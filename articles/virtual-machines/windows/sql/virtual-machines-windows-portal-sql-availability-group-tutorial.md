@@ -16,15 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb58cd7a00bc8eb5eaf2ea5a7a8f7641b0502ed9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
 このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。 チュートリアル全体では、2 つの SQL Server にデータベース レプリカで可用性グループを作成します。
@@ -58,7 +55,7 @@ ms.lasthandoff: 05/10/2017
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-## クラスターを作成する
+##クラスターを作成します。
 
 前提条件が完了した後は、最初に、2 つの SQL Sever と監視サーバーを含む Windows Server フェールオーバー クラスターを作成します。  
 
@@ -349,7 +346,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
    ![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  **[作成]**をクリックします。
+1.  **Create** をクリックしてください。
 3. ロード バランサーに関して次のパラメーターを構成します。
 
    | Setting | フィールド |
@@ -503,4 +500,3 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 ## <a name="next-steps"></a>次のステップ
 
 - [2 番目の可用性グループのロード バランサーに IP アドレスを追加](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP)します。
-

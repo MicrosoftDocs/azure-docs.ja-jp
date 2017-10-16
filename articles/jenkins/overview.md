@@ -12,10 +12,10 @@ ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 6a4c32d73050795a70a86f745840536bb3fc2a49
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 720d4c592256389f9494cb1b2be56393f4e9f03f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -51,6 +51,6 @@ Jenkins プラグインを使用して、アプリケーションを Jenkins CI/
  次のサービスおよび環境にデプロイするためのプラグインが用意されています。
 
 - [Linux で動作する Azure Web アプリ](/azure/app-service-web/app-service-linux-intro)。 作業を開始するには、こちらの[チュートリアル](java-deploy-webapp-tutorial.md)を参照してください。
-- [Azure Web アプリ](/azure/app-service-web/app-service-web-overview)。 作業を開始するには、こちらの[操作方法](deploy-Jenkins-app-service-plugin.md)を参照してください。
+- [Azure Web アプリ](/azure/app-service/app-service-web-overview)。 作業を開始するには、こちらの[操作方法](deploy-Jenkins-app-service-plugin.md)を参照してください。
 
 

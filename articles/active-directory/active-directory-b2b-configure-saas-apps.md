@@ -15,15 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
 Azure Active Directory (Azure AD) B2B コラボレーションは、Azure AD と統合されているほとんどのアプリで動作します。 このセクションでは、いくつかの一般的な SaaS アプリを Azure AD B2B と共に使用できるように構成する手順について説明します。
@@ -117,4 +114,3 @@ Azure AD B2B コラボレーションに関する以下の記事を参照して�
 * [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
 * [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 * [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
-

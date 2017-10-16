@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 31291a9b0f452adeae42f744a976c14e61a4b303
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 7a24df6f2c3b2c091d1b66b8b9c0a61035ffde11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) との統合
 Operations Management Suite は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  OMS の標準機能を使用するだけでなく、他の管理アプリケーションおよびサービスと統合して、ハイブリッドの管理環境を提供したり、環境に固有のカスタム管理シナリオを提供したり、お客様用のカスタム管理エクスペリエンスを提供したりすることができます。  この記事では、OMS サービスと統合するさまざまなオプションおよび詳細な技術情報を提供する記事へのリンクを示します。 
@@ -106,5 +105,4 @@ Azure Backup と Site Recovery は、エンタープライズ データを保護
 
 ## <a name="next-steps"></a>次のステップ
 * OMS サービスの技術情報については、「[OMS SDK](operations-management-suite-sdk.md)」をご覧ください。  
-
 

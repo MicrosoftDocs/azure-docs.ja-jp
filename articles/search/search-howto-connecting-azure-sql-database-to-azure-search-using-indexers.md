@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 
 [Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL Database に存在する場合は、**Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
@@ -244,7 +242,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
     }
 
 > [!WARNING]
-> ソース テーブルの高基準列にインデックスがない場合、SQL インデクサーが使用するクエリはタイムアウトになる可能性があります。 具体的には、多くの行が含まれるテーブルに対してクエリを効率的に実行するには、`ORDER BY [High Water Mark Column]` 句にはインデックスが必要です。
+> ソース テーブルの高基準列にインデックスがない場合、SQL インデクサーが使用するクエリはタイムアウトになる可能性があります。具体的には、多くの行が含まれるテーブルに対してクエリを効率的に実行するには、`ORDER BY [High Water Mark Column]` 句にはインデックスが必要です。
 >
 >
 
@@ -358,4 +356,3 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 + インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
 
 + 列が実行されないことを防ぐために、インデックスの完全な再作成を定期的に実行している。 
-

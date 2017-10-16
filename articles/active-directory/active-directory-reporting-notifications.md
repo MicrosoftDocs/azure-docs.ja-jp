@@ -16,12 +16,11 @@ ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: f4632bd2af802b10c8c64972e8c605d7ad7c0eaf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory のレポート通知
 ## <a name="what-reports-generate-email-notifications"></a>電子メール通知を生成するレポート
@@ -49,5 +48,4 @@ ms.lasthandoff: 12/29/2016
 * 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 [Azure AD のセキュリティ、監査、およびアクティビティ レポート](active-directory-view-access-usage-reports.md)に関するページをご覧ください
 * [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 * [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
-
 

@@ -24,7 +24,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 
 Microsoft Azure IoT Suite は、SDL および OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。 
 
-[IoT Suite](../articles/iot-suite/iot-suite-what-is-azure-iot.md) 内の [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス ([Azure Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) など) 間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。  
+[IoT Suite](../articles/iot-suite/iot-suite-what-is-azure-iot.md) 内の [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス ([Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) など) 間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。  
 
 Azure IoT Suite に組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、ここでは Suite を 3 つの主なセキュリティ領域に分けました。 
 
@@ -61,7 +61,7 @@ Azure IoT Suite は、クラウドにおける暗号化された通信やデー�
 
 データをクラウドに配置すれば、ユーザー定義のワークフローでの処理と格納が可能になります。 データの各部分へのアクセスは、使用するストレージ サービスに応じて、Azure Active Directory で制御されます。
 
-IoT インフラストラクチャで使用されるすべてのキーはクラウド内のセキュリティで保護されたストレージに格納されるため、キーの再プロビジョニングが必要な場合はロール オーバーすることができます。 データは、必要なセキュリティ レベルの定義を有効にして、[DocumentDB](../articles/documentdb/documentdb-introduction.md) または [SQL Database](../articles/sql-database/sql-database-faq.md) に格納できます。 さらに、Azure では、侵入や不正アクセスを知らせるためにデータへのすべてのアクセスを監視し、監査する方法が提供されます。
+IoT インフラストラクチャで使用されるすべてのキーはクラウド内のセキュリティで保護されたストレージに格納されるため、キーの再プロビジョニングが必要な場合はロール オーバーすることができます。 データは、必要なセキュリティ レベルの定義を有効にして、[Azure Cosmos DB](../articles/cosmos-db/introduction.md) または [SQL Database](../articles/sql-database/sql-database-faq.md) に格納できます。 さらに、Azure では、侵入や不正アクセスを知らせるためにデータへのすべてのアクセスを監視し、監査する方法が提供されます。
 
 ## <a name="conclusion"></a>まとめ
 モノのインターネットは、お客様のモノ、つまり、ビジネスにとって最も重要なモノから始められます。 IoT は、コストを減らし、収益を増やし、事業を転換することで、企業にすばらしい価値をもたらすことができます。 この転換の成功は、適切な IoT ソフトウェアとサービス プロバイダーの選択に大きく左右されます。 これは、ビジネスのニーズと要件を理解してこの転換を促進するだけでなく、主な設計に関する考慮事項として、セキュリティ、プライバシー、透明性、およびコンプライアンスが組み込まれたサービスやソフトウェアを提供するプロバイダーを見つけることを意味します。 Microsoft はセキュリティで保護されたソフトウェアとサービスの開発とデプロイの豊富な経験があり、モノのインターネットの新時代におけるリーダーであり続けます。 
@@ -72,7 +72,7 @@ Microsoft Azure IoT Suite には仕様でセキュリティ対策が組み込ま
 Azure IoT Suite の各事前構成済みソリューションでは、次のような Azure サービスのインスタンスを作成します。
 
 * [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): クラウドを "モノ" に接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
-* [**Azure DocumentDB**](https://azure.microsoft.com/services/documentdb/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 DocumentDB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付け、および豊富な SQL クエリ インターフェイスが提供されます。
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 * [**Azure App Services**](https://azure.microsoft.com/services/app-service/): データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。

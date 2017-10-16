@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: fe7f508ed1c4eb57663f7e252d286719af03dbb1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 63f69756b3933fecdec75cc677e1098447e5b94e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: スケジューラ
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ ( 同期エンジンとも言います) について説明します。
@@ -48,7 +47,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 * **AllowedSyncCycleInterval**。 Azure AD で利用できる同期サイクルの最短の時間間隔です。 この設定よりも頻繁に同期してサポートを受けることはできません。
 * **CurrentlyEffectiveSyncCycleInterval**。 現時点で有効になっているスケジュールです。 AllowedSyncInterval よりも高い頻度でない場合は、CustomizedSyncInterval と同じ値です (設定されている場合)。 1.1.281 より前のビルドを使用している場合、CustomizedSyncCycleInterval を変更すると、次回の同期サイクルの後に有効になります。 ビルド 1.1.281 以降を使用している場合、変更はすぐに反映されます。
 * **CustomizedSyncCycleInterval**。 既定の 30 分以外の頻度でスケジューラを実行する場合は、この設定を構成します。 上の図では、スケジューラは 1 時間ごとに実行されるように設定されています。 この設定を AllowedSyncInterval より低い値に設定すると、その値が使用されます。
-* **NextSyncCyclePolicyType**。 Delta または Initial です。 次回の実行で、変更の差分だけを処理するのか、完全なインポートと同期を行って、 新規の規則と変更した規則のすべてを再処理するのかを定義します。
+* **NextSyncCyclePolicyType**。 Delta または Initial です。 次回の実行で、変更の差分だけを処理するのか、完全なインポートと同期を行って、新規の規則と変更した規則のすべてを再処理するのかを定義します。
 * **NextSyncCycleStartTimeInUTC**。 スケジューラが次回の同期サイクルを開始する時刻です。
 * **PurgeRunHistoryInterval**。 操作ログを保持する時間です。 ログは Synchronization Service Manager で参照できます。 既定では、ログは 7 日間保持されます。
 * **SyncCycleEnabled**。 スケジューラが、その操作の一部としてインポート、同期、およびエクスポート処理を実行しているかどうかを示します。
@@ -173,4 +172,3 @@ Get-ADSyncConnectorRunStatus
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

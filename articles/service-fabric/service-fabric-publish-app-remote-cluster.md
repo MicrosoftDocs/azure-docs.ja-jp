@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
-ms.translationtype: HT
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
 ms.openlocfilehash: c440c520d84fc503ff9e705555449e92555d4721
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-visual-studio"></a>Visual Studio を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -113,4 +112,3 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 [2]: ./media/service-fabric-publish-app-remote-cluster/EditParams.png
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
-

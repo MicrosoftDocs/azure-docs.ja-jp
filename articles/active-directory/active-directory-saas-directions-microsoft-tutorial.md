@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: f9c068c71eb00a4c779c91c8ee0f0dc9d6ba85ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>チュートリアル: Azure Active Directory と Directions on Microsoft の統合
 
@@ -112,7 +110,7 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
@@ -173,7 +171,7 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-directions-on-microsoft-test-user"></a>Directions on Microsoft テスト ユーザーの作成
 
@@ -237,5 +235,4 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 [201]: ./media/active-directory-saas-directions-microsoft-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-directions-microsoft-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-directions-microsoft-tutorial/tutorial_general_203.png
-
 

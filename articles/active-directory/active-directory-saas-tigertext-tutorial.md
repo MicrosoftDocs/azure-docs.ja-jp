@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: e101e5fc84b032b66dd0636bab8bff128791f77c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
 
@@ -157,7 +156,7 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-tigertext-secure-messenger-test-user"></a>TigerText Secure Messenger のテストユーザーの作成
 
@@ -219,5 +218,4 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 [201]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_203.png
-
 

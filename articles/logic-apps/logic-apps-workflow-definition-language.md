@@ -14,14 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語スキーマ
 
 ワークフロー定義には、ロジック アプリの一部として実行される実際のロジックが含まれます。 この定義には、ロジック アプリを開始する 1 つ以上のトリガーと、ロジック アプリが実行する 1 つ以上のアクションが含まれます。  
@@ -339,4 +337,3 @@ outputs では、ワークフローの実行から返すことができる情報
 ## <a name="next-steps"></a>次のステップ
 
 [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)
-

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 および 0.1 のリリース ノート
 ## <a name="overview"></a>概要
@@ -83,10 +83,4 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 
 ## <a name="next-step"></a>次のステップ
 [更新プログラムをインストールします](storsimple-ova-install-update-01.md) 。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

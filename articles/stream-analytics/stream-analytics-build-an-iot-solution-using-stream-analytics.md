@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 1031cd63dede9ed202fdc11b153a550766d9cb19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 ## <a name="introduction"></a>はじめに
 このチュートリアルでは、データに隠された知見を Azure Stream Analytics を使ってリアルタイムで突き止める方法を説明します。 開発者は、データのストリーム (クリック ストリーム、ログ、デバイスによって生成されたイベントなど) に履歴レコードや参照データを簡単に組み合わせて、ビジネスに関する知見を導き出すことができます。 Azure Stream Analytics は、Microsoft Azure の徹底した管理によってホストされたリアルタイム ストリーム計算処理サービスであるため、高い障害回復力とスケーラビリティ、低遅延が実現され、短時間での立ち上げが可能となっています。
@@ -130,7 +128,7 @@ Azure アカウントをお持ちでない場合は、 [無料試用版にサイ
 > 
 > 
 
-Azure クレジットを利用できるよう、この記事の最後にある「Azure アカウントのクリーンアップ」セクションの手順を忘れずに実行してください。
+この記事の最後に「Azure アカウント クリーンアップ」セクションの手順に従って、Azure クレジットを最大限に活用することができますされるようにすることを確認します。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>チュートリアルに必要な Azure リソースのプロビジョニング
 このチュートリアルでは、"*入口*" と "*出口*" のデータ ストリームを受信するために、2 つのイベント ハブが必要となります。 Stream Analytics ジョブの結果は Azure SQL Database で出力します。 また、車両登録に関する参照データは Azure Storage に格納します。
@@ -181,7 +179,7 @@ Azure Portal で、左側の管理ウィンドウの下部にある **[その他
 
 ![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。 この名前空間に作成された *entry* と *exit* という 2 つのイベント ハブが表示されます。
+*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。この名前空間に作成された *entry* と *exit* という 2 つのイベント ハブが表示されます。
 
 ![クラシック ポータルの [イベント ハブ] タブ](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
@@ -293,7 +291,7 @@ PowerShell スクリプトは、TollApp というサンプル アプリケーシ
 4. **[ユーザー名]** フィールドに「**tolladmin**」、**[パスワード]** フィールドに 「**123toll!**」、および **[テーブル]** フィールドに「**TollDataRefJoin**」と入力します。
    
     ![SQL Database settings](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
-5. **[作成]**をクリックします。
+5. **Create** をクリックしてください。
 
 ## <a name="azure-stream-analytics-query"></a>Azure Stream Analytics クエリ
 **[クエリ]** タブには、入力データを変換する SQL クエリが表示されます。
@@ -402,7 +400,7 @@ WHERE Registration.Expired = '1'
     ![Selection of "Show Table Data" in Server Explorer](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image51.jpg)
 
 ## <a name="scale-out-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのスケールアウト
-Azure Stream Analytics は、大量のデータ処理に対応できるよう、状況の変化に応じてスケール変更できるように設計されています。 Azure Stream Analytics クエリで **PARTITION BY** 句を使用すると、そのステップをスケールアウトして処理するようシステムに命令することができます。 **PartitionId** は、システムによって追加される特殊な列で、入力 (イベント ハブ) のパーティション ID と一致します。
+Azure Stream Analytics は、大量のデータ処理に対応できるよう、状況の変化に応じてスケール変更できるように設計されています。 Azure Stream Analytics クエリで **PARTITION BY** 句を使用すると、そのステップをスケールアウトして処理するようシステムに命令することができます。**PartitionId** は、システムによって追加される特殊な列で、入力 (イベント ハブ) のパーティション ID と一致します。
 
     SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
     FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
@@ -442,6 +440,5 @@ Azure Stream Analytics の詳細については、 [オンライン ドキュメ
    > リソースを表す名前が表示されます。 それぞれ慎重に確認してから削除してください。
    > 
    > 
-
 
 

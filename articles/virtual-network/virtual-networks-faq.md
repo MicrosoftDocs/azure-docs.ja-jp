@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
+ms.openlocfilehash: c71e188b74ebfd9420f840957e83190cf476b584
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 1032c4e7d378016e36c92efa9478be72e9a557c4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -179,9 +178,9 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Azure App Service Web Apps を VNet で使用することはできますか。
 はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。 VNet にポイント対サイト接続が構成されている場合、すべての Web Apps は Azure VNet のリソースに安全に接続してアクセスできます。 詳細については、次の記事を参照してください。
 
-* [App Service 環境で Web Apps を作成する](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
-* [アプリを Azure 仮想ネットワークに統合する](../app-service-web/web-sites-integrate-with-vnet.md)
-* [Web Apps と VNet Integration and Hybrid Connections の併用](../app-service-web/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
+* [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+* [アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)
+* [Web Apps と VNet Integration and Hybrid Connections の併用](../app-service/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ロールと worker ロール (PaaS) を持つ Cloud Services を VNet にデプロイすることはできますか。
 はい。 Cloud Services ロール インスタンスは、VNet 内に (オプションで) デプロイできます。 そのためには、サービス構成のネットワーク構成セクションで、VNet の名前と、ロールとサブネットのマッピングを指定します。 どのバイナリも更新する必要はありません。
@@ -216,4 +215,3 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 - Azure Portal。[Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
 - PowerShell。[Resource Manager](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md) および[クラシック](/powershell/module/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
 - [Azure コマンド ライン インターフェイス (CLI)](../virtual-machines/azure-cli-arm-commands.md#azure-network-commands-to-manage-network-resources)。両方のデプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。  
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics の Data Lake Store 出力
 Stream Analytics ジョブは、 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)など、いくつかの出力方法をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。
@@ -88,5 +87,4 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 この問題を解決するには、実行中のジョブを停止し、Data Lake Store 出力に移動します。 [承認の更新] リンクをクリックすると、"承認にリダイレクトしています..." というページが短時間表示されます。 処理が成功すると、このページは自動的に閉じられ、"承認が正常に更新されました" と表示されます。 ページの下部にある [保存] をクリックする必要があります。[最後に停止した時刻] からジョブを再開して継続することで、データの損失を防ぐことができます。
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
-
 

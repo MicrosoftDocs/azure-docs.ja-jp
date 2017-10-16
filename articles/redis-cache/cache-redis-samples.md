@@ -14,13 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
 ms.openlocfilehash: 7841fcf0b5f4dcb409abf8bfb804c2e03dad6d3a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis Cache のサンプル
 このトピックでは、キャッシュへの接続、キャッシュ内のデータの読み取りと書き込み、ASP.NET Redis Cache プロバイダーの使用などのシナリオを対象とする、Azure Redis Cache のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
@@ -63,12 +61,11 @@ ms.lasthandoff: 07/06/2017
 「 [Azure 管理ライブラリを使用した Azure Redis Cache の管理](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) 」サンプルでは、Azure 管理ライブラリを使用してキャッシュを管理 (作成/更新/削除) する方法を示しています。 
 
 ## <a name="custom-monitoring-sample"></a>カスタム監視のサンプル
-「 [Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) 」サンプルは、Azure ポータルの外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
+「[Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)」サンプルは、Azure Portal の外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
 
 ## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>PHP と Redis を使用して記述された Twitter 形式の複製
 [Retwis](https://github.com/SyntaxC4-MSFT/retwis) サンプルは「Redis Hello World」です。 [Predis](https://github.com/nrk/predis) クライアントを使用し、Redis と PHP で記述された最小の Twitter 形式のソーシャル ネットワーク クローンです。 このソース コードは非常に単純に設計されており、同時にさまざまな Redis データ構造を示しています。
 
 ## <a name="bandwidth-monitor"></a>帯域幅モニター
 「 [帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) 」サンプルでは、クライアントで使用されている帯域幅を監視できます。 帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
-
 

@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 36936ae66c458fcbedeec95cfa2f573a40c8af53
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-ios-app"></a>iOS アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/21/2017
 ## <a name="overview"></a>概要
 このチュートリアルでは、 [Azure Mobile Apps](app-service-mobile-value-prop.md)(クラウドのバックエンド サービス) を iOS アプリに追加する方法について説明します。 まず、新しいモバイル バックエンドを作成します。 その後、簡単な *Todo リスト* iOS アプリを使用して Azure にデータを格納します。
 
-このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/) が必要です。
+このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>手順 I: 新しい Azure Mobile App バックエンドの作成
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
@@ -42,4 +41,3 @@ ms.lasthandoff: 07/21/2017
 [Azure portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-

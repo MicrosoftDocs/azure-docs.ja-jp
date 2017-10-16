@@ -12,19 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/13/2017
+ms.date: 09/18/2017
 ms.author: ryanwi
 ms.custom: mvc
+ms.openlocfilehash: 86c01a55304c5f5179e0e94d67f318e42075fd48
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 80c5a2a43302e1cc8ec3b4298eb393a1861252d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="create-a-secure-cluster-on-azure-using-powershell"></a>PowerShell を使用して Azure にセキュリティで保護されたクラスターを作成する
-このチュートリアルでは、Azure で実行される Service Fabric クラスター (Window または Linux) を作成する方法について説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。
+# <a name="create-a-windows-cluster-in-azure-using-powershell"></a>PowerShell を使用して Azure に Windows クラスターを作成する
+このチュートリアルでは、Azure で実行される Windows Service Fabric クラスターを作成する方法について説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -46,7 +44,7 @@ Azure で Service Fabric クラスターを実行することによって発生�
 Service Fabric クラスターを作成する方法について詳しくは、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」をご覧ください。
 
 ## <a name="create-the-cluster-using-azure-powershell"></a>Azure PowerShell を使用してクラスターを作成する
-1. [Service Fabric 用の Azure Resource Manager](https://aka.ms/securepreviewonelineclustertemplate) GitHub リポジトリから Azure Resource Manager テンプレートとパラメーター ファイルのローカル コピーをダウンロードします。  *azuredeploy.json* は、Service Fabric クラスターを定義する Azure Resource Manager テンプレートです。 *azuredeploy.parameters.json* はクラスター デプロイをカスタマイズするためのパラメーター ファイルです。
+1. [Service Fabric 用の Azure Resource Manager](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) GitHub リポジトリから Azure Resource Manager テンプレートとパラメーター ファイルのローカル コピーをダウンロードします。  *azuredeploy.json* は、Service Fabric クラスターを定義する Azure Resource Manager テンプレートです。 *azuredeploy.parameters.json* はクラスター デプロイをカスタマイズするためのパラメーター ファイルです。
 
 2. *azuredeploy.parameters.json* パラメーター ファイルで次のパラメーターをカスタマイズします。
 
@@ -56,7 +54,7 @@ Service Fabric クラスターを作成する方法について詳しくは、�
    | clusterName     | 作成するクラスターの名前。 | *bobs-sfpreviewcluster など* |
    | adminUserName   | クラスター仮想マシンのローカル管理者アカウントです。 | *任意の有効な Windows Server ユーザー名* |
    | adminPassword   | クラスター仮想マシンのローカル管理者アカウントのパスワードです。 | *任意の有効な Windows Server パスワード* |
-   | clusterCodeVersion | 実行する Service Fabric バージョン (255.255.X.255 はプレビュー バージョンです)。 | **255.255.5718.255** |
+   | clusterCodeVersion | 実行する Service Fabric バージョン (255.255.X.255 はプレビュー バージョンです)。 | **5.7.198.9494** |
    | vmInstanceCount | クラスター内の仮想マシンの数 (1 または 3 ～ 99 で指定できます)。 | **1** | *プレビュー クラスターの場合、1 つの仮想マシンのみを指定します* |
 
 3. PowerShell コンソールを開き、Azure にログインし、クラスターをデプロイするサブスクリプションを選択します。
@@ -157,4 +155,3 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 次のチュートリアルでは、既存のアプリケーションをデプロイする方法について説明します。
 > [!div class="nextstepaction"]
 > [Docker Compose を使用して既存の .NET アプリケーションをデプロイする](service-fabric-host-app-in-a-container.md)
-

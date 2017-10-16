@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 2d3046381892978e3aea12752f526d7cdf8184f5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: f8718e240eaefb47b18b6098be083e335ccbc89d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure Portal でサポートされるブラウザーとデバイス
 [Azure Portal](https://portal.azure.com) は、最新の主要なデスクトップ デバイス、タブレット デバイス、ブラウザーで実行できます。
@@ -37,5 +36,4 @@ Azure Portal は、最新の PC、Mac、タブレットで快適に動作しま�
 * Safari (最新バージョン、Mac のみ)
 * Chrome (最新バージョン)
 * Firefox (最新バージョン)
-
 

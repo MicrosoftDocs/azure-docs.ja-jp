@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
+ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: f50d5073b0016bbf0c7b6ba1374e951225dfd88f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性を実現するうえで欠かせないのは、サービスがあらゆる種類の障害を切り抜けられるようにすることです。 これは、計画外の障害や、制御できない障害に関しては特に重要です。 この記事では、正しくモデル化および管理されていない場合に、災害につながる可能性がある一般的な障害モードをいくつか取り上げて説明します。 さらに、軽減策や、災害が発生した場合に実行するアクションについても解説します。 その目的は、計画的または計画外の障害が発生したときに、ダウンタイムやデータ損失のリスクを軽減または排除することです。
@@ -154,4 +153,3 @@ Service Fabric にはシード ノードの概念があります。 これは基
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
-

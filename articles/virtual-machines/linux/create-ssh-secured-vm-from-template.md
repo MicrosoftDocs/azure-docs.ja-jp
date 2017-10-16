@@ -4,7 +4,7 @@ description: "Azure CLI 2.0 を使用して Resource Manager テンプレート�
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 721b8378-9e47-411e-842c-ec3276d3256a
@@ -13,16 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 09/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 908a8a0c82b2d21fb25c9b33dbd714570d1ac272
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
-
+ms.openlocfilehash: 938304efe5e4a13736a50348bd0531c475149aec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
 この記事では、Azure Resource Manager テンプレートと Azure CLI 2.0 と を使用してすばやく Linux 仮想マシンをデプロイする方法を説明します。 これらの手順は、[Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) を使用して実行することもできます。
@@ -60,7 +58,7 @@ az network public-ip show \
     --output tsv
 ```
 
-通常どおりに、ご使用の VM に SSH 接続できます。
+通常どおりに、ご使用の VM に SSH 接続できます。 上記のコマンドで取得した独自のパブリック IP アドレスを指定します。
 
 ```bash
 ssh azureuser@<ipAddress>

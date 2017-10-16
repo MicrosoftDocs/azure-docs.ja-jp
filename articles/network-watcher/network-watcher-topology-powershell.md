@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 40e01a7a6a2ea6127ab725f04649cec47b9d9422
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 84e925b4461e55e570e9848bf03d3d352bfff898
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-network-watcher-topology-with-powershell"></a>PowerShell を使用した Network Watcher トポロジの確認
 
 > [!div class="op_single_selector"]
@@ -138,6 +136,5 @@ Resources       : [
 ## <a name="next-steps"></a>次のステップ
 
 [Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
-
 
 

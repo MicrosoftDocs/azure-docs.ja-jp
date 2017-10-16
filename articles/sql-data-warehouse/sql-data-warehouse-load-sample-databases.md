@@ -15,14 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: cc5ec6022cede019541d697905aa068b88d25ee4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
-
-
+ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>SQL Data Warehouse へのサンプル データのロード
 次の簡単な手順で Adventure Works サンプル データベースをロードしてクエリを実行します。 これらのスクリプトでは、まず sqlcmd を使用して、テーブルとビューを作成する SQL を実行します。 テーブルが作成されると、スクリプトは bcp を使用してデータを読み込みます。  まだ sqlcmd と bcp をインストールしていない場合は、リンクに従って [bcp をインストール][install bcp]し、[sqlcmd をインストール][install sqlcmd]します。
@@ -93,4 +90,3 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 
 <!--Other Web references-->
 [Adventure Works Sample Scripts for SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
-

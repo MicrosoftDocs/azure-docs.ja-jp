@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 3c00867a29cf8343a57e74e2aabe3971ae6837af
-ms.contentlocale: ja-jp
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
 ms.lasthandoff: 08/03/2017
-
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 08/03/2017
 1. デバイスを非アクティブ化する前に、デバイスに関連付けられているすべてのボリューム コンテナー (およびボリューム) を削除する必要があります。 ボリューム コンテナーを削除できるのは、関連付けられているバックアップを削除した後だけです。
 
     > [!NOTE]
-    > StorSimple 物理デバイスまたはクラウド アプライアンスを非アクティブ化する前に、削除されたボリューム コンテナーのデータが実際にそのデバイスから削除されていることを確認してください。 クラウド消費グラフを監視でき、削除したバックアップのためにクラウドの使用が低下したことが確認されたら、そのデバイスの非アクティブ化に進むことができます。 この低下が発生する前にデバイスを非アクティブ化すると、ストレージ アカウント内でデータが孤立し、請求が発生します。
+    > StorSimple 物理デバイスまたはクラウド アプライアンスを非アクティブ化する前に、デバイスから削除されたボリューム コンテナーからのデータが実際に削除されることを確認します。 クラウドの使用量グラフを監視することができ、削除したバックアップのためドロップ クラウド使用率を確認するときに進むことができます、デバイスを非アクティブ化します。 デバイスを非アクティブ化と、このドロップが発生する前に、データは、ストレージ アカウントに孤立したし、料金を計上します。
 
 2. 次のようにデバイスを非アクティブ化します。
    
@@ -121,5 +120,4 @@ StorSimple Cloud Appliance の場合、ポータルから非アクティブ化�
 * 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「 [デバイスの出荷時設定へのリセット](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 * 技術的な詳細については、 [Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md)てください。
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: e2d12f807756b778a64920b12a66fba184a99844
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: aeb27a02ed624106afec5dbd98faacf5f400f89e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -58,7 +57,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="inspect-individual-items"></a>個々の項目の確認
 任意のテレメトリ項目を選択すると、キー フィールドと関連項目が表示されます。 フィールドの完全なセットを表示するには、[...] をクリックします。 
 
-![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
+![新しい作業項目をクリックし、フィールドを編集して OKをクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
 
 ## <a name="filter-event-types"></a>イベントの種類のフィルター選択
 [フィルター] ブレードを開き、表示するイベントの種類を選択します  (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
@@ -140,7 +139,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="create-work-item"></a>作業項目を作成する
 任意のテレメトリ項目の詳細を使用して、GitHub または Visual Studio Team Services でバグを作成できます。 
 
-![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/42.png)
+![新しい作業項目をクリックし、フィールドを編集して OKをクリックします。](./media/app-insights-diagnostic-search/42.png)
 
 これを初めて行う場合は、Team Services のアカウントおよびプロジェクトへのリンクを構成するように求められます。
 
@@ -184,4 +183,3 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Application Insights にログとカスタム テレメトリを送信する](app-insights-asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
-

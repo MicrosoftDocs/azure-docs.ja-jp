@@ -12,28 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/19/2017
 ms.author: billmath
+ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: da517c096357bb8db4334715fa46aa209c273f22
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
 
 既に Azure AD の ID モデルについての知識があり、特定の方法の詳細を知りたい場合は、適切なリンクを参照してください。
 
-* [シングル サインオン (SSO)](active-directory-aadconnect-sso.md) による[パスワード同期](#password-synchronization)
-* [パススルー認証](active-directory-aadconnect-pass-through-authentication.md)
+* [シームレス シングル サインオン (SSO)](active-directory-aadconnect-sso.md) による[パスワード ハッシュの同期](#password-synchronization)
+* [シームレス シングル サインオン (SSO)](active-directory-aadconnect-sso.md) による[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)
 * [フェデレーション SSO (Active Directory フェデレーション サービス (AD FS) を使用する)](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>組織のユーザー サインイン方法の選択
-多くの組織においては Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインを可能にするのみなので、その場合は既定のパスワードの同期オプションをお勧めします。 ただし、組織によっては、特定の理由によってこのオプションを使用できない場合があります。 その場合は、フェデレーション サインイン オプション (AD FS など) か、パススルー認証を選択できます。 次の表を使用して、適切な選択を行ってください。
+Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。 ただし、組織によっては、特定の理由によってこのオプションを使用できない場合があります。 その場合は、フェデレーション サインイン オプション (AD FS など) か、パススルー認証を選択できます。 次の表を使用して、適切な選択を行ってください。
 
-必要事項 | PS と SSO| PA と SSO| AD FS |
+必要事項 | SSO による PHS| SSO と PTA| AD FS |
  --- | --- | --- | --- |
 オンプレミスの Active Directory にある新しいユーザー、連絡先、およびグループ アカウントを、自動的にクラウドに同期する。|○|○|○|
 テナントを Office 365 ハイブリッド シナリオ用にセット アップする。|○|○|○|
@@ -42,19 +41,16 @@ Azure Active Directory (Azure AD) Connect では、ユーザーは同じパス�
 クラウドにパスワードが保存されていないことを確認する。||○*|○|
 オンプレミスの Multi-factor Authentication ソリューションを有効化する。|||○|
 
-* 軽量コネクタ経由。
+* 軽量エージェント経由。
 
->[!NOTE]
-> パススルー認証では、現在、リッチ クライアントにいくつかの制限があります。 詳細については「[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)」を参照してください。 
+### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
+パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービスのパスワード リセットを有効にできます。
 
-### <a name="password-synchronization"></a>パスワードの同期
-パスワードの同期では、ユーザーのパスワードのハッシュが、オンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、新しいパスワードは Azure AD にすぐに同期されるため、ユーザーは常に、クラウドのリソースとオンプレミスのリソースに同じパスワードを使用できます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワードの同期とパスワードの書き戻しを組み合わせて使用すると、Azure AD でセルフ サービス パスワードのリセットを有効にすることができます。
+さらに、企業ネットワーク上にある、ドメインに参加しているマシン上のユーザーに対して[シームレス SSO](active-directory-aadconnect-sso.md) を有効にすることができます。 シングル サインオンを使用すれば、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。
 
-さらに、企業ネットワーク上にあるドメイン参加済みコンピューターのユーザーに対しても、[SSO](active-directory-aadconnect-sso.md) を有効化できます。 シングル サインオンを使用すれば、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。
+![パスワード ハッシュの同期](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
-![パスワードの同期](./media/active-directory-aadconnect-user-signin/passwordhash.png)
-
-詳しくは、[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関する記事をご覧ください。
+詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関する記事を参照してください。
 
 ### <a name="pass-through-authentication"></a>パススルー認証
 パススルー認証では、ユーザーのパスワードはオンプレミスの Active Directory コントローラーに対して検証されます。 パスワードを何らかの形式で Azure AD に保存する必要はありません。 そのため、クラウド サービスへの認証時に、オンプレミスのポリシー (ログオン時間制限など) を評価することができます。
@@ -140,7 +136,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 以下の説明では、UPN サフィックスが contoso.com である場合を想定しています。これは、オンプレミス ディレクトリで UPN の一部分として使用されます (例: user@contoso.com)。
 
-###### <a name="express-settingspassword-synchronization"></a>簡単設定とパスワード同期
+###### <a name="express-settingspassword-hash-synchronization"></a>簡易設定/パスワード ハッシュの同期
 | 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |この場合、contoso.com のカスタム ドメインは Azure AD ディレクトリに追加されていません。 オンプレミスの UPN にサフィックス @contoso.com が付いているユーザーは、オンプレミスの UPN を使用して Azure にサインインすることができません。 代わりに、Azure AD によって提供された新しい UPN を使用する必要があります。この UPN は、既定の Azure AD ディレクトリのサフィックスを追加して作成されます。 たとえば、azurecontoso.onmicrosoft.com という Azure AD ディレクトリにユーザーを同期する場合、オンプレミス ユーザー user@contoso.com には、user@azurecontoso.onmicrosoft.com という UPN が与えられます。 |
@@ -159,7 +155,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 | Verified |この場合、特に対処は必要なく、そのまま構成を続行できます。 |
 
 ## <a name="changing-the-user-sign-in-method"></a>ユーザーのサインイン方法の変更
-ウィザードを使用して Azure AD Connect の最初の構成を完了したら、Azure AD Connect で利用可能なタスクを使用して、ユーザーのサインイン方法 (フェデレーション、パスワード同期、またはパススルー認証) を変更できます。 Azure AD Connect ウィザードを再実行すると、実行できるタスクの一覧が表示されます。 タスクの一覧から **[ユーザー サインインの変更]** を選択します。
+ウィザードによる Azure AD Connect の初期構成の後、Azure AD Connect で使用可能なタスクを使用して、ユーザーのサインイン方法をフェデレーション、パスワード ハッシュの同期、またはパススルー認証から変更できます。 Azure AD Connect ウィザードを再実行すると、実行できるタスクの一覧が表示されます。 タスクの一覧から **[ユーザー サインインの変更]** を選択します。
 
 ![ユーザー サインインの変更](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -172,11 +168,10 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 ![Azure への接続](./media/active-directory-aadconnect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> 一時的にパスワード同期に切り替えるだけの場合は、 **[ユーザー アカウントを変換しない]** チェック ボックスをオンにします。 このオプションをオンにしないと、各ユーザーがフェデレーション ディレクトリに変換されることになり、数時間かかることがあります。
+> パスワード ハッシュの同期への一時的な切り替えを行なっているだけの場合は、**[ユーザー アカウントを変換しない]** チェック ボックスをオンにします。 このオプションをオンにしないと、各ユーザーがフェデレーション ディレクトリに変換されることになり、数時間かかることがあります。
 >
 >
 
 ## <a name="next-steps"></a>次のステップ
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関する記事をご覧ください。
 - [Azure AD Connect の設計概念](active-directory-aadconnect-design-concepts.md)についての詳しく知る。
-

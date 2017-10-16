@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>Notification Hubs を使用した iOS デバイスへのローカライズ ニュース速報の送信
 > [!div class="op_single_selector"]
@@ -247,29 +247,23 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 
 
 <!-- URLs. -->
-[方法: Service Bus Notification Hubs (iOS アプリケーション)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
 [通知ハブを使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-ios
-[モバイル サービス]: /develop/mobile/tutorials/get-started
+[Mobile Service]: /develop/mobile/tutorials/get-started
 [Notification Hubs によるユーザーへの通知: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs によるユーザーへの通知: Mobile Services]: /manage/services/notification-hubs/notify-users
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
-[データの使用]: /develop/mobile/tutorials/get-started-with-data-ios
-[認証の概要]: /develop/mobile/tutorials/get-started-with-users-ios
-[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-ios
-[アプリケーション ユーザーへのプッシュ通知]: /develop/mobile/tutorials/push-notifications-to-users-ios
-[スクリプトを使用したユーザーの認証]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[JavaScript と HTML]: ../get-started-with-push-js.md
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
+[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
+[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
+[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
+[JavaScript and HTML]: ../get-started-with-push-js.md
 
-[Mobile Services の Windows 開発者プレビュー登録の手順]: ../mobile-services-windows-developer-preview-registration.md
-[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+[Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx

@@ -14,14 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 
 
 このガイドを読む前に、いくつかの定義を確認しておいてください。 「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」では、HANA L インスタンス ユニットの次の 2 種類のクラスを紹介しました。
@@ -299,6 +297,5 @@ VNet が削除された後、Azure サポート要求を開き、削除する IP
 SAP HANA on Azure (L インスタンス) の追加の ExpressRoute 回線を削除するには、SAP HANA on Azure サービス管理で Azure サポート要求を開き、回線の削除を要求します。 Azure サブスクリプション内では、必要に応じて VNet を削除または保持することができます。 ただし、HANA L インスタンスの ExpressRoute 回線と、そのリンク先 VNet ゲートウェイとを結ぶ接続は削除する必要があります。
 
 VNet も削除する場合は、前のセクション「VNet の削除」のガイダンスに従います。
-
 
 

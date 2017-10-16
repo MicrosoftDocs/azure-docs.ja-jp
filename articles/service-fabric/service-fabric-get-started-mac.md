@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2017
+ms.date: 09/26/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
@@ -49,7 +49,7 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    この手順を実行すると、VM 構成と VM のダウンロード元の場所が含まれた `Vagrantfile` ファイルがダウンロードされます。
+    この手順を実行すると、VM 構成と VM のダウンロード元の場所が含まれた `Vagrantfile` ファイルがダウンロードされます。  ファイルはストック Ubuntu イメージを指します。
 
 2. リポジトリのローカル クローンに移動します。
 
@@ -70,9 +70,24 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
     vagrant up
     ```
 
-   この手順を実行すると、事前構成済みの VM イメージがダウンロードされてローカルで起動され、ローカル Service Fabric クラスターがセットアップされます。 この処理には数分かかります。 セットアップが正常に完了すると、クラスターが開始されていることを示すメッセージが出力に表示されます。
 
-    ![Cluster setup starting following VM provisioning][cluster-setup-script]
+5. VM にログインして Service Fabric SDK をインストールする
+
+    ```bash
+    vagrant ssh
+    ```
+
+   「[SDK のインストール](service-fabric-get-started-linux.md)」の説明に従って SDK をインストールします。  Service Fabric ランタイムと共通 SDK を sfctl CLI と共にインストールする場合に備え以下のスクリプトが用意されています。 スクリプトの実行では、インストールされているすべてのソフトウェアのライセンスを読んで同意していることが前提となります。
+
+    ```bash
+    sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+    ```
+
+5.  Service Fabric クラスターを起動する
+
+    ```bash
+    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
+    ```
 
     >[!TIP]
     > VM のダウンロードに長い時間がかかる場合、wget または curl を使用してダウンロードできます。そのほか、ブラウザーを使い、`Vagrantfile` ファイルの **config.vm.box_url** で指定されたリンク先に移動してダウンロードすることもできます。 VM をローカルにダウンロードした後、イメージのダウンロード先のローカル パスを指すように、`Vagrantfile` を編集します。 たとえば、イメージのダウンロード先が /home/users/test/azureservicefabric.tp8.box であった場合、**config.vm.box_url** をこのパスに設定します。
@@ -82,6 +97,23 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
 
     ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
 
+## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>必要な Java アーティファクトを Vagrant にインストールして Service Fabric Java プログラミング モデルを使用する
+
+Service Fabric サービスを Java で構築するには、ビルド タスクを実行するための Gradle と共に、JDK 1.8 がインストールされている必要があります。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
+
+  ```bash
+  vagrant ssh
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+```
+
+## <a name="set-up-the-service-fabric-cli"></a>Service Fabric CLI のセットアップ
+
+[Service Fabric CLI](service-fabric-cli.md) には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 Python がベースになっているため、あらかじめ Python と pip がインストールされていることを確認してから、次のコマンドを実行してください。
+
+```bash
+pip install sfctl
+```
 
 ## <a name="create-application-on-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
@@ -107,6 +139,10 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
   ```
 4. Service Fabric Java アプリケーションを Mac で構築するには、JDK 1.8 と Gradle がマシンにインストールされている必要があります。
 
+## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 開発環境をセットアップする
+
+[.NET Core 2.0 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core 2.0 Service Fabric アプリケーション用のパッケージは、現在プレビューの段階で NuGet.org でホストされています。
+
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Eclipse Neon 用の Service Fabric プラグインをインストールする
 
@@ -122,6 +158,7 @@ Service Fabric には、Java サービスの作成、構築、デプロイのプ
 * [Azure Portal で Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)
 * [Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
+* [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

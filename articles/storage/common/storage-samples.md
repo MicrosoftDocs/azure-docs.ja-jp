@@ -3,7 +3,7 @@ title: "Azure Storage のサンプル コード | Microsoft Docs"
 description: "Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 .NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
 services: storage
 documentationcenter: na
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 8fceeff7-dd8a-47d6-b2cd-564a34a2a776
@@ -13,14 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/03/2017
-ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: aa2b53c514890aa980bc89626e8c7c7336b77a0b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
-
+ms.author: tamram
+ms.openlocfilehash: 371db3bdbedf4abe12b0b903ea8f428f19f07a9f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 

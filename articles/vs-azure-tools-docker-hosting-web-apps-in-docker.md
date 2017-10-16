@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
 ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 ## <a name="overview"></a>概要
@@ -88,4 +86,3 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 [1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
 [2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
-

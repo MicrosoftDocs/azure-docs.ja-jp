@@ -11,14 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: markscu
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 6b91466da46d1f4ca9f25bf1718be783603efc58
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
 
 Azure CLI を使用して、コードを記述せずに Batch ジョブを実行できます。
@@ -265,4 +263,3 @@ Azure CLI の Batch 拡張機能を試し、フィードバックまたは提案
 
 - Batch テンプレートのブログ投稿: [Azure CLI を利用した Azure Batch ジョブの実行 (コード記述不要)](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/) をご覧ください。
 - インストールと使用方法に関する詳細なドキュメント、サンプル、ソース コードは、[Azure GitHub リポジトリ](https://github.com/Azure/azure-batch-cli-extensions)で入手できます。
-

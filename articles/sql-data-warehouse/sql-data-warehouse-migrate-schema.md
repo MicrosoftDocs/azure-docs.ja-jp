@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>SQL Data Warehouse にスキーマを移行する
 SQL Data Warehouse に SQL スキーマを移行するためのガイダンス。 
@@ -86,4 +84,3 @@ SQL Data Warehouse のベスト プラクティスの詳細については、「
 
 
 <!--Other Web references-->
-

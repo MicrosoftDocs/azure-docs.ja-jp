@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 2dd8ed2cc0cd9575dcc56f489afa19a41cc9c10a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: bb3fc7877f4e7cafc3904fc67abd87b897874d8a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problem-adding-a-non-gallery-application"></a>ギャラリー以外のアプリケーションの追加時に関する問題
 
 この記事では、**ギャラリー以外のカスタム アプリケーション**を追加するするときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容について説明します。 
@@ -43,9 +41,9 @@ ms.lasthandoff: 04/11/2017
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータル通知の詳細を確認する方法
 
-ポータル通知の詳細を確認するには、次の手順に従います。
+ポータルの通知の詳細を確認するには、次の手順に従います。
 
-1.  Azure Portal の右上隅にある **[通知]** アイコン (ビープ音) をクリックします。
+1.  Azure Portal の右上隅にある **[通知]** アイコン (ベル) をクリックします。
 
 2.  **[エラー]** 状態 (横に赤い (!) が付記) でいずれかの通知を選択します。
 
@@ -64,7 +62,7 @@ ms.lasthandoff: 04/11/2017
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>通知の詳細をサポート エンジニアに送信して支援を受ける方法
 
-支援が必要な場合は、**以下に記載された詳細をすべて**サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取ったり**、**[コピー エラー]** ボックスの右にある **[コピー エラー] アイコン**をクリックすると、簡単に実行できます。
+支援が必要な場合は、**以下に記載された詳細をすべて**サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取ったり**、**[エラーのコピー]** ボックスの右にある **[エラーのコピー] アイコン**をクリックすると、簡単に実行できます。
 
 ## <a name="notification-details-explained"></a>通知の詳細についての説明
 
@@ -73,11 +71,11 @@ ms.lasthandoff: 04/11/2017
 ### <a name="essential-notification-items"></a>重要な通知項目
 
 -   **タイトル** – 通知のわかりやすいタイトル
-   *  例 - **アプリケーションのプロキシ設定**
+   *  例 – **アプリケーション プロキシの設定**
 
 -   **説明** – 操作の結果として発生した内容についての説明
 
-   *  例 - **入力した内部 URL はすでに別のアプリケーションによって使用されています。**
+   *  例 – **入力された内部 URL は、既に別のアプリケーションで使用されています**
 
 -   **通知 ID** – 通知の一意の ID
 
@@ -103,7 +101,7 @@ ms.lasthandoff: 04/11/2017
 
    *  例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **ユーザーのオブジェクト ID** – 操作を実行したユーザーの一意の ID
+-   **ユーザー オブジェクト ID** – 操作を実行したユーザーの一意の ID
 
  *  例 – **17f84be4-51f8-483a-b533-383791227a99**
 
@@ -123,15 +121,14 @@ ms.lasthandoff: 04/11/2017
 
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
 
-   *  例 - **内部 URL 'http://bing.com/' は既に使用中のため無効です**
+   *  例 – **内部 URL "http://bing.com/" は既に使用中のため無効です**
 
 -   **コピー エラー** - **[コピー エラー]** ボックスの右にある **[コピー] アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有します。
 
    *  例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory を使用したアプリケーションの管理](active-directory-enable-sso-scenario.md)
-
+[Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
 
 
 

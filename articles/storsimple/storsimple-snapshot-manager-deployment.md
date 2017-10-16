@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: cde355381b0d726a1ab340bc4230b2dc8f6e2c56
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC スナップインのデプロイ
 
@@ -216,5 +214,4 @@ StorSimple Snapshot Manager を再インストールするには、「 [StorSimp
 * StorSimple Snapshot Manager の詳細については、「 [StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
 * StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「 [StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」を参照してください。
 * StorSimple Snapshot Manager の使用方法については、「 [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
-
 

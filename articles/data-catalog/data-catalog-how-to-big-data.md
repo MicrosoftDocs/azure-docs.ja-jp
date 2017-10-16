@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: e31bcfce2c66d9428535fb51c4bbe11bc103a1ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: 001d80ce42f0e87276e59d70dffb75eb561d96cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
 ## <a name="introduction"></a>はじめに
@@ -68,4 +67,3 @@ ms.lasthandoff: 06/21/2017
 
 ## <a name="summary"></a>概要
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。 ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。
-

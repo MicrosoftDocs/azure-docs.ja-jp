@@ -14,11 +14,11 @@ ms.devlang: swift
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>Swift で IOS アプリ の Azure  Mobile Engagement を開始する
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -44,10 +44,10 @@ ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
+## <a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。 統合に関する完全なドキュメントは、「 [Mobile Engagement iOS SDK 統合](mobile-engagement-ios-sdk-overview.md)
 
 統合のデモンストレーションを行うために、XCode で基本的なアプリを作成します。
@@ -56,7 +56,7 @@ ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
 [!INCLUDE [Create a new iOS Project](../../includes/mobile-engagement-create-new-ios-app.md)]
 
 ### <a name="connect-your-app-to-mobile-engagement-backend"></a>アプリを Mobile Engagement のバックエンドに接続する
-1.  [モバイル エンゲージメント iOS SDK]
+1. [モバイル エンゲージメント iOS SDK]
 2. コンピューター上のフォルダーに .tar.gz ファイルを抽出します
 3. プロジェクトを右クリックし、[Add files to ...] を選択します
    
@@ -96,18 +96,18 @@ ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
               [...]
         }
 
-## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視の有効化
+## <a id="monitor"></a>リアルタイム監視の有効化
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
 1. **ViewController.swift** ファイルを開き、**ViewController** の基本クラスを **EngagementViewController** に変更します。
    
     `class ViewController : EngagementViewController {`
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenabling-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
- Mobile Engagement により、ユーザーと通信を行い、キャンペーンのコンテキストに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、 Mobile Engagement ポータルで REACH として呼び出されます。
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+Mobile Engagement により、ユーザーと通信を行い、キャンペーンのコンテキストに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、 Mobile Engagement ポータルで REACH として呼び出されます。
 次のセクションでは、それらを受信するためにアプリをセットアップします。
 
 ### <a name="enable-your-app-to-receive-silent-push-notifications"></a>アプリがサイレント プッシュ通知を受信できるようにする
@@ -197,9 +197,3 @@ ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
 [4]: ./media/mobile-engagement-ios-swift-get-started/add-header-file.png
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

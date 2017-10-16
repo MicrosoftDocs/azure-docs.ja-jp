@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/01/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: aa0193e741b1a84c03230b2458eec96b5504f031
 ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -438,7 +438,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 | &nbsp; |`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y` |ブート時にマルチパス デーモンを開始するようにする |
 | &nbsp; |`multipathd –k` |トラブルシューティングのために対話型コンソールを起動する |
 | &nbsp; |`multipath –l` |マルチパス接続とデバイスを一覧表示する |
-| &nbsp; |`mpathconf --enable` | `/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |`/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>次のステップ
@@ -446,10 +446,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 
 * [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 * [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

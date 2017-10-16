@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: b38eb3a011d46f2239891ea1d1bcac2a4059a866
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-replication-to-azure"></a>手順 8: Azure への Hyper-V レプリケーションのソースとターゲットを設定する
 
 この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure へのオンプレミスの Hyper-V 仮想マシン (System Center VMM なし) をレプリケートする場合にソースとターゲットの設定を構成する方法について説明します。
@@ -94,4 +92,3 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 ## <a name="next-steps"></a>次のステップ
 
 [手順 9: レプリケーション ポリシーを設定する](hyper-v-site-walkthrough-replication.md)方法に関するページに進む
-

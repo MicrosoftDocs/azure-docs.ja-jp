@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fa79ab0ab80481c8969c6fa653e92b10985cab3b
-ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: d5cb5ba431eeae1956a9dbf1d48561c66faef9a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-topology-in-azure-network-watcher"></a>Azure Network Watcher のトポロジの概要
 
 トポロジは、仮想ネットワーク内のネットワーク リソースの図式を返します。 図式は、エンド ツー エンドのネットワーク接続を表すリソース間の相互接続を示します。
@@ -45,4 +43,3 @@ ms.lasthandoff: 03/31/2017
 <!--Image references-->
 
 [1]: ./media/network-watcher-topology-overview/topology.png
-

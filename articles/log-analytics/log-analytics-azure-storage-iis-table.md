@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
 
@@ -197,4 +195,3 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 * サポートされている Azure サービスの[ログとメトリックを収集](log-analytics-azure-storage.md)します。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-

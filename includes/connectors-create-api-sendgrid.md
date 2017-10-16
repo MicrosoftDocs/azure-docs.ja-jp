@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [SendGrid](https://www.SendGrid.com/) アカウント 
 
-ロジック アプリで SendGrid アカウントを使用するには、SendGrid アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。 
+ロジック アプリで SendGrid アカウントを使用するには、SendGrid アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
 
 次に、SendGrid アカウントに接続するロジック アプリを承認する手順を示します。
 

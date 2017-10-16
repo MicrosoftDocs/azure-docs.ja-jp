@@ -14,14 +14,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 23a6e09d410616b135506df778d6fdd5ed68bb41
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
 
 Azure Automation DSC は、PowerShell の Desired State Configuration (DSC) [構成](https://msdn.microsoft.com/powershell/dsc/configurations)の書き込み、管理、コンパイル、[DSC リソース](https://msdn.microsoft.com/powershell/dsc/resources)のインポート、および構成のターゲット ノードへの割り当てを、すべてクラウドで実行できる Azure サービスです。
@@ -67,4 +65,4 @@ Log Analytics ワークスペースに DSC ステータス データを送信す
 * DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md)」を参照してください。
 * Azure Automation DSC の PowerShell コマンドレットのリファレンスについては、「[Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](/powershell/module/azurerm.automation/#automation)」を参照してください。
 * 料金情報については、[Azure Automation DSC の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページを参照してください。
-* 継続的なデプロイ パイプラインで Azure Automation DSC を使用する例については、「 [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)」を参照してください。
+* 継続的なデプロイ パイプラインで Azure Automation DSC を使う例については、「[Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。

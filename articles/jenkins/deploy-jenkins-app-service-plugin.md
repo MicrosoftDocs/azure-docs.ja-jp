@@ -16,10 +16,10 @@ ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: dfb1abd4eefdb2baea8cdbd497bc8fcc95d200e6
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bd4e629e522fb9acea5601be8eac7c70ae61d042
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -76,7 +76,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
 
 
 1. [az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。
-2. Web アプリを作成します。 [Azure ポータル](/azure/app-service-web/web-sites-configure)を使用するか、次の Az CLI コマンドを使用できます。
+2. Web アプリを作成します。 [Azure ポータル](/azure/app-service/web-sites-configure)を使用するか、次の Az CLI コマンドを使用できます。
 ```azurecli-interactive 
 az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
 ```
@@ -142,7 +142,7 @@ Web App on Linux は、Git や FTP のような従来の方法もサポートし
 
 Jenkins でジョブ設定する前に、Azure App Service on Linux が必要です。 プライベート Docker コンテナー イメージを保存して管理するためのコンテナー レジストリも必要です。 DockerHub を使用できます。この例では Azure Container Registry を使用します。
 
-* [こちら](/azure/app-service-web/app-service-linux-how-to-create-web-app)の手順に従って、Linux で実行される Web アプリを作成できます。 
+* [こちら](../app-service/containers/quickstart-nodejs.md)の手順に従って、Linux で実行される Web アプリを作成できます。 
 * Azure Container Registry は、オープン ソースの Docker Registry 2.0 に基づく、管理された [Docker レジストリ] (https://docs.docker.com/registry/) サービスです。 これを行う方法の詳しいガイダンスについては、[こちら] (/azure/container-registry/container-registry-get-started-azure-cli) の手順に従ってください。 DockerHub を使用することもできます。
 
 ### <a name="to-deploy-using-docker"></a>Docker を使用してデプロイするには:
@@ -165,7 +165,7 @@ az acr update -n <yourRegistry> --admin-enabled true
 az acr credential show -n <yourRegistry>
 ```
 
-9. **[Advanced]\(詳細\)** タブの Docker イメージの名前とタグは省略可能です。 既定では、イメージの名前は、Azure ポータル (の Docker コンテナーの設定) で構成したイメージの名前から取得します。タグは $BUILD_NUMBER から生成されます。 イメージの名前が Azure ポータルに指定しているか、**[Advanced]\(詳細\)** タブの **[Docker Image]\(Docker イメージ\)** に値が入力されていることを確認してください。 この例では、**[Docker image]\(Docker イメージ\)** に [&lt;自分のレジストリ>.azurecr.io/calculator] を指定し、**[Docker Image Tag]\(Docker イメージ タグ\)** は空白のままにします。
+9. **[Advanced]\(詳細\)** タブの Docker イメージの名前とタグは省略可能です。 既定では、イメージの名前は、Azure ポータル (の Docker コンテナーの設定) で構成したイメージの名前から取得します。タグは $BUILD_NUMBER から生成されます。 イメージの名前が Azure ポータルに指定しているか、**[Advanced]\(詳細\)** タブの **[Docker Image]\(Docker イメージ\)** に値が入力されていることを確認してください。この例では、**[Docker image]\(Docker イメージ\)** に [&lt;自分のレジストリ>.azurecr.io/calculator] を指定し、**[Docker Image Tag]\(Docker イメージ タグ\)** は空白のままにします。
 10. 組み込みの Docker イメージの設定を使用すると、デプロイは失敗することに注意してください。 Azure ポータルの Docker コンテナーの設定に指定されたカスタム イメージを使用するように Docker 構成を必ず変更してください。 組み込みのイメージの場合は、ファイルをアップロードする方法を使用してデプロイします。
 11. ファイルをアップロードする方法と同じように、運用環境以外の別のスロットを選択できます。
 12. プロジェクトを保存してビルドします。 コンテナー イメージがレジストリへプッシュされ、Web アプリがデプロイされます。

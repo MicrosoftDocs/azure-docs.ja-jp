@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b2be03e12b2deaecb352f8703650cf23cdefdebd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 48f439a566a8067e153aab4fb789937d2f91268d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager での MMC メニュー操作の使用
 
@@ -102,5 +100,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
-
 

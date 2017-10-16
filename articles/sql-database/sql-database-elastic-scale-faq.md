@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2420d31c73fcb43e680edf2a95995e4ed4969236
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f0a7b5ce61feaead608d457465f64813737fa112
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="elastic-database-tools-faq"></a>エラスティック データベース ツールに関する FAQ
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>シャードごとにシングルテナントはあるが、シャーディング キーがない場合、スキーマ情報にどのようにしてシャーディング キーを取り込むのですか。
@@ -34,7 +32,7 @@ ms.lasthandoff: 11/17/2016
 エラスティック データベース クライアント ライブラリの使用にコストは発生しません。 コストが発生するのは、シャードとシャード マップ マネージャーに使用した Azure SQL データベースと、Split Merge ツールにプロビジョニングした Web/worker ロールに対してのみです。
 
 #### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>別のサーバーからシャードを追加した場合に、資格情報が機能しないのはどうしてですか。
-資格情報は「User ID=username@servername”,」の形式ではなく、単純に「User ID = username」を使用します。  また、「username」ログインがシャードで権限を持っていることを確認します。
+形式で資格情報を使用しないでください"ユーザー ID =username@servername"、代わりに使用して単に"ユーザー ID のユーザー名を ="です。  また、「username」ログインがシャードで権限を持っていることを確認します。
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>アプリケーションを起動するたびに、シャード マップ マネージャーを作成してシャードを取り込む必要がありますか。
 必要ありません。シャード マップ マネージャー (たとえば **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) の作成は 1 回だけの操作です。  アプリケーションは、アプリケーションの起動時に **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 呼び出しを使用する必要があります。  アプリケーション ドメインごとにそのような呼び出しを 1 回行います。
@@ -52,5 +50,4 @@ Elastic Scale API を使用すると、シャーディング キーの接続デ�
 されません。 **分割** 操作の場合、適切なスキーマを持ったターゲット データベースが存在し、シャード マップ マネージャーに登録されている必要があります。  **結合** 操作の場合、シャード マップ マネージャーからシャードを削除してから、データベースを削除する必要があります。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 

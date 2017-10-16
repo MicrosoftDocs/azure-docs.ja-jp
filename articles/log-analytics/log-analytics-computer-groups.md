@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/15/2017
 ms.author: bwren
+ms.openlocfilehash: 3cc8b5c5394a031575ad0a840f57ee5e97012c17
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: a2ddc932343d54963a378ee27dc962a790326b2a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -57,7 +56,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 >[!NOTE]
 > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、新しいコンピューター グループを作成する手順を次のように変更します。
 >  
-> - コンピューター グループを作成するためのクエリに `distinct Computer` を含める必要があります。  コンピューター グループを作成するクエリの例を次に示します。<br>`Heartbeat | where Computer contains "srv" `
+> - コンピューター グループを作成するためのクエリに `distinct Computer` を含める必要があります。  コンピューター グループを作成するクエリの例を次に示します。<br>`Heartbeat | where Computer contains "srv" | distinct Computer `
 > - 新しいコンピューター グループを作成するときは、名前だけでなくエイリアスを指定する必要があります。  以下に説明するクエリの中でコンピューター グループを使用するときに、そのエイリアスを使用します。  
 
 ### <a name="log-search-api"></a>Log Search API
@@ -104,7 +103,7 @@ Active Directory のセキュリティ グループをインポートするた�
 >[!NOTE]
 > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、クエリの中でコンピューター グループを使用する際は、そのエイリアスを関数として扱います。その例を次に示します。
 > 
->  `UpdateSummary | where Computer IN (MyComputerGroup)`
+>  `UpdateSummary | where Computer in (mycomputergroup)`
 
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが OMS リポジトリに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。
@@ -123,5 +122,4 @@ Active Directory または WSUS から作成されたコンピューター グ�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-
 

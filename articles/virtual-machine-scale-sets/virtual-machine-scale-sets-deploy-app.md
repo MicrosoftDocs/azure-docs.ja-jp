@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e6a5e3a378a5661c09f770a202c10d270f324447
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -47,7 +47,7 @@ Azure 内の仮想マシンを使用して、スケール セットの基本イ�
 
 4. 前の手順でキャプチャしたイメージ URI を使用して[仮想マシン スケール セット][vmss-create]を作成します。
 
-ディスクについての詳細は、[Managed Disks の概要](../storage/storage-managed-disks-overview.md)と[接続されたデータ ディスクの使用](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。
+ディスクについての詳細は、[Managed Disks の概要](../virtual-machines/windows/managed-disks-overview.md)と[接続されたデータ ディスクの使用](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。
 
 ## <a name="install-when-the-scale-set-is-provisioned"></a>スケール セットのプロビジョニング時のインストール
 

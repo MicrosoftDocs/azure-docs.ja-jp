@@ -1,6 +1,6 @@
 ---
-title: Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments | Microsoft Docs
-description: Step-by-step procedure that a cloud administrator uses to create a site-to-site VPN connection between two single-node Azure Stack Development Kit environments.
+title: "異なる Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する | Microsoft Docs"
+description: "2 つのシングル ノード Azure Stack 開発キット環境の間にクラウド管理者がサイト間 VPN 接続を作成するための詳細な手順。"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,57 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments
-## <a name="overview"></a>Overview
-This article shows you how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack Development Kit environments. While you configure the connections, you learn how VPN gateways in Azure Stack work.
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
+## <a name="overview"></a>概要
+この記事では、2 つの独立した Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する方法を説明します。 接続を構成しながら Azure Stack での VPN ゲートウェイのしくみを学習します。
 
-### <a name="connection-diagram"></a>Connection diagram
-The following diagram shows what the connection configuration should look like when you’re done.
+### <a name="connection-diagram"></a>接続図
+次の図は、作業完了後の接続構成を表しています。
 
-![Site-to-site VPN connection configuration](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
+![サイト間 VPN 接続構成](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
-### <a name="before-you-begin"></a>Before you begin
-To complete the connection configuration, ensure that you have the following items before you begin:
+### <a name="before-you-begin"></a>開始する前に
+接続構成を行うには、作業開始前に次のものを用意する必要があります。
 
-* Two servers that meet the Azure Stack Development Kit hardware requirements, which are defined by the [Azure Stack deployment prerequisites](azure-stack-deploy.md). Ensure that the other prerequisites that appear in the [article](azure-stack-deploy.md) are fulfilled too.
-* The [Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) deployment package.
+* Azure Stack 開発キット ハードウェア要件を満たす 2 つのサーバー。この要件は「[Azure Stack deployment prerequisites](azure-stack-deploy.md)」(Azure Stack デプロイ前提条件) に定義されています。 [この記事](azure-stack-deploy.md)にあるその他の前提条件も満たしてください。
+* [Azure Stack 開発キット](https://azure.microsoft.com/en-us/overview/azure-stack/try/) デプロイ パッケージ。
 
-## <a name="deploy-the-azure-stack-development-kit-environments"></a>Deploy the Azure Stack Development Kit environments
-To complete the connection configuration, you must deploy two Azure Stack Development Kit environments.
+## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack 開発キット環境のデプロイ
+接続構成を行うには、2 つの Azure Stack 開発キット環境をデプロイする必要があります。
 > [!NOTE] 
-> For each Azure Stack Development Kit that you deploy, follow the [deployment instructions](azure-stack-run-powershell-script.md). In this article, the Azure Stack Development Kit environments are called *POC1* and *POC2*.
+> デプロイする Azure Stack 開発キットごとに、[デプロイ指示](azure-stack-run-powershell-script.md)に従ってください。 この記事では、Azure Stack 開発キット環境の名称が *POC1* と *POC2* になっています。
 
 
-## <a name="prepare-an-offer-on-poc1-and-poc2"></a>Prepare an offer on POC1 and POC2
-On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines. For information on how to create an offer, see [Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
+## <a name="prepare-an-offer-on-poc1-and-poc2"></a>POC1 と POC2 でプランを用意する
+POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシンをデプロイできるようにプランを用意します。 プランの作成方法については、「[Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md)」 (Azure Stack ユーザーが仮想マシンを使えるようにする) を参照してください。
 
-## <a name="review-and-complete-the-network-configuration-table"></a>Review and complete the network configuration table
-The following table summarizes the network configuration for both Azure Stack Development Kit environments. Use the procedure that appears after the table to add the External BGPNAT address that is specific for your network.
+## <a name="review-and-complete-the-network-configuration-table"></a>ネットワーク構成表を確認し、完成する
+次の表は、両方の Azure Stack 開発キット環境のネットワーク構成についてまとめたものです。 表の後に出てくる手順で、自分のネットワークに固有の外部 BGPNAT アドレスを追加します。
 
-**Network configuration table**
+**ネットワーク構成表**
 |   |POC1|POC2|
 |---------|---------|---------|
-|Virtual network name     |VNET-01|VNET-02 |
-|Virtual network address space |10.0.10.0/23|10.0.20.0/23|
-|Subnet name     |Subnet-01|Subnet-02|
-|Subnet address range|10.0.10.0/24 |10.0.20.0/24 |
-|Gateway subnet     |10.0.11.0/24|10.0.21.0/24|
-|External BGPNAT address     |         |         |
+|仮想ネットワーク名     |VNET-01|VNET-02 |
+|仮想ネットワークのアドレス空間 |10.0.10.0/23|10.0.20.0/23|
+|サブネット名     |Subnet-01|Subnet-02|
+|サブネットのアドレス範囲|10.0.10.0/24 |10.0.20.0/24 |
+|ゲートウェイ サブネット     |10.0.11.0/24|10.0.21.0/24|
+|外部 BGPNAT アドレス     |         |         |
 
 > [!NOTE]
-> The external BGPNAT IP addresses in the example environment are 10.16.167.195 for POC1, and 10.16.169.131 for POC2. Use the following procedure to determine the external BGPNAT IP addresses for your Azure Stack Development Kit hosts, and then add them to the previous network configuration table.
+> 環境例の外部 BGPNAT IP アドレスは POC1 が 10.16.167.195 で、POC2 が 10.16.169.131 です。 次の手順で Azure Stack 開発キット ホストの外部 BGPNAT IP アドレスを決定し、それを先のネットワーク構成表に追加します。
 
 
-### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Get the IP address of the external adapter of the NAT VM
-1. Sign in to the Azure Stack physical machine for POC1.
-2. Edit the following Powershell code to replace your administrator password, and then run the code on the POC host:
+### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>NAT VM の外部アダプターの IP アドレスを取得する
+1. POC1 の Azure Stack 物理マシンにサインインします。
+2. 次の Powershell コードを編集して管理者パスワードを変更し、POC ホストでコードを実行します。
 
    ```powershell
    cd \AzureStack-Tools-master\connect
@@ -76,199 +75,199 @@ The following table summarizes the network configuration for both Azure Stack De
     -HostComputer "AzS-bgpnat01" `
     -Password $Password
    ```
-3. Add the IP address to the network configuration table that appears in the previous section.
+3. 先のセクションのネットワーク構成表に IP アドレスを追加します。
 
-4. Repeat this procedure on POC2.
+4. POC2 でこの手順を繰り返します。
 
-## <a name="create-the-network-resources-in-poc1"></a>Create the network resources in POC1
-Now you create the POC1 network resources that you need to set up your gateways. The following instructions show you how to create the resources by using the user portal. You can also use PowerShell code to create the resources.
+## <a name="create-the-network-resources-in-poc1"></a>POC 1 でネットワーク リソースを作成する
+次に、ゲートウェイを設定する POC1 ネットワーク リソースを作成します。 次の手順は、ユーザー ポータルを使用してリソースを作成する方法です。 PowerShell コードでリソースを作成することもできます。
 
-![Workflow that is used to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
+![リソース作成に使用されるワークフロー](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+### <a name="sign-in-as-a-tenant"></a>テナントとしてサインインする
+サービス管理者は、テナントが使用する可能性があるプラン、オファー、サブスクリプションをテストするためにテナントとしてサインインできます。 まだ持っていない場合は、サインインする前に[テナント アカウントを作成](azure-stack-add-new-user-aad.md)します。
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
-1. Use a tenant account to sign in to the user portal.
-2. In the user portal, select **New**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>仮想ネットワークと VM サブネットを作成する
+1. テナント アカウントを使用してユーザー ポータルにサインインします。
+2. ユーザー ポータルで、**[新規]** を選択します。
 
-    ![Create new virtual network](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![新しい仮想ネットワークを作成する](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. For **Name**, **Address space**, **Subnet name**, and **Subnet address range**, use the values that appear earlier in the network configuration table.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, you can either create a resource group or if you already have one, select **Use existing**.
-8. Verify the default location.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
+3. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+4. **[仮想ネットワーク]** を選択します。
+5. **[名前]**、**[アドレス空間]**、**[サブネット名]**、**[サブネット アドレス範囲]** には、先のネットワーク構成表にあった値を使用します。
+6. **[サブスクリプション]** には、先に作成したサブスクリプションが表示されます。
+7. **[リソース グループ]** については、リソース グループを作成することも、既存のリソース グループがある場合に **[既存のものを使用]** を選択することもできます。
+8. 既定の場所を確認します。
+9. **[ダッシュボードにピン留めする]** をオンにします。
+10. **[作成]**を選択します。
 
-### <a name="create-the-gateway-subnet"></a>Create the gateway subnet
-1. On the dashboard, open the VNET-01 virtual network resource that you created earlier.
-2. On the **Settings** blade, select **Subnets**.
-3. To add a gateway subnet to the virtual network, select **Gateway Subnet**.
+### <a name="create-the-gateway-subnet"></a>ゲートウェイ サブネットを作成する
+1. ダッシュボードで、先ほど作成した VNET-01 仮想ネットワーク リソースを開きます。
+2. **[設定]** ブレードで **[サブネット]** を選択します。
+3. ゲートウェイ サブネットを仮想ネットワークに追加するには、**[ゲートウェイ サブネット]** を選択します。
    
-    ![Add gateway subnet](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
+    ![ゲートウェイ サブネットを追加する](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
 
-4. By default, the subnet name is set to **GatewaySubnet**.
-   Gateway subnets are special. To function properly, they must use the *GatewaySubnet* name.
-5. In **Address range**, verify that the address is **10.0.11.0/24**.
-6. Select **OK** to create the gateway subnet.
+4. 既定では、サブネット名は **GatewaySubnet** に設定されます。
+   ゲートウェイ サブネットは特別です。 正常に機能するために、*GatewaySubnet* という名前を使用する必要があります。
+5. **[アドレス範囲]** でアドレスが **10.0.11.0/24** であることを確認します。
+6. **[OK]** を選択し、ゲートウェイ サブネットを作成します。
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, enter **GW1**.
-5. Select the **Virtual network** item to choose a virtual network.
-   Select **VNET-01** from the list.
-6. Select the **Public IP address** menu item. When the **Choose public IP address** blade opens, select **Create new**.
-7. In **Name**, enter **GW1-PiP**, and then select **OK**.
-8.  By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
+1. Azure Portal で **[新規]** を選択します。 
+2. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+3. ネットワーク リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を選択します。
+4. **[名前]** には、「**GW1**」と入力します。
+5. **[仮想ネットワーク]** 項目を選択し、仮想ネットワークを選択します。
+   一覧から **[VNET-01]** を選択します。
+6. **[パブリック IP アドレス]** メニュー項目を選択します。 **[パブリック IP アドレスの選択]** ブレードが開いたら、**[新規作成]** を選択します。
+7. **[名前]** に「**GW1-PiP**」と入力し、**[OK]** を選択します。
+8.  既定では、**[VPN の種類]** に **[ルート ベース]** が選択されています。
+    VPN の種類は **[ルート ベース]** のままにします。
+9. **[サブスクリプション]** と **[場所]** が正しいことを確認します。 リソースをダッシュボードにピン留めできます。 **[作成]**を選択します。
 
-### <a name="create-the-local-network-gateway"></a>Create the local network gateway
-The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
+### <a name="create-the-local-network-gateway"></a>ローカル ネットワーク ゲートウェイを作成する
+この Azure Stack 評価デプロイでの "*ローカル ネットワーク ゲートウェイ*" の実装は、実際の Azure デプロイとは若干異なります。
 
-In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device, that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways!
+Azure デプロイでは、ローカル ネットワーク ゲートウェイは、Azure の仮想ネットワーク ゲートウェイへの接続に使用するオンプレミスの (テナントの) 物理デバイスを表します。 この Azure Stack 評価デプロイでは、接続の両端が仮想ネットワーク ゲートウェイになります。
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the Azure Stack Development Kit was designed, you need to provide the IP address of the external network adapter on the network address translation (NAT) VM of the other Azure Stack Development Kit as the Public IP Address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
-
-
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
-1. Sign in to the Azure Stack physical machine for POC1.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. From the list of resources, select **local network gateway**.
-5. In **Name**, enter **POC2-GW**.
-6. In **IP address**, enter the External BGPNAT address for POC2. This address appears earlier in the network configuration table.
-7. In **Address Space**, for the address space of the POC2 VNET that you create later, enter **10.0.20.0/23**.
-8. Verify that your **Subscription**, **Resource Group**, and **location** are correct, and then select **Create**.
-
-### <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**.
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basics** settings blade, for the **Connection type**, select **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** blade,  select **Virtual network gateway**, and then select **GW1**.
-7. Select **Local network gateway**, and then select **POC2-GW**.
-8. In **Connection Name**, enter **POC1-POC2**.
-9. In **Shared key (PSK)**, enter **12345**, and then select **OK**.
-10. On the **Summary** blade, select **OK**.
-
-### <a name="create-a-vm"></a>Create a VM
-To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet.
-
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** blade, in **Name**, enter **VM01**.
-5. Enter a valid username and password. You use this account to sign in to the VM after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, for this instance, select a virtual machine size, and then select **Select**.
-8. On the **Settings** blade, accept the defaults. Ensure that the **VNET-01** virtual network is selected. Verify that the subnet is set to **10.0.10.0/24**. Then select **OK**.
-9. On the **Summary** blade, review the settings, and then select **OK**.
+これをより一般化すると、ローカル ネットワーク ゲートウェイ リソースは、常に接続の反対側の端にあるリモート ゲートウェイを示します。 Azure Stack 開発キットの設計上、ローカル ネットワーク ゲートウェイのパブリック IP アドレスとして、他の Azure Stack 開発キットのネットワーク アドレス変換 (NAT) VM で外部ネットワーク アダプターの IP アドレスを指定する必要があります。 その後、NAT VM で NAT マッピングを作成し、両端が正しく接続されるようにします。
 
 
+### <a name="create-the-local-network-gateway-resource"></a>ローカル ネットワーク ゲートウェイ リソースを作成する
+1. POC1 の Azure Stack 物理マシンにサインインします。
+2. ユーザー ポータルで、**[新規]** を選択します。
+3. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+4. リソースの一覧から **[ローカル ネットワーク ゲートウェイ]** を選択します。
+5. **[名前]** には、「**POC2-GW**」と入力します。
+6. **[IP アドレス]** に、POC2 の外部 BGPNAT アドレスを入力します。 このアドレスは先のネットワーク構成表にありました。
+7. **[アドレス空間]** で、後で使用する POC2 VNET のアドレス空間に「**10.0.20.0/23**」と入力します。
+8. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** がすべて正しいことを確認し、**[作成]** を選択します。
 
-## <a name="create-the-network-resources-in-poc2"></a>Create the network resources in POC2
+### <a name="create-the-connection"></a>接続の作成
+1. ユーザー ポータルで、**[新規]** を選択します。
+2. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+3. リソースの一覧から **[接続]** を選択します。
+4. **[基本]** 設定ブレードで、**[接続の種類]** として **[サイト対サイト (IPsec)]** を選択します。
+5. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択し、**[OK]** を選択します。
+6. **[設定]** ブレードで **[仮想ネットワーク ゲートウェイ]** を選択し、**[GW1]** を選択します。
+7. **[ローカル ネットワーク ゲートウェイ]** を選択し、**[POC2-GW]** を選択します。
+8. **[接続名]** に **[POC1-POC2]** と入力します。
+9. **[共有キー (PSK)]** に「**12345**」と入力し、**[OK]** を選択します。
+10. **[概要]** ブレードで、**[OK]** を選択します。
 
-The next step is to create the network resources for POC2. The following instructions show how to create the resources by using the user portal.
+### <a name="create-a-vm"></a>VM を作成します
+VPN 接続で送信されるデータを検証するには、各 Azure Stack 開発キットでデータを送受信する仮想マシンが必要です。 今から POC1 に仮想マシンを作成し、次に仮想ネットワークで作成し、VM サブネットにそれを配置します。
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+1. Azure Portal で **[新規]** を選択します。
+2. **[Marketplace]** に移動し、**[計算]** を選択します。
+3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Eval** イメージを選択します。
+4. **[基本]** ブレードの **[名前]** に「**VM01**」と入力します。
+5. 有効なユーザー名とパスワードを入力します。 このアカウントを利用し、作成後の VM にサインインします。
+6. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定し、**[OK]** を選択します。
+7. **[サイズ]** ブレードで、この場合、仮想マシンのサイズを選択し、**[選択]** を選択します。
+8. **[設定]** ブレードで、既定値を選択します。 **VNET-01** 仮想ネットワークが選択されていることを確認します。 サブネットが **10.0.10.0/24** に設定されていることを確認します。 **[OK]** をクリックします。
+9. **[サマリー]** ブレードで、設定を確認し、**[OK]** を選択します。
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
 
-1. Sign in by using a tenant account.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. Use the information appearing earlier in the network configuration table to identify the values for the POC2 **Name**, **Address space**, **Subnet name**, and **Subnet address range**.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, create a new resource group or, if you already have one, select **Use existing**.
-8. Verify the default **Location**.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual network resource you created (**VNET-02**) from the dashboard.
-2. On the **Settings** blade, select **Subnets**.
-3. Select  **Gateway subnet** to add a gateway subnet to the virtual network.
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, verify the address is **10.0.21.0/24**.
-6. Select **OK** to create the gateway subnet.
+## <a name="create-the-network-resources-in-poc2"></a>POC2 でネットワーク リソースを作成する
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**.  
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, enter **GW2**.
-5. To choose a virtual network, select **Virtual network**. Then select **VNET-02** from the list.
-6. Select **Public IP address**. When the **Choose public IP address** blade opens, select **Create new**.
-7. In **Name**, enter **GW2-PiP**, and then select **OK**.
-8. By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+次の手順は、POC2 のネットワーク リソースを作成することです。 次の手順は、ユーザー ポータルを利用してリソースを作成する方法です。
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### <a name="sign-in-as-a-tenant"></a>テナントとしてサインインする
+サービス管理者は、テナントが使用する可能性があるプラン、オファー、サブスクリプションをテストするためにテナントとしてサインインできます。 まだ持っていない場合は、サインインする前に[テナント アカウントを作成](azure-stack-add-new-user-aad.md)します。
 
-1. In the POC2 user portal, select **New**. 
-4. Go to **Marketplace**, and then select **Networking**.
-5. From the list of resources, select **Local network gateway**.
-6. In **Name**, enter **POC1-GW**.
-7. In **IP address**, enter the External BGPNAT address for POC1 that is listed earlier in the network configuration table.
-8. In **Address Space**, from POC1, enter the **10.0.10.0/23** address space of **VNET-01**.
-9. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>仮想ネットワークと VM サブネットを作成する
 
-## <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basic** settings blade, for the **Connection type**, choose **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** blade, select **Virtual network gateway**, and then select **GW2**.
-7. Select **Local network gateway**, and then select **POC1-GW**.
-8. In **Connection name**, enter **POC2-POC1**.
-9. In **Shared key (PSK)**, enter **12345**. If you choose a different value, remember that it *must* match the value for the shared key that you created on POC1. Select **OK**.
-10. Review the **Summary** blade, and then select **OK**.
+1. テナント アカウントでサインインします。
+2. ユーザー ポータルで、**[新規]** を選択します。
+3. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+4. **[仮想ネットワーク]** を選択します。
+5. 先のネットワーク構成表にあった情報を利用し、POC2 の **[名前]**、**[アドレス空間]**、**[サブネット名]**、**[サブネット アドレス範囲]** の値を特定します。
+6. **[サブスクリプション]** には、先に作成したサブスクリプションが表示されます。
+7. **[リソース グループ]** については、新しいものを作成するか、既存のリソース グループがある場合は **[既存のものを使用]** を選択します。
+8. 既定の**場所**を確認します。
+9. **[ダッシュボードにピン留めする]** をオンにします。
+10. **[作成]**を選択します。
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-Create a virtual machine in POC2 now, and put it on your VM subnet in your virtual network.
+### <a name="create-the-gateway-subnet"></a>ゲートウェイ サブネットを作成する
+1. ダッシュボードから、作成した仮想ネットワーク リソース (**VNET-02**) を開きます。
+2. **[設定]** ブレードで **[サブネット]** を選択します。
+3. **[ゲートウェイ サブネット]** を選択し、ゲートウェイ サブネットを仮想ネットワークに追加します。
+4. サブネットの名前は、既定で **GatewaySubnet** に設定されます。
+   ゲートウェイ サブネットは特別であり、正しく動作するにはこの特定の名前である必要があります。
+5. **[アドレス範囲]** フィールドでアドレスが **10.0.21.0/24** であることを確認します。
+6. **[OK]** を選択し、ゲートウェイ サブネットを作成します。
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** blade, for **Name**, enter **VM02**.
-5. Enter a valid username and password. You use this account to sign in to the virtual machine after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, select a virtual machine size for this instance, and then select **Select**.
-8. On the **Settings** blade, you can accept the defaults. Ensure that the **VNET-02** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
-9. Review the settings on the **Summary** blade, and then select **OK**.
+### <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
+1. Azure Portal で **[新規]** を選択します。  
+2. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+3. ネットワーク リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を選択します。
+4. **[名前]** には、「**GW2**」と入力します。
+5. 仮想ネットワークを選択するには、**[仮想ネットワーク]** を選択します。 一覧から **[VNET-02]** を選択します。
+6. **[パブリック IP アドレス]** を選択します。 **[パブリック IP アドレスの選択]** ブレードが開いたら、**[新規作成]** を選択します。
+7. **[名前]** に「**GW2-PiP**」と入力し、**[OK]** を選択します。
+8. 既定では、**[VPN の種類]** に **[ルート ベース]** が選択されています。
+    VPN の種類は **[ルート ベース]** のままにします。
+9. **[サブスクリプション]** と **[場所]** が正しいことを確認します。 リソースをダッシュボードにピン留めできます。 **[作成]**を選択します。
 
-## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>Configure the NAT virtual machine on each Azure Stack Development Kit for gateway traversal
-Because the Azure Stack Development Kit is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to is not actually external. Instead, the VIP network is hidden behind a router that performs network address translation. 
+### <a name="create-the-local-network-gateway-resource"></a>ローカル ネットワーク ゲートウェイ リソースを作成する
 
-The router is a Windows Server virtual machine, called *AzS-bgpnat01*, that runs the Routing and Remote Access Services (RRAS) role in the Azure Stack Development Kit infrastructure. You must configure NAT on the AzS-bgpnat01 virtual machine to allow the site-to-site VPN connection to connect on both ends. 
+1. POC2 ユーザー ポータルで、**[新規]** を選択します。 
+4. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+5. リソースの一覧から **[ローカル ネットワーク ゲートウェイ]** を選択します。
+6. **[名前]** には、「**POC1-GW**」と入力します。
+7. **[IP アドレス]** には、前述のネットワーク構成表にあった POC1 の外部 BGPNAT アドレスを入力します。
+8. **[アドレス空間]** には、POC1 から、**VNET-01** のアドレス空間 **10.0.10.0/23** を入力します。
+9. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** がすべて正しいことを確認し、**[作成]** を選択します。
 
-To configure the VPN connection, you must create a static NAT map route that maps the external interface on the BGPNAT virtual machine to the VIP of the Edge Gateway Pool. A static NAT map route is required for each port in a VPN connection.
+## <a name="create-the-connection"></a>接続の作成
+1. ユーザー ポータルで、**[新規]** を選択します。 
+2. **[Marketplace]** に移動し、**[ネットワーク]** を選択します。
+3. リソースの一覧から **[接続]** を選択します。
+4. **[基本]** 設定ブレードで、**[接続の種類]** として **[サイト対サイト (IPSec)]** を選択します。
+5. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択し、**[OK]** を選択します。
+6. **[設定]** ブレードで **[仮想ネットワーク ゲートウェイ]** を選択し、**[GW2]** を選択します。
+7. **[ローカル ネットワーク ゲートウェイ]** を選択し、**[POC1-GW]** を選択します。
+8. **[接続名]** に **[POC2-POC1]** と入力します。
+9. **[共有キー (PSK)]** に「**12345**」と入力します。 別の値を選択する場合は、POC1 で作成した共有キーの値と一致する*必要がある*ことに注意してください。 **[OK]**を選択します。
+10. **[概要]** ブレードを確認し、**[OK]** を選択します。
+
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
+ここでは POC2 に仮想マシンを作成し、仮想ネットワーク内の VM サブネットにそれを配置します。
+
+1. Azure Portal で **[新規]** を選択します。
+2. **[Marketplace]** に移動し、**[計算]** を選択します。
+3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Eval** イメージを選択します。
+4. **[基本]** ブレードの **[名前]** に「**VM02**」と入力します。
+5. 有効なユーザー名とパスワードを入力します。 このアカウントを利用し、作成後の仮想マシンにサインインします。
+6. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定し、**[OK]** を選択します。
+7. **[サイズ]** ブレードで、この場合は仮想マシンのサイズを選択し、**[選択]** を選択します。
+8. **[設定]** ブレードは既定値のままでかまいません。 **VNET-02** 仮想ネットワークが選択されていること、サブネットが **10.0.20.0/24** に設定されていることを確認します。 **[OK]**を選択します。
+9. **[サマリー]** ブレードで設定を確認し、**[OK]** を選択します。
+
+## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>ゲートウェイ通過のために各 Azure Stack 開発キットで NAT 仮想マシンを構成する
+Azure Stack 開発キットは自己完結型であり、物理ホストがデプロイされるネットワークから分離されているため、ゲートウェイの接続先の*外部* VIP ネットワークは実際は外部にはありません。 VIP ネットワークは、ネットワーク アドレス変換を実行しているルーターの背後に隠れています。 
+
+このルーターは *AzS-bgpnat01* という名前の Windows Server 仮想マシンです。この仮想マシンは、Azure Stack 開発キット インフラストラクチャでルーティングとリモート アクセス サービス (RRAS) ロールを実行します。 AzS-bgpnat01 仮想マシンでは、両端を結ぶサイト間 VPN 接続を許可するよう NAT を構成する必要があります。 
+
+VPN 接続を構成するには、静的 NAT マップ ルートを作成する必要があります。このルートにより、BGPNAT VM の外部インターフェイスがエッジ ゲートウェイ プールの VIP にマップされます。 静的 NAT マップ ルートは、VPN 接続の各ポートに必須です。
 
 > [!NOTE]
-> This configuration is required for Azure Stack Development Kit environments only.
+> この構成は、Azure Stack 開発キット環境のみで必要です。
 > 
 > 
 
-### <a name="configure-the-nat"></a>Configure the NAT
+### <a name="configure-the-nat"></a>NAT を構成する
 > [!IMPORTANT]
-> You must complete this procedure for *both* Azure Stack Development Kit environments.
+> この手順は、*両方*の Azure Stack 開発キット環境で実行する必要があります。
 
-1. Determine the **Internal IP address** to use in the following PowerShell script. Open the virtual network gateway (GW1 and GW2), and then on the **Overview** blade, save the value for the **Public IP address** for later use.
-![Internal IP address](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
-2. Sign in to the Azure Stack physical machine for POC1.
-3. Copy and edit the following PowerShell script. To configure the NAT on each Azure Stack Development Kit, run the script in an elevated Windows PowerShell ISE. In the script, add values to the *External BGPNAT address* and *Internal IP address* placeholders:
+1. 次の PowerShell スクリプトで使用する**内部 IP アドレス**を決定します。 仮想ネットワーク ゲートウェイ (GW1 と GW2) を開き、**[概要]** ブレードで後で使用するために **[パブリック IP アドレス]** の値を保存します。
+![内部 IP アドレス](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
+2. POC1 の Azure Stack 物理マシンにサインインします。
+3. 次の PowerShell スクリプトをコピーし、編集します。 各 Azure Stack 開発キットで NAT を構成するには、管理者特権の Windows PowerShell ISE でこのスクリプトを実行します。 このスクリプトで、*[External BGPNAT address]\(外部 BGPNAT アドレス\)* プレースホルダーと *[内部 IP アドレス]* プレースホルダーに値を追加します。
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -310,25 +309,25 @@ To configure the VPN connection, you must create a static NAT map route that map
       -InternalPort 4500}
    ```
 
-4. Repeat this procedure on POC2.
+4. POC2 でこの手順を繰り返します。
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either Azure Stack Development Kit environment. Then, ping the virtual machine that you created in the other environment. 
+## <a name="test-the-connection"></a>接続をテストする
+サイト間接続が確立されたので、トラフィックがこの接続を経由できることをことを検証する必要があります。 検証するには、いずれかの Azure Stack 開発キット環境で作成した仮想マシンの 1 つにサインインします。 次に、もう 1 つの環境で作成した仮想マシンに ping を実行します。 
 
-To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do this, find the DIP address on the other end of the connection. Save the address for later use.
+トラフィックがサイト間接続を通過するように、VIP ではなく、リモート サブネットの仮想マシンのダイレクト IP (DIP) に ping を実行します。 これを実行するには、接続の反対側の DIP アドレスを探します。 後で使用するためにアドレスを保存します。
 
-### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>Sign in to the tenant VM in POC1
-1. Sign in to the Azure Stack physical machine for POC1, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, select **Compute**.
-3. In the list of VMs, find **VM01** that you created previously, and then select it.
-4. On the blade for the virtual machine, click **Connect**, and then open the VM01.rdp file.
+### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>POC1 のテナント VM にサインインする
+1. POC1 の Azure Stack 物理マシンにサインインし、テナント アカウントを使用してユーザー ポータルにサインインします。
+2. 左側のナビゲーション バーで、**[計算]** を選択します。
+3. VM の一覧で、先ほど作成した **VM01** を探して選択します。
+4. 仮想マシンのブレードで、**[接続]**をクリックし、VM01.rdp ファイルを開きます。
    
-     ![Connect button](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Enter **ipconfig /all**.
-8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you will ping from POC2. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+     ![[接続] ボタン](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+5. 仮想マシンの作成時に構成したアカウントでサインインします。
+6. 管理者特権の **Windows PowerShell** ウィンドウを開きます。
+7. 「**ipconfig /all**」と入力します。
+8. 出力で **IPv4 アドレス**を見つけ、後で使用するためにそのアドレスを保存します。 これは POC2 から ping を実行するアドレスです。 この例の環境ではアドレスは **10.0.10.4** ですが、実際の環境では異なる場合があります。 このアドレスは、先ほど作成した **10.0.10.0/24** サブネット内に含まれています。
+9. 仮想マシンが ping に応答することを許可するファイアウォール ルールを作成するには、次の PowerShell コマンドを実行します。
 
    ```powershell
    New-NetFirewallRule `
@@ -336,16 +335,16 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>Sign in to the tenant VM in POC2
-1. Sign in to the Azure Stack physical machine for POC2, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, click **Compute**.
-3. From the list of virtual machines, find **VM02** that you created previously, and then select it.
-4. On the blade for the virtual machine, click **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Enter **ipconfig /all**.
-8. You should see an IPv4 address that falls within **10.0.20.0/24**. In the example environment, the address is **10.0.20.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>POC2 のテナント VM にサインインする
+1. POC2 の Azure Stack 物理マシンにサインインし、テナント アカウントを使用してユーザー ポータルにサインインします。
+2. 左側のナビゲーション バーで、**[計算]** をクリックします。
+3. 仮想マシンの一覧で、先ほど作成した **VM02** を探して選択します。
+4. 仮想マシンのブレードで、 **[接続]**をクリックします。
+5. 仮想マシンの作成時に構成したアカウントでサインインします。
+6. 管理者特権の **Windows PowerShell** ウィンドウを開きます。
+7. 「**ipconfig /all**」と入力します。
+8. **10.0.20.0/24** の範囲内にある IPv4 アドレスが表示されます。 この例の環境ではアドレスは **10.0.20.4** ですが、実際の環境では異なる場合があります。
+9. 仮想マシンが ping に応答することを許可するファイアウォール ルールを作成するには、次の PowerShell コマンドを実行します。
 
    ```powershell
    New-NetFirewallRule `
@@ -353,18 +352,17 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     –Protocol ICMPv4
    ```
 
-10. From the virtual machine on POC2, ping the virtual machine on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01.
-   In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following:
+10. POC2 の仮想マシンから、トンネル経由で POC1 の仮想マシンに ping を実行します。 これを行うには、VM01 から記録した DIP に ping を実行します。
+   この例の環境ではこのアドレスは **10.0.10.4** ですが、必ずラボでメモしたアドレスに ping を実行するようにしてください。 結果は次のようになります。
    
-    ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. A reply from the remote virtual machine indicates a successful test! You can close the virtual machine window. To test your connection, you can try other kinds of data transfers like a file copy.
+    ![ping 成功](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+11. リモート仮想マシンからの応答は、テストが成功したことを示します。 仮想マシン ウィンドウを閉じてもかまいません。 ファイル コピーなど、他の種類のデータ転送を試し、接続をテストすることもできます。
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
-If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** blade. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
+### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>ゲートウェイ接続を使用したデータ転送の統計情報を表示する
+サイト間接続を通過したデータの量を把握したい場合、**[接続]** ブレードでこの情報を確認できます。 このテストは、先ほど送信した ping が実際に VPN 接続を通過したことを検証するためのもう 1 つの手段でもあります。
 
-1. While you're signed in to the tenant virtual machine in POC2, use your tenant account to sign in to the user portal.
-2. Go to **All resources**, and then select the **POC2-POC1** connection. **Connections** appears.
-4. On the **Connection** blade, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
+1. POC2 のテナント仮想マシンにサインインしているとき、テナント アカウントを利用してユーザー ポータルにサインインします。
+2. **[すべてのリソース]** に移動し、**POC2-POC1** 接続を選択します。 **[接続]** が表示されます。
+4. **[接続]** ブレードには、**[受信データ]** と **[送信データ]** の統計情報が表示されます。 次のスクリーンショットでは大きな数値を確認できますが、これは追加のファイル転送によるものです。 ここには 0 以外の値が表示されます。
    
-    ![Data in and out](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
-
+    ![受信データと送信データ](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)

@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb5483e497ef1c1a239f207a034eb8c67f485a39
-ms.openlocfilehash: c7a46ebf0df6db92d2e66c7523e00c0a574ebf56
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: f626cf417d8b3f1761f3c900d49039b3ff83b093
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 SQL Azure でデータベースを簡単にスケールアウトするには、シャード マップ マネージャーを使用します。 シャード マップ マネージャーは、シャード セット内のすべてのシャード (データベース) についてのグローバル マッピング情報を保持する特殊なデータベースです。 メタデータにより、アプリケーションは **シャーディング キー**の値に基づいて適切なデータベースに接続できます。 さらに、セット内のすべてのシャードには、ローカル シャード データを追跡するマップが含まれます ( **シャードレット**と呼ばれます)。 
@@ -324,4 +322,3 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [1]: ./media/sql-database-elastic-scale-shard-map-management/listmapping.png
 [2]: ./media/sql-database-elastic-scale-shard-map-management/rangemapping.png
 [3]: ./media/sql-database-elastic-scale-shard-map-management/multipleonsingledb.png
-

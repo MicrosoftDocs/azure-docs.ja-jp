@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: e7a8f4cff0889a02ef1f7a4d32fda4e57c5d35b0
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 8efb3ab66d07875b51f723fed5594bcb477ed025
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-network-security-groups-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したネットワーク セキュリティ グループの作成
 
@@ -362,4 +361,3 @@ ms.lasthandoff: 02/28/2017
     "routeTable": null
     }
     ```
-

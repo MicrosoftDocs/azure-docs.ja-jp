@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) アカウント 
 
-ロジック アプリで ProjectOnline アカウントを使用するには、ProjectOnline アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。 
+ロジック アプリで ProjectOnline アカウントを使用するには、ProjectOnline アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
 
 次に、ProjectOnline アカウントに接続するロジック アプリを承認する手順を示します。
 

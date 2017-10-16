@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: a49b76e4fa0e0d5de7c0b7b758e8103a0a79a140
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
 [Cloud Foundry](http://cloudfoundry.org) は、Microsoft Azure で使用できる一般的なオープン ソース プラットフォームです。 この記事では、Azure 環境にある Cloud Foundry にアプリケーションをデプロイして管理する方法について説明します。

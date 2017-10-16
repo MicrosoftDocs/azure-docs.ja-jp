@@ -11,27 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: e1f992aede3af99fa7c2ffa661bccbcac9f52ba9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: bdaa5af6ff5331bc310499586615b48a864c3c5e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
+Azure Active Directory アプリケーション プロキシを使用すると、Web アプリケーションに加えて、Azure AD Authentication Library (ADAL) を使用して構成されているネイティブ クライアント アプリを発行することもできます。 ネイティブ クライアント アプリはデバイスにインストールされる点が Web アプリとは異なります。一方、Web アプリはブラウザーからアクセスされます。 
 
-Azure Active Directory アプリケーション プロキシを使用すると、Web アプリケーションに加えて、ネイティブ クライアント アプリを発行することもできます。 ネイティブ クライアント アプリはデバイスにインストールされる点が Web アプリとは異なります。一方、Web アプリはブラウザーからアクセスされます。 
-
-アプリケーション プロキシはネイティブ クライアント アプリをサポートするために、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンを受け入れます。
+アプリケーション プロキシは、ヘッダーで送信される Azure AD 発行トークンを受け入れることで、ネイティブ クライアント アプリをサポートします。 アプリケーション プロキシ サービスは、ユーザーに代わって認証を実行します。 このソリューションでは、認証するためにアプリケーションのトークンは使用しません。 
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-認証を行い、多数のクライアント環境をサポートする Azure AD Authentication Library を使用して、ネイティブ アプリケーションを発行します。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。 
+認証を行い、多数のクライアント環境をサポートする Azure AD Authentication Library を使用して、ネイティブ アプリケーションを発行します。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)に適しています。 
+
+この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。 
 
 ## <a name="step-1-publish-your-application"></a>手順 1: アプリケーションの発行
 他のアプリケーションと同様にプロキシ アプリケーションを発行し、アプリケーションにアクセスするユーザーを割り当てます。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
@@ -91,10 +91,10 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 * ネイティブ アプリケーションの **App Id** は、ネイティブ アプリケーションの **[プロパティ]** ページに表示されます。
 * **Redirect URI of the native app** は、ネイティブ アプリケーションの **[リダイレクト URI]** ページに表示されます。
 
+これらのパラメーターを使用して ADAL を編集すると、企業ネットワークの外部ユーザーであっても、ネイティブ クライアント アプリを認証できるようになります。 
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 
-最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-
+[アプリケーション プロキシのシングル サインオン](application-proxy-sso-overview.md)の設定に関する記事を参照します。

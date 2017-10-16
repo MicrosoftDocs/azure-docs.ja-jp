@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 6e1622cd55e3b0e8063604ac9dc0cb0673fa9753
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル: Azure Active Directory と Sprinklr の統合
 
@@ -201,7 +199,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-sprinklr-test-user"></a>Sprinklr テスト ユーザーの作成
 
@@ -303,5 +301,4 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 09ddabf97028525e04f930f935f6ddf7ae132567
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/03/2017
-
+ms.openlocfilehash: 85935e60bba4b27972282700e2e9c9a22b403bdb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>ロール ベースのアクセス制御 (Service Fabric クライアント用)
 Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。  
@@ -106,5 +105,4 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 
 [Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)
-
 

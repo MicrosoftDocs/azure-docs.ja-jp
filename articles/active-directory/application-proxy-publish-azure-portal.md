@@ -15,15 +15,12 @@ ms.date: 07/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: e00a939f2b20ab8e0a2ddf0ff91e59db440213ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
 > [!div class="op_single_selector"]
@@ -106,4 +103,3 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 - [コネクタのダウンロード](active-directory-application-proxy-enable.md)と[コネクタ グループの作成](active-directory-application-proxy-connectors-azure-portal.md)を行って、アプリケーションを別のネットワークや場所に発行します。
 
 - 新しく発行したアプリに対する[シングル サインオンを設定](application-proxy-sso-azure-portal.md)します。
-

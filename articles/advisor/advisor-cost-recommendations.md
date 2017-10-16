@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5eef2116f238b477fa8de46ce7b25728c393739c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 51320d93689da3e37c0946d8877b27a11793d9c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="advisor-cost-recommendations"></a>Advisor のコストに関する推奨事項
 
 Advisor は、アイドル状態にあるリソースや活用されていないリソースを識別することによって Azure を最適化し、総合的な Azure の支出を削減します。 コストに関する推奨事項は、Advisor ダッシュボードの **[コスト]** タブで取得できます。
@@ -46,7 +44,7 @@ Advisor は、エラスティック データベース プールの作成によ�
 
 2. 左側のウィンドウで、**[その他のサービス]** をクリックします。
 
-3. サービス メニュー ウィンドウの **[監視と管理]** で、**[Azure Advisor]** をクリックします。  
+3. サービス メニュー ウィンドウの **[Monitoring and Management (監視と管理)]** で、**[Azure Advisor]** をクリックします。  
  Advisor ダッシュボードが表示されます。
 
 4. Advisor ダッシュボードで、**[コスト]** タブをクリックします。
@@ -64,4 +62,3 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-cost-recommendations.md)
-

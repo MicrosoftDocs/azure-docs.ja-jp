@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信する
 
@@ -80,7 +78,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
     次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
     データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-12.    **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
+12. **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
@@ -113,4 +111,3 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
 
 ## <a name="learn-more"></a>詳細情報
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
-

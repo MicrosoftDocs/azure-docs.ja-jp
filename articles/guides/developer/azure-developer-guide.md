@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2c90272a9d33795dca7839292bba38fa16fec3da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -123,7 +123,7 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 
     >**使用する場合**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
 
-    >**作業開始**: [BLOB](../../storage/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../storage/storage-dotnet-how-to-use-tables.md)、[クエリ](../../storage/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
+    >**作業開始**: [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
 
 -   **Azure DocumentDB**: 完全に管理され、スケーラブルな NoSQL データベース サービスです。オブジェクト データに対して SQL クエリを実行できます。 DocumentDB には、既存の MongoDB ドライバーを使用してアクセスできます。
     >**使用する場合:** アプリケーションから JSON ドキュメントに対して SQL クエリを実行できる必要がある場合、または MongoDB を使用している場合。
@@ -158,7 +158,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: Linux 上の Web アプリを Docker イメージにデプロイする場合。
 
-    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service-web/app-service-linux-using-custom-docker-image.md)。
+    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-custom-docker-image.md)。
 
 ### <a name="authentication"></a>認証
 
@@ -168,7 +168,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
 
-    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/active-directory-developers-guide.md)」を参照してください。
+    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/active-directory-developers-guide.md)」を参照してください。
 
 -   **App Service 認証**: App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 
@@ -229,7 +229,7 @@ Azure には、Bash、ターミナル、コマンド プロンプト、または
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。 カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
 
 ### <a name="rest-apis"></a>REST API
 

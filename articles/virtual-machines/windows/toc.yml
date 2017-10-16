@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 - 仮想マシンのバックアップ
       href: tutorial-backup-vms.md
-    - name: 10 - 仮想マシンの監視
+    - name: 10 - VM の監視と更新
       href: tutorial-monitoring.md
     - name: 11 - VM のセキュリティの管理
       href: tutorial-azure-security.md
@@ -49,56 +49,33 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: Azure リソース マネージャー
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: リージョンと可用性
       href: regions-and-availability.md
-    - name: ストレージ
+    - name: VM の種類とサイズ
+      href: sizes.md
+    - name: メンテナンスと更新
+      href: maintenance-and-updates.md
+    - name: Storage
       href: about-disks-and-vhds.md
     - name: ネットワーク
       href: network-overview.md
-    - name: VM スケール セット
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: コンテナー
-      href: containers.md
-    - name: リソース マネージャー
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-        - name: デプロイ モデル
-          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: VM 用のテンプレート
-          href: template-description.md
-    - name: Azure Windows エージェント
-      href: agent-user-guide.md
-    - name: Azure Security Center
-      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: ディザスター リカバリー
-      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Azure の計画メンテナンス
-      href: planned-maintenance.md
-    - name: VM サイズ
-      href: sizes.md
-      items:
-        - name: 汎用
-          href: sizes-general.md
-        - name: コンピューティング最適化
-          href: sizes-compute.md
-        - name: メモリ最適化
-          href: sizes-memory.md
-        - name: ストレージ最適化
-          href: sizes-storage.md
-        - name: GPU 最適化
-          href: sizes-gpu.md
-          items:
-            - name: GPU ドライバー
-              href: n-series-driver-setup.md
-        - name: ハイ パフォーマンス コンピューティング
-          href: sizes-hpc.md
-        - name: Azure コンピューティング ユニット (ACU)
-          href: acu.md
-        - name: コンピューティング ベンチマーク スコア
-          href: compute-benchmark-scores.md
+    - name: 自動スケール アプリケーション
+      href: autoscale.md
+    - name: インフラストラクチャの自動化
+      href: infrastructure-automation.md
+    - name: セキュリティとポリシー
+      href: security-policy.md
+    - name: 監視
+      href: monitor.md
+    - name: バックアップと回復
+      href: backup-recovery.md
+    - name: ハイ パフォーマンス コンピューティング
+      href: high-performance-computing.md
     - name: デプロイに関する考慮事項
       items:
-        - name: 基本的なデプロイの例
+        - name: インフラストラクチャのガイドライン
           href: infrastructure-example.md
 - name: ハウツー ガイド
   items:
@@ -154,6 +131,8 @@
           href: download-template.md
         - name: Azure VM エージェント
           href: agent-user-guide.md
+        - name: Azure の計画メンテナンス
+          href: maintenance-notifications.md
         - name: スケジュールされたイベント
           href: scheduled-events.md
         - name: メタデータの監視
@@ -184,6 +163,12 @@
           href: manage-availability.md
         - name: 垂直方向にスケーリングする
           href: vertical-scaling-automation.md
+        - name: 可用性ゾーン内に VM を作成する
+          items:
+            - name: PowerShell
+              href: create-powershell-availability-zone.md
+            - name: ポータル
+              href: create-portal-availability-zone.md
     - name: 自動化ツールの使用
       items:
         - name: Chef
@@ -191,7 +176,7 @@
     - name: アプリケーションの実行
       items:
         - name: SQL Server
-          href: /sql/virtual-machines-windows-sql-server-iaas-overview
+          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
         - name: MongoDB
           href: install-mongodb.md
         - name: SAP on Azure
@@ -359,11 +344,13 @@
               href: troubleshoot-recovery-disks-portal.md
         - name: PerfInsights の使用
           href: how-to-use-perfInsights.md
+        - name: パフォーマンス診断 VM 拡張機能
+          href: performance-diagnostics-vm-extension.md
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/vm
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/azureps-cmdlets-docs
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: b9e842a93dfdb7699158a11978aa622c31382d28
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: 1a3a92ab8d08c6ed6f047208217c46022027157e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>IoT ゲートウェイとしての Intel NUC のセットアップ
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -174,5 +173,4 @@ log.txt のコンテンツが表示されます。これは、ゲートウェイ
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ゲートウェイを使用し、Azure IoT Hub にデバイスを接続する](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-
 

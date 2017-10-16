@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c33e132037d95fa92fd59a8243a9a8a351ae0224
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: c80e78b39b3fba4dcd9523e1e679822758822805
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure Security Center でサポートされているプラットフォーム
 セキュリティ状態の監視と推奨事項は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのどちらで作成された仮想マシン (VM) でも利用できます。
@@ -39,12 +37,6 @@ ms.lasthandoff: 06/17/2017
 * Windows Server 2012 R2
 * Windows Server 2016
 
-> [!NOTE]
->
-* OS の脆弱性評価は、Windows Server 2016 ではまだ利用できません。
-* クラッシュ分析とクラッシュ検出は Windows Server 2012 と Windows Server 2012 R2 でのみサポートされています。
->
->
 
 ## <a name="supported-platforms-for-linux-vms"></a>Linux VM でサポートされているプラットフォーム
 サポートされている Linux オペレーティング システム:
@@ -70,4 +62,3 @@ ms.lasthandoff: 06/17/2017
 - [Azure Security Center のタイプ別のセキュリティ アラート](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) - Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析について説明します。
 - [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 08feb4ec34bb1635f8ea744b54a10b677b94ab3e
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="task-fail-event"></a>タスク失敗イベント
 
  このイベントは、タスクがエラーで完了したときに出力されます。 現在は、すべてが 0 以外の終了コードはエラーと見なされます。 このイベントは、タスク完了イベント*に加えて*出力され、タスクが失敗したときの検出に使用できます。
@@ -92,4 +91,3 @@ ms.lasthandoff: 04/22/2017
 |exitCode|Int32|タスクの終了コード。|
 |retryCount|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外の終了コードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|
 |requeueCount|Int32|Batch サービスによりタスクがユーザー要求の結果として再度キューに入れられる回数です。<br /><br /> ユーザーが (プールをサイズ変更したり圧縮することで) プールからノードを削除するときやジョブを無効にしているとき、ユーザーはノードで実行中のタスクを再実行のキューに再度入れるよう指定できます。 この回数は、タスクがこうした理由により何回キューに入れられたかを追跡します。|
-

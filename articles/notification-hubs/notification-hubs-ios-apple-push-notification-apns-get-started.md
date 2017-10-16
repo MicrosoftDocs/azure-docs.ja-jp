@@ -15,11 +15,11 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: e17f0e050530a64fdf569176abc5cf3ae88da516
 ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>Azure Notification Hubs から iOS へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -43,7 +43,7 @@ ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 このチュートリアルには、次のものが必要です。
 
 * [Mobile Services iOS SDK バージョン 1.2.4]
-*  [Xcode]
+* [Xcode]
 * iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 * [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
   
@@ -70,7 +70,7 @@ ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 <p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。 <b>[実稼働]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。</p>
 </li>
 </ol>
-&emsp;&emsp;&emsp;&emsp;![Configure APNS in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![Azure ポータルでの APNS を構成します。](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
 &emsp;&emsp;&emsp;&emsp;![Configure APNS certification in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
@@ -156,7 +156,7 @@ ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 1. お使いのデバイスでアプリケーションをビルドして実行し、エラーがないことを確認します。
 
 ## <a name="send-test-push-notifications"></a>テスト プッシュ通知を送信する
-アプリで通知の受信テストを行うには、 [Azure ポータル] でハブ ブレードの **[トラブルシューティング]** から ( *[テストの送信]* オプションを使用して) プッシュ通知を送信します。
+アプリで通知の受信テストを行うには、[Azure Portal] でハブ ブレードの **[トラブルシューティング]** から ( *[テストの送信]* オプションを使用して) プッシュ通知を送信します。
 
 ![Azure Portal - Test Send][30]
 
@@ -431,7 +431,7 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
 1. アプリケーションを実行して登録が成功したことを確認したら、 **[OK]**を押します。
    
     ![iOS App Push Notification Registration Test][33]
-2. 前述のとおり、 [Azure ポータル]からテスト プッシュ通知を送信することができます。 アプリにプッシュ通知を送信するためのコードを追加した場合は、テキスト フィールドの内部をタップして、通知メッセージを入力します。 入力後、キーボードの **Send** キーまたはビュー内の **[Send Notification]** ボタンを押して、通知メッセージを送信します。
+2. 前述のとおり、[Azure Portal] からテスト プッシュ通知を送信することができます。 アプリにプッシュ通知を送信するためのコードを追加した場合は、テキスト フィールドの内部をタップして、通知メッセージを入力します。 入力後、キーボードの **Send** キーまたはビュー内の **[Send Notification]** ボタンを押して、通知メッセージを送信します。
    
     ![iOS App Push Notification Send Test][34]
 3. 特定の通知ハブから通知を受信するように登録されているすべてのデバイスにプッシュ通知が送信されます。
@@ -481,10 +481,5 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure ポータル]: https://portal.azure.com
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-
+            [Azure Portal]: https://portal.azure.com

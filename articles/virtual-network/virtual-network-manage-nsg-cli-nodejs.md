@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: 2e53c3ff2ffbef95d6b72ca6afb3b4de377f0389
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用したネットワーク セキュリティ グループの管理
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 02/28/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 > 
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -62,7 +61,7 @@ azure network nsg list --resource-group RG-NSG
     info:    network nsg list command OK
 
 ### <a name="list-all-rules-for-an-nsg"></a>NSG のすべての規則を一覧表示する
-**NSG-FrontEnd`azure network nsg show` という NSG の規則を表示するには、次のように ** コマンドを実行します。 
+**NSG-FrontEnd`azure network nsg show` という NSG の規則を表示するには、次のように** コマンドを実行します。 
 
 ```azurecli
 azure network nsg show --resource-group RG-NSG --name NSG-FrontEnd
@@ -367,5 +366,4 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
 ## <a name="next-steps"></a>次のステップ
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
-
 

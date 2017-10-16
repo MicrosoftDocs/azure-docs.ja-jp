@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -41,7 +40,7 @@ Azure Portal を使用して、Azure Data Lake Analytics のアカウント、�
    3. **[リソース グループ]**: アカウントの作成先の Azure リソース グループ。 
    4. **[場所]**: Data Lake Analytics アカウントの Azure データセンター。 
    5. **[Data Lake Store]**: Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
-4. ページの下部にある **[Create]**」を参照してください。 
+4. **Create** をクリックしてください。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントの削除
 
@@ -254,5 +253,4 @@ Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つ�
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)
-
 

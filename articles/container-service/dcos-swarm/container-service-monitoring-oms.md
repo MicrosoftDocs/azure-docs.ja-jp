@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
+ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9c6eab099057ef91f79ff1a97e1cc1bd397fc946
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視
 
 Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
@@ -52,8 +50,7 @@ Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベ�
 
 ![](media/container-service-monitoring-oms/image4.png)
 
-3. ここでは、`wsid` (OMS ワークスペース ID) と `wskey` (ワークスペース ID の OMS 主キー) の入力を求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> に OMS アカウントを作成する必要があります。
-手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
+3. ここでは、`wsid` (OMS ワークスペース ID) と `wskey` (ワークスペース ID の OMS 主キー) の入力を求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> に OMS アカウントを作成する必要があります。手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -77,7 +74,7 @@ OMS ポータル (<https://mms.microsoft.com>) にログインし、**[Solution 
 
 ![](media/container-service-monitoring-oms/image8.png)
 
-### <a name="azure-portal"></a>Azure ポータル 
+### <a name="azure-portal"></a>Azure Portal 
 
 Azure Portal (<https://portal.microsoft.com/>) にログインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、**[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、**[作成]** をクリックします。
 
@@ -117,4 +114,3 @@ $ dcos package uninstall msoms
 ## <a name="next-steps"></a>次のステップ
 
  これで、コンテナーを監視するための OMS を設定できました。次は、[コンテナー ダッシュボードについて説明](../../log-analytics/log-analytics-containers.md)します。
-

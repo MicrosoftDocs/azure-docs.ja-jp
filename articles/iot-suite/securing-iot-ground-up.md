@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4e02b55272fee8460886bb807a45cad99612dd86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: b876881af6ead69906c14cf7aeeab70130ba66ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="internet-of-things-security-from-the-ground-up"></a>モノのインターネットの徹底的なセキュリティ
 モノのインターネット (IoT) は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。
 
@@ -49,7 +47,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 
 Microsoft Azure IoT Suite は、SDL および OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。 
 
-[IoT Suite](iot-suite-what-is-azure-iot.md) 内の [Azure IoT Hub](../iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス ([Azure Machine Learning](../machine-learning/machine-learning-what-is-machine-learning.md) や [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) など) 間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+[IoT Suite](iot-suite-what-is-azure-iot.md) 内の [Azure IoT Hub](../iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス ([Azure Machine Learning](../machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) など) 間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT Suite に組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、ここでは Suite を 3 つの主なセキュリティ領域に分けました。 
 
@@ -124,4 +122,3 @@ IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-se
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md
-

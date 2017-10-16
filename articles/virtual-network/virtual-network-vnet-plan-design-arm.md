@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
 ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure Virtual Network の計画と設計
 試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。 ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。 VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](virtual-networks-create-vnet-arm-pportal.md)について学習することが推奨されます。
@@ -253,4 +252,3 @@ VNet ごとにアドレス空間を指定する必要もあります。 オン�
 * IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
 * [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md) について詳しく学習します。
 * [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)について詳しく学習します。
-

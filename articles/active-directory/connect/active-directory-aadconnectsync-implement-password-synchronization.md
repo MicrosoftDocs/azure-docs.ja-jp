@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0cb1b04bcfab1f1864ae0ce867be02a8bf8c827c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: db9b1578a235be9018fc1985cc75a0a05ee47b3a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-password-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期でパスワード同期を実装する
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -39,7 +38,7 @@ ms.lasthandoff: 04/12/2017
 
 また、[Active Directory フェデレーション サービス (AD FS) でフェデレーション](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)を使用する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、オプションでパスワード同期を設定することもできます。
 
-パスワード同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。 環境でパスワード同期を使用するには、以下のことを行う必要があります。
+パスワード同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。環境でパスワード同期を使用するには、以下のことを行う必要があります。
 
 * Azure AD Connect をインストールする。  
 * オンプレミスの Active Directory インスタンスと Azure Active Directory インスタンスとの間のディレクトリ同期を構成する。
@@ -183,4 +182,3 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 ## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect 同期: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

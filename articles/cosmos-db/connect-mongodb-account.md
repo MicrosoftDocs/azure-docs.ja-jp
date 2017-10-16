@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 5a47001705531d971d3181df9c0aa8f957168845
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続
 MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB アカウントに接続する方法について説明します。 MongoDB アプリのデータ ストアとして Azure Cosmos DB データベースを使用できるようになります。 
 
@@ -80,4 +77,3 @@ Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポ�
 ## <a name="next-steps"></a>次のステップ
 * MongoDB アカウント用の Azure Cosmos DB API で [MongoChef を使用](mongodb-mongochef.md)する方法を説明します。
 * [サンプル](mongodb-samples.md)を表示して MongoDB 用 の Azure Cosmos DB API を調べます。
-

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3c472904641108b7383cd0f1416c47460f8de11a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-and-service-level-event-and-log-generation"></a>アプリケーションおよびサービス レベルのイベントとログの生成
 
 ## <a name="instrumenting-the-code-with-custom-events"></a>カスタム イベントを使用してコードをインストルメント化する
@@ -179,4 +176,3 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションとサービスのインストルメント化にログ プロバイダーを選択したら、任意の分析プラットフォームに送信できるようにログとイベントを集計する必要があります。 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) に関する記事と [WAD](service-fabric-diagnostics-event-aggregation-wad.md) に関する記事を読んで、推奨されるオプションについて理解を深めてください。
-

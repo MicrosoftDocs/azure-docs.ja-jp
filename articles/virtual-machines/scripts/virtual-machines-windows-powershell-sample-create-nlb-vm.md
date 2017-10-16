@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: b361d599022e8dfcc03c539d26d6a5f03791b80c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: 25bcbbcd1615e01a384825d7bd1582a528e91f71
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>高可用性仮想マシン間でトラフィックの負荷を分散する
 
 このサンプル スクリプトでは、高可用性と負荷分散が設定された構成で、構成済みの複数の Windows 2016 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。
@@ -34,7 +32,7 @@ ms.lasthandoff: 06/07/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[メイン](../../../powershell_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.ps1 "VM NLB の作成")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.ps1 "Create VM NLB")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -73,4 +71,3 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。
-

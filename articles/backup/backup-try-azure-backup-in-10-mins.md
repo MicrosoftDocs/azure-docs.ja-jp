@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
+ms.openlocfilehash: 7a016ed92c68ce624aeb09d766adbc6fc8ba2b42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b21edb70eca3ec9552dc157ee3bb658d243b8fcd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>最初に: Resource Manager デプロイメントでのファイルとフォルダーのバックアップ
 この記事では、Resource Manager デプロイメントを使用して、Windows Server (または Windows コンピューター) のファイルとフォルダーを Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。 この記事は、Azure Backup を始めて使用する場合に適しています。
@@ -171,7 +170,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
     2. *.Microsoft.com
     3. *.WindowsAzure.com
     4. *.microsoftonline.com
-    5. *.windows.ne
+    5. *.windows.net
 
 ## <a name="back-up-your-files-and-folders"></a>ファイルとフォルダーをバックアップする
 初回バックアップには、次の 2 つの主要なタスクが含まれています。
@@ -229,4 +228,3 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 * [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
 * ファイルとフォルダーをバックアップしたので、 [コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
-

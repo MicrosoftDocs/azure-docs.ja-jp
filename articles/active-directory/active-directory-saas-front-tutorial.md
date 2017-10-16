@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: d936bc50a66ac2a3c17038ff08351edf9902c99f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -200,7 +199,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-front-test-user"></a>Front テスト ユーザーの作成
 
@@ -260,5 +259,4 @@ Front で Azure AD のシングル サインオンを構成してテストする
 [201]: ./media/active-directory-saas-front-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-front-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-front-tutorial/tutorial_general_203.png
-
 

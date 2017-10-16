@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: bwren
+ms.openlocfilehash: ca1bb8ee886c4b4e69be9dd653d6a52b874e1f5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
 
@@ -129,4 +128,3 @@ Azure Windows VM でホストされている Docker でコンポーネントが�
 ## <a name="next-steps"></a>次のステップ
 
 * [開発、テスト、および運用のテレメトリを分離する](app-insights-separate-resources.md)
-

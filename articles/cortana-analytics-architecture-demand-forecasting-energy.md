@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2015
 ms.author: garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 87a27dbe9042973dcfa7e9a5a438773d1bbab4d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ
 次の図に、 [エネルギー需要予測のための Cortana Intelligence ソリューション テンプレート](cortana-analytics-playbook-demand-forecasting-energy.md)のアーキテクチャの概要を示します。
@@ -31,4 +29,3 @@ ms.lasthandoff: 07/06/2017
 ![エネルギー需要予測のための Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャの図][image]
 
 [image]: ./media/cortana-analytics-architecture-demand-forecasting-energy/ca-topologies-energy-forecasting.png
-

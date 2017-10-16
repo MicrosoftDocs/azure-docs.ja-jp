@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
 ![DNS 分析のシンボル](./media/log-analytics-dns/dns-analytics-symbol.png)
@@ -66,7 +64,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
 
-- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Log Analytics に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
+- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Log Analytics に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。スクロールすると、既定のリスト全体を確認できます。
 
  このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
 
@@ -192,4 +190,3 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 ## <a name="next-steps"></a>次のステップ
 
 [ログを検索](log-analytics-log-searches.md)して、詳細な DNS ログ レコードを確認します。
-

@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [Office 365 Video](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6) アカウント  
 
-ロジック アプリで Office 365 Video アカウントを使用するには、Office 365 Video アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで Office 365 Video アカウントを使用するには、Office 365 Video アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 Office 365 Video アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

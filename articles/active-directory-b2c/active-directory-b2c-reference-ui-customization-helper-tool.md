@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: f9c1e41c423cc0d638d5c1d273d58b2fe713fa1c
-ms.openlocfilehash: 2aeb1f20255264ca97b8aff6bd506b5fa1832e28
-
-
+ms.openlocfilehash: e0c2d827553567ddbc7d006192dc35574e66f1cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール
 この記事は、Azure Active Directory (Azure AD) B2C での [UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md) に付随するものです。 以下の手順では、用意されているサンプルの HTML および CSS の内容を使用して、ページの UI カスタマイズ機能を試してみる方法について説明します。
@@ -58,7 +58,7 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[+ 新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** の順にクリックします。 Azure BLOB ストレージ アカウントを作成するには、Azure サブスクリプションが必要です。 [Azure Web サイト](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。
-3. ストレージ アカウントの**名前** (例: "contoso") を入力し、**[価格レベル]**、**[リソース グループ]**、**[サブスクリプション]** でそれぞれ該当する項目を選択します。 **[スタート画面にピン留めする]** がオンになっていることを確認します。 **[作成]**をクリックします。
+3. ストレージ アカウントの**名前** (例: "contoso") を入力し、**[価格レベル]**、**[リソース グループ]**、**[サブスクリプション]** でそれぞれ該当する項目を選択します。 **[スタート画面にピン留めする]** がオンになっていることを確認します。 **Create** をクリックしてください。
 4. スタート画面に戻り、作成したストレージ アカウントをクリックします。
 5. **[概要]** セクションで、**[コンテナー]**、**[+ 追加]** の順にクリックします。
 6. コンテナーの **[名前]** ("b2c" など) を指定し、**[アクセスの種類]** として **[BLOB]** を選択します。 **[OK]**をクリックします。
@@ -86,10 +86,4 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 独自のストレージ アカウントにサンプル コンテンツをアップロードしたので、それを参照するようにサインアップ ポリシーを編集する必要があります。 前述の「[ポリシーをカスタマイズする](#customize-your-policy)」の手順を繰り返します。ただし、今回は独自のストレージ アカウントの URL を使用します。 たとえば、`unified.html` ファイルの場所は `<url-of-your-container>/wingtip/unified.html` になります。
 
 これで、 **[今すぐ実行]** ボタンまたは独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。 どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。 ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再びアップロードできます。 HTML および CSS のカスタマイズの詳細については、 [UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

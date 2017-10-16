@@ -1,0 +1,73 @@
+- name: Azure IoT Hub Device Provisioning Service のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: IoT Device Provisioning について
+      href: about-iot-dps.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 自動プロビジョニングの設定
+      href: quick-setup-auto-provision.md
+    - name: シミュレートされたデバイスの作成
+      href: quick-create-simulated-device.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - クラウド リソースを設定する
+      href: tutorial-set-up-cloud.md
+    - name: 2 - デバイスを設定する
+      href: tutorial-set-up-device.md
+    - name: 3 - デバイスを IoT ハブにプロビジョニングする
+      href: tutorial-provision-device-to-hub.md
+    - name: 4 - デバイスを複数のハブにプロビジョニングする
+      href: tutorial-provision-multiple-hubs.md
+- name: 概念
+  items:
+    - name: デバイスの概念
+      href: concepts-device.md
+    - name: サービスの概念
+      href: concepts-service.md
+    - name: セキュリティの概念
+      href: concepts-security.md
+- name: ハウツー ガイド
+  items:
+    - name: デバイス登録の管理
+      href: how-to-manage-enrollments.md
+    - name: SDK での HSM の使用
+      href: use-hsm-with-sdk.md
+- name: リファレンス
+  items:
+    - name: REST ()
+      href: /rest/api/iot-dps
+- name: リソース
+  items:
+    - name: Azure IoT Hub
+      href: 'https://azure.microsoft.com/services/iot-hub/'
+    - name: IoT デバイス カタログ向けの Azure 認定
+      href: 'https://catalog.azureiotsuite.com/'
+    - name: Azure IoT デベロッパー センター
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Device Explorer ツール
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics ツール
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: iothub-explorer ツール
+      href: 'https://github.com/Azure/iothub-explorer'
+    - name: ラーニング パス
+      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技術的なケース スタディ
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

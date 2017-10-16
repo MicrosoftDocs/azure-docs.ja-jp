@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bd14d9902f4061965c008454a14f91d3927f5b99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
-
+ms.openlocfilehash: 75c6cf17ee269ae169d9f2f748d0985ca07e454e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成
 > [!div class="op_single_selector"]
@@ -261,5 +259,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## <a name="next-steps"></a>次のステップ
 127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](../../virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することができます。
-
 

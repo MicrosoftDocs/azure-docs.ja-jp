@@ -16,13 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: d9cca5d529d96d505f304736547c23362796e16e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 3f1c7bb1795828899148a8ba8a0461a06947d40d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
@@ -39,7 +37,7 @@ ms.lasthandoff: 07/08/2017
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。 Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。 Azure ストレージ アカウントの作成の詳細については、 [ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md)に関するページを参照してください。
+* **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。 Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。 Azure ストレージ アカウントの作成の詳細については、 [ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md)に関するページを参照してください。
 
 ## <a name="open-the-portal"></a>ポータルを開く
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
@@ -212,7 +210,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 
 このプロセスをプログラムで実行する方法は数多くあります。
 
-* Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/data-factory-compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/data-factory-data-transformation-activities.md)」をご覧ください。
+* Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/transform-data.md)」をご覧ください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 * Azure CLI を使用する。 「 [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
 * HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
@@ -379,4 +377,3 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
-

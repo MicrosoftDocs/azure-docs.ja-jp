@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Monitor のドキュメント
+metadata:
+  title: Azure Monitor のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Azure Monitor は、Microsoft Azure の全体監視ソリューションの一部です。 Azure Monitor は、パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、監査、アラートの作成、データのアーカイブの方法を確認してください。
+  services: monitoring-and-diagnostics
+  author: czeumault
+  manager: carolz
+  ms.service: monitoring-and-diagnostics
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/18/2017
+  ms.author: carolz
+abstract:
+  description: Azure Monitor は、Microsoft Azure の全体監視ソリューションの一部です。 Azure Monitor は、パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、監査、アラートの作成、データのアーカイブの方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure アプリケーションで特定の状態になったときに通知を受け取る方法を確認できます。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/Chart.svg'
+            text: 監視メトリック
+            href: monitor-quick-resource-metric-alert-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
+            text: サブスクリプションの監査とアラート
+            href: monitor-quick-audit-notify-action-in-subscription
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: 監視データの自動スケールとアーカイブについて確認できます。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="monitor-tutorial-autoscale-performance-schedule">スケジュールまたはアプリケーションのパフォーマンスに基づく自動スケール</a>
+          - html: <a href="monitor-tutorial-archive-monitoring-data">監視データのアーカイブ</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: IaaS 監視の概要
+            href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
+          - title: Microsoft Azure でのインフラストラクチャの管理
+            href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">Azure CLI</a></p><p><a href="/powershell/module/azurerm.insights">Azure PowerShell</a></p>
+          - title: REST ()
+            html: <p><a href="/rest/api/monitor/">REST ()</a></p>
+          - title: 監視
+            html: <p><a href="monitoring-supported-metrics">サポートされるメトリック</a></p><p><a href="monitoring-diagnostic-logs-schema">診断ログのサービス、カテゴリ、スキーマ</a></p><p><a href="monitoring-activity-log-schema">アクティビティ ログのイベント スキーマ</a></p>
+          - title: 診断
+            html: <p><a href="azure-diagnostics-schema">Azure 診断拡張機能のスキーマ</a></p>

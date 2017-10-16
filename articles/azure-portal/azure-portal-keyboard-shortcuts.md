@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: d5f837d0017ca885144b91d35f489a6fc0e5670e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 この記事では、Azure ポータル全体で機能するキーボード ショートカットを示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。
@@ -30,12 +29,12 @@ ms.lasthandoff: 08/28/2017
 | --- | --- |
 |新しいリソースを作成|G + N|
 |[その他のサービス] ウィンドウを開く|G + B|
-|リソースを検索|G + /| 
+|リソースの検索|G + /| 
 |リソースのメニュー項目を検索|CTRL + / |
 |選択した左側のウィンドウの項目を上に移動 |ALT + Shift + 上方向キー|
 |選択した左側のウィンドウの項目を下に移動 |ALT + Shift + 下方向キー|
 
-## <a name="navigation"></a>ナビゲーション
+## <a name="navigation"></a>「ナビゲーション」
 |目的 |押すキー |
 | --- | --- |
 |コマンド バーにフォーカスを移動 |G + , |

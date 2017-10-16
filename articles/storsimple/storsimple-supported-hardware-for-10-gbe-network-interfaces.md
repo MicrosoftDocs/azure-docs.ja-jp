@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 85911fcc66dcedff0d43bd986bce4500a1a2f00b
-
-
+ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
 ## <a name="overview"></a>概要
@@ -57,7 +57,7 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | スイッチのオペレーティング システム バージョン |JunOS 12.3R9.4 |
 | ブレード モデル |オンボード ポート (PIC 0) |
 | トランシーバー メーカー |Juniper |
-| トランシーバー モデル |部品番号 740-021308  <br></br>  部品番号 740-030658 |
+| トランシーバー モデル |部品番号 740-021308  <br></br> 部品番号 740-030658 |
 | トランシーバーのファームウェア バージョン |Rev 01 Version 0.0 (報告済み) |
 | ケーブル モデル |デュプレックス ジャンパー LC/LC 50/125µ、OM3、LSZH |
 | StorSimple モデル |8600 |
@@ -122,10 +122,4 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

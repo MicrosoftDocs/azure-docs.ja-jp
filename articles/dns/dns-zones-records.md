@@ -15,14 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
 このページでは、ドメイン、DNS ゾーン、DNS レコードおよびレコード セットの主要な概念と、Azure DNS でのサポートについて説明します。
@@ -140,4 +138,3 @@ Azure DNS を使用する際は、次の制限が既定で適用されます。
 
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。
 * 既存の DNS ゾーンを移行する場合は、[DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)の実行方法を確認してください。
-

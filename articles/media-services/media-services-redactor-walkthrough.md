@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -31,9 +30,7 @@ ms.lasthandoff: 04/03/2017
 
 このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。
 
-**Azure Media Redactor** MP は現在プレビュー段階です。 すべてのパブリックな Azure リージョン、米国政府、および中国国内のデータセンターで使用できます。 このプレビューは、現在無料で提供されています。 現在のリリースでは、処理後のビデオの長さは 10 分に制限されています。
-
-詳細については、[こちら](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally) のブログをご覧ください。
+詳細については、 [このブログ](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally) をご覧ください。
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer のワークフロー
 
@@ -135,4 +132,3 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)
-

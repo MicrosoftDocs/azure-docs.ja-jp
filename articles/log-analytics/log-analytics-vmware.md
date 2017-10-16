@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: 17072c4b6e4fdf6e4dc2b7a6a4ded7fa9f9f6fde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
 ![VMware のシンボル](./media/log-analytics-vmware/vmware-symbol.png)
@@ -205,4 +203,3 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 * Log Analytics の[ログ検索](log-analytics-log-searches.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](log-analytics-alerts.md)します。
-

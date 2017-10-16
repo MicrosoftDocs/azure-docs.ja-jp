@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/29/2016
 ms.author: golive
-translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: 0f2f25175e3988c58961be3d23e0e7aabcb0da8d
-
-
+ms.openlocfilehash: f23d7374a8954a0a95853fa9e00b54a8d9c468c4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 DevOps 領域には、継続的な統合パイプラインのさまざまなポイントで役立つ多くのツールがあります。  Azure Automation Desired State Configuration (DSC) は、DevOps チームが採用できる新たに追加された待望のオプションです。  この記事では、Windows コンピューター用の継続的なデプロイメント (CD) の設定について説明します。  必要な数の Windows コンピューターをロール (Web サイトなど) に含め、さらにそこから追加ロールにも含めるために手法を簡単に拡張することができます。
@@ -71,7 +71,7 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 
 ![PowerShell ギャラリーの例](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
-Azure ポータルに最近追加された別の手法を使用すると、新しいモジュールを取得したり既存のモジュールを更新したりできます。 [Automation アカウント] リソース、[アセット] タイル、[モジュール] タイルの順にクリックします。  [ギャラリーの参照] アイコンを使用すると、ギャラリー内のモジュールの一覧を表示し、詳細にドリルダウンして、Automation アカウントにインポートできます。 これは、モジュールを随時最新の状態に保つことができる素晴らしい方法です。 このインポート機能では、同期もれがないように他のモジュールとの依存関係もチェックされます。
+Azure Portal に最近追加された別の手法を使用すると、新しいモジュールを取得したり既存のモジュールを更新したりできます。 [Automation アカウント] リソース、[アセット] タイル、[モジュール] タイルの順にクリックします。  [ギャラリーの参照] アイコンを使用すると、ギャラリー内のモジュールの一覧を表示し、詳細にドリルダウンして、Automation アカウントにインポートできます。 これは、モジュールを随時最新の状態に保つことができる素晴らしい方法です。 このインポート機能では、同期もれがないように他のモジュールとの依存関係もチェックされます。
 
 手動による方法もあります。  Windows コンピューター用の PowerShell 統合モジュールのフォルダー構造は、Azure Automation で必要なフォルダー構造とは少し異なります。  ユーザーが少し調整する必要があります。  しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
@@ -176,10 +176,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 * [Azure Automation DSC の概要](automation-dsc-overview.md)
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

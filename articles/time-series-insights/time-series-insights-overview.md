@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: omravi
+ms.openlocfilehash: 1814459e47280af62450a4093140ab6ab9b765fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: abd66208ab7ac30831f3f1eddb2891ed7bcd3995
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
 Azure Time Series Insights は、ストレージ、分析、および視覚化コンポーネントを備えた管理型のクラウド サービスです。これらのコンポーネントにより、簡単に、数十億ものイベントを並行して取り込み、保存、調査、分析することができます。 Time Series Insights では、データの全体像を確認でき、隠れた傾向や異常の検出、ほぼリアルタイムでの根本原因分析の実施が可能になるため、IoT ソリューションの検証をすばやく行い、デバイスの大きなダウンタイムを防ぐことができます。 Time Series Insights は、イベント ブローカー (例: IoT Hub や Event Hubs) から時系列のデータを取り込み、そのデータにインデックスを作成して、構成可能な保持ポリシーに基づいてデータを削除します。 ユーザーは、直観的な UX または REST クエリ API を介してそのデータを使用します。
@@ -51,4 +49,3 @@ Azure Time Series Insights は、ストレージ、分析、および視覚化�
 * **環境**: 環境は、受信とストレージの容量を備えた Azure リソースです。  導入ユーザーは、Azure Portal を使用して、必要な容量を備えた環境をプロビジョニングします。
 * **イベント ソース**: イベント ソースは、Azure Event Hubs のようなイベント ブローカーから派生しています。  Time Series Insights は直接イベント ソースに接続してデータ ストリームを取り込みます。コードを記述する必要は一切ありません。 現在 Time Series Insights では、Azure Event Hubs と Azure IoT Hub がサポートされています。
 * **参照データ**: Time Series Insights により、ユーザーは、時系列のデータを参照データと結合することができます。  参照データには、デバイスに関するメタデータや、比較的変更頻度の低いその他の静的データを含めることができます。 Time Series Insights では参照データがデータ ストリームと結合されるため、ユーザーはこのデータをほぼリアルタイムで視覚化して分析できます。
-

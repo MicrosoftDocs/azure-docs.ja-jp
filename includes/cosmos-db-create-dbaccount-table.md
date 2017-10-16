@@ -28,4 +28,4 @@
 
 6.  デプロイが完了したら、[All Resources] \(すべてのリソース) タイルから、新しいアカウントを開きます。 
 
-    ![[All Resources] \(すべてのリソース) タイルの DocumentDB アカウント](./media/cosmos-db-create-dbaccount-table/all-resources.png)
+    ![[すべてのリソース] タイルの Azure Cosmos DB アカウント](./media/cosmos-db-create-dbaccount-table/all-resources.png)

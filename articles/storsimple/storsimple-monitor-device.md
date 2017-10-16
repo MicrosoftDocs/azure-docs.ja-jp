@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/16/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>StorSimple Manager サービスを使用した StorSimple デバイスの監視
 ## <a name="overview"></a>Overview
@@ -115,10 +115,4 @@ Update 2 以降を使用している場合は、次に示すように、プラ�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Manager サービスのデバイス ダッシュボードを使用する方法](storsimple-device-dashboard.md)。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

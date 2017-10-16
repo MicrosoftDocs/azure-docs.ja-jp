@@ -1,9 +1,9 @@
 ---
 title: "Azure Application Gateway でのエンド ツー エンド SSL の構成 | Microsoft Docs"
-description: "この記事では、Azure Resource Manager PowerShell を使用して Application Gateway でエンド ツー エンド SSL を構成する方法を説明します。"
+description: "この記事では、PowerShell を使用して Azure Application Gateway でエンド ツー エンド SSL を構成する方法を説明します。"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: e6d80a33-4047-4538-8c83-e88876c8834e
@@ -13,24 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: df14d5c4572a250f9f8951ee3b86e87e6f652782
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 6d969d6a0c649c263e1d5bb99bdbceec484cb9a3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-end-to-end-ssl-with-application-gateway-using-powershell"></a>PowerShell を使って Application Gateway にエンド ツー エンド SSL を構成する
+# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
 
 ## <a name="overview"></a>概要
 
-Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 これは、Application Gateway で SSL 接続を終了することによってサポートされます。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンドへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
+Azure Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 Application Gateway は、アプリケーション ゲートウェイで SSL 接続を終了します。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンド サーバーへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
 
-Application Gateway がサポートする別の機能は、カスタム SSL オプションの定義です。 Application Gateway は **TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化をサポートしています。また、使用する暗号スイートとその優先順位の定義もサポートします。  構成可能な SSL のオプションの詳細については、[SSL ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページをご覧ください。
+Application Gateway は、カスタム SSL オプションの定義をサポートしています。 また、**TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化と、使用する暗号スイートとその優先順位の定義もサポートしています。 構成可能な SSL のオプションの詳細については、[SSL ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページをご覧ください。
 
 > [!NOTE]
-> SSL 2.0 と SSL 3.0 は既定で無効になっており、有効にすることはできません。 これらはセキュリティで保護されておらず、Application Gateway では使用できないと見なされています。
+> SSL 2.0 と SSL 3.0 は既定で無効になっており、有効にすることはできません。 これらはセキュリティで保護されておらず、Application Gateway では使用できません。
 
 ![シナリオのイメージ][scenario]
 
@@ -41,92 +40,82 @@ Application Gateway がサポートする別の機能は、カスタム SSL オ�
 このシナリオで、以下の作業を行います。
 
 * **appgw-rg** という名前のリソース グループを作成します。
-* アドレス スペースが 10.0.0.0/16 の **appgwvnet** という名前の仮想ネットワークを作成します。
+* アドレス スペースが **10.0.0.0/16** の **appgwvnet** という名前の仮想ネットワークを作成します。
 * **appgwsubnet** と **appsubnet** という名前の 2 つのサブネットを作成します。
 * SSL プロトコル バージョンと暗号化スイートを制限するエンド ツー エンド SSL 暗号化をサポートする、小さなアプリケーション ゲートウェイを作成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL を使用してゲートウェイに送信されるトラフィックの暗号化と暗号化解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (pfx) 形式である必要があります。 このファイル形式により、秘密キーをエクスポートすることができます。このキーは、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要です。
+アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL 経由でゲートウェイに送信されるトラフィックの暗号化と暗号化解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
 
-エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドをホワイトリスト登録する必要があります。 許可リストに登録するには、バックエンドの公開証明書をアプリケーション ゲートウェイにアップロードします。 これにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
+エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドをホワイトリスト登録する必要があります。 それには、バックエンドの公開証明書をアプリケーション ゲートウェイにアップロードする必要があります。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
 
-このプロセスについては以降の手順で説明します。
+この構成プロセスについては以降のセクションで説明します。
 
 ## <a name="create-the-resource-group"></a>リソース グループの作成
 
 このセクションでは、アプリケーション ゲートウェイを含むリソース グループの作成手順について説明します。
 
-### <a name="step-1"></a>手順 1
 
-Azure アカウントにログインします。
+   1. Azure アカウントにサインインします。
 
-```powershell
-Login-AzureRmAccount
-```
+   ```powershell
+   Login-AzureRmAccount
+   ```
 
-### <a name="step-2"></a>手順 2.
 
-このシナリオで使用するサブスクリプションを選択します。
+   2. このシナリオで使用するサブスクリプションを選択します。
 
-```powershell
-Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
-```
+   ```powershell
+   Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
+   ```
 
-### <a name="step-3"></a>手順 3.
 
-リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
+   3. リソース グループを作成します。 (既存のリソース グループを使用する場合は、この手順をスキップしてください。)
 
-```powershell
-New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
-```
+   ```powershell
+   New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
+   ```
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
 次の例では、仮想ネットワークと 2 つのサブネットを作成します。 1 つはアプリケーション ゲートウェイを保持するために使用します。 もう 1 つのサブネットは、Web アプリケーションをホストするバックエンドに使用します。
 
-### <a name="step-1"></a>手順 1
 
-Application Gateway 自体に使用するサブネットのアドレス範囲を割り当てます。
+   1. アプリケーション ゲートウェイに使用するサブネットのアドレス範囲を割り当てます。
 
-```powershell
-$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
-```
+   ```powershell
+   $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
+   ```
 
-> [!NOTE]
-> アプリケーション ゲートウェイ用に構成されているサブネットのサイズを適切に設定する必要があります。 アプリケーション ゲートウェイは、最大 10 個のインスタンスに対して構成できます。 各インスタンスは、サブネットから IP アドレスを 1 つ取得します。 サブネットのサイズが小さすぎると、アプリケーション ゲートウェイのスケールアウトに悪影響を及ぼす可能性があります。
-> 
-> 
+   > [!NOTE]
+   > アプリケーション ゲートウェイ用に構成されているサブネットのサイズを適切に設定する必要があります。 アプリケーション ゲートウェイは、最大 10 個のインスタンスに対して構成できます。 各インスタンスは、サブネットから IP アドレスを 1 つ取得します。 サブネットのサイズが小さすぎると、アプリケーション ゲートウェイのスケールアウトに悪影響を及ぼす可能性があります。
+   > 
+   > 
 
-### <a name="step-2"></a>手順 2.
+   2. バックエンド アドレス プールに使用するアドレス範囲を割り当てます。
 
-バックエンド アドレス プールに使用するアドレス範囲を割り当てます。
+   ```powershell
+   $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
+   ```
 
-```powershell
-$nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
-```
+   3. 上記の手順で定義されたサブネットを含む仮想ネットワークを作成します。
 
-### <a name="step-3"></a>手順 3.
+   ```powershell
+   $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+   ```
 
-上記の手順で定義されたサブネットを含む仮想ネットワークを作成します。
+   4. 以降の手順で使用する仮想ネットワーク リソースとサブネット リソースを取得します。
 
-```powershell
-$vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
-```
-
-### <a name="step-4"></a>手順 4.
-
-次の手順で使用する仮想ネットワーク リソースとサブネット リソースを取得します。
-
-```powershell
-$vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
-$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
-$nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
-```
+   ```powershell
+   $vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
+   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
+   $nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
+   ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>フロントエンド構成のパブリック IP アドレスの作成
 
-アプリケーション ゲートウェイに使用するパブリック IP リソースを作成します。 このパブリック IP アドレスは、次の手順で使用します。
+アプリケーション ゲートウェイに使用するパブリック IP リソースを作成します。 このパブリック IP アドレスは、以降の手順のいずれかで使用します。
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
@@ -139,157 +128,134 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定します。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
-### <a name="step-1"></a>手順 1
+   1. アプリケーション ゲートウェイの IP 構成を作成します。 この設定では、アプリケーション ゲートウェイで使用するサブネットを構成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得され、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
-アプリケーション ゲートウェイの IP 構成を作成します。この設定によって、アプリケーション ゲートウェイで使用されるサブネットが構成されます。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
+   ```powershell
+   $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
+   ```
 
-```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
-```
 
-### <a name="step-2"></a>手順 2.
+   2. フロント エンドの IP 構成を作成します。 この設定によって、アプリケーション ゲートウェイのフロントエンドにプライベート IP アドレスまたはパブリック IP アドレスがマッピングされます。 次の手順で、フロントエンドの IP 構成と前の手順のパブリック IP アドレスを関連付けます。
 
-フロントエンドの IP 構成を作成します。この設定によって、アプリケーション ゲートウェイのフロントエンドにプライベート IP アドレスまたはパブリック IP アドレスがマッピングされます。 次の手順で、フロントエンドの IP 構成と前の手順のパブリック IP アドレスを関連付けます。
+   ```powershell
+   $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
+   ```
 
-```powershell
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
-```
+   3. バックエンド Web サーバーの IP アドレスを使用してバックエンド IP アドレス プールを構成します。 これらの IP アドレスは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。 サンプルの IP アドレスを独自のアプリケーションの IP アドレス エンドポイントに置き換えます。
 
-### <a name="step-3"></a>手順 3.
+   ```powershell
+   $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
+   ```
 
-バックエンド Web サーバーの IP アドレスを使用してバックエンド IP アドレス プールを構成します。 これらの IP アドレスは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。 独自のアプリケーションの IP アドレス エンドポイントを追加するには、次の IP アドレスを置き換えます。
+   > [!NOTE]
+   > バックエンド サーバーの IP アドレスの代わりに、完全修飾ドメイン名 (FQDN) の値も使用できます。 有効にするには、**-BackendFqdns** スイッチを使用します。 
 
-```powershell
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
-```
 
-> [!NOTE]
-> バックエンド サーバーの IP アドレスの代わりに、-BackendFqdns スイッチを使用した完全修飾ドメイン名 (FQDN) も有効な値です。 
+   4. パブリック IP エンドポイントのフロントエンド IP ポートを構成します。 このポートは、エンドユーザーが接続するポートです。
 
-### <a name="step-4"></a>手順 4.
+   ```powershell
+   $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
+   ```
 
-パブリック IP エンドポイントのフロントエンド IP ポートを構成します。 このポートは、エンドユーザーが接続するポートです。
+   5. アプリケーション ゲートウェイの証明書を構成します。 この証明書は、アプリケーション ゲートウェイでのトラフィックの暗号化解除と再暗号化に使用されます。
 
-```powershell
-$fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
-```
+   ```powershell
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+   ```
 
-### <a name="step-5"></a>手順 5.
+   > [!NOTE]
+   > このサンプルでは、SSL 接続に使用する証明書を構成します。 証明書は .pfx 形式であり、4 ～ 12 文字のパスワードを使用する必要があります。
 
-アプリケーション ゲートウェイの証明書を構成します。 この証明書は、アプリケーション ゲートウェイでのトラフィックの暗号化解除と再暗号化に使用されます。
+   6. アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
 
-```powershell
-$cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
-```
+   ```powershell
+   $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
+   ```
 
-> [!NOTE]
-> このサンプルでは、SSL 接続に使用する証明書を構成します。 証明書は .pfx 形式であり、4 ～ 12 文字のパスワードを使用する必要があります。
+   7. SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
 
-### <a name="step-6"></a>手順 6.
+   > [!NOTE]
+   > 既定のプローブは、バックエンドの IP アドレスでの*既定の* SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
+   
+   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定の* SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
 
-アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
+   ```powershell
+   $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   ```
 
-```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
-```
+   > [!NOTE]
+   > この手順で指定する証明書は、バックエンドに存在する .pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を Claim, Evidence, and Reasoning (CER) 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドがホワイトリスト登録されます。
 
-### <a name="step-7"></a>手順 7.
+   8. アプリケーション ゲートウェイのバックエンドの HTTP 設定を構成します。 前の手順でアップロードした証明書を HTTP 設定に割り当てます。
 
-SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
+   ```powershell
+   $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
+   ```
+   9. ロード バランサーの動作を構成するロード バランサーのルーティング規則を作成します。 この例では、ラウンド ロビンの基本的な規則を作成します。
 
-> [!NOTE]
-> 既定のプローブは、バックエンドの IP アドレスでの**既定の** SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 バックエンドでホスト ヘッダーと SNI を使用している**場合**、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンドで https://127.0.0.1/ にアクセスして、**既定の** SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンドでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンドで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
+   ```powershell
+   $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+   ```
 
-```powershell
-$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
-```
+   10. アプリケーション ゲートウェイのインスタンスのサイズを構成します。 利用可能なサイズは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** です。  容量に使用可能な値は **1** ～ **10** です。
 
-> [!NOTE]
-> この手順で指定する証明書は、バックエンドに存在する pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を .CER 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドがホワイトリスト登録されます。
+   ```powershell
+   $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+   ```
 
-### <a name="step-8"></a>手順 8.
+   > [!NOTE]
+   > テスト目的では、インスタンス数として 1 を選択できます。 重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。 小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
 
-アプリケーション ゲートウェイのバックエンドの http 設定を構成します。 前の手順でアップロードした証明書を http 設定に割り当てます。
+   11. アプリケーション ゲートウェイで使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
 
-```powershell
-$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
-```
+   次の値が、定義できるプロトコル バージョンの一覧です。
 
-### <a name="step-9"></a>手順 9.
+    - **TLSV1_0**
+    - **TLSV1_1**
+    - **TLSV1_2**
+    
+   次の例では、最小のプロトコルのバージョンを **TLSv1_2** に設定し、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみを有効にします。
 
-ロード バランサーの動作を構成するロード バランサーのルーティング規則を作成します。 この例では、ラウンド ロビンの基本的な規則を作成します。
-
-```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-```
-
-### <a name="step-10"></a>手順 10.
-
-アプリケーション ゲートウェイのインスタンスのサイズを構成します。  利用可能なサイズは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** です。  容量に使用可能な値は 1 ～ 10 です。
-
-```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-```
-
-> [!NOTE]
-> テスト目的では、インスタンス数として 1 を選択できます。 重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。 小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
-
-### <a name="step-11"></a>手順 11.
-
-Application Gateway で使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
-
-次の値が、定義できるプロトコル バージョンの一覧です。
-
-* **TLSv1_0**
-* **TLSv1_1**
-* **TLSv1_2**
-
-最小のプロトコルのバージョンを **TLSv1_2** に設定し、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみを有効にします。
-
-```powershell
-$SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-```
+   ```powershell
+   $SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+   ```
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-これまでのすべての手順に従って、Application Gateway を作成します。 ゲートウェイの作成には、長い時間がかかります。
+これまでのすべての手順に従って、アプリケーション ゲートウェイを作成します。 ゲートウェイの作成は、実行時間が長くかかるプロセスです。
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存の Application Gateway で SSL プロトコル バージョンを制限する
+## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで SSL プロトコル バージョンを制限する
 
 これまでの手順で、エンド ツー エンド SSL を使用したアプリケーションの作成と、SSL プロトコルの特定バージョンの無効化について説明しました。 次の例では、既存のアプリケーション ゲートウェイの特定の SSL ポリシーを無効にします。
 
-### <a name="step-1"></a>手順 1
+   1. 更新するアプリケーション ゲートウェイを取得します。
 
-更新するアプリケーション ゲートウェイを取得します。
+   ```powershell
+   $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
-```
+   2. SSL ポリシーを定義します。 次の例では、 **TLSv1.0** および **TLSv1.1** は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
 
-### <a name="step-2"></a>手順 2.
+   ```powershell
+   Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
-SSL ポリシーを定義します。 次の例では、TLSv1.0 および TLSv1.1 は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
+   ```
 
-```powershell
-Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
+   3. 最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかるため、注意してください。 終了すると、エンド ツー エンド SSL がアプリケーション ゲートウェイに構成されます。
 
-```
+   ```powershell
+   $gw | Set-AzureRmApplicationGateway
+   ```
 
-### <a name="step-3"></a>手順 3.
+## <a name="get-an-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名を取得する
 
-最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかるため、注意してください。 終了すると、エンド ツー エンド SSL がアプリケーション ゲートウェイに構成されます。
+ゲートウェイを作成した後の次の手順は通信用にフロントエンドを構成することです。 パブリック IP を使用する場合、Application Gateway には、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実にヒットできるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 詳細については、[Azure でのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name-portal.md)に関する記事を参照してください。 
 
-```powershell
-$gw | Set-AzureRmApplicationGateway
-```
-
-## <a name="get-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名の取得
-
-ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実に見つけられるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照できます。 次に、[Azure でのカスタム ドメイン名を構成します](../cloud-services/cloud-services-custom-domain-name-portal.md)。 それには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成する必要があります。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
+別名を構成するには、アプリケーション ゲートウェイに接続されている **PublicIPAddress** 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成します。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -319,7 +285,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>次のステップ
 
-Application Gateway を使用して Web アプリケーション ファイアウォールで Web アプリケーションのセキュリティを強化する詳細については、 [Web アプリケーション ファイアウォールの概要](application-gateway-webapplicationfirewall-overview.md)
+Application Gateway を使用して Web アプリケーション ファイアウォールで Web アプリケーションのセキュリティを強化する方法の詳細については、[Web アプリケーション ファイアウォールの概要](application-gateway-webapplicationfirewall-overview.md)に関するページをご覧ください。
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png
-

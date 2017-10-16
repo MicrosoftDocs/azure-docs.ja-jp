@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
 ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-procedures"></a>アップグレードの手順
 既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
@@ -91,11 +91,11 @@ XCode 8 はアプリケーションのプッシュ機能をリセットする場
 
 ### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>UNUserNotificationCenter デリゲートの競合を解決する
 
-*アプリケーションでも、いずれかのサードパーティ ライブラリでも `UNUserNotificationCenterDelegate` を実装しない場合は、この部分をスキップすることができます。*
+*アプリケーションも、いずれかのサードパーティ ライブラリも `UNUserNotificationCenterDelegate` を実装していない場合は、この部分をスキップできます。*
 
-`UNUserNotificationCenter` デリゲートは、iOS 10 以上で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在可能な `UNUserNotificationCenter` デリゲートは&1; つだけです。 `UNUserNotificationCenter` に追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはそれ以外のサード パーティのデリゲートが検出された場合、独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
+`UNUserNotificationCenter` デリゲートは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。 SDK には、`UNUserNotificationCenterDelegate` プロトコルの独自の実装が存在しますが、アプリケーションごとに存在できる `UNUserNotificationCenter` デリゲートは 1 つだけです。 `UNUserNotificationCenter` オブジェクトに追加されたその他のデリゲートは、Engagement のものと競合します。 SDK によって自分またはそれ以外のサード パーティのデリゲートが検出された場合、独自の実装は使用されず、競合を解決する機会が提供されます。 競合を解決するには、Engagement ロジックを独自のデリゲートに追加する必要があります。
 
-これを実現する方法は&2; つあります。
+これを実現する方法は 2 つあります。
 
 提案 1: 単に、デリゲート呼び出しを SDK に転送します。
 
@@ -214,10 +214,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 * クラス `CapptainTableViewController` は `EngagementTableViewController` に変更されました。
 * クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 * クラス `CapptainViewController` は `EngagementViewController` に変更されました。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

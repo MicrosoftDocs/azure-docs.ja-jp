@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 6d6afd2b9b956138ed400fbd6cabd3b480fde0f0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -39,7 +38,7 @@ Azure Virtual Network サービスでは、仮想ネットワーク (VNet) を�
 
 ## <a name = "isolation"></a>ネットワークの分離とセグメント化
 
-各 Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)と Azure [リージョン](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
+各 Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)と Azure [リージョン](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)内に複数の VNet を実装できます。 VNet 同士は分離されています。 各 VNet では、次のことを実行できます。
 - パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、VNet に接続されているリソースに、割り当てたアドレス空間のプライベート IP アドレスを割り当てます。
 - VNet を 1 つ以上のサブネットに分割し、各サブネットに VNet のアドレス空間の一部を割り当てる。
 - Azure で提供される名前解決を使用するか、VNet に接続されたリソースで使用するために独自の DNS サーバーを指定する。 VNet での名前解決の詳細については、[VM と Cloud Services の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
@@ -92,4 +91,3 @@ Virtual Network についてよく寄せられる質問を確認するには、[
 - 「[最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順を実行して、VNet に対するポイント対サイト接続を作成します。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について参照してください。
-

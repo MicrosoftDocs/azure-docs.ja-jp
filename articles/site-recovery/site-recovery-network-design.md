@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/20/2017
 ms.author: pratshar
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 90ffd3dd1cf5068359afa1b60892cdee43ec0658
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>ディザスター リカバリー に対応したネットワークの設計
 
@@ -78,7 +77,7 @@ IP アドレスを維持した状態で仮想マシンを Azure にレプリケ�
 Woodgrove がビジネス要件を満たすためには、次のワークフローを実行する必要があります。
 
 * フェールオーバーされた仮想マシンの作成先となるネットワーク (ここでは "Recovery Network" とします) を別途作成します。
-* フェールオーバー後も VM の IP を確実に維持するために、VM のプロパティの [構成] タブに移動して、オンプレミス側の VM と同じ IP を指定し、[保存] をクリックします。 VM がフェールオーバーされると、Azure Site Recovery によって、指定した IP が仮想マシンに割り当てられます。
+* フェールオーバー後も VM の IP を確実に維持するために、VM のプロパティの 構成 タブに移動して、オンプレミス側の VM と同じ IP を指定し、保存をクリックします。 VM がフェールオーバーされると、Azure Site Recovery によって、指定した IP が仮想マシンに割り当てられます。
 
 ![Network properties](./media/site-recovery-network-design/network-design8.png)
 
@@ -167,4 +166,3 @@ VM の保護が有効な状態で、次のサンプル スクリプトを使用�
 
 ## <a name="next-steps"></a>次のステップ
 [こちらの記事](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) を参照してください。
-

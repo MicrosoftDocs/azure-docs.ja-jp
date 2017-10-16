@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/10/2017
 ms.author: a-crradu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: d687f94bebfd0b6c1ec0690da798be5409640954
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
-
+ms.openlocfilehash: cccd0af0c991efe330567c2459717798d116e68f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="intro-on-role-based-access-control"></a>ロールベースのアクセス制御の概要
 
@@ -35,6 +33,7 @@ Azure 環境で RBAC を使用するには、以下のことが必要です。
 * Azure サブスクリプションの所有者ロールがある
 * [Azure Portal](https://portal.azure.com) にアクセスできる
 * ユーザーのサブスクリプションに次のリソース プロバイダーが登録されていることを確認する: **Microsoft.Authorization**。 リソース プロバイダーの登録方法の詳細については、[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](/azure-resource-manager/resource-manager-supported-services.md)に関するページを参照してください。
+<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found--->
 
 > [!NOTE]
 > O365 ポータルからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例: Azure Active Directory へのアクセス) に RBAC の使用資格はありません。
@@ -78,6 +77,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 ![Azure Portal の [アクセス制御 (IAM)] 機能で新しいユーザーを追加する](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
 次の手順では、割り当てるロールと RBAC ロールの割り当て先のユーザーを選択します。 管理者ユーザーの場合、**[ロール]** ドロップダウン メニューには Azure で利用できる組み込み RBAC ロールのみが表示されます。 各ロールとその割り当て可能なスコープの詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](/active-directory/role-based-access-built-in-roles.md)」を参照してください。
+<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found--->
 
 次に、管理者ユーザーは外部ユーザーのメール アドレスを追加する必要があります。 想定される動作として、既存のテナントに外部ユーザーが表示されません。 外部ユーザーを招待すると、そのユーザーは、**[サブスクリプション] の [アクセス制御 (IAM)]** 内に、現在サブスクリプション スコープで RBAC ロールが割り当てられているすべてのユーザーと共に表示されます。
 
@@ -124,6 +124,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 * クラシック ポータルでのソース ポイントの違い
 
 ただし、**所有者**または**共同作成者**のアクセス権を**サブスクリプション** スコープで外部ユーザーに付与しても、**全体管理者**が許可しない限り、管理者ユーザーのディレクトリに外部ユーザーがアクセスすることはできません。 ユーザーのプロパティでは、**[メンバー]** と **[ゲスト]** という 2 つの共通パラメーターがある **[ユーザー タイプ]** を確認できます。 メンバーはディレクトリに登録されているユーザーであるのに対し、ゲストは外部ソースからディレクトリに招待されているユーザーです。 詳細については、「[Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](/active-directory/active-directory-b2b-admin-add-users)」を参照してください。
+<!---Loc Comment: Link [How do Azure Active Directory admins add B2B collaboration users] is broken with an error message "404 - Content Not Found--->
 
 > [!NOTE]
 > ポータルで資格情報を入力した後に、外部ユーザーが正しいディレクトリを選択してサインインしていることを確認してください。 同じユーザーは、複数のディレクトリにアクセスすることができるほか、Azure Portal の右上にあるユーザー名をクリックすることで、ドロップダウン リストから適切なディレクトリを 1 つ選択することができます。
@@ -348,4 +349,3 @@ azure role create --inputfile <path>
 
 
 ![Azure Cloud Shell](./media/role-based-access-control-create-custom-roles-for-internal-external-users/27.png)
-

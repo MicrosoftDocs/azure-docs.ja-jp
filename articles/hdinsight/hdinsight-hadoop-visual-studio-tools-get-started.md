@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: d24c92b90d7d8e43554fcd77278bf7d23a963c02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: f7eff70ece5e8dc7e0c5983871d40bd1f6eafff2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行
 
@@ -242,5 +241,4 @@ Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 * [HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [HDInsight での Hadoop を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)
-
 

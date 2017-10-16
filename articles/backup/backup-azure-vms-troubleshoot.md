@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
+ms.openlocfilehash: 096c97f4cb41ff8df2e646f59dbc0bf845721ac7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: dbd70bdbb17d99c5025018e76ea756b1b1528a3e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -30,7 +29,16 @@ ms.lasthandoff: 08/23/2017
 
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
-## <a name="backup"></a>バックアップ
+## <a name="backup"></a>Backup
+
+### <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
+
+現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
+- 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>
+- 次に、1 TB を超えるディスクから、新規作成した 1 TB より小さいサイズのディスクにデータをコピーします。 <br>
+- すべてのデータがコピーされたことを確認し、1 TB を超えるディスクを取り外します。
+- バックアップを開始します。
+
 | エラーの詳細 | 対処法 |
 | --- | --- |
 | VM が存在しないため、操作を実行できませんでした。 - バックアップ データを削除しないで、仮想マシンの保護を停止してください。 詳細については、 http://go.microsoft.com/fwlink/?LinkId=808124 を参照してください。 |これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が検索され続ける場合に発生します。 このエラーを解決するには、次の手順に従います。 <ol><li> 同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 [詳細](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
@@ -73,7 +81,7 @@ ms.lasthandoff: 08/23/2017
 ## <a name="restore"></a>復元
 | エラーの詳細 | 対処法 |
 | --- | --- |
-| クラウドの内部エラーの復元に失敗しました |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次の内容をチェックすることができます。 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>構成済みのアドレスがある場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されていて、クラウド サービスの既存の VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <br>- ロード バランサー構成 (内部および外部の) での仮想マシン<br>- 複数の予約済み IP を持つ仮想マシン<br>- 複数の NIC を持つ仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-arm-restore-vms.md#restoring-vms-with-special-network-configurations)を参照してください。</ol> |
+| クラウドの内部エラーの復元に失敗しました |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次の内容をチェックすることができます。 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>構成済みのアドレスがある場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されていて、クラウド サービスの既存の VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <br>- ロード バランサー構成 (内部および外部の) での仮想マシン<br>- 複数の予約済み IP を持つ仮想マシン<br>- 複数の NIC を持つ仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)を参照してください。</ol> |
 | 選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 |この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。 これは一意である必要があります。 このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。 <br><br> このエラーは Azure Portal のユーザーのみに表示されます。 PowerShell による復元操作は、ディスクを復元するだけで、VM を作成しないため、成功します。 ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
 | 指定された仮想ネットワークの構成が正しくありません - 別の仮想ネットワークの構成を指定してからやり直してください。 |なし |
 | 指定したクラウド サービスでは、復元対象の仮想マシンの構成と一致しない予約済み IP が使用されています。予約済み IP を使用していない別のクラウド サービスを指定するか、復元元に別の回復ポイントを選択してください。 |なし |
@@ -81,9 +89,9 @@ ms.lasthandoff: 08/23/2017
 | バックアップ資格情報コンテナーと対象のストレージ アカウントが 2 つの異なるリージョンに存在します - 復元操作で指定したストレージ アカウントが、バックアップ資格情報コンテナーと同じ Azure リージョンに存在するようにしてください。 |なし |
 | 復元操作に指定されたストレージ アカウントがサポートされていません - サポートされているのは、ローカル冗長レプリケーションまたは geo 冗長レプリケーションの設定が指定された Basic または Standard ストレージ アカウントのみです。 サポートされているストレージ アカウントを選択してください。 |なし |
 | 復元操作に指定されたストレージ アカウントの種類がオンラインではありません - 復元操作で指定したストレージ アカウントがオンラインであることを確認してください。 |これは、Azure Storage の一時的なエラーや障害が原因で発生する可能性があります。 別のストレージ アカウントを選択してください。 |
-| リソース グループのクォータに達しました - Azure Portal の一部のリソース グループを削除するか、Azure サポートに問い合わせて上限を引き上げてください。 |なし |
+| リソース グループのクォータに達しました - Azure ポータルの一部のリソース グループを削除するか、Azure サポートに問い合わせて上限を引き上げてください。 |なし |
 | 選択したサブネットが存在しません - 存在するサブネットを選択してください。 |なし |
-| Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |これを解決するには、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成します。 |
+| Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |これを解決するには、「[VM の復元構成の選択](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)」の**バックアップされたディスクの復元**に関するセクションで説明されている手順に従って、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順を使用して、復元されたディスクから完全な VM を作成します。 |
 
 ## <a name="backup-or-restore-taking-time"></a>バックアップまたは復元に要する時間
 バックアップが 12 時間以上、または復元が 6 時間以上かかる場合は、次のことを行います。
@@ -164,4 +172,3 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 > 詳細については、 [静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関する記事をご覧ください。
 >
 >
-

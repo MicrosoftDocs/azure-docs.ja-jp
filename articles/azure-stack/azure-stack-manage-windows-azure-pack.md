@@ -1,6 +1,6 @@
 ---
-title: Manage Windows Azure Pack virtual machines from Azure Stack | Microsoft Docs
-description: Learn how to manage Windows Azure Pack (WAP) VMs from the user portal in Azure Stack.
+title: "Azure Stack からの Windows Azure Pack 仮想マシンの管理 | Microsoft Docs"
+description: "Azure Stack 内のユーザー ポータルから Windows Azure Pack (WAP) VM を管理する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: walterov
@@ -12,95 +12,97 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: walterov
+ms.openlocfilehash: b07a18055d149e20cd605a892063eccecf3df8a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e00cf1c3f3d74b98e84b3d3f862e3a7b1b5b65f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Manage Windows Azure Pack virtual machines from Azure Stack
-In the Azure Stack Development Kit, you can enable access from the Azure Stack user portal to tenant virtual machines running on Windows Azure Pack. Tenants can use the Azure Stack portal to manage their existing IaaS virtual machines and virtual networks. These resources are made available on Windows Azure Pack through the underlying Service Provider Foundation (SPF) and Virtual Machine Manager (VMM) components. Specifically, tenants can:
+# <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Azure Stack からの Windows Azure Pack 仮想マシンの管理
 
-* Browse resources
-* Examine configuration values
-* Stop or start a virtual machine
-* Connect to a virtual machine through Remote Desktop Protocol (RDP)
-* Create and manage checkpoints
-* Delete virtual machines and virtual networks
+*適用対象: Azure Stack 開発キット*
 
-This functionality is provided by the Windows Azure Pack Connector for Azure Stack (Preview). This article shows how to configure the connector for a single-node Azure Stack environment.
+Azure Stack Development Kit では、Azure Stack ユーザー ポータルから Windows Azure Pack 上で実行されているテナント仮想マシンへのアクセスを有効にできます。 ユーザーは Azure Stack ポータルを使用して、その既存の IaaS 仮想マシンおよび仮想ネットワークを管理できます。 これらのリソースは、基になる Service Provider Foundation (SPF) および Virtual Machine Manager (VMM) コンポーネント経由で Windows Azure Pack で使用可能になります。 具体的には、ユーザーは次のことができます。
 
-For this preview release of the connector, be aware of the following:
-* Use the Windows Azure Pack Connector only in test environments (for both Azure Stack and Windows Azure Pack), and not in production deployments.
-* You must have Windows Azure Pack Update Rollup (UR) 9.1 or later and System Center SPF and VMM UR 9 or later.
-* The VMM and SPF components can be either System Center 2012 R2 or System Center 2016.
-* You must perform configuration steps on both Azure Stack and on Windows Azure Pack.
-* The instructions apply to non-Cloud Platform System (CPS) environments.
-* To review the known issues, see [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md).
+* リソースを参照する
+* 構成値を検証する
+* 仮想マシンを停止または起動する
+* リモート デスクトップ プロトコル (RDP) 経由で仮想マシンに接続する
+* チェックポイントを作成および管理する
+* 仮想マシンおよび仮想ネットワークを削除する
 
+この機能は、Azure Stack 用の Windows Azure Pack コネクタ (プレビュー) によって提供されます。 この記事では、単一ノード Azure Stack 環境用のコネクタを構成する方法を示します。
 
-## <a name="architecture"></a>Architecture
-The following diagram shows the main components of the Windows Azure Pack Connector.
-
-![The Windows Azure Pack Connector components](media/azure-stack-manage-wap/image1.png)
-
-Notice the following details:
-* The Azure Stack user portal accesses the resource information from both clouds (Azure Stack and Windows Azure Pack).
-* The user must have an account that is valid in both environments.
-* The Azure Stack user portal must have network access to the components running on Windows Azure Pack.
-* In the **WAP** section of the diagram, you can see the new Windows Azure Pack Connector modules (WAP Extension and Connector) and the existing Windows Azure Pack Tenant API with SPF and VMM components.
+コネクタのこのプレビュー リリースについては、次の点に注意してください。
+* Windows Azure Pack コネクタは運用環境のデプロイではなく、テスト環境 (Azure Stack と Windows Azure Pack の両方共) でのみ使用してください。
+* Windows Azure Pack 更新プログラム ロールアップ (UR) 9.1 以降と System Center SPF および VMM UR 9 以降が必要です。
+* VMM および SPF コンポーネントは、System Center 2012 R2 または System Center 2016 のどちらでもかまいません。
+* Azure Stack と Windows Azure Pack の両方で構成手順を実行する必要があります。
+* これらの指示は、Cloud Platform System (CPS) 以外の環境に適用されます。
+* 既知の問題を確認するには、「[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)」を参照してください。
 
 
-## <a name="identity-management"></a>Identity management
-The Windows Azure Pack Tenant API must trust the Azure Stack security token service (STS).
+## <a name="architecture"></a>アーキテクチャ
+次の図は、Windows Azure Pack コネクタの主要なコンポーネントを示しています。
 
-When a user performs an action through the Azure Stack portal that targets Windows Azure Pack resources, the portal uses the Windows Azure Pack Tenant API. Therefore, the provided user authentication token must come from a trusted STS. See the following diagram:
+![Windows Azure Pack コネクタのコンポーネント](media/azure-stack-manage-wap/image1.png)
 
-![Diagram of Windows Azure Pack Connector authentication](media/azure-stack-manage-wap/image2.png)
+次の詳細事項に注意してください。
+* Azure Stack ユーザー ポータルは、両方のクラウド (Azure Stack と Windows Azure Pack) からリソース情報にアクセスします。
+* ユーザーには、この両方の環境で有効なアカウントが必要です。
+* Azure Stack ユーザー ポータルには、Windows Azure Pack 上で実行されているコンポーネントへのネットワーク アクセスが必要です。
+* 図の **WAP** セクションでは、新しい Windows Azure Pack コネクタ モジュール (WAP 拡張機能およびコネクタ) と、SPF および VMM コンポーネントとの既存の Windows Azure Pack テナント API を確認できます。
 
-In the development kit environment, Windows Azure Pack and Azure Stack have independent identity providers. Users who access both environments from the Azure Stack portal must have the same user principal name (UPN) name in both identity providers. For example, the account *azurestackadmin@azurestack.local* should also exist in the STS for Windows Azure Pack. Where AD FS is not set up to support outbound trust relationships, you will establish trust from the Windows Azure Pack components (Tenant API) to the Azure Stack instance of AD FS.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="identity-management"></a>ID 管理
+Windows Azure Pack テナント API は、Azure Stack セキュリティ トークン サービス (STS) を信頼している必要があります。
 
-### <a name="download-the-windows-azure-pack-connector"></a>Download the Windows Azure Pack Connector
-On the [Microsoft Download Center](https://aka.ms/wapconnectorazurestackdlc), download the .exe file and extract it to your local computer. Later, you copy the contents to a computer that can access your Windows Azure Pack environment.
+ユーザーが Windows Azure Pack リソースをターゲットとする Azure Stack ポータル経由でアクションを実行すると、そのポータルは Windows Azure Pack テナント API を使用します。 そのため、提供されるユーザー認証トークンは信頼できる STS からのものである必要があります。 次の図を参照してください。
 
-### <a name="deployment-option-requirement"></a>Deployment option requirement
-To integrate with Windows Azure Pack, you can deploy Azure Stack by using the AD FS option or the Azure Active Directory option.
+![Windows Azure Pack コネクタの認証の図](media/azure-stack-manage-wap/image2.png)
 
-### <a name="connectivity-requirements"></a>Connectivity requirements
-1. From the computer on which you access the Azure Stack user portal, make sure that you can access the Windows Azure Pack tenant portal through the web browser.
-2. The AzS-WASP01 virtual machine on Azure Stack must be able to connect to the Windows Azure Pack tenant portal computer. Use Ping.exe to verify network connectivity. 
-3.  You must have valid certificates for the new Connector services. These SSL certificates must be issued by a trusted certification authority (CA). You can't use self-signed certificates. The SSL certificates must be trusted by Azure Stack (specifically the AzS-WASP01 VM) and any other computer that the tenant may use to access the Azure Stack user portal.
+開発キット環境では、Windows Azure Pack と Azure Stack には独立した ID プロバイダーがあります。 Azure Stack ポータルから両方の環境にアクセスするユーザーは、両方の ID プロバイダーに同じユーザー プリンシパル名 (UPN) を持っている必要があります。 たとえば、アカウント *azurestackadmin@azurestack.local* は Windows Azure Pack の STS にも存在する必要があります。 AD FS が送信の信頼関係をサポートするように設定されていない場合は、Windows Azure Pack コンポーネント (テナント API) から AD FS の Azure Stack インスタンスへの信頼を確立します。
+
+## <a name="prerequisites"></a>前提条件
+
+### <a name="download-the-windows-azure-pack-connector"></a>Windows Azure Pack コネクタのダウンロード
+[Microsoft ダウンロード センター](https://aka.ms/wapconnectorazurestackdlc)で、.exe ファイルをダウンロードし、それをローカル コンピューターに抽出します。 後で、その内容を Windows Azure Pack 環境にアクセスできるコンピューターにコピーします。
+
+### <a name="deployment-option-requirement"></a>デプロイ オプションの要件
+Windows Azure Pack と統合するには、AD FS オプションまたは Azure Active Directory オプションを使用して Azure Stack をデプロイできます。
+
+### <a name="connectivity-requirements"></a>接続の要件
+1. Azure Stack ユーザー ポータルにアクセスするコンピューターから、Web ブラウザー経由で Windows Azure Pack テナント ポータルにアクセスできることを確認してください。
+2. Azure Stack 上の AzS-WASP01 仮想マシンは、Windows Azure Pack テナント ポータル コンピューターに接続できる必要があります。 ネットワーク接続を確認するには、Ping.exe を使用します。 
+3.  新しいコネクタ サービスの有効な証明書が必要です。 これらの SSL 証明書は、信頼できる証明機関 (CA) によって発行されている必要があります。 自己署名証明書を使用することはできません。 SSL 証明書は、Azure Stack (具体的には AzS-WASP01 VM) や、テナントが Azure Stack ユーザー ポータルにアクセスするために使用する可能性のあるその他のすべてのコンピューターによって信頼されている必要があります。
  
     >[!NOTE]
-    Because AzS-WASP01 runs Windows Server with the Server Core installation option, you can use a command-line tool such as Certutil.ext to import the certificate. For example, you could copy the .cer file to c:\temp on AzS-WASP01, and then run the command **certutil -addstore "CA" "c:\temp\certname.cer"**.
+    AzS-WASP01 は Server Core インストール オプションで Windows Server を実行するため、Certutil.ext などのコマンドライン ツールを使用して証明書をインポートできます。 たとえば、.cer ファイルを c:\temp on AzS-WASP01 にコピーしてから、コマンド **certutil -addstore "CA" "c:\temp\certname.cer"** を実行できます。
 
-4.  To establish RDP connectivity to Windows Azure Pack tenant virtual machines through the Azure Stack portal, the Windows Azure Pack environment must allow Remote Desktop traffic to the tenant VMs.
-5.  For connectivity between Azure Stack tenant virtual machines and Windows Azure Pack tenant virtual machines, their external IP addresses must be routable across the two environments. This connectivity could also include associating a DNS server to resolve virtual machine names between the environments.
+4.  Azure Stack ポータル経由で Windows Azure Pack テナント仮想マシンへの RDP 接続を確立するには、Windows Azure Pack 環境がテナント VM へのリモート デスクトップ トラフィックを許可する必要があります。
+5.  Azure Stack テナント仮想マシンと Windows Azure Pack テナント仮想マシンの間の接続のためには、それらの外部 IP アドレスが 2 つの環境にまたがってルーティング可能である必要があります。 この接続には、これらの環境間で仮想マシン名を解決するための DNS サーバーの関連付けも含まれる可能性があります。
 
-### <a name="iis-requirements"></a>IIS requirements
-The computer that hosts the Windows Azure Pack tenant portal (which may be a physical host, a virtual machine, or multiple virtual machines) must have the URL Rewrite IIS extension installed. If it is not already installed, you can download it from [here](https://www.iis.net/downloads/microsoft/url-rewrite). If multiple virtual machines host the tenant portal, install the extension on each virtual machine.
+### <a name="iis-requirements"></a>IIS の要件
+Windows Azure Pack テナント ポータルをホストするコンピューター (これは物理ホスト、仮想マシン、または複数の仮想マシンである可能性があります) には、URL 書き換え IIS 拡張機能がインストールされている必要があります。 まだインストールされていない場合は、それを[ここ](https://www.iis.net/downloads/microsoft/url-rewrite)からダウンロードできます。 複数の仮想マシンがテナント ポータルをホストする場合は、この拡張機能を各仮想マシンにインストールします。
 
-## <a name="configure-azure-stack"></a>Configure Azure Stack
-Before you configure the Windows Azure Pack Connector, you must enable multi-cloud mode in the Azure Stack user portal. This mode enables users to select from which cloud to access resources.
+## <a name="configure-azure-stack"></a>Azure Stack の構成
+Windows Azure Pack コネクタを構成する前に、Azure Stack ユーザー ポータルでマルチクラウド モードを有効にする必要があります。 このモードでは、ユーザーはどのクラウドからリソースにアクセスするかを選択できます。
 
-To enable multi-cloud mode, you must run the Add-AzurePackConnector.ps1 script after Azure Stack deployment. The following table describes the script parameters.
+マルチクラウド モードを有効にするには、Azure Stack デプロイの後に Add-AzurePackConnector.ps1 スクリプトを実行する必要があります。 次の表で、スクリプト パラメーターについて説明します。
 
 
-|  Parameter | Description | Example |   
+|  パラメーター | Description | 例 |   
 | -------- | ------------- | ------- |  
-| AzurePackClouds | URIs of the Windows Azure Pack Connectors. These URIs should correspond to the Windows Azure Pack tenant portals. | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (By default, the port value is 40005.) |  
-| AzureStackCloudName | Label to represent the local Azure Stack cloud.| "AzureStack" |
-| DisableMultiCloud | A switch to disable multi-cloud mode.| N/A |
+| AzurePackClouds | Windows Azure Pack コネクタの URI。 これらの URI は、Windows Azure Pack テナント ポータルに対応している必要があります。 | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (既定では、ポート値は 40005 です。) |  
+| AzureStackCloudName | ローカルの Azure Stack クラウドを表すラベル。| "AzureStack" |
+| DisableMultiCloud | マルチクラウド モードを無効にするためのスイッチ。| 該当なし |
 | | |
 
-You can run the Add-AzurePackConnector.ps1 script immediately after deployment, or later. To run the script immediately after deployment, use the same Windows PowerShell session where Azure Stack deployment completed. Otherwise, you can open a new Windows PowerShell session as an administrator (signed in as the azurestackadmin account).
+Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、または後で実行できます。 このスクリプトをデプロイの直後に実行するには、Azure Stack デプロイが完了した同じ Windows PowerShell セッションを使用します。 それ以外の場合は、(azurestackadmin アカウントとしてサインインされた) 管理者として新しい Windows PowerShell セッションを開くことができます。
 
-1. Run the Add-AzurePackConnector.ps1 script by using the following commands (with values specific to your environment). Notice that the Add-AzurePackConnector script enables you to add more than one Windows Azure Pack Connector endpoint.
+1. 次のコマンドを (環境に固有の値と共に) 使用して、Add-AzurePackConnector.ps1 スクリプトを実行します。 Add-AzurePackConnector スクリプトでは、複数の Windows Azure Pack コネクタ エンドポイントを追加できることに注意してください。
  
  ```powershell
     $cred = New-Object System.Management.Automation.PSCredential("cloudadmin@azurestack.local", `
@@ -118,48 +120,48 @@ You can run the Add-AzurePackConnector.ps1 script immediately after deployment, 
 
  ```
 > [!NOTE]
-> In the current build there is an issue where after the Add-AzurePackConnector script ends, it remains in a polling loop for an extended period of time (several minutes) until it ends. After you see the message **VERBOSE: Step 'Configure Azure Pack Connector' status: 'Success'**, you can stop the script or wait until it stops by itself. It won’t make a difference because the configuration has already succeeded.
+> 現在のビルドには、Add-AzurePackConnector スクリプトが終了した後、ポーリング ループが終了するまで長時間 (数分) にわたってスクリプトがそのループ内に残るという問題が存在します。 **VERBOSE: Step 'Configure Azure Pack Connector' status: 'Success' (詳細: 手順 'Azure Pack コネクタの構成' 状態: '成功')** というメッセージが表示された後、スクリプトを停止するか、またはそのまま停止するまで待つことができます。 構成は既に成功しているため、それらに違いはありません。
 
-2. Make note of the output files that are produced by this script, one for each Windows Azure Pack environment that you specified. The files are located at:  \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput. These files contain the information that is required to configure the target Windows Azure Pack environments. You pass this file as a parameter to a script later in these instructions. This file contains the following information:
+2. このスクリプトによって生成された出力ファイル (指定した Windows Azure Pack 環境ごとに 1 つ) をメモしておきます。 これらのファイルは、\\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput にあります。 これらのファイルには、ターゲットの Windows Azure Pack 環境を構成するために必要な情報が含まれています。 このファイルは、この手順内の後でパラメーターとしてスクリプトに渡します。 このファイルには、次の情報が含まれています。
 
-    * **AzurePackConnectorEndpoint**: Contains the endpoint to the Windows Azure Pack Connector service.
-    * **AuthenticationIdentityProviderPartner**: Contains the following value pair:
-        * Authentication Token signing certificate that the Windows Azure Pack Tenant API needs to trust to accept calls from the Azure Stack portal extension.
+    * **AzurePackConnectorEndpoint**: Windows Azure Pack コネクタ サービスへのエンドポイントが含まれています。
+    * **AuthenticationIdentityProviderPartner**: 次の値のペアが含まれています。
+        * Windows Azure Pack テナント API が Azure Stack ポータル拡張機能からの呼び出しを受け付けるために信頼している必要のある認証トークン署名証明書。
 
-        * The "Realm" associated with the signing certificate. For example: https://adfs.local.azurestack.global.external/adfs/c1d72562-534e-4aa5-92aa-d65df289a107/.
+        * 署名証明書に関連付けられた "領域"。 例: https://adfs.local.azurestack.global.external/adfs/c1d72562-534e-4aa5-92aa-d65df289a107/。
 
-3.  Browse to the folder that contains the output files (\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput), and copy the files to your local computer. The files will look similar to this: AzurePack-06-27-15-50.txt.
+3.  出力ファイルを含むフォルダー (\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) を参照し、それらのファイルをローカル コンピューターにコピーします。 これらは、AzurePack-06-27-15-50.txt のようなファイルです。
 
-4.  Test the configuration.
+4.  構成をテストします。
 
-    a. Open your browser and sign in to the Azure Stack user portal (https://portal.local.azurestack.external/).
+    a. ブラウザーを開き、Azure Stack ユーザー ポータル (https://portal.local.azurestack.external/) にサインインします。
     
-    b. After you sign in as a tenant and the portal loads, you'll see errors about not being able to fetch subscriptions or extensions from the Azure Pack cloud. Click **OK** to close these messages. (These error messages will go away after you configure Windows Azure Pack.)
+    b. テナントとしてサインインし、ポータルが読み込まれた後、Azure Pack クラウドからサブスクリプションまたは拡張機能をフェッチできないことに関するエラーが表示されます。 **[OK]** をクリックして、これらのメッセージを閉じます。 (これらのエラー メッセージは、Windows Azure Pack を構成した後に消えます。)
 
-    c. Notice the **Cloud** drop-down list in the upper-left corner of the portal.
+    c. ポータルの左上隅にある **[クラウド]** ドロップダウン リストに注意してください。
 
-    ![The cloud selector in the Azure Stack user interface](media/azure-stack-manage-wap/image3.png)
+    ![Azure Stack ユーザー インターフェイス内のクラウド セレクター](media/azure-stack-manage-wap/image3.png)
 
-## <a name="configure-windows-azure-pack"></a>Configure Windows Azure Pack
-For this Connector preview release only, Windows Azure Pack requires manual configuration.
+## <a name="configure-windows-azure-pack"></a>Windows Azure Pack の構成
+このコネクタ プレビュー リリースでのみ、Windows Azure Pack には手動の構成が必要です。
 
 >[!IMPORTANT]
-For this preview release, use the Windows Azure Pack Connector only in test environments, and not in production deployments.
+このプレビュー リリースの場合、Windows Azure Pack コネクタは運用環境のデプロイではなく、テスト環境でのみ使用してください。
 
-1.  Install Connector MSI files on the Windows Azure Pack tenant portal virtual machine, and install certificates. (If you have multiple tenant portal virtual machines, you must complete this step on each virtual machine.)
+1.  Windows Azure Pack テナント ポータル仮想マシンにコネクタ MSI ファイルをインストールし、証明書をインストールします。 (複数のテナント ポータル仮想マシンがある場合は、各仮想マシンでこの手順を完了する必要があります。)
 
-    a. In File Explorer, copy the **WAPConnector** folder (what you downloaded earlier) to a folder named **c:\temp** in the tenant portal virtual machine.
+    a. ファイル エクスプローラーで、**WAPConnector** フォルダー (前にダウンロードしたもの) をテナント ポータル仮想マシン内の **c:\temp** という名前のフォルダーにコピーします。
 
-    b. Open a Console or RDP connection to the tenant portal virtual machine.
+    b. テナント ポータル仮想マシンへのコンソールまたは RDP 接続を開きます。
 
-    c. Change directories to **c:\temp\wapconnector\setup\scripts**, and run the **Install-Connector.ps1** script to install three MSI files. No parameters are required.
+    c. ディレクトリを **c:\temp\wapconnector\setup\scripts** に変更し、**Install-Connector.ps1** スクリプトを実行して 3 つの MSI ファイルをインストールします。 パラメーターは必要ありません。
 
      ```powershell
     cd C:\temp\wapconnector\setup\scripts\
 
     .\Install-Connector.ps1
     ```
-     d. Change directories to **c:\inetpub** and verify that the three new sites are installed:
+     d. ディレクトリを **c:\inetpub** に変更し、次の 3 つの新しいサイトがインストールされていることを確認します。
 
        * MgmtSvc-Connector
 
@@ -167,7 +169,7 @@ For this preview release, use the Windows Azure Pack Connector only in test envi
 
        * MgmtSvc-ConnectorController
 
-    e. From the same **c:\temp\wapconnector\setup\scripts** folder, run the **Configure-Certificates.ps1** script to install certificates. By default, it will use the same certificate that is available for the Tenant Portal site in Windows Azure Pack. Make sure this is a valid certificate (trusted by the Azure Stack AzS-WASP01 virtual machine and any client computer that accesses the Azure Stack portal). Otherwise, communication won’t work. (Alternatively, you can explicitly pass a certificate thumbprint as a parameter by using the -Thumbprint parameter.)
+    e. 同じ **c:\temp\wapconnector\setup\scripts** フォルダーから、**Configure-Certificates.ps1** スクリプトを実行して証明書をインストールします。 既定では、Windows Azure Pack でテナント ポータル サイトに対して使用可能な同じ証明書が使用されます。 これが (Azure Stack AzS-WASP01 仮想マシンや、Azure Stack ポータルにアクセスするすべてのクライアント コンピューターによって信頼されている) 有効な証明書であることを確認してください。 そうでない場合は、通信が機能しません。 (あるいは、-Thumbprint パラメーターを使用して、証明書の拇印をパラメーターとして明示的に渡すこともできます。)
 
      ```powershell
         cd C:\temp\wapconnector\setup\scripts\
@@ -175,13 +177,13 @@ For this preview release, use the Windows Azure Pack Connector only in test envi
         .\Configure-Certificates.ps1
     ```
 
-    f. To finish the configuration of these three services, run the **Configure-WapConnector.ps1** script to update the Web.config file parameters.
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 これらの 3 つのサービスの構成を完了するには、**Configure-WapConnector.ps1** スクリプトを実行して Web.config ファイル パラメーターを更新します。
 
-    |  Parameter | Description | Example |   
+    |  パラメーター | Description | 例 |   
     | -------- | ------------- | ------- |  
-    | TenantPortalFQDN | The Windows Azure Pack tenant portal FQDN. | tenant.contoso.com | 
-    | TenantAPIFQDN | The Windows Azure Pack Tenant API FQDN. | tenantapi.contoso.com  |
-    | AzureStackPortalFQDN | The Azure Stack user portal FQDN. | portal.local.azurestack.external |
+    | TenantPortalFQDN | Windows Azure Pack テナント ポータルの FQDN。 | tenant.contoso.com | 
+    | TenantAPIFQDN | Windows Azure Pack テナント API の FQDN。 | tenantapi.contoso.com  |
+    | AzureStackPortalFQDN | Azure Stack ユーザー ポータルの FQDN。 | portal.local.azurestack.external |
     | | |
     
      ```powershell
@@ -189,19 +191,19 @@ For this preview release, use the Windows Azure Pack Connector only in test envi
          -TenantAPIFQDN "tenantapi.contoso.com" `
          -AzureStackPortalFQDN "portal.local.azurestack.external"
     ```
-    g. If you have multiple tenant portal virtual machines, repeat step 1 for each of these virtual machines.
+    g. 複数のテナント ポータル仮想マシンがある場合は、これらの各仮想マシンに対して手順 1. を繰り返します。
 
-2. Install the new Tenant API MSI on each Windows Azure Pack Tenant API virtual machine.
+2. 各 Windows Azure Pack テナント API 仮想マシンに新しいテナント API MSI をインストールします。
 
-    a. If a load balancer is in use, you may want to mark the virtual machine as offline.
+    a. ロード バランサーが使用されている場合は、仮想マシンをオフラインとしてマークすることもできます。
 
-    b. In File Explorer, copy the **WAPConnector** folder to a folder named **c:\temp** on each Tenant API machine.
+    b. ファイル エクスプローラーで、**WAPConnector** フォルダーを各テナント API マシン上の **c:\temp** という名前のフォルダーにコピーします。
 
-    c. Copy the AzurePackConnectorOutput.txt file that you saved earlier, to **c:\temp\WAPConnector**.
+    c. 前に保存した AzurePackConnectorOutput.txt ファイルを **c:\temp\WAPConnector** にコピーします。
 
-    d. Open a Console or RDP connection to the Tenant API VM you copied the files to.
+    d. ファイルをコピーした先のテナント API VM へのコンソールまたは RDP 接続を開きます。
     
-    e. Change directories to **c:\temp\wapconnector\setup\scripts**, and run **Update-TenantAPI.ps1**. This new version of the WAP Tenant API contains a change to enable a trust relationship not only with the current STS, but also with the instance of AD FS in Azure Stack.
+    e. ディレクトリを **c:\temp\wapconnector\setup\scripts** に変更し、**Update-TenantAPI.ps1** を実行します。 この新しいバージョンの WAP テナント API には、現在の STS との信頼関係だけでなく、Azure Stack 内の AD FS のインスタンスとの信頼関係も有効にするための変更が含まれています。
 
      ```powershell
     cd C:\temp\wapconnector\setup\packages\
@@ -209,17 +211,17 @@ For this preview release, use the Windows Azure Pack Connector only in test envi
     .\Update-TenantAPI.ps1
     ```
 
-    f.  Repeat step 2 on any other virtual machine running the Tenant API.
-3. From **only one** of the Tenant API VMs, run the Configure-TrustAzureStack.ps1 script to add a trust relationship between the Tenant API and the AD FS instance on Azure Stack. You must use an account with sysadmin access to the Microsoft.MgmtSvc.Store database. This script has the following parameters:
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。  テナント API を実行しているその他のすべての仮想マシンに対して手順 2. を繰り返します。
+3. テナント API VM のうちの **1 つだけ**から、Configure-TrustAzureStack.ps1 スクリプトを実行して、テナント API と Azure Stack 上の AD FS インスタンスの間の信頼関係を追加します。 Microsoft.MgmtSvc.Store データベースへの sysadmin アクセス権を持つアカウントを使用する必要があります。 このスクリプトには、次のパラメーターがあります。
 
-    | Parameter | Description | Example |
+    | パラメーター | Description | 例 |
     | --------- | ------------| ------- |
-   | SqlServer | The name of the SQL Server that contains the Microsoft.MgmtSvc.Store database. This parameter is required. | SQLServer | 
-   | DataFile | The output file that was generated during the configuration of the Azure Stack multi-cloud mode earlier. This parameter is required. | AzurePack-06-27-15-50.txt | 
-   | PromptForSqlCredential | Indicates that the script should prompt you interactively for a SQL Authentication credential to use when connecting to the SQL Server instance. The given credential must have sufficient permissions to uninstall databases, schemas, and delete user logins. If none is provided, the script assumes that current user context has access. | No value is needed. |
+   | SqlServer | Microsoft.MgmtSvc.Store データベースを含む SQL Server の名前。 このパラメーターは必須です。 | SQLServer | 
+   | DataFile | 以前の Azure Stack マルチクラウド モードの構成中に生成された出力ファイル。 このパラメーターは必須です。 | AzurePack-06-27-15-50.txt | 
+   | PromptForSqlCredential | SQL Server インスタンスに接続するときに、スクリプトから対話的に、使用する SQL 認証の資格情報を入力するよう求めるプロンプトが表示されることを示します。 指定される資格情報は、データベースやスキーマをアンインストールしたり、ユーザー ログインを削除したりするための十分なアクセス許可を持っている必要があります。 何も指定されない場合、スクリプトは現在のユーザー コンテキストにアクセス権があると見なします。 | 値は必要ありません。 |
    |  |  |
 
-    If you don't know the SQL Server to use, you can discover it. Connect to the Tenant API computer, use the Unprotect-MgmtSvc command to unprotect the Tenant API Web.config file, and look for the server name in the connection string. Remember to run Protect-MgmtSvc again to protect the Tenant API Web.config file.
+    使用する SQL Server がわからない場合は、それを検出できます。 テナント API コンピューターに接続し、Unprotect-MgmtSvc コマンドを使用してテナント API Web.config ファイルの保護を解除し、接続文字列内のサーバー名を検索します。 Protect-MgmtSvc を再度実行してテナント API Web.config ファイルを保護することを忘れないでください。
 
   ```powershell
   cd C:\temp\wapconnector\setup\scripts\
@@ -228,8 +230,8 @@ For this preview release, use the Windows Azure Pack Connector only in test envi
        -DataFile "C:\temp\wapconnector\AzurePackConnectorOutput.txt"
   ```
 
-## <a name="example"></a>Example
-The following example shows a complete Windows Azure Pack Connector deployment on a single-node Azure Stack configuration and two Windows Azure Pack Express installations. (Each Express installation is on a single computer, with the example names *wapcomputer1* and*wapcomputer2*.)
+## <a name="example"></a>例
+次の例は、単一ノード Azure Stack 構成上の完全な Windows Azure Pack コネクタ デプロイと、2 つの Windows Azure Pack Express インストールを示しています。 (各 Express インストールは *wapcomputer1* と *wapcomputer2* という例の名前を持ち、1 台のコンピューター上にあります。)
 
 ```powershell
 # Run the following script on the Azure Stack host
@@ -245,7 +247,7 @@ invoke-command -Session $session -ScriptBlock { Add-AzurePackConnector -AzurePac
      -AzureStackCloudName "AzureStack" }  
 
 ```
-Download the .exe file from the [Microsoft Download Center](https://aka.ms/wapconnectorazurestackdlc), extract it, and copy the WAPConnector folder to a **c:\temp** folder on the Windows Azure Pack computer. Copy the files that were generated as output in the previous script (located at \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) to the **c:\temp\WAPConnector** folder. (The files will looks similar to this: AzurePack-06-27-15-50.txt.) Then, run the following script, once per instance of Windows Azure Pack:
+[Microsoft ダウンロード センター](https://aka.ms/wapconnectorazurestackdlc)から .exe ファイルをダウンロードして抽出し、WAPConnector フォルダーを Windows Azure Pack コンピューター上の **c:\temp** フォルダーにコピーします。 以前のスクリプトで出力として生成された (\\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput にある) ファイルを **c:\temp\WAPConnector** フォルダーにコピーします。 (これらは、AzurePack-06-27-15-50.txt のようなファイルです。)次に、次のスクリプトを Windows Azure Pack のインスタンスごとに 1 回実行します。
 
  ```powershell
 # Install Connector components
@@ -268,13 +270,12 @@ cd C:\temp\WAPConnector\Setup\Scripts
      -DataFile "C:\temp\wapconnector\AzurePack-06-27-15-50.txt" 
 
 ```
-## <a name="troubleshooting-tips"></a>Troubleshooting tips
-1.  Ensure there is network connectivity between Azure Stack and Windows Azure Pack. This connectivity should be between any tenant computer that accesses the Azure Stack portal and the Windows Azure Pack tenant portal virtual machine where the new Connector services are running.
-2.  Ensure that all specified FQDNs are correct.
-3.  Ensure that the SSL certificates used in the new Connector services are trusted by Azure Stack (specifically the AzS-WASP01 VM) and any other computer the tenant may use to access the Azure Stack user portal.
-4. For known issues, see [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md).
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+1.  Azure Stack と Windows Azure Pack の間にネットワーク接続が存在することを確認してください。 この接続は、Azure Stack ポータルにアクセスするすべてのテナント コンピューターと、新しいコネクタ サービスが実行されている Windows Azure Pack テナント ポータル仮想マシンの間に存在する必要があります。
+2.  指定されたすべての FQDN が正しいことを確認してください。
+3.  新しいコネクタ サービスで使用される SSL 証明書が Azure Stack (具体的には AzS-WASP01 VM) や、テナントが Azure Stack ユーザー ポータルにアクセスするために使用する可能性のあるその他のすべてのコンピューターによって信頼されていることを確認してください。
+4. 既知の問題については、「[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)」を参照してください。
 
 
-## <a name="next-steps"></a>Next steps
-[Using the administrator and user portals in Azure Stack](azure-stack-manage-portals.md)
-
+## <a name="next-steps"></a>次のステップ
+[Azure Stack での管理者およびユーザー ポータルの使用](azure-stack-manage-portals.md)

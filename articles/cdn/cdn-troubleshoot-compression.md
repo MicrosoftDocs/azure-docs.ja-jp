@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
-
-
+ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -117,10 +117,4 @@ ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
 
 * **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](https://msdn.microsoft.com/library/ms525390.aspx)
 * **IIS 7 以降**: [サーバーの構成で **noCompressionForHttp10** と **noCompressionForProxies** を False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: c7891c188c2cecbbf056fa79672a13bb16fa7fcf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-3-plan-capacity-and-scaling-for-hyper-v-to-azure-replication"></a>手順 3: Azure への Hyper-V レプリケーションの容量とスケーリングを計画する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使ってオンプレミスの Hyper-V VM (System Center VMM なし) を Azure にレプリケートする場合に容量とスケーリングを計画する方法について説明します。
@@ -32,7 +30,7 @@ ms.lasthandoff: 06/23/2017
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 
 
-レプリケーション環境に関する情報を収集し、この記事で指摘されている事項を考慮しながらこの情報に基づいて容量を計画します。
+レプリケーション環境に関する情報を収集し、この記事で強調されている考慮事項と共にこの情報を使用して容量を計画します。
 
 
 ## <a name="gather-information"></a>情報を収集する
@@ -84,5 +82,4 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-[手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)方法に関するページに進む
-
+「[手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)」に進みます。

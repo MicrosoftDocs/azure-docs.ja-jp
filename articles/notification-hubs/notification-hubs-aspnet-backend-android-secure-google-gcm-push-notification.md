@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ce4bc214d4428393d8130831d628c324ad3485e8
-
-
+ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
 > [!div class="op_single_selector"]
@@ -135,10 +135,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 2. Eclipse で、物理的な Android デバイスまたはエミュレーターでアプリケーションを実行します。
 3. Android アプリケーションの UI で、ユーザー名とパスワードを入力します。 文字列は任意ですが、値は同じである必要があります。
 4. Android アプリケーションの UI で、 **[ログイン]**をクリックします。 次に、 **[プッシュを送信する]**をクリックします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

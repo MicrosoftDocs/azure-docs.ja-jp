@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 0db83cde6facc89b8b8aa72e6419129ec868235c
-ms.lasthandoff: 03/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Traffic Manager での優先順位によるトラフィック ルーティング方法の構成
 
 Azure Websites では、Web サイトのモードにかかわらず、データセンター ("リージョン" と呼びます) 内の Web サイト用に、フェールオーバー機能があらかじめ用意されています。 Traffic Manager は、さまざまなデータセンター内の Web サイトにフェールオーバーを提供します。
@@ -44,9 +43,9 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 8. **[保存]** をクリックして、エンドポイントの設定の変更を保存します。
 9. 構成の変更が完了したら、ページの下部にある **[保存]** をクリックします。
 10. 次の手順で構成の変更をテストします。
-    1.    ポータルの検索バーで、Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-    2.    **[Traffic Manager プロファイル]** ブレードで、**[概要]** をクリックします。
-    3.    **[Traffic Manager プロファイル]** ブレードに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
+    1.  ポータルの検索バーで、Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
+    2.  **[Traffic Manager プロファイル]** ブレードで、**[概要]** をクリックします。
+    3.  **[Traffic Manager プロファイル]** ブレードに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
 11. Traffic Manager プロファイルが機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。
 
 ![Traffic Manager を使用した優先順位によるトラフィック ルーティング方法の構成][1]
@@ -57,7 +56,7 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
 - [パフォーマンスによるトラフィック ルーティング方法](traffic-manager-configure-performance-routing-method.md)について学習します。
 - [地理的なルーティング方法](traffic-manager-configure-geographic-routing-method.md)について学習します。
-- [Traffic Manager の設定をテストする](traffic-manager-testing-settings.md)方法について学習します。
+- [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)方法について学習します。
 
 <!--Image references-->
 [1]: ./media/traffic-manager-priority-routing-method/traffic-manager-priority-routing-method.png

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: raviperi
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 70a3d762431d90acdd6ed2a432a569f34d0ce447
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
 
 Apache Ambari で Apache Storm ペイロードを操作するときに発生する主な問題とその解決策について説明します。
@@ -153,5 +151,4 @@ Nimbus の Log4J 構成は、/usr/hdp/\<HDP バージョン\>/storm/log4j2/clust
 ワーカーの Log4J 構成ファイルは、/usr/hdp/\<HDP バージョン\>/storm/log4j2/cluster.xml から読み取られます。
  
 例: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
-
 

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 58ba34f8f99b7cd2b6a9a199bc70d79431405100
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: a763f1c600c1a3f37cb565a8eb7db3c3f27dcf75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-sql-data-warehouse-using-powershell"></a>PowerShell を使用して SQL Data Warehouse を作成する
 > [!div class="op_single_selector"]
@@ -111,4 +109,3 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-

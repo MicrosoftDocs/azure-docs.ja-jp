@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/16/2017
 ms.author: xshi
+ms.openlocfilehash: 9b278735ce3af9e6e61a85c5e95ea218622361c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8eee4b2eea165176bddf0896685636bbac4db321
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather M0 WiFi をクラウドの Azure IoT Hub に接続する
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -161,7 +159,7 @@ Ubuntu の場合は、Feather M0 WiFi の USB ポートを操作するアクセ�
 1. **[File]\(ファイル)\** > **[Preferences]\(設定\)** をクリックする (Windows/Linux) か、**[Arduino]** > **[Preferences]\(設定\)** をクリック (Mac) し、以下のリンクをコピーして Arduino IDE の設定の **[Additional Boards Manager URLs]\(ボード マネージャーの追加の URL\)** に貼り付けます。
    
    ```
-   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json, https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
 1. **[Tools]\(ツール\)** > **[Board]\(ボード\)** > **[Boards Manager]\(ボード マネージャー\)** の順にクリックし、`Arduino SAMD Boards` バージョン `1.6.2` 以降をインストールします。 
@@ -240,5 +238,4 @@ BME280 センサーの実物がない場合、サンプル アプリケーショ
 Feather M0 WiFi を IoT Hub に接続し、キャプチャしたセンサー データを IoT Hub に送信しました。 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-
 

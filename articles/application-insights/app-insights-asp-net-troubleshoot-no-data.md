@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: db8d7b0e117276dd63ee83a1c2337e69253184b8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: 8772a9a21a0c99994ac9bcf10ea7b13c35bac6c2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
@@ -96,7 +95,7 @@ Application Insights をインストールしているとき、またはログ �
 
 * Microsoft アカウントが複数存在する (仕事用と個人用など)。 前回既定のブラウザーで使用されたサインインが、 [Application Insights をプロジェクトに追加](app-insights-asp-net.md)するためのアクセス権を持ったアカウントと異なります。 
   
-  * 解決策: ブラウザー ウィンドウの右上に表示される名前をクリックしてサインアウトします。 そのうえで、アクセス権のあるアカウントでサインインします。 左側のナビゲーション バーで [Application Insights] をクリックし、対象のアプリケーションを選択します。
+  * 解決策: ブラウザー ウィンドウの右上に表示される名前をクリックしてサインアウトします。そのうえで、アクセス権のあるアカウントでサインインします。 左側のナビゲーション バーで [Application Insights] をクリックし、対象のアプリケーションを選択します。
 * 自分以外のだれかが Application Insights をプロジェクトに追加し、作成先となった [リソース グループへのアクセス権](app-insights-resources-roles-access-control.md) をあなたに与えるのを忘れている。 
   
   * 解決策: その人物が組織アカウントを使用していた場合、そのチームに追加してもらいます。それ以外の場合は、リソース グループへのアクセス権を個別に付与してもらいます。
@@ -159,17 +158,15 @@ Application Insights をインストールしているとき、またはログ �
 ## <a name="no-performance-data"></a>パフォーマンス データが表示されない
 パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](app-insights-java-collectd.md)、[Windows デスクトップ アプリ](app-insights-windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
 
-Azure Web サイトでは利用できません。
-
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>サーバーにアプリを発行して以来、(サーバー) データが得られない
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
-* ファイアウォールで、[一部の TCP ポートを開く](app-insights-ip-addresses.md#data-access-api)ことが必要な場合があります。
+* ファイアウォールで、[一部の TCP ポートを開く](app-insights-ip-addresses.md)ことが必要な場合があります。
 * プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) を設定します。
 * Windows Server 2008: [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) の各更新プログラムがインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。 上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、 [アダプティブ サンプリング](app-insights-sampling.md) 機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 
@@ -184,5 +181,4 @@ Azure Web サイトでは利用できません。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
-
 

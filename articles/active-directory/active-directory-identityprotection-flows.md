@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: e45936280b51fb2e54012a688fceddcc8dabe984
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
@@ -112,5 +111,4 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
-
 

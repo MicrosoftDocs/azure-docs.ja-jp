@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
@@ -36,7 +35,7 @@ ms.lasthandoff: 08/25/2017
 
 * サブスクリプション
 * リソース グループ
-* リソース
+* resource
 
 割り当てたアクセス許可は、サブスクリプションからリソースへと継承されます。 発行したダッシュボードはリソースです。 したがってサブスクリプションのロールに対して既にユーザーが割り当てられていると、発行したダッシュボードに対しても、そのロールが作用します。 
 
@@ -77,5 +76,4 @@ ms.lasthandoff: 08/25/2017
 ## <a name="next-steps"></a>次のステップ
 * 一連のロールについては、「 [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
-
 

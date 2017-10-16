@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 27243856d0c6b70c7515b6bde66b99ef6160eb36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
@@ -123,7 +121,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 
 詳細情報:
 
-* [Azure ポータルを使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal を使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [VPN ゲートウェイの計画と設計](../vpn-gateway/vpn-gateway-plan-design.md)
 
 ### <a name="connect-your-on-premises-network-to-an-azure-virtual-network-with-a-dedicated-wan-link"></a>オンプレミス ネットワークから Azure Virtual Network への専用 WAN リンクによる接続
@@ -289,4 +287,3 @@ Azure Security Center は、ネットワーク セキュリティの最適化と
 詳細情報:
 
 * [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
-

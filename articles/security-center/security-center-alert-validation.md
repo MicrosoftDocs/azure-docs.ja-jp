@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 121b5d8f023a9b663d0e7af26dce8f81db27672c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -35,12 +34,15 @@ Security Center エージェントをコンピューターにインストール�
 3. コマンド プロンプトを開き、引数 (単なるダミーの引数名) を指定してこのファイルを実行します (たとえば、*ASC_AlertTest_662jfi039N.exe -foo*)。
 4. 5 ～ 10 分待って、Security Center のアラートを開きます。 次のようなアラートが表示されます。
 
-    ![アラートの検証](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![アラートの検証](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
 このアラートを確認する際に、[Arguments Auditing Enabled]\(引数の監査が有効\) フィールドの値が [true] になっていることを確認してください。 値が [false] になっている場合は、コマンド ライン引数の監査を有効にする必要があります。 このオプションを有効にするには、次のコマンド ラインを使用します。
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
+
+> [!NOTE]
+> この機能のデモンストレーションについては、動画「[Alert Validation in Azure Security Center (Azure Security Center でのアラート検証)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center)」をご覧ください。 
 
 ## <a name="see-also"></a>関連項目
 この記事では、アラートの検証プロセスについて説明しました。 この検証について理解できたら、次の記事をお読みください。
@@ -51,5 +53,4 @@ Security Center エージェントをコンピューターにインストール�
 * [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 Security Center における一般的な問題のトラブルシューティング方法について説明します。 
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
 

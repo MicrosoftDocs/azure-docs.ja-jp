@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
 ms.openlocfilehash: 73b3bc05aeb337c12acb7e47c0dbebe6d0196530
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合
 このチュートリアルの目的は、Wizergos Productivity Software と Azure Active Directory (Azure AD) を統合する方法を説明することです。
@@ -50,7 +49,7 @@ Wizergos Productivity Software と Azure AD の統合を構成するには、次
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Wizergos Productivity Software の追加
 2. Azure AD SSO の構成とテスト
@@ -156,7 +155,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_05.png) 
   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-  3. **[次へ]**をクリックします。
+  3. **[次へ]** をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_06.png)
@@ -164,7 +163,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
   2. **[姓]** ボックスに「**Simon**」と入力します。
   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-  5. **[次へ]**をクリックします。
+  5. **[次へ]** をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_07.png)
@@ -224,4 +223,3 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 [203]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_205.png
-

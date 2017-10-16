@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f07b3116d062d5089446fb66d8683aae7024327f
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 63b35ed25b809a16b61b685fd35aa67474b0a369
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-the-azure-cli-10"></a>Azure CLI 1.0 のインストール
 > [!div class="op_single_selector"]
@@ -139,4 +138,3 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 [linux-installer]: http://aka.ms/linux-azure-cli
 [cliasm]: /cli/azure/get-started-with-az-cli2
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
-

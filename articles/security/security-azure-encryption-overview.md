@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ums.workload: na
 ms.date: 08/18/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 752568747ab96bc0a9c7fc5f24ff28c3bce4e09f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -206,4 +205,3 @@ Azure Key Vault を使用すれば、組織はハードウェア セキュリテ
 - [Azure 仮想マシンのセキュリティの概要](security-virtual-machines-overview.md)
 - [保存データの暗号化](azure-security-encryption-atrest.md)
 - [データ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
-

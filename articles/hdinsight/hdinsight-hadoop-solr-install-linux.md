@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 09/28/2017
 ms.author: larryfr
+ms.openlocfilehash: c7a911474d6fb90f45565c90a72bfd407898ceba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ad930ca023a36fa5874483873c82fdba11d117c7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/21/2017
 > [!WARNING]
 > HDInsight クラスターに付属のコンポーネントは、Microsoft によって完全にサポートされています。
 >
-> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
 
@@ -59,7 +58,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
 
 Solr がインストールされているクラスターを作成するには、[HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)に関するドキュメントの手順を使用します。 作成プロセスの間に、次の手順を使用して Solr をインストールします。
 
-1. __[クラスターの概要]__ ブレードで、[詳細設定] を選択し、__[スクリプト アクション]__ を選択します。 次の情報を使用して、フォームに記入します。
+1. __[クラスターの概要]__ セクションで、[詳細設定] を選択し、__[スクリプト アクション]__ を選択します。 次の情報を使用して、フォームに記入します。
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
    * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -68,7 +67,7 @@ Solr がインストールされているクラスターを作成するには、
    * **[Zookeeper]**: Zookeeper ノードにインストールするには、このオプションをオンにします
    * **[パラメーター]**: このフィールドは空のままにします。
 
-2. **[スクリプト アクション]** ブレードの下部で、**[選択]** を使用して構成を保存します。 最後に、**[次へ]** ボタンを使用して __[クラスターの概要]__ に戻ります。
+2. **[スクリプト アクション]** セクションの下部で、**[選択]** を使用して構成を保存します。 最後に、**[次へ]** ボタンを使用して __[クラスターの概要]__ に戻ります。
 
 3. __[クラスターの概要__] ページで、__[作成]__ を選択してクラスターを作成します。
 
@@ -329,4 +328,3 @@ Solr のバックアップと復元の操作の詳細については、 [https:/
 * [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。 Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
 ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
 
@@ -89,10 +90,4 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 * フェールオーバーの方法については、[StorSimple Virtual Array のフェールオーバーと障害復旧](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。
 
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、[StorSimple デバイス マネージャー サービスを使用した StorSimple Virtual Array の管理](storsimple-virtual-array-manager-service-administration.md)に関するページをご覧ください。 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

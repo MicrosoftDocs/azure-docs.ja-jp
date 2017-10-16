@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 1b257b5a021a682990fb615d7c9aae4fc9160dd4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Hadoop クラスターを作成する
 
@@ -376,4 +375,3 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
-

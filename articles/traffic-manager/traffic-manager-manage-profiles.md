@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理
 
 Traffic Manager プロファイルでは、クラウド サービスまたは Web サイト エンドポイントへのトラフィックの分散を制御するためにトラフィック ルーティング方法が使用されます。 この記事では、これらのプロファイルの作成と管理の方法について説明します。
@@ -40,7 +38,7 @@ Azure Portal を使用して Traffic Manager プロファイルを作成でき�
     3. **[サブスクリプション]** で、このプロファイルを作成するサブスクリプションを選択します。
     4. **[リソース グループ]** で、このプロファイルを配置する新しいリソース グループを作成します。
     5. **[リソース グループの場所]** で、リソース グループの場所を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。
-    6. **[作成]**をクリックします。
+    6. **Create** をクリックしてください。
     7. Traffic Manager プロファイルは、グローバルなデプロイが完了すると、それぞれのリソース グループ内にリソースの 1 つとして表示されます。
 
 ## <a name="disable-enable-or-delete-a-profile"></a>プロファイルの無効化、有効化、または削除
@@ -76,4 +74,3 @@ Traffic Manager が構成済みのエンドポイントに対するユーザー�
 * [地理的なルーティング方法の構成](traffic-manager-configure-geographic-routing-method.md) 
 * [重み付けによるルーティング方法の構成](traffic-manager-configure-weighted-routing-method.md)
 * [パフォーマンスによるルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
-

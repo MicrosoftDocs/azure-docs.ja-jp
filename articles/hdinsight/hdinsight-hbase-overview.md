@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
+ms.openlocfilehash: 62b2700c368c4b0c66df140e8961408840beb626
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c8857076faa37f5b0d7c70f40b494465b3b99af2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>HDInsight の HBase とは: Hadoop で BigTable のような機能を提供する NoSQL データベース
 Apache HBase は、オープン ソースの NoSQL データベースで、Hadoop 上に構築され、Google BigTable を模範にしています。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
@@ -61,7 +60,6 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 * [HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]
 * [Azure Virtual Network での HDInsight クラスターの作成][hbase-provision-vnet]
 * [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)
-* [HDInsight 環境の HBase での Twitter のセンチメントのリアルタイム分析][hbase-twitter-sentiment]
 * [HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションの Maven での構築][hbase-build-java-maven]
 
 ## <a name="see-also"></a>関連項目
@@ -69,8 +67,6 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 * [Bigtable: A Distributed Storage System for Structured Data (Bigtable: 構造化データ用分散ストレージ システム)](http://research.google.com/archive/bigtable.html)
 
 [hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
 [hbase-build-java-maven]: hdinsight-hbase-build-java-maven.md
 
@@ -87,4 +83,3 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
-

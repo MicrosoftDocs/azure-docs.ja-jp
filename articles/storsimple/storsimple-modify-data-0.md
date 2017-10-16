@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3a47ff1eed220cede820e8698c3384300e94688d
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-device"></a>StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
 ## <a name="overview"></a>Overview
@@ -68,10 +68,4 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 ## <a name="next-steps"></a>次のステップ
 * DATA 0 以外のネットワーク インターフェイスを構成するには、 [Azure クラシック ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。 
 * ネットワーク インターフェイスを構成するときに問題が発生した場合は、 [デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

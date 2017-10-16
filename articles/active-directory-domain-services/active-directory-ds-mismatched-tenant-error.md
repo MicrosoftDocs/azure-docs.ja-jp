@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ca9ff29f5f91b8d796a29706ab49a82e417d1ecd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 118773be1f03701246051b8832695c591d76b1e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services 管理対象ドメインでのディレクトリの不一致エラーを解決する
 Azure クラシック ポータルを使用して有効化された、既存の管理対象ドメインがあるとします。 新しい Azure Portal にアクセスしてこの管理対象ドメインを表示すると、次のエラー メッセージが表示されます。
@@ -64,4 +63,3 @@ Resource Manager 環境では次のルールが適用されます。
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD Domain Services - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [トラブルシューティング ガイド - Azure AD Domain Services](active-directory-ds-troubleshooting.md)
-

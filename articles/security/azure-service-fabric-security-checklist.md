@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: d0441f1e96e94352d4112ec387058b47074d8b0b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric セキュリティのチェックリスト
 この記事では、Azure Service Fabric 環境のセキュリティ保護を支援するための使いやすいチェックリストを提供します。
@@ -51,4 +50,3 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 - [Service Fabric クラスターのアップグレード プロセスと機能](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-upgrade)
 - [Visual Studio での Service Fabric アプリケーションの管理](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-manage-application-in-visual-studio)。
 - [Service Fabric の正常性モデルの概要](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-health-introduction)
-

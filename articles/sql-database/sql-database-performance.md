@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 522b932ab055978c52f085dbaa36095bb6b77962
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
@@ -78,5 +76,4 @@ Azure SQL Database では、[パフォーマンスの推奨事項](sql-database-
 ## <a name="additional-resources"></a>その他のリソース
 * [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
 * [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
-
 

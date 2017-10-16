@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
@@ -137,4 +136,3 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-

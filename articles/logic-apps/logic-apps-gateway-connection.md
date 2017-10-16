@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 4744405b2c294be564dedee308b4cba95cfcc3c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータにアクセスする

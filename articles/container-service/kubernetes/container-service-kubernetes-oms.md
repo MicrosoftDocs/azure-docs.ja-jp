@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
+ms.openlocfilehash: bd5c81435c091d25bc14710589b7c043e9f56a25
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: bcb4a7a7d0b712ebe35a5a5bb063124be5095148
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する
 
 ## <a name="prerequisites"></a>前提条件
@@ -75,8 +73,7 @@ Microsoft Operations Management (OMS) は、Microsoft のクラウドベース�
 ## <a name="installing-oms-on-kubernetes"></a>Kubernetes への OMS のインストール
 
 ### <a name="obtain-your-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-OMS エージェントからサービスに通信するには、ワークスペース ID とワークスペース キーが構成されている必要があります。 ワークスペース ID とキーを取得するには、<https://mms.microsoft.com> で OMS アカウントを作成する必要があります。
-手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして ID とキーを取得する必要があります。
+OMS エージェントからサービスに通信するには、ワークスペース ID とワークスペース キーが構成されている必要があります。 ワークスペース ID とキーを取得するには、<https://mms.microsoft.com> で OMS アカウントを作成する必要があります。手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして ID とキーを取得する必要があります。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -131,4 +128,3 @@ OMS ワークスペースの ID とキーを保護するには、DaemonSet YAML 
 
 ### <a name="conclusion"></a>まとめ
 これで完了です。 しばらくすると、OMS ダッシュボードにデータが送られたことがわかります。
-

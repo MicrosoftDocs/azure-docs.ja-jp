@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 03c4b6d225dce99d79ef6c1ba2af43af8dea3eae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-a-windows-phone-app"></a>Azure AD と Windows Phone アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -73,7 +72,7 @@ Windows Phone 8.1 アプリを開発する場合、Azure AD を使用すると�
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
-* DirectorySearcher プロジェクトで、 `MainPage.xaml.cs`を開きます。  Azure ポータルで入力した値が反映されるように、 `Config Values` 領域の値を置き換えます。  これらの値は、コードで ADAL を使用する際に常に参照されます。
+* DirectorySearcher プロジェクトで、 `MainPage.xaml.cs`を開きます。  Azure Portal で入力した値が反映されるように、`Config Values` 領域の値を置き換えます。  これらの値は、コードで ADAL を使用する際に常に参照されます。
   * `tenant` は、Azure AD テナントのドメイン (たとえば、contoso.onmicrosoft.com) です。
   * `clientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
 * ここで、Windows Phone アプリのコールバック URI を調べる必要があります。  `MainPage` メソッドの次の行にブレークポイントを設定します。
@@ -184,5 +183,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [Protect a Web API using Bearer tokens from Azure AD](active-directory-devquickstarts-webapi-dotnet.md) (Azure AD からのベアラー トークンを使用することによる Web API の保護)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
 

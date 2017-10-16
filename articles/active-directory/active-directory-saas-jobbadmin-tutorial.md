@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 848a6d6d0f072bc3f697ff57756714fc45e7dcc4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>チュートリアル: Azure Active Directory と Jobbadmin の統合
 
@@ -166,7 +164,7 @@ Jobbadmin で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-jobbadmin-test-user"></a>Jobbadmin テスト ユーザーの作成
 
@@ -231,5 +229,4 @@ Azure AD ユーザーが Jobbadmin にログインできるようにするには
 [201]: ./media/active-directory-saas-jobbadmin-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-jobbadmin-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-jobbadmin-tutorial/tutorial_general_203.png
-
 

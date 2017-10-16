@@ -3,7 +3,7 @@ title: "ピーク時間外 VM 起動/停止 [プレビュー] ソリューショ
 description: "スケジュールに従って Azure Resource Manager 仮想マシンを起動/停止し、Log Analytics からプロアクティブに監視する VM 管理ソリューションについて説明します。"
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e44f04b3492ac07822b0842864f84a5f16dc3f5b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: b4271d07858eacf2fa55e748f276c8252b0dedf9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
 
 ピーク時間外 VM 起動/停止 (プレビュー) は、ユーザー定義のスケジュールに従って Azure Resource Manager 仮想マシンを起動/停止することによって、それらの仮想マシンを起動/停止する Automation ジョブが正常に実行されているかどうかを OMS Log Analytics で分析するソリューションです。  
@@ -245,5 +243,4 @@ Automation アカウントと OMS ワークスペースは、このプロセス�
 
 
    
-
 

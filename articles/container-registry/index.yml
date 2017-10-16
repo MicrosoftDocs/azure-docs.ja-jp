@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Container Registry のドキュメント
+metadata:
+  title: Azure Container Registry のドキュメント - チュートリアル | Microsoft Docs
+  description: Azure Container Registry では、あらゆる種類のコンテナー デプロイのイメージを格納し、管理できます。 以下のクイック スタート、チュートリアル、サンプルを使用して、Azure Container Registry の使用方法を確認してください。
+  services: container-registry
+  author: czeumault
+  manager: carolz
+  ms.service: container-registry
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/26/2017
+  ms.author: carolz
+abstract:
+  description: Azure Container Registry では、あらゆる種類のコンテナー デプロイのイメージを格納し、管理できます。 以下のクイック スタート、チュートリアル、サンプルを使用して、Azure Container Registry の使用方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure Container Registry をデプロイする方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Azure CLI
+            href: /azure/container-registry/container-registry-get-started-azure-cli
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure Portal
+            href: /azure/container-registry/container-registry-get-started-portal
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/container-registry/container-registry-get-started-powershell
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Container Instances と Azure Container Service で Azure Container Registry を使用する方法を説明します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure Container Instances と Container Registry</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Azure Container Service と Container Registry</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
+          - title: REST ()
+            html: <p><a href="/rest/api/containerregistry">REST API リファレンスに関するページ</a></p>

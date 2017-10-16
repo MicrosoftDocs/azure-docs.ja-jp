@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-dns-records-in-azure-dns-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した Azure DNS の DNS レコードの管理
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](dns-operations-recordsets-portal.md)
+> * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
@@ -297,4 +295,3 @@ azure network dns record-set delete MyResourceGroup contoso.com www A
 [Azure DNS におけるゾーンとレコード](dns-zones-records.md)について確認します。
 <br>
 Azure DNS の使用時に[ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)方法について確認します。
-

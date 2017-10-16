@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
+ms.openlocfilehash: 7d2b498d3f84c4fd6cccf97c6d7781f293f5b395
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: b382e545e47353a177b3b02b3931001ab22d53c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する
 
 ワークロードのホストについて Azure 仮想マシンを評価する場合、既存のアマゾン ウェブ サービス (AWS) EC2 Windows VM インスタンスをエクスポートしてから、仮想ハード ディスク (VHD) を Azure にアップロードできます。 VHD のアップロード後、その VHD から Azure に新しい VM を作成できます。 
@@ -71,4 +68,3 @@ VHD のエクスポートが完了したら、「[How Do I Download an Object fr
 - エクスポート前に Sysprep を実行しなかった場合、VHD は**特殊化された**と見なされます。その場合、[特殊化した VHD を Azure にアップロードして新しい VM を作成する方法](create-vm-specialized.md)に関するページを参照してください。
 
  
-

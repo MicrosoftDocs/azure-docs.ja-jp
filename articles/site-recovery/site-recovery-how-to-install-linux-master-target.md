@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Linux マスター ターゲット サーバーをインストールする
 仮想マシンをフェールオーバーした後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -401,4 +400,3 @@ VMware ツールは、データストアを検出できるように、マスタ�
 * NIC の構成がカスタマイズされていることが原因で、起動中にネットワーク インターフェイスが無効となり、マスター ターゲット エージェントを初期化できない場合があります。 以下のプロパティが正しく設定されていることを確認してください。 イーサネット カード ファイルの /etc/sysconfig/network-scripts/ifcfg-eth* で次のプロパティを確認します。
     * BOOTPROTO=dhcp
     * ONBOOT=yes
-

@@ -3,7 +3,7 @@ title: "Azure Automation でのグラフィカル作成 | Microsoft Docs"
 description: "グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。 この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 417fceb0961165d96ece000f95c8a3f973f4f75b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 137e8503b9759136510db59700c3032853246c89
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 ## <a name="introduction"></a>はじめに
@@ -383,5 +381,4 @@ PowerShell 式をデータ ソースとして使用し、 [アクティビティ
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * Automation の実行アカウントを使った認証方法を理解するには、 [Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)
-
 

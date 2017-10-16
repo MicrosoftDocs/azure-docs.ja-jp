@@ -4,7 +4,7 @@ description: "Ansible を使用して、Azure で完全な Linux 仮想マシン
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: na
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/25/2017
+ms.date: 09/25/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b2fcc288b40c12a9b3f966156ee2eedf4acca313
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: f5dfecd1f5aafc1b7117433ef1bdb1805be2c57b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
 
@@ -32,7 +30,7 @@ Ansible で Azure リソースを管理するには、次の項目が必要で�
 
 - ホスト システムにインストールされた Ansible および Azure Python SDK モジュール。
     - [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[CentOS 7.3](ansible-install-configure.md#centos-73)、[SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2) への Ansible のインストール
-- Azure 資格情報とそれらを使用するように構成された Ansible。
+- Azure の資格情報と、それを使用するように構成された Ansible。
     - [Azure 資格情報の作成と Ansible の構成](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI バージョン 2.0.4 以降。 バージョンを確認するには、`az --version` を実行します。 
     - アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。

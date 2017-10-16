@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 516240ccc82a522a414d837ec334712196edf7dd
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 0a45a563d8aed45dd30cc76a13b0e197c248be84
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Azure Virtual Network での新しい Active Directory フォレストのインストール
 このトピックでは、 [Azure の仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上の仮想マシン (VM) に新しい Windows Server Active Directory 環境を作成する方法を示します。 この場合、Azure の仮想ネットワークはオンプレミスのネットワークには接続されません。
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 
 * これらの手順については、ビデオ「 [How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * 必要であれば、 [サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md) した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。 これらの手順については、「 [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)」を参照してください。
-* Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「 [Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
+* Azure の仮想ネットワークに Active Directory Domain Services (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## <a name="scenario-diagram"></a>シナリオ図
 このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。 アプリケーション サーバーを実行する VM およびドメイン コントローラーを実行する VM は、Azure Virtual Network の専用のクラウド サービスにインストールされます。 また、フォールト トレランス向上のため、可用性セットにも含まれます。
@@ -120,8 +119,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 * [Set Azure VM Static IP Address (Azure の VM の静的 IP アドレスの設定)](http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address)
 * [Azure VM への静的 IP アドレスの割り当て方法](http://www.bhargavs.com/index.php/2014/03/13/how-to-assign-static-ip-to-azure-vm/)
 * [Install a New Active Directory Forest (新しい Active Directory フォレストのインストール)](https://technet.microsoft.com/library/jj574166.aspx)
-* [Active Directory ドメイン サービス (AD DS) の仮想化 (レベル 100) の概要](https://technet.microsoft.com/library/hh831734.aspx)
+* [Active Directory Domain Services (AD DS) の仮想化 (レベル 100) の概要](https://technet.microsoft.com/library/hh831734.aspx)
 
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
-

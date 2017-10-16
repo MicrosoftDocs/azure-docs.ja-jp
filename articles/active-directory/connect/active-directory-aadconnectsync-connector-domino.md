@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス
 この記事では Lotus Domino Connector について説明します。 この記事は次の製品に適用されます。
@@ -455,7 +454,7 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 1. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) に従って、Domino Directory テンプレート {PUBNAMES.NTF} のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
 2. Domino Designer で作成した Domino Directory テンプレート {CONTOSO.NTF} テンプレートのコピーを開きます。
 3. 左のウィンドウから [Shared Code]、[Subforms] の順に選択します。
-4. [New Subform] をクリックします。
+4. New Subformをクリックします。
 5. 次を実行し、新しいサブフォームのプロパティを指定します。
    * 新しいサブフォームが開いたら、[Design - Subform Properties] を選択します。
    * [Name] プロパティの横に、TestSubform など、補助オブジェクト クラスの名前を入力します。
@@ -495,4 +494,3 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
-

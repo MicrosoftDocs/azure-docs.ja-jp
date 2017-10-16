@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>Microsoft Azure を使用して個人データを保護する
 
@@ -78,4 +77,3 @@ ms.lasthandoff: 08/30/2017
 - [Azure セキュリティ チームのブログ](https://www.azuresecurityorg)
 
 - [Azure.com ブログ - セキュリティ](https://azure.microsoft.com/blog/topics/security/)
-

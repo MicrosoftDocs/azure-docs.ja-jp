@@ -1,6 +1,6 @@
 ---
 title: "Azure Stream Analytics によるイベントの順序と遅延の処理 | Microsoft Docs"
-description: "データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Stream Analytics によって処理されるしくみを説明します。"
+description: "データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Azure Stream Analytics によって処理されるしくみを説明します"
 keywords: "順序の逸脱, 遅延, イベント"
 documentationcenter: 
 services: stream-analytics
@@ -16,59 +16,75 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5089dda48ea829902663ef9d09fe83177df6f220
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: cf9a43fbb82a32c92d66f25809916d3ccde1a20d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-stream-analytics-event-order-handling"></a>Azure Stream Analytics によるイベントの順序の処理
 
-時間の経過に伴い発生するイベントのデータ ストリームでは、各イベントは受信された時刻と共に記録されます。 いくつかの条件が原因で、一部のイベントが送信されたのと異なる順序でイベント ストリームに届くことがあります。 このような状況が発生するのは、単純な TCP 再送信、または送信デバイスと受信イベント ハブの時刻のずれが原因の場合があります。 イベントの到着がない場合に時間を進めるために、"区切り記号" イベントも受信イベント ストリームに追加されます。 これらのイベントは、"3 分間ログインがない場合に通知する" などのシナリオで必要です。
+イベントのテンポラル データ ストリームでは、各イベントにタイムスタンプが割り当てられます。 Azure Stream Analytics は、到着時刻またはアプリケーション時間を使用して、各イベントにタイムスタンプを割り当てます。 
 
-順序どおりでない入力ストリームは、次のいずれかに当てはまります。
-* 並べ替えられた (そのため**遅延**した)。
-* ユーザーが指定したポリシーに従って、システムによって調整された。
+**System.Timestamp** 列には、イベントに割り当てられたタイムスタンプが含まれます。 イベントがソースに到達すると、入力ソースに到着時刻が割り当てられます。 到着時刻は、イベント ハブ入力では **EventEnqueuedTime** になり、BLOB 入力では [BLOB の最終更新時刻](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3)になります。 アプリケーション時間は、イベントの生成時に割り当てられ、ペイロードの一部になります。 
 
+アプリケーション時間でイベントを処理するには、SELECT クエリで TIMESTAMP BY 句を使用します。 TIMESTAMP BY 句がない場合は、イベントは到着時間で処理されます。 到着時間にアクセスするには、イベント ハブの場合は **EventEnqueuedTime** プロパティを、BLOB 入力の場合は **BlobLastModified** プロパティを使用します。 
 
-## <a name="lateness-tolerance"></a>遅延の許容範囲
-Stream Analytics では、上に挙げた種類のシナリオが許容されます。 Stream Analytics には "順序を逸脱した" イベントと "遅延" イベントへの対応策があり、 これらのイベントは次の方法で処理されます。
-
-* 順序を逸脱しているものの、設定された許容範囲内であるイベントは、**タイムスタンプに基づいて並べ替え**られます。
-* 許容範囲を超えたイベントは、**削除または調整**されます。
-    * **調整**: 許容される最新の時刻に届いたかのように調整されます。
-    * **削除**: 破棄されます。
+Azure Stream Analytics では、出力はタイムスタンプ順に生成され、順序を逸脱したデータを扱うためのいくつかの設定が備わっています。
 
 ![Stream Analytics のイベントの処理](media/stream-analytics-event-handling/stream-analytics-event-handling.png)
 
-## <a name="reduce-the-number-of-out-of-order-events"></a>順序を逸脱したイベントの数の抑制
+順序どおりでない入力ストリームは、次のいずれかに当てはまります。
+* 並べ替えられた (そのため*遅延*した)。
+* ユーザーが指定したポリシーに従って、システムによって調整された。
 
-受信イベントを処理する際に一時的な変換を適用するため (例: ウィンドウ表示の集計または一時的な結合)、Stream Analytics はタイムスタンプの順序に基づいて受信イベントを並べ替えます。
+Stream Analytics では、アプリケーション時間で処理する場合、遅延と順序を逸脱したイベントは許容されます。
 
-"TIMESTAMP BY" キーワードを**使用しなかった**場合には、Azure Event Hubs のイベント エンキュー時間が既定で使用されます。 Event Hubs では、イベント ハブの各パーティションに対するタイムスタンプの単調性が保証されます。 さらに、すべてのパーティションからのイベントがタイムスタンプの順序でマージされることも保証されます。 Event Hubs によるこれら 2 つの保証があるため、順序を逸脱したイベントは発生しません。
+**到着遅延許容期間**
 
-送信側のタイムスタンプを使用することが重要な場合があります。 この場合、イベント ペイロードからのタイムスタンプは "TIMESTAMP BY" を使用して選択します。 これらのシナリオでは、イベントが順序を逸脱する原因が 1 つまたは複数含まれる可能性があります。
+* 到着遅延許容期間の設定は、アプリケーション時間で処理する場合にのみ実行できます。 それ以外の場合は無視されます。
+* 到着遅延許容期間は、到着時刻とアプリケーション時間の差の最大値です。 アプリケーション時間が *(到着時刻 - 到着遅延)* よりも前の時刻である場合は、*(到着時刻 - 到着遅延)* に設定されます。
+* 同じ入力ストリームの複数のパーティションまたは複数の入力ストリームが組み合わされる場合、すべてのパーティションが新しいデータを待機する最大時間が到着遅延許容期間になります。 
 
-* イベント生成元に時刻のずれがある。 コンピューターが異なっているため生成元の時計が異なる場合、時刻のずれがよく発生します。
-* イベントの送信元から送信先のイベント ハブの間でネットワークの遅延がある。
-* イベント ハブ パーティションの間で時刻のずれが存在する。 Stream Analytics では最初に、すべてのイベント ハブ パーティションからのイベントがイベント エンキュー時間に基づいて並べ替えられます。 次に、順序を逸脱したイベントの有無についてデータ ストリームがチェックされます。
+簡単に言うと、到着遅延は、イベントが生成されてから、入力ソース側でイベントが受信されるまでの最大遅延です。
+到着遅延許容期間に基づく調整は最初に実行され、誤順序の許容期間に基づく調整は 2 番目に実行されます。 **System.Timestamp** 列には、イベントに割り当てられた最後のタイムスタンプが含まれます。
 
-構成タブに表示される既定値は次のとおりです。
+**誤順序の許容期間**
 
-![Stream Analytics による順序の逸脱の処理](media/stream-analytics-event-handling/stream-analytics-out-of-order-handling.png)
+* 順序を逸脱しているものの、「誤順序の許容期間」内であるイベントは、*タイムスタンプに基づいて並べ替え*られます。 
+* 許容範囲を超えたイベントは、*削除*または*調整*されます。
+    * **調整**: 許容される最新の時刻に届いたかのように調整されます。 
+    * **削除**: 破棄されます。
 
-順序の逸脱の許容期間として 0 秒を使用する場合、すべてのイベントが常に順番どおりであると仮定することになります。 イベントが順序を逸脱する原因として上の 3 つがあることを考慮すると、この仮定が真であるとは考えにくいと言えます。 
+「誤順序の許容期間」内に届いたイベントを並べ替えるために、クエリの出力は*誤順序の許容期間*だけ遅延されます。
 
-Stream Analytics がイベントの順序の逸脱を修正できるようにするには、順序の逸脱の許容期間として 0 秒ではない値を指定します。 Stream Analytics はこの期間が経過するまでイベントをバッファーしてから、選択されたタイムスタンプを使用してそれらのイベントを並べ替えます。 その後、一時的な変換が適用されます。 許容期間は 3 秒から開始できます。また、値を調整して時間調整されるイベントの数を減らすことができます。 
+**例**
 
-バッファリングの副作用は、出力が**同じ時間だけ遅延する**ことです。 値を調整して順序を逸脱したイベントの数を抑制したり、ジョブの待ち時間が短い状態を維持したりできます。
+到着遅延許容期間 = 10 分<br/>
+誤順序の許容期間 = 3 分<br/>
+アプリケーション時間による処理<br/>
+
+イベント:
+
+イベント 1 _アプリケーション時間_ = 00:00:00、_到着時刻_ = 00:10:01、_System.Timestamp_ = 00:00:01、(_到着時刻_ - _アプリケーション時間_) は到着遅延許容期間を超えているため、調整されます。
+
+イベント 2 _アプリケーション時間_ = 00:00:01、_到着時刻_ = 00:10:01、_System.Timestamp_ = 00:00:01、アプリケーション時間は到着遅延期間の範囲内であるため、調整されません。
+
+イベント 3 _アプリケーション時間_ = 00:10:00、_到着時刻_ = 00:10:02、_System.Timestamp_ = 00:10:00、アプリケーション時間は到着遅延期間の範囲内であるため、調整されません。
+
+イベント 4 _アプリケーション時間_ = 00:09:00、_到着時刻_ = 00:10:03、_System.Timestamp_ = 00:09:00、アプリケーション時間は到着遅延許容期間の範囲内であるため、元のタイムスタンプで承認されます。
+
+イベント 5 _アプリケーション時間_ = 00:06:00、_到着時刻_ = 00:10:04、_System.Timestamp_ = 00:07:00、アプリケーション時間は誤順序の許容期間よりも古いため、調整されます。
+
+
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
+* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+

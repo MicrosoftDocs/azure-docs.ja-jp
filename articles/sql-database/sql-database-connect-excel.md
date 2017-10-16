@@ -16,13 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 6a9993aa31142681f3f6c57684913bf932fd5e7d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: 68eadf7a7eef4ba5e6bcd9af1279227a01efdf70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 
@@ -80,6 +78,5 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 ## <a name="next-steps"></a>次のステップ
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。
 * [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
-* [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法を学習します。
-
+* [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)方法を学習します。
 

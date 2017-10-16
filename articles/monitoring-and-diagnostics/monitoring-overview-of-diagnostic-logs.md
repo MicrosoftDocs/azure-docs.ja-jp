@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 08/24/2017
 
     ![Azure Monitor の [監視] セクション](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. 必要に応じて、リソース グループまたはリソースの種類ごとに一覧をフィルタリングして、診断設定を行うリソースをクリックします。
+2. 必要に応じて、リソース グループまたはリソースの種類で一覧をフィルタリングして、診断設定を行うリソースをクリックします。
 
 3. 選択したリソースの設定が存在しない場合は、設定を作成するように求められます。 [診断を有効にする] をクリックします。
 
@@ -180,4 +179,3 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 * [リソース診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md)
-

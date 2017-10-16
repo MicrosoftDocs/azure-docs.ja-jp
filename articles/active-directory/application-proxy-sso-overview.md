@@ -15,14 +15,12 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Azure AD アプリケーション プロキシを使用したシングル サインオンの提供
 
 シングル サインオンは、Azure AD アプリケーション プロキシの重要な要素です。  ユーザーに必要なのはクラウドの Azure Active Directory にサインインすることだけであるため、最善のユーザー エクスペリエンスが提供されます。 Azure Active Directory で認証された後、アプリケーション プロキシ コネクタがオンプレミスのアプリケーションでの認証を処理します。 バックエンド アプリケーションは、アプリケーション プロキシを通してサインインしているリモート ユーザーとドメインに参加しているデバイスでの通常使用の違いを見分けることはできません。 
@@ -81,4 +79,3 @@ ms.lasthandoff: 08/25/2017
 - [アプリケーション プロキシを使用したシングル サインオンでのパスワードの保管](application-proxy-sso-azure-portal.md)
 - [アプリケーション プロキシを使用したシングル サインオンでの Kerberos の制約付き委任](active-directory-application-proxy-sso-using-kcd.md)
 - [アプリケーション プロキシを使用したシングル サインオンでのヘッダーベースの認証](application-proxy-ping-access.md) 
-

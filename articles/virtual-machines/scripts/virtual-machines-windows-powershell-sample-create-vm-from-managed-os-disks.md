@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 68820183e28cd27fb8493704f1de523747e9f7cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: ec532811e94647c8a04b9faf9474f6749969f83e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
 このスクリプトは、既存の管理ディスクを OS ディスクとして接続することで仮想マシンを作成します。 このスクリプトは、次のシナリオで使用します。
@@ -37,7 +35,7 @@ ms.lasthandoff: 05/16/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[メイン](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "スナップショットから VM を作成する")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "Create VM from snapshot")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

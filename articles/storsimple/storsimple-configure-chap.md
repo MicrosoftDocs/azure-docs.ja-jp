@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。 この記事の詳細な手順は、StorSimple 8000 シリーズと StorSimple 1200 デバイスに適用されます。
@@ -160,10 +160,4 @@ CHAP の構成が正しくない場合、 **"認証エラー"** というエラ�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-security.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

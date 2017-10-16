@@ -3,7 +3,7 @@ title: "Azure Application Gateway の作成 - Azure CLI 1.0 | Microsoft Docs"
 description: "Resource Manager で Azure CLI 1.0 を使用して、アプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: 5106b0a480bb853ad75ad1aaca896f7a72fc4f71
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: e7b16e789e0f241aa8ca2292aacb2bccde8777ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -45,7 +44,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 ## <a name="scenario"></a>シナリオ
 
-このシナリオでは、Azure ポータルを使用してアプリケーション ゲートウェイを作成する方法について説明します。
+このシナリオでは、Azure Portal を使用してアプリケーション ゲートウェイを作成する方法について説明します。
 
 このシナリオで、以下の作業を行います。
 
@@ -161,4 +160,3 @@ azure network application-gateway create \
 [1]: ./media/application-gateway-create-gateway-cli-nodejs/figure1.png
 [2]: ./media/application-gateway-create-gateway-cli-nodejs/figure2.png
 [3]: ./media/application-gateway-create-gateway-cli-nodejs/figure3.png
-

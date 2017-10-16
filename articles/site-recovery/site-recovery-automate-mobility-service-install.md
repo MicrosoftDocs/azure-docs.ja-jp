@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: krnese
+ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: cdb88505427cdea05f594277170633183dbe6d3e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>VM レプリケーションのために Azure Automation DSC を使用してモビリティ サービスをデプロイする
 Operations Management Suite では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよび障害復旧ソリューションが提供されています。
@@ -511,4 +510,3 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 
 ## <a name="next-steps"></a>次のステップ
 モビリティ サービスのエージェントをデプロイした後は、仮想マシンの [レプリケーションを有効にする](site-recovery-vmware-to-azure.md) ことができます。
-

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: f24a620a18d7756b24f8f5f63d8b31fca63ade25
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/25/2017
-
+ms.openlocfilehash: 7e80951de55ade6b5140608dcff8ebb064f942ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -173,4 +172,3 @@ iothub-explorer help
 ## <a name="azure-storage-issues"></a>Azure Storage の問題
 
 [Microsoft Azure Storage エクスプローラー (プレビュー)](http://storageexplorer.com/) は、Windows、macOS、Linux で Azure Storage のデータを操作できる Microsoft 製の無料のスタンドアロン アプリです。 このツールでは、テーブルに接続し、そこに格納されているデータを表示できます。 このツールを使えば、Azure Storage の問題をトラブルシューティングできます。
-

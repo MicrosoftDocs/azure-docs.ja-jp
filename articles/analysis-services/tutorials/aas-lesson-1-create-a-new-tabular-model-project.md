@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
+ms.openlocfilehash: d523e3e103b4c351d01af6f1eb3c396f9a63016a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ebd160372fc75c6d0fc323be9e948fa2475b71cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-1-create-a-tabular-model-project"></a>レッスン 1: 表形式モデル プロジェクトを作成する
 
@@ -37,9 +36,9 @@ ms.lasthandoff: 08/22/2017
   
 #### <a name="to-create-a-new-tabular-model-project"></a>新しい表形式モデル プロジェクトを作成する  
   
-1.  SSDT の [**ファイル**] メニューで､[**New** > **Project**] をクリックします｡  
+1.  SSDT の **ファイル** メニューで､**New** > **Project**をクリックします｡  
   
-2.  [**New Project**] ダイアログ ボックスで[**Installed** > **Business Intelligence** > **Analysis Services**] を展開し､[**Analysis Services Tabular Project**] をクリックします｡  
+2.  **New Project** ダイアログ ボックスで**Installed** > **Business Intelligence** > **Analysis Services** を展開し､**Analysis Services Tabular Project**をクリックします｡  
   
 3.  [**名前**] フィールドで **AW Internet Sales** と入力し､プロジェクトファイルの場所を指定します｡  
   
@@ -88,4 +87,3 @@ SSDT をインストールすると､Visual Studio 環境にいくつかのメ�
   
   
   
-

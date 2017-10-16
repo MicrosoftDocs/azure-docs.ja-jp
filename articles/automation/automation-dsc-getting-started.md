@@ -14,12 +14,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;eslesar
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2a6daccdc70ff285a6993da0b2fdcfbe85e635cf
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
 このトピックでは、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
@@ -219,5 +218,4 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 * [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/powershell/dsc/overview)
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](/powershell/module/azurerm.automation/#automation)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
-
 

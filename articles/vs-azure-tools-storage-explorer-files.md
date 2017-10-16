@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.lasthandoff: 03/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-storage-explorer-preview-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラー (プレビュー) の使用
 
 Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、ストレージ エクスプローラー (プレビュー) を使用してファイル共有とファイルを操作する方法について説明します。
@@ -262,4 +261,3 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 - [最新のストレージ エクスプローラー (プレビュー) のリリース ノートとビデオ](http://www.storageexplorer.com/)を確認します。
 
 - [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。
-

@@ -9,14 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 2164562af60442375b96a51f820a65d4d4a6f257
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。 
 
@@ -116,4 +114,3 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 
 ## <a name="next-steps"></a>次のステップ
 別の移行方法として、[Azure Database for MySQL でのダンプと復元を使用した MySQL データベースの移行](concepts-migrate-dump-restore.md)に関する記事を読みます。 
-

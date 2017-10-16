@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/27/2017
 ms.author: msfussell
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 9871bc5aa4e74ab0faef401d67c4e9558eb5e14b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。
@@ -131,4 +130,3 @@ public class ValuesController : Controller
 [0]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
 [1]: ./media/service-fabric-dnsservice/servicefabric-explorer-dns.PNG
 [2]: ./media/service-fabric-dnsservice/DNSService.PNG
-

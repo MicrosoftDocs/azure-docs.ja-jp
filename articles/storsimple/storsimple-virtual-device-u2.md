@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
+ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f9a9ff81913dda1457123525fe509d194798db14
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Azure での StorSimple 仮想デバイスのデプロイと管理
 ## <a name="overview"></a>Overview
@@ -64,7 +63,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーで仮想デバイスを更新します。 |仮想デバイスから再生成することはできません。 |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>仮想デバイスの前提条件
-以下の各セクションでは、StorSimple 仮想デバイスの構成の前提条件について説明します。 仮想デバイスをデプロイする前に、 [仮想デバイスを使用する際のセキュリティの考慮事項](storsimple-security.md#storsimple-virtual-device-security)を確認してください。
+以下の各セクションでは、StorSimple 仮想デバイスの構成の前提条件について説明します。 仮想デバイスをデプロイする前に、 [仮想デバイスを使用する際のセキュリティの考慮事項](storsimple-security.md)を確認してください。
 
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
@@ -236,4 +235,3 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
-

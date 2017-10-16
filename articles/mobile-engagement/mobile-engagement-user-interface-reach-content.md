@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.lasthandoff: 03/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
 新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。 プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。 
@@ -31,7 +30,7 @@ ms.lasthandoff: 03/01/2017
 * タイル (Windows Phone のみ)
 
 ## <a name="content-of-announcements"></a>アナウンスのコンテンツ
- ![リーチ - コンテンツ&1;][30] 
+ ![リーチ - コンテンツ 1][30] 
 
 ### <a name="choose-the-type-of-your-announcement"></a>アナウンスの種類を選択します:
 * 通知のみ: シンプルな標準的な通知です。 ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
@@ -114,7 +113,7 @@ ms.lasthandoff: 03/01/2017
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-polls"></a>アンケートのコンテンツ
-![リーチ - コンテンツ&2;][31] 
+![リーチ - コンテンツ 2][31] 
 
 アナウンスの件名、説明、ボタンのテキストを入力します。 次に、質問と質問への回答の選択肢を追加します。
 このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。 また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
@@ -123,7 +122,7 @@ ms.lasthandoff: 03/01/2017
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-data-pushes"></a>データ プッシュのコンテンツ
-![リーチ - コンテンツ&3;][32] 
+![リーチ - コンテンツ 3][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>データの種類を選択します：
 * テキスト
@@ -139,7 +138,7 @@ ms.lasthandoff: 03/01/2017
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>タイルのコンテンツ (Windows Phone のみ)
-![リーチ - コンテンツ&4;][33]
+![リーチ - コンテンツ 4][33]
 
 ### <a name="define-the-content-of-your-tile"></a>タイルのコンテンツを定義します
 タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。
@@ -238,5 +237,4 @@ ms.lasthandoff: 03/01/2017
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
 

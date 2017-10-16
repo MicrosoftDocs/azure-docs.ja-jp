@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: d47ee8c794d1e231507dae6bb4aa88bf19ce6418
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。 
@@ -70,5 +68,4 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
 * [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
-
 

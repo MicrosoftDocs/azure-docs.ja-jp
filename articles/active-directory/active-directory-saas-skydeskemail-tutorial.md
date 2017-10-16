@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 0ffcca4161fc836192fc9c9871a905f36ea76b32
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル: Azure Active Directory と SkyDesk Email の統合
 
@@ -163,7 +162,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[ログアウト]** URL ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
@@ -208,7 +207,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-skydesk-email-test-user"></a>SkyDesk Email テスト ユーザーの作成
 
@@ -278,5 +277,4 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_203.png
-
 

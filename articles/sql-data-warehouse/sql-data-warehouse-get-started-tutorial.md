@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
+ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 95e14824ba3b705bb909ec983652dd3305b98805
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>SQL Data Warehouse を使ってみる
 
@@ -59,7 +58,7 @@ SQL Data Warehouse は、大規模な並列処理用に設計された特殊な�
 
 ### <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]** > **[Databases]** > **[SQL Data Warehouse]** の順にクリックします。
 
     ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png) ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
@@ -142,7 +141,6 @@ Azure Active Directory 管理者アカウントを利用することもできま
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 3. "*SQL Data Warehouse データベース*" に対してクエリを実行して、データベースにアクセスして操作を実行するためのデータベース ユーザーを、作成したログインに基づいて作成します。
@@ -670,4 +668,3 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/
 [SQL Server Management Studio]: https://msdn.microsoft.com/en-us/library/mt238290.aspx
-

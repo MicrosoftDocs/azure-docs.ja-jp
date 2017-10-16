@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="roll-out-password-reset-for-users"></a>ユーザーのパスワード リセットの展開
 

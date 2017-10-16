@@ -17,18 +17,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: jgao
+ms.openlocfilehash: 5c862dbf46a30dd6811faeea447d559dca493991
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 5c352fd29c32b381d754b491ec46b3b250bd66ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 
 Azure HDInsight では、Azure Storage および Azure Data Lake Store 上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。 Azure Storage および Data Lake Store は、HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage および Data Lake Store は、データの保管と計算処理のために最適化された別個のファイル システムです。 Azure Storage を使用するメリットの詳細については、[HDInsight での Azure Storage の使用][hdinsight-storage]および[HDInsight での Data Lake Store の使用](hdinsight-hadoop-use-data-lake-store.md)に関するページをご覧ください。
 
-##<a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 開始する前に、次の要件にご注意ください。
 
@@ -159,7 +158,7 @@ Hadoop コマンド ラインは、クラスターのヘッド ノードに既�
 Hadoop コマンドを使用するためには、まず、次の方法のいずれかを使用してヘッドノードに接続する必要があります。
 
 * **Windows ベースの HDInsight**: [リモート デスクトップを使用して接続する](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux ベースの HDInsight**: SSH を使って接続する ([SSH コマンド](hdinsight-hadoop-linux-use-ssh-unix.md)または [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md))
+* **Linux ベースの HDInsight**: [SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使って接続する
 
 接続したら、次の構文を使用してファイルをストレージにアップロードすることができます。
 
@@ -329,4 +328,3 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
-

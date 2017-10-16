@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
 暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。
@@ -157,7 +155,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 使用する方法にかかわらず、操作が完了するまでに 10 ～ 15 分かかることを示すダイアログ ボックスが表示されます。 **[はい]**をクリックします。
 
-暗号化処理が行われている間に、Azure ポータルに戻って、仮想マシンの状態を確認することができます。 ページの左側にある **[Virtual Machines]** をクリックし、**[Virtual Machines]** ブレードで、暗号化している仮想マシンの名前をクリックします。 表示されたブレードで、**[状態]** に **[更新中]** と表示されていることに気付きます。 これは、暗号化が進行中であることを示します。
+暗号化処理が行われている間に、Azure Portal に戻って、仮想マシンの状態を確認することができます。 ページの左側にある **[Virtual Machines]** をクリックし、**[Virtual Machines]** ブレードで、暗号化している仮想マシンの名前をクリックします。 表示されたブレードで、**[状態]** に **[更新中]** と表示されていることに気付きます。 これは、暗号化が進行中であることを示します。
 
 ![More details about the VM](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
@@ -165,7 +163,7 @@ PowerShell ISE に戻ります。 スクリプトが完了すると、次の図�
 
 ![PowerShell の出力](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
-仮想マシンが暗号化されることを示すには、Azure ポータルに戻り、ページの左側にある **[Virtual Machines]** をクリックします。 暗号化した仮想マシンの名前をクリックします。 **[設定]** ブレードで **[ディスク]** をクリックします。
+仮想マシンが暗号化されることを示すには、Azure Portal に戻り、ページの左側にある **[Virtual Machines]** をクリックします。 暗号化した仮想マシンの名前をクリックします。 **[設定]** ブレードで **[ディスク]** をクリックします。
 
 ![Settings options](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
@@ -180,4 +178,3 @@ PowerShell ISE に戻ります。 スクリプトが完了すると、次の図�
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -セキュリティの警告の管理および応答の方法について
 * [Azure セキュリティ センターに関する FAQ](security-center-faq.md) 」 – このサービスの使用に関してよく寄せられる質問
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) 」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
-

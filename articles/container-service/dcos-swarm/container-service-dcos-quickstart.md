@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 8070d224fe6281e61f67483d4f1dd905a2ab99eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fdc85e69403cec392328aad255352b2bee5afc20
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-dcos-cluster"></a>DC/OS クラスターのデプロイ
 
 DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイック スタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
@@ -58,12 +56,10 @@ az group create --name myResourceGroup --location eastus
 次の例では、*myDCOSCluster* という名前の DC/OS クラスターを作成し、まだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
 ```azurecli
-az acs create \
-  --orchestrator-type dcos \
-  --resource-group myResourceGroup \
-  --name myDCOSCluster \
-  --generate-ssh-keys
+az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
 ```
+
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してコマンドが完了すると、デプロイに関する情報が返されます。
 

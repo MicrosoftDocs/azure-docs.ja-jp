@@ -15,12 +15,11 @@ ms.date: 08/25/2017
 ms.author: kgremban
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 7fc6ad052e4e873be6a3e7009e9739e4a1c9ce03
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Windows Server の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
 Active Directory フェデレーション サービス (AD FS) を使用しており、クラウドまたはオンプレミスのリソースをセキュリティで保護したい場合には、Azure Multi-Factor Authentication Server を構成し、AD FS と連携させることができます。 この構成を行うことで、重要なエンドポイントの 2 段階認証がトリガーされます。
@@ -145,4 +144,3 @@ Web サービス SDK の構成には、2 つの選択肢があります。 1 つ
 
 ## <a name="related-topics"></a>関連トピック
 トラブルシューティングのヘルプについては、「 [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
-

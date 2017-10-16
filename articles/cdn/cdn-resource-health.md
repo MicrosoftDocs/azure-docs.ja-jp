@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 37fe208f5087f318e665e76825127854b4a11c98
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
   
 Azure CDN リソース正常性は、[Azure Resource Health](../resource-health/resource-health-overview.md) のサブセットです。  Azure Resource Health を使用すると、CDN リソースの正常性を監視し、問題のトラブルシューティングを行うための実践的なガイダンスを得ることができます。
@@ -65,8 +64,3 @@ Azure CDN リソース正常性に関連する状態を次に示します。
 - [Azure Resource Health の概要を確認します](../resource-health/resource-health-overview.md)
 - [CDN 圧縮に関する問題のトラブルシューティングを行います](./cdn-troubleshoot-compression.md)
 - [404 エラーに関する問題のトラブルシューティングを行います](./cdn-troubleshoot-endpoint.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

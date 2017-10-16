@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
+ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -58,6 +57,16 @@ ms.lasthandoff: 08/02/2017
 > 列の先頭をクリックすると、Web ブラウザーで使用できる結果の順序を変更できます。 ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行の数が制限されることに注意してください。 この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。 項目を確実に並べ替えるには、`top` または `sort` 演算子を使用します。
 >
 >
+
+## <a name="query-across-applications"></a>アプリケーション間のクエリ
+複数の Application Insights アプリケーションのデータを結合する場合は、**アプリ**のキーワードを使用して、テーブル名と共にアプリケーションを指定します。  このクエリは **union** コマンドを使用して、2 つの異なるアプリケーションからの要求を結合します。
+
+
+```AIQL
+
+    union app('fabrikamstage').requests, app('fabrikamprod').requests
+    
+```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) と [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。 指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
@@ -704,4 +713,3 @@ TrackTrace() を使用してアプリが送信したテレメトリ、または 
 * [SQL ユーザーのチート シート](https://aka.ms/sql-analytics)では、最も一般的な言語の対応付けを確認できます。
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-

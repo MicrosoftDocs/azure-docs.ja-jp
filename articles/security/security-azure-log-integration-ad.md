@@ -15,14 +15,12 @@ ums.workload: na
 ms.date: 08/08/2017
 ms.author: barclayn
 ms.custom: azlog
+ms.openlocfilehash: 8a1295cc86057ed72940e774d0bd423d61142e31
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 4a5c1cf7ee6f9e7ad43bb47f798520384606969c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 
 Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure Active Directory で発生した特権アクションを識別できます。 [Azure Active Directory 監査レポートのイベント](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)に関する記事を確認することで、追跡できるイベントのタイプを確認できます。
@@ -76,4 +74,3 @@ Azure ログ統合の詳細については、次をご覧ください。
 * [Azure ログ統合の FAQ](security-azure-log-integration-faq.md): この記事は、Azure ログ統合について寄せられる質問とその回答です。
 * [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md): この記事では、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
 * [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るのに役立つその他の機能を紹介します。
-

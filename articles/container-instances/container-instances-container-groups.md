@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: 25eab41c3f0c986bcce33123f86f4c9638b77191
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5b2abb76fc2bfcf719292db1fdafc8b353d13a3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
 Azure Container Instances の最上位のリソースは、コンテナー グループです。 この記事では、コンテナー グループとは何か、およびそれらによってどのような種類のシナリオが有効になるかを説明します。

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6aba9206ab0634e9379d63520ad9e2d0256b7e94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 80f4a965920fec9cb578c1bee235c7857f37431e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>使用するシングル サインオン方法を確認する方法
 
 この記事は、Azure AD でサポートされているシングル サインオン モードと、対象となるアプリケーションに対してモードを選ぶ方法を理解するのに役立ちます。
@@ -67,13 +65,13 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[More services (その他のサービス)]** をクリックして **[Azure Active Directory Extension (Azure Active Directory 拡張機能)]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** アイテムを選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
 4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[All Applications (すべてのアプリケーション)]** をクリックしてすべてのアプリケーションの一覧を表示します。
+5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
    * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[All Applications (すべてのアプリケーション)]** に設定します。
 
@@ -83,5 +81,4 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)
-
 

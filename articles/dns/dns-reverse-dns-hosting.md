@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 3e10b25d2f9b91c96af2958fef6dc6a4fdbff301
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="hosting-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
 この記事では、割り当てられた IP アドレス範囲の逆引き DNS 参照ゾーンを Azure DNS でホストする方法について説明します。 逆引き参照ゾーンによって表される IP 範囲を、通常は ISP が、組織に割り当てる必要があります。
@@ -119,7 +117,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 次の例では、Azure DNS で逆引き DNS ゾーンの PTR レコードを作成する手順を説明します。 他のレコードの種類と、既存のレコードの変更については、「[Azure Portal を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)」を参照してください。
 
-1.    **[DNS ゾーン]** ブレードの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
+1.  **[DNS ゾーン]** ブレードの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
 
  ![[DNS ゾーン]](./media/dns-reverse-dns-hosting/figure4.png)
 
@@ -269,4 +267,3 @@ ISP によって割り当てられた IP アドレス ブロックの逆引き D
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>
 [Azure サービスの逆引き DNS レコードを管理する](dns-reverse-dns-for-azure-services.md)方法を学習してください。
-

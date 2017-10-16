@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
+ms.openlocfilehash: 7fdcff5ed93e56e4ac70dd9dcee0056a4cbef0bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fa07135d550bf9ea0f6d1e03089b988cf0d5dddc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
 
@@ -130,7 +129,7 @@ cp docker.tar.gz /mnt/share/dcosshare
 Ubuntu イメージからコンテナーを作成します。
 
 ```azurecli-interactive
-docker run ubunut --name base-image
+docker run ubuntu --name base-image
 ```
 
 コンテナーを新しいイメージにキャプチャします。 イメージ名には、コンテナー レジストリの `loginServer` 名が `loginServer/imageName` の形式で含まれる必要があります。
@@ -208,4 +207,3 @@ dcos marathon app add acrDemo.json
 > * DC/OS クラスターで ACR 認証を構成する
 > * Azure Container Registry にイメージをアップロードする
 > * Azure Container Registry からコンテナー イメージを実行する
-

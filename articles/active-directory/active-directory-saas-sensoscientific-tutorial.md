@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: fa6242cf7f9559ca394ffde2e5e734cb935b03dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>チュートリアル: Azure Active Directory と SensoScientific Wireless Temperature Monitoring System の統合
 
@@ -106,7 +104,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-sensoscientific-tutorial/tutorial_sensoscientificwtms_samlbase.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sensoscientific-tutorial/tutorial_sensoscientificwtms_samlbase.png)
 
 3. アプリは Azure と事前に統合済みであるため、**[SensoScientific Wireless Temperature Monitoring System のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
@@ -176,7 +174,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>SensoScientific Wireless Temperature Monitoring System テスト ユーザーの作成
 
@@ -236,5 +234,4 @@ Azure AD ユーザーが SensoScientific Wireless Temperature Monitoring System 
 [201]: ./media/active-directory-saas-sensoscientific-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sensoscientific-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sensoscientific-tutorial/tutorial_general_203.png
-
 

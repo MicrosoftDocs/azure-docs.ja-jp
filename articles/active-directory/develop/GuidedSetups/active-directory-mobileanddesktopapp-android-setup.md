@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
-ms.contentlocale: ja-jp
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
 > 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
@@ -109,5 +107,4 @@ compile 'com.android.volley:volley:1.0.0'
         android:visibility="invisible" />
 </LinearLayout>
 ```
-
 

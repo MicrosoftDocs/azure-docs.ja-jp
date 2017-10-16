@@ -13,12 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: adsolank;juliako;
+ms.openlocfilehash: ae6c4da189cd6637b4e1fa9274473b62f6664e51
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 520785880cb5c9dfa5191a097fdcc3ad776f403e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 用のタスク プリセット
 
@@ -65,5 +64,4 @@ Azure Media Indexer はメディア プロセッサであり、メディア フ�
 ## <a name="next-steps"></a>次のステップ
 
 「[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)」をご覧ください。
-
 

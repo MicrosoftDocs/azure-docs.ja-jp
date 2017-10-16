@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: afc4790d5714ce7145c8f4291a05acc2e9882a9b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Site Recovery でのテスト フェールオーバー (VMM から VMM)
 
@@ -119,4 +117,3 @@ DHCP を定義する場合、ターゲット VMM サーバーは、DHCP サー�
 
 ## <a name="next-steps"></a>次のステップ
 テスト フェールオーバーが正常に実行されたら、[フェールオーバー](site-recovery-failover.md)を試すことができます。
-

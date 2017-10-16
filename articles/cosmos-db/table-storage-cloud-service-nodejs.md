@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>ストレージを使用する Node.js Web アプリケーション
 ## <a name="overview"></a>概要
@@ -415,6 +414,5 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
 [Express を使用した Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
-
 
 

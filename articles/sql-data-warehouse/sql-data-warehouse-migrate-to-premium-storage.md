@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
-ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/16/2016
-
-
+ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Premium Storage へのデータ ウェアハウスの移行
 Azure SQL Data Warehouse では最近、パフォーマンス予測能力の向上を目的として [Premium Storage][premium storage for greater performance predictability] が導入されました。 これにより、現在 Standard Storage 上に存在するデータ ウェアハウスを Premium Storage に移行できるようになりました。 移行は自動で行われますが、移行のタイミングを制御する必要がある場合は、手動で行うこともできます (移行の際にはダウンタイムが生じます)。
@@ -118,7 +116,7 @@ Premium Storage の変更により、データ ウェアハウスの基になる
 **前提条件:**
 
 - データ ウェアハウスは 1,000 DWU 以上で実行する必要があります (「[コンピューティング能力のスケーリング][scale compute power]」セクションを参照)。
-- このスクリプトを実行するユーザーは、[mediumrc ロール][mediumrc role]以上である必要があります。 このロールにユーザーを追加するには、次のコマンドを実行します。    ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- このスクリプトを実行するユーザーは、[mediumrc ロール][mediumrc role]以上である必要があります。 このロールにユーザーを追加するには、次のコマンドを実行します。````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
@@ -184,4 +182,3 @@ go
 <!--Other Web references-->
 [Premium Storage for greater performance predictability]: https://azure.microsoft.com/en-us/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure Portal]: https://portal.azure.com
-

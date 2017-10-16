@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9d118e26340371d63d18b5e6793cbd51add3da55
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: ced7e23dca2ea7a9222648a79c2d0afc7c15001d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う
 この記事は、**エンタープライズ アプリケーション**の管理と、**アプリケーション レジストリ**で新しいアプリケーションの開発に関する最も一般的な問題のいくつかをトラブルシューティングするためのドキュメントの検索に役立ちます。
 
@@ -39,4 +37,3 @@ ms.lasthandoff: 04/12/2017
 * [アクセス パネルに関する問題](active-directory-application-access-panel-content-map.md)
 * [アプリケーション プロキシに関する問題](active-directory-application-proxy-content-map.md)
 * [条件付きアクセスに関する問題](active-directory-application-conditional-access-content-map.md)
-

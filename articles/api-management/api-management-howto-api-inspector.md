@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.lasthandoff: 01/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Azure API Management で API Inspector を使用して呼び出しをトレースする方法
 API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。 API Inspector は、プログラムで使用することも、開発者ポータルから直接使用することもできます。 
@@ -262,7 +262,6 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
 [api-management-open-console]: ./media/api-management-howto-api-inspector/api-management-open-console.png
 [api-management-http-get]: ./media/api-management-howto-api-inspector/api-management-http-get.png
 [api-management-send-results]: ./media/api-management-howto-api-inspector/api-management-send-results.png
-
 
 
 

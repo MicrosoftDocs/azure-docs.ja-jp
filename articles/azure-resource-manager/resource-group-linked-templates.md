@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9ab6d3e5e41f155b1404cee8a555078409c09c60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.openlocfilehash: 8b58a83ffd473500dd3f76c09e251f9208527d4f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートの使用
 1 つの Azure Resource Manager テンプレート内から別のテンプレートにリンクして、対象となる、目的に特化した一連のテンプレートにデプロイを分解することができます。 アプリケーションを複数のコード クラスに分解する場合と同様に、分解すると、テスト、再利用、読みやすさの面でメリットがあります。  
@@ -230,5 +228,4 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 ## <a name="next-steps"></a>次のステップ
 * リソースのデプロイの順序の定義については、「 [Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)
 * リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
-
 

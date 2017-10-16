@@ -28,7 +28,7 @@
     前述のように、"structure" セクションの型情報は省略可能です。 構造化ソースの場合、型情報はデータ ストアのデータセット定義の一部として既に使用可能なので、"structure" セクションを含める場合に型情報を含めないでください。
 * **読み取りデータ ソースのスキーマの場合 (具体的には Azure BLOB)**、データと共にスキーマや型情報を保存せずに、データを保存することができます。 このような種類のデータ ソースでは、次の 2 つの場合に "structure" を含める必要があります。
   * 列マッピングを実行する場合。
-  * データセットがコピー アクティビティのソースの場合、"structure" で型情報を提供できます。Data Factory ではシンクのネイティブ型への変換にその型情報を使用します。 詳細については、[Azure BLOB との間のデータの移動](../articles/data-factory/data-factory-azure-blob-connector.md)に関する記事を参照してください。
+  * データセットがコピー アクティビティのソースの場合、"structure" で型情報を提供できます。Data Factory ではシンクのネイティブ型への変換にその型情報を使用します。 詳細については、[Azure BLOB との間のデータの移動](../articles/data-factory/v1/data-factory-azure-blob-connector.md)に関する記事を参照してください。
 
 ### <a name="supported-net-based-types"></a>サポートされる .NET ベースの型
 Data Factory は、Azure BLOB などの読み取りデータ ソースでスキーマに "structure" で型情報を提供する場合、次の CLS 準拠の .NET ベースの型値をサポートしています。

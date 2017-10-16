@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: aabe99dbd375b80e4a87ca7a067927008672b4ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-10-enable-replication-for-hyper-v-vms-replicating-to-azure"></a>手順 10: Azure への Hyper-V VM のレプリケーションを有効にする
 
 
@@ -81,5 +79,4 @@ ms.lasthandoff: 06/23/2017
 ## <a name="next-steps"></a>次のステップ
 
 
-[手順 11: テスト フェールオーバーを実行する](hyper-v-site-walkthrough-test-failover.md)方法に関するページに進む
-
+「[手順 11: テスト フェールオーバーを実行する](hyper-v-site-walkthrough-test-failover.md)」に進みます。

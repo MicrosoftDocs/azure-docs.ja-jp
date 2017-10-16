@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: cbb5d3598ef91512991d7d1e9f854eb12980752b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-2-review-the-prerequisites-for-hyper-v-without-vmm-to-azure-replication"></a>手順 2: Azure への Hyper-V (VMM なし) のレプリケーションの前提条件を確認する
 
 前提条件を表にまとめます。
@@ -40,4 +38,3 @@ ms.lasthandoff: 07/21/2017
 
 - 完全なデプロイを行う場合は、「[手順 3: 容量を計画する](hyper-v-site-walkthrough-capacity.md)」に進みます。
 - 簡単なテスト配置を行う場合は、「[手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)」に進みます。
-

@@ -15,13 +15,11 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 8013fc618fe78ea16c21a4605deb91797bf00f7d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>v2.0 エンドポイントを使用してサインインを Windows ユニバーサル アプリに追加する
   Windows ユニバーサル アプリのクイック スタート チュートリアルは、まだ準備ができていません...後でもう一度確認して、Twitter の @AzureAD から最新情報をチェックしてください。
@@ -34,5 +32,4 @@ ms.lasthandoff: 05/25/2017
     ## Get security updates for our products
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
 

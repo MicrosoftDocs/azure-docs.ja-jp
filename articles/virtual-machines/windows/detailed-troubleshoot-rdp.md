@@ -13,15 +13,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: support-article
-ms.date: 07/25/2017
+ms.topic: troubleshooting
+ms.date: 09/06/2017
 ms.author: genli
+ms.openlocfilehash: afbaa3afc78efd220d74def2e9f106e9fbd1ee2d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -50,6 +49,8 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 * Azure Portal で、仮想マシンの状態に明らかな問題があるかどうかを確認します。
 * [基本的なトラブルシューティング ガイドの一般的な RDP エラーに対する応急処置の手順](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)に従います。
+* カスタム イメージの場合は、アップロード前に VHD が適切に準備されていることを確認してください。 詳細については、「[Azure にアップロードする Windows VHD または VHDX を準備する](prepare-for-upload-vhd-image.md)」を参照してください。
+
 
 これらの手順を実行してから、リモート デスクトップを介して VM に再接続してみてください。
 
@@ -198,5 +199,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Azure の仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 4fb13a158c660105a5fc8f79a92c67ba65c5356d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk サービス: 発行者名および発行者キーに関するページ
 
@@ -52,7 +50,7 @@ ACS で認証して、発行者名と発行者キーの値を取得するため�
 4. サブスクリプション `select-azuresubscription <name of your subscription>` を選択します 
 5. 新しい名前空間 `new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging` を作成します
 
-    例:    `new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
+    例:`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
 5. 新しい ACS 名前空間が作成されたら (数分かかる場合があります)、発行者名と発行者キーの一覧が接続文字列に表示されます。 
 
@@ -102,5 +100,4 @@ Azure BizTalk Services に関するその他のトピック:
 * [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-
 

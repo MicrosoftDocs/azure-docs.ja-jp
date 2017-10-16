@@ -15,14 +15,12 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: ef922668f080b8f02f07c2f9724f5a98171fb754
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
 ネットワーク ポリシー サーバー (NPS) の拡張機能は、クラウドベースの Azure Multi-Factor Authentication 機能をオンプレミスのインフラストラクチャに拡張します。 この記事では、拡張機能をインストール済みであることを前提に、ニーズに合わせて拡張機能をカスタマイズする方法について説明します。 
@@ -39,7 +37,7 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Empty | UPN の代わりに使用する Active Directory 属性の名前を指定します。 この属性は、AlternateLoginId 属性として使用されます。 このレジストリ値が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx) (メールや displayName など) に設定されている場合、その属性の値がユーザーの UPN の代わりに認証に使用されます。 このレジストリ値が空または構成されていない場合、AlternateLoginId が無効になり、ユーザーの UPN が認証に使用されます。 |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | このフラグを使用して、AlternateLoginId を検索する LDAP 検索でグローバル カタログの使用を強制します。 グローバル カタログとしてドメイン コントローラーを構成し、AlternateLoginId 属性をグローバル カタログに追加してから、このフラグを有効にします。 <br><br> LDAP_LOOKUP_FORESTS が構成されている (空でない) 場合、レジストリ設定の値に関係なく、**このフラグが true として適用されます**。 この場合、NPS の拡張機能では、各フォレストに対してグローバル カタログが AlternateLoginId 属性で構成される必要があります。 |
-| LDAP_LOOKUP_FORESTS | string | Empty | 検索用にセミコロンで区切られたフォレストの一覧を提供します  (*contoso.com;foobar.com* など)。 このレジストリ値が構成されると、NPS の拡張機能はすべてのフォレストを一覧に表示されていた順番に繰り返し検索し、最初に見つかった AlternateLoginId 値を返します。 このレジストリ値が構成されていない場合、AlternateLoginId の検索は現在のドメインに限定されます。|
+| LDAP_LOOKUP_FORESTS | string | Empty | 検索用にセミコロンで区切られたフォレストの一覧を提供します  (*contoso.com;foobar.com* など)。このレジストリ値が構成されると、NPS の拡張機能はすべてのフォレストを一覧に表示されていた順番に繰り返し検索し、最初に見つかった AlternateLoginId 値を返します。 このレジストリ値が構成されていない場合、AlternateLoginId の検索は現在のドメインに限定されます。|
 
 代替ログイン ID の問題については、[代替ログイン ID エラー](multi-factor-authentication-nps-errors.md#alternate-login-id-errors)に関する推奨手順を使用して解決していください。
 

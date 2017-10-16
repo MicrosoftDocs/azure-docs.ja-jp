@@ -1,4 +1,4 @@
-Cu--- title: Azure の暗号化で個人の保存データを保護する | Microsoft Docs description: この記事は、Azure を使用して個人データを保護する方法を説明するシリーズの 1 つです。services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
+title: Azure の暗号化で個人の保存データを保護する | Microsoft Docs description: この記事は、Azure を使用して個人データを保護する方法を説明するシリーズの 1 つです。services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
 
 ms.assetid: ms.service: security ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 08/22/2017 ms.author: barclayn ms.custom: 
 
@@ -23,7 +23,7 @@ Encryption at Rest は、データをディスク上で確実に暗号化する�
 
 この会社では、顧客や従業員のデータのプライバシーを保護する必要があり、関係部署が必要な時にいつでもデータにアクセスできるようにしておく必要があります。 (給与を管理する部署や、予約を受け付ける部署など)
 
-このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在と過去の顧客との関係を追跡できる個人情報なども含まれています。
+このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在および過去の顧客との関係を追跡できる個人情報なども含まれています。
 
 ### <a name="problem-statement"></a>問題の説明
 
@@ -129,7 +129,7 @@ REST API または PowerShell を使用して、Azure Portal で TDE を構成�
 
 1. Azure Portal (<https://portal.azure.com>) にアクセスして、Azure 管理者または共同作成者のアカウントでサインインします。
 
-2. 左側のバナーで [参照] をクリックし、[SQL データベース] をクリックします。
+2. 左側のバナーで 参照をクリックし、SQL データベースをクリックします。
 
 3. 左側のウィンドウで SQL データベースを選択して、ご利用のユーザー データベースをクリックします。
 
@@ -137,7 +137,7 @@ REST API または PowerShell を使用して、Azure Portal で TDE を構成�
 
 5. [設定] ブレードで [Transparent Data Encryption] の箇所をクリックして、[Transparent Data Encryption] ブレードを開きます。
 
-6. [Data Encryption] ブレードで [Data Encryption] ボタンをオンにしてから、ページの上部にある [保存] をクリックして設定を適用します。 暗号化の状態は、透過的なデータ暗号化の進行状況とほぼ同様です。
+6. Data Encryption ブレードで Data Encryption ボタンをオンにしてから、ページの上部にある 保存をクリックして設定を適用します。 暗号化の状態は、透過的なデータ暗号化の進行状況とほぼ同様です。
 
 ![データの暗号化を有効にする](media/protect-personal-data-at-rest/turn-data-encryption-on.png)
 

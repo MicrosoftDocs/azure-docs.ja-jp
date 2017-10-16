@@ -13,16 +13,15 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
-自分が管理しているユーザーが Azure Active Directory の機能をどのように採り入れ、使用しているかを把握することは、IT 管理者にとってきわめて重要です。 そうすることで自社の IT インフラストラクチャと通信を計画し、使用率を高め、AAD の機能を最大限に活かすことができます。 Azure Active Directory Power BI コンテンツ パックを使用すると、データを深く掘り下げて分析できます。利用頻度の高い各種の機能に関して、そのデータをどのように利用すれば Azure Active Directory で起こっていることについての洞察を深めることができるかが見えてきます。  Azure Active Directory の API が Power BI に統合されているため、既製のコンテンツ パックをすぐにダウンロードして、Power BI が備えている多彩な視覚化機能を使い、Azure Active Directory 内のあらゆるアクティビティについての洞察を得ることができます。 そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
+自分が管理しているユーザーが Azure Active Directory の機能をどのように採り入れ、使用しているかを把握することは、IT 管理者にとってきわめて重要です。そうすることで自社の IT インフラストラクチャと通信を計画し、使用率を高め、AAD の機能を最大限に活かすことができます。 Azure Active Directory Power BI コンテンツ パックを使用すると、データを深く掘り下げて分析できます。利用頻度の高い各種の機能に関して、そのデータをどのように利用すれば Azure Active Directory で起こっていることについての洞察を深めることができるかが見えてきます。  Azure Active Directory の API が Power BI に統合されているため、既製のコンテンツ パックをすぐにダウンロードして、Power BI が備えている多彩な視覚化機能を使い、Azure Active Directory 内のあらゆるアクティビティについての洞察を得ることができます。 そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
 
 このトピックでは、ご利用の環境にコンテンツ パックをインストールして使用する具体的な手順を紹介します。
 
@@ -150,4 +149,3 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 ## <a name="next-steps"></a>次のステップ
 
 レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
-

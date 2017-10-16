@@ -14,13 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a662841bebda460d4225e080f16705b3f16fdc46
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
 Azure Portal を使用して Advisor にアクセスする方法、推奨事項を取得する方法、推奨事項を実装する方法、推奨事項を検索する方法、および推奨事項を更新する方法を説明します。
@@ -31,7 +30,7 @@ Azure Portal を使用して Advisor にアクセスする方法、推奨事項�
 
 2. 左側のウィンドウで、**[その他のサービス]** をクリックします。
 
-3. サービス メニュー ウィンドウの **[監視と管理]** で、**[Azure Advisor]** をクリックします。  
+3. サービス メニュー ウィンドウの **[Monitoring and Management (監視と管理)]** で、**[Azure Advisor]** をクリックします。  
  Advisor ダッシュボードが表示されます。
 
    ![Azure Portal を使用した Azure Advisor へのアクセス](./media/advisor-overview/advisor-azure-portal-menu.png) 
@@ -94,4 +93,3 @@ Advisor の詳細については、次を参照してください。
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 -  [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
-

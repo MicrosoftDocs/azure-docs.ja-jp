@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 8d4f2cec35a8edfec9b8830a077b8aa65ca0c229
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 497429e7bf62f7e1d67ea429d6b858725f843688
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 
 この記事では、アプリケーションへのユーザーのアクセスを削除する方法について説明します。
@@ -39,7 +37,7 @@ ms.lasthandoff: 04/11/2017
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに**「Azure Active Directory」**と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -51,17 +49,17 @@ ms.lasthandoff: 04/11/2017
 
 6.  削除するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、上部アプリケーションの **[概要]** ブレードから **[削除]** アイコンをクリックします。
+7.  アプリケーションを読み込んだら、上部アプリケーションの **[概要]** ブレードから **[削除]** アイコンをクリックします。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする必要がある
 
-ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザに代わって同意できます。 アプリケーションの同意と、これを行う理由または行わない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)」をご覧ください。
+ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、これを行う理由または行わない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)」をご覧ください。
 
 **ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、以下の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに**「Azure Active Directory」**と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -74,4 +72,3 @@ ms.lasthandoff: 04/11/2017
 
 # <a name="next-steps"></a>次のステップ
 [アプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
-

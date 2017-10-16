@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
 ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -236,5 +235,4 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 ## <a name="next-steps"></a>次のステップ
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-windows-powershell-administration.md)の詳細を確認する。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
-
 

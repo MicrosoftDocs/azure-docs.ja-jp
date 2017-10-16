@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [OneDrive](http://OneDrive.com) アカウント 
 
-ロジック アプリで OneDrive for Business アカウントを使用するには、OneDrive for Business アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。 
+ロジック アプリで OneDrive for Business アカウントを使用するには、OneDrive for Business アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
 
 次に、OneDrive for Business アカウントに接続するロジック アプリを承認する手順を示します。
 

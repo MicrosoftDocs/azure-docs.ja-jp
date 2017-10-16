@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: d92fa4efd69736565e8dc1abc44ec3b1bd8bc508
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 7643050c4ba8929abcf77476970a2f99e992579d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
@@ -46,7 +46,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
     * [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 
-* HDInsight クラスターでの Hadoop。 クラスターの作成の詳細については、「[HDInsight クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
+* HDInsight クラスターでの Hadoop。 クラスターの作成の詳細については、「[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 

@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 0171ce0bbeab783ac9b63c1fa02c7a9184cc5145
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: 52180b760046d273c5a75720df0a73532d0343ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Reporting API による Azure AD B2C の使用状況レポートへのアクセス
 
@@ -135,4 +134,3 @@ $myReport.Content | Out-File -FilePath b2cUserJourneySummaryEvents.json -Force
 # to output the content in XML use the following line
 (($myReport.Content | ConvertFrom-Json).value | ConvertTo-Xml).InnerXml | Out-File -FilePath name-your-file.xml -Force
 ```
-

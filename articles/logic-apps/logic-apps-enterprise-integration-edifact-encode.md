@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e83488f4ec420c2af40d373239ba6989387da3cb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: b8d577326d23ec45cb4a9ec0e450ebf7afd945f3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをエンコードする
 
@@ -42,7 +40,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 2. Encode EDIFACT Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
-3.    検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[契約名で EDIFACT メッセージにエンコードする]** または **[ID で EDIFACT メッセージにエンコードする]** を選択します。
+3.  検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[契約名で EDIFACT メッセージにエンコードする]** または **[ID で EDIFACT メッセージにエンコードする]** を選択します。
    
     ![search EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -57,7 +55,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-5.    完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
 
     ![integration account connection details](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -100,5 +98,4 @@ EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/c
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
-
 

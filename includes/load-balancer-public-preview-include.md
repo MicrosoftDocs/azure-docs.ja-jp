@@ -1,0 +1,1 @@
+この Standard Load Balancer Public Preview は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Load Balancer の更新情報](https://azure.microsoft.com/en-us/updates/?product=load-balancer)に関するページを参照してください。

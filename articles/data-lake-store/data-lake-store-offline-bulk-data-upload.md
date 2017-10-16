@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c852374b6f6ca58d807631fdfcc8e42abf99b673
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
-
+ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
-この記事では、[Azure Import/Export サービス](../storage/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
+この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
 
 Azure Import/Export サービスを使用すると、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage により安全に転送できます。
 
@@ -50,7 +48,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>ディスクにデータを準備する
-[Azure Import/Export サービスの使用](../storage/storage-import-export-service.md)に関する記事 (「**ドライブの準備**」セクションの下) にある手順に従って、ハード ドライブを準備します。 全体の手順を次に示します。
+[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関する記事 (「**ドライブの準備**」セクションの下) にある手順に従って、ハード ドライブを準備します。 全体の手順を次に示します。
 
 1. Azure Import/Export サービスでの使用要件を満たしているハード ディスクを調達します。
 2. Azure ストレージ アカウントを指定します。データは、Azure データセンターへの発送後そのアカウントにコピーされます。
@@ -59,11 +57,11 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../storage/storage-import-export-service.md)に関するページを参照してください。
+    さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関するページを参照してください。
 4. 上記のコマンドを実行すると、指定した場所にジャーナル ファイルが作成されます。 このジャーナル ファイルを使用して、[Azure クラシック ポータル](https://manage.windowsazure.com)でインポート ジョブを作成します。
 
 ## <a name="create-an-import-job"></a>インポート ジョブの作成
-これで、[Azure Import/Export サービスの使用](../storage/storage-import-export-service.md)に関する記事 (「**インポート ジョブの作成**」セクションの下) にある手順を使って、インポート ジョブを作成できるようになりました。 このインポート ジョブでは、他の詳細とともに、ディスク ドライブの準備中に作成されたジャーナル ファイルを提供します。
+これで、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関する記事 (「**インポート ジョブの作成**」セクションの下) にある手順を使って、インポート ジョブを作成できるようになりました。 このインポート ジョブでは、他の詳細とともに、ディスク ドライブの準備中に作成されたジャーナル ファイルを提供します。
 
 ## <a name="physically-ship-the-disks"></a>ディスクを物理的に出荷する
 これで、Azure データセンターにディスクを物理的に発送できるようになりました。 データセンターでは、インポート ジョブ作成時に指定した Azure Storage BLOB にデータがコピーされます。 さらに、ジョブ作成時に、後から追跡情報を提供することを選択した場合、インポート ジョブに戻って追跡番号を更新することができます。
@@ -71,7 +69,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 ## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Azure Storage BLOB から Azure Data Lake Store へのデータのコピー
 インポート ジョブの状態が完了になった後、指定した Azure Storage BLOB でデータが使用できるかどうかを確認できます。 その後、さまざまな方法で、そのデータを BLOB から Azure Data Lake Store へ移動することができます。 データのアップロードについて利用可能なすべてのオプションについては、「[Data Lake Store へのデータの取り込み](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store)」を参照してください。
 
-このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure Portal](../data-factory/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](../data-factory/data-factory-copy-activity-tutorial-using-powershell.md) で使用できます。
+このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure Portal](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md) で使用できます。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>ソース リンク サービス (Azure Storage BLOB)
 ````
@@ -189,7 +187,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
 }
 ````
-詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md)に関するページを参照してください。
+詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Azure Data Lake Store 内でデータ ファイルを再構築する
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Store 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
@@ -213,4 +211,3 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-

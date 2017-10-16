@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 77ebe20940bce0e21caa60567e1ccffaba7351b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: f4dfe430fba51bd009431ca72279a21be55e3a40
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-to-azure-with-site-recovery"></a>Site Recovery を使用した Azure への移行
 
@@ -83,4 +81,3 @@ AWS インスタンスを Azure VM に移行できます。 このシナリオ�
 - [AWS インスタンスを Azure に移行する](site-recovery-migrate-aws-to-azure.md)
 - ディザスター リカバリーの要件に沿って、[移行したマシンを別のリージョンにレプリケートできるように準備する](site-recovery-azure-to-azure-after-migration.md)
 - [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)してワークロードの保護を開始する
-

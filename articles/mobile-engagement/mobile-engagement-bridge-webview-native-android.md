@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ
 > [!div class="op_single_selector"]
@@ -213,9 +213,3 @@ ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
 <!-- Images. -->
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

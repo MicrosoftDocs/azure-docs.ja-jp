@@ -17,15 +17,12 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.custom: aaddev
 ms.reviewer: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: fbc12a52555b190d43b5e953fd4d19923a25b0ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションとは
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
@@ -125,4 +122,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [B2B コラボレーション ユーザーの監査およびレポート](active-directory-b2b-auditing-and-reporting.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-

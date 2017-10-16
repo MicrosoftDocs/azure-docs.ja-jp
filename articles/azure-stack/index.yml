@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Stack のオペレーター ドキュメント
+metadata:
+  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  title: Azure Stack のオペレーター ドキュメント - チュートリアル、API リファレンス
+  description: Azure Stack プレビューを使用してデータセンターから Azure サービスを提供する方法について説明します。 概念実証環境の機能を学習して試します。
+  services: azure-stack
+  author: czeumault
+  manager: carolz
+  ms.service: azure-stack
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/23/2017
+  ms.author: carolz
+abstract:
+  description: Microsoft Azure Stack は、データセンターからの Azure サービスの提供を可能にするハイブリッド クラウド プラットフォームです。 Microsoft が提供するクイックスタートとチュートリアルを使用して、Azure Stack のデプロイ方法とサービスの提供方法についてご確認ください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: ハードウェアを設定し、Azure Stack をデプロイします。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
+            text: Azure Stack のデプロイ
+            href: azure-stack-deploy-overview.md
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Stack デプロイにサービスを追加する方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Azure Stack で仮想マシンを有効にする</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Azure Stack で SQL データベースを有効にする</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Azure Stack で Web アプリを有効にする</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Stack の基礎を確認できます
+            href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>

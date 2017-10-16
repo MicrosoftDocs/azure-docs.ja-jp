@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 635e44a7ec6f9244f5fe75eb5ad947cdd8ae59a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.openlocfilehash: 69c06c9607e13c2bcffa946d6bbff9bad310ccf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 これらの要素は、[Azure マネージ アプリケーションを作成する](managed-application-publishing.md)ときに使用します。 ほとんどの要素のスキーマは、次のようになっています。
@@ -67,4 +66,3 @@ ms.lasthandoff: 05/13/2017
 ## <a name="next-steps"></a>次のステップ
 * マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
-

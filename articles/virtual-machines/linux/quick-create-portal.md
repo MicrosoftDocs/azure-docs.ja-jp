@@ -10,20 +10,18 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 15d4f81f8a7a835ea61a9056d83d8337d529c7cc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d009020e86fdfed6a45b5b63b9664c623bcb1843
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
 
 Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、仮想マシンを作成してそこに Web サーバーをインストールする手順を紹介します。
@@ -58,18 +56,18 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
-5. 設定ブレードで、既定値のまま **[OK]** をクリックします。
+5. **[設定]** は既定値のままにして、**[OK]** をクリックします。
 
 6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 
-7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM のサマリー ブレードが自動的に表示されます。
+7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
 仮想マシンとの SSH 接続を作成します。
 
-1. 仮想マシンのブレードで、**[接続]** ボタンをクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
+1. 仮想マシンのプロパティで、**[接続]** ボタンをクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
 
     ![ポータル 9](./media/quick-create-portal/portal-quick-start-9.png) 
 
@@ -110,13 +108,13 @@ sudo apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
 
-NGINX がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の VM ブレードで確認できます。
+NGINX がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の VM のプロパティで確認できます。
 
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ブレードでリソース グループを選択し、**[削除]** をクリックします。
+必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシンのリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -124,4 +122,3 @@ NGINX がインストールされ、ご利用の VM に対してポート 80 が
 
 > [!div class="nextstepaction"]
 > [Azure Linux 仮想マシンのチュートリアル](./tutorial-manage-vm.md)
-

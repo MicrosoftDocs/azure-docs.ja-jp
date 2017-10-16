@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: sutalasi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 118dd3a69f140d57a3779e86c658982d58dbb718
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 5a6e00877b0a2b139d5322f610c1901ad76a710f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-vmm-to-vmm.md)
+> * [Azure Portal](site-recovery-vmm-to-vmm.md)
 > * [クラシック ポータル](site-recovery-vmm-to-vmm-classic.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 >
@@ -321,4 +319,3 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 ## <a name="next-steps"></a>次のステップ
 [詳細を確認](/powershell/module/azurerm.recoveryservices.backup/#recovery) します。
-

@@ -13,16 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 8/31/2017
 ms.author: arijitt
+ms.openlocfilehash: 84b78fe4eb60162f3cad0ae4ae7f98864d5bbf2b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: cfed5f0f4f703821e83e3d365810c0e5ad22f035
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Spark のトラブルシューティング
 
 Apache Ambari で Apache Spark ペイロードを操作するときに発生する主な問題とその解決策について説明します。
@@ -213,12 +211,12 @@ java.lang.OutOfMemoryError
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    すべての Executor で使用されるメモリの合計を取得するには、次のコマンドを実行します。 
+    すべての Executor で使用される合計メモリを計算するには、次のコマンドを実行します。 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-    ドライバーで使用されるメモリの合計を取得するには、次のコマンドを実行します。
+   ドライバーで使用される合計メモリを計算するには、次のコマンドを実行します。
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -228,5 +226,4 @@ java.lang.OutOfMemoryError
 
 - [Spark のメモリ管理の概要](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 - [HDInsight クラスターでの Spark アプリケーションのデバッグ](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
 

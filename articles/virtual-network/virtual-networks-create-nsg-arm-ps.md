@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 32a25a0ed80c31c366bf63d61d5c78267ba0f3c8
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-network-security-groups-using-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループの作成
 
@@ -218,5 +217,4 @@ Azure には、Azure Resource Manager とクラシックという 2 種類のデ
 ```powershell
 Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
 ```
-
 

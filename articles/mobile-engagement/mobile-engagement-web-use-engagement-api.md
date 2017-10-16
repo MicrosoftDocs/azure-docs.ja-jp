@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Web アプリケーションでの Azure Mobile Engagement API の使用
 このドキュメントは、[Web アプリケーションに Mobile Engagement を統合する](mobile-engagement-web-integrate-engagement.md)方法を示すドキュメントを補足するものであり、 Azure Mobile Engagement API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
@@ -215,9 +215,3 @@ AJAX 要求が失敗した場合のエラー報告の例を次に示します。
 前の例では、サーバーに送信される JSON は 44 文字です。
 
     {"birthdate":"1983-12-07","gender":"female"}
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

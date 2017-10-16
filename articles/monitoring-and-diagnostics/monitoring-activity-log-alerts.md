@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 3885469ec0e1fcc31386dd0ad7fe6cb5d03ab28e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-activity-log-alerts"></a>アクティビティ ログ アラートの作成
 
@@ -38,7 +37,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - **[カテゴリ]**: [管理]、[サービス正常性]、[自動スケール]、[推奨]。 詳細については、[Azre アクティビティ ログの概要](./monitoring-overview-activity-logs.md#categories-in-the-activity-log)に関する記事を参照してください。 サービス正常性イベントについて詳しくは、[サービス通知のアクティビティ ログ アラートの受け取り](./monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
 - **[リソース グループ]**
 - **リソース**
-- **[リソースの種類]**
+- **リソースの種類**
 - **[操作名]**: Resource Manager のロールベースのアクセス制御の操作名。
 - **[レベル]**: イベントの重大度レベル ([詳細]、[情報]、[警告]、[エラー]、[重大])。
 - **[状態]**: イベントの状態 (通常は [開始]、[失敗]、または [成功])。
@@ -90,7 +89,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
     a. **[名前]**: アクションの名前、別名、または識別子を入力します。
 
-    b. **[アクションの種類]**: SMS、電子メール、または webhook を選択します。
+    b. **アクションの種類**: SMS、電子メール、または webhook を選択します。
 
     c. **[詳細]**: アクションの種類に基づいて、電話番号、電子メール アドレス、または webhook の URI を入力します。
 
@@ -130,4 +129,3 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - [サービス正常性の通知](monitoring-service-notifications.md)について学習します。
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視します](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)。
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視します](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
-

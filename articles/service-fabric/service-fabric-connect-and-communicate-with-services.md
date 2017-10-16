@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/9/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
@@ -37,7 +35,7 @@ Service Fabric は、サービスのライフサイクル管理に役立ちま�
 ![service endpoints][1]
 
 ## <a name="service-discovery-and-resolution"></a>サービスの検出と解決
-分散システムでは、サービスが時間の経過と共に、あるコンピューターから別のコンピューターに移動することがあります。 移動の理由にはさまざまなものがあり、リソースの分散、アップグレード、フェールオーバー、スケールアウトなどが挙げられます。 このため、別の IP アドレスを持つノードにサービスが移動すると、サービス エンドポイントのアドレスが変化することになります。また、サービスで動的に選択されるポートを使用している場合は、別のポートで開かれることがあります。
+分散システムでは、サービスが時間の経過と共に、あるコンピューターから別のコンピューターに移動することがあります。 移動の理由にはさまざまなものがあり、リソースの分散、アップグレード、フェールオーバー、スケールアウトなどが挙げられます。このため、別の IP アドレスを持つノードにサービスが移動すると、サービス エンドポイントのアドレスが変化することになります。また、サービスで動的に選択されるポートを使用している場合は、別のポートで開かれることがあります。
 
 ![Distribution of services][7]
 
@@ -155,7 +153,7 @@ Azure の Service Fabric クラスターは、Azure Load Balancer の背後に�
             protected List<ServiceInstanceListener> createServiceInstanceListeners() {
                 <ServiceInstanceListener> listeners = new ArrayList<ServiceInstanceListener>();
                 listeners.add(new ServiceInstanceListener((context) -> new HttpCommunicationlistener(context)));
-                return listeners;        
+                return listeners;       
             }
 
             ...
@@ -195,4 +193,3 @@ Reliable Services フレームワークには、事前に構築されたいく�
 [8]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerprobe.png
 [9]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
 [10]: ./media/service-fabric-reverseproxy/internal-communication.png
-

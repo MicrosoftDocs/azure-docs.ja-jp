@@ -1,6 +1,6 @@
 ---
 title: ".NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする | Microsoft Docs"
-description: "このトピックでは、.NET で Azure Active Directory (Azure AD) 認証を使用して Azure Media Services (AMS) API にアクセスする方法を示します。"
+description: "このトピックでは、.NET で Azure Active Directory (Azure AD) Authentication を使用して Azure Media Services (AMS) API にアクセスする方法を示します。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 78ca7eceb31396c748c4c20763d5c74575bbc8f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
-Windowsazure.mediaservices 4.0.0.4 以降では、Azure Media Services で Azure Active Directory (Azure AD) に基づく認証がサポートされます。 このトピックでは、Microsoft .NET で Azure AD 認証を使用して Azure Media Services API にアクセスする方法を示します。
+Windowsazure.mediaservices 4.0.0.4 以降では、Azure Media Services で Azure Active Directory (Azure AD) に基づく認証がサポートされます。 このトピックでは、Microsoft .NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +32,7 @@ Windowsazure.mediaservices 4.0.0.4 以降では、Azure Media Services で Azure
 
 Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
-- **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に対話型アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
+- **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
 - **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
 >[!IMPORTANT]
@@ -41,7 +40,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 ## <a name="get-an-azure-ad-access-token"></a>Azure AD アクセス トークンを取得する
 
-Azure AD 認証を使用して Azure Media Services API に接続するには、クライアント アプリから Azure AD アクセス トークンを要求する必要があります。 Media Services .NET クライアント SDK を使用する場合、Azure AD アクセス トークンの取得方法についての詳細の多くは、[AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) および [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) クラスでラップされ、簡略化されます。 
+Azure AD Authentication を使用して Azure Media Services API に接続するには、クライアント アプリから Azure AD アクセス トークンを要求する必要があります。 Media Services .NET クライアント SDK を使用する場合、Azure AD アクセス トークンの取得方法についての詳細の多くは、[AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) および [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) クラスでラップされ、簡略化されます。 
 
 たとえば、Azure AD オーソリティ、Media Services リソース URI、またはネイティブ Azure AD アプリケーションの詳細を指定する必要はありません。 これらは、Azure AD アクセス トークンのプロバイダー クラスで構成済みの既知の値です。 
 
@@ -189,4 +188,3 @@ Media Services に対するプログラミングを開始するには、サー�
 ## <a name="next-steps"></a>次のステップ
 
 [アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)を開始します。
-

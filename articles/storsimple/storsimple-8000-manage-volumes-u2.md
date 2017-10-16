@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 09f4de79ab9b0cdfafd10c7c7c29b0f8e6304f14
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -124,7 +123,7 @@ StorSimple ボリュームは、次のいずれかです。
 
         ![接続済みのホスト](./media/storsimple-8000-manage-volumes-u2/step5createvol2.png)
 
-    7. **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。 ページの下部にある **[Create]**」を参照してください。 指定した設定でボリュームが作成されます。
+    7. **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。 **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
         ![Click Create](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -333,5 +332,4 @@ StorSimple ボリュームは、次のいずれかです。
 
 * [StorSimple ボリュームを複製する](storsimple-8000-clone-volume-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
-
 

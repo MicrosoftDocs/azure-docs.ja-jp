@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 0275bd00850a734c9b721c8348e24c5c40422201
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory
 Azure Active Directory は、開発者が、Microsoft によってサポートされる職場または学校アカウントでユーザーが安全にサインインできるようにすることができるクラウド ID サービスです。  このドキュメントでは、業界標準の認証プロトコルである OAuth と OpenID Connect を使用して、アプリケーションに Azure AD のサポートを追加する方法を示します。
@@ -73,4 +72,3 @@ Azure Active Directory は、開発者が、Microsoft によってサポート�
 
 > [!NOTE]
 > Microsoft の個人アカウントでサインインできるようにする必要がある場合は、[Azure AD v2.0 エンドポイント](active-directory-appmodel-v2-overview.md)の使用を検討してください。  Azure AD v2.0 エンドポイントは、(Azure AD から) Microsoft の個人アカウントと Microsoft の職場アカウントを 1 つの認証システムに統合します。
-

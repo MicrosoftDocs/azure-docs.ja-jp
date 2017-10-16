@@ -15,13 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
-ms.lasthandoff: 04/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-azure-dns-using-powershell"></a>PowerShell で Azure DNS の使用を開始する
 
 > [!div class="op_single_selector"]
@@ -107,5 +106,4 @@ Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)�
 Azure DNS での DNS ゾーンの管理の詳細については、[PowerShell を使用した Azure DNS での DNS ゾーンの管理](dns-operations-dnszones.md)に関するページをご覧ください。
 
 Azure DNS での DNS レコードの管理の詳細については、[PowerShell を使用した Azure DNS での DNS レコードおよびレコード セットの管理](dns-operations-recordsets.md)に関するページをご覧ください。
-
 

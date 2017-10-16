@@ -12,12 +12,9 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b803da9d1cfefababd18b48fd39efc9895331bf
-ms.openlocfilehash: bb4088e42fcd577ef1c7af0f5a631cf4ec4b0c70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/25/2017
-
+ms.openlocfilehash: 77265ad5e5c5b201d782a4f3765e644e84e36e70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-

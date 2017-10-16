@@ -3,8 +3,8 @@ title: "ストレージ エクスプローラー (プレビュー) を使用し�
 description: "ストレージ エクスプローラー (プレビュー) を使用して Azure BLOB コンテナーと BLOB を管理します"
 services: storage
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f779106e8ca79260c8abba070586e3f03ffa61e9
-
-
+ms.author: cawa
+ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理
 ## <a name="overview"></a>概要
-[Azure Blob Storage](storage/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。
+[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。
 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、ストレージ エクスプローラー (プレビュー) を使用して BLOB コンテナーおよび BLOB を操作する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ BLOB ストレージを使用すると、データを一般に公開すること
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 
    ![Create blob containers context menu][0]
-4. **[BLOB コンテナー]** フォルダーの下に、テキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの名前付け規則](storage/storage-dotnet-how-to-use-blobs.md#create-a-container) に関するセクションをご覧ください。
+4. **[BLOB コンテナー]** フォルダーの下に、テキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの名前付け規則](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) に関するセクションをご覧ください。
 
    ![Create Blob Containers text box][1]
 5. 作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
@@ -96,7 +96,7 @@ BLOB コンテナーは、必要に応じて、簡単に作成および削除で
    ![Paste blob container context menu][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>BLOB コンテナーの SAS を取得する
-[shared access signature (SAS)](storage/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。
+[shared access signature (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。
 つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。
 
 次の手順では、BLOB コンテナーの SAS を作成する方法を説明します。
@@ -174,7 +174,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![Upload files options][16]
-     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
      4. 必要に応じて、選択したファイルのアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
      5. **[アップロード]**を選択します。
    * **BLOB コンテナーにフォルダーをアップロードする**
@@ -185,7 +185,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         ![Upload folder options][18]
-     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
      4. 必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
      5. **[アップロード]**を選択します。
    * **ローカル コンピューターに BLOB をダウンロードする**
@@ -235,9 +235,3 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 [17]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-menu.png
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

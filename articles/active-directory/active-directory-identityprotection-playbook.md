@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
-ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 このプレイブックは次の操作で役立ちます。
@@ -110,7 +109,7 @@ Azure Active Directory Identity Protection:
 11. **[保存]**をクリックします。
 12. リスク レベルを上げたユーザーを使用してサインインすることにより、リスクに基づく条件付きアクセスをテストできます。 ユーザーのリスクが中の場合、ポリシーの設定に応じて、サインインがブロックされるか、パスワードの変更を強制されます。 
     <br><br>
-    ![プレイブック](./media/active-directory-identityprotection-playbook/201.png "Playbook")
+    ![戦略](./media/active-directory-identityprotection-playbook/201.png "戦略")
     <br>
 
 ## <a name="sign-in-risk"></a>サインイン リスク
@@ -120,7 +119,7 @@ Azure Active Directory Identity Protection:
 2. **Identity Protection**に移動します。
 3. **Azure AD Identity Protection** のメイン ブレードで、**[設定]** をクリックします。 
 4. **[ポータルの設定]** ブレードの **[セキュリティ規則]** で、**[サインインのリスク]** をクリックします。
-5. **[サインインのリスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
+5. * * リスク サインイン * * ブレードで、**で****規則の有効化**です。 
 6. 次のいずれかのオプションを選択します。
    
    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します
@@ -137,5 +136,4 @@ Azure Active Directory Identity Protection:
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

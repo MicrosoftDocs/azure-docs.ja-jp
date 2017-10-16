@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
+ms.openlocfilehash: ebf35877dcd6f980af75f46b437070a6a29b7c54
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 1e1b93c29dc28569e897c57d9b68622c1edbd636
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Operations Management Suite で Kubernetes クラスターを監視する
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリを含む大規模な運用クラスターを管理するときは特に重要です。 
@@ -40,9 +38,9 @@ Microsoft または他のプロバイダーから提供されている複数の 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、イメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、イメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 
 
-このチュートリアルには、少なくとも、Linux エージェント ノードが含まれる Kubernetes クラスターと、Operations Management Suite (OMS) アカウントが必要です。 必要な場合は、[無料の OMS 試用版](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial)にサインアップしてください。
+これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
 
 ## <a name="get-workspace-settings"></a>ワークスペースの設定を取得する
 
@@ -140,7 +138,7 @@ OMS ポータルの OMS ダッシュボードで、**[コンテナー]** 概要�
 
 同様に、Azure Portal では、**[Log Analytics]** に移動してワークスペースを選択します。 **[コンテナー]** 概要タイルを表示するには、**[ソリューション]** > **[コンテナー]** の順にクリックします。 詳細を表示するには、タイルをクリックします。
 
-監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/index.md)をご覧ください。
+監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/index.yml)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -156,4 +154,3 @@ Container Service のビルド済みスクリプト サンプルを見るには�
 
 > [!div class="nextstepaction"]
 > [Azure Container Service のサンプル スクリプト](cli-samples.md)
-

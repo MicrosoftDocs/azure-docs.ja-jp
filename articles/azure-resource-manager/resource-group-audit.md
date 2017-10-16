@@ -1,6 +1,6 @@
 ---
 title: "リソースを監視する Azure アクティビティ ログの表示 | Microsoft Docs"
-description: "アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure ポータル、PowerShell、Azure CLI、および REST を表示します。"
+description: "アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure Portal、PowerShell、Azure CLI、および REST を表示します。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
 ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 アクティビティ ログを使用すると、次の内容を判断することができます。
@@ -64,7 +64,7 @@ ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
     ![表示操作](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
-1. ログ エントリを取得するには、 **Get-AzureRmLog** コマンドを実行します。 パラメーターを追加し、エントリの一覧を絞り込むことができます。 開始時間と終了時間を指定しない場合は、過去&1; 時間のエントリが返されます。 たとえば、過去&1; 時間のリソース グループの操作を取得するには、次を実行します。
+1. ログ エントリを取得するには、 **Get-AzureRmLog** コマンドを実行します。 パラメーターを追加し、エントリの一覧を絞り込むことができます。 開始時間と終了時間を指定しない場合は、過去 1 時間のエントリが返されます。 たとえば、過去 1 時間のリソース グループの操作を取得するには、次を実行します。
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup
@@ -147,10 +147,4 @@ ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
 * セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

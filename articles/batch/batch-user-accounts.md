@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 通常は、既定のユーザー アカウントの設定で十分です。 ただし、タスクを実行するために、特別にユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分の用途に合わせてユーザー アカウントを構成する方法について説明します。

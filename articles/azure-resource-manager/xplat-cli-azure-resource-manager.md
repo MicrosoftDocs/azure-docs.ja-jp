@@ -6,152 +6,216 @@ manager: timlt
 documentationcenter: 
 author: tfitzmac
 services: azure-resource-manager
-ms.assetid: bb0af466-4f65-4559-ac3a-43985fa096ff
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 09/14/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 3ad4e68b90979fd7f9d3ddf5278e65e19cb07152
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 2e3fdf06316bbf68abefe06024f63668bdf07b05
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Azure CLI を使用して Azure のリソースとリソース グループを管理する
-> [!div class="op_single_selector"]
-> * [ポータル](resource-group-portal.md) 
-> * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [REST API](resource-manager-rest-api.md)
-> 
-> 
 
-Azure コマンド ライン インターフェイス (Azure CLI) は、Resource Manager を使用したリソースのデプロイと管理に使用できるツールの 1 つです。 この記事では、Resource Manager モードで Azure CLI を使用して、Azure のリソースとリソース グループを管理する一般的な方法を紹介します。 CLI を使用したリソースのデプロイの詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。 Azure リソースと Resource Manager に関する背景については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+この記事では、Azure CLI と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
 
-> [!NOTE]
-> Azure CLI を使用して Azure リソースを管理するには、[Azure CLI をインストール](../cli-install-nodejs.md)し、`azure login` コマンドを使用して [Azure にログイン](../xplat-cli-connect.md)する必要があります。 CLI が Resource Manager モードになっていることを確認します (`azure config mode arm` を実行します)。 これらの操作が完了したら、準備は OK です。
-> 
-> 
+1. リソース グループの作成
+2. リソース グループへのリソースの追加
+3. リソースへのタグの追加
+4. 名前とタグの値に基づいたリソースへのクエリ実行
+5. リソースへのロック適用と解除
+6. リソース グループの削除
 
-## <a name="get-resource-groups-and-resources"></a>リソース グループとリソースの取得
-### <a name="resource-groups"></a>リソース グループ
-サブスクリプションのすべてのリソース グループとその場所の一覧を取得するには、次のコマンドを実行します。
+この記事では、Resource Manager テンプレートをサブスクリプションにデプロイする方法については説明しません。 詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」をご覧ください。
 
-    azure group list
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+CLI をインストールしてローカルで使用するには、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」をご覧ください。
 
-### <a name="resources"></a>リソース
- グループ内 (この例では *testRG* という名前のグループ) のすべてのリソースの一覧を表示するには、次のコマンドを使用します。
+## <a name="set-subscription"></a>サブスクリプションの設定
 
-    azure resource list testRG
+複数のサブスクリプションがある場合は、別のサブスクリプションに切り替えることができます。 最初に、自分のアカウントのすべてのサブスクリプションを見てみましょう。
 
-*MyUbuntuVM* という名前の VM など、グループ内の個別のリソースを表示するには、次のコマンドを使用します。
+```azurecli-interactive
+az account list
+```
 
-    azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
+有効および無効なサブスクリプションの一覧を返します。
 
-**Microsoft.Compute/virtualMachines** パラメーターに注意してください。 このパラメーターは、情報要求の対象となるリソースの種類を示します。
-
-> [!NOTE]
-> **list** コマンド以外の **azure resource** コマンドを使用する場合、リソースの API バージョンを **-o** パラメーターで指定する必要があります。 API バージョンが不明な場合は、テンプレート ファイルでリソースの apiVersion フィールドを確認してください。 Resource Manager の API バージョンの詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
-> 
-> 
-
-リソースの詳細を表示するとき、多くの場合、`--json` パラメーターを使用すると便利です。 このパラメーターを使用すると、一部の値が入れ子構造やコレクションになるので、出力が読みやすくなります。 次の入力例は、**show** コマンドの結果を JSON ドキュメントとして返す場合を示しています。
-
-    azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json
-
-> [!NOTE]
-> &gt; 文字を使用して出力をファイルに転送することで、JSON データをファイルに保存できます。 次に例を示します。
-> 
-> `azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json > myfile.json`
-> 
-> 
-
-### <a name="tags"></a>タグ
-[!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
-
-## <a name="manage-resources"></a>リソースの管理
-ストレージ アカウントなどのリソースをリソース グループに追加するには、次のようなコマンドを実行します。
-
-    azure resource create testRG MyStorageAccount "Microsoft.Storage/storageAccounts" "westus" -o "2015-06-15" -p "{\"accountType\": \"Standard_LRS\"}"
-
-**-o** パラメーターでリソースの API バージョンを指定するほか、**-p** パラメーターで必須または追加のプロパティを指定して JSON で書式設定された文字列を渡します。
-
-仮想マシンのリソースなど、既存のリソースを削除するには、次のようなコマンドを使用します。
-
-    azure resource delete testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 **azure resource move** コマンドを使用します。 次の例は、Redis Cache を新しいリソース グループに移動する方法を示しています。 **-i** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
-
-    azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
-
-## <a name="control-access-to-resources"></a>リソースへのアクセスの制御
-Azure CLI を使用して、Azure リソースへのアクセスを制御するポリシーを作成し、管理することができます。 ポリシーの定義とリソースへのポリシーの割り当てに関する背景については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
-
-たとえば、米国西部または米国中北部以外の場所からのすべての要求を拒否する次のポリシーを定義し、ポリシー定義ファイル policy.json に保存してみます。
-
-    {
-    "if" : {
-        "not" : {
-        "field" : "location",
-        "in" : ["westus" ,  "northcentralus"]
-        }
-    },
-    "then" : {
-        "effect" : "deny"
+```json
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "<guid>",
+    "isDefault": true,
+    "name": "Example Subscription One",
+    "registeredProviders": [],
+    "state": "Enabled",
+    "tenantId": "<guid>",
+    "user": {
+      "name": "example@contoso.org",
+      "type": "user"
     }
-    }
+  },
+  ...
+]
+```
 
-次に、**policy definition create** コマンドを実行します。
+サブスクリプションの 1 つが既定値としてマークされていることに注意してください。 このサブスクリプションが、現在操作しているコンテキストです。 別のサブスクリプションに切り替えるには、**az account set** コマンドを使用してサブスクリプション名を指定します。
 
-    azure policy definition create MyPolicy -p c:\temp\policy.json
+```azurecli-interactive
+az account set -s "Example Subscription Two"
+```
 
-このコマンドの出力は次のようになります。
+現在のサブスクリプションのコンテキストを表示するには、パラメーターを付けずに **az account show** を使用してください。
 
-    + Creating policy definition MyPolicy data:    PolicyName:             MyPolicy data:    PolicyDefinitionId:     /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy
+```azurecli-interactive
+az account show
+```
 
-    data:    PolicyType:             Custom data:    DisplayName:            undefined data:    Description:            undefined data:    PolicyRule:             field=location, in=[westus, northcentralus], effect=deny
+## <a name="create-a-resource-group"></a>リソース グループの作成
+サブスクリプションにリソースをデプロイする前に、そのリソースを含めるリソース グループを作成する必要があります。
 
- 目的のスコープにポリシーを割り当てるには、前のコマンドで返された **PolicyDefinitionId** を使用します。 次の例では、スコープはサブスクリプションになっていますが、リソース グループや個々のリソースをスコープにすることもできます。
+リソース グループを作成するには、**az group create** コマンドを使用します。 このコマンドは **name** パラメーターを使用してリソース グループの名前を指定し、**location** パラメーターを使用して場所を指定します。
 
-    azure policy assignment create MyPolicyAssignment -p /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy -s /subscriptions/########-####-####-####-############/
+```azurecli-interactive
+az group create --name TestRG1 --location "South Central US"
+```
 
-**policy definition show**、**policy definition set**、**policy definition delete** の各コマンドを使用して、ポリシー定義を取得、変更、削除することができます。
+出力の形式は次のとおりです。
 
-同様に、**policy assignment show**、**policy assignment set**、**policy assignment delete** の各コマンドを使用して、ポリシーの割り当てを取得、変更、削除することができます。
+```json
+{
+  "id": "/subscriptions/<subscription-id>/resourceGroups/TestRG1",
+  "location": "southcentralus",
+  "managedBy": null,
+  "name": "TestRG1",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null
+}
+```
 
-## <a name="export-a-resource-group-as-a-template"></a>テンプレートとしてのリソース グループのエクスポート
-既存のリソース グループがある場合は、そのリソース グループの Resource Manager テンプレートを表示できます。 テンプレートのエクスポートには、2 つの利点があります。
+後でリソース グループを取得する必要がある場合は、次のコマンドを使用します。
 
-1. ソリューションの将来のデプロイを簡単に自動化できます。すべてのインフラストラクチャがテンプレートに定義されているためです。
-2. ソリューションを表す JSON を見ることでテンプレートの構文について理解を深めることができます。
+```azurecli-interactive
+az group show --name TestRG1
+```
 
-Azure CLI を使用して、リソース グループの現在の状態を表すテンプレートをエクスポートするか、特定のデプロイに使用されたテンプレートをダウンロードできます。
+ご利用のサブスクリプションにあるすべてのリソース グループを取得するには、以下を使用します。
 
-* **リソース グループのテンプレートのエクスポート** - これは、リソース グループを変更した後で、現在の状態の JSON 表現を取得する必要があるときに便利です。 しかしながら、生成されたテンプレートには、最小数のパラメーターのみが含まれ、変数はありません。 テンプレートの大半の値はハードコーディングされています。 生成されたテンプレートをデプロイする前に、さまざまな環境に合わせてデプロイをカスタマイズできるように、多くの値をパラメーターに変換しておくと便利です。
-  
-    リソース グループのテンプレートをローカル ディレクトリにエクスポートするには、次の例に示すように、`azure group export` コマンドを実行します  (ローカル ディレクトリはお使いのオペレーティング システム環境に合わせて置き換えてください)。
-  
-        azure group export testRG ~/azure/templates/
-* **特定のデプロイのテンプレートのダウンロード** -- これは、リソースのデプロイに使用された実際のテンプレートを表示する必要があるときに便利です。 テンプレートには、元のデプロイに定義されていたすべてのパラメーターと変数が含まれます。 ただし、組織のだれかがテンプレートに定義されている以外のリソース グループを変更した場合、そのテンプレートはそのリソース グループの現在の状態を表しません。
-  
-    特定のデプロイに使用されたテンプレートをローカル ディレクトリにダウンロードするには、`azure group deployment template download` コマンドを実行します。 次に例を示します。
-  
-        azure group deployment template download TestRG testRGDeploy ~/azure/templates/downloads/
+```azurecli-interactive
+az group list
+```
 
-> [!NOTE]
-> テンプレートのエクスポート機能はプレビューの段階にあり、現在のところ、一部の種類のリソースでは、テンプレートをエクスポートできません。 テンプレートのエクスポートを試行したとき、一部のリソースがエクスポートされなかったというエラーが表示されることがあります。 必要に応じて、ダウンロード後、エクスポートされなかったリソースをテンプレート内で手動で定義します。
-> 
-> 
+## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
+リソースをリソース グループに追加するには、**az resource create** コマンド、または作成するリソースの種類に固有のコマンド (**az storage account create** など) を使用します。 リソースの種類に固有のコマンドには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、こちらを使用する方が簡単です。 **az resource create** を使用するには、設定するすべてのプロパティを把握しておく必要があります。これらを入力するよう求めるメッセージは表示されません。
+
+ただし、スクリプトを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。
+
+次のコマンドは、ストレージ アカウントを作成します。 この例で示されている名前ではなく、ストレージ アカウントの一意の名前を指定してください。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。 この例で示されている名前は既に使用済みのため、その名前を使うと、エラーが発生します。
+
+```azurecli-interactive
+az storage account create -n myuniquestorage -g TestRG1 -l westus --sku Standard_LRS
+```
+
+後でこのリソースを取得する必要がある場合は、次のコマンドを使用します。
+
+```azurecli-interactive
+az storage account show --name myuniquestorage --resource-group TestRG1
+```
+
+## <a name="add-a-tag"></a>タグを追加します
+
+タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 このトピックでは、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
+
+次のコマンドは、2 つのタグをお使いのストレージ アカウントに適用します。
+
+```azurecli-interactive
+az resource tag --tags Dept=IT Environment=Test -g TestRG1 -n myuniquestorage --resource-type "Microsoft.Storage/storageAccounts"
+```
+
+タグは 1 つのオブジェクトとして更新されます。 タグが既に含まれているリソースにタグを追加するには、最初に既存のタグを取得します。 新しいタグを、既存のタグが含まれるオブジェクトに追加したら、すべてのタグをリソースに再度適用します。
+
+```azurecli-interactive
+jsonrtag=$(az resource show -g TestRG1 -n myuniquestorage --resource-type "Microsoft.Storage/storageAccounts" --query tags)
+rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
+az resource tag --tags $rt Project=Redesign -g TestRG1 -n myuniquestorage --resource-type "Microsoft.Storage/storageAccounts"
+```
+
+## <a name="search-for-resources"></a>リソースの検索
+
+**az resource list** コマンドを使用して、さまざまな検索条件でリソースを取得します。
+
+* 名前をもとにリソースを取得するには、**name** パラメーターを指定します。
+
+  ```azurecli-interactive
+  az resource list -n myuniquestorage
+  ```
+
+* リソース グループのすべてのリソースを取得するには、**resource-group** パラメーターを指定します。
+
+  ```azurecli-interactive
+  az resource list --resource-group TestRG1
+  ```
+
+* タグ名と値ですべてのリソースを取得するには、**tag** パラメーターを指定します。
+
+  ```azurecli-interactive
+  az resource list --tag Dept=IT
+  ```
+
+* 特定のリソースの種類のリソースをすべて取得するには、**resource-type** パラメーターを指定します。
+
+  ```azurecli-interactive
+  az resource list --resource-type "Microsoft.Storage/storageAccounts"
+  ```
+
+## <a name="lock-a-resource"></a>リソースのロック
+
+重要なリソースが誤って削除または変更されないようにするには、そのリソースにロックを適用します。 **CanNotDelete** または **ReadOnly** のいずれかを指定できます。
+
+管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、所有者とユーザー アクセス管理者にのみこれらのアクションが許可されています。
+
+ロックを適用するには、次のコマンドを使用します。
+
+```azurecli-interactive
+az lock create --lock-type CanNotDelete --resource-name myuniquestorage --resource-group TestRG1 --resource-type Microsoft.Storage/storageAccounts --name storagelock
+```
+
+前の例でロックされたリソースは、ロックが解除されるまで削除できません。 ロックを解除するには、次を使用します。
+
+```azurecli-interactive
+az lock delete --name storagelock --resource-group TestRG1 --resource-type Microsoft.Storage/storageAccounts --resource-name myuniquestorage
+```
+
+ロックの詳細については、[Azure Resource Manager でのリソースのロック](resource-group-lock-resources.md)に関するページをご覧ください。
+
+## <a name="remove-resources-or-resource-group"></a>リソースまたはリソース グループの削除
+リソースまたはリソース グループを削除できます。 リソース グループを削除すると、そのリソース グループ内のリソースもすべて削除されます。
+
+* リソース グループからリソースを削除するには、削除するリソースの種類に対して delete コマンドを使用します。 このコマンドはリソースを削除しますが、リソース グループは削除しません。
+
+  ```azurecli-interactive
+  az storage account delete -n myuniquestorage -g TestRG1
+  ```
+
+* リソース グループとそのすべてのリソースを削除するには、**az group delete** コマンドを使用します。
+
+  ```azurecli-interactive
+  az group delete -n TestRG1
+  ```
+
+どちらのコマンドについても、リソースまたはリソース グループを削除するかどうかを確認するメッセージが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure CLI を使用したデプロイ操作とデプロイ エラーのトラブルシューティングの詳細については、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関する記事を参照してください。
-* CLI を使用してリソースにアクセスするアプリケーションやスクリプトを設定する場合は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」を参照してください。
+* リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
+* テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。
+* 新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-

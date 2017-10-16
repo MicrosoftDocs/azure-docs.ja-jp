@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9778db69e94e9f1d033cc8c16fdb9554df3eddcc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: eb455477547f3db8245cf3601576eba9c6fdc56f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
 Azure AD に同期される、オンプレミスの Active Directory 向けの AD ごみ箱機能を有効にすることをお勧めします。 
@@ -47,4 +46,3 @@ Azure AD に同期される、オンプレミスの Active Directory 向けの A
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: d7bd0d780c265cc15ad09a73ede8c5a886005e37
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -59,6 +59,18 @@ ms.lasthandoff: 08/28/2017
 ### <a name="question-why-are-my-query-results-not-sorted"></a>質問: クエリの結果がソートされていないのはなぜですか。
 既定では、新しいクエリ言語では結果の並べ替えは行われません。  [sort 演算子](https://go.microsoft.com/fwlink/?linkid=856079)を使用して、1 つまたは複数のプロパティで結果を並べ替えます。
 
+### <a name="question-where-did-minify-go-after-i-upgraded"></a>質問: アップグレードした後、縮小はどこに移動されましたか?
+縮小は、検索結果の概要を把握する機能です。  アップグレードした後、縮小オプションは、ログ検索ポータルに表示されなくなります。  新しい検索言語では、[reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) または [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster) を使用して類似した機能を使用できます。 
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | reduce by RenderedDescription
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | evaluate autocluster_v2()
+
+
 ### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>既知の問題: 一覧の検索結果にデータのないプロパティが表示されることがある
 一覧のログ検索の結果に、データのないプロパティが表示されることがあります。  アップグレードの前に、これらのプロパティが含まれないようにします。  この問題を修正し、空のプロパティが表示されないようにする予定です。
 
@@ -68,7 +80,7 @@ ms.lasthandoff: 08/28/2017
 ## <a name="log-search-api"></a>Log Search API
 
 ### <a name="question-does-the-log-search-api-get-updated-after-i-upgrade"></a>質問: アップグレード後に Log Search API は更新されますか。
-[Log Search API](log-analytics-log-search-api.md) は、まだ新しい検索言語にアップグレードされていません。  ワークスペースをアップグレードした後でも、引き続き従来のクエリ言語をこの API とあわせて使用します。  更新版の Log Search API のドキュメントは、API が更新されたときに利用できるようになります。
+従来の [Log Search API](log-analytics-log-search-api.md) は、ワークスペースをアップグレードすると動作しなくなります。  新しい API の詳細については、「[Azure Log Analytics REST API](https://dev.loganalytics.io/)」を参照してください。
 
 
 ## <a name="portals"></a>ポータル
@@ -125,11 +137,11 @@ ms.lasthandoff: 08/28/2017
 ### <a name="known-issue-capacity-and-performance-solution"></a>既知の問題: Capacity and Performance のソリューション
 [Capacity and Performance](log-analytics-capacity.md) ビューの何か所かは、空になっている場合があります。  この問題の修正は、まもなく利用できるようになります。
 
-### <a name="known-issue-device-health-solution"></a>既知の問題: デバイスの正常性ソリューション
-[デバイスの正常性ソリューション](https://docs.microsoft.com/windows/deployment/update/device-health-monitor)は、アップグレードされたワークスペースから情報を収集しません。  この問題の修正は、まもなく利用できるようになります。
-
 ### <a name="known-issue-application-insights-connector"></a>既知の問題: Application Insights Connector
 [Application Insights Connector ソリューション](log-analytics-app-insights-connector.md)のパースペクティブは、現在、アップグレード後のワークスペースではサポートされていません。  この問題の修正は、現在分析中です。
+
+### <a name="known-issue-backup-solution"></a>既知の問題: Microsoft Azure Backup ソリューション
+Microsoft Azure Backup ソリューションは、アップグレードされたワークスペースからデータを収集しません。 アップグレードされたワークスペースで動作する新しい Microsoft Azure Backup ソリューションがまもなく発表されます。
 
 ## <a name="upgrade-process"></a>アップグレード プロセス
 

@@ -9,19 +9,17 @@ editor:
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/25/2017
 ms.author: genli
+ms.openlocfilehash: 3011ef7eced5a24ba07d06e2db2f5e4d344b94de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 524f6303f71590de75f7eb8fd2a9082c35dfa651
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
 Azure 仮想マシン (VM) 間の接続について問題が発生することがあります。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。 

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 3a597d228f6c9234ec2fd2644ec3ac50b98f3b6b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル: Azure Active Directory と FM:Systems の統合
 
@@ -159,7 +157,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-fmsystems-test-user"></a>FM:Systems テスト ユーザーの作成
 
@@ -238,5 +236,4 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-fm-systems-tutorial/tutorial_general_203.png
-
 

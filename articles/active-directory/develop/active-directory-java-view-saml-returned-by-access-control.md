@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06d30b8222cd0590809b2fd5a1241394056c6338
-ms.openlocfilehash: ac91a1c753611f4002a930dadeaeba2fcd53a324
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: 1552e624a4703138ab82f7133ceaec3dbd04e1db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
 このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。 このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法](active-directory-java-authenticate-users-access-control-eclipse.md)」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。 完成したアプリケーションは次のようになります。
@@ -197,4 +195,3 @@ ACS の詳細については、「 [次のステップ](#next_steps) 」を参�
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
-

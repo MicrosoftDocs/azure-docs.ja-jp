@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: dd1c18e32f3d0386e522dba82ce494394abbf8ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -69,12 +68,13 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    
    * **sc** : Spark コンテキスト用
    * **sqlContext** : Hive コンテキスト用
-
-    そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
-
-        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
-
-    代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
+   
+   そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
+   
+          sc = SparkContext('yarn-client')
+          sqlContext = HiveContext(sc)
+   
+   代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
 - **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
    
@@ -177,4 +177,3 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: b4357150d0be21672d0b8e212c4ea1a7bec99412
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
-
+ms.openlocfilehash: 2cf765cb034725199127c547a9b8b997a4a6089c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-use-performance-counters-in-an-azure-application"></a>Azure アプリケーションでのパフォーマンス カウンターの作成と使用
 この記事では、Azure アプリケーションにパフォーマンス カウンターを配置する利点と方法について説明します。 パフォーマンス カウンターを使用すると、データの収集、ボトルネックの特定、およびシステムとアプリケーションのパフォーマンスの調整を行うことができます。
@@ -100,7 +98,7 @@ Azure アプリケーションで、パフォーマンス カウンターを有�
 このセクションは、アプリケーションに診断モニターがインポートされ、Visual Studio ソリューションに診断構成ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) が追加されていることを前提としています。 詳細については、[Azure の Cloud Services および Virtual Machines での診断機能の有効化](cloud-services-dotnet-diagnostics.md)に関するページの手順 1. と手順 2. を参照してください。
 
 ## <a name="step-1-collect-and-store-data-from-performance-counters"></a>手順 1. パフォーマンス カウンターからデータを収集して保存する
-Visual Studio ソリューションに診断ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集と保存を構成できます。 そのためには、診断ファイルにパフォーマンス カウンターを追加します。 パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。 その後、データが Azure Table サービスの WADPerformanceCountersTable テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。 コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。 診断データを保存する前に、[Azure Portal](http://portal.azure.com/) でクラシック ストレージ アカウントを作成する必要があります。 最善の方法は、Azure アプリケーションと同じ地理的場所にストレージ アカウントを配置することです。 Azure アプリケーションとストレージ アカウントを同じ地理的な場所にしておくことで、外部帯域幅の料金を払わなくて済み、待機時間を短縮できます。
+Visual Studio ソリューションに診断ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集と保存を構成できます。 そのためには、診断ファイルにパフォーマンス カウンターを追加します。 パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。 その後、データが Azure Table service の WADPerformanceCountersTable テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。 コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。 診断データを保存する前に、[Azure Portal](http://portal.azure.com/) でクラシック ストレージ アカウントを作成する必要があります。 最善の方法は、Azure アプリケーションと同じ地理的場所にストレージ アカウントを配置することです。 Azure アプリケーションとストレージ アカウントを同じ地理的な場所にしておくことで、外部帯域幅の料金を払わなくて済み、待機時間を短縮できます。
 
 ### <a name="add-performance-counters-to-the-diagnostics-file"></a>診断ファイルにパフォーマンス カウンターを追加する
 使用できるパフォーマンス カウンターは多数あります。 次の例に、Web ロールおよび worker ロールの監視に推奨されるパフォーマンス カウンターをいくつか示します。
@@ -244,7 +242,7 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 これらの手順を完了すると、カスタム パフォーマンス カウンター データが Azure 診断モニターによって収集されます。
 
 ## <a name="step-3-query-performance-counter-data"></a>手順 3. パフォーマンス カウンターのデータのクエリを実行する
-アプリケーションがデプロイされたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure ストレージに保存されます。 Visual Studio のサーバー エクスプローラー、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) (Cerebrata) などのツールを使用して、WADPerformanceCountersTable テーブルにあるパフォーマンス カウンター データを確認します。 [C#](../storage/storage-dotnet-how-to-use-tables.md)、[Java](../storage/storage-java-how-to-use-table-storage.md)、[Node.js](../storage/storage-nodejs-how-to-use-table-storage.md)、[Python](../storage/storage-python-how-to-use-table-storage.md)、[Ruby](../storage/storage-ruby-how-to-use-table-storage.md)、[PHP](../storage/storage-php-how-to-use-table-storage.md) を使って、Table service をプログラムにより照会することもできます。
+アプリケーションがデプロイされたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure ストレージに保存されます。 Visual Studio のサーバー エクスプローラー、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) (Cerebrata) などのツールを使用して、WADPerformanceCountersTable テーブルにあるパフォーマンス カウンター データを確認します。 [C#](../cosmos-db/table-storage-how-to-use-dotnet.md)、[Java](../cosmos-db/table-storage-how-to-use-java.md)、[Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)、[Python](../cosmos-db/table-storage-how-to-use-python.md)、[Ruby](../cosmos-db/table-storage-how-to-use-ruby.md)、[PHP](../cosmos-db/table-storage-how-to-use-php.md) を使って、Table service をプログラムにより照会することもできます。
 
 次の C# の例は、WADPerformanceCountersTable テーブルに対する基本的なクエリを示しており、CSV ファイルに診断データを保存します。 パフォーマンス カウンターが CSV ファイルに保存されたら、Microsoft Excel や他のツールのグラフ作成機能を使ってデータを視覚化できます。 必ず、Microsoft.WindowsAzure.Storage.dll への参照を追加してください。これは、Azure SDK for .NET (2012 年 10 月) 以降に含まれています。 このアセンブリは、%Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ ディレクトリにインストールされます。
 
@@ -322,4 +320,3 @@ public class PerformanceCountersEntity : TableEntity
 
 ## <a name="next-steps"></a>次のステップ
 [Azure 診断に関するその他の記事を確認します](../azure-diagnostics.md)
-

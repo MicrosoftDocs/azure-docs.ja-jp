@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
 ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>チュートリアル: Azure Active Directory と ScaleX Enterprise の統合
 
@@ -135,7 +133,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     b. **emailaddress** 属性をクリックして、[属性の編集] ウィンドウを開きます。 その値を、**user.mail** から **user.userprincipalname** に変更し、[Ok] をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)    
+    ![Configure Single Sign-On](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)   
     
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -215,7 +213,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>ScaleX Enterprise テスト ユーザーの作成
 
@@ -278,5 +276,4 @@ Azure AD ユーザーが ScaleX Enterprise にログインできるようにす�
 [201]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_203.png
-
 

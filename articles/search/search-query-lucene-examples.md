@@ -15,14 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/21/2017
 ms.author: liamca
+ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: bfd044f333087d8e3e9526820196be6eaec2f18f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための Lucene クエリ構文例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)または代替の [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用できます。 Lucene Query Parser は、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
 
@@ -41,7 +39,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>完全な Lucene の解析を呼び出す方法
 
-この記事のすべての例で、Lucene Query Parser によって処理される完全な構文を示す、**queryType=full** 検索パラメーターを指定します。 
+この記事のすべての例で、**queryType=full** 検索パラメーターを指定します。そうすることで、Lucene Query Parser によって完全な構文が処理されるように指示します。 
 
 **例 1** -- 次のクリエ スニペットを右クリックし、新しいブラウザー ページで開きます。新しいページが JSFiddle を読み込み、クエリを実行します。
 

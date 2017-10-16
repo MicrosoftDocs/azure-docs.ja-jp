@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -196,7 +195,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. 左側のウィンドウで、 **[データベース]** をクリックします。
 2. **[データベースの変更]**をクリックします。
-3. **[新しいレポート サーバー データベースを作成する]** が選択されていることを確認し、[次へ] をクリックします。
+3. **新しいレポート サーバー データベースを作成する** が選択されていることを確認し、次へをクリックします。
 4. **[サーバー名]** を確認し、**[接続テスト]** をクリックします。
 5. **"接続テストに成功しました"** というメッセージが表示されたら、**[OK]** をクリックし、**[次へ]** をクリックします。
 6. データベース名が **[ReportServer]**、**[レポート サーバー モード]** が **[ネイティブ]** であることを確認し、**[次へ]** をクリックします。
@@ -352,5 +351,4 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 
 ### <a name="community-content"></a>コミュニティ コンテンツ
 * [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
-
 

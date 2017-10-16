@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>Windows ユニバーサル アプリ Engagement SDK を使用した詳細なレポート
 > [!div class="op_single_selector"]
@@ -160,10 +160,4 @@ Engagement の構成は、「[作業の開始](mobile-engagement-windows-store-d
 オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。 Engagement API により、Engagement のすべての高度な機能を使用できます。
 
 詳細については、「 [How to use the advanced Mobile Engagement tagging API in your Windows Universal app (Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-store-use-engagement-api.md)」をご覧ください
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 666d0f655a0705423d025b88a1f457b866008ab9
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 ただし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは発行者ポータル ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
@@ -262,7 +262,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 [Runscope 用の既存のクライアント ライブラリ](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)を利用し、`HttpRequestMessage` と `HttpResponseMessage` のインスタンスをサービスに簡単にプッシュ送信することができました。 Runscope API にアクセスするには、アカウントと API キーが必要です。 API キーを取得するための手順については、 [Runscope API にアクセスするアプリケーションの作成](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) に関するスクリーンキャストを参照してください。
 
 ## <a name="complete-sample"></a>完全なサンプル
-サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](api-management-get-started.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/storage-create-storage-account.md)が必要です。   
+サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](api-management-get-started.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-create-storage-account.md)が必要です。   
 
 このサンプルは、イベント ハブからのイベントをリッスンし、そのイベントを `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換して、Runscope API に転送するだけの簡単なコンソール アプリケーションです。
 
@@ -282,4 +282,3 @@ Azure API Management サービスでは、API を経由して送受信される 
   * [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)
   * [ロガーのエンティティ リファレンス](https://msdn.microsoft.com/library/azure/mt592020.aspx)
   * [log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
-

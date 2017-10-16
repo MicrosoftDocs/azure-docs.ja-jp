@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
-ms.lasthandoff: 02/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する
 DevTest ラボのコスト管理機能は、ラボのコストを追跡するのに役立ちます。 この記事では、 **月間推定コスト傾向** グラフを使用して、現在のカレンダー月の現時点までの推定コストおよび現在のカレンダー月の月末の予測コストを表示する方法を示します。 この記事では、Azure Portal で月間推定コスト傾向グラフを表示する方法について説明します。
@@ -36,7 +35,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
    
     ![コスト グラフ](./media/devtest-lab-configure-cost-management/graph.png)
 
-**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストです。 **[予測コスト]** は現在のカレンダー月全体の推定コストで、過去&5; 日間のラボのコストを使用して計算されます。
+**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストです。 **[予測コスト]** は現在のカレンダー月全体の推定コストで、過去 5 日間のラボのコストを使用して計算されます。
 
 コストの金額の端数は切り上げられます。 次に例を示します。 
 
@@ -56,7 +55,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
-* [Two more things to keep your cost on track in DevTest Labs (DevTest Labs でコストを正常に保つためのさらに&2; つのこと)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
+* [Two more things to keep your cost on track in DevTest Labs (DevTest Labs でコストを正常に保つためのさらに 2 つのこと)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
 * [Why Cost Thresholds? (なぜコストのしきい値か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
 
 ## <a name="next-steps"></a>次のステップ
@@ -66,5 +65,4 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 * [カスタム イメージを作成する](devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。 この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 * [Marketplace イメージを構成する](devtest-lab-configure-marketplace-images.md) - DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 * [ラボで VM を作成する](devtest-lab-add-vm-with-artifacts.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: ce78b996a5f45b0b074563bc50af5aaab85f2667
-ms.openlocfilehash: 56eacc48102302961132bba6d14838327a899c59
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: b3c01f8d332d26e92dc3052681a4b2c95142d440
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enterprise-state-roaming-overview"></a>Enterprise State Roaming の概要
 Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis.md) のユーザーが、そのユーザー設定とアプリケーション設定のデータをクラウドと安全に同期させることができます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。 Enterprise State Roaming の働きは、Windows 8 で初めて導入された標準的な [コンシューマー設定の同期機能](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) と似ています。 それに加えて、Enterprise State Roaming には次の機能が用意されています。
@@ -38,5 +37,4 @@ Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis
 | [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md) |Windows 10 では、グループ ポリシーとモバイル デバイス管理 (MDM) のポリシー設定を通じて、設定の同期を制限することができます。 |
 | [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) |Windows 10 でローミングまたはバックアップされる全設定の一覧が掲載されています。 |
 | [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md) |このトピックでは、トラブルシューティングの基本的な手順について説明します。既知の問題の一覧も含まれています。 |
-
 

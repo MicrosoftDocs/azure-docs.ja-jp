@@ -14,16 +14,15 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 82d5eb7fd13b1e9700a3e9bc2d30775e9c129749
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site-classic-portal"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする (クラシック ポータル)
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+> * [Azure Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
 > * [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 >
@@ -150,7 +149,7 @@ Linux VM としてマスター ターゲット サーバーを実行する管理
 
 1. RHEL 6-64 ユニファイド エージェント バイナリを、VM にコピーします。 次のコマンドを実行して、バイナリを解凍します: **tar –zxvf <file name>**
 2. 次のコマンドを実行して、アクセス許可を付与します: **# chmod 755 ./ApplyCustomChanges.sh**
-3. 次のスクリプトを実行します: **# ./ApplyCustomChanges.sh**。 このスクリプトは一度だけ実行します。 スクリプトが正常に実行されたら、サーバーを再起動します。
+3. 次のスクリプトを実行します: **# ./ApplyCustomChanges.sh**。このスクリプトは一度だけ実行します。 スクリプトが正常に実行されたら、サーバーを再起動します。
 
 ## <a name="run-the-failback"></a>フェールバックを実行する
 ### <a name="reprotect-the-azure-vms"></a>Azure VM を再保護する
@@ -189,4 +188,3 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 
 * ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 * データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。 ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
-

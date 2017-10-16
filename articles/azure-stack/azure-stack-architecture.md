@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Development Kit architecture | Microsoft Docs
-description: View the Microsoft Azure Stack Development Kit architecture.
+title: "Microsoft Azure Stack Development Kit のアーキテクチャ | Microsoft Docs"
+description: "Microsoft Azure Stack Development Kit のアーキテクチャを表示します。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -12,46 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: helaw
+ms.openlocfilehash: e8ff17e069bd9237bf06cd79b4c222c50a999eda
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ece8cb785ffcceaed476fa729e7471dc7831c155
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit architecture
-The Azure Stack Development Kit is a single-node deployment of Azure Stack. All the components are installed in virtual machines running on a single host machine. 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit のアーキテクチャ
 
-## <a name="logical-architecture-diagram"></a>Logical architecture diagram
-The following diagram illustrates the logical architecture of the Azure Stack development kit and its components.
+*適用対象: Azure Stack 開発キット*
+
+Azure Stack Development Kit は、Azure Stack の単一ノード デプロイです。 すべてのコンポーネントは、1 台のホスト マシンで実行されている仮想マシンにインストールされます。 
+
+## <a name="logical-architecture-diagram"></a>論理アーキテクチャ図
+次の図は、Azure Stack 開発キットとそのコンポーネントの論理アーキテクチャを示しています。
 
 ![](media/azure-stack-architecture/image1.png)
 
-## <a name="virtual-machine-roles"></a>Virtual machine roles
-The Azure Stack development kit offers services using the following VMs on the host:
+## <a name="virtual-machine-roles"></a>仮想マシンのロール
+Azure Stack 開発キットは、ホスト上の次の仮想マシンを使ってサービスを提供します。
 
-| Name | Description |
+| 名前 | Description |
 | ----- | ----- |
-| **AzS-ACS01** | Azure Stack storage services.|
-| **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |
-| **AzS-BGPNAT01** | Edge router and provides NAT and VPN capabilities for Azure Stack. |
-| **AzS-CA01** | Certificate authority services for Azure Stack role services.|
-| **AzS-DC01** | Active Directory, DNS, and DHCP services for Microsoft Azure Stack.|
-| **AzS-ERCS01** | Emergency Recovery Console VM. |
-| **AzS-GWY01** | Edge gateway services such as VPN site-to-site connections for tenant networks.|
-| **AzS-NC01** | Network Controller, which manages Azure Stack network services.  |
-| **AzS-SLB01** | Load balancing multiplexer services in Azure Stack for both tenants and Azure Stack infrastructure services.  |
-| **AzS-SQL01** | Internal data store for Azure Stack infrastructure roles.  |
-| **AzS-WAS01** | Azure Stack administrative portal and Azure Resource Manager services.|
-| **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
-| **AzS-XRP01** | Infrastructure management controller for Microsoft Azure Stack, including the Compute, Network, and Storage resource providers.|
+| **AzS-ACS01** | Azure Stack ストレージ サービス。|
+| **AzS-ADFS01** | Active Directory フェデレーション サービス (ADFS)。  |
+| **AzS-BGPNAT01** | エッジ ルーター。Azure Stack 用の NAT 機能と VPN 機能を提供します。 |
+| **AzS-CA01** | Azure Stack ロール サービス用の証明機関サービス。|
+| **AzS-DC01** | Microsoft Azure Stack 用の Active Directory、DNS、DHCP サービス。|
+| **AzS-ERCS01** | 緊急回復コンソールの VM。 |
+| **AzS-GWY01** | テナント ネットワーク用の VPN サイト間接続などのエッジ ゲートウェイ サービス。|
+| **AzS-NC01** | ネットワーク コントローラー。Azure Stack ネットワーク サービスを管理します。  |
+| **AzS-SLB01** | テナントおよび Azure Stack インフラストラクチャ サービス用の、Azure Stack の負荷分散マルチプレクサー サービス。  |
+| **AzS-SQL01** | Azure Stack インフラストラクチャ ロール用の内部データ ストア。  |
+| **AzS-WAS01** | Azure Stack 管理ポータルと Azure Resource Manager のサービス。|
+| **AzS-WASP01**| Azure Stack ユーザー (テナント) ポータルと Azure Resource Manager のサービス。|
+| **AzS-XRP01** | Microsoft Azure Stack 用のインフラストラクチャ管理コントローラー。計算、ネットワーク、ストレージのリソースプロバイダーなどがあります。|
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy Azure Stack](azure-stack-deploy.md)
+## <a name="next-steps"></a>次のステップ
+[Azure Stack をデプロイする](azure-stack-deploy.md)
 
-[First scenarios to try](azure-stack-first-scenarios.md)
-
+[最初のシナリオを試す](azure-stack-first-scenarios.md)
 

@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
+ms.openlocfilehash: 65f8e0170fa7b89162e811a1d5dd58775fd20d7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fea76427d45a72fe3f0a42082373162f24221094
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>Marathon REST API を使用した DC/OS コンテナー管理
 DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。 一般的な各種ワークロードに対応したフレームワークはいくつかありますが、このドキュメントでは、Marathon REST API を使用してコンテナーのデプロイを作成し、スケールする方法について説明します。 
@@ -198,5 +197,4 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ## <a name="next-steps"></a>次のステップ
 * [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)
 * [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)
-
 

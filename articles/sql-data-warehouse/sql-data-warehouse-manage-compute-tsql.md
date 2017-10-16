@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 03/30/2017
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e37a943c775261a6817169c95a931f1b268305d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 9221d72ecf8ab2ba8b04e4bc97eeef7157817cca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-t-sql"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (T-SQL)
 > [!div class="op_single_selector"]
@@ -44,10 +42,10 @@ ms.lasthandoff: 03/31/2017
 ```sql
 SELECT
     db.name [Database]
-,    ds.edition [Edition]
-,    ds.service_objective [Service Objective]
+,   ds.edition [Edition]
+,   ds.service_objective [Service Objective]
 FROM
-     sys.database_service_objectives ds
+    sys.database_service_objectives ds
 JOIN
     sys.databases db ON ds.database_id = db.database_id
 ```
@@ -118,4 +116,3 @@ AND
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-

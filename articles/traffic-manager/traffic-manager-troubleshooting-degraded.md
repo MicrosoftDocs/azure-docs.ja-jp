@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
 この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも**機能低下**している可能性があります｡
@@ -96,4 +94,3 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 [Azure Traffic Manager コマンドレット][1]
 
 [1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
-

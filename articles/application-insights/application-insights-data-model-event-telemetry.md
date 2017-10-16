@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1cad3594be32e59ea6bd3d3ba2289d391bd92c0b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 422e193ae10938954602a6ef8c49fd47f473bc01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>イベント テレメトリ: Application Insights データ モデル
 
@@ -44,4 +43,3 @@ ms.lasthandoff: 04/27/2017
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - [カスタム イベント テレメトリを記述します](app-insights-api-custom-events-metrics.md#trackevent)。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

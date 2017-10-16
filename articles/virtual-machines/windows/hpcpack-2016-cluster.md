@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/15/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 88d1f4e29f38ba1a6bef57c2da43bee205575eee
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>Azure に HPC Pack 2016 クラスターをデプロイする
 
@@ -156,5 +155,4 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 ## <a name="next-steps"></a>次のステップ
 * クラスターにジョブを送信します。 [Azure の HPC Pack クラスターに HPC のジョブを送信する方法](hpcpack-cluster-submit-jobs.md)および[Azure Active Directory を使用した Azure の HPC Pack 2016 クラスターの管理](hpcpack-cluster-active-directory.md)に関する記事をご覧ください。
-
 

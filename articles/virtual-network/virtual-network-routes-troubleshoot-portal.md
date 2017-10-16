@@ -1,6 +1,6 @@
 ---
 title: "ルートのトラブルシューティング | Microsoft Docs"
-description: "Azure Resource Manager のデプロイメント モデルで、Azure ポータルを使用してルートをトラブルシューティングする方法について説明します。"
+description: "Azure Resource Manager のデプロイメント モデルで、Azure Portal を使用してルートをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: b2e005d707717a8f6db90b24438527304823a6a8
-ms.openlocfilehash: a0867e97805bbb905d5defa89d13bbb0d4c4aa49
-
-
+ms.openlocfilehash: dad415936280b4af916b8c46df46f6c51ac0bca4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="troubleshoot-routes-using-the-azure-portal"></a>Azure ポータルを使用してルートのトラブルシューティングを行う
+# <a name="troubleshoot-routes-using-the-azure-portal"></a>Azure Portal を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-routes-troubleshoot-portal.md)
+> * [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 >
 >
@@ -150,9 +150,3 @@ VM に適用されている集約ルートを表示するには、次の手順�
 * VNet のピアリング トラフィックが正常に機能するためには、ピアリングされる VNet のプレフィックスの範囲に **nextHopType** *VNetPeering* を使用するシステム ルートを追加する必要があります。 そのようなルートが存在せず、VNet ピアリングのリンクに問題がないと考えられる場合:
   * 新しく確立されたピアリングのリンクの場合は、数秒待ってから再度実行してください。 サブネット内のすべてのネットワーク インターフェイスにルートを反映させるのに時間がかかる場合がります。
   * ネットワーク セキュリティ グループ (NSG) の規則が、トラフィック フローに影響を与える可能性があります。 詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md) 」をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

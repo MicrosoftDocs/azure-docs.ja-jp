@@ -3,8 +3,8 @@ title: "Azure AD での特権アクセスのセキュリティ保護 | Microsoft
 description: "このトピックでは、Azure、Azure Active Directory、および Microsoft Online Services で特権アクセスを保護するための方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
-manager: femila
+author: barclayn
+manager: mbaldwin
 editor: mwahl
 ms.assetid: 235a0ce9-1daf-4433-8f65-9c6afcd64d08
 ms.service: active-directory
@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: c96a0bd6710d60629bc631fe7e1f642cdb2bada6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
 現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
@@ -52,7 +50,7 @@ Azure Multi-Factor Authentication の概要については、次のビデオを�
 ## <a name="time-bound-privileges"></a>期限付きの特権
 組織によっては、高い特権を持つロールに割り当てられたユーザーが増えすぎることがあります。 サービスのサインアップなど、特定のアクティビティのためにユーザーがロールに追加されたが、その後、ユーザーはあまり権限を使用していないというケースもあります。
 
-特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーがタスクの実行を必要としているときにだけ特権を "ジャスト イン タイム" (JIT) で取得するようにユーザーを制限します。 Azure Active Directory と Microsoft Online Services では、 [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)を使用することができます。
+特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーが "Just-In-Time" (JIT) 特権を持つように制限するか、短縮された期間に対してこうしたロールを割り当てます。確実に特権は自動失効します。 Azure Active Directory、Azure リソース (プレビュー)、Microsoft Online Services では、[Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM) をご利用いただけます。
 
 ![PIM dashboard][2]
 
@@ -79,4 +77,3 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 [2]: ../media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ../media/active-directory-identityprotection/29.png
 [4]: ../media/active-directory-conditional-access/conditionalaccess-saas-apps.png
-

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 4ca9268c26f681fcc96955b6161fe4a119b2dcf4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>チュートリアル: Azure Active Directory と CA PPM の統合
 
@@ -112,9 +110,9 @@ CA PPM で Azure AD のシングル サインオンを構成してテストす�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cappm-tutorial/tutorial_cappm_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、 `https://ca.ondemand.saml.20.post.<companyname>` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://ca.ondemand.saml.20.post.<companyname>` の形式で URL を入力します。
     
-    b. **[応答 URL]** ボックスに、「 `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`」と入力します。
+    b. **[応答 URL]** ボックスに、「`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`」と入力します。
 
     > [!NOTE] 
     > これは実際の値ではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[CA PPM サポート チーム](mailto:catechnicalsupport@ca.com)に問い合わせてください。
@@ -166,7 +164,7 @@ CA PPM で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-ca-ppm-test-user"></a>CA PPM のテスト ユーザーの作成
 
@@ -226,5 +224,4 @@ CA PPM で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-cappm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cappm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cappm-tutorial/tutorial_general_203.png
-
 

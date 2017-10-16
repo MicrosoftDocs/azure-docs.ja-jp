@@ -14,14 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
-ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
-
-
-
+ms.openlocfilehash: e9036f92f6c76e8c4738ee981efa8a7b9791dcc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]
@@ -196,4 +193,3 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 
 
 <!--anchors-->
-

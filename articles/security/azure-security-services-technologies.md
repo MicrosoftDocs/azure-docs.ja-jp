@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
+ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6d4379248cff45b601e32e8554f86bb7a1846570
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
 現在と将来の Azure の顧客との話し合いで、“Azure で提供する必要のあるすべてのセキュリティ関連のサービスとテクノロジを一覧したリストはありますか?” という質問を受けることがよくあります。
@@ -36,12 +35,12 @@ ms.lasthandoff: 07/21/2017
 * [Azure Dev/Test Lab](https://azure.microsoft.com/documentation/services/devtest-lab/)
 
 ## <a name="azure-storage-security"></a>Azure Storage セキュリティ
-* [Azure Storage Service Encryption](../storage/storage-service-encryption.md)
+* [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)
 * [StorSimple のハイブリッド ストレージの暗号化](https://azure.microsoft.com/documentation/services/storsimple/)
-* [Azure のクライアント側の暗号化](../storage/storage-client-side-encryption.md)
-* [Azure Storage Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md)
-* [Azure ストレージ アカウント キー](../storage/storage-create-storage-account.md)
-* [SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/storage-dotnet-how-to-use-files.md)
+* [Azure のクライアント側の暗号化](../storage/common/storage-client-side-encryption.md)
+* [Azure Storage Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+* [Azure ストレージ アカウント キー](../storage/common/storage-create-storage-account.md)
+* [SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/files/storage-dotnet-how-to-use-files.md)
 * [Azure Storage Analytics](https://msdn.microsoft.com/library/hh343270.aspx)
 
 ## <a name="azure-database-security"></a>Azure Database Security
@@ -58,7 +57,7 @@ ms.lasthandoff: 07/21/2017
 * [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory ドメイン サービス](../active-directory-domain-services/active-directory-ds-overview.md)
+* [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
@@ -73,4 +72,3 @@ ms.lasthandoff: 07/21/2017
 * [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 * [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)
 * [Azure アプリケーション プロキシ](../active-directory/active-directory-application-proxy-enable.md)
-

@@ -3,7 +3,7 @@ title: "内部ロード バランサーの作成 - Azure CLI クラシック | M
 description: "クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,13 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
 
 > [!div class="op_single_selector"]
@@ -41,8 +40,8 @@ ms.lasthandoff: 03/21/2017
 内部ロード バランサー セットと、このセットにトラフィックを送信するサーバーを作成するには、次の手順を実行する必要があります。
 
 1. 負荷分散セットのサーバー間で負荷分散される着信トラフィックのエンドポイントとなる内部負荷分散のインスタンスを作成します。
-2. 着信トラフィックを受信する仮想マシンに対応するエンドポイントを追加します。
-3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するように負荷分散されたトラフィックを送信するサーバーを構成します。
+2. 着信トラフィックを受信できる仮想マシンに対応するエンドポイントを追加します。
+3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するようにサーバーを構成します。
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>CLI を使用した内部ロード バランサーの作成手順
 
@@ -92,7 +91,7 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
 
 ### <a name="step-2"></a>手順 2.
 
-最初のエンドポイントの追加時に、内部ロード バランサー セットを構成します。 この手順では、エンドポイント、仮想マシン、およびプローブ ポートを内部ロード バランサーに関連付けます。
+最初のエンドポイントの追加時に、内部ロード バランサー セットを構成します。 この手順では、エンドポイント、仮想マシン、およびプローブ ポートを内部ロード バランサーに関連付けることができます。
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
@@ -106,7 +105,7 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 azure vm show DB1
 ```
 
-次のように出力されます。
+出力は次のようになります。
 
     azure vm show DB1
     info:    Executing command vm show
@@ -180,4 +179,3 @@ azure vm endpoint delete DB1 tcp-1433-1433
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-

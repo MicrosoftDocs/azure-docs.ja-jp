@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43b77cabdb2d8832bda8fd0b726ba27edb0a0602
-ms.openlocfilehash: 2992b074986a7b7f3244ce996f2b41269bff8bbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/03/2017
-
-
+ms.openlocfilehash: ba5bdf7daba6086b70aec54ebe25d4445fa708c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>.NET MVC Web アプリへのサインインの追加
 v2.0 エンドポイントを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリに認証をすばやく追加できます。  ASP.NET Web アプリでは、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。
@@ -219,4 +217,3 @@ OpenID Connect を使用してユーザーの認証処理を実行すると、v2
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-

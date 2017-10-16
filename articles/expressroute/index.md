@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1c9d64f415a94c35bc6e41706ce78b0da34a0131
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 8c12fd74d131538e736d6357da586c5debb9929c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="expressroute-documentation"></a>ExpressRoute のドキュメント
 
 ExpressRoute を使用して、オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスへの高速なプライベート接続を設定する方法について説明します。 チュートリアルや REST API などのドキュメントは、ExpressRoute 回線の構成と管理に役立ちます。
@@ -112,6 +110,5 @@ ExpressRoute を使用して、オンプレミス インフラストラクチャ
         </div>
     </li>
 </ul>
-
 
 

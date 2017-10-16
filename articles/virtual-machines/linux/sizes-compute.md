@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 530efae6d62d9a261e2c6f8abf8161cf56cf41bf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: 05b8fd98da0c87e383ba7d67fb8bee2eefb25981
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="compute-optimized-linux-vm-sizes"></a>コンピューティング最適化された Linux VM のサイズ
 
 [!INCLUDE [virtual-machines-common-sizes-compute](../../../includes/virtual-machines-common-sizes-compute.md)]

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 777bddea6b1cb325a6f8ede00196b18e1746d80c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-the-azure-portal"></a>Azure Portal を使用して VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
 > [!div class="op_single_selector"]
@@ -433,7 +432,7 @@ VMM で分類が適切に構成されている場合、記憶域マッピング�
 次の表は、このシナリオでデータを格納する方法をまとめたものです。
 
 - - -
-| アクション | **詳細** | **収集されるデータ** | **最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、** | **必須** |
+| アクション | **詳細** | **収集されるデータ** | **用途** | **必須** |
 | --- | --- | --- | --- | --- |
 | **登録** | Recovery Services コンテナーに VMM サーバーを登録します。 後で登録を解除する場合は、Azure Portal からサーバー情報を削除すれば解除できます。 | VMM サーバーが登録された後、VMM サーバーに関するメタデータと、Site Recovery によって検出された VMM クラウドの名前が、収集、処理、転送されます。 | これらのデータを使用して、適切な VMM サーバーの識別と通信、および適切な VMM クラウドの設定の構成が実行されます。 | この機能は必須です。 この情報を Site Recovery に送信することを希望しない場合は、Site Recovery サービスは使用しないでください。 |
 | **Enable replication** | Azure Site Recovery プロバイダーが VMM サーバーにインストールされ、Site Recovery サービスと通信するためのパイプの役割を果たします。 プロバイダーは、VMM プロセスでホストされているダイナミック リンク ライブラリ (DLL) です。 プロバイダーをインストールすると、VMM 管理者コンソールで「Datacenter Recovery」機能が有効になります。 新規の VM および既存の VM は、この機能を有効にして、VM の保護を有効にすることができます。 |このプロパティを設定すると、プロバイダーは VM の名前と ID を Site Recovery に送信します。  レプリケーションは、Windows Server 2012 または Windows Server 2012 R2 Hyper-V レプリカによって実現されます。 仮想マシンのデータは、1 つの Hyper-V ホストから (通常は別の "復旧" データ センターにある) 別の Hyper-V ホストにレプリケートされます。 |Site Recovery では、メタデータを使用して、Azure Portal に VM の情報を設定します。 | これは、本サービスに必要不可欠であり、無効にすることはできません。 この情報を送信することを希望しない場合は、VM に対して Site Recovery 保護を有効にしないでください。 プロバイダーによって Site Recovery に送信されるすべてのデータは、HTTPS を介して送信されます。 |
@@ -444,4 +443,3 @@ VMM で分類が適切に構成されている場合、記憶域マッピング�
 ## <a name="next-steps"></a>次のステップ
 
 デプロイをテストしたら、他の種類の[フェールオーバー](site-recovery-failover.md)について学びます。
-

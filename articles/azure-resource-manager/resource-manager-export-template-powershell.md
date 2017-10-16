@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 74bf865d796c965b4843092215639b32f033d807
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
-
+ms.openlocfilehash: 7543811eb9448222b6e7c266756e68debc7d54be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>PowerShell を使用した Azure Resource Manager テンプレートのエクスポート
 
@@ -223,4 +221,3 @@ SKU をパラメーターに設定します。
 * ポータルを使用したテンプレートのエクスポートについては、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 * テンプレートのパラメーターの定義については、 [テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
-

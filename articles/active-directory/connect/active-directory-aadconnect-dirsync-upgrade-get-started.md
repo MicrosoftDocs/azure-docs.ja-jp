@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
 
@@ -32,7 +30,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 * プロキシ サーバーで開く必要がある URL。 基本的なシナリオでは、これらのシナリオは DirSync でもサポートされるため、要件は同じです。 Azure AD Connect で導入された新機能のいずれかを使用する場合は、いくつかの新しい URL を開く必要があります。
 
 > [!NOTE]
-> Azure AD に対する変更の同期を新しい Azure AD Connect サーバーが開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。 Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
+> Azure AD に対する変更の同期を新しい Azure AD Connect サーバーが開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
 
 DirSync からアップグレードしない場合は、「 [関連ドキュメント](#related-documentation) 」でその他のシナリオを確認してください。
 
@@ -170,7 +168,7 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Azure AD Connect の同期を開始する準備が完了していることを確認する
 Azure AD Connect で DirSync からの引き継ぎの準備ができていることを確認するために、[スタート] メニューから **[Azure AD Connect]** グループの **Synchronization Service Manager** を開く必要があります。
 
-アプリケーションで、 **[操作]** タブに移動します。 このタブで、次の操作が完了していることを確認します。
+アプリケーションで、 **[操作]** タブに移動します。このタブで、次の操作が完了していることを確認します。
 
 * AD コネクタへのインポート
 * Azure AD コネクタへのインポート
@@ -218,4 +216,3 @@ Azure AD Connect がインストールされたので、[インストールを�
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

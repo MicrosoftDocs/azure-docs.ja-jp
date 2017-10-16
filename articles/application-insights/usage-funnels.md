@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
+ms.openlocfilehash: 59c4dfafc102b26e3b9873f433065715f4aec9ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2b25ffd844507074a8467b1135b1331feb9d3ed7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているかを把握します。
 
 カスタマー エクスペリエンスを理解することは、ビジネスにとって極めて重要です。 アプリケーションが複数のステージに関わっている場合は、ほとんどの顧客がプロセス全体を円滑に処理しているか、または任意の時点でプロセスを終了しているかを把握する必要があります。 Web アプリケーションにおける一連の手順の進行は、"ファネル" と呼ばれています。 Application Insights のファネルを使って、ユーザーに対する洞察を得て、手順ごとの変換率を監視します。 
@@ -50,4 +48,3 @@ ms.lasthandoff: 08/09/2017
   * [保持](app-insights-usage-retention.md)
   * [ブック](app-insights-usage-workbooks.md)
   * [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
-

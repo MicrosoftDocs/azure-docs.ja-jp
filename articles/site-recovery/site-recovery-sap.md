@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: manayar
-ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
 ms.openlocfilehash: 951980eeba61e53c983d5b23c301c81eee9528bd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する
 
@@ -119,4 +118,3 @@ Azure Site Recovery は、(A)SCS などのアプリケーション レイヤー�
 Azure Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法については、[こちらのホワイトペーパー](http://aka.ms/asr-sap)を参照してください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションに適したテスト計画についても説明しています。
 
 [Site Recovery を使用した他のワークロードのレプリケートに関する記事](site-recovery-workload.md)を参照してください。
-

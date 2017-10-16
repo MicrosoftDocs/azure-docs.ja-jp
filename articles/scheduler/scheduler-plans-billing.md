@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5452a42cff5204fce780af41368b9515f9652d91
-
-
+ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure Scheduler のプランと課金
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン
@@ -26,7 +26,7 @@ ms.openlocfilehash: 5452a42cff5204fce780af41368b9515f9652d91
 
 | **ジョブ コレクション プラン** | **ジョブ コレクションあたりのジョブの最大数** | **最大繰り返し頻度** | **サブスクリプションあたりのジョブ コレクションの最大数** | **制限** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Free** |ジョブ コレクションあたり 5 個のジョブ |1 時間に 1 回。 1 時間に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 1 個の Free ジョブ コレクションが許可されます。 | [HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md) |
+| **Free** |ジョブ コレクションあたり 5 個のジョブ |1 時間に 1 回。 1 時間に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 1 個の Free ジョブ コレクションが許可されます。 |[HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md) |
 | **Standard** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 100 個の Standard ジョブ コレクションが許可されます。 |Scheduler の完全な機能セットへのアクセス |
 | **P10 Premium** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P10 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
 | **P20 Premium** |ジョブ コレクションあたり 1,000 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P20 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
@@ -85,10 +85,4 @@ P20 Premium ジョブ コレクションで提供される機能は P10 Premium 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

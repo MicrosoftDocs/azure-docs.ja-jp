@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [GoogleDrive](https://www.google.com/drive/) アカウント  
 
-ロジック アプリで GoogleDrive アカウントを使用するには、GoogleDrive アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで GoogleDrive アカウントを使用するには、GoogleDrive アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 GoogleDrive アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

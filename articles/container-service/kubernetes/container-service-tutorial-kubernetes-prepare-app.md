@@ -14,17 +14,15 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: d09f59715ac4dac1482e6ca5f79e8426f1f01ced
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: f02ee61ef1cd3b3dfaa051cfabe52866e3e7e838
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-images-to-be-used-with-azure-container-service"></a>Azure Container Service で使用するコンテナー イメージを作成する
 
 このチュートリアルは、7 つあるうちの 1 番目で、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 手順は次のとおりです。  
@@ -46,6 +44,8 @@ ms.lasthandoff: 08/25/2017
 
 このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
 
+Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 そのため、完全な Docker 開発環境の使用をお勧めします。
+
 ## <a name="get-application-code"></a>アプリケーションのコードを入手する
 
 このチュートリアルで使うサンプル アプリケーションは、基本的な投票アプリです。 アプリケーションは、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成されています。 Web コンポーネントは、カスタム コンテナー イメージにパッケージ化されています。 Redis インスタンスでは、Docker Hub から変更されていないイメージを使用します。  
@@ -56,16 +56,22 @@ ms.lasthandoff: 08/25/2017
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-複製されたディレクトリ内には、アプリケーションのソース コード、事前作成された Docker Compose ファイル、および Kubernetes マニフェスト ファイルがあります。 これらのファイルを使って、チュートリアル セット全体のアセットを作成します。 
+ディレクトリを変更して、複製されたディレクトリから作業するようにします。
+
+```
+cd azure-voting-app-redis
+```
+
+ディレクトリ内には、アプリケーションのソース コード、事前作成された Docker Compose ファイル、および Kubernetes マニフェスト ファイルがあります。 これらのファイルは、チュートリアル セット全体で使用されます。 
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 
 [Docker Compose](https://docs.docker.com/compose/) は、コンテナー イメージと複数のコンテナー アプリケーションのデプロイからのビルドを自動化するために使用できます。
 
-コンテナー イメージの作成、Redis イメージのダウンロード、およびアプリケーションの起動を行うために、docker-compose.yml ファイルを実行します。
+コンテナー イメージの作成、Redis イメージのダウンロード、およびアプリケーションの起動を行うために、`docker-compose.yml` ファイルを実行します。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
+docker-compose up -d
 ```
 
 完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
@@ -74,7 +80,7 @@ docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
 docker images
 ```
 
-3 つのイメージがダウンロードまたは作成されたことに注目してください。 *azure-vote-front* イメージにアプリケーションが含まれています。 これは、*nginx flask* イメージから派生しました。 Redis イメージは、Docker Hub からダウンロードされました。
+3 つのイメージがダウンロードまたは作成されたことに注目してください。 `azure-vote-front` イメージはアプリケーションを含み、`nginx-flask` イメージをベースとして使用します。 `redis` イメージは、Redis インスタンスを起動するために使用されます。
 
 ```bash
 REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
@@ -105,18 +111,18 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-アプリケーションの機能を検証したので、実行中のコンテナーを停止して削除できます。 コンテナー イメージは削除しないでください。 *azure-vote-front* イメージは、次のチュートリアルで Azure Container Registry インスタンスにアップロードされます。
+アプリケーションの機能を検証したので、実行中のコンテナーを停止して削除できます。 コンテナー イメージは削除しないでください。 `azure-vote-front` イメージは、次のチュートリアルで Azure Container Registry インスタンスにアップロードされます。
 
 実行中のコンテナーを停止するには、次を実行します。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml stop
+docker-compose stop
 ```
 
-次のコマンドで、停止しているコンテナーを削除します。
+次のコマンドで、停止しているコンテナーとリソースを削除します。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml rm
+docker-compose down
 ```
 
 完了すると、Azure Vote アプリケーションを含むコンテナー イメージが完成します。

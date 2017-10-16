@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42b245d4e205dffda7ec62199ced3834c278a466
-
-
+ms.openlocfilehash: 32d20e7a8adcfc646c592213fe7395b87a93c985
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-a-storsimple-support-package"></a>StorSimple サポート パッケージを作成および管理する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 StorSimple サポート パッケージは、Microsoft サポートが StorSimple デバイスの問題を解決するときに役立つ、すべての関連するログを収集する使いやすいメカニズムです。 収集したログが暗号化され、圧縮されます。
 
 このチュートリアルでは、サポート パッケージを作成および管理するための手順を取り上げています。
@@ -47,7 +47,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    
    * **[サポート パスキー]** テキストボックスにパスキーを入力します。 Microsoft サポート エンジニアから、電子メールでこのパスキーが送信されます。
    * サポート パッケージを Microsoft サポート サイトへ自動的にアップロードすることに同意するチェック ボックスをオンにします。
-   * チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-manage-support-package/IC740895.png) の順に選択します。
+   * チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-create-manage-support-package/IC740895.png)の順に選択します。
 
 ## <a name="manually-create-a-support-package"></a>サポート パッケージを手動で作成する
 場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 次に例を示します。
@@ -166,10 +166,4 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
 ## <a name="next-steps"></a>次のステップ
 * [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

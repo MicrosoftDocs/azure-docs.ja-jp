@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: e746decaea19477e52aba3ce714d8dd10140602e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 > [!div class="op_single_selector"]
 > * [Azure ポータル](cloud-services-how-to-scale-portal.md)
@@ -39,7 +37,7 @@ ms.lasthandoff: 05/23/2017
 
     ロール インスタンスが大きいと、使用するコアも多くなります。 アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。 たとえば、サブスクリプションのコア数が 20 に制限されているとします。 アプリケーションを 2 つの中規模のクラウド サービスで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスのデプロイは残りの 16 コアまでしかスケールアップできません。 サイズの詳細については、「[Cloud Service のサイズ](cloud-services-sizes-specs.md)」を参照してください。
 
-* スケールはキュー メッセージのしきい値に基づいて行うことができます。 キューの使用方法の詳細については、 [Queue Storage サービスの使用方法](../storage/storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
+* スケールはキュー メッセージのしきい値に基づいて行うことができます。 キューの使用方法の詳細については、 [Queue Storage サービスの使用方法](../storage/queues/storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
 
 * サブスクリプションに関連付けられているその他のリソースについてもスケールを行うことができます。
 
@@ -114,4 +112,3 @@ ms.lasthandoff: 05/23/2017
 3. スケールするロールのインスタンス。
 
 スケール設定を構成したら、上部にある **[保存]** アイコンを選択します。
-

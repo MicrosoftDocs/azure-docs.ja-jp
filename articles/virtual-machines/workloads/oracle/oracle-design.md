@@ -15,15 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
+ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9bd9ff35cebc2aeaf0558dcf1a37887050682f0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
 ## <a name="assumptions"></a>前提条件
@@ -238,4 +235,3 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 
 - [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
-

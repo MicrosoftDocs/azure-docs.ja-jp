@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d38adc6104337aa6cea9ee0f8042c22434624c9a
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して静的パブリック IP アドレスを持つ VM を作成する
 
@@ -205,5 +204,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
         data:    Tags: null
         data:
         info:    group create command OK
-
 

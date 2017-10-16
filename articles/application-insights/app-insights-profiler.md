@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: 5d9a5b0dbd0b2a95bbb3cae37aea27908addc3c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
 
@@ -25,7 +24,7 @@ ms.lasthandoff: 06/29/2017
 
 [Azure Application Insights](app-insights-overview.md) のプロファイリング ツールを使用して、実行中の Web アプリケーションで各メソッドにどれくらい時間がかかっているかを確認できます。 アプリによって処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "ホット パス" が強調表示されます。 また、複数の応答時間が含まれたサンプルが自動的に選択されます。 オーバーヘッドは、さまざまな手法を使用して最小化されます。
 
-このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます  
+このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます 
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>プロファイラーを有効にする
@@ -50,6 +49,7 @@ Application Insights で構成されている Web アプリは、[構成] ブレ
 
 ![[構成] ブレード][linked app services]
 
+## <a name="disable-the-profiler"></a>Profiler を無効にする
 個々の App Service インスタンスのプロファイラーを停止または再起動するには、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。
 
 ![Web ジョブのプロファイラーを無効にする][disable-profiler-webjob]
@@ -65,11 +65,17 @@ Web アプリケーションに対する変更を WebDeploy を使用してデ�
 [Azure Compute リソース用の Profiler のプレビュー版](https://go.microsoft.com/fwlink/?linkid=848155)が利用可能です。
 
 
-## <a name="limits"></a>制限
+## <a name="limitations"></a>制限事項
 
 データは既定で 5 日間保持されます。 また、1 日に最大 10 GB のデータを取り込むことができます。
 
 プロファイラー サービスの料金は発生しません。 Web アプリは、少なくとも App Services の Basic レベルでホストする必要があります。
+
+## <a name="overhead-and-sampling-algorithm"></a>オーバーヘッドとサンプリング アルゴリズム
+
+Profiler は、Profiler のトレース キャプチャが有効なアプリケーションをホストする各仮想マシンで、1 時間に 2 分ランダムに実行されます。 Profiler の実行中は、サーバーに 5 ～ 15% の CPU オーバーヘッドが加わります。
+アプリケーションをホスト可能なサーバーの数が多くなるほど、Profiler がアプリケーション パフォーマンス全体に与える影響は低下します。 これは、サンプリング アルゴリズムにより Profiler が常にサーバーの実行時間の 5% しか実行されないためで、より多くのサーバーを利用して Web 要求を処理すれば、Profiler から受けるサーバーのオーバーヘッドを低下させることができます。
+
 
 ## <a name="viewing-profiler-data"></a>プロファイラー データを表示する
 
@@ -85,9 +91,13 @@ Web アプリケーションに対する変更を WebDeploy を使用してデ�
 * **カウント** - ブレードに表示された時間の範囲における要求の数。
 * **中央値** - アプリが要求に応答するのに要する標準的な時間。 全応答の半数が、これより短い時間で行われました。
 * **95 パーセンタイル** - 応答の 95% が、これより短い時間で行われました。 この数値と中央値との差が非常に大きい場合は、アプリに一時的な問題が発生している可能性があります  (または、キャッシュなどの設計特性が原因である可能性があります)。
-* **例** - プロファイラーがこの操作のスタック トレースをキャプチャしたことを示すアイコン。
+* **[Profiler traces]\(Profiler トレース\)** - アイコンは、Profiler がこの操作のスタック トレースをキャプチャしたことを示します。
 
-[例] アイコンをクリックすると、トレース エクスプローラーが開きます。 このエクスプローラーには、プロファイラーがキャプチャしたいくつかのサンプルが応答時間ごとに分類されて表示されます。
+[表示] をクリックすると、トレース エクスプローラーが開きます。 このエクスプローラーには、プロファイラーがキャプチャしたいくつかのサンプルが応答時間ごとに分類されて表示されます。
+
+[Preview Performance]\(パフォーマンスのプレビュー\) ブレードを使用している場合は、プロファイラー トレースを表示するために右下隅の **[Take Actions]\(アクションの実行\)** セクションに移動します。 [Profiler Traces]\(Profiler トレース\) をクリックします。
+
+![Application Insights の [パフォーマンス] ブレードのプロファイラー トレースのプレビュー][performance-blade-v2-examples]
 
 いずれかのサンプルを選択すると、要求の実行に費やした時間の内訳がコード レベルで表示されます。
 
@@ -152,6 +162,10 @@ SqlCommand.Execute などのメソッドは、コードがデータベース操�
 
 ## <a id="troubleshooting"></a>トラブルシューティング
 
+### <a name="too-many-active-profiling-sessions"></a>アクティブなプロファイリング セッションが多すぎる
+
+現在、同じサービス プランで実行されている最大 4 つの Azure Web Apps とデプロイ スロットでプロファイラーを有効にすることができます。 プロファイラー Web ジョブでアクティブなプロファイリング セッションが多すぎる旨が報告された場合は、いくつかの Web アプリを別のサービス プランに移動する必要があります。
+
 ### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>Application Insights プロファイラーが実行されているかどうかを確認するにはどうすればよいですか。
 
 プロファイラーは、Web アプリで継続的な Web ジョブとして実行されます。 https://portal.azure.com で Web アプリ リソースを開き、[WebJobs] ブレードで "ApplicationInsightsProfiler" の状態を確認できます。 実行されていない場合は、**[ログ]** を開いて詳細を確認できます。
@@ -192,6 +206,18 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 
 ポータルからサポート チケットを提出してください。 その際、エラー メッセージの関連付け ID を含めてください。
 
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Deployment error Directory Not Empty 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+
+Web アプリを Profiler が有効な App Services のリソースに再デプロイする場合、次のようなエラーが出る可能性があります: Directory Not Empty 'D:\\home\\site\\wwwroot\\App_Data\\jobs'。スクリプトまたは VSTS 配置パイプラインで Web 配置を実行した場合に、このエラーが発生します。
+この問題を解決するには Web 配置タスクに、次のデプロイ パラメーターを追加します。
+
+```
+-skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
+```
+
+これにより、App Insights Profiler で使用されたフォルダーが削除され、再配置プロセスがブロック解除されます。 現在実行中の Profiler インスタンスには影響はありません。
+
+
 ## <a name="manual-installation"></a>手動のインストール
 
 プロファイラーを構成すると、Web アプリの設定が次のように更新されます。 Azure App Service Environment (ASE) でアプリケーションを実行している場合など、環境に応じて手動で設定することもできます。
@@ -216,6 +242,7 @@ ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspN
 
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
+[performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png
 [trace-explorer]: ./media/app-insights-profiler/trace-explorer.png
 [trace-explorer-toolbar]: ./media/app-insights-profiler/trace-explorer-toolbar.png
 [trace-explorer-hint-tip]: ./media/app-insights-profiler/trace-explorer-hint-tip.png
@@ -223,4 +250,3 @@ ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspN
 [enable-profiler-banner]: ./media/app-insights-profiler/enable-profiler-banner.png
 [disable-profiler-webjob]: ./media/app-insights-profiler/disable-profiler-webjob.png
 [linked app services]: ./media/app-insights-profiler/linked-app-services.png
-

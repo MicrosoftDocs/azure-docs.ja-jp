@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b9b3bd0f2184ac85261166d5fe2ab67e1bf319d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する
 
@@ -62,4 +61,3 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>アフィニティ グループに VM (クラシック) がある場合の対処方法
 現在アフィニティ グループ内にある VM (クラシック) を、アフィニティ グループから削除する必要はありません。 VM をデプロイすると、単一のスケール ユニットにデプロイされます。 アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。 VM はスケール ユニットに既にデプロイされているため、VM をアフィニティ グループから削除しても VM に影響はありません。
-

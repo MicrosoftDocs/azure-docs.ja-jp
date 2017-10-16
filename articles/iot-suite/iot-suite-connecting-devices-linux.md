@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c844f9a84878f12fbdf7a5b4eaf7bbf19f4ce666
-ms.openlocfilehash: 4a1615c4bea8c54d506c3252e2de42642bb55e46
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/27/2017
-
+ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>デバイスをリモート監視構成済みソリューションに接続する (Linux)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
@@ -168,5 +167,4 @@ int main(void)
     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
-
 

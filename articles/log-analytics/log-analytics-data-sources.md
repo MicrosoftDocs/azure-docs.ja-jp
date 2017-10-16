@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、OMS ワークスペース内の接続されたソースからデータを収集して OMS リポジトリに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  OMS リポジトリ内のデータは、一連のレコードとして保存されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -68,4 +66,3 @@ Log Analytics によって収集されたデータはすべて、レコードと
 * Log Analytics に機能を追加し、OMS リポジトリにデータを収集する [ソリューション](log-analytics-add-solutions.md) について学習します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。
-

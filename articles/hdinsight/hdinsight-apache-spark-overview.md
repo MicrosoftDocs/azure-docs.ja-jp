@@ -4,7 +4,7 @@ description: "この記事では、HDInsight での Spark の概要と、HDInsig
 keywords: "Apache Spark とは,Spark クラスター,Spark の概要,HDInsight での Spark"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
-ms.author: nitinme
+ms.date: 09/07/2017
+ms.author: maxluk
+ms.openlocfilehash: 9d66931e1c855788163d92f0c3f34f55c44615dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>HDInsight での Spark の概要
 
@@ -30,8 +29,17 @@ ms.lasthandoff: 08/29/2017
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure 計算リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約 10 分です。 処理するデータは Azure Storage または Azure Data Lake Store に格納されます。 [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
 
-**HDInsight で Spark クラスターを作成するには、**[HDInsight での Spark クラスターの作成と Jupyter を使用した対話型クエリの実行に関するクイックスタート ガイド](hdinsight-apache-spark-jupyter-spark-sql.md)のページを参照してください。
+![Spark: 一元化されたフレームワーク](./media/hdinsight-apache-spark-overview/hdinsight-spark-overview.png)
 
+## <a name="spark-vs-traditional-mapreduce"></a>Spark と従来の MapReduce
+
+Spark の速さの秘訣は何でしょうか。 Apache Spark のアーキテクチャは、従来の MapReduce をどう変えることで、データ共有のパフォーマンスを高めているのでしょうか。
+
+![従来の MapReduce と Spark](./media/hdinsight-apache-spark-overview/mapreduce-vs-spark.png)
+
+Spark には、クラスターの計算処理をインメモリで行うための基本的な要素が備わっています。 Spark ジョブは、データをメモリに読み込んでキャッシュしておいて、それを繰り返し照会することができるため、ディスクベースのシステムと比べて処理速度が大幅に向上します。 また Spark は、Scala プログラミング言語との親和性が高く、分散データ セットをローカル コレクションのように扱うことができます。 計算内容をすべて map 処理と reduce 処理に分ける必要がありません。
+
+Spark では、データがメモリ内に存在するため、処理間のデータ共有を高速に行うことができます。 一方 Hadoop では、HDFS を介してデータを共有するため、処理に時間がかかります。
 
 ## <a name="what-is-apache-spark-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark とは
 Azure HDInsight の Spark クラスターでは、完全に管理された Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
@@ -52,8 +60,22 @@ Azure HDInsight の Spark クラスターでは、完全に管理された Spark
 | 拡張性 |作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターでは、クラスター内のノード数を変更できます。 また、すべてのデータは Azure Storage または Data Lake Store に格納されるため、Spark クラスターはデータの損失なしで削除できます。 |
 | 常時サポート |HDInsight の Spark クラスターでは、エンタープライズ レベルの 24 時間無休体制のサポートと、アップタイム 99.9% の SLA が提供されます。 |
 
+## <a name="spark-cluster-architecture"></a>Spark クラスターのアーキテクチャ
+
+以下の図は、Spark クラスターのアーキテクチャとその動作を示したものです。
+
+![Spark クラスターのアーキテクチャ](./media/hdinsight-apache-spark-overview/spark-architecture.png)
+
+ヘッド ノードには、アプリケーションの数を管理する Spark マスターがあり、アプリケーションは Spark ドライバーにマッピングされます。 Spark マスターは、さまざまな方法ですべてのアプリケーションを管理します。 アプリケーションにワーカー ノード リソースを割り当てるのはクラスター マネージャーです。Spark は、Mesos、YARN、Spark のいずれかのクラスター マネージャーにデプロイすることができます。 HDInsight では、YARN クラスター マネージャーを使って Spark が実行されます。 クラスターのリソースは、HDInsight の Spark マスターによって管理されます。 つまり、ワーカー ノード上の塞がっているリソース (メモリなど) と空いているリソースは、Spark マスターが把握しています。
+
+ドライバーは、ユーザーの main 関数を実行し、ワーカー ノードでさまざまな並列処理を実行した後、 その結果を収集します。 ワーカー ノードによるデータの読み取りと書き込みは、Hadoop 分散ファイル システム (HDFS) との間で行われます。 また、ワーカー ノードは、変換後のデータを Resilient Distributed Dataset (RDD) としてメモリ内にキャッシュします。
+
+Spark マスターに作成されたアプリケーションには、Spark マスターによってリソースが割り当てられ、Spark ドライバーと呼ばれる実行が作成されます。 さらに、Spark ドライバーによって SparkContext が作成され、RDD の作成が開始されます。 RDD のメタデータは、Spark ドライバーに格納されます。
+
+Spark ドライバーは Spark マスターに接続し、ワーカー ノードの Executor プロセス内で実行される個々のタスクの有向グラフ (DAG) にアプリケーションを変換する処理を行います。 アプリケーションはそれぞれ独自の Executor プロセスを取得し、そのプロセスが、アプリケーション全体が終了するまで稼働し続けながら、複数のスレッドでタスクを実行します。
+
 ## <a name="what-are-the-use-cases-for-spark-on-hdinsight"></a>HDInsight での Spark の使用例
-HDInsight の Spark クラスターにより、以下に挙げる主なシナリオが実現できます。
+HDInsight の Spark クラスターでは、以下に挙げる主なシナリオを実現できます。
 
 ### <a name="interactive-data-analysis-and-bi"></a>対話型のデータ分析と BI
 [チュートリアルを見る](hdinsight-apache-spark-use-bi-tools.md)
@@ -99,7 +121,7 @@ HDInsight の Spark クラスターでは、Microsoft Power BI や Tableau な�
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
@@ -110,4 +132,3 @@ HDInsight の Spark クラスターでは、Microsoft Power BI や Tableau な�
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 * [Azure HDInsight における Apache Spark の既知の問題](hdinsight-apache-spark-known-issues.md)。
-

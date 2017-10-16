@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 546610d05d0ed261f671df651cd6cc74837063f7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル: Azure Active Directory と Versal の統合
 
@@ -163,7 +162,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-versal-test-user"></a>Versal テスト ユーザーの作成
 
@@ -225,5 +224,4 @@ Azure AD シングル サインオンのサポートによる Versal コース�
 [201]: ./media/active-directory-saas-versal-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-versal-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-versal-tutorial/tutorial_general_203.png
-
 

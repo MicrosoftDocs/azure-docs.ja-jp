@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 1feba4f7c33276996213f50e34784c0f8edff226
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 11231bb5af5374f3c05cfd5038e1ad03cdd01372
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problems-adding-or-configuring-applications"></a>アプリケーションの追加または構成に関する問題
 
 
@@ -44,4 +42,3 @@ ms.lasthandoff: 04/18/2017
   * [Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成するときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-federated-sso-gallery/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成するときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成するときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-gallery/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

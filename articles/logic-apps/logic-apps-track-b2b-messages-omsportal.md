@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で B2B 通信を追跡する
 
 統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 これらのメッセージが正しく処理されているかどうかを確認するには、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して AS2、X12、および EDIFACT メッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
@@ -49,7 +47,7 @@ ms.lasthandoff: 07/21/2017
 
 OMS でロジック アプリの B2B メッセージを追跡するには、OMS ポータルに **Logic Apps B2B** ソリューションを追加する必要があります。 [OMS へのソリューションの追加](../log-analytics/log-analytics-get-started.md)に関する詳細を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** を選択します。 次に示すように、"ログ分析" を検索してから、**[Log Analytics]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
    ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
@@ -219,7 +217,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているゲスト パートナー |
 | ロジック アプリ | EDIFACT アクションが設定されているロジック アプリ |
 | 状態 | EDIFACT メッセージの状態 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な EDIFACT メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
-| Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] \(保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
+| Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] (保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
 | 方向 | EDIFACT メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
 | メッセージの種類 | EDIFACT メッセージの種類 |

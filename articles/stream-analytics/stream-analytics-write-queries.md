@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 215b774c20d80a67b1cefa2634131bd44860c692
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-write-queries-in-stream-analytics"></a>Stream Analytics でクエリを記述する方法
 Azure Stream Analytics のストリーム処理ロジックのクエリ記述は、ジョブが開始する前に定義され、ジョブに到着したデータに対して実行される、"継続クエリ" として実装されます。 データの変換は、SQL に似たクエリ言語で表されます。この言語は、主として T-SQL のサブセットであり、時間的なセマンティクスを表すために使用される[ウィンドウ化](https://msdn.microsoft.com/library/azure/dn835019.aspx)などの言語拡張機能が追加されています。
@@ -70,5 +69,4 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

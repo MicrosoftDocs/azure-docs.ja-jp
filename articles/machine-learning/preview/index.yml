@@ -1,0 +1,50 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Machine Learning のドキュメント (プレビュー)
+metadata:
+  title: Azure Machine Learning のドキュメント (プレビュー)
+  meta.description: Learn how to use Azure Machine Learning public preview features.
+  services: machine-learning
+  author: czeumault
+  manager: carolz
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/06/2017
+  ms.author: carolz
+abstract:
+  description: Microsoft が提供するクイック スタートとチュートリアルを使用して、データを準備し、モデルをビルドおよびデプロイする方法を確認してください。 Azure Machine Learning のプレビュー機能では、Python ツールと Python ライブラリを使用して、ML および AI モデルをビルド、デプロイ、管理できます。 データを保存および処理するために、さまざまなデータや Azure の Compute Services を使用できます。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 初めての Machine Learning プロジェクトの作成
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/machine-learning/media/index/i_machine-learning.svg
+            text: インストールと作成
+            href: quickstart-installation
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: データを準備し、実験を設定して、モデルを運用化する方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-classifying-iris-part-1">Machine Learning のサービス (プレビュー) の基礎を確認する</a>
+          - html: <a href="tutorial-classifying-iris-part-2">Machine Learning Workbench を使用して、あやめデータセットでモデルをビルドする</a>
+          - html: <a href="tutorial-classifying-iris-part-3">Machine Learning モデルをデプロイする方法を確認する</a>
+          - html: <a href="tutorial-bikeshare-dataprep">高度なデータ準備に Azure Machine Learning Workbench を使用する</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 言語
+            html: '<p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST ()
+            html: <p><a href="model-management-api-reference">モデル管理 REST API</a></p>

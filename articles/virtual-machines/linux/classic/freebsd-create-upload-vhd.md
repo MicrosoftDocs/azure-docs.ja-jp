@@ -3,7 +3,7 @@ title: "FreeBSD VM イメージの作成とアップロード | Microsoft Docs"
 description: "FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードして、Azure 仮想マシンを作成する方法について説明します"
 services: virtual-machines-linux
 documentationcenter: 
-author: KylieLiang
+author: thomas1206
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: kyliel
+ms.author: huishao
+ms.openlocfilehash: 0010e01d4333b96696680ec6fbbeee74b17f46a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 918f454784a9676297077c2e94c3e49ab2872d2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>FreeBSD VHD の作成と Azure へのアップロード
 この記事では、FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure の仮想マシン (VM) を作成することができます。
@@ -207,4 +206,3 @@ FreeBSD オペレーティング システムがインストールされた仮�
 5. プロビジョニングが完了すると、Azure に FreeBSD VM が実行状態として表示されます。
 
     ![FreeBSD image in azure](./media/freebsd-create-upload-vhd/freebsdimageinazure.png)
-

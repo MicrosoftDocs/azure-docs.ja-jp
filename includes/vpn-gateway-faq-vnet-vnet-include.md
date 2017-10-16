@@ -24,6 +24,10 @@ VPN Gateway 接続を使用している場合は、同じリージョン内の V
 
 いいえ。
 
+### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>別々の Azure インスタンスに存在する仮想ネットワークを VNet 間接続で接続することはできますか。 
+
+いいえ。 VNet 間接続でサポートされるのは、同じ Azure インスタンス内の仮想ネットワークの接続だけです。 たとえば、パブリック Azure と Chinese/German/US Gov の Azure インスタンスとの間で接続を作成することはできません。 これらのシナリオについては、サイト間 VPN 接続の使用をご検討ください。
+
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>VNet 間接続はマルチサイト接続と併用できますか。
 
 はい。 仮想ネットワーク接続は、マルチサイト VPN と同時に使用することができます。

@@ -13,14 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
+ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b7e17b83afb7306b74b8769f31188642b54566ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 
 ## <a name="introduction"></a>はじめに
@@ -37,9 +35,9 @@ Azure VM サイズを確認すると、GS5 では 64 個のデータ ディス�
 
 この選択は簡単で単純なように思えますが、いくつかの考慮事項が存在します。 前述のとおり、Azure VM に接続できるデータ ディスクの数には上限があります。 データベースのサイズとディスク スループットの要件しだいでは、VM のファイル システム上に SAP HANA バックアップ ファイルを格納する容量がない可能性があります。場合によっては、複数のデータ ディスクへのストライピングを使用したソフトウェア RAID が必要です。 これらのバックアップ ファイルを移動したり、テラバイト単位のデータを処理する際にファイル サイズ制限とパフォーマンスを管理したりするための各種の方法について、この記事で後ほど説明します。
 
-合計容量に関して自由度の高い別のオプションとしては、Azure Blob Storage があります。 1 つの BLOB の容量は 1 TB に制限されているものの、1 つの BLOB コンテナーの合計容量は現在 500 TB です。 さらに Azure Blob Storage では、コスト面で優れている、いわゆる &quot;クール&quot; BLOB ストレージを選択して使用できます。 クール BLOB ストレージの詳細については、「[Azure Blob Storage: ホット ストレージ層とクール ストレージ層](../../../storage/storage-blob-storage-tiers.md)」を参照してください。
+合計容量に関して自由度の高い別のオプションとしては、Azure Blob Storage があります。 1 つの BLOB の容量は 1 TB に制限されているものの、1 つの BLOB コンテナーの合計容量は現在 500 TB です。 さらに Azure Blob Storage では、コスト面で優れている、いわゆる &quot;クール&quot; BLOB ストレージを選択して使用できます。 クール BLOB ストレージの詳細については、「[Azure Blob Storage: ホット ストレージ層とクール ストレージ層](../../../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 
-安全性を追求する場合は、geo レプリケーションされたストレージ アカウントを使用して SAP HANA バックアップを格納します。 ストレージ アカウント レプリケーションの詳細については、「[Azure Storage のレプリケーション](../../../storage/storage-redundancy.md)」を参照してください。
+安全性を追求する場合は、geo レプリケーションされたストレージ アカウントを使用して SAP HANA バックアップを格納します。 ストレージ アカウント レプリケーションの詳細については、「[Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md)」を参照してください。
 
 SAP HANA バックアップの専用 VHD を、geo レプリケーションされた専用バックアップ ストレージ アカウントに格納することができます。 そのほか、geo レプリケーションされたストレージ アカウントまたは別のリージョンにあるストレージ アカウントに、SAP HANA バックアップが保持された VHD をコピーできます。
 
@@ -51,7 +49,7 @@ Azure Backup には、VM を丸ごとバックアップする方法だけでな�
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer ユーティリティの詳細
 
-ディレクトリとファイルを Azure ストレージに格納するには、CLI または PowerShell を使用できます。また、いずれかの [Azure SDK](https://azure.microsoft.com/downloads/) を使用してツールを作成できます。 Azure ストレージへのデータ コピーにすぐに使用できるユーティリティ (AzCopy) もありますが、使用できるのは Windows のみです (「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../../storage/storage-use-azcopy.md)」を参照)。
+ディレクトリとファイルを Azure ストレージに格納するには、CLI または PowerShell を使用できます。また、いずれかの [Azure SDK](https://azure.microsoft.com/downloads/) を使用してツールを作成できます。 Azure ストレージへのデータ コピーにすぐに使用できるユーティリティ (AzCopy) もありますが、使用できるのは Windows のみです (「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../../storage/common/storage-use-azcopy.md)」を参照)。
 
 そのため、SAP HANA バックアップ ファイルのコピーには blobxfer を使用しました。 blobxfer は、多くのお客様が運用環境で使用しているオープン ソース ツールであり、[GitHub](https://github.com/Azure/blobxfer) で入手できます。 このツールでは、Azure Blob Storage と Azure ファイル共有のどちらにもデータを直接コピーできます。 さらに、md5 ハッシュや、複数のファイルが含まれたディレクトリをコピーする際の自動並列処理など、さまざまな便利な機能があります。
 
@@ -71,7 +69,7 @@ Azure Backup には、VM を丸ごとバックアップする方法だけでな�
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Azure Blob Storage への SAP HANA バックアップ ファイルのコピー
 
-2016 年 12 月の時点では、SAP HANA バックアップ ファイルを迅速に格納する最善の方法は Azure Blob Storage です。 1 つの BLOB コンテナーには 500 TB の上限があります。Azure の GS5 VM で実行されているほとんどの SAP HANA システムでは、この容量で必要な SAP HANA バックアップを十分保持できます。 お客様は、&quot;ホット&quot; BLOB ストレージと &quot;コールド&quot; BLOB ストレージのいずれかを選択できます (「[Azure Blob Storage: ホット ストレージ層とクール ストレージ層](../../../storage/storage-blob-storage-tiers.md)」を参照)。
+2016 年 12 月の時点では、SAP HANA バックアップ ファイルを迅速に格納する最善の方法は Azure Blob Storage です。 1 つの BLOB コンテナーには 500 TB の上限があります。Azure の GS5 VM で実行されているほとんどの SAP HANA システムでは、この容量で必要な SAP HANA バックアップを十分保持できます。 お客様は、&quot;ホット&quot; BLOB ストレージと &quot;コールド&quot; BLOB ストレージのいずれかを選択できます (「[Azure Blob Storage: ホット ストレージ層とクール ストレージ層](../../../storage/blobs/storage-blob-storage-tiers.md)」を参照)。
 
 blobxfer ツールを使用すると、SAP HANA バックアップ ファイルを Azure Blob Storage に簡単に直接コピーできます。
 
@@ -139,7 +137,7 @@ NFS 共有は、SAP HANA サーバーと同様に高速なストライプ セッ
 
 ## <a name="copy-sap-hana-backup-files-to-azure-file-service"></a>Azure ファイル サービスへの SAP HANA バックアップ ファイルのコピー
 
-Azure Linux VM 内の Azure ファイル共有をマウントすることができます。 これを実行する方法の詳細については、記事「[Linux で Azure File Storage を使用する方法](../../../storage/storage-how-to-use-files-linux.md)」を参照してください。 現在、Azure ファイル共有あたり 5 TB のクォータ制限があり、ファイルあたり 1 TB のサイズ制限があることに注意してください。 ストレージの制限については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../../storage/storage-scalability-targets.md)」を参照してください。
+Azure Linux VM 内の Azure ファイル共有をマウントすることができます。 これを実行する方法の詳細については、記事「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」を参照してください。 現在、Azure ファイル共有あたり 5 TB のクォータ制限があり、ファイルあたり 1 TB のサイズ制限があることに注意してください。 ストレージの制限については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../../storage/common/storage-scalability-targets.md)」を参照してください。
 
 しかしテストの結果によると、現時点では CIFS マウントを使用した場合、SAP HANA バックアップを直接実行することができません。 [SAP ノート 1820529](https://launchpad.support.sap.com/#/notes/1820529) でも、CIFS は非推奨であると述べられています。
 
@@ -161,4 +159,3 @@ Azure ファイルへの SAP HANA バックアップ ファイルの格納は、
 * 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」には、概要と基本的な情報が記載されています。
 * 「[ストレージ スナップショットに基づいた SAP HANA のバックアップ](sap-hana-backup-storage-snapshots.md)」では、ストレージ スナップショットベースのバックアップ方法について説明されています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
-

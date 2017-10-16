@@ -16,7 +16,7 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 
 <sup>2</sup> オンデマンド HDInsight コアは、Data Factory を含むサブスクリプションから割り当てられます。 そのため、上記の制限はオンデマンド HDInsight コアで Data Factory を実行しているコアの制限であり、Azure サブスクリプションに関連付けられているコアの制限とは異なります。
 
-<sup>3</sup> クラウド データ移動単位 (DMU) は、クラウド間のコピー操作で使用されます。 これは、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 一部のシナリオで多くの DMU を活用することで、より高いコピー スループットを実現できます。 詳細については、「[クラウド データ移動単位](../articles/data-factory/data-factory-copy-activity-performance.md#cloud-data-movement-units)」を参照してください。
+<sup>3</sup> クラウド データ移動単位 (DMU) は、クラウド間のコピー操作で使用されます。 これは、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 一部のシナリオで多くの DMU を活用することで、より高いコピー スループットを実現できます。 詳細については、「[クラウド データ移動単位](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units)」を参照してください。
 
 | **リソース** | **既定値の下限** | **上限** |
 | --- | --- | --- |

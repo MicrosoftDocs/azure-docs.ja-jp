@@ -12,15 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/16/2017
+ms.date: 10/04/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: df7c127f4ab140cb26c82e723964f1d99f03131a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
-
+ms.openlocfilehash: 8ac4a10b9030a4d56824d1a42ed2729ebb2d208e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric のパターンとシナリオ
 Azure Service Fabric を使用して大規模なマイクロサービスを構築することを検討している場合は、このサービスとしてのプラットフォーム (PaaS) を設計および構築した専門家から学んでください。 適切なアーキテクチャから始め、アプリケーションのリソースを最適化する方法を確認します。 「[Service Fabric Patterns and Practices (Service Fabric のパターンと実践)](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)」コースでは、Service Fabric のシナリオとアプリケーション領域について、実際のお客様からよく寄せられる質問に答えます。
@@ -101,4 +99,3 @@ Visual Studio Team Services による継続的インテグレーション/継続
 
 ## <a name="next-steps"></a>次のステップ
 これで、Service Fabric のパターンとシナリオについて学習できました。次に、[クラスターを作成して管理する方法](service-fabric-deploy-anywhere.md)、[Cloud Services アプリを Service Fabric に移行する方法](service-fabric-cloud-services-migration-worker-role-stateless-service.md)、[継続的配信を設定する方法](service-fabric-set-up-continuous-integration.md)、[コンテナーをデプロイする方法](service-fabric-containers-overview.md)の詳細を確認します。
-

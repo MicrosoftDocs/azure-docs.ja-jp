@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/1/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
 ms.openlocfilehash: 1370fa64c2ddc25d3121c567ceea4828b1e50921
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>チュートリアル: Azure Active Directory と Nexonia の統合
 
@@ -109,7 +107,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_samlbase.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_samlbase.png)
 
 3. **[Nexonia のドメインと URL]** セクションで、次の手順に従います。
 
@@ -177,7 +175,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-nexonia-test-user"></a>Nexonia テスト ユーザーの作成
 
@@ -241,5 +239,4 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_203.png
-
 

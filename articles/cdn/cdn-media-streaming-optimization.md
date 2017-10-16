@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
+ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 1221f4f50b8b9c4b9f9f88be4d04a65375c36062
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Azure Content Delivery Network を介したメディア ストリーミングの最適化 
  
@@ -61,7 +60,7 @@ Akamai からのメディア ストリーミングの最適化は、配信に個
 多くのユーザーが、まだ存在していないフラグメントを要求する場合の配信元のオフロードには、負の短いキャッシュ時間が便利です。 例として、瞬間的に配信元からパケットが利用できなくなることのあるライブ ストリームが挙げられます。 通常、ビデオ コンテンツは変更されないため、キャッシュ間隔を長くしても配信元からの要求をオフロードできます。
  
 
-|    | 全般<br> web<br>配信を使用) | 全般<br> メディア<br> ストリーミング | ビデオ オン デマンド <br>メディア<br> ストリーミング  
+|   | 一般的な Web 配信 | 一般的なメディア ストリーミング | ビデオ オン デマンド メディア ストリーミング  
 --- | --- | --- | ---
 キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |365 日 | 365 日   
 キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 | 1 秒
@@ -98,5 +97,4 @@ Azure Content Delivery Network from Verizon は、一般的な Web 配信の最�
 ### <a name="cache-fill-wait-time"></a>キャッシュ フィル待機時間
 
  キャッシュ フィル待機時間機能は、配信元サーバーから HTTP 応答ヘッダーが到着するまで、同じリソースの後続のすべての要求をエッジ サーバーに強制的に保留させます。 タイマーの有効期限が切れる前に配信元から HTTP 応答ヘッダーが到着すると、保留になったすべての要求はキャッシュを増大することなく使用されます。 同時に、配信元からのデータによってキャッシュがフィルされます。 既定では、キャッシュ フィル待機時間は 3000 ミリ秒に設定されます。 
-
 

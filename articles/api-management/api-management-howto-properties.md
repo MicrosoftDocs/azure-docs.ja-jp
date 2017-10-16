@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Azure API Management ポリシーのプロパティの利用方法
 API Management のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、プロパティを使用して構築できます。 
@@ -34,7 +32,7 @@ API Management のポリシーは、発行者がその構成を通じて API の
 | シークレット |boolean |値がシークレットかどうかと暗号化する必要があるかどうかを決定します。 |
 | タグ |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
 
-プロパティは発行者ポータルの **[プロパティ]** タブで構成できます。 次の例では、次の 3 つのプロパティが構成されています。
+プロパティは発行者ポータルの **[プロパティ]** タブで構成できます。次の例では、次の 3 つのプロパティが構成されています。
 
 ![プロパティ][api-management-properties]
 
@@ -153,5 +151,4 @@ REST API を利用し、プロパティを削除する方法については、�
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-
 

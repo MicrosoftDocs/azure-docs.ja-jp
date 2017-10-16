@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: cde5983710185d1e46a5601b16bbfb1c0fcae382
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -153,7 +151,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon9.png)
 
-12.    **[管理]**をクリックします。
+12. **[管理]**をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon10.png)
     
@@ -177,7 +175,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     d. **[Load]\(読み込み\)** ボタンをクリックします。
 
-    e. IdP メタデータが読み取られ、スクリーン ショットで強調表示されているフィールドが設定されます。    
+    e. IdP メタデータが読み取られ、スクリーン ショットで強調表示されているフィールドが設定されます。 
 
 16. **[Save settings]\(設定の保存\)** ボタンをクリックして、設定を保存します。
 
@@ -216,7 +214,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user"></a>SAML SSO for Jira by resolution GmbH のテスト ユーザーの作成
 
@@ -251,7 +249,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 
     d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
-    e. **[Create user]\(ユーザーの作成\)** をクリックします。    
+    e. **[Create user]\(ユーザーの作成\)** をクリックします。   
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -310,5 +308,4 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 [201]: ./media/active-directory-saas-samlssojira-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-samlssojira-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-samlssojira-tutorial/tutorial_general_203.png
-
 

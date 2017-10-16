@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
 Azure VM で HPC Pack 2012 R2 クラスターを作成した場合に、クラスターでいくつかの計算ノード VM を簡単に追加、削除、起動 (プロビジョニング)、または停止 (プロビジョニング解除) できる方法があれば便利です。 そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します。 これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
@@ -150,5 +149,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 ## <a name="next-steps"></a>次のステップ
 * クラスターのジョブやタスクの現在のワークロードに合わせてクラスター ノードを自動的に拡大縮小する方法については、「[クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する](hpcpack-cluster-node-autogrowshrink.md)」をご覧ください。
-
 

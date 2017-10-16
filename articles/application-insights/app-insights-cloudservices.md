@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: bwren
+ms.openlocfilehash: c12b225aa351d0c272243469550791a6840091e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 692cd9e3113589142a7df84da88215eabe8f10fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
 [Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -252,4 +251,3 @@ Web ロールの場合、以下のカウンターも収集されます。
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
-

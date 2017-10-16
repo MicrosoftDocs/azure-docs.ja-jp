@@ -13,15 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 361ad3a669370419e1080d3e4b3fc646f7a0a958
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
-
+ms.openlocfilehash: f48eb610b47820e6d7438520a00a5e6dfe879e01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、完全に管理されたクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -134,11 +132,11 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td>Schema ("schema")</td><td></td><td></td><td>スキーマは、データの構造を説明します。  属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。  この情報はすべて、データ ソースから派生します。  スキーマはシングルトンの注釈です。1 つのスキーマのみを資産に追加できます。</td></tr>
 <tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。 データ ソースから派生した情報を含む列を説明します。</td></tr>
 
-<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>このプロパティには、列の説明が含まれています。  システムの各ユーザーは、複数の列に対して独自の説明 (1 列ごとに最大 1 つの説明) を追加できます。 ColumnDescription オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます  (管理者および資産の所有者は、ColumnDescription オブジェクトを削除できますが、編集することはできません)。 システムは、ユーザーの列の説明を個別に管理します。  したがって、資産ごとに ColumnDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明に加えて、列に関する知識を提供した各ユーザーの 1 列あたり 1 つの説明)。  ColumnDescription はスキーマに疎結合されているため、同期から除外することができます。 ColumnDescription は、スキーマに存在しなくなった列を表す場合があります。  説明とスキーマの同期を保つのは、ライターの責任です。  データ ソースは列の説明情報を持つこともできます。これらは、ツールの実行時に作成される追加の ColumnDescription オブジェクトです。</td></tr>
+<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>このプロパティには、列の説明が含まれています。  システムの各ユーザーは、複数の列に対して独自の説明 (1 列ごとに最大 1 つの説明) を追加できます。 ColumnDescription オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます  (管理者および資産の所有者は、ColumnDescription オブジェクトを削除できますが、編集することはできません)。 システムは、ユーザーの列の説明を個別に管理します。  したがって、資産ごとに ColumnDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明に加えて、列に関する知識を提供した各ユーザーの 1 列あたり 1 つの説明)。  ColumnDescription はスキーマに疎結合されているため、同期から除外することができます。ColumnDescription は、スキーマに存在しなくなった列を表す場合があります。  説明とスキーマの同期を保つのは、ライターの責任です。データ ソースは列の説明情報を持つこともできます。これらは、ツールの実行時に作成される追加の ColumnDescription オブジェクトです。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>この説明が参照する列の名前。</td></tr>
 <tr><td></td><td>description</td><td>String</td><td>列の簡単な説明 (2 ～ 3 行)。</td></tr>
 
-<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>このプロパティには、列のタグが含まれています。 システムの各ユーザーは、特定の 1 つの列に対して複数のタグを追加できます。複数の列に対して複数のタグを追加することもできます。 ColumnTag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます (管理者および資産の所有者は、ColumnTag オブジェクトを削除できますが、編集することはできません)。 システムは、ユーザーの列のタグを個別に管理します。  したがって、各資産に ColumnTag オブジェクトの配列があります。  ColumnTag はスキーマに疎結合されているため、同期から除外することができます。 ColumnTag は、スキーマに存在しなくなった列を表す場合があります。  列のタグとスキーマの同期を保つのは、ライターの責任です。</td></tr>
+<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>このプロパティには、列のタグが含まれています。 システムの各ユーザーは、特定の 1 つの列に対して複数のタグを追加できます。複数の列に対して複数のタグを追加することもできます。 ColumnTag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます (管理者および資産の所有者は、ColumnTag オブジェクトを削除できますが、編集することはできません)。 システムは、ユーザーの列のタグを個別に管理します。  したがって、各資産に ColumnTag オブジェクトの配列があります。  ColumnTag はスキーマに疎結合されているため、同期から除外することができます。ColumnTag は、スキーマに存在しなくなった列を表す場合があります。  列のタグとスキーマの同期を保つのは、ライターの責任です。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>このタグが参照する列の名前。</td></tr>
 <tr><td></td><td>tag</td><td>String</td><td>列を説明するタグ。</td></tr>
 
@@ -361,4 +359,3 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成�
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
-

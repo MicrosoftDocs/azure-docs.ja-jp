@@ -11,14 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2015
+ms.date: 09/20/2017
 ms.author: bwren
+ms.openlocfilehash: 9efe10fa35c6a7c84e0d448bbe53127d16d20870
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 69ead621c179bf49f17ed3274be4b625fc587556
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -117,9 +116,38 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 * 稼働中の Web アプリを [Live Metrics Stream][livestream] で監視します。
 * .Net アプリケーションの状態を[スナップショット デバッガー][snapshot]でキャプチャします。
 
-## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>インタラクティブなパフォーマンス調査によりパフォーマンスのボトルネックを探して修正する
+>[!Note]
+> 現在、Application Insights のパフォーマンス調査をインタラクティブな全画面エクスペリエンスに移行するための作業が行われています。 以降のドキュメントでは、最初に新しいエクスペリエンスについて説明します。さらに、従来のエクスペリエンスについてもアクセスが必要になる場合に備えて説明します。従来のエクスペリエンスは、移行中のどの段階でも使用できます。
 
-新しい Application Insights のインタラクティブなパフォーマンス調査機能を使用して、Web アプリの全体的なパフォーマンスを低下させている領域を特定できます。 速度を低下させている具体的なページを簡単に特定し、[プロファイル ツール](app-insights-profiler.md)を使用してそれらのページ間に相関関係があるかどうかを確認できます。
+## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-full-screen-performance-investigation"></a>インタラクティブな全画面のパフォーマンス調査によりパフォーマンスのボトルネックを探して修正する
+
+Application Insights の新しいインタラクティブなパフォーマンス調査機能を使用して、Web アプリの操作のパフォーマンス低下を調べることができます。 特定の低速な操作をすばやく選択し、[Profiler](app-insights-profiler.md) を使用して、低速な操作の根本原因となっているコードを特定することができます。 選択した操作に対して表示される新しい期間分布を使用すると、そのエクスペリエンスが顧客にとってどれだけ好ましくないかがひとめでわかります。 実際、それぞれの低速な操作について、影響を受けたユーザーの操作の数を確認できます。 次の例では、[GET Customers/Details]\(顧客/詳細の取得\) 操作のエクスペリエンスを詳しく見ています。 期間分布を見ると、3 つのスパイクがあることがわかります。 最も左のスパイクは 400 ミリ秒付近にあり、非常に反応の良いエクスペリエンスを表しています。 中央のスパイクは 1.2 秒付近にあり、平凡なエクスペリエンスを表しています。 最後に、3.6 秒の地点に 99 パーセンタイルのエクスペリエンスを表すもう 1 つの小さなスパイクがあります。これは、顧客が不満を招いて去る原因になっている可能性があります。 このエクスペリエンスは、同じ操作の高速なエクスペリエンスよりも 10 倍低速です。 
+
+![[GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+
+この操作のユーザー エクスペリエンスをより深く理解するために、より長い時間範囲を選択することができます。 また、操作が特に低速な特定の時間枠で時間を絞り込むこともできます。 次の例では、既定の 24 時間の時間範囲から 7 日間の時間範囲に切り替えた後、12 日 (火) から 13 日 (水) の 9:47 ～ 12:47 の時間枠にズームインしています。 右側の期間分布とサンプルおよびプロファイラー トレースの数が両方とも更新されていることに注意してください。
+
+![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+
+次に、低速なエクスペリエンスを絞り込むために、95 番目から 99 番目のパーセンタイルまでの期間にズームインします。 これらは、ユーザーの操作のうち特に低速な 4% を表します。
+
+![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+
+ここで、[サンプル] ボタンをクリックして代表的なサンプルを見たり、[Profiler traces]\(Profiler トレース\) ボタンをクリックして代表的なプロファイラー トレースを見たりできます。 この例には、対象の時間枠と範囲期間で、[GET Customers/Details]\(顧客/詳細の取得\) 操作について収集された 4 つのトレースがあります。
+
+ときには、コードではなくコードで呼び出される依存関係に問題があることがあります。 このような低速の依存関係を調査するには、パフォーマンス トリアージ ビューの [依存関係] タブに切り替えます。 パフォーマンス ビューでは既定でトレンド平均が示されますが、ここで本当に見たいのは 95 パーセンタイル (または成熟したサービスを監視している場合は 99 パーセンタイル) であることに注意してください。 次の例では、PUT fabrikamaccount という名前の低速な Azure BLOB 依存関係に焦点を当てています。 良好なエクスペリエンスは 40 ミリ秒付近で発生しています。一方、それよりも 3 倍遅い同じ依存関係への低速な呼び出しが 120 ミリ秒付近で発生しています。 これらの呼び出しが重なって対応する操作が顕著に遅くなるまでに多くはかかりません。 [操作] タブで実行できるのと同様に、代表的なサンプルとプロファイラー トレースを掘り下げることができます。
+
+![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/app-insights-web-monitor-performance/SlowDependencies95thTrend.png)
+
+インタラクティブな全画面のパフォーマンス調査に新しく追加されたもう 1 つの非常に強力な機能は、洞察との統合です。 Application Insights は、洞察の応答性回帰を検出して明らかにすることができ、フォーカス対象のサンプル セット内の共通の特性を識別するのに役立ちます。 利用可能なすべての洞察を調べる最も良い方法は、30 日間の時間範囲に切り替えた後、[Overall]\(全体\) を選択して、過去 1 か月間のすべての操作についての分析を表示することです。
+
+![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/app-insights-web-monitor-performance/Performance30DayOveralllnsights.png)
+
+Web アプリ ユーザーに対する貧弱なエクスペリエンスを招く原因を見つけるのは、干し草の山から針を見つけ出すような困難な作業ですが、Application Insights の新しいパフォーマンス トリアージ ビューは誇張なしにその役に立ちます。
+
+## <a name="deprecated-find-and-fix-performance-bottlenecks-with-a-narrow-bladed-legacy-performance-investigation"></a>使用中止: 細いブレードの従来のパフォーマンス調査機能でパフォーマンスのボトルネックを見つけて修正する
+
+従来の Application Insights のブレード形式のパフォーマンス調査機能を使用して、Web アプリの全体的なパフォーマンスを低下させている領域を特定できます。 速度が遅い特定のページを見つけ、[Profiler](app-insights-profiler.md) を使用してその問題の根本原因をコードまで追跡できます。 
 
 ### <a name="create-a-list-of-slow-performing-pages"></a>パフォーマンスが低下しているページの一覧を作成する 
 
@@ -168,7 +196,6 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 [usage]: app-insights-web-track-usage.md
 [livestream]: app-insights-live-stream.md
 [snapshot]: app-insights-snapshot-debugger.md
-
 
 
 

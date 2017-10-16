@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-vmware-vcenter-server-in-azure-site-recovery"></a>Azure Site Recovery での VMware vCenter サーバーの管理
 この記事では、VMware vCenter で実行できるさまざまな Site Recovery 操作について説明します。
 
@@ -85,4 +83,3 @@ Site Recovery は、プロセス サーバーで仮想マシンを自動検出�
 
 > [!NOTE]
 vCenter の IP アドレス/FQDN、ポートの詳細を変更する場合は、vCenter サーバーを削除して、再度追加する必要があります。
-

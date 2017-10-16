@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 89fa80b3e3409b7cd2f600776fffdeb3a5271b5d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>HDInsight での R Server の概要
 
@@ -136,7 +135,7 @@ Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用
 
    * データが大きいとき、Spark での分散 R Server 分析のパフォーマンスは、worker ノードの数に比例します。  
 
-   * R Server 分析のパフォーマンスは、分析されているデータのサイズに比例します。 次の例のようになります。  
+   * R Server 分析のパフォーマンスは、分析されているデータのサイズに比例します。 For example:  
 
      * データのサイズが中程度までの場合は、エッジ ノードのローカルのコンピューティング コンテキストで分析するときにパフォーマンスが最高になります。  ローカルと Spark コンピューティング コンテキストのパフォーマンスが最高になるシナリオの詳細については、「Compute context options for R Server on HDInsight」(HDInsight での R Server のコンピューティング コンテキスト オプション) をご覧ください。<br>
      * エッジ ノードにログインして R スクリプトを実行すると、ScaleR rx 関数を除くすべてが、エッジ ノードで<strong>ローカルに</strong>実行されます。 したがって、エッジ ノードのメモリとコアの数を適切なサイズにする必要があります。 ノート パソコンからリモート コンピューティング コンテキストとして HDI の RServer を使用する場合、同じことがあてはまります。
@@ -184,7 +183,7 @@ SSH とコマンドを使用して HDInsight クラスターの R Server エッ�
 >
 >
 
-SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、 `-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 次の例のようになります。
+SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、 `-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 For example:
 
     ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -377,7 +376,7 @@ scaleR 関数を使用してジョブを送信できます。 ジョブの実行
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI の R Server を使用する
 
-デスクトップまたはノート PC で実行している Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することもできます。 「[Creating a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md)」(Spark 用のコンピューティング コンテキストの作成) の「**Using Microsoft R Server as a Hadoop Client**」(Hadoop クライアントとしての Microsoft R Server の使用) をご覧ください。 そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。 次の例のようになります。
+デスクトップまたはノート PC で実行している Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することもできます。 「[Creating a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md)」(Spark 用のコンピューティング コンテキストの作成) の「**Using Microsoft R Server as a Hadoop Client**」(Hadoop クライアントとしての Microsoft R Server の使用) をご覧ください。 そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。 For example:
 
 
     myNameNode <- "default"
@@ -788,4 +787,3 @@ R Server を含む新しい HDInsight クラスターを作成する方法と、
 * [HDInsight へ RStudio Server を追加する (クラスター作成時にインストールされていない場合)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)
-

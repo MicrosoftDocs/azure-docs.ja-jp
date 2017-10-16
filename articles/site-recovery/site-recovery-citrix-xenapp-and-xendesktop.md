@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: ponatara
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: dc064352b1841ff346b705dc63186b12d79350b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 XenApp および Citrix XenDesktop デプロイをレプリケートします
 
@@ -200,4 +198,3 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
 ## <a name="next-steps"></a>次のステップ
 
 このホワイト ペーパーで Citrix XenApp と XenDesktop デプロイのレプリケートの[詳細を確認](https://aka.ms/citrix-xenapp-xendesktop-with-asr)する。 Site Recovery を使用した[他のアプリケーションのレプリケート](site-recovery-workload.md)に関するガイダンスを確認する。
-

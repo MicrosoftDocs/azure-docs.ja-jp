@@ -3,7 +3,7 @@ title: "Azure Active Directory に新しいユーザーを追加する | Microso
 description: "Azure Active Directory に新しいユーザーを追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: jeffgilb
+author: curtand
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -12,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: jeffgilb
-ms.reviewer: jsnow
+ms.author: curtand
+ms.reviewer: jeffsta
 ms.custom: it-pro
+ms.openlocfilehash: 9b6a48220132bb8ea18ae5efca46ea2faf825806
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 13a7d2d3b991206c45e66872b590bc27a224eead
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>クイック スタート: Azure Active Directory に新しいユーザーを追加する
 この記事では、Azure ポータルを使用して組織の新しいユーザーを Azure Active Directory (Azure AD) に 1 度に追加するか、オンプレミスの Windows Server AD ユーザー アカウントのデータを同期することによって追加する方法を説明します。 
@@ -28,12 +27,12 @@ ms.lasthandoff: 08/24/2017
 ## <a name="add-cloud-based-users"></a>クラウドベースのユーザーを追加する
 1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
 2. **[Azure Active Directory]**を選択し、**[ユーザーとグループ]** を選択します。
-3. **[ユーザーとグループ]** ブレードで、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
+3. **[ユーザーとグループ]** で、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
    ![[追加] コマンドの選択](./media/add-users-azure-active-directory/add-user.png)
 4. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "[ドメイン名].onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
 5. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
-6. 必要に応じて、ユーザーの **[プロファイル]** ブレード、**[グループ]** ブレード、または **[Directory role (ディレクトリ ロール)]** ブレードを開き、情報を入力します。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
-7. **[ユーザー]** ブレードで **[作成]** をクリックします。
+6. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+7. **[ユーザー]** で、**[作成]** を選択します。
 8. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 
 > [!TIP]

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 24ca63e69d181f0d2c236b1fb6761984ce89520b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/02/2017
-
+ms.openlocfilehash: e82d35459110e122ec8438b406a52df61922b0fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -152,4 +151,3 @@ ms.lasthandoff: 02/02/2017
 
 * [手動で構成するメトリックのアラート](app-insights-alerts.md)
 * [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
-

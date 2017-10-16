@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
+ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3269cb65cfb59258d761f4c60278c598bc251325
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -267,7 +266,7 @@ ms.lasthandoff: 07/21/2017
     private static String deviceId = "myDeviceId";
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 現時点では、デバイス ツインの機能を使用するには、MQTT プロトコルを使用する必要があります。
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 
 
 1. 次の操作を行うコードを **main** メソッドに追加します。
     * IoT Hub と通信するデバイス クライアントを作成します。
@@ -366,4 +365,3 @@ ms.lasthandoff: 07/21/2017
 
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-

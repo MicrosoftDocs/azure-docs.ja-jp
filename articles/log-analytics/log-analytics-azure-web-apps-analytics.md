@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 90d0b7e3f49daa33ab8c617d07ba9098cdda751f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: 9ef26d4b6bfd92925a70b7bbdf8979e287c73445
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
 ![Web Apps のシンボル](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
-Azure Web Apps Analytics (プレビュー) ソリューションでは、すべての Azure Web App リソースのさまざまなメトリックを収集することで、[Azure Web Apps](../app-service-web/app-service-web-overview.md) を把握することができます。 ソリューションを使用することで、Web アプリ リソースのメトリック データの分析および検索が可能になります。
+Azure Web Apps Analytics (プレビュー) ソリューションでは、すべての Azure Web App リソースのさまざまなメトリックを収集することで、[Azure Web Apps](../app-service/app-service-web-overview.md) を把握することができます。 ソリューションを使用することで、Web アプリ リソースのメトリック データの分析および検索が可能になります。
 
 ソリューションを使用すれば、以下の情報を表示することができます。
 
@@ -98,8 +96,8 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 | --- | --- |
 | Azure Webapps |   |
 | Web Apps の要求傾向 | 選択した日付範囲の Web Apps の要求傾向の折れ線グラフが表示され、上位 10 個の Web 要求のリストが表示されます。 折れ線グラフをクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> のログ検索が実行されます。 <br>Web 要求の項目をクリックすると、要求する Web 要求メトリック傾向のログ検索が実行されます。 |
-| Web Apps の応答時間 | 選択した日付範囲の Web Apps の応答時間の折れ線グラフが表示されます。 上位 10 個の Web Apps 応答時間のリストも表示されます。 グラフをクリックすると、<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code> のログ検索が実行されます。<br> Web App をクリックすると、ログ検索が実行され、Web App の応答時間が返されます。 |
-| Web Apps のトラフィック | Web Apps のトラフィックの折れ線グラフが MB 単位で表示され、上位の Web Apps のトラフィックがリストされます。 グラフをクリックすると、<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code> のログ検索が実行されます。<br> 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 Web App をクリックすると、ログ検索が実行され、Web App の送受信バイト数が表示されます。 |
+| Web Apps の応答時間 | 選択した日付範囲の Web Apps の応答時間の折れ線グラフが表示されます。 上位 10 個の Web Apps 応答時間のリストも表示されます。 グラフをクリックすると、ログ検索 (<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code>) が実行されます。<br> Web App をクリックすると、ログ検索が実行され、Web App の応答時間が返されます。 |
+| Web Apps のトラフィック | Web Apps のトラフィックの折れ線グラフが MB 単位で表示され、上位の Web Apps のトラフィックがリストされます。 グラフをクリックすると、ログ検索 (<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code>) が実行されます。<br> 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 Web App をクリックすると、ログ検索が実行され、Web App の送受信バイト数が表示されます。 |
 | Azure App Service プラン |   |
 | CPU 使用率 &gt; 80% の App Service プラン | CPU 使用率が 80% を超える App Service プランの合計数が表示され、CPU 使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均 CPU 使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均 CPU 使用率が表示されます。 |
 | メモリ使用率 &gt; 80% の App Service プラン | メモリ使用率が 80% を超える App Service プランの合計数が表示され、メモリ使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均メモリ使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均メモリ使用率が表示されます。 |
@@ -144,4 +142,3 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 
 - 特定のメトリックの[アラート](log-analytics-alerts-creating.md)を作成します。
 - [ログ検索](log-analytics-log-searches.md)を使用して、アクティビティ ログの詳細情報を表示します。
-

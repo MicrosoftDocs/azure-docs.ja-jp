@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 0e7d7f44a70278a7777ba6c32c8e546074953fdc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理
 
@@ -88,5 +87,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 * [StorSimple 監視インジケーター LED の使用](storsimple-monitoring-indicators.md)
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢ [Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)」を参照してください。
-
 

@@ -1,4 +1,4 @@
---- 
+---
 title: "Azure Time Series Insights のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "完全に管理されたイベント処理によってクラウド内で IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。"
 services: time-series-insights
@@ -12,13 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
---- 
+ms.openlocfilehash: ca41dab4f1488c0d172513e61b1960f236c7ebf0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
+---
 # <a name="azure-time-series-insights-documentation"></a>Azure Time Series Insights のドキュメント 
  
 Time Series Insights 環境をセットアップし、IoT ソリューションまたは接続されたモノの時系列データを調査および分析する方法について説明します。 ドキュメントでは、前提条件、使用方法、API リファレンスなど、数分で作業を開始するのに役立つドキュメントを取り上げます。 

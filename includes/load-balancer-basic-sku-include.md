@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Basic Load Balancer は一般公開されていますが、Standard Load Balancer は現在パブリック プレビュー中です。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](https://aka.ms/AzureLoadBalancerStandard)に関するページをご覧ください。

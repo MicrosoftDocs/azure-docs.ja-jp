@@ -1,6 +1,6 @@
 ---
-title: Tools and PaaS services for Azure Stack | Microsoft Docs
-description: Learn how to get started with PaaS services in Azure Stack.
+title: "Azure Stack 用のツールおよび PaaS サービス | Microsoft Docs"
+description: "Azure Stack で PaaS サービスを開始する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,23 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: a3866a91bf2656990c40ead20cedb67fc47a87fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="paas-services-for-azure-stack"></a>PaaS services for Azure Stack
+# <a name="paas-services-for-azure-stack"></a>Azure Stack 用の PaaS サービス
 
-You can deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack from Microsoft and other 3rd party providers. If you want to be notified of new services, follow #AzureStack on Twitter.
+マイクロソフトおよびその他サード パーティ プロバイダーの Azure Stack 用の[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) サービスをデプロイできます。 新しいサービスに関する通知を受け取るには、Twitter で #AzureStack をフォローしてください。
 
-[Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+[App Service リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
 
-[Add a SQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+[SQL Server リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
 
-[Add a MySQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
-
+[MySQL サーバー リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
 
 
 

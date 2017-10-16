@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 6410ea44861c59841d945390de326a805ee4b8e1
-ms.lasthandoff: 12/09/2016
-
-
+ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されています。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
@@ -657,5 +656,4 @@ SCP を使用して作成された Storm トポロジの例については、次
 * [Process vehicle sensor data from Event Hubs using Storm on HDInsight (HDInsight での Storm を使用した Event Hubs からの車両センサー データの処理)](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
 * [Azure Event Hubs から HBase への抽出、変換、ロード (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
 * [HDInsight での Storm および HBase を使用した関連付け](hdinsight-storm-correlation-topology.md)
-
 

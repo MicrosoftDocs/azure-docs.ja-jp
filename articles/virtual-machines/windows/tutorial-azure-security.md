@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: ec4b06a341f74e021a8745bfb324358c0a12b6ec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: adb00e28b0b204858a763f83836ee2ac96f8f9e4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使用して仮想マシンのセキュリティを監視する
 
@@ -30,7 +29,7 @@ Azure リソースのセキュリティの状態は、Azure Security Center で�
 > [!div class="checklist"]
 > * データ収集を設定する
 > * セキュリティ ポリシーを設定する
-> * 構成の正常性に関する問題を表示して解決する
+> * 構成の正常性に関する問題を確認して解決する
 > * 検出された脅威を確認する  
 
 ## <a name="security-center-overview"></a>Security Center の概要
@@ -47,7 +46,7 @@ Security Center の機能はデータを検出するだけではありません�
 
 ## <a name="set-up-data-collection"></a>データ収集を設定する
 
-VM のセキュリティ構成を可視化するためには、まず Security Center でデータ収集を設定する必要があります。 この作業には、データ収集を有効にすることや、収集したデータを保持するための Azure Storage アカウントを作成することが含まれます。 
+VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 この作業には、データ収集を有効にすることや、収集したデータを保持するための Azure ストレージ アカウントを作成することが含まれます。 
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
 2. **[データ収集]** で **[オン]** を選択します。
@@ -58,12 +57,12 @@ VM のセキュリティ構成を可視化するためには、まず Security C
 
 ## <a name="set-up-a-security-policy"></a>セキュリティ ポリシーを設定する
 
-Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/security-center-policies.md)」をご覧ください。 
+Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/security-center-policies.md)」を参照してください。 
 
 すべての Azure リソースを対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択してサブスクリプションを選択します。
-2. **[防止ポリシー]** を選択します。
+2. **[Prevention policy]\(防止ポリシー\)** を選択します。
 3. すべての Azure リソースに適用するポリシー項目をオンまたはオフにします。
 4. 必要な設定を選択したら、**[OK]** を選択します。
 5. **[セキュリティ ポリシー]** ブレードで **[保存]** を選択します。 
@@ -71,7 +70,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 特定のリソース グループを対象とするポリシーを設定するには、次の手順に従います。
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、リソース グループを選択します。
-2. **[防止ポリシー]** を選択します。
+2. **[Prevention policy]\(防止ポリシー\)** を選択します。
 3. 対象のリソース グループに適用するポリシー項目をオンまたはオフにします。
 4. **[継承]** の **[固有]** を選択します。
 5. 必要な設定を選択したら、**[OK]** を選択します。
@@ -79,13 +78,13 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 特定のリソース グループを対象とするデータ収集のオンとオフは、このページで切り替えることもできます。
 
-次の例では、*myResoureGroup* という名前のリソース グループを対象とする固有のポリシーを作成しています。 このポリシーでは、ディスクの暗号化と Web アプリケーション ファイアウォールに関する推奨事項の提示がオフになっています。
+次の例では、*myResoureGroup* という名前のリソース グループを対象に固有のポリシーを作成しています。 このポリシーでは、ディスクの暗号化と Web アプリケーション ファイアウォールに関する推奨事項の提示がオフになっています。
 
 ![固有のポリシー](./media/tutorial-azure-security/unique-policy.png)
 
 ## <a name="view-vm-configuration-health"></a>VM の構成の正常性を表示する
 
-データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性について詳しくは、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-recommendations.md)に関するページをご覧ください。 
+データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性の詳細については、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-recommendations.md)に関するページを参照してください。 
 
 データが収集されると、各 VM のリソースの正常性および関連する Azure リソースの正常性が収集されます。 その情報が見やすいグラフの形で表示されます。 
 
@@ -117,7 +116,7 @@ Security Center による構成データの収集が開始されると、設定�
 
 ## <a name="view-detected-threats"></a>検出された脅威を表示する
 
-Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能について詳しくは、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」をご覧ください。
+Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」を参照してください。
 
 セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げる際は、30 日間の**無料試用版**をご利用いただけます。 
 
@@ -137,16 +136,15 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 ![RDP 攻撃](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法について学習しました。
+このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * データ収集を設定する
 > * セキュリティ ポリシーを設定する
-> * 構成の正常性に関する問題を表示して解決する
+> * 構成の正常性に関する問題を確認して解決する
 > * 検出された脅威を確認する
 
 次のチュートリアルに進み、Visual Studio Team Services と IIS を実行する Windows VM で CI/CD パイプラインを作成する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Visual Studio Team Services の CI/CD パイプライン](./tutorial-vsts-iis-cicd.md)
-

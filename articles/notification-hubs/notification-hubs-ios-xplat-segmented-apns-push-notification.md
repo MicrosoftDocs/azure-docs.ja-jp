@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -26,7 +26,7 @@ ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
 ## <a name="overview"></a>Overview
 このトピックでは、Azure 通知ハブを使用してニュース速報通知を iOS アプリケーションにブロードキャストする方法について説明します。 完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。 このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
-ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の *タグ* を追加することで有効にします。 通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。 タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。 タグの詳細については、「 [Notification Hubs のルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。
+ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の "*タグ*" を追加することで有効にします。 通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。 タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。 タグの詳細については、「 [Notification Hubs のルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このトピックは、「[Notification Hubs の使用][get-started]」で作成したアプリケーションが基になります。 このチュートリアルを開始する前に、「[Notification Hubs の使用][get-started]」を完了している必要があります。
@@ -149,16 +149,16 @@ ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
 
     この時点では、 **didRegisterForRemoteNotificationsWithDeviceToken** メソッドに他のコードが存在しない点に注目してください。
 
-1. 「[Notification Hubs の使用][get-started]」チュートリアルを完了していれば、次のコードが AppDelegate.m に含まれているはずです。  ない場合は、それらを追加します。
+1. 次のメソッドを妨げます AppDelegate.m 内に存在する必要があります既に、 [Notification Hubs の概要][ get-started]チュートリアルです。  ない場合は、それらを追加します。
    
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText  {
+    -(void) メッセージ ボックス:(NSString *) タイトル メッセージ:(NSString *) messageText {
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
             cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
    
-   * (void)application:(UIApplication *)application didReceiveRemoteNotification:   (NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]]; }
+   * (void) アプリケーション:(UIApplication *) アプリケーション didReceiveRemoteNotification: (NSDictionary *) ユーザー情報 {NSLog (@"% @"、ユーザー情報)。  [自己 MessageBox:@"Notification"メッセージ: [ユーザー情報 objectForKey:@"aps"] valueForKey:@"alert"] です。}
    
    このメソッドにより、簡単な **UIAlert**を表示することでアプリケーションの実行中に受信した通知が処理されます。
 2. ViewController.m で、 AppDelegate.h をインポートするためのステートメントを追加し、次のコードを XCode で生成された **subscribe** メソッドにコピーします。 このコードは、ユーザーがユーザー インターフェイスで選択した新しいカテゴリ タグを使用するように通知登録を更新します。
@@ -212,7 +212,7 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>(省略可能) デバイスから通知を送信する
-通常、通知はバックエンド サービスによって送信されますが、アプリからニュース速報通知を直接送信できます。 これを行うには、「[Notification Hubs の使用][get-started]」チュートリアルで定義した`SendNotificationRESTAPI` メソッドを更新します。
+通常、通知はバックエンド サービスによって送信されますが、アプリからニュース速報通知を直接送信できます。 更新してこれを行う、`SendNotificationRESTAPI`メソッドで定義されていることを[Notification Hubs の概要][ get-started]チュートリアルです。
 
 1. ViewController.m で、 `SendNotificationRESTAPI` メソッドを次のように更新して、カテゴリ タグのパラメーターを受け取って適切な [テンプレート](notification-hubs-templates-cross-platform-push-messages.md) 通知を送信するようにします。
    
@@ -324,17 +324,11 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 
 
 <!-- URLs. -->
-[方法: Service Bus Notification Hubs (iOS アプリケーション)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: notification-hubs-ios-xplat-localized-apns-push-notification.md
-[モバイル サービス]: /develop/mobile/tutorials/get-started
-[Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/dn530749.aspx
-[iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
+[Mobile Service]: /develop/mobile/tutorials/get-started
+[Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [Azure クラシック ポータル]: https://manage.windowsazure.com
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -1,5 +1,5 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
-1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop)に関するページを参照してください。
+1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)に関するページを参照してください。
 2. ログインしたら、スタート画面で「 **WF.msc**」と入力し、Enter キーを押します。
    
     ![ファイアウォール プログラムを開始する](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)

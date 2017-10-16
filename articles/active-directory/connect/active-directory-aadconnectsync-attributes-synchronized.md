@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 32b5e5a8025be3381e20aad0b22289b2c641f74e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 786cba7402d8a7e7ecf4667d30c4c393c8d6de5d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -232,7 +231,7 @@ ms.lasthandoff: 06/17/2017
 | pager |○ |○ | | |
 | physicalDeliveryOfficeName |○ |○ | | |
 | postalCode |○ |○ | | |
-| postOfficeBox |○ |○ | | |
+| postOfficeBox |○ |○ | |この属性は現在、SharePoint Online では使用されていません。 |
 | preferredLanguage |○ | | | |
 | proxyAddresses |○ |○ |○ | |
 | pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
@@ -254,7 +253,7 @@ ms.lasthandoff: 06/17/2017
 | userPrincipalName |○ | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | wWWHomePage |○ |○ | | |
 
-## <a name="lync-online"></a>Lync Online
+## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (後続製品: Skype for Business)
 | 属性名 | ユーザー | 連絡先 | グループ | コメント |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
@@ -474,4 +473,3 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

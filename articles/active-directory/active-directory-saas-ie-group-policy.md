@@ -15,12 +15,11 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: b402ae326ab34ec71ad9de966e22be00045fee3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 53ce95811bbeb306ae986fda91d3387db4e71998
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
 このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/21/2017
 アクセス パネルの拡張機能は [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) および [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) でも使用でき、どちらの場合もインストールに管理者のアクセス許可は必要ありません。
 
 ## <a name="prerequisites"></a>前提条件
-* [Active Directory ドメイン サービス](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
+* [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
 * グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 [詳細情報。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>手順 1: 配布ポイントを作成する
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/21/2017
 2. **[サーバー マネージャー]** ウィンドウで、**[ファイルおよび記憶域サービス]** に移動します。
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. **[共有]** タブに移動します。 **[タスク]**  >  **[新しい共有...]** の順にクリックします
+3. **[共有]** タブに移動します。**[タスク]**  >  **[新しい共有...]** の順にクリックします
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/shares.png)
 4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
@@ -51,7 +50,7 @@ ms.lasthandoff: 07/21/2017
 7. クライアント コンピューターが共有のインストーラー パッケージにアクセスできることを確認します。 
 
 ## <a name="step-2-create-the-group-policy-object"></a>手順 2: グループ ポリシー オブジェクトを作成する
-1. Active Directory ドメイン サービス (AD DS) のインストールをホストしているサーバーにログオンします。
+1. Active Directory Domain Services (AD DS) のインストールをホストしているサーバーにログオンします。
 2. サーバー マネージャーで、**[ツール]** > **[グループ ポリシーの管理]** に移動します。
    
     ![[ツール] > [グループ ポリシーの管理] に移動する](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
@@ -165,5 +164,4 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md)
-
 

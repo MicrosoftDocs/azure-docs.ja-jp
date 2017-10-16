@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
+ms.openlocfilehash: d0f67b1a63c36e878ed5f7c9aa1c45267e5b156c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 07e55117d92e2780ea0c2ec24af04832f3f704a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 このチュートリアルはシリーズの第 3 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
@@ -39,6 +37,7 @@ ms.lasthandoff: 09/02/2017
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Visual Studio Team Services を使用して CI/CD を構成する
+> * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -159,10 +158,9 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 > * リリース定義の作成
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
-このチュートリアルでは、アプリケーションをデプロイして、継続的インテグレーションを構成しました。次の操作をお試しください。
-- [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-- [アプリケーションのテスト](service-fabric-testability-overview.md) 
-- [監視と診断](service-fabric-diagnostics-overview.md)
+次のチュートリアルに進みます。
+> [!div class="nextstepaction"]
+> [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

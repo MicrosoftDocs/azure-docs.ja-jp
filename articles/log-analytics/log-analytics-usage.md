@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データを送信したコンピューター、送信されたさまざまな種類のデータに関する情報が含まれます。  **[ログ分析の利用状況]** ダッシュボードを使用すると、Log Analytics サービスに送信されたデータの量を確認できます。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -80,8 +79,8 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 - **[検索クエリ]**: `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
 - **[時間枠]**: "*24 時間*"
 - **[アラートの頻度]**: 使用量データは 1 時間に 1 回しか更新されないため、1 時間に設定します。
-- **[アラートを生成する基準]**: *[結果の数]*
-- **[結果の数]**: "*0 より大きい*"
+- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
+- **[結果の数]** を *[Greater than 0] \(0 を超える)* に
 
 [アラート ルールへのアクションの追加](log-analytics-alerts-actions.md)に関する記事に記載されている手順で、アラート ルールの電子メール、webhook、または Runbook アクションを設定します。
 
@@ -91,7 +90,7 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 - **[検索クエリ]**: `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
 - **[時間枠]**: "*3 時間*"
 - **[アラートの頻度]**: 使用量データは 1 時間に 1 回しか更新されないため、1 時間に設定します。
-- **[アラートを生成する基準]**: *[結果の数]*
+- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
 - **[結果の数]**: "*0 より大きい*"
 
 アラートを受け取ったら、次のセクションの手順を使用して、使用量が予想よりも多い理由のトラブルシューティングを行います。
@@ -173,4 +172,3 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 * [パフォーマンス カウンターの構成](log-analytics-data-sources-performance-counters.md)を変更します。
 * [イベント ログの構成](log-analytics-data-sources-windows-events.md)を変更します。
 * [syslog の構成](log-analytics-data-sources-syslog.md)を変更します。
-

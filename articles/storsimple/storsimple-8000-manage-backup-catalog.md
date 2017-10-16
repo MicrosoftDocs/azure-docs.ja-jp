@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple デバイス マネージャー サービスを使用してバックアップ カタログを管理する
 ## <a name="overview"></a>概要
@@ -113,5 +111,4 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 ## <a name="next-steps"></a>次のステップ
 * [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-8000-restore-from-backup-set-u2.md)。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
-
 

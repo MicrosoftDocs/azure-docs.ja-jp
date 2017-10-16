@@ -14,13 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9691408bcd80afb6eba534f26749b76dd3bfe315
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-automation-to-trigger-a-job-private-preview"></a>Azure Automation を使用してジョブをトリガーする (プライベート プレビュー)
 
 この記事では、Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します。
@@ -29,12 +28,12 @@ ms.lasthandoff: 03/21/2017
 
 開始する前に、次の要件が満たされていることを確認します。
 
-*    Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*    データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
-*    リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
-*    GitHub リポジトリから `DataTransformationApp.zip` [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) ファイルをダウンロード済みである。
-*    GitHub リポジトリから `Get-ConfigurationParams.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)をダウンロード済みである。
-*    GitHub リポジトリから `Trigger-DataTransformation-Job.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)をダウンロード済みである。
+*   Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
+*   リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
+*   GitHub リポジトリから `DataTransformationApp.zip` [zip](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) ファイルをダウンロード済みである。
+*   GitHub リポジトリから `Get-ConfigurationParams.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Get-ConfigurationParams.ps1)をダウンロード済みである。
+*   GitHub リポジトリから `Trigger-DataTransformation-Job.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)をダウンロード済みである。
 
 ## <a name="step-by-step"></a>詳細な手順:
 

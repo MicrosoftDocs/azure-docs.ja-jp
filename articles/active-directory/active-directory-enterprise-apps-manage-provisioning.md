@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 44476bbf0e878e347d176077e08706d1afd44479
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/08/2017
 **[自動]** オプションを選択すると、4 つのセクションに分かれた画面が表示されます。
 
 ### <a name="admin-credentials"></a>[Admin Credentials (管理者の資格情報)]
-ここでは、Azure AD をアプリケーションのユーザー管理 API に接続するために必要な資格情報を入力します。 必要な入力は、アプリケーションによって異なります。 資格情報の種類と特定のアプリケーションの要件の詳細については、 [その特定のアプリケーションの構成に関するチュートリアル](active-directory-saas-app-provisioning.md#list-of-apps-that-support-automated-user-provisioning)を参照してください。
+ここでは、Azure AD をアプリケーションのユーザー管理 API に接続するために必要な資格情報を入力します。 必要な入力は、アプリケーションによって異なります。 資格情報の種類と特定のアプリケーションの要件の詳細については、 [その特定のアプリケーションの構成に関するチュートリアル](active-directory-saas-app-provisioning.md)を参照してください。
 
 **[接続テスト]** をクリックすると、資格情報をテストできます (Azure AD が、指定された資格情報を使用してアプリのプロビジョニング アプリへの接続を試みます)。
 
@@ -85,4 +84,3 @@ Azure AD エクスペリエンスを気に入っていただけることを期�
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG
-

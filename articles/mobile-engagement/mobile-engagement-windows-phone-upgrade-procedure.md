@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06b2a8b5e12d33c3ade469491b2694dd4a342cf1
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Windows Phone Silverlight SDK アップグレード手順
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
@@ -143,5 +142,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 * GetCapptainPageName は GetEngagementPageName という名前になりました
 
 名前の変更はオーバーライドされたメソッドにも影響することにご注意ください。
-
 

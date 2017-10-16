@@ -1,6 +1,6 @@
 ---
-title: Diagnostics in Azure Stack | Microsoft Docs
-description: How to collect log files for diagnostics in Azure Stack
+title: "Azure Stack の診断 | Microsoft Docs"
+description: "Azure Stack の診断のログ ファイルを収集する方法"
 services: azure-stack
 documentationcenter: 
 author: adshar
@@ -12,34 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/25/2017
 ms.author: adshar
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 70004cfd83360ac4c66fd4c90632d341709d2e6f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: d8f39d921222a3642e3da6e288b4ca11ae1ccaeb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostics tools
- 
-Azure Stack is a large collection of components working together and interacting with each other. All these components  generate their own unique logs, which means that diagnosing issues can quickly become a challenging task, especially for errors coming from multiple interacting Azure Stack components. 
+# <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
-Our diagnostics tools help make sure the log collection mechanism is easy and efficient. The following diagram shows how log collection tools in Azure Stack work:
+*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+ 
+Azure Stack は、相互に連携して作用する複数のコンポーネントによって構成された大規模なコレクションです。 これらすべてのコンポーネントで独自のログが生成されるため、相互作用する Azure Stack の複数コンポーネントからのエラーについては特に、問題の診断がたちまち困難になる可能性があります。 
 
-![Log collection tools](media/azure-stack-diagnostics/image01.png)
- 
- 
-## <a name="trace-collector"></a>Trace Collector
- 
-The Trace Collector is enabled by default. It continuously runs in the background and collects all Event Tracing for Windows (ETW) logs from component services on Azure Stack and stores them on a common local share. 
+Azure Stack の診断ツールを使用すれば、ログ収集のメカニズムを簡単かつ効率的にすることができます。 次の図は、Azure Stack のログ収集ツールのしくみを示しています。
 
-The following are important things to know about the Trace Collector:
+![ログ収集ツール](media/azure-stack-diagnostics/image01.png)
  
-* The Trace Collector runs continuously with default size limits. The default maximum size allowed for each file (200 MB) is **not** a cutoff size. A size check occurs periodically (currently every 10 minutes) and if the current file is >= 200 MB, it is saved and a new file is generated. There is also an 8 GB (configurable) limit on the total file size generated per event session. Once this limit is reached, the oldest files are deleted as new ones are created.
-* There is a 5-day age limit on the logs. This limit is also configurable. 
-* Each component defines the trace configuration properties through a JSON file. The JSON files are stored in `C:\TraceCollector\Configuration`. If necessary, these files can be edited to change the age and size limits of the collected logs. Changes to these files require a restart of the *Microsoft Azure Stack Trace Collector* service for the changes to take effect.
-* The following example is a trace configuration JSON file for FabricRingServices Operations from the XRP VM: 
+ 
+## <a name="trace-collector"></a>トレース コレクター
+ 
+トレース コレクターは、既定で有効になっています。 継続的にバックグラウンドで実行され、Azure Stack のコンポーネント サービスから Windows イベント トレーシング (ETW) のすべてのログを収集し、共通のローカル共有に格納します。 
+
+トレース コレクターについて知っておくべき重要事項を次に示します。
+ 
+* トレース コレクターは、既定のサイズ制限で継続的に実行されます。 各ファイルに対して許容される既定の最大サイズ (200 MB) は、サイズの上限では**ありません**。 定期的にサイズのチェックが行われ (現時点では 10 分ごと)、その時点で 200 MB 以上のファイルは保存されて、新しいファイルが生成されます。 また、イベント セッションごとに生成されるファイルの合計サイズには、8 GB (構成可能) の制限が設定されています。 この制限に達した場合、新しいファイルが作成されると最も古いファイルは削除されます。
+* ログの保存期間には 5 日間の制限があります。 この制限も構成可能です。 
+* 各コンポーネントは、JSON ファイルでトレースの構成プロパティを定義します。 JSON ファイルは `C:\TraceCollector\Configuration` に格納されています。 必要に応じてこれらのファイルを編集し、収集したログの保存期間とサイズの制限を変更できます。 ファイルへの変更を有効にするには、*Microsoft Azure Stack トレース コレクター* サービスを再起動する必要があります。
+* 次の例は、XRP VM の FabricRingServices 操作に対する、トレース構成の JSON ファイルです。 
 
 ```
 {
@@ -63,57 +65,57 @@ The following are important things to know about the Trace Collector:
 
 * **MaxDaysOfFiles**
 
-    This parameter controls the age of files to keep. Older log files are deleted.
+    このパラメーターは、ファイルの保存期間を制御します。 古いログ ファイルは削除されます。
 * **MaxSizeInMB**
 
-    This parameter controls the size threshold for a single file. If the size is reached, a new .etl file is created.
+    このパラメーターは、1 つのファイルのサイズのしきい値を制御します。 サイズが上限に達すると、新しい .etl ファイルが作成されます。
 * **TotalSizeInMB**
 
-    This parameter controls the total size of the .etl files generated from an event session. If the total file size is greater than this parameter value, older files are deleted.
+    このパラメーターは、イベント セッションから生成された .etl ファイルの合計サイズを制御します。 ファイルの合計サイズがこのパラメーターの値よりも大きくなると、古いファイルは削除されます。
   
-## <a name="log-collection-tool"></a>Log collection tool
+## <a name="log-collection-tool"></a>ログ収集ツール
  
-The PowerShell command `Get-AzureStackLog` can be used to collect logs from all the components  in an Azure Stack environment. It saves them in zip files in a user defined location. If our technical support team needs your logs to help troubleshoot an issue, they may ask you to run this tool.
+PowerShell コマンド `Get-AzureStackLog` を使用して、Azure Stack 環境のすべてのコンポーネントからログを収集できます。 これらは、ユーザーの定義した場所に zip ファイルで保存されます。 テクニカル サポート チームが問題を解決するためにお客様のログを必要とする場合は、このツールを実行するようにお願いすることがあります。
 
 > [!CAUTION]
-> These log files may contain personally identifiable information (PII). Take this into account before you publicly post any log files.
+> これらのログ ファイルには個人を特定できる情報 (PII) が含まれている可能性があります。 ログ ファイルを公開する前に、この点を考慮してください。
  
-We currently collect the following log types:
-*   **Azure Stack deployment logs**
-*   **Windows event logs**
-*   **Panther logs**
+現時点では、次の種類のログが収集されます。
+*   **Azure Stack デプロイ ログ**
+*   **Windows イベント ログ**
+*   **Panther ログ**
 
-     To troubleshoot VM creation issues.
-*   **Cluster logs**
-*   **Storage diagnostic logs**
-*   **ETW logs**
+     VM 作成の問題をトラブルシューティングします。
+*   **クラスター ログ**
+*   **Storage 診断ログ**
+*   **ETW ログ**
 
-    These are collected by the Trace Collector and stored in a share from where `Get-AzureStackLog` retrieves them.
+    これらはトレース コレクターによって収集され、`Get-AzureStackLog` によって取得された場所から共有に格納されます。
  
-To identify all the logs that get collected from all the components, refer to the `<Logs>` tags in the customer configuration file located at `C:\EceStore\<Guid>\<GuidWithMaxFileSize>`.
+すべてのコンポーネントから収集されたすべてのログを識別するには、`C:\EceStore\<Guid>\<GuidWithMaxFileSize>` にある顧客構成ファイルの `<Logs>` タグを参照します。
  
-### <a name="to-run-get-azurestacklog"></a>To run Get-AzureStackLog
-1.  Log in as AzureStack\AzureStackAdmin on the host.
-2.  Open a PowerShell window as an administrator.
-3.  Run `Get-AzureStackLog`.  
+**Get-AzureStackLog を実行するには**
+1.  ホストに AzureStack\AzureStackAdmin でログインします。
+2.  管理者として PowerShell ウィンドウを開きます。
+3.  `Get-AzureStackLog` を実行します。  
 
-    **Examples**
+    **例**
 
-    - Collect all logs for all roles:
+    - すべてのロールのすべてのログを収集します。
 
         `Get-AzureStackLog -OutputPath C:\AzureStackLogs`
 
-    - Collect logs from VirtualMachines and BareMetal roles:
+    - VirtualMachines ロールと BareMetal ロールからログを収集します。
 
         `Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal`
 
-    - Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
+    - ログ ファイルに対する過去 8 時間以内の日付範囲のフィルター処理で、VirtualMachines ロールと BareMetal ロールからログを収集します。
 
         `Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date)`
 
-If the `FromDate` and `ToDate` parameters are not specified, logs are collected for the past 4 hours by default.
+`FromDate` および `ToDate` パラメーターが指定されない場合、既定では過去 4 時間以内のログが収集されます。
 
-Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles:
+現時点では `FilterByRole` パラメーターを使用して、次のロールごとにログ収集をフィルター処理できます。
 
 |   |   |   |
 | - | - | - |
@@ -135,23 +137,33 @@ Currently, you can use the `FilterByRole` parameter to filter log collection by 
 | `WAS`                     | `WASPUBLIC`              | `WDS`                |
 
 
-A few things to note:
+注意点を次に示します。
 
-* This command takes some time for log collection based on which role logs are collected. Contributing factors include the time duration specified for log collection, and the numbers of nodes in the Azure Stack environment.
-* After log collection completes, check the new folder created in the `-OutputPath` parameter specified in the command.
-* A file called `Get-AzureStackLog_Output.log` is created in the folder containing the zip files and includes the command output, which can be used for troubleshooting any failures in log collection.
-* Each role has its logs inside an individual zip file. 
-* To investigate a specific failure, logs may be needed from more than one component.
-    -   System and Event logs for all infrastructure VMs are collected in the *VirtualMachines* role.
-    -   System and Event logs for all hosts are collected in the *BareMetal* role.
-    -   Failover Cluster and Hyper-V event logs are collected in the *Storage* role.
-    -   ACS logs are collected in the *Storage* and *ACS* roles.
-* For more details, you can refer to the customer configuration file. Investigate the `<Logs>` tags for the different roles.
+* このコマンドでは、どのロールのログが収集されるかに基づいて、ログの収集に時間がかかります。 関連する要素には、ログ収集に指定した期間と、Azure Stack 環境のノード数が含まれます。
+* ログの収集が完了したら、コマンドで指定した `-OutputPath` パラメーターに作成された新しいフォルダーを確認します。
+* zip ファイルを含むフォルダーに `Get-AzureStackLog_Output.log` という名前のファイルが作成され、このファイルには、ログ収集のエラーを解決するのに使用できるコマンドの出力が含まれています。
+* ロールごとに、個々の zip ファイル内にログがあります。 
+* 特定のエラーを調べるには、複数のコンポーネントのログが必要な場合があります。
+    -   インフラストラクチャのすべての VM のシステム ログとイベント ログは、*VirtualMachines* ロールで収集されます。
+    -   すべてのホストのシステム ログとイベント ログは、*BareMetal* ロールで収集されます。
+    -   フェールオーバー クラスターおよび Hyper-V のイベント ログは、*Storage* ロールで収集されます。
+    -   ACS ログは、*Storage* ロールと *ACS* ロールで収集されます。
+* 詳細については、顧客構成ファイルをご覧ください。 各種ロールの `<Logs>` タグを調べます。
 
 > [!NOTE]
-> We are enforcing size and age limits to the logs collected as it is essential to ensure efficient utilization of your storage space to make sure it doesn't get flooded with logs. Having said that, when diagnosing a problem you will often need logs that might not exist anymore due to these limits being enforced. Hence, it is **highly recommended** that you offload your logs to an external storage space (a storage account in public Azure, an additional on-prem storage device etc.) every 8 to 12 hours and keep them there for 1 - 3 months depending on your requirements.
+> 記憶域スペースを効率的に使用し、ログで占領されることがないようにすることは極めて重要なため、収集したログにはサイズと保存期間の制限が適用されます。 ただし、問題を診断するときに、これらの制限が適用されることによってもはや存在しないログが必要になってくる場合があります。 このため、外部の記憶域スペース (Azure のストレージ アカウント、オンプレミスの追加の記憶装置など) に、8 - 12 時間ごとにログをオフロードし、要件に応じて 1 - 3 か月間そこに保存することを**強くお勧めします**。
 
+### <a name="multi-node-considerations"></a>マルチノードに関する考慮事項
+マルチノード環境でログを収集する場合は、次の相違点に注意してください。
+* `get-date` 関数は、マルチノード環境ではホワイトリストに含まれません。 そのため、日付を明示的に指定する必要があります。 For example:
 
-## <a name="next-steps"></a>Next steps
-[Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md)
+   `-FromDate "Friday, August 18, 2017 6:34:48 AM" -ToDate "Friday, August 18, 2017 7:35:25 AM"`
+* ハードウェア ライフサイクル ホスト上の共有フォルダーまたはアクセス可能なその他の共有フォルダーに出力するための UNC パスを指定します。 For example:
+
+   `Get-AzureStackLog -OutputSharePath \\10.193.128.250\logs -OutputShareCredential $sharecred`
+
+   `-OutputShareCredential`パラメーターで、共有フォルダーにアクセスするための資格情報を入力するよう求められます。
+
+## <a name="next-steps"></a>次のステップ
+[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
 

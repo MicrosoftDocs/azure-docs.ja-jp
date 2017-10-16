@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 428cfb29fe5d436073744a369da8ca1c2784044b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: de8f7acadc282e4b81c657b1723f00fd3e5fd4f2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。
@@ -57,4 +56,3 @@ Azure Monitor の自動スケールは、仮想マシン スケール セット 
 [5]: ./media/monitoring-autoscale-scale-by-custom-metric/scale-setting-new-web-app.png
 [6]: ./media/monitoring-autoscale-scale-by-custom-metric/scale-by-custom-metric.png
 [7]: ./media/monitoring-autoscale-scale-by-custom-metric/autoscale-setting-custom-metrics-ai.png
-

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
-
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、Azure のさまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。
@@ -78,7 +75,7 @@ Azure には、ネットワーク セキュリティについて議論する上�
 
 ### <a name="basic-network-connectivity"></a>基本的なネットワーク接続
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を使用して、VNet 同士を接続したり、オンプレミスのネットワークと接続したりできます。
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 Vnet とサイト対サイト Vpn を使用する、内部設置型ネットワークに相互に接続でき、専用[WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)です。
 
 ![基本的なネットワーク接続](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -665,4 +662,3 @@ Application Gateway に関しては、次のメトリックがサポートされ
 -   [マイクロソフトが高速で信頼性の高いグローバル ネットワークを構築する方法](https://azure.microsoft.com/blog/how-microsoft-builds-its-fast-and-reliable-global-network/)
 
 -   [ネットワークの革新に着手する](https://azure.microsoft.com/blog/lighting-up-network-innovation/)
-

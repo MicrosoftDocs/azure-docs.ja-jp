@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>Site Recovery コンテナーから Azure Resource Manager ベースの Recovery Services コンテナーへのアップグレード
 
@@ -186,4 +185,3 @@ PowerShell で次のコマンドを実行します。
 Site Recovery コンテナーでは、各保護グループは、コピーの頻度、復旧ポイントのリテンション期間、アプリケーションの整合性スナップショットの作成頻度などのレプリケーション設定で構成されています。 Recovery Services コンテナーでは、これらの設定はレプリケーション ポリシーとして構成されています。 ポリシーの名前は保護グループの名前、または *primarycloud_Policy* です。
 
 レプリケーション ポリシーの詳細については、「[VMware から Azure へのレプリケーション ポリシーの管理](site-recovery-setup-replication-settings-vmware.md)」をご覧ください。
-

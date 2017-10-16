@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 09/20/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
-ms.lasthandoff: 04/14/2017
-
-
+ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>高信頼アクターの Service Fabric プラットフォームの使用方法
 この記事では、Reliable Actors による Azure Service Fabric プラットフォームの使用方法について説明します。 Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。 アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
@@ -31,7 +30,7 @@ ms.lasthandoff: 04/14/2017
 これらのコンポーネントで Reliable Actors フレームワークが構成されます。
 
 ## <a name="service-layering"></a>サービスのレイヤー
-アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージ化](service-fabric-package-apps.md)、[デプロイメント](service-fabric-deploy-remove-applications.md)、アップグレード、スケーリングの各概念は、すべてアクター サービスにも同様に適用されます。 
+アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージ化](service-fabric-package-apps.md)、[デプロイメント](service-fabric-deploy-remove-applications.md)、アップグレード、スケーリングの各概念は、すべてアクター サービスにも同様に適用されます。
 
 ![アクター サービスのレイヤー][1]
 
@@ -373,6 +372,35 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 
 GUID/UUID と文字列を使用している場合、値は Int64 にハッシュされます。 ただし、Int64 を `ActorId`に明示的に指定している場合、Int64 はハッシュされることなくパーティションに直接マップされます。 この手法を使用して、どのパーティションにアクターが配置されるかを制御できます。
 
+## <a name="actor-using-remoting-v2-stack"></a>リモート処理 V2 スタックを使用したアクター
+2.8 Nuget パッケージによって、ユーザーは、カスタムのシリアル化などの機能を提供する高性能なリモート処理 V2 スタックを使用できるようになりました。 リモート処理 V2 には、既存のリモート処理スタック (これからは V1 リモート処理スタックと呼びます) との下位互換性がありません。
+
+リモート処理 V2 スタックを使用するには、次の変更が必要です。
+ 1. アクター インターフェイスで次の Assembly 属性を追加します。
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+   ```
+
+ 2. ActorService とアクター クライアント プロジェクトをビルドしてアップグレードし、V2 スタックの使用を開始します。
+
+### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>サービスの可用性に影響を与えずにアクター サービスをリモート処理 V2 スタックにアップグレードする
+この変更は、2 段階に分かれたアップグレードです。 次に示す順序で手順に従います。
+
+1.  アクター インターフェイスで次の Assembly 属性を追加します。 この属性は、ActorService 用の 2 つのリスナーである、V1 (既存) および V2 リスナーを開始します。 この変更で ActorService をアップグレードします。
+
+  ```csharp
+  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
+  ```
+
+2. 上記アップグレードの完了後、ActorClients をアップグレードします。
+この手順により、アクター プロキシは確実にリモート処理 V2 スタックを使用します。
+
+3. この手順は省略可能です。 上記の属性を変更して V1 リスナーを削除します。
+
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+    ```
+
 ## <a name="next-steps"></a>次のステップ
 * [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
@@ -386,4 +414,3 @@ GUID/UUID と文字列を使用している場合、値は Int64 にハッシュ
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
-

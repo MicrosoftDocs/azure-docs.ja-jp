@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
+ms.openlocfilehash: 33cd461c61db5f3f6aa9f68fc655ace94c30611a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2559bdbca8002392ef925e0eddfd23044cc563b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
 ### <a name="overview"></a>概要
@@ -58,7 +56,7 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
-- Azure AD 内のデータへのアクセスには、[Security Token Service (STS)](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization) によるユーザー認証が要求されます。 承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。
+- Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。 承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。
 
 ![Azure テナント](./media/azure-isolation/azure-isolation-fig1.png)
 
@@ -71,7 +69,7 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 - Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 RBAC ポリシー チェックを回避することはできません。
 
-診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。 [管理者候補](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
+診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。[管理者候補](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
 
 ![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
@@ -222,7 +220,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 -   [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--   [ワイヤ暗号化](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
+-   [ワイヤ暗号化](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
 
 -   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
@@ -324,7 +322,7 @@ VIP (仮想 IP アドレス) の背後には、ステートレス ゲートウ�
 一般に、バックエンド システムは、セキュリティ上の理由から他のシステムへのアウトバウンド通信を行いません。 これは、フロントエンド (ゲートウェイ) 層のシステムにまかされます。 高度な防御メカニズムとして、攻撃対象領域を最小限に抑えるため、ゲートウェイ層のマシンがバックエンド マシンに対して持つ権限は制限されます。
 
 ### <a name="isolation-by-machine-function-and-access"></a>マシンの機能とアクセスによる分離
-SQL Azure は、さまざまなマシンの機能に対して実行するサービスで構成されます。 SQL Azure は "バックエンド" のクラウド データベースと "フロントエンド" (ゲートウェイ/管理) 環境に分けられ、一般原則としてトラフィックはバックエンドのみに送信され、逆方向はありません。 フロントエンド環境は外部の他のサービスと通信できます。通常、バックエンドに対しては限られたアクセス許可 (起動に必要なエントリ ポイントを呼び出すために十分なもの) しかありません。
+SQL Azure は、さまざまなマシンの機能に対して実行するサービスで構成されます。 SQL Azure は "バックエンド" のクラウド データベースと "フロントエンド" (ゲートウェイ/管理) 環境に分けられ、一般原則としてトラフィックはバックエンドのみに送信され、逆方向はありません。フロントエンド環境は外部の他のサービスと通信できます。通常、バックエンドに対しては限られたアクセス許可 (起動に必要なエントリ ポイントを呼び出すために十分なもの) しかありません。
 
 ## <a name="networking-isolation"></a>ネットワークの分離
 Azure デプロイでは、複数の層でネットワークの分離を行うことができます。 次の図は、Azure が顧客に提供するさまざまなネットワーク分離の層を示しています。 これらの層は、Azure プラットフォーム自体とユーザー定義機能の両方でネイティブです。 インターネットから受信する場合は、Azure DDoS が Azure に対する大規模な攻撃に対して分離を提供します。 次の分離の層は、顧客が定義したパブリック IP アドレス (エンドポイント) です。これらのエンドポイントは、クラウド サービスを通過して仮想ネットワークに到達できるトラフィックを決定するために使用されます。 ネイティブの Azure Virtual Network の分離により、その他すべてのネットワークから完全に分離されると、そのトラフィックだけが、ユーザーが構成した経路と方法を介して流れます。 これらの経路と方法が次の層となります。次の層では、NSG、UDR、ネットワーク仮想アプライアンスを使用して DMZ などの分離境界を構築し、保護されているネットワークにおけるアプリケーションのデプロイを保護することができます。
@@ -348,5 +346,4 @@ Microsoft Azure ではクラウドベースのコンピューティング サー
 - [記憶域の分離](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure では、顧客 VM ベースのコンピューティングを記憶域から切り離します。 このように分けることで、コンピューティングと記憶域を個別に拡張することができ、マルチテナント機能と分離を容易に提供できます。 したがって、Azure Storage は別のハードウェアで稼働し、Azure コンピューティングとのネットワーク接続はありません (論理的な接続のみ)。 すべての要求は、顧客の選択に基づいて HTTP または HTTPS 上で実行されます。
-
 

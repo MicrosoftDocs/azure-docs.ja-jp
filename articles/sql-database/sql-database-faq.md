@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 6ed02ead07c50b9a49e8868756b6f957d7b49b99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -125,4 +123,3 @@ DMV を使ってプライマリ データベースと geo セカンダリの間�
 
 ## <a name="to-move-a-database-between-subscriptions"></a>サブスクリプション間でデータベースを移動するには
 * [Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]**をクリックし、移動するリソースと移動先のサブスクリプションを選択します。
-

@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -314,23 +314,23 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
     ログイン ボタンを有効にするデバイス トークンの設定方法に注意してください。 これは、ログイン アクションの一部として、View Controller がアプリケーション バックエンドでプッシュ通知を登録するためです。 そのため、デバイス トークンが適切に設定される前にユーザーがログイン ボタンを押すのを防ぐ必要があります。 プッシュ登録の前にログインが発生する場合には、プッシュ登録からログインを切り離す必要があります。
 2. 以下のスニペットを使って、ViewController.m に **[Log in]** ボタンのアクション メソッドと、ASP.NET バックエンドを使って通知メッセージを送信するためのメソッドを実装します。
    
-       - (IBAction)LogInAction:(id)sender {   // create authentication header and set it in register client   NSString* username = self.UsernameField.text;   NSString* password = self.PasswordField.text;
+       - (IBAction)LogInAction: (id) 送信者 {/認証ヘッダーを作成し、登録クライアント NSString * ユーザー名の設定/self を = です。UsernameField.text です。  NSString * パスワード self を = です。PasswordField.text です。
    
            [self createAndSetAuthenticationHeaderWithUsername:username AndPassword:password];
    
-           __weak ViewController* selfie = self;   [self.registerClient registerWithDeviceToken:self.deviceToken tags:nil       andCompletion:^(NSError* error) {       if (!error) {           dispatch_async(dispatch_get_main_queue(),           ^{               selfie.SendNotificationButton.enabled = YES;               [self MessageBox:@"Success" message:@"Registered successfully!"];           });       }   }]; }
+           __weak ViewController * selfie = self です。  [self.registerClient registerWithDeviceToken:self.deviceToken タグ: nil andCompletion:^(NSError* error){場合 (! エラー) {dispatch_async(dispatch_get_main_queue()、^ {selfie です。SendNotificationButton.enabled = [はい] です。              [自己 MessageBox:@"Success"message:@"Registered 正常!"];});}}]}。
 
         - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag            Message:(NSString*)message {    NSURLSession* session = [NSURLSession        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil        delegateQueue:nil];
 
-            // Pass the pns and username tag as parameters with the REST URL to the ASP.NET backend    NSURL* requestURL = [NSURL URLWithString:[NSString        stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,        usernameTag]];
+            REST の URL でパラメーターとして ASP.NET バックエンド NSURL * requestURL に pns とユーザー名のタグを渡す = [NSURL URLWithString: [NSString stringWithFormat:@"%@/api/notifications? pns = % @ (& a) to_tag = % @"、BACKEND_ENDPOINT、pns、usernameTag] です。
 
-            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];    [request setHTTPMethod:@"POST"];
+            NSMutableURLRequest * 要求 [NSMutableURLRequest requestWithURL:requestURL] を = です。   [要求 setHTTPMethod:@"POST"] です。
 
-            // Get the mock authenticationheader from the register client    NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",        self.registerClient.authenticationHeader];    [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            モック authenticationheader クライアントから取得、レジスタ NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @"、self.registerClient.authenticationHeader] です。   [要求 setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"] です。
 
-            //Add the notification message body    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
+            通知メッセージの本文の追加 [setValue:@"application/json;charset=utf-8 を要求する"forHTTPHeaderField:@"Content-Type"] です。   [setHTTPBody を要求します。 [メッセージ dataUsingEncoding:NSUTF8StringEncoding]] です。
 
-            // Execute the send notification REST API on the ASP.NET Backend    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)    {        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;        if (error || httpResponse.statusCode != 200)        {            NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",                                pns, httpResponse.statusCode, error];            dispatch_async(dispatch_get_main_queue(),            ^{                // Append text because all 3 PNS calls may also have information to view                [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
+            ASP.NET バックエンド NSURLSessionDataTask * dataTask で REST API の通知の送信を実行 = [セッション dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) 応答です。       場合 (エラー | | httpResponse.statusCode! = 200) {NSString*ステータス = [NSString stringWithFormat:@"Error ステータス % @: %d\nerror: %@\n"、pns、httpResponse.statusCode、エラー] です。           dispatch_async(dispatch_get_main_queue()、^ {//3 の PNS のすべての呼び出しも情報があります [self.sendResults setText:[self.sendResults.text stringByAppendingString:status] を表示するためのテキストの追加] です。           });           NSLog(status) です。       }
 
                 if (data != NULL)
                 {
@@ -409,9 +409,3 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

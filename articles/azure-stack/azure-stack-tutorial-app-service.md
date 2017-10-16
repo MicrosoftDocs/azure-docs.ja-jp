@@ -1,6 +1,6 @@
 ---
-title: Make web, mobile, and API apps available to your Azure Stack users | Microsoft Docs
-description: Tutorial to install the App Service resource provider and create offers that give your Azure Stack users the ability to create web, mobile, and API apps.
+title: "Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする | Microsoft Docs"
+description: "App Service リソース プロバイダーをインストールし、Azure Stack ユーザーが Web、モバイル、および API アプリを作成できるようにするオファーを作成するためのチュートリアル。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,86 +11,84 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 11ecaa8ec017a9eb1285928e3d3d367ddfc43022
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Make web, mobile, and API apps available to your Azure Stack users
+# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする
 
-As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create Azure Functions and web, mobile, and API applications. By providing access to these on-demand, cloud-based apps to your users, you can save them time and resources. To set this up, you will:
+Azure Stack クラウド管理者として、ユーザー (テナント) が Azure Functions や Web、モバイル、および API アプリケーションを作成できるようにするオファーを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
-> * Deploy the App Service resource provider
-> * Create an offer
-> * Test the offer
+> * App Service リソース プロバイダーをデプロイする
+> * オファーの作成
+> * オファーのテスト
 
-## <a name="deploy-the-app-service-resource-provider"></a>Deploy the App Service resource provider
+## <a name="deploy-the-app-service-resource-provider"></a>App Service リソース プロバイダーをデプロイする
 
-1. [Prepare the Azure Stack Development Kit host](azure-stack-app-service-before-you-get-started.md). This includes deploying the SQL Server resource provider, which is required for creating some apps.
-2. [Download the installer and helper scripts](azure-stack-app-service-deploy.md#download-the-required-components).
-3. [Run the helper script to create required certificates](azure-stack-app-service-deploy.md#create-certificates-required-by-app-service-on-azure-stack).
-4. [Install the App Service resource provider](azure-stack-app-service-deploy.md#use-the-installer-to-download-and-install-app-service-on-azure-stack) (it will take a couple hours to install and for all the worker roles to appear).
-5. [Validate the installation](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
+1. [Azure Stack Development Kit ホストを準備します](azure-stack-app-service-before-you-get-started.md)。 これには、一部のアプリの作成に必要な SQL Server リソース プロバイダーのデプロイが含まれます。
+2. [インストーラおよびヘルパー スクリプトをダウンロードします](azure-stack-app-service-deploy.md)。
+3. [ヘルパー スクリプトを実行して、必要な証明書を作成します](azure-stack-app-service-deploy.md)。
+4. [App Service リソース プロバイダーをインストールします](azure-stack-app-service-deploy.md) (インストールし、すべての worker ロールが表示されるには数時間かかります)。
+5. [インストールを検証します](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation)。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>オファーの作成
 
-As an example, you can create an offer that lets users create DNN web content management systems. It requires the SQL Server service which you already enabled by installing the SQL Server resource provider.
+例として、ユーザーが DNN Web コンテンツ管理システムを作成できるようにするオファーを作成できます。 それには、SQL Server リソース プロバイダーをインストールすることによって既に有効にしている SQL Server サービスが必要です。
 
-1.  [Set a quota](azure-stack-setting-quotas.md) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
-2.  [Create a plan](azure-stack-create-plan.md). Name it *TestAppServicePlan*, select the the **Microsoft.SQL** service, and **AppService Quota** quota.
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.Web]** を選択します。
+2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスおよび **[AppService Quota] (AppService クォータ)** クォータを選択します。
 
     > [!NOTE]
-    > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan     include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQL**.
+    > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、Wordpress には **Microsoft.MySQL** が必要です。
     > 
     >
 
-3.  [Create an offer](azure-stack-create-offer.md), name it **TestAppServiceOffer** and select the **TestAppServicePlan** plan.
+3.  [オファーを作成し](azure-stack-create-offer.md)、それに **TestAppServiceOffer** という名前を付け、**[TestAppServicePlan]** プランを選択します。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>オファーのテスト
 
-Now that you've deployed the App Service resource provider and created an offer, you can sign in as a user, subscribe to the offer, and create an app. For this example, we'll create a DNN Platform content management system. You must first create a SQL database and then the DNN web app.
+これで App Service リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、アプリを作成できます。 この例では、DNN プラットフォーム コンテンツ管理システムを作成します。 最初に SQL データベース、次に DNN Web アプリを作成する必要があります。
 
-### <a name="subscribe-to-the-offer"></a>Subscribe to the offer
-1. Sign in to the Azure Stack portal (https://portal.local.azurestack.external) as a tenant.
-2. Click **Get a subscription** > type **TestAppServiceSubscription** under **Display Name** > **Select an offer** > **TestAppServiceOffer** > **Create**.
+### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
+1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
+2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** > **[Select an offer] \(オファーの選択)** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
 
-### <a name="create-a-sql-database"></a>Create a SQL database
+### <a name="create-a-sql-database"></a>SQL Database の作成
 
-1. Click **+** > **Data + Storage** > **SQL Database**.
-2. Leave the defaults for the fields, except as follows:
-    - **Database Name**: DNNdb
-    - **Max Size in MB**: 100
-    - **Subscription**: TestAppServiceOffer
-    - **Resource Group**: DNN-RG
-3. Click **Login Settings**, enter credentials for the database, and then click **OK**. You'll use these credentials later in these steps.
-4. Click **SKU** > select the SQL SKU that you created for the SQL Hosting Server > **OK**.
-5. Click **Create**.
+1. **+** > **[データ + ストレージ]** > **[SQL Database]** をクリックします。
+2. 次を除き、各フィールドの既定値のままにします。
+    - **[データベース名]**: DNNdb
+    - **[Max Size in MB] (最大サイズ (MB))**: 100
+    - **[サブスクリプション]**: TestAppServiceOffer
+    - **[リソース グループ]**: DNN-RG
+3. **[Login Settings] (ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、この手順内の後で使用します。
+4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
+5. **Create** をクリックしてください。
 
-### <a name="create-a-dnn-app"></a>Create a DNN app    
+### <a name="create-a-dnn-app"></a>DNN アプリの作成    
 
-1. Click **+** > **See all** > **DNN Platform preview** > **Create**.
-2. Type *DNNapp* under **App name** and select **TestAppServiceOffer** under **Subscription**.
-3. Click **Configure required settings** > **Create New** > type an **App Service plan** name.
-4. Click **Pricing tier** > **F1 Free** > **Select** > **OK**.
-5. Click **Database** and enter the information for the SQL database you created earlier.
-6. Click **Create**.
+1. **+** > **[See all] (すべてを表示)** > **[DNN Platform preview] (DNN プラットフォームのプレビュー)** > **[作成]** をクリックします。
+2. **[App name] \(アプリ名)** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
+3. **[Configure required settings] \(必要な設定の構成)** > **[Create New] \(新規作成)** をクリックし、**App Service プラン**の名前を入力します。
+4. **[Pricing tier] \(価格レベル)** > **[F1 Free] \(F1 無料)** > **[選択]** > **[OK]** をクリックします。
+5. **[Database] \(データベース)** をクリックし、以前に作成した SQL データベースの情報を入力します。
+6. **Create** をクリックしてください。
 
-In this tutorial, you learned how to:
+このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Deploy the App Service resource provider
-> * Create an offer
-> * Test the offer
+> * App Service リソース プロバイダーをデプロイする
+> * オファーの作成
+> * オファーのテスト
 
-Advance to the next tutorial to learn how to:
+次のチュートリアルに進み、次の操作方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
-
+> [Azure と Azure Stack へのアプリのデプロイ](user/azure-stack-solution-pipeline.md)

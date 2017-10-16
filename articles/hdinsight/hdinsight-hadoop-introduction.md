@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: cgronlun
+ms.openlocfilehash: e5ed09ddb1556e6c76813e71bcb31cf4f792b616
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: b413b6f1a6c73251dfdbe6bf9d23cdfa6510839a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-hdinsight-the-hadoop-technology-stack-and-hadoop-clusters"></a>Azure HDInsight、Hadoop テクノロジ スタック、Hadoop クラスターの概要
  この記事では、Hadoop テクノロジ スタックのクラウド ディストリビューションである Azure HDInsight について概説します。 さらに、Hadoop クラスターとは何であるかや、いつ Hadoop クラスターを使用するかについても説明します。 
@@ -53,7 +52,7 @@ Hadoop クラスターは、保存されているデータのバッチ処理に�
 ## <a name="overview"></a>HDInsight でのクラスターの種類
 HDInsight には、特定のクラスターの種類のほか、コンポーネント、ユーティリティ、および言語の追加などのクラスター カスタマイズ機能が含まれています。
 
-### <a name="spark-kafka-interactive-hive-hbase-customized-and-other-cluster-types"></a>Spark、Kafka、Interactive Hive、HBase、カスタマイズ、その他のクラスターの種類
+### <a name="spark-kafka-interactive-query-hbase-customized-and-other-cluster-types"></a>Spark、Kafka、Interactive Query、HBase、カスタマイズ、その他のクラスターの種類
 HDInsight は、次のクラスターの種類を提供します。
 
 * **[Apache Hadoop](https://wiki.apache.org/hadoop)**: [HDFS](#hdfs)、[YARN](#yarn) によるリソース管理、およびシンプルな [MapReduce](#mapreduce) プログラミング モデルを使用して、バッチ データを同時に処理および分析します。
@@ -61,7 +60,7 @@ HDInsight は、次のクラスターの種類を提供します。
 * **[Apache HBase](http://hbase.apache.org/)**: Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](hdinsight-hbase-overview.md)に関する記事を参照してください。
 * **[Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver)**: 並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)に関するページを参照してください。
 * **[Apache Storm](https://storm.incubator.apache.org/)**: 大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)」を参照してください。
-* **[Apache Interactive Hive プレビュー (別名: Live Long and Process)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: 対話型で高速な Hive クエリを実現するメモリ内キャッシュです。 「[HDInsight での対話型 Hive の使用](hdinsight-hadoop-use-interactive-hive.md)」を参照してください。
+* **[Apache Interactive Query プレビュー (別名: Live Long and Process)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: 対話型で高速な Hive クエリを実現するメモリ内キャッシュです。 [HDInsight での対話型クエリの使用](hdinsight-hadoop-use-interactive-hive.md)に関する記事を参照してください。
 * **[Apache Kafka](https://kafka.apache.org/)**: ストリーミング データ パイプラインおよびアプリケーションを構築するためのオープン ソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](hdinsight-apache-kafka-introduction.md)」を参照してください。
 
 次の方法を使用してクラスターを構成することもできます。

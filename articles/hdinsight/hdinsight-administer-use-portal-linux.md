@@ -3,7 +3,7 @@ title: "Azure Portal を使用した HDInsight での Hadoop クラスターの�
 description: "Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。"
 services: hdinsight
 documentationcenter: 
-author: mumian
+author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -14,77 +14,76 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
-ms.author: jgao
+ms.date: 09/08/2017
+ms.author: ashishtha
+ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 736e1a52f55560dfded7a21eaeb1cbac7602f8d6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
+
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure Portal][azure-portal] を使用すると、Azure HDInsight で Hadoop クラスターを管理できます。 他のツールを使用して HDInsight で Hadoop クラスターを管理する方法については、タブ セレクターを使用してください。
+[Azure Portal][azure-portal] を使用すると、Azure HDInsight で Hadoop クラスターを管理できます。 他のツールを使って HDInsight で Hadoop クラスターを管理する方法については、上のタブ セレクターを使ってください。
 
 **前提条件**
 
-この記事の操作を始める前に、以下を用意する必要があります。
+この記事の手順を実行するには、**Azure サブスクリプション**が必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-
-## <a name="open-the-portal"></a>ポータルを開く
+## <a name="open-the-azure-portal"></a>Azure ポータルを開きます
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
 2. ポータルを開くと、次の操作を行うことができます。
 
    * 左側のメニューの **[新規]** をクリックして新しいクラスターを作成する。
 
        ![新しい [HDInsight クラスター] ボタン](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
-   * 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示する。
+   * 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示します。
 
        ![Azure ポータル [HDInsight クラスター] ボタン](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
-       HDInsight クラスターが表示されない場合は、一覧の最後の **[その他のサービス]** をクリックし、**[インテリジェンス + 分析]**セクションで **[HDInsight クラスター]** をクリックします。
+       **[HDInsight クラスター]** ボタンが表示されない場合は、一覧の最後の **[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** セクションの **[HDInsight クラスター]** をクリックします。
 
 
 ## <a name="create-clusters"></a>クラスターの作成
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-HDInsight は、広範囲の Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、「 [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)」を参照してください。 一般的なクラスターの作成に関する詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+HDInsight は、広範囲の Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、「[Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)」をご覧ください。 一般的なクラスターの作成について詳しくは、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 
-HDInsight クラスターを作成するときは Azure サブスクリプションを指定する必要があります。 このクラスターは、新しい Azure リソース グループに作成することも、既存のリソース グループに作成することもできます。 HDInsight クラスターを作成するためのアクセス許可は、次の手順に従って確認できます。
+HDInsight クラスターを作成するときは Azure サブスクリプションを指定する必要があります。 クラスターは、新しい Azure リソース グループに作成することも、既存のリソース グループに作成することもできます。 HDInsight クラスターを作成するためのアクセス許可は、次の手順に従って確認できます。
 
-- 既存のリソース グループを使用するには
-
-    1. [Azure ポータル](https://portal.azure.com)にサインインします。
-    2. 左側のメニューから **[リソース グループ]** をクリックしてリソース グループを一覧表示します。
-    3. HDInsight クラスターの作成に使用するリソース グループをクリックします。
-    4. **[アクセス制御 (IAM)]** をクリックし、そのリソース グループに対して少なくとも共同作成者のアクセス権が自分 (または自分が属しているグループ) にあることを確認します。
-
-- 新しいリソース グループを作成するには
+- 新しいリソース グループを作成するには:
 
     1. [Azure ポータル](https://portal.azure.com)にサインインします。
     2. 左側のメニューから **[サブスクリプション]** をクリックします。 黄色い鍵のアイコンが目印です。 これをクリックすると一連のサブスクリプションが表示されます。
     3. クラスターの作成に使用するサブスクリプションをクリックします。 
     4. **[アクセス許可]** をクリックします。  そのサブスクリプションに対する自分の[役割](../active-directory/role-based-access-control-what-is.md#built-in-roles)が表示されます。 HDInsight クラスターを作成するには、少なくとも共同作成者のアクセス権が必要です。
 
+- 既存のリソース グループを使うには:
+
+    1. [Azure ポータル](https://portal.azure.com)にサインインします。
+    2. 左側のメニューから **[リソース グループ]** をクリックしてリソース グループを一覧表示します。
+    3. HDInsight クラスターの作成に使用するリソース グループをクリックします。
+    4. **[アクセス制御 (IAM)]** をクリックし、そのリソース グループに対して少なくとも共同作成者のアクセス権が自分 (または自分が属しているグループ) にあることを確認します。
+
 NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エラーが発生した場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」を参照してください。
 
 ## <a name="list-and-show-clusters"></a>クラスターの一覧と表示
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
-2. 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示します。
+2. 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示します。 **[HDInsight クラスター]** が表示されない場合は、先に **[その他のサービス]** をクリックします。
 3. クラスター名をクリックします。 クラスターの一覧が長い場合は、ページの上部でフィルターを使用できます。
 4. クラスターの一覧から概要ページを表示するクラスターをクリックします。
 
-    ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
-
+    ![Azure Portal HDInsight クラスター基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png) **[概要] メニュー:**
     * **ダッシュ ボード**: クラスターのダッシュボード (Linux ベースのクラスターの場合は Ambari Web) を開きます。
     * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
     * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
     * **[削除]**: クラスターを削除します。
+
+    **左側のメニュー:**
     * **[アクティビティ ログ]**: アクティビティ ログを表示およびクエリします。
     * **[アクセス制御 (IAM)]**: ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
     * **[タグ]**: キーと値のペアを設定して、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
@@ -111,20 +110,22 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     プロパティは次のとおりです。
 
    * **[ホスト名]**: クラスター名。
-   * **[クラスター URL]**:  Ambari Web インターフェイスの URL。
-   * **[状態]**: Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization が表示されます。
+   * **[クラスター URL]**: Ambari Web インターフェイスの URL。
+   * **[SSH (Secure Shell)]**: SSH でクラスターにアクセスするときに使うユーザー名とホスト名。
+   * **[状態]**: Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization のいずれか。
    * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「 **HDInsight の価格** 」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
-   * **[作成日]**。
+   * **[作成日]**: クラスターがデプロイされた日付。
    * **[オペレーティング システム]**: **Windows** または **Linux**。
    * **[タイプ]**: Hadoop、HBase、Storm、Spark。
-   * **[バージョン]**。 [HDInsight のバージョン](hdinsight-component-versioning.md)
+   * **[バージョン]**。 「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。
    * **[サブスクリプション]**: サブスクリプション名。
    * **[既定のデータ ソース]**: クラスターの既定のファイル システムです。
-   * **[Worker ノードのサイズ]**。
-   * **[ヘッド ノードのサイズ]**。
+   * **[ワーカー ノードのサイズ]**: worker ノードの選択されている VM のサイズ。
+   * **[ヘッド ノードのサイズ]**: ヘッド ノードの選択されている VM のサイズ。
+   * **[仮想ネットワーク]**: クラスターのデプロイ先の Virtual Network とサブネットの名前 (デプロイ時に選択された場合)。
 
 ## <a name="delete-clusters"></a>クラスターの削除
-クラスターを削除しても、既定のストレージ アカウントまたはリンクされたストレージ アカウントは削除されません。 同じストレージ アカウントと同じメタストアを使用してクラスターを再作成することができます。 クラスターを再作成するときに、新しい既定の BLOB コンテナーを使用することをお勧めします。
+クラスターを削除しても、既定のストレージ アカウントまたはリンクされたストレージ アカウントは削除されません。 同じストレージ アカウントと同じメタストアを使用してクラスターを再作成することができます。 クラスターを再作成するときに、新しい既定の BLOB コンテナーを使うことをお勧めします。
 
 1. [Portal][azure-portal] にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックする。 **[HDInsight クラスター]** が表示されない場合は、先に **[その他のサービス]** をクリックします。
@@ -138,16 +139,16 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
 クラスターが作成されたら、Azure ストレージ アカウントや Azure Data Lake Store アカウントを追加できます。 詳細については、「[HDInsight にストレージ アカウントを追加する](./hdinsight-hadoop-add-storage.md)」を参照してください。
 
 ## <a name="scale-clusters"></a>クラスターのスケール
-クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
+クラスターのスケール設定機能を使うと、Azure HDInsight クラスターによって使われる worker ノードの数を、クラスターを再作成することなく、変更できます。
 
 > [!NOTE]
 > HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](#list-and-show-clusters)」を参照してください。
 >
 >
 
-HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
+データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
 
-* Hadoop は、
+* Hadoop
 
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
 
@@ -179,7 +180,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
-    CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
+    Storm トポロジのバランスを再調整する CLI コマンドの例を次に示します。
 
     ```cli
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -227,12 +228,12 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 Ambari Web UI を使用してクラスターのユーザー パスワードを変更することができます。 Ambari にログインするには、既存のクラスター ユーザー名とパスワードを使用する必要があります。
 
 > [!NOTE]
-> クラスター ユーザー (管理者) のパスワードを変更すると、このクラスターに対するスクリプト アクションが失敗する可能性があります。 worker ノードを対象とする保存済みスクリプト アクションがある場合、サイズの変更操作を通じてノードをクラスターに追加すると、これらのスクリプト アクションは失敗する可能性があります。 スクリプト アクションの詳細については、「 [スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> クラスター ユーザー (管理者) のパスワードを変更すると、このクラスターに対して実行されたスクリプト アクションが失敗する可能性があります。 worker ノードを対象とする保存済みスクリプト アクションがある場合、サイズの変更操作を通じてノードをクラスターに追加すると、これらのスクリプト アクションは失敗する可能性があります。 スクリプト アクションの詳細については、「 [スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 >
 >
 
 1. HDInsight クラスター ユーザーの資格情報を使用して Ambari Web UI にサインインします。 既定のユーザー名は **admin**です。URL は **https://&lt;HDInsight Cluster Name>azurehdinsight.net** です。
-2. 上部のメニューの **[Admin]** をクリックしてから [Ambari の管理] をクリックします。
+2. 上部のメニューの **Admin** をクリックしてから Ambari の管理をクリックします。
 3. 左側のメニューで **[ユーザー]**をクリックします。
 4. **[Admin]**をクリックします。
 5. **[パスワードの変更]**をクリックします。
@@ -344,11 +345,14 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 * [HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>次のステップ
+
 この記事では、基本的な管理機能をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
+* [Ambari Web UI の使用に関する詳細](hdinsight-hadoop-manage-ambari.md)
+* [Ambari REST API の使用に関する詳細](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
@@ -357,4 +361,3 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
-

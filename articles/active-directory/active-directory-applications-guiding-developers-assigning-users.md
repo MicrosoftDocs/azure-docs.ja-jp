@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: kgremban
 robots: noindex
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d30ebb5a0e3e7b1560e1eff04bc5a54f0c45a595
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 29d63bd5781dc7ef9e84840dd4b1b70222cf6892
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD とアプリケーション: アプリケーションへのユーザーの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。  ユーザー割り当てを要求する方法については、「 [ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md) 」を参照してください。
@@ -38,5 +37,4 @@ ms.lasthandoff: 12/29/2016
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
-
 

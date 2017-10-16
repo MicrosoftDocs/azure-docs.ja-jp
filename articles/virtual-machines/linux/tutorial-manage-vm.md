@@ -10,20 +10,18 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c163c715eb1438a0d6b0ab53cbb43816ca8dbbb4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンのデプロイに関する基本事項について説明します。 学習内容は次のとおりです。
@@ -42,7 +40,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-resource-group"></a>Create resource group
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
@@ -54,7 +52,7 @@ az group create --name myResourceGroupVM --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#create) コマンドを使用します。 
+仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
 仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 
 
@@ -62,7 +60,7 @@ az group create --name myResourceGroupVM --location eastus
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `publicIpAddress` を記録します。このアドレスは仮想マシンへのアクセスに使用します。 
+VM の作成には数分かかることがあります。 VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `publicIpAddress` を記録します。このアドレスは仮想マシンへのアクセスに使用します。 
 
 ```azurecli-interactive 
 {
@@ -79,13 +77,13 @@ VM が作成されると、Azure CLI で VM に関する以下の情報が出力
 
 ## <a name="connect-to-vm"></a>VM への接続
 
-これで、SSH を使用して VM に接続できるようになりました。 サンプルの IP アドレスは、前の手順で記録した `publicIpAddress` に置き換えてください。
+Azure Cloud Shell またはローカル コンピューターで、SSH を使用して VM に接続できるようになりました。 サンプルの IP アドレスは、前の手順で記録した `publicIpAddress` に置き換えてください。
 
 ```bash
 ssh 52.174.34.95
 ```
 
-VM での作業が完了したら SSH セッションを終了します。 
+VM にログインしたら、アプリケーションをインストールして構成できます。 作業が終了したら、通常どおり SSH セッションを閉じます。
 
 ```bash
 exit
@@ -208,7 +206,11 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>VM のサイズを変更する
 
-デプロイ後に VM のサイズを変更して、リソースの割り当てを増減できます。
+デプロイ後に VM のサイズを変更して、リソースの割り当てを増減できます。 VM の現在のサイズを表示するには、[az vm show](/cli/azure/vm#show) を使用します。
+
+```azurecli-interactive
+az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
+```
 
 VM のサイズを変更する前に、現在の Azure クラスターで目的のサイズを利用可能であるか確認します。 [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) コマンドでは、サイズのリストが返されます。 
 
@@ -300,7 +302,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ### <a name="delete-resource-group"></a>Delete resource group
 
-リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。
+リソース グループを削除すると、グループに含まれているリソース (VM、仮想ネットワーク、ディスクなど) もすべて削除されます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupVM --no-wait --yes
@@ -321,4 +323,3 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 > [!div class="nextstepaction"]
 > [VM ディスクの作成と管理](./tutorial-manage-disks.md)
-

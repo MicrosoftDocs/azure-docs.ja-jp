@@ -15,12 +15,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
+ms.openlocfilehash: 16bd85065f77612ac342ae4a8b500e0c7fa2a078
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4af05aa1563341ca62c63c4b8256f11118c38efd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 [Azure Cosmos DB](../cosmos-db/introduction.md) は、グローバルにレプリケートされた柔軟な高速データベース サービスです。大量のトランザクション データや運用データを格納するために使用され、読み取りと書き込みで数ミリ秒 (1 桁) の予測可能な待機時間を実現します。 このため、IoT、ゲーム、小売、操作ログといったアプリケーションに最適です。 これらのアプリケーションの一般的な設計パターンでは、Azure Cosmos DB のデータの変更を追跡し、その変更内容に基づいて、具体化されたビューの更新、リアルタイム分析の実行、コールド ストレージへのデータのアーカイブ、特定のイベントに関する通知のトリガーなどのアクションを実行します。 Azure Cosmos DB の **Change Feed サポート**により、これらの各パターンに対応する効率的でスケーラブルなソリューションを構築できます。
@@ -42,7 +41,7 @@ Azure Cosmos DB での変更は保持され、非同期的に処理できます�
 Change Feed を使用すると、大量の書き込みが発生する大規模なデータセットを効率的に処理できるので、データセット全体に対してクエリを実行する代わりに、Change Feed を使用して変更を特定できます。 たとえば、次のタスクを効率よく実行できます。
 
 * Azure Cosmos DB に格納されたデータで、キャッシュ、検索インデックス、データ ウェアハウスを更新する。
-* アプリケーション レベルのデータの階層化とアーカイブを実装する ("ホット データ" を Azure Cosmos DB に格納し、"コールド データ" を [Azure Blob Storage](../storage/storage-introduction.md) または [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) にエイジアウトする)。
+* アプリケーション レベルのデータの階層化とアーカイブを実装する ("ホット データ" を Azure Cosmos DB に格納し、"コールド データ" を [Azure Blob Storage](../storage/common/storage-introduction.md) または [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) にエイジアウトする)。
 * [Apache Hadoop](run-hadoop-with-hdinsight.md) を使用してデータの一括分析を実装する。
 * Azure Cosmos DB を使用して [Azure でラムダ パイプライン](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/)を実装する。 Azure Cosmos DB は、取り込みとクエリの両方を処理し、低 TCO でラムダ アーキテクチャを実装できる、スケーラブルなデータベース ソリューションを提供します。 
 * パーティション スキームが異なる別の Azure Cosmos DB アカウントへの移行をダウンタイムなしに実行する。
@@ -71,7 +70,7 @@ Azure Cosmos DB の Change Feed は、すべてのアカウントで既定で有
 
 ![Azure Cosmos DB の Change Feed の分散処理](./media/change-feed/changefeedvisual.png)
 
-クライアント コードで Change Feed を実装する場合、方法がいくつかあります。 以降のセクションでは、Azure Cosmos DB REST API と DocumentDB SDK を使用して Change Feed を実装する方法を説明します。 ただし、.NET アプリケーションの場合、新しい [Change Feed プロセッサ ライブラリ](#change-feed-processor)を使用して、Change Feed のイベントを処理することをお勧めします。このライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。 
+クライアント コードで Change Feed を実装する場合、方法がいくつかあります。 以降のセクションでは、Azure Cosmos DB REST API と DocumentDB SDK を使用して Change Feed を実装する方法を説明します。 ただし、.NET アプリケーションの場合、新しい [Change Feed Processor ライブラリ](#change-feed-processor)を使用して、Change Feed のイベントを処理することをお勧めします。このライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。 
 
 ## <a id="rest-apis"></a>REST API と DocumentDB SDK の使用
 Azure Cosmos DB では、**コレクション**と呼ばれるストレージとスループットの弾力性のあるコンテナーを提供します。 コレクション内のデータはスケーラビリティとパフォーマンスのために、[パーティション キー](partition-data.md)を使用して論理的にグループ化されます。 Azure Cosmos DB には、ID による検索 (Read/Get)、クエリ、読み取りフィード (スキャン) など、このデータにアクセスするためのさまざまな API が用意されています。 Change Feed は、DocumentDB の `ReadDocumentFeed` API に 2 つの新しい要求ヘッダーを設定することで取得でき、複数のパーティション キー範囲で並列処理できます。
@@ -211,7 +210,7 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
 <table>
     <tr>
         <th>ヘッダー名</th>
-        <th>説明</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>A-IM</td>
@@ -309,7 +308,7 @@ private async Task<Dictionary<string, string>> GetChanges(
 
         while (query.HasMoreResults)
         {
-            FeedResponse<DeviceReading> readChangesResponse = query.ExecuteNextAsync<DeviceReading>().Result;
+            FeedResponse<DeviceReading> readChangesResponse = await query.ExecuteNextAsync<DeviceReading>();
 
             foreach (DeviceReading changedDocument in readChangesResponse)
             {
@@ -339,7 +338,7 @@ checkpoints = await GetChanges(client, collection, checkpoints);
 クライアント側のロジックを使用して Change Feed にフィルターを適用し、選択的にイベントを処理することもできます。 たとえば、これはクライアント側の LINQ を使用して、デバイス センサーから温度変更イベントのみを処理するスニペットです。
 
 ```csharp
-FeedResponse<DeviceReading> readChangesResponse = query.ExecuteNextAsync<DeviceReading>().Result;
+FeedResponse<DeviceReading> readChangesResponse = await query.ExecuteNextAsync<DeviceReading>;
 
 foreach (DeviceReading changedDocument in 
     readChangesResponse.AsEnumerable().Where(d => d.MetricType == "Temperature" && d.MetricValue > 1000L))
@@ -348,24 +347,24 @@ foreach (DeviceReading changedDocument in
 }
 ```
 
-## <a id="change-feed-processor"></a>Change Feed プロセッサ ライブラリ
-もう 1 つの方法は、[Azure Cosmos DB Change Feed プロセッサ ライブラリ](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed)を使用することです。このライブラリを使用すると、Change Feed のイベント処理を複数のコンシューマーに簡単に分散させることができます。 このライブラリは、.NET プラットフォームで Change Feed リーダーを作成する場合に最適です。 他の Cosmos DB SDK に含まれているメソッドで Change Feed プロセッサ ライブラリを使用すると、次のワークフローが簡素化されます。 
+## <a id="change-feed-processor"></a>Change Feed Processor ライブラリ
+もう 1 つの方法は、[Azure Cosmos DB Change Feed Processor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed)を使用することです。このライブラリを使用すると、Change Feed のイベント処理を複数のコンシューマーに簡単に分散させることができます。 このライブラリは、.NET プラットフォームで Change Feed リーダーを作成する場合に最適です。 他の Cosmos DB SDK に含まれているメソッドで Change Feed Processor ライブラリを使用すると、次のワークフローが簡素化されます。 
 
 * データが複数のパーティションに保存されている場合の Change Feed からの更新のプル
 * コレクション間でのデータの移動またはレプリケート
 * データと Change Feed の更新によってトリガーされるアクションの並列実行 
 
-Cosmos SDK の API を使用すると、各パーティションの Change Feed の更新に正確にアクセスできますが、Change Feed プロセッサ ライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。 各コンテナーから変更を手動で読み取り、パーティションごとに継続トークンを保存するのではなく、Change Feed プロセッサは、リース メカニズムを使用してパーティション全体での変更の読み取りを自動的に管理します。
+Cosmos SDK の API を使用すると、各パーティションの Change Feed の更新に正確にアクセスできますが、Change Feed Processor ライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。 各コンテナーから変更を手動で読み取り、パーティションごとに継続トークンを保存するのではなく、Change Feed Processor は、リース メカニズムを使用してパーティション全体での変更の読み取りを自動的に管理します。
 
 このライブラリは、NuGet パッケージ ([Microsoft.Azure.Documents.ChangeFeedProcessor](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)) として提供されており、Github [サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)としてソース コードから入手できます。 
 
-### <a name="understanding-change-feed-processor-library"></a>Change Feed プロセッサ ライブラリについて 
+### <a name="understanding-change-feed-processor-library"></a>Change Feed Processor ライブラリについて 
 
-Change Feed プロセッサの実装には、監視対象コレクション、リース コレクション、プロセッサ ホスト、コンシューマーの 4 つの主要コンポーネントがあります。 
+Change Feed Processor の実装には、監視対象コレクション、リース コレクション、プロセッサ ホスト、コンシューマーの 4 つの主要コンポーネントがあります。 
 
 **監視対象コレクション:** 監視対象コレクションは、Change Feed の生成元のデータです。 監視対象コレクションに対する挿入と変更は、コレクションの Change Feed に反映されます。 
 
-**リース コレクション:** リース コレクションは、複数の worker 間で Change Feed の処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。 このリース コレクションは、Change Feed プロセッサが実行されている場所の近くに書き込みリージョンを持つ別のアカウントに保存すると便利です。 リース オブジェクトには次の属性があります。 
+**リース コレクション:** リース コレクションは、複数の worker 間で Change Feed の処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。 このリース コレクションは、Change Feed Processor が実行されている場所の近くに書き込みリージョンを持つ別のアカウントに保存すると便利です。 リース オブジェクトには次の属性があります。 
 * Owner: リースを所有するホストを指定します。
 * Continuation: 特定のパーティションの Change Feed 内の位置 (継続トークン) を指定します。
 * Timestamp: リースの最終更新時刻。タイムスタンプを使用して、リースを期限切れと見なすかどうかを確認できます。 
@@ -379,22 +378,22 @@ Change Feed プロセッサの実装には、監視対象コレクション、�
 
 **コンシューマー:** コンシューマー (worker) は、各ホストによって開始された Change Feed の処理を実行するスレッドです。 プロセッサ ホストごとに複数のコンシューマーを使用できます。 各コンシューマーは、割り当てられているパーティションから Change Feed を読み取り、変更と期限切れのリースをホストに通知します。
 
-Change Feed プロセッサのこの 4 つの要素の連携のしくみについて理解を深めるために、次の図の例を見てみましょう。 監視対象コレクションでは、ドキュメントを保存し、パーティション キーとして "city" を使用します。 青色のパーティションには、"A-E" の "city" フィールドを含むドキュメントが格納されていることがわかります (他のパーティションも同様)。 2 つのホストがあり、各ホストは 4 つのパーティションから並列で読み取る 2 つのコンシューマーを使用しています。 矢印は、コンシューマーが Change Feed の特定の場所から読み取ることを示しています。 最初のパーティションでは、濃い青はまだ読み取られていない変更を表し、薄い青は Change Feed で既に読み取られた変更を表しています。 ホストはリース コレクションを使用して "Continuation" 値を保存することで、各コンシューマーの現在の読み取り位置を追跡します。 
+Change Feed Processor のこの 4 つの要素の連携のしくみについて理解を深めるために、次の図の例を見てみましょう。 監視対象コレクションでは、ドキュメントを保存し、パーティション キーとして "city" を使用します。 青色のパーティションには、"A-E" の "city" フィールドを含むドキュメントが格納されていることがわかります (他のパーティションも同様)。 2 つのホストがあり、各ホストは 4 つのパーティションから並列で読み取る 2 つのコンシューマーを使用しています。 矢印は、コンシューマーが Change Feed の特定の場所から読み取ることを示しています。 最初のパーティションでは、濃い青はまだ読み取られていない変更を表し、薄い青は Change Feed で既に読み取られた変更を表しています。 ホストはリース コレクションを使用して "Continuation" 値を保存することで、各コンシューマーの現在の読み取り位置を追跡します。 
 
 ![Azure Cosmos DB Change Feed プロセッサ ホストの使用](./media/change-feed/changefeedprocessornew.png)
 
-### <a name="using-change-feed-processor-library"></a>Change Feed プロセッサ ライブラリの使用 
-次のセクションでは、移動元コレクションから移動先コレクションへの変更のレプリケートのコンテキストで Change Feed プロセッサ ライブラリを使用する方法について説明します。 ここでは、移動元コレクションは Change Feed プロセッサの監視対象コレクションです。 
+### <a name="using-change-feed-processor-library"></a>Change Feed Processor ライブラリの使用 
+次のセクションでは、移動元コレクションから移動先コレクションへの変更のレプリケートのコンテキストで Change Feed Processor ライブラリを使用する方法について説明します。 ここでは、移動元コレクションは Change Feed Processor の監視対象コレクションです。 
 
-**Change Feed プロセッサ NuGet パッケージをインストールして含める** 
+**Change Feed Processor NuGet パッケージをインストールして含める** 
 
-Change Feed プロセッサ NuGet パッケージをインストールする前に、まず以下をインストールします。 
+Change Feed Processor NuGet パッケージをインストールする前に、まず以下をインストールします。 
 * Microsoft.Azure.DocumentDB バージョン 1.13.1 以上。 
 * Newtonsoft.Json バージョン 9.0.1 以上。`Microsoft.Azure.DocumentDB.ChangeFeedProcessor` をインストールし、参照として含めます。
 
 **監視対象、リース、移動先の各コレクションを作成する** 
 
-Change Feed プロセッサ ライブラリを使用するには、プロセッサ ホストを実行する前に、リース コレクションを作成する必要があります。 ここでも、リース コレクションは、Change Feed プロセッサが実行されている場所の近くに書き込みリージョンを持つ別のアカウントに保存することをお勧めします。 このデータ移動の例では、Change Feed プロセッサ ホストを実行する前に、移動先コレクションを作成する必要があります。 サンプル コードでは、ヘルパー メソッドを呼び出して、監視対象、リース、移動先の各コレクションを作成しています (これらのコレクションがまだ存在しない場合)。 
+Change Feed Processor ライブラリを使用するには、プロセッサ ホストを実行する前に、リース コレクションを作成する必要があります。 ここでも、リース コレクションは、Change Feed Processor が実行されている場所の近くに書き込みリージョンを持つ別のアカウントに保存することをお勧めします。 このデータ移動の例では、Change Feed Processor ホストを実行する前に、移動先コレクションを作成する必要があります。 サンプル コードでは、ヘルパー メソッドを呼び出して、監視対象、リース、移動先の各コレクションを作成しています (これらのコレクションがまだ存在しない場合)。 
 
 > [!WARNING]
 > コレクションの作成は料金に影響します。これは、Azure Cosmos DB と通信するためにアプリケーションのスループットを予約するためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
@@ -435,7 +434,7 @@ Change Feed プロセッサ ライブラリを使用するには、プロセッ�
 <table>
     <tr>
         <th>プロパティ名</th>
-        <th>説明</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>MaxItemCount</td>
@@ -464,7 +463,7 @@ Change Feed プロセッサ ライブラリを使用するには、プロセッ�
     <tr>
         <th>プロパティ名</th>
         <th>型</th>
-        <th>説明</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>LeaseRenewInterval</td>
@@ -532,4 +531,3 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 ## <a name="next-steps"></a>次のステップ
 * [GitHub の Azure Cosmos DB Change Feed コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)を使ってみる
 * [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使用してコーディングを開始する
-

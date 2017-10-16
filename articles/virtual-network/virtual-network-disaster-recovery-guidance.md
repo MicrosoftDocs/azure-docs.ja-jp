@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dbb749b056c36f16e921933fb8345211e3eaa697
-
-
+ms.openlocfilehash: 4e125406d2e798138c45e3fbbf61a610afab69fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-network--business-continuity"></a>Virtual Network – ビジネス継続性
 ## <a name="overview"></a>概要
@@ -46,10 +46,4 @@ VNet を作成する手順については、 [こちら](virtual-networks-create
 A: はい。VNet の同じプライベート IP アドレス空間とリソースを使用して、2 つの異なるリージョンに 2 つの VNet を前もって作成できます。 お客様が VNet 内でインターネットに接続するサービスをホストしていた場合は、Traffic Manager をセットアップして、アクティブなリージョンにトラフィックを地理的に分散させることができます。 ただし、ルーティングの問題の原因となるため、同じアドレス空間を持つ 2 つの VNet をオンプレミスのネットワークに接続することはできません。 一方のリージョンで災害が発生し、VNet が失われた場合は、アドレス空間が一致する利用可能なリージョンのもう一方の VNet をオンプレミスのネットワークに接続できます。
 
 VNet を作成する手順については、 [こちら](virtual-networks-create-vnet-arm-pportal.md)をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

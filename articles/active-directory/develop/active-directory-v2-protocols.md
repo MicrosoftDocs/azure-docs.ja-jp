@@ -15,15 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3750f975600575349e5ea9de249cf4521636fd2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 プロトコル - OAuth 2.0 と OpenID Connect
+# v2.0 プロトコル - OAuth 2.0 と OpenID Connect
 v2.0 エンドポイントは、業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用し、Azure AD を Identity-as-a-Service (サービスとしての ID) として使用することできます。  このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。  ここでは、Microsoft のオープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティのオープン ソース ライブラリを使用する場合に役立つ情報を紹介します。
 <!-- TODO: Need link to libraries above -->
 
@@ -32,17 +30,17 @@ v2.0 エンドポイントは、業界標準のプロトコルである OpenID C
 >
 >
 
-## <a name="the-basics"></a>基本操作
+## 基本操作
 OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
 ![OAuth 2.0 Roles](../../media/active-directory-v2-flows/protocols_roles.png)
 
 * **承認サーバー**は v2.0 エンドポイントです。  ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。  ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 * **リソース所有者** とは通常、エンド ユーザーを指します。  データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。
-* **OAuth クライアント**は、皆さんが開発するアプリです。対応するアプリケーション ID で識別されます。  通常はこの当事者がエンド ユーザーと情報をやり取りし、承認サーバーにトークンを要求します。  クライアントには、リソース所有者がリソースへのアクセス権を付与する必要があります。
+* **OAuth クライアント**は、皆さんが開発するアプリです。対応するアプリケーション ID で識別されます。通常はこの当事者がエンド ユーザーと情報をやり取りし、承認サーバーにトークンを要求します。  クライアントには、リソース所有者がリソースへのアクセス権を付与する必要があります。
 * **リソース サーバー**は、リソースまたはデータが存在する場所です。  承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。リソースへのアクセスを許可するためにベアラー トークン (access_tokens) が使用されます。
 
-## <a name="app-registration"></a>アプリケーションの登録
+## アプリケーションの登録
 v2.0 エンドポイントを使うアプリは、すべて [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) で登録する必要があります。登録後、OAuth または OpenID Connect を使用して対話できるようになります。  アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション ID** 。
@@ -51,7 +49,7 @@ v2.0 エンドポイントを使うアプリは、すべて [apps.dev.microsoft.
 
 詳細については、 [アプリの登録](active-directory-v2-app-registration.md)方法を参照してください。
 
-## <a name="endpoints"></a>エンドポイント
+## エンドポイント
 登録済みのアプリは、v2.0 エンドポイントに要求を送ることによって、Azure AD と通信を行います。
 
 ```
@@ -70,12 +68,12 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 これらのエンドポイントと対話する方法の詳細については、以下のアプリ タイプごとの説明を参照してください。
 
-## <a name="tokens"></a>トークン
+## トークン
 OAuth 2.0 および OpenID Connect の v2.0 実装では、ベアラー トークンが広範囲に使われています (JWT として表現されたベアラー トークンなど)。 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 利用者がベアラー トークンを受信するには、まず Azure AD による認証が必要となりますが、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。 一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはこのメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)をご覧ください。
 
 v2.0 エンドポイントで使われている各種トークンの詳細については、 [v2.0 エンドポイント トークン リファレンス](active-directory-v2-tokens.md)を参照してください。
 
-## <a name="protocols"></a>プロトコル
+## プロトコル
 要求の例を理解できる状態になったら、最初に以下のチュートリアルのどれかをご覧ください。  いずれも、特定の認証シナリオに対応しています。  どのフローを見ればよいかわからない場合は、 [v2.0 で作成できるアプリの種類](active-directory-v2-flows.md)を確認してください。
 
 * [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-v2-protocols-oauth-code.md)
@@ -83,4 +81,3 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 * [OAuth 2.0 Implicit Flow で単一ページのアプリを作成する](active-directory-v2-protocols-implicit.md)
 * [OAuth 2.0 Client Credentials Flow でデーモンまたはサーバー側プロセスを作成する](active-directory-v2-protocols-oauth-client-creds.md)
 * [OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する](active-directory-v2-protocols-oauth-on-behalf-of.md)
-

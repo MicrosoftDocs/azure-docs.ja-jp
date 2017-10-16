@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 9f4eb32227bd8a68837eabd58b9d058bc4995d17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
-
+ms.openlocfilehash: 0927508117bda67b62a188f89a2d2e151fe02a5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-details-of-an-azure-redis-cache"></a>Azure Redis Cache の詳細を取得
 
 このシナリオでは、プロビジョニング ステータスを含む、Azure Redis Cache インスタンスの詳細を取得する方法を説明します。
@@ -39,11 +37,11 @@ ms.lasthandoff: 04/15/2017
 
 | コマンド | メモ |
 |---|---|
-| [az redis の表示](https://docs.microsoft.com/cli/azure/redis#show) | Azure Redis Cache インスタンスの詳細を取得します。 |
+| [az redis の表示](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | Azure Redis Cache インスタンスの詳細を取得します。 |
 
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
-その他 Azure Redis Cache の CLI サンプル スクリプトは、[Azure Redis Cache のドキュメント](../cli-samples.md)のページに掲載されています。
+その他の Azure Redis Cache の CLI サンプル スクリプトは、[Azure Redis Cache のドキュメント](../cli-samples.md)のページにあります。

@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 09e3828172d06a8c7ef39c89e69653c48a7e729e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
-
-
+ms.openlocfilehash: 73f1210b8d1f5ceca8fac9534d498bdc23d96d48
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 [弾力性データベース ツール](sql-database-elastic-scale-get-started.md)と [Row-Level Security (RLS)](https://msdn.microsoft.com/library/dn765131) は、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層を柔軟かつ効率的にスケーリングできる強力な機能セットを提供します。 詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md) 」をご覧ください。 
@@ -318,6 +316,5 @@ GO
 <!--Image references-->
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
-
 
 

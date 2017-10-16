@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 3574f62d67740fc498af85b261ad5cbaff0e87dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: d3929698cb3f3520b838bcaf88da6dca0c93c806
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Azure Application Insights で予定されている変更点のプレビュー 
 
@@ -39,4 +38,3 @@ Application Insights は新しい機能を頻繁にリリースしています�
 ## <a name="next-steps"></a>次のステップ
 
 - [リソースの作成](app-insights-create-new-resource.md)
-

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.openlocfilehash: 67c11277142d6616fe77179e03b55ed08993b818
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
@@ -60,10 +58,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
+1. [Azure Portal](https://portal.azure.com) にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、**[作成]** 
-     ![[テンプレートのデプロイメント UI のスクリーンショット]](./media/create-website/TemplateDeployment2.png) をクリックします。
+2. [テンプレートのデプロイ] を選択し、**[作成]**![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
 3. **[テンプレートの編集]** をクリックし、DocDBWebsiteTodo.json テンプレート ファイルの内容を貼り付けて、**[保存]** をクリックします。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
 4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、**[OK]** をクリックします。  パラメーターは、次のとおりです。
@@ -101,10 +98,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-1. [Azure ポータル](https://portal.azure.com)で、[新規] をクリックし、「テンプレートのデプロイ」を検索します。
+1. [Azure Portal](https://portal.azure.com) で、新規をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、**[作成]** 
-     ![[テンプレートのデプロイメント UI のスクリーンショット]](./media/create-website/TemplateDeployment2.png) をクリックします。
+2. [テンプレートのデプロイ] を選択し、**[作成]**![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
 3. **[テンプレートの編集]** をクリックし、DocDBWebSite.json テンプレート ファイルの内容を貼り付けて、**[保存]** をクリックします。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
 4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、**[OK]** をクリックします。  パラメーターは、次のとおりです。
@@ -122,8 +118,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
 7. デプロイメントが完了したら、リソース グループ ブレードが開きます。
    ![リソース グループ ブレードのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
-8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]** 
-     ![[リソース グループのスクリーンショット]](./media/create-website/TemplateDeployment9.png) をクリックします。  
+8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]**![リソース グループのスクリーンショット](./media/create-website/TemplateDeployment9.png) をクリックします  
 9. Azure Cosmos DB エンドポイントとそれぞれの Azure Cosmos DB マスター キーに関するアプリケーション設定がどのように表示されているのかを確認します。
 
     ![アプリケーションの設定のスクリーンショット](./media/create-website/TemplateDeployment10.png)  
@@ -140,11 +135,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 ## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更ガイドについては、「 [Azure クラシック ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
-
 

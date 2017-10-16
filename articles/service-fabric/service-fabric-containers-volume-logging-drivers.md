@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 37436f7be4f09c14febef6174faf956fa07255ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>コンテナーのボリューム プラグインとログ ドライバーを指定する
 
 Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定をサポートします。 プラグインは、次のマニフェストで示すように、アプリケーション マニフェストに指定します。
@@ -46,7 +44,9 @@ Service Fabric では、コンテナー サービスへの [Docker ボリュー�
         </LogConfig>
         <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
         <Volume Source="d:\myfolder" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
-        <Volume Source="myexternalvolume" Destination="c:\testmountlocation3" Driver="sf" IsReadOnly="true"></Volume>
+        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azurefile" IsReadOnly="true">
+           <DriverOption Name="share" Value="models"/>
+        </Volume>
        </ContainerHostPolicies>
    </Policies>
     </ServiceManifestImport>
@@ -74,5 +74,4 @@ Service Fabric クラスターにコンテナーをデプロイするには、�
 
 
 [Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-deploy-container.md)
-
 

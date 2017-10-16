@@ -11,19 +11,17 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: NA
-ms.date: 08/25/2017
+ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.openlocfilehash: 38c8c83909fe6a68e8850c9ac9d796784c38c70a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 4e4483ce7473070591128375960daa2b2c26a55d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
 SQL Database のエラスティック プールは、予期できない多様な使用ニーズを持つ複数のデータベースを管理しスケーリングするための、シンプルでコスト効率の高いソリューションです。 エラスティック プール内のデータベースは、単一の Azure SQL Database サーバー上にあり、設定された数のリソース ([エラスティック データベース トランザクション ユニット](sql-database-what-is-a-dtu.md) (eDTU)) を設定価格で共有します。 Azure SQL Database のエラスティック プールを使用すると、SaaS 開発者は、各データベースのパフォーマンスに弾力性を提供しながら、データベース グループの価格に対するパフォーマンスを所定の予算内で最適化できます。 
@@ -227,7 +225,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![エラスティック プールの監視](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
 
-**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] (過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
+**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] \(過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
 
 ![[データベース リソース使用率] ページ](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
@@ -239,7 +237,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![[カスタム] をクリックする](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
 
-**[Compare databases by] (データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
+**[Compare databases by] \(データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
 
 ![グラフを編集する](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
 
@@ -262,7 +260,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
    グラフにはそのメトリックのリソース使用率が動的に表示されるため、しきい値の選択に役立ちます。
 
-4. **[条件]** (より大きい、より小さいなど) と **[しきい値]** を選択します。
+4. **[条件]** \(より大きい、より小さいなど) と **[しきい値]** を選択します。
 5. **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。
 6. **[OK]**をクリックします。
 
@@ -329,12 +327,12 @@ Azure PowerShell を使用して SQL Database エラスティック プールを
 
 | コマンドレット | Description |
 | --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#create)|エラスティック プールを作成します。|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#list)|サーバー内のエラスティック プールの一覧を返します。|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#list-dbs)|エラスティック プール内のデータベースの一覧を返します。|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#list-editions)|使用可能なプール DTU の設定、ストレージ制限、およびデータベースごとの設定も含まれます。 詳細度を減らすために、既定では、追加のストレージ制限とデータベースごとの設定は非表示になります。|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#update)|エラスティック プールを更新します。|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#delete)|エラスティック プールを削除します。|
+|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|エラスティック プールを作成します。|
+|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|サーバー内のエラスティック プールの一覧を返します。|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|エラスティック プール内のデータベースの一覧を返します。|
+|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|使用可能なプール DTU の設定、ストレージ制限、およびデータベースごとの設定も含まれます。 詳細度を減らすために、既定では、追加のストレージ制限とデータベースごとの設定は非表示になります。|
+|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|エラスティック プールを更新します。|
+|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|エラスティック プールを削除します。|
 
 ## <a name="manage-databases-within-elastic-pools-using-transact-sql"></a>Transact-SQL を使用したエラスティック プール内のデータベースの管理
 
@@ -375,11 +373,10 @@ SQL Database エラスティック プールを作成して管理するには、
 |[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
 |[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](/api/sql/databases/update)|既存のデータベースを更新します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 ## <a name="next-steps"></a>次のステップ
 
 * ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 * エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 * エラスティック プールを使用した SaaS チュートリアルについては、「[Introduction to the Wingtip SaaS application (Wingtip SaaS アプリケーションの概要)](sql-database-wtp-overview.md)」を参照してください。
-

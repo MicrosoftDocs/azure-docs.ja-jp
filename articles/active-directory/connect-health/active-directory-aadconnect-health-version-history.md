@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2daa6c07191da7bd732cadf62b414f8027682071
-ms.openlocfilehash: 35d7ac416c35c74d38f4370ee7e34a96eb18d000
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: 6c990a184d44771c78330f54f518bb4c35a36a35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。
@@ -97,5 +96,4 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 ## <a name="next-steps"></a>次のステップ
 「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)」を参照してください。
-
 

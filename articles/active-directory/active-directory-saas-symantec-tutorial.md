@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 61576d3a915d209e7355e04432e586dcf66e7c5a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
 
@@ -162,7 +161,7 @@ Symantec Web Security Service (WSS) での Azure AD シングル サインオン
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-symantec-web-security-service-wss-test-user"></a>Symantec Web Security Service (WSS) テスト ユーザーの作成
 
@@ -225,5 +224,4 @@ WSS にトラフィックをプロキシするように Web ブラウザーを�
 [201]: ./media/active-directory-saas-symantec-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-symantec-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-symantec-tutorial/tutorial_general_203.png
-
 

@@ -1,6 +1,6 @@
 ---
-title: Add the default VM image to the Azure Stack marketplace | Microsoft Docs
-description: Add the Windows Server 2016 VM default image to the Azure Stack marketplace.
+title: "既定の VM イメージの Azure Stack Marketplace への追加 | Microsoft Docs"
+description: "Windows Server 2016 VM の既定のイメージを Azure Stack Marketplace に追加します。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,48 +14,47 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
+ms.openlocfilehash: 43781cb025865df1d228376f57412f3d482d3ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 2cbdca8c795346864b6e39e42858f3dc46def199
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Add the Windows Server 2016 VM image to the Azure Stack marketplace
+# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Windows Server 2016 VM イメージの Azure Stack Marketplace への追加
 
-By default, there aren’t any virtual machine images available in the Azure Stack marketplace. The Azure Stack operator must add an image to the marketplace before users can use them. You can add the Windows Server 2016 image to the Azure Stack marketplace by using one of the following two methods:
+既定では、Azure Stack Marketplace には使用可能な仮想マシン イメージはありません。 ユーザーがイメージを使用できるようにするには、Azure Stack オペレーターがイメージをマーケットプレースに追加する必要があります。 Windows Server 2016 イメージを Azure Stack Marketplace に追加するには、次の 2 つの方法の 1 つを使用します。
 
-* [Add the image by downloading it from the Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) - Use this option if you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure.
+* [Azure Marketplace からイメージをダウンロードして追加する](#add-the-image-by-downloading-it-from-the-Azure-marketplace) - 接続されたシナリオで操作しており、Azure Stack インスタンスを Azure に登録している場合は、このオプションを使用します。
 
-* [Add the image by using PowerShell](#add-the-image-by-using-powershell) - Use this option if you have deployed Azure Stack in a disconnected scenario or in scenarios with limited connectivity.
+* [PowerShell を使用してイメージを追加する](#add-the-image-by-using-powershell) - 接続が切断されたシナリオで、または接続が制限されたシナリオで Azure Stack をデプロイした場合は、このオプションを使用します。
 
-## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Add the image by downloading it from the Azure Marketplace
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Azure Marketplace からイメージをダウンロードして追加
 
-1. After deploying Azure Stack, sign in to your Azure Stack Development Kit.
+1. Azure Stack のデプロイ後に、Azure Stack Development Kit にサインインします。
 
-2. click **More services** > **Marketplace Management** > **Add from Azure** 
+2. **[More services]** (その他のサービス) > **[Marketplace Management]** (Marketplace の管理) > **[Add from Azure]** (Azure から追加) をクリックします 
 
-3. Find or search for the **Windows Server 2016 Datacenter – Eval** image > click **Download**
+3. **Windows Server 2016 Datacenter – Eval** イメージを検索し、**[Download]** (ダウンロード) をクリックします
 
-   ![Download image from Azure](media/azure-stack-add-default-image/download-image.png)
+   ![Azure からのイメージのダウンロード](media/azure-stack-add-default-image/download-image.png)
 
-After the download completes, the image is added to the **Marketplace Management** blade and it is also made available from the **Virtual Machines** blade.
+ダウンロードの完了後、イメージは **[Marketplace Management]** (Marketplace の管理) ブレードに追加され、**[Virtual Machines]** (仮想マシン) ブレードからも使用できるようになります。
 
-## <a name="add-the-image-by-using-powershell"></a>Add the image by using PowerShell
+## <a name="add-the-image-by-using-powershell"></a>PowerShell を使用したイメージの追加
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>前提条件 
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)から、または [VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合は Windows ベースの外部クライアントから、次の前提条件を実行します。
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
+* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。  
 
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。  
 
-* Go to https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 and download the Windows Server 2016 evaluation. When prompted, select the **ISO** version of the download. Record the path to the download location, which is used later in these steps. This step requires internet connectivity.  
+* https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 に移動し、Windows Server 2016 評価版をダウンロードします。 メッセージが表示されたら、ダウンロードの **ISO** バージョンを選択します。 この手順の後の方で使用できるよう、ダウンロード先のパスを記録します。 この手順では、インターネット接続が必要です。  
 
-Now run the following steps to add the image to the Azure Stack marketplace:
+ここで、以下の手順を実行して、Azure Stack Marketplace にイメージを追加します。
    
-1. Import the Azure Stack Connect and ComputeAdmin modules by using the following commands:
+1. 次のコマンドを使用して、Azure Stack Connect および ComputeAdmin モジュールをインポートします。
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned
@@ -66,19 +65,25 @@ Now run the following steps to add the image to the Azure Stack marketplace:
 
    ```
 
-2. Sign in to your Azure Stack environment. Run the following script depending on if your Azure Stack environment is deployed by using AAD or AD FS (Make sure to replace the AAD tenant name):  
+2. Azure Stack 環境にサインインします。 Azure Stack 環境が AAD と AD FS のどちらを使用してデプロイされているかに応じて、次のスクリプトを実行します (環境の構成に従って、必ず AAD tenantName、GraphAudience エンドポイント、および ArmEndpoint の値を置き換えてください)。  
 
-   a. **Azure Active Directory**, use the following cmdlet:
+   a. **Azure Active Directory** の場合は、次のコマンドレットを使用します。
 
    ```PowerShell
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+   
    # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
    $TenantID = Get-AzsDirectoryTenantId `
      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
@@ -89,17 +94,23 @@ Now run the following steps to add the image to the Azure Stack marketplace:
      -TenantId $TenantID 
    ```
 
-   b. **Active Directory Federation Services**, use the following cmdlet:
+   b. **Active Directory フェデレーション サービス (AD FS)** の場合は、次のコマンドレットを使用します。
     
    ```PowerShell
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
    # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
      -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
+     -GraphAudience $GraphAudience `
      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `
@@ -111,7 +122,7 @@ Now run the following steps to add the image to the Azure Stack marketplace:
      -TenantId $TenantID 
    ```
    
-3. Add the Windows Server 2016 image to the Azure Stack marketplace (Make sure to replace the *Path_to_ISO* with the path to the WS2016 ISO you downloaded):
+3. Windows Server 2016 イメージを Azure Stack Marketplace に追加します (必ず *Path_to_ISO* を、ダウンロードした WS2016 ISO のパスに置き換えてください)。
 
    ```PowerShell
    $ISOPath = "<Fully_Qualified_Path_to_ISO>"
@@ -122,23 +133,22 @@ Now run the following steps to add the image to the Azure Stack marketplace:
 
    ```
 
-To ensure that the Windows Server 2016 VM image has the latest cumulative update, include the `IncludeLatestCU` parameter when running the `New-AzsServer2016VMImage` cmdlet. See the [Parameters](#parameters) section for information about allowed parameters for the `New-AzsServer2016VMImage` cmdlet. It takes about an hour to publish the image to the Azure Stack marketplace. 
+Windows Server 2016 VM イメージに最新の累積的更新プログラムを確実に適用するには、`New-AzsServer2016VMImage` コマンドレットの実行時に `IncludeLatestCU` パラメーターを含めます。 `New-AzsServer2016VMImage` コマンドレットで許可されるパラメーターの詳細については、「[パラメーター](#parameters)」セクションを参照してください。 イメージを Azure Stack Marketplace に公開するには、1 時間ほどかかります。 
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
-|New-AzsServer2016VMImage parameters|Required?|Description|
+|New-AzsServer2016VMImage パラメーター|必須|Description|
 |-----|-----|------|
-|ISOPath|Yes|The fully qualified path to the downloaded Windows Server 2016 ISO.|
-|Net35|No|This parameter allows you to install the .NET 3.5 runtime on the Windows Server 2016 image. By default, this value is set to true. It is mandatory that the image contains the .NET 3.5 runtime to install the SQL and MYSQL resource providers. |
-|Version|No|This parameter allows you to choose whether to add a **Core** or **Full** or **Both** Windows Server 2016 images. By default, this value is set to "Full."|
-|VHDSizeInMB|No|Sets the size (in MB) of the VHD image to be added to your Azure Stack environment. By default, this value is set to 40960 MB.|
-|CreateGalleryItem|No|Specifies if a Marketplace item should be created for the Windows Server 2016 image. By default, this value is set to true.|
-|location |No |Specifies the location to which the Windows Server 2016 image should be published.|
-|IncludeLatestCU|No|Set this switch to apply the latest Windows Server 2016 cumulative update to the new VHD.|
-|CUUri |No |Set this value to choose the Windows Server 2016 cumulative update from a specific URI. |
-|CUPath |No |Set this value to choose the Windows Server 2016 cumulative update from a local path. This option is helpful if you have deployed the Azure Stack instance in a disconnected environment.|
+|ISOPath|あり|ダウンロードした Windows Server 2016 ISO の完全修飾パス。|
+|Net35|いいえ|このパラメーターを使用すると、Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールできます。 既定では、この値は true に設定されます。|
+|バージョン|いいえ|このパラメーターを使用すると、**[Core]** (コア)、**[Full]** (完全)、**[Both]** (両方) の Windows Server 2016 イメージを追加するかどうかを選択できます。 既定では、この値は [Full] (完全) に設定されます。|
+|VHDSizeInMB|いいえ|Azure Stack 環境に追加する VHD イメージのサイズ (MB 単位) を設定します。 既定では、この値は 40960 MB に設定されます。|
+|CreateGalleryItem|いいえ|Windows Server 2016 イメージの Marketplace 項目を作成するかどうかを指定します。 既定では、この値は true に設定されます。|
+|location |いいえ |Windows Server 2016 イメージを公開する場所を指定します。|
+|IncludeLatestCU|いいえ|このスイッチを設定すると、最新の Windows Server 2016 累積的更新プログラムが新しい VHD に適用されます。|
+|CUUri |いいえ |この値を設定すると、特定の URI から Windows Server 2016 累積的更新プログラムを選択できます。 |
+|CUPath |いいえ |この値を設定すると、ローカル パスから Windows Server 2016 累積的更新プログラムを選択できます。 このオプションは、接続が切断された環境で Azure Stack インスタンスをデプロイしている場合に便利です。|
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Provision a virtual machine](azure-stack-provision-vm.md)
-
+[仮想マシンのプロビジョニング](azure-stack-provision-vm.md)

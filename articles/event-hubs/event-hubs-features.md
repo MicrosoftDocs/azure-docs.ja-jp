@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-features-overview"></a>Event Hubs の機能の概要
 
 Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 サービスの概要については、「[Event Hubs とは](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -173,4 +171,3 @@ Event Hubs の詳細については、次のリンクを参照してください
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples
-

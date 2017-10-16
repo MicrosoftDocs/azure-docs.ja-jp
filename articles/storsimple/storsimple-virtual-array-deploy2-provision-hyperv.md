@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.lasthandoff: 03/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -93,7 +93,7 @@ ms.lasthandoff: 03/16/2017
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 仮想マシンの新規作成ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
-5. **[名前と場所を指定]** ページで、仮想アレイの**名前**を入力します。 **[次へ]**にログインします。
+5. **[名前と場所を指定]** ページで、仮想アレイの**名前**を入力します。 **[次へ]** をクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. **[世代の指定]** ページで、デバイスのイメージの種類を選択し、**[次へ]** をクリックします。 Windows Server 2008 R2 を使用している場合、このページは表示されません。
@@ -130,16 +130,16 @@ ms.lasthandoff: 03/16/2017
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、**[次へ]** をクリックします。
-16. **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。 **[次へ]**にログインします。 Windows Server 2008 R2 を実行している場合、この画面は表示されません。
+16. **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。 **[次へ]** をクリックします。 Windows Server 2008 R2 を実行している場合、この画面は表示されません。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。 **固定サイズ**のディスクでも動作しますが、待機時間が長くなる可能性があります。 **[差分]** は使用しないことをお勧めします。 **[次へ]**にログインします。 Windows Server 2012 R2 および Windows Server 2012 では、**[容量可変]** オプションが既定で設定されていますが、Windows Server 2008 R2 では **[固定サイズ]** が既定の設定です。
+17. **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。 **固定サイズ**のディスクでも動作しますが、待機時間が長くなる可能性があります。 **[差分]** は使用しないことをお勧めします。 **[次へ]** をクリックします。 Windows Server 2012 R2 および Windows Server 2012 では、**[容量可変]** オプションが既定で設定されていますが、Windows Server 2008 R2 では **[固定サイズ]** が既定の設定です。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。 **[次へ]**にログインします。
+18. **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[次へ]**をクリックします。
+19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. **[概要]** ページで仮想データ ディスクの詳細を確認し、問題がなければ **[完了]** をクリックしてディスクを作成します。 ウィザードが終了し、仮想ハード ディスクがコンピューターに追加されます。
@@ -216,4 +216,3 @@ ms.lasthandoff: 03/16/2017
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)
-

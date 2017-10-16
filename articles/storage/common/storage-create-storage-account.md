@@ -3,7 +3,7 @@ title: "Azure Portal でストレージ アカウントを作成、管理、削�
 description: "Azure Portal で、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords:
-- sql13.swb.windowsazurestorage.connect.f1
+f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: cdca35f8ae339d02b44490cd61e2684d81d88365
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
@@ -62,14 +60,14 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ハブ メニューで、**[新規]** -> **[ストレージ]** -> **[ストレージ アカウント]** の順にクリックします。
 3. ストレージ アカウントの名前を入力します。 Azure Storage 内のオブジェクトを指すためにストレージ アカウント名がどのように使用されるかについては、「 [ストレージ アカウント エンドポイント](#storage-account-endpoints) 」を参照してください。
    
    > [!NOTE]
    > ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
    > 
-   > ストレージ アカウント名は Azure 内で一意である必要があります。 選択したストレージ アカウント名が既に使用されているかどうかが、Azure Portal によって示されます。
+   > ストレージ アカウント名は Azure 内で一意である必要があります。 選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
    > 
    > 
 4. 使うデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。 **[リソース マネージャー]** が、推奨されるデプロイ モデルです。 詳細については、「 [リソース マネージャー デプロイと従来のデプロイを理解する](../../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
@@ -90,7 +88,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ## <a name="manage-your-storage-account"></a>ストレージ アカウントの管理
 ### <a name="change-your-account-configuration"></a>アカウント構成の変更
-ストレージ アカウントの作成後、アカウントで使用するレプリケーション オプションの変更や、BLOB ストレージ アカウントのアクセス層の変更など、そのアカウント構成を変更できます。 [Azure Portal](https://portal.azure.com) でお使いのストレージ アカウントに移動し、**[設定]** で **[構成]** を見つけてクリックすると、アカウント構成を表示したり変更したりできます。
+ストレージ アカウントの作成後、アカウントで使用するレプリケーション オプションの変更や、BLOB ストレージ アカウントのアクセス層の変更など、そのアカウント構成を変更できます。 [Azure ポータル](https://portal.azure.com)でお使いのストレージ アカウントに移動し、**[設定]** で **[構成]** を見つけてクリックすると、アカウント構成を表示したり変更したりできます。
 
 > [!NOTE]
 > ストレージ アカウントの作成時に選択したパフォーマンス レベルによっては、一部のレプリケーション オプションが使用できない場合があります。
@@ -134,7 +132,7 @@ BLOB ストレージ アカウントでは、アクセス層を変更すると�
 4. 同様に、セカンダリ アクセス キーを再生成します。
 
 ## <a name="delete-a-storage-account"></a>ストレージ アカウントの削除
-使わなくなったストレージ アカウントを削除するには、[Azure Portal](https://portal.azure.com) でストレージ アカウントに移動し、**[削除]**をクリックします。 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
+使わなくなったストレージ アカウントを削除するには、 [Azure ポータル](https://portal.azure.com)でストレージ アカウントに移動し、 **[削除]**をクリックします。 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
 
 > [!WARNING]
 > 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。 アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 これはアカウントのどのリソースにも当てはまります。BLOB、テーブル、キュー、またはファイルを削除すると、完全に削除されます。
@@ -149,5 +147,4 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 * [Azure Storage の接続文字列を構成する](../storage-configure-connection-string.md)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 * [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-
 

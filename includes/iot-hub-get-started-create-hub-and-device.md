@@ -19,7 +19,7 @@
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-3. ページの下部にある **[Create]**」を参照してください。 IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を確認できます。
+3. **Create** をクリックしてください。 IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を確認できます。
 
    ![IoT ハブの進捗状況の通知を見る](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
 

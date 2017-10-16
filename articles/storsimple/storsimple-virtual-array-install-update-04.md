@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: a0c56eb55f81a30924835290acb59b7e7d7e3480
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
 
@@ -107,10 +108,4 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

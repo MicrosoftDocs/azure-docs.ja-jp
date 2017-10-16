@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 0dfb4102904c2e972e6617fd3851fb1c50147357
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 次のビデオでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  この記事では、ビデオで説明する手順の概要と追加情報を紹介します。 この 24 分間のビデオでは、次の手順について説明しています。
@@ -39,7 +38,7 @@ Azure Active Directory を使用して Web API バックエンドを保護する
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-この例では、**APIMDemo** という名前のディレクトリが既定のドメイン名 **DemoAPIM.onmicrosoft.com** で作成されます。 このディレクトリはビデオ全体で使用されます。
+この例では、**APIMDemo** という名前のディレクトリが既定のドメイン名 **DemoAPIM.onmicrosoft.com** で作成されます。このディレクトリはビデオ全体で使用されます。
 
 ![Azure Active Directory][api-management-create-aad]
 
@@ -52,7 +51,7 @@ Azure Active Directory を使用して Web API バックエンドを保護する
 
 ![新しいプロジェクト][api-management-new-project]
 
-**[組織アカウント]** をクリックして、AAD テナントの**ドメイン**を指定します。 この例では、ドメインは **DemoAPIM.onmicrosoft.com**です。 ディレクトリのドメインは、ディレクトリの **[ドメイン]** タブから取得できます。
+**[組織アカウント]** をクリックして、AAD テナントの**ドメイン**を指定します。 この例では、ドメインは **DemoAPIM.onmicrosoft.com**です。ディレクトリのドメインは、ディレクトリの **[ドメイン]** タブから取得できます。
 
 ![ドメイン][api-management-aad-domains]
 
@@ -564,4 +563,3 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Manage your first API]: api-management-get-started.md
-

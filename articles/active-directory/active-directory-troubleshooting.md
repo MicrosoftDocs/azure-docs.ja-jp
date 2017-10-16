@@ -1,5 +1,5 @@
 ---
-title: 'Troubleshooting: ''Active Directory'' item is missing or not available | Microsoft Docs'
+title: "トラブルシューティング:\"Active Directory\"項目が存在しないか利用できない |Microsoft ドキュメント"
 description: "Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。"
 services: active-directory
 documentationcenter: na
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c52e9257272c5b0c55c488d2c7ca6fef500260b
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: be3a797c4a405fd2f6636e67f4c961dd6d143486
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>トラブルシューティング: Active Directory 項目が不足しているか使用できない
 Azure Active Directory の機能とサービスを使用するための手順の多くが、"Microsoft Azure 管理ポータルに移動し、**[Active Directory]** をクリックします。" という指示で始まります。 Active Directory 拡張機能またはメニュー項目が表示されない、または **[使用不可]** とマークされている場合はどうすればよいのでしょうか。 このトピックを役立ててください。 **Active Directory** が表示されない状況と使用できない状況について説明し、どのように対応するかについて説明しています。
@@ -52,5 +51,4 @@ Access Control 名前空間または Multi-factor Authentication プロバイダ
 ただし、ページの読み込み中は、項目は淡色表示され、 **[使用不可]**とマークされます。 これは一時的な状態です。 数秒待てば、項目は使用可能になります。 待ち時間が長いときは、Web ページを更新すれば、多くの場合、問題が解決します。
 
 ![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
-
 

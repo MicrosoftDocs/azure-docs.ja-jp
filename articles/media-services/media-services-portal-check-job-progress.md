@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3540a1d74de52e5e8cff5648dd02a92e0cfb4eb5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
 > [!div class="op_single_selector"]
@@ -29,7 +28,7 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
@@ -53,5 +52,4 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

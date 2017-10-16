@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: adb9a12899e9040cd83d522c734448989636fe29
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 07497231e2cfab86082c5a0d1f4a4ec8ab31f6a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
 
@@ -79,4 +78,3 @@ Azure IoT Hub は、以下を提供します。
 [devguide-messages-c2d]: iot-hub-devguide-messages-c2d.md
 [devguide-format]: iot-hub-devguide-messages-construct.md
 [devguide-protocol]: iot-hub-devguide-protocols.md
-

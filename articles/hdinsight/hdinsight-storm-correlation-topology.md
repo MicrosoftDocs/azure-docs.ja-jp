@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 06630096383601e48e8f69f8553314cee42f5f3e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
 
@@ -219,4 +218,3 @@ START イベントと同じ方法で END イベントを検索できます。 �
 ## <a name="next-steps"></a>次のステップ
 
 Storm の例の詳細については、「 [HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
-

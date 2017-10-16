@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35ba9161f70a27a215685830d1a9e7c1881cc3bb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要があるユーザーに多くのメリットを提供するビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると自動的にビデオ ストリームが低解像度に変更されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
 Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH ビデオ プレーヤーです。 ビデオ再生機能を必要とするアプリケーションで自由に再使用できる、堅牢なクロスプラットフォーム プレイヤーを提供することが目的です。 W3C Media Source Extensions (MSE) をサポートするどのブラウザーでも MPEG-DASH を再生できるようになります。現在では Chrome、Microsoft Edge、IE11 がこれに該当します (他のブラウザーも今後 MSE に対応する予定です)。 DASH.js の詳細については、「jGitHub dash.js リポジトリ」をご覧ください。
@@ -106,5 +105,4 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js) 
-
 

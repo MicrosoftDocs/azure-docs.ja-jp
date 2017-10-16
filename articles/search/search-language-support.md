@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: jlembicz
-translationtype: Human Translation
-ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
 ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
-ms.lasthandoff: 02/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [!div class="op_single_selector"]
 >
@@ -30,12 +29,12 @@ ms.lasthandoff: 02/09/2017
 >
 >
 
-インデックス定義内で検索可能フィールドにプロパティを&1; つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。 この手順はポータルで実行できるようになりました。
+インデックス定義内で検索可能フィールドにプロパティを 1 つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。 この手順はポータルで実行できるようになりました。
 
-ユーザーがインデックス スキーマを定義できる、Azure ポータルの Azure Search 用のブレードのスクリーンショットを以下に示します。 ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
+ユーザーがインデックス スキーマを定義できる、Azure Portal の Azure Search 用のブレードのスクリーンショットを以下に示します。 ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
 
 > [!IMPORTANT]
-> 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは&1; つだけです。 フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。 変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
+> 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。 フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。 変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
 >
 >
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 02/09/2017
 4. 使用するアナライザーを選択します。
 
 ![][2]
-*フィールドごとにサポートされているアナライザーを&1; つ選択する*
+*フィールドごとにサポートされているアナライザーを 1 つ選択する*
 
 既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、 [Azure Search の言語サポート](https://msdn.microsoft.com/library/azure/dn879793.aspx)に関するページを参照してください。
 
@@ -92,4 +91,3 @@ ms.lasthandoff: 02/09/2017
 [1]: ./media/search-language-support/AnalyzerTab.png
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
-

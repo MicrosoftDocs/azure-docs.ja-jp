@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 8/2/2017
 ms.author: markgal;trinadhk;jimpark
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 5f0f06adb8177ce2d17aa0b40666470279c04e22
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>AzureRM.Backup コマンドレットを使って仮想マシンをバックアップする
 > [!div class="op_single_selector"]
@@ -32,8 +31,8 @@ ms.lasthandoff: 08/03/2017
 この記事では、Azure の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。 Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルを使用してデータをバックアップ コンテナーにバックアップする方法について説明します。 サブスクリプションにバックアップ コンテナーを作成していない場合は、「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md)」の Resource Manager バージョンの記事をご覧ください。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 > [!IMPORTANT]
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使用してバックアップ コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
->- 残っているすべてのバックアップ コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 10 月 15 日以降は、PowerShell を使って Backup コンテナーを作成することはできません。 **2017 年 11 月 1 日まで**:
+>- 残っているすべての Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
 
@@ -358,4 +357,3 @@ $DAILYBACKUPSTATS | Out-GridView
 
 ## <a name="next-steps"></a>次のステップ
 PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。 [DPM のバックアップのデプロイと管理](backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。 両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。
-

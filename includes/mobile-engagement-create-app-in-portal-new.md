@@ -1,5 +1,5 @@
 
-1. [Azure ポータル](https://portal.azure.com)にログオンします。
+1. [Azure Portal](https://portal.azure.com) にログオンします。
 2. **[新規]**、**[Web + モバイル]**、**[Mobile Engagement]** の順にクリックします。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: bbd6ddeeeff949afe0cb66adc37982c036fc5c46
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 898160814304fa8ec65622056a77ca9d4caf2c99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Windows ユニバーサル アプリ Engagement SDK 統合
 > [!div class="op_single_selector"]
@@ -123,7 +122,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
       }
 
 > [!IMPORTANT]
->  Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。
+> Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。
 > 
 > 
 
@@ -279,5 +278,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 
 [here]:http://www.nuget.org/packages/Capptain.WindowsCS
 [NuGet website]:http://docs.nuget.org/docs/start-here/overview
-
 

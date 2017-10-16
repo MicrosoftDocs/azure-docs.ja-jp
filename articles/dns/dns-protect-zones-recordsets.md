@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
 DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンはもちろんのこと、DNS レコードが 1 つ削除されただけで、サービス全体が停止する可能性があります。  そのため、DNS ゾーンと DNS レコードは、承認されていない変更や意図しない変更が加えられないように保護する必要があります。
@@ -223,5 +221,4 @@ DNS ゾーン保護のための多層防御手法としては、リソースの�
 
 * RBAC の操作の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 * リソース ロックの操作の詳細については、「[Azure Resource Manager によるリソースのロック](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
-
 

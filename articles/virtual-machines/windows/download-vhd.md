@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
+ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 0f2c6ce3e5df6c513d8077b3dfcca0beb4a247bf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 
-この記事では、Azure Portal を使用して Azure から [Windows 仮想ハード ディスク (VHD)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ファイルをダウンロードする方法を説明します。 
+この記事では、Azure Portal を使用して Azure から [Windows 仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ファイルをダウンロードする方法を説明します。 
 
-Azure の仮想マシン (VM) では、オペレーティング システム、アプリケーション、およびデータを格納するための場所として[ディスク](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用します。 Azure のすべての VM には、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクは最初にイメージから作成されます。オペレーティング システム ディスクとイメージの両方は VHD であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
+Azure の仮想マシン (VM) では、オペレーティング システム、アプリケーション、およびデータを格納するための場所として[ディスク](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用します。 Azure のすべての VM には、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクは最初にイメージから作成されます。オペレーティング システム ディスクとイメージの両方は VHD であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
@@ -52,7 +50,7 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 
 ## <a name="generate-sas-url"></a>SAS URL の生成
 
-VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
+VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
 1.  VM のブレードのメニューで、**[ディスク]** をクリックします。
 2.  VM のオペレーティング システム ディスクを選択し、**[エクスポート]** をクリックします。
@@ -81,5 +79,4 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 - [VHD ファイルを Azure にアップロードする](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法を学習します。 
 - [ストレージ アカウント内の非管理対象ディスクから管理対象ディスクを作成する](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 - [PowerShell を使用した Azure ディスクの管理](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
 

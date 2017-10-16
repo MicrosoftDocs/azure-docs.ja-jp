@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 07/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Azure クラシック ポータルで StorSimple Manager サービスをデプロイする
 
@@ -102,4 +101,3 @@ StorSimple デバイスをデプロイする場合は、 **[簡易作成]** オ�
 * [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-manage-storage-accounts.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-

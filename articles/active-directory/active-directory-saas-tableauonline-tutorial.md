@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 443fab1198a91a4d5749e6421f7b8603fc75a81e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル: Azure Active Directory と Tableau Online の統合
 
@@ -112,7 +110,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. **[サインオン URL]** ボックスに、URL: `https://sso.online.tableau.com` を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
 
     b. **[識別子]** ボックスに、URL: `https://sso.online.tableau.com/public/sp/<instancename>` を入力します。
 
@@ -196,7 +194,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-tableau-online-test-user"></a>Tableau Online のテスト ユーザーの作成
 
@@ -208,7 +206,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 2. **[Add users for single sign-on (SSO) authentication (シングル サインオン (SSO) 認証用にユーザーを追加する)]**を選択します。 **[Enter Email Addresses (電子メール アドレスの入力)]** ボックスに「britta.simon@contoso.com」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. **[作成]**をクリックします。
+3. **Create** をクリックしてください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -264,5 +262,4 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-
 

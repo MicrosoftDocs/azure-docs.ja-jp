@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a36283053939ccd53856a394cd9efb66285271ae
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 146a2e16399a3eeed6b178d72234584c76cc8f51
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/01/2017
 | 格納と取得 | IoT Hub によって、最大 7 日間、一時的に格納されます。 シーケンシャルな読み取りのみ可能です。 | IoT Hub によってデバイス ツインに格納されます。 [IoT Hub クエリ言語][lnk-query]を使用して取得できます。 | ユーザー指定の Azure Storage アカウントに格納されます。 |
 | サイズ | 最大 256 KB のメッセージ。 | 報告されるプロパティの最大サイズは 8 KB。 | Azure Blob Storage によってサポートされるファイルの最大サイズ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 |
-| プロトコル | すべてのプロトコルで使用できます。 | 現時点では、MQTT を使用する場合のみ使用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTP が必要です。 |
+| プロトコル | すべてのプロトコルで使用できます。 | MQTT または AMQP を使用して利用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTP が必要です。 |
 
 アプリケーションは、情報を時系列のテレメトリまたはアラートとして送信することと、デバイス ツインで使用できるようにすることの両方を要求できます。 このシナリオでは、次のいずれかの方法を選ぶことができます。
 

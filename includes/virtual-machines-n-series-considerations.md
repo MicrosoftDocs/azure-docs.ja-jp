@@ -12,7 +12,7 @@
 
 * Azure サブスクリプションの (リージョンごとの) コア クォータと NC または NV のコアの個別のクォータを増やす必要が生じる場合があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../articles/azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
 
-* N シリーズ VM にデプロイできる VM イメージの 1 つに、[Azure データ サイエンス仮想マシン](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)があります。 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが事前にインストールされ、構成されています。 NC インスタンス用の NVIDIA Tesla GPU ドライバーも事前にインストールされています。
+* N シリーズ VM にデプロイできる VM イメージの 1 つに、[Azure データ サイエンス仮想マシン](../articles/machine-learning/data-science-virtual-machine/overview.md)があります。 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが事前にインストールされ、構成されています。 NC インスタンス用の NVIDIA Tesla GPU ドライバーも事前にインストールされています。
 
 
 

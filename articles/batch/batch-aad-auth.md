@@ -3,7 +3,7 @@ title: "Azure Active Directory を使用して Azure Batch サービス ソリ�
 description: "Batch は、Batch サービスからの認証に Azure AD をサポートしています。"
 services: batch
 documentationcenter: .net
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 tags: 
@@ -13,16 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 06/20/2017
+ms.date: 09/28/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 9c03bde919c46cd301229255c0b12ee69dda6f78
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: a5dd04e992bd181e512d176fd913a7395fd6b702
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
 Azure Batch は、[Azure Active Directory][aad_about] (Azure AD) を使用した認証をサポートしています。 Azure AD は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 Azure AD は、顧客、サービス管理者、組織のユーザーを認証するために Azure 自体で使用されています。
@@ -33,13 +31,6 @@ Azure AD 認証に Azure Batch を使用する場合は、次の 2 つの方法�
 - **サービス プリンシパル**を使用して無人のアプリケーションを認証します。 サービス プリンシパルは、実行時のリソースへのアクセスの際にアプリケーションを表すための、アプリケーション用のポリシーとアクセス許可を定義します。
 
 Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。
-
-## <a name="authentication-and-pool-allocation-mode"></a>認証およびプールの割り当てモード
-
-Batch アカウントを作成する場合、そのアカウントに作成するプールを割り当てる必要がある場所を指定できます。 プールの割り当て場所には、既定の Batch サービスのサブスクリプションか、ユーザーのサブスクリプションのいずれかを選択できます。 この選択は、そのアカウント内のリソースへのアクセスを認証する方法に影響を与えます。
-
-- **Batch サービス サブスクリプション。** 既定では、Batch プールは Batch サービス サブスクリプションに割り当てられます。 このオプションを選択すると、[共有キー](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service)または Azure AD のいずれかを使用して、そのアカウントのリソースへのアクセスを認証できます。
-- **ユーザー サブスクリプション。** 指定したユーザー サブスクリプションに Batch プールを割り当てるように選択できます。 このオプションを選択した場合は、Azure AD で認証する必要があります。
 
 ## <a name="endpoints-for-authentication"></a>認証のためのエンドポイント
 
@@ -332,4 +323,3 @@ Azure AD を使用して Batch 管理アプリケーションを認証するに�
 [aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD の認証シナリオ"
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
 [azure_portal]: http://portal.azure.com
-

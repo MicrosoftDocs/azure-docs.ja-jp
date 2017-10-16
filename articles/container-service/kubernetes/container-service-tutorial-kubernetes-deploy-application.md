@@ -14,23 +14,21 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: b8f747b15bf491b7221a71b5beaa595aa7f1b49b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 81a6a3d5364642b2da75faf875d64d2f4a1939d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
 
 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 手順は次のとおりです。
 
 > [!div class="checklist"]
-> * Kubernetes マニフェスト ファイルをダウンロードする
+> * Kubernetes マニフェスト ファイルを更新する
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
@@ -40,29 +38,15 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 
 
-このチュートリアルでは、少なくとも Kubernetes クラスターが必要です。
+このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。
 
-## <a name="get-manifest-file"></a>マニフェスト ファイルを取得する
-
-このチュートリアルでは、Kubernetes マニフェストを使って [Kubernetes オブジェクト](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)をデプロイします。 Kubernetes マニフェストは YAML または JSON 形式のファイルであり、Kubernetes オブジェクトのデプロイと構成の指示が含まれます。
-
-このチュートリアルのアプリケーション マニフェスト ファイルは、前のチュートリアルで複製した Azure Vote アプリケーション リポジトリで入手できます。 まだ行っていない場合は、次のコマンドでリポジトリを複製してください。 
-
-```bash
-git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
-```
-
-マニフェスト ファイルは、複製されたリポジトリの次のディレクトリにあります。
-
-```bash
-/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
-```
+これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
 
 ## <a name="update-manifest-file"></a>マニフェスト ファイルを更新する
 
-Azure Container Registry を使ってコンテナー イメージを格納している場合は、マニフェストを ACR loginServer 名で更新する必要があります。
+このチュートリアルでは、Azure Container Registry (ACR) を使用してコンテナー イメージを保存しています。 アプリケーションを実行する前に、Kubernetes マニフェスト ファイルの ACR ログイン サーバー名を更新する必要があります。
 
 ACR ログイン サーバー名を取得するには、[az acr list](/cli/azure/acr#list) コマンドを使います。
 
@@ -70,7 +54,13 @@ ACR ログイン サーバー名を取得するには、[az acr list](/cli/azure
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-サンプル マニフェストは、*microsoft* というリポジトリ名であらかじめ作成されています。 任意のテキスト エディターでファイルを開き、*microsoft* という値を実際の ACR インスタンスのログイン サーバー名に置き換えます。
+マニフェスト ファイルは、ログイン サーバー名 `microsoft` で事前作成されています。 任意のテキスト エディターでファイルを開きます。 この例では、ファイルは `vi` で開きます。
+
+```bash
+vi azure-vote-all-in-one-redis.yml
+```
+
+`microsoft` を ACR ログイン サーバー名に置き換えます。 この値は、マニフェスト ファイルの **47** 行にあります。
 
 ```yaml
 containers:
@@ -78,12 +68,14 @@ containers:
   image: microsoft/azure-vote-front:redis-v1
 ```
 
+ファイルを保存して閉じます。
+
 ## <a name="deploy-application"></a>アプリケーションをデプロイする
 
 [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) コマンドを使用してアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 
 ```azurecli-interactive
-kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
+kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 出力:
@@ -105,7 +97,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初に、*azure-vote-front* サービスの **EXTERNAL-IP** が "*保留中*" として表示されます。 EXTERNAL-IP アドレスが "*保留中*" から "*IP アドレス*" に変わると、`CTRL-C` を使用してkubectl ウォッチ プロセスを停止します。
+最初に `azure-vote-front` サービスの **EXTERNAL-IP** が `pending` として表示されます。 EXTERNAL-IP アドレスが `pending` から `IP address` に変わったら、`CTRL-C` を使用して kubectl ウォッチ プロセスを停止します。
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE

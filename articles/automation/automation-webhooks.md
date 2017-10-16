@@ -3,7 +3,7 @@ title: "webhook を使用した Azure Automation の Runbook の開始 | Microso
 description: "HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 6c65427fcd18e41a90dfb872aa9525f758b17b87
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: d384a1f6e0f6bf49cf94020265fe5675ffc0029d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 *Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure Automation API を使用した完全なソリューションを実装しなくても、Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics などの外部サービスやカスタム アプリケーションで Runbook を開始できます。  
@@ -56,7 +55,7 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 
 Webhook の作成時に $WebhookData の値を指定した場合、クライアントの要求本文にデータが含まれていなくても、クライアントの POST 要求からのデータで Webhook が Runbook を開始した時点でその値はオーバーライドされます。  Webhook 以外の方法を使用して $WebhookData が含まれる Runbook を開始する場合、Runbook で認識される $Webhookdata の値を指定することができます。  この値は $Webhookdata と同じ[プロパティ](#details-of-a-webhook)を持つオブジェクトにする必要があります。それにより、Runbook は、Webhook によって渡された実際の WebhookData を操作しているかのように適切な処理を実行できます。
 
-たとえば、Azure ポータルから次の Runbook を開始するときにテスト用のサンプル WebhookData を渡す場合、WebhookData はオブジェクトであるため、UI に JSON として渡す必要があります。
+たとえば、Azure Portal から次の Runbook を開始するときにテスト用のサンプル WebhookData を渡す場合、WebhookData はオブジェクトであるため、UI に JSON として渡す必要があります。
 
 ![UI からの WebhookData パラメーター](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
@@ -267,4 +266,3 @@ Azure アラートを通知システムとして使用するだけでなく、�
 * Runbook を開始するさまざまな方法の詳細については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事をご覧ください。
 * Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」をご覧ください。
 * Azure Automation を使用して Azure アラートに対処する方法については、[Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)に関する記事をご覧ください。
-

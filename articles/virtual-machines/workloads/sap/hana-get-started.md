@@ -16,13 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 88441cd85dd07d701805131f67eda20bbe857ae1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 05fb31007e1e4c2243f93169129ec5b2c93099e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイックスタート ガイド: Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -202,7 +200,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 Azure Premium Storage では、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にする必要があります。 その他のボリューム (ディスク) では、キャッシュ モードを **ReadOnly** に設定する必要があります。
 
-詳しくは、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../../storage/storage-premium-storage.md)」をご覧ください。
+詳しくは、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../../storage/common/storage-premium-storage.md)」をご覧ください。
 
 VM 作成用の JSON のサンプル テンプレートを検索するには、「[Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates)」(Azure クイック スタート テンプレート) をご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートはベースとして使用することができます。 テンプレートは特定の構成に適用できます。
@@ -455,5 +453,4 @@ Linux/HANA 用の NetWeaver 7.5 のダウンロード:
 HANA SP12 Platform Edition のダウンロード:
 
  ![HANA SP12 Platform Edition をダウンロードするための [SAP Service Installation and Upgrade (SAP サービスのインストールとアップグレード)] ウィンドウ](./media/hana-get-started/image002.jpg)
-
 

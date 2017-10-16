@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
 > [!IMPORTANT]
@@ -274,4 +272,3 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 * 全体的な OData マッピングのプロセスと目的を理解したい場合は、こちらの [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 * データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
-

@@ -1,4 +1,4 @@
-## <a name="add-function-apps-to-your-portal-favorites"></a>ポータルのお気に入りへの Function App の追加 
+## <a name="favorite-functions-in-the-portal"></a>Portal のお気に入りの関数 
 
 Function App をまだ Azure Portal のお気に入りに追加していない場合は、追加します。 これにより、Function App が探しやすくなります。 すでに追加した場合は、次のセクションに進みます。 
 

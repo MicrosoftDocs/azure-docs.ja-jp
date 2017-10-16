@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/26/2017
 ms.author: billmath
+ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory パススルー認証: スマート ロックアウト
 
 ## <a name="overview"></a>概要
@@ -56,7 +54,7 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 
 ![AD アカウント ロックアウト ポリシー](./media/active-directory-aadconnect-pass-through-authentication/pta5.png)
 
-## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values"></a>テナントのスマート ロックアウトの値を管理するには、Graph API を使います。
+## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values-needs-premium-license"></a>Graph API を使用してテナントのスマート ロックアウトの値を管理する (Premium ライセンスが必要)
 
 >[!IMPORTANT]
 >Graph API を使って Azure AD のロックアウトしきい値とロックアウト期間の値を変更するのは、Azure AD Premium P2 の機能です。 また、テナントのグローバル管理者が行う必要があります。
@@ -79,7 +77,7 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 1. テナントのグローバル管理者として Graph Explorer にサインインします。 メッセージが表示されたら、要求されたアクセス許可のアクセスを許可します。
 2. [Modify permissions]\(アクセス許可の変更\) をクリックし、"Directory.ReadWrite.All" を選びます。
 3. Graph API の要求で、バージョンを "BETA" に、要求の種類を "POST" に、URL を `https://graph.microsoft.com/beta/<your-tenant-domain>/settings` に設定します。
-4. 次の JSON 要求をコピーし、"Request Body" に貼り付けます。 必要に応じてスマート ロックアウトの値を変更し、`templateId` にはランダムな GUID を使います。
+4. 次の JSON 要求をコピーし、"Request Body" に貼り付けます。
 5. [Run Query]\(クエリの実行\) をクリックして、テナントのスマート ロックアウトの値を設定します。
 
 ```
@@ -149,4 +147,3 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 
 ## <a name="next-steps"></a>次のステップ
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
-

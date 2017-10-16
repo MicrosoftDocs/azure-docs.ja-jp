@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: df1a5b2c200b7fa69961247ac036ee35fd14f54d
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 76f69946724b5297b1f9a1f715819c69c4a4a51d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oms-architecture"></a>OMS アーキテクチャ
 [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) は、オンプレミス環境とクラウド環境を管理するためのクラウドベース サービスの集合体です。  この記事では、OMS のさまざまなオンプレミスおよびクラウドのコンポーネントと、クラウド コンピューティング アーキテクチャの概要について説明します。  詳細については、各サービスのドキュメントをご覧ください。
@@ -84,5 +83,4 @@ Azure Site Recovery には、3 つの基本的なレプリケーション シナ
 * [Azure Automation](https://azure.microsoft.com/documentation/services/automation)の詳細を確認する。
 * [Azure Backup](http://azure.microsoft.com/documentation/services/backup)の詳細を確認する。
 * [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery)の詳細を確認する。
-
 

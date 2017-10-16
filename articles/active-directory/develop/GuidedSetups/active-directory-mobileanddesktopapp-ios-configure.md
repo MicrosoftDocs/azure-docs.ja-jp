@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.openlocfilehash: 0ebca65585fc87bd4a85ba092cd423fce9540f58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 8a4f412102c0e75654030f5d4f8aab575fdcebba
-ms.contentlocale: ja-jp
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
@@ -41,7 +41,7 @@ let kClientID = "Your_Application_Id_Here"
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコンテキスト メニューを表示し、<code>Open As</code>> <code>Source Code</code>
+Ctrl キーを押しながら <code>Info.plist</code>をクリックしてコンテキスト メニューを表示し、<code>Open As</code>> <code>Source Code</code>
  をクリックします</li>
 <li>
 ルート ノード <code>dict</code> の下に次の内容を追加します。
@@ -69,4 +69,3 @@ Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコ
 <i><code>[Your_Application_Id_Here]</code></i> を、さきほど登録したアプリケーション ID に置き換えます
 </li>
 </ol>
-

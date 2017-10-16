@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 6af6c10cef317453131197db74a9380518afadf0
-ms.lasthandoff: 12/02/2016
-
-
+ms.openlocfilehash: 3b6327b1f5150f32afd71639f32c55d823f1d1f0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-security-and-audit-solution-data-security"></a>Operations Management Suite のセキュリティと監査ソリューションのデータ セキュリティ
 ユーザーが脅威を回避、検出、対応できるように、[Operations Management Suite (OMS) のセキュリティと監視ソリューション](operations-management-suite-overview.md)は、次のような、リソースに関するデータを収集して処理します。
@@ -59,5 +58,4 @@ OMS のセキュリティと監査ソリューションでは、OMS エージェ
 * [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
 

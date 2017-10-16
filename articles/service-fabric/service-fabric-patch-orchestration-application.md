@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 6385dd99e3f5d96eee2cf50016e4af599d91b011
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
-パッチ オーケストレーション アプリケーションは、ダウンタイムなしで、Azure の Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Azure Service Fabric アプリケーションです。
+パッチ オーケストレーション アプリケーションは、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Azure Service Fabric アプリケーションです。
 
 パッチ オーケストレーション アプリケーションは、次の機能を備えています。
 
@@ -274,6 +274,17 @@ PowerShell を使用して既存のパッチ オーケストレーション ア�
   ...
 ]
 ```
+
+JSON のフィールドについて以下で説明します。
+
+フィールド | 値 | 詳細
+-- | -- | --
+OperationResult | 0 - 成功<br> 1 - 成功 (エラーあり)<br> 2 - 失敗<br> 3 - 中止<br> 4 - タイムアウトにより中止 | 操作全体 (通常、1 つ以上の更新プログラムのインストールを含む) の結果を示します。
+ResultCode | OperationResult と同じ | このフィールドは、個々の更新プログラムのインストール操作の結果を示します。
+OperationType | 1 - インストール<br> 0 - 検索とダウンロード| インストールは、既定で結果に表示される唯一の OperationType です。
+WindowsUpdateQuery | 既定値は "IsInstalled=0" |更新プログラムの検索に使用された Windows 更新プログラムのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
+RebootRequired | true - 再起動が必要<br> false - 再起動は不要 | 更新プログラムのインストールを完了するのに再起動が必要かどうかを示します。
+
 更新がまだスケジュールされていない場合、結果の JSON は空になります。
 
 Windows Update の結果を照会するには、クラスターにログインします。 次に、コーディネーター サービスのプライマリのレプリカ アドレスを検索し、ブラウザーから http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults にアクセスします。
@@ -361,7 +372,7 @@ A. パッチ オーケストレーション アプリケーションが必要と
 - 更新プログラムをダウンロードしてインストールするために必要な平均時間。平均時間が 2 ～ 3 時間を超えることは通常ありません。
 - VM とネットワーク帯域幅のパフォーマンス。
 
-Q. **Windows Update の一部の更新プログラムが REST API 経由で取得されたと表示されますが、コンピューターの Windows Update 履歴には表示されないのはなぜですか?**
+Q. **Windows Update の結果で一部の更新プログラムが REST API 経由で取得されたと表示されますが、マシンの Windows Update 履歴に表示されないのはなぜですか?**
 
 A. 一部の製品更新プログラムは、各更新プログラム/パッチ履歴で確認する必要があります。 たとえば、Windows Defender の更新プログラムは、Windows Server 2016 の Windows Update 履歴には表示されません。
 
@@ -403,7 +414,7 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 
 管理者が介入し、Windows Update によってアプリケーションやクラスターが異常な状態になった原因を特定する必要があります。
 
-## <a name="release-notes-"></a>リリース ノート:
+## <a name="release-notes"></a>リリース ノート
 
 ### <a name="version-110"></a>バージョン 1.1.0
 - 公開リリース

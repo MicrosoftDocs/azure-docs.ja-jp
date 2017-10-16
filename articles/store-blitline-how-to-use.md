@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8b7e8dd557ddeeaa295a9849d471d74259941c2
-
-
+ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>Azure と Azure Storage で Blitline を使用する方法
 このガイドでは、Blitline サービスへのアクセス方法と Blitline へのジョブの送信方法について説明します。
@@ -124,10 +124,4 @@ Azure Storage に関する Blitline のドキュメントの最新版を [ここ
 * Blitline API 関数 <http://www.blitline.com/docs/functions>
 * Blitline API の例 <http://www.blitline.com/docs/examples>
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

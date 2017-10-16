@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
@@ -117,5 +115,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
-
 

@@ -1,6 +1,6 @@
 ---
-title: Subscribe to an offer | Microsoft Docs
-description: As a tenant, learn how to subscribe to an offer.
+title: "オファーをサブスクラブする | Microsoft Docs"
+description: "ユーザーとしてオファーをサブスクライブする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,35 +14,36 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/03/2017
 ms.author: erikje
+ms.openlocfilehash: f70815b5e89753a4b0083ffbe10d9920062d1ff0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3cd87ebe9827249d32f15b5de0ad8521d0282c47
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="subscribe-to-an-offer"></a>Subscribe to an offer
-Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.
+# <a name="subscribe-to-an-offer"></a>プランへのサブスクライブ
 
-1. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack tenant portal (https://portal.local.azurestack.external) and click **Get a Subscription**.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+[オファーの作成](azure-stack-create-offer.md)が終わったら、ユーザーがサブスクリプションを作成できるかどうかをテストします。
+
+1. ユーザーとして Azure Stack のユーザー ポータル (https://portal.local.azurestack.external) に[サインイン](azure-stack-connect-azure-stack.md)し、**[サブスクリプションの取得]** をクリックします。
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
-2. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.
+2. **[表示名]** フィールドにサブスクリプションの名前を入力し、**[オファー]** をクリックします。**[Choose an offer]\(オファーの選択\)** ブレードでいずれかのオファーをクリックし、**[作成]** をクリックします。
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image02.png)
-3. To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.  
+3. 作成したサブスクリプションを表示するには、**[その他のサービス]**、**[サブスクリプション]** の順にクリックし、作成した新しいサブスクリプションをクリックします。  
 
-After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
+オファーをサブスクライブしたら、ポータルを更新して、どのサービスが新しいサブスクリプションの一部であるかを確認します。
 
-## <a name="subscribe-to-an-add-on-plan"></a>Subscribe to an add-on plan
-If the offer has an add-on plan, tenants can add them to their subscription at any time.  
+## <a name="subscribe-to-an-add-on-plan"></a>アドオン プランをサブスクライブする
+オファーにアドオン プランがある場合、ユーザーは、それらをいつでも自分のサブスクリプションに追加できます。  
 
-1. In the tenant portal, select **More services** > **Subscriptions**.
+1. ユーザーポータルで、**[その他のサービス]** > **[サブスクリプション]** を選択します。
 
-2. Click on the subscription > **Add Plan** button, and select the add-on plan.
+2. サブスクリプションをクリックし、**[プランの追加]** ボタンをクリックし、アドオン プランを選択します。
 
 
 
-## <a name="next-steps"></a>Next steps
-[Provision a virtual machine](azure-stack-provision-vm.md)
-
+## <a name="next-steps"></a>次のステップ
+[仮想マシンのプロビジョニング](azure-stack-provision-vm.md)

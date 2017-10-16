@@ -15,12 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 6e02f42613808bcb13c0057e9f8fcc1c02273e77
-ms.lasthandoff: 03/25/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 > [!IMPORTANT]
@@ -55,7 +54,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
    4. 適切な**サブスクリプション**を選択します。
    5. **[リソース グループ]** で、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。 または、**[既存のものを使用]** をクリックし、使用可能なリソース グループのいずれかを選択します。
    6. 仮想マシンが存在する場所 (**[米国中南部]** など) を選択します。
-6. **[次へ]**をクリックします。
+6. **[次へ]** をクリックします。
 7. **[Virtual machine image size (仮想マシン イメージのサイズ)]** ブレードで、**[A1 Standard]** または別の適切なイメージを選択します。
 8. **[選択]**をクリックします。
 
@@ -121,7 +120,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 10. **[名前]** 画面で、**HttpIn** などの規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。  
     ![新しい受信の規則の名前][NewRuleName]
 
-これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレス ウィンドウに、**http://*your\_DNS\_name*.cloudapp.net**(***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を入力します。
+これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレスのウィンドウで、フォームの URL を入力 **http://*、\_DNS\_名前*. cloudapp.net**、場所***、\_DNS\_名前***仮想マシンを作成したときに指定した DNS 名です。
 
 ## <a name="application-lifecycle-considerations"></a>アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、 **webapps** フォルダーに追加することもできます。 たとえば、基本的な Java Service Page (JSP) 動的 Web プロジェクトを作成し、WAR ファイルとしてエクスポートします。 次に、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーし、ブラウザーで実行します。
@@ -159,4 +158,3 @@ Java アプリケーションに含めることのできるその他のサービ
 6. In the **Add endpoint** dialog box, ensure **Add standalone endpoint** is selected, and then click **Next**.
 7. In the **New endpoint details** dialog box:
 -->
-

@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5f10f6dc878d92337a37bbc4b16edf3962d53cc6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
-
-
+ms.openlocfilehash: 73b8ed7e6a153a0790f7eae9bd51bb2e554ae72e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>iOS で ADAL を使用してクロス アプリ SSO を有効にする方法
 シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
@@ -298,11 +296,9 @@ ADAL は、ブローカーがデバイスにインストールされているか
 
 <key>LSApplicationQueriesSchemes</key>
 
-<array>
-     <string>msauth</string>
+<array><string>msauth</string>
 </array>
 
 ### <a name="youve-configured-sso"></a>SSO の構成の終了
 これで、Microsoft Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
-
 

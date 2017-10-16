@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
-ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/10/2016
-
+ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)は、ポータルに組み込まれた [エクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用してログ プロファイルで Service Bus 規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -80,5 +79,4 @@ Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key 
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](monitoring-archive-activity-log.md)
 * [Azure アクティビティ ログの概要を確認する](monitoring-overview-activity-logs.md)
 * [アクティビティ ログ イベントに基づいてアラートを設定する](insights-auditlog-to-webhook-email.md)
-
 

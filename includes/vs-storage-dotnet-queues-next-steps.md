@@ -3,7 +3,7 @@
 
 * 利用可能な API の完全な詳細については、 [.NET 用 Azure Storage クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731) リファレンスの Queue サービス リファレンス ドキュメントを参照してください。
 * Queue Storage を使用する方法については、「 [.NET を使用して Azure Queue Storage を使用する](../articles/storage/queues/storage-dotnet-how-to-use-queues.md)
-* Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure Web ジョブ SDK とは](../articles/app-service-web/websites-dotnet-webjobs-sdk.md)
+* Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure Web ジョブ SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   * Azure Storage のテーブルを操作する方法については、「 [.NET を使用して Azure Table Storage を使用する](../articles/cosmos-db/table-storage-how-to-use-dotnet.md)」を参照してください。
   * Azure Storage の BLOB を操作する方法については、「 [.NET を使用して Azure Blob Storage を使用する](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。

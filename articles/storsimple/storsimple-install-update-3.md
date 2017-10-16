@@ -15,12 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: f48f9dff289c556aea1912ecf7b6415abb902f33
 ms.openlocfilehash: 72b004a6c2604e0fc20b71b4b69217622f8f9ea0
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-3-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスに Update 3 をインストールする
 
@@ -70,7 +69,7 @@ Update 3 には、デバイス ソフトウェア、LSI ドライバーとファ
 > 
 > 
 
-修正プログラムを使用する方法には、次の&3; つの手順が含まれます。
+修正プログラムを使用する方法には、次の 3 つの手順が含まれます。
 
 1. Microsoft Update カタログから修正プログラムをダウンロードします。
 2. 通常モードの修正プログラムをインストールして確認します。
@@ -85,7 +84,7 @@ Update 3 には、デバイス ソフトウェア、LSI ドライバーとファ
 | 2. |KB3186859 |LSI ドライバーおよびファームウェア |通常  <br></br>中断なし |～ 20 分 |
 | 3. |KB3121261 |Storport および Spaceport 修正プログラム  </br> Windows Server 2012 R2 |通常  <br></br>中断なし |～ 20 分 |
 
-&#42; *ソフトウェア更新プログラムは、デバイスのソフトウェア更新プログラム (`all-hcsmdssoftwareupdate` で始まる) と Cis と Mds のエージェント (`all-cismdsagentupdatebundle` で始まる) の&2; つのバイナリ ファイルで構成されます。Cis と Mds のエージェントをインストールする前に、デバイスのソフトウェア更新プログラムをインストールする必要があります。また、Cis と Mds のエージェント更新プログラムを適用したら (残りの更新プログラムを適用する前に)、`Restart-HcsController` コマンドレットを使用してアクティブなコントローラーを再起動する必要があります。*" 
+&#42; *ソフトウェア更新プログラムは、デバイスのソフトウェア更新プログラム (`all-hcsmdssoftwareupdate` で始まる) と Cis と Mds のエージェント (`all-cismdsagentupdatebundle` で始まる) の 2 つのバイナリ ファイルで構成されます。Cis と Mds のエージェントをインストールする前に、デバイスのソフトウェア更新プログラムをインストールする必要があります。また、Cis と Mds のエージェント更新プログラムを適用したら (残りの更新プログラムを適用する前に)、`Restart-HcsController` コマンドレットを使用してアクティブなコントローラーを再起動する必要があります。*" 
 
 **デバイスが更新プログラム 0.1、0.2、0.3、1.0、1.1、1.2、または 2.0 を実行している場合**は、前の表に示したソフトウェア、LSI ドライバー、ファームウェアの更新プログラムのほか、次の修正プログラムを、指定の順序でダウンロードしてインストールする必要があります。
 
@@ -119,5 +118,4 @@ Update 3 には、デバイス ソフトウェア、LSI ドライバーとファ
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [Update 3 リリース](storsimple-update3-release-notes.md)に関するページをご覧ください。
-
 

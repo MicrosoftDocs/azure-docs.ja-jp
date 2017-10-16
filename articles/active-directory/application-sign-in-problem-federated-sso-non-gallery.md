@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3afc7bca878caef424d3fa3c64aa17df0fda7de5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー以外のアプリケーションへのサインインに関する問題
 
 問題をトラブルシューティングするには、次のように Azure AD でのアプリケーション構成を確認する必要があります。
@@ -242,4 +239,3 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD でのシングル サインオンの SAML プロトコルの要件](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>ログ検索ポータルを使用して Azure Log Analytics でログ検索を作成する
 
@@ -165,4 +164,3 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 - 「[Getting Started with the Analytics Portal (分析ポータルの概要)](https://go.microsoft.com/fwlink/?linkid=856079)」で、Log Analytics クエリ言語の詳細について確認します。
 - ログ検索ポータルと同じクエリを実行し、同じデータにアクセスできる[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)を使用するチュートリアルを実行します。
-

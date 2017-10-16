@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack storage accounts  | Microsoft Docs
-description: Learn how to find, manage, recover and reclaim Azure Stack storage accounts
+title: "Azure Stack のストレージ アカウントを管理する | Microsoft Docs"
+description: "Azure Stack のストレージ アカウントを検索、管理、回復、および回収する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: AniAnirudh
@@ -14,202 +14,201 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Manage Storage Accounts in Azure Stack
-Learn how to manage storage accounts in Azure Stack to find, recover, and reclaim storage capacity based on business needs.
+# <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でのストレージ アカウントの管理
+ビジネスのニーズに基づいてストレージ容量を検索、回復、および再利用するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
 
-## <a name="find"></a>Find a storage account
-The list of storage accounts in the region can be viewed in Azure Stack by:
+## <a name="find"></a>ストレージ アカウントの検索
+リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
 
-1. In an Internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
+1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
+2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
+3. 既定のダッシュボードで、**[Region management]\(リージョンの管理\)** リストを見つけ、調べたいリージョンをクリックします。 例: **(local**)。
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Select **Storage** from the **Resource Providers** list.
+4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Now, on the storage Resource Provider administrator blade – scroll down to the **Storage accounts** tab and click it.
+5. ここで、ストレージ リソース プロバイダーの管理者ブレードで、下にスクロールして、**[ストレージ アカウント]** タブをクリックします。
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
-   The resulting page is the list of storage accounts in that region.
+   結果のページでは、そのリージョンのストレージ アカウントのリストが示されます。
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
-By default, the first 10 accounts are displayed. You can choose to fetch more by clicking the  **Load more** link at the bottom of the list.
+既定では、最初の 10 個のアカウントが表示されます。 リストの下部にある **[さらに読み込む]** リンクをクリックすると、さらに多くのアカウントをフェッチすることができます。
 
-OR
+または
 
-If you are interested in a particular storage account – you can **filter and fetch the relevant accounts** only.
+特定のストレージ アカウントに興味がある場合は、**フィルター処理して関連するアカウントのみをフェッチ**することができます。
 
 
-**To filter for accounts:**
+**アカウントをフィルター処理するには:**
 
-1. Click **Filter** at the top of the blade.
-2. On the Filter blade, it allows you to specify **account name**, **subscription ID** or **status** to fine-tune the list of storage accounts to be displayed. Use them as appropriate.
-3. Click **Update**. The list should refresh accordingly.
+1. ブレードの上部にある **[フィルター]** をクリックします。
+2. [フィルター] ブレードでは、**アカウント名**、**サブスクリプション ID**、または**ステータス**を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
+3. **[Update]**をクリックします。 リストが更新されます。
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. To reset the filter: click **Filter**, clear out the  selections and update.
+4. フィルターをリセットするには、**[フィルター]** をクリックし、選択をオフにして更新します。
 
-The search text box (on the top of the storage accounts list blade) lets you highlight the selected text in the list of accounts. This is really handy in the case when the full name or id is not easily available.
+(ストレージ アカウントのリスト ブレードの上部の) 検索テキスト ボックスを使用すると、アカウントのリスト内で選択したテキストを強調表示することができます。 これは、フルネームや ID が簡単に使用できない場合にとても便利です。
 
-You can use free text here to help find the account you are interested in.
+ここでフリー テキストを使用すると、興味のあるアカウントが見つけやすくなります。
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
-## <a name="look-at-account-details"></a>Look at account details
-Once you have located the accounts you are interested in viewing, you can click the particular account to view certain details. A new blade opens with the account details such as: the type of the account, creation time, location, etc.
+## <a name="look-at-account-details"></a>アカウントの詳細の確認
+表示で興味のあるアカウントが見つかったら、そのアカウントをクリックして特定の詳細を表示できます。 新しいブレードが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
-## <a name="recover-a-deleted-account"></a>Recover a deleted account
-You may be in a situation where you need to recover a deleted account.
+## <a name="recover-a-deleted-account"></a>削除されたキーの回復
+削除したアカウントを回復する必要がある場合があります。
 
-In Azure Stack there is a very simple way to do that:
+Azure Stack では、これを行う非常に簡単な方法があります。
 
-1. Browse to the storage accounts list. See [Find a storage account](#find) in this topic for more information.
-2. Locate that particular account in the list. You may need to filter.
-3. Check the *state* of the account. It should say **Deleted**.
-4. Click the account which opens the account details blade.
-5. On top of this blade, locate the **Recover** button and click it.
-6. Click **Yes** to confirm.
+1. ストレージ アカウント リストを参照します。 詳細については、このトピックの「[ストレージ アカウントの検索](#find)」を参照してください。
+2. リストでそのアカウントを見つけます。 場合によっては、フィルターを使用する必要があります。
+3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
+4. アカウントをクリックして、アカウントの詳細ブレードを開きます。
+5. このブレードの上部にある **[回復]** ボタンをクリックします。
+6. **[はい]** をクリックして確定します。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. The recovery is now in *process…wait* for an indication that it was successful.
-   You can also click the “bell” icon at the top of the portal to view progress indications.
+7. 回復が正常に完了したことが示される間、*[process…wait]\(処理中…お待ちください\)* と表示されます。
+   ポータルの上部にある “ベル” のアイコンをクリックしても進行状況インジケーターを表示できます。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
-   Once the recovered account is successfully synchronized, it can be used again.
+   回復したアカウントが正常に同期されたら、もう一度使用できます。
 
-### <a name="some-gotchas"></a>Some Gotchas
-* Your deleted account shows state as **out of retention**.
+### <a name="some-gotchas"></a>注意事項
+* 削除されたアカウントの状態が、**保有期間外**として表示される。
   
-  This means that the deleted account has exceeded the retention period and may not be recoverable.
-* Your deleted account does not show in the accounts list.
+  これは、削除されたアカウントが保有期間を超過しており、回復できない可能性があることを意味します。
+* 削除されたアカウントがアカウント リストに表示されない。
   
-  This could mean that the deleted account has already been garbage collected. In this case it cannot be recovered. See [Reclaim capacity](#reclaim) in this topic.
+  これは、削除されたアカウントが既にガベージ コレクトされた可能性があります。 この場合、回復はできません。 このトピックの「[容量の回収](#reclaim)」を参照してください。
 
-## <a name="set-the-retention-period"></a>Set the retention period
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+## <a name="set-the-retention-period"></a>保有期間の設定
+保有期間の設定では、クラウド オペレーターは削除されたアカウントが回復できる可能性がある期間を日数で指定できます (0 から 9999 日の間)。 既定の保有期間は 15 日に設定されています。 値を “0” に設定すると、削除されたすべてのアカウントがすぐに保有期間外になり、定期的なガベージ コレクションの対象としてマークされます。
 
-**To change the retention period:**
+**保有期間を変更するには:**
 
-1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
-4. Select **Storage** from the **Resource Providers** list.
-5. Click **Settings** at the top to open the setting blade.
-6. Click **Configuration** then edit the retention period value.
+1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
+2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
+3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンをクリックします。例: **(local**)。
+4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
+5. 上部の **[設定]** をクリックして [設定] ブレードを開きます。
+6. **[構成]** をクリックして保有期間の値を編集します。
 
-   Set the number of days and then save it.
+   日数を設定して保存します。
    
-   This value is immediately effective and is set for your entire region.
+   この値はすぐに有効になり、リージョン全体に設定されます。
 
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>Reclaim capacity
-One of the side effects of having a retention period is that a deleted account continues to consume capacity until it comes out of the retention period. As a cloud operator you may need a way to reclaim the deleted account space even though the retention period has not yet expired.
+## <a name="reclaim"></a>容量の回収
+保有期間を設定することの副作用の 1 つは、削除されたアカウントが、保有期間外になるまで、容量を消費し続けることです。 クラウド オペレーターには、削除されたアカウントの保有期間が終了していなくても、その領域を回収する方法が必要な場合があります。
 
-You can reclaim capacity using either the portal or PowerShell.
+ポータルまたは PowerShell のいずれかを使用して、容量の回収ができます。
 
-**To reclaim capacity using the portal:**
-1. Navigate to the storage accounts blade. See [Find a storage account](#find).
-2. Click **Reclaim space** at the top of the blade.
-3. Read the message and then click **OK**.
+**ポータルを使用して容量を回収するには:**
+1. [ストレージ アカウント] ブレードに移動します。 「[ストレージ アカウントの検索](#find)」を参照してください。
+2. ブレードの上部の **[Reclaim space]\(領域の回収\)** をクリックします。
+3. メッセージを確認し、**[OK]** をクリックします。
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
-4. Wait for success notification See the bell icon on the portal.
+4. 成功を通知するベルのアイコンがポータルに表示されるまで待ちます。
 
     ![](media/azure-stack-manage-storage-accounts/image12.png)
-5. Refresh the Storage accounts page. The deleted accounts are no longer shown in the list because they have been purged.
+5. [ストレージ アカウント] ページを更新します。 削除されたアカウントは消去されているため、リストに表示されません。
 
-You can also use PowerShell to explicitly override the retention period and immediately reclaim capacity.
+PowerShell を使用して保有期間を明示的に上書きし、すぐに容量を回収することもできます。
 
-**To reclaim capacity using PowerShell:**   
+**PowerShell を使用して容量を回収するには:**   
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions: 
-   * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Run the following cmdlet:
+1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。 
+   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。
+   Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
+2. 次のコマンドレットを実行します。
 
 > [!NOTE]
-> If you run this cmdlet you permanently delete the account and its contents. It is not recoverable. Use this with care.
+> このコマンドレットを実行すると、アカウントとその内容が完全に削除されます。 これは復旧できません。 慎重に使用してください。
 
 
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-For more details, refer to [Azure Stack powershell documentation.](https://msdn.microsoft.com/library/mt637964.aspx)
+詳細については、[Azure Stack PowerShell のドキュメント](https://msdn.microsoft.com/library/mt637964.aspx)を参照してください。
  
 
-## <a name="migrate-a-container"></a>Migrate a container
-Due to uneven storage use by tenants, an cloud operator may find one or more underlying tenant shares using more space than others. If this occurs, the cloud operator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
+## <a name="migrate-a-container"></a>コンテナーの移行
+テナントが使用するストレージにはばらつきがあるため、クラウド オペレーターは、他よりも多くの領域を使用しているテナントの共有が 1 つまたは複数あることに気付く場合があります。 このような場合、クラウド オペレーターは、一部の BLOB コンテナーを別の共有に手動で移行して、高負荷の共有での領域の解放を試みることができます。 
 
-You must use PowerShell to migrate containers.
+PowerShell を使用して、コンテナーを移行する必要があります。
 > [!NOTE]
->Blob container migration does not support live migration and currently is an offline operation. During migration and until it is complete the underlying blobs in that container cannot be used and are “offline”. 
+>BLOB コンテナーの移行では、ライブ マイグレーションをサポートしておらず、現在はオフライン操作です。 移行中および完了するまで、そのコンテナー内の基になる BLOB は使用できず、"オフライン" です。 
 
-**To migrate containers using PowerShell:**
+**PowerShell を使用してコンテナーを移行するには:**
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions:
-    * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Get the farm name: 
+1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。
+    * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。 Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
+2. ファームの名前を取得します。 
       
       `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. Get the shares: 
+3. 共有を取得します。 
 
    `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
 
-4. Get the containers for a given share. Note that count and intent are optional parameters:
+4. 指定された共有のコンテナーを取得します。 count と intent は省略可能なパラメーターであることに注意してください。
             
    `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
 
-   Then examine $containers:
+   $containers を確認します。
 
    `$containers`
 
     ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. Get the best destination shares for the container migration:
+5. コンテナーの移行先の最適な共有を取得します。
 
     `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
 
-    Then examine $destinationshares:
+    $destinationshares を確認します。
 
     `$destinationshares`
 
     ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Kick off migration for a container, notice this is an async implementation, so one can loop all containers in a share and track the status using the returned job id.
+6. コンテナーの移行を開始します。これは非同期の実装であるため、1 つが共有内のすべてのコンテナーをループでき、返されるジョブの ID を使用して状態を追跡できることに注目してください。
 
     `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
 
-    Then examine $jobId:
+    $jobId を確認します。
 
    ```
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. Check status of the migration job by its job id. When the container migration finishes, MigrationStatus is set to “Completed”.
+7. ジョブ ID で、移行ジョブの状態を確認します。コンテナーの移行が完了すると、MigrationStatus が “Completed” に設定されます。
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 
     ![](media/azure-stack-manage-storage-accounts/image15.png)
 
-8. You can cancel an in-progress migration job. This again is an async operation and can be tracked using $jobid:
+8. 実行中の移行ジョブを取り消すことができます。 これも、非同期操作であるため、$jobid を使用して追跡することができます。
 
     `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    You can check the status of the migration cancel again:
+    移行取り消しの状態をもう一度確認することができます。
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

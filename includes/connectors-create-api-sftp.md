@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) アカウント  
 
-ロジック アプリで SFTP アカウントを使用するには、SFTP アカウントに接続するロジック アプリを承認する必要があります。 これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで SFTP アカウントを使用するには、SFTP アカウントに接続するロジック アプリを承認する必要があります。 これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 SFTP アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

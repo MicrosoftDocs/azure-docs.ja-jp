@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG) のためのログ分析
 
@@ -124,4 +123,3 @@ CLI を使用してログを有効にするには、[CLI での診断ログの�
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
 アクティビティ ログ データの表示方法については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断データを Log Analytics に送信すると、[Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) (プレビュー) 管理ソリューションを使用してより深い洞察を得ることができます。 
-

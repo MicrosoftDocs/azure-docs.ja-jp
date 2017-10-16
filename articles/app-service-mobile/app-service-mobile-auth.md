@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8b676aee5353d0e5d85224950a537b3fe31f2f29
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 4105392f58eaf37e88c1d9ffb74f3f4133fa5482
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Azure Mobile Apps での認証および承認
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
@@ -102,9 +101,8 @@ App Service の認証および承認では、**要求が認証されない場合
 [Xamarin.Android アプリに認証を追加する]: app-service-mobile-xamarin-android-get-started-users.md
 [Windows アプリに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
 
-[Azure Active Directory ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-facebook-authentication.md
-[Google ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-google-authentication.md
-[Microsoft アカウント ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-twitter-authentication.md
-
+[Azure Active Directory ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[Google ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
+[Microsoft アカウント ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md

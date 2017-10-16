@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>CSDL を使用した既存の Web サービスの OData へのマッピング
 > [!IMPORTANT]
@@ -47,7 +47,7 @@ CSDL (Conceptual Schema Definition Language) は、Azure Marketplace に対し�
 
 Azure Marketplace 拡張機能を構築する基本となる Atom、Atom Pub、OData プロトコルの背景については、 [http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
 
-このリンクからの引用:       *" Open Data プロトコル (以降 OData) の目的は、データ サービスとして公開されているリソースに対する CRUD スタイルの操作 (作成、読み取り、更新、削除) 用に REST ベースのプロトコルを提供することです。"データ サービス" とは、それぞれにゼロ個以上の "エントリ" がある 1 つ以上の "コレクション" から公開されたデータがあるエンドポイントです。エントリは型指定された名前と値のペアで構成されます。OData は、OASIS (Organization for the Advancement of Structured Information Standards) 標準に従い Microsoft から発行されています。そのため、誰でも、ロイヤリティや制限なしでサーバー、クライアント、またはツールを構築できます。"*
+このリンクからの引用: *" Open Data プロトコル (以降 OData) の目的は、データ サービスとして公開されているリソースに対する CRUD スタイルの操作 (作成、読み取り、更新、削除) 用に REST ベースのプロトコルを提供することです。"データ サービス" とは、それぞれにゼロ個以上の "エントリ" がある 1 つ以上の "コレクション" から公開されたデータがあるエンドポイントです。エントリは型指定された名前と値のペアで構成されます。OData は、OASIS (Organization for the Advancement of Structured Information Standards) 標準に従い Microsoft から発行されています。そのため、誰でも、ロイヤリティや制限なしでサーバー、クライアント、またはツールを構築できます。"*
 
 ### <a name="three-critical-pieces-that-have-to-be-defined-by-the-csdl-are"></a>CSDL で定義する必要がある 3 つの重要な項目があります。
 * サービス プロバイダーの**エンドポイント**。サービスの Web アドレス (URI) です。
@@ -140,8 +140,7 @@ CSDL は、Web サービスを記述するための XML 文法です。 CSDL の
 * PPUI における MyCompany は、 **Microsoft デベロッパー センター** の UI における [Publisher Display Name](http://dev.windows.com/registration?accountprogram=azure) と対応します。
 * ご利用の API は、Web サービスまたはデータ サービス (PPUI におけるプラン) に対応します。
 
-**階層:**
- 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
+**階層:** 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
 
 ### <a name="webservice-csdl-example"></a>WebService CSDL の例
 (C# アプリケーションと同様に) Web アプリケーション エンドポイントを公開しているサービスへの接続
@@ -317,10 +316,4 @@ CSDL は、Web サービスを記述するための XML 文法です。 CSDL の
 * 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この [データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) に関する記事を参照してください。
 * 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
 * データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

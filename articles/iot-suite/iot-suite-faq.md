@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 09/15/2017
 ms.author: corywink
+ms.openlocfilehash: 5039dd30f85278b4e3bbba938ef40077af2c5c75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 08/25/2017
    3. **MasterKey** と **QueryKey** という 2 つのキーが表示されます。 **QueryKey** の値をコピーします。
       
       > [!NOTE]
-      > Bing Maps API for Enterprise アカウントがない場合は、 [Azure Portal][lnk-azure-portal] で [+ 新規] をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
+      > Bing Maps API for Enterprise アカウントがない場合は、 [Azure Portal][lnk-azure-portal] で + 新規をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
       > 
       > 
 2. [Azure-IoT-Remote-Monitoring][lnk-remote-monitoring-github] から最新のコードをダウンロードします。
@@ -122,4 +121,3 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-remote-monitoring-github]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-predictive-maintenance-github]: https://github.com/Azure/azure-iot-predictive-maintenance
-

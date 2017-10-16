@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 8babb0d016729f318442af93596d206c38d91206
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-6-run-a-test-failover-for-azure-vm-replication"></a>手順 6: Azure VM レプリケーションのテスト フェールオーバーを実行する
 
 Azure 仮想マシン (VM) のレプリケーションを有効にしたら、この記事の手順に従って、Azure Portal にある [Azure Site Recovery](site-recovery-overview.md) サービスを使って 1 つの Azure リージョンから別のリージョンへテスト フェールオーバーを実行します。
@@ -66,5 +64,4 @@ Azure 仮想マシン (VM) のレプリケーションを有効にしたら、�
 - [復旧計画の使用](site-recovery-create-recovery-plans.md)による複数の VM のフェールオーバーについて詳細を確認する。
 - [復旧計画の使用](site-recovery-create-recovery-plans.md)について詳細を確認する。
 - フェールオーバー後の [Azure VM の再保護](site-recovery-how-to-reprotect.md)の詳細を確認する。
-
 

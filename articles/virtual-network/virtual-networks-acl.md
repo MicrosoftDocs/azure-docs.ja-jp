@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 9a0c85367968c9b38104012d75b1f3975be82cc1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>エンドポイント アクセス制御リストとは
 
@@ -93,5 +91,4 @@ ACL は、ルールの一覧が格納されたオブジェクトです。 ACL �
 
 ## <a name="next-steps"></a>次のステップ
 [PowerShell を使用してエンドポイントのアクセス制御リストを管理する](virtual-networks-acl-powershell.md)
-
 

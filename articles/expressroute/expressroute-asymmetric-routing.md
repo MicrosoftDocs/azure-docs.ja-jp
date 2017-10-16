@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
 この記事では、ネットワークの送信元と送信先の間で利用できるパスが複数存在する場合に、ネットワーク トラフィックが行きと戻りで異なるルートを取る場合がある理由について説明します。
@@ -73,5 +71,4 @@ ExpressRoute を認証に使用したい場合は、NAT を使用せずに Expre
 
 ## <a name="asymmetric-routing-detection"></a>非対称ルーティングの検出
 traceroute は、ネットワーク トラフィックが予想されるパスを経由していることを確認するうえで、最善の手段です。 オンプレミスの SMTP サーバーから Microsoft に送信されるトラフィックがインターネット パスを経由することが予想される場合、予想される traceroute は SMTP サーバーから Office 365 までです。 その結果から、トラフィックが実際にユーザーのネットワークから (ExpressRoute ではなく) インターネットに向かって送信されていることが確認できます。
-
 

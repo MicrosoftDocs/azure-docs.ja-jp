@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのアクティビティ ログ アラートの作成
 この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)を使用してアクティビティ ログ アラートを構成する方法について説明します。 テンプレートを使用すると、自動デプロイ プロセスの一環として、特定のアクティビティ ログ イベント条件に基づいてアクティブ化する多数のアラートを簡単に設定できます。
@@ -102,8 +101,7 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
 アクティビティ ログ アラート テンプレートの例については、[Azure クイックスタート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [アラート](monitoring-overview-alerts.md)の詳細を確認します。
+- [アラート](monitoring-overview-alerts.md)の詳細について学習します。
 - [Resource Manager テンプレートを使用してアクション グループ](monitoring-create-action-group-with-resource-manager-template.md)を追加する方法について確認します。
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)方法について確認します。
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)方法について確認します。
-

@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: asteen
+ms.openlocfilehash: 4302436244de95d865ba5f68ae5d3116dcc93524
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reset-a-password-for-a-user-in-the-azure-classic-portal"></a>Azure クラシック ポータルでのユーザーのパスワードのリセット
 > [!div class="op_single_selector"]
@@ -46,4 +45,3 @@ ms.lasthandoff: 07/28/2017
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 * [Manage groups in Azure AD](active-directory-manage-groups.md)
-

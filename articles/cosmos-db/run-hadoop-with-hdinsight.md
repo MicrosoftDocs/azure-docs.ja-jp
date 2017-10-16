@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
 このチュートリアルでは、Azure Cosmos DB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 Cosmos DB の Hadoop コネクタを使用すると、Cosmos DB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に Cosmos DB を使用します。
@@ -90,7 +89,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         <tr><td>サブスクリプション名</td>
             <td>複数の Azure サブスクリプションがある場合は、HDInsight クラスターをホストするサブスクリプションを選択します。 </td></tr>
     </table>
-5. **[クラスターの種類の選択]** をクリックし、以下のプロパティを、指定された値に設定します。
+5. [クラスターの種類の選択] **** をクリックし、以下のプロパティを、指定された値に設定します。
 
     <table border='1'>
         <tr><td>クラスターの種類</td><td><strong>Hadoop</strong></td></tr>
@@ -435,4 +434,3 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [image-pig-query-results]: ./media/run-hadoop-with-hdinsight/pigqueryresults.PNG
 
 [powershell-install-configure]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0
-

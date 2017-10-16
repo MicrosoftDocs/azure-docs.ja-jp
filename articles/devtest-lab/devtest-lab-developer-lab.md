@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: b829ebd90034031721dfe2e97427e624306da1e9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。
@@ -135,5 +134,4 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
 

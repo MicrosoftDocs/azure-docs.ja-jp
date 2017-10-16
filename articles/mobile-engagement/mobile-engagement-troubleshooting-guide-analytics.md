@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c407e8f0beb110844ba2ae4ca1a065a122d0fdbd
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: e30c9ac0a8421ffcf4fc3e2548cfd7ac49701900
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-analytics-monitoring-segmentation-and-dashboard-issues"></a>分析、監視、セグメント化、ダッシュ ボードの問題のトラブルシューティング ガイド
 次に説明するのは、Azure モバイル エンゲージメントが、アプリケーション、デバイス、ユーザーの情報を収集する方法に関して発生する可能性のある問題です。
@@ -60,5 +59,4 @@ ms.lasthandoff: 11/17/2016
 ### <a name="causes"></a>原因
 * 分析、監視、ダッシュ ボードに表示されるアプリケーションのクラッシュをトラブルシューティングするには、以前のバージョンの SDK に関する既知の問題についてのリリース ノートをご確認ください。
 * アプリケーションのクラッシュをさらにトラブルシューティングするには、インストールされているアプリケーションを使用してテスト デバイスからイベントを実行し、Azure モバイル エンゲージメント UI の [Monitor – Events (監視 - イベント)] セクションでデバイス ID を検索します。 次に、アプリケーションをクラッシュさせたイベントを実行し、Azure Mobile Engagement UI の [監視 - クラッシュ] セクションで追加情報を検索します。 
-
 

@@ -16,13 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成 (プレビュー)
 Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -93,7 +91,7 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
     Hive サーバーの種類|<strong>Hive Server 2</strong> を選択します。
     メカニズム|<strong>Azure HDInsight サービス</strong>を選択します。
     HTTP パス|空白のままにします。
-    ユーザー名|「hiveuser1@contoso158.onmicrosoft.com」を入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。
+    ユーザー名|「hiveuser1@contoso158.onmicrosoft.com」を入力します。ドメイン名が異なる場合は、ドメイン名を更新します。
     パスワード|hiveuser1 のパスワードを入力します。
     </table>
 
@@ -112,7 +110,7 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
 6. **[hivesampletable]** を選択し、**[次へ]** をクリックします。
 7. **[完了]**をクリックします。
 8. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。 これを行うには、 **[プロパティ]**をクリックします。 この処理には数秒かかります。
-9. **[定義]** タブをクリックします。 コマンド テキストを次に示します。
+9. **[定義]** タブをクリックします。コマンド テキストを次に示します。
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
@@ -146,4 +144,3 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
 * Hive JDBC を使用して Hive に接続する方法については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」をご覧ください。
 * Hive ODBC を使用して Excel を Hadoop に接続する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
 * Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用した Excel から Hadoop への接続](hdinsight-connect-excel-power-query.md)」をご覧ください。
-

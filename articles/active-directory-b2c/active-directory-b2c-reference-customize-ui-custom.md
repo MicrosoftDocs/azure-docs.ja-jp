@@ -14,15 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 68f40aa638a687398512278a0b77d1ba392859cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -90,32 +87,32 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 2. 管理者の資格情報でサインインします。
 3. **[新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** の順にクリックします。  **[ストレージ アカウントの作成]** ブレードが開きます。
 4. **[名前]** に、*contoso369b2c* などのストレージ アカウントの名前を指定します。 この値は後で *storageAccountName* として参照されます。
-5. [価格レベル]、[リソース グループ]、[サブスクリプション] でそれぞれ該当する項目を選択します。 **[スタート画面にピン留めする]** がオンになっていることを確認します。 **[作成]**をクリックします。
+5. [価格レベル]、[リソース グループ]、[サブスクリプション] でそれぞれ該当する項目を選択します。 **[スタート画面にピン留めする]** がオンになっていることを確認します。 **Create** をクリックしてください。
 6. スタート画面に戻り、作成したストレージ アカウントをクリックします。
 7. **[サービス]** セクションで、**[BLOB]** をクリックします。 **[Blob service] ブレード**が開きます。
 8. **[+ コンテナー]** をクリックします。
 9. **[名前]** に、*b2c* などのコンテナーの名前を指定します。 この値は後で *containerName* として参照されます。
-9. **[アクセスの種類]** として **[BLOB]** を選択します。 **[作成]**をクリックします。
+9. **[アクセスの種類]** として **[BLOB]** を選択します。 **Create** をクリックしてください。
 10. 作成したコンテナーは、**[Blob service] ブレード**に一覧表示されます。
 11. **[BLOB]** ブレードを閉じます。
-12.    **[ストレージ アカウント] ブレード**で、**キー** アイコンをクリックします。 **[アクセス キー] ブレード**が開きます。  
-13.    **key1** の値を書き留めます。 この値は後で *key1* として参照されます。
+12. **[ストレージ アカウント] ブレード**で、**キー** アイコンをクリックします。 **[アクセス キー] ブレード**が開きます。  
+13. **key1** の値を書き留めます。 この値は後で *key1* として参照されます。
 
 ## <a name="downloading-the-helper-tool"></a>ヘルパー ツールをダウンロードする
 
-1.    [GitHub](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip) からヘルパー ツールをダウンロードします。
-2.    *B2C-AzureBlobStorage-Client-master.zip* ファイルをローカル コンピューターに保存します。
-3.    B2C-AzureBlobStorage-Client-master.zip ファイルのコンテンツをローカル ディスクに展開します (**UI-Customization-Pack** フォルダーの直下など)。 これにより、その下に *B2C-AzureBlobStorage-Client-master* フォルダーが作成されます。
-4.    このフォルダーを開き、その中にある *B2CAzureStorageClient.zip* というアーカイブ ファイルのコンテンツを展開します。
+1.  [GitHub](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip) からヘルパー ツールをダウンロードします。
+2.  *B2C-AzureBlobStorage-Client-master.zip* ファイルをローカル コンピューターに保存します。
+3.  B2C-AzureBlobStorage-Client-master.zip ファイルのコンテンツをローカル ディスクに展開します (**UI-Customization-Pack** フォルダーの直下など)。 これにより、その下に *B2C-AzureBlobStorage-Client-master* フォルダーが作成されます。
+4.  このフォルダーを開き、その中にある *B2CAzureStorageClient.zip* というアーカイブ ファイルのコンテンツを展開します。
 
 ## <a name="upload-the-ui-customization-pack-sample-files"></a>UI-Customization-Pack サンプル ファイルをアップロードする
 
-1.    エクスプローラーを使用して、前のセクションで作成した *UI-Customization-Pack* フォルダーの下にある *B2C-AzureBlobStorage-Client-master* フォルダーに移動します。
-2.    *B2CAzureStorageClient.exe* ファイルを実行します。 このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。
-3.    メッセージが表示されたら、次のとおり指定します。a.     ストレージ アカウントの名前である *storageAccountName* (*contoso369b2c* など)。
-    b.    Azure BLOB ストレージのプライマリ アクセス キーである *key1* (*contoso369b2c* など)。
-    c.    ストレージの BLOB ストレージ コンテナーの名前である *containerName* (*b2c* など)。
-    d.    *Starter-Pack* サンプル ファイルのパス (*..\B2CTemplates\wingtiptoys* など)。
+1.  エクスプローラーを使用して、前のセクションで作成した *UI-Customization-Pack* フォルダーの下にある *B2C-AzureBlobStorage-Client-master* フォルダーに移動します。
+2.  *B2CAzureStorageClient.exe* ファイルを実行します。 このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。
+3.  メッセージが表示されたら、次のとおり指定します。a.   ストレージ アカウントの名前である *storageAccountName* (*contoso369b2c* など)。
+    b.  Azure BLOB ストレージのプライマリ アクセス キーである *key1* (*contoso369b2c* など)。
+    c.  ストレージの BLOB ストレージ コンテナーの名前である *containerName* (*b2c* など)。
+    d.  *Starter-Pack* サンプル ファイルのパス (*..\B2CTemplates\wingtiptoys* など)。
 
 上記の手順を実行した場合、架空の企業である **wingtiptoys** 用の *UI-Customization-Pack* の HTML5 および CSS ファイルは、ストレージ アカウントを指すようになります。  関連するコンテナーのブレードを Azure Portal で開くことで、コンテンツが正常にアップロードされていることを確認できます。 別の方法として、ブラウザーでページにアクセスしてみることでも、コンテンツが正常にアップロードされていることを確認できます。 詳細については、「[Azure Active Directory B2C: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)」を参照してください。
 
@@ -126,7 +123,7 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、https://contoso369b2c.blob.core.windows.net/b2c/unified.html などです。
-2. http://test-cors.org に移動します。 このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
+2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->
@@ -175,4 +172,3 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 
 ## <a name="next-steps"></a>次のステップ
 [リファレンス: B2C の Identity Experience Framework を利用してカスタム ポリシーを操作する方法について](active-directory-b2c-reference-custom-policies-understanding-contents.md)
-

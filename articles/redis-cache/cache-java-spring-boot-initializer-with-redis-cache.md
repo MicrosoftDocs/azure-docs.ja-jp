@@ -13,23 +13,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: java
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 08/31/2017
 ms.author: robmcm;zhijzhao;yidon
+ms.openlocfilehash: 7a6ec549654d00975494bac8594a6777af5ec415
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: fb3fc96a2136b7c326bb0eb291b7204e7acf0190
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-a-spring-boot-initializer-app-to-use-redis-cache"></a>Redis Cache を使用するように Spring Boot Initializer アプリを構成する方法
 
 ## <a name="overview"></a>概要
 
 **[Spring Framework]** は Java 開発者のエンタープライズ レベルのアプリケーション作成を支援するオープンソース ソリューションです。 このプラットフォームで構築される特に知られたプロジェクトの 1 つが [Spring Boot] です。これによって、スタンドアロンの Java アプリケーションの作成方法が簡略化されます。 Spring Boot を使い始めた開発者を支援するために、<https://github.com/spring-guides/> では、サンプルの Spring Boot パッケージがいくつか用意されています。 基本的な Spring Boot プロジェクトの一覧から選択するだけでなく、**[Spring Initializr]** は、開発者がカスタム Spring Boot アプリケーションの作成を開始できるように支援します。
 
-この記事では、Azure Portal を使用して Redis Cache を作成し、**Spring Initializr** を使用してカスタム アプリケーションを作成した後、作成した Redis Cache を使用してデータを格納および取得する Java Web アプリケーションを作成する方法について説明します。
+この記事では、Azure Portal を使用した Redis キャッシュの作成と、カスタム アプリケーションを作成するための **Spring Initializr** の使用、さらに Redis キャッシュを使用してデータを保管および取得する Java Web アプリケーションの作成について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +49,18 @@ ms.lasthandoff: 08/10/2017
 
    ![Azure ポータル][AZ02]
 
-1. **[新規 Redis Cache]** ページで、キャッシュの **DNS 名**を入力し、**[サブスクリプション]**、**[リソース グループ]**、**[場所]**、および **[価格レベル]** を指定します。 これらのオプションの指定後、**[作成]** をクリックしてキャッシュを作成します。
+1. **[新規 Redis Cache]** ページで、以下の情報を指定します。
+
+   * キャッシュの **[DNS 名]** を入力します。
+   * **[サブスクリプション]**、**[リソース グループ]**、**[場所]**、および **[価格レベル]** を指定します。
+   * このチュートリアルでは、**[ポート 6379 のブロックを解除]** を選択します。
+
+   > [!NOTE]
+   >
+   > Redis キャッシュで SSL を使用できますが、Jedis のような異なる Redis クライアントを使用する必要があります。 詳細については、「[Java で Azure Redis Cache を使用する方法][Redis Cache with Java]」をご覧ください。
+   >
+
+   これらのオプションの指定後、**[作成]** をクリックしてキャッシュを作成します。
 
    ![Azure ポータル][AZ03]
 
@@ -101,13 +110,18 @@ ms.lasthandoff: 08/10/2017
    spring.redis.host=myspringbootcache.redis.cache.windows.net
 
    # Specify the port for your Redis cache.
-   spring.redis.port=6380
+   spring.redis.port=6379
 
    # Specify the access key for your Redis cache.
    spring.redis.password=57686f6120447564652c2049495320526f636b73=
    ```
 
    ![application.properties ファイルの編集][RE02]
+
+   > [!NOTE]
+   >
+   > SSL を有効にする Jedis のような異なる Redis クライアントを使用している場合は、*application.properties* ファイルでポート 6380 を指定します。 詳細については、「[Java で Azure Redis Cache を使用する方法][Redis Cache with Java]」をご覧ください。
+   >
 
 1. *application.properties* ファイルを保存して閉じます。
 
@@ -126,41 +140,32 @@ ms.lasthandoff: 08/10/2017
 
    import org.springframework.web.bind.annotation.RequestMapping;
    import org.springframework.web.bind.annotation.RestController;
-   import org.springframework.beans.factory.annotation.Value;
-   import redis.clients.jedis.Jedis;
-   import redis.clients.jedis.JedisShardInfo;
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+   import org.springframework.data.redis.core.StringRedisTemplate;
+   import org.springframework.data.redis.core.ValueOperations;
 
    @RestController
    public class HelloController {
    
-      // Retrieve the DNS name for your cache.
-      @Value("${spring.redis.host}")
-      private String redisHost;
-
-      // Retrieve the port for your cache.
-      @Value("${spring.redis.port}")
-      private int redisPort;
-
-      // Retrieve the access key for your cache.
-      @Value("${spring.redis.password}")
-      private String redisPassword;
+      @Autowired
+      private StringRedisTemplate template;
 
       @RequestMapping("/")
       // Define the Hello World controller.
       public String hello() {
       
-         // Create a JedisShardInfo object to connect to your Redis cache.
-         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, redisPort, true);
-         // Specify your access key.
-         jedisShardInfo.setPassword(redisPassword);
-         // Create a Jedis object to store/retrieve information from your cache.
-         Jedis jedis = new Jedis(jedisShardInfo);
+         ValueOperations<String, String> ops = this.template.opsForValue();
 
          // Add a Hello World string to your cache.
-         jedis.set("greeting", "Hello World!");
+         String key = "greeting";
+         if (!this.template.hasKey(key)) {
+             ops.set(key, "Hello World!");
+         }
 
          // Return the string from your cache.
-         return jedis.get("greeting");
+         return ops.get(key);
       }
    }
    ```
@@ -222,4 +227,3 @@ Azure 上の Java での Redis Cache の使用開始の詳細については、�
 
 [RE01]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE01.png
 [RE02]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE02.png
-

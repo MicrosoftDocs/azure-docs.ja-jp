@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: bf8038b7171053b75eeb9aed88bff4246e65a8a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>StorSimple デバイス マネージャー サービスを使用してジョブを表示および管理する (Update 3 以降)
 
@@ -89,5 +87,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple バックアップ ポリシーの管理方法](storsimple-8000-manage-backup-policies-u2.md)。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)。
-
 

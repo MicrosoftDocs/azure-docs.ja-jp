@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
-ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/20/2017
-
-
+ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (Azure ポータル)
 > [!div class="op_single_selector"]
@@ -109,4 +107,3 @@ ms.lasthandoff: 01/20/2017
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-

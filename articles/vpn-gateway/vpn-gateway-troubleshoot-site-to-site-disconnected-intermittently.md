@@ -9,19 +9,17 @@ editor:
 tags: 
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/21/2017
 ms.author: genli
+ms.openlocfilehash: 58e7acc91fc048c8204608aa857134323abdab14
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 99a790617baa65116bfba976cd9279627e8775f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 
 新規または既存の Microsoft Azure ポイント対サイト VPN 接続が不安定になったり頻繁に切断されたりする問題に遭遇することがあります。 この記事では、問題の原因の特定と解決に役立つトラブルシューティング手順について説明します。 
@@ -75,5 +73,4 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 - [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)
-
 

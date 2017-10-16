@@ -6,23 +6,21 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/18/2017
 ms.author: babanisa
+ms.openlocfilehash: 5b69478bf00284594b984fde452f6bed4e73859b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 83b9b2c7bb4134e1d9bdf857449bfb85884333d0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
 Azure Event Grid の主要な概念を次に示します。
 
 ## <a name="events"></a>イベント
 
-イベントは、システム内で発生した何かを完全に記述する最小限の情報です。  すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。  すべてのイベントは、特定のイベントに関連する特定の情報も持っています。 たとえば、Azure Storage 内に作成される新しいファイルに関するイベントには、lastTimeModified 値などのファイルの詳細が含まれます。 また、仮想マシンの再起動に関するイベントには、仮想マシンの名前と再起動の理由が含まれます。
+イベントは、システム内で発生した何かを完全に記述する最小限の情報です。  すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。  すべてのイベントは、特定のイベントに関連する特定の情報も持っています。 たとえば、Azure Storage 内に作成される新しいファイルに関するイベントには、lastTimeModified 値などのファイルの詳細が含まれます。 また、仮想マシンの再起動に関するイベントには、仮想マシンの名前と再起動の理由が含まれます。 各イベントは、64 KB のデータに制限されます。
 
 ## <a name="event-sourcespublishers"></a>イベント ソース/発行元
 

@@ -1,19 +1,25 @@
 # [概要](overview.md)
 
-# [クイックスタート](quickstart.md)
+# クイック スタート
+## [Bash のクイックスタート](quickstart.md)
+## [PowerShell のクイックスタート](quickstart-powershell.md)
 
 # 概念
-## [機能とツール](features.md)
+## [Bash の機能とツール](features.md)
+## [PowerShell の機能とツール](features-powershell.md)
 ## [制限事項](limitations.md)
+## [トラブルシューティング](troubleshooting.md)
 
 # 操作方法
-## [ストレージの永続化](persisting-shell-storage.md)
+## [Bash でのストレージの永続化](persisting-shell-storage.md)
+## [PowerShell でのストレージの永続化](persisting-shell-storage-powershell.md)
 ## [ウィンドウの使用](using-the-shell-window.md)
 
 # [料金](pricing.md)
 
 # リファレンス
-## [Azure CLI 2.0](/cli/azure) 
+## [Azure CLI](/cli/azure)
+## [Azure PowerShell](/powershell/azure)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)

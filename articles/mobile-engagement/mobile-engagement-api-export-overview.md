@@ -1,4 +1,3 @@
-
 ---
 title: "Mobile Engagement Export API の概要"
 description: "お使いのユーザー デバイスによって生成された生データをエクスポートして、自社のツールで活用する方法の基本について説明します。"
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-translationtype: Human Translation
-ms.sourcegitcommit: b1e2ddb613e713972820621d0fa836c41eb61f91
 ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Mobile Engagement Export API の概要
 ## <a name="introduction"></a>はじめに
@@ -73,10 +72,4 @@ Mobile Engagement からデータをエクスポートするには、API を介�
 ジョブが作成されると、そのステータスを見てまだ実行中であるか完了しているかを確認できます。
 
 ジョブが成功すると、結果のデータ ファイルが指定のストレージ コンテナーに格納されます。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

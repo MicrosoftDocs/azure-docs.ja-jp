@@ -15,14 +15,12 @@ ms.topic: sample
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
+ms.openlocfilehash: 2bbf689820a92cfa01b26fdbacb4526ade8956ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 74d54b314e81dc260e800e32d6c3edd5215c82b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Service Fabric クラスターへのアプリケーションのデプロイ
 
 このサンプル スクリプトは、アプリケーション パッケージをクラスター イメージ ストアにコピーし、クラスターにそのアプリケーションの種類を登録し、そのアプリケーションの種類からアプリケーション インスタンスを作成します。 また、この時点で既定のサービスも作成されます。
@@ -31,7 +29,7 @@ ms.lasthandoff: 08/24/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "クラスターへのアプリケーションのデプロイ")]
+[!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "Deploy an application to a cluster")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -42,4 +40,3 @@ ms.lasthandoff: 08/24/2017
 詳細については、[Service Fabric CLI ドキュメント](../service-fabric-cli.md)をご覧ください。
 
 その他の Azure Service Fabric 用 Service Fabric CLI サンプルは、[Service Fabric CLI のサンプル](../samples-cli.md)のページにあります。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: ef87cd82b021e40f0da05142878daff245cd9c62
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-4-plan-networking-for-hyper-v-with-vmm-to-azure-replication"></a>手順 4: Hyper-V から Azure へのレプリケーション (VMM あり) のネットワークを計画する
 
 [キャパシティ プランニング](vmm-to-azure-walkthrough-capacity.md)を実行した後に、完全な展開を実行する場合、この記事で、[Azure Site Recovery](site-recovery-overview.md)サービスを使用して、System Center Virtual Machine Manager (VMM) クラウド内の Hyper-V VM の Azure へのレプリケーションを行うときのネットワーク計画に関する考慮事項を学習してください。
@@ -114,4 +112,3 @@ Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケ�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 5: Azure を準備する](vmm-to-azure-walkthrough-prepare-azure.md)方法に関するページに進む
-

@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: f961cde4aa8de5bdd0f8f220d355f2c93af580a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: c04cdabf53e4018877691f7272f6cc022b42df39
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -342,12 +341,11 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 * [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK コード
-* [ASP.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5)
+* [ASP.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>次のステップ
 * [イベントおよびログを検索する](app-insights-diagnostic-search.md)
 * [サンプリング](app-insights-sampling.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
-

@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 1d5ea7263cc44a1873b5009edf4f106cc91e0067
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 25c543528119410dff0684845a713dcb0d6151d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 
@@ -207,4 +205,3 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
 [azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 [rp-rest-api]: https://docs.microsoft.com/rest/api/documentdbresourceprovider/
-

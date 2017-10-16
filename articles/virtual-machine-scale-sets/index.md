@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c03fc321082b8be9044faf0e57e2f26ddc22c243
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets のドキュメント
 
@@ -126,6 +125,5 @@ Virtual Machine Scale Sets を使用して、同一の自動スケールの Wind
         </div>
     </li>
 </ul>
-
 
 

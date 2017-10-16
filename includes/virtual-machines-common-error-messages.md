@@ -180,7 +180,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  VMExtensionManagementInternalError  |  VM 拡張機能を準備しているときに、複数のエラーが発生しました。 詳しくは、VM 拡張機能のインスタンス ビューをご覧ください。  |
 |  VMExtensionProvisioningError  |  拡張機能 '{0}' を処理しているときに、VM がエラーを報告しました。 エラー メッセージ: "{1}"。  |
 |  VMExtensionProvisioningError  |  VM で複数の VM 拡張機能をプロビジョニングできませんでした。 詳しくは、VM 拡張機能のインスタンス ビューをご覧ください。  |
-|  VMExtensionProvisioningTimeout  |  VM 拡張機能 '{0}' のプロビジョニングがタイムアウトしました。 拡張機能のインストールに時間がかかりすぎたか、拡張機能の状態を取得できませんでした。  |
+|  VMExtensionProvisioningTimeout  |  VM 拡張機能 '{0}' のプロビジョニングがタイムアウトしました。拡張機能のインストールに時間がかかりすぎたか、拡張機能の状態を取得できませんでした。  |
 |  VMMarketplaceInvalidInput  |  Marketplace 以外のイメージから仮想マシンを作成する場合、プラン情報は必要ありません。要求からプラン情報を削除してください。 OS ディスク名は {0} です。  |
 |  VMMarketplaceInvalidInput  |  購入情報が一致しません。 Marketplace イメージからデプロイできません。 OS ディスク名は {0} です。  |
 |  VMMarketplaceInvalidInput  |  Marketplace イメージから仮想マシンを作成する場合、要求にプラン情報が必要です。 OS ディスク名は {0} です。  |

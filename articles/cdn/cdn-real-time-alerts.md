@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
-ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
-
-
+ms.openlocfilehash: 51dce1680be5f5f4387c2ba02827195bcdbe9b48
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -32,12 +32,12 @@ ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
 * 接続
 
 ## <a name="creating-a-real-time-alert"></a>リアルタイム アラートの作成
-1. [Azure ポータル](https://portal.azure.com)で、CDN プロファイルに移動します。
+1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。
    
-    ![CDN プロファイル ブレード](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-2. CDN プロファイル ブレードで、 **[管理]** をクリックします。
+    ![CDN プロファイル](./media/cdn-real-time-alerts/cdn-profile-blade.png)
+1. CDN プロファイル ブレードで、 **[管理]** をクリックします。
    
-    ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![[CDN プロファイル] の [管理] ボタン](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
 3. **[分析]** タブにマウス ポインターを合わせ、次に **[Real-Time Stats (リアルタイム統計情報)]** フライアウトにポインターを合わせます。  **[Real-Time Alerts (リアルタイム アラート)]**をクリックします。
@@ -59,7 +59,7 @@ ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
     ![[HTTP Large Object (HTTP ラージ オブジェクト] を選択した [Media Type (メディアの種類)]](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > **メディアの種類**として **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択する必要があります。  **Azure CDN from Verizon**では、他の選択肢は使用しません。  **[HTTP Large Object (HTTP ラージ オブジェクト]** を選択しないと、アラートはトリガーされません。
+   > **メディアの種類**として **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択する必要があります。  **Azure CDN from Verizon**では、他の選択肢は使用しません。  **[HTTP Large Object]\(HTTP ラージ オブジェクト\)** を選択しないと、アラートはトリガーされません。
    > 
    > 
 8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する**式**を作成します。
@@ -68,17 +68,17 @@ ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
    * **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
    * **[トリガー値]** は、通知の送信前に満たす必要があるしきい値です。
      
-     以下の例で作成した式は、404 ステータス コードの数が 25 を超えたときに通知を行うことを示しています。
+     次の例で作成される式は、404 状態コードの数が 25 を超えると通知が送信されることを示しています。
      
      ![リアルタイム アラートのサンプル式](./media/cdn-real-time-alerts/cdn-expression.png)
 9. **[間隔]**に、式を評価する頻度を入力します。
 10. **[Notify on (通知タイミング)]** ドロップダウンで、式が true のときに通知を行うタイミングを選択します。
     
-    * **[Condition Start (条件開始時)]** は、指定された条件を最初に検出したときに通知を送信することを示します。
-    * **[Condition End (条件終了時)]** は、指定された条件を検出しなくなったときに通知を送信することを示します。 この通知は、ネットワーク監視システムが、指定された条件の発生を検出した後にのみトリガーすることができます。
-    * **[継続]** は、ネットワーク監視システムが指定された条件を検出するたびに通知を送信することを示します。 ネットワーク監視システムは、間隔&1; 回ごとに&1; 回しか指定された条件をチェックしないことに注意してください。
-    * **[Condition Start and End (条件の開始時と終了時)]** は、指定された条件を最初に検出したときと、条件が検出されなくなったときに、通知を送信することを示します。
-11. 電子メールで通知を受信する場合は、 **[Notify by Email (電子メールで通知)]** チェックボックスをオンします。  
+    * **[Condition Start]\(条件開始時\)** は、指定された条件を最初に検出したときに通知を送信することを示します。
+    * **[Condition End]\(条件終了時\)** は、指定された条件を検出しなくなったときに通知を送信することを示します。 この通知は、ネットワーク監視システムが、指定された条件の発生を検出した後にのみトリガーすることができます。
+    * **[継続]** は、ネットワーク監視システムが指定された条件を検出するたびに通知を送信することを示します。 ネットワーク監視システムは、間隔 1 回ごとに 1 回しか指定された条件をチェックしないことに注意してください。
+    * **[Condition Start and End]\(条件の開始時と終了時\)** は、指定された条件を最初に検出したときと、条件が検出されなくなったときに、通知を送信することを示します。
+1. 電子メールで通知を受信する場合は、 **[Notify by Email (電子メールで通知)]** チェックボックスをオンします。  
     
     ![[Notify by Email (電子メールで通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
@@ -92,7 +92,7 @@ ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
     
     ![[Notify by HTTP Post (HTTP Post で通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、**[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
+    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、**[Available keywords]\(使用可能なキーワード\)** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -110,10 +110,4 @@ ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
 * [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 * [使用量パターン](cdn-analyze-usage-patterns.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

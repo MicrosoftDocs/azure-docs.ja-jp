@@ -1,6 +1,6 @@
 ---
-title: ".NET での Azure File Storage 用の開発 | Microsoft Docs"
-description: "Azure File Storage を使用してファイル データを格納する .NET アプリケーションとサービスを開発する方法を説明します。"
+title: ".NET での Azure Files 用の開発 | Microsoft Docs"
+description: "Azure Files を使ってファイル データを格納する.NET アプリケーションとサービスを開発する方法を説明します。"
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7b94e70619324bb8dc8e7f8306f00f06e7476c1f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="develop-for-azure-file-storage-with-net"></a>.NET での Azure File Storage 用の開発 
+# <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する 
 > [!NOTE]
-> この記事では、.NET コードで Azure File Storage を管理する方法を説明します。 Azure File Storage の詳細については、「[Introduction to Azure File storage (Azure File Storage の概要)](storage-files-introduction.md)」を参照してください。
+> この記事では、.NET コードで Azure Files を管理する方法を説明します。 Azure Files の詳細については、「[Introduction to Azure Files (Azure Files の概要)](storage-files-introduction.md)」を参照してください。
 >
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/22/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、ファイル データの格納に Azure File Storage を使用するアプリケーションまたはサービスを開発するための .NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure File Storage による次のような基本的な操作の実行方法を示します。
+このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための.NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files による次のような基本的な操作の実行方法を示します。
 
 * ファイルの内容を取得する
 * ファイル共有のクォータ (最大サイズ) を設定する
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/22/2017
 * トラブルシューティングに Azure Storage メトリックを使用します。
 
 > [!Note]  
-> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 System.IO クラスを使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage .NET SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。 
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 System.IO クラスを使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage .NET SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [File REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。 
 
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
@@ -86,7 +86,7 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 ```
 
 > [!NOTE]
-> 最新バージョンの Azure ストレージ エミュレーターでは、Azure File Storage がサポートされません。 Azure File Storage を操作するには、接続文字列がクラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> 最新バージョンの Azure ストレージ エミュレーターでは、Azure Files はサポートされません。 Azure Files を操作するには、接続文字列がクラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ## <a name="add-using-directives"></a>using ディレクティブを追加する
 ソリューション エクスプローラーで `Program.cs` ファイルを開き、次の using ディレクティブをファイルの先頭に追加します。
@@ -95,7 +95,7 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
 using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Azure Blobs
-using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
+using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
 ```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
@@ -104,7 +104,7 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
 次に、前に示したコードの後で、`Main()` メソッドに次のコードを追加し、接続文字列を取得します。 このコードは、前の手順で作成したファイルへの参照を取得し、その内容をコンソール ウィンドウに出力します。
 
 ```csharp
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -149,7 +149,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -184,7 +184,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降、
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -242,7 +242,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -286,7 +286,7 @@ if (share.Exists())
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Create a new file share, if it does not already exist.
@@ -327,14 +327,12 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 同じ方法で、ファイルに BLOB をコピーできます。 ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを認証します。
 
-## <a name="troubleshooting-azure-file-storage-using-metrics"></a>メトリックを使用した Azure File Storage のトラブルシューティング
-Azure ストレージ分析で Azure File Storage のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
+## <a name="troubleshooting-azure-files-using-metrics"></a>メトリックを使用した Azure Files のトラブルシューティング
+Azure ストレージ分析で Azure Files のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
+[Azure Portal](https://portal.azure.com) から Azure Files のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
-[Azure Portal](https://portal.azure.com) から Azure File Storage のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
-
-
-次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure File Storage のメトリックを有効にする方法を示します。
+次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure Files のメトリックを有効にする方法を示します。
 
 まず、`Program.cs` ファイルで、先ほど追加したディレクティブに加え、次の `using` ディレクティブを追加します。
 
@@ -343,7 +341,7 @@ using Microsoft.WindowsAzure.Storage.File.Protocol;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 ```
 
-Azure BLOB、Azure テーブル、Azure キューは `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型を使用しますが、Azure File Storage はその独自の型である、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型を使用することに注意してください。 ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
+Azure BLOB、Azure テーブル、Azure キューは `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型を使用しますが、Azure Files はその独自の型である、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型を使用することに注意してください。 ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -386,26 +384,26 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File Storage のトラブルシューティングに関する記事](storage-troubleshoot-windows-file-connection-problems.md)も参照してください。
+エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File のトラブルシューティングに関する記事](storage-troubleshoot-windows-file-connection-problems.md)も参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure File Storage の詳細については、次のリンクを参照してください。
+Azure Files の詳細については、次のリンクをご覧ください。
 
 ### <a name="conceptual-articles-and-videos"></a>概念に関する記事とビデオ
-* [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)
+* [Azure Files: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Linux で Azure Files を使用する方法](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage 用のツールのサポート
 * [Microsoft Azure Storage で AzCopy を使用する方法](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Storage での Azure CLI の使用](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Azure File Storage に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+* [Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### <a name="blog-posts"></a>ブログ記事
-* [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Inside Azure File storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Azure Files が一般公開されました](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Azure Files の内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Microsoft Azure File Storage への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: b422dd2cf23426de2f154a553b38509082536309
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site"></a>VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-vmm.md)
+> * [Azure ポータル](site-recovery-vmm-to-vmm.md)
 > * [クラシック ポータル](site-recovery-vmm-to-vmm-classic.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 >
@@ -71,7 +70,7 @@ Recovery Services コンテナーをセットアップします。 このコン�
 
 ## <a name="step-6-set-up-source-and-target-settings"></a>手順 6: ソースとターゲットの設定をセットアップする
 
-ソースとターゲットのレプリケーション VMM の場所をセットアップします。 VMM サーバーをコンテナーに追加し、Site Recovery コンポーネントのインストール ファイルをダウンロードします。 VMM サーバーで Azure Site Recovery Provider のセットアップを実行します。 セットアップで Provider が VMM サーバーにインストールされ、サーバーがコンテナーに登録されます。 各 Hyper-V ホストには、Microsoft Azure Recovery Services エージェントをインストールします。
+ソースとターゲットのレプリケーション VMM の場所をセットアップします。 VMM サーバーをコンテナーに追加し、Site Recovery コンポーネントのインストール ファイルをダウンロードします。 VMM サーバーで Azure Site Recovery Provider のセットアップを実行します。 プロバイダーが VMM サーバーにインストールされ、サーバーがコンテナーに登録されます。 各 Hyper-V ホストには、Microsoft Azure Recovery Services エージェントをインストールします。
 
 [手順 6: ソースとターゲットの設定をセットアップする](vmm-to-vmm-walkthrough-source-target.md)方法に関するページに進みます。
 
@@ -101,4 +100,3 @@ VMM の場所の間で VM をレプリケートする方法を指定します。
 テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。
 
 [手順 10: テスト フェールオーバーを実行する](vmm-to-vmm-walkthrough-test-failover.md)方法に関するページに進みます。
-

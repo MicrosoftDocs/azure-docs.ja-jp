@@ -3,7 +3,7 @@
 > [!NOTE]
 > アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)によって負荷分散される場合、この記事の上部にあるセレクターをクリックして、具体的な手順を確認してください。
 > 
-> **Free レベルでは、カスタム ドメイン名を使用できません**。 [価格レベルをスケールアップする](../articles/app-service-web/web-sites-scale.md)必要があります。これにより、サブスクリプションに対して課金される金額が変更される可能性があります。 
+> **Free レベルでは、カスタム ドメイン名を使用できません**。 [価格レベルをスケールアップする](../articles/app-service/web-sites-scale.md)必要があります。これにより、サブスクリプションに対して課金される金額が変更される可能性があります。 
 > 詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 > 
 > 

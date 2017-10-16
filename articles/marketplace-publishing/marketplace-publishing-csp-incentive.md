@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: DavidBosland
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 5ac1f509ca90a09d8bd8e67a04df99516a6da072
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-the-azure-marketplace"></a>Azure Marketplace で Cloud Solution Provider の「リセラー インセンティブ」を表示および変更する
 2016 年 3 月 15 日から、Marketplace のパブリッシャーは Cloud Solution Providers (CSP) の「リセラー インセンティブ」を利用できるようになります。  このインセンティブ値の既定の設定は「 **はい**」です。  パブリッシャーは、インセンティブ プログラムをオプトアウトできます。  この記事では、パブリッシャー プロファイルの設定を変更してオプトアウトする方法を説明します。
 
 「リセラー インセンティブ」の状態を表示または変更するには、次のようにします。
 
-1.  [Microsoft Azure 発行アカウント](https://publish.windowsazure.com/workspace)
+1. [Microsoft Azure 発行アカウント](https://publish.windowsazure.com/workspace)
 
    ![プロファイル先頭画面][1]
-2.  **[パブリッシャー]**
+2. **[パブリッシャー]**
 
    ![プロファイル先頭画面 - パブリッシャー リンク][2]
 3. プロファイルで CSP に関する情報に注目してください。  「リセラー インセンティブ」の**「はい」または「いいえ」を指定するスイッチ**があります。既定の状態は [はい] です。
@@ -46,4 +45,3 @@ ms.lasthandoff: 12/08/2016
 [2]: ./media/marketplace-publishing-csp-incentive/profile-boxes.png
 [3]: ./media/marketplace-publishing-csp-incentive/profile-publishers-boxes.png
 [4]: ./media/marketplace-publishing-csp-incentive/profile-publishers-change-boxes.png
-

@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6e6e12f3d6d95002b223ad0fcb11d72bd920cdaf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Logic Apps と Azure Cosmos DB を使用して HL7 FHIR 医療記録の変更を患者に通知する
 
 Azure MVP の Howard Edidin は、最近、患者向けポータルに新しい機能を追加したいという相談を医療機関から受けました。 医療記録が更新されたときに患者に通知を送信する必要があり、患者がこれらの更新に同意できるようにする必要もあるということでした。 
@@ -233,6 +230,5 @@ Azure Cosmos DB DocumentDB .NET API の [`CreateDocumentChangeFeedQuery`](https:
 
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の詳細については、[Azure Cosmos DB のホーム ページ](https://azure.microsoft.com/services/cosmos-db/)をご覧ください。 Logic Apps の詳細については、「[Logic Apps](https://azure.microsoft.com/services/logic-apps/)」を参照してください。
-
 
 

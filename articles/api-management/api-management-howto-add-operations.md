@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 105fc51c2d1152a40a5757985da47330e0b7b8cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-add-operations-to-an-api-in-azure-api-management"></a>Azure API Management で API に操作を追加する方法
 API Management 内の API を使用するためには、操作を追加する必要があります。 このガイドでは、API Management 内の API に各種の操作を追加して構成する方法を説明します。
@@ -84,7 +82,7 @@ API Management 内の API を使用するためには、操作を追加する必
 > 
 
 ## <a name="request-parameters"> </a>要求パラメーター
-操作のパラメーターは、[パラメーター] タブで管理します。 **[署名]** タブの **[URL テンプレート]** に指定されたパラメーターは自動的に追加されます。このパラメーターを変更するには、URL テンプレートを編集する必要があります。 追加のパラメーターは手動で入力できます。
+操作のパラメーターは、[パラメーター] タブで管理します。**[署名]** タブの **[URL テンプレート]** に指定されたパラメーターは自動的に追加されます。このパラメーターを変更するには、URL テンプレートを編集する必要があります。 追加のパラメーターは手動で入力できます。
 
 新しいクエリ パラメーターを追加するには、 **[クエリ パラメーターの追加]** をクリックし、次の情報を入力します。
 
@@ -171,4 +169,3 @@ API Management 内の API を使用するためには、操作を追加する必
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-

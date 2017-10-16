@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 8738ffc13734437f4c61cf7be76590e5d73adf42
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>個人データを侵害や攻撃から保護する: Azure Security Center
 
@@ -207,4 +206,3 @@ Qualys エージェントは、Qualys 管理プラットフォームに脆弱性
 - [Azure Security Center の警告と Azure ログの統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration)
 
 - [Boost Azure Security Center with Integrated Vulnerability Assessment (統合された脆弱性評価による Azure Security Center の機能向上)](https://blogs.msdn.microsoft.com/azuresecurity/2016/12/16/boost-azure-security-center-with-integrated-vulnerability-assessment/)
-

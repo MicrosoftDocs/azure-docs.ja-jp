@@ -4,7 +4,7 @@
 2. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 このアカウントには管理者権限 (ローカルまたはドメイン) が必要です  (このアカウントは、プッシュ インストールとエージェントの更新にのみ使用します)。
 
    > [!NOTE]
-   > ドメイン アカウントを使用していない場合、ローカル コンピューターで "リモート ユーザー アクセス" コントロールを無効にしてください。 リモート ユーザー アクセス制御を無効にするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに新しい DWORD として **LocalAccountTokenFilterPolicy** を追加して、 その値を **1** に設定します。 これをコマンド プロンプトから行うには、次のコマンドを実行します。  
+   > ドメイン アカウントを使用していない場合、ローカル コンピューターで "リモート ユーザー アクセス" コントロールを無効にしてください。 新しい DWORD を追加 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーの下で、リモートのユーザー アクセス制御を無効にする: **LocalAccountTokenFilterPolicy**です。 値に設定**1**です。 これをコマンド プロンプトから行うには、次のコマンドを実行します。  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >

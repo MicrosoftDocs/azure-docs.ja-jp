@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースの場所を設定する
 テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 このトピックでは、リソースの種類ごとに、サブスクリプションで利用できる場所を決定する方法について説明します。
@@ -101,5 +100,4 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートの作成方法の推奨事項については、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](resource-manager-template-best-practices.md)」を参照してください。
-
 

@@ -11,34 +11,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/05/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: df2ffb8958a7d4b881f0a6904fb9ca13c3614040
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 24e22d7314de536714a825cd7035d2cec2112278
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 
-Azure Active Directory アプリケーション プロキシを使用すると、どこからでもシングル サインオンでオンプレミス アプリケーションにアクセスできます。また、Microsoft Teams を使用すると共同作業が効率化します。 この 2 つを統合することで、あらゆる状況下でチームの生産性を向上させることができます。 
+Azure Active Directory アプリケーション プロキシを使用すると、どこからでもシングル サインオンでオンプレミス アプリケーションにアクセスできます。 また、Microsoft Teams を使用すると共同作業が効率化します。 この 2 つを統合することで、あらゆる状況下でチームの生産性を向上させることができます。 
 
-ユーザーは[タブを使用](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)して、Teams のチャネルにクラウド アプリを追加することができますが、使用する SharePoint サイトや計画ツールがオンプレミスでホストされている場合は、 アプリケーション プロキシを使用します。 アプリケーション プロキシを通じて公開したアプリは、そのアプリにリモートでアクセスするときと同じ外部 URL を使用して、チャネルに追加することができます。 また、アプリケーション プロキシは Azure Active Directory を通じて認証するので、同じシングル サインオンでのアクセスが可能です。
+ユーザーは[タブを使用](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)して、Teams のチャネルにクラウド アプリを追加することができますが、使用する SharePoint サイトや計画ツールがオンプレミスでホストされている場合は、 アプリケーション プロキシを使用します。 アプリケーション プロキシを通じて公開したアプリは、そのアプリにリモートでアクセスするときと同じ外部 URL を使用して、チャネルに追加することができます。 また、アプリケーション プロキシは Azure Active Directory を通じて認証するので、ユーザーはシングル サインオンを使用できます。
 
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>アプリケーション プロキシ コネクタのインストールとアプリの公開
 
-まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](active-directory-application-proxy-enable.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](application-proxy-publish-azure-portal.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、エンドユーザーが Teams にアプリを追加するときに必要になります。
+まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](active-directory-application-proxy-enable.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](application-proxy-publish-azure-portal.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、Teams にアプリを追加するときに必要になります。
 
 既にアプリケーションを公開していて、その外部 URL がわからない場合は、[Azure Portal](https://portal.azure.com) で確認できます。 ポータルにサインインしたら、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、アプリケーションを選び、**[アプリケーション プロキシ]** を選択します。
 
 ## <a name="add-your-app-to-teams"></a>Teams へのアプリの追加
 
-アプリケーション プロキシを通じてアプリを公開したら、そのアプリを直接 Teams チャネルにタブとして追加できることをユーザーに通知します。 ユーザーに次の手順を実行してもらいます。
+アプリケーション プロキシを通じてアプリを公開したら、そのアプリを直接 Teams チャネルにタブとして追加できること、およびチームの全員がアクセスできるようになることをユーザーに通知します。 ユーザーに次の手順を実行してもらいます。
 
 1. アプリを追加する Teams チャネルに移動し、**+** を選択してタブを追加します。
 
@@ -52,10 +50,9 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
    ![タブ名と URL の設定](./media/application-proxy-teams/tab-name-url.png)
 
-チームのいずれかのメンバーがタブを追加すると、そのタブはチャネル内の全ユーザーに表示されます。 アプリへのアクセス権を持つすべてのユーザーが、Microsoft Teams の資格情報を使ったシングル サインオンでアクセスできます。 アプリへのアクセス権を持たないユーザーの場合、Teams にタブは表示されますが、オンプレミスのアプリケーションと Azure ポータルの公開バージョンへのアクセス権が付与されるまで、アクセスはブロックされます。 
+チームのいずれかのメンバーがタブを追加すると、そのタブはチャネル内の全ユーザーに表示されます。 アプリへのアクセス権を持つすべてのユーザーが、Microsoft Teams の資格情報を使ったシングル サインオンでアクセスできます。 アプリへのアクセス権を持たないユーザーの場合、Teams にタブは表示されますが、オンプレミスのアプリケーションと Azure Portal の公開バージョンへのアクセス権が付与されるまで、アクセスはブロックされます。 
 
 ## <a name="next-steps"></a>次のステップ
 
 - アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](application-proxy-enable-remote-access-sharepoint.md)方法を学びます。
 - 外部 URL に[カスタム ドメイン](active-directory-application-proxy-custom-domains.md)を使用するようアプリを構成します。 
-

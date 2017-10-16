@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
+ms.openlocfilehash: e5e6a2e5b7ec4bc9c3c81ff37640c98cae36392d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 72f66081a6409f980ec6bca5188f585489245a36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB API の使用に関するチュートリアル
 > [!div class="op_single_selector"]
@@ -57,8 +56,10 @@ Azure Cosmos DB の DocumentDB API を実際に使ってみるチュートリア
 以下のものがそろっていることを確認してください。
 
 * アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
-    * また、このチュートリアルには、[Azure Cosmos DB Emulator](local-emulator.md) を使用することもできます。
-* [Visual Studio Community 2017](http://www.visualstudio.com/)。
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]」を参照してください。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「 [Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。
@@ -115,7 +116,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 
 ポータルから URI をコピーし、program.cs ファイルの `<your endpoint URL>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `<your primary key>`に貼り付けます。
 
-![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーン ショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている Azure Cosmos DB アカウントを示します][keys]
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーンショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account] (Azure Cosmos DB アカウント) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キー値が強調表示されている Azure Cosmos DB アカウントを示します。][keys]
 
 次に、**DocumentClient** の新しいインスタンスを作成して、アプリケーションを起動します。
 
@@ -551,4 +552,3 @@ Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、�
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 [cosmos-db-create-account]: create-documentdb-dotnet.md#create-account
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 62280b205f2fd691e8c75134585172b995377311
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル: Azure Active Directory と Predictix Price Reporting の統合
 
@@ -168,7 +167,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>Predictix Price Reporting テスト ユーザーの作成
 
@@ -230,5 +229,4 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 [201]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_203.png
-
 

@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: danlep
+ms.openlocfilehash: 87d60ae51aaa33b709d272605419fd85eeb5d93d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 653af144eb12cacf955f96a5442efd73add38e88
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Azure VM への LEMP Web サーバーのインストール
 この記事では、NGINX Web サーバー、MySQL、PHP (LEMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 LEMP スタックは、同様に Azure にインストールすることができる、一般的な [LAMP スタック](tutorial-lamp-stack.md) の代替品です。 LEMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -71,7 +70,7 @@ NGINX がインストールされ、VM に対しポート 80 が開かれると�
 次のコマンドを使用して MySQL のバージョンを確認します (大文字の `V` パラメーターに注意)。
 
 ```bash
-msql -V
+mysql -V
 ```
 
 MySQL のインストールをセキュリティ保護するために、次のスクリプトを実行することをお勧めします。
@@ -172,9 +171,8 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [SSL で Web サーバーをセキュリティ保護する](tutorial-secure-web-server.md)
+> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
 
 [1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png
-

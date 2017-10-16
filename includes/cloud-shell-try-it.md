@@ -5,7 +5,7 @@ Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash �
 
 [![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
 
-このボタンによって対話型のシェルが起動されます。このトピックのすべての手順はこれを使用して実行できます。
+このボタンによって対話型のシェルが起動されます。このトピックの手順はこれを使って実行できます。
 
 [![ポータルに Cloud Shell のウィンドウが表示されるスクリーンショット](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
 

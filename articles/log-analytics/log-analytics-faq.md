@@ -12,17 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/26/2017
 ms.author: magoedte
+ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 8ddea06b1a90e9b1599466ad4d1c3af7a6dc8ba9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
-この Microsoft FAQ は、Microsoft Operations Management Suite (OMS) の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ## <a name="general"></a>全般
 
@@ -40,21 +39,17 @@ A. 次のクエリは、現在実行されているすべてのチェックの�
 
 結果を Excel にエクスポートしてレビューすることができます。
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-system-center-operations-manager-console"></a>Q: System Center Operations Manager コンソールに *OMS* とは異なる内容が表示されるのはなぜですか?
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>Q: System Center Operations Manager コンソールに OMS とは異なる内容が表示されるのはなぜですか?
 
 A: 使用している Operations Manager の更新プログラム ロールアップに応じて、*System Center Advisor*、*Operational Insights*、または *Log Analytics* のノードが表示される可能性があります。
 
 管理パックでは *OMS* のテキスト文字列が更新されており、手動でインポートする必要があります。 現在のテキストと機能を表示するには、最新の System Center Operations Manager 更新プログラム ロールアップ KB 記事の手順に従い、コンソールを更新してください。
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Q: *オンプレミス* バージョンの Log Analytics はありますか?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Q: オンプレミス バージョンの Log Analytics はありますか?
 
-A: いいえ。 Log Analytics は、大量のデータを処理して格納します。 Log Analytics はクラウド サービスなので、必要に応じてスケールアップし、ユーザー環境のパフォーマンスに対する影響を防ぐことができます。
+A: いいえ。 Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
 
-その他の利点には次のものがあります。
-- Microsoft は Log Analytics インフラストラクチャを実行するため、コストが節約される
-- 機能更新および解決策の定期的なデプロイ。
-
-### <a name="q-how-do-i-troubleshoot-that-log-analytics-is-no-longer-collecting-data"></a>Q. Log Analytics がデータを収集しなくなった問題をトラブルシューティングするにはどうすればよいですか?
+### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Log Analytics がデータを収集しなくなった場合にトラブルシューティングするにはどうすればよいですか?
 
 A: 無料の価格レベルを使用しており、1 日に 500 MB を超えるデータを送信した場合、その日の残りはデータ収集が停止します。 1 日の制限に達したことが、Log Analytics がデータの収集を停止したり、データがないように見えたりする一般的な原因です。
 
@@ -112,7 +107,7 @@ Log Analytics へのトラフィックには、パブリックピアリング Ex
 
 A. `Move-AzureRmResource` コマンドレットを使用すると、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することもできます。 詳細については、「[Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
 
-この変更は、Azure Portal で行うこともできます。
+この変更は、Azure ポータルで行うこともできます。
 
 ある Log Analytics ワークスペースから別のワークスペースにデータを移行したり、Log Analytics データが格納されているリージョンを変更したりすることはできません。
 
@@ -127,13 +122,13 @@ A: 最新の更新プログラム ロールアップに更新し、管理パッ�
 
 A: エージェントが OMS と通信できることを確認するには、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択します。
 
-**[Azure Log Analytics (OMS)]** タブの緑色のチェック マークを確認します。 緑色のチェック マーク アイコンは、エージェントが OMS サービスと通信できることを示します。
+**[Azure Log Analytics (OMS)]** タブの緑色のチェック マークを確認します。 緑色のチェック マーク アイコンは、エージェントが Azure サービスと通信できることを示します。
 
-黄色の警告アイコンは、エージェントと OMS の通信に問題が発生していることを示します。 1 つの一般的な原因は、Microsoft Monitoring Agent サービスが停止したことです。 サービス コントロール マネージャーを使用してサービスを再開します。
+黄色の警告アイコンは、エージェントと Log Analytics の通信に問題が発生していることを示します。 1 つの一般的な原因は、Microsoft Monitoring Agent サービスが停止したことです。 サービス コントロール マネージャーを使用してサービスを再開します。
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Q: エージェントの Log Analytics との通信を停止するにはどうすればよいですか?
 
-A: System Center Operations Manager では、Advisor で管理されたコンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、エージェントの通信を停止できます。
+A: System Center Operations Manager では、OMS で管理されたコンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、エージェントの通信を停止できます。
 **[Azure Log Analytics (OMS)]**に表示されているすべてのワークスペースを削除します。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Q: ワークスペースを Azure サブスクリプション間で移動しようとするとエラーが表示されるのはなぜですか?
@@ -170,8 +165,5 @@ WireData エージェントを実行できるコンピューターの場合、�
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
-
-
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-

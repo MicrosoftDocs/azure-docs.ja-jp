@@ -17,15 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: b48df78df9f53ac7bf0804f55a8d36a2fe2f86b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
@@ -274,4 +271,3 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 - [ネットワークの制限: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]
 - [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]
-

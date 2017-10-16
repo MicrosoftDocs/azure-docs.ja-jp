@@ -17,14 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1021,7 +1019,7 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、**<*SID*>-lb-ascs ロード バランサー** > **[負荷分散規則]** の順に選択します。
+1.  Azure Portal で、 **<*SID*>-lb-ascs ロード バランサー** > **負荷分散規則**の順に選択します。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
   * 名前
@@ -1652,4 +1650,3 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
   ![図 64: SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
 
   _**図 64:** SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
 ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
-ms.lasthandoff: 02/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
 このチュートリアルの目的は、SciQuest Spend Director と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
@@ -45,11 +44,11 @@ SciQuest Spend Director と Azure AD の統合を構成するには、次のも�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SciQuest Spend Director の追加 
 2. Azure AD シングル サインオンの構成とテスト
@@ -120,7 +119,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
    
      b. **[応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。 
    
-     c. **[次へ]**をクリックします。
+     c. **[次へ]** をクリックします。
 
 4. **[SciQuest Spend Director でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
    
@@ -260,5 +259,4 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_18.png
 [204]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_20.png
-
 

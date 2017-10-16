@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs"
 description: "Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
 documentationcenter: na
@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 09/07/2017
 ms.author: dastrock
 ms.custom: aaddev
+ms.openlocfilehash: be28230b9c56dcbca4ba8f70e44741f65a447f73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c211c59b00d445a62ebe3ae9334101c983e05c57
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
@@ -30,7 +29,7 @@ Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-
 
 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 ベアラー トークンを受信するには Azure AD による認証が必要となりますが、意図しない利用者による傍受を防ぐために、トークンをセキュリティで保護する対策を講じる必要があります。 ベアラー トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、中間者攻撃によってトークンが取得され、保護されたリソースに不正アクセスされる可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)をご覧ください。
 
-Azure AD によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。  JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。  JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。  JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。  Azure AD によって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。  そのためには、 [jwt.calebb.net](http://jwt.calebb.net)などの複数のツールを利用できます。 JWT の詳細については、 [JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
+Azure AD によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。  JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。  JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。  JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。  Azure AD によって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。  そのためには、[jwt.ms](https://jwt.ms/) などの複数のツールを利用できます。 JWT の詳細については、 [JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
 ## <a name="idtokens"></a>Id_tokens
 id_token は、アプリが [OpenID Connect](active-directory-protocols-openid-connect-code.md) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。  [JWT](#types-of-tokens) として表され、ユーザーがアプリに署名するために使用できる要求が含まれます。  必要に応じて id_token で要求を使用できます。一般には、アカウント情報の表示や、アプリ内でのアクセス制御の決定に使用されます。
@@ -45,7 +44,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 ```
 
 > [!TIP]
-> 試しに、サンプル id_token を [calebb.net](http://jwt.calebb.net) に貼り付けて、その中の要求を調べてみてください。
+> 試しに、サンプルのid_token を [jwt.ms](https://jwt.ms/) に貼り付けて、その中の要求を調べてみてください。
 > 
 > 
 
@@ -304,4 +303,3 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ## <a name="related-content"></a>関連コンテンツ
 * Azure AD Graph API を使用したトークンの有効期間ポリシーの管理の詳細については、Azure AD Graph の[ポリシー操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)および[ポリシー エンティティ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)を参照してください。
 * PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../active-directory-configurable-token-lifetimes.md) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
-

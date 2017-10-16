@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 4d9e1564c3fcbdfd59edb0e24158df9954c26026
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 25b3ca9af2639860d9cfcb1492aef745fb47beb9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Visual Studio の Azure アプリケーションの公開ウィザードの使用
 Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスに発行できます。 

@@ -14,12 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a3debf3380b57faa5b7b30f612698fe6de5b7067
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: a0f3b294f2a655a5ff891d4fd1be9137080349a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-redis-cache"></a>Azure Redis Cache 用の Azure CLI サンプル
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 04/15/2017
 | [キャッシュの詳細を取得する](./scripts/show-cache.md) | プロビジョニングの状態を含む、Azure Redis Cache インスタンスの詳細を取得します。 |
 | [ホスト名、ポート、およびキーを取得する](./scripts/cache-keys-ports.md) | Azure Redis Cache インスタンスのホスト名、ポート、およびキーを取得します。 |
 |**Web アプリとキャッシュ**||
-| [Web アプリを Redis Cache に接続する](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | Azure Web アプリと Redis Cache を作成し、Redis の接続の詳細をアプリケーション設定に追加します。 |
+| [Web アプリを Redis Cache に接続する](./../app-service/scripts/app-service-cli-app-service-redis.md) | Azure Web アプリと Redis Cache を作成し、Redis の接続の詳細をアプリケーション設定に追加します。 |
 |**キャッシュの削除**||
 | [キャッシュを削除する](./scripts/delete-cache.md) | Azure Redis Cache インスタンスを削除します。  |
 | | |

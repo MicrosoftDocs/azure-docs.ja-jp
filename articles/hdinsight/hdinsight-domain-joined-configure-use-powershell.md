@@ -16,13 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: d31ad53525ef75bdb61c42409dc07bba4138fc25
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.openlocfilehash: 9da76bb5f649817cd2f027f3d0eb46d58a996b4f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>Azure PowerShell を使用したドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 Azure PowerShell を使って、Azure HDInsight クラスター、Azure Active Directory (Azure AD)、および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップする方法について説明します。 迅速な構成とエラーの抑制のために、Azure PowerShell スクリプトが提供されます。 ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](hdinsight-domain-joined-introduction.md)に関するページを参照してください。
@@ -154,7 +152,7 @@ DNS 逆引きゾーンの作成時に、スクリプトにより、ネットワ�
          **[選択]** をクリックして変更を保存します。        
          **[選択]** をクリックして変更を保存します。
    * **リソース グループ**: HDInsight VNet (contosohdirg) 用に使用されるリソース グループを選択します。
-4. **[作成]**をクリックします。  
+4. **Create** をクリックしてください。  
 
 ドメイン参加済み HDInsight クラスターを作成するためのもう 1 つのオプションは、Azure Resource Manager テンプレートを使用する方法です。 次の手順は、その方法を示しています。
 
@@ -192,5 +190,4 @@ DNS 逆引きゾーンの作成時に、スクリプトにより、ネットワ�
 
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
 * SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、[HDInsight での SSH キーの使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関するページを参照してください。
-
 

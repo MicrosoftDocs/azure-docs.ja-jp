@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handle-content-types-in-logic-apps"></a>ロジック アプリにおける各種コンテンツの扱い
 
@@ -112,5 +110,4 @@ CustomerName=Frank&Address=123+Avenue
 ```
 
 現時点ではフォーム データ用のネイティブ関数は存在しないので、`@string(body('formdataAction'))` のような関数を使用して手動でデータにアクセスすれば、このデータをワークフロー内で使用できます。 送信要求に `application/x-www-url-formencoded` という Content-Type ヘッダーも加えたい場合は、その要求をアクション本体に追加すれば済みます。`@body('formdataAction')` のようなキャストは必要ありません。 ただし、この方法が有効なのは、本体が `body` 入力内で唯一のパラメーターであるときのみです。 `application/json` 要求内で `@body('formdataAction')` を使おうとすると、エンコードされた本体が送信されるためにランタイム エラーが発生します。
-
 

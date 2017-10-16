@@ -14,17 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
+ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: e9499d036c8c5ef5a56a70f7e7ecf9afbff4e6b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
 
-[OpenAPI メタデータ](http://swagger.io/)では、REST API をホストしている関数を、他のさまざまなソフトウェアで使用できます。 このソフトウェアには、PowerApps や [Azure App Service の API Apps 機能](https://docs.microsoft.com/azure/app-service-api/app-service-api-dotnet-get-started#a-idcodegena-generate-client-code-for-the-data-tier)などの Microsoft 製品、[Postman](https://www.getpostman.com/docs/importing_swagger) などのサード パーティの開発者ツール、および[多くのその他のパッケージ](http://swagger.io/tools/)が含まれています。
+[OpenAPI メタデータ](http://swagger.io/)では、REST API をホストしている関数を、他のさまざまなソフトウェアで使用できます。 このソフトウェアには、PowerApps や [Azure App Service の API Apps 機能](../app-service/app-service-web-overview.md)などの Microsoft 製品、[Postman](https://www.getpostman.com/docs/importing_swagger) などのサード パーティの開発者ツール、および[多くのその他のパッケージ](http://swagger.io/tools/)が含まれています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -82,4 +81,3 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 * [概要チュートリアル](functions-api-definition-getting-started.md)。 OpenAPI 定義が動作することを確認するチュートリアルを試してください。
 * [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) API 定義のサポート プレビューについてフィードバックを提供するには、Functions リポジトリを参照してください。 更新が必要な内容については、Github の問題を作成してください。
 * [Azure Functions の開発者向けガイド](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関して学習してください。
-

@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
 ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
 
@@ -52,7 +51,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 
-5. **[Permissions]** タブをクリックします。 既定のアクセス許可は **読み取り専用**です。
+5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。
 
 6. **[Keys and Access Tokens]** タブをクリックします。
 
@@ -335,4 +334,3 @@ HDInsight のストレージにデータをアップロードするには、次�
 
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
-

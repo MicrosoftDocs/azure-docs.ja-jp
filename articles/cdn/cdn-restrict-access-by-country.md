@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>国に応じて Azure CDN コンテンツへのアクセスを制限
 
@@ -62,15 +62,9 @@ ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
 ### <a name="country-codes"></a>国コード
 **地理フィルタリング**機能では、国コードを使用して、保護されたディレクトリに対する要求が許可またはブロックされる国を定義します。 国コードは、「[Azure CDN Country Codes (Azure CDN の国コード)](https://msdn.microsoft.com/library/mt761717.aspx)」に記載されています。 
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="considerations"></a>考慮事項
+## <a id="considerations"></a>考慮事項
 * 国フィルタリング構成の変更が有効になるまでには、Verizon の場合は最大で 90 分、Akamai の場合は数分かかることがあります。
 * この機能では、ワイルドカード文字 (例: *) はサポートされていません。
 * 相対パスに関連付けられている地理フィルタリング構成は、そのパスに再帰的に適用されます。
-* 同じ相対パスに適用できるルールは&1; つだけです (同じ相対パスを参照する複数の国フィルターを作成することはできません)。 ただし、フォルダーには複数の国フィルターを適用できます。 これは、国フィルターの再帰的な性質のためです。 つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* 同じ相対パスに適用できるルールは 1 つだけです (同じ相対パスを参照する複数の国フィルターを作成することはできません)。 ただし、フォルダーには複数の国フィルターを適用できます。 これは、国フィルターの再帰的な性質のためです。 つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
 

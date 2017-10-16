@@ -11,15 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/20/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: e11f19d518b22a7be4f8daf93304821b42e94a9b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: da437908509e40386ed23863648bd6956b308186
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory における名前付きの場所
 
@@ -52,13 +51,13 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
 
 6. **[新規]** ブレードで、次の操作を行います。
 
-    ![[新規] ブレード](./media/active-directory-named-locations/08.png)
+    ![[新規] ブレード](./media/active-directory-named-locations/56.png)
 
     a. **[名前]** ボックスに、名前付きの場所の名前を入力します。
 
     b. **[IP 範囲]** ボックスに、IP 範囲を入力します。 IP 範囲は *Classless Inter-Domain Routing* (CIDR) 形式である必要があります。  
 
-    c. **[作成]**をクリックします。
+    c. **Create** をクリックしてください。
 
 
 
@@ -75,5 +74,4 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
 ## <a name="next-steps"></a>次のステップ
 
 リスク イベントの詳細については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
-ms.lasthandoff: 02/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>要求コンポーネントと応答コンポーネントの概要
 ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
@@ -51,7 +50,7 @@ ms.lasthandoff: 02/16/2017
 ![Response Trigger](./media/connectors-native-reqres/using-trigger.png)
 
 ## <a name="use-the-http-response-action"></a>HTTP 応答アクションの使用
-HTTP 応答アクションは、HTTP 要求によってトリガーされたワークフローで使用した場合にのみ有効です。 応答アクションを定義していない場合は、 `202 ACCEPTED` 応答がすぐに呼び出し元に返されます。  応答アクションは、ワークフロー内のどのステップにでも追加できます。 ロジック アプリは、応答のために受信要求を&1; 分間だけオープンしたままにします。  ワークフローから応答が送信されなかった場合は、(応答アクションが定義内に存在していても)&1; 分後に `504 GATEWAY TIMEOUT` が呼び出し元に返されます。
+HTTP 応答アクションは、HTTP 要求によってトリガーされたワークフローで使用した場合にのみ有効です。 応答アクションを定義していない場合は、 `202 ACCEPTED` 応答がすぐに呼び出し元に返されます。  応答アクションは、ワークフロー内のどのステップにでも追加できます。 ロジック アプリは、応答のために受信要求を 1 分間だけオープンしたままにします。  ワークフローから応答が送信されなかった場合は、(応答アクションが定義内に存在していても) 1 分後に `504 GATEWAY TIMEOUT` が呼び出し元に返されます。
 
 HTTP 応答アクションの追加方法を次に示します。
 
@@ -73,7 +72,7 @@ HTTP 応答アクションの追加方法を次に示します。
 | 要求 |HTTP 要求を受信したときに実行されます。 |
 
 ## <a name="response-action"></a>応答アクション
-ここでは、このコネクタでサポートされているアクションの詳細について説明します。 要求トリガーに伴う場合にのみ使用可能な応答アクションが&1; つあります。
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。 要求トリガーに伴う場合にのみ使用可能な応答アクションが 1 つあります。
 
 | アクション | Description |
 | --- | --- |
@@ -111,5 +110,4 @@ HTTP 応答アクションの入力フィールドを次に示します。 * は
 
 ## <a name="next-steps"></a>次のステップ
 プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
-
 

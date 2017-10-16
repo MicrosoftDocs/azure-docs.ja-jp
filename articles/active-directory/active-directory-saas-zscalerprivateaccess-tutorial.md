@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: c81f23603cfbbc916c148c61bd3de52ef1db36ac
 ms.openlocfilehash: 5c598bfa5b6725d21a89df54dbcb3314cc631d80
-ms.lasthandoff: 02/15/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -47,11 +46,11 @@ Zscaler Private Access (ZPA) と Azure AD の統合を構成するには、次�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
+- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Zscaler Private Access (ZPA) の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -125,7 +124,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
 4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)     
+    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
 
 5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
@@ -192,7 +191,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 
 

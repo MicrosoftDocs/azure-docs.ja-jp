@@ -16,14 +16,12 @@ ms.workload: identity
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 75cafa6868d54f9d8a7e0dbe9f2a9e85ed43f16f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 55e2e095138842f8e2d31a4f79ffb22b81d18dba
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
 次の情報と例を使用して Azure Active Directory (Azure AD) のグループベースのライセンスについて詳しく理解できます。
@@ -123,7 +121,7 @@ Microsoft が製品に新しいサービスを追加すると、既定では、�
 
 3. [**[Azure Active Directory] > [ライセンス] > [すべての製品]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ブレードに移動して、*[Office 365 Enterprise E5]* を選択してから、**[ライセンスされているグループ]** を選択し、その製品を持つすべてのグループの一覧を表示します。
 
-4. 確認するグループをクリックします (この場合は、*[O365 E5 - Exchange のみ]*)。 これにより、**[ライセンス]** タブが開きます。 E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
+4. 確認するグループをクリックします (この場合は、*[O365 E5 - Exchange のみ]*)。 これにより、**[ライセンス]** タブが開きます。E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
 > [!NOTE]
 > このグループで *Exchange Online* サービスに加え、*Microsoft Stream* サービスも自動的に追加され、有効になっています。
 
@@ -200,6 +198,16 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 >[!TIP]
 > *[ユーザー ライセンスの変更]* に関連する項目をクリックすると、個々のユーザーごとに適用されたライセンスの変更の詳細が表示されます。
 
+## <a name="deleting-a-group-with-an-assigned-license"></a>ライセンスが割り当てられているグループを削除する
+
+アクティブなライセンスが割り当てられているグループを削除することはできません。 管理者がグループを削除できてしまうと、気が付かないうちに、ユーザーからライセンスが削除されてしまいます。このため、こうしたグループを削除するには、最初にそのグループからライセンスを削除する必要があります。
+
+Azure Portal でグループを削除しようとすると、次のようなエラー通知が表示されることがあります。![グループの削除失敗のスクリーンショット](media/active-directory-licensing-group-advanced/groupdeletionfailed.png)
+
+グループの **[ライセンス]** タブに移動し、割り当てられているライセンスがないかどうかを確認します。 ライセンスが割り当てられている場合は、そのライセンスを削除してから、再度グループ削除してみてください。
+
+PowerShell または Graph API でグループを削除しようとした場合も、同様のエラーが発生することがあります。 オンプレミスから同期されたグループを使用している場合、Azure AD でのグループ削除に失敗すると、Azure AD Connect によってエラーが通知されます。 このような場合は、そのグループにライセンスが割り当てられていないかどうかを確認し、そのライセンスを最初に削除します。
+
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
 グループベースのライセンスを使用する場合、次の制限事項と既知の問題の一覧について理解することをお勧めします。
@@ -213,6 +221,8 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 - ユーザーがグループから削除され、ライセンスを失うと、そのライセンスのサービス プラン (例: SharePoint Online) は、「**中断**」状態に設定されます。 サービス プランは最終的な無効状態には設定されていません。 この予防措置によって、管理者がグループ メンバーシップの管理で間違いを犯した場合にユーザー データが誤って削除されるのを回避することができます。
 
 - 大きなグループ (例: ユーザーが 100,000 人) に対してライセンスを割り当てるまたはライセンスを変更すると、パフォーマンスに影響が及ぶことがあります。 特に、Azure AD のオートメーションによって生成される変更の量によっては、Azure AD とオンプレミスのシステム間のディレクトリの同期のパフォーマンスに悪影響を及ぼす可能性があります。
+
+- ある種の負荷の大きな状況では、ライセンスの処理に遅延が生じ、グループ ライセンスの追加/削除、グループのユーザーの追加/削除などの変更の処理にかかる時間が長くなることがあります。 変更の処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 Microsoft では、*一般提供*の開始までにこの機能のパフォーマンス指標を向上させる予定です。
 
 - ライセンス管理のオートメーションは、環境内のすべての種類の変更に自動的には反応しません。 たとえば、ライセンスの不足により一部のユーザーがエラー状態になる場合があります。 使用可能なシート数を解放するために、他のユーザーから直接割り当てられた一部のライセンスを削除できます。 ただし、システムがこの変更に自動的に反応してそのエラー状態のユーザーを修正することはありません。
 
@@ -228,4 +238,3 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 * [Assigning licenses to a group in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [How to migrate individual licensed users to group-based licensing in Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md) (Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法)
-

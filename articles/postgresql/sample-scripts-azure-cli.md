@@ -11,12 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 05/25/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cda2ae1776602b4daa85b5bec8204eec035d537f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: bad53b7d7ff931605fd3a2cdfc40fda6447f8ab9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 用 Azure CLI サンプル 
 次の表には、Azure Database for PostgreSQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。
@@ -28,4 +27,3 @@ ms.lasthandoff: 05/27/2017
 |**サーバーのスケーリング**||
 | [サーバーのスケーリング](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | 絶えず変化するパフォーマンス ニーズに対応するために、単一の Azure Database for PostgreSQL サーバーをスケールアップまたはスケールダウンするための Azure CLI スクリプトです。 |
 |||
-

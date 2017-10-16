@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5fb86c60b2d1f258dde5636ff8854b6f30f7f1c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 995a1f37a3fd68b39c14a95d46109c0f7814018d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="advisor-performance-recommendations"></a>Advisor のパフォーマンスに関する推奨事項
 
 Azure Advisor のパフォーマンスに関する推奨事項は、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させるために役立ちます。 Advisor のパフォーマンスに関する推奨事項は、Advisor ダッシュボードの **[パフォーマンス]** タブで取得できます。
@@ -59,7 +57,7 @@ App Services に関する推奨事項の詳細については、「[Azure App Se
 
 2. 左側のウィンドウで、**[その他のサービス]** をクリックします。
 
-3. サービス メニュー ウィンドウの **[監視と管理]** で、**[Azure Advisor]** をクリックします。  
+3. サービス メニュー ウィンドウの **[Monitoring and Management (監視と管理)]** で、**[Azure Advisor]** をクリックします。  
  Advisor ダッシュボードが表示されます。
 
 4. Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
@@ -78,5 +76,4 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: b6ded8ba1adf03fdccbdb7573c09fae1857c8b16
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル: Azure Active Directory と ScreenSteps の統合
 
@@ -148,7 +147,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     
     b. **[Mode]** 一覧から **[SAML]** を選択します。
     
-    c. **[作成]**をクリックします。
+    c. **Create** をクリックしてください。
 
 12. 新しいエンドポイントを**編集**します。
 
@@ -208,7 +207,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-screensteps-test-user"></a>ScreenSteps テスト ユーザーの作成
 
@@ -269,5 +268,4 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-screensteps-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-screensteps-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-screensteps-tutorial/tutorial_general_203.png
-
 

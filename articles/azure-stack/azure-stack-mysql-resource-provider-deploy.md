@@ -1,6 +1,6 @@
 ---
-title: Use MySQL databases as PaaS on Azure Stack | Microsoft Docs
-description: Learn how you can deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack
+title: "Azure Stack で MySQL データベースを PaaS として使用する | Microsoft Docs"
+description: "Azure Stack で MySQL リソース プロバイダーをデプロイし、MySQL データベースをサービスとして提供する方法を説明します"
 services: azure-stack
 documentationCenter: 
 author: JeffGoldner
@@ -14,66 +14,66 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: JeffGo
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4e9da524ef9dfa2d5b7150bc6a888536a1435dfd
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 45c7edcc645e82107805b3e62d87655a830fb22a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Use MySQL databases on Microsoft Azure Stack
+# <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
 
-You can deploy a MySQL resource provider on Azure Stack. After you deploy the resource provider, you can create MySQL servers and databases through Azure Resource Manager deployment templates and provide MySQL databases as a service. MySQL databases, which are common on web sites, support many website platforms. As an example, after you deploy the resource provider, you can create WordPress websites from the Azure Web Apps platform as a service (PaaS) add-on for Azure Stack.
+Azure Stack に MySQL リソース プロバイダーをデプロイできます。 リソース プロバイダーをデプロイしたら、Azure Resource Manager デプロイ テンプレートを使用して MySQL サーバーおよびデータベースを作成し、MySQL データベースをサービスとして提供できます。 MySQL データベースは、Web サイトで一般的であり、多くの Web サイト プラットフォームをサポートしています。 たとえば、リソース プロバイダーをデプロイした後に、Azure Stack のサービスとしての Azure Web Apps プラットフォーム (PaaS) アドオンから WordPress Web サイトを作成できます。
 
-To deploy the MySQL provider on a system that does not have internet access, you can copy the file [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi) to a local share and provide that share name when prompted (see below). You must also install the Azure and Azure Stack PowerShell modules.
+インターネットにアクセスできないシステムに MySQL プロバイダーをデプロイするには、ファイル [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi) をローカル共有にコピーし、プロンプトが表示されたら、その共有名を指定できます (下記参照)。 Azure および Azure Stack PowerShell モジュールもインストールする必要があります。
 
 
-## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL Server Resource Provider Adapter architecture
+## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL サーバー リソース プロバイダー アダプターのアーキテクチャ
 
-The resource provider is made up of three components:
+リソース プロバイダーは、次の 3 つのコンポーネントで構成されています。
 
-- **The MySQL resource provider adapter VM**, which is a Windows virtual machine running the provider services.
-- **The resource provider itself**, which processes provisioning requests and exposes database resources.
-- **Servers that host MySQL Server**, which provide capacity for databases, called Hosting Servers. 
+- **MySQL リソース プロバイダー アダプター VM**。これはプロバイダー サービスを実行する Windows 仮想マシンです。
+- **リソース プロバイダー自体**。これはプロビジョニング要求を処理し、データベース リソースを公開します。
+- **MySQL サーバーをホストするサーバー**。これはデータベースに容量を提供し、ホスティング サーバーと呼ばれます。 
 
-This release no longer creates a MySQL instance. You must create them and/or provide access to external SQL instances. You can visit the [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) for an example template that can create a MySQL server for you or download and deploy a MySQL Server from the Marketplace.
+このリリースでは、MySQL インスタンスは作成されなくなりました。 それらを作成するか、外部 SQL インスタンスへのアクセスを提供する必要があります。 [Azure Stack クイックスタート ギャラリー](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) にアクセスして、自動的に MySQL サーバーを作成できるサンプル テンプレートを取得するか、または Marketplace から MySQL サーバーをダウンロードしてデプロイできます。
 
-## <a name="deploy-the-resource-provider"></a>Deploy the resource provider
+## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 
-1. If you have not already done so, register your development kit and download the Windows Server 2016 Datacenter - Eval image downloadable through Marketplace Management. You can also use a script to create a [Windows Server 2016 image](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image).
+1. まだ開発キットを登録していない場合は、登録して、Marketplace 管理を通じてダウンロード可能な Windows Server 2016 Datacenter - Eval イメージをダウンロードします。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます。
 
-2. [Download the MySQL resource provider binaries file](https://aka.ms/azurestackmysqlrp) and extract it on the development kit host.
+2. [MySQL リソース プロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestackmysqlrp)し、開発キット ホストに抽出します。
 
-3. Sign in to the development kit host, and extract the MySQL RP installer file to a temporary directory.
+3. 開発キット ホストにサインインし、MySQL RP インストーラー ファイルを一時ディレクトリに抽出します。
 
-4. The Azure Stack root certificate is retrieved and a self-signed certificate is created as part of this process. 
+4. このプロセスの一環として、Azure Stack ルート証明書が取得され、自己署名証明書が作成されます。 
 
-    __Optional:__ If you need to provide your own, prepare the certificates and copy to a local directory if you wish to customize the certificates (passed to the installation script). You need the following:
+    __省略可能:__ 独自に提供する必要がある場合は証明書を準備し、(インストール スクリプトに渡される) 証明書をカスタマイズする場合はローカル ディレクトリにコピーします。 以下のものが必要になります。
 
-    a. A wildcard certificate for *.dbadapter.\<region\>.\<external fqdn\>. This certificate must be trusted, such as would be issued by a certificate authority (that is, the chain of trust must exist without requiring intermediate certificates.) (A single site certificate can be used with the explicit VM name you provide during install.)
+    a. *.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書。 証明機関によって発行されるなど、この証明書が信頼されている必要があります (つまり、中間証明書を必要とせずに信頼チェーンが存在する必要があります)。(1 つのサイト証明書を、インストール時に指定した明示的な VM 名で使用できます)。
 
-    b. The root certificate used by the Azure Resource Manager for your instance of Azure Stack. If it is not found, the root certificate will be retrieved.
+    b. Azure Stack のインスタンスの Azure Resource Manager で使用されるルート証明書。 これが見つからない場合は、ルート証明書が取得されます。
 
-5. Open a **new** elevated PowerShell console and change to the directory where you extracted the files. Use a new window to avoid problems that may arise from incorrect PowerShell modules already loaded on the system.
+5. **新しい**管理者特権の PowerShell コンソールを開き、ファイルを抽出したディレクトリに変更します。 新しいウィンドウを使用すると、システムに不適切な PowerShell モジュールが既に読み込まれている場合に発生する可能性のある問題を回避できます。
 
-6. If you have installed any versions of the AzureRm or AzureStack PowerShell modules other than 1.2.9 or 1.2.10, you will be prompted to remove them or the install will not proceed. This includes versions 1.3 or greater.
+6. 1.2.9 または 1.2.10 以外の任意のバージョンの AzureRm または AzureStack PowerShell モジュールをインストールした場合は、それらを削除するように求められるか、インストールが続行されません。 これには、バージョン 1.3 以上も含まれます。
 
-7. Run DeployMySqlProvider.ps1.
+7. DeployMySqlProvider.ps1 を実行します。
 
-This script performs these steps:
+このスクリプトでは次の手順が実行されます。
 
-* If necessary, download a compatible version of Azure PowerShell.
-* Download the MySQL connector binary (this can be provided offline).
-* Upload the certificate and all other artifacts to an Azure Stack storage account.
-* Publish gallery packages so that you can deploy MySQL databases through the gallery.
-* Deploy a virtual machine (VM) that hosts your resource provider.
-* Register a local DNS record that maps to your resource provider VM.
-* Register your resource provider with the local Azure Resource Manager.
+* 必要に応じて、Azure PowerShell の互換バージョンをダウンロードします。
+* MySQL コネクタ バイナリをダウンロードします (これはオフラインで提供できます)。
+* Azure Stack ストレージ アカウントに証明書とその他のアーティファクトをアップロードします。
+* ギャラリー パッケージを公開して、ギャラリーを通じて MySQL データベースをデプロイできるようにします。
+* リソース プロバイダーをホストする仮想マシン (VM) をデプロイします。
+* リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
+* リソース プロバイダーをローカル Azure Resource Manager に登録します。
 
-Either specify at least the required parameters on the command line, or, if you run without any parameters, you are prompted to enter them. 
+コマンド ラインに少なくとも必須パラメーターを指定するか、またはパラメーターを指定せずに実行した場合は、パラメーターを入力するように求められます。 
 
-Here's an example you can run from the PowerShell prompt (but change the account information and portal endpoints as needed):
+PowerShell プロンプトから実行できる例を次に示します (ただし、必要に応じてアカウント情報とポータル エンドポイントを変更してください)。
 
 
 ```
@@ -113,118 +113,114 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 <extracted file directory>\DeployMySQLProvider.ps1 -DirectoryTenantID $tenantID -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -ResourceGroupName "MySqlRG" -VmName "MySQLRP" -ArmEndpoint "https://adminmanagement.local.azurestack.external" -TenantArmEndpoint "https://management.local.azurestack.external" -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 parameters
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 パラメーター
 
-You can specify these parameters in the command line. If you do not, or any parameter validation fails, you are prompted to provide the required ones.
+これらのパラメーターをコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
-| Parameter Name | Description | Comment or Default Value |
+| パラメーター名 | Description | コメントまたは既定値 |
 | --- | --- | --- |
-| **DirectoryTenantID** | The Azure or ADFS Directory ID (guid) | _required_ |
-| **ArmEndpoint** | The Azure Stack Administrative Azure Resource Manager Endpoint | _required_ |
-| **TenantArmEndpoint** | The Azure Stack Tenant Azure Resource Manager Endpoint | _required_ |
-| **AzCredential** | Azure Stack Service Admin account credential (use the same account as you used for deploying Azure Stack) | _required_ |
-| **VMLocalCredential** | The local administrator account of the MySQL resource provider VM | _required_ |
-| **ResourceGroupName** | Resource Group for the items created by this script |  _required_ |
-| **VmName** | Name of the VM holding the resource provider |  _required_ |
-| **AcceptLicense** | Skips the prompt to accept the GPL License  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
-| **DependencyFilesLocalPath** | Path to a local share containing [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi). If you provide them, certificate files must be placed in this directory as well. | _optional_ |
-| **DefaultSSLCertificatePassword** | The password for the .pfx certificate | _required_ |
-| **MaxRetryCount** | Each operation is retried if there is a failure | 2 |
-| **RetryDuration** | Timeout between retries, in seconds | 120 |
-| **Uninstall** | Remove the resource provider | No |
-| **DebugMode** | Prevents automatic cleanup on failure | No |
+| **DirectoryTenantID** | Azure または ADFS ディレクトリ ID (guid) | _必須_ |
+| **ArmEndpoint** | Azure Stack 管理 Azure Resource Manager エンドポイント | _必須_ |
+| **TenantArmEndpoint** | Azure Stack テナント Azure Resource Manager エンドポイント | _必須_ |
+| **AzCredential** | Azure Stack Service 管理者アカウント資格情報 (Azure Stack の展開に使用した同じアカウントを使用) | _必須_ |
+| **VMLocalCredential** | MySQL リソース プロバイダー VM のローカル管理者アカウント | _必須_ |
+| **ResourceGroupName** | このスクリプトで作成された項目のリソース グループ |  _必須_ |
+| **VmName** | リソース プロバイダーを保持している VM の名前 |  _必須_ |
+| **AcceptLicense** | プロンプトをスキップして、GPL ライセンス (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) に同意します | |
+| **DependencyFilesLocalPath** | [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi) を格納するローカル共有のパス。 それらを提供する場合は、証明書ファイルもこのディレクトリに配置する必要があります。 | _省略可能_ |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
+| **MaxRetryCount** | 失敗した場合、各操作が再試行されます | 2 |
+| **RetryDuration** | 再試行間のタイムアウト (秒単位) | 120 |
+| **アンインストール** | リソース プロバイダーを削除します | いいえ |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ |
 
 
-Depending on the system performance and download speeds, installation may take as little as 20 minutes or as long as several hours. You must refresh the admin portal if the MySQLAdapter blade is not available.
+システムのパフォーマンスとダウンロード速度によっては、インストールに 20分しかかからない場合も、数時間にも及ぶことがあります。 MySQLAdapter ブレードを使用できない場合は、管理ポータルを更新する必要があります。
 
 > [!NOTE]
-> If the installation takes more than 90 minutes, it may fail and you will see a failure message on the screen and in the log file. The deployment is retried from the failing step. Systems that do not meet the recommended memory and core specifications may not be able to deploy the MySQL RP.
+> インストールに要する時間が 90 分を超える場合は、インストールが失敗している可能性があり、画面とログ ファイルにエラー メッセージが表示されることがあります。 失敗した手順からデプロイが再試行されます。 推奨されるメモリとコア仕様を満たしていないシステムは、MySQL RP をデプロイできないことがあります。
 
 
-## <a name="provide-capacity-by-connecting-to-a-mysql-hosting-server"></a>Provide capacity by connecting to a MySQL hosting server
+## <a name="provide-capacity-by-connecting-to-a-mysql-hosting-server"></a>MySQL ホスティング サーバに接続して容量を提供する
 
-1. Sign in to the Azure Stack portal as a service admin.
+1. Azure Stack ポータルにサービス管理者としてサインインします。
 
-2. Click **Resource Providers** &gt; **MySQLAdapter** &gt; **Hosting Servers** &gt; **+Add**.
+2. **[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[Hosting Servers] \(ホスティング サーバー)** &gt; **[+追加]** をクリックします。
 
-    The **MySQL Hosting Servers** blade is where you can connect the MySQL Server Resource Provider to actual instances of MySQL Server that serve as the resource provider’s backend.
+    **[MySQL Hosting Servers] \(MySQL ホスティング サーバー)** ブレードでは、リソース プロバイダーのバックエンドとして機能する MySQL サーバーの実際のインスタンスに MySQL サーバー リソース プロバイダーを接続できます。
 
-    ![Hosting Servers](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+    ![ホスティング サーバー](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
-3. Fill the form with the connection details of your MySQL Server instance. Provide the fully qualified domain name (FQDN) or a valid IPv4 address, and not the short VM name. This installation no longer provides a default MySQL instance. The size provided helps the resource provider manage the database capacity. It should be close to the physical capacity of the database server.
+3. MySQL サーバー インスタンスの接続詳細をフォームに入力します。 短い VM 名ではなく、完全修飾ドメイン名 (FQDN) または有効な IPv4 アドレスを指定します。 このインストールでは、既定の MySQL インスタンスが提供されなくなりました。 指定したサイズは、リソース プロバイダーがデータベース容量を管理するのに役立ちます。 それはデータベース サーバーの物理容量に近い値にする必要があります。
 
     > [!NOTE]
-    > As long as the MySQL instance can be accessed by the tenant and admin Azure Resource Manager, it can be placed under control of the resource provider. The MySQL instance __must__ be allocated exclusively to the RP.
+    > MySQL インスタンスがテナントと管理者の Azure Resource Manager によってアクセスできる限り、リソース プロバイダーの管理下に置くことができます。 MySQL インスタンスは RP に排他的に割り当てられている__必要があります__。
 
-4. As you add servers, you must assign them to a new or existing SKU to allow differentiation of service offerings. For example, you could have an enterprise instance providing database capacity and automatic backup, reserve high-performance servers for individual departments, etc. The SKU name should reflect the properties so that tenants can place their databases appropriately and all hosting servers in a SKU should have the same capabilities.
-
-    ![Create a MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+4. サーバーを追加する際に、サービス内容を区別できるように新規または既存の SKU に割り当てる必要があります。 たとえば、データベース容量と自動バックアップを提供するエンタープライズ インスタンスを使用したり、個々の部門用に高パフォーマンス サーバーを予約したりできます。テナントがデータベースを適切に配置でき、SKU 内のすべてのホスティング サーバーが同じ機能を持つように、SKU 名はプロパティを反映する必要があります。
 
 
 >[!NOTE]
-SKUs can take up to an hour to be visible in the portal. You cannot create a database until the SKU is created.
+SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU が作成されるまで、データベースを作成できません。
 
 
-## <a name="create-your-first-mysql-database-to-test-your-deployment"></a>Create your first MySQL database to test your deployment
+## <a name="create-your-first-mysql-database-to-test-your-deployment"></a>最初の MySQL データベースを作成してデプロイをテストする
 
 
-1. Sign in to the Azure Stack portal as service admin.
+1. Azure Stack ポータルにサービス管理者としてサインインします。
 
-2. Click the **+ New** button &gt; **Data + Storage** &gt; **MySQL Database (preview)**.
+2. **[新規]** ボタン &gt; **[データ + ストレージ]** &gt; **[MySQL Database (preview)] \(MySQL データベース (プレビュー))** をクリックします。
 
-3. Fill in the form with the database details.
+3. フォームにデータベースの詳細を入力します。
 
-    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![テスト MySQL データベースの作成](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
 
-4. Select a SKU.
+4. SKU を選択します。
 
-    ![Select a SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+    ![SKU の選択](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
 
-5. Create a login setting. The login setting can be reused or a new one created. This contains the user name and password for the database.
+5. ログイン設定を作成します。 ログイン設定は再利用するか、新しい設定を作成できます。 これには、データベースのユーザー名とパスワードが含まれます。
 
-    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+    接続文字列には、実際のデータベース サーバー名が含まれます。 それをポータルからコピーします。
 
-    The connections string includes the real database server name. Copy it from the portal.
-
-    ![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+    ![MySQL データベースの接続文字列の取得](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
 
 > [!NOTE]
-> The length of the user names cannot exceed 32 characters with MySQL 5.7 or 16 characters in earlier editions. This is a limitation of the MySQL implementations.
+> ユーザー名の長さは MySQL 5.7 では 32文字、またはそれ以前のエディションでは 16文字を超えることはできません。 これは MySQL 実装の制限です。
 
 
-## <a name="add-capacity"></a>Add capacity
+## <a name="add-capacity"></a>容量を追加する
 
-Add capacity by adding additional MySQL servers in the Azure Stack portal. If you wish to use another instance of MySQL, click **Resource Providers** &gt; **MySQLAdapter** &gt; **MySQL Hosting Servers** &gt; **+Add**.
-
-
-## <a name="making-mysql-databases-available-to-tenants"></a>Making MySQL databases available to tenants
-Create plans and offers to make MySQL databases available for tenants. Add the Microsoft.MySqlAdapter service, add a quota, etc.
-
-![Create plans and offers to include databases](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
-
-## <a name="removing-the-mysql-adapter-resource-provider"></a>Removing the MySQL Adapter Resource Provider
-
-To remove the resource provider, it is essential to first remove any dependencies.
-
-1. Ensure you have the original deployment package that you downloaded for this version of the Resource Provider.
-
-2. All tenant databases must be deleted from the resource provider (this will not delete the data). This should be performed by the tenants themselves.
-
-3. Tenants must unregister from the namespace.
-
-4. Administrator must delete the hosting servers from the MySQL Adapter
-
-5. Administrator must delete any plans that reference the MySQL Adapter.
-
-6. Administrator must delete any quotas associated to the MySQL Adapter.
-
-7. Rerun the deployment script with the -Uninstall parameter, Azure Resource Manager endpoints, DirectoryTenantID, and credentials for the service administrator account.
+容量を追加するには、Azure Stack ポータルに追加の MySQL サーバを追加します。 MySQL の別のインスタンスを使用する場合は、**[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[MySQL Hosting Servers] \(MySQL ホスティング サーバー)** &gt; **[+追加]** をクリックします。
 
 
+## <a name="making-mysql-databases-available-to-tenants"></a>MySQL データベースをテナントで使用できるようにする
+プランとサービスを作成して、MySQL データベースをテナントで使用できるようにします。 Microsoft.MySqlAdapter サービスを追加したり、クォータを追加したりします。
+
+![データベースに含めるプランとサービスの作成](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
+
+## <a name="removing-the-mysql-adapter-resource-provider"></a>MySQL アダプター リソース プロバイダーの削除
+
+リソース プロバイダーを削除するには、最初にすべての依存関係を削除する必要があります。
+
+1. このバージョンのリソース プロバイダーに対してダウンロードした元のデプロイ パッケージがあることを確認します。
+
+2. リソース プロバイダーからすべてのテナント データベースを削除する必要があります (データは削除されません)。 これは、テナント自体で実行する必要があります。
+
+3. テナントを名前空間から登録解除する必要があります。
+
+4. 管理者は、MySQL アダプターからホスティング サーバーを削除する必要があります
+
+5. 管理者は、MySQL アダプターを参照するすべてのプランを削除する必要があります。
+
+6. 管理者は、MySQL アダプターに関連付けられているすべてのクォータを削除する必要があります。
+
+7. -Uninstall パラメーター、Azure Resource Manager エンドポイント、DirectoryTenantID、サービス管理者アカウントの資格情報を指定してデプロイ スクリプトを再実行します。
 
 
-## <a name="next-steps"></a>Next steps
 
 
-Try other [PaaS services](azure-stack-tools-paas-services.md) like the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [App Services resource provider](azure-stack-app-service-overview.md).
+## <a name="next-steps"></a>次のステップ
+
+
+[SQL Server リソース プロバイダー](azure-stack-sql-resource-provider-deploy.md)や [App Services リソース プロバイダー](azure-stack-app-service-overview.md)のような他の [PaaS サービス](azure-stack-tools-paas-services.md)を試します。
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>チュートリアル: Cerner Central を構成して自動ユーザー プロビジョニングに対応する
 
 このチュートリアルでは、Azure AD から Cerner Central のユーザー リストにユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するために Cerner Central と Azure AD で実行する必要がある手順について説明します。 
@@ -136,4 +134,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次のステップ
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)
-

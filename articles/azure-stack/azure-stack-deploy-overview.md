@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Development Kit deployment quickstart | Microsoft Docs
-description: Learn how to deploy the Azure Stack Development Kit
+title: "Azure Stack 開発キット デプロイ クイックスタート | Microsoft Docs"
+description: "Azure Stack 開発キットのデプロイについて説明します"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,30 +11,30 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 81b6282addd1e88e4146367c4dd9a2ee7b8c84bf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack Development Kit deployment quickstart
+# <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack 開発キット デプロイ クイックスタート
 
-The [Azure Stack Development Kit](azure-stack-poc.md) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you’ll need to prepare the environment hardware and run some scripts (this will take several hours). After that, you can sign in to the admin and tenant portals to manage Azure Stack and test offers. 
+*適用対象: Azure Stack 開発キット*
 
-1. [**Plan your hardware, software, and network**](azure-stack-deploy.md). The computer that hosts the development kit (the development kit host) must meet hardware, software, and network requirements. You must also choose between using Azure Active Directory or Active Directory Federation Services. Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly. 
+[Azure Stack 開発キット](azure-stack-poc.md)は、Azure Stack の機能やサービスを評価したり、実演したりするためにデプロイできるテスト/開発環境です。 この環境を立ち上げるには、環境ハードウェアを用意し、いくつかのスクリプトを実行する (これには数時間かかります) 必要があります。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack を管理したり、プランをテストしたりできます。 
 
-2. [**Download and extract the deployment package**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). You can download the deployment package to the development kit host or to a another computer. The extracted deployment files take up 60 GB of free disk space, so using another computer can help reduce the hardware requirements for the development kit host.
+1. [**ハードウェア、ソフトウェア、ネットワークを計画します**](azure-stack-deploy.md)。 開発キットをホストするコンピューター (開発キット ホスト) は、ハードウェア、ソフトウェア、ネットワークの要件を満たす必要があります。 Azure Active Directory か Active Directory フェデレーション サービス (AD FS) の使用を選択する必要もあります。 インストール プロセスが滞りなく進行するように、デプロイの開始前に以上の前提条件を必ず満たしてください。 
 
-3. [**Prepare the development kit host**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) by using the installer. After this step, the development kit host will boot to the Cloudbuilder.vhdx (a virtual hard drive that includes a bootable operating system and the Azure Stack install files).
+2. [**デプロイ パッケージをダウンロードし、抽出します**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit)。 開発キット ホストや別のコンピューターにデプロイ パッケージをダウンロードできます。 抽出されたデプロイ ファイルは 60 GB の空きディスク容量を占めます。そのため、別のコンピューターを利用することで、開発キット ホストのハードウェア要件を緩和できます。
 
-4. [**Deploy the development kit**](azure-stack-run-powershell-script.md#deploy-the-development-kit) on the development kit host.
+3. インストーラーを利用して[**開発キット ホスト**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host)を用意します。 この手順の後、開発キット ホストは Cloudbuilder.vhdx (起動可能オペレーティング システムと Azure Stack インストール ファイルを含む仮想ハード ドライブ) を起動します。
 
-5. If your Azure Stack deployment uses Azure Active Directory, you must [register Azure Stack with Azure](azure-stack-register.md) so that you can [download Azure marketplace items](azure-stack-download-azure-marketplace-item.md) to Azure Stack.
+4. 開発キット ホストで[**開発キットをデプロイします**](azure-stack-run-powershell-script.md#deploy-the-development-kit)。
 
-After completing these steps, you’ll have a development kit environment with both administrator and tenant portals. Next, you can [connect and sign in](azure-stack-connect-azure-stack.md) to the portal. You can then start deploying resource providers, creating [offers](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions), and populating the Azure Stack [marketplace](azure-stack-marketplace.md).
+5. Azure Stack 開発で Azure Active Directory を利用する場合、Azure Stack に [Azure Marketplace アイテムをダウンロード](azure-stack-download-azure-marketplace-item.md)できるように [Azure に Azure Stack を登録する](azure-stack-register.md)必要があります。
 
+これらの手順を完了すると、管理者ポータルとユーザー ポータルの両方で開発キット環境が提供されます。 これでポータルに[接続し、サインイン](azure-stack-connect-azure-stack.md)できます。 サインインしたら、リソース プロバイダーのデプロイ、[プラン](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions)の作成、Azure Stack [Marketplace](azure-stack-marketplace.md) のデータ入力を開始できます。

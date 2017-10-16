@@ -10,16 +10,14 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 08/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成
-Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、拡張するための管理されたサービスです。 このクイックスタートでは、Azure Portal を使用して Azure Database for MySQL サーバーを作成する方法を説明します。所要時間は約 5 分です。  
+Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、スケーリングするための管理されたサービスです。 このクイックスタートでは、Azure Portal を使用して 5 分で Azure Database for MySQL サーバーを作成する方法を説明します。  
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
@@ -43,14 +41,14 @@ Azure Database for MySQL サーバーを作成するには、次の手順に従�
     ---|---|---
     サーバー名 | myserver4demo | Azure Database for MySQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *mysql.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
     [サブスクリプション] | 該当するサブスクリプション | サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
-    リソース グループ | myresourcegroup | 新しいまたは既存のリソース グループの名前。
+    リソース グループ | myresourcegroup | 新規または既存のリソース グループの名前。
     サーバー管理者のログイン | myadmin | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     パスワード | *<任意>* | サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 ～ 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     パスワードの確認 | *<任意>*| 確認入力する管理者アカウントのパスワード。
     場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所。
     バージョン | "*最新バージョン*"| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
     [価格レベル]  | **Basic**、**50 コンピューティング ユニット**、**50 GB** | 新しいデータベースのサービス レベルとパフォーマンス レベル。 上部のタブで **Basic レベル**を選択します。 **[コンピューティング ユニット]** スライダーの左の端を選択して、このクイックスタートで使用可能な最小量に値を調整します。 **[OK]** を選択して、価格レベルの選択を保存します。 詳細については、次のスクリーンショットを参照してください。
-    [ダッシュボードにピン留めする] | ○ | Azure Portal のフロント ダッシュボード ページでサーバーを追跡しやすくなります。
+    [ダッシュボードにピン留めする] | ○ | Azure Portal のフロント ダッシュボード ページでサーバーを追跡しやすくします。
 
     > [!IMPORTANT]
     > ここで指定するサーバー管理者のサインイン名とパスワードは、このクイックスタートの後半でサーバーとそのデータベースにサインインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。
@@ -229,5 +227,4 @@ GUI ツールである MySQL Workbench を使用してサーバーに接続す�
 
 > [!div class="nextstepaction"]
 > [最初の Azure Database for MySQL データベースを設計する](./tutorial-design-database-using-portal.md)
-
 

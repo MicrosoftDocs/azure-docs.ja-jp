@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 350264be2b885720359b72660397d24dc4d03e11
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 61273e472dd0d0727df40984ad277aaf4c244611
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vpn-gateway-documentation"></a>VPN Gateway のドキュメント
 
@@ -166,6 +165,5 @@ ms.lasthandoff: 06/02/2017
         </div>
     </li>
 </ul>
-
 
 

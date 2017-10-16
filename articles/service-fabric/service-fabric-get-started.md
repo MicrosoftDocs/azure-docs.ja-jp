@@ -1,6 +1,6 @@
 ---
-title: "Azure マイクロサービスの開発環境のセットアップ | Microsoft Docs"
-description: "ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを終えれば、アプリケーションを構築する準備は完了です。"
+title: "Azure マイクロサービスの Windows 開発環境のセットアップ | Microsoft Docs"
+description: "ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,16 +12,15 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2017
+ms.date: 09/25/2017
 ms.author: ryanwi, mikhegn
+ms.openlocfilehash: 0691f26168feacf290b732afd7dfd680a2537179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 10a5871d64524ff8adeb6ee3041b348ef2b1b32e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="prepare-your-development-environment"></a>開発環境を準備する
+# <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/30/2017
 > 
 > 
 
- 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、およびツールをインストールしてください。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
+ Windows 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、およびツールをインストールしてください。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 ### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
@@ -63,8 +62,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK 2.7.198
-* Service Fabric ランタイム 5.7.198
+* Service Fabric SDK 2.8.211
+* Service Fabric ランタイム 6.0.211
 * Service Fabric Tools for Visual Studio 2015 1.7.50721
 * Visual Studio 2017 Update 3 には、Service Fabric Tools for Visual Studio 1.7.20170817 が含まれています
 * Visual Studio 2017 Update 4 Preview 1 (15.4.0 Preview 1.0) には、Service Fabric Tools for Visual Studio 1.7.20170721 が含まれています
@@ -95,4 +94,3 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
 [core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI のリンク"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
-

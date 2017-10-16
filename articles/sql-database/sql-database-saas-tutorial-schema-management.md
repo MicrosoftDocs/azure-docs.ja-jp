@@ -5,7 +5,7 @@ keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,14 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
+ms.openlocfilehash: 461da2528d515072bf04a82bb8ba64a853443f98
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションでの複数テナントのスキーマの管理
+# <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します
 
 [最初の Wingtip SaaS チュートリアル](sql-database-saas-tutorial.md)では、アプリがテナント データベースをどのようにプロビジョニングし、カタログに登録するかを示します。 他のアプリケーション同様、Wingtip SaaS アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更には、新しいまたは変更されたスキーマ、新しいまたは変更された参照データ、およびアプリの最適なパフォーマンスを得るための定期的なデータベース メンテナンス タスクなどがあります。 SaaS アプリケーションにより、これらの変更は、大容量になる可能性のあるテナント データベース全体に体系的な方法でデプロイされる必要があります。 これらの変更が将来のテナント データベースに含まれるようにするには、プロビジョニング プロセスに変更を組み込む必要があります。
 
@@ -136,4 +135,3 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 * [Wingtip SaaS アプリケーションのデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
 * [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)
-

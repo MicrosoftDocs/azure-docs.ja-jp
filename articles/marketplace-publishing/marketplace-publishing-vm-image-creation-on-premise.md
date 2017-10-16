@@ -14,12 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
 Azure 仮想ハード ディスク (VHD) は、リモート デスクトップ プロトコルを使用してクラウドで直接作成することを強くお勧めします。 ただし、必要な場合は、VHD をダウンロードして、オンプレミスのインフラストラクチャを使用して開発できます。  
@@ -98,7 +97,7 @@ VHD は、米国内のリージョンのストレージ アカウントにアッ
 3. ストレージ アカウント名を入力し、場所を選択します。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
-4. **[作成]**をクリックします。
+4. **Create** をクリックしてください。
 5. 作成したストレージ アカウント用のブレードが開きます。 開かない場合は、**[参照]**  >  **[ストレージ アカウント]** の順に選択します。 [ストレージ アカウント] ブレードで、先ほど作成したストレージ アカウントを選択します。
 6. **[コンテナー]**を選択します。
    
@@ -149,5 +148,4 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 ## <a name="see-also"></a>関連項目
 * [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 * [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
-
 

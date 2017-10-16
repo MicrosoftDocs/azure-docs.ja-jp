@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
+ms.openlocfilehash: 44546b423cd7f3a49d3699aa39f2437a42de86a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d136b71c9587d4035009a2ef2296fd93f9e984fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 Azure には、Microsoft Azure で SQL Server ワークロードをホストするためのオプションが 2 つあります。
@@ -66,7 +65,6 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 |  | 高可用性、障害復旧、アップグレードが組み込まれたデータベースを必要とするチーム。 |SQL Server の高可用性、障害復旧、修正プログラムの適用を構成して管理できるチーム。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 | |
 |  | 基盤のオペレーティング システムと構成設定の管理を回避したいチーム。 |完全な管理者アクセス権がある、カスタマイズされた環境を必要としている。 | |
 |  | 4 TB までのデータベース、またはスケールアウト パターンを使用して [水平または垂直方向にパーティション分割](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) できる、より大きなデータベース。 |記憶域が 64 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 | |
-|  | [サービスとしてのソフトウェア (SaaS) アプリケーションの構築](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 |エンタープライズ アプリケーションとハイブリッド アプリケーションの移行と構築。 | |
 |  | | |
 | **リソース:** |基盤となるインフラストラクチャの構成と管理のために IT リソースを使用するつもりがなく、アプリケーション層に的を絞りたい。 |構成と管理のための IT リソースが存在する。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 |
 | **総保有コスト:** |ハードウェアのコストを削減し、管理コストを削減します。 |ハードウェアのコストを削減します。 |
@@ -146,5 +144,4 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 * SQL Database の使用を開始するには、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
 * 「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 * Azure VM での SQL Server の基本的な使い方については、 [Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) に関する記事を参照してください。
-
 

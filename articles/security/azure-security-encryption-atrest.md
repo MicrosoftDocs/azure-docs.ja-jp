@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: ae612cbfb889181a18a7b6071ad80e8cc8ba336c
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 6af94c795ec5153013f4a9c5c937beed08f44e7a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest

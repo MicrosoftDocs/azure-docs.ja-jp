@@ -14,14 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/14/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 14bfdd8554b075b0c19a75bb572f1214a45ff471
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: c57684133ac7e5dfd2cc273db0e1ceca78679178
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight で JDBC ドライバーを使用して Hive のクエリを実行する
 
@@ -46,7 +45,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 
 ## <a name="jdbc-connection-string"></a>JDBC 接続文字列
 
-Azure の HDInsight クラスターに対する JDBC 接続は 443 を使用して行われ、トラフィックは SSL を使用してセキュリティで保護されます。 クラスターが背後に存在するパブリックのゲートウェイは HiveServer2 が実際にリッスンするポートにトラフィックをリダイレクトします。 接続文字列の例を次に示します。
+Azure の HDInsight クラスターに対する JDBC 接続は 443 を使用して行われ、トラフィックは SSL を使用してセキュリティで保護されます。 クラスターが背後に存在するパブリックのゲートウェイは HiveServer2 が実際にリッスンするポートにトラフィックをリダイレクトします。 次の接続文字列は、HDInsight に使用する形式を示しています。
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -68,16 +67,23 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 1. HDInsight クラスターから Hive の JDBC ドライバーをコピーします。
 
-    * **Linux ベースの HDInsight** の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
+    * **Linux ベースの HDInsight** クラスター バージョン 3.5 または 3.6 の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
 
         1. ファイルを含むディレクトリを作成します。 たとえば、「 `mkdir hivedriver`」のように入力します。
 
         2. コマンドラインで次のコマンドを使用して、HDInsight クラスターからファイルをコピーします。
 
             ```bash
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-jdbc*standalone.jar .
             scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
             scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
+            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
             ```
 
             `USERNAME` をクラスターの SSH ユーザー アカウント名に置き換えます。 `CLUSTERNAME` を HDInsight クラスター名に置き換えます。
@@ -88,11 +94,11 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
             ![[リモート デスクトップ] アイコン](./media/hdinsight-connect-hive-jdbc-driver/remotedesktopicon.png)
 
-        2. [リモート デスクトップ] ブレードで、**[接続]** を使用してクラスターに接続します。 [リモート デスクトップ] が有効でない場合、フォームを使用してユーザー名とパスワードを入力し、**[有効にする]** を選択して、クラスターの [リモート デスクトップ] を有効にします。
+        2. [リモート デスクトップ] セクションで、**[接続]** を使用してクラスターに接続します。 [リモート デスクトップ] が有効でない場合、フォームを使用してユーザー名とパスワードを入力し、**[有効にする]** を選択して、クラスターの [リモート デスクトップ] を有効にします。
 
-            ![[リモート デスクトップ] ブレード](./media/hdinsight-connect-hive-jdbc-driver/remotedesktopblade.png)
+            ![[リモート デスクトップ] セクション](./media/hdinsight-connect-hive-jdbc-driver/remotedesktopblade.png)
 
-            **[接続]** を選択した後に、.rdp ファイルがダウンロードされます。 このファイルを使用して、リモート デスクトップ クライアントを起動します。 メッセージが表示されたら、リモート デスクトップのアクセス用に入力したユーザー名とパスワードを使用します。
+            **[接続]** を選択すると、.RDP ファイルがダウンロードされます。 このファイルを使用して、リモート デスクトップ クライアントを起動します。 メッセージが表示されたら、リモート デスクトップのアクセス用に入力したユーザー名とパスワードを使用します。
 
         3. 接続されたら、次のファイルをリモート デスクトップ セッションからローカル コンピューターにコピーします。 `hivedriver` という名前のローカル ディレクトリに置きます。
 
@@ -134,7 +140,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Driver**: ドロップダウンを使用して、**[Hive]** ドライバーを選択します
 
-    * **URL**: jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
+    * **URL**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -144,7 +150,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
  ![[Add Alias] ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/addalias.png)
 
-    **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight]** ダイアログが表示されたら、**[Connect]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。
+    **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight]** ダイアログが表示されたら、**[Connect]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
 
     **[Add Alias\(エイリアスの追加\)]** ダイアログの下部にある **[OK]** ボタンを使用して、接続エイリアスを保存します。
 
@@ -166,7 +172,7 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>SQL 接続を開こうとしたときに、予期しないエラーが発生した
 
-**症状**: バージョン 3.3 または 3.4 の HDInsight クラスターに接続するときに、予期しないエラーが発生したというエラーが表示される場合があります。 このエラーのスタック トレースは、次の行で始まります。
+**症状**: バージョン 3.3 以上の HDInsight クラスターに接続するときに、予期しないエラーが発生したというエラーを受け取る場合があります。 このエラーのスタック トレースは、次の行で始まります。
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -174,7 +180,7 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**原因**: このエラーの原因は、SQuirreL で使用される commons-codec.jar ファイルと、Hive JDBC コンポーネントで必要な commons-codec.jar ファイルのバージョンの不一致です。
+**原因**: このエラーは、SQuirreL に付属する commons-codec.jar ファイルのバージョンが古いために発生します。
 
 **解決策**: このエラーを解決するには、次の手順を使用します。
 
@@ -190,8 +196,13 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 これで、JDBC を使用して Hive を操作する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
+* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](./hdinsight-connect-hive-power-bi.md)。
+* [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)。
+* [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](./hdinsight-connect-excel-hive-odbc-driver.md)。
+* [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
+* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
-

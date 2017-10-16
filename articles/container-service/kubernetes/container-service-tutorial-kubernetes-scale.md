@@ -14,17 +14,15 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
+ms.openlocfilehash: bb528c424bc71f0309439e741c30e16d0d13c7d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: c851e40cd03e98e04f10973321c10525c2d8d8e9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
 
 ここまでチュートリアルに従って進めてきた場合は、Azure Container Service で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。 
@@ -40,9 +38,9 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 
 
-このチュートリアルでは、少なくとも実行中のアプリケーションがある Kubernetes クラスターが必要です。
+これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
@@ -160,5 +158,4 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 > [!div class="nextstepaction"]
 > [Kubernetes でアプリケーションを更新する](./container-service-tutorial-kubernetes-app-update.md)
-
 

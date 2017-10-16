@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 53c142217c67465d29fa413f4edb4f96fcb4c6cc
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: d90b8c41d130526607adb035c5c6d4c02c5f7c4f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
@@ -156,7 +156,7 @@ Service Fabric への重要なアプローチは既存のコードを再利用�
 
 ![マイクロサービスへの移行][Image3]
 
-重要なのは、**どのステージで開始しても終了してもよい**ということです。次のステージに進むことは強制されません。 以下では各ステージの例を示します。
+重要なのでもう一度強調しておくと、**どのステージから始めても、どのステージで終えてもかまいません**。 次のステージに進むことは強制されません。 以下では各ステージの例を示します。
 
 **リフト アンド シフト** - 多くの企業が、2 つの理由で既存のモノリシック アプリケーションをコンテナーにリフト アンド シフトしています。
 

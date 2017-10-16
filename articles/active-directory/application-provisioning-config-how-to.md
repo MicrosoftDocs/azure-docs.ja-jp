@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: d24031955f57794d6796ea37d8d1b0984f066286
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
+ms.openlocfilehash: 2e38fcb30ea7632339a3ba8815a536872cfcc69e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法
 
 "*ユーザー アカウントのプロビジョニング*" とは、アプリケーションのローカル ユーザー プロファイル ストアのユーザー アカウント レコードを作成、更新、無効化することです。 ほとんどのクラウドおよび SaaS アプリケーションでは、ユーザー ロールとアクセス許可を独自のローカル ユーザー プロファイル ストアに格納しています。このようにローカル ストアにユーザー レコードを格納することは、シングル サインオンとアクセスの実行のために "*必須*" となっています。
@@ -54,5 +52,4 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
-
 

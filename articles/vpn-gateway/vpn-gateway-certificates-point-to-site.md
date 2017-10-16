@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
+ms.openlocfilehash: be2e8fe12dee88ccf81faaa114056a29e03881bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Windows 10 での PowerShell を使用したポイント対サイト接続の証明書の生成とエクスポート
 
@@ -130,11 +129,11 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
 ## <a name="install"></a>エクスポートしたクライアント証明書のインストール
 
-[!INCLUDE [Install client certificate](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
+クライアント証明書をインストールするには、[ポイント対サイト接続用のクライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-引き続きポイント対サイト構成を使用します。 
+引き続きポイント対サイト構成を使用します。
 
-* **Resource Manager** デプロイメント モデルの手順については、[VNet へのポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関する記事を参照してください。 
+* **Resource Manager** デプロイメント モデルの手順については、[ネイティブ Azure 証明書認証を使用した P2S の構成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。 
 * **クラシック** デプロイメント モデルの手順については、[VNet へのポイント対サイト VPN 接続の構成 (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md) に関する記事を参照してください。

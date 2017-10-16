@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
 ## <a name="overview"></a>Overview
@@ -199,5 +198,4 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 ## <a name="see-also"></a>関連項目
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
-
 

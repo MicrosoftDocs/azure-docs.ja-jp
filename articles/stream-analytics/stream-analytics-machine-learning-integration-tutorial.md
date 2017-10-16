@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
 この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
 
@@ -162,7 +160,7 @@ ms.lasthandoff: 08/29/2017
 
     ![新しいジョブ入力の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-4. ページの下部にある **[Create]**」を参照してください。
+4. **Create** をクリックしてください。
 
 ### <a name="configure-the-job-output"></a>ジョブの出力を構成する
 このジョブは、入力を取得したのと同じ BLOB ストレージに結果を送信します。 
@@ -181,7 +179,7 @@ ms.lasthandoff: 08/29/2017
 
    ![新しいジョブ出力の設定](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-4. ページの下部にある **[Create]**」を参照してください。   
+4. **Create** をクリックしてください。   
 
 
 ### <a name="add-the-machine-learning-function"></a>Machine Learning 関数を追加する 
@@ -206,7 +204,7 @@ ms.lasthandoff: 08/29/2017
   
     ![Machine Learning 関数を Stream Analytics ジョブに追加するための設定](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-5. ページの下部にある **[Create]**」を参照してください。
+5. **Create** をクリックしてください。
 
 ### <a name="create-a-query-to-transform-the-data"></a>データを変換するためのクエリを作成する
 
@@ -277,7 +275,6 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 
 
 

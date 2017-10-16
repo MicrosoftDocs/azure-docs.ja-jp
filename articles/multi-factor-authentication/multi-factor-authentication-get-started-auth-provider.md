@@ -15,14 +15,12 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: ed14a5a762bab20a1ccde699504dd21f25009b52
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Azure Multi-Factor Auth プロバイダーの概要
 Azure Active Directory を持つグローバル管理者と Office 365 ユーザーは、既定で 2 段階認証を使用できます。 ただし、[高度な機能](multi-factor-authentication-whats-next.md)が必要な場合は、通常版の Multi-Factor Authentication (MFA) をご購入ください。
 
@@ -88,4 +86,3 @@ MFA プロバイダーが Azure AD テナントにリンクされていない場
 [Multi-Factor Authentication SDK をダウンロードする](multi-factor-authentication-sdk.md)
 
 [Multi-Factor Authentication の設定を構成する](multi-factor-authentication-whats-next.md)
-

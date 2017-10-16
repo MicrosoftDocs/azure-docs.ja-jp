@@ -14,13 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/05/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: a5f222e5b11e05286152a9f1cc55d2c3fc27a9dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C カスタム ポリシー パブリック プレビューのリリース ノート
 カスタム ポリシー機能セットは、すべての Azure Active Directory B2C (Azure AD B2C) のユーザーがパブリック プレビューで評価できるようになりました。 この機能セットは、最も複雑な ID ソリューションを構築する上級 ID 開発者を対象としています。  
@@ -65,4 +63,3 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="next-steps"></a>次のステップ
 [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)
-

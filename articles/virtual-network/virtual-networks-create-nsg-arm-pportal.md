@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループの作成
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 02/28/2017
 上記のシナリオのように **NSG-FrontEnd** という名前の NSG を作成するには、次の手順を実行します。
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. **[参照] > ** > **[ネットワーク セキュリティ グループ]** をクリックします。
+2. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
    
     ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
 3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
@@ -54,7 +53,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="create-rules-in-an-existing-nsg"></a>既存の NSG に規則を作成する
 Azure ポータルから既存の NSG に規則を作成するには、次の手順を実行します。
 
-1. **[参照] > ** > **[ネットワーク セキュリティ グループ]** をクリックします。
+1. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
 2. NSG の一覧で、 **NSG-FrontEnd** > **[受信セキュリティ規則]**
    
     ![Azure ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
@@ -95,5 +94,4 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 ## <a name="next-steps"></a>次のステップ
 * [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
-
 

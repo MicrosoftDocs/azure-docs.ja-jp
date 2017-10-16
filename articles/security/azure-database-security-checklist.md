@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 5047635555a6b4592c0714677c2b942e50bad344
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
 Azure データベースには、セキュリティ向上を促進するために、アクセスを制限および制御するために使用できるセキュリティ制御が多数組み込まれています。
@@ -65,5 +63,4 @@ Azure データベースは、多くの組織や規制のコンプライアン�
 - サーバーまたはデータベースの[ファイアウォール規則](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure)をセットアップする
 - [暗号化](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/sql-server-encryption)でデータを保護する
 - [SQL Database の監査](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing)を有効にする
-
 

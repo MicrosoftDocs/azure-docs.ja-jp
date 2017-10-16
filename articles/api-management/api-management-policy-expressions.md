@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 ポリシー式の構文は C# 6.0 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。  
@@ -173,7 +172,7 @@ ms.lasthandoff: 08/31/2017
   
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> Deployment<br /><br /> LastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId: Guid<br /><br /> Response<br /><br /> Subscription<br /><br /> Tracing: ブール値<br /><br /> User<br /><br /> Variables:IReadOnlyDictionary<文字列, オブジェクト><br /><br /> void Trace(message: 文字列)|  
+|context|Api: IApi<br /><br /> デプロイ<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> RequestId: Guid<br /><br /> 応答<br /><br /> [サブスクリプション]<br /><br /> トレース: bool<br /><br /> ユーザー<br /><br /> 変数: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  
@@ -203,4 +202,3 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-

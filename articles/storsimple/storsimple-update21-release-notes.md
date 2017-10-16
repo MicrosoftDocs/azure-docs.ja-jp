@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c9bdd0862397dcac0a48375476002b42e6a8e331
-
-
+ms.openlocfilehash: 3793df974175a5c41b83800f73748c52c8223572
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 シリーズ Update 2.2 リリース ノート
 ## <a name="overview"></a>概要
@@ -95,10 +95,4 @@ Update 2.2 では、主に次の点が強化されています。
 
 ## <a name="next-step"></a>次のステップ
 StorSimple デバイスに [Update 2.2 をインストールする](storsimple-install-update-21.md) 方法を確認します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

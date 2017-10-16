@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 72cd94ba16cb4fe234c898b093c7de6a08f71239
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 095411a7fc854f4dce11921adb0f57c5389a8e13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 > [!div class="op_single_selector"]
@@ -159,5 +158,4 @@ Azure Active Directory アプリが更新され、*ディレクトリ データ�
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
-
 

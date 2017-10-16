@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: fcc3743028e369fdc42b71887d49fb41fba2c0dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.openlocfilehash: f17f3084138d667b2584142ed90ecc8fc1586189
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -61,7 +59,7 @@ SDK で **[Hostname]** (ホスト名) または **[Namespace]** (名前空間) �
 
 IoT Hub から公開されている、Event Hub 互換のエンドポインで使用できる SDK と統合には、次のリストの項目が含まれます。
 
-* [Event Hubs の Java クライアント](https://github.com/hdinsight/eventhubs-client)。
+* [Event Hubs の Java クライアント](https://github.com/Azure/azure-event-hubs-java)。
 * [Apache Storm のスパウト](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md)。 [スパウトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) は GitHub で確認できます。
 * [Apache Spark 統合](../hdinsight/hdinsight-apache-spark-eventhub-streaming.md)。
 
@@ -86,4 +84,3 @@ IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポ
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
 [lnk-amqp]: https://www.amqp.org/
-

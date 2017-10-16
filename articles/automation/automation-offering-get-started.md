@@ -1,9 +1,9 @@
---- 
+---
 title: "Azure Automation の概要 | Microsoft Docs"
 description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、設計と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -12,16 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
 この概要ガイドでは、Azure Automation のデプロイに関連する主要な概念を紹介します。 Azure 上の Automation を初めて使用する方や、System Center Orchestrator などの自動化ワークフロー ソフトウェアの使用経験がある方向けに、まず Automation の準備とオンボードの方法について説明します。  この後、プロセス自動化ニーズに対応するために Runbook の開発を始める準備が整います。 
@@ -90,7 +88,7 @@ Azure Automation で Azure コマンドレットを使用してリソースに�
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
 > [!NOTE]
-> Azure Portal で作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
+> Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
 > 
 
 Azure Portal で Automation アカウントを作成すると、次の 2 つの認証エンティティが自動的に作成されます。
@@ -170,8 +168,7 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
    - 新しい **OMS ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、リソース グループを作成するか、既存のリソース グループを選択できます。  
-   - **[場所]**を選択します。  現在選択できる場所は、**オーストラリア南東部**、**米国東部**、**東南アジア**、**米国中西部**、および**西ヨーロッパ**のみです。
-   - **[価格レベル]** を選択します。  このソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
+   - **[場所]**を選択します。  詳細については、[Azure Automation を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。  ソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
    - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。 
   - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
@@ -192,6 +189,5 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 ## <a name="next-steps"></a>次のステップ
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。
 * Runbook を作成するには、開始する前に、サポートされている [Automation の Runbook の種類](automation-runbook-types.md)と関連する考慮事項を確認してください。
-
 
 

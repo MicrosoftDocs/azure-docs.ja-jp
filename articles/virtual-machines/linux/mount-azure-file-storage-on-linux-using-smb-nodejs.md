@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4951860630f0aad107d0846d52ebe4423ee0b91c
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Azure CLI 1.0 で SMB を使用して Linux VM に Azure File Storage をマウントする
 
 この記事では、サーバー メッセージ ブロック (SMB) プロトコルを使用して、Linux VM に Azure File Storage をマウントする方法を説明します。 File Storage では、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 要件は次のとおりです。
@@ -134,4 +132,3 @@ File Storage でホストされている SMB マウントに VM からファイ�
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Linux VM へのディスクの追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

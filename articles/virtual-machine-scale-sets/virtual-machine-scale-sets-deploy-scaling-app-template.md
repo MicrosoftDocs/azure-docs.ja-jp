@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>テンプレートを使用した自動スケール アプリのデプロイ
 
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアルは、[単純なスケール セットのデプロイ](virtual-machine-scale-sets-mvss-start.md)に関する記事に基づいて作成されています。このチュートリアルでは、Azure Resource Manager テンプレートを使用して、スケール セットにシンプルな自動スケール アプリケーションをデプロイする方法について説明します。  PowerShell、CLI、またはポータルを使用して、自動スケールを設定することもできます。 詳細については、[自動スケールの概要](virtual-machine-scale-sets-autoscale-overview.md)に関するページを参照してください。
@@ -309,4 +307,3 @@ fi
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 3d4fe2fa10d848c8b29e4d22d284c0d378f07ae0
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 0e91d249116d39675d6e4bdf429442b6bc8af391
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: アプリケーションを登録する
@@ -31,6 +31,8 @@ ms.lasthandoff: 08/08/2017
 
 Azure Portal の Azure AD B2C ブレードから作成したアプリケーションは、同じ場所から管理する必要があります。 PowerShell または別のポータルを使用して B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなります。 詳細については、「[アプリの障害](#faulted-apps)」セクションを参照してください。 
 
+この記事では、サンプルを使い始めるために役立つ例を使用しています。 これらのサンプルの詳細については、後続の記事で説明しています。
+
 ## <a name="navigate-to-b2c-settings"></a>B2C の設定に移動する
 
 B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にログインします。 
@@ -39,13 +41,13 @@ B2C テナントの全体管理者として [Azure Portal](https://portal.azure.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
 
-登録するアプリケーションの種類に応じた手順に進みます。
+## <a name="choose-next-steps-based-on-your-application-type"></a>アプリケーションの種類に基づいて次の手順を選択する
 
 * [Web アプリケーションの登録](#register-a-web-app)
 * [Web API の登録](#register-a-web-api)
 * [モバイル/ネイティブ アプリケーションの登録](#register-a-mobile-or-native-app)
  
-## <a name="register-a-web-app"></a>Web アプリの登録
+### <a name="register-a-web-app"></a>Web アプリの登録
 
 [!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
 
@@ -59,7 +61,7 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 [**次の手順**に進む](#next-steps)
 
-## <a name="register-a-web-api"></a>Web API の登録
+### <a name="register-a-web-api"></a>Web API の登録
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
@@ -67,7 +69,7 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 [**次の手順**に進む](#next-steps)
 
-## <a name="register-a-mobile-or-native-app"></a>モバイル/ネイティブ アプリの登録
+### <a name="register-a-mobile-or-native-app"></a>モバイル/ネイティブ アプリの登録
 
 [!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
 
@@ -100,7 +102,7 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 `https://new.login.contoso.com`
 
-この場合、login.contoso.com の DNS サブドメインを参照しています。 応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
+この場合、login.contoso.com の DNS サブドメインを参照しています。応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
 
 `https://contoso.com`
 

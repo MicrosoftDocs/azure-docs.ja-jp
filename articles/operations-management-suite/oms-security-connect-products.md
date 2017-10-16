@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/06/2016
-
+ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Operations Management Suite (OMS) のセキュリティと監査ソリューションへのセキュリティ製品の接続 
 このドキュメントでは、お使いのセキュリティ製品を OMS のセキュリティと監査ソリューションに接続する方法について説明します。 次のソースがサポートされています。
@@ -64,7 +63,7 @@ OMS セキュリティでは、Syslog と [Cisco ASA](https://blogs.technet.micr
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
 3. ファイル *security_events.conf* をダウンロードし、OMS エージェント コンピューターの */etc/opt/microsoft/omsagent/conf/omsagent.d/* に配置します。
-4. 次のコマンドを入力し、Syslog デーモンを再起動します。 *Syslog-ng が実行されている場合:*
+4. Syslog デーモンを再起動するには、次のコマンドを入力: *syslog-ng 実行の。*
     
     ```
     sudo service rsyslog restart
@@ -113,5 +112,4 @@ OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 まででドメ�
 * [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
 

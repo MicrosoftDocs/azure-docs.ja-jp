@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 36da8c7d0f3ace194522e5288f26069cf46d470e
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -26,15 +26,19 @@ ms.lasthandoff: 06/30/2017
 
 構成サーバーは、Site Recovery サービスとオンプレミス インフラストラクチャの調整役として機能します。 この記事では、構成サーバーを設定、構成、管理する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
-次の表は、構成サーバーの設定に最低限必要なハードウェア、ソフトウェア、ネットワーク構成を示したものです。
-
 > [!NOTE]
 > [容量計画](site-recovery-capacity-planner.md)は、負荷要件を満たす構成で構成サーバーをデプロイするための重要なステップです。 詳細については、「[構成サーバーのサイズ要件](#sizing-requirements-for-a-configuration-server)」を参照してください。
+
+
+## <a name="prerequisites"></a>前提条件
+次の表は、構成サーバーの設定に最低限必要なハードウェア、ソフトウェア、ネットワーク構成を示したものです。
+> [!IMPORTANT]
+> VMware 仮想マシンを保護するために構成サーバーをデプロイするときは、**高可用性 (HA)** 仮想マシンとしてデプロイすることをお勧めします。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 ## <a name="downloading-the-configuration-server-software"></a>構成サーバー ソフトウェアのダウンロード
+
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** ([For VMware & Physical Machines (VMware および物理マシン)] の下) に移動します。
 
@@ -107,6 +111,17 @@ ProxyPassword="Password"
   >[!WARNING]
   スケールアウト プロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)必要があります。
 
+## <a name="modify-user-accounts-and-passwords"></a>ユーザー アカウントとパスワードを変更する
+
+CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**で使用されるユーザー アカウントの管理、および**保護されているマシンへのモビリティ サービスのプッシュ インストール**を行います。 
+
+1. 構成サーバーにログインします。
+2. デスクトップにあるショートカットをクリックして、CSPSConfigtool.exe を起動します。
+3. **[アカウントの管理]** タブをクリックします。
+4. パスワードの変更が必要なアカウントを選択して、**[編集]** ボタンをクリックします。
+5. 新しいパスワードを入力し、**[OK]** をクリックします。
+
+
 ## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>同じ Recovery Services コンテナーを使用した構成サーバーの再登録
   1. 構成サーバーにログインします。
   2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
@@ -128,13 +143,17 @@ ProxyPassword="Password"
   この構成サーバーにスケールアウト プロセス サーバーが接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーを再登録する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)必要があります。
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>異なる Recovery Services コンテナーを使用した構成サーバーの登録
+
+> [!WARNING]
+> 以下の一連の手順では、現在のコンテナーとの構成の関連付けを解除します。それにより構成サーバーの下で保護されているすべての仮想マシンのレプリケーションが停止します。
+
 1. 構成サーバーにログインします。
 2. 管理者のコマンド プロンプトで、次のコマンドを実行します
 
-```
-reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-net stop dra
-```
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
 3. ショートカットを使用して cspsconfigtool.exe を起動します。
 4. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
 5. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
@@ -149,6 +168,17 @@ net stop dra
     net stop obengine
     net start obengine
     ```
+
+## <a name="updating-a-configuration-server"></a>構成サーバーの更新
+
+> [!WARNING]
+> 更新プログラムがサポートされているのは、N-4 バージョンまでです。 たとえば、販売中の最新バージョンが 9.11 の場合は、バージョン 9.10、9.9、9.8、9.7 から 9.11 に直接更新できます。 ただし、使用しているバージョンが 9.6 以前の場合、構成サーバーに最新の更新プログラムを適用するには、少なくとも 9.7 に更新する必要があります。 以前のバージョンのダウンロード リンクは、「[Azure Site Recovery service updates](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)」 (Azure Site Recovery サービスの更新情報) に記載されています。
+
+1. 構成サーバーで更新プログラムのインストーラーをダウンロードします。
+2. インストーラーをダブルクリックして起動します。
+3. インストーラーによって、マシンに存在する Site Recovery のコンポーネントのバージョンが検出され、確認メッセージが表示されます。 
+4. [OK] をクリックして確認を行い、アップグレードを続行します。
+
 
 ## <a name="decommissioning-a-configuration-server"></a>構成サーバーの使用停止
 構成サーバーの使用停止操作を始める前に、次のことを確認します。
@@ -212,6 +242,17 @@ net stop dra
 
   >[!TIP]
   **[今すぐ更新]** の代わりに **[今すぐアップグレード]** が表示される場合があります。 現在の環境にまだ 9.4.xxxx.x 以上のバージョンにアップグレードされていないコンポーネントがあることを示します。
+
+## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>Secure Socket Layer (SSL) 証明書が期限切れになった場合の構成サーバーの回復
+
+1. 構成サーバーを[最新バージョン](http://aka.ms/unifiedinstaller)に更新する
+2. スケールアウト プロセス サーバー、フェールバック マスター ターゲット サーバー、フェールバック プロセス サーバーをお持ちの場合は、最新バージョンに更新してください。
+3. すべての保護された仮想マシン上にあるモビリティ サービスを最新バージョンに更新します。
+4. 構成サーバーにログインし、管理者特権でコマンド プロンプトを開きます。
+5. フォルダー %ProgramData%\ASR\home\svsystems\bin を参照します。
+6. RenewCerts.exe を実行して、構成サーバー上の SSL 証明書を更新します。
+7. プロセスが成功すると、"証明書の更新が成功しました" という内容のメッセージが表示されます。
+
 
 ## <a name="sizing-requirements-for-a-configuration-server"></a>構成サーバーのサイズ要件
 

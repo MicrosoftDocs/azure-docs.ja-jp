@@ -1,0 +1,53 @@
+- name: Azure Container Registry
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Container Registry について
+      href: container-registry-intro.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Container Registry - CLI
+      href: container-registry-get-started-azure-cli.md
+    - name: Container Registry - ポータル
+      href: container-registry-get-started-portal.md
+    - name: Container Registry - PowerShell
+      href: container-registry-get-started-powershell.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Container Service
+      href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+- name: ハウツー ガイド
+  items:
+    - name: イメージのプッシュとプル
+      href: container-registry-get-started-docker-cli.md
+    - name: リポジトリの表示
+      href: container-registry-repositories.md
+    - name: サービス プリンシパルの作成
+      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json
+    - name: レジストリによる認証
+      href: container-registry-authentication.md
+    - name: ACR webhook の使用
+      href: ./container-registry-webhook.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/acr
+    - name: REST ()
+      href: /rest/api/containerregistry
+    - name: PowerShell
+      href: /powershell/module/azurerm.containerregistry
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'

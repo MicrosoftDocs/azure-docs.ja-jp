@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 9a35de7ca0e7161468181b21709e1bd9915d566f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 現行 (1.6 より後の) バージョン の Azure Tools をインストールすると、バージョン 1.6 (2011 年 11 月) より前の Azure Tools を使用して作成されたプロジェクトはすべて、プロジェクトを開いた際に自動的にアップグレードされます。 バージョン 1.6 (2011 年 11 月) を使用してプロジェクトを作成し、まだそのバージョンがインストールされている場合は、バージョンの低い方でプロジェクトを開けば、アップグレードするかどうかの判断を先延ばしすることができます。
 
 ## <a name="how-your-project-changes-when-you-upgrade-it"></a>アップグレードしたときのプロジェクトの変化
@@ -47,5 +46,4 @@ ms.lasthandoff: 11/17/2016
     そのプロジェクトに関連付けられているツールのバージョンが **[アプリケーション]** タブに表示されます。 新しいバージョンの Azure Tools が表示された場合、そのプロジェクトは既にアップグレードされています。 タブに表示されたバージョンよりも新しいツールがインストールされている場合は、 **[アップグレード]** ボタンが表示されます。
 3. **[アップグレード]** ボタンをクリックして、プロジェクトを新しいバージョンのツールにアップグレードします。
 4. プロジェクトをビルドし、API の変更に起因するエラーがあれば解決してください。 新しいバージョンのコードを変更する方法については、特定の API に関するドキュメントを参照してください。
-
 

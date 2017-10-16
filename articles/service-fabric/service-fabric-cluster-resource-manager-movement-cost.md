@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
 クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 
@@ -121,4 +120,3 @@ ClusterManifest.xml:
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「 [Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
-

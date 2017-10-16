@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: afa6625e4c3ebe2a408b4bd956c8d2eb9ac6a34b
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>対象条件を使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法
 [New Criteria (新しい条件)] ボタンを使用して特定の条件を指定することで対象ユーザーを絞り込む方法は、Azure モバイル エンゲージメントの最も重要な概念の 1 つであり、すべてのユーザーにプッシュ通知を送る代わりに、ユーザーに関連するプッシュ通知を送ることで反応を得やすくなります。 標準的な条件に基づいて対象ユーザーを限定し、プッシュをシミュレートすることで、通知を受信するユーザー数を確認できます。
@@ -29,7 +28,7 @@ ms.lasthandoff: 12/08/2016
 * [UI ドキュメント - リーチ - 新しいのプッシュ キャンペーン][Link 27]
 
 ## <a name="audience-criteria-can-include"></a>対象ユーザーの条件には次のようなものを使用できます:
-* **テクニカル: ** [分析] セクションおよび [監視] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。 **関連項目:** [UI ドキュメント - 分析][Link 15]、[UI ドキュメント- 監視][Link 16]
+* * * Technicals: * * 対象とすることができます、分析とモニターのセクションで確認できます同じ技術的な情報を基にします。 **関連項目:** [UI ドキュメント - 分析][Link 15]、[UI ドキュメント- 監視][Link 16]
 * **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。 "大まかなエリアの位置報告" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "大まかなエリアの位置報告" は、SDK からアクティブ化する必要があります)。 **関連項目:** [SDK ドキュメント - iOS - 統合][Link 5]、[SDK ドキュメント - Android - 統合][Link 5]
 * **Reach のフィードバック:** アナウンス、アンケート、データ プッシュからのリーチ フィードバックを通じて、過去のリーチ通知へのユーザーのフィードバックに基づいて対象ユーザーを設定できます。 この方法は、初めてのキャンペーンよりも数回リーチ キャンペーンを行った後に使用することでより的確な対象ユーザーを絞り込むことができます。 また、特定の過去のキャンペーンをすでに受信したユーザーにキャンペーンを送信しないよう設定すると、すでに同様のコンテンツの通知を受け取ったユーザーを除外できます。 さらに、現在アクティブな特定のキャンペーンに含まれているユーザーを新しいプッシュから除外することもできます。 **関連項目:** [UI ドキュメント - リーチ - プッシュのコンテンツ][Link 29]
 * **インストールの追跡:** ユーザーがアプリをインストールした場所に基づいて情報を追跡できます。 **関連項目:** [UI ドキュメント - 設定][Link 20]
@@ -176,5 +175,4 @@ ms.lasthandoff: 12/08/2016
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
 

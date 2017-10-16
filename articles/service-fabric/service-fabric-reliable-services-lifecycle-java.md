@@ -13,14 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 80eb68346dd05c256c60725eb082aa0651fe7cbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
 > * [Windows での C# ](service-fabric-reliable-services-lifecycle.md)
@@ -80,4 +78,3 @@ Reliable Services のライフサイクルについて考える際には、ラ�
 * [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-

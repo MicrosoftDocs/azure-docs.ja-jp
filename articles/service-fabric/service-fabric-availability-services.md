@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
+ms.openlocfilehash: 3e46b4bdcf7b55c31afe5e7bc84a1fb95ad98701
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: b0d4615a9b8ab566f69b27e4879b6e2d597b4990
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="availability-of-service-fabric-services"></a>Service Fabric サービスの可用性
 この記事では、Service Fabric がサービスの可用性を維持する方法の概要を示します。
 
@@ -37,16 +35,9 @@ Azure Service Fabric サービスには、ステートレスなものとステ�
 
 プライマリ レプリカは 1 つのみですが、アクティブ セカンダリ レプリカは複数ある場合があります。 アクティブ セカンダリ レプリカの数は構成可能で、レプリカの数を多くすると、ソフトウェア障害やハードウェア障害が多数同時発生した場合への耐性が得られます。
 
-プライマリ レプリカがダウンした場合、Service Fabric はアクティブ セカンダリ レプリカの 1 つを新しいプライマリ レプリカにします。 このアクティブ セカンダリ レプリカは、更新されたバージョンの状態を (*レプリケーション*経由で) 既に取得しているため、その先の読み取り処理と書き込み処理を続行できます。
+プライマリ レプリカがダウンした場合、Service Fabric はアクティブ セカンダリ レプリカの 1 つを新しいプライマリ レプリカにします。 このアクティブ セカンダリ レプリカは、更新されたバージョンの状態を (*レプリケーション*経由で) 既に取得しているため、その先の読み取り処理と書き込み処理を続行できます。 このプロセスは再構成と呼ばれます。詳細については、[再構成に関するページ](service-fabric-concepts-reconfiguration.md)を参照してください。
 
-レプリカがプライマリであったりアクティブ セカンダリであったりするこの概念は、レプリカ ロールと呼ばれます。
-
-### <a name="replica-roles"></a>レプリカ ロール
-レプリカのロールは、そのレプリカによって管理されている状態のライフサイクルを管理するために使用されます。 ロールがプライマリになっているレプリカは、読み取り要求を処理します。 またプライマリは、状態を更新し、変更内容をレプリケートすることで、すべての書き込み要求を処理します。 これらの変更は、レプリカ セット内のアクティブ セカンダリに適用されます。 アクティブ セカンダリのジョブは、プライマリ レプリカがレプリケートした状態の変更を受信し、その状態のビューを更新することです。
-
-> [!NOTE]
-> [Reliable Actors](service-fabric-reliable-actors-introduction.md) や [Reliable Services](service-fabric-reliable-services-introduction.md) など、抽象度の高いプログラミング モデルの場合、レプリカ ロールの概念は開発者には隠されています。 Reliable Actors では、ロールの概念は不要です。Reliable Services では、ほとんどの場合に大幅に簡略化されます。
->
+レプリカがプライマリであったりアクティブ セカンダリであったりするこの概念は、レプリカ ロールと呼ばれます。 詳細については、「[Replicas and Instances](service-fabric-concepts-replica-lifecycle.md)」(レプリカとインスタンス) を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
@@ -55,4 +46,3 @@ Service Fabric の概念について詳しくは、次の記事をご覧くだ�
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 - [状態の定義と管理](service-fabric-concepts-state.md)
 - [Reliable Service](service-fabric-reliable-services-introduction.md)
-

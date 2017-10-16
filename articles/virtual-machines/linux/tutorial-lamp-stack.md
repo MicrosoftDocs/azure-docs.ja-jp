@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: danlep
+ms.openlocfilehash: c00e6a190633348411f47490808739d570cafd69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9148ac9646e4e1cfeff8f20c096e390499437e78
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Azure VM への LAMP Web サーバーのインストール
 この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 NGINX Web サーバーを実行する場合は、[LEMP スタック](tutorial-lemp-stack.md)チュートリアルを参照してください。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -76,7 +75,7 @@ Apache がインストールされ、VM に対しポート 80 が開かれると
 次のコマンドを使用して MySQL のバージョンを確認します (大文字の `V` パラメーターに注意)。
 
 ```bash
-msql -V
+mysql -V
 ```
 
 MySQL のインストールをセキュリティ保護するために、次のスクリプトを実行することをお勧めします。
@@ -109,7 +108,7 @@ php -v
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
 
-ここで作成した PHP 情報ページを確認できます。 ブラウザーを開いて､`http://yourPublicIPAddress/info.php` に移動します。 IP アドレスを、使用している VM のパブリック IP アドレスに置き換えます。 以下の画像のようなページが表示されます。
+ここで作成した PHP 情報ページを確認できます。 Web ブラウザーを開いて､`http://yourPublicIPAddress/info.php` に移動します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 以下の画像のようなページが表示されます。
 
 ![PHP 情報ページ][2]
 
@@ -130,7 +129,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [SSL で Web サーバーをセキュリティ保護する](tutorial-secure-web-server.md)
+> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
 
 [1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png

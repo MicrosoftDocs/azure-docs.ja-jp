@@ -1,6 +1,6 @@
 ---
-title: "高可用性を実現するための Azure MFA サーバーの構成 | Microsoft Docs"
-description: "高可用性を提供する構成で Azure Multi-Factor Authentication サーバーの複数のインスタンスをデプロイします。"
+title: "高可用性のための Azure MFA サーバーの構成 | Microsoft Docs"
+description: "高可用性を提供する構成で Azure Multi-Factor Authentication Server の複数のインスタンスをデプロイします。"
 services: multi-factor-authentication
 keywords: Azure MFA,
 documentationcenter: 
@@ -16,14 +16,13 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 9f03e61e05383c309fb66b67e0641b17df5ab00f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性を実現するための Azure Multi-Factor Authentication サーバーの構成
+# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 
 Azure サーバーの MFA のデプロイで高可用性を実現するには、複数の MFA サーバーをデプロイする必要があります。 このセクションでは、Azure MFS サーバーのデプロイで高可用性の目標を達成するための負荷分散設計について説明します。
 
@@ -33,9 +32,9 @@ Azure MFA サーバーのサービス アーキテクチャには、次の図に
 
  ![MFA サーバーのアーキテクチャ](./media/mfa-server-high-availability/mfa-ha-architecture.png)
 
-MFA サーバーは、Azure Multi-Factor Authentication ソフトウェアがインストールされている Windows サーバーです。 MFA サーバーのインスタンスが機能するためには、Azure で MFA サービスによってアクティブ化される必要があります。 複数の MFA サーバーをオンプレミスでインストールできます。
+MFA サーバーは、Azure Multi-Factor Authentication ソフトウェアがインストールされている Windows サーバーです。 MFA サーバーのインスタンスが機能するためには、Azure 上で MFA サービスによってアクティブ化される必要があります。 複数の MFA サーバーをオンプレミスでインストールできます。
 
-インストールされる 1 台目の MFA サーバーは、既定では、Azure MFA サービスにアクティブ化されると、マスター MFA サーバーとなります。 マスター MFA サーバーには、PhoneFactor.pfdata データベースの書き込み可能コピーがあります。 MFA サーバーのインスタンスの後続のインストールは、スレーブと呼ばれます。 MFA スレーブには、PhoneFactor.pfdata データベースのレプリケートされた読み取り専用コピーがあります。 MFA サーバーでは、リモート プロシージャ コール (RPC) を使って情報がレプリケートされます。 情報をレプリケートするには、すべての MFA サーバーを、ドメイン参加済みかスタンドアロンのどちらかにまとめる必要があります。
+既定では、最初にインストールされた MFA サーバーが Azure MFA サービスにアクティブ化された時点で、マスター MFA サーバーとなります。 マスター MFA サーバーには、PhoneFactor.pfdata データベースの書き込み可能コピーがあります。 MFA サーバーのインスタンスの後続のインストールは、スレーブと呼ばれます。 MFA スレーブには、PhoneFactor.pfdata データベースのレプリケートされた読み取り専用コピーがあります。 MFA サーバーでは、リモート プロシージャ コール (RPC) を使って情報がレプリケートされます。 情報をレプリケートするには、すべての MFA サーバーを、ドメイン参加済みかスタンドアロンのどちらかにまとめる必要があります。
 
 マスターおよびスレーブの両方の MFA サーバーは、2 要素認証が必要な場合に、MFA サービスと通信します。 たとえば、2 要素認証を必要とするアプリケーションにユーザーがアクセスしようとした場合、このユーザーは、まず、Active Directory (AD) などの ID プロバイダーに認証されます。
 
@@ -77,4 +76,3 @@ Azure MFA サーバーとその関連コンポーネントの負荷分散では�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure MFA Server のインストールと構成](multi-factor-authentication-get-started-server.md)
-

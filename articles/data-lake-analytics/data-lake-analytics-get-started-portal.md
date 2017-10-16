@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -43,7 +42,7 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
    * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。
    * **Data Lake Store**: 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。 
 4. 必要に応じて、Data Lake Analytics アカウントの価格レベルを選択します。
-5. ページの下部にある **[Create]**」を参照してください。 
+5. **Create** をクリックしてください。 
 
 
 ## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
@@ -77,4 +76,3 @@ OUTPUT @a
 * U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
-

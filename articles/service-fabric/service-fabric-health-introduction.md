@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: oanapl
+ms.openlocfilehash: 330ef58d89ebabaa2af7fa8e98e693ddd64dcc4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 598a4d35faebb592f840b1bec7e77c7a091ea2de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
 
 Service Fabric のコンポーネントは、この豊富な機能を持つ正常性モデルを使用して、現在の状態を報告します。 アプリケーションからの正常性レポートにも同じメカニズムを使用できます。 カスタム条件をキャプチャする高品質の正常性レポートに投資すれば、実行中のアプリケーションの問題をより簡単に検出し、修正できます。
 
-次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -212,7 +211,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 * **説明**。 これは文字列で、レポーターはこれによって正常性イベントに関する詳細情報を提供できます。 **SourceId**、**Property**、および **HealthState** は、レポートを完全に記述する必要があります。 説明には、レポートに関する人間が判読できる情報が追加されます。 このテキストによって、管理者とユーザーは正常性レポートを理解しやすくなります。
 * **HealthState**。 [列挙型](service-fabric-health-introduction.md#health-states) で、レポートの正常性状態を説明します。 有効な値は、"OK"、"警告"、および "エラー" です。
 * **TimeToLive**。 TimeSpan 型で、正常性レポートの有効期間を示します。 **RemoveWhenExpired**と組み合わせて、期限切れイベントの評価方法を正常性ストアに通知します。 既定値は infinite で、レポートは永久に有効です。
-* **RemoveWhenExpired**。 ブール値。 true に設定されている場合、期限切れの正常性レポートは自動的に正常性ストアから削除され、エンティティの正常性評価には影響しません。 レポートが指定された期間のみ有効で、レポーターがレポートを明示的に消去する必要がない場合に使用されます。 また、正常性ストアからレポートを削除する場合 (たとえば、ウォッチドッグが変更され、以前のソースとプロパティを使用したレポート送信を停止した場合) にも使用されます。 短い TimeToLive と RemoveWhenExpired を一緒に使用してレポートを送信し、正常性ストアから以前の任意の状態をクリアできます。 この値が false に設定されている場合、期限切れのレポートは正常性評価でエラーとして扱われます。 値を false にすると、このプロパティに関するソースからの定期的なレポートが必要であることが正常性ストアに通知されます。 通知されない場合は、ウォッチドッグに何らかの問題があります。 ウォッチドッグの正常性は、このイベントをエラーと見なすことによりキャプチャされます。
+* **RemoveWhenExpired**。 ブール値。 true に設定されている場合、期限切れの正常性レポートは自動的に正常性ストアから削除され、エンティティの正常性評価には影響しません。 レポートが指定された期間のみ有効で、レポーターがレポートを明示的に消去する必要がない場合に使用されます。また、正常性ストアからレポートを削除する場合 (たとえば、ウォッチドッグが変更され、以前のソースとプロパティを使用したレポート送信を停止した場合) にも使用されます。 短い TimeToLive と RemoveWhenExpired を一緒に使用してレポートを送信し、正常性ストアから以前の任意の状態をクリアできます。 この値が false に設定されている場合、期限切れのレポートは正常性評価でエラーとして扱われます。 値を false にすると、このプロパティに関するソースからの定期的なレポートが必要であることが正常性ストアに通知されます。 通知されない場合は、ウォッチドッグに何らかの問題があります。 ウォッチドッグの正常性は、このイベントをエラーと見なすことによりキャプチャされます。
 * **SequenceNumber**。 正の整数値です。レポートの順序を表すものであり、増え続ける必要があります。 正常性ストアにより、ネットワークの遅延やその他の問題のために受信が遅れた古いレポートを検出するのに使用されます。 レポートのシーケンス番号が、同じエンティティ、ソース、およびプロパティに適用されている最新のシーケンス番号以下である場合、レポートは拒否されます。 指定されていない場合、シーケンス番号は自動的に生成されます。 状態遷移をレポートする場合にのみ、シーケンス番号を入力する必要があります。 この場合、ソースは送信したレポートを記憶し、フェールオーバー時の復旧用にその情報を保持する必要があります。
 
 すべての正常性レポートに、SourceId、エンティティ識別子、プロパティおよび HealthState という 4 つの情報が必要です。 SourceId 文字列では、先頭に "**System.**" というプレフィックスを使用することはできません。これはシステム レポート用に予約されています。 同じエンティティの場合、同じソースとプロパティに対するレポートは 1 つだけ存在します。 同じソースとプロパティに対する複数のレポートは、正常性クライアント側 (バッチ処理される場合) または正常性ストア側で、互いにオーバーライドします。 置換はシーケンス番号に基づいて行われます。新しいレポート (シーケンス番号が大きい方) が古いレポートを置換します。
@@ -319,5 +318,4 @@ HealthEvents                    :
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-
 

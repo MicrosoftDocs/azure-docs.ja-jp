@@ -12,32 +12,32 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/21/2017
+ms.date: 9/19/2017
 ms.author: subramar
+ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
 > * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
-> * [Java - Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [Java - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-java.md)
+> * [C# - Linux (プレビュー)](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
-Service Fabric では、.NET Core と Java の両方で Linux 上のサービスを構築するための SDK を提供しています。 このチュートリアルでは Linux 用アプリケーションを作成し、C# (.NET Core) を使用してサービスを構築する方法について説明します。
+Service Fabric では、.NET Core と Java の両方で Linux 上のサービスを構築するための SDK を提供しています。 このチュートリアルでは Linux 用アプリケーションを作成し、.NET Core 2.0 で C# を使用してサービスを構築する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 作業を開始する前に、 [Linux 開発環境がセットアップ](service-fabric-get-started-linux.md)されていることを確認してください。 Mac OS X を使用している場合は、 [Vagrant を使用して仮想マシンに Linux ワンボックス環境を設定](service-fabric-get-started-mac.md)します。
 
 また、[Service Fabric CLI](service-fabric-cli.md) をインストールしてください。
 
-### <a name="install-and-set-up-the-generators-for-csharp"></a>CSharp のジェネレーターのインストールとセットアップ
-Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric CSharp アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに CSharp 用の Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
+### <a name="install-and-set-up-the-generators-for-c"></a>C# のジェネレーターのインストールとセットアップ
+Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 次の手順に従って、C# の Service Fabric Yeoman テンプレート ジェネレーターを設定します。
+
 1. マシンに nodejs と NPM をインストールします。
 
   ```bash
@@ -56,7 +56,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
   ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 直前の手順でインストールした CSharp 用の Service Fabric [Yeoman](http://yeoman.io/) ジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 直前の手順でインストールした C# 用の Service Fabric [Yeoman](http://yeoman.io/) ジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
 
 1. ターミナルで、コマンド「`yo azuresfcsharp`」を入力してスキャフォールディングの構築を開始します。
 2. アプリケーションに名前を付けます。
@@ -126,7 +126,6 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
 * [Service Fabric CLI を使用した Service Fabric クラスターの対話操作](service-fabric-cli.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 * [Service Fabric CLI の概要](service-fabric-cli.md)
@@ -134,4 +133,3 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-csharp/sfx-primary.png
-

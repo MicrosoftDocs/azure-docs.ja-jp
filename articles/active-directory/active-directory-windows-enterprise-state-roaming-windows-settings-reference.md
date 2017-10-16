@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
-ms.lasthandoff: 04/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -180,4 +179,3 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-

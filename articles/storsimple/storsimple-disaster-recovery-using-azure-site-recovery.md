@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Site Recovery を使用して StorSimple ファイル共有 DR を自動化する | Microsoft Docs"
 description: "Microsoft Azure StorSimple ストレージでホストされているファイル共有用ディザスター リカバリー ソリューションを作成するための手順とベスト プラクティスについて説明します。"
 services: storsimple
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/09/2017
 ms.author: vidarmsft
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b4d575587eec1bcf43c33c7faeb8360ec67b5214
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 ## <a name="overview"></a>概要
@@ -102,7 +101,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    6. ボリューム コンテナーを作成してから、ボリュームを作成します  (これらのボリュームは、ファイル サーバー VM でのファイル共有に使用します)。 イニシエーター名をコピーし、ボリューム作成時にアクセス制御レコードに適切な名前を付けます。
    7. **[構成]** タブを選択し、デバイスの IP アドレスを書き留めます。
    8. 使用しているオンプレミスの VM で **[iSCSI イニシエーター]** に再び移動し、[クイック接続] セクションに IP アドレスを入力します。 **[クイック接続]** をクリックします (デバイスが接続されます)。
-   9. Azure ポータルを開き、**[ボリュームとデバイス]** タブを選択します。 **[自動構成]**をクリックします。 先ほど作成したボリュームが表示されます。
+   9. Azure ポータルを開き、**[ボリュームとデバイス]** タブを選択します。**[自動構成]**をクリックします。 先ほど作成したボリュームが表示されます。
    10. ポータルで **[デバイス]** タブを選択してから、**[Create a New Virtual Device (新しい仮想デバイスの作成)]** を選択します  (フェールオーバーが発生した場合にこの仮想デバイスが使用されます)。 この新しい仮想デバイスはオフラインで維持できるため、余分なコストがかかりません。 仮想デバイスをオフラインにするには、ポータルの **[Virtual Machines]** セクションでデバイスをシャットダウンします。
    11. オンプレミスの VM に戻って [ディスクの管理] を開きます (Windows キー + X キーを押してから、 **[ディスクの管理]**を 選択します)。
    12. 余分なディスクが表示される場合があります (作成したボリュームの数によって異なります)。 1 つ目のディスクを右クリックして **[ディスクの初期化]** を選択し、**[OK]** をクリックします。 **[未割り当て]** セクションを右クリックして **[新しいシンプル ボリューム]** を選択し、ドライブ文字を割り当ててからウィザードを終了します。
@@ -314,4 +313,3 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 ## <a name="summary"></a>概要
 Azure Site Recovery を使用すると、StorSimple ストレージでホストされているファイル共有を含むファイル サーバー VM に対して、自動ディザスター リカバリー復旧計画を作成できます 障害発生時に、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
-

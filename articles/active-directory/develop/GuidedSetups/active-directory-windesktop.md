@@ -15,19 +15,15 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 3017165ad58e93b582fb5364d54ca3e64ea9e35d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 [!INCLUDE [1. Introduction](active-directory-mobileanddesktopapp-windowsdesktop-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-mobileanddesktopapp-windowsdesktop-setup.md)]
 [!INCLUDE [3. Use](active-directory-mobileanddesktopapp-windowsdesktop-use.md)]
 [!INCLUDE [4. Configure](active-directory-mobileanddesktopapp-windowsdesktop-configure.md)]
 [!INCLUDE  [5. Test and Validate](active-directory-mobileanddesktopapp-windowsdesktop-test.md)]
-
 

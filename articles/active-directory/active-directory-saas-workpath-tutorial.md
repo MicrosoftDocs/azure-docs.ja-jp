@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: f4efa56d2c0374a977c1e46dad64b596cc9c3ea8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル: Azure Active Directory と Workpath の統合
 
@@ -129,7 +127,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-workpath-tutorial/tutorial_workpath_attributes.png)
     
-6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ------------------- | -------------------- |    
@@ -198,7 +196,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-workpath-test-user"></a>Workpath テスト ユーザーの作成
 
@@ -262,5 +260,4 @@ Workpath は、ジャストインタイム ユーザー プロビジョニング
 [201]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_203.png
-
 

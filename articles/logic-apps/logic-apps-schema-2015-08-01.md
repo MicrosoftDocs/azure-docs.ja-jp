@@ -15,22 +15,20 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ae5ce7d16ac9ed3a06c313ff3c48e8cbf79c54
-ms.openlocfilehash: f1bf19e6dfbcf187635730a53c93162244c17c6a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure Logic Apps のスキーマの更新 - August 1, 2015 preview
 
 Azure Logic Apps の新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。
 
-*    アクションの種類 **APIApp** が更新され、新しいアクションの種類 [**APIConnection**](#api-connections) になりました。
-*    **Repeat** から [**Foreach**](#foreach) への名前変更
-*    [**HTTP リスナー** API アプリ](#http-listener)が不要になりました。
-*    子ワークフローの呼び出しに[新しいスキーマ](#child-workflows)を使用します。
+*   アクションの種類 **APIApp** が更新され、新しいアクションの種類 [**APIConnection**](#api-connections) になりました。
+*   **Repeat** から [**Foreach**](#foreach) への名前変更
+*   [**HTTP リスナー** API アプリ](#http-listener)が不要になりました。
+*   子ワークフローの呼び出しに[新しいスキーマ](#child-workflows)を使用します。
 
 <a name="api-connections"></a>
 ## <a name="move-to-api-connections"></a>API 接続への移行
@@ -480,4 +478,3 @@ HTTP リスナーの機能が新たに組み込まれました。 したがっ�
 ## <a name="coming-soon-enterprise-integration-apis"></a>近日提供予定: Enterprise Integration API
 
 AS2 のようなマネージ バージョンの Enterprise Integration API はまだありません。 その間は、既にデプロイされている BizTalk API を HTTP アクションで使用することができます。 詳しくは、[統合ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)の「Using your already deployed API apps (既にデプロイされている API アプリ)」をご覧ください。 
-

@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim;oldportal;it-pro;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 3ac07bb7b070f44595c099a454b3d0dbc66126c9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
 Azure Active Directory (AD) では、全体管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。 これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、 「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」に記載されているように、Azure クラシック ポータルを使用できます。
@@ -48,7 +47,7 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 > [!NOTE]
 > 既定では、ロールに新しく追加されたユーザーは、そのロールのみの候補になります。 ロールを永続的にする場合は、一覧のユーザーをクリックします。 ユーザーの情報が新しいブレードに表示されます。 ユーザー情報メニューで **[永続化]** を選択します。  
-> ユーザーが Azure Multi-Factor Authentication (MFA) に登録できない場合、または Microsoft アカウント (例: @outlook.com), を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。 管理者候補は、アクティブ化時に MFA への登録が求められます。
+> ユーザーが Azure Multi-factor Authentication (MFA) を登録できませんまたは Microsoft アカウントを使用する場合 (通常@outlook.com)、すべての役割で永続的なようにする必要があります。 管理者候補は、アクティブ化時に MFA への登録が求められます。
 
 これで、ユーザーがロールの候補者になりました。[ロールをアクティブ化または非アクティブ化する方法](active-directory-privileged-identity-management-how-to-activate-role.md)に関するページの指示に従ってロールをアクティブ化できることを、ユーザーに通知してください。
 
@@ -66,5 +65,4 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
 

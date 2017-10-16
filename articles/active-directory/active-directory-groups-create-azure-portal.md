@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 9636d26ec62bb83b30fdc4ae8b1701da8ab532e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 6d3d37761a9fdf9bd9801396d45f2fcd47efb0be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
 > [!div class="op_single_selector"]
@@ -61,4 +60,3 @@ ms.lasthandoff: 05/08/2017
 * [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 7835797bc353a64c934b362c31fdcd9b448aca34
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/17/2017
-
-
+ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-your-data"></a>データの移行
 さまざまなソースのデータを、さまざまなツールを使って SQL Data Warehouse に移動することができます。  この目的を果たすうえで、ADF コピー、SSIS、bcp はすべて使用できます。 ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。 これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -187,10 +185,10 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]: ../storage/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
-[ADF samples]: ../data-factory/data-factory-samples.md
-[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[AZCopy]: ../storage/common/storage-use-azcopy.md
+[ADF Copy]: ../data-factory/v1/data-factory-data-movement-activities.md 
+[ADF samples]: ../data-factory/v1/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
@@ -209,4 +207,3 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 [preview version]: http://aka.ms/downloadazcopypr/
 [ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
-

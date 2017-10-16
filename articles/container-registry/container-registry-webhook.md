@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2017
 ms.author: nepeters
+ms.openlocfilehash: 35f2b940a36ca3176cf850afd97e62af0dd797ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d0190f5725671c320d92b897f0dcef7a526a86e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-azure-container-registry-webhooks---azure-portal"></a>Azure コンテナー レジストリ Webhook - Azure Portal
 
 Docker Hub で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート Docker コンテナー イメージを格納および管理します。 いずれかのレジストリ リポジトリで特定のアクションが発生した場合に、Webhooks を使用してイベントをトリガーします。 Webhooks では、レジストリ レベルでイベントに応答したり、特定のリポジトリ タグに範囲を絞ったりできます。 

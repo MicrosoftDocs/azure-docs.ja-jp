@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 9ea5744d77b90929598ea5feb80c7bbdff3772fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>割り当てたアプリケーションがアクセス パネルに表示されない
 
 Web ベースのポータルであるアクセス パネルを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 これらのアプリケーションは、Azure AD ポータルでユーザーのために構成されます。 アクセス パネルでアプリケーションを表示するには、アプリケーションが正しく構成され、ユーザーまたはユーザーがメンバーであるグループに割り当てられている必要があります。
@@ -671,5 +669,4 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory に新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
-
 

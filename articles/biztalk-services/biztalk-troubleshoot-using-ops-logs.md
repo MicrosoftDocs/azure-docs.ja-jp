@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: 操作ログを使用したトラブルシューティング
 
@@ -38,7 +36,7 @@ ms.lasthandoff: 06/01/2017
 ## <a name="view-biztalk-services-operation-logs"></a>BizTalk Services の操作ログの表示
 1. Azure クラシック ポータルで、**[管理サービス]** を選択し、**[操作ログ]** タブを選択します。
 2. さまざまなパラメーターに基づいてログをフィルター処理できます。パラメーターの例としては、サブスクリプション、日付の範囲、サービスの種類 (例: BizTalk サービス)、サービス名、操作の状態 (成功、失敗) があります。
-3. チェックマークを選択すると、フィルター処理された一覧が表示されます。 次の図では、testbiztalkservice に関連するアクティビティが表示されています。 ![操作ログを表示][ViewLogs] 
+3. チェックマークを選択すると、フィルター処理された一覧が表示されます。 次の図では、testbiztalkservice に関連するアクティビティが表示されています。![操作ログを表示][ViewLogs] 
 4. 特定の操作について詳細を表示するには、操作の行を選択して、下部のタスク バーにある [ **詳細** ] をクリックします。
 
 ## <a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
@@ -74,5 +72,4 @@ Azure 管理サービスを使用して追跡される操作の一覧を次の�
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 430063bbc9fab8195e12cd1d3e3966a29bafd404
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Graph API を使用する
@@ -59,6 +59,11 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 5. 最後に、[必要なアクセス許可] メニューに戻り、**[アクセス許可の付与]** をクリックします。
 
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
+
+> [!NOTE]
+> アクセス許可を付与する処理は、完了するまでに数分間かかります。
+> 
+> 
 
 ## <a name="configure-delete-permissions-for-your-application"></a>アプリケーション用に削除アクセス許可を構成する
 現時点では、*ディレクトリ データの読み取りと書き込み*アクセス許可には、ユーザーの削除など、削除を行う機能は含まれて**いません**。 アプリケーションにユーザーを削除する権限を付与する場合は、PowerShell に関連する下記の追加手順を実行する必要がありますそれ以外の場合、次のセクションにスキップできます。

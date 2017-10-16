@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 0cf21ea9a820de0396b54dd26a625a046de39291
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 88851ed3ee5757f1ba635683fc00a5dde8b3b846
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
 
@@ -44,5 +43,4 @@ Service Bus の概念の要約については、次のトピックを参照し�
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus のアーキテクチャ](service-bus-architecture.md)
 * [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
-
 

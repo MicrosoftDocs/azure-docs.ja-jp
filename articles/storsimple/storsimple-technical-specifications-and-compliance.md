@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
 ## <a name="overview"></a>Overview
@@ -175,5 +173,4 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple デバイスをデータセンターにデプロイする準備ができました。 詳細については、「 [オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-deployment-walkthrough-u2.md)」を参照してください。  
-
 

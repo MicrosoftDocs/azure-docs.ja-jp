@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: af453ec27ba15ad8c59cf9f544584ad18dc0f74a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-7-set-up-a-vault-for-hyper-v-replication"></a>手順 7: Hyper-V レプリケーション用のコンテナーを設定する
 
 この記事では、コンテナーを設定する方法と、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの場所から Azure にレプリケートする対象を指定する方法について説明します。
@@ -50,4 +48,3 @@ ms.lasthandoff: 07/26/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 8: ソースとターゲットを設定する](vmm-to-azure-walkthrough-source-target.md)方法に関するページに進む
-

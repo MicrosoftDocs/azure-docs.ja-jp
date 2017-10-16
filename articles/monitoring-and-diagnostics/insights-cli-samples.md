@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: ashwink
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: ec4512500dc3c77a40d2ebd1e6b460d5bb005811
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-monitor--cross-platform-cli-10-quick-start-samples"></a>Azure Monitor クロスプラットフォーム CLI 1.0 のクイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
@@ -51,7 +50,7 @@ azure help
 azure login
 ```
 
-このコマンドを実行した後、画面の指示に従ってサインインする必要があります。 サインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。 すべてのコマンドは、既定のサブスクリプションのコンテキストで動作します。
+このコマンドを実行した後、画面の指示に従ってサインインする必要があります。 サインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。すべてのコマンドは、既定のサブスクリプションのコンテキストで動作します。
 
 現在のサブスクリプションの詳細を一覧表示するには、次のコマンドを使用します。
 
@@ -202,4 +201,3 @@ azure insights autoscale setting list montest2 -n setting2
 ```console
 azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```
-

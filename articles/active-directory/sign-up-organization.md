@@ -15,12 +15,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
+ms.openlocfilehash: 029fb8ddad84b297d99509a0a9ad35d9548e5c00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 07ad266ad87028996c4a7b3e4365c11b019f8529
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-up-for-azure-as-an-organization"></a>Azure への組織としてのサインアップ
 最近まで、新しい Microsoft Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。 現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
@@ -37,5 +36,4 @@ ms.lasthandoff: 07/21/2017
 * [Microsoft Azure のブログ](https://azure.microsoft.com/blog/)
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
-
 

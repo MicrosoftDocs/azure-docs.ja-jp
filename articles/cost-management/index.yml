@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure コスト管理のドキュメント
+metadata:
+  title: コスト管理のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Cloudyn による Azure コスト管理は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+  services: cost-management
+  author: czeumault
+  manager: carolz
+  ms.service: cost-management
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/18/2017
+  ms.author: carolz
+abstract:
+  description: Cloudyn による Azure コスト管理は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure 契約またはサブスクリプションの情報をコスト管理に登録し、コスト データの表示を開始する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: コスト データの表示
+            href: quick-register-azure-sub
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: コスト管理を使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-review-usage">利用状況とコストを確認して異常や効率を検出する</a>
+          - html: <a href="tutorial-user-access">コスト管理データへのアクセスを割り当てる</a>
+          - html: <a href="tutorial-forecast-spending">将来の支出を予測する</a>

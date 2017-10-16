@@ -15,19 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4bae56abfdc609ad40e6fbefe120493f1cd4e66d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>VHD から新しい ARM Managed Disk VM にクラシック VM を手動で移行する 
 
 
-このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](../../storage/storage-managed-disks-overview.md) する方法を説明します。
+このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](managed-disks-overview.md) する方法を説明します。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
@@ -176,5 +173,4 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 ## <a name="next-steps"></a>次のステップ
 
 - 仮想マシンへの接続 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-
 

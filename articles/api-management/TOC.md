@@ -6,6 +6,10 @@
 ## [パフォーマンス向上のためにキャッシュを追加する](api-management-howto-cache.md)
 ## [よく寄せられる質問](api-management-faq.md)
 # 方法
+## APIM サービスのセットアップ
+### [APIM インスタンスを作成する](get-started-create-service-instance.md)
+### [アップグレードとスケール](upgrade-and-scale.md)
+### [カスタム ドメインを構成する](configure-custom-domain.md)
 ## API を開発する
 ### [API 製品を追加および発行する](api-management-howto-add-products.md)
 ### [操作を追加する](api-management-howto-add-operations.md)
@@ -51,7 +55,7 @@
 #### [クイック スタート](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # リファレンス
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [REST ()](/rest/api/apimanagement/)
 ## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [ポリシー](api-management-policies.md)

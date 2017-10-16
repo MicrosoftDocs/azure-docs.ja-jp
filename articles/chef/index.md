@@ -11,12 +11,11 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 04/25/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 384597b6a34ba41fb5337d6d42fe2790b138fb83
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
    <h1>Azure 上の Chef</h1>
@@ -41,5 +40,4 @@ ms.lasthandoff: 08/31/2017
 <a href="https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/">ブログ: VSTS と Chef</a><br/>
 <a href="https://www.chef.io">Chef の詳細</a>
 </div>
-
 

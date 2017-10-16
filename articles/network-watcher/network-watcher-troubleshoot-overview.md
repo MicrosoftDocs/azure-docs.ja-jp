@@ -3,7 +3,7 @@ title: "Azure Network Watcher のリソース トラブルシューティング�
 description: "このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
@@ -13,15 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 3ae4701914fb759efe7a890d5906f231c1def2e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.author: jdial
+ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
 仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
@@ -109,7 +107,7 @@ ms.lasthandoff: 06/20/2017
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -219,4 +217,3 @@ Elapsed Time            330 sec
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
 [2]: ./media/network-watcher-troubleshoot-overview/portal.png
-

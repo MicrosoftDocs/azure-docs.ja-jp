@@ -16,14 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 33eef1b51a5ee00b0fa67096030ed9ce92cf768e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 
 Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 そのため、どのようの種類のデータであっても、高速かつ一貫性のある[SQL](documentdb-sql-query.md) (および [JavaScript](programming.md)) クエリが実行されます。 
@@ -58,5 +56,4 @@ Azure Cosmos DB のパフォーマンスは、パーティションにプロビ�
 ## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB のリソース プロビジョニングの最適化に関する新しい記事をお見逃しなく。 Microsoft の [RU 計算ツール](https://www.documentdb.com/capacityplanner)を自由にご利用ください。
-
 

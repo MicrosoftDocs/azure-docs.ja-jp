@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
 ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Azure Search サービス REST API バージョン 2016-09-01 へのアップグレード
 バージョン 2015-02-28 または 2015-02-28-Preview 以前の [Azure Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用している場合、この記事を参考にして、次に一般公開される API バージョンの 2016-09-01 にアップグレードできます。
@@ -66,10 +67,4 @@ Azure Search サービス REST API の使用に関する詳細については、
 Azure Search に関するご意見をお待ちしております。 問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)または [StackOverflow](http://stackoverflow.com/)でご質問ください。 StackOverflow で Azure Search に関する質問を行う場合は、必ず `azure-search` タグを付けてください。
 
 Azure Search をお使いいただきありがとうございます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

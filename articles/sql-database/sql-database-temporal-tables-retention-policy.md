@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 3870a6ddb8c40a619e3aa6ed1a040f2070e2598c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
-
+ms.openlocfilehash: 8975d7a7d39114b2758d64a4df9f992cba6bf561
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
@@ -188,5 +186,4 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
 テンポラル テーブルの詳細については、[MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)をご覧ください。
-
 

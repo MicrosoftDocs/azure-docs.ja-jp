@@ -9,25 +9,26 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: a7da42f4b84b77ad0a82004a56f7712c31567449
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: cb123107178f5e7c0207524c19331a6fa4658739
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。
 
-このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の [MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、MongoDB のクライアント接続をサポートしています。
+このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、MongoDB のクライアント接続をサポートしています。
 
 言い換えると、Golang アプリケーションは、MongoDB API を使用してデータベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
+- Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
+
+  [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+
 - [Go](https://golang.org/dl/) と、[Go](https://golang.org/) 言語の基本的な知識。
 - IDE - Jetbrains 提供の [Gogland](https://www.jetbrains.com/go/)、Microsoft 提供の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/)。 このチュートリアルでは、Goglang を使用しています。
 
@@ -244,4 +245,3 @@ Azure Portal に戻り、データ エクスプローラーでドキュメント
 
 > [!div class="nextstepaction"]
 > [MongoDB API 用に Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
-

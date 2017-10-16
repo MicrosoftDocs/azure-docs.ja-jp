@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 96840d72b86d0b9487d9a3a6039c7582a2718e7a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
@@ -36,8 +36,8 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 * [json](#json)
 * [last](#last)
 * [length](#length)
-* [min](#min)
 * [max](#max)
+* [min](#min)
 * [range](#range)
 * [skip](#skip)
 * [take](#take)
@@ -64,7 +64,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、array 関数をさまざまな型で使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json)では、array 関数をさまざまな型で使用する方法を示します。
 
 ```json
 {
@@ -111,6 +111,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | stringOutput | array | ["a"] |
 | objectOutput | array | [{"a": "b", "c": "d"}] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
+```
+
 <a id="coalesce" />
 
 ## <a name="coalesce"></a>coalesce
@@ -120,7 +132,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
 | 残りの引数 |いいえ |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
@@ -131,7 +143,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、coalesce をさまざまな方法で使用したときの出力を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)では、coalesce をさまざまな方法で使用したときの出力を示します。
 
 ```json
 {
@@ -187,6 +199,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | arrayOutput | array | [1] |
 | emptyOutput | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
+```
+
 <a id="concat" />
 
 ## <a name="concat"></a>concat
@@ -196,9 +220,9 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
+| arg1 |あり |配列または文字列 |連結する最初の配列または文字列。 |
 | 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。
@@ -208,7 +232,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、2 つの配列を結合する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)では、2 つの配列を結合する方法を示します。
 
 ```json
 {
@@ -249,7 +273,19 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | ---- | ---- | ----- |
 | return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-次の例は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
 ```json
 {
@@ -277,6 +313,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
 <a id="contains" />
 
 ## <a name="contains"></a>contains
@@ -286,10 +334,10 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
-| itemToFind |あり |文字列または整数 |検索対象の値。 |
+| itemToFind |はい |文字列または整数 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -297,7 +345,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、contains をさまざまな型で使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)では、contains をさまざまな型で使用する方法を示します。
 
 ```json
 {
@@ -359,6 +407,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | arrayTrue | ブール値 | True |
 | arrayFalse | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
 <a id="createarray" />
 
 ## <a name="createarray"></a>createarray
@@ -368,7 +428,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
 | 残りの引数 |なし |文字列、整数、配列、オブジェクト |配列の残りの値。 |
@@ -379,7 +439,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、createArray をさまざまな型で使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json)では、createArray をさまざまな型で使用する方法を示します。
 
 ```json
 {
@@ -427,6 +487,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | objectArray | array | [{"one": "a", "two": "b", "three": "c"}] |
 | arrayArray | array | [["one", "two", "three"]] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
+```
+
 <a id="empty" />
 
 ## <a name="empty"></a>empty
@@ -437,9 +509,9 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+| itemToTest |あり |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -447,7 +519,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、配列、オブジェクト、および文字列が空かどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
 ```json
 {
@@ -494,6 +566,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | objectEmpty | ブール値 | True |
 | stringEmpty | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
 <a id="first" />
 
 ## <a name="first"></a>first
@@ -503,9 +587,9 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
+| arg1 |あり |配列または文字列 |最初の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -513,7 +597,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、first 関数を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json)では、first 関数を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -547,6 +631,18 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | arrayOutput | String | one |
 | stringOutput | String | O |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
 <a id="intersection" />
 
 ## <a name="intersection"></a>intersection
@@ -556,7 +652,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |あり |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
@@ -568,7 +664,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="example"></a>例
 
-次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json)では、intersection を配列およびオブジェクトと共に使用する方法を示します。
 
 ```json
 {
@@ -614,6 +710,17 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | objectOutput | オブジェクト | {"one": "a", "three": "c"} |
 | arrayOutput | array | ["two", "three"] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
+```
 
 ## <a name="json"></a>json
 `json(arg1)`
@@ -622,7 +729,7 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |string |JSON に変換する値。 |
 
@@ -633,7 +740,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)では、json 関数を配列およびオブジェクトと共に使用する方法を示します。
 
 ```json
 {
@@ -661,6 +768,18 @@ JSON オブジェクトを返します。
 | jsonOutput | オブジェクト | {"a": "b"} |
 | nullOutput | Boolean | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
+```
+
 <a id="last" />
 
 ## <a name="last"></a>last
@@ -670,9 +789,9 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
+| arg1 |あり |配列または文字列 |最後の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -680,7 +799,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、last 関数を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json)では、last 関数を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -714,6 +833,18 @@ JSON オブジェクトを返します。
 | arrayOutput | String | three |
 | stringOutput | String | e |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
 <a id="length" />
 
 ## <a name="length"></a>length
@@ -723,9 +854,9 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -733,7 +864,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、length を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)では、length を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -774,6 +905,18 @@ JSON オブジェクトを返します。
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
 この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。 次の例では、 **siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
 
 ```json
@@ -785,58 +928,6 @@ JSON オブジェクトを返します。
 
 この関数を配列と共に使用する方法の詳細については、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 
-<a id="min" />
-
-## <a name="min"></a>Min
-`min(arg1)`
-
-整数の配列または整数のコンマ区切りリストから最小値を返します。
-
-### <a name="parameters"></a>parameters
-
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
-
-### <a name="return-value"></a>戻り値
-
-最小値を表す整数。
-
-### <a name="example"></a>例
-
-次の例では、min を配列および整数のリストと共に使用する方法を示します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
-    }
-}
-```
-
-既定値を使用した場合の前の例の出力は次のようになります。
-
-| 名前 | 型 | 値 |
-| ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
-
 <a id="max" />
 
 ## <a name="max"></a>max
@@ -846,9 +937,9 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
+| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -856,7 +947,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、max を配列および整数のリストと共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json)では、max を配列および整数のリストと共に使用する方法を示します。
 
 ```json
 {
@@ -889,6 +980,82 @@ JSON オブジェクトを返します。
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+<a id="min" />
+
+## <a name="min"></a>Min
+`min(arg1)`
+
+整数の配列または整数のコンマ区切りリストから最小値を返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+|:--- |:--- |:--- |:--- |
+| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
+
+### <a name="return-value"></a>戻り値
+
+最小値を表す整数。
+
+### <a name="example"></a>例
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json)では、min を配列および整数のリストと共に使用する方法を示します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "arrayToTest": {
+            "type": "array",
+            "defaultValue": [0,3,2,5,4]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "arrayOutput": {
+            "type": "int",
+            "value": "[min(parameters('arrayToTest'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+    }
+}
+```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
 <a id="range" />
 
 ## <a name="range"></a>range
@@ -909,7 +1076,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、range 関数を使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json)では、range 関数を使用する方法を示します。
 
 ```json
 {
@@ -941,6 +1108,18 @@ JSON オブジェクトを返します。
 | ---- | ---- | ----- |
 | rangeOutput | array | [5, 6, 7] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
+```
+
 <a id="skip" />
 
 ## <a name="skip"></a>skip
@@ -961,7 +1140,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json)では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
 
 ```json
 {
@@ -1010,6 +1189,18 @@ JSON オブジェクトを返します。
 | arrayOutput | array | ["three"] |
 | stringOutput | String | two three |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
 <a id="take" />
 
 ## <a name="take"></a>take
@@ -1030,7 +1221,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json)では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
 
 ```json
 {
@@ -1079,6 +1270,18 @@ JSON オブジェクトを返します。
 | arrayOutput | array | ["one", "two"] |
 | stringOutput | String | on |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
 <a id="union" />
 
 ## <a name="union"></a>union
@@ -1088,7 +1291,7 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |あり |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
@@ -1100,7 +1303,7 @@ JSON オブジェクトを返します。
 
 ### <a name="example"></a>例
 
-次の例では、union を配列およびオブジェクトと共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json)では、union を配列およびオブジェクトと共に使用する方法を示します。
 
 ```json
 {
@@ -1145,6 +1348,18 @@ JSON オブジェクトを返します。
 | ---- | ---- | ----- |
 | objectOutput | オブジェクト | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
 | arrayOutput | array | ["one", "two", "three", "four"] |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
+```
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

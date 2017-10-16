@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
 ms.openlocfilehash: 44fc8226480cafc130720fbe78aa85ee95caec6c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル: Azure Active Directory と Merchlogix の統合
 
@@ -164,7 +163,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-merchlogix-test-user"></a>Merchlogix のテスト ユーザーの作成
 
@@ -227,5 +226,4 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-merchlogix-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-merchlogix-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-merchlogix-tutorial/tutorial_general_203.png
-
 

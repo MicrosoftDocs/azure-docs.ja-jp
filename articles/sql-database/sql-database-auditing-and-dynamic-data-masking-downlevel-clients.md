@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 1447a75758475dd6536ef1bcd0e8432e5618dab8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: d4a7e6658ec65a70bd7e07859e2a69acee58b7b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 
 > [!IMPORTANT]
@@ -85,4 +82,3 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 | カナダ東部 |40.86.227.82, 40.86.225.194 |
 | 英国北部 |13.87.101.18, 13.87.100.232 |
 | 英国南部 2 |13.87.32.202, 13.87.32.226 |
-

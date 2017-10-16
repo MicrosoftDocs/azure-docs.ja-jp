@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 086e5a9622cad681cd282345d97e0c28ee7de2fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 > [!div class="op_single_selector"]
@@ -111,5 +110,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
-
 

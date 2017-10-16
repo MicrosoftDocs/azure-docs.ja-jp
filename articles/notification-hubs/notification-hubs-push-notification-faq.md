@@ -15,13 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: c8592ea38d62213327549583a1e931ea682ee56e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
-
+ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
 ## <a name="general"></a>全般
@@ -143,7 +141,7 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 アプリのバックエンドからの登録は、登録を作成する前にクライアントを認証する必要がある場合に便利です。 アプリのロジックに基づいてアプリのバックエンドによって作成または変更される必要があるタグがある場合にも便利です。 詳細については、「[バックエンド登録のガイダンス]」ページと「[バックエンド登録のガイダンス 2]」ページを参照してください。
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>プッシュ通知の配信のセキュリティ モデルは何ですか。
-Azure Notification Hubs では、[Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
+Azure Notification Hubs では、[Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) ベースのセキュリティ モデルを使用しています。 Shared Access Signature トークンはルートの名前空間レベルや詳細な通知ハブ レベルで使用できます。 メッセージ アクセス許可の送信や、通知アクセス許可のリッスンなど、さまざまな承認規則に従うように、Shared Access Signature トークンを設定できます。 詳細については、[Notification Hubs のセキュリティ モデル]に関するドキュメントを参照してください。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>プッシュ通知内の機密情報を含むペイロードはどのように扱えばよいですか。
 すべての通知は、プラットフォームの PNS によってターゲット デバイスに送信されます。 通知は、Azure Notification Hubs に送信されると、処理されて該当する PNS に渡されます。
@@ -221,4 +219,3 @@ Microsoft では、プログラムによってテレメトリ データをエク
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
 [App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
-

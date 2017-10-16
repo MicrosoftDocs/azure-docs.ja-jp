@@ -1,15 +1,15 @@
-- name: Kubernetes を伴う ACS
+- name: Kubernetes on Azure
   href: ./index.yml
 - name: 概要
   items:
-    - name: Container Service について
+    - name: Kubernetes on Azure
       href: container-service-intro-kubernetes.md
 - name: クイック スタート
   expanded: true
   items:
-    - name: Kubernetes Linux
+    - name: Kubernetes on Azure
       href: container-service-kubernetes-walkthrough.md
-- name: チュートリアル
+- name: Tutorials (チュートリアル)
   items:
     - name: 1 - コンテナー イメージを作成する
       href: container-service-tutorial-kubernetes-prepare-app.md
@@ -25,14 +25,8 @@
       href: container-service-tutorial-kubernetes-app-update.md
     - name: 7 - OMS で監視する
       href: container-service-tutorial-kubernetes-monitor.md
-- name: サンプル
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: 概念
   items:
-    - name: コンテナーをセキュリティ保護する
-      href: container-service-security.md
     - name: サービス プリンシパル - Kubernetes
       href: container-service-kubernetes-service-principal.md
 - name: ハウツー ガイド
@@ -41,18 +35,14 @@
       href: container-service-kubernetes-windows-walkthrough.md
     - name: Kubernetes Web インターフェイス
       href: container-service-kubernetes-ui.md
-    - name: Helm グラフのデプロイ
+    - name: Helm グラフの使用
       href: container-service-kubernetes-helm.md
-    - name: Jenkins と ACS Kubernetes
+    - name: ACS での Jenkins の使用
       href: container-service-kubernetes-jenkins.md
-    - name: ACR と ACS で Draft を使用する
+    - name: ACS での Draft の使用
       href: container-service-draft-up.md
-    - name: ACS クラスターに接続する
-      href: container-service-connect.md
-    - name: ACS クラスターをスケールする
+    - name: クラスターのスケーリング
       href: container-service-scale.md
-    - name: Kubernetes ACS クラスターの負荷を分散する
-      href: container-service-kubernetes-load-balancing.md
     - name: 監視
       items:
         - name: OMS で監視する
@@ -69,12 +59,16 @@
           href: container-service-deploy-spring-boot-app-on-linux.md
         - name: Azure Container Service で Spring Boot アプリケーションを Kubernetes クラスターにデプロイする
           href: container-service-deploy-spring-boot-app-on-kubernetes.md
+        - name: fabric8 Maven プラグインを使用して Spring Boot アプリをデプロイする
+          href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: リファレンス
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: /cli/azure/acs
+    - name: PowerShell
+      href: /powershell/module/azurerm.compute
     - name: REST ()
-      href: /rest/api/container-services
+      href: /rest/api/container-service
 - name: リソース
   items:
     - name: Azure のロードマップ

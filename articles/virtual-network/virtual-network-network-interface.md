@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: 7dafb491cec908ffbb3683991919654f3d3eb452
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
 ネットワーク インターフェイスの作成、設定変更、削除の方法について説明します。 ネットワーク インターフェイスは、Azure 仮想マシンがインターネット、Azure、およびオンプレミスのリソースと通信できるようにします。 Azure Portal を使用して仮想マシンを作成すると、既定の設定でネットワーク インターフェイスが 1 つ自動的に作成されます。 その代わりに、カスタム設定でネットワーク インターフェイスを作成し、仮想マシンを作成するときに 1 つ以上のネットワーク インターフェイスを追加することができます。 既存のネットワーク インターフェイスについて、既定のネットワーク インターフェイス設定を変更することもできます。 この記事では、カスタム設定を使用してネットワーク インターフェイスを作成する方法、ネットワーク フィルター (ネットワーク セキュリティ グループ) の割り当て、サブネットの割り当て、DNS サーバーの設定、IP 転送などの既存の設定を変更する方法、およびネットワーク インターフェイスを削除する方法について説明します。
@@ -108,7 +106,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 3. 表示される **[ネットワーク インターフェイス]** ブレードで、設定を表示または変更するネットワーク インターフェイスをクリックします。
 4. 選択したネットワーク インターフェイスのブレードで、**[設定]** にある **[DNS サーバー]** をクリックします。
 5. 次のいずれかをクリックします。
-    - **[仮想ネットワークから継承する] \(既定)**: このオプションを選択すると、ネットワーク インターフェイスの割り当て先の仮想ネットワークで定義されている DNS サーバー設定を継承します。 仮想ネットワーク レベルでは、カスタム DNS サーバーまたは Azure 提供の DNS サーバーのいずれかが定義されます。 Azure 提供の DNS サーバーは、同じ仮想ネットワークに割り当てられているリソースのホスト名を解決できます。 異なる仮想ネットワークに割り当てられているリソースの名前解決には、FQDN を使用する必要があります。
+    - **[仮想ネットワークから継承する] (既定)**: このオプションを選択すると、ネットワーク インターフェイスの割り当て先の仮想ネットワークで定義されている DNS サーバー設定を継承します。 仮想ネットワーク レベルでは、カスタム DNS サーバーまたは Azure 提供の DNS サーバーのいずれかが定義されます。 Azure 提供の DNS サーバーは、同じ仮想ネットワークに割り当てられているリソースのホスト名を解決できます。 異なる仮想ネットワークに割り当てられているリソースの名前解決には、FQDN を使用する必要があります。
     - **[カスタム]**: 複数の仮想ネットワークにわたって名前を解決する独自の DNS サーバーを構成できます。 DNS サーバーとして使用するサーバーの IP アドレスを入力します。 指定した DNS サーバー アドレスは、このネットワーク インターフェイスにのみ割り当てられて、ネットワーク インターフェイス割り当て先の仮想ネットワークの DNS 設定をすべてオーバーライドします。
 6. [ **Save**] をクリックします。
 
@@ -191,4 +189,3 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 |複数 NIC を持つ VM の作成|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |複数の IPv4 アドレスが割り当てられた 1 つの NIC VM の作成|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |プライベート IPv6 アドレスが割り当てられた 1 つの NIC VM の作成 (Azure Load Balancer の背後)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-

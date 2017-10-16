@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 9d007e2ce7cc4291eeebe26b887874085c6438b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
@@ -74,7 +74,7 @@ base64 形式を含む文字列。
 
 ### <a name="examples"></a>例
 
-次の例では、base64 関数を使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64 関数を使用する方法を示します。
 
 ```json
 {
@@ -120,6 +120,18 @@ base64 形式を含む文字列。
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
 | toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="base64tojson" />
 
@@ -140,7 +152,7 @@ JSON オブジェクト。
 
 ### <a name="examples"></a>例
 
-次の例では、base64ToJson 関数を使用して base64 値を変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64ToJson 関数を使用して base64 値を変換します。
 
 ```json
 {
@@ -186,6 +198,18 @@ JSON オブジェクト。
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
 | toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="base64tostring" />
 
@@ -206,7 +230,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、base64ToString 関数を使用して base64 値を変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)では、base64ToString 関数を使用して base64 値を変換します。
 
 ```json
 {
@@ -253,7 +277,17 @@ base64 形式を文字列に変換します。
 | toStringOutput | String | one, two, three |
 | toJsonOutput | オブジェクト | {"one": "a", "two": "b"} |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="concat" />
 
@@ -264,7 +298,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |あり |文字列または配列 |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順の追加の値。 |
@@ -274,7 +308,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
 ```json
 {
@@ -302,7 +336,19 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-次の例では、2 つの配列を結合する方法を示します。
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)では、2 つの配列を結合する方法を示します。
 
 ```json
 {
@@ -343,6 +389,18 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
 <a id="contains" />
 
 ## <a name="contains"></a>contains
@@ -352,10 +410,10 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
-| itemToFind |あり |文字列または整数 |検索対象の値。 |
+| itemToFind |はい |文字列または整数 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -363,7 +421,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、contains をさまざまな型で使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)では、contains をさまざまな型で使用する方法を示します。
 
 ```json
 {
@@ -425,6 +483,18 @@ base64 形式を文字列に変換します。
 | arrayTrue | ブール値 | True |
 | arrayFalse | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
 <a id="datauri" />
 
 ## <a name="datauri"></a>dataUri
@@ -444,7 +514,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、値をデータ URI に変換し、データ URI を文字列に変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)では、値をデータ URI に変換し、データ URI を文字列に変換します。
 
 ```json
 {
@@ -480,6 +550,18 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
 
 <a id="datauritostring" />
 
@@ -500,7 +582,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、値をデータ URI に変換し、データ URI を文字列に変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)では、値をデータ URI に変換し、データ URI を文字列に変換します。
 
 ```json
 {
@@ -537,6 +619,18 @@ base64 形式を文字列に変換します。
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
 <a id="empty" /> 
 
 ## <a name="empty"></a>empty
@@ -546,9 +640,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+| itemToTest |あり |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -556,7 +650,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、配列、オブジェクト、および文字列が空かどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
 ```json
 {
@@ -603,6 +697,18 @@ base64 形式を文字列に変換します。
 | objectEmpty | ブール値 | True |
 | stringEmpty | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
 <a id="endswith" />
 
 ## <a name="endswith"></a>endsWith
@@ -623,7 +729,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、startsWith 関数と endsWith 関数の使用方法を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)は、startsWith 関数と endsWith 関数の使用方法を示しています。
 
 ```json
 {
@@ -670,6 +776,18 @@ base64 形式を文字列に変換します。
 | endsCapTrue | ブール値 | True |
 | endsFalse | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
 <a id="first" />
 
 ## <a name="first"></a>first
@@ -679,9 +797,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
+| arg1 |あり |配列または文字列 |最初の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -689,7 +807,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、first 関数を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json)では、first 関数を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -723,6 +841,18 @@ base64 形式を文字列に変換します。
 | arrayOutput | String | one |
 | stringOutput | String | O |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
 <a id="indexof" />
 
 ## <a name="indexof"></a>indexOf
@@ -743,7 +873,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
 
 ```json
 {
@@ -785,6 +915,18 @@ base64 形式を文字列に変換します。
 | lastString | int | 0 |
 | notFound | int | -1 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
 <a id="last" />
 
 ## <a name="last"></a>last
@@ -794,9 +936,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
+| arg1 |あり |配列または文字列 |最後の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -804,7 +946,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、last 関数を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json)では、last 関数を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -838,6 +980,18 @@ base64 形式を文字列に変換します。
 | arrayOutput | String | three |
 | stringOutput | String | e |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
 <a id="lastindexof" />
 
 ## <a name="lastindexof"></a>lastIndexOf
@@ -858,7 +1012,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)は、indexOf 関数と lastIndexOf 関数の使用方法を示しています。
 
 ```json
 {
@@ -900,6 +1054,18 @@ base64 形式を文字列に変換します。
 | lastString | int | 0 |
 | notFound | int | -1 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
 <a id="length" />
 
 ## <a name="length"></a>length
@@ -909,9 +1075,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -919,7 +1085,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、length を配列および文字列と共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)では、length を配列および文字列と共に使用する方法を示します。
 
 ```json
 {
@@ -960,6 +1126,18 @@ base64 形式を文字列に変換します。
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
 <a id="padleft" />
 
 ## <a name="padleft"></a>padLeft
@@ -983,7 +1161,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。 
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。 
 
 ```json
 {
@@ -1011,6 +1189,18 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
+```
+
 <a id="replace" />
 
 ## <a name="replace"></a>replace
@@ -1032,7 +1222,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、ユーザーが指定した文字列からすべてのダッシュを削除し、その文字列の部分を別の文字列に置き換える方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json)では、ユーザーが指定した文字列からすべてのダッシュを削除し、その文字列の部分を別の文字列に置き換える方法を示します。
 
 ```json
 {
@@ -1065,6 +1255,18 @@ base64 形式を文字列に変換します。
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
+```
+
 <a id="skip" />
 
 ## <a name="skip"></a>skip
@@ -1085,7 +1287,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json)では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
 
 ```json
 {
@@ -1134,6 +1336,18 @@ base64 形式を文字列に変換します。
 | arrayOutput | array | ["three"] |
 | stringOutput | String | two three |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
 <a id="split" />
 
 ## <a name="split"></a>split
@@ -1154,7 +1368,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、入力文字列をコンマで分割したり、コンマまたはセミコロンで分割したりします。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json)では、入力文字列をコンマで分割したり、コンマまたはセミコロンで分割したりします。
 
 ```json
 {
@@ -1194,6 +1408,18 @@ base64 形式を文字列に変換します。
 | firstOutput | array | ["one", "two", "three"] |
 | secondOutput | array | ["one", "two", "three"] |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
+```
+
 <a id="startswith" />
 
 ## <a name="startswith"></a>startsWith
@@ -1214,7 +1440,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、startsWith 関数と endsWith 関数の使用方法を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)は、startsWith 関数と endsWith 関数の使用方法を示しています。
 
 ```json
 {
@@ -1261,6 +1487,18 @@ base64 形式を文字列に変換します。
 | endsCapTrue | ブール値 | True |
 | endsFalse | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
 <a id="string" />
 
 ## <a name="string"></a>string
@@ -1280,7 +1518,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、さまざまな型の値を文字列に変換する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json)では、さまざまな型の値を文字列に変換する方法を示します。
 
 ```json
 {
@@ -1333,6 +1571,18 @@ base64 形式を文字列に変換します。
 | arrayOutput | String | ["a","b","c"] |
 | intOutput | String | 5 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
+```
+
 <a id="substring" />
 
 ## <a name="substring"></a>substring
@@ -1367,7 +1617,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、パラメーターから部分文字列を抽出します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json)では、パラメーターから部分文字列を抽出します。
 
 ```json
 {
@@ -1395,6 +1645,17 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
+```
 
 <a id="take" />
 
@@ -1416,7 +1677,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json)では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
 
 ```json
 {
@@ -1465,6 +1726,18 @@ base64 形式を文字列に変換します。
 | arrayOutput | array | ["one", "two"] |
 | stringOutput | String | on |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
 <a id="tolower" />
 
 ## <a name="tolower"></a>toLower
@@ -1484,7 +1757,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、パラメーター値を小文字と大文字に変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)では、パラメーター値を小文字と大文字に変換します。
 
 ```json
 {
@@ -1516,6 +1789,18 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
 
 <a id="toupper" />
 
@@ -1536,7 +1821,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、パラメーター値を小文字と大文字に変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)では、パラメーター値を小文字と大文字に変換します。
 
 ```json
 {
@@ -1569,6 +1854,18 @@ base64 形式を文字列に変換します。
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
 <a id="trim" />
 
 ## <a name="trim"></a>trim
@@ -1588,7 +1885,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例では、パラメーターから空白文字を削除します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json)では、パラメーターから空白文字を削除します。
 
 ```json
 {
@@ -1615,6 +1912,18 @@ base64 形式を文字列に変換します。
 | 名前 | 型 | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | String | one two three |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
+```
 
 <a id="uniquestring" />
 
@@ -1673,7 +1982,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="examples"></a>例
 
-次の例は、uniquestring から結果を返します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json)は、uniquestring から結果を返します。
 
 ```json
 {
@@ -1691,6 +2000,18 @@ base64 形式を文字列に変換します。
         }
     }
 }
+```
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
 ```
 
 <a id="uri" />
@@ -1721,7 +2042,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-次の例では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
 
 ```json
 {
@@ -1757,6 +2078,18 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 <a id="uricomponent" />
 
@@ -1777,7 +2110,7 @@ URI エンコードされた値の文字列。
 
 ### <a name="examples"></a>例
 
-次の例では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
 
 ```json
 {
@@ -1814,6 +2147,17 @@ URI エンコードされた値の文字列。
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 <a id="uricomponenttostring" />
 
@@ -1834,7 +2178,7 @@ URI エンコードされた値のデコード済み文字列。
 
 ### <a name="examples"></a>例
 
-次の例では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)では、uri、uriComponent、および uriComponentToString を使用する方法を示します。
 
 ```json
 {
@@ -1871,6 +2215,17 @@ URI エンコードされた値のデコード済み文字列。
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

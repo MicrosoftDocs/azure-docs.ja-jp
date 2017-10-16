@@ -15,13 +15,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: cf1482ae7b1070023703f5dbe861d151f5d64fd8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したグローバルにレプリケートされたマルチマスター データベース アーキテクチャ
 Azure Cosmos DB では、ワークロードであらゆる場所での待機時間の短いアクセスによって複数のリージョンにデータを配布できる、ターンキー [グローバル レプリケーション](distribute-data-globally.md)をサポートしています。 このモデルは、1 つの地理的リージョンにライターが存在し、他の複数の (読み取り) リージョンにグローバルに分散したリーダーが存在する発行者/コンシューマー ワークロードに一般に使用されます。 
@@ -323,4 +321,3 @@ Azure Cosmos DB でグローバルに分散したマルチリージョン/マル
 * [Azure Cosmos DB - DocumentDB API](tutorial-global-distribution-documentdb.md) を使用して複数リージョンで開発する
 * [Azure Cosmos DB - MongoDB API](tutorial-global-distribution-MongoDB.md) を使用して複数リージョンで開発する
 * [Azure Cosmos DB - Table API](tutorial-global-distribution-table.md) を使用して複数リージョンで開発する
-

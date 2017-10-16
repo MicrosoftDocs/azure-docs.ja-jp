@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.lasthandoff: 03/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -119,7 +119,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 14. vSphere client のウィンドウに戻ります。 ESXi サーバーを選択して右クリックし、 **[新しい仮想マシン]**を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. A **[New Virtual Machine]** ウィンドウが表示されます。 **[Configuration]** ページで **[Custom]** を選択します。 **[次へ]**をクリックします。
+15. A **[New Virtual Machine]** ウィンドウが表示されます。 **[Configuration]** ページで **[Custom]** を選択します。 **[次へ]** をクリックします。
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. **[Name and Location]** ページで、仮想マシンの名前を指定します。 この名前は、手順 8 で指定したフォルダー名と一致する必要があります (推奨されるベスト プラクティス)。
 
@@ -133,10 +133,10 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 19. **[Guest Operating System]** ページで、**[Guest Operating System]** に **[Windows]** を選択します。 **[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. **[CPUs]** ページで、**[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。 **[次へ]**をクリックします。
+20. **[CPUs]** ページで、**[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。 **[次へ]**をクリックします。
+21. **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. **[Network]** ページでネットワーク インターフェイスの数を指定します。 ネットワーク インターフェイスの最小要件は 1 つです。
@@ -145,10 +145,10 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 23. **[SCSI Controller]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。 **[次へ]**をクリックします。
+24. **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]**をクリックします。
+25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
@@ -163,10 +163,10 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 29. **[Add Hardware]** ウィンドウが表示されます。 **[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、**[Next]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。 **[次へ]**をクリックします。
+30. **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[Disk Provisioning]** で **[Thin Provision]** を選択します。 **[次へ]**をクリックします。
+31. **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[Disk Provisioning]** で **[Thin Provision]** を選択します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. **[Advanced Options]** ページで既定値をそのまま使用します。
@@ -178,7 +178,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 34. [Virtual Machine Properties] ページに戻ります。 新しいハード ディスクが仮想マシンに追加されます。 **[Finish]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。 仮想マシンの設定を確認します。
+35. 仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。仮想マシンの設定を確認します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,7 +191,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 1. 仮想デバイスを起動します。 vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。 **[Power]**、**[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 設定タスクの完了には数分かかります。 デバイスが起動したら **[Console]** タブに移動します。 Ctrl + Alt + Del キーを押して、デバイスにログインします。 [Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
+2. 設定タスクの完了には数分かかります。 デバイスが起動したら **[Console]** タブに移動します。Ctrl + Alt + Del キーを押して、デバイスにログインします。 [Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。 このため、パスワードを変更するよう求められます。
@@ -243,4 +243,3 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)
-

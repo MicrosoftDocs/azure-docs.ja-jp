@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
+ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへの再保護
 
@@ -29,10 +28,13 @@ ms.lasthandoff: 08/16/2017
 この記事では、Azure 仮想マシンを Azure からオンプレミス サイトに再保護する方法について説明します。 VMware 仮想マシンまたは Windows/Linux 物理サーバーが (「[Replicate VMware virtual machines and physical servers to Azure with Azure Site Recovery (Azure Site Recovery を使用して VMware 仮想マシンおよび物理サーバーを Azure にレプリケートする)](site-recovery-failover.md)」の説明に従って) オンプレミス サイトから Azure にフェールオーバーされた後にそれらをフェールバックする準備ができたら、この記事の手順に従ってください。
 
 > [!WARNING]
-> [移行を完了](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)したり、仮想マシンを別のリソース グループに移動したり、Azure 仮想マシンを削除したりした後にフェールバックすることはできません。
+> 既に[移行が完了](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)している場合、仮想マシンを別のリソース グループに移動した場合、または Azure 仮想マシンを削除した場合、その後フェールバックを実行することはできません。 仮想マシンの保護を無効にした場合は、フェールバックを実行できません。
 
 
 再保護が完了し、保護された仮想マシンがレプリケートされた後、仮想マシン上でフェールバックを開始してそのマシンをオンプレミス サイトに移動できます。
+
+> [!NOTE]
+> 再保護および ESXi ホストへのフェールバックのみを実行できます。 仮想マシンを Hyper-v ホスト、VMware ワークステーション、またはその他の仮想化プラットフォームにフェールバックすることはできません。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
@@ -41,6 +43,11 @@ ms.lasthandoff: 08/16/2017
 
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!IMPORTANT]
+> Azure へのフェールオーバー中には、オンプレミス サイトにアクセスできないために、構成サーバーが利用不可またはシャットダウン状態になる場合があります。 再保護とフェールバック中には、オンプレミスの構成サーバーが実行中で、かつその接続状態が OK である必要があります。
+
+
 仮想マシンを再保護する準備ができたら、次の前提条件のアクション実行するか、または検討してください。
 
 * vCenter サーバーがフェールバック先の仮想マシンを管理している場合は、vCenter サーバー上の仮想マシンの検出に[必要なアクセス許可](site-recovery-vmware-to-azure-classic.md)があることを確認してください。
@@ -93,13 +100,15 @@ ExpressRoute 接続が設定されている場合は、仮想マシンとプロ�
  ![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
 
 
-レプリケーションは S2S VPN 経由、または ExpressRoute ネットワークのプライベート ピアリング経由でのみ実行されることに注意してください。 そのネットワーク チャネルで十分な帯域幅を使用できることを確認してください。
+Azure からオンプレミスへのレプリケーションは、S2S VPN または、ExpressRoute ネットワークのプライベート ピアリングを介してのみ実行できることに注意してください。 そのネットワーク チャネルで十分な帯域幅を使用できることを確認してください。
 
 Azure ベースのプロセス サーバーのインストールについては、「[Manage a process server running in Azure (Azure で実行されているプロセス サーバーを管理する)](site-recovery-vmware-setup-azure-ps-resource-manager.md)」を参照してください。
 
 > [!TIP]
 > フェールバック中は Azure ベースのプロセス サーバーを使用することをお勧めします。 レプリケーションのパフォーマンスは、プロセス サーバーが、レプリケートしている仮想マシン (Azure 内のフェールオーバーされたマシン) に近いほど高くなります。 ただし、概念実証 (POC) やデモンストレーション中は、オンプレミスのプロセス サーバーをプライベート ピアリングの ExpressRoute と共に使用して POC をより高速に完了できます。
 
+> [!NOTE]
+> オンプレミスから Azure へのレプリケーションは、インターネット、またはパブリック ピアリングを使用した ExpressRoute 経由でのみ実行できます。 Azure からオンプレミスへのレプリケーションは、S2S VPN、またはプライベート ピアリングを使用した ExpressRoute 経由でのみ実行できます。
 
 
 #### <a name="what-ports-should-i-open-on-different-components-so-that-reprotection-can-work"></a>再保護が機能できるようにするために各コンポーネントで開くべきポート
@@ -226,4 +235,39 @@ Azure 上の仮想マシンを既存のオンプレミスの仮想マシン復�
 * 代替の vCenter にフェールバックしようとしている場合は、新しい vCenter とマスター ターゲット サーバーが検出されることを確認してください。 典型的な症状は、データストアにアクセスできないか、**[再保護]** ダイアログに表示されないことです。
 
 * 物理オンプレミス サーバーとして保護されている Windows Server 2008 R2 SP1 サーバーは、Azure からオンプレミス サイトにフェールバックすることができません。
+
+### <a name="common-error-codes"></a>一般的なエラー コード
+
+#### <a name="error-code-95226"></a>エラー コード 95226
+
+*Azure 仮想マシンがオンプレミスの構成サーバーにアクセスできなかったため、再保護に失敗しました。*
+
+このエラーは次の場合に発生します。 
+1. Azure 仮想マシンがオンプレミスの構成サーバーに到達できず、その結果、構成サーバーから検出されず、登録されなかった可能性があります。 
+2. オンプレミスの構成サーバーと通信するために実行する必要がある Azure 仮想マシン上の InMage Scout Application サービスが、フェールオーバー後に実行していない可能性があります。
+
+この問題を解決するには
+1. Azure 仮想マシンがオンプレミスの構成サーバーと通信できるように Azure 仮想マシンのネットワークが構成されていることを確認する必要があります。 確認するには、オンプレミスのデータセンターに対してサイト間 VPN を設定するか、Azure 仮想マシンの仮想ネットワーク上でプライベート ピアリングを使用して ExpressRoute 接続を構成します。 
+2. Azure 仮想マシンがオンプレミスの構成サーバーと通信できるように既にネットワークを構成している場合は、仮想マシンにログインし、'InMage Scout Application Service' を確認します。 InMage Scout Application Service が実行中ではない場合は、サービスを手動で開始し、サービス開始の種類が [自動] に設定されていることを確認します。
+
+### <a name="error-code-78052"></a>エラー コード 78052
+再保護が次のエラー メッセージで失敗します: *仮想マシンの保護を完了できませんでした。*
+
+このエラーは、2 つの理由で発生する可能性があります。
+1. 再保護する仮想マシンが Windows Server 2016 です。 現在、このオペレーティング システムではフェールバックがサポートされていませんが、間もなくサポートされる予定です。
+2. フェールバック先のマスター ターゲット サーバーに同じ名前の仮想マシンが既に存在します。
+
+この問題を解決するには、別のホスト上にある別のマスター ターゲット サーバーを選択して、再保護によって別のホストに仮想マシンを作成し、名前が競合しないようにします。 また、vMotion を使用して、名前の競合が発生しない別のホストにマスター ターゲットを移動することもできます。 既存の仮想マシンがはぐれたコンピューターである場合は、同じ ESXi ホストで新しい仮想マシンを作成できるように、はぐれたコンピューターの名前を変更することができます。
+
+### <a name="error-code-78093"></a>エラー コード 78093
+
+*VM が実行中でないか、応答を停止しているか、アクセスできない状態です。*
+
+フェールオーバーした仮想マシンをオンプレミスで再保護するには、Azure 仮想マシンが実行されている必要があります。 これは、モビリティ サービスがオンプレミスの構成サーバーに登録され、プロセス サーバーと通信することでレプリケートを開始できるようにするためです。 マシンが不適切なネットワーク上にある場合、または実行されていない場合 (停止状態またはシャットダウン)、構成サーバーは、再保護を開始する仮想マシンのモビリティ サービスに到達できません。 仮想マシンを再起動して、オンプレミスで通信を開始できるようにします。 Azure 仮想マシンを起動した後に、再保護ジョブを再起動します。
+
+### <a name="error-code-8061"></a>エラー コード 8061
+
+"*データ ストアには、ESXi ホストからアクセスできません。*"
+
+[マスター ターゲットの前提条件](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)とフェールバック用に[サポートされているデータストア](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback)を参照してください。
 

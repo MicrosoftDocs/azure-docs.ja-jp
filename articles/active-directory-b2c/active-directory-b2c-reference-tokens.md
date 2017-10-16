@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: parakhj
+ms.openlocfilehash: 92087e4553580a5fe14e647d014e493bc7e47b67
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 7f98637264d1acb209d0379e4800e542fc91955b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
 
@@ -155,5 +154,4 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 | ID トークン |1 時間 |通常、ID トークンの有効期間は 1 時間です。 Web アプリは、この有効期間を使用して、ユーザーとの独自のセッションを維持できます (推奨)。 また、別のセッション有効期間を選択することもできます。 アプリで新しい ID トークンを取得する必要がある場合は、Azure AD に対して新しいサインイン要求を行うだけで済みます。 ユーザーが Azure AD との有効なブラウザー セッションを使用している場合、そのユーザーは資格情報を再度入力する必要がない可能性があります。 |
 | 更新トークン |最大 14 日 |1 つの更新トークンは、最大 14 日間有効です。 ただし、更新トークンはさまざまな理由で、いつでも無効になる可能性があります。 アプリは、要求が失敗するまで、またはアプリが更新トークンを新しいトークンに置き換えるまで、更新トークンの使用を試み続ける必要があります。 更新トークンはまた、ユーザーが最後に資格情報を入力してから 90 日が経過した場合にも無効になる可能性があります。 |
 | 承認コード |5 分 |承認コードは、意図的に有効期間が短くなっています。 受け取ったらすぐに、アクセス トークン、ID トークン、または更新トークンに対して使用する必要があります。 |
-
 

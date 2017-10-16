@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="a-idunity-roll-a-ballacreate-unity-roll-a-ball-game"></a><a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
+# <a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
 このチュートリアルでは、若干変更された [Unity Roll a Ball のチュートリアル](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)の主な手順について説明します。 このサンプル ゲームは、アプリ ユーザーによって操作される球形の "プレーヤー" オブジェクトで構成されます。ゲームの目的は、プレーヤー オブジェクトを収集可能なオブジェクトに衝突させることによって、このような収集可能なオブジェクトを "収集" することです。 このチュートリアルは、Unity エディター環境の基礎知識があることを前提としています。 問題が発生した場合は、完全なチュートリアルを参照してください。 
 
 ### <a name="setting-up-the-game"></a>ゲームを設定する
@@ -329,11 +329,5 @@ Unity の基本的なチュートリアルは、上のセクションで終了�
 
 
 
-
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

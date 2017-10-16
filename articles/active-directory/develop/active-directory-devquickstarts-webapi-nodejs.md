@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 707bb2b7cd9796e0e05234aa08002bbc1820f871
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: 4f58177f540c14172d7ece8b4bc8c8a2b9787f8f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-web-apis-for-nodejs"></a>Node.js の Web API の概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -720,8 +718,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 3. 次に、ディレクトリを変更し、curl を開始します。
 
-    `$ cd azuread`
-    `$ node server.js`
+    `$ cd azuread` `$ node server.js`
 
     `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -893,8 +890,7 @@ next();
 
 2. 次に、ディレクトリを変更し、curl を開始します。
 
-      `$ cd azuread`
-      `$ node server.js`
+      `$ cd azuread` `$ node server.js`
 
 3. 基本的な POST を試してください。
 
@@ -924,4 +920,3 @@ ADAL に関連するさらに高度な手順に興味がある場合は、以下
 [ADAL for Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

@@ -14,12 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c81ab9004bf71007395d2545c4e44b07c865aa9d
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -198,7 +197,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 上記のメソッドは、HTTP POST 要求、および通知を送信する正しい本体とヘッダーを通知ハブの /messages エンドポイントに送信します。
 
-## <a name="a-namecomplete-tutorialacomplete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
+## <a name="complete-tutorial"></a>チュートリアルの完了
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
 Notification Hubs クライアントを初期化します (「 [Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
@@ -254,5 +253,4 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-
 

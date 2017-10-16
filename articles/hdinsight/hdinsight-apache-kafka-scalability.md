@@ -12,16 +12,14 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/14/2017
+ms.date: 09/07/2017
 ms.author: larryfr
+ms.openlocfilehash: 41d96958ee999e4d0b304dfd9296f51d53eb3277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 880a186a3d9a23b013294b0121e8265270d160cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
 HDInsight 上の Apache Kafka によって使われる複数の管理ディスクを構成する方法を説明します。
@@ -36,12 +34,12 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 1. 「[HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 Portal の作成プロセスは実行しないでください。
 
-2. __[クラスター サイズ]__ ブレードの __[Disks per worker node\(ワーカー ノードごとのディスク数\)]__ フィールドを使って、ディスクの数を構成します。
+2. __[クラスター サイズ]__ セクションの __[Disks per worker node\(ワーカー ノードごとのディスク数\)]__ フィールドを使って、ディスクの数を構成します。
 
     > [!NOTE]
     > 管理ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] ブレードの画像](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
+    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクションの画像](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>管理ディスクを構成する: Resource Manager テンプレート
 

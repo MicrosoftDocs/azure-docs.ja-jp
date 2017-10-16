@@ -1,7 +1,7 @@
 
 
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
-Apple Push Notification サービス (APNS) では、証明書を使用してプッシュ通知を認証します。 次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。 これらの概念の詳細については、 [Apple Push Notification サービス](http://go.microsoft.com/fwlink/p/?LinkId=272584) の公式ドキュメントを参照してください。
+Apple Push Notification Service (APNS) では、証明書を使用してプッシュ通知を認証します。 次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。 これらの概念の詳細については、[Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584) の公式ドキュメントを参照してください。
 
 Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成します。
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
 Service Bus は、Standard と [Premium](service-bus-premium-messaging.md) の各階層で提供されます。 作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのエンティティにこの階層選択が適用されます。
@@ -99,4 +98,3 @@ Premium 階層では、仲介型接続は料金がかかりません。
 * Service Bus の価格および課金に関してよく寄せられる質問については、[Service Bus に関する FAQ](service-bus-faq.md#pricing) をご覧ください。
 
 [Azure portal]: https://portal.azure.com
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 0ec9ceb63c3e1872e9815a7895b624276fc46123
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Azure のレポート ツールによる、個人データのドキュメント保護
 
@@ -27,11 +26,11 @@ ms.lasthandoff: 08/30/2017
 
 ## <a name="scenario"></a>シナリオ
 
-米国に本社を置く大規模なクルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この取り組みの中で、この会社は、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模クルーズ会社を買収しました。
+米国に本社を置く大手クルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この取り組みの中で、この会社は、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模クルーズ会社を買収しました。
 
 会社は、Microsoft Azure を使用して企業データを処理および格納しています。 これには、グローバルな顧客ベースの氏名や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社では、現在と過去の顧客とのリレーションシップを追跡するための個人情報を含む、特典やロイヤリティ プログラム メンバーの大規模なデータベースも管理しています。
 
-企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店は、一部の会社リソースにアクセスできます。
+この企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店の社員は、一部の会社リソースにアクセスできます。
 
 ## <a name="problem-statement"></a>問題の説明
 
@@ -55,7 +54,7 @@ Microsoft Azure は、個人データのアクセスと処理、データの geo
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-[Azure Active Directory ](https://azure.microsoft.com/services/active-directory/)は、Microsoft が提供する、クラウドベースのマルチテナントに対応したディレクトリおよび ID の管理サービスです。 サービスのサインインと監査レポートの機能により、詳細なサインインおよびアプリケーション使用状況アクティビティ情報を取得できるため、顧客および従業員の個人データが適切にアクセスされていることを監視し、確認できます。
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) は、マイクロソフトが提供する、クラウドベースの、マルチテナント対応ディレクトリおよび ID 管理サービスです。 サービスのサインインと監査レポートの機能により、詳細なサインインおよびアプリケーション使用状況アクティビティ情報を取得できるため、顧客および従業員の個人データが適切にアクセスされていることを監視し、確認できます。
 
 アクティビティ レポートには次の 2 つの種類があります。
 
@@ -229,7 +228,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 Storage Analytics のログ記録を有効にする方法については、「[Azure ポータルでのストレージ アカウントの監視](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)」を参照してください。
 
-### <a name="azure-security-center"></a>Azure Security Center 
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center) 
 
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、Azure リソースのセキュリティ状態を監視して、脅威を予防および検出して対応策を推奨します。 個人データのプライバシーを保護するセキュリティ対策を文書化する方法がいくつかあります。
 
@@ -276,4 +275,3 @@ Azure Security Center の各セキュリティ アラートの**疑わしいプ�
 [Microsoft Azure での監視の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
 
 [Azure のアクティビティ ログの概要 (ビデオ)](https://azure.microsoft.com/resources/videos/intro-activity-log/)
-

@@ -17,10 +17,10 @@ ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: e7853892af550ec66fbc48b669a6c9b8ff18df8c
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 08/01/2017
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Jessie with Desktop (.zip ファイル) をダウンロードします](https://www.raspberrypi.org/downloads/raspbian/)。
+   1. [Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル) をダウンロードします。
    1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 1. microSD カードに Raspbian をインストールします。
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
@@ -120,8 +120,8 @@ BME280 センサーでは、温度と湿度のデータを収集できます。 
 | -----------------------  | ---------------------- | ------------: |
 | VDD (ピン 5G)             | 3.3V PWR (ピン 1)       | 白いケーブル   |
 | GND (ピン 7G)             | GND (ピン 6)            | 茶色のケーブル   |
-| SCK (ピン 8G)             | I2C1 SDA (ピン 3)       | オレンジ色のケーブル  |
-| SDI (ピン 10G)            | I2C1 SCL (ピン 5)       | 赤いケーブル     |
+| SDI (ピン 10G)            | I2C1 SDA (ピン 3)       | 赤いケーブル     |
+| SCK (ピン 8G)             | I2C1 SCL (ピン 5)       | オレンジ色のケーブル  |
 | LED VDD (ピン 18F)        | GPIO 24 (ピン 18)       | 白いケーブル   |
 | LED GND (ピン 17F)        | GND (ピン 20)           | 黒いケーブル   |
 
@@ -222,7 +222,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="next-steps"></a>次のステップ
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 Raspberry Pi から IoT Hub に送信したメッセージやコマンド ライン インターフェイスで Raspberry Pi に送信したメッセージを確認するには、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 コマンド ライン インターフェイスで Raspberry Pi にメッセージを送信したり、Raspberry Pi から IoT Hub に送信されたメッセージを表示したりする方法については、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

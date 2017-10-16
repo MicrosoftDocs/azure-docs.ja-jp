@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: 9a663a4e79c30b97e6390b7ff7f83deec131384a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: b71a4938dde2a71f1ce29403af7aa9101358d64c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>追跡を有効にしてワークフロー全体をエンド ツー エンドで監視する
 企業間取引のワークフローにおけるさまざまな部分について、AS2 や X12 メッセージの追跡など、組み込みの追跡を有効にすることができます。 ロジック アプリ、BizTalk Server、SQL Server、またはその他のレイヤーを含むワークフローを作成する場合は、カスタムの追跡を有効にして、ワークフローの最初から最後までのイベントをログに記録することができます。 
@@ -89,4 +87,3 @@ B2B プロトコル追跡スキーマ について詳しくは、次のページ
 * [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報。   
 * [Operations Management Suite ポータルでの B2B メッセージ追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。
-

@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions の従量課金プランと App Service プラン | Microsoft Docs"
-description: "ユーザーのイベント ドリブン ワークロードのニーズに合わせて Azure Functions が拡大縮小する方法を説明します。"
+title: "Azure Functions のホスティング プランの比較 | Microsoft Docs"
+description: "Azure Functions の従量課金プランと App Service プランの選択方法について説明します。"
 services: functions
 documentationcenter: na
 author: lindydonna
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+keywords: "Azure Functions, 関数, 従量課金プラン, App Service プラン, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ"
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -18,13 +18,13 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 41ebbe944213373c028b7410baa86e6c55db0d8c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions の従量課金プランと App Service プラン 
+# <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions のホスティング プラン
 
 ## <a name="introduction"></a>はじめに
 
@@ -56,7 +56,7 @@ App Service プランの階層間で拡大縮小することはできます。 �
 
 ## <a name="app-service-plan"></a>App Service プラン
 
-App Service プランでは、関数アプリは Web Apps と同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。
+App Service プランでは、Function App は Web Apps と同様に、Basic、Standard、Premium、および Isolated SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。
 
 次のような場合に App Service プランを検討してください。
 - 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。
@@ -67,7 +67,7 @@ App Service プランでは、関数アプリは Web Apps と同様に、Basic�
 
 VM を使用すると、コストが実行時間とメモリ サイズの両方から切り離されます。 このため、割り当てた VM インスタンスのコストを超えて課金されることはありません。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
 
-App Service プランでは、VM インスタンスを追加して手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service-web/web-sites-scale.md) に関するページを参照してください。 App Service プランで JavaScript 関数を実行する予定がある場合は、コアの少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans)」を参照してください。  
+App Service プランでは、VM インスタンスを追加して手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/web-sites-scale.md) に関するページを参照してください。 App Service プランで JavaScript 関数を実行する予定がある場合は、コアの少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans)」を参照してください。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -96,7 +96,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 
-Azure Functions は "*スケール コントローラー*" と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールダウンのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
+Azure Functions は "*スケール コントローラー*" と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールインのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
 
 スケーリングは Function App 単位で行われます。 関数アプリがスケールアウトするときは、Azure Functions ホストの複数のインスタンスを実行するためのリソースが追加で割り当てられます。 反対に、コンピューティングの需要が減ると、スケール コントローラーにより、関数ホストのインスタンスが削除されます。 Function App 内で関数が何も実行されていない場合、インスタンスの数は最終的に 0 にスケールダウンされます。
 
@@ -104,7 +104,7 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 
 ### <a name="billing-model"></a>課金モデル
 
-従量課金プランの課金の詳細については、[Azure Functions の価格]に関するページをご覧ください。 使用量は関数アプリレベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
+従量課金プランの課金の詳細については、[Azure Functions の価格]に関するページをご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
 * **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
 * **実行回数**。 バインドによってトリガーされる関数がイベントに応じて実行されるたびにカウントされます。
 

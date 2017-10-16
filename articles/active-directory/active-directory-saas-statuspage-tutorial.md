@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: fa16cdec7b89404c140435fe57d5aa4b08cfa985
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
 
@@ -111,7 +110,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-statuspage-tutorial/tutorial_statuspage_url.png)
 
-    a. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
@@ -197,7 +196,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
 
@@ -285,5 +284,4 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 [201]: ./media/active-directory-saas-statuspage-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-statuspage-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-statuspage-tutorial/tutorial_general_203.png
-
 

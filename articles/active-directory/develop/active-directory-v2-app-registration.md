@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: lenalepa
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: e6202aa8665c906382666fe08a561421e50e0a8d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>v2.0 エンドポイントを使用してアプリケーションを登録する方法
 MSA および Azure AD サインインの両方を受け付けるアプリを構築するには、最初に、アプリを Microsoft に登録する必要があります。  現時点では、Azure AD または MSA で利用している既存のアプリは使用できません。新しいアプリを作成してください。
@@ -56,5 +54,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 Microsoft アプリを構築したら、いずれかの v2.0 クイック スタート チュートリアルを実行します。  以下に、推奨事項をいくつか示します。
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-
 

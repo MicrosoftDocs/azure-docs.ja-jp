@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
+ms.openlocfilehash: 1ce90cf4bae66bfd6387a2698fd9b1ba7fc64595
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: ddc391127d43a954f555943d27258593eba02df2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
 この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法を説明しています。 障害復旧をサポートするには、この構成を使います。
@@ -158,7 +156,7 @@ ms.lasthandoff: 07/26/2017
 1. [OK] をクリックします。
 1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、**[ダッシュボードの表示]** をクリックします。
 1. ダッシュボードで、DR サイトのレプリカが同期されていることを確認します。
-1. Explore**オブジェクト エクスプローラー**で、可用性グループを右クリックし、**[フェールオーバー...]** をクリックします。 SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
+1. Explore**オブジェクト エクスプローラー**で、可用性グループを右クリックし、**[フェールオーバー...]** をクリックします。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
 1. **[次へ]** をクリックし、DR サイトの SQL Server インスタンスを選びます。 もう一度 **[次へ]** をクリックします。
 1. DR サイトの SQL Server インスタンスに接続し、**[次へ]** をクリックします。
 1. **[概要]** ページで設定を確認し、**[完了]** をクリックします。
@@ -185,4 +183,3 @@ ms.lasthandoff: 07/26/2017
 * [Azure Virtual Machines](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure の可用性セット](../manage-availability.md)
-

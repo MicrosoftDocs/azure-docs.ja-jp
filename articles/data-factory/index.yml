@@ -1,0 +1,81 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Factory V2 プレビューのドキュメント
+metadata:
+  title: Azure Data Factory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: 分析用のデータを移動して処理するために、Data Factory を使用してオンプレミスやクラウドのソースとの間で自動化データ パイプラインを設定する方法について説明します。
+  services: data-factory
+  author: spelluru
+  manager: jhubbard
+  ms.service: data-factory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/08/2017
+  ms.author: spelluru
+abstract:
+  description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理に加え、分析用のデータの移動と変換の方法を紹介します。 <p>現在、Data Factory のバージョン V2 はプレビュー段階です。 バージョン V1 は一般公開されています。 Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 以下を使用して、データ ファクトリを作成する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-factory/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/data-factory/quickstart-create-data-factory-powershell
+          - image:
+              src: /azure/data-factory/media/index/logo_net.svg
+            text: .NET
+            href: /azure/data-factory/quickstart-create-data-factory-dot-net
+          - image:
+              src: /azure/data-factory/media/index/logo_python.svg
+            text: Python
+            href: /azure/data-factory/quickstart-create-data-factory-python
+          - image:
+              src: /azure/data-factory/media/index/logo_rest.svg
+            text: REST ()
+            href: /azure/data-factory/quickstart-create-data-factory-rest-api
+          - image:
+              src: /azure/data-factory/media/index/portal.svg
+            text: Azure ポータル
+            href: /azure/data-factory/quickstart-create-data-factory-portal
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: データ ファクトリを作成および監視する方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">SSIS パッケージを Azure にデプロイする</a>
+          - html: <a href="/azure/data-factory/tutorial-copy-data-dot-net">クラウドのデータをコピーする</a>
+          - html: <a href="../data-factory/tutorial-hybrid-copy-powershell">オンプレミスのデータをクラウドにコピーする</a>
+          - html: <a href="../data-factory/tutorial-bulk-copy">データを一括コピーする</a>
+          - html: <a href="../data-factory/tutorial-incremental-copy-powershell">データを増分コピーする</a>
+          - html: <a href="../data-factory/tutorial-transform-data-spark-powershell">Spark を使用してクラウドのデータを変換する</a>
+          - html: <a href="../data-factory/tutorial-transform-data-hive-virtual-network">仮想ネットワーク内のデータを変換する</a>
+          - html: <a href="../data-factory/tutorial-control-flow">制御フロー</a>
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: 次のサンプルを使用して、Data Factory を操作します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
+          - title: 言語
+            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
+          - title: REST ()
+            html: <p><a href="/rest/api/datafactory">REST API</a></p>

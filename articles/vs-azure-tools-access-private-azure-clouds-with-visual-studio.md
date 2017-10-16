@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/19/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b29a3299433e57709ea31de3c7849230ea09c09a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: b2578c837732ab05d538e9b896ed3a3035075a70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>Visual Studio での Azure プライベート クラウドへのアクセス
 既定では、Visual Studio は Azure パブリック クラウドの REST エンドポイントをサポートします。 このトピックでは、プライベート クラウドの証明書を使用して Visual Studio からプライベート クラウドにアクセスし、操作する方法を説明します。
@@ -54,4 +53,3 @@ ms.lasthandoff: 03/21/2017
 ## <a name="next-steps"></a>次のステップ
 - [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 - [方法: 発行設定とサブスクリプション情報のダウンロードとインポート](https://msdn.microsoft.com/library/dn385850\(v=nav.70\).aspx)
-

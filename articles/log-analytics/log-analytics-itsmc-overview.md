@@ -1,6 +1,6 @@
 ---
-title: "OMS の IT Service Management Connector | Microsoft Docs"
-description: "IT Service Management Connector を使用して、OMS の ITSM 作業項目を一元的に監視、管理し、問題をすばやく解決できます。"
+title: "Azure Log Analytics の IT Service Management Connector | Microsoft Docs"
+description: "IT Service Management Connector を使用して、Azure Log Analytics の ITSM 作業項目を一元的に監視および管理し、問題をすばやく解決できます。"
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,41 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 54974ef06efdae69ddbfa12b1ba9278b48b113d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 411d6103852cbf534d3c420d5ea7b2146df5164e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>IT Service Management Connector を使用した ITSM 作業項目の一元管理 (プレビュー)
 
 ![IT Service Management Connector シンボル](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-OMS ログ分析の IT Service Management Connector (ITSMC) を使用して、ITSM 製品/サービスの作業項目を一元的に監視、管理できます。
-
-IT Service Management Connector には、既存の IT Service Management (ITSM) 製品/サービスと OMS Log Analytics が統合されています。  このソリューションには複数の ITSM 製品/サービスが相互に関連付けられて統合されているため、OMS ユーザーは ITSM ソリューション内のインシデント、アラート、イベントなどの作成を自由に選択できます。 また、このコネクタは、インシデントなどのデータや ITSM ソリューションからの変更要求を OMS ログ分析にインポートします。
+IT Service Management Connector では、サポートされている IT Service Management (ITSM) 製品/サービスと Log Analytics 間の双方向の統合が提供されます。  この接続を介して、Log Analytics のアラートまたはログ レコードに基づいて ITSM 製品でインシデント、アラート、またはイベントを作成できます。 また、このコネクタは、インシデントなどのデータや ITSM 製品からの変更要求を OMS Log Analytics にインポートします。
 
 IT Service Management Connector では、次のことができます。
 
-  - 組織全体で使用される ITSM 製品/サービスの作業項目を一元的に監視、管理する。
-  - OMS アラートとログ検索から、ITSM で ITSM 作業項目 (アラート、イベント、インシデントなど) を作成する。
-  - ITSM ソリューションのインシデントと変更要求を読み取り、Log Analytics ワークスペースで関連するログ データを相互に関連付ける。
-  - エンド ユーザーがヘルプデスクに電話したり報告したりしなくても、予期しない異常なイベントを事前に見つけ、それを解決する。
-  - 作業項目のデータを Log Analytics にインポートし、主要業績評価指標 (KPI) レポートを作成する。  これらのレポートを使用して、マルウェアの評価などの複数の重要項目の確認、評価、アクションを行う。
-  - インシデント、変更要求、影響を受けるシステムに関するより深い洞察をまとめたダッシュボードを表示する。
-  - Log Analytics ワークスペースで他の管理ソリューションと相互に関連付けることによって迅速にトラブルシューティングする。
+  - 任意の ITSM ツールで操作アラートとインシデント管理プラクティスを統合する。
+    - OMS アラートとログ検索から、ITSM で作業項目 (アラート、イベント、インシデントなど) を作成する。
+    - アクション グループの ITSM アクションを使用して、Azure アクティビティ ログ アラートに基づいて作業項目を作成する。 
+  
+  - 組織全体で使用される監視、ログ、およびサービス管理データを統合する。
+    - ITSM ツールのインシデントと変更要求データを、Log Analytics ワークスペースの関連するログ データに関連付ける。   
+    - インシデント、変更要求、影響を受けるシステムの概要を示すトップレベルのダッシュボードを表示する。
+    - サービス管理データを洞察するための Log Analytics クエリを記述する。
+      
+## <a name="adding-the-it-service-management-connector-solution"></a>IT Service Management Connector ソリューションの追加
 
-
-## <a name="prerequisites"></a>前提条件
-
-ITSM 作業項目を OMS Log Analytics にインポートするには、OMS の IT Service Management Connector と、作業項目のインポート元である ITSM 製品/サービスとが、このソリューションにおいて相互に接続されている必要があります。
-
-
-## <a name="configuration"></a>構成
-
-[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順に従い、IT Service Management Connector ソリューションを OMS ワーク スペースに追加します。
+[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、IT Service Management Connector ソリューションを Log Analytics ワーク スペースに追加します。
 
 ソリューション ギャラリーで表示される IT Service Management Connector タイル:
 
@@ -64,12 +55,10 @@ ITSM 作業項目を OMS Log Analytics にインポートするには、OMS の 
 
  ![ITSMC の更新](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
-## <a name="management-packs"></a>管理パック
-このソリューションでは、管理パックは不要です。
 
-## <a name="connected-sources"></a>接続先ソース
+## <a name="configuring-the-connection-with-your-itsm-software"></a>ITSM ソフトウェアとの接続の構成
 
-IT Service Management Connector では、次の ITSM 製品/サービスがサポートされています。
+IT Service Management Connector ソリューションでは、**System Center Service Manager**、**ServiceNow**、**Provance**、および **Cherwell** への接続がサポートされます。 次の接続の構成を行います。
 
 - [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
 
@@ -81,16 +70,14 @@ IT Service Management Connector では、次の ITSM 製品/サービスがサ�
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
-OMS の IT Service Management Connector を ITSM サービスに接続すると、Log Analytics サービスは接続された ITSM 製品/サービスからデータの収集を開始します。
+ITSM ソフトウェアの詳細を使用して IT Service Management Connector を構成した後、Connector は接続された ITSM 製品/サービスからのデータの収集を開始します。 ITSM 製品/サービスの変更要求やインシデントの数によっては、初期同期が完了するまで数分かかります。 
 
 > [!NOTE]
-> - IT Service Management Connector ソリューションによってインポートされたデータは、**ServiceDesk_CL** という名前のイベントとして Log Analytics に表示されます。
-- イベントには **ServiceDeskWorkItemType_s** という名前のフィールドが含まれています。 このフィールドは、**ServiceDesk_CL** イベントに含まれている作業項目データに応じて、インシデントまたは変更要求の値を取ることができます。
+> - IT Service Management Connector ソリューションによって ITSM 製品からインポートされたデータは、**ServiceDesk_CL** タイプのログ レコードとして Log Analytics に表示されます。
+> - ログ レコードには、**ServiceDeskWorkItemType_s** という名前のフィールドが含まれ、インシデントまたは変更要求 (ITSM 製品からインポートされた 2 種類のデータ) が示されます。
 
-## <a name="input-data"></a>入力データ
-作業項目は、ITSM 製品/サービスからインポートされます。
-
-IT Service Management Connector によって収集されるデータの例を以下に示します。
+## <a name="data-synced-from-itsm-product"></a>ITSM 製品から同期されるデータ
+インシデントと変更要求は、ITSM 製品から Log Analytics ワークスペースに同期されます。 IT Service Management Connector によって収集されるデータの例を以下に示します。
 
 > [!NOTE]
 > Log Analytics にインポートされる作業項目の種類によっては、**ServiceDesk_CL** には以下のフィールドが含まれます。
@@ -208,16 +195,16 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="it-service-management-connector--integration-with-other-oms-solutions"></a>IT Service Management Connector – その他の OMS ソリューションとの統合
 
-現在、IT Service Management Connector ではサービス マップ ソリューションとの統合がサポートされています。
+現在、IT Service Management Connector では Service Map ソリューションとの統合がサポートされています。
 
 サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 詳細: [サービス マップ](../operations-management-suite/operations-management-suite-service-map.md)。
 
-サービス マップが統合されたことによって、ITSM ソリューションで作成したサービス デスク項目が次のように表示されます。
+Service Map ソリューションも使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
-![統合ソリューション ](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Service Map の統合](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
 ## <a name="create-itsm-work-items-for-oms-alerts"></a>OMS アラートの ITSM 作業項目を作成する
 
-接続先の ITSM ソース内に OMS アラートに関連する作業項目を作成できます。  これを行うには、次の手順に従います。
+ITSM Connector ソリューションを適用して、次のように、接続されている ITMS ツールで作業項目の作成をトリガーするように OMS アラートを構成することができます。
 
 1. **[ログ検索]** ウィンドウで、ログ検索クエリを実行しデータを表示します。 クエリ結果は、作業項目のソースです。
 2. **[ログ検索]** ウィンドウで、**[アラート]** をクリックし、**[アラート ルールの追加]** ページを開きます。
@@ -236,11 +223,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 7. [ **Save**] をクリックします。
 
-OMS アラートは **[アラート]** の下に作成されます。 指定したアラートの条件が満たされた場合は、それに対応する ITSM 接続の作業項目が作成されます。
+作成した OMS アラートは、**[設定]**>**[アラート]** で確認できます。 指定したアラートの条件が満たされた場合は、それに対応する ITSM 接続の作業項目が作成されます。
 
 ## <a name="create-itsm-work-items-from-oms-logs"></a>OMS ログから ITSM 作業項目を作成する
 
-OMS ログ検索を使用して、接続先の ITSM ソース内に作業項目を作成できます。 これを行うには、次の手順に従います。
+次のように、ログ レコードから直接接続された ITSM ソースで作業項目を作成することもできます。
 
 1. **[ログ検索]** で、必要なデータを検索し、詳細を選択して **[作業項目の作成]** をクリックします。
 
@@ -264,22 +251,53 @@ OMS ログ検索を使用して、接続先の ITSM ソース内に作業項目�
 
 4. **[連絡先の種類]**、**[影響]**、**[緊急度]**、**[カテゴリ]**、**[サブ カテゴリ]** のテキスト ボックスに適切な値を入力し、**[作成]** をクリックします。
 
-作業項目は ITSM 内に作成されますが、OMS 内でも確認できます。
+## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure アラートから ITSM 作業項目を作成する
+ITSM Connector は現在、アクション グループと統合されています。 [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)では、Azure アラートのアクションをトリガーする再利用可能なモジュール化された方法が提供されます。 アクション グループの ITSM アクションでは、既存の ITSM Connector ソリューションを使用して、ITSM 製品の作業項目を作成します。
+
+1. Azure Portal で、**[監視]** をクリックします。
+2. 左側のウィンドウで、**[アクション グループ]** をクリックします。
+
+    ![アクション グループ](media/log-analytics-itsmc/ActionGroups.png)
+
+3. アクション グループの**名前**と**短い名前**を入力します。 アクション グループが作成される**リソース グループ**と**サブスクリプション**を選択します。
+
+    ![アクション グループの詳細](media/log-analytics-itsmc/ActionGroupsDetail.png)
+
+4. アクション リストで、**[アクションの種類]** のドロップダウン リストから **[ITSM]** を選択します。 アクションの**名前**を入力し、**[詳細の編集]** をクリックします。
+
+
+5. Log Analytics ワークスペースが配置される**サブスクリプション**を選択します。 **接続** (つまり、 ワークスペース名が後に続く ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
+
+    ![ITSM アクションの詳細](./media/log-analytics-itsmc/ITSMActionDetails.png)
+
+6. ドロップダウン リストから **[作業項目]** の種類を選択します。
+7. 既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
+8. **[OK]**
+
+Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成されます。 
+
+>[!NOTE]
+>現在、Activity Log アラートのみで ITSM アクションがサポートされています。 他の Azure アラートでは、このアクションは操作できません。
+>
+
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>OMS の ITSM 接続のトラブルシューティング
-1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次のことを行ってください。
- - ServiceNow、Cherwell、Provance の接続の場合、各接続のユーザー名/パスワードとクライアント ID/クライアント シークレットが正しく入力されていることを確認します。 エラーが解決しない場合は、対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。
- - Service Manager の場合、Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。
-
-2.  ServiceNow のデータが OMS で同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 これは、ServiceNow Dev インスタンスがアイドル状態のときに発生する場合があります。 それ以外の場合は、問題を報告してください。
-3.  OMS でアラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、次のことを行ってください。
- -  OMS ポータルの IT Service Management Connector ソリューションを使用して、接続、作業項目、コンピューターなどの概要を取得できます。状態ブレードでエラー メッセージをクリックし、**[ログ検索]** に移動します。エラー メッセージの詳細情報を使用してエラーがある接続を表示します。
- - *Type=ServiceDeskLog_CL* を使用して、**[ログ検索]** ページにエラーと関連情報を直接表示できます。
+1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次の手順を実行してください。
+ - ServiceNow、Cherwell および Provance の接続の場合
+    - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。
+    - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。
+ - Service Manager 接続の場合
+     - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。
+     
+2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
+3.  OMS アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
+ -  **IT Service Management Connector ソリューション**: このソリューションでは、接続/作業項目/コンピューターなどの概要が表示されます。**接続の状態**を示すタイルをクリックします。これにより、関連するクエリを使用する **[ログ検索]** が表示されます。 詳細については、LogType_S が ERROR のログ レコードを確認してください。
+ - または、*Type=ServiceDeskLog_CL* というクエリを使用して **[ログ検索]** ページに直接エラー/関連情報を表示します。
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
-2.  [スクリプト](log-analytics-itsmc-service-manager-script.md)の実行中に、"**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラー メッセージが表示された場合は、**[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
-3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal でリソース プロバイダーを手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
+2.  [スクリプト](log-analytics-itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、**[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
+3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
 
 
 ## <a name="contact-us"></a>お問い合わせ
@@ -288,4 +306,3 @@ IT Service Management Connector に関するご質問やフィードバックは
 
 ## <a name="next-steps"></a>次のステップ
 [ITSM 製品/サービスを IT Service Management Connector に追加する](log-analytics-itsmc-connections.md)。
-

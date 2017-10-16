@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9a3a1e1b58dcb828e2d2d09c18f1aab6d46051aa
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="viewing-and-modifying-hostnames"></a>ホスト名の表示と変更
 ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。 そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。 **vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。 たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。 仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。 Microsoft Azure サービスの構成の詳細については、「 [Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -26,7 +26,7 @@ ms.openlocfilehash: 9a3a1e1b58dcb828e2d2d09c18f1aab6d46051aa
 ## <a name="viewing-hostnames"></a>ホスト名の表示
 次のいずれかのツールを使用して、クラウド サービスで仮想マシンのホスト名とロール インスタンスを表示できます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure Portal
 [Azure ポータル](http://portal.azure.com) を使用して、仮想マシンの概要ブレードに仮想マシンのホスト名を表示できます。 ブレードには、**[名前]** と **[ホスト名]** の値が表示されることに注意してください。 これらは最初は同じですが、ホスト名を変更しても、仮想マシンまたはロール インスタンスの名前は変わりません。
 
 ロール インスタンスは Azure ポータルでも表示できますが、クラウド サービスでインスタンスの一覧を表示しても、ホスト名は表示されません。 各インスタンスの名前は表示されますが、その名前はホスト名ではありません。
@@ -65,10 +65,4 @@ REST クライアントから次の手順を実行します。
 [Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

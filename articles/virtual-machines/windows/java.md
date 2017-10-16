@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: b9e739a07c5863577285fb3a221b372b385c6762
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -473,5 +472,4 @@ azure.resourceGroups().deleteByName("myResourceGroup");
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure の Java ライブラリ](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。
-
 

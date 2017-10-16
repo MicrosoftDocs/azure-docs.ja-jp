@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 21f24f387e96ac763419c37eeb16c75eab0bc452
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.openlocfilehash: 579fe32f75e051e679e6cbbaea5f99c7fcd6037b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="storsimple-documentation"></a>StorSimple のドキュメント
 
@@ -148,6 +147,5 @@ ms.lasthandoff: 04/28/2017
         </div>
     </li>
 </ul>
-
 
 

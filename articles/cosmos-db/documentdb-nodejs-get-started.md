@@ -15,12 +15,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: anhoh
+ms.openlocfilehash: 02e98aadc6a001c7275266d89a196a57bb366b3c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 6510e0270bb2efa252a2b2ad40014c5d26b74a81
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-tutorial-use-the-documentdb-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js チュートリアル: Azure Cosmos DB の DocumentDB API を使用して Node.js コンソール アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -56,8 +55,10 @@ Node.js チュートリアルを完了した後で、このページの上部ま
 ## <a name="prerequisites-for-the-nodejs-tutorial"></a>Node.js チュートリアルの前提条件
 以下のものがそろっていることを確認してください。
 
-* アクティブな Azure アカウント。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-    * また、このチュートリアルには、[Azure Cosmos DB Emulator](local-emulator.md) を使用することもできます。
+* アクティブな Azure アカウント。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
 * [Node.js](https://nodejs.org/) バージョン v0.10.29 以降
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
@@ -93,7 +94,7 @@ Node.js チュートリアルを完了した後で、このページの上部ま
     config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
 
-```database id```、```collection id```、```JSON documents``` をコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.authKey``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、ドキュメント定義を追加するのではなく、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用できます。
+```database id```、```collection id```、```JSON documents``` をコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.primaryKey``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、ドキュメント定義を追加するのではなく、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用できます。
 
     config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
@@ -263,7 +264,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ## <a id="CreateColl"></a>手順 6: コレクションを作成する
 > [!WARNING]
-> **CreateDocumentCollectionAsync** は新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
+> **createCollection** は新しいコレクションを作成します。これは価格に影響します。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 > 
 > 
 
@@ -615,7 +616,7 @@ npm で **documentdb** モジュールをインストールします。 次の�
 
 * ```npm install documentdb --save```
 
-次に、 ```config.js``` ファイルで、「 [手順 3: アプリの構成を設定する](#Config)」の説明に従って、config.endpoint と config.authKey の値を更新します。 
+次に、```config.js``` ファイルで、「[手順 3: アプリの構成を設定する](#Config)」の説明に従って、config.endpoint と config.primaryKey の値を更新します。 
 
 次に、ターミナルで ```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
@@ -629,4 +630,3 @@ npm で **documentdb** モジュールをインストールします。 次の�
 
 [create-account]: create-documentdb-dotnet.md#create-account
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 53614d4d2e3101e8ea0bfa6a29256cc817055843
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-multiple-guest-executables"></a>複数のゲスト実行可能ファイルのデプロイ
 この記事では、複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric にデプロイする方法について説明します。 単一の Service Fabric のパッケージを作成しデプロイする方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
@@ -74,7 +72,7 @@ Visual Studio を使用して、複数のゲスト実行可能ファイルを含
 * **/target** は、パッケージを作成するディレクトリを定義します。 このディレクトリは、ソース ディレクトリとは別のディレクトリである必要があります。
 * **/appname** は、既存のアプリケーションのアプリケーション名を定義します。 この名前はマニフェスト内で、Service Fabric のアプリケーション名ではなく、サービス名に変換されることを理解しておくことが重要です。
 * **/exe** は、Service Fabric が開始する実行可能ファイルを定義します (この例では `node.exe`)。
-* **/ma** は、実行可能ファイルの起動に使用される引数を定義します。 Node.js がインストールされていないため、Service Fabric は、 `node.exe bin/www`を実行して Node.js Web サーバーを起動する必要があります。  `/ma:'bin/www'` は、パッケージ化ツールに node.exe の引数として `bin/ma` を使用するように指示しています。
+* **/ma** は、実行可能ファイルの起動に使用される引数を定義します。 Node.js がインストールされていないため、Service Fabric は、 `node.exe bin/www`を実行して Node.js Web サーバーを起動する必要があります。  `/ma:'bin/www'` は、パッケージ化ツールに node.exe の引数として `bin/www` を使用するように指示しています。
 * **/AppType** は、Service Fabric アプリケーションの種類の名前を定義します。
 
 /target パラメーターで指定したディレクトリを参照すると、次に示すように、完全に機能する Service Fabric パッケージがツールによって作成されていることを確認できます。
@@ -220,4 +218,3 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 * コンテナーのデプロイについて、[Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)に関する記事で確認してください
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
-

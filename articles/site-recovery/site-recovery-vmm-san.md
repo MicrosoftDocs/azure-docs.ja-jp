@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 29084a52aca22b31a2fa42660ec2cdf050aec7ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: 3df38802fcdc86e4553253d38c49faff455f873e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-vms-in-vmm-clouds-to-a-secondary-site-with-azure-site-recovery-by-using-san"></a>Azure Site Recovery で SAN を使って VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする
 
@@ -262,7 +260,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成しま�
 6. Site Recovery は、クラウドが SAN 記憶域にアクセスできること、および記憶域アレイがマッピングされていることを検証します。
 7. 検証が成功した場合、**[レプリケーションの種類]** で **[SAN]** を選択します。
 
-この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。 設定は **[構成]** タブで変更できます。 ターゲットの場所やターゲット クラウドを変更する場合は、クラウド構成を削除して、クラウドを再構成する必要があります。
+この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。設定は **[構成]** タブで変更できます。ターゲットの場所やターゲット クラウドを変更する場合は、クラウド構成を削除して、クラウドを再構成する必要があります。
 
 ## <a name="step-5-enable-network-mapping"></a>手順 5: ネットワーク マッピングの有効化
 
@@ -305,7 +303,7 @@ Site Recovery、VMM、SMI-S プロバイダーは、ターゲット サイトの
 >
 >
 
-**[ジョブ]** タブで、初期レプリケーションなどの進行状況を確認できます。 保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
+**[ジョブ]** タブで、初期レプリケーションなどの進行状況を確認できます。保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
 
 ![仮想マシン保護ジョブ](./media/site-recovery-vmm-san/job-props.png)
 
@@ -321,7 +319,7 @@ Site Recovery、VMM、SMI-S プロバイダーは、ターゲット サイトの
 3. **[仮想マシンの選択]** で、レプリケーション グループを選択します。 グループに関連付けられているすべての VM が、復旧計画に追加されます。 これらの VM は、復旧計画の既定のグループ (グループ 1) に追加されます。 必要に応じて、さらにグループを追加できます。 レプリケーションの後、VM は復旧計画グループの順序に従って番号が付けられます。
 
     ![仮想マシンの選択](./media/site-recovery-vmm-san/r-plan-vm.png)
-4. 作成した復旧計画は、**[復旧計画]** タブに一覧表示されます。 計画を選び、**[テスト フェールオーバー]** を選択します。
+4. 作成した復旧計画は、**[復旧計画]** タブに一覧表示されます。計画を選び、**[テスト フェールオーバー]** を選択します。
 5. **[テスト フェールオーバーの確認]** ページで、**[なし]** を選択します。 このオプションが有効な場合、フェールオーバーしたレプリカ VM はネットワークに接続されません。 VM が意図したとおりにフェールオーバーすることはテストされますが、ネットワーク環境はテストされません。 他のネットワーク オプションの詳細については、[Site Recovery でのフェールオーバー](site-recovery-failover.md)に関するページを参照してください。
 
     ![テスト ネットワークの選択](./media/site-recovery-vmm-san/test-fail1.png)
@@ -350,4 +348,3 @@ Site Recovery、VMM、SMI-S プロバイダーは、ターゲット サイトの
 ## <a name="next-steps"></a>次のステップ
 
 テスト フェールオーバーを実行して、環境が予想どおりに動作することを確認したら、[Site Recovery でのフェールオーバー](site-recovery-failover.md)に関するページでさまざまな種類のフェールオーバーについて確認します。
-

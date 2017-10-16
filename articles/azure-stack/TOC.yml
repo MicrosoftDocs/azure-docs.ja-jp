@@ -1,0 +1,209 @@
+- name: Azure Stack のオペレーター ドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Stack とは
+      href: azure-stack-poc.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Azure Stack のデプロイ
+      href: azure-stack-deploy-overview.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 仮想マシンの提供
+      href: azure-stack-tutorial-tenant-vm.md
+    - name: SQL データベースの提供
+      href: azure-stack-tutorial-sql-server.md
+    - name: Web アプリの提供
+      href: azure-stack-tutorial-app-service.md
+- name: 概念
+  items:
+    - name: サービス ポリシー
+      href: azure-stack-servicing-policy.md
+    - name: リリース ノート
+      href: azure-stack-asdk-release-notes.md
+    - name: 主要機能および概念
+      href: azure-stack-key-features.md
+    - name: Azure Stack Development Kit のアーキテクチャ
+      href: azure-stack-architecture.md
+    - name: 管理の基本
+      href: azure-stack-manage-basics.md
+- name: ハウツー ガイド
+  items:
+    - name: デプロイ
+      items:
+        - name: 前提条件
+          href: azure-stack-deploy.md
+        - name: デプロイ
+          href: azure-stack-run-powershell-script.md
+        - name: 登録
+          href: azure-stack-register.md
+        - name: Azure Stack への接続
+          href: azure-stack-connect-azure-stack.md
+        - name: 既定のイメージの追加
+          href: azure-stack-add-default-image.md
+        - name: テスト VM の作成
+          href: azure-stack-provision-vm.md
+    - name: データセンターの統合
+      items:
+        - name: DNS の統合
+          href: azure-stack-integrate-dns.md
+        - name: エンドポイントの発行
+          href: azure-stack-integrate-endpoints.md
+    - name: 管理
+      items:
+        - name: リージョンの管理
+          href: azure-stack-region-management.md
+        - name: 管理者ポータルの使用
+          href: azure-stack-manage-portals.md
+        - name: Azure Stack への接続
+          href: azure-stack-connect-azure-stack.md
+        - name: ユーザーに対する CLI の有効化
+          href: azure-stack-cli-admin.md
+        - name: 管理環境の設定
+          items:
+            - name: Azure Stack PowerShell のインストール
+              href: azure-stack-powershell-install.md
+            - name: ツールのダウンロード
+              href: azure-stack-powershell-download.md
+            - name: PowerShell の構成 - クラウド オペレーター
+              href: azure-stack-powershell-configure-admin.md
+            - name: PowerShell の稼働
+              href: azure-stack-powershell-configure-quickstart.md
+        - name: 特権エンドポイントへのアクセス
+          href: azure-stack-privileged-endpoint.md
+        - name: 更新プログラムの管理
+          items:
+            - name: 更新プログラムの管理の概要
+              href: azure-stack-updates.md
+            - name: 更新プログラムを適用する
+              href: azure-stack-apply-updates.md
+        - name: 正常性とアラートの監視
+          href: azure-stack-monitor-health.md
+        - name: ネットワーク リソースの管理
+          href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: ストレージ リソースの管理
+          href: azure-stack-manage-storage-accounts.md
+        - name: Windows Azure Pack VM の管理
+          href: azure-stack-manage-windows-azure-pack.md
+        - name: ハードウェアの交換
+          items:
+            - name: ディスクの交換
+              href: azure-stack-replace-disk.md
+    - name: セキュリティ、コンプライアンス、ID
+      items:
+        - name: セキュリティの概要
+          href: azure-stack-security-foundations.md
+        - name: ID
+          items:
+            - name: RBAC の管理
+              href: azure-stack-manage-permissions.md
+            - name: Azure AD のユーザーの追加
+              href: azure-stack-add-new-user-aad.md
+            - name: AD FS のユーザーの追加
+              href: azure-stack-add-users-adfs.md
+            - name: サービス プリンシパルの作成
+              href: Azure-stack-create-service-principals.md
+            - name: マルチテナントの有効化
+              href: azure-stack-enable-multitenancy.md
+    - name: サービスの提供
+      items:
+        - name: サービスの提供の概要
+          href: azure-stack-offer-services-overview.md
+        - name: プラン、オファー、クォータの作成
+          items:
+            - name: プラン、オファー、クォータ、サブスクリプションの概要
+              href: azure-stack-plan-offer-quota-overview.md
+            - name: プランの作成
+              href: azure-stack-create-plan.md
+            - name: オファーの作成
+              href: azure-stack-create-offer.md
+            - name: プランへのサブスクライブ
+              href: azure-stack-subscribe-plan-provision-vm.md
+            - name: Azure Stack でのプランの委任
+              href: azure-stack-delegated-provider.md
+            - name: クォータの種類
+              href: azure-stack-quota-types.md
+        - name: SQL または MySQL を PaaS として提供する
+          items:
+            - name: PaaS サービスの概要
+              href: azure-stack-tools-paas-services.md
+            - name: MySQL リソース プロバイダーのデプロイ
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: SQL リソース プロバイダーのデプロイ
+              href: azure-stack-sql-resource-provider-deploy.md
+        - name: App Service を PaaS として提供する
+          items:
+            - name: Azure Stack 上の App Service の概要
+              href: azure-stack-app-service-overview.md
+            - name: 開始する前に
+              href: azure-stack-app-service-before-you-get-started.md
+            - name: App Service リソース プロバイダーのデプロイ
+              href: azure-stack-app-service-deploy.md
+            - name: App Service のオフライン デプロイ
+              href: azure-stack-app-service-deploy-offline.md
+            - name: Web worker ロールの追加
+              href: azure-stack-app-service-add-worker-roles.md
+            - name: デプロイ ソースを構成する
+              href: azure-stack-app-service-configure-deployment-sources.md
+        - name: Marketplace の設定
+          items:
+            - name: Marketplace の概要
+              href: azure-stack-marketplace.md
+            - name: Marketplace アイテムのダウンロード
+              href: azure-stack-download-azure-marketplace-item.md
+            - name: Azure Stack 用の Azure Marketplace アイテム
+              href: azure-stack-marketplace-azure-items.md
+            - name: Marketplace アイテムの作成と発行
+              href: azure-stack-create-and-publish-marketplace-item.md
+            - name: Marketplace 発行ツールの使用
+              href: azure-stack-marketplace-publisher.md
+            - name: カスタム仮想マシン イメージを追加する
+              href: azure-stack-add-vm-image.md
+            - name: 仮想マシン スケール セットの追加
+              href: azure-stack-compute-add-scalesets.md
+            - name: Linux 仮想マシンをデプロイする
+              href: azure-stack-linux.md
+        - name: 使用量と課金
+          items:
+            - name: 概要
+              href: azure-stack-billing-and-chargeback.md
+            - name: 使用量データ レポート
+              href: azure-stack-usage-reporting.md
+            - name: プロバイダー使用量 API
+              href: azure-stack-provider-resource-api.md
+            - name: テナント使用量 API
+              href: azure-stack-tenant-resource-usage-api.md
+            - name: 使用量に関する FAQ
+              href: azure-stack-usage-related-faq.md
+        - name: Azure への接続
+          items:
+            - name: VPN を使用した接続
+              href: azure-stack-connect-vpn.md
+            - name: ExpressRoute を使用した接続
+              href: azure-stack-connect-expressroute.md
+    - name: トラブルシューティング
+      items:
+        - name: 既知の問題
+          href: azure-stack-troubleshooting.md
+        - name: Azure Stack の診断
+          href: azure-stack-diagnostics.md
+        - name: Azure Stack Development Kit の再デプロイ
+          href: azure-stack-redeploy.md
+- name: リファレンス
+  items:
+    - name: Azure Stack PowerShell
+      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: 料金情報
+      href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-stack'
+    - name: トレーニングと認定
+      href: azure-stack-train-and-cert.md

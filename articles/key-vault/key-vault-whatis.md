@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a178f6b88054425177092225095b016c902cfc78
-ms.openlocfilehash: 59b1e2a5398d687d71708f6e641cda321062dd7d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 3b679a2a8ba91a8a9dec0534a3d8930fcaa7afcf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
@@ -60,4 +59,3 @@ Azure Key Vault でキーとシークレットを使用する方法の詳細に�
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-

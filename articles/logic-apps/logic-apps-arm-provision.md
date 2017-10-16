@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 1305fdc4cf87905eef701ec5471d6329006c2b5f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>テンプレートを使用したロジック アプリの作成
 テンプレートを使用すると、ロジック アプリ内でさまざまなコネクタを簡単に使用できます。 Logic Apps には、ビジネス ワークフローの定義に使用できるロジック アプリを作成するための Azure Resource Manager テンプレートが含まれています。 デプロイ対象のリソースと、ロジック アプリをデプロイする際のパラメーターを定義する方法を定義できます。 このテンプレートは、独自のビジネス シナリオに使用することも、要件に合わせてカスタマイズすることもできます。
@@ -109,7 +107,6 @@ ms.lasthandoff: 01/31/2017
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
-
 
 
 

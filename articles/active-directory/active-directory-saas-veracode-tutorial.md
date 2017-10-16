@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: d49349c5ae08e67d91e30967f3644623211823ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル: Azure Active Directory と Veracode の統合
 
@@ -219,7 +218,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-veracode-test-user"></a>Veracode テスト ユーザーの作成
 Azure AD ユーザーが Veracode にログインできるようにするには、そのユーザーを Veracode にプロビジョニングする必要があります。 Veracode の場合、プロビジョニングは自動化されています。 ユーザー側で必要な操作はありません。 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
@@ -285,5 +284,4 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
 [201]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-veracode-tutorial/tutorial_general_203.png
-
 

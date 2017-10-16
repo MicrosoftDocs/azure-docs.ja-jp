@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e9465afb560a73d74f853c19094b3ee75b8c470c
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>VirtualBox を使用した Docker ホストの構成
 ## <a name="overview"></a>Overview
@@ -65,9 +65,3 @@ Docker クライアントを構成するには、Windows PowerShell を開き、
 
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

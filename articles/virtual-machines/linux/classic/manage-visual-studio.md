@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2484ac935c0b196dc3e7db9acb9e570a037b6cc6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: fb91e6cf1fd32833d1e9711a55b41dfa410fee5d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-linux-virtual-machines-in-visual-studio"></a>Visual Studio での Linux 仮想マシンの作成と管理
 [!INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
-
 

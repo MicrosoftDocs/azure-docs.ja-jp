@@ -4,7 +4,7 @@
 次の手順を実行して、Microsoft Update カタログからソフトウェア更新プログラムをダウンロードします。
 
 1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
-2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、[**インストール**] をクリックします。
+2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、[ **インストール** ] をクリックします。
     ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**3179904** など) を入力して、**[検索]** をクリックします。
    

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: fceb6b0671e0f77c1f8f92bbb49c986fda3660ea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>ハイブリッド接続の作成と管理
 
@@ -52,12 +50,12 @@ ms.lasthandoff: 06/03/2017
 ## <a name="CreateHybridConnection"></a>ハイブリッド接続の作成
 ハイブリッド接続は、Azure ポータルで Web Apps と BizTalk Services の **いずれか** を使用して作成できます。 
 
-**Web Apps を使用してハイブリッド接続を作成する**には、「[Azure Web アプリをオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。 Web アプリケーションから Hybrid Connection Manager (HCM) をインストールすることもできます。この方法をお勧めします。 
+<!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
 **BizTalk Services でハイブリッド接続を作成する**には、以下の手順に従います。
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
    
     既存の BizTalk サービスがない場合は、 [BizTalk サービスを作成する](biztalk-provision-services.md)ことができます。
 3. **[ハイブリッド接続]** タブを選択します。  
@@ -76,13 +74,14 @@ ms.lasthandoff: 06/03/2017
 * それぞれのハイブリッド接続は、送信用のアプリケーション キーとリッスン用のオンプレミス キーで構成される接続文字列のペアと共に作成されます。 各ペアにはプライマリ キーとセカンダリ キーが含まれています。 
 
 ## <a name="LinkWebSite"></a>Azure App Service の Web アプリまたはモバイル アプリを関連付ける
-既存のハイブリッド接続に Azure App Service の Web アプリまたはモバイル アプリを関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。 「[Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md)」をご覧ください。
+既存のハイブリッド接続に Azure App Service の Web アプリまたはモバイル アプリを関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。 
+<!-- See [Access on-premises resources using hybrid connections in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md). -->
 
 ## <a name="InstallHCM"></a>オンプレミスへの Hybrid Connection Manager のインストール
 ハイブリッド接続の作成後、オンプレミス リソースに Hybrid Connection Manager をインストールします。 Hybrid Connection Manager は Azure Web Apps または BizTalk サービスからダウンロードできます。 BizTalk Services の手順は以下のとおりです。 
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。  
    ![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. タスク バーで **[オンプレミス設定]** を選択します。  
@@ -121,7 +120,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 #### <a name="copyregenerate-the-hybrid-connection-strings"></a>ハイブリッド接続文字列をコピー、再生成する
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。  
    ![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. [ハイブリッド接続] を選択します。 タスク バーで **[接続の管理]** を選択します。  
@@ -145,8 +144,6 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 
 ## <a name="next"></a>次へ
-[Azure Web アプリをオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)  
-[Azure Web Apps からオンプレミスの SQL Server に接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)   
 [ハイブリッド接続の概要](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>関連項目
@@ -158,4 +155,3 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png 
-

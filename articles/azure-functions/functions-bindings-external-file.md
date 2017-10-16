@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
+ms.openlocfilehash: 7e3b396d290212d3875385521bd7ae92da196b95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2082e4e9b23271be93f3e3ab43997c3243238da8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions 外部ファイル バインディング (プレビュー)
 この記事では、関数から組み込みのバインディングを利用し、各種 SaaS プロバイダー (OneDrive、Dropbox など) にあるファイルを操作する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/09/2017
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|○|○|○
 |[Dropbox](https://www.dropbox.com)|○|○|○
-|[FTP](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp)|○|○|○
+|[FTP](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)|○|○|○
 |[OneDrive](https://onedrive.live.com)|○|○|○
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|○|○|○
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|○|○|○
@@ -364,4 +363,3 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-

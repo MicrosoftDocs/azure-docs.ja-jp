@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
-ms.lasthandoff: 04/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple デバイスのマルチパス IO の構成
 Microsoft では、フォールト トレランスと可用性に優れた SAN を構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。 MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。 コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。 さらに構成によっては、これらのパスの間で負荷を分散することで、パフォーマンスの向上にも貢献します。 詳細については、「 [MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要 and features")」を参照してください。  
@@ -54,7 +53,7 @@ Windows Server ホストにこの機能をインストールするには、次�
    
    * **[開始する前に]** ページで **[次へ]** をクリックします。
    * **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。 **[次へ]**」を参照してください。![役割と機能の追加ウィザード 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   * **[対象サーバーの選択]** ページで、**[サーバー プールからサーバーを選択]** を選択します。 使用中のホスト サーバーが自動的に検出されます。 **[次へ]**をクリックします。
+   * **[対象サーバーの選択]** ページで、**[サーバー プールからサーバーを選択]** を選択します。 使用中のホスト サーバーが自動的に検出されます。 **[次へ]** をクリックします。
    * **[サーバーの役割の選択]** ページで、**[次へ]**をクリックします。
    * **[機能の選択]** ページで、**[マルチパス I/O]** を選択し、**[次へ]** をクリックします。![役割と機能の追加ウィザード 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
    * **[インストール オプションの確認]** ページでオプションの設定内容を確認し、次のように **[必要に応じて対象サーバーを自動的に再起動する]** を選択します。 **[インストール]** をクリックします。![役割と機能の追加ウィザード 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
@@ -169,5 +168,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
-
 

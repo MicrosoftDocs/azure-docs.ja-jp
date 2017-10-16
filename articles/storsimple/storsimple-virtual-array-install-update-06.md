@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
 ms.openlocfilehash: 111976cd684561f5bc63b92f09a20470fe3036d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 0.6 をインストール
 
@@ -126,5 +125,4 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
-
 

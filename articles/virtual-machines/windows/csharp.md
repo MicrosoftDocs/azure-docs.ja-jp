@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -61,7 +60,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 ### <a name="create-the-authorization-file"></a>認証ファイルを作成する
 
 1. ソリューション エクスプ ローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
-2. 次の認証プロパティを追加します。
+2. 次の承認プロパティを追加します。
 
     ```
     subscription=<subscription-id>
@@ -397,5 +396,4 @@ azure.ResourceGroups.DeleteByName(groupName);
 ## <a name="next-steps"></a>次のステップ
 * テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * [Azure libraries for .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet) の使用方法の詳細について学習します。
-
 

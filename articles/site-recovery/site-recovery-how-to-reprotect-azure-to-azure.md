@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 92a3250a4b07a8a473bd3343181176a2623cd476
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: 32f5d2d142940bc515849dcd0edb1bb1f152aa6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>フェールオーバーされた Azure リージョンからプライマリ リージョンに戻るときの再保護
 
@@ -109,4 +108,3 @@ ms.lasthandoff: 06/16/2017
 -   [仮想マシンのテスト フェールオーバーを開始する手順](site-recovery-test-failover-to-azure.md)
 
 -   [仮想マシンのフェールオーバーを開始する手順](site-recovery-failover.md)
-

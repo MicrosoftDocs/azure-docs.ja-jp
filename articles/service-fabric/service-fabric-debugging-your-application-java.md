@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2017
 ms.author: vturecek;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 3d122720c834de672d5cb512c7bad2dc5ed3ea58
-ms.openlocfilehash: aa608d6ab76792234e6607160bb17cff520b5665
-
-
+ms.openlocfilehash: f3bcee3794de35005bd387ecfae7e6707f3cb5ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Eclipse を使用して Java Service Fabric アプリケーションをデバッグする
 > [!div class="op_single_selector"]
@@ -51,9 +51,3 @@ ms.openlocfilehash: aa608d6ab76792234e6607160bb17cff520b5665
 
 * [Linux Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)。
 * [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-

@@ -15,13 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
-ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>JSON を使用してロジック アプリのワークフロー定義を作成する
 
@@ -277,9 +275,9 @@ ms.lasthandoff: 03/01/2017
 
 ここでは、次のことに注意してください。 
 
-*    [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数は、定義済みの既知のカテゴリのいずれかとそのカテゴリが一致するかどうかを確認します。
+*   [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数は、定義済みの既知のカテゴリのいずれかとそのカテゴリが一致するかどうかを確認します。
 
-*    カテゴリを取得したら、`parameters[...]` のように、角かっこを使用してマップの項目を取り出すことができます。
+*   カテゴリを取得したら、`parameters[...]` のように、角かっこを使用してマップの項目を取り出すことができます。
 
 ## <a name="process-strings"></a>文字列を処理する
 
@@ -452,4 +450,3 @@ ms.lasthandoff: 03/01/2017
 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。 
 
 ロジック アプリの作成と管理用に用意されているすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx)を参照してください。 
-

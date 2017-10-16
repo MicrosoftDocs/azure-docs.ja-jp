@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: c56c1c262aa1a88e3f7a3d6638176cb9f97011d3
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference-topics-for-sql-data-warehouse"></a>SQL Data Warehouse の参照トピック
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
@@ -44,4 +43,3 @@ ms.lasthandoff: 04/03/2017
 
 
 <!--MSDN references-->
-

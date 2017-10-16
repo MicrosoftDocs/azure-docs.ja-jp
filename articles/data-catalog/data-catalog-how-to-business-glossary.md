@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1c0233aa398b975cef5bb346d7c6822e4a47812e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 83ca3b2d89a335a5fd6dddeaca7c11f6d0492234
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
 ## <a name="introduction"></a>はじめに
@@ -84,4 +83,3 @@ Azure Data Catalog のビジネス用語集と、それで有効になる管理�
 
 ## <a name="next-steps"></a>次のステップ
 * [ビジネス用語集操作の REST API ドキュメント](https://msdn.microsoft.com/library/mt708855.aspx)
-

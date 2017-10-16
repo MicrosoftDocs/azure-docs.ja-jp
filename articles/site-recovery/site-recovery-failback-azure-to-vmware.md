@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする
 
@@ -244,4 +243,3 @@ VPN 接続または ExpressRoute 接続を使用してフェールバックで�
 
 * ExpressRoute 接続が、ソース コンピューターのフェールオーバー先であり、フェールオーバーの発生後に Azure VM が配置される Azure 仮想ネットワーク上に設定されている必要があります。
 * データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。 ExpressRoute 接続を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定します。
-

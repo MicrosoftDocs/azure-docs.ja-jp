@@ -5,7 +5,7 @@
 ## [FAQ](faq.md)
 
 # 作業の開始
-## [ポータルを使用した Linux VM の作成](createportal.md)
+## [Azure Portal を使用して Linux VM を作成する](createportal.md)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
 ## [SSH キーの作成](../mac-create-ssh-keys.md)
 
@@ -22,7 +22,7 @@
 ### [Linux パスワードまたはキーのリセット、SSH の修正、ディスクのチェックを実行する](reset-access.md)
 ### [メンテナンス](planned-maintenance-schedule.md)
 ### [CLI を使用して Docker ホストを作成する](cli-use-docker.md)
-### [ポータルを使用して Docker ホストを作成する](portal-use-docker.md)
+### [Azure Portal を使用して Docker ホストを作成する](portal-use-docker.md)
 ### [Docker Swarm を使用する方法](../../virtual-machines-linux-docker-swarm.md)
 
 ## ストレージの使用
@@ -67,14 +67,14 @@
 ### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Resource Manager テンプレートの作成](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
-## [コンピューティング REST](/rest/api/compute)
-## [ネットワーク REST](/rest/api)
-## [Storage REST](/rest/api/storageservices)
+## [コンピューティング REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [ネットワーク REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [Storage REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 
 # リソース

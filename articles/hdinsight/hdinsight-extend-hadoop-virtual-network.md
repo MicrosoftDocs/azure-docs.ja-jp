@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 09/21/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 00f2ecbf0d8542741bd78dcfe2692e6627b1f3cd
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: e7c64a7f6b85986d48f0da39962c634b572e773b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
@@ -34,6 +34,9 @@ ms.lasthandoff: 08/28/2017
 
 > [!WARNING]
 > このドキュメントの情報を理解するには、TCP/IP ネットワークの知識が必要です。 TCP/IP ネットワークに詳しくない方は、実稼働ネットワークに変更を加えた経験のある方をパートナーにすることをおすすめします。
+
+> [!IMPORTANT]
+> Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
 
 ## <a name="planning"></a>計画
 

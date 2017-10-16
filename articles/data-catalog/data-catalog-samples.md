@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/05/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0c76287232e578df695f73e5d9792ee457266db9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: 6ba88885805f1a206f01015f7eec5236da517403
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-catalog-developer-samples"></a>Data Catalog 開発者向けサンプル
 Data Catalog REST API を使用して Data Catalog アプリの開発を開始します。 Data Catalog REST API は、データ資産をプログラムで登録、注釈付けおよび検索するために Data Catalog のリソースにプログラムでアクセスできるようにする、REST ベースの API です。
@@ -40,5 +39,4 @@ GitHub に以下のサンプルがあります。
 * [一括インポート用語集の用語](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
 
     このサンプルでは、CSV ファイルから ADC 用語集に用語集の用語をインポートする方法を示します。
-
 

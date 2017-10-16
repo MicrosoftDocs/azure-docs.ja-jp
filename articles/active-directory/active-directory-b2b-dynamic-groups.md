@@ -16,15 +16,12 @@ ms.workload: identity
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 5818c41610c8c5df89abcb0dcd058bcbe9579ce7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
 ## <a name="what-are-dynamic-groups"></a>動的グループとは
@@ -62,4 +59,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
 * [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 * [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
-

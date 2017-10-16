@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 26e2becf7810950fd5734fd70c1fed225149ec4d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/24/2017
-
-
+ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルには異なるサービスが用意されているため、実行する内容に正確に基づいて実行モデルを選択してください。
@@ -29,7 +27,7 @@ Azure Cloud Services が最適な選択ですか? Azure にはアプリケーシ
 <a name="tellmecs"></a>
 
 ## <a name="tell-me-about-cloud-services"></a>Cloud Services の概要
-Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[App Service](../app-service-web/app-service-web-overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。 独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
+Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[App Service](../app-service/app-service-web-overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。 独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
 
 ![cs_diagram](./media/cloud-services-choose-me/diagram.png)
 
@@ -43,7 +41,7 @@ IIS を使用して自動的にアプリをデプロイおよびホストしま�
 * **worker ロール**  
 IIS を使用せず、アプリをスタンドアロンで実行します。
 
-たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/storage-introduction.md)を使用する可能性があります)。
+たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/common/storage-introduction.md)を使用する可能性があります)。
 
 上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale.md)します。
 
@@ -64,5 +62,4 @@ PaaS という Cloud Services の本質には、他の含意もあります。 �
 [nodejs でクラウド サービス アプリケーションを作成する](cloud-services-nodejs-develop-deploy-app.md)  
 [php でクラウド サービス アプリケーションを作成する](../cloud-services-php-create-web-role.md)  
 [Python でのクラウド サービス アプリの作成](cloud-services-python-ptvs.md)
-
 

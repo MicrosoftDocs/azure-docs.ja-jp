@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
-ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement のドキュメント
 
 Mobile Engagement を使用して、モバイル アプリの使用量、リテンション、および収益化を高める方法について説明します。 チュートリアルや SDK などのドキュメントでは、モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法を紹介します。
@@ -208,6 +206,5 @@ Mobile Engagement を使用して、モバイル アプリの使用量、リテ�
 </ul>
 
 ---
-
 
 

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
+ms.openlocfilehash: 74571fc6e1a0b2d6a903cdd992a247f4d5dfa700
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: e1cb2e4a1fc82fb43082e79a5feba71b81b3eaa8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell を使用して Hive クエリを実行
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
@@ -50,11 +49,11 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 * **Add-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
 * **New-AzureRmHDInsightHiveJobDefinition**: 指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
-* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる *ジョブ* オブジェクトを返します。
+* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 * **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 * **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得する場合に使用します。
-* **Invoke-AzureRmHDInsightHiveJob**: HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了にブロックし、その結果を返します。
-* **Use-AzureRmHDInsightCluster**: **Invoke-AzureRmHDInsightHiveJob** コマンドに現在のクラスターを使用するように設定します
+* **Invoke-AzureRmHDInsightHiveJob**: HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。
+* **Use-AzureRmHDInsightCluster**: **Invoke-AzureRmHDInsightHiveJob** コマンドに現在のクラスターを使用するように設定します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -68,7 +67,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
     スクリプトの実行時に、クラスター名とクラスター用の HTTPS/管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのログインが求められる場合もあります。
 
-3. ジョブが完了すると、次のような情報が返されます。
+3. ジョブが完了すると、次のテキストのような情報が返されます。
 
         Display the standard output...
         2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
@@ -94,7 +93,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。 このジョブに関するエラーを表示するには、以下を **hivejob.ps1** ファイルの末尾に追加して保存し、再実行します。
+ジョブが完了しても情報が返されない場合は、エラー ログを調べてください。 このジョブに関するエラーを表示するには、以下を **hivejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
 ```powershell
 # Print the output of the Hive job.
@@ -105,9 +104,9 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-このコマンドレットは、ジョブの実行時にサーバー上の STDERR に書き込まれた情報を返します。
+このコマンドレットは、ジョブ処理中に STDERR に書き込まれた情報を返します。
 
-## <a name="summary"></a>まとめ
+## <a name="summary"></a>概要
 
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
@@ -121,4 +120,3 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
 Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高い同時実行性を備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
@@ -97,7 +95,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-これらのタスクが並列実行されて正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 キュー内の要素の順序を推測することはできません。 このコード スニペットでは、要素の順序が 24 とおり (4 の階乗) 存在し、そのどれに該当するかは不定です。 possible orderings.  キューは、元の (エンキュー時の) 順序で要素を保とうとしますが、同時に実行される操作やエラーが原因でやむをえず順序を変更する可能性があります。
+これらのタスクが並列実行されて正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 キュー内の要素の順序を推測することはできません。 このコード スニペットの項目は、4 のいずれかで現れる場合があります! 考えられる順序が指定されています。  キューは、元の (エンキュー時の) 順序で要素を保とうとしますが、同時に実行される操作やエラーが原因でやむをえず順序を変更する可能性があります。
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
@@ -346,4 +344,3 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-

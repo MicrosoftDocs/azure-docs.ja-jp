@@ -13,14 +13,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 09/16/2017
 ms.author: vvasic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 71c286061e214898a7f10fa8dfd6c6d86af8db39
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ef73f9036a91d5bac50597d1d96fe134225eef51
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
@@ -48,6 +47,13 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 新しい Azure リソースをプロビジョニングするか、既存のリソースを選択できます。 ストレージ リソースを選択したら、収集するデータを指定する必要があります。 次のオプションを使用できます。
 
 - **[1 分メトリック](sql-database-metrics-diag-logging.md#1-minute-metrics)** - DTU の割合、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。
+- **[QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)** - CPU 使用率、クエリ実行時間など、クエリのランタイム統計に関する情報が含まれます。
+- **[QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics)** - CPU、ログ、ロック状態など、クエリが何を待機したかを示すクエリ待機統計に関する情報が含まれます。
+- **[Errors](sql-database-metrics-diag-logging.md#errors-dataset)** - このデータベースで発生した SQL エラーに関する情報が含まれます。
+- **[DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset)** - データベースがさまざまな種類の待機に費やした時間に関する情報が含まれます。
+- **[Timeouts](sql-database-metrics-diag-logging.md#timeouts-dataset)** - データベースがさまざまな種類の待機に費やした時間に関する情報が含まれます。
+- **[Blockings](sql-database-metrics-diag-logging.md#blockings-dataset)** - データベースで発生したブロック イベントに関する情報が含まれます。
+- **[SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)** - Intelligent Insights が含まれます。 「[Intelligent Insights](sql-database-intelligent-insights.md)」をご覧ください
 
 イベント ハブまたは AzureStorage アカウントを指定した場合は、リテンション期間ポリシーを指定して、選択した期間より古いデータを削除するように指定できます。 Log Analytics を指定した場合、リテンション期間ポリシーは選択した価格レベルに依存します。 [Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページをご覧ください。 
 
@@ -58,6 +64,10 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 Azure Portal でメトリックと診断のログ収集を有効にするには、Azure SQL Database またはエラスティック プールのページに移動して、**[診断設定]** をクリックします。
 
    ![Azure Portal で有効にする](./media/sql-database-metrics-diag-logging/enable-portal.png)
+
+ターゲットとテレメトリを選択して、新規診断設定を作成するか、既存の診断設定を編集します。
+
+   ![診断設定の構成](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -97,7 +107,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
-### <a name="cli"></a>CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLI を使用してメトリックと診断のロギングを有効にするには、次のコマンドを使用します。
 
@@ -144,9 +154,9 @@ Azure SQL Database のメトリックと診断のログは、ポータルの組�
 
 Log Analytics を使用すると、Monitoring Azure SQL Database フリートを簡単に監視できます。 次の 3 つの手順が必要です。
 
-1.  Log Analytics リソースを作成する
-2.  作成した Log Analytics にメトリックと診断のログを記録するデータベースを構成する
-3.  Log Analytics のギャラリーから **Azure SQL Analytics** ソリューションをインストールする
+1. Log Analytics リソースを作成する
+2. 作成した Log Analytics にメトリックと診断のログを記録するデータベースを構成する
+3. Log Analytics のギャラリーから **Azure SQL Analytics** ソリューションをインストールする
 
 ### <a name="create-log-analytics-resource"></a>Log Analytics リソースを作成する
 
@@ -171,8 +181,7 @@ Log Analytics を使用すると、Monitoring Azure SQL Database フリートを
 
 ### <a name="using-azure-sql-analytics-solution"></a>Azure SQL Analytics ソリューションを使用する
 
-Azure SQL Analysis は階層型のダッシュボードで、ユーザーは Azure SQL Database リソースの階層を移動できます。 この機能を使用して全体像を監視できるほか、監視の範囲を正しいリソース セットに限定することができます。
-ダッシュボードの選択したリソースの下にさまざまなリソースの一覧が含まれます。 たとえば、選択したサブスクリプションについて、そのサブスクリプションに所属するすべてのサーバー、エラスティック プール、およびデータベースが表示されます。 さらに、エラスティック プールやデータベースでは、そのリソースのリソース使用状況メトリックが表示されます。 これには、DTU、CPU、IO、LOG、セッション、ワーカー、接続、およびストレージ (GB 単位) が含まれます。
+Azure SQL Analysis は階層型のダッシュボードで、ユーザーは Azure SQL Database リソースの階層を移動できます。 Azure SQL Analytics ソリューションの使用方法については、[こちら](../log-analytics/log-analytics-azure-sql.md)をクリックしてください。
 
 ## <a name="stream-into-azure-event-hub"></a>Azure イベント ハブにストリーミングする
 
@@ -187,9 +196,9 @@ Azure SQL Database のメトリックと診断のログは、ポータルの組�
 
 ストリーミング機能を使用する場合、次のような方法があります。
 
--   "ホットパス" データを PowerBI にストリーミングしてサービスの正常性を表示する - Event Hubs、Stream Analytics、PowerBI を使用して、メトリックや診断データを Azure サービスに関するほぼリアルタイムの洞察に簡単に変換できます。 Event Hubs をセットアップし、Stream Analytics でデータを処理して、PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
--   サードパーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする - Event Hubs のストリーミングを使用して、メトリックおよび診断ログが別のサードパーティ製の監視およびログ分析ソリューションに入るように設定できます。 
--   カスタムのテレメトリおよびログ プラットフォームを構築する - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
+-             "ホットパス" データを PowerBI にストリーミングしてサービスの正常性を表示する - Event Hubs、Stream Analytics、PowerBI を使用して、メトリックや診断データを Azure サービスに関するほぼリアルタイムの洞察に簡単に変換できます。 Event Hubs をセットアップし、Stream Analytics でデータを処理して、PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
+-             サードパーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする - Event Hubs のストリーミングを使用して、メトリックおよび診断ログが別のサードパーティ製の監視およびログ分析ソリューションに入るように設定できます。 
+-             カスタムのテレメトリおよびログ プラットフォームを構築する - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
 
 ## <a name="stream-into-azure-storage"></a>Azure Storage にストリーミングする
 
@@ -223,16 +232,214 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-azure-storage"></a>Azure Storage からメトリックとログをダウンロードする
 
-[Azure Storage からメトリックとログをダウンロードする方法](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
+[Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
 
-## <a name="1-minute-metrics"></a>1 分メトリック
+## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-| |  |
-|---|---|
+### <a name="1-minute-metrics"></a>1 分メトリック
+
 |**リソース**|**メトリック**|
+|---|---|
 |データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
 |||
+
+### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|query_hash_s|クエリ ハッシュ|
+|query_plan_hash_s|クエリ プラン ハッシュ|
+|statement_sql_handle_s|ステートメント sql ハンドル|
+|interval_start_time_d|1900-1-1 からのティック数での間隔の開始 datetimeoffset。|
+|interval_end_time_d|1900-1-1 からのティック数での間隔の終了 datetimeoffset。|
+|logical_io_writes_d|論理 IO 書き込みの合計数。|
+|max_logical_io_writes_d|実行ごとの論理 IO 書き込みの最大数。|
+|physical_io_reads_d|物理 IO 読み取りの合計数。|
+|max_physical_io_reads_d|実行ごとの論理 IO 読み取りの最大数。|
+|logical_io_reads_d|論理 IO 読み取りの合計数。|
+|max_logical_io_reads_d|実行ごとの論理 IO 読み取りの最大数。|
+|execution_type_d|実行の種類|
+|count_executions_d|クエリの実行回数。|
+|cpu_time_d|クエリで使用された合計 CPU 時間 (マイクロ秒単位)。|
+|max_cpu_time_d|1 回の実行による最大 CPU 時間コンシューマー (マイクロ秒単位)。|
+|dop_d|並列処理の次数の合計。|
+|max_dop_d|1 回の実行で使用された並列処理の最大次数。|
+|rowcount_d|返された行数の合計。|
+|max_rowcount_d|1 回の実行で返された行の最大数。|
+|query_max_used_memory_d|サポート技術情報で使用されたメモリの合計量 (KB 単位)。|
+|max_query_max_used_memory_d|1 回の実行で使用されたメモリの最大量 (KB 単位)。|
+|duration_d|合計実行時間 (マイクロ秒単位)。|
+|max_duration_d|1 回の実行の最大実行時間。|
+|num_physical_io_reads_d|物理読み取りの合計数。|
+|max_num_physical_io_reads_d|実行ごとの物理読み取りの最大数。|
+|log_bytes_used_d|使用されたログの合計量 (バイト数)。|
+|max_log_bytes_used_d|実行ごとに使用されたログの最大量 (バイト数)。|
+|query_id_d|クエリ ストアでのクエリの ID|
+|plan_id_d|クエリ ストアでのプランの ID|
+
+[クエリ ストアのランタイム統計データの詳細。](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)
+
+### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|wait_category_s|待機のカテゴリ。|
+|is_parameterizable_s|クエリがパラメーター化可能かどうか。|
+|statement_type_s|ステートメントの種類。|
+|statement_key_hash_s|ステートメント キー ハッシュ。|
+|exec_type_d|実行の種類|
+|total_query_wait_time_ms_d|特定の待機カテゴリでのクエリの合計待機時間。|
+|max_query_wait_time_ms_d|特定の待機のカテゴリの個々の実行でのクエリの最大待機時間|
+|query_param_type_d|0|
+|query_hash_s|クエリ ストア内のクエリ ハッシュ。|
+|query_plan_hash_s|クエリ ストア内のクエリ プラン ハッシュ|
+|statement_sql_handle_s|クエリ ストア内のステートメント ハンドル|
+|interval_start_time_d|1900-1-1 からのティック数での間隔の開始 datetimeoffset。|
+|interval_end_time_d|1900-1-1 からのティック数での間隔の終了 datetimeoffset。|
+|count_executions_d|クエリの実行回数|
+|query_id_d|クエリ ストアでのクエリの ID|
+|plan_id_d|クエリ ストアでのプランの ID|
+
+クエリ ストアの待機統計データの詳細については、[こちら](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)をクリックしてください。
+
+### <a name="errors-dataset"></a>エラー データセット
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|メッセージ|プレーンテキストでのエラー メッセージ|
+|user_defined_b|エラーがユーザー定義ビットかどうか|
+|error_number_d|エラー コード|
+|Severity|エラーの重大度|
+|state_d|エラーの状態|
+|query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ|
+|query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ|
+
+[SQL Server エラー メッセージ](https://msdn.microsoft.com/en-us/library/cc645603.aspx)
+
+### <a name="database-waits-dataset"></a>データベース待機データセット
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|wait_type_s|待機の種類の名前|
+|start_utc_date_t [UTC]|測定期間の開始時刻。|
+|end_utc_date_t [UTC]|測定期間の終了時刻。|
+|delta_max_wait_time_ms_d|実行ごとの最大待機時間|
+|delta_signal_wait_time_ms_d|合計シグナルの待機時間|
+|delta_wait_time_ms_d|期間内の合計待機時間|
+|delta_waiting_tasks_count_d|待機中のタスク数|
+
+データベース待機統計の詳細については、[こちら](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)をクリックしてください。
+
+### <a name="timeouts-dataset"></a>タイムアウト データセット
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|error_state_d|エラー状態コード|
+|query_hash_s|クエリ ハッシュ (使用可能な場合)|
+|query_plan_hash_s|クエリ プラン ハッシュ (使用可能な場合)|
+
+### <a name="blockings-dataset"></a>ブロックしているデータセット
+
+|プロパティ|Description|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|型|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
+|OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
+|リソース|リソースの名前|
+|ResourceType|リソースの種類の名前。 常に SERVERS/DATABASES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|データベースが属するサーバーの名前。|
+|ElasticPoolName_s|データベースが属するエラスティック プールの名前 (存在する場合)。|
+|DatabaseName_s|データベースの名前|
+|ResourceId|リソース URI|
+|lock_mode_s|クエリで使用されるロック モード|
+|resource_owner_type_s|ロックの所有者。|
+|blocked_process_filtered_s|ブロックされているプロセスのレポート XML。|
+|duration_d|ロック期間 (ミリ秒単位)。|
+
+### <a name="intelligent-insights-dataset"></a>Intelligent Insights データセット
+Intelligent Insights ログ形式の詳細については、[こちら](sql-database-intelligent-insights-use-diagnostics-log.md)をクリックしてください
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -240,5 +447,5 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 - Event Hubs については次の記事をご覧ください。
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- [Azure Storage からメトリックとログをダウンロードする方法](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
+- [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
 

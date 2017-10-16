@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: d3aba4aab8ded8749db2bf8197f57a6763008c60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル: Azure Active Directory と Greenhouse の統合
 
@@ -148,7 +147,7 @@ Greenhouse で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックします。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/active-directory-saas-greenhouse-tutorial/create_aaduser_03.png)
 
@@ -162,7 +161,7 @@ Greenhouse で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-greenhouse-test-user"></a>Greenhouse テスト ユーザーの作成
 
@@ -249,5 +248,4 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 [201]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_203.png
-
 

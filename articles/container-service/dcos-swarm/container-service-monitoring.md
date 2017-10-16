@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
+ms.openlocfilehash: 9dd451f994940d7cc3a59bd7fd08a8f067345e34
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 42e1743b67a46c9eac6cce44852ea3a48fd38e5a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Datadog を使用した Azure Container Service DC/OS クラスターの監視
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Datadog エージェントをデプロイする方法について説明します。 この構成を行うには、Datadog のアカウントが必要です。 
@@ -50,5 +49,4 @@ Datadog は監視サービスです。Azure コンテナー サービス クラ�
 ![Datadog configuration in the DC/OS Universe](./media/container-service-monitoring/datadog3.png) 
 
 上記の構成で、インスタンス数を「10000000」に設定します。これでクラスターに新しいノードが追加されると、そのノードに対して自動的にエージェントがデプロイされます。 これは暫定的な措置です。 パッケージをインストールしたら、Datadog Web サイトに戻り、[[Dashboards (ダッシュ ボード)]](https://app.datadoghq.com/dash/list) を見つけます。 ここには、カスタム ダッシュボードと統合ダッシュボードが表示されます。 [Docker ダッシュボード](https://app.datadoghq.com/screen/integration/docker)には、クラスターの監視に必要なすべてのコンテナー メトリックが表示されます。 
-
 

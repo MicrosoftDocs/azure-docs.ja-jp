@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>コネクテッド ファクトリ事前構成済みソリューションの概要
 
@@ -81,7 +80,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 ダッシュボードには次の情報が表示されます。
 
-* **工場の一覧**パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 初めてソリューションを実行すると、シミュレートされたデバイスが多数表示されます。 この生産ラインのシミュレーションでは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバーが生産ラインあたり 3 台構成されています。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+* **工場の一覧**パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 初めてソリューションを実行すると、シミュレートされたデバイスが多数表示されます。 この生産ラインのシミュレーションでは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバーが生産ラインあたり 3 台構成されています。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
 * **マップ**: ソリューションに接続されている各デバイスの場所が表示されます。 ソリューションは Bing Maps API を使用して、マップに情報をプロットします。 サブスクリプションで Bing Maps Enterprise API が有効になっている場合は、この機能が自動的に使用されます。 有効になっていない場合は、マップを動的に表示する方法について、[よく寄せられる質問][lnk-faq]に関するページを参照してください。
 * **[アラート]** パネル: テレメトリまたは OEE/KPI の値が、指定されたしきい値を超えた場合に、アラートが生成されて表示されます。
 * **[Overall Equipment Efficiency (総合設備効率)]** パネル: 企業全体または表示中の工場/生産ライン/ステーションの OEE 値が表示されます。 この値は、各ステーション ビューから全社レベルに集計されます。 OEE の数値とその構成要素は、さらに詳しく分析できます。

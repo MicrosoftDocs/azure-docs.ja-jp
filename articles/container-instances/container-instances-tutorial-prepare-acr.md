@@ -14,17 +14,15 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
 これは 3 つのパートで構成されるチュートリアルの 2 番目のタスクです。 [前のステップ](./container-instances-tutorial-prepare-app.md)では、[Node.js](http://nodejs.org) で記述されたシンプルな Web アプリケーションに対して、コンテナー イメージが作成されました。 このチュートリアルでは、このイメージを Azure Container Registry にプッシュします。 コンテナー イメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成](./container-instances-tutorial-prepare-app.md)に関するページに戻ってください。 
@@ -40,7 +38,7 @@ Azure Container Registry は、Docker コンテナー イメージ用の Azure �
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.12 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
@@ -62,7 +60,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
-イメージをプッシュする前に、ACR のインスタンスにログインする必要があります。 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
+イメージをプッシュする前に、ACR のインスタンスにログインする必要があります。 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
 ```azurecli
 az acr login --name <acrName>
@@ -125,7 +123,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 
 ## <a name="list-images-in-azure-container-registry"></a>Azure Container Registry のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 コンテナー レジストリ名でコマンドを更新します。
+お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 コンテナー レジストリ名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -166,4 +164,3 @@ v1
 
 > [!div class="nextstepaction"]
 > [コンテナーを Azure Container Instances にデプロイする](./container-instances-tutorial-deploy-app.md)
-

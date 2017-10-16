@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 102e54627a8fee721d3ed85e86a8009e706bb5b1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 63119978c59186a71e7e30438e8e37c0b2e1b454
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="work-with-azure-functions-proxies-preview"></a>Azure Functions プロキシ (プレビュー) の操作
 
@@ -51,7 +50,7 @@ ms.lasthandoff: 05/10/2017
 3. プロキシの名前を指定します。
 4. **ルート テンプレート**と **HTTP メソッド**を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
 5. **バックエンド URL** を他のエンドポイントに設定します。 このエンドポイントは、別の関数アプリ内の関数にすることも、他の任意の API にすることもできます。 静的な値である必要はありません。[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することもできます。
-6. **[作成]**をクリックします。
+6. **Create** をクリックしてください。
 
 これで、プロキシが関数アプリの新しいエンドポイントになりました。 クライアントの観点からは、Azure Functions の HttpTrigger と同じです。 プロキシの URL をコピーし、任意の HTTP クライアントでテストすることで、新しいプロキシを試してみることができます。
 
@@ -218,4 +217,3 @@ Proxies.json は、名前付きプロキシとその定義から成るプロキ�
 [変数を使用する]: #using-variables
 [元のクライアント要求のパラメーター]: #request-parameters
 [バックエンドからの応答のパラメーター]: #response-parameters
-

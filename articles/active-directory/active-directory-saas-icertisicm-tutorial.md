@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 9dd002f71b7a960338071db869f7c8cf88071342
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合
 
@@ -166,7 +164,7 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-icertis-contract-management-platform-test-user"></a>Icertis Contract Management Platform テスト ユーザーの作成
 
@@ -228,5 +226,4 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 [201]: ./media/active-directory-saas-icertisicm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-icertisicm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-icertisicm-tutorial/tutorial_general_203.png
-
 

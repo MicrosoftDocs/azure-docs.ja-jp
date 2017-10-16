@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
+ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: de9d41cfb157c71f324f5662c1c037ff515e7108
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>多層を利用した Azure AD パスワード セキュリティ
 
@@ -51,7 +50,7 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
 
 ### <a name="dynamically-banned-passwords"></a>パスワードの動的禁止
 
-Azure AD と Microsoft アカウントでは、パスワードを確実に保護するために、よく使われているパスワードが動的に禁止されています。 Azure ID Identity Protection チームは、禁止パスワード リストを定期的に分析し、ありきたりのパスワードをユーザーが選択できないようにしています。 このサービスは、Azure AD と Microsoft アカウント サービスのユーザーが利用できます。
+Azure AD と Microsoft アカウントでは、パスワードを確実に保護するために、よく使われているパスワードが動的に禁止されています。 Azure AD Identity Protection チームは、禁止パスワード リストを定期的に分析し、ありきたりのパスワードをユーザーが選択できないようにしています。 このサービスは、Azure AD と Microsoft アカウント サービスのユーザーが利用できます。
 
 管理者は、パスワードを作成するユーザーに、アルファベットや数字、文字、単語を不規則に組み合わせたパスワード フレーズを奨励することが重要です。 この手法では、ユーザーにとって覚えやすいが、見抜かれる危険がほとんどないパスワードを作成できます。
 
@@ -86,4 +85,3 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
 * [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 * [Azure ID 管理の基礎](fundamentals-identity.md)
 * [パスワード リセット アクティビティに関するレポート](active-directory-passwords-reporting.md)
-

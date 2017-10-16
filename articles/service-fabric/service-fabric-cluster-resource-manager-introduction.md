@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたはオンライン サービスの管理とは、特定の物理コンピューターまたは仮想マシンを特定のサービスまたはシステム専用にすることを意味していました。 サービスは階層として設計されていました。 "Web" 階層と、"データ" または "ストレージ" 階層があります。 アプリケーションには、要求が出入りするメッセージング階層と、キャッシュ専用の一連のコンピューターがあります。 ワークロードの階層または種類にはそれぞれ専用のコンピューターが使用されていました。データベースには 2 個の専用コンピューターが、Web サーバーには数個が使用されました。 特定の種類のワークロードがそのワークロード用のコンピューターの能力を超えた場合は、そのワークロード用に構成されたコンピューターの数をその階層に増やしていました。 ただし、すべてのワークロードを簡単にスケール アウトできる訳ではありません。通常はコンピューターを大きなコンピューターで置き換えるデータ層では特にそうですが、 簡単です。 マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。 まだ (楽しくはないにしても) 十分に簡単です。
@@ -64,4 +63,3 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 - クラスター リソース マネージャーは Service Fabric の管理機能と連動します。 その統合の詳細については、 [この記事](service-fabric-cluster-resource-manager-management-integration.md)
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
-

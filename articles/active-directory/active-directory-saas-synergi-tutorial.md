@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: dedbe96fbb26bc34c4d7e213892b318f0e6fef12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>チュートリアル: Azure Active Directory と Synergi の統合
 
@@ -163,7 +162,7 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-synergi-test-user"></a>Synergi のテスト ユーザーの作成
 
@@ -224,5 +223,4 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_203.png
-
 

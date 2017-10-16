@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: ed1d30be780e0882b8e75c01bc7822c3350f3fee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: .NET、Xamarin、Facebook 認証を使用した Web アプリの構築
 
@@ -33,6 +32,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -107,7 +107,7 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 4. Xamarin プロジェクトを開き、TodoItemManager.cs に移動します。 accountURL、collectionId、databaseId の値を入力し、リソース トークン ブローカーの Web サイトの基本 https URL として resourceTokenBrokerURL の値を入力します。
 
-5. [[How to configure your App Service application to use Facebook login] (Facebook ログインを使用するように App Service アプリケーションを構成する方法)](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md) チュートリアルを完了し、Facebook 認証をセットアップして ResourceTokenBroker の Web サイトを構成します。
+5. [[How to configure your App Service application to use Facebook login] (Facebook ログインを使用するように App Service アプリケーションを構成する方法)](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) チュートリアルを完了し、Facebook 認証をセットアップして ResourceTokenBroker の Web サイトを構成します。
 
     Xamarin アプリを実行します。
 
@@ -128,4 +128,3 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-

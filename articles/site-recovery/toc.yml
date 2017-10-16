@@ -1,0 +1,250 @@
+- name: Site Recovery のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Site Recovery とは
+      href: site-recovery-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Azure VM をセカンダリ リージョンにレプリケートする
+      href: azure-to-azure-quickstart.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: Azure VM
+      items:
+        - name: ディザスター リカバリーを設定する
+          href: azure-to-azure-tutorial-enable-replication.md
+        - name: ディザスター リカバリー訓練を実行する
+          href: azure-to-azure-tutorial-dr-drill.md
+        - name: フェールオーバーとフェールバックを実行する
+          href: azure-to-azure-tutorial-failover-failback.md
+    - name: VMware VM
+      items:
+        - name: Azure を準備する
+          href: tutorial-prepare-azure.md
+        - name: オンプレミスの VMware を準備する
+          href: tutorial-prepare-on-premises-vmware.md
+        - name: ディザスター リカバリーを設定する
+          href: tutorial-vmware-to-azure.md
+        - name: ディザスター リカバリー訓練を実行する
+          href: tutorial-dr-drill-azure.md
+        - name: フェールオーバーとフェールバックを実行する
+          href: tutorial-vmware-to-azure-failover-failback.md
+    - name: Azure に移行する
+      items:
+        - name: Azure を準備する
+          href: tutorial-prepare-azure.md
+        - name: オンプレミスのマシンを Azure に移行する
+          href: tutorial-migrate-on-premises-to-azure.md
+        - name: AWS インスタンスを Azure に移行する
+          href: tutorial-migrate-aws-to-azure.md
+- name: 概念
+  items:
+    - name: Azure から Azure へのアーキテクチャ
+      href: concepts-azure-to-azure-architecture.md
+    - name: VMware から Azure へのアーキテクチャ
+      href: concepts-vmware-to-azure-architecture.md
+    - name: Hyper-V から Azure へのアーキテクチャ
+      href: concepts-hyper-v-to-azure-architecture.md
+    - name: 物理から Azure へのアーキテクチャ
+      href: concepts-physical-to-azure-architecture.md
+    - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
+      href: concepts-hyper-v-to-secondary-architecture.md
+    - name: オンプレミスから Azure へのサポート マトリックス
+      href: site-recovery-support-matrix-to-azure.md
+    - name: オンプレミスからセカンダリ サイトへのサポート マトリックス
+      href: site-recovery-support-matrix-to-sec-site.md
+    - name: ワークロードのディザスター リカバリー
+      href: site-recovery-workload.md
+    - name: Azure から Azure へのネットワーク (プレビュー)
+      href: site-recovery-azure-to-azure-networking-guidance.md
+    - name: Azure へのフェールオーバー後の VM 接続
+      href: concepts-on-premises-to-azure-networking.md
+    - name: セカンダリ サイトへのフェールオーバー後の VM 接続
+      href: concepts-on-premises-to-on-premises-networking.md
+    - name: Azure VM レプリケーションのネットワーク マッピング
+      href: site-recovery-network-mapping-azure-to-azure.md
+    - name: Azure への Hyper-V VM レプリケーションのネットワーク マッピング
+      href: site-recovery-network-mapping.md
+    - name: ロールベースのアクセス許可
+      href: site-recovery-role-based-linked-access-control.md
+    - name: FAQ
+      href: site-recovery-faq.md
+    - name: Azure への VMware レプリケーションのための容量計画
+      href: site-recovery-plan-capacity-vmware.md
+      items:
+        - name: Azure への VMware レプリケーションのための Deployment Planner
+          href: site-recovery-deployment-planner.md
+    - name: Hyper-V レプリケーションのための Capacity Planner
+      href: site-recovery-capacity-planner.md
+- name: ハウツー ガイド
+  items:
+    - name: ディザスター リカバリー
+      items:
+        - name: マルチテナントをサポートしている VMware VM を Azure に
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
+        - name: Hyper-V VM を Azure に
+          href: tutorial-hyper-v-to-azure.md
+        - name: 物理サーバー を Azure に
+          href: tutorial-physical-to-azure.md
+        - name: Hyper-V VM をセカンダリ サイトに
+          href: tutorial-vmm-to-vmm.md
+        - name: VMware VM と物理サーバーをセカンダリ サイトに
+          href: tutorial-vmware-to-vmware.md
+        - name: Azure へのディザスター リカバリー訓練を実行する
+          href: tutorial-dr-drill-azure.md
+        - name: セカンダリ サイトへのディザスター リカバリー訓練を実行する
+          href: tutorial-dr-drill-secondary.md
+        - name: 物理サーバーのフェールオーバーとフェールバックを実行する
+          href: tutorial-vmware-to-azure-failover-failback.md
+        - name: Hyper-V VM のフェールオーバーとフェールバックを実行する
+          href: tutorial-hyper-v-to-azure-failover-failback.md
+        - name: オンプレミス サイト間のフェールオーバーとフェールバックを実行する
+          href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: 構成
+      items:
+        - name: ソース環境をセットアップする
+          items:
+            - name: VMware から Azure への場合のソース環境
+              href: site-recovery-set-up-vmware-to-azure.md
+            - name: 物理から Azure への場合のソース環境
+              href: site-recovery-set-up-physical-to-azure.md
+        - name: ターゲット環境をセットアップする
+          items:
+            - name: VMware から Azure への場合のターゲット環境
+              href: site-recovery-prepare-target-vmware-to-azure.md
+            - name: 物理から Azure への場合のターゲット環境
+              href: site-recovery-prepare-target-physical-to-azure.md
+        - name: レプリケーションの設定を構成する
+          href: site-recovery-setup-replication-settings-vmware.md
+        - name: VMware のレプリケーション用にモビリティ サービスをデプロイする
+          href: site-recovery-vmware-to-azure-install-mob-svc.md
+          items:
+            - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
+              href: site-recovery-install-mobility-service-using-sccm.md
+            - name: Azure Automation DSC を使用してモビリティ サービスをデプロイする
+              href: site-recovery-automate-mobility-service-install.md
+        - name: Enable replication
+          items:
+            - name: Azure から Azure へのレプリケーションを有効にする
+              href: site-recovery-replicate-azure-to-azure.md
+            - name: VMware から Azure へのレプリケーションを有効にする
+              href: site-recovery-replicate-vmware-to-azure.md
+    - name: フェールオーバーとフェールバック
+      items:
+        - name: 復旧計画を設定する
+          href: site-recovery-create-recovery-plans.md
+          items:
+            - name: 復旧計画に Azure Runbook を追加する
+              href: site-recovery-runbook-automation.md
+        - name: テスト フェールオーバーの実行
+          items:
+            - name: Azure へのテスト フェールオーバーの実行
+              href: site-recovery-test-failover-to-azure.md
+            - name: VMM クラウド間でのテスト フェールオーバーの実行
+              href: site-recovery-test-failover-vmm-to-vmm.md
+        - name: 保護されたマシンのフェールオーバー
+          href: site-recovery-failover.md
+        - name: フェールオーバー後にマシンを再保護する
+          items:
+            - name: Azure セカンダリ リージョンからプライマリへの再保護
+              href: site-recovery-how-to-reprotect-azure-to-azure.md
+            - name: Azure からオンプレミスへの再保護
+              href: site-recovery-how-to-reprotect.md
+        - name: Azure からのフェールバック
+          items:
+            - name: Azure から VMware へのフェールバック
+              href: site-recovery-failback-azure-to-vmware.md
+            - name: Azure から Hyper-V へのフェールバック
+              href: site-recovery-failback-from-azure-to-hyper-v.md
+    - name: 自動化
+      items:
+        - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM なし)
+          href: site-recovery-deploy-with-powershell-resource-manager.md
+        - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM を使用)
+          href: site-recovery-vmm-to-azure-powershell-resource-manager.md
+        - name: PowerShell を使用してセカンダリ VMM サイトへの Hyper-V のレプリケーションを設定する
+          href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
+    - name: 移行
+      items:
+        - name: 別の Azure リージョンへの移行マシンのレプリケート
+          href: site-recovery-azure-to-azure-after-migration.md
+    - name: ワークロード
+      items:
+        - name: Active Directory と DNS
+          href: site-recovery-active-directory.md
+        - name: SQL Server のレプリケート
+          href: site-recovery-sql.md
+        - name: SharePoint
+          href: site-recovery-sharepoint.md
+        - name: Dynamics AX
+          href: site-recovery-dynamicsax.md
+        - name: RDS
+          href: 'site-recovery-workload.md#protect-rds'
+        - name: Exchange
+          href: 'site-recovery-workload.md#protect-exchange'
+        - name: SAP
+          href: site-recovery-sap.md
+        - name: IIS ベースの Web アプリケーション
+          href: site-recovery-iis.md
+        - name: Citrix XenApp と XenDesktop
+          href: site-recovery-citrix-xenapp-and-xendesktop.md
+        - name: その他のワークロード
+          href: 'site-recovery-workload.md#workload-summary'
+    - name: 管理
+      items:
+        - name: Site Recovery コンテナーから Recovery Services コンテナーへのアップグレード
+          href: upgrade-site-recovery-vaults.md
+        - name: Azure でのプロセス サーバーの管理
+          href: site-recovery-vmware-setup-azure-ps-resource-manager.md
+        - name: 構成サーバーの管理
+          href: site-recovery-vmware-to-azure-manage-configuration-server.md
+        - name: スケールアウト プロセス サーバーの管理
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: vCenter サーバーの管理
+          href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: サーバーの削除と保護の無効化
+          href: site-recovery-manage-registration-and-protection.md
+        - name: Recovery Services コンテナーの削除
+          href: delete-vault.md
+    - name: トラブルシューティング
+      items:
+        - name: Azure から Azure へのレプリケーションの問題
+          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+        - name: オンプレミスから Azure へのレプリケーションの問題
+          href: site-recovery-vmware-to-azure-protection-troubleshoot.md
+        - name: モビリティ サービスのインストールの問題
+          href: site-recovery-vmware-to-azure-push-install-error-codes.md
+        - name: Azure へのフェールオーバーの問題
+          href: site-recovery-failover-to-azure-troubleshoot.md
+        - name: ログの収集とオンプレミスの問題のトラブルシューティング
+          href: site-recovery-monitoring-and-troubleshooting.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.siterecovery
+    - name: Azure PowerShell クラシック
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: REST ()
+      href: 'https://msdn.microsoft.com/en-us/library/mt750497'
+- name: 関連項目
+  items:
+    - name: Azure Automation
+      href: /azure/automation/
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ブログ
+      href: 'http://azure.microsoft.com/blog/tag/azure-site-recovery/'
+    - name: フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: ラーニング パス
+      href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=site-recovery'

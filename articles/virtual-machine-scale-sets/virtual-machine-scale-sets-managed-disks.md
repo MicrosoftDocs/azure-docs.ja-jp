@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
+ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 
@@ -30,7 +29,7 @@ Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets
 
 * スケール セットに管理データ ディスクを接続できます。
 
-* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 100 台の VM 分の容量をスケール セットで使用できます。
+* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 300 台の VM 分の容量をスケール セットで使用できます。
 
 ## <a name="get-started"></a>作業開始
 
@@ -52,6 +51,5 @@ Resource Manager テンプレートを変換して、管理ディスクを使用
 スケール セットで管理データ ディスクを使用する方法の詳細については、[こちらの記事](./virtual-machine-scale-sets-attached-disks.md)をご覧ください。
 
 大規模なスケール セットの使用を開始する場合は、[こちらの記事](./virtual-machine-scale-sets-placement-groups.md)をご覧ください。
-
 
 

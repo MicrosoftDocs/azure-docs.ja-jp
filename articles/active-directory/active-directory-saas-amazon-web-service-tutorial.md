@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 61999ebea05371c53e5ff27644a68039db1aef96
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.openlocfilehash: 0fb9c8f428368271b548e3f174726fa01ea910c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル: Azure Active Directory と Amazon Web Services (AWS) の統合
 
@@ -307,7 +306,7 @@ To ensure users can sign-in to Amazon Web Services (AWS) after it has been confi
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-amazon-web-services-test-user"></a>Amazon Web Services テスト ユーザーの作成
 
@@ -424,4 +423,3 @@ Azure AD ユーザーが Amazon Web Services (AWS) にログインできるよ�
 [39]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
 [41]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_on.png
-

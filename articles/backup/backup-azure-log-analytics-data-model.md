@@ -15,12 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 この記事では、Log Analytics にレポート データをプッシュするのに使用するデータ モデルについて説明します。 このデータ モデルを使用すると、カスタム クエリ、ダッシュボードを作成し、OMS で活用することができます。 
@@ -288,4 +287,3 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 Azure Backup のレポートを作成するためのデータ モデルを確認したら、Log Analytics および OMSで[ダッシュボードの作成](../log-analytics/log-analytics-dashboards.md)を開始できます。
-

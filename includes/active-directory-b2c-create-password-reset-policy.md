@@ -12,7 +12,7 @@
 
 ![ID プロバイダーとして [Reset password using email address]\(電子メール アドレスを使用してパスワードをリセットする\) を選択して [OK] をクリック](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
 
-**[アプリケーション クレーム]** を選択します。 パスワード リセット エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、**[User's Object ID] \(ユーザーのオブジェクト ID)** を選択します。
+**[アプリケーション クレーム]** を選択します。 パスワード リセット エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、**[User's Object ID] (ユーザーのオブジェクト ID)** を選択します。
 
 ![アプリケーション要求を選択して [OK] をクリック](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-application-claims.png)
 

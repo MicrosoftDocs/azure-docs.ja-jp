@@ -10,23 +10,22 @@ tags: azure-resource-manager,azure-service-management
 ms.assetid: 
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/10/2017
+ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
+ms.openlocfilehash: 3a1a6e2acd2ff40c2b35a6099f8a9fc7eb104bbc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
 VPN ゲートウェイ接続を使用すると、Azure 内の Virtual Network とオンプレミスの IT インフラストラクチャ間の安全なクロスプレミス接続を確立できます。
 
-この記事では、オンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証する方法を示します。 また、トラブルシューティングのガイドラインも示します。
+この記事では、オンプレミスのリソースから Azure 仮想マシン (VM) へのネットワーク スループットを検証する方法を示します。 また、トラブルシューティングのガイドラインも示します。
 
 >[!NOTE]
 >この記事の目的は、一般的な問題の診断と修正に役立つことです。 次の情報を使用して問題を解決できない場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
@@ -40,7 +39,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 - オンプレミスの VPN デバイス ([検証済みの VPN デバイス](vpn-gateway-about-vpn-devices.md#devicetable)の一覧を表示)。
 - パブリック インターネット
 - Azure VPN Gateway
-- Azure 仮想マシン
+- Azure VM
 
 次の図は、オンプレミスのネットワークから Azure 仮想ネットワークへの VPN 経由の論理接続を示しています。
 
@@ -140,4 +139,3 @@ tracert を使用して、Microsoft Azure エッジ デバイスを追跡し、�
 
 - [Azure 仮想マシンのネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)
 - [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-

@@ -1,0 +1,234 @@
+- name: Team Data Science Process のドキュメント
+- name: 概要
+  href: overview.md
+- name: ライフサイクル
+  href: lifecycle.md
+  items:
+    - name: 1. ビジネスの把握
+      href: lifecycle-business-understanding.md
+    - name: 2. データの取得と理解
+      href: lifecycle-data.md
+    - name: 3. モデリング
+      href: lifecycle-modeling.md
+    - name: 4. デプロイ
+      href: lifecycle-deployment.md
+    - name: 5. 顧客による受け入れ
+      href: lifecycle-acceptance.md
+    - name: Azure ML の使用
+      href: 'http://aka.ms/datascienceprocess'
+- name: ロールとタスク
+  href: roles-tasks.md
+  items:
+    - name: グループ マネージャー
+      href: group-manager-tasks.md
+    - name: チーム リーダー
+      href: team-lead-tasks.md
+    - name: プロジェクト リード
+      href: project-lead-tasks.md
+    - name: 個々の共同作成者
+      href: project-ic-tasks.md
+- name: プロジェクト構造
+  href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
+- name: プロジェクトの実行
+  href: project-execution.md
+- name: Tutorials (チュートリアル)
+  href: walkthroughs.md
+  items:
+    - name: Azure Machine Learning Workbench
+      href: walkthroughs-aml-with-tdsp.md
+      items:
+        - name: 米国の所得の分類
+          href: ../preview/scenario-tdsp-classifying-us-incomes.md
+          maintainContext: true
+        - name: 生体エンティティの認識
+          href: ../preview/scenario-tdsp-biomedical-recognition.md
+          maintainContext: true
+    - name: PySpark と Scala を使用した Spark
+      href: walkthroughs-spark.md
+      items:
+        - name: データを調査する
+          href: spark-data-exploration-modeling.md
+        - name: モデルにスコアを付ける
+          href: spark-model-consumption.md
+        - name: 高度なデータの探索
+          href: spark-advanced-data-exploration-modeling.md
+    - name: HDInsight Hadoop での Hive の使用
+      href: walkthroughs-hdinsight-hadoop.md
+    - name: Azure Data Lake での U-SQL の使用
+      href: walkthroughs-azure-data-lake.md
+    - name: SQL Server での R、Python、T-SQL の使用
+      href: walkthroughs-sql-server.md
+    - name: SQL DW での T-SQL と Python の使用
+      href: walkthroughs-sql-data-warehouse.md
+- name: 方法
+  items:
+    - name: Azure ML での TDSP の使用
+      href: ../preview/how-to-use-tdsp-in-azure-ml.md
+      maintainContext: true
+    - name: データ サイエンス環境の設定
+      href: environment-setup.md
+      items:
+        - name: Azure ストレージ アカウント
+          href: ../../storage/common/storage-create-storage-account.md
+          maintainContext: true
+        - name: プラットフォームとツール
+          href: platforms-and-tools.md
+        - name: Hadoop をカスタマイズする
+          href: customize-hadoop-cluster.md
+        - name: Azure Machine Learning ワークスペース
+          href: ../studio/create-workspace.md
+          maintainContext: true
+        - name: 仮想マシンを設定する
+          href: virtual-machines.md
+    - name: ビジネス ニーズの分析
+      items:
+        - name: シナリオの特定
+          href: plan-your-environment.md
+    - name: データの取得と理解
+      items:
+        - name: データ ロジスティックの管理
+          items:
+            - name: 概要
+              href: ingest-data.md
+            - name: BLOB ストレージ
+              href: move-azure-blob.md
+            - name: Storage Explorer を使用する
+              href: move-data-to-azure-blob-using-azure-storage-explorer.md
+            - name: AzCopy を使用する
+              href: move-data-to-azure-blob-using-azcopy.md
+            - name: Python の使用
+              href: move-data-to-azure-blob-using-python.md
+            - name: SSIS を使用する
+              href: move-data-to-azure-blob-using-ssis.md
+            - name: VM に移動する
+              href: move-sql-server-virtual-machine.md
+            - name: SQL Database に移動する
+              href: move-sql-azure.md
+            - name: Hive テーブルに読み込む
+              href: move-hive-tables.md
+            - name: オンプレミスの SQL から読み込む
+              href: move-sql-azure-adf.md
+            - name: SQL パーティション テーブルから読み込む
+              href: parallel-load-sql-partitioned-tables.md
+        - name: データの調査と視覚化
+          items:
+            - name: データを準備する
+              href: prepare-data.md
+            - name: データを調査する
+              items:
+                - name: 概要
+                  href: explore-data.md
+                - name: Pandas を使用する
+                  href: explore-data-blob.md
+                - name: SQL VM を使用する
+                  href: explore-data-sql-server.md
+                - name: Hive テーブルを使用する
+                  href: explore-data-hive-tables.md
+            - name: サンプル データ
+              items:
+                - name: 概要
+                  href: sample-data.md
+                - name: Blob Storage を使用する
+                  href: sample-data-blob.md
+                - name: SQL Server を使用する
+                  href: sample-data-sql-server.md
+                - name: Hive テーブルを使用する
+                  href: sample-data-hive.md
+            - name: データを処理する
+              items:
+                - name: Python でアクセスする
+                  href: python-data-access.md
+                - name: BLOB データを処理する
+                  href: data-blob.md
+                - name: Azure Data Lake を使用する
+                  href: data-lake-walkthrough.md
+                - name: SQL VM を使用する
+                  href: sql-server-virtual-machine.md
+                - name: データ パイプラインを使用する
+                  href: automated-data-pipeline-cheat-sheet.md
+                - name: Spark を使用する
+                  href: spark-overview.md
+                - name: Scala と Spark を使用する
+                  href: scala-walkthrough.md
+    - name: モデルの開発
+      items:
+        - name: 特徴エンジニアリング
+          items:
+            - name: 概要
+              href: create-features.md
+            - name: Pandas を使用する
+              href: create-features-blob.md
+            - name: SQL と Python を使用する
+              href: create-features-sql-server.md
+            - name: Hive クエリを使用する
+              href: create-features-hive.md
+        - name: 機能を選択する
+          href: select-features.md
+        - name: モデルの作成とトレーニング
+          items:
+            - name: アルゴリズムを選択する
+              href: ../studio/algorithm-choice.md
+              maintainContext: true
+            - name: アルゴリズム チート シート
+              href: ../studio/algorithm-cheat-sheet.md
+              maintainContext: true
+    - name: モデルをデプロイする
+      items:
+        - name: Web サービスを利用する
+          href: ../studio/publish-a-machine-learning-web-service.md
+          maintainContext: true
+        - name: Web サービスを使用する
+          href: ../studio/consume-web-services.md
+          maintainContext: true
+- name: 関連項目
+  items:
+    - name: Microsoft Cognitive Toolkit - CNTK
+      href: 'https://docs.microsoft.com/en-us/cognitive-toolkit/'
+      maintainContext: true
+    - name: Cortana Intelligence パートナー ソリューション
+      items:
+        - name: Cortana Intelligence ギャラリー
+          href: 'https://gallery.cortanaintelligence.com'
+        - name: Cortana Intelligence の発行ガイド
+          href: cortana-intelligence-appsource-publishing-guide.md
+        - name: Cortana Intelligence ソリューション評価ツール
+          href: cortana-intelligence-appsource-evaluation-tool.md
+    - name: Cortana Analytics
+      items:
+        - name: API
+          items:
+            - name: 異常検出
+              href: apps-anomaly-detection-api.md
+            - name: Cognitive Services
+              href: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+            - name: 予測的なメンテナンス
+              items:
+                - name: 概要
+                  href: cortana-analytics-playbook-predictive-maintenance.md
+                - name: アーキテクチャ
+                  href: cortana-analytics-architecture-predictive-maintenance.md
+                - name: テクニカル ガイド
+                  href: cortana-analytics-technical-guide-predictive-maintenance.md
+            - name: 車両テレメトリ
+              items:
+                - name: 概要
+                  href: cortana-analytics-playbook-vehicle-telemetry.md
+                - name: プレイブック
+                  href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
+                - name: '[Setup]'
+                  href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
+- name: リソース
+  items:
+    - name: TDSP のツールとユーティリティ - GitHub
+      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+      items:
+        - name: Team Data Science Process の最新のユーティリティ
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
+    - name: Cortana Intelligence と Machine Learning のブログ
+      href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'

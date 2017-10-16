@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
 
@@ -127,4 +126,3 @@ A: Storage Service Encryption に関する問題は、 [ssediscussions@microsoft
 *   安全なアプリケーション開発を支援する包括的なセキュリティ機能の詳細については、[Storage セキュリティ ガイド](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)に関するページをご覧ください。
 *   Azure Key Vault の概要については、「[Azure Key Vault とは](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)」を参照してください。
 *   Azure Key Vault の概要については、[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)に関するページを参照してください。
-

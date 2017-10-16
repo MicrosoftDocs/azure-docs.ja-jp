@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
 ms.openlocfilehash: 74aace2136136c25bc56327d38cfbab168265401
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -199,4 +198,3 @@ ms.lasthandoff: 08/15/2017
 - 仮想ネットワーク内のサブネット間のネットワーク トラフィックをフィルター処理する場合は、[ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事を参照してください。
 - 仮想ネットワークを別の仮想ネットワークにピアリングする場合は、[仮想ネットワーク ピアリングの作成](virtual-network-create-peering.md#portal)に関する記事を参照してください。
 - オンプレミスのネットワークに仮想ネットワークを接続するためのオプションの詳細については、[VPN Gateway の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)に関する記事を参照してください。
-

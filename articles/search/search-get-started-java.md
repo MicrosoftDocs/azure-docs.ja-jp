@@ -14,12 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.lasthandoff: 03/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -64,7 +63,7 @@ ms.lasthandoff: 03/29/2017
 ## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
 Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。 
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
@@ -91,7 +90,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 
 ## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と API キーの構成
 1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
-2. この記事で前述の手順を参照し、 [Azure ポータル](https://portal.azure.com)でサービスの URL と API キーを探して、 **config.properties**に入力する値を取得します。
+2. この記事で前述の手順を参照し、[Azure Portal](https://portal.azure.com) でサービスの URL と API キーを探して、**config.properties**に入力する値を取得します。
 3. **config.properties**で、「API キー」をサービスの API キーに置き換えます。 次に、サービス名 (URL http://servicename.search.windows.net の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
    
     ![][5]
@@ -110,7 +109,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 7. **[完了]**をクリックします。
 8. **[Window (ウィンドウ)]** > **[Preferences (設定)]** > **[Java]** > **[Installed JREs (インストール済み JRE)]** > **[Add (追加)]** の順に選択します。
 9. **[Add JRE (JRE の追加)]** で、**[Standard VM (標準 VM)]** を選択します。
-10. **[次へ]**をクリックします。
+10. **[次へ]** をクリックします。
 11. [JRE Definition] の [JRE home] で、 **[Directory]**をクリックします。
 12. **[Program Files (プログラム ファイル)]** > **[Java]** の順に移動し、先にインストールした JDK を選択します。 JRE として JDK を選択することが重要です。
 13. [Installed JREs] で、 **[JDK]**を選択します。 設定は次のスクリーン ショットのようになります。
@@ -180,4 +179,3 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
-

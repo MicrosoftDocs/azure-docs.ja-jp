@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/08/2017
 ms.author: anbacker
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 5772334aade138101730fa7345f4515664d6d22f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Manager サービスを使用して StorSimple アラートを表示および管理する
 ## <a name="overview"></a>概要
@@ -61,7 +60,7 @@ StorSimple デバイスごとに、アラート状態について電子メール
    
    1. **[電子メール通知の送信]** フィールドで、**[はい]** を選択します。
    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
-   3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。 名前は *someone@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つのデバイスで構成できる電子メール アドレスは最大 20 件です。 
+   3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。 名前は *someone@somewhere.com* の形式で入力します。電子メール アドレスはセミコロンで区切ります。 1 つのデバイスで構成できる電子メール アドレスは最大 20 件です。 
       
        ![Alerts notification configuration](./media/storsimple-manage-alerts/AlertNotify.png)
 3. 電子メールのテスト通知を送信するには、 **[テスト電子メールの送信]**の隣にある矢印アイコンをクリックします。 テスト通知を転送すると、StorSimple Manager サービスに状態メッセージが表示されます。 
@@ -79,7 +78,7 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 ![Alerts dashboard](./media/storsimple-manage-alerts/admin_alerts_dashboard.png)
 
-重大度レベルをクリックすると、 **[アラート]** タブが開きます。 結果には、その重大度レベルに一致するアラートのみが含まれます。
+重大度レベルをクリックすると、 **[アラート]** タブが開きます。結果には、その重大度レベルに一致するアラートのみが含まれます。
 
 ![Alerts report scoped to alert type](./media/storsimple-manage-alerts/admin_alerts_scoped.png)
 
@@ -203,5 +202,4 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple エラーと運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)の詳細について確認します。
-
 

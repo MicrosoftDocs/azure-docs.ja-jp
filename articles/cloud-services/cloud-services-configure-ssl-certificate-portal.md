@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: e5c8c3b098772c0586712305a577b24a6f0d924c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 7b0e76f86ec6443fcb394f7be1e6b417de99d4b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 > [!div class="op_single_selector"]
@@ -31,14 +29,12 @@ ms.lasthandoff: 05/31/2017
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。 この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 > [!NOTE]
-> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service-web/web-sites-configure-ssl-certificate.md)をご覧ください。
+> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service/app-service-web-tutorial-custom-ssl.md)をご覧ください。
 >
 
 このタスクでは、運用環境のデプロイを使用します。 ステージング環境のデプロイを使用する場合の情報については、このトピックの最後で紹介します。
 
 クラウド サービスを作成していない場合は、まず [こちら](cloud-services-how-to-create-deploy-portal.md) を参照してください。
-
-[!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
 アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。 まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
@@ -189,4 +185,3 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
-

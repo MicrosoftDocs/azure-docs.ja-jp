@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 07/12/2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 59da1ab9e76685d7ed0c4415ef99578c982e956c
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 92c34e7ac074ded1702e0df96298d33c60227ab3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/21/2017
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-php"></a>PHP のインストール
-独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)を作成します。
+独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/app-service-web-overview.md)を作成します。
 
 ### <a name="macos"></a>MacOS
 - [PHP 7.1.4 バージョン](http://php.net/downloads.php)をダウンロードします。
@@ -233,5 +233,5 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Azure で PHP と MySQL Web アプリを構築する](../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
+> [Azure で PHP と MySQL Web アプリを構築する](../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
 

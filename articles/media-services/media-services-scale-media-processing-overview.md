@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 165e4394d21a0202a320a8697360b715517bc7a2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: 1009d8b87cb3a131909f3ae9ee231f9ebb408c04
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 
@@ -72,5 +71,4 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

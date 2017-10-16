@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: a30859610aed55c1ffa22e821de3702d265a7fa7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: d5de4f5a7357cf5adde7773867356d47ad447bab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
 Azure のホスティング サービスとスケーラビリティを利用するために、Azure クラウド サービスに Web アプリケーションを移行し、発行できます。 既存のアプリケーションに最小限の変更を加えることで、Azure で Web アプリケーションを実行できます。
 
 > [!NOTE]
-> このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。 Web サイトへのデプロイの詳細については、「[Azure App Service での Web アプリのデプロイ](app-service-web/web-sites-deploy.md)」を参照してください。
+> このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。 Web サイトへのデプロイの詳細については、「[Azure App Service での Web アプリのデプロイ](app-service/app-service-deploy-local-git.md)」を参照してください。
 >
 >
 
@@ -202,4 +201,3 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 
 ## <a name="next-steps"></a>次のステップ
 発行の詳細については、「 [Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。 また、「 [名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
-

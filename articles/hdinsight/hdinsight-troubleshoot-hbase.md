@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HBase のトラブルシューティング
 
 Apache Ambari で Apache HBase ペイロードを操作するときに発生する主な問題とその解決策について説明します。
@@ -226,7 +224,7 @@ Phoenix に接続するには、アクティブな Zookeeper ノードの IP ア
    ```
 
    > [!Note] 
-   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK* (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
+   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
 
 3. sqlline.py が Phoenix に接続し、タイムアウトしていない場合は、次のコマンドを実行して Phoenix の可用性と正常性を検証します。
 
@@ -422,5 +420,4 @@ Ambari UI から HBase リージョン サーバーでの再起動操作を開�
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
    ```
-
 

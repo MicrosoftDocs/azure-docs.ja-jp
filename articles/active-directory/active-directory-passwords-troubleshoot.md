@@ -13,17 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: d33e516628c56a7aa038e37b4498461de17f8433
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 60d35b230534ca5721a49a770ea81cc79d52ec02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>セルフサービスのパスワード リセットのトラブルシューティング方法
 
 セルフサービスのパスワード リセットで問題が発生した場合に、以下の項目が問題の解決に役立つ場合があります。
@@ -152,17 +150,21 @@ ms.lasthandoff: 08/29/2017
 | 33008| ADPasswordPolicyError| このイベントは、パスワード ライトバック サービスが、パスワードの有効期間、履歴、複雑さ、フィルタリングに関するドメインの要件を満たしていないローカル ディレクトリにパスワードを設定しようとすると発生します。 <br> <br> パスワードの最小有効期間が残っていて、最近その期間内にパスワードを変更した場合は、そのドメインで指定された期限に達するまで、もう一度パスワードを変更することはできません。 テストのために、最小有効期間は 0 に設定する必要があります。 <br> <br> パスワードの履歴の要件が有効になっている場合は、最後の N 回で使用されていないパスワードを選択する必要があります。N はパスワードの履歴設定です。 最後の N 回で使用されているパスワードを選択した場合は、エラーが表示されます。 テストのために、履歴は 0 に設定する必要があります。 <br> <br> パスワードの複雑さの要件を指定する場合は、ユーザーがパスワードを変更またはリセットしようとすると、すべての要件が適用されます。 <br> <br> パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。|
 | 33009| ADConfigurationError| このイベントは、Active Directory に構成の問題があるため、オンプレミスのディレクトリへのパスワード書き込みエラーが発生したことを示します。 発生したエラーの詳細については、Azure AD Connect コンピューターのアプリケーション イベント ログで ADSync サービスからのメッセージを確認します。|
 
-
 ## <a name="troubleshoot-password-writeback-connectivity"></a>パスワード ライトバックの接続のトラブルシューティング
 
 Azure AD Connect のパスワード ライトバック コンポーネントでサービスの中断が発生した場合は、いくつかの簡単な手順を使用してこの問題を解決できます。
 
+* [ネットワーク接続を確認する](#confirm-network-connectivity)
 * [Azure AD Connect 同期サービスを再起動する](#restart-the-azure-ad-connect-sync-service)
 * [パスワード ライトバック機能を無効にしてから再び有効にする](#disable-and-re-enable-the-password-writeback-feature)
 * [最新の Azure AD Connect リリースをインストールする](#install-the-latest-azure-ad-connect-release)
 * [パスワード ライトバックをトラブルシューティングする](#troubleshoot-password-writeback)
 
 通常、最も速い方法でサービスを復旧するには、上記の順序でこれらの手順を実行することをお勧めします。
+
+### <a name="confirm-network-connectivity"></a>ネットワーク接続を確認する
+
+最も一般的な障害点は、ファイアウォール、プロキシ ポート、アイドル タイムアウトなどが正しく構成されていないことです。 「[Azure AD のセルフ サービスによるパスワードのリセットの詳細](active-directory-passwords-how-it-works.md#network-requirements)」でネットワーク要件を確認してください。
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービスを再起動する
 
@@ -277,4 +279,3 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 * [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
 * [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-

@@ -15,13 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 27d05c1681f7d7b3090fc7abd4a6b15d1c030e2c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.openlocfilehash: a81b956107ef82f40ad5304808068a7573ca7d27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 
@@ -62,6 +60,8 @@ Azure 内の SQL Server データベースのディザスター リカバリー 
 | **可用性グループ** |可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。 この複数のリージョンにわたるソリューションでは、完全なサイトの機能停止の場合にも保護できます。 <br/> ![可用性グループ](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>リージョン内で、すべてのレプリカが同じクラウド サービスおよび同じ VNet 内にある必要があります。 各リージョンは個別の VNet を持つため、これらのソリューションには VNet と VNet 間の接続が必要です。 詳細については、「[Azure Portal を使用した VNet 間接続の構成](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)」をご覧ください。 詳細については、「[さまざまな地域に存在する Azure Virtual Machines に Always On 可用性グループを構成する](virtual-machines-windows-portal-sql-availability-group-dr.md)」を参照してください。|
 | **データベース ミラーリング** |プリンシパルとミラーとサーバーが、ディザスター リカバリーのために、異なるデータセンターで実行されます。 Active Directory ドメインは、複数のデータセンターにまたがって機能できないため、サーバー証明書を使用してデプロイする必要があります。<br/>![データベース ミラーリング](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Azure BLOB ストレージ サービスを使用したバックアップと復元** |実稼働データベースが、ディザスター リカバリーのために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。 |
+| **Azure Site Recovery を使用する Azure への SQL Server のレプリケートおよびフェールオーバー** |ある Azure データセンターの実稼働 SQL Server が、ディザスター リカバリーのために別の Azure データセンターの Azure Storage に直接レプリケートされます。<br/>![Azure Site Recovery を使用してレプリケートする](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>詳細については、「[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](../../../site-recovery/site-recovery-sql.md)」を参照してください。 |
+
 
 ## <a name="hybrid-it-disaster-recovery-solutions"></a>ハイブリッド IT: ディザスター リカバリー ソリューション
 ハイブリッド IT 環境内の SQL Server データベースのディザスター リカバリー ソリューションを実現するには、可用性グループ、データベース ミラーリング、ログ配布、および Azure BLOB ストレージによるバックアップと復元を使用します。
@@ -72,6 +72,7 @@ Azure 内の SQL Server データベースのディザスター リカバリー 
 | **データベース ミラーリング** |クロスサイトでのディザスター リカバリーのために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。 パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。 [Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)が必要です。<br/><br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 |
 | **ログ配布** |クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。 ログ配布は Windows ファイル共有に依存しているため、Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続が必要です。<br/>![ログ配布](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 |
 | **Azure BLOB ストレージ サービスを使用したバックアップと復元** |オンプレミスの実稼働データベースが、ディザスター リカバリーのために、Azure Blob Storage に直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。 |
+| **Azure Site Recovery を使用する Azure への SQL Server のレプリケートおよびフェールオーバー** |オンプレミスの実稼働 SQL Server が、ディザスター リカバリーのために Azure Storage に直接レプリケートされます。<br/>![Azure Site Recovery を使用してレプリケートする](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_standalone_sqlserver-asr.png)<br/>詳細については、「[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](../../../site-recovery/site-recovery-sql.md)」を参照してください。 |
 
 ## <a name="important-considerations-for-sql-server-hadr-in-azure"></a>Azure での SQL Server HADR の重要な考慮事項
 Azure の VM、ストレージ、およびネットワークには、オンプレミスの非仮想化 IT インフラストラクチャとは異なる動作特性があります。 Azure での HADR SQL Server ソリューションの実装を成功させるには、これらの違いを理解し、それに対応したソリューションを設計する必要があります。
@@ -138,5 +139,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 ### <a name="other-resources"></a>その他のリソース
 * [Azure での新しい Active Directory フォレストのインストール](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Azure VM での可用性グループのフェールオーバー クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
-
 

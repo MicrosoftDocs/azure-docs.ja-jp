@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 07ad15c61bd4b3912dfa2f629218deebdebd6dc8
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 38f6f5ebe0c53bc4314fa11f0f8d4f00af6086dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
@@ -29,25 +29,64 @@ Visual Studio C# の開発者は、Azure Functions を [Visual Studio 2017 に�
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
-Azure Functions Core Tools は、ローカル バージョンの Azure Functions ランタイムで、ローカルの Windows コンピューターで実行できます。 エミュレーターまたはシミュレーターではありません。 Azure で Functions を実行するランタイムと同じです。
+[Azure Functions Core Tools] は、ローカル バージョンの Azure Functions ランタイムで、ローカルの開発コンピューターで実行できます。 エミュレーターまたはシミュレーターではありません。 Azure で Functions を実行するランタイムと同じです。 Azure Functions Core Tools には 2 つのバージョンがあります。1 つはランタイムのバージョン 1.x 用、もう 1 つはバージョン 2.x 用です。 両方のバージョンは [npm](https://docs.npmjs.com/getting-started/what-is-npm) パッケージとして用意されています。
 
-[Azure Functions Core Tools] は npm パッケージとして提供されています。 まず [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node) する必要があります。これには npm が含まれています。  
+>[!NOTE]  
+> いずれかのバージョンをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。 
 
->[!NOTE]
->現時点では、Azure Functions Core Tools パッケージをインストールできるのは Windows コンピューターのみです。 この制限は、Functions ホストの一時的な制限によるものです。
+### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
 
-[Azure Functions Core Tools] で追加されるコマンドのエイリアスを次に示します。
+元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework を使用し、Windows コンピューターでのみサポートされます。 次のコマンドを使用して、バージョン 1.x ツールをインストールします。
+
+```bash
+npm install -g azure-functions-core-tools
+```
+
+### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+
+バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、.NET Core 2.x がサポートするすべてのプラットフォームでサポートされています。 クロスプラットフォーム開発時、または Functions ランタイム 2.x が必要なときに、このバージョンを使用します。 
+
+>[!IMPORTANT]   
+> Azure Functions Core Tools をインストールする前に、[.NET Core 2.0](https://www.microsoft.com/net/core) をインストールします。  
+>
+> Azure Functions ランタイム 2.0 はプレビュー段階であり、現在のところ、Azure Functions のすべての機能はサポートされていません。 詳細については、「[Azure Functions runtime 2.0 known issues](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)」(Azure Functions ランタイム 2.0 の既知の問題) を参照してください 
+
+ 次のコマンドを使用して、バージョン 2.0 ツールをインストールします。
+
+```bash
+npm install -g azure-functions-core-tools@core
+```
+
+Ubuntu にインストールする場合は、次のように `sudo` を使用します。
+
+```bash
+sudo npm install -g azure-functions-core-tools@core
+```
+
+macOS および Linux 上にインストールする場合、次のように `unsafe-perm` フラグを含める必要があります。
+
+```bash
+sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+## <a name="run-azure-functions-core-tools"></a>Azure Functions Core Tools の実行
+ 
+Azure Functions Core Tools で追加されるコマンドのエイリアスを次に示します。
 * **func**
 * **azfun**
 * **azurefunctions**
 
-これらの別名はすべて、このトピックの例に示す `func` の代わりに使用できます。
+これらすべてのエイリアスは、`func` が例に示されている場所で使用できます。
+
+```
+func init MyFunctionProj
+```
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-ローカルで実行中は、Functions プロジェクトが、host.json ファイルと local.settings.json ファイルが含まれるディレクトリです。 このディレクトリは、Azure の関数アプリに相当します。 Azure Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
+ローカルで実行中の場合、Functions プロジェクトは、[host.json](functions-host-json.md) ファイルと [local.settings.json](#local-settings) ファイルが含まれるディレクトリです。 このディレクトリは、Azure の関数アプリに相当します。 Azure Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
 
-コマンド プロンプトで、次のコマンドを実行します。
+ターミナル ウィンドウまたはコマンド プロンプトで、次のコマンドを実行してプロジェクトおよびローカルの Git リポジトリを作成します。
 
 ```
 func init MyFunctionProj
@@ -63,7 +102,7 @@ Created launch.json
 Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
-Git リポジトリの作成を除外するには、`--no-source-control [-n]` オプションを使用します。
+ローカル Git リポジトリを使用せずにプロジェクトを作成する場合は、`--no-source-control [-n]` オプションを使用します。
 
 <a name="local-settings"></a>
 
@@ -90,9 +129,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 | 設定      | Description                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
-| **値** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 このオブジェクトに、アプリケーション設定を追加します。  |
-| **AzureWebJobsStorage** | Azure Functions ランタイムによって内部的に使用される Azure Storage アカウントへの接続文字列を設定します。 このストレージ アカウントは、関数のトリガーをサポーします。 このストレージ アカウントの接続設定は、HTTP によってトリガーされる関数を除くすべての関数で必要です。  |
-| **AzureWebJobsDashboard** | 関数のログを保存するのに使用される Azure Storage アカウントへの接続文字列を設定します。 この省略可能な値により、ポータルでログにアクセスできるようになります。|
+| **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。  |
 | **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 | 
 | **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
 | **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (**\***) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
@@ -112,7 +149,7 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成
 
-接続文字列の値を設定するには、次のいずれかの操作を行います。
+接続文字列の値を設定するには、次のいずれかのオプションを構成します。
 * [Azure Storage Explorer](http://storageexplorer.com/) で、接続文字列を入力します。
 * 次のコマンドのいずれかを使用します。
 
@@ -120,7 +157,7 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
     ```
-    func azure functionapp storage fetch-connection-string <StorageAccountName>
+    func azure storage fetch-connection-string <StorageAccountName>
     ```
     どちらのコマンドも、最初に Azure にサインインする必要があります。
 
@@ -233,7 +270,18 @@ func azure functionapp publish <FunctionAppName>
 | **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。|
 | **`--overwrite-settings -y`** | `-i` で使用する必要があります。 値が異なる場合は、Azure の AppSettings をローカル値で上書きします。 既定値は prompt です。|
 
-`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure Portal] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。
+このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 コマンド プロンプトまたはターミナル ウィンドウから Azure CLI を使用して、関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。
+
+`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure Portal] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
+
+>[!IMPORTANT]  
+> Azure で関数アプリを作成すると、既定でバージョン 1.x の Function ランタイムが使用されます。 関数アプリでバージョン 2.x のランタイムを使用するには、アプリケーション設定 `FUNCTIONS_EXTENSION_VERSION=beta` を追加します。  
+次の Azure CLI コードを使用して、この設定を関数アプリに追加します。 
+```azurecli-interactive
+az functionapp config appsettings set --name <function_app> \
+--resource-group myResourceGroup \
+--settings FUNCTIONS_EXTENSION_VERSION=beta   
+```
 
 ## <a name="next-steps"></a>次のステップ
 

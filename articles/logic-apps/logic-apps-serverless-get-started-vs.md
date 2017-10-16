@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>ロジック アプリと関数を使用して Visual Studio でサーバーレス アプリを構築する
 
@@ -47,8 +46,7 @@ Azure でのリソースの管理は、リソース グループ内で実行さ�
 1. **[クラウド]** カテゴリで、Azure の **[リソース グループ]** プロジェクトを選択して作成します  
  * カテゴリまたはプロジェクトが一覧表示されない場合は、Azure SDK が Visual Studio 向けにインストールされていることを確認してください
 1. プロジェクトに名前と場所を与え、**[OK]** を選択して、テンプレートを選択するための Visual Studio プロンプトを作成します。  空白から始めたり、ロジック アプリまたは他のリソースから始めたりすることも選択できます。  ただし、この場合は Azure クイック スタート テンプレートを使用して、サーバーレス アプリの操作を開始します。
-1. **Azure クイック スタート**
-    ![Azure クイック スタート テンプレートの選択][1]からテンプレートを表示することを選択する
+1. テンプレートを表示する場合に選択**Azure クイック スタート**![を選択する Azure クイック スタート テンプレート][1]
 1. サーバーレス クイック スタート テンプレート **101-logic-app-and-function-app** を選択し、**[OK]** をクリックします
 
 このクイック スタート テンプレートにより、リソース グループ プロジェクト内にデプロイ テンプレートが作成されます。  このテンプレートには、Azure Functions を呼び出して結果を返す単純なロジック アプリが含まれています。  ソリューション エクスプローラーで `azuredeploy.json` ファイルを開いた場合は、サーバーレス アプリのリソースを確認できます。
@@ -57,7 +55,7 @@ Azure でのリソースの管理は、リソース グループ内で実行さ�
 
 Visual Studio でロジック アプリ ビジュアル デザイナーを開くには、事前にデプロイされた Azure リソース グループが存在する必要があります。  これにより、デザイナーは、ロジック アプリ内のリソースやサービスへの接続を作成して使用できます。  開始するために必要なことは、作成されたソリューションのデプロイだけです。
 
-1. Visual Studio でプロジェクトを右クリックし、**[デプロイ]** を選択して **[新規]** デプロイを作成します  ![新しいリソースのデプロイの選択][2]
+1. 選択、Visual Studio でプロジェクトを右クリックして**展開**、作成して、**新規**展開![新しいリソースの配置を選択します。][2]
 1. 有効な Azure サブスクリプションとリソース グループを選択する
 1. ソリューションを **[デプロイ]** することを選択する
 1. ロジック アプリと Azure 関数アプリの名前を入力します。  Azure 関数名は、グローバルに一意である必要があります
@@ -94,4 +92,3 @@ JavaScript、Python、F#、Bash、Batch、または PowerShell を使用して�
 <!-- Image references -->
 [1]: ./media/logic-apps-serverless-get-started-vs/select-template.png
 [2]: ./media/logic-apps-serverless-get-started-vs/deploy.png
-

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory ドメイン サービス: 管理対象ドメインでの同期 | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスの管理対象ドメインでの同期について"
+title: "Azure Active Directory Domain Services: 管理対象ドメインでの同期 | Microsoft Docs"
+description: "Azure Active Directory Domain Services の管理対象ドメインでの同期について"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
-ms.lasthandoff: 03/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインでの同期
 次の図は、Azure AD ドメイン サービスの管理対象ドメインにおける同期のしくみを示しています。
@@ -122,4 +121,3 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 * [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)
 * [Azure AD ドメイン サービスの使用開始](active-directory-ds-getting-started.md)
-

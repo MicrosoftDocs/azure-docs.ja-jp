@@ -11,14 +11,12 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: c6cfca299dabba253757d959411c0cac8f90fa2e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: a3bfa3a17f0d7300f9d1ceb529410bbbb7bb2fee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
 このチュートリアルでは、Jenkins の [Azure VM エージェント プラグイン](https://plugins.jenkins.io/azure-vm-agents)を使用して、Azure 上で実行している Linux 仮想マシンにオンデマンドで容量を追加します。
@@ -147,5 +145,4 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure App Service への CI/CD](deploy-jenkins-app-service-plugin.md)
-
+> [Azure App Service への CI/CD](java-deploy-webapp-tutorial.md)

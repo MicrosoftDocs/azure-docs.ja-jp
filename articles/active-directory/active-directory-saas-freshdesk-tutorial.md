@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 47609ab453cf3db3cb745f91ed23904ff90e7b41
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: f4b47e345a40b64f69ad8a4618564662b4a6c879
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -186,7 +185,7 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-freshdesk-test-user"></a>FreshDesk テスト ユーザーの作成
 
@@ -285,5 +284,4 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-freshdesk-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-freshdesk-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-freshdesk-tutorial/tutorial_general_203.png
-
 

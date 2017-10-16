@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 65a9815525c612bdfac569e5ec56a1db53d82c78
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 688b33710283a82fcd772bf50a171893f3ac124c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
@@ -39,7 +38,7 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 | ターゲット | **deviceId** を使用する場合は 1 台のデバイス、[jobs][lnk-jobs] を使用する場合は複数台のデバイス。 | **deviceId** を使用する場合は 1 台のデバイス、[jobs][lnk-jobs] を使用する場合は複数台のデバイス。 | **deviceId** による 1 台のデバイス。 |
 | サイズ | 最大 8 KB の要求と 8 KB の応答。 | 必要なプロパティの最大サイズは 8 KB。 | 最大 64 KB のメッセージ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 |
-| プロトコル | 現時点では、MQTT を使用する場合のみ使用できます。 | 現時点では、MQTT を使用する場合のみ使用できます。 | すべてのプロトコルで使用できます。 HTTP を使う場合、デバイスはポーリングを行う必要があります。 |
+| プロトコル | MQTT または AMQP を使用して利用できます。 | MQTT または AMQP を使用して利用できます。 | すべてのプロトコルで使用できます。 HTTP を使う場合、デバイスはポーリングを行う必要があります。 |
 
 ダイレクト メソッド、必要なプロパティ、および cloud-to-device メッセージの使用方法については、次のチュートリアルを参照してください。
 

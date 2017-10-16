@@ -13,14 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 6a6bacedde04419449a061554d5ce9ad37259a2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
 
@@ -60,4 +58,3 @@ ms.lasthandoff: 08/12/2017
 ## <a name="related"></a>関連項目
 * [スタンドアロン Azure Service Fabric クラスターを作成する](service-fabric-cluster-creation-for-windows-server.md)
 * [Service Fabric クラスターのセキュリティに関するシナリオ](service-fabric-windows-cluster-windows-security.md)
-

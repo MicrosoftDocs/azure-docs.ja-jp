@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: bf6a98fd7e7e11764bef174f9efd0635fa7efe9a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -45,7 +44,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する
 1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。
 
-    !["モニター" サービス](./media/monitoring-activity-log-alerts-on-service-notifications/home-monitor.png)
+    ![[モニター] サービス](./media/monitoring-activity-log-alerts-on-service-notifications/home-monitor.png)
 
 2. **[アクティビティ ログ]** セクションで、**[アラート]** を選択します。
 
@@ -110,4 +109,3 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 - [アクティビティ ログ アラート webhook スキーマ](monitoring-activity-log-alerts-webhook.md)を確認します。
 - [アクティビティ ログ アラートの概要](monitoring-overview-alerts.md)を把握し、アラートを受信する方法について学習します。 
 - [アクション グループ](monitoring-action-groups.md)について学習します。
-

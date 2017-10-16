@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 04c83dcd4df442d3e8bb41a15bb033de91bc4fcc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/05/2017
-
+ms.openlocfilehash: a78ee0877de717210d5c9140c6957d271a2b2453
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-for-microsoft-azure-apps"></a>Microsoft Azure アプリ向けの Application Insights
 
@@ -37,5 +36,4 @@ ms.lasthandoff: 04/05/2017
 
 * [ライブ Azure Web アプリ用のプロファイラー](app-insights-profiler.md)
 * [Application Insights で Azure 診断ログ表示する](app-insights-azure-diagnostics.md)
-
 

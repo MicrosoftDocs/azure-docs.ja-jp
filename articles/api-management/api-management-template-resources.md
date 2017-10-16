@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 3c633d54e6b81576a2fbd1adfc69775ca1bdd09d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 212e7ea7bb2ffea63c7ba210195df0da38aa8f0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -163,7 +162,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Invalid header '{0}' (ヘッダー '{0}' が無効です)|  
 |WebDocumentationInvalidRequestErrorMessage|Invalid Request URL (要求 URL が無効です)|  
-|TextboxLabelAccessToken|Access token * (アクセス トークン *)|  
+|TextboxLabelAccessToken|Access token * (アクセス トークン)|  
 |DropdownOptionPrimaryKeyFormat|Primary-{0} (プライマリ-{0})|  
 |DropdownOptionSecondaryKeyFormat|Secondary-{0} (セカンダリ-{0})|  
 |WebDocumentationSubscriptionKeyText|Your subscription key (サブスクリプション キー)|  
@@ -579,4 +578,3 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。
-

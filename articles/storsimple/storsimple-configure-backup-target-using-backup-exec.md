@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 38a5bee31483cbb91b0278ea6c750e5ff7780b7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
 ## <a name="overview"></a>概要
@@ -447,48 +445,12 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
 1.  [Azure PowerShell をインストールします](/powershell/azure/overview)。
-2.  [発行設定とサブスクリプション情報をダウンロードしてインポートします](https://msdn.microsoft.com/library/dn385850.aspx)。
-3.  Azure クラシック ポータルで、StorSimple Manager サービス用のリソース名と[登録キーを取得します](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
-4.  スクリプトを実行するサーバーで PowerShell を管理者として実行します。 次のコマンドを入力します。
-
-    `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
-
-    バックアップ ポリシー ID を記録します。
-5.  メモ帳で、次のコードを使用して新しい PowerShell スクリプトを作成します。
-
-    次のコード スニペットをコピーして貼り付けてください。
-    ```powershell
-    Import-AzurePublishSettingsFile "c:\\CloudSnapshot Snapshot\\myAzureSettings.publishsettings"
-    Disable-AzureDataCollection
-    $ApplianceName = <myStorSimpleApplianceName>
-    $RetentionInDays = 20
-    $RetentionInDays = -$RetentionInDays
-    $Today = Get-Date
-    $ExpirationDate = $Today.AddDays($RetentionInDays)
-    Select-AzureStorSimpleResource -ResourceName "myResource" –RegistrationKey
-    Start-AzureStorSimpleDeviceBackupJob –DeviceName $ApplianceName -BackupType CloudSnapshot -BackupPolicyId <BackupId> -Verbose
-    $CompletedSnapshots =@()
-    $CompletedSnapshots = Get-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName
-    Write-Host "The Expiration date is " $ExpirationDate
-    Write-Host
-
-    ForEach ($SnapShot in $CompletedSnapshots)
-    {
-        $SnapshotStartTimeStamp = $Snapshot.CreatedOn
-        if ($SnapshotStartTimeStamp -lt $ExpirationDate)
-
-        {
-            $SnapShotInstanceID = $SnapShot.InstanceId
-            Write-Host "This snpashotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
-            Write-Host "Instance ID " $SnapShotInstanceID
-            Write-Host "This snpashotdate is older and needs to be deleted"
-            Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
-            Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
-        }
-    }
-    ```
-      この PowerShell スクリプトを、Azure 発行設定を保存したのと同じ場所に保存します。 たとえば、C:\CloudSnapshot\StorSimpleCloudSnapshot.ps1 という名前を付けて保存します。
-6.  Backup Exec ジョブ オプションの前処理コマンドと後処理コマンドを編集し、Backup Exec のバックアップ ジョブにスクリプトを追加します。
+2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
+3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
+```powershell
+.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+```
+4.  Backup Exec ジョブ オプションの前処理コマンドと後処理コマンドを編集し、Backup Exec のバックアップ ジョブにスクリプトを追加します。
 
     ![Backup Exec コンソール、バックアップ オプション、前処理および後処理コマンド タブ](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
@@ -525,4 +487,3 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。
-

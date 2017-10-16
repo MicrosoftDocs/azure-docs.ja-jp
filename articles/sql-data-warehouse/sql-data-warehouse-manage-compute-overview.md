@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
 > [!div class="op_single_selector"]
@@ -220,4 +219,3 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
-

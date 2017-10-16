@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: ef559fbbd3e8448d64167552cacee04790418343
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>PowerShell で Azure Network Watcher の Next Hop 機能を使用して次ホップの種類を確認する
 
 > [!div class="op_single_selector"]
@@ -104,7 +102,6 @@ NextHopIpAddress NextHopType           RouteTableId
 ## <a name="next-steps"></a>次のステップ
 
 [Network Watcher での NSG 監査](network-watcher-nsg-auditing-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの設定をプログラムで確認する方法を見る
-
 
 
 

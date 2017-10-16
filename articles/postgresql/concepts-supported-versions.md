@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/06/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 12744ae66a22b16339f9a1549a4d2d25b545c29b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: cdc8f570c66630e210efa3163f8ee419337df3a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-postgresql-database-versions"></a>サポートされている PostgreSQL Database バージョン
 Azure Database for PostgreSQL では現在、次のバージョンがサポートされています。
@@ -30,4 +29,3 @@ Azure Database for PostgreSQL では、マイナー バージョンの更新プ�
 
 ## <a name="next-steps"></a>次のステップ
 さまざまな PostgreSQL 拡張機能のサポートについては、[PostgreSQL 拡張機能](concepts-extensions.md)に関するページをご覧ください
-

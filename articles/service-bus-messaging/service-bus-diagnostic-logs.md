@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
@@ -99,4 +97,3 @@ Service Bus の詳細については、次のリンクを参照してくださ�
 
 * [Service Bus の概要](service-bus-messaging-overview.md)
 * [Service Bus の使用](service-bus-dotnet-get-started-with-queues.md)
-

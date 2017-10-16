@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 3977cbc0f111de39621a875cce2d6714559a73fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: a3b37674469a131016f46af590e1eee3ba4cdc73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する
 Azure Application Insights を使うと、アプリの可用性、パフォーマンス、使用状況を監視できます。 ここでは、SharePoint サイトのために Application Insights を設定する方法について学習します。
@@ -35,7 +34,7 @@ Azure Application Insights を使うと、アプリの可用性、パフォー�
 
 ![](./media/app-insights-sharepoint/02-monitor-web-page.png)
 
-追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。 Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 たとえば、ASP.NET MVC プロジェクトで、View\Shared\_Layout.cshtml にスクリプトを配置します。
+追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 たとえば、ASP.NET MVC プロジェクトで、View\Shared\_Layout.cshtml にスクリプトを配置します。
 
 このスクリプトには、Application Insights リソースに利用統計情報を転送するインストルメンテーション キーが含まれています。
 
@@ -145,6 +144,5 @@ function onRequestFail(sender, args) {
 * [Application Insights](app-insights-overview.md) 。
 
 <!--Link references-->
-
 
 

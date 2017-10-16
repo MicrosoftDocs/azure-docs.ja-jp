@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 
 HTTP を HTTPS に自動的にリダイレクトして、アプリケーションとユーザーの間のすべての通信が暗号化されたパスで行われるようにすることは、多くの Web アプリケーションでよくあるシナリオです。 これまでは、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のバックエンド プールの作成といった手法が使われていました。  Application Gateway は、Application Gateway 上でトラフィックをリダイレクトする機能をサポートするようになりました。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Application Gateway のリダイレクトのサポートは、HTTP から HTTPS へのリダイレクトだけではありません。 これは汎用的なリダイレクト メカニズムであり、Application Gateway のあるリスナーで受信したトラフィックを別のリスナーにリダイレクトできます。 同様に、外部サイトへのリダイレクトもサポートします。 Application Gateway のリダイレクトのサポートでは、次の機能が提供されます。
@@ -37,4 +35,3 @@ HTTP を HTTPS に自動的にリダイレクトして、アプリケーショ�
 ### <a name="next-steps"></a>次のステップ
 
 [アプリケーション ゲートウェイに URL リダイレクトを構成する](application-gateway-configure-redirect-powershell.md)
-

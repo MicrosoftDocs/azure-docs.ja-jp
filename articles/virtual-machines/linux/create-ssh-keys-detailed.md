@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Azure で Linux VM 用の SSH キー ペアと追加の証明書を作成する詳細なチュートリアル
 SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。 パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure CLI または Resource Manager テンプレートで作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、SSH のパスワード ログインを無効にするというデプロイ後の構成手順を省略できます。 この記事では、Linux 仮想マシンなどで使用する証明書を生成する詳細な手順について説明します。 SSH キー ペアを短時間で作成して使用したい場合は、「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](mac-create-ssh-keys.md)」をご覧ください。
 
@@ -217,4 +215,3 @@ ssh fedora22
 * [Azure テンプレートを使用して安全な Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure ポータルを使用して安全な Linux VM を作成する](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure CLI を使用して安全な Linux VM を作成する](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

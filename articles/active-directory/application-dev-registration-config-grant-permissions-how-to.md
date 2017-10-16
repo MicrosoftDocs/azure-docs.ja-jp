@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 922774c2482737537b64787ae473231ec1fbb68e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/14/2017
-
+ms.openlocfilehash: 336b945929f80e1a566f7cf71b40fd799a98c12d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>独自に開発したアプリケーションにアクセス許可を付与する方法
 
 事前にアプリに同意を付与したい場合、またはアプリに対する同意がないことを示すエラーが発生した場合は、以下の手順を試してみてください。
@@ -46,4 +44,3 @@ ms.lasthandoff: 04/14/2017
 [Azure AD v2.0 集中型アプリの同意とアクセス許可](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
-

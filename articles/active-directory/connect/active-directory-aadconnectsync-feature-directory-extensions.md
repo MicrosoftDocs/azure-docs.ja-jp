@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f5c5e9af193c843765f63640d46c25f3a6d10c3
-ms.openlocfilehash: 3641f9309cc38f6575ce36d3450448cdae1601a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/02/2017
-
+ms.openlocfilehash: d586df0ede6ff9b3a4837a4a9c551ab3ee6d763a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
-ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。 この機能により、独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。 これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 それぞれ [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net) と [Microsoft Graph Explorer](https://graphexplorer2.azurewebsites.net/) を使用して、利用可能な属性を表示できます。
+ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。 この機能により、独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。 これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) を使用して、利用可能な属性を表示できます。
 
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
 
@@ -50,4 +49,3 @@ Azure AD のオブジェクトは、最大で 100 個のディレクトリ拡張
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

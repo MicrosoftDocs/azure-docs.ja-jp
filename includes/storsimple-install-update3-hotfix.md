@@ -22,7 +22,7 @@
 > 
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>通常モードの修正プログラムをインストールして確認するには
-通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。 Azure ポータルを使用して既にインストールしてある場合は、 [メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
+通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。 Azure Portal を使用して既にインストールしてある場合は、[メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
 
 1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter**キーを押します。
 2. **[オプション 1]** を選択して、フル アクセスでデバイスにログオンします。 まず、パッシブ コントローラーに修正プログラムをインストールすることをお勧めします。

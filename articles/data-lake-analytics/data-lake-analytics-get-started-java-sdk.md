@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Java SDK で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -103,7 +101,7 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
     このコードでは、Data Lake Store と Data Lake Analytics のアカウントの作成、ストアでのファイルの作成、ジョブの状態の取得、ジョブ出力のダウンロード、最後にアカウントの削除のプロセスを行います。
 
    > [!NOTE]
-   > 現時点で、Azure Data Lake Service の既知の問題があります。  サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。  ポータルに慣れていない場合は、「 [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md) 」から始めることをお勧めします。
+   > 現時点で、Azure Data Lake Service の既知の問題があります。  サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。  ポータルに慣れていない場合は、「[Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」から始めることをお勧めします。
    >
    >
 
@@ -349,6 +347,5 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * U-SQL アプリケーションの開発を開始する場合は、「 [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 * U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
-* 管理タスクについては、「 [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
+* 管理タスクについては、「[Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-

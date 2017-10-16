@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: ce323880100706accf0c08c9929d20908c6198cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-content"></a>Windows Phone Silverlight SDK コンテンツ
 このドキュメントでは、アプリケーションで SDK により展開されるコンテンツについて説明します。
@@ -33,5 +32,4 @@ ms.lasthandoff: 11/17/2016
 * `EngagementIconCloseLight.png` : モバイル エンゲージメントのリーチ通知のWindows Phone ライト テーマ用 [終了] アイコンです。
 * `EngagementIconCloseDark.png` : モバイル エンゲージメントのリーチ通知のWindows Phone ダーク テーマ用 [終了] アイコンです。
 * `EngagementConfiguration.xml` : モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
-
 

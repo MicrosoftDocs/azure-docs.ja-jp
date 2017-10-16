@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="community-portal"></a>コミュニティ ポータル
 ## <a name="community-spotlight"></a>コミュニティ スポットライト
@@ -243,5 +242,4 @@ Azure Cosmos DB ウィザードは、次世代の Azure DocumentDB である Azu
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
 Azure Cosmos DB ウィザードになることをご希望ですか。 ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、カンファレンス、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度も評価されます。 [電子メールを送信](mailto:askcosmosdb@microsoft.com)することで、自薦または他薦できます。
-
 

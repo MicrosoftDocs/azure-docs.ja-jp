@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54e20146b2f1e0ca6153b66319be70c6f7c2fb59
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: fb3b2ecd73acb0ea65af477bc6a5b887c117574c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
@@ -189,7 +189,15 @@ System.FM は、パーティションが作成されており、正常な場合�
 
 * **SourceId**: System.FM
 * **プロパティ**: State
-* **次のステップ**: 正常性状態が OK でない場合、一部のレプリカが正しく作成されていないか、開かれていないか、プライマリまたはセカンダリに昇格されていない可能性があります。 多くの場合、根本的な原因は、ロールを開くか変更する実装でのサービスのバグです。
+* **次のステップ**: 正常性状態が OK でない場合、一部のレプリカが正しく作成されていないか、開かれていないか、プライマリまたはセカンダリに昇格されていない可能性があります。 
+
+説明にクォーラムの損失について記述されている場合、ダウンしたレプリカの詳細な正常性レポートを確認し、それらをバックアップしておくと、対象パーティションを再びオンラインに戻すのに役立ちます。
+
+パーティションが[再構成](service-fabric-concepts-reconfiguration.md)処理でスタックしていることが説明に記述されている場合、プライマリ レプリカに関する正常性レポートに詳しい情報が示されています。
+
+他の System.FM 正常性レポートでは、他のシステム コンポーネントのレプリカ、パーティション、サービスに関するレポートが含まれます。 
+
+次の例では、これらのレポートの一部について取り上げます。 
 
 正常なパーティションの例を示します。
 
@@ -235,12 +243,12 @@ HealthEvents          :
                         TTL                   : Infinite
                         Description           : Partition is below target replica or instance count.
                         fabric:/WordCount/WordCountService 7 2 af2e3e44-a8f8-45ac-9f31-4093eb897600
-                          N/S RD _Node_2 Up 131444422260002646
-                          N/S RD _Node_4 Up 131444422293113678
-                          N/S RD _Node_3 Up 131444422293113679
-                          N/S RD _Node_1 Up 131444422293118720
-                          N/P RD _Node_0 Up 131444422293118721
-                          (Showing 5 out of 5 replicas. Total available replicas: 5.)
+                          N/S Ready _Node_2 131444422260002646
+                          N/S Ready _Node_4 131444422293113678
+                          N/S Ready _Node_3 131444422293113679
+                          N/S Ready _Node_1 131444422293118720
+                          N/P Ready _Node_0 131444422293118721
+                          (Showing 5 out of 5 replicas. Total available replicas: 5)
                         
                         RemoveWhenExpired     : False
                         IsExpired             : False
@@ -291,6 +299,55 @@ PS C:\> @(Get-ServiceFabricNode).Count
 5
 ```
 
+次の例は、ユーザーが RunAsync メソッドでキャンセル トークンを考慮しないために、再構成処理でスタックしているパーティションの正常性を示しています。 プライマリ (P) とマークされているレプリカの正常性レポートを調査すると、問題の詳細を把握するのに役立ちます。
+
+```powershell
+PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
+
+
+PartitionId           : 0e40fd81-284d-4be4-a665-13bc5a6607ec
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', 
+                        ConsiderWarningAsError=false.
+                                               
+HealthEvents          : 
+                        SourceId              : System.FM
+                        Property              : State
+                        HealthState           : Warning
+                        SequenceNumber        : 7
+                        SentAt                : 8/27/2017 3:43:09 AM
+                        ReceivedAt            : 8/27/2017 3:43:32 AM
+                        TTL                   : Infinite
+                        Description           : Partition reconfiguration is taking longer than expected.
+                        fabric:/app/test1 3 1 0e40fd81-284d-4be4-a665-13bc5a6607ec
+                          P/S Ready Node1 131482789658160654
+                          S/P Ready Node2 131482789688598467
+                          S/S Ready Node3 131482789688598468
+                          (Showing 3 out of 3 replicas. Total available replicas: 3)                        
+                        
+                        For more information see: http://aka.ms/sfhealth
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
+```
+この正常性レポートには、再構成中のパーティションのレプリカの状態が示されています。 
+
+```
+  P/S Ready Node1 131482789658160654
+  S/P Ready Node2 131482789688598467
+  S/S Ready Node3 131482789688598468
+```
+
+各レプリカの正常性レポートには、次の項目が含まれています。
+- 前の構成ロール
+- 現在の構成ロール
+- [レプリカの状態](service-fabric-concepts-replica-lifecycle.md)
+- レプリカが実行されているノード
+- レプリカ ID
+
+このような場合、上の例のようにプライマリとしてマークされているレプリカ (131482789658160654 および 131482789688598467) で始まる各レプリカの正常性を調査することによって、詳しく調べる必要があります。
+
 ### <a name="replica-constraint-violation"></a>レプリカ制約違反
 **System.PLB** は、レプリカ制約違反を検出し、すべてのパーティション レプリカを配置できない場合、警告を報告します。 レポートの詳細には、レプリカを配置できなかった原因の制約とプロパティが示されます。
 
@@ -328,14 +385,189 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/14/2017 4:55:13 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="replica-open-status"></a>開いている状態のレプリカ
-この正常性レポートの説明には、API 呼び出しが行われたときの開始時刻 (世界協定時刻) が含まれます。
+### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus、ReplicaCloseStatus、ReplicaChangeRoleStatus
+このプロパティは、レプリカを開いたり、閉じたり、レプリカのロールを切り替えたりする場合に生じる警告またはエラーを示すために使用されます ([レプリカ ライフサイクル](service-fabric-concepts-replica-lifecycle.md) を参照)。 API 呼び出しからスローされる例外や、その時点のサービス ホスト プロセスのクラッシュといったエラーが考えられます。 C# コードからの API 呼び出しに起因するエラーの場合、Service Fabric によって正常性レポートに例外とスタックトレースが追加されます。
 
-**System.RA** は、レプリカを開くために、構成されている期間 (既定値: 30 分) よりも長い時間がかかる場合、警告を報告します。 API がサービスの可用性に影響する場合、レポートは大幅に短時間で発行されます (間隔は構成可能で既定値は 30 秒)。 計測された時間には、レプリケーターを開く処理とサービスを開く処理にかかる時間が含まれます。 プロパティは、開く処理が完了すると OK に変わります。
+これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを試行し続けます。それでも解決しない場合、対象ノードでこのアクションをあきらめて、警告の原因となっている状況を修正するためのアクションを試行し、警告を解除します。 たとえば、レプリカをノードで開くことができない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカで開くことができない場合、Service Fabric は、他のノードで同じ操作を試行するなど、自己修復アクションを実行します。 これにより、対象レプリカで生じている警告がクリアされます。 
 
 * **SourceId**: System.RA
-* **プロパティ**サービスの State イベントの例を次に示します。 **ReplicaOpenStatus**
-* **次のステップ**: 正常性の状態が OK でない場合は、レプリカを開く処理が予想よりも長くかかる原因を調査します。
+* **プロパティ**: **ReplicaOpenStatus**、**ReplicaCloseStatus**、**ReplicaChangeRoleStatus**
+* **次のステップ**: サービス コードまたはクラッシュ ダンプを調べ、操作が失敗した理由を特定します。
+
+次の例は、Open メソッドから `TargetInvocationException` がスローされているレプリカの正常性を示しています。 この説明には、障害点 (**IStatefulServiceReplica.Open**)、例外の種類 (**TargetInvocationException**)、およびスタックトレースが含まれています。
+
+```powershell
+PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
+
+
+PartitionId           : 337cf1df-6cab-4825-99a9-7595090c0b1b
+ReplicaId             : 131483509874784794
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.RA', Property='ReplicaOpenStatus', HealthState='Warning', 
+                        ConsiderWarningAsError=false.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : ReplicaOpenStatus
+                        HealthState           : Warning
+                        SequenceNumber        : 131483510001453159
+                        SentAt                : 8/27/2017 11:43:20 PM
+                        ReceivedAt            : 8/27/2017 11:43:21 PM
+                        TTL                   : Infinite
+                        Description           : Replica had multiple failures during open on _Node_0 API call: IStatefulServiceReplica.Open(); Error = System.Reflection.TargetInvocationException (-2146232828)
+Exception has been thrown by the target of an invocation.
+   at Microsoft.ServiceFabric.Replicator.RecoveryManager.d__31.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.ServiceFabric.Replicator.LoggingReplicator.d__137.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.ServiceFabric.Replicator.DynamicStateManager.d__109.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.ServiceFabric.Replicator.TransactionalReplicator.d__79.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.ServiceFabric.Replicator.StatefulServiceReplica.d__21.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.ServiceFabric.Services.Runtime.StatefulServiceReplicaAdapter.d__0.MoveNext()
+
+    For more information see: http://aka.ms/sfhealth
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
+```
+
+次の例は、終了中に継続的にクラッシュしているレプリカを示しています。
+
+```Powershell
+C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
+
+
+PartitionId           : dcafb6b7-9446-425c-8b90-b3fdf3859e64
+ReplicaId             : 131483565548493142
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.RA', Property='ReplicaCloseStatus', HealthState='Warning', 
+                        ConsiderWarningAsError=false.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : ReplicaCloseStatus
+                        HealthState           : Warning
+                        SequenceNumber        : 131483565611258984
+                        SentAt                : 8/28/2017 1:16:01 AM
+                        ReceivedAt            : 8/28/2017 1:16:03 AM
+                        TTL                   : Infinite
+                        Description           : Replica had multiple failures during close on _Node_1. The application 
+                        host has crashed.
+                        
+                        For more information see: http://aka.ms/sfhealth
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 8/28/2017 1:16:03 AM, LastOk = 1/1/0001 12:00:00 AM
+```
+
+### <a name="reconfiguration"></a>Reconfiguration
+このプロパティは、[再構成](service-fabric-concepts-reconfiguration.md)を実行しているレプリカが、再構成の停止やスタックを検出する場合に使用されます。 この正常性レポートは、現在のロールがプライマリであるレプリカに関するものです (ただし、プライマリからアクティブなセカンダリに降格されているレプリカに対する、スワップ プライマリ再構成の場合は例外です)。
+
+再構成は、次の理由によって停止することがあります
+
+- ローカル レプリカ (再構成を実行しているのと同じレプリカ) におけるアクションが完了していない。 この場合、他のコンポーネント (System.RAP または System.RE) からこのレプリカに関する正常性レポートを調査すると、詳細な情報が得られることがあります。
+
+- リモート レプリカでアクションが完了していない。 アクションが保留中のレプリカが、正常性レポートにリストされます。 こうしたリモート レプリカの正常性レポートを詳しく調査する必要があります。 対象ノードとリモート ノード間の通信に問題がある可能性もあります。
+
+まれなケースとして、対象ノードとフェールオーバー マネージャー サービス間の通信などの問題が原因で再構成がスタックすることもあります。
+
+* **SourceId**: System.RA
+* **プロパティ**: **Reconfiguration**
+* **次のステップ**: 正常性レポートの内容に応じて、ローカル レプリカまたはリモート レプリカを調査します。
+
+次の例は、(サービスがキャンセル トークンを考慮しないことが原因で) ローカル レプリカで再構成がスタックしている正常性レポートを示しています。
+
+```Powershell
+PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
+
+
+PartitionId           : 9a0cedee-464c-4603-abbc-1cf57c4454f3
+ReplicaId             : 131483600074836703
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', 
+                        ConsiderWarningAsError=false.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : Reconfiguration
+                        HealthState           : Warning
+                        SequenceNumber        : 131483600309264482
+                        SentAt                : 8/28/2017 2:13:50 AM
+                        ReceivedAt            : 8/28/2017 2:13:57 AM
+                        TTL                   : Infinite
+                        Description           : Reconfiguration is stuck. Waiting for response from the local replica
+                        
+                        For more information see: http://aka.ms/sfhealth
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
+```
+
+次の例は、2 つのリモート レプリカからの応答を待機しているために再構成がスタックしている正常性レポートを示しています (現在のプライマリが含まれるパーティションには 3 つのレプリカがあります)。 
+
+```Powershell
+PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
+
+
+PartitionId           : 579d50c6-d670-4d25-af70-d706e4bc19a2
+ReplicaId             : 131483956274977415
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : Reconfiguration
+                        HealthState           : Warning
+                        SequenceNumber        : 131483960376212469
+                        SentAt                : 8/28/2017 12:13:57 PM
+                        ReceivedAt            : 8/28/2017 12:14:07 PM
+                        TTL                   : Infinite
+                        Description           : Reconfiguration is stuck. Waiting for response from 2 replicas
+                        
+                        Pending Replicas: 
+                        P/I Down 40 131483956244554282
+                        S/S Down 20 131483956274972403
+                        
+                        For more information see: http://aka.ms/sfhealth
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
+```
+
+この正常性レポートは、2 つのレプリカからの応答を待機しているために、再構成がスタックしていることを示しています。 
+
+```
+    P/I Down 40 131483956244554282
+    S/S Down 20 131483956274972403
+```
+
+それぞれのレプリカに関して、次の情報が提供されます。
+- 前の構成ロール
+- 現在の構成ロール
+- [レプリカの状態](service-fabric-concepts-replica-lifecycle.md)
+- ノード ID
+- レプリカ ID
+
+再構成のブロックを解除するには、次の条件が必要です。
+- **down** レプリカの実行 
+- **inbuild** レプリカがビルドを完了し、準備完了状態に遷移
 
 ### <a name="slow-service-api-call"></a>低速のサービス API 呼び出し
 **System.RAP** と **System.Replicator** は、ユーザー サービス コードの呼び出しにかかる時間が構成された時間よりも長い場合、警告を報告します。 呼び出しが完了すると、警告はクリアされます。
@@ -344,108 +576,48 @@ HealthEvents          :
 * **プロパティ**: 低速の API の名前。 説明には、API が保留中であった時間についての詳細が示されます。
 * **次のステップ**: 呼び出しに予想よりも長くかかる原因を調査します。
 
-次の例は、クォーラム損失の状態にあるパーティションと、理由を解明するために実行した調査のステップを示します。 レプリカの 1 つの正常性状態が警告になっているため、そのレプリカの正常性を取得します。 サービス操作に予想よりも長くかかることを示しています (System.RAP によって報告されたイベント)。 この情報を受け取った後、次のステップはサービス コードを確認し、調査することです。 この場合、ステートフル サービスの **RunAsync** 実装は、未処理の例外をスローします。 レプリカはリサイクルされるため、警告状態のレプリカが 1 つもない場合もあります。 正常性状態の取得を再試行し、レプリカ ID の違いを探します。 場合によっては、再試行により手掛かりが得られることがあります。
+次の例は、RunAsync のキャンセル トークンを考慮しない Reliable services に関する、System.RAP からの正常性イベントを示しています。
 
 ```powershell
-PS C:\> Get-ServiceFabricPartition fabric:/HelloWorldStatefulApplication/HelloWorldStateful | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics
+PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
-PartitionId           : 72a0fb3e-53ec-44f2-9983-2f272aca3e38
-AggregatedHealthState : Error
-UnhealthyEvaluations  :
-                        Error event: SourceId='System.FM', Property='State'.
 
-ReplicaHealthStates   :
-                        ReplicaId             : 130743748372546446
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 130743746168084332
-                        AggregatedHealthState : Ok
-
-                        ReplicaId             : 130743746195428808
-                        AggregatedHealthState : Warning
-
-                        ReplicaId             : 130743746195428807
-                        AggregatedHealthState : Ok
-
-HealthEvents          :
-                        SourceId              : System.FM
-                        Property              : State
-                        HealthState           : Error
-                        SequenceNumber        : 182
-                        SentAt                : 4/24/2015 7:00:17 PM
-                        ReceivedAt            : 4/24/2015 7:00:31 PM
-                        TTL                   : Infinite
-                        Description           : Partition is in quorum loss.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : Warning->Error = 4/24/2015 6:51:31 PM
-
-PS C:\> Get-ServiceFabricPartition fabric:/HelloWorldStatefulApplication/HelloWorldStateful
-
-PartitionId            : 72a0fb3e-53ec-44f2-9983-2f272aca3e38
-PartitionKind          : Int64Range
-PartitionLowKey        : -9223372036854775808
-PartitionHighKey       : 9223372036854775807
-PartitionStatus        : InQuorumLoss
-LastQuorumLossDuration : 00:00:13
-MinReplicaSetSize      : 3
-TargetReplicaSetSize   : 3
-HealthState            : Error
-DataLossNumber         : 130743746152927699
-ConfigurationNumber    : 227633266688
-
-PS C:\> Get-ServiceFabricReplica 72a0fb3e-53ec-44f2-9983-2f272aca3e38 130743746195428808
-
-ReplicaId           : 130743746195428808
-ReplicaAddress      : PartitionId: 72a0fb3e-53ec-44f2-9983-2f272aca3e38, ReplicaId: 130743746195428808
-ReplicaRole         : Primary
-NodeName            : Node.3
-ReplicaStatus       : Ready
-LastInBuildDuration : 00:00:01
-HealthState         : Warning
-
-PS C:\> Get-ServiceFabricReplicaHealth 72a0fb3e-53ec-44f2-9983-2f272aca3e38 130743746195428808
-
-PartitionId           : 72a0fb3e-53ec-44f2-9983-2f272aca3e38
-ReplicaId             : 130743746195428808
+PartitionId           : 5f6060fb-096f-45e4-8c3d-c26444d8dd10
+ReplicaId             : 131483966141404693
 AggregatedHealthState : Warning
-UnhealthyEvaluations  :
-                        Unhealthy event: SourceId='System.RAP', Property='ServiceOpenOperationDuration', HealthState='Warning', ConsiderWarningAsError=false.
-
-HealthEvents          :
-                        SourceId              : System.RA
-                        Property              : State
-                        HealthState           : Ok
-                        SequenceNumber        : 130743756170185892
-                        SentAt                : 4/24/2015 7:00:17 PM
-                        ReceivedAt            : 4/24/2015 7:00:33 PM
-                        TTL                   : Infinite
-                        Description           : Replica has been created.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : ->Ok = 4/24/2015 7:00:33 PM
-
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
+                        
+HealthEvents          :                         
                         SourceId              : System.RAP
-                        Property              : ServiceOpenOperationDuration
+                        Property              : IStatefulServiceReplica.ChangeRole(S)Duration
                         HealthState           : Warning
-                        SequenceNumber        : 130743756399407044
-                        SentAt                : 4/24/2015 7:00:39 PM
-                        ReceivedAt            : 4/24/2015 7:00:59 PM
+                        SequenceNumber        : 131483966663476570
+                        SentAt                : 8/28/2017 12:24:26 PM
+                        ReceivedAt            : 8/28/2017 12:24:56 PM
                         TTL                   : Infinite
-                        Description           : Start Time (UTC): 2015-04-24 19:00:17.019
+                        Description           : The api IStatefulServiceReplica.ChangeRole(S) on _Node_1 is stuck. Start Time (UTC): 2017-08-28 12:23:56.347.
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : ->Warning = 4/24/2015 7:00:59 PM
+                        Transitions           : Error->Warning = 8/28/2017 12:24:56 PM, LastOk = 1/1/0001 12:00:00 AM
+                        
 ```
 
-障害のあるアプリケーションをデバッガーで起動すると、診断イベント ウィンドウに RunAsync からスローされた例外が表示されます。
+プロパティとテキストには、スタックする可能性がある API が示されます。 スタックした API によって、次のステップも異なります。 通常、*IStatefulServiceReplica* または *IStatelessServiceInstance* はサービス コードのバグです。 次のセクションでは、[Reliable services モデル](service-fabric-reliable-services-lifecycle.md)にどのように変換されるかを取り上げます。
 
-![Visual Studio 2015 診断イベント: fabric:/HelloWorldStatefulApplication の RunAsync エラー][1]
+- **IStatefulServiceReplica.Open**: これは、`CreateServiceInstanceListeners` または `ICommunicationListener.OpenAsync` に対する呼び出し、あるいは上書きされた `OnOpenAsync` がスタックしているかどうかを示します。
 
-Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication**の RunAsync エラー。
+- **IStatefulServiceReplica.Close** および **IStatefulServiceReplica.Abort**: 最も一般的なのは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 または、`ICommunicationListener.CloseAsync` あるいは上書きされた `OnCloseAsync` がスタックしている場合にも生じます。
 
-[1]: ./media/service-fabric-understand-and-troubleshoot-with-system-health-reports/servicefabric-health-vs-runasync-exception.png
+- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)**: 最も一般的なのは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。
 
+- **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なのは、`RunAsync` からタスクが戻されないサービスです。
+
+**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 For example:
+
+- **IReplicator.CatchupReplicaSet**: 十分な数の実行中のレプリカがないこと (パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認して判別できます)、またはレプリカが操作を認識できないことを示します。 Powershell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
+
+- **IReplicator.BuildReplica (<Remote ReplicaId>)**: これは、ビルド プロセスに問題があることを示します ([レプリカ ライフサイクル](service-fabric-concepts-replica-lifecycle.md)を参照)。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります ([こちら](service-fabric-reliable-services-configuration.md)と[こちら](service-fabric-service-manifest-resources.md)を参照)。 リモート ノードに問題があることもあります。
 
 ### <a name="replication-queue-full"></a>レプリケーション キュー満杯
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
@@ -465,7 +637,7 @@ Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication**
 
 * **SourceId**: System.NamingService
 * **Property**: プレフィックス **Duration_** で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を識別します。 たとえば、fabric:/MyApp/MyService という名前のサービスの作成に時間がかかる場合、プロパティは Duration_AOCreateService.fabric:/MyApp/MyService になります。 AO は、この名前と操作の名前付けパーティションの役割を指します。
-* **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、ノードではサービスの削除が停止することがあります。
+* **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、サービスの削除がスタックすることがあります。
 
 サービスの作成操作の例を次に示します。 この操作には、構成された期間よりも長い時間がかかりました。 AO は再試行し、作業を NO に送信します。 NO は、タイムアウトにより最後の操作を完了しました。 この場合、同じレプリカが AO と NO の両方の役割でプライマリになります。
 

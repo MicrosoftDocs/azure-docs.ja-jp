@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
+ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a7dbe54ffb4daa941c19b51ba263dd3d23b7a98b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
   > この機能はパブリック プレビュー段階にあります。
@@ -38,7 +36,7 @@ Operations Management Suite のサービス マップでは、Windows および 
 * Operations Management Suite ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。
 
 ## <a name="install-the-service-map-management-pack"></a>サービス マップ管理パックのインストール
-Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 このバンドルには、次の管理パックが含まれています。
+Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 管理パックのバンドルは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=55763)からダウンロードできます。 このバンドルには、次の管理パックが含まれています。
 * Microsoft サービス マップ アプリケーション ビュー
 * Microsoft System Center サービス マップ Internal
 * Microsoft System Center サービス マップ
@@ -134,4 +132,3 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ### <a name="feedback"></a>フィードバック
 サービス マップやこのドキュメントについてフィードバックはありますか。 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
-

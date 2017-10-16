@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: 
 author: rothja
 manager: jhubbard
-editor: 
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
@@ -13,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/07/2017
+ms.date: 09/12/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: f0100423550046d18642180ce98e93ce3609749b
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: b9d42e393e696187d2299e033402db8ee565593a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server の概要
@@ -27,34 +26,8 @@ ms.lasthandoff: 06/28/2017
 
 > [!NOTE]
 > 既に SQL Server を使い慣れており、SQL Server VM のデプロイ方法を確認するだけの場合は、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
-> 
-> 
 
-## <a name="overview"></a>Overview
-データベースの管理者または開発者の場合、Azure VM には、オンプレミスの SQL Server ワークロードとアプリケーションをクラウドに移動する方法が用意されています。 次のビデオでは、SQL Server Azure VM の技術的な概要を紹介します。
-
-> [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
-> 
-> 
-
-ビデオでは次の分野を取り上げています。
-
-| Time | 領域 |
-| --- | --- |
-| 00:21 |Azure VM とは |
-| 01:45 |セキュリティ |
-| 02:50 |接続 |
-| 03:30 |ストレージの信頼性とパフォーマンス |
-| 05:20 |VM サイズ |
-| 05:54 |高可用性と SLA |
-| 07:30 |構成のサポート |
-| 08:00 |監視 |
-| 08:32 |デモ: SQL Server 2016 VM の作成 |
-
-> [!NOTE]
-> このビデオでは、SQL Server 2016 を取り上げていますが、Azure には、SQL Server の多くのバージョン (2012、2014、2016) の VM イメージが用意されています。 
-> 
-> 
+データベースの管理者または開発者の場合、Azure VM には、オンプレミスの SQL Server ワークロードとアプリケーションをクラウドに移動する方法が用意されています。
 
 ## <a name="scenarios"></a>シナリオ
 データを Azure でホストするにはさまざまな理由があります。 アプリケーションが Azure に移動している場合、データの移動でもパフォーマンスが向上します。 ただし、ほかにも利点があります。 グローバルな展開と障害復旧のために、自動的に複数のデータ センターにアクセスできるようになります。 データは、高度なセキュリティで保護され、耐久性に優れています。
@@ -126,7 +99,7 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 ### <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 
 
-詳細については、「[使用許諾契約への同意](https://msdn.microsoft.com/library/ms143343.aspx)」の CEIP に関するセクションを参照してください。 
+データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

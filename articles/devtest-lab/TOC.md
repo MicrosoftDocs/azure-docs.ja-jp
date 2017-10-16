@@ -28,6 +28,7 @@
 ### [ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)
 ### [コスト管理の構成](devtest-lab-configure-cost-management.md)
 ### [Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md)
+### [ラボへのタグの追加](devtest-lab-add-tag.md)
 
 ## [カスタム イメージまたは式の選択](devtest-lab-comparing-vm-base-image-types.md)
 
@@ -55,8 +56,8 @@
 ## [ラボのスケーリング](devtest-lab-scale-lab.md)
 
 # リファレンス
-## [CLI 2.0](/cli/azure/lab)
-## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+## [Azure CLI](/cli/azure/lab)
+## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [ラボを自動的に作成または変更する](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST API](https://docs.microsoft.com/rest/api/dtl/)
 ## [Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Samples)

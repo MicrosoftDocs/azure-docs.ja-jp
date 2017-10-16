@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 958b61f5de732a882e0a2682b8dd4e18504a6ae7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Azure Portal の Site Recovery を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-azure.md)
+> * [Azure ポータル](site-recovery-vmm-to-azure.md)
 > * [Azure クラシック](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [PowerShell クラシック](site-recovery-deploy-with-powershell.md)
@@ -88,7 +87,7 @@ Site Recovery に使用されている Azure ネットワークは、同じま�
 
 ### <a name="prepare-the-vmm-server"></a>VMM サーバーを準備する
 * VMM サーバーが [前提条件](#prerequisites)に準拠しているかどうかを確認します。
-* Site Recovery のデプロイ時に、VMM サーバー上のすべてのクラウドを Azure Portal で使用できるようにするかを指定できます。 特定のクラウドのみをポータルに表示する場合は、そのための設定を VMM 管理コンソールで対象クラウドに対して有効にできます。
+* Site Recovery のデプロイ時に、VMM サーバー上のすべてのクラウドを Azure ポータルで使用できるようにするかを指定できます。 特定のクラウドのみをポータルに表示する場合は、そのための設定を VMM 管理コンソールで対象クラウドに対して有効にできます。
 
 ### <a name="prepare-for-network-mapping"></a>ネットワーク マッピングを準備する
 Site Recovery のデプロイ中にネットワーク マッピングをセットアップする必要があります。 ネットワーク マッピングは、ソースの VMM VM ネットワークとターゲットの Azure ネットワークを対応付けることで、以下のことを実現します。
@@ -101,7 +100,7 @@ Site Recovery のデプロイ中にネットワーク マッピングをセッ�
   * [前述](#set-up-an-azure-network)
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]** > 、**[監視 + 管理]**、 > **[Backup and Site Recovery (OMS) (バックアップと Site Recovery (OMS))]** の順にクリックします。
 
     ![新しいコンテナー](./media/site-recovery-vmm-to-azure/new-vault3.png)
@@ -475,4 +474,3 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 ## <a name="next-steps"></a>次のステップ
 
 初期レプリケーションが完了し、デプロイをテストしたら、必要に応じてフェールオーバーを呼び出すことができます。 さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
-

@@ -1,4 +1,4 @@
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。
+Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して App Service プランを作成します。
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 

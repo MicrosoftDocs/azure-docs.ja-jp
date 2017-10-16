@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 3f7eb053db6b6a545990f31f64628594f7f3e2c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: 30166823b33669dda88b41a4aee2dfc34f01466f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに
@@ -88,4 +87,3 @@ Data Catalog データ ソース登録ツールを使用して、登録された
 
 ## <a name="next-steps"></a>次のステップ
 データ ソースの登録の詳細については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
-

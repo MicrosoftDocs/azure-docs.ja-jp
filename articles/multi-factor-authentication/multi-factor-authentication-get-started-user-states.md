@@ -15,14 +15,12 @@ ms.date: 06/26/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 1869b7a4ef42536a3cd909ba2983ae0fe97185a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>ユーザーまたはグループに 2 段階認証を要求する方法
 
 2 段階認証を要求する方法は 2 つあります。 1 つ目は、個々のユーザーに Azure Multi-Factor Authentication (MFA) を有効にする方法です。 ユーザーを個別に有効にした場合は、2 段階認証が常に実行されます (信頼済み IP アドレスからサインインするときや、記憶されたデバイスの機能が有効なときなど、一部例外があります)。 2 つ目は、特定の条件下で 2 段階認証を要求する条件付きアクセス ポリシーを設定する方法です。
@@ -42,7 +40,7 @@ ms.lasthandoff: 08/12/2017
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-| [Status] | Description | 非ブラウザー アプリに影響があるか |
+| 状態 | Description | 非ブラウザー アプリに影響があるか |
 |:---:|:---:|:---:|
 | 無効 |新しいユーザーの既定の状態は、Azure Multi-Factor Authentication (MFA) に登録されていません。 |なし |
 | 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |いいえ。  これらは登録プロセスが完了するまで機能し続けます。 |

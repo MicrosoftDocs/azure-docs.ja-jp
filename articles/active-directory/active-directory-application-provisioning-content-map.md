@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4d33237833f34495e6049e348ad4518a2b70ee51
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 55c5abccb2472d653a4e355e39a19a224b979b85
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problems-configuring-and-provisioning-users-to-an-application"></a>アプリケーションに対するユーザーの構成およびプロビジョニングに関する問題
 
 
@@ -35,4 +33,3 @@ ms.lasthandoff: 04/18/2017
   * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成しているときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Azure AD ギャラリー アプリケーションへのプロビジョニングを設定したが、ユーザーがプロビジョニングされていない](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-no-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Azure AD ギャラリー アプリケーションへのプロビジョニングが動作しているが、間違ったユーザー グループがプロビジョニングされている](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-wrong-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

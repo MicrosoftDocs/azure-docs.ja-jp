@@ -1,6 +1,6 @@
 ---
 title: "Azure Application Insights アプリのデータを表示する | Microsoft Docs"
-description: "Application Insights Connector ソリューションを使用して、パフォーマンスに関する問題を診断し、Application Insights でアプリを監視しているときに、ユーザーがアプリを使用して何を行っているかを理解することができます。"
+description: "Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,19 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 297c85d2aa5609729e394dc527fb3a1ca5810ffa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: fe6c003e095b25cf3ec3430fc68dcd399150b3ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Application Insights Connector ソリューション (プレビュー)
 
 ![Application Insights シンボル](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
-Application Insights Connector ソリューションを使用すると、パフォーマンスに関する問題を診断し、[Application Insights](../application-insights/app-insights-overview.md) でアプリを監視しているときに、ユーザーがアプリを使用して何を行っているかを理解することができます。 Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを OMS でも使用できます。 ただし、Application Insights アプリを OMS と統合すると、操作とアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
+Application Insights Connector ソリューションを使用すると、[Application Insights](../application-insights/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 OMS でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを OMS と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
 このソリューションを使用して、次の操作を実行できます。
 
@@ -63,7 +61,7 @@ Application Insights Connector ソリューションを使用すると、パフ�
 
 ![[Application Insights] タイル](./media/log-analytics-app-insights-connector/app-insights-tile.png)
 
-注意するその他のポイント:
+その他の留意点:
 
 - Application Insights アプリは、1 つの OMS ワークスペースにのみリンクできます。
 - [Standard または Premium の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、OMS Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
@@ -93,9 +91,9 @@ Application Insights Connector ソリューションを使用すると、パフ�
 | アプリケーション: アプリケーションの数 | アプリケーション リソース内のアプリケーションの数を示します。 アプリケーションの名前と各アプリケーションのレコードの数も示されます。 数値をクリックすると、ログ検索 (<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code>) が実行されます。 <br><br>  アプリケーション名をクリックすると、アプリケーションのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
 | データ ボリューム: データを送信中のホスト | データを送信しているコンピューター ホストの数を示します。 コンピューター ホストと各ホストのレコード数も示されます。 数値をクリックすると、ログ検索 (<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code>) が実行されます。 <br><br> コンピューター名をクリックすると、ホストのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
 | 可用性: Web テストの結果 | Web テストの結果 (合格または不合格) を示すドーナツ グラフを表示します。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code>) が実行されます。 <br><br> 結果は、すべてのテストの合格数と不合格数を示します。 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 アプリケーション名をクリックすると、不合格だった Web テストの詳細を示すログ検索が表示されます。 |
-| サーバー要求: 1 時間あたりの要求の数 | さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点で要求の受信数が多い上位 3 つのアプリケーションが表示されます。 要求を受信しているアプリケーションの一覧と、選択した期間中の要求の数も示されます。 <br><br>グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を示す詳細な折れ線グラフが表示されます。 <br><br> 一覧のアプリケーションをクリックすると、ログ検索 (<code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code>) が実行され、要求の一覧、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および要求応答コードの一覧が表示されます。   |
-| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点で失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code>) が実行され、失敗した要求の数、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
-| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code>) が実行され、例外、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
+| サーバー要求: 1 時間あたりの要求の数 | さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での要求の受信数が多い上位 3 つのアプリケーションが表示されます。 要求を受信しているアプリケーションの一覧と、選択した期間中の要求の数も示されます。 <br><br>グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を示す詳細な折れ線グラフが表示されます。 <br><br> 一覧のアプリケーションをクリックすると、ログ検索 (<code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code>) が実行され、要求の一覧、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および要求応答コードの一覧が表示されます。   |
+| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code>) が実行され、失敗した要求の数、時間を追った失敗要求数のグラフ、要求の実行時間別の失敗要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
+| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code>) が実行され、例外の一覧、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>ログ検索で Application Insights のパースペクティブを表示する
 
@@ -266,4 +264,3 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 ## <a name="next-steps"></a>次のステップ
 
 - [ログ検索](log-analytics-log-searches.md)を使用して Application Insights アプリの詳細情報を表示します。
-

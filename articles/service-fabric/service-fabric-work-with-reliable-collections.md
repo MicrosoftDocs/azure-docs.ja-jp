@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rajak
-translationtype: Human Translation
-ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
-ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8
-ms.lasthandoff: 02/22/2017
-
-
+ms.openlocfilehash: f53f13e4fb83b1cd370ec673e86e5311cd93055f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 Reliable Dictionary オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
@@ -143,7 +142,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>変更不可のデータ型を定義してプログラマ エラーを防ぐ
-変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。 しかし、C# コンパイラには、このような機能はありません。 プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。 つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。 もちろん、文字列を使用することもできます。 コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。 ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) を使用することを強くお勧めします。 このライブラリは http://nuget.org からダウンロードすることができます。 クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
+変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。 しかし、C# コンパイラには、このような機能はありません。 プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。 つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。 もちろん、文字列を使用することもできます。 コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。 ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) を使用することを強くお勧めします。 このライブラリは http://nuget.org からダウンロードすることができます。クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
 
 下記の UserInfo 型は、前述の推奨事項を利用して変更不可の型を定義する方法を示しています。
 
@@ -217,4 +216,3 @@ Reliable Collection は、内部で .NET の DataContractSerializer を使用し
 バージョン トレラントなデータ コントラクトを実装する方法については、「 [バージョン トレラントなシリアル化コールバック](https://msdn.microsoft.com/library/ms733734.aspx)」を参照してください。
 
 複数のバージョンで相互運用できるデータ構造を提供する方法については、「 [IExtensibleDataObject インターフェイス](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)」を参照してください。
-

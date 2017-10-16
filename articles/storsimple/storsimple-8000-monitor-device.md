@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 ## <a name="overview"></a>概要
@@ -135,5 +134,4 @@ iSCSI にのみ対応する別の 1 GbE ネットワーク インターフェイ
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイス マネージャー サービスのデバイス ダッシュボードを使用する](storsimple-device-dashboard.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-manager-service-administration.md)方法について説明します。
-
 

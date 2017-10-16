@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8d876a0f2168ee9375a3905d5d5a562ab1194cf3
-ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 47152d05eb7e31e7fe1f35e33a10fe8e903e21e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -539,7 +538,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>ユーザーをロールに割り当てる
-クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (read-only と admin) にユーザーを割り当てます。 [Azure クラシック ポータル][azure-classic-portal]を使用してロールを割り当てることができます。
+クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (read-only と admin) にユーザーを割り当てます。[Azure クラシック ポータル][azure-classic-portal]を使用してロールを割り当てることができます。
 
 1. Azure Portal で、テナントに移動し、**[アプリケーション]** を選択します。
 2. `myTestCluster_Cluster`のような名前を持つ Web アプリケーションを選択します。
@@ -591,7 +590,7 @@ CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
 
 証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 CA から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
-これらのサブジェクト名は、「[Resource Manager テンプレート パラメーターの構成](#configure-arm)」で取り上げた、セキュリティで保護された Service Fabric クラスターを (Azure AD なしで) 作成するために必要なエントリです。 セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。 Linux プレビュー クラスターでは、Azure AD 認証がサポートされません。 「[ユーザーをロールに割り当てる](#assign-roles)」セクションの説明に従って管理者ロールとクライアント ロールを割り当ててください。 Linux プレビュー クラスターに管理者とクライアントのロールを指定する際には、認証に対して証明書の拇印を提供する必要があります  (このプレビュー リリースではチェーン検証や失効が行われないため、サブジェクト名は指定しません)。
+これらのサブジェクト名は、「[Resource Manager テンプレート パラメーターの構成](#configure-arm)」で取り上げた、セキュリティで保護された Service Fabric クラスターを (Azure AD なしで) 作成するために必要なエントリです。 セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。 Linux クラスターでは、Azure AD 認証はサポートされません。 「[ユーザーをロールに割り当てる](#assign-roles)」セクションの説明に従って管理者ロールとクライアント ロールを割り当ててください。 Linux クラスターに管理者とクライアントのロールを指定する際には、認証に対して証明書の拇印を提供する必要があります。 チェーン検証や失効が行われないため、サブジェクト名は指定しません。
 
 テストに自己署名証明書を使用する場合は、同じスクリプトを使用して生成できます。 その後、証明書のパスと名前を指定する代わりに、フラグ `ss` を指定して Key Vault に証明書をアップロードできます。 たとえば自己署名証明書を作成してアップロードするには、次のコマンドを使用します。
 
@@ -682,5 +681,4 @@ FabricClient と FabricGateway では、相互認証が実行されます。 Azu
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-
 

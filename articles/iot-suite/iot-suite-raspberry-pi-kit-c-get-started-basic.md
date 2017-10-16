@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ce8809a8e464e5a6815ced6e5609e5196a896057
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 418108e8236518d2671abca0f06f1ae8159d6442
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-telemetry-from-a-real-sensor-using-c"></a>C を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、センサーから受信したテレメトリを送信する
 
@@ -117,4 +116,3 @@ Azure IoT のその他のサンプルとドキュメントについては、「[
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-basic/appoutput.png
 
 [lnk-demo-config]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/configure-preconfigured-demo.md
-

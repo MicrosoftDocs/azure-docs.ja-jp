@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 4dfd3973593a94adfc15a6e15d69c697e13998af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-01-release-notes--october-2014"></a>StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月
 ## <a name="overview"></a>Overview
@@ -96,5 +94,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 
 ## <a name="virtual-device-updates-in-the-october-release"></a>10 月のリリースでの仮想デバイスの更新プログラム
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。 この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
-
 

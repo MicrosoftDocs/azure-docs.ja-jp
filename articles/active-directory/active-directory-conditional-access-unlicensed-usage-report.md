@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
-
+ms.openlocfilehash: c0b4f455f067e825362bdecc02ea62d7984f0d31
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unlicensed-usage-report"></a>許可されていない使用に関するレポート
 許可されていない使用に関するレポートを使用すると、有料の Azure AD 機能を使用しているライセンスのないユーザーを特定できます。 これにより、購入したライセンスの使用をより適切に管理できるほか、ライセンスを追加する必要があるタイミングがわかります。 
@@ -46,5 +44,4 @@ ms.lasthandoff: 12/29/2016
 ## <a name="see-also"></a>関連項目
 * [Office 365 およびその他の Azure Active Directory 接続アプリでの条件付きアクセスの使用](active-directory-conditional-access.md)
 * [Azure AD への条件付きアクセスの基本](active-directory-conditional-access-azuread-connected-apps.md) 
-
 

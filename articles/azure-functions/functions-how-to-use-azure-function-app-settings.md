@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 3229fe0b5aacbbc716039a4a6abfd235dbc4c4f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -57,7 +56,7 @@ Functions では、従量課金ホスティング プランと App Service ホ�
 + [認証](#auth)
 + [API の定義](#swagger)
 
-App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)に関するページをご覧ください。
+App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service/web-sites-configure.md)に関するページをご覧ください。
 
 ### <a name="editor"></a>App Service Editor
 
@@ -120,7 +119,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 | | |
 |-|-|
-| ![Azure Portal の関数 アプリ API Swagger の定義](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions では Swagger がサポートされ、クライアントが、HTTP によってトリガーされる関数をもっと簡単に使用できます。 Swagger を使用した API 定義の作成の詳細については、[Azure での API Apps、ASP.NET、Swagger の使用](../app-service-api/app-service-api-dotnet-get-started.md)に関するページを参照してください。 Functions Proxies を使用して、複数の関数に対して 1 つの API サーフェスを定義することをもできます。 詳細については、「[Azure Functions Proxies の操作](functions-proxies.md)」を参照してください。 |
+| ![Azure Portal の関数 アプリ API Swagger の定義](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions では Swagger がサポートされ、クライアントが、HTTP によってトリガーされる関数をもっと簡単に使用できます。 Swagger を使用した API 定義の作成の詳細については、[Azure での API Apps と Swagger の使用](../app-service/app-service-web-tutorial-rest-api.md)に関するページを参照してください。 Functions Proxies を使用して、複数の関数に対して 1 つの API サーフェスを定義することをもできます。 詳細については、「[Azure Functions Proxies の操作](functions-proxies.md)」を参照してください。 |
 
 ![Function App の API の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
@@ -128,9 +127,8 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [Azure App Service の設定の構成](../app-service-web/web-sites-configure.md)
++ [Azure App Service の設定の構成](../app-service/web-sites-configure.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
-
 
 
 

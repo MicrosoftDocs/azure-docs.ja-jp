@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: anilmur;juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: 5be8472e242db6d17306ba086e4fe06e769018d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 60d0ce14a271fcbe698559da95ca011cb888b221
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする
 Media Encoder Standard (MES) をすると、入力ビデオをトリミングできます。 トリミングは、ビデオ フレーム内で四角形のウィンドウを選択して、そのウィンドウ内のピクセルだけをエンコードするプロセスです。 次の図は、そのプロセスを示しています。
@@ -143,4 +142,3 @@ MES でのトリミングは前処理段階であるため、エンコード プ
 Azure Media Services のラーニング パスをご覧ください。AMS で提供される優れた機能の学習に役立ちます。  
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-

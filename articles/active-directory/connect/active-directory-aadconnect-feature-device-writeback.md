@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 7af8fadca15e07e178f12db27fec2467f43c5d36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
@@ -44,19 +43,27 @@ ms.lasthandoff: 07/06/2017
 デバイスの書き戻しの使用を準備するには、次の手順を使用します。
 
 1. Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
-2. Active Directory PowerShell モジュールがインストールされていない場合は、次のコマンドを使用してインストールします。
-   
-   `Add-WindowsFeature RSAT-AD-PowerShell`
-3. Azure Active Directory PowerShell モジュールがインストールされていない場合、 [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297)からそれをダウンロードしてインストールします。 このコンポーネントには、Azure AD Connect と一緒にインストールされるサインイン アシスタントへの依存関係があります。
+2. Active Directory PowerShell モジュールがインストールされていない場合は、スクリプトの実行に必要な dsacls.exe と AD PowerShell モジュールを含むリモート サーバー管理ツールをインストールします。  次のコマンドを実行します。
+  
+   ``` powershell
+   Add-WindowsFeature RSAT-AD-Tools
+   ```
+
+3. Azure Active Directory PowerShell モジュールがインストールされていない場合、 [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297)からそれをダウンロードしてインストールします。 このコンポーネントには、Azure AD Connect と一緒にインストールされるサインイン アシスタントへの依存関係があります。  
 4. エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
    
-   `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
-   
-   `Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
+   ``` powershell
+   Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
+   ```
+
+   ``` powershell
+   Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}
+   ```
 
 構成名前空間の変更が必要なため、エンタープライズ管理者の資格情報が必要です。 ドメイン管理者には、十分なアクセス許可がありません。
 
 ![デバイスの書き戻しを有効にするための Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
+
 
 説明:
 
@@ -75,7 +82,7 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 
 1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。
    ![カスタム インストール [同期オプションのカスタマイズ]](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
-2. [オプション機能] ページで、デバイスの書き戻しを変更できるようになります。 Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。 [デバイスの書き戻し] チェックボックスをオンにして、 **[次へ]**をクリックします。 チェックボックスがまだオフの場合は、 [トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。
+2. [オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。 [デバイスの書き戻し] チェックボックスをオンにして、 **[次へ]**をクリックします。 チェックボックスがまだオフの場合は、 [トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。
    ![カスタム インストール デバイスの書き戻しオプション機能](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
 3. [書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。
    ![カスタム インストール デバイスの書き戻し先フォレスト](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
@@ -104,7 +111,7 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 * 初期化スクリプトで指定したアカウントが、Active Directory Connector に使用されている正しいユーザーであることを確認します。 確認する手順は次のとおりです。
   * [スタート] メニューから **[同期サービス]**を開きます。
   * **[コネクタ]** タブを開きます。
-  * 種類が Active Directory ドメイン サービスのコネクタを探して選択します。
+  * 種類が Active Directory Domain Services のコネクタを探して選択します。
   * **[アクション]** の **[プロパティ]** を選択します。
   * **[Active Directory フォレストに接続]**を選択します。 この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。
     ![Synchronization Service Manager のコネクタ アカウント](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
@@ -139,5 +146,4 @@ Active Directory の構成を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50049b1c66bf93cbed52e30e66385c33a4d97c5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
@@ -134,7 +134,7 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
 
 次のプロセスは、手動で実行するか、または自動化されたシステムを設定して定期的に実行することができます。 インポートするデータのブロックごとに、これらの手順を実行する必要があります。
 
-1. [Azure BLOB ストレージ](../storage/storage-dotnet-how-to-use-blobs.md)にデータをアップロードします。 
+1. [Azure BLOB ストレージ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)にデータをアップロードします。 
 
  * BLOB のサイズは、非圧縮で 1 GB が上限となります。 パフォーマンスの観点から言うと、数百 MB の BLOB が最適なサイズです。
  * Gzip で圧縮すれば、アップロード時間が短縮されるだけでなく、データがクエリで使用できるようになるまでの時間も短縮されます。 ファイル名拡張子は `.gz` を使用してください。
@@ -142,7 +142,7 @@ JSON ではデータの部分的なマッピングが可能なため、JSON 形�
  * データを高い頻度で送信する場合、パフォーマンス上の理由で、数秒おきに複数のストレージ アカウントを使用することをお勧めします。
 
  
-2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
+2. [BLOB の Shared Access Signature キーを作成します](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
 3. データが待機していることを Application Insights に通知するための REST 呼び出しを実行します。
 
  * エンドポイント: `https://dc.services.visualstudio.com/v2/track`

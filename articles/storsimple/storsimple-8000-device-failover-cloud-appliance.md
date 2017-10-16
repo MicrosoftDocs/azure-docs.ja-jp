@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ec8bebf2854e84a37e84b45564e80fc20b63d8d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance にフェールオーバーする
 
@@ -34,7 +32,7 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
 
 ## <a name="prerequisites"></a>前提条件
 
-- デバイスのフェールオーバーに関する考慮事項を確認したことを確認します。 詳細については、「[Common considerations for device failover](storsimple-8000-device-failover-disaster-recovery.md)」(デバイスのフェールオーバーの一般的な考慮事項) を参照してください。
+- デバイスのフェールオーバーに関する考慮事項を必ず見直してください。 詳細については、「[Common considerations for device failover](storsimple-8000-device-failover-disaster-recovery.md)」(デバイスのフェールオーバーの一般的な考慮事項) を参照してください。
 
 - この手順を実行する前に、StorSimple Cloud Appliance を作成して構成する必要があります。 ソフトウェア バージョン Update 3 以降を実行している場合は、DR 用の 8020 クラウド アプライアンスの使用を検討してください。 8020 モデルは、64 TB を備え、Premium Storage を使用します。 詳細については、「[StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)」を参照してください。
 
@@ -96,5 +94,4 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-8000-deactivate-and-delete-device.md)します。
 
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。
-
 

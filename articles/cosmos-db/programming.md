@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: andrl
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 8cddc7a8c9aa677b9c93bee3a7e05c226cc1f655
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 これにより、データベース ストレージ パーティションに直接配置して実行できるデータベース プログラム アプリケーション ロジックを記述できます。 
@@ -54,7 +53,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
   * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
   * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](documentdb-sdk-dotnet.md) 経由でサポートされます。
+作成およびデータベース トリガー、ストアド プロシージャとカスタム クエリ演算子の実行はサポートされて、 [REST API](/rest/api/documentdb/)、 [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および[クライアント Sdk](documentdb-sdk-dotnet.md) .NET、Node.js、および JavaScript を含む多くのプラットフォームでします。
 
 このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。   
 
@@ -810,5 +809,4 @@ Azure Cosmos DB には、[Node.js](documentdb-sdk-node.md) クライアント用
 * [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
 * [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
-
 

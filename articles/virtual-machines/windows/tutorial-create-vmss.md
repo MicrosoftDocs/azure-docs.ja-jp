@@ -16,16 +16,14 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 8a5f6e8bf01c8bc38f3fd327acd0ddc8f9cdd7de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: 7fc2e841a193c219822e232fbc994df5e934ddc4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
-仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
+仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * カスタム スクリプト拡張機能を使用して、スケールする IIS サイトを定義する
@@ -38,11 +36,11 @@ ms.lasthandoff: 05/09/2017
 
 
 ## <a name="scale-set-overview"></a>スケール セットの概要
-スケール セットに採用されている概念は、前の[高可用性 VM の作成](tutorial-availability-sets.md)に関するチュートリアルで学習したものとよく似ています。 スケール セット内の VM は、可用性セット内の VM と同じように、障害ドメインと更新ドメインに分散されます。
+仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM は、1 つ以上の*配置グループ*内の論理障害ドメインおよび更新ドメインに配布されます。 これらは同じように構成された VM のグループであり、[可用性セット](tutorial-availability-sets.md)に似ています。
 
 スケール セットには必要に応じて VM が作成されます。 スケール セットの VM を追加または削除する方法とタイミングを制御するには、自動スケール ルールを定義します。 これらのルールは、CPU の負荷、メモリの使用量、ネットワーク トラフィックなどのメトリックに基づいて発動できます。
 
-Azure プラットフォーム イメージを使う場合、スケール セットは最大 1,000 個の VM をサポートします。 大量のインストールが必要なワークロードや、VM に大幅なカスタマイズが必要なワークロードについては、[カスタム VM イメージを作成する](tutorial-custom-images.md)という方法もあります。 カスタム イメージを使うと、最大 100 個の VM をスケール セットに作成できます。
+Azure プラットフォーム イメージを使う場合、スケール セットは最大 1,000 個の VM をサポートします。 大量のインストールが必要なワークロードや、VM に大幅なカスタマイズが必要なワークロードについては、[カスタム VM イメージを作成する](tutorial-custom-images.md)という方法もあります。 カスタム イメージを使うと、最大 300 個の VM をスケール セットに作成できます。
 
 
 ## <a name="create-an-app-to-scale"></a>スケーリングするアプリを作成する
@@ -290,6 +288,8 @@ Add-AzureRmAutoscaleSetting `
   -AutoscaleProfiles $myScaleProfile
 ```
 
+自動スケールの使用に関する詳しい設計情報については、[自動スケールのベスト プラクティス](/azure/architecture/best-practices/auto-scaling)に関する記事をご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法について学習しました。
@@ -305,4 +305,3 @@ Add-AzureRmAutoscaleSetting `
 
 > [!div class="nextstepaction"]
 > [仮想マシンを負荷分散する](tutorial-load-balancer.md)
-

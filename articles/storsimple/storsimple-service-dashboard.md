@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-dashboard"></a>StorSimple Manager サービスのダッシュボードを使用する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 StorSimple Manager サービスのダッシュボード ページには、StorSimple Manager サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とする内容は、強調表示されます。 このチュートリアルでは、ダッシュボード ページを紹介してから、ダッシュボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
 
 ![サービスのダッシュボード](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
@@ -68,10 +68,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)を行う方法
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

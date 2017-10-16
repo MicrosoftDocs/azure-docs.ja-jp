@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Python 向け Batch SDK の概要
 
@@ -276,7 +275,7 @@ Shared Access Signature (SAS) は、Azure Storage のコンテナーと BLOB へ
 * **コンテナー Shared Access Signature**: 各タスクでコンピューティング ノードでの処理が完了すると、その出力ファイルが Azure Storage の *output* コンテナーにアップロードされます。 その際、コンテナーへの書き込みアクセスを可能にする Shared Access Signature が *python_tutorial_task.py* によって使用されます。 *python_tutorial_client.py* の `get_container_sas_token` 関数でコンテナーの Shared Access Signature を取得し、それをコマンド ライン引数としてタスクに渡します。 コンテナーの SAS の使用方法については、「 [手順 5: ジョブにタスクを追加する](#step-5-add-tasks-to-job)」で説明します。
 
 > [!TIP]
-> Storage アカウントのデータに安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB service での SAS の作成と使用](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
+> Storage アカウントのデータに安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: Blob service での SAS の作成と使用](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
 >
 >
 
@@ -716,4 +715,3 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [9]: ./media/batch-python-tutorial/credentials_batch_sm.png "ポータルの Batch の資格情報"
 [10]: ./media/batch-python-tutorial/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-python-tutorial/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
-

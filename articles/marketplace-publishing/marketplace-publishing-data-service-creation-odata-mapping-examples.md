@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>CSDL を使用した既存の Web サービスの OData へのマッピングの例
 > [!IMPORTANT]
@@ -164,5 +162,4 @@ GET で取得したデータの RESTful なページングを実装します。 
 * 全体的な OData マッピング プロセスと目的を理解したい場合は、この [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この [データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) に関する記事をご覧ください。
 * データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
-
 

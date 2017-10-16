@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 618fcfa3354ef5900d89546ffb7c222a852fe4f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.openlocfilehash: ef63e06c0621753e0a706d6efb709b943e38ee42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -84,7 +83,7 @@ ms.lasthandoff: 05/22/2017
 ## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
 
 * アプリの複数のロール: 単一の Application Insights リソースを使用し、cloud_Rolename でフィルター処理します。 [詳細情報](app-insights-monitor-multi-role-apps.md)
-* 開発、テスト、およびリリースのバージョンの分離: 複数の Application Insights のリソースを使用します。 web.config からインストルメンテーション キーを選択します。 [詳細情報](app-insights-separate-resources.md)
+* 開発、テスト、およびリリースのバージョンの分離: 複数の Application Insights のリソースを使用します。 web.config からインストルメンテーション キーを選択します。[詳細情報](app-insights-separate-resources.md)
 * ビルド バージョンのレポート: テレメトリ初期化子を使用してプロパティを追加します。 [詳細情報](app-insights-separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>バックエンド サーバーとデスクトップ アプリを監視する
@@ -104,7 +103,7 @@ ms.lasthandoff: 05/22/2017
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>匿名ユーザーまたは認証済みユーザーのフィルター処理
-ユーザーがサインインしたら、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。 (自動的には設定されません。)
+ユーザーがサインインしたら、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。(自動的には設定されません。)
 
 次に以下のことを行えます。
 
@@ -147,7 +146,7 @@ ms.lasthandoff: 05/22/2017
 
 
 
-**選択されている標準のコレクターを無効にする** には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、 [ApplicationInsights.config](app-insights-api-custom-events-metrics.md)内の該当する行を削除するか、またはコメントアウトします。 たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+**選択されている標準のコレクターを無効にする** には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、 [ApplicationInsights.config](app-insights-api-custom-events-metrics.md)内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 ## <a name="view-system-performance-counters"></a>システム パフォーマンス カウンターの表示
 メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。 事前定義された **サーバー** というブレードに、それらのいくつかが表示されます。
@@ -162,4 +161,3 @@ ms.lasthandoff: 05/22/2017
 ### <a name="to-display-more-performance-counters"></a>表示するパフォーマンス カウンターの数を増やすには
 * 最初に、 [新しいグラフを追加](app-insights-metrics-explorer.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-performance-counters.md)します。
-

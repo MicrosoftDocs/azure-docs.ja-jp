@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>StorSimple Snapshot Manager を使用したバックアップ カタログの管理
 
@@ -94,7 +92,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
    1. **[名前]** ボックスに、複製するボリュームの名前を入力します。 この名前は **[ボリューム]** ノードに表示されます。 
    2. (省略可能) **[ドライブ]**を選択し、ドロップダウン リストからドライブ文字を選択します。
    3. (省略可能) **[フォルダー (NTFS)]**を選択し、フォルダー パスを入力するか [参照] をクリックし、フォルダーの場所を選択します。 
-   4. **[作成]**をクリックします。
+   4. **Create** をクリックしてください。
 5. 複製の処理が完了したら、複製されたボリュームを初期化する必要があります。 Server Manager を起動し、ディスクの管理を開始します。 詳細については、「 [ボリュームのマウント](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)」をご覧ください。 初期化が終わったら、**[スコープ]** ウィンドウの **[ボリューム]** ノードにボリュームが一覧表示されます。 ボリュームが一覧表示されない場合は、ボリュームのリストを更新します (**[ボリューム]** ノードを右クリックし、**[更新]** をクリックします)。
 
 ## <a name="delete-a-backup"></a>バックアップの削除
@@ -127,7 +125,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
    1. **[名前]** ボックスに、複製するボリュームの名前を入力します。 この名前は **[ボリューム]** ノードに表示されます。 
    2. (省略可能) **[ドライブ]**を選択し、ドロップダウン リストからドライブ文字を選択します。 
    3. (省略可能) **[フォルダー (NTFS)]** を選択し、フォルダー パスを入力するか **[参照]** をクリックし、フォルダーの場所を選択します。 
-   4. **[作成]**をクリックします。 
+   4. **Create** をクリックしてください。 
 5. 複製の処理が完了したら、複製されたボリュームを初期化する必要があります。 Server Manager を起動し、ディスクの管理を開始します。 詳細については、「 [ボリュームのマウント](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)」をご覧ください。 初期化が終わったら、**[スコープ]** ウィンドウの **[ボリューム]** ノードにボリュームが一覧表示されます。 
    
     ボリュームが一覧表示されない場合は、ボリュームのリストを更新します (**[ボリューム]** ノードを右クリックし、**[更新]** をクリックします)。
@@ -165,5 +163,4 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 * [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)
-
 

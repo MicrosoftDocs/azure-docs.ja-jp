@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/14/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 45a3fa5c7190e039fd637c78a41eeb3f6ede9bc7
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Azure Notification Hubs から Android へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -64,13 +64,13 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
 ## <a name="configure-a-new-notification-hub"></a>新しい Notification Hub を構成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.通知ハブの **[設定]** ブレードで、**[Notification Services]**、**[Google (GCM)]** の順に選択します。 先ほど [Firebase Console](https://firebase.google.com/console/) からコピーした FCM サーバー キーを入力し、**[保存]** をクリックします。
+&emsp;&emsp;6. 通知ハブの **[設定]** ブレードで、**[Notification Services]**、**[Google (GCM)]** の順に選択します。 先ほど [Firebase Console](https://firebase.google.com/console/) からコピーした FCM サーバー キーを入力し、**[保存]** をクリックします。
 
 &emsp;&emsp;![Azure Notification Hubs - Google (GCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-gcm-api.png)
 
 これで、通知ハブが Firebase Cloud Messaging と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a id="connecting-app"></a>通知ハブにアプリを接続する
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
@@ -131,7 +131,7 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
    
    * **SenderId**: [Firebase Console](https://firebase.google.com/console/) でプロジェクト設定の **[Cloud Messaging]** タブから先ほど取得した送信者 ID。
    * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
-   * **HubName**: [Azure Portal]のハブ ブレードに表示される通知ハブの名前を使用します。
+   * **HubName**: [Azure Portal] のハブ ブレードに表示される通知ハブの名前を使用します。
      
      `NotificationSettings` のコードは次のとおりです。
      
@@ -431,7 +431,7 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
 
 通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)を使用してクライアントから通知を送信する方法を説明します。
 
-1. Android Studio の [Project (プロジェクト)] ビューで **[App]** > **[src]** > **[main]** > **[res]** > **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
    
         <Button
         android:layout_width="wrap_content"
@@ -450,7 +450,7 @@ Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する�
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
-2. Android Studio の [Project (プロジェクト)] ビューで **[App]** > **[src]** > **[main]** > **[res]** > **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 これらはファイルの一番下の `</resources>`のすぐ前に追加します。
+2. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 これらはファイルの一番下の `</resources>`のすぐ前に追加します。
    
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -669,17 +669,11 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 
 
 <!-- URLs. -->
-[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[ライブラリ プロジェクトの参照]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

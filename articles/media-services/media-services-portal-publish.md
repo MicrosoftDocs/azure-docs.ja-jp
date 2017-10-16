@@ -1,6 +1,6 @@
 ---
-title: "  Azure Portal を使用したコンテンツの発行 | Microsoft Docs"
-description: "このチュートリアルでは、Azure ポータルを使用してコンテンツを発行する手順について説明します。"
+title: "Azure Portal でのコンテンツの発行 | Microsoft Docs"
+description: "このチュートリアルでは、Azure Portal を使用してコンテンツを発行する手順について説明します。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
+ms.openlocfilehash: 6759d3f49e15a3b01022df318a83563ad6bd859f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 403f15db2979a6626d5896ccc950f355f0a06a4e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="publish-content-with-the-azure-portal"></a>Azure ポータルを使用したコンテンツの発行
+# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -31,73 +30,70 @@ ms.lasthandoff: 08/08/2017
 
 ## <a name="overview"></a>概要
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
 > 
 
-ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成して資産を "発行" する必要があります。 資産に含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。 
+コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を発行する必要があります。 資産ファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
 
-* ストリーミング (OnDemandOrigin) ロケーター。アダプティブ ストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなどでのストリーミング) に使用します。 ストリーミング ロケーターを作成する場合、資産に .ism ファイルが含まれている必要があります。 
-* プログレッシブ (SAS) ロケーター。プログレッシブ ダウンロードを使用してビデオを配信する場合に使用します。
+* **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例としては、Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 ストリーミング ロケーターを作成するには、資産に .ism ファイルが含まれている必要があります。 
+* **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
 
-ストリーミング URL には次の形式があり、スムーズ ストリーミング資産の再生に使用できます。
+HLS ストリーミング URL を作成するには、次のように、*(format=m3u8-aapl)* を URL に追加します。
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-HLS ストリーミング URL を作成するには、(format=m3u8-aapl) を URL に追加します。
+Smooth Streaming 資産を再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
-MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf) を URL に追加します。
+MPEG-DASH ストリーミング URL を作成するには、*(format=mpd-time-csf)* を URL に追加します。
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
-SAS URL には次の形式があります。
+共有アクセス署名 URL の形式は、次のとおりです。
 
-    {blob container name}/{asset name}/{file name}/{SAS signature}
+    {blob container name}/{asset name}/{file name}/{shared access signature}
 
-詳細については、 [コンテンツ配信の概要](media-services-deliver-content-overview.md)に関する記事を参照してください。
+詳細については、[コンテンツ配信の概要](media-services-deliver-content-overview.md)に関する記事を参照してください。
 
 > [!NOTE]
-> 2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。  
+> 2015 年 3 月より前に Azure Portal で作成されたロケーターには、2 年間の有効期限があります。  
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
+ロケーターの有効期限を更新するには、[REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) または [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
+
+> [!NOTE]
+> Shared Access Signature ロケーターの有効期限を更新すると、URL が変更されます。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用して資産を発行するには
-ポータルを使用して資産を発行するには、次の操作を行います。
-
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]**を参照してください。
-3. 発行する資産を選択します。
-4. **[発行]** ボタンをクリックします。
-5. ロケーターの種類を選択します。
-6. **[追加]**をクリックします。
+2. **[設定]** > **[資産]**を参照してください。 発行する資産を選択します。
+3. **[発行]** を選択します。
+4. ロケーターの種類を選択します。
+5. **[追加]**を選択します。
    
-    ![[発行]](./media/media-services-portal-vod-get-started/media-services-publish1.png)
+    ![ビデオを発行する](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
 URL が **[発行された URL]**の一覧に追加されます。
 
-## <a name="play-content-from-the-portal"></a>ポータルでコンテンツを再生する
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+## <a name="play-content-in-the-portal"></a>ポータル内でコンテンツを再生する
+Azure Portal のコンテンツ プレーヤーでビデオをテストできます。
 
-目的のビデオをクリックし、 **[再生]** ボタンをクリックします。
+ビデオを選択し、**[再生]** を選択します。
 
-![[発行]](./media/media-services-portal-vod-get-started/media-services-play.png)
+![Azure Portal でビデオを再生する](./media/media-services-portal-vod-get-started/media-services-play.png)
 
 いくつかの考慮事項が適用されます。
 
 * ビデオが発行されたことを確認します。
-* この **メディア プレイヤー** は既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。 ( [Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
+* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
 * ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。  
-
-## <a name="next-steps"></a>次のステップ
-Media Services のラーニング パスを確認します。
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+## <a name="next-steps"></a>次のステップ
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

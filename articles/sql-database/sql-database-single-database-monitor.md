@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/10/2017
+ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: e11ed3275413b428523eef78a5a89b537f6a4afc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.openlocfilehash: 50d635191ff65f8b892595c954673b2820b22ecb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Azure SQL Database におけるデータベース パフォーマンスの監視
 Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断できます。また、データベースのパフォーマンス レベルと[サービス レベル](sql-database-service-tiers.md)を調整する必要があるかどうかを判断することもできます。 データベースの監視には、[Azure Portal](https://portal.azure.com) のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
+
+> [!TIP]
+> データベース パフォーマンスの自動監視には、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用します。 パフォーマンスの問題が検出されたら、問題の詳細と根本原因分析 (RCA) が記載された診断ログが生成されます。 可能な場合は、パフォーマンス改善の推奨事項も提供されます。
+>
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 [Azure Portal](https://portal.azure.com/) では、データベースを選択して **[監視]** グラフをクリックすると、単一のデータベースの使用率を監視することができます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
@@ -210,3 +212,7 @@ Azure SQL Database では、各サーバーの **master** データベースの 
 
 SQL Database 分析の場合、[sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューにクエリを実行し、**active_session_count** 列を確認して、セッションの過去の統計値を取得できます。 
 
+## <a name="next-steps"></a>次のステップ
+
+- [Azure SQL Database の自動チューニング](sql-database-automatic-tuning.md)を使用して、データベースのインデックスとクエリ実行プランを自動チューニングします。
+- [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用して、データベースのパフォーマンスを自動的に監視します。 この機能は、パフォーマンスの問題に関する診断情報と根本原因分析を提供します。

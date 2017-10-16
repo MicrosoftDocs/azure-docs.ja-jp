@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 06/30/2017
+ms.date: 09/20/2017
 ms.author: carlrab
+ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 28aa6d79f999fe9b247d9bb2c61a149a21e72a4a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
@@ -85,16 +84,20 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 
 SQL Database には、インテリジェンスが組み込まれています。このインテリジェンスによって、データベースの運用コストと管理コストは大幅に削減され、アプリケーションのパフォーマンスとセキュリティの両方が最大化されます。 数百万の顧客のワークロードを 24 時間実行する SQL Database は、水面下で顧客のプライバシーを 100% 尊重しながら、膨大な量のテレメトリ データを収集して処理します。 アプリケーションの状況をサービスが学習し、状況に適応することができるように、さまざまなアルゴリズムによってテレメトリ データが継続的に評価されます。 この分析に基づいて、サービスは、特定のワークロードに合わせたパフォーマンスの向上に関する推奨事項を考え出すことができます。 
 
-### <a name="automatic-performance-tuning"></a>パフォーマンスの自動チューニング
+### <a name="automatic-performance-monitoring-and-tuning"></a>自動パフォーマンス監視とチューニング
 
-SQL Database は、監視する必要があるクエリの詳細な洞察を提供します。 SQL Database は、データベースのパターンについて学習し、データベース スキーマをワークロードに適応させることができます。 SQL Database は、[SQL Database Advisor](sql-database-advisor.md) を使用して、パフォーマンスのチューニングに関する推奨事項を提示します。チューニング アクションを確認してそれらを適用できます。 ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、自動チューニング機能を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、各チューニング アクションを検証して、パフォーマンスが向上していることを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
+SQL Database は、監視する必要があるクエリの詳細な洞察を提供します。 SQL Database は、データベースのパターンについて学習し、データベース スキーマをワークロードに適応させることができます。 SQL Database は[パフォーマンスのチューニングに関する推奨事項](sql-database-advisor.md)を提示します。チューニング アクションを確認してそれらを適用できます。 
+
+ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、スケールで SQL Database のパフォーマンスを自動的に監視することによってこのジョブを行い、パフォーマンスの低下の問題を通知し、問題の根本原因を特定し、可能な場合にはパフォーマンスの向上の推奨事項を提供します。
+
+膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、各チューニング アクションを検証して、パフォーマンスが向上していることを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
 
 今日、SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行している当社の多数のパートナーは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
 
-SQL Database では、次の 2 つの自動チューニングを使用できます。
+[SQL Database では](sql-database-automatic-tuning.md)、次の 2 つの自動チューニングを使用できます。
 
-- **[自動インデックス管理](sql-database-automatic-tuning.md#automatic-index-management)**: データベースに追加するインデックスと削除するインデックスを識別します。
-- **[プランの自動修正](sql-database-automatic-tuning.md#automatic-plan-choice-correction)**: 問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
+- **自動インデックス管理**: データベースに追加するインデックスと削除するインデックスを識別します。
+- **プランの自動修正**: 問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
 
 ### <a name="adaptive-query-processing"></a>クエリの適応処理
 
@@ -114,7 +117,7 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 
-SQL Database の[透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。 2017 年 5 月以降、新しく作成されるすべての Azure SQL データベースは、透過的なデータ暗号化 (TDE) によって自動的に保護されます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL の実証済みの保存データの暗号化テクノロジです。 顧客は、Azure Key Vault を使用して、TDE 暗号化キーとその他のシークレットをセキュリティで保護された準拠する方法で管理できます。
+SQL Database の[透過的なデータ暗号化](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。 2017 年 5 月以降、新しく作成されるすべての Azure SQL データベースは、透過的なデータ暗号化 (TDE) によって自動的に保護されます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL の実証済みの保存データの暗号化テクノロジです。 顧客は、Azure Key Vault を使用して、TDE 暗号化キーとその他のシークレットをセキュリティで保護された準拠する方法で管理できます。
 
 ### <a name="data-encryption-in-motion"></a>移動中のデータの暗号化
 
@@ -168,4 +171,3 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
   - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
-

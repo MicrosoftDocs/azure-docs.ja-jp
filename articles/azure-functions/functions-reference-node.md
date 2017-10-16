@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 641afd78aae145c5e1b16a08567a22c1aafe59a8
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: a20f6db8bbbc9b7936cf102e8cd2ff1b2a995fb2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
@@ -155,7 +155,7 @@ host.json ファイルにログを記録する場合のトレース レベルの
 
 関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 この時点では、`console.log` を使用してコンソールに書き込むことはできません。
 
-`context.log()` を呼び出すと、既定のトレース レベルである、_情報_トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
+`context.log()` を呼び出すと、既定のトレース レベルである、_情報_ トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
 
 ```javascript
 context.log({hello: 'world'});  
@@ -173,7 +173,7 @@ context.log.info({hello: 'world'});
 context.log.error("An error has occurred.");  
 ```
 
-_エラー_は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。  
+_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。  
 
 
 すべての `context.log` メソッドは、Node.js の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートされているのと同じパラメーター形式をサポートしています。 既定のトレース レベルを使用してコンソールに出力する次のコードについて検討してください。
@@ -202,7 +202,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 host.json ファイルの詳細については、[host.json リファレンス トピック](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)を参照してください。
+**consoleLevel** の値は、`context.log` メソッドの名前に対応します。 コンソールへのすべてのトレース ログ記録を無効にするには、**consoleLevel** を _off_ に設定します。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP トリガーとバインディング
 

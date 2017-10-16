@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi;andkjell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
-ms.openlocfilehash: 3623537c80bd0e4190d1e51f289a4b194c13878d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/25/2017
-
+ms.openlocfilehash: 6cf8debc6443bb60fc5f601ea4aa392eb2f13a8f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect Sync: 技術的概念
 この記事は、 [アーキテクチャの理解](active-directory-aadconnectsync-technical-concepts.md)に関するトピックの概要です。
@@ -41,8 +40,7 @@ Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、�
 ## <a name="connector"></a>コネクタ
 接続されたディレクトリとの通信に使用されるコード モジュールをコネクタと呼びます (以前の管理エージェント (MA) に相当)。
 
-コネクタは、Azure AD Connect Sync を実行しているコンピューターにインストールされます。
-コネクタを使用すると、特殊なエージェントをデプロイすることに依存せず、リモート システム プロトコルを使用することで、エージェントレスでのやり取りが可能になります。 つまり、リスクが低減され、デプロイにかかる時間が短縮されます。これは、重要なアプリケーションとシステムを扱う場合に顕著です。
+コネクタは、Azure AD Connect Sync を実行しているコンピューターにインストールされます。コネクタを使用すると、特殊なエージェントをデプロイすることに依存せず、リモート システム プロトコルを使用することで、エージェントレスでのやり取りが可能になります。 つまり、リスクが低減され、デプロイにかかる時間が短縮されます。これは、重要なアプリケーションとシステムを扱う場合に顕著です。
 
 上の図では、コネクタはコネクタ スペースと同じです。外部システムとのすべての通信に及んでいます。
 
@@ -91,4 +89,3 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
-

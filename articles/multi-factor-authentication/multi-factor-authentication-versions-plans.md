@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: kgremban
+ms.openlocfilehash: cacb027fad4127072e542f554373881932870841
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: c47ca818bd77291338de6e90e5dd27465475e868
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -66,7 +65,6 @@ ms.lasthandoff: 08/29/2017
 | 信頼済みデバイスの MFA の記憶 |● |● |● |
 | MFA の SDK | | |● (Multi-Factor Authentication プロバイダーと完全な Azure サブスクリプションが必要) |
 | オンプレミス アプリケーション用の MFA | | |● |
-| 条件付きアクセス ポリシー | | | ● |
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 Azure Multi-Factor Authentication で提供されるすべての機能を利用するには、次のような方法があります。

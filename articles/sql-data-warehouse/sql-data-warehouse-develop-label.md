@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9e75bbe528a427724a623305fbd45e2277e9d0af
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-labels-to-instrument-queries-in-sql-data-warehouse"></a>SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
 SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポートします。 難解な領域に入る前に、1 つの例を説明しましょう。
@@ -61,4 +60,3 @@ WHERE   r.[label] = 'My Query Label'
 <!--MSDN references-->
 
 <!--Other Web references-->
-

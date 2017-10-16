@@ -1,6 +1,6 @@
 ---
-title: Create an offer in Azure Stack | Microsoft Docs
-description: As a cloud administrator, learn how to create an offer for your tenants in Azure Stack.
+title: "Azure Stack でのオファーの作成 | Microsoft Docs"
+description: "クラウド管理者が Azure Stack でユーザーのオファーを作成する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,42 +14,43 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: erikje
+ms.openlocfilehash: 269a6106f657536ba74be366f842b2f9cd86c5dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 3d7360a1fb1c0cf42d77b3f39bf92c30438c2e01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-offer-in-azure-stack"></a>Create an offer in Azure Stack
-[Offers](azure-stack-key-features.md) are groups of one or more plans that providers present to tenants to purchase or subscribe to. This document shows you how to create an offer that includes the [plan that you created](azure-stack-create-plan.md) in the last step. This offer gives subscribers the ability to provision virtual machines.
+# <a name="create-an-offer-in-azure-stack"></a>Azure Stack でのオファーの作成
 
-1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external) > click **New** > **Tenant Offers + Plans** > **Offer**.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+[オファー](azure-stack-key-features.md)は、プロバイダーがユーザーに提示する 1 つまたは複数のプランのグループで、ユーザーはそれを購入またはサブスクライブします。 ここでは、最後の手順で[作成したプラン](azure-stack-create-plan.md)を含むオファーを作成する方法について説明します。 このオファーのサブスクライバーは仮想マシンをプロビジョニングすることができます。
+
+1. Azure Stack 管理者ポータルに (https://adminportal.local.azurestack.external) にサインインし、**[新規]** > **[テナントのプラン]** > **[オファー]** をクリックします。
 
    ![](media/azure-stack-create-offer/image01.png)
-2. In the **New Offer** blade, fill in **Display Name** and **Resource Name**, and then select a new or existing **Resource Group**. The Display Name is the offer's friendly name and is the only information about the offer that the users will see when subscribing. Therefore, be sure to use an intuitive name that helps the user understand what comes with the offer. Only the admin can see the Resource Name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
+2. **[新しいプラン]** ブレードの **[表示名]** と **[リソース名]** に入力し、新規または既存の **[リソース グループ]** を選択します。 [表示名] はオファーのフレンドリ名であり、ユーザーがサブスクライブするときに表示されるオファーに関する唯一の情報です。 そのため、ユーザーがオファーで提供される内容を理解できるように、わかりやすい名前を付けてください。 リソース名は、管理者のみが表示できます。 この名前を使用して、管理者はオファーを Azure リソース マネージャーのリソースとして操作します。
 
    ![](media/azure-stack-create-offer/image01a.png)
-3. Click **Base plans** and, in the **Plan** blade, select the plans you want to include in the offer, and then click **Select**. Click **Create** to create the offer.
+3. **[基本プラン]** をクリックし、**[プラン]** ブレードで、オファーに含めるプランを選択し、**[選択]** をクリックします。 **[作成]** をクリックしてオファーを作成します。
 
    ![](media/azure-stack-create-offer/image02.png)
-4. Click **All Resources**, search for your new offer, click on the new offer, click **Change State**, and then click **Public**.
+4. **[すべてのリソース]** をクリックし、新しいオファーを検索して新しいオファーをクリックします。**[状態の変更]** をクリックし、**[パブリック]** をクリックします。
 
    ![](media/azure-stack-create-offer/image03.png)
 
-Offers must be made public for tenants to get the full view when subscribing. Offers can be:
+サブスクライブ時にユーザーが完全なビューを取得するために、オファーはパブリックにする必要があります。 オファーの状態:
 
-* **Public**: Visible to tenants.
-* **Private**: Only visible to the cloud administrators. Useful while drafting the plan or offer, or if the cloud administrator wants to approve every subscription.
-* **Decommissioned**: Closed to new subscribers. The cloud administrator can use decommissioned to prevent future subscriptions, but leave current subscribers untouched.
+* **パブリック**: ユーザーに表示されます。
+* **プライベート**: クラウド管理者にのみ表示されます。 プランまたはオファーの下書き作成や、クラウド管理者がすべてのサブスクリプションを承認する必要がある場合に便利です。
+* **使用停止**: 新しいサブスクライバーに公開されません。 クラウド管理者は [使用停止] を使って、既存のサブスクライバーを変更することなく、以降のサブスクリプションを回避することができます。
 
-Changes to the offer are not immediately visible to the tenant. To see the changes, you might have to logout/login to see the new subscription in the “Subscription picker” when creating resources/resource groups.
+オファーの変更は、ユーザーにすぐに表示されるわけではありません。 変更を表示するには、新しいリソース/リソース グループを作成するときにログアウト/ログインして、"サブスクリプションの選択" に新しいサブスクリプションを表示する必要があります。
 
 > [!NOTE]
->You can also create default offers, plans, and quotas by using PowerShell as explained in the [Azure Stack Service Administrator readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
+>また、[Azure Stack Service Administrator の readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin) の説明に従って、PowerShell を使用して既定のオファー、プラン、クォータを作成することもできます。
 >
 
 
-## <a name="next-steps"></a>Next steps
-[Subscribe to an offer and then provision a VM](azure-stack-subscribe-plan-provision-vm.md)
-
+### <a name="next-steps"></a>次のステップ
+[プランへのサブスクライブと VM のプロビジョニングに関するページ](azure-stack-subscribe-plan-provision-vm.md)

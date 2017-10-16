@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a293c06f2e9bca8790832ecb851c89b04e76bb24
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する | Microsoft Docs
 
@@ -270,4 +268,3 @@ $restoredDb
 - サービスによって生成された自動バックアップについては、[自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 - バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 - バックアップからの復元については、[バックアップからの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-

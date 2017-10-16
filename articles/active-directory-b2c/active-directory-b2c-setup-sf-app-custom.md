@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/11/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 269cbd80fb6e861fa8588025eec70b6c6e2890d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C: SAML を利用した、Salesforce アカウントでのサインイン
 
@@ -118,7 +117,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
     2. **名前**を入力します (たとえば、SAMLSigningCert)。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
     3. 証明書を選択するには、**ファイルのアップロード コントロール**を選択します。 
     4. PowerShell スクリプトで設定した証明書のパスワードを入力します。
-3. ページの下部にある **[Create]**」を参照してください。
+3. **Create** をクリックしてください。
 4. キー (たとえば、B2C_1A_SAMLSigningCert) を作成したことを確認します。 フルネームをメモします (*B2C_1A_* を含む)。 ポリシーで、後でこのキーを参照します。
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>基本ポリシーでの Salesforce SAML 要求プロバイダーの作成
@@ -256,4 +255,3 @@ ID プロバイダー ボタンが所定の位置に配置されたので、ボ�
 ## <a name="next-steps"></a>次のステップ
 
 [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にフィードバックを提供します。
-

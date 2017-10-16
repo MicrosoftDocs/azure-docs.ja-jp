@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
@@ -108,7 +106,7 @@ ms.lasthandoff: 08/23/2017
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS 準拠)</li><li>SHA384Cng (FIPS 準拠)</li><li>SHA256Cng (FIPS 準拠)</li><li>SHA512Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA512 を使用)</li><li>SHA384Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA384 を使用)</li><li>SHA256Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA256 を使用)</li><li>SHA512CryptoServiceProvider (FIPS 準拠)</li><li>SHA256CryptoServiceProvider (FIPS 準拠)</li><li>SHA384CryptoServiceProvider (FIPS 準拠)</li></ul>| 
+| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS 準拠)</li><li>SHA384Cng (FIPS 準拠)</li><li>SHA256Cng (FIPS 準拠)</li><li>SHA512Managed (非 FIPS 準拠) (SHA512 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA384Managed (非 FIPS 準拠) (SHA384 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA256Managed (非 FIPS 準拠) (SHA256 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA512CryptoServiceProvider (FIPS 準拠)</li><li>SHA256CryptoServiceProvider (FIPS 準拠)</li><li>SHA384CryptoServiceProvider (FIPS 準拠)</li></ul>| 
 
 ## <a id="strong-db"></a>強力な暗号化アルゴリズムを使用してデータベース内のデータを暗号化する
 

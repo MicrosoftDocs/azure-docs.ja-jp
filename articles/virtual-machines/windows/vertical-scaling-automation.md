@@ -16,14 +16,12 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: ea5169c1a95f00e78ae3f5f177812466eb7a0deb
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Azure Automation を使用して Windows VM を垂直方向にスケーリングする
 
 垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。 Azure では、仮想マシンのサイズを変更することで実行できます。 これは、次のようなシナリオで役立ちます。
@@ -93,5 +91,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 ![アラートを仮想マシン 1 に追加](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![アラートを仮想マシン 2 に追加](./media/vertical-scaling-automation/add-alert-webhook-2.png)
-
 

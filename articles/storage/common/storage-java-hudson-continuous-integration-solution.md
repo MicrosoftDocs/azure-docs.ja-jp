@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e54bedff5f744004288e132efbed8c3e7981f8a6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -80,9 +79,9 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
    
-    b. 同様に、 [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
+    b. 同様に、[Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
    
-    c. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、 [Azure Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
+    c. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、[Azure Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
    
     d. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
    

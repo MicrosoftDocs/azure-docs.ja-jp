@@ -26,9 +26,17 @@ sections:
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_net.svg'
+              src: 'https://docs.microsoft.com/azure/app-service-web/media/index/logo_net.svg'
             text: .NET
-            href: 'https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet'
+            href: service-fabric-quickstart-dotnet
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux コンテナー
+            href: service-fabric-quickstart-containers-linux
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
+            text: Windows コンテナー
+            href: service-fabric-quickstart-containers
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
@@ -38,6 +46,8 @@ sections:
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET アプリケーションのデプロイ</a>
           - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">既存の .NET アプリケーションのリフト アンド シフト</a>
+          - html: <a href="service-fabric-tutorial-create-container-images">Linux コンテナー アプリの作成</a>
+          - html: <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> または <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> クラスターの作成と管理
   - title: 無料の Pluralsight ビデオ トレーニング
     items:
       - type: list
@@ -47,25 +57,38 @@ sections:
           - title: .NET を使用した開発
             href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
             image:
-              src: 'https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
           - title: クラウド パートナーとアーキテクチャ
             href: 'https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7'
             image:
-              src: 'https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7'
+  - title: 概念
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="service-fabric-overview-microservices">マイクロサービスの概要</a>
+          - html: <a href="service-fabric-content-roadmap">全体像</a>
+          - html: <a href="service-fabric-application-scenarios">アプリケーションのシナリオ</a>
+          - html: <a href="service-fabric-patterns-and-scenarios">パターンとシナリオ</a>
+          - html: <a href="service-fabric-architecture">アーキテクチャ</a>
+          - html: <a href="service-fabric-technical-overview">用語集</a>
   - title: サンプル
     items:
+      - type: paragraph
+        text: 一般的な管理タスクに使用されるスクリプトをご覧ください。
       - type: list
         style: cards
         className: cardsD
         items:
           - title: スクリプトのサンプル
-            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p>
+            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p><p><a href="samples-cli">Service Fabric CLI</a></p>
           - title: .NET
-            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-getting-started/">使用の開始</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-web-reference-app/">Web リファレンス</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-watchdog-service/">ウォッチドッグ</a></p>'
+            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/">使用の開始</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/">Web リファレンス</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/">ウォッチドッグ</a></p>'
           - title: Java
-            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-java-getting-started/">使用の開始</a></p>'
+            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/">使用の開始</a></p>'
   - title: リファレンス
     items:
       - type: list
@@ -73,7 +96,7 @@ sections:
         className: cardsD
         items:
           - title: コマンド ライン
-            html: <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">PowerShell (Azure)</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
+            html: <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="/powershell/module/azurerm.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
           - title: 言語
             html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p>
           - title: REST ()

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b7ad7b91c6b836f26b45959ef65a99666a4bf69a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
 
@@ -140,7 +139,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 
 ### <a name="create-the-biztalk-services-project"></a>BizTalk Services プロジェクトを作成する
 1. Visual Studio ソリューションで、InvoiceProcessingBridge プロジェクトを展開し、 **MessageFlowItinerary.bcs** ファイルを開きます。
-2. キャンバスの任意の場所をクリックし、[プロパティ] ボックスの **[BizTalk サービスの URL]** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
+2. キャンバスの任意の場所をクリックし、プロパティ ボックスの **BizTalk サービスの URL** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
    
    ![][7]  
 3. ツールボックスから、 **XML 一方向ブリッジ** をキャンバスにドラッグします。 ブリッジの **[エンティティ名]** プロパティと **[相対アドレス]** プロパティを **ProcessInvoiceBridge** に設定します。 **[ProcessInvoiceBridge]** をダブルクリックし、ブリッジ構成画面を開きます。
@@ -227,7 +226,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 このトピックでは、サンプルの一部として提供される **チュートリアル クライアント** アプリケーションを使用して、ソリューションをテストする方法について説明します。  
 
 1. Visual Studio で、F5 を押して、 **チュートリアル クライアント**を起動します。
-2. この画面には、Service Bus キューを作成する手順で用いた値が事前入力されています。 **[次へ]**をクリックします。
+2. この画面には、Service Bus キューを作成する手順で用いた値が事前入力されています。 **[次へ]** をクリックします。
 3. 次のウィンドウで、BizTalk Services サブスクリプションの ACS 資格情報と、EAI ブリッジおよび EDI (受信) ブリッジがデプロイされているエンドポイントを入力します。
    
    EAI ブリッジのエンドポイントは前の手順でコピーしています。 EDI 受信ブリッジのエンドポイントは、BizTalk Services ポータルで、[契約]、[受信の設定]、[トランスポート]、[エンドポイント] の順に進んで確認できます。
@@ -253,10 +252,10 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 
 1. BizTalk Services ポータルで、前に作成した契約をクリックします。 [送信の設定]、[バッチ処理]、[バッチの追加] の順にクリックします。
 2. バッチ名に「**InvoiceBatch**」と入力し、説明を入力して、**[次へ]** をクリックします。
-3. 一括処理するメッセージを定義するバッチ条件を指定します。 このソリューションでは、すべてのメッセージを一括処理します。 そのため、[詳細な定義を使用する] オプションを選択し、「 **1 = 1**」と入力します。 これは常に真になる条件であるため、すべてのメッセージが一括処理されます。 **[次へ]**をクリックします。
+3. 一括処理するメッセージを定義するバッチ条件を指定します。 このソリューションでは、すべてのメッセージを一括処理します。 そのため、[詳細な定義を使用する] オプションを選択し、「 **1 = 1**」と入力します。 これは常に真になる条件であるため、すべてのメッセージが一括処理されます。 **[次へ]** をクリックします。
    
    ![][17]  
-4. バッチ リリース条件を指定します。 ドロップダウン リストから、**[MessageCountBased]** を選択し、**[カウント]** に「**3**」を指定します。 これで、3 つのメッセージをまとめたバッチが Northwind に送信されます。 **[次へ]**をクリックします。
+4. バッチ リリース条件を指定します。 ドロップダウン リストから、**[MessageCountBased]** を選択し、**[カウント]** に「**3**」を指定します。 これで、3 つのメッセージをまとめたバッチが Northwind に送信されます。 **[次へ]** をクリックします。
    
    ![][18]  
 5. 概要を確認し、 **[保存]**をクリックします。 **[デプロイ]** をクリックし、契約を再デプロイします。
@@ -281,5 +280,4 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 [16]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-16.PNG  
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG  
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
-
 

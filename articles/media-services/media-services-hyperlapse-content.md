@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.lasthandoff: 03/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル
 Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成するメディア プロセッサ (MP) です。  [Microsoft Research のデスクトップ版 Hyperlapse Pro および電話ベースの Hyperlapse Mobile](http://aka.ms/hyperlapse)とはクラウド ベースの兄弟である、Azure Media Services 向けの Microsoft Hyperlapse では大規模な Azure Media Services メディア処理プラットフォームを利用して、Hyperlapse の一括処理を水平方向にスケーリングし、並列化します。
@@ -36,7 +35,7 @@ Azure Media Hyperlapse の最新の更新プログラムについては、 [Medi
 ## <a name="hyperlapse-an-asset"></a>Hyperlapse における資産
 最初に、必要な入力ファイルを Azure Media Services にアップロードする必要があります。  コンテンツのアップロードと管理に関する概念の詳細については、 [コンテンツ管理の記事](media-services-portal-vod-get-started.md)をお読みください。
 
-### <a name="a-idconfigurationaconfiguration-preset-for-hyperlapse"></a><a id="configuration"></a>Hyperlapse の構成プリセット
+### <a id="configuration"></a>Hyperlapse の構成プリセット
 コンテンツを Media Services アカウントにアップロードしたら、構成プリセットを作成する必要があります。  次の表では、ユーザー指定のフィールドについて説明します。
 
 | フィールド | Description |
@@ -75,7 +74,7 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
         }
     }
 
-### <a name="a-idsamplecodea-microsoft-hyperlapse-with-the-ams-net-sdk"></a><a id="sample_code"></a> AMS .NET SDK を使用する Microsoft Hyperlapse
+### <a id="sample_code"></a> AMS .NET SDK を使用する Microsoft Hyperlapse
 次のメソッドは、資産としてメディア ファイルをアップロードし、Azure Media Hyperlapse メディア プロセッサでジョブを作成します。
 
 > [!NOTE]
@@ -199,7 +198,7 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
         return processor;
     }
 
-### <a name="a-idfiletypesasupported-file-types"></a><a id="file_types"></a>サポートされるファイルの種類
+### <a id="file_types"></a>サポートされるファイルの種類
 * MP4
 * MOV
 * WMV
@@ -214,5 +213,4 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

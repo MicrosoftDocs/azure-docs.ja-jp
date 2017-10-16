@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/7/2017
 ms.author: sromeroz
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 8c2154fcf33537358b549395d15b4ba937371cd0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する

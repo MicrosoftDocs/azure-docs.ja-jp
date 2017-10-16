@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: adff529bfdc40006666cc643d49a302d7f1d09ad
-ms.contentlocale: ja-jp
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
@@ -69,4 +69,3 @@ var msalconfig = {
 <code>Enter_the_Application_Id_here</code> を、さきほど登録したアプリケーション ID に置き換えます
 </li>
 </ol>
-

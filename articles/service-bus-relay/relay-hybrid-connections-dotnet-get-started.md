@@ -14,14 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-relay-hybrid-connections"></a>Relay ハイブリッド接続の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
@@ -77,5 +75,4 @@ Relay にメッセージを送信するために、Visual Studio を使って C#
 * [Relay に関する FAQ](relay-faq.md)
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
-
 

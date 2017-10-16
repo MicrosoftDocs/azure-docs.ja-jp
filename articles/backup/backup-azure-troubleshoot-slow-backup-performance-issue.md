@@ -11,16 +11,14 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ac68ae449a03b6d9e77e6093531a47c905654f16
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f1aa4117b389bb127eb7235f69f587dcb715ac25
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
@@ -48,7 +46,7 @@ Windows には、これらのボトルネックを検出するための、 [パ�
 | カウンター | 状態 |
 | --- | --- |
 | Logical Disk(Physical Disk)--%idle |• 100 ～ 50% アイドル = 正常</br>• 49 ～ 20% アイドル = 警告または監視</br>• 19 ～ 0% アイドル = 重大または基準不適合 |
-| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (全インスタンス) |要求数が 80 件の状態が 6 分超 |
 | Memory--Pool Non Paged Bytes |• プールの 60% 未満を消費 = 正常<br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
 | Memory--Pool Paged Bytes |• プールの 60% 未満を消費 = 正常</br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
@@ -89,4 +87,3 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
 * **データ転送の進行状況が UI に表示されていない**。 C:\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、FileProvider::EndData というログ エントリが記録されているかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
-

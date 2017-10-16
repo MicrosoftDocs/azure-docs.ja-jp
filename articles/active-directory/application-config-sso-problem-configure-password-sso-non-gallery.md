@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 2fc922cb591bcd9ef333fbe3d77ee3dd03005915
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 9c76b6f3495e2dd759a156fcef97b57aece8d632
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 
 この記事では、ギャラリー以外のアプリケーションで**パスワード シングル サインオン**を構成するときに直面する一般的な問題について説明します。
@@ -155,9 +153,9 @@ ms.lasthandoff: 04/18/2017
 
 3.  ソフトウェアのインストールを確認するプロンプトで、**[今すぐインストール]** を選択します。
 
-4.  お使いのブラウザーに基づいて、ダウンロード リンクが表示されます。 ブラウザーに拡張機能を**追加**します。
+4.  お使いのブラウザーに基づいて、ダウンロード リンクが表示されます。 お使いのブラウザーに拡張機能を**追加**します。
 
-5.  ブラウザーに確認メッセージが表示されたら、拡張機能を **[有効にする]** と **[許可する]** のいずれかを選択します。
+5.  お使いのブラウザーに確認メッセージが表示されたら、拡張機能を **[有効にする]** または **[許可する]** のいずれかを選択します。
 
 6.  インストールが完了したら、ブラウザー セッションを**再起動**します。
 
@@ -259,5 +257,4 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)
-
 

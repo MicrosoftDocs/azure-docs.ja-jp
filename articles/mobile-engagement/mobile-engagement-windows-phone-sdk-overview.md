@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
-ms.lasthandoff: 02/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Azure Mobile Engagement の Windows Phone Silverlight SDK 概要
 ここから Azure Mobile Engagement を Windows Phone Silverlight アプリに統合する方法についての説明を開始します。 まず試してみる場合は、「 [15 分間チュートリアル](mobile-engagement-windows-phone-get-started.md)」を完了してください。
@@ -46,12 +45,11 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 
 ### <a name="from-200-to-330"></a>2.0.0 から 3.3.0 に移行
 #### <a name="test-logs"></a>テスト ログ
-SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。 これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の&1; つに更新します。
+SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。 これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
 ### <a name="upgrade-from-older-versions"></a>古いバージョンからのアップグレード
 [Upgrade Procedures](mobile-engagement-windows-phone-upgrade-procedure.md)
-
 

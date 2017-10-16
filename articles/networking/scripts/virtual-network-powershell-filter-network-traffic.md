@@ -15,15 +15,12 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: e871ba2f370157936c2aaabc804dc9f5aea6d7ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
 
 このスクリプト サンプルは、フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへの着信ネットワーク トラフィックは、HTTP と HTTPS に制限されますが、バックエンド サブネットからインターネットへの送信トラフィックは許可されません。 スクリプトを実行すると、2 つの NIC がアタッチされた 1 つの仮想マシンが作成されます。 各 NIC は異なるサブネットに接続されます。
@@ -35,7 +32,7 @@ ms.lasthandoff: 05/27/2017
 ## <a name="sample-script"></a>サンプル スクリプト
 
 
-[!code-powershell[メイン](../../../powershell_scripts/virtual-network/filter-network-traffic/filter-network-traffic.ps1  "VM ネットワーク トラフィックのフィルター処理")]
+[!code-powershell[main](../../../powershell_scripts/virtual-network/filter-network-traffic/filter-network-traffic.ps1  "Filter VM network traffic")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -67,4 +64,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 
-その他のネットワーク PowerShell のサンプル スクリプトは、[Azure のネットワーク概要のドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)に関するページで確認できます。
+その他のネットワーク PowerShell のサンプル スクリプトは、[Azure ネットワークの概要ドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)で確認できます。

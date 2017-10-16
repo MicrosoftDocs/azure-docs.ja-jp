@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: f13fd0540b783120014b3a8d4e41f78808c7fade
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-service-issues"></a>サービスの問題に関するトラブルシューティング ガイド
 次に説明するのは、Azure モバイル エンゲージメントの実行方法に関して発生する可能性のある問題です。
@@ -89,5 +88,4 @@ ms.lasthandoff: 11/17/2016
   * 区切り文字としてコンマ「,」を使用します (サービス要求を開いて、.csv の区切り文字をコンマ「,」からセミコロン「;」などの別の文字に変更するように要求できます)。
   * ブール値の「TRUE」と「FALSE」には、すべて小文字を使用します。
   * 最大ファイル サイズの 35 MB よりも小さいファイルを使用します。
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B のリージョン間ディザスター リカバリー
 
 B2B のワークロードには、発注や請求などの金銭が関係するトランザクションが含まれます。 ビジネスでは、障害イベント時に迅速に復旧して、パートナーと合意したビジネス レベルの SLA を満たすことが重要です。 この記事では、B2B ワークロード向けのビジネス継続性計画の構築方法について説明します。 
@@ -248,5 +246,4 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 ## <a name="next-steps"></a>次のステップ
 
 [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
-
 

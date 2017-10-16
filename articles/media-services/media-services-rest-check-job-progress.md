@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
+ms.openlocfilehash: fea4383e81f3ca21955252cf1d573f1b347b5a38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 23b6c0f7abd40d67792d45e4ea0fae02efeae861
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 > [!div class="op_single_selector"]
@@ -79,4 +78,3 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ## <a name="see-also"></a>関連項目
 
 [Media Services Operations REST API の概要](media-services-rest-how-to-use.md)
-

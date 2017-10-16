@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 960a44e0df2c46cea464d9277f22f449b62e7d06
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: be282f79445c505ece7c6115df7a29c20a6a5f02
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>CLI でスナップショットから仮想マシンを作成する
 
 このスクリプトは、OS ディスクのスナップショットから仮想マシンを作成します。
@@ -34,7 +32,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[メイン](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "スナップショットから VM を作成する")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "Create VM from snapshot")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -50,13 +48,12 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | スナップショット名とリソース グループ名を使用して、スナップショットを取得します。 返されたオブジェクトの Id プロパティは、管理ディスクを作成するために作成されます。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | スナップショット ID、ディスク名、記憶域の種類、およびサイズを使用して、スナップショットから管理ディスクを作成します。  |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | 管理 OS ディスクを使用して VM を作成する |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | スナップショット名とリソース グループ名を使用して、スナップショットを取得します。 返されたオブジェクトの Id プロパティは、管理ディスクを作成するために作成されます。  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | スナップショット ID、ディスク名、記憶域の種類、およびサイズを使用して、スナップショットから管理ディスクを作成します。  |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
-

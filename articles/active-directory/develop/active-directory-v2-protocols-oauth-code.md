@@ -1,5 +1,3 @@
-
-
 ---
 title: "Azure AD v2.0 OAuth 承認コード フロー | Microsoft Docs"
 description: "Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。"
@@ -17,15 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e9da636d5dbe95ea7d0bd8cf186af30247ca8bd8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: b64413e9cc916837dc779b92117f90293c4f1d87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 プロトコル: OAuth 2.0 承認コード フロー
+# v2.0 プロトコル: OAuth 2.0 承認コード フロー
 デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。  アプリ モデル v2.0 による OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。  本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
 > [!NOTE]
@@ -35,12 +31,12 @@ ms.lasthandoff: 01/18/2017
 
 OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749)で規定されています。  [Web アプリ](active-directory-v2-flows.md#web-apps)や[ネイティブにインストールされるアプリ](active-directory-v2-flows.md#mobile-and-native-apps)を含め、大半のアプリ タイプで認証と承認を行う際にこのフローが使用されます。  アプリは、このフローによって安全に access_tokens を取得し、v2.0 エンドポイントを使用して保護されているリソースにアクセスすることができます。  
 
-## <a name="protocol-diagram"></a>プロトコルのダイアグラム
+## プロトコルのダイアグラム
 まとめると、ネイティブ/モバイル アプリケーションの全体的な認証フローは次のようになります。
 
 ![OAuth Auth Code Flow](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
-## <a name="request-an-authorization-code"></a>承認コードを要求する
+## 承認コードを要求する
 承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。  この要求で、クライアントは、ユーザーから取得する必要のあるアクセス許可を指定します。
 
 ```
@@ -78,7 +74,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ユーザーが本人であることを証明し、同意の許可を与えると、v2.0 エンドポイントは、`response_mode` パラメーターに指定されたメソッドを使い、指定された `redirect_uri` でアプリに応答を返します。
 
-#### <a name="successful-response"></a>成功応答
+#### 成功応答
 `response_mode=query` を使用した場合の正常な応答は次のようになります。
 
 ```
@@ -87,12 +83,12 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| パラメーターが含まれる必要があります。 | Description |
+| パラメーター | Description |
 | --- | --- |
 | code |アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。  承認コードは有効期間が非常に短く、通常 10 分後には期限切れとなります。 |
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
-#### <a name="error-response"></a>エラー応答
+#### エラー応答
 アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
 
 ```
@@ -101,12 +97,12 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーターが含まれる必要があります。 | Description |
+| パラメーター | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
-#### <a name="error-codes-for-authorization-endpoint-errors"></a>承認エンドポイント エラーのエラー コード
+#### 承認エンドポイント エラーのエラー コード
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
 
 | エラー コード | Description | クライアント側の処理 |
@@ -119,7 +115,7 @@ error=access_denied
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明できます。 |
 | invalid_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 |これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
 
-## <a name="request-an-access-token"></a>アクセス トークンを要求する
+## アクセス トークンを要求する
 ユーザーから authorization_code を取得し、アクセス許可を得たら、`POST` 要求を `/token` エンドポイントに送信することで `access_token` の `code` を目的のリソースに対して使うことができます。
 
 ```
@@ -152,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |必須 |authorization_code の取得に使用された同じ redirect_uri 値。 |
 | client_secret |Web アプリの場合は必須 |アプリ登録ポータルで作成した、アプリケーションのシークレット。  ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。  Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。 |
 
-#### <a name="successful-response"></a>成功応答
+#### 成功応答
 正常なトークン応答は次のようになります。
 
 ```
@@ -174,7 +170,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | refresh_token |OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。  Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。  詳細については、 [v2.0 トークン リファレンス](active-directory-v2-tokens.md)を参照してください。 |
 | id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 |
 
-#### <a name="error-response"></a>エラー応答
+#### エラー応答
 エラー応答は次のようになります。
 
 ```
@@ -199,7 +195,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | trace_id |診断に役立つ、要求の一意の識別子。 |
 | correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
-#### <a name="error-codes-for-token-endpoint-errors"></a>トークン エンドポイント エラーのエラー コード
+#### トークン エンドポイント エラーのエラー コード
 | エラー コード | Description | クライアント側の処理 |
 | --- | --- | --- |
 | invalid_request |必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 |
@@ -211,7 +207,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | interaction_required |要求にユーザーの介入が必要です。 たとえば、追加の認証手順が必要です。 |同じリソースで要求を再試行します。 |
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明できます。 |
 
-## <a name="use-the-access-token"></a>アクセス トークンを使用する
+## アクセス トークンを使用する
 `access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。
 
 > [!TIP]
@@ -225,7 +221,7 @@ Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="refresh-the-access-token"></a>アクセス トークンを更新する
+## アクセス トークンを更新する
 アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。  アクセス トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
 
 ```
@@ -258,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |必須 |authorization_code の取得に使用された同じ redirect_uri 値。 |
 | client_secret |Web アプリの場合は必須 |アプリ登録ポータルで作成した、アプリケーションのシークレット。  ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。  Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。 |
 
-#### <a name="successful-response"></a>成功応答
+#### 成功応答
 正常なトークン応答は次のようになります。
 
 ```
@@ -280,7 +276,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | refresh_token |新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 |
 | id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 |
 
-#### <a name="error-response"></a>エラー応答
+#### エラー応答
 ```
 {
   "error": "invalid_scope",
@@ -304,5 +300,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 エラー コードとクライアントに推奨される対処法については、「 [トークン エンドポイント エラーのエラー コード](#error-codes-for-token-endpoint-errors)」を参照してください。
-
 

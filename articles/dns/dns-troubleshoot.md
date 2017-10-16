@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: bae6cf7f5025936deba301dc4fd05f6fd5fd8fa6
 ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 
 このページには、Azure DNS についてよく寄せられる質問のトラブルシューティング情報が示されています。
@@ -29,10 +29,10 @@ ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
 
 ## <a name="i-cant-create-a-dns-zone"></a>DNS ゾーンを作成できない
 
-一般的な問題を解決するには、次の手順のうち&1; つ以上を試してください。
+一般的な問題を解決するには、次の手順のうち 1 つ以上を試してください。
 
 1.  Azure DNS 監査ログを確認して、失敗の理由を特定します。
-2.  各 DNS ゾーン名は、リソース グループ内で一意である必要があります。 つまり、同じ名前の&2; つの DNS ゾーンがリソース グループを共有することはできません。 別のゾーン名 (別のリソース グループ) を使用してみてください。
+2.  各 DNS ゾーン名は、リソース グループ内で一意である必要があります。 つまり、同じ名前の 2 つの DNS ゾーンがリソース グループを共有することはできません。 別のゾーン名 (別のリソース グループ) を使用してみてください。
 3.  "サブスクリプション {サブスクリプション ID} のゾーンが最大数に達したか、最大数を超えました" というエラー メッセージが表示される場合があります。 別の Azure サブスクリプションを使用するか、ゾーンのいくつかを削除するか、Azure サポートに連絡してサブスクリプションの上限を引き上げてください。
 4.  "ゾーン '{ゾーン名}' は使用できません" というエラー メッセージが表示される場合があります。 このエラーは、Azure DNS で、この DNS ゾーンのネーム サーバーを割り当てることができなかったことを示します。 別のゾーン名を使用してみてください。 ドメイン名の所有者である場合は、Azure サポートに連絡してください。Azure サポートがネーム サーバーを割り当てます。
 
@@ -45,7 +45,7 @@ ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
 
 ## <a name="i-cant-create-a-dns-record"></a>DNS レコードを作成できない
 
-一般的な問題を解決するには、次の手順のうち&1; つ以上を試してください。
+一般的な問題を解決するには、次の手順のうち 1 つ以上を試してください。
 
 1.  Azure DNS 監査ログを確認して、失敗の理由を特定します。
 2.  レコード セットが既にありますか。  Azure DNS では、レコード *セット*を使用してレコードを管理します。レコード セットは、同じ名前で同じ種類のレコードのコレクションです。 名前と種類が同じであるレコードが既に存在する場合、別のこのようなレコードを追加するには、既存のレコード セットを編集する必要があります。
@@ -104,10 +104,4 @@ SRV レコード名の例 (サービス名が "sip"、プロトコルが "tcp") 
 * [Azure DNS ゾーンとレコード](dns-zones-records.md)について学習します
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。
 * 既存の DNS ゾーンを移行する場合は、[DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)の実行方法を確認してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -12,14 +12,12 @@ ms.date: 05/15/2017
 ms.topic: article
 ms.author: markgal,masaran
 manager: carmonm
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: 3608c310f43ff9f97563d252437d50d962162f47
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
 この記事では、Azure Backup Server で保護できるさまざまなサーバーおよびワークロードを一覧表示します。 次のマトリックスは、Azure Backup Server v1 および v2 で保護できる内容を一覧表示しています。
@@ -112,4 +110,3 @@ Azure Backup Server は、次のクラスタ化されたアプリケーション
 -   SQL Server - Azure Backup Server は、クラスター共有ボリューム (CSV) 上にホストされた SQL Server データベースのバックアップをサポートしていません。
 
 Azure Backup Server は、DPM サーバーと同じドメイン内、および子または信頼できるドメイン内に配置されたクラスター ワークロードを保護できます。 信頼されていないドメインまたはワークグループ内のデータ ソースを保護する場合は、単一サーバーに対しては NTLM または証明書認証、クラスターに対しては証明書認証のみを使用します。
-

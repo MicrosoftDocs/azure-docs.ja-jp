@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2016
 ms.author: v-livech
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 2e46a0f3c9bdbe267d121b4bf62e25d5d411fcc2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="join-a-redhat-linux-vm-to-an-azure-active-directory-domain-service"></a>Red Hat Linux VM を Azure Active Directory ドメインサービスに参加させる
 
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Active Directory Domain Services (AADDS) の管理対象ドメインに参加させる方法について説明します。  要件は次のとおりです。
@@ -112,4 +110,3 @@ ssh -l ahmet@mydomain.com mydomain.cloudapp.net
 * [Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure (RHUI)](update-infrastructure-redhat.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Resource Manager の仮想マシンの Key Vault を設定する](key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

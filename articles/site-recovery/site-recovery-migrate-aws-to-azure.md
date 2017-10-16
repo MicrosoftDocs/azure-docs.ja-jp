@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/31/2017
 ms.author: bsiva
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b3c0727a279649f4f7dae30d41027129ce5b04ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-virtual-machines-in-amazon-web-services-aws-to-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Amazon Web Services (AWS) から Azure に仮想マシンを移行する
 
@@ -81,4 +80,3 @@ Site Recovery を使用すると、次のどのオペレーティング シス�
 
 - ディザスター リカバリーの要件に沿って、[移行したマシンを別のリージョンにレプリケートできるように準備する](site-recovery-azure-to-azure-after-migration.md)
 - [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)してワークロードの保護を開始する
-

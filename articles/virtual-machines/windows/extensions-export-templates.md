@@ -15,13 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: cc3c705f1c9123de75ced016a5b39eb1a86b0f73
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 
 Azure リソース グループを、再デプロイ可能な新しい Resource Manager テンプレートにエクスポートできます。 エクスポート プロセスでは、既存のリソースが解釈され、Resource Manager テンプレートが作成されます。これは、デプロイされると同様のリソース グループになります。 仮想マシン拡張機能を含むリソース グループに対してリソース グループのエクスポート オプションを使用する場合、拡張機能の互換性や保護された設定など、いくつかの項目について考慮する必要があります。
@@ -165,4 +164,3 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 ```
 
 この時点で、任意のテンプレート デプロイ方法を使用して、テンプレートをデプロイできます。
-

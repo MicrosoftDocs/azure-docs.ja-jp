@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 09/25/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d9849b5e061dd7f2ae0744a3522dc2eb1fb37035
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 84bddd0cb6e53786d3aafb3f7acde34b7e19f83b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -120,22 +120,22 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します｡ 次のようにして Jenkins の初期設定を行います｡
 
 - 前の手順で VM から入手した *initialAdminPassword* を入力します｡
-- [**Select plugins to install**] をクリックします｡
-- 最上部にあるテキスト ボックスで *GitHub* を検索し､*GitHub プラグイン* を選択して､[**インストール**] をクリックします｡
+- **[Select plugins to install]** を選択します。
+- 最上部にあるテキスト ボックスで *GitHub* を検索し、*GitHub プラグイン* を選択して、**[インストール]** を選択します。
 - 必要に応じてフォームに必要事項を入力して､Jenkins ユーザー アカウントを作成します｡ セキュリティの観点からは､既定の管理者アカウントを使い続けずに､ここで最初の Jenkins ユーザーを作成します｡
-- 完了したら､[**Start using Jenkins**] をクリックします｡
+- 完了したら、**[Start using Jenkins]** を選択します。
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook を作成する
-GitHub との統合を構成するには､Azures サンプル リポジトリから [Node.js Hello World サンプル アプリ](https://github.com/Azure-Samples/nodejs-docs-hello-world) を開きます｡ 自身の GitHub アカウントにリポジトリをフォークするには､右上隅の [**Fork**] ボタンをクリックします｡
+GitHub との統合を構成するには､Azures サンプル リポジトリから [Node.js Hello World サンプル アプリ](https://github.com/Azure-Samples/nodejs-docs-hello-world) を開きます｡ 自身の GitHub アカウントにリポジトリをフォークするには、右上隅の **[Fork]** ボタンを選択します。
 
 作成したフォーク内に webhook を作成します｡
 
-- [**Settings**] をクリックして､左側から[**Integrations & services**] を選択します｡
-- [**Add service**] をクリックし､フィルター ボックスに *Jenkins* と入力します｡
+- **[Settings]** を選択して、左側の **[Integrations & services]** を選択します。
+- **[Add service]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
 - *Jenkins (GitHub plugin)* を選択します｡
 - **Jenkins フック用 URL** として `http://<publicIps>:8080/github-webhook/` を入力します｡ 末尾のスラッシュ (/) を含めていることを確認します。
-- [**Add service**] をクリックします｡
+- **[Add service]** を選択します。
 
 ![フォークしたレポジトリに GitHub webhook を追加します｡](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -143,28 +143,28 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 ## <a name="create-jenkins-job"></a>Jenkins ジョブを作成する
 コード コミットなどの GitHub 内のイベントに Jenkins が応答するようにするには､Jenkins ジョブを作成します｡ 
 
-Jenkins Web サイトのホームページから [**Create new jobs**] をクリックします｡
+Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
 - ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
 - [**General**] セクションから **GitHub** プロジェクトを選択し､フォークしたレポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します｡
 - [**Source code management**] セクションから**Git** を選択し､フォークしたレポジトリ *.git* の URL を入力します(例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)｡
 - [**Build Triggers**] セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 - **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **Execute shell** を選択し､コマンド ウィンドウに `echo "Testing"` を入力します｡
-- ジョブ ウィンドウの下部にある **[保存]** をクリックします。
+- ジョブ ウィンドウの下部にある **[保存]** を選択します。
 
 
 ## <a name="test-github-integration"></a>GitHub 統合をテストする
 Jenkins との GitHub の統合をテストするには､フォークの変更をコミットします｡ 
 
-GitHub の Web UI に戻り､フォークしたレポジトリを選択して､**index.js** ファイルをクリックします｡ 鉛筆アイコンをクリックして､このファイルを編集し､6 行目を次のように変更します｡
+GitHub の Web UI に戻り、フォークしたレポジトリを選択して、**index.js** ファイルを選択します。 鉛筆アイコンを選択して、このファイルを編集し、6 行目を次のように変更します。
 
 ```nodejs
 response.end("Hello World!");
 ```
 
-変更をコミットするには､下部にある [**変更をコミット**] ボタンをクリックします。
+変更をコミットするには、下部にある **[変更をコミット]** ボタンを選択します。
 
-Jenkins ジョブ ページ左下隅の [**Build history**] セクションで新しいビルドが開始されます｡ ビルド番号のリンクをクリックし､左側の **Console output** を選択します｡ GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに､webhook は Jenkins にアクセスし､新しいビルドをトリガーします｡
+Jenkins ジョブ ページ左下隅の [**Build history**] セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに､webhook は Jenkins にアクセスし､新しいビルドをトリガーします｡
 
 
 ## <a name="define-docker-build-image"></a>Docker ビルド イメージを定義する
@@ -195,10 +195,10 @@ COPY index.js /var/www/
 ## <a name="create-jenkins-build-rules"></a>Jenkins ビルド ルールを作成する
 前の手順では、コンソールにメッセージを出力する基本的な Jenkins ビルド ルールを作成しました｡ Docker ファイルを利用するビルド ステップを作成し､アプリを実行してみましょう｡
 
-Jenkins インスタンスに戻り､前の手順で作成したジョブを選択します｡ 左側の[**Configure**] をクリックし､下方向にスクロールして [**Build**] セクションを表示します｡
+Jenkins インスタンスに戻り､前の手順で作成したジョブを選択します｡ 左側の **[Configure]** を選択し、下方向にスクロールして **[Build]** セクションを表示します。
 
-- 既存の `echo "Test"` ビルド ステップを削除します｡ 既存のビルド ステップ ボックスの右上隅にある赤い十字をクリックします｡
-- [**Add build step**] をクリックして､[**Execute shell**] を選択します｡
+- 既存の `echo "Test"` ビルド ステップを削除します｡ 既存のビルド ステップ ボックスの右上隅にある赤い十字を選択します。
+- **[Add build step]** を選択して、**[Execute shell]** を選択します。
 - **[コマンド]** ボックスに次の Docker コマンドを入力して、**[保存]** を選択します。
 
   ```bash
@@ -211,7 +211,7 @@ Docker ビルドステップはイメージを作成し､イメージの履歴�
 
 
 ## <a name="test-your-pipeline"></a>パイプラインをテストする
-動作中のパイプライン全体を表示するには､､フォークした GitHub レポジトリ内の *index.js* ファイルを再び編集し､[**Commit change**] をクリックします｡ GitHub の webhook に基づき Jenkins で新しいジョブが開始されます｡ Docker イメージを作成して､新しいコンテナー内でアプリを起動するには､数秒の時間がかかります｡
+動作中のパイプライン全体を表示するには、フォークした GitHub レポジトリ内の *index.js* ファイルを再び編集し、**[Commit change]** を選択します。 GitHub の webhook に基づき Jenkins で新しいジョブが開始されます｡ Docker イメージを作成して､新しいコンテナー内でアプリを起動するには､数秒の時間がかかります｡
 
 必要に応じて､再度､VM のパブリック IP アドレスを入手します｡
 
@@ -219,11 +219,11 @@ Docker ビルドステップはイメージを作成し､イメージの履歴�
 az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publicIps] --o tsv
 ```
 
-Web ブラウザーを開いて､`http://<publicIps>:1337` を入力します｡ Node.js アプリが表示され､次のようにGitHub フォークに最新のコミットが反映されています｡
+Web ブラウザを開いて､`http://<publicIps>:1337` を入力します｡ Node.js アプリが表示され､次のようにGitHub フォークに最新のコミットが反映されています｡
 
 ![実行中の Node.js アプリ](media/tutorial-jenkins-github-docker-cicd/running_nodejs_app.png)
 
-GitHub 内の *index.js* ファイルをもう一度編集し､変更をコミットします｡ Jenkins でジョブが完了するのを数秒待って､Web ブラウザーを再表示し､新しいコンテナー内で動作するアプリの更新後のバージョンを確認します｡
+GitHub 内の *index.js* ファイルをもう一度編集し､変更をコミットします｡ Jenkins でジョブが完了するのを数秒待って､Web ブラウザを再表示し､新しいコンテナー内で動作するアプリの更新後のバージョンを確認します｡
 
 ![実行中の Node.js アプリ - GitHub への再コミット後](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 

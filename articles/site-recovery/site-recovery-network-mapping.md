@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: b1b8b1ebc013a5dfb69528f9353369e18f84e61f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>Site Recovery を使用した Hyper-V VM レプリケーションのネットワーク マッピングの計画
 
 
@@ -139,4 +136,3 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 ## <a name="next-steps"></a>次のステップ
 
 [ネットワーク インフラストラクチャの計画](site-recovery-network-design.md)の詳細を確認する。
-

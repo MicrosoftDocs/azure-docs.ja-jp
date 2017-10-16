@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
@@ -62,7 +61,7 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. プロンプトが表示されたら 'n' キーを押して、**新しい**パーティションを作成します。
+2. キーを押して、プロンプトを作成するには、「n」、  **n**新しいパーティション。
 
     ```bash
     Command (m for help): n
@@ -239,4 +238,3 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     # sudo yum install util-linux
     # sudo fstrim /data
     ```
-

@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [Facebook](https://www.facebook.com/) アカウント 
 
-ロジック アプリで Facebook アカウントを使用するには、Facebook アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。 
+ロジック アプリで Facebook アカウントを使用するには、Facebook アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
 
 次に、Facebook アカウントに接続するロジック アプリを承認する手順を示します。
 

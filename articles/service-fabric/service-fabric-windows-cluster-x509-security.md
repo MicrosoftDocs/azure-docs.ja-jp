@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dekapur
+ms.openlocfilehash: d66f02051279d1cfe685fdae6aa8a035f4edd5aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: ebac24385560377bac27a8b8c425323c57392bd2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護
 この記事では、スタンドアロンの Windows クラスターのさまざまなノード間の通信をセキュリティで保護する方法と、クラスターに接続するクライアントを X.509 証明書を使用して認証する方法について説明しています。 これにより、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。  証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -43,7 +42,8 @@ ms.lasthandoff: 08/12/2017
         "ClusterCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -56,7 +56,8 @@ ms.lasthandoff: 08/12/2017
         "ServerCertificateCommonNames": {
             "CommonNames": [
             {
-                "CertificateCommonName": "[CertificateCommonName]"
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint": "[Thumbprint1,Thumbprint2,Thumbprint3,...]"
             }
             ],
             "X509StoreName": "My"
@@ -108,9 +109,9 @@ ms.lasthandoff: 08/12/2017
 | **CertificateInformation の設定** | **説明** |
 | --- | --- |
 | ClusterCertificate |テスト環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
-| ClusterCertificateCommonNames |実稼働環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 1 つまたは 2 つのクラスター証明書の共通名を使用することができます。 |
+| ClusterCertificateCommonNames |実稼働環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 1 つまたは 2 つのクラスター証明書の共通名を使用することができます。 **CertificateIssuerThumbprint** は、この証明書の発行者の拇印に対応します。 共通名が同じ証明書が複数使用されている場合、複数の発行者の拇印を指定できます。|
 | ServerCertificate |テスト環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、*ClusterCertificate* と *ServerCertificate* に同じ証明書を使用することもできます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。 プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
-| ServerCertificateCommonNames |実稼働環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、*ClusterCertificateCommonNames* と *ServerCertificateCommonNames* に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
+| ServerCertificateCommonNames |実稼働環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 **CertificateIssuerThumbprint** は、この証明書の発行者の拇印に対応します。 共通名が同じ証明書が複数使用されている場合、複数の発行者の拇印を指定できます。 利便性を考えて、*ClusterCertificateCommonNames* と *ServerCertificateCommonNames* に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
 | ClientCertificateThumbprints |認証されたクライアントにインストールする証明書のセットです。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は **CertificateThumbprint** 変数で設定します。 **IsAdmin** を *true*に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 **IsAdmin** が *false*の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 役割の詳細については、「 [ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
 | ClientCertificateCommonNames |**CertificateCommonName**には、最初のクライアント証明書の共通名を設定します。 **CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。 共通名と発行者の詳細については、「 [証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx) 」を参照してください。 |
 | ReverseProxyCertificate |テスト環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護したい場合に指定することができる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
@@ -161,7 +162,8 @@ ms.lasthandoff: 08/12/2017
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName"
+                      "CertificateCommonName": "myClusterCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -169,7 +171,8 @@ ms.lasthandoff: 08/12/2017
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myServerCertCommonName"
+                      "CertificateCommonName": "myServerCertCommonName",
+                      "CertificateIssuerThumbprint": "7c fc 91 97 13 16 8d ff a8 ee 71 2b a2 f4 62 62 00 03 49 0d"
                     }
                   ],
                   "X509StoreName": "My"
@@ -218,7 +221,7 @@ ms.lasthandoff: 08/12/2017
 
 ## <a name="certificate-roll-over"></a>証明書のロール オーバー
 拇印ではなく証明書共通名を使用する場合、証明書のロール オーバーにクラスター構成のアップグレードは必要ありません。
-証明書のロール オーバーで発行者のロール オーバーも行われる場合は、新しい発行者の証明書をインストールした後、少なくとも 2 時間は古い発行者の証明書を証明書ストアに残してください。
+発行者の拇印をアップグレードする場合、新しい拇印のリストには古いリストとの共通部分が含まれるようにしてください。 まず、新しい発行者の拇印を使用して構成をアップグレードし、その後、ストアに新しい証明書 (クラスター/サーバー証明書および発行者証明書の両方) をインストールする必要があります。 新しい発行者の証明書をインストールした後、少なくとも 2 時間は古い発行者の証明書を証明書ストアに残してください。
 
 ## <a name="acquire-the-x509-certificates"></a>X.509 証明書を取得します。
 クラスター内の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。 さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、クライアント コンピューター用に証明書を取得し、インストールする必要があります。
@@ -323,5 +326,4 @@ Connect-ServiceFabricCluster $ConnectArgs
 > 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ *[アプリケーションとサービス ログ]* > *[Microsoft Service Fabric]*を参照してください。
 > 
 > 
-
 

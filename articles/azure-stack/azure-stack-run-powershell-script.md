@@ -1,6 +1,6 @@
 ---
-title: Deploy the Azure Stack Development Kit | Microsoft Docs
-description: Learn how to prepare the Azure Stack Development Kit and run the PowerShell script to deploy it.
+title: "Azure Stack Development Kit のデプロイ | Microsoft Docs"
+description: "Azure Stack Development Kit を準備し、PowerShell スクリプトを実行してそれをデプロイする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,52 +15,55 @@ ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ce2978d345262b68b177a38a978133a71da2806f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
-To deploy the development kit, you must complete the following steps:
+# <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
-1. [Download the deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try) to get the Cloudbuilder.vhdx.
-2. [Prepare the cloudbuilder.vhdx](#prepare-the-development-kit-host) by running the asdk-installer.ps1 script to configure the computer (the development kit host) on which you want to install development kit. After this step, the development kit host will boot to the Cloudbuilder.vhdx.
-3. [Deploy the development kit](#deploy-the-development-kit) on the development kit host.
+*適用先: Azure Stack Development Kit*
 
-> [!NOTE]
-> For best results, even if you want to use a disconnected Azure Stack environment, it is best to deploy while connected to the internet. That way, the Windows Server 2016 evaluation version can be activated at deployment time. If the Windows Server 2016 evaluation version is not activated within 10 days, it shuts down.
-> 
-> 
+[Azure Stack Development Kit](azure-stack-poc.md) をデプロイするには、次の手順を完了する必要があります。
 
-## <a name="download-and-extract-the-development-kit"></a>Download and extract the development kit
-1. Before you start the download, make sure that your computer meets the following prerequisites:
-
-   * The computer must have at least 60 GB of free disk space.
-   * [.NET Framework 4.6 (or a later version)](https://aka.ms/r6mkiy) must be installed.
-
-2. [Go to the Get Started page](https://azure.microsoft.com/overview/azure-stack/try/?v=try), provide your details, and click **Submit**.
-3. Under **Download the software**, click **Azure Stack Development Kit**.
-4. Run the downloaded AzureStackDownloader.exe file.
-5. In the **Azure Stack Development Kit Downloader** window, follow steps 1 through 5.
-6. After the download completes, click **Run** to launch the MicrosoftAzureStackPOC.exe.
-7. Review the License Agreement screen and information of the Self-Extractor Wizard and then click **Next**.
-8. Review the Privacy Statement screen and information of the Self-Extractor Wizard and then click **Next**.
-9. Select the Destination for the files to be extracted, click **Next**.
-   * The default is: <drive letter>:\<current folder>\Microsoft Azure Stack
-10. Review the Destination location screen and information of the Self-Extractor Wizard, and then click **Extract** to extract the CloudBuilder.vhdx (~25 GB) and ThirdPartyLicenses.rtf files. This process will take some time to complete.
+1. [デプロイ パッケージをダウンロード](https://azure.microsoft.com/overview/azure-stack/try/?v=try)して、Cloudbuilder.vhdx を取得します。
+2. 開発キットをインストールするコンピューター (開発キットのホスト) を構成するために、asdk-installer.ps1 スクリプトを実行し、[cloudbuilder.vhdx を準備](#prepare-the-development-kit-host)します。 この手順の後に、開発キットのホストは、Cloudbuilder.vhdx から起動します。
+3. 開発キットのホストに[開発キットをデプロイ](#deploy-the-development-kit)します。
 
 > [!NOTE]
-> After you extract the files, you can delete the exe and bin files to recover space on the machine. Or, you can move these files to another location so that if you need to redeploy you don’t need to download the files again.
+> インターネット接続されていない Azure Stack 環境を使用する場合でも、最適な結果を得るには、接続中にデプロイすることが最良です。 そうすることにより、Windows Server 2016 の評価バージョンがデプロイ時にアクティブ化されます。 Windows Server 2016 の評価版は、10 日以内にアクティブ化されない場合、シャットダウンされます。
 > 
 > 
 
-## <a name="prepare-the-development-kit-host"></a>Prepare the development kit host
-1. Make sure that you can physically connect to the development kit host, or have physical console access (such as KVM). You must have such access after you reboot the development kit host in step 13 below.
-2. Make sure the development kit host meets the [minimum requirements](azure-stack-deploy.md). You can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm your requirements.
-3. Sign in as the Local Administrator to your development kit host.
-4. Copy or move the CloudBuilder.vhdx file to the root of the C:\ drive (C:\CloudBuilder.vhdx).
-5. Run the following script to download the development kit installer file (asdk-installer.ps1) to the c:\AzureStack_Installer folder on your development kit host.
+## <a name="download-and-extract-the-development-kit"></a>開発キットのダウンロードと抽出
+1. ダウンロードを開始する前に、コンピューターが次の前提条件を満たしていることを確認します。
+
+   * コンピューターには、最低 60 GB のディスク空き領域があります。
+   * [.NET framework 4.6 (またはそれ以降のバージョン)](https://aka.ms/r6mkiy) がインストールされています。
+
+2. [[はじめに] ページに移動して](https://azure.microsoft.com/overview/azure-stack/try/?v=try)、詳細を入力し、**[送信]** をクリックします。
+3. **[Download the software]\(ソフトウェアをダウンロード\)** の **[Azure Stack Development Kit]** をクリックします。
+4. ダウンロードした AzureStackDownloader.exe ファイルを実行します。
+5. **Azure Stack Development Kit のダウンローダー**ウィンドウで、手順 1 から 5 を実行します。
+6. ダウンロードが完了したら **[実行]** をクリックして、MicrosoftAzureStackPOC.exe を起動します。
+7. [使用許諾契約書] 画面および自己解凍ウィザードの情報を確認し、**[次へ]** をクリックします。
+8. [プライバシーに関する声明] 画面と自己解凍ウィザードの情報を確認し、**[次へ]** をクリックします。
+9. ファイルの抽出先をクリックして、**[次へ]** をクリックします。
+   * 既定は、<drive letter>:\<current folder>\Microsoft Azure Stack です。
+10. [送信先] 画面と自己解凍ウィザードの情報を確認し、**[抽出]** をクリックして CloudBuilder.vhdx (最大 25 GB) と ThirdPartyLicenses.rtf ファイルを抽出します。 この処理には、完了までに時間がかかる場合があります。
+
+> [!NOTE]
+> ファイルを抽出したら、exe ファイルと bin ファイルを削除して、コンピューターの場所を復元できます。 または、これらのファイルを別の場所に移動すると、再度デプロイするときにファイルを再度ダウンロードする必要がありません。
+> 
+> 
+
+## <a name="prepare-the-development-kit-host"></a>開発キットのホストの準備
+1. 開発キットのホストに物理的に接続できること、および (KVM などの) 物理コンソールにアクセスできることを確認します。 このアクセスは、以下の手順 13 で開発キットのホストを再起動した後で必要になります。
+2. 開発キットのホストが[最小要件](azure-stack-deploy.md)を満たしていることを確認します。 要件を確認するには、「[Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b)」 (Azure Stack のデプロイ チェッカー) を使用してください。
+3. 開発キットのホストにローカル管理者としてサインインします。
+4. CloudBuilder.vhdx ファイルを C:\ ドライブ (C:\CloudBuilder.vhdx) のルートにコピーまたは移動します。
+5. 次のスクリプトをダウンロードして、開発キットのインストーラー ファイル (asdk installer.ps1) を開発キットのホストの c:\AzureStack_Installer フォルダーにダウンロードします。
     ```powershell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
@@ -72,82 +75,82 @@ To deploy the development kit, you must complete the following steps:
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Open an elevated PowerShell console > run the C:\AzureStack_Installer\asdk-installer.ps1 script > click **Prepare vhdx**.
-7. On the **Select Cloudbuilder vhdx** page of the installer, browse to and select the cloudbuilder.vhdx file that you downloaded in the previous steps.
-8. Optional: Check the **Add drivers** box to specify a folder containing additional drivers that you want on the host.
-9. On the **Optional settings** page, provide the local administrator account for the development kit host. If you don't provide these credentials, you'll need KVM access to the host during the install process below.
-10. Also on the **Optional settings** page, you have the option to set the following:
-    - **Computername**: This option sets the name for the development kit host. The name must comply with FQDN requirements and must be 15 characters or less in length. The default is a random computer name generated by Windows.
-    - **Time zone**: Sets the time zone for the development kit host. The default is (UTC-8:00) Pacific Time (US & Canada).
-    - **Static IP configuration**: Sets your deployment to use a static IP address. Otherwise, when the installer reboots into the cloudbuilder.vhx, the network interfaces are configured with DHCP.
-11. Click **Next**.
-12. If you chose a static IP configuration in the previous step, you must now:
-    - Select a network adapter. Make sure you can connect to the adapter before you click **Next**.
-    - Make sure that the **IP address**, **Gateway**, and **DNS** values are correct and then click **Next**.
-13. Click **Next** to start the preparation process.
-14. When the preparation indicates **Completed**, click **Next**.
-15. Click **Reboot now** to boot into the cloudbuilder.vhdx and continue the deployment process.
+6. 管理者特権で PowerShell コンソールを開き、C:\AzureStack_Installer\asdk-installer.ps1 スクリプトを実行し、**[Prepare vhdx]\(vhdx の準備\)** をクリックします。
+7. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、前の手順でダウンロードした cloudbuilder.vhdx ファイルを探して選択します。
+8. 省略可能: **[ドライバーの追加]** ボックスをオンにすると、ホストで使用する追加のドライバーが含まれるフォルダーを指定できます。
+9. **[オプション設定]** ページで、開発キットのホストのローカル管理者アカウントを指定します。 これらの資格情報を指定しない場合、以下のインストール時に、ホストへの KVM アクセスが必要になります。
+10. また、**[オプション設定]** ページには、次を設定するオプションもあります。
+    - **[コンピューター名]**: このオプションでは、開発キットのホスト名が設定されます。 名前は FQDN の要件に準拠している必要があり、長さは 15 文字以下にする必要があります。 既定は、Windows によって生成されたランダムなコンピューター名です。
+    - **[タイム ゾーン]**: 開発キットのホストのタイム ゾーンが設定されます。 既定は、(UTC-8:00) 太平洋標準時 (米国およびカナダ) です。
+    - **[Static IP configuration]\(静的な IP 構成\)**: デプロイが静的 IP アドレスを使用するよう設定されます。 それ以外の場合、インストーラーが cloudbuilder.vhx から再起動されるときに、ネットワーク インターフェイスが DHCP と構成されます。
+11. **[次へ]** をクリックします。
+12. 前の手順で静的 IP を構成した場合、次を実行する必要があります。
+    - ネットワーク アダプターを選択します。 **[次へ]** をクリックする前に、アダプターに接続できることを確認します。
+    - **[IP アドレス]**、**[ゲートウェイ]**、および **[DNS]** 値が正しいことを確認し、**[次へ]** をクリックします。
+13. **[次へ]** をクリックして、準備プロセスを開始します。
+14. 準備が **[完了]** と示されたら、**[次へ]** をクリックします。
+15. **[今すぐ再起動する]** をクリックして cloudbuilder.vhdx から起動し、デプロイ処理を続行します。
 
-## <a name="deploy-the-development-kit"></a>Deploy the development kit
-1. Sign in as the Local Administrator to the development kit host. Use the credentials specified in the previous steps.
+## <a name="deploy-the-development-kit"></a>開発キットのデプロイ
+1. 開発キットのホストにローカル管理者としてサインインします。 前の手順で指定した資格情報を使用します。
 
     > [!IMPORTANT]
-    > For Azure Active Directory deployments, Azure Stack requires access to the Internet, either directly or through a transparent proxy. The deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script in the next section.
+    > Azure Active Directory のデプロイの場合、Azure Stack ではインターネットへのアクセスを、直接または透過プロキシを介してのいずれかで必要とします。 このデプロイでは、ネットワーク用に NIC は 1 つのみサポートされます。 NIC が複数ある場合、次のセクションで開発スクリプトを実行する前に、(他はすべて無効にし) 1 つのみが有効になっていることを確認します。
     
-2. Open an elevated PowerShell console > run the \AzureStack_Installer\asdk-installer.ps1 script (which may be on a different drive in the Cloudbuilder.vhdx) > click **Install**.
-3. In the **Type** box, select **Azure Cloud** or **ADFS**.
-    - **Azure Cloud**: Azure Active Directory is the identity provider. Use this parameter to specify a specific directory where the AAD account has global admin permissions. Full name of an AAD Directory tenant in the format of .onmicrosoft.com. 
-    - **ADFS**: The default stamp Directory Service is the identity provider, the default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of the setup.
-4. Under **Local administrator password**, in the **Password** box, type the local administrator password (which must match the current configured local administrator password), and then click **Next**.
-5. Select a network adapter to use for the development kit and then click **Next**.
-6. Select DHCP or static network configuration for the BGPNAT01 virtual machine.
-    - **DHCP** (default): The virtual machine gets the IP network configuration from the DHCP server.
-    - **Static**: Only use this option if DHCP can’t assign a valid IP address for Azure Stack to access the Internet. A static IP address must be specified with the subnetmask length (for example, 10.0.0.5/24).
-7. Optionally, set the following values:
-    - **VLAN ID**: Sets the VLAN ID. Only use this option if the host and AzS-BGPNAT01 must configure VLAN ID to access the physical network (and Internet). 
-    - **DNS forwarder**: A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.
-    - **Time server**: Sets a specific time server. 
-8. Click **Next**. 
-9. On the **Verifying network interface card properties** page, you'll see a progress bar. 
-    - If it says **An update cannot be downloaded**, follow the instructions on the page.
-    - When it says **Completed**, click **Next**.
-10. On **Summary** page, click **Deploy**.
-11. If you're using an Azure Active Directory deployment, you'll be asked to enter your Azure Active Directory global administrator account credentials.
-12. The deployment process can take a few hours, during which the system automatically reboots once.
+2. 管理者特権で PowerShell コンソールを開き、(Cloudbuilder.vhdx の別のドライブにある場合がある) \AzureStack_Installer\asdk-installer.ps1 スクリプトを実行し、**[インストール]** をクリックします。
+3. **[タイプ]** ボックスで、**[Azure クラウド]** または **[ADFS]** を選択します。
+    - **[Azure クラウド]**: Azure Active Directory は ID プロバイダーです。 このパラメーターは、AAD アカウントにグローバル管理者アクセス許可がある特定のディレクトリを指定するために使用します。 .onmicrosoft.com の形式の AAD ディレクトリ テナントの完全名です。 
+    - **[ADFS]**: 既定のスタンプ ディレクトリ サービスは、ID プロバイダーであり、サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として提供したものです。
+4. **[Local administrator password]\(ローカル管理者のパスワード\)** の **[パスワード]** ボックスに、(現在の構成済みのローカル管理者パスワードと同じ) ローカル管理者パスワードを入力し、**[次へ]** をクリックします。
+5. 開発キットに使用するネットワーク アダプターを選択して、**[次へ]** をクリックします。
+6. BGPNAT01 仮想マシン用に DHCP または静的なネットワーク構成を選択します。
+    - **[DHCP]** (既定): 仮想マシンが DHCP サーバーから IP ネットワークの構成を取得します。
+    - **[静的]**: DHCP が Azure Stack に、インターネットにアクセスするための有効な IP アドレスを割り当てることができない場合にのみこのオプションは使用されます。 静的な IP アドレスは、サブネット マスク長を使用して指定する必要があります (例: 10.0.0.5/24)。
+7. 任意で次の値を設定します。
+    - **[VLAN ID]**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用されます。 
+    - **[DNS Forwarder]\(DNS フォワーダ\)**: DNS サーバーは Azure Stack のデプロイの一部として作成されます。 ソリューション内のコンピューターにスタンプ外の名前解決を許可するには、既存のインフラストラクチャの DNS サーバーを提供します。 スタンプ内の DNS サーバーが、このサーバーに不明な名前解決の要求を送信します。
+    - **[タイム サーバー]**: 特定のタイム サーバーを設定します。 
+8. **[次へ]** をクリックします。 
+9. **[Verifying network interface card properties]\(ネットワーク インターフェイス カードのプロパティを確認しています\)** ページに、進行状況バーが表示されます。 
+    - **[An update cannot be downloaded]\(更新プログラムをダウンロードできませんでした\)** と書かれている場合、ページの指示に従います。
+    - **[完了]** と書かれている場合、**[次へ]** をクリックします。
+10. **[概要] ページで** [デプロイ] **をクリックします。**
+11. Azure Active Directory のデプロイを使用している場合、Azure Active Directory のグローバル管理者アカウントの資格情報を入力するよう求められます。
+12. デプロイには場合によって数時間かかります。その間システムは自動的に 1 回再起動されます。
    
    > [!IMPORTANT]
-   > If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin. If you sign in as a local admin after the machine is joined to the domain, you won't see the deployment progress. Do not rerun deployment, instead sign in as azurestack\AzureStackAdmin to validate that it's running.
+   > デプロイの進行状況を監視する場合は、azurestack\AzureStackAdmin としてサインインします。 コンピューターがドメインに参加した後に、ローカル管理者としてサインインした場合、デプロイの進行状況は表示されません。 デプロイは再実行せず、代わりに azurestack\AzureStackAdmin としてサインインし、それが実行中であることを確認します。
    > 
    > 
    
-    When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment’**.
+    デプロイが成功した場合、PowerShell コンソールには、**[COMPLETE: Action ‘Deployment’]\(完了: アクション ‘デプロイ’\)** と表示されます。
    
-If the deployment fails, you can use the following PowerShell rerun script from the same elevated PowerShell window:
+デプロイが失敗した場合は、同じ管理者特権の PowerShell ウィンドウから次の PowerShell 再実行スクリプトを使用できます。
 
 ```powershell
 cd c:\CloudDeployment\Setup
 .\InstallAzureStackPOC.ps1 -Rerun
 ```
 
-This script will restart the deployment from the last step that succeeded.
+このスクリプトでは、成功した最後の手順からデプロイを再開します。
 
-Or, you can [redeploy](azure-stack-redeploy.md) from scratch.
-
-
-## <a name="reset-the-password-expiration-to-180-days"></a>Reset the password expiration to 180 days
-
-To make sure that the password for the development kit host doesn't expire too soon, follow these steps after you deploy:
-
-1. On the development kit host, open **Group Policy Management** and navigate to **Group Policy Management** – **Forest: azurestack.local** – **Domains** – **azurestack.local**.
-2. Right click on **MemberServer** and click **Edit**.
-3. In the Group Policy Management Editor, navigate to **Computer Configuration** – **Policies** – **Windows Settings** – **Security Settings** – **Account Policies** – **Password Policy**.
-4. In the right pane, double-click on **Maximum password age**.
-5. In the **Maximum password age Properties** dialog box, change the **Password will expire in** value to 180, then Click **OK**.
+または、最初から[再デプロイ](azure-stack-redeploy.md)することも可能です。
 
 
-## <a name="next-steps"></a>Next steps
-[Register Azure Stack with your Azure subscription](azure-stack-register.md)
+## <a name="reset-the-password-expiration-to-180-days"></a>パスワードの有効期限を 180 日間にリセットする
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+開発キットのホストのパスワードがすぐに期限切れにならないようにするには、デプロイ後に次の手順を実行します。
+
+1. 開発キットのホストで、**[グループ ポリシーの管理]** を開き、**[グループ ポリシーの管理]**、**[フォレスト: azurestack.local]**、**[ドメイン]**、**[azurestack.local]** に移動します。
+2. **[MemberServer]** を右クリックして、**[編集]** をクリックします。
+3. グループ ポリシー管理エディターで、**[コンピューターの構成]**、**[ポリシー]**、**[Windows の設定]**、**[セキュリティの設定]**、**[アカウント ポリシー]**、**[パスワード ポリシー]** の順に移動します。
+4. 右側のウィンドウの **[パスワードの有効期間]** をダブルクリックします。
+5. **[Maximum password age Properties]\(パスワードの有効期間プロパティ\)** ダイアログ ボックスで、**[パスワードの有効期限]** の値を 180 に変更し、**[OK]** をクリックします。
+
+
+## <a name="next-steps"></a>次のステップ
+[Azure のサブスクリプションを使用した Azure Stack の登録](azure-stack-register.md)
+
+[Azure Stack への接続](azure-stack-connect-azure-stack.md)
 
 

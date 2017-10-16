@@ -1,24 +1,28 @@
 
-このセクションでは、.NET コンソール アプリケーションからタグ付けされたテンプレート通知としてニュース速報を送信する方法について説明します。
+このセクションでは、.NET コンソール アプリから、タグ付けされたテンプレート通知としてニュース速報を送信します。
 
-Mobile Apps を使用している場合は、[Mobile Apps へのプッシュ通知の追加]に関するチュートリアルを参照し、ページの上部でご使用のプラットフォームを選択してください。
+Microsoft Azure App Service の Mobile Apps 機能を使用している場合は、[Mobile Apps へのプッシュ通知の追加]に関するチュートリアルを参照し、ページの上部でご使用のプラットフォームを選択してください。
 
 Java または PHP を使用する場合は、[Java または PHP から Notification Hubs を使用する方法]に関するページを参照してください。 [Notification Hubs の REST インターフェイス]を使用することで、任意のバックエンドから通知を送信できます。
 
-「[Notification Hubs の使用]」の完了時に、通知を送信するためのコンソール アプリケーションを作成した場合は、手順 1. ～ 3. をスキップします。
+[Notification Hubs の使用]に関するチュートリアルの完了時に、通知を送信するためのコンソール アプリを作成した場合は、手順 1. ～ 3. をスキップします。
 
 1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
    
-       ![][13]
-2. Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、コンソール ウィンドウで次のコマンドを入力して、**Enter** キーを押します。
+      ![コンソール アプリケーションのリンク][13]
+
+2. Visual Studio のメイン メニューで、**[ツール]** > **[Library Package Manager]** > **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次の文字列を入力します。
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    これにより [Microsoft.Azure.Notification Hubs NuGet パッケージ]を利用して Azure Notification Hubs SDK に参照が追加されます。
-3. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
+3. **[Enter]** を選択します。  
+    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ]を使用して Azure Notification Hubs SDK に参照が追加されます。
+
+4. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.NotificationHubs;
-4. `Program` クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
+
+5. `Program` クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
    
         private static async void SendTemplateNotificationAsync()
         {
@@ -31,7 +35,7 @@ Java または PHP を使用する場合は、[Java または PHP から Notific
             var categories = new string[] { "World", "Politics", "Business",
                                             "Technology", "Science", "Sports"};
    
-            // Sending the notification as a template notification. All template registrations that contain
+            // Send the notification as a template notification. All template registrations that contain
             // "messageParam" and the proper tags will receive the notifications.
             // This includes APNS, GCM, WNS, and MPNS template registrations.
    
@@ -45,11 +49,14 @@ Java または PHP を使用する場合は、[Java または PHP から Notific
          }
    
     このコードでは、文字列の配列の 6 つのタグのそれぞれに対するテンプレート通知が送信されます。 タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
-5. 上のコードで、プレースホルダー `<hub name>` と `<connection string with full access>` を、通知ハブの名前と通知ハブのダッシュボードの *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+
+5. 上記のコードでは、プレースホルダー `<hub name>` と `<connection string with full access>` を、通知ハブの名前と通知ハブのダッシュボードから得た *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+
 6. **Main** メソッド内に、次の行を追加します。
    
          SendTemplateNotificationAsync();
          Console.ReadLine();
+
 7. コンソール アプリケーションをビルドします。
 
 <!-- Images. -->

@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f9d8cecf45e40909e39f894c62bcc572b610b014
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 70aac3b0544e652ca92219fba9e6bfb405c2eadc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-billing-documentation"></a>Azure Billing のドキュメント
 
@@ -136,4 +135,3 @@ Azure の課金を確認したり、使用量とコストを監視したりす�
         </div>
     </li>
 </ul>
-

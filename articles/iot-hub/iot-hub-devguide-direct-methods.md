@@ -16,10 +16,10 @@ ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 77e788a32097edbcb1cd4faaa45f35812eabd94a
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: fda1111877e5eb35fe246891fa7ff71ce6b5c20d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
@@ -45,7 +45,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 ダイレクト メソッドは同期型であり、タイムアウト期間 (既定では 30 秒、最長 3600 秒に設定可能) 後に成功または失敗します。 ダイレクト メソッドは、デバイスがオンラインでコマンドを受け取っている場合のみデバイスを操作する対話型のシナリオ (携帯電話から照明を付けるなどの操作) で便利です。 このようなシナリオでは、成功か失敗かを即座に確認し、クラウド サービスがその結果に対してできるだけ早く対応することが必要になります。 デバイスはメッセージの結果として何らかのメッセージ本文を返すことがありますが、メソッドにはその機能は必要ありません。 順番の保証や、メソッドの呼び出しの同時実行セマンティクスはありません。
 
-ダイレクト メソッドは、クラウド側からは HTTP のみに、デバイス側からは MQTT のみになります。
+ダイレクト メソッドは、クラウド側からは HTTP のみに、デバイス側からは MQTT または AMQP になります。
 
 メソッドの要求および応答のペイロードは、最大 8 KB の JSON ドキュメントになります。
 

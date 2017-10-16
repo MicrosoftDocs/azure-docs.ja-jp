@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: saurse;trinadhk;markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 > [!div class="op_single_selector"]
 > * [クラシック ポータル](backup-azure-restore-windows-server-classic.md)
-> * [Azure Portal](backup-azure-restore-windows-server.md)
+> * [Azure ポータル](backup-azure-restore-windows-server.md)
 >
 >
 
@@ -241,4 +240,3 @@ ms.lasthandoff: 08/12/2017
 * [Azure Backup の概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 * [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
 * [Microsoft ワークロードのバックアップ](backup-azure-dpm-introduction.md)
-

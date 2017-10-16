@@ -13,12 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/31/2016
+ms.date: 09/13/2017
 ms.author: dendeli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
-
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 8db82ae9f37a89b6b7049208133949a7f49e9d92
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知
@@ -27,12 +28,12 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 > 
 > 
 
-このチュートリアルでは、ユニバーサル Windows プラットフォーム アプリケーション内からの利用を前提に、Azure Notification Hubs と Bing の空間データを使用して、所在に応じたプッシュ通知を行う方法について説明します。
+このチュートリアルでは、ユニバーサル Windows プラットフォーム アプリケーション内からの利用を前提に、Azure Notification Hubs と Bing の空間データを使用して、位置情報に基づいたプッシュ通知を行う方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 まず、前提条件として以下のソフトウェアとサービスがすべて揃っていることを確認してください。
 
-* [Visual Studio 2015 Update 1](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) 以降 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) も使用可)。 
+* [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) 以降 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) も使用可)。 
 * 最新バージョンの [Azure SDK](https://azure.microsoft.com/downloads/)。 
 * [Bing マップ デベロッパー センター アカウント](https://www.bingmapsportal.com/)。アカウントの作成は無料です。作成したアカウントは Microsoft アカウントに関連付けることができます。 
 
@@ -54,11 +55,11 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 では、上に挙げた各要素の設定について詳しく見ていきます。
 
 ## <a name="setting-up-the-data-source"></a>データ ソースの設定
-データ ソースの設定は、Bing マップ デベロッパー センターで行うことができます。 最上部のナビゲーション バーにある **[Data sources (データ ソース)]** をクリックし、**[Manage Data Sources (データ ソースの管理)]** を選択します。
+データ ソースの設定は、Bing Maps デベロッパー センターで行えます。 最上部のナビゲーション バーで、**[Data sources]\(データ ソース\)** > **[Manage Data Sources]\(データ ソースの管理\)** の順に選択します。
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
 
-過去に Bing マップ API を使用したことがない場合、おそらくデータ ソースは存在しません。データ ソースへのデータのアップロード ボタンをクリックして新しく作成してください。 すべての必須フィールドに必要事項を入力します。
+過去に Bing Maps API を使用したことがない場合、おそらくデータ ソースは存在しません。**[Data sources]\(データ ソース\)** > **[Upload data]\(データのアップロード\)** の順に選択して、新しく作成してください。 すべての必須フィールドに必要事項を入力します。
 
 ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
 
@@ -72,7 +73,7 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 
 ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 
-単に上の文字列をコピーして新しいファイルに貼り付け、 **NotificationHubsGeofence.pipe**という名前で保存して、Bing デベロッパー センターにアップロードしてください。
+上の文字列をコピーして新しいファイルに貼り付け、**NotificationHubsGeofence.pipe** という名前で保存して、Bing デベロッパー センターにアップロードします。
 
 > [!NOTE]
 > **[マスター キー]** に、**[クエリ キー]** とは異なる新しいキーを指定するよう求められる場合があります。 ダッシュボードで新しいキーを作成して、データ ソースのアップロード ページを更新してください。
@@ -81,21 +82,21 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 
 データ ファイルをアップロードしたら、データ ソースを発行する必要があります。 
 
-先ほどと同様、**[Manage Data Sources (データ ソースの管理)]** に移動し、該当するデータ ソースをリストから探して、**[Actions (アクション)]** 列の **[Publish (発行)]** をクリックします。 すぐに **[発行されたデータ ソース]** タブにデータ ソースが表示されます。
+先ほどと同様、**[Manage Data Sources]\(データ ソースの管理\)** に移動し、該当するデータ ソースをリストから探して、**[Actions]\(アクション\)** 列の **[Publish]\(発行\)** を選択します。 すぐに **[発行されたデータ ソース]** タブにデータ ソースが表示されます。
 
 ![](./media/notification-hubs-geofence/bing-maps-published-data.png)
 
-**[編集]**をクリックすると、今取り込んだ場所がひとめで確認できます。
+**[編集]** を選択すると、今取り込んだ場所がひとめで確認できるようになります。
 
 ![](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
-この時点では、作成したジオフェンスの境界がポータルに表示されません。指定した場所が、適切に収まっていることを確認するだけでかまいません。
+この時点では、作成したジオフェンスの境界がポータルに表示されません。指定した場所が適切に収まっていることを確認するだけでかまいません。
 
-これで、データ ソースの要件がすべて揃いました。 API 呼び出しに使用する要求 URL について詳しい情報を確認するには、Bing マップ デベロッパー センターで **[Data sources (データ ソース)]** をクリックし、**[Data Source Information (データ ソース情報)]** を選択します。
+これで、データ ソースの要件がすべて揃いました。 API 呼び出しに使用する要求 URL について詳しい情報を確認するには、Bing Maps デベロッパー センターで **[Data sources]\(データ ソース\)** を選択し、**[Data Source Information]\(データ ソース情報\)** を選択します。
 
 ![](./media/notification-hubs-geofence/bing-maps-data-info.png)
 
-ここで必要になるのは、 **[クエリの URL]** です。 このエンドポイントに対しクエリを実行することで、デバイスが特定の位置の境界内に存在するかどうかをリアルタイムでチェックすることができます。 このチェックを実行するために必要な操作は、クエリの URL に次のパラメーターを追加して GET 呼び出しを実行するだけです。
+ここで必要になるのは、 **[クエリの URL]** です。 このエンドポイントに対しクエリを実行することで、デバイスが特定の位置の境界内に存在するかどうかをリアルタイムでチェックすることができます。 このチェックを実行するには、クエリの URL に次のパラメーターを追加して GET 呼び出しを実行するだけです。
 
     ?spatialFilter=intersects(%27POINT%20LONGITUDE%20LATITUDE)%27)&$format=json&key=QUERY_KEY
 
@@ -110,11 +111,11 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 ## <a name="setting-up-the-uwp-application"></a>UWP アプリケーションの設定
 データ ソースの準備が整ったら、先ほど立ち上げた UWP アプリケーションの作業に進みます。
 
-まず、アプリケーションに対して位置情報サービスを有効にする必要があります。 そのためには、**ソリューション エクスプローラー**で `Package.appxmanifest` ファイルをダブルクリックします。
+まず、アプリケーションに対して位置情報サービスを有効にする必要があります。 そのためには、**ソリューション エクスプローラー**で `Package.appxmanifest` ファイルを開きます。
 
 ![](./media/notification-hubs-geofence/vs-package-manifest.png)
 
-パッケージのプロパティ タブが表示されたら、**[機能]** をクリックし、**[場所]** をオンにします。
+パッケージのプロパティ タブが表示されたら、**[機能]** を選択して、**[場所]** をオンにしてください。
 
 ![](./media/notification-hubs-geofence/vs-package-location.png)
 
@@ -215,9 +216,9 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 
 接続文字列を構成するには、`Models` フォルダーの `Notifications.cs` を開きます。 `NotificationHubClient.CreateClientFromConnectionString` 関数には、通知ハブの情報を含める必要があります。この情報は、[Azure Portal](https://portal.azure.com) の **[設定]** の **[アクセス ポリシー]** ブレードで確認できます。 更新した構成ファイルを保存します。
 
-次に、Bing マップ API から返される結果のモデルを作成する必要があります。 これを簡単に行う方法があります。まず、`Models` フォルダーを右クリックし、**[追加]** > **[クラス]** の順にクリックしてください。 これに `GeofenceBoundary.cs` という名前を付けます。 その後、最初のセクションで取り上げた API の応答から JSON をコピーし、Visual Studio で **[編集]** > **[形式を選択して貼り付け]** > **[JSON をクラスとして貼り付ける]** の順に選択します。 
+次に、Bing マップ API から返される結果のモデルを作成する必要があります。 これを行うには、`Models` フォルダーを開いて、**[追加]** > **[クラス]** の順に選択する方法が最も簡単です。 これに `GeofenceBoundary.cs` という名前を付けます。 その後、最初のセクションで取り上げた API の応答から JSON をコピーし、Visual Studio で **[編集]** > **[形式を選択して貼り付け]** > **[JSON をクラスとして貼り付ける]** の順に選択します。 
 
-こうすることでオブジェクトが、その意図に従って適切に逆シリアル化されます。 これで次のようなクラスが完成しました。
+こうすることで、意図したとおりにオブジェクトが逆シリアル化されます。 これで次のようなクラスが完成しました。
 
     namespace AppBackend.Models
     {
@@ -337,23 +338,23 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 > 
 > 
 
-ここで、プッシュ通知に使用する UWP アプリを登録しましょう。 Visual Studio で、**[プロジェクト]** > **[ストア]** > **[アプリケーションをストアと関連付ける]** の順にクリックします。
+ここで、プッシュ通知に使用する UWP アプリを登録しましょう。 Visual Studio で、**[プロジェクト]** > **[ストア]** > **[アプリケーションをストアと関連付ける]** の順に選択します。
 
 ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
 
 開発者アカウントにサインインしたら、既存のアプリを選択するか、または新しくアプリを作成してそこにパッケージを関連付けてください。 
 
-デベロッパー センターにアクセスして、先ほど作成したアプリを開きます。 **[Services (サービス)]** > **[Push Notifications (プッシュ通知)]** > **[Live Services site (Live サービス サイト)]** の順にクリックします。
+デベロッパー センターにアクセスして、先ほど作成したアプリを開きます。 **[サービス]** > **[プッシュ通知]** > **[Live Services site]\(Live サービス サイト\)** の順に選択します。
 
 ![](./media/notification-hubs-geofence/ms-live-services.png)
 
-このサイトで、**アプリケーションのシークレット**と**パッケージ SID** をメモします。 どちらも Azure Portal で必要となります。通知ハブを開いて **[設定]** > **[Notification Services]** > **[Windows (WNS)]** の順にクリックし、必要なフィールドにその情報を入力してください。
+このサイトで、**アプリケーションのシークレット**と**パッケージ SID** をメモします。 どちらも Azure Portal で必要となります。通知ハブを開いて **[設定]** > **[Notification Services]** > **[Windows (WNS)]** の順に選択し、必須フィールドにその情報を入力してください。
 
 ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
 
-**[Save]**をクリックします。
+**[保存]** を選択します。
 
-**ソリューション エクスプローラー**で **[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。 **Microsoft Azure Service Bus マネージ ライブラリ**への参照を追加する必要があります。`WindowsAzure.Messaging.Managed` を探してプロジェクトに追加してください。
+**ソリューション エクスプローラー**で **[参照設定]** を開いて、**[NuGet パッケージの管理]** を選択します。 **Microsoft Azure Service Bus マネージ ライブラリ**への参照を追加する必要があります。`WindowsAzure.Messaging.Managed` を探してプロジェクトに追加してください。
 
 ![](./media/notification-hubs-geofence/vs-nuget.png)
 
@@ -390,10 +391,5 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 ここで紹介したソリューションのシナリオは多様なターゲット プラットフォームを想定しており、システム固有の機能にジオフェンスを限定することはしていません。 しかし、ユニバーサル Windows プラットフォームには、 [細かい設定なしにジオフェンスを検出](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
 
 Notification Hubs の機能について詳しくは、 [ドキュメント ポータル](https://azure.microsoft.com/documentation/services/notification-hubs/)をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

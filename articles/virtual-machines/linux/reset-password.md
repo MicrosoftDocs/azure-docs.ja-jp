@@ -12,17 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 7/3/2017
 ms.author: delhan
+ms.openlocfilehash: d24d1f194b74b9da6a463d3efd741b402102fde3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: bd48128a078821b7a4baa02d5d7ceecc6de99608
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
 
 この記事では、ローカルの Linux 仮想マシン (VM) のパスワードをリセットする方法をいくつか紹介します。 ユーザー アカウントが期限切れになっている場合や、単に新しいアカウントを作成したい場合は、以下の方法で新しいローカル管理者アカウントを作成し、VM へのアクセスを再取得することができます。

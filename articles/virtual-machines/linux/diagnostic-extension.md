@@ -9,12 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -705,4 +704,3 @@ EventHubs エンドポイントに発行されたメッセージを使用する�
 * 収集するメトリックのメトリック アラートを [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) で作成します。
 * メトリックの[監視グラフ](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)を作成します。
 * メトリックを使用して[仮想マシン スケール セットを作成](/azure/virtual-machines/linux/tutorial-create-vmss)し、自動スケールを制御する方法について説明します。
-

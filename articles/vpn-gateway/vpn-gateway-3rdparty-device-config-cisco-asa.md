@@ -1,6 +1,6 @@
 ---
-title: "サンプル構成 - Azure VPN ゲートウェイに接続される Cisco ASA デバイス | Microsoft Docs"
-description: "この記事には、Azure VPN ゲートウェイに接続される Cisco ASA デバイスのサンプル構成が用意されています。"
+title: "Cisco ASA デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成 | Microsoft Docs"
+description: "この記事では、Cisco ASA デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,117 +15,121 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
+ms.openlocfilehash: 080f83a67674ab059404870f6ec0e7470cfcceff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 10466b8928e2cd687f7961a2956b6d60823b82be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成: Cisco ASA デバイス (IKEv2/BGP なし)
-この記事には、Azure VPN ゲートウェイに接続される Cisco ASA デバイスのサンプル構成が用意されています。
+この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
 
 ## <a name="device-at-a-glance"></a>デバイスの概略
 
 |                        |                                   |
 | ---                    | ---                               |
 | デバイスの製造元          | Cisco                             |
-| デバイスのモデル           | ASA (Adaptive Security Appliance) |
-| ターゲット バージョン         | 8.4+                              |
+| デバイスのモデル           | ASA                               |
+| ターゲット バージョン         | 8.4 以降                     |
 | テスト済みのモデル           | ASA 5505                          |
 | テスト済みのバージョン         | 9.2                               |
-| IKE バージョン            | **IKEv2**                         |
-| BGP                    | **いいえ**                            |
-| Azure VPN ゲートウェイの種類 | **ルート ベース**の VPN ゲートウェイ       |
+| IKE バージョン            | IKEv2                             |
+| BGP                    | いいえ                                |
+| Azure VPN ゲートウェイの種類 | ルートベースの VPN ゲートウェイ           |
 |                        |                                   |
 
 > [!NOTE]
-> 1. 以下の構成は、[この記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)で説明されているように、カスタム IPsec/IKE ポリシーを "UserPolicyBasedTrafficSelectors" オプションで使用して Cisco ASA デバイスを**ルート ベース**の Azure VPN ゲートウェイに接続します。
-> 2. ASA デバイスでは、VTI ベースではなくアクセス リスト ベースの構成の **IKEv2** を使用する必要があります。
-> 3. オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。
+> このサンプル構成では、Cisco ASA デバイスが Azure の**ルートベース**の VPN ゲートウェイに接続されます。 この接続では、[こちらの記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)で説明したカスタム IPsec/IKE ポリシーと **UsePolicyBasedTrafficSelectors** オプションが使用されます。
+>
+> このサンプルで使用する ASA デバイスの **IKEv2** ポリシーは、VTI ベースではなくアクセスリストベースの構成であることが必要です。 オンプレミスの VPN デバイスで IKEv2 ポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。
+
 
 ## <a name="vpn-device-requirements"></a>VPN デバイスの要件
-Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイートを使用して S2S VPN トンネルを確立します。 Azure VPN ゲートウェイで使用する IPsec/IKE プロトコル パラメーターと既定の暗号アルゴリズムについて詳しくは、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関する記事をご覧ください。 [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続について、暗号アルゴリズムとキーの強度の正確な組み合わせを指定することもできます。 暗号アルゴリズムとキーの強度の具体的な組み合わせを選択した場合は、お使いの VPN デバイスに対応する仕様を使用してください。
+Azure VPN ゲートウェイでは、標準の IPsec/IKE プロトコル スイートを使用してサイト間 (S2S) VPN トンネルが確立されます。 Azure VPN ゲートウェイで使用する IPsec/IKE プロトコル パラメーターと既定の暗号アルゴリズムについて詳しくは、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
+
+> [!NOTE]
+> [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続を対象に、暗号アルゴリズムとキーの強度の組み合わせを具体的に指定することもできます。 アルゴリズムとキーの強度の組み合わせを具体的に指定する場合は必ず、対応する仕様をご利用の VPN デバイスで使用してください。
 
 ## <a name="single-vpn-tunnel"></a>単一の VPN トンネル
-このトポロジーは、Azure VPN ゲートウェイとオンプレミスの VPN デバイスの間の単一の S2S VPN トンネルで構成されます。 VPN トンネル間に BGP を構成することもできます。
+この構成は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスの間にある単一の S2S VPN トンネルで構成されます。 [VPN トンネル上に BGP](#bgp) を構成することもできます。
 
-![単一のトンネル](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
+![単一の S2S VPN トンネル](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Azure の構成を構築する詳細な手順については、[単一のトンネルの設定](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)に関する記事をご覧ください。
+Azure の構成を作成する具体的な手順については、[単一の VPN トンネルの設定](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)に関する記事を参照してください。
 
-### <a name="network-and-vpn-gateway-information"></a>ネットワークおよび VPN ゲートウェイの情報
-このセクションでは、このサンプルのパラメーターの一覧を示します。
+### <a name="virtual-network-and-vpn-gateway-information"></a>仮想ネットワークと VPN ゲートウェイの情報
+このセクションでは、サンプルのパラメーターの一覧を示します。
 
 | **パラメーター**                | **値**                    |
 | ---                          | ---                          |
-| VNet アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
+| 仮想ネットワーク アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN ゲートウェイ IP         | Azure_Gateway_Public_IP      |
 | オンプレミス アドレス プレフィックス | 10.51.0.0/16<br>10.52.0.0/16 |
 | オンプレミス VPN デバイス IP    | OnPrem_Device_Public_IP     |
-| *VNet BGP ASN                | 65010                        |
-| *Azure BGP ピア IP           | 10.12.255.30                 |
-| *オンプレミス BGP ASN         | 65050                        |
-| *オンプレミス BGP ピア IP     | 10.52.255.254                |
+| * 仮想ネットワーク BGP ASN                | 65010                        |
+| * Azure BGP ピア IP           | 10.12.255.30                 |
+| * オンプレミス BGP ASN         | 65050                        |
+| * オンプレミス BGP ピア IP     | 10.52.255.254                |
 |                              |                              |
 
-* (*) BGP 専用のオプション パラメーター。
+\* BGP 専用のオプション パラメーター。
 
-### <a name="ipsecike-policy--parameters"></a>IPsec/IKE のポリシーとパラメーター
-
-以下の表に、サンプルで使用されている IPsec/IKE のアルゴリズムとパラメーターの一覧を示します。 上記のすべてのアルゴリズムがお使いの VPN デバイス モデルとファームウェア バージョンでサポートされていることを確認するには、VPN デバイスの仕様をご覧ください。
+### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE のポリシーとパラメーター
+以下の表に、サンプルで使用されている IPsec/IKE のアルゴリズムとパラメーターの一覧を示します。 これらのアルゴリズムが VPN デバイスのモデルとファームウェア バージョンでサポートされていることを、ご使用の VPN デバイスの仕様で確認してください。
 
 | **IPsec/IKEv2**  | **値**                            |
 | ---              | ---                                  |
 | IKEv2 暗号化 | AES256                               |
 | IKEv2 整合性  | SHA384                               |
 | DH グループ         | DHGroup24                            |
-| IPsec 暗号化 | AES256                               |
-| IPsec 整合性  | SHA1                                 |
+| * IPsec 暗号化 | AES256                               |
+| * IPsec 整合性  | SHA1                                 |
 | PFS グループ        | PFS24                                |
-| QM SA の有効期間   | 7200 秒                         |
+| QM SA の有効期間   | 7,200 秒                         |
 | トラフィック セレクター | UsePolicyBasedTrafficSelectors $True |
 | 事前共有キー   | PreSharedKey                         |
 |                  |                                      |
 
-- (*) 一部のデバイスでは、IPsec の暗号化アルゴリズムとして GCM-AES が使用されている場合、IPSec の整合性が "null" である必要があります。
+\* 一部のデバイスでは、IPsec 暗号化アルゴリズムが AES-GCM である場合に IPsec 整合性の値を null にする必要があります。
 
-### <a name="device-notes"></a>デバイス メモ
+### <a name="asa-device-support"></a>ASA デバイスのサポート
 
->[!NOTE]
->
-> 1. IKEv2 のサポートには ASA バージョン 8.4 以上が必要です。
-> 2. より上位の DH および PFS グループのサポート (グループ 5 以降) には ASA バージョン 9.x が必要です。
-> 3. AES-GCM による IPsec の暗号化と、SHA-256、SHA-384、SHA-512 との IPsec の整合性のサポートには、より新しい ASA ハードウェア上に ASA パージョン 9.x 以上が必要です。ASA 5505、5510、5520、5540、5550、5580 は**サポートされていません**。 (製造元の仕様を確認してください。)
->
+* IKEv2 のサポートには ASA バージョン 8.4 以降が必要です。
+
+* DH グループおよび PFS グループのグループ 5 以降のサポートには ASA バージョン 9.x が必要です。
+
+* AES-GCM による IPsec の暗号化と、SHA-256、SHA-384、SHA-512 との IPsec の整合性のサポートには、ASA パージョン 9.x が必要です。 より新しい ASA デバイスには、このサポート要件が当てはまります。
+
+    > [!NOTE]
+    > ASA デバイス モデル 5505、5510、5520、5540、5550、5580 はサポートされません。 これらのアルゴリズムが VPN デバイスのモデルとファームウェア バージョンでサポートされていることを、ご使用の VPN デバイスの仕様で確認してください。
 
 
-### <a name="sample-device-configurations"></a>デバイスのサンプル構成
-以下のスクリプトは、上記のトポロジやパラメーターに基づくサンプル構成を提供します。 S2S VPN トンネルの構成は、次の部分で構成されます。
+### <a name="sample-device-configuration"></a>デバイスのサンプル構成
+スクリプトのサンプルは、前出のセクションで説明した構成およびパラメーターに基づいたものです。 S2S VPN トンネルの構成は、次の部分で構成されます。
 
 1. インターフェイスとルート
 2. アクセス リスト
 3. IKE ポリシーとパラメーター (フェーズ 1 またはメイン モード)
 4. IPsec ポリシーとパラメーター (フェーズ 2 またはクイック モード)
-5. その他のパラメーター (TCP MSS クランプ他)
+5. その他のパラメーター (TCP MSS クランプなど)
 
->[!IMPORTANT] 
->以下に列挙する追加構成に入力します。プレースホルダーは実際の値に置き換えてください。
-> 
-> - インターフェイス内外のインターフェイスの構成
-> - 内部/プライベートおよび外部/パブリック ネットワークのルート
-> - すべての名前とポリシー番号がデバイスで一意であることを確認する
-> - 暗号アルゴリズムがデバイスでサポートされていることを確認する
-> - 次のプレースホルダーを実際の値に置き換える
->   - 外部インターフェイスの名前: "outside"
->   - Azure_Gateway_Public_IP
->   - OnPrem_Device_Public_IP
->   - IKE Pre_Shared_Key
->   - VNet およびローカル ネットワーク ゲートウェイの名前 (VNetName、LNGName)
->   - VNet およびオンプレミスのネットワーク アドレス プレフィックス
->   - 適切なネットマスク
+> [!IMPORTANT]
+> サンプル スクリプトを使用する前に、次の手順を完了する必要があります。 スクリプト内のプレースホルダーの値は、実際の構成に使用するデバイスの設定に置き換えてください。
 
-#### <a name="sample-configuration"></a>サンプル構成
+* インターフェイス内外のインターフェイスの構成を指定します。
+* 内部/プライベートおよび外部/パブリック ネットワークのルートを特定します。
+* すべての名前とポリシー番号がデバイスで一意であることを確認します。
+* 暗号アルゴリズムがデバイスでサポートされていることを確認します。
+* 次の**プレースホルダーの値**を実際の構成の値に置き換えます。
+  - 外部インターフェイスの名前: **outside**
+  - **Azure_Gateway_Public_IP**
+  - **OnPrem_Device_Public_IP**
+  - IKE: **Pre_Shared_Key**
+  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前: **VNetName** と **LNGName**
+  - 仮想ネットワークおよびオンプレミスのネットワーク アドレス **プレフィックス**
+  - 適切な**ネットマスク**
+
+#### <a name="sample-script"></a>サンプル スクリプト
 
 ```
 ! Sample ASA configuration for connecting to Azure VPN gateway
@@ -280,19 +284,31 @@ sysopt connection tcpmss 1350
 
 ## <a name="simple-debugging-commands"></a>シンプルなデバッグ コマンド
 
-デバッグ用途の ASA コマンドをいくつか紹介します。
+デバッグには、次の ASA コマンドを使用します。
 
-1. IPsec や IKE SA を表示する
-    - "show crypto ipsec sa"
-    - "show crypto ikev2 sa"
-2. デバッグ モードに入る - コンソールのノイズが非常に多くなる場合があります
-    - "debug crypto ikev2 platform <level>"
-    - "debug crypto ikev2 protocol <level>"
-3. 現在の構成の一覧を表示する
-    - "show run" - デバイスの現在の構成を表示します。各種サブ コマンドを使用して構成の特定の部分の一覧を表示できます。 例: "show run crypto"、"show run access-list"、"show run tunnel-group"、他。
+* IPsec または IKE のセキュリティ アソシエーション (SA) を表示します。
+    ```
+    show crypto ipsec sa
+    show crypto ikev2 sa
+    ```
 
+* デバッグ モードに切り替えます。
+    ```
+    debug crypto ikev2 platform <level>
+    debug crypto ikev2 protocol <level>
+    ```
+    `debug` コマンドを使用すると、重要な出力をコンソールで生成することができます。
+
+* デバイスの現在の構成を表示します。
+    ```
+    show run
+    ```
+    `show` サブコマンドを使用すると、デバイス構成の特定の部分を一覧表示できます。
+    ```
+    show run crypto
+    show run access-list
+    show run tunnel-group
+    ```
 
 ## <a name="next-steps"></a>次のステップ
-アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する手順については、[クロスプレミス接続と VNet 間接続のアクティブ/アクティブ VPN Gateway の構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
-
-
+アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する方法については、[アクティブ/アクティブの VPN ゲートウェイの構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。

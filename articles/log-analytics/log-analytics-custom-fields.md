@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b98dcbcf219276bb9a7fd24e7f8c8c8eba806cf0
-
-
+ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
 Log Analytics の **カスタム フィールド** 機能を使用すると、独自の検索可能なフィールドを追加して、OMS リポジトリの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
@@ -141,10 +141,4 @@ DPMRA サービスを含むレコードまでスクロールし、同じプロ�
 ## <a name="next-steps"></a>次のステップ
 * 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](log-analytics-data-sources-custom-logs.md)を監視します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

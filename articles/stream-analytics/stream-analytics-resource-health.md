@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="stream-analytics-resource-health-blade"></a>Stream Analytics の [リソース正常性] ブレード
 
 Azure Portal の **[リソース正常性]** ブレードには、Azure Stream Analytics ジョブの正常性に関する情報が表示されます。 ここには、問題のトラブルシューティングを行ううえで役に立つ実用的なガイダンスも表示されます。 

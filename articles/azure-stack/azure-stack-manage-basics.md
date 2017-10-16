@@ -1,6 +1,6 @@
 ---
-title: Azure Stack administration basics | Microsoft Docs
-description: Learn what you need to know to administer Azure Stack.
+title: "Azure Stack の管理の基本 | Microsoft Docs"
+description: "Azure Stack を管理するために知っておく必要があることについて説明します。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,108 +12,128 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: twooley
+ms.openlocfilehash: 04dea8f055eb562455b568c43553a6fefe749467
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: c62b4c165cdeeb0a038521ad9e43e061044c921c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-administration-basics"></a>Azure Stack administration basics
+# <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 
-There are several things you need to know if you're new to Azure Stack administration. This guidance provides an overview of your role as a cloud operator, and what you need to tell your users for them to become productive quickly.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="understand-development-kit-builds"></a>Understand development kit builds
+Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
 
-Review the [What is Azure Stack?](azure-stack-poc.md) article to make sure you understand the purpose of the Azure Stack Development Kit, and its limitations. You should use the development kit as a "sandbox," where you can evaluate Azure Stack, and develop and test your apps in a non-production environment. (For deployment information, see the [Azure Stack Development Kit deployment](azure-stack-deploy-overview.md) quickstart.)
+## <a name="understand-the-builds"></a>ビルドを理解する
 
-Like Azure, we innovate rapidly. We'll regularly release new builds. When you want to move to the latest build, you must [redeploy Azure Stack](azure-stack-redeploy.md). This process takes time, but the benefit is that you can try out the latest features. The documentation on our website reflects the latest release build.
+### <a name="integrated-systems"></a>統合システム
 
-## <a name="learn-about-available-services"></a>Learn about available services
+Azure Stack 統合システムを使用している場合、Azure Stack の更新バージョンは更新プログラム パッケージを通して配布されます。 これらのパッケージをインポートして、管理者ポータルの [更新] タイルでパッケージを適用できます。
+ 
+### <a name="development-kit"></a>Development kit
 
-You'll need an awareness of which services you can make available to your users. Azure Stack supports a subset of Azure services. The list of supported services will continue to evolve.
+Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](azure-stack-poc.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](azure-stack-deploy-overview.md) のデプロイ クイックスタートを参照してください。)
 
-**Foundational services**
+Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](azure-stack-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
 
-By default, Azure Stack includes the following "foundational services" when you deploy Azure Stack:
+## <a name="learn-about-available-services"></a>利用できるサービスの詳細
 
-- Compute
-- Storage
-- Networking
+ユーザーにどのようなサービスを提供できるかを認識しておく必要があります。 Azure Stack では Azure サービスのサブセットがサポートされます。 サポートされるサービスは引き続き増加してゆきます。
+
+**基礎となるサービス**
+
+Azure Stack をデプロイすると、Azure Stack には既定で以下の "基礎となるサービス" が含まれています。
+
+- コンピューティング
+- ストレージ
+- ネットワーク
 - Key Vault
 
-With these foundational services, you can offer Infrastructure-as-a-Service (IaaS) to your users with minimal configuration.
+これらの基礎となるサービスによって、最小限の構成でユーザーにサービスとしてのインフラストラクチャ (IaaS) を提供できます。
 
-**Additional services**
+**その他のサービス**
 
-Currently, we support the following additional Platform-as-a-Service (PaaS) services:
+現時点では、その他に以下の、サービスとしてのプラットフォーム (PaaS) サービスをサポートしています。
 
 - App Service
 - Azure Functions
-- SQL and MySQL databases
+- SQL および MySQL データベース
 
-These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides\Offer services" sections of our documentation.
+これらのサービスをユーザーに提供する前には、追加の構成が必要です。 詳細については、Azure Stack オペレーター ドキュメントの "チュートリアル" や "ハウツー ガイド\サービスの提供" に関するセクションをご覧ください。
 
-**Service roadmap**
+**サービスのロードマップ**
 
-Azure Stack will continue to add support for Azure services. For the projected roadmap, see the [Hybrid Application Innovation with Azure and Azure Stack](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
+Azure Stack には、引き続き Azure サービスのサポートが追加される予定です。 計画されているロードマップについては、「[Azure Stack: An extension of Azure (Azure Stack: Azure の拡張機能)](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」のホワイトペーパーをご覧ください。 新しい発表については、[Azure Stack のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)をチェックすることもできます。
 
-## <a name="what-tools-do-i-use-to-manage"></a>What tools do I use to manage?
+## <a name="what-tools-do-i-use-to-manage"></a>管理に使用するツールについて
  
-You can use the [administrator portal](azure-stack-manage-portals.md) or PowerShell to manage Azure Stack. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, there are preparation steps. You must [install](azure-stack-powershell-install.md) PowerShell, [download](azure-stack-powershell-download.md) additional modules, and [configure](azure-stack-powershell-configure.md) PowerShell.
+[管理者ポータル](azure-stack-manage-portals.md)または PowerShell を使用して Azure Stack を管理できます。 基本的概念を学ぶためには、ポータルを介するのが最も容易な方法です。 PowerShell を使用する場合は、準備の手順があります。 PowerShell を[インストール](azure-stack-powershell-install.md)し、追加モジュールを[ダウンロード](azure-stack-powershell-download.md)して、PowerShell を[構成](azure-stack-powershell-configure-admin.md)する必要があります。
 
-Azure Stack uses Azure Resource Manager as its underlying deployment, management, and organization mechanism. If you're going to manage Azure Stack and help support users, you should learn about Resource Manager. See the [Getting Started with Azure Resource Manager](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) whitepaper.
+Azure Stack はデプロイ、管理、整理のための基礎となるメカニズムとして、Azure Resource Manager を使用します。 Azure Stack の管理とユーザーのサポートを行う予定であれば、Resource Manager について学習する必要があります。 「[Azure Resource Manager の概要](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)」ホワイトペーパーを参照してください。
 
-## <a name="your-typical-responsibilities"></a>Your typical responsibilities
+## <a name="your-typical-responsibilities"></a>クラウド オペレーターの通常の担当範囲
 
-Your users want to use services. From their perspective, your main role is to make these services available to them. You must decide which services to offer, and make those services available by creating [quotas](azure-stack-setting-quotas.md), [plans](azure-stack-create-plan.md), and [offers](azure-stack-create-offer.md). 
+ユーザーはサービスを使用する必要があります。 ユーザーの観点からは、クラウド オペレーターの主な役割は、ユーザーがこれらのサービスを使用できるようにすることです。 提供するサービスを決定し、プラン、オファー、クォータを作成することで、それらのサービスを使用できるようにする必要があります。 詳細については、「[Overview of offering services in Azure Stack (Azure の提供サービスの概要)](azure-stack-offer-services-overview.md)」をご覧ください。 
 
-You'll also need to add items to the marketplace, such as virtual machine images. The easiest way is to [download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
+仮想マシンのイメージなど、[マーケットプレース](azure-stack-marketplace.md)に項目を追加する必要もあります。 [マーケットプレースの項目を Azure から Azure Stack にダウンロードする](azure-stack-download-azure-marketplace-item.md)のが最も容易な方法です。
 
 > [!NOTE]
-> If you want to test your plans, offers, and services, you should use the [user portal](azure-stack-manage-portals.md); not the administrator portal.
+> プラン、オファー、およびサービスをテストする場合は、管理者ポータルではなく[ユーザー ポータル](azure-stack-manage-portals.md)を使用する必要があります。
 
-In addition to providing services, you must perform all the regular  duties of a cloud operator to keep Azure Stack up and running. These duties include the following:
+サービスを提供することに加えて、オペレーターとして Azure Stack を稼働させ続けるという通常の業務をすべて実行する必要があります。 これには以下のような業務が含まれます。
 
-- Add user accounts (for [Azure Active Directory](azure-stack-add-new-user-aad.md) deployment or for [Active Directory Federation Services](azure-stack-add-users-adfs.md) deployment)
-- [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This is not restricted to administrators.)
-- [Monitor infrastructure health](azure-stack-monitor-health.md)
-- Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources
-- Replace bad hardware
+- ユーザー アカウントを追加する ([Azure Active Directory](azure-stack-add-new-user-aad.md) のデプロイや [Active Directory フェデレーション サービス (AD FS) ](azure-stack-add-users-adfs.md)のデプロイのため)
+- [ロールベースのアクセス制御 (RBAC) のロールを割り当てる](azure-stack-manage-permissions.md) (これは管理者に限られません)
+- [インフラストラクチャの正常性を監視する](azure-stack-monitor-health.md)
+- [ネットワーク](azure-stack-viewing-public-ip-address-consumption.md)と[ストレージ](azure-stack-manage-storage-accounts.md)のリソースを管理する
+- 不具合のあるハードウェアを交換する、たとえば[障害が発生したディスクを交換する](azure-stack-replace-disk.md)。
 
-## <a name="what-to-tell-your-users"></a>What to tell your users
+## <a name="what-to-tell-your-users"></a>ユーザーに伝えること
 
-You'll need to let your users know how to work with services in Azure Stack, how to connect to the development kit environment, and how to subscribe to offers.
+ユーザーには、Azure Stack 内のサービスを操作する方法、環境に接続する方法、オファーをサブスクライブする方法を知らせる必要があります。 ユーザーに提供するカスタム ドキュメントのほかに、ユーザーには Azure Stack ユーザー ドキュメント サイトを案内できます。
 
-**Understand how to work with services in Azure Stack**
+**Azure Stack 内のサービスを操作する方法について**
 
-There's information your users must understand before they use services and build apps in Azure Stack. For example, there are specific PowerShell and API version requirements. Also, there are some feature deltas between a service in Azure and the equivalent service in Azure Stack. Make sure that your users review the following articles:
+Azure Stack 内のサービスを使用してアプリを構築する前に、ユーザーが理解しておく必要のある情報があります。 たとえば、PowerShell と API については、特定のバージョン要件があります。 また、Azure のサービスと Azure Stack の同等のサービスに備わる機能には、一部違いがあります。 ユーザーには、以下の記事に必ず目を通してもらってください。
 
-- [Key considerations: Using services or building apps for Azure Stack](azure-stack-considerations.md)
-- [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md)
-- [Storage: differences and considerations](azure-stack-acs-differences-tp2.md)
+- [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](user/azure-stack-considerations.md)
+- [Azure Stack の仮想マシンに関する考慮事項](user/azure-stack-vm-considerations.md)
+- [ストレージ: 相違点と考慮事項](user/azure-stack-acs-differences.md)
 
-The information in these articles summarizes the differences between a service in Azure and Azure Stack. It supplements the information that's available for an Azure service in the global Azure documentation. 
+これらの記事には、Azure と Azure Stack でのサービスの相違点に関する情報がまとめられています。 これらは、グローバルな Azure ドキュメントで Azure サービスについて提供されている情報を補完するものです。
 
-**Connect to Azure Stack as a user**
+**ユーザーとしての Azure Stack への接続**
 
-In a development kit environment, if a user doesn't have Remote Desktop access to the development kit host, they must configure a virtual private network (VPN) connection before they can access Azure Stack. See [Connect to Azure Stack](azure-stack-connect-azure-stack.md). 
+開発キット環境では、ユーザーが開発キット ホストに対するリモート デスクトップのアクセス権を持っていない場合は、Azure Stack にアクセスする前に仮想プライベート ネットワーク (VPN) 接続を構成する必要があります。 「[Azure Stack への接続](azure-stack-connect-azure-stack.md)」を参照してください。 
 
-Your users will want to know how to [access the user portal ](azure-stack-manage-portals.md) or how to connect through PowerShell. If using PowerShell, users may have to register resource providers before they can use services. (A resource provider manages a service. For example, the networking resource provider manages resources such as virtual networks, network interfaces, and load balancers.) They must [install](azure-stack-powershell-install.md) PowerShell, [download](azure-stack-powershell-download.md) additional modules, and [configure](azure-stack-powershell-configure.md) PowerShell (which includes resource provider registration).
+ユーザーは、[ユーザー ポータルへのアクセス方法](user/azure-stack-use-portal.md)や PowerShell を介した接続方法を知る必要があります。 統合システム環境では、ユーザーのポータル アドレスはデプロイごとに異なります。 ユーザーには正しい URL を提供する必要があります。
 
-**Subscribe to an offer**
+PowerShell を使用する場合、ユーザーはサービスを使用する前にリソース プロバイダーに登録する必要がある場合があります。 (リソース プロバイダーがサービスを管理しています。 たとえば、ネットワーク リソース プロバイダーは仮想ネットワーク、ネットワーク インターフェイス、ロード バランサーなどのリソースを管理しています。)ユーザーは PowerShell を[インストール](user/azure-stack-powershell-install.md)し、追加のモジュールを[ダウンロード](user/azure-stack-powershell-download.md)して、PowerShell を[構成](user/azure-stack-powershell-configure-user.md)する (これにはリソース プロバイダーの登録が含まれます) 必要があります。
 
-Before a user can access services, they must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that you've created as a cloud operator.
+**プランへのサブスクライブ**
 
-## <a name="where-to-get-support"></a>Where to get support
+ユーザーはサービスにアクセスする前に、オペレーターが作成した[オファーをサブスクライブする](azure-stack-subscribe-plan-provision-vm.md)必要があります。
 
-For the Azure Stack Development Kit, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens the forums site directly. These forums are regularly monitored. Because the development kit is an evaluation environment, there is no official support offered through Microsoft Customer Support Services (CSS).
+## <a name="where-to-get-support"></a>サポートが受けられる場所
 
-## <a name="next-steps"></a>Next steps
+### <a name="integrated-systems"></a>統合システム
 
-- [Region management in Azure Stack](azure-stack-region-management.md)
+統合システムについては、Microsoft と Microsoft の OEM (original equipment manufacturer) ハードウェア パートナーとの間で、統合されたエスカレーションと解決のプロセスをご用意しています。
 
+クラウド サービスに問題がある場合は、Microsoft カスタマー サポート サービス (CSS) を通じてサポートを提供いたします。 管理者ポータルの右上隅にあるヘルプとサポート アイコン (疑問符) をクリックして **[新しいサポート要求]** をクリックすると、サポート要求を直接展開できるサイトが開きます。
+
+デプロイ、パッチ、更新プログラム、ハードウェア (現場交換可能ユニットを含む) や、ハードウェア ライフサイクル ホストで実行するソフトウェアなどのハードウェア ブランドのソフトウェアに問題がある場合は、はじめに OEM ハードウェア ベンダーにお問い合わせください。
+
+その他の問題については、Microsoft CSS にお問い合わせください。
+
+### <a name="development-kit"></a>Development kit
+
+Development Kit については、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)でサポート関連の質問をすることができます。 管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[新しいサポート要求]** をクリックすると、フォーラムのサイトが直接開かれます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
 
 

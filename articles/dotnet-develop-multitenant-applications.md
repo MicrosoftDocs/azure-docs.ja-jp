@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 57ba0e46139bda2d74c9f7db0ffab2f2122b0df2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
 マルチテナント アプリケーションは共有リソースであり、個別のユーザーつまり "テナント" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、アプリケーションのすべてのユーザーがユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。
@@ -56,7 +55,7 @@ Azure には、マルチテナント システムの設計時に発生する主�
 
 **Storage**
 
-Azure SQL Database や Azure Storage サービスのようなデータ管理。たとえば、大量の非構造化データを保存するための Table サービスがあります。また、大量の非構造化テキストまたはバイナリ データ (ビデオ、オーディオ、画像など) を保存するための BLOB サービスもあります。
+Azure SQL Database や Azure Storage サービスのようなデータ管理。たとえば、大量の非構造化データを保存するための Table service があります。また、大量の非構造化テキストまたはバイナリ データ (ビデオ、オーディオ、画像など) を保存するための Blob service もあります。
 
 * SQL Database 内のマルチテナント データをセキュリティで保護する。SQL Server へのテナント単位のログインに適しています。
 * Azure テーブルをアプリケーション リソース用に使用する。コンテナー レベルのアクセス ポリシーを指定することでアクセス許可を調整できます。共有のアクセス署名で保護されたリソース用に新しい URL を発行する必要はありません。
@@ -93,4 +92,3 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 
 [Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
-

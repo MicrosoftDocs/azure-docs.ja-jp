@@ -4,7 +4,7 @@ description: "Azure Functions でタイマー トリガーを使用する方法�
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -15,15 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: chrande; glenga
+ms.author: glenga
 ms.custom: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 12a793c4df497f221dbd592ca3d249b8c1f65e04
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
-
+ms.openlocfilehash: ed4afa2b946fe11d5802a95f8a490f3419dc0f39
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 06/22/2017
 
 この記事では、Azure Functions でタイマー トリガーを構成およびコーディングする方法について説明します。 Azure Functions には、定義したスケジュールに基づいて関数コードを実行することができるタイマー トリガー バインディングがあります。 
 
-タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。 特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
+タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -193,5 +191,4 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

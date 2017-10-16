@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: d8dcf0171b93fec15347e810a1b525bd815dbf04
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合
 
@@ -112,7 +110,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
-    a. **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
 
     | `https://sso.8x8.com/<companyname>` |
     | `https://www.8x8.com/<companyname>` |
@@ -201,7 +199,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-8x8-virtual-office-test-user"></a>8x8 Virtual Office のテスト ユーザーの作成
 
@@ -269,5 +267,4 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 [201]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_203.png
-
 

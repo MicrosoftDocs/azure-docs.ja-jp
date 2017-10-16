@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: f401f592d79ad954aa466de74d3e3fbb18aa9a5b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
 
@@ -202,7 +201,7 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-mimecast-admin-console-test-user"></a>Mimecast Admin Console テスト ユーザーの作成
 
@@ -239,7 +238,7 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 
 ![ユーザー ロールを割り当てる][200] 
 
-**を Mimecast Admin Console に割り当てるには、次の手順に従います。**
+ **を Mimecast Admin Console に割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
@@ -288,5 +287,4 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 [201]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-mimecast-admin-console-tutorial/tutorial_general_203.png
-
 

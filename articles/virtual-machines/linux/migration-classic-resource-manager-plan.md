@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 5db4e5b18ad385e7eba125a1296a9c5054213446
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。 
 
@@ -96,7 +94,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 - **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシックから Resource Manager デプロイメント モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
-  - 移行中に DNS サーバーへの接続が失われると、BGInfo v1.\* を除くすべての VM 拡張機能 を最初に各 VM から削除してから移行の準備を行い、Azure Resource Manager への移行後に再度 VM に追加する必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure 診断やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
+  - BGInfo v1 を除くすべての VM 拡張機能の移行中に DNS サーバーへの接続が失われた場合。\*最初から削除するすべての移行を準備する、前に VM と再度、後で再追加する VM を Azure リソース マネージャーの移行後にする必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure 診断やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
   - また、ネットワーク セキュリティ グループが送信インターネット アクセスを制限していないことを確認してください。 これは、一部のネットワーク セキュリティ グループ構成で発生することがあります。 VM 拡張機能を Azure Resource Manager に移行するには、送信インターネット アクセス (および DNS) が必要です。 
   - BGInfo 拡張機能には 2 つのバージョン (v1 と v2) があります。  VM がクラシック ポータルまたは PowerShell を使用して作成された場合は、VM に v1 拡張機能が搭載される可能性があります。 この拡張機能を削除する必要はありません。この拡張機能は、移行 API によってスキップされます (移行されません)。 ただし、クラシック VM が新しい Azure Portal で作成された場合は、JSON ベースの v2 バージョンの BGInfo が搭載される可能性があります。エージェントが動作しており、送信インターネット アクセス (および DNS) を使用している場合は、この拡張機能を Azure Resource Manager に移行できます。 
   - **修復オプション 1**。 送信インターネット アクセス、動作中の DNS サービス、および動作中の Azure エージェントが VM にないことがわかっている場合は、準備の前に、移行の一環としてすべての VM 拡張機能をアンインストールしてから、移行後に VM 拡張機能を再インストールしてください。 
@@ -213,4 +211,3 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 * [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Review most common migration errors](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (移行の一般的なエラーを確認する)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-

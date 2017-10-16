@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
+ms.openlocfilehash: de7aff6b31d937576da65498c5fcce2ae9abdbf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 0230ec0e4fc4ff7fe98a7c3e82f252bd8dd66d16
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Data Lake Store と他の Azure サービスを統合する
 Azure Data Lake Store を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Store と統合できるサービスについてまとめてあります。
@@ -29,7 +28,7 @@ HDFS 準拠ストレージとして Data Lake Store を使用する [Azure HDIns
 
 Data Lake Store で HDInsight クラスターにプロビジョニングする方法については、次を参照してください。
 
-* [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Azure PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Azure PowerShell を使用して、Data Lake Store を追加のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -41,7 +40,7 @@ Data Lake Store で Data Lake Analytics を使用する方法については、�
 ## <a name="use-data-lake-store-with-azure-data-factory"></a>Azure Data Factory で Data Lake Store を使用する
 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用し、Azure テーブル、Azure SQL Database、Azure SQL DataWarehouse、Azure Storage BLOB、オンプレミス データベースからデータを取り込むことができます。 Azure エコシステムの第一級オブジェクトである Azure Data Factory を使用し、これらのソースから Azure Data Lake Store へのデータ取り込みを調整できます。
 
-Data Lake Store で Azure Data Factory を使用する方法については、「 [Data Factory を使用し、Data Lake Store のデータを移動する](../data-factory/data-factory-azure-datalake-connector.md)」を参照してください。
+Data Lake Store で Azure Data Factory を使用する方法については、「 [Data Factory を使用し、Data Lake Store のデータを移動する](../data-factory/connector-azure-data-lake-store.md)」を参照してください。
 
 ## <a name="copy-data-from-azure-storage-blobs-into-data-lake-store"></a>Azure Storage BLOB から Data Lake Store へのデータのコピー
 Azure Data Lake Store には、AdlCopy というコマンド ライン ツールがあります。このツールを使用すると、Azure Blob Storage のデータを Data Lake Store アカウントにコピーできます。 詳細については、「[Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)」を参照してください。
@@ -71,5 +70,4 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
 * [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [Azure PowerShell で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)  
-
 

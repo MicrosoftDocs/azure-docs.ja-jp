@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: ccebc722386a19014674d7a59757a3685bd50793
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
 ネットワーク スループットのパフォーマンスを Azure でテストするための最善の方法は、テストするネットワークをターゲットとするツールを使用して、パフォーマンスに影響する可能性があるその他のリソースの使用を最小限に抑えることです。 NTTTCP を使用することをお勧めします。
@@ -164,4 +162,3 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ## <a name="next-steps"></a>次のステップ
 * 結果によっては、シナリオに適合するように[マシンのネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)を実行できる余地がある場合があります。
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照します。
-

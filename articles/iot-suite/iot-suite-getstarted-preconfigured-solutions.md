@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 2364ab79ec4091d41e4d340e13033181df05b507
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.openlocfilehash: 466825ab78a5ac9773d8beff69cca90ff9db6c01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>事前に構成されたソリューションを使ってみる
 

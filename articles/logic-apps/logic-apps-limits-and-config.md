@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 3a8a661f65923476c89763580a98ea240642db99
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 5d905d410e70c5b635a3f6221e7e0c0bda7ad140
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="logic-app-limits-and-configuration"></a>ロジック アプリの制限と構成
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/30/2017
 
 ### <a name="integration-account-limits"></a>統合アカウントの制限
 
-次に示したのは、統合アカウントに追加されるアーティファクトの制限です
+統合アカウントに追加できる成果物の制限を以下に示します。
 
 |名前|制限|メモ|
 |----|----|----|
@@ -123,6 +123,21 @@ ms.lasthandoff: 08/30/2017
 |ランタイム エンドポイントの 5 分間の起動呼び出し数 |45,000|必要に応じて複数のアカウントにワークロードを分散できます。|
 |ランタイム エンドポイントの 5 分間の追跡呼び出し数 |45,000|必要に応じて複数のアカウントにワークロードを分散できます。|
 |ランタイム エンドポイントでブロックされた同時呼び出し数 |～ 1,000|必要に応じて、同時要求数を削減するか期間を短縮します。|
+
+統合アカウントに追加できる成果物の数の制限を以下に示します。
+
+Free 価格レベル
+
+|名前|制限|メモ|
+|----|----|----|
+|アグリーメント|10||
+|その他の成果物の種類|25|この種類には、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。|
+
+Standard 価格レベル
+
+|名前|制限|メモ|
+|----|----|----|
+|成果物の任意の種類|500|この種類には、契約、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B プロトコル (AS2、X12、EDIFACT) のメッセージのサイズ
 

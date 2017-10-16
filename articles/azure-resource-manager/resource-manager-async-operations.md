@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 5590ced0e7d2a68fd525178ee21590b0897b58d7
 ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
 Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 このトピックでは、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  
@@ -37,7 +37,7 @@ Azure の REST 操作の中には、操作を迅速に完了できないため�
 実行中の操作に関する応答については、[REST API のドキュメント](/rest/api/)を参照してください。 
 
 ## <a name="monitor-status-of-operation"></a>操作の状態を監視する
-非同期の REST 操作では、操作の状態を確認するために使用するヘッダーの値が返されます。 確認が必要なヘッダーの値は&3; つ想定されます。
+非同期の REST 操作では、操作の状態を確認するために使用するヘッダーの値が返されます。 確認が必要なヘッダーの値は 3 つ想定されます。
 
 * `Azure-AsyncOperation` - 操作の進行状態をチェックするための URL です。 操作がこの値を返す場合、(Location ではなく) この値を使用して操作の状態を追跡します。
 * `Location` - 操作が完了したタイミングを確認するための URL です。 Azure-AsyncOperation が返されない場合にのみ、この値を使用します。
@@ -79,7 +79,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 ## <a name="provisioningstate-values"></a>provisioningState 値
 
-リソースを作成、更新、または削除 (PUT、PATCH、DELETE) する操作は通常、`provisioningState` 値を返します。 操作が完了すると、次の&3; つの値のいずれかが返されます。 
+リソースを作成、更新、または削除 (PUT、PATCH、DELETE) する操作は通常、`provisioningState` 値を返します。 操作が完了すると、次の 3 つの値のいずれかが返されます。 
 
 * Succeeded
 * Failed
@@ -175,7 +175,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-状態コード 202 が返されます。 ヘッダーの値の中には、次の&2; つの値があります。
+状態コード 202 が返されます。 ヘッダーの値の中には、次の 2 つの値があります。
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
@@ -196,8 +196,3 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 * 各 REST 操作の詳細については、[REST API のドキュメント](/rest/api/)を参照してください。
 * リソース マネージャー REST API からリソースを管理する方法の詳細については、「[Using the Resource Manager REST API (リソース マネージャー REST API の使用)](resource-manager-rest-api.md)」を参照してください。
 * リソース マネージャー REST API からテンプレートをデプロイする方法の詳細については、「[Deploy resources with Resource Manager templates and Resource Manager REST API (リソース マネージャー テンプレートとリソース マネージャー REST API を使用したリソースのデプロイ)](resource-group-template-deploy-rest.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -7,9 +7,13 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: コンテナー インスタンスの作成
+    - name: コンテナーの作成 - CLI
       href: container-instances-quickstart.md
-- name: チュートリアル
+    - name: コンテナーの作成 - ポータル
+      href: container-instances-quickstart-portal.md
+    - name: コンテナーの作成 - PowerShell
+      href: container-instances-quickstart-powershell.md
+- name: Tutorials (チュートリアル)
   items:
     - name: コンテナーの作成とデプロイ
       items:
@@ -39,8 +43,12 @@
       href: container-instances-troubleshooting.md
 - name: リファレンス
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: /cli/azure/container
+    - name: REST ()
+      href: /rest/api/container-instances
+    - name: PowerShell
+      href: '/powershell/module/azurerm.containerinstance#container_instances'
 - name: リソース
   items:
     - name: Azure のロードマップ

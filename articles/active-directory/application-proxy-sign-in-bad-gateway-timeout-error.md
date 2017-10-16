@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7c4e2f084571a2146e5013f24bd5da55319118af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 78ff8763a461162cbcfa04c6a86123973271928a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
 この記事では、Azure AD アプリケーション プロキシ アプリケーションで "この企業アプリにアクセスできない" というエラーが表示される一般的な問題をトラブルシューティングする方法について説明します。
@@ -113,4 +111,3 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
-

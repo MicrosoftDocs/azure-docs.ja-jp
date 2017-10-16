@@ -17,41 +17,22 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7a989ffd72dd3636419dfb91f696f0e38f9271c2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。 
 
-## <a name="quick-commands"></a>クイック コマンド
-次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM に `50` GB のディスクを接続します。
 
-管理ディスクを使用する場合:
-
-```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
-```
-
-非管理対象ディスクを使用する場合:
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
-```
-
-## <a name="attach-a-managed-disk"></a>管理ディスクの接続
-
-管理ディスクを使用すると、Azure Storage アカウントについて心配することなく、VM およびそれらのディスクに注力できます。 同じ Azure リソース グループを使用して、管理ディスクを迅速に作成して VM に接続したり、任意の数のディスクを作成して VM に接続したりできます。
+## <a name="use-managed-disks"></a>Managed Disks の使用
+Azure Managed Disks は、VM ディスクに関連付けられているストレージ アカウントを管理することで、Azure VM のディスク管理を簡素化します。 必要なディスクの種類 (Premium または Standard) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。 詳細については、[Managed Disks の概要](managed-disks-overview.md)に関する記事を参照してください。
 
 
 ### <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
-
-VM に新しいディスクが必要な場合は、`az vm disk attach` コマンドを使用できます。
+仮想マシンに新しいディスクが必要な場合、`--new` パラメーターを指定した [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前の、*50* GB のディスクを作成します。
 
 ```azurecli
 az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
@@ -59,8 +40,7 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
 ```
 
 ### <a name="attach-an-existing-disk"></a>既存のディスクの接続 
-
-多くの場合は、既に作成されているディスクを接続します。 まずディスク ID を探し、`az vm disk attach` コマンドに渡します。 次の例では、`az disk create -g myResourceGroup -n myDataDisk --size-gb 50` で作成されたディスクを使用します。
+多くの場合は、 既に作成されているディスクを接続します。 既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
 
 ```azurecli
 # find the disk id
@@ -96,70 +76,29 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
 
-## <a name="attach-an-unmanaged-disk"></a>非管理対象ディスクの接続
-
-VM と同じストレージ アカウントにディスクを作成しても問題ない場合は、新しいディスクの接続は簡単です。 「`azure vm disk attach-new`」と入力して、VM 用に新しい GB ディスクを作成し、接続します。 ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM に `50` GB のディスクを接続します。
+## <a name="use-unmanaged-disks"></a>非管理対象ディスクの使用
+非管理対象ディスクでは、基になるストレージ アカウントの作成および管理に追加のオーバーヘッドが必要です。 非管理対象ディスクは、お使いの OS ディスクと同じストレージ アカウントに作成されます。 非管理対象ディスクを作成して接続するには、[az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach) コマンドを使用します。 次の例では、*50* GB の非管理対象ディスクを、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に接続します。
 
 ```azurecli
 az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
   --new --size-gb 50
 ```
 
+
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Linux VM を接続して新しいディスクをマウントする
-> [!NOTE]
-> このトピックでは、ユーザー名とパスワードを使用して VM に接続します。 公開キーおよび秘密キーのペアを使用して VM と通信する方法については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。 
-> 
-> 
-
-Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続する必要があります。 **ssh** を使用した接続に慣れていない場合は、`ssh <username>@<FQDNofAzureVM> -p <the ssh port>` 形式のコマンドを使用します。コマンドは次のようになります。
+Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。 
 
 ```bash
-ssh ops@mypublicdns.westus.cloudapp.azure.com -p 22
+ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-出力
-
-```bash
-The authenticity of host 'mypublicdns.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
-ECDSA key fingerprint is bx:xx:xx:xx:xx:xx:xx:xx:xx:x:x:x:x:x:x:xx.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'mypublicdns.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
-ops@mypublicdns.westus.cloudapp.azure.com's password:
-Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
-
-* Documentation:  https://help.ubuntu.com/
-
-System information as of Fri May 22 21:02:32 UTC 2015
-
-System load: 0.37              Memory usage: 2%   Processes:       207
-Usage of /:  41.4% of 1.94GB   Swap usage:   0%   Users logged in: 0
-
-Graph this data and manage this system at:
-  https://landscape.canonical.com/
-
-Get cloud support with Ubuntu Advantage Cloud Guest:
-  http://www.ubuntu.com/business/services/cloud
-
-0 packages can be updated.
-0 updates are security updates.
-
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-ops@myVM:~$
-```
-
-これで VM に接続されたので、ディスクを接続する準備ができました。  まず、 `dmesg | grep SCSI` を使用してディスクを探します (新しいディスクの検出に使用する方法は異なる場合があります)。 この場合、次のようになります。
+VM に接続された時点で、ディスクを接続する準備ができました。 まず、`dmesg` を使用してディスクを探します (新しいディスクの検出に使用する方法は異なる場合があります)。 次の例では、*SCSI* ディスクでのフィルター処理に dmesg を使用します。
 
 ```bash
 dmesg | grep SCSI
 ```
 
-出力
+出力は次の例のようになります。
 
 ```bash
 [    0.294784] SCSI subsystem initialized
@@ -169,13 +108,13 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-このトピックで必要なのは `sdc` ディスクです。 使用しているディスクを `sdc` と想定して、`sudo fdisk /dev/sdc` でディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。
+ここでは、*sdc* が対象のディスクです。 `fdisk` でディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-出力
+出力は次の例のようになります。
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -197,7 +136,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-プロンプトで「 `p` 」と入力して、パーティションを作成します。
+次のようにプロンプトで「`p`」と入力して、パーティションを作成します。
 
 ```bash
 Command (m for help): p
@@ -219,13 +158,13 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-**mkfs** コマンドを使用し、ファイル システムの種類とデバイス名を指定して、パーティションにファイル システムを作成します。 このトピックでは、前の内容から `ext4` と `/dev/sdc1` を使用しています。
+次に、`mkfs` コマンドを使用してパーティションにファイル システムを書き込みます。 ファイル システムの種類とデバイス名を指定します。 次の例では、上記の手順で作成された */dev/sdc1* パーティション上に *ext4* ファイル システムを作成します。
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
 ```
 
-出力
+出力は次の例のようになります。
 
 ```bash
 mke2fs 1.42.9 (4-Feb-2014)
@@ -250,38 +189,25 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-次に、 `mkdir`を使用して、ファイル システムをマウントするディレクトリを作成します。
+次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount`を使用して、ディレクトリをマウントします。
+`mount` を使用して、ファイル システムをマウントします。 次の例では、*/dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-これで、データ ディスクを `/datadrive`として使用する準備ができました。
-
-```bash
-ls
-```
-
-出力
-
-```bash
-bin   datadrive  etc   initrd.img  lib64       media  opt   root  sbin  sys  usr  vmlinuz
-boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
-```
-
-再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。 また、ドライブを参照する際に、デバイス名 ( `/dev/sdc1`など) だけでなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、 **blkid** ユーティリティを使用します。
+再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 (*/dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
 ```bash
 sudo -i blkid
 ```
 
-出力は、次のようになります。
+出力は次の例のようになります。
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -291,32 +217,30 @@ sudo -i blkid
 
 > [!NOTE]
 > **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。 編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。 編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
-> 
-> 
 
-次に、テキスト エディターで **/etc/fstab** ファイルを開きます。
+次に、テキスト エディターで次のように */etc/fstab* ファイルを開きます。
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-この例では、前の手順で作成した新しい **/dev/sdc1** デバイスに対して UUID 値を使用し、マウント ポイントとして **/datadrive** を使用します。 次の行を **/etc/fstab** ファイルの末尾に追加します。
+この例では、前の手順で作成した */dev/sdc1* デバイスに対して UUID 値を使用し、マウント ポイントとして */datadrive* を使用します。 次の行を */etc/fstab* ファイルの末尾に追加します。
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。 ディストリビューションのほとんどに `nofail` または `nobootwait` fstab オプションが用意されています。 これにより起動時にディスクのマウントが失敗しても、システムを起動できます。 これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
+> この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。 ほとんどのディストリビューションでは、*nofail* または *nobootwait* fstab オプションが提供されています。 これにより起動時にディスクのマウントが失敗しても、システムを起動できます。 これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 > 
-> **nofail** オプションを使用すると、ファイル システムが壊れているか、ブート時にディスクが存在しない場合でも VM が起動されるようになります。 このオプションを指定しない場合、「[Cannot SSH to Linux VM due to FSTAB errors (FSTAB エラーが原因で Linux VM に SSH 接続できない)](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)」で説明されているような動作が発生します。
+> *nofail* オプションを使用すると、ファイル システムが壊れているか、ブート時にディスクが存在しない場合でも VM が起動されるようになります。 このオプションを指定しない場合、「[Cannot SSH to Linux VM due to FSTAB errors (FSTAB エラーが原因で Linux VM に SSH 接続できない)](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)」で説明されているような動作が発生します。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure における Linux の TRIM/UNMAP サポート
-一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。 これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 この機能は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。また、この機能により、サイズの大きいファイルを作成して削除する場合のコストを削減できます。
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-* 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+* 次のように、*/etc/fstab* で `discard` マウント オプションを使用します。
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
@@ -342,7 +266,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 ## <a name="next-steps"></a>次のステップ
 * 新しいディスクは、 [fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
-* [Linux マシンのパフォーマンスの最適化](optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
-* ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) してパフォーマンスを強化します。
-
+* [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
+* ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。
 

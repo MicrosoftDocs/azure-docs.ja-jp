@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: 4f8dd685c3ae89535217d7a17a01c5129ca7e6e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポート
 
-HTTP/2 は HTTP/1.1 に対するメジャー リビジョンです。\.これにより、Web パフォーマンスの高速化、応答時間の短縮、ユーザー エクスペリエンスの向上が実現される一方で、使い慣れた HTTP メソッド、状態コード、およびセマンティクスは維持されます。 HTTP/2 は HTTP や HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは HTTP/2 over TLS のみをサポートしています。
+Http/2 は、メジャー リビジョン HTTP/1.1\ です。 高速化は提供使い慣れた HTTP メソッド、ステータス コードとセマンティクスを維持しながら、web パフォーマンス、短縮された応答時間、および改良されたユーザーが発生します。 HTTP/2 は HTTP や HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは HTTP/2 over TLS のみをサポートしています。
 
 ###<a name="http2-benefits"></a>HTTP/2 の利点
 

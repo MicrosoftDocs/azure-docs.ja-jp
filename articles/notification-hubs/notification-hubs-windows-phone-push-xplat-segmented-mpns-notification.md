@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -293,10 +293,10 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 -->
 
 <!-- Anchors. -->
-[アプリケーションにカテゴリ選択を追加する]: #adding-categories
-[通知を登録する]: #register
-[バックエンドから通知を送信する]: #send
-[アプリケーションを実行して通知を生成する]: #test-app
+[Add category selection to the app]: #adding-categories
+[Register for notifications]: #register
+[Send notifications from your back-end]: #send
+[Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -308,15 +308,9 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 <!-- URLs.-->
 [Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: ../breakingnews-localized-wp8.md
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users/
-[モバイル サービス]: /develop/mobile/tutorials/get-started
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Microsoft Azure Notification Hubs (Windows Phone 8 アプリ) に関するページ]: ??
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Use Notification Hubs to broadcast localized breaking news]: ../breakingnews-localized-wp8.md
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users/
+[Mobile Service]: /develop/mobile/tutorials/get-started
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Phone]: ??
 

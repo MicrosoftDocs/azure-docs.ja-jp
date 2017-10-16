@@ -15,14 +15,12 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
 Azure Active Directory アプリケーション プロキシと PingAccess の連携によって、Azure Active Directory でアクセスできるアプリケーションの幅が一層広がっています。 PingAccess は[既存のアプリケーション プロキシ サービス](active-directory-application-proxy-get-started.md)を拡張し、ヘッダーを使って認証を行うアプリケーションへのシングル サインオン アクセスに対応します。
@@ -163,4 +161,3 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 - [PingAccess for Azure AD を構成する](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](application-proxy-sso-overview.md)
 - [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md)
-

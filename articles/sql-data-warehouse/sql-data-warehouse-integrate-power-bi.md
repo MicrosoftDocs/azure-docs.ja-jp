@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 201efc5225d6c12028b48ccaf6764c60b44dce58
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 4b7609fc5d6ce7bf0e3bd3ebf6d8f52e93a40a75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>SQL Data Warehouse での Power BI の使用
 Azure SQL Database の場合と同様、SQL Data Warehouse Direct Connect を使用すると、強力な論理プッシュ ダウンと共に Power BI の分析機能を活用できます。  Direct Connect では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。  これを SQL Data Warehouse のスケールで組み合わすことで、テラバイト単位のデータに対して動的レポートを数分で作成できます。  さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。
@@ -52,8 +50,8 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 
 1. ナビゲーション ウィンドウの下部にある [データの取得] をクリックします。
 2. [データベース] を選択します。
-3. [データベース] ページで、[Azure SQL Data Warehouse] を選択し、[接続] をクリックします。
-4. 必要な接続情報を入力します。  Azure ポータルでは、サーバー名とデータベース名を検索できます。
+3. データベース ページで、Azure SQL Data Warehouse を選択し、接続をクリックします。
+4. 必要な接続情報を入力します。  Azure Portal では、サーバー名とデータベース名を検索できます。
 5. 接続が行われると、Power BI のメイン ページに戻り、[データベース] の下に新しいエントリがインスタンスの名前で表示されます。  
 6. 新しいデータセットをクリックして、データベース内のすべてのテーブルとビューを確認できます。 列を選択すると、ソースにクエリが送信されて、ビジュアルが動的に作成されます。 これらのビジュアルは新しいレポートに保存され、ダッシュボードに固定できます。
 
@@ -66,4 +64,3 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 <!--MSDN references-->
 
 <!--Other Web references-->
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure Security Center のプラットフォームの移行
 
@@ -78,5 +77,4 @@ OMS セキュリティ ソリューションがインストールされていな
 - データの収集は必須になり、Standard 価格レベルのお客様では自動的に有効になります。
 - Azure Security Center は、Azure 拡張機能でデプロイされなかったマルウェア対策ソリューションの検出を開始します。 Symantec Endpoint Protection と Defender for Windows 2016 の検出が最初に利用可能になります。
 - 防止ポリシーと通知は、"*サブスクリプション*" レベルのみで構成可能ですが、価格設定は、"*リソース グループ*" レベルでこれまでどおり設定できます。
-
 

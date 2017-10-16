@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>OMS Agent for Linux の Log Analytics で Nagios と Zabbix からのアラートを収集する 
 [Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。  [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
@@ -59,7 +57,7 @@ Zabbix サーバーからのアラートを収集するには、ユーザーと�
 
 アラートを収集するには、Nagios サーバー上で次の手順を実行します。
 
-1. (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。  ユーザー名とパスワードを Zabbix 環境の値に変更します。
+1. (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。ユーザー名とパスワードを Zabbix 環境の値に変更します。
 
         <source>
          type zabbix_alerts
@@ -116,4 +114,3 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics での[アラート](log-analytics-alerts.md)について学習します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
-

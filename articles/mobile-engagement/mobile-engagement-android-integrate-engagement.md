@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.lasthandoff: 03/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>Engagement を Android に統合する方法
 > [!div class="op_single_selector"]
@@ -57,7 +56,7 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
             engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure ポータルに表示されます。
+アプリケーションの接続文字列が Azure Portal に表示されます。
 
 * 次の Android のアクセス権限が不足している場合は (`<application>` タグの前に) 追加します。
   
@@ -182,7 +181,7 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
 場所を報告する場合は、数行の構成行を (`<application>` タグと `</application>` タグの間に) 追加する必要があります。
 
 ### <a name="lazy-area-location-reporting"></a>遅延エリアの場所レポート
-大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。 このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。 デバイス エリアがセッションごとに最大&1; 回レポートされます。 GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
+大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。 このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。 デバイス エリアがセッションごとに最大 1 回レポートされます。 GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
 
 報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計をコンピューティングします。 また、リーチ キャンペーンの条件としても使用されます。
 
@@ -385,4 +384,3 @@ Engagement では、この設定を管理するために設定ファイル内で
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
-

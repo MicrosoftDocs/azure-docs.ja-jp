@@ -1,6 +1,6 @@
 ---
 title: "マルチテナント SaaS アプリで多くの Azure SQL データベースのパフォーマンスを監視する | Microsoft Docs"
-description: "Azure SQL Database の Wingtip SaaS アプリのデータベースおよびプールのパフォーマンスを監視および管理します"
+description: "マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 42f727aa40e744916b1a8adf634c10d55880bef0
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="monitor-performance-of-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションのパフォーマンスの監視
+# <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
 このチュートリアルでは、SaaS アプリケーションで使用されるいくつかの主要なパフォーマンス管理シナリオを説明します。 ロード ジェネレーターを使用して、すべてのテナント データベース間でのアクティビティをシミュレートし、SQL Database およびエラスティック プールに組み込まれている監視機能およびアラート機能を示します。
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 58908d65fdebd651e5cfab2b668574bdf7ab6085
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
@@ -82,7 +81,7 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 次に例を示します。  
 `Trim([proxyAddresses])` proxyAddress 属性の各値の Trim を実行します。  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` @-sign, を含むすべての文字列では、ドメインを @contoso.com に置き換えます。  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`値ごとに、@-signを使用してドメインを置き換えます@contoso.comです。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP アドレスを検索し、値から削除します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -98,5 +97,4 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 **参照トピック**
 
 * [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
-
 

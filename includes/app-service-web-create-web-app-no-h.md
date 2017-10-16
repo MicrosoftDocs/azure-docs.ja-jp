@@ -1,4 +1,4 @@
-[az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../articles/app-service-web/app-service-web-overview.md)を作成します。 
+Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](../articles/app-service/app-service-web-overview.md)を作成します。 
 
 Web アプリによって目的のコード用のホスト領域が提供され、デプロイされたアプリを表示するための URL が提供されます。
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack Development Kit release notes | Microsoft Docs
+title: "Microsoft Azure Stack Development Kit のリリース ノート | Microsoft Docs"
 description: 
 services: azure-stack
 documentationcenter: 
@@ -12,81 +12,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 9e82cf367bdc03aaafe1050078194cc3bd746bac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 2bd93faf01c5d1790989a0231020ce8340eff57d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit release notes
-These release notes provide information on new features and known issues.
+# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
 
-## <a name="release-build-201706271"></a>Release Build 20170627.1
-Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-version) release, Azure Stack Proof of Concept has been renamed to Azure Stack Development Kit.  Like the Azure Stack POC, Azure Stack Development Kit is intended to be a development and evaluation environment used to explore Azure Stack features, and provide a development platform for Azure Stack.
+*適用先: Azure Stack Development Kit*
 
-### <a name="whats-new"></a>What's new
-- You can now use CLI 2.0 to manage Azure Stack resources from a commandline on popular operating systems.
-- DSV2 virtual machine sizes enable template portability between Azure and Azure Stack.
-- Cloud operators can preview the capacity management experience within the capacity management blade.
-- You can now use the Azure Diagnostics extension to gather diagnostic data from your virtual machines.  Capturing this data is useful when analyzing workload performance and for investigating issues.
-- A new [deployment experience](azure-stack-run-powershell-script.md) replaces previous scripted steps for deployment.  The new deployment experience provides a common graphical interface through the entire deployment lifecycle.
-- Microsoft Accounts (MSA) are now supported during deployment.
-- Multi-Factor Authentication (MFA) is now supported during deployment.  Previously, MFA must be disabled during deployment.
+これらのリリース ノートでは、新機能と既知の問題に関する情報を提供します。
 
-### <a name="known-issues"></a>Known issues
-#### <a name="deployment"></a>Deployment
-* You may notice deployment taking longer than previous releases. 
-* Get-AzureStackLogs generates diagnostic logs, however, does not log progress to the console.
-* You must use the new [deployment experience](azure-stack-run-powershell-script.md) to deploy Azure Stack, or deployment may fail.
-* Deployments using the *PublicVLANID* parameter will fail.
+## <a name="release-build-201706271"></a>リリース ビルド 20170627.1
+[20170627.1](azure-stack-updates.md#determine-the-current-version) リリース以降、Azure Stack Proof of Concept は、Azure Stack Development Kit という名前に変更されています。  Azure Stack POC と同様、Azure Stack Development Kit は、Azure Stack の機能を検討し、Azure Stack 用の開発プラットフォームを提供するために使用される開発および評価環境として提供されます。
 
-#### <a name="portal"></a>Portal
-* You may see a blank dashboard in the portal.  You can recover the dashboard by selecting the gear in the upper right of the portal, and selecting "Restore default settings".
-* Tenants are able to browse the full marketplace without a subscription, and will see administrative items like plans and offers.  These items are non-functional to tenants.
-* When selecting an infrastructure role instance,  you see an error showing a reference error. Use the browser’s refresh functionality to refresh the Admin Portal.
-* The "move" button is disabled on the Resource Group blade.  This is expected behavior, because moving resource groups between subscriptions is not currently supported.
-* You will receive repeated notifications for syndicated marketplace items that have completed downloading.
-* You are not able to view permissions to your subscription using the Azure Stack portals.  As a work-around, you can verify permissions using Powershell.
-* You must add `-TenantID` as a flag when exporting a completed deployment as an automation script from the portal.
+### <a name="whats-new"></a>新機能
+- CLI 2.0 を使用して、一般的なオペレーティング システムのコマンドラインから Azure Stack リソースを管理できるようになりました。
+- DSV2 仮想マシン サイズを使用することで、Azure と Azure Stack 間でのテンプレート移植が可能になります。
+- クラウド オペレーターは、容量管理ブレード内で容量管理エクスペリエンスをプレビューすることができます。
+- Microsoft Azure 診断の拡張機能を使用して、仮想マシンから診断データを収集できるようになりました。  このデータのキャプチャは、ワークロードのパフォーマンスを分析する場合や、問題を調査する場合に役立ちます。
+- デプロイについてスクリプト化された以前の手順は、新しい[デプロイ エクスペリエンス](azure-stack-run-powershell-script.md)に置き換えられます。  新しいデプロイ エクスペリエンスでは、デプロイ ライフサイクル全体で共通のグラフィカル インターフェイスが提供されます。
+- デプロイ時に Microsoft アカウント (MSA) がサポートされるようになりました。
+- デプロイ時に Multi-Factor Authentication (MFA) がサポートされるようになりました。  以前は、デプロイ時に MFA を無効にする必要がありました。
 
-#### <a name="services"></a>Services
-* Key Vault services must be created from the tenant portal or tenant API.  If you are logged in as an administrator, make sure to use the tenant portal to create new Key Vault vaults, secrets, and keys.
-* There is no marketplace experience for creating virtual machine scale sets, though they can be created via template.
-* You cannot associate a load balancer with a backend network via the portal.  This task can be completed with PowerShell or with a template.
-* VM Availability sets can only be configured with a fault domain of one and an update domain of one.  
-* A tenant must have an existing storage account before creating a new Azure Function.
-* VM may fail and report "Cannot bind argument to parameter 'VM Network Adapter' because it is null."  Redeployment of the virtual machine succeeds.  
-* Deleting tenant subscriptions results in orphaned resources.  As a workaround, first delete tenant resources or entire resource group, and then delete tenant subscriptions. 
-* You must create a NAT rule when creating a network load balancer, or you will receive an error when you attempt to add a NAT rule after the load balancer is created.
-* Tenants can create virtual machines larger than quota allows.  This behavior is because compute quotas are not enforced.
-* Tenants are given the option to create a virtual machine with geo-redundant storage.  This configuration causes virtual machine creation to fail.
-* It can take up to an hour before tenants can create databases in a new SQL or MySQL SKU. 
-* Creation of items directly on SQL and MySQL hosting servers that are not performed by the resource provider is not supported and may result in mismatched state.
-* AzureRM PowerShell 1.2.10 requires extra configuration steps:
-    * Run this after running Add-AzureRMEnvironment for Azure AD deployments.  Provide the Name and GraphAudience values using the output from `Add-AzureRMEnvironment`.
+### <a name="known-issues"></a>既知の問題
+#### <a name="deployment"></a>デプロイ
+* 以前のリリースよりも、デプロイに時間がかかる場合があります。 
+* Get-AzureStackLogs では診断ログが生成されますが、進行状況はコンソールに記録されません。
+* Azure Stack をデプロイするには、新しい[デプロイ エクスペリエンス](azure-stack-run-powershell-script.md)を使用する必要があります。そうしないと、デプロイに失敗する可能性があります。
+* *PublicVLANID* パラメーターを使用すると、デプロイは失敗します。
+
+#### <a name="portal"></a>ポータル
+* ポータルに空のダッシュボードが表示されることがあります。  ポータルの右上にある歯車を選択し、[既定の設定に戻す] を選択することで、ダッシュボードを復元できます。
+* テナントはサブスクリプションなしですべてのマーケットプレースを参照することができ、プランやオファーなどの管理アイテムを示します。  これらのアイテムはテナントでは機能しません。
+* インフラストラクチャ ロール インスタンスを選択すると、参照エラーを示すエラーが表示されます。 管理ポータルを更新するには、ブラウザーの更新機能を使用します。
+* [リソース グループ] ブレードの "移動" ボタンは無効になっています。  サブスクリプション間のリソース グループの移動は現在サポートされていないため、これは予期される動作です。
+* ダウンロードが完了したシンジケート化されたマーケットプレース アイテムについて、繰り返し通知を受け取ります。
+* Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。  回避策として、Powershell を使用してアクセス許可を確認することができます。
+* ポータルから自動化スクリプトとして完了したデプロイをエクスポートする場合は、フラグとして `-TenantID` を追加する必要があります。
+
+#### <a name="services"></a>サービス
+* Key Vault サービスは、テナント ポータルまたはテナント API から作成する必要があります。  管理者としてログインしている場合は、必ず、テナント ポータルを使用して新しい Key Vault コンテナー、シークレット、およびキーを作成してください。
+* 仮想マシン スケール セットを作成するためのマーケットプレース エクスペリエンスはありませんが、テンプレートを使用して作成することはできます。
+* ポータルを介して、バックエンド ネットワークにロード バランサーを関連付けることはできません。  このタスクは、PowerShell またはテンプレートを使用して完了することができます。
+* VM 可用性セットは、1 つの障害ドメインと 1 つの更新ドメインでのみ構成可能です。  
+* 新しい Azure 関数を作成するには、テナントに既存のストレージ アカウントが必要です。
+* VM で障害が発生し、"引数が null であるため、パラメーター 'VM ネットワーク アダプター' にバインドできません" と報告される場合があります。  仮想マシンの再デプロイは正常に行われます。  
+* テナント サブスクリプションを削除すると、リソースが孤立します。  回避策として、まず、テナント リソースまたはリソース グループ全体を削除してから、テナント サブスクリプションを削除します。 
+* ネットワーク ロード バランサーを作成する場合は、NAT 規則を作成する必要があります。そうしないと、ロード バランサーが作成された後、NAT 規則を追加しようとしたときにエラーが発生します。
+* テナントは、クォータで許可される数より多くの仮想マシンを作成できます。  コンピューティング クォータが適用されていないと、このような動作になります。
+* テナントでは、geo 冗長ストレージを持つ仮想マシンを作成するオプションを利用できます。  この構成の場合、仮想マシンの作成が失敗します。
+* テナントでデータベースを新しい SQL または MySQL SKU で作成する際に、最大で 1 時間かかる場合があります。 
+* リソース プロバイダーで実行されない SQL および MySQL ホスティング サーバーで直接アイテムを作成することはサポートされていないため、状態が不一致になる場合があります。
+* AzureRM PowerShell 1.2.10 には、以下の追加の構成手順が必要です。
+    * Azure AD デプロイでは Add-AzureRMEnvironment を実行してから次のコマンドを実行します。  `Add-AzureRMEnvironment` の出力を使用して、Name と GraphAudience の値を指定します。
       
       ```PowerShell
       Set-AzureRmEnvironment -Name <Environment Name> -GraphAudience <Graph Endpoint URL>
       ```
-    * Run this after running Add-AzureRMEnvironment for AD FS deployments.  Provide the Name and GraphAudience values using the output of `Add-AzureRMEnvironment`.
+    * Active Directory フェデレーション サービス (AD FS) デプロイでは Add-AzureRMEnvironment を実行してから次のコマンドを実行します。  `Add-AzureRMEnvironment` の出力を使用して、Name と GraphAudience の値を指定します。
       
       ```PowerShell
       Set-AzureRmEnvironment <Environment Name> -GraphAudience <Graph Endpoint URL> -EnableAdfsAuthentication:$true
       ```
     
-    As an example, the following is used for an Azure AD environment:
+    たとえば、Azure AD 環境では以下のコマンドが使用されます。
 
     ```PowerShell
       Set-AzureRmEnvironment AzureStack -GraphAudience https://graph.local.azurestack.external/
     ```
 
 #### <a name="fabric"></a>Fabric
-* The compute resource provider displays an unknown state.
-* The BMC IP address & model are not shown in the essential information of a Scale Unit Node.  This behavior is expected in Azure Stack development kit.
-* The restart action on Compute controller infrastructure role (AzS-XRP01 instance) should not be used.
-* The Infrastructure backup blade should not be used.
+* コンピューティング リソース プロバイダーの状態が不明と表示されます。
+* BMC IP アドレスとモデルは、スケール ユニット ノードの重要な情報には表示されません。  Azure Stack Development Kit では、この動作は予期されるものです。
+* コンピューティング コントローラー インフラストラクチャ ロール (AzS XRP01 インスタンス) では再起動アクションは使用しないでください。
+* インフラストラクチャ バックアップ ブレードは使用しないでください。
 

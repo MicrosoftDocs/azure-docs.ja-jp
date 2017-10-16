@@ -8,19 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 51c11be2-af6d-425f-a86a-39cbfe61da29
 ms.service: cosmos-db
-ms.custom: quick start connect, mvc
+ms.custom: quick start connect, mvc, devcenter
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/13/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 26694432663feb0f9cd21573e9114007b2357528
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: b16807c7b6b7f3e5aa893f02dc5958f10e5e9569
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal による DocumentDB API アプリの構築
 
@@ -31,11 +30,12 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 ## <a name="prerequisites"></a>前提条件
 
 * このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-    * [Visual Studio 2015](http://www.visualstudio.com/) 以降。
+    * まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
     * Python Tools for Visual Studio ( [GitHub](http://microsoft.github.io/PTVS/)から入手できます)。 このチュートリアルでは、Python Tools for VS 2015 を使用します。
     * Python 2.7 ([python.org](https://www.python.org/downloads/release/python-2712/) から入手できます)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -163,6 +163,5 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 > [!div class="nextstepaction"]
 > [DocumentDB API 用に Azure Cosmos DB にデータをインポートする](import-data.md)
-
 
 

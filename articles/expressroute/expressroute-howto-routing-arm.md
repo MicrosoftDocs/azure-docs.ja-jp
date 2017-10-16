@@ -15,16 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: ganesr;cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: af68955b78239832e413e1b59e033d7d3da8d599
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 
-この記事では、PowerShell を使用して、Resource Manager デプロイメント モデルで ExpressRoute 回線のルーティング構成を作成し、管理します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
+この記事では、作成し、PowerShell を使用して、リソース マネージャーの配置モデルでの ExpressRoute 回線のルーティングの構成を管理できます。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
@@ -40,7 +39,7 @@ ms.lasthandoff: 08/01/2017
 
 * Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
-* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 この記事のコマンドレットを実行するには、ExpressRoute 回線を、プロビジョニングおよび有効化されている状態にする必要があります。
+* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 ExpressRoute 回線は、この記事でコマンドレットを実行するためにプロビジョニングされ有効になっている状態でなければなりません。
 
 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
@@ -93,7 +92,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
   手順に従って、 [ExpressRoute 回線](expressroute-howto-circuit-arm.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。
 
-  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがユーザーに代わってルーティングを管理しない場合は、回線を作成した後、次の手順を使用して構成を続行します。
+  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 3. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
 
   ```powershell
@@ -127,13 +126,13 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
   ```
 4. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
-  * プライマリ リンク用の /30 サブネット。 このサブネットは、仮想ネットワーク用に予約されたアドレス空間の一部であってはいけません。
-  * セカンダリ リンク用の /30 サブネット。 このサブネットは、仮想ネットワーク用に予約されたアドレス空間の一部であってはいけません。
+  * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
+  * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用しないようにしてください。
-  * **省略可能 -** MD5 ハッシュを使用する場合は 1 つ。
+  * **省略可能 -** いずれかを使用する場合は、MD5 ハッシュ。
 
-  次の例を参考にして、回線のために Azure プライベート ピアリングを構成します。
+  次の例を使用して、回線用に Azure プライベート ピアリングを構成します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -141,7 +140,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  MD5 ハッシュを使用する場合は、次の例を参考にします。
+  MD5 ハッシュを使用する場合は、次の例を使用します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
@@ -154,7 +153,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ### <a name="to-view-azure-private-peering-details"></a>Azure プライベート ピアリングの詳細を表示するには
 
-次の例を使用して構成の詳細を取得することができます。
+構成の詳細を取得するには、次の例を使用します。
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -164,7 +163,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit
 
 ### <a name="to-update-azure-private-peering-configuration"></a>Azure プライベート ピアリングの構成を更新するには
 
-次の例を使用して構成の任意の部分を更新することができます。 この例では、回線の VLAN ID が 100 から 500 に更新されようとしています。
+構成の任意の部分を更新するには、次の例を使用します。 この例では、回線の VLAN ID が 100 から 500 に更新されています。
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -174,7 +173,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-delete-azure-private-peering"></a>Azure プライベート ピアリングを削除するには
 
-次の例を実行して、ピアリング構成を削除することができます。
+ピアリング構成を削除するには、次の例を実行します。
 
 > [!WARNING]
 > この例を実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。 
@@ -230,7 +229,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
   手順に従って、 [ExpressRoute 回線](expressroute-howto-circuit-arm.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。
 
-  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがユーザーに代わってルーティングを管理しない場合は、回線を作成した後、次の手順を使用して構成を続行します。
+  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 3. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
 
   ```powershell
@@ -268,9 +267,9 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * **省略可能 -** MD5 ハッシュを使用する場合は 1 つ。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
-  次の例を実行して、回線のために Azure パブリック ピアリングを構成します。
+  回線用の Azure パブリック ピアリングを構成するのには、次の例を実行します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -278,7 +277,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  MD5 ハッシュを使用する場合は、次の例を参考にします。
+  MD5 ハッシュを使用する場合は、次の例を使用します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -303,7 +302,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-update-azure-public-peering-configuration"></a>Azure パブリック ピアリング構成を更新するには
 
-次の例を使用して構成の任意の部分を更新することができます。 この例では、回線の VLAN ID が 200 から 600 に更新されようとしています。
+構成の任意の部分を更新するには、次の例を使用します。 この例では、回線の VLAN ID が 200 から 600 に更新されています。
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -313,7 +312,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-delete-azure-public-peering"></a>Azure パブリック ピアリングを削除するには
 
-次の例を実行して、ピアリング構成を削除することができます。
+ピアリング構成を削除するには、次の例を実行します。
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
@@ -325,7 +324,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 このセクションでは、ExpressRoute 回線用の Microsoft ピアリング構成を作成、取得、更新、および削除します。
 
 > [!IMPORTANT]
-> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングを介してアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 詳細については、「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-powershell.md)」を参照してくださいｊ。
+> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 詳しくは、「[Configure a route filter for Microsoft peering](how-to-routefilter-powershell.md)」(Microsoft ピアリング用にルート フィルターを構成する) をご覧ください。
 > 
 > 
 
@@ -368,7 +367,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 
   手順に従って、 [ExpressRoute 回線](expressroute-howto-circuit-arm.md) を作成し、接続プロバイダー経由で回線をプロビジョニングします。
 
-  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがユーザーに代わってルーティングを管理しない場合は、回線を作成した後、次の手順を使用して構成を続行します。
+  接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに要求できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 3. ExpressRoute 回線がプロビジョニングされ、有効になっていることを確認します。 次の例を使用してください。
 
   ```powershell
@@ -406,12 +405,12 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   * セカンダリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する予定の場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-  * **省略可能 -** 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 番号を指定できます。
+  * アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
+  * **省略可能 -** 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。
   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-  * **省略可能 -** MD5 ハッシュを使用する場合は 1 つ。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
-   次の例を使用して、回線のために Microsoft ピアリングを構成します。
+   Microsoft、回路のピアリングを構成するのにには、次の例を使用します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -421,7 +420,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 
 ### <a name="to-get-microsoft-peering-details"></a>Microsoft ピアリングの詳細を取得するには
 
-次の例を使用して構成の詳細を取得することができます。
+構成の詳細を取得するには、次の例を使用します。
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -431,7 +430,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRou
 
 ### <a name="to-update-microsoft-peering-configuration"></a>Microsoft ピアリング構成を更新するには
 
-次の例を使用して構成の任意の部分を更新することができます。
+次の例を使用して、構成の一部を更新することができます。
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -456,4 +455,3 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 * ExpressRoute ワークフローの詳細については、「 [ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 * 回路ピアリングの詳細については、「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 * 仮想ネットワークの詳細については、「 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
-

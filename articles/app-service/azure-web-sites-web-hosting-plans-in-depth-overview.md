@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
+ms.openlocfilehash: 688f57de662fec6a04227c35d6578097c795c6da
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service プランの詳細な概要
 
@@ -31,22 +30,36 @@ App Service プランには、次の定義があります。
 - リージョン (米国西部、米国東部など)
 - スケール カウント (インスタンス数 1、2、3 など)
 - インスタンス サイズ (Small、Medium、Large)
-- SKU (Free、Shared、Basic、Standard、Premium)
+- SKU (Free、Shared、Basic、Standard、Premium、PremiumV2、Isolated)
 
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps、Mobile Apps、Function Apps (または Functions) は、すべて App Service プラン内で実行されます。  同じサブスクリプションとリージョン内のアプリは、App Service プランを共有できます。 
 
 **App Service プラン**に割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。 この共有により、1 つの App Service プランで複数のアプリをホストする場合にコストを節約できます。
 
-**App Service プラン**は、**Free** や **Shared** の SKU から **Basic**、**Standard**、**Premium** の SKU にスケールすることで、利用できるリソースや機能を増やすことができます。
+**App Service プラン**は、**Free** および **Shared** レベルから、**Basic**、**Standard**、**Premium**、および **Isolated** レベルにスケールできます。 上位のレベルになるほど多くのリソースや機能にアクセスできます。
 
-App Service プランを **Basic** の SKU 以上に設定する場合は、VM の **サイズ**とスケール カウントを制御できるようになります。
+App Service プランを **Basic** レベル以上に設定する場合は、VM の **サイズ**とスケール カウントを制御できるようになります。
 
-たとえば、Standard サービス レベルで 2 つの "Small" インスタンスを使用するようにプランが構成されている場合、そのプランに関連付けられているすべてのアプリが両方のインスタンス上で実行されます。 また、アプリは Standard サービス レベルの機能にアクセスすることができます。 アプリを実行するプランのインスタンスは、完全に管理され、高い可用性が確保されます。
+たとえば、**Standard** レベルで 2 つの "small" インスタンスを使用するようにプランが構成されている場合、そのプランのすべてのアプリが両方のインスタンス上で実行されます。 また、アプリは **Standard** レベルの機能にアクセスすることができます。 アプリを実行するプランのインスタンスは、完全に管理され、高い可用性が確保されます。
 
 > [!IMPORTANT]
-> App Service プランの **SKU** と**スケール**によってコストが決まります。ホストできるアプリの数には影響しません。
+> App Service プランの価格レベル (SKU) によってコストが決まります。ホストできるアプリの数には影響しません。
 
-この記事では、App Service プランのレベルとスケール、アプリを管理する中でそれらがどのように作用するかなど、主な特徴を詳しく見ていきます。
+この記事では、価格レベルとスケール、アプリを管理する中でそれらがどのように作用するかなど、App Service プランの主な特徴を詳しく見ていきます。
+
+## <a name="new-pricing-tier-premiumv2"></a>新しい価格レベル: PremiumV2
+
+新しい価格レベル **PremiumV2** は、より高速なプロセッサ、SSD ストレージを搭載し、メモリ対コア比が **Standard** レベルの 2 倍である [Dv2 シリーズ VM](../virtual-machines/windows/sizes-general.md#dv2-series) を提供します。 **PremiumV2** は、インスタンス数が多いためサポートできるスケールも大きく、その一方で Standard プランの高度な機能もすべて提供します。 既存の **Premium** レベルで使用可能なすべての機能が **PremiumV2** に含まれています。
+
+他の特化したレベルと同様に、次の 3 つの VM サイズをこのレベルに利用できます。
+
+- Small (1 CPU コア、3.5 GB メモリ) 
+- Medium (2 CPU コア、7 GB メモリ) 
+- Large (4 CPU コア、14 GB メモリ)  
+
+**PremiumV2** の価格については、「[App Service の価格](/pricing/details/app-service/)」をご覧ください。
+
+新しい価格レベル **PremiumV2** を使用するには、「[Configure PremiumV2 tier for App Service (App Service 向け PremiumV2 レベルの構成)](app-service-configure-premium-tier.md)」をご覧ください。
 
 ## <a name="apps-and-app-service-plans"></a>アプリと App Service プラン
 
@@ -64,9 +77,7 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 
 ## <a name="create-an-app-service-plan-or-use-existing-one"></a>App Service プランを作成する場合と既存のプランを使用する場合
 
-アプリを作成する際には、リソース グループの作成を検討する必要があります。 もう一方で、このアプリがより大規模なアプリケーションのコンポーネントである場合、その大規模なアプリケーション用に割り当てられたリソース グループの内部にアプリを作成します。
-
-アプリが完全に新しいアプリケーションであっても、大規模なアプリケーションの一部であっても、それをホストするために既存のプランを活用するか、新しいプランを作成するか選ぶことができます。 これは、どちらかというと、容量と予想される負荷の問題です。
+App Service で新しい Web アプリを作成する場合は、既存の App Service プランにアプリを配置することによってホスト リソースを共有できます。 新しいアプリが必要なリソースを持てるかどうかを判断するには、既存の App Service プランの容量と新しいアプリの予想される負荷について理解する必要があります。 リソースの過剰割り当ては、新規および既存のアプリのダウンタイムを引き起こす可能性があります。
 
 次の場合にアプリを新しい App Service プランに分離することをお勧めします。
 
@@ -79,9 +90,9 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 > [!TIP]
-> App Service Environment を使用している場合は、[App Service Environment での App Service プランの作成](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)に関するセクションで、App Service Environment に固有の情報を確認できます。
+> App Service 環境がある場合は、 「[App Service 環境で App Service プランを作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
 
-空の App Service プランは、App Service プランの参照機能で作成するか、アプリ作成の一環として作成することができます。
+空の App Service プランを作成したり、またはアプリ作成の一部として作成したりすることができます。
 
 [Azure Portal](https://portal.azure.com) で **[新規]** > **[Web + モバイル]** の順にクリックし、**[Web アプリ]** またはその他の App Service アプリの種類をクリックします。
 
@@ -95,7 +106,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 
 ## <a name="move-an-app-to-a-different-app-service-plan"></a>アプリを別の App Service プランに移動する
 
-別の App Service プランへのアプリの移動は、[Azure Portal](https://portal.azure.com) で行うことができます。 プラン間でのアプリの移動は、対象となるプランが同じリソース グループおよび同じ地理的リージョンに属している場合に限り可能です。
+別の App Service プランへのアプリの移動は、[Azure Portal](https://portal.azure.com) で行うことができます。 プラン間でのアプリの移動は、対象となるプランが_同じリソース グループおよび同じ地理的リージョン_に属している場合に限り可能です。
 
 アプリを別のプランに移動するには、次の手順に従います。
 
@@ -103,16 +114,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 - **[メニュー]** で、**[App Service プラン]** セクションを探します。
 - **[App Service プランの変更]** を選択して処理を開始します。
 
-**[App Service プランの変更]** で **[App Service プラン]** セレクターが表示されます。 この時点では、このアプリを移動する既存のプランを選択できます。
-
-> [!IMPORTANT]
-> 一部の App Service プラン UI は次の基準でフィルター処理されます。
-> - 同じリソース グループ内に存在します
-> - 同じ地理的リージョン内に存在します
-> - 同じ Web スペース内に存在します
->
-> Web スペースは、サーバー リソースのグループ化を定義する App Service 内の論理コンストラクトです。 地理的リージョン (米国西部など) には、App Service の顧客を割り当てる目的で、さまざまな Web スペースが含まれています。 現在のところ、App Service リソースを Web スペース間で移動させることはできません。
->
+**[App Service プランの変更]** で **[App Service プラン]** セレクターが表示されます。 この時点では、このアプリを移動する既存のプランを選択できます。 同じリソース グループとリージョンのプランのみが表示されます。
 
 ![App Service plan selector.][change]
 
@@ -125,7 +127,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 メニューの **[開発ツール]** セクションに **[アプリの複製]** があります。
 
 > [!IMPORTANT]
-> 複製にはいくつかの制限があります。これらの制限については、「[Azure Portal を使用した Azure App Service アプリの複製](../app-service-web/app-service-web-app-cloning-portal.md)」を参照してください。
+> 複製にはいくつかの制限があります。これらの制限については、[Azure App Service アプリの複製](app-service-web-app-cloning.md)に関する記事をご覧ください。
 
 ## <a name="scale-an-app-service-plan"></a>App Service プランのスケーリング
 
@@ -144,7 +146,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 > [!IMPORTANT]
 > **App Service プラン**にアプリが関連付けられていない場合でも、コンピューティング容量が引き続き予約されるため、料金が発生します。
 
-予期しない料金を避けるために、App Service プランでホストされている最後のアプリが削除されると、残りの空の App Service プランも削除されます。
+予期しない料金を避けるために、App Service プランでホストされている最後のアプリが削除されると、残りの空の App Service プランも既定で削除されます。
 
 ## <a name="summary"></a>概要
 
@@ -159,4 +161,3 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
-

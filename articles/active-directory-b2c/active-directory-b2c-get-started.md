@@ -14,16 +14,15 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
+ms.openlocfilehash: 213d532f484056f3833c743d25c5e6faa5b732e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 8a1d4935397f59e5813afc6f04559e471187a779
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2C テナントを作成する
 
-このクイック スタートを読むと、Microsoft Azure Active Directory (Azure AD) B2C テナントを数分で作成できるようになります。 完了したら、B2C アプリケーションの登録で使用する B2C テナントができます。
+このクイック スタートを読むと、Microsoft Azure Active Directory (Azure AD) B2C テナントを数分で作成できるようになります。 完了したら、B2C アプリケーションの登録で使用する B2C テナント (ディレクトリとも言います) ができます。
 
 ## <a name="prerequisites"></a>前提条件
 

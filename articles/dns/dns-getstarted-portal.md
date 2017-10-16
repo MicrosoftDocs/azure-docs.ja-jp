@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Azure Portal で Azure DNS の使用を開始する
 
 > [!div class="op_single_selector"]
@@ -104,5 +102,4 @@ DNS ゾーンとレコードを正しく設定したら、Azure DNS ネーム �
 Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
 
 Azure DNS での DNS レコードの管理の詳細については、「[Azure Portal を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)」を参照してください。
-
 

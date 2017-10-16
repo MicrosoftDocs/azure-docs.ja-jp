@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7884032fd4b5a72ca7e2f2dc2830b0a7c2220e94
-ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: 4f58a587c1f10aea1cee89e46fa9ec340e0d21c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する
 
@@ -60,11 +58,11 @@ ms.lasthandoff: 02/07/2017
 
 **アクセス レベルを確認するには**
 
-1.    **Azure ストレージ エクスプローラー**を開きます。 
+1.  **Azure ストレージ エクスプローラー**を開きます。 
 
-2.    **[BLOB コンテナー]** で、目的の BLOB コンテナーを選択します。 
+2.  **[BLOB コンテナー]** で、目的の BLOB コンテナーを選択します。 
 
-3.    **[セキュリティ]**、**[アクセス レベル]** の順に選択します。
+3.  **[セキュリティ]**、**[アクセス レベル]** の順に選択します。
 
 BLOB のセキュリティ レベルが **[パブリック]** の場合は、次の手順に従います。
 
@@ -134,5 +132,4 @@ BLOB のセキュリティ レベルが **[匿名アクセスはありません]
 
 ## <a name="next-steps"></a>次のステップ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
 

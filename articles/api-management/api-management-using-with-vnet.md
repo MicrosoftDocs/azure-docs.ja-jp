@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: c733c61132a79381d5e025819ff944507fc3fb9b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f152682f4d584f5a94d1f757009892047c19c69d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
@@ -108,7 +108,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 11000 - 11999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 14000 - 14999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 5671 |送信 |AMQP |Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 6381 - 6383 / 6381 - 6383 |受信および送信 |TCP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
+| * / 6381 - 6383 |受信および送信 |TCP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |
 | * / 445 |送信 |TCP |GIT のための Azure ファイル共有への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / * | 受信 |TCP |Azure インフラストラクチャの Load Balancer | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部 / 内部 |
 

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: f8a20b45b50f71631122e574b634818c1912f12e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-4-plan-networking-for-physical-server-replication-to-azure"></a>手順 4: 物理サーバーから Azure へのレプリケーションのネットワークを計画する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの物理サーバーを Azure にレプリケートする場合のネットワーク計画の考慮事項について概説します。
@@ -86,4 +83,3 @@ Woodgrove が IP アドレスを維持したままサーバーを Azure にレ�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 5: Azure を準備する](physical-walkthrough-prepare-azure.md)方法に関するページに進む
-

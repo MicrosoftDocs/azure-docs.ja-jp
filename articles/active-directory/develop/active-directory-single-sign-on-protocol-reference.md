@@ -15,21 +15,20 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
-ms.openlocfilehash: 12370f2c3367b69217d17228723b26b6a14d09ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: f41402fc2cb282975b93071d998365fdb0a21941
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
+# シングル サインオンの SAML プロトコル
 この記事では、Azure Active Directory (Azure AD) がシングル サインオンに対してサポートする SAML 2.0 の認証要求と応答について説明します。
 
 次の図は、このプロトコルでのシングル サインオンのシーケンスを示したものです。 クラウド サービス (サービス プロバイダー) は、HTTP リダイレクト バインディングを使用して、 `AuthnRequest` (認証要求) 要素を Azure AD (ID プロバイダー) に渡します。 Azure AD は、HTTP POST バインディングを使用して、 `Response` 要素をクラウド サービスに送信します。
 
 ![シングル サインオンのワークフロー](media/active-directory-single-sign-on-protocol-reference/active-directory-saml-single-sign-on-workflow.png)
 
-## <a name="authnrequest"></a>AuthnRequest
+## AuthnRequest
 ユーザー認証を要求するため、クラウド サービスは `AuthnRequest` 要素を Azure AD に送信します。 SAML 2.0 の `AuthnRequest` の例を次に示します。
 
 ```
@@ -56,7 +55,7 @@ Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerService
 
 Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
-### <a name="issuer"></a>発行者
+### 発行者
 `AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
 
 `Issuer` 要素を含む SAML の抜粋の例を次に示します。
@@ -65,7 +64,7 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
 ```
 
-### <a name="nameidpolicy"></a>NameIDPolicy
+### NameIDPolicy
 この要素は、特定の名前 ID 形式を応答で使用することを要求するものであり、Azure AD に送信される `AuthnRequest` 要素では省略可能です。
 
 `NameIdPolicy` 要素の例を次に示します。
@@ -83,21 +82,21 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
 Azure AD は `AllowCreate` 属性を無視します。
 
-### <a name="requestauthncontext"></a>RequestAuthnContext
+### RequestAuthnContext
 `RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD がサポートする `AuthnContextClassRef` の値は、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` のただ 1 つです。
 
-### <a name="scoping"></a>Scoping
+### Scoping
 ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD に送信される `AuthnRequest` 要素では省略可能です。
 
 指定する場合は、`ProxyCount` 属性、`IDPListOption` 要素、または `RequesterID` 要素を使用しないでください。これらはサポートされていません。
 
-### <a name="signature"></a>署名
+### 署名
 `AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
 
-### <a name="subject"></a>[件名]
+### [件名]
 Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
-## <a name="response"></a>応答
+## 応答
 要求されたサインオンが正常に完了すると、Azure AD はクラウド サービスに応答を送信します。 成功したサインオン試行に対する応答の例を次に示します。
 
 ```
@@ -143,13 +142,13 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 </samlp:Response>
 ```
 
-### <a name="response"></a>応答
+### 応答
 `Response` 要素には、承認要求の結果が含まれます。 Azure AD は、`Response` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。 また、次の属性も設定します。
 
 * `Destination`: サインオンが正常に完了すると、この属性にはサービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
 * `InResponseTo`: この属性には、応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
 
-### <a name="issuer"></a>発行者
+### 発行者
 Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
 たとえば、Issuer 要素を含む応答の例は次のようになります。
@@ -158,7 +157,7 @@ Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDG
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>状態
+### 状態
 `Status` 要素には、サインオンの成功または失敗を示す値が設定されます。 `StatusCode` 要素が含まれており、この要素には要求の状態を表すコードまたは一連の入れ子になったコードが含まれます。 また、 `StatusMessage` 要素もあり、これにはサインイン プロセス中に生成されたカスタム エラー メッセージが含まれます。
 
 <!-- TODO: Add a authentication protocol error reference -->
@@ -178,17 +177,17 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>Assertion
+### Assertion
 `ID`、`IssueInstant`、および `Version` に加えて、Azure AD は応答の `Assertion` 要素の次の要素も設定します。
 
-#### <a name="issuer"></a>発行者
+#### 発行者
 この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。<TenantIDGUID> は Azure AD テナントのテナント ID です。
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### <a name="signature"></a>署名
+#### 署名
 Azure AD は、サインオンが成功すると応答のアサーションに署名します。 `Signature` 要素にはデジタル署名が含まれ、クラウド サービスはそれを使用してソースを認証し、アサーションの整合性を検証できます。
 
 このデジタル署名を生成するため、Azure AD はメタデータ ドキュメントの `IDPSSODescriptor` 要素の署名キーを使用します。
@@ -199,7 +198,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>[件名]
+#### [件名]
 この要素は、アサーションのステートメントのサブジェクトであるプリンシパルを指定します。 認証されたユーザーを表す `NameID` 要素が含まれます。 `NameID` の値は、トークンの対象であるサービス プロバイダーに対してのみ送信される限定的な識別子です。 永続的であり、取り消すことはできますが、再割り当てはされません。 また、非透過的であるため、ユーザーについての情報はわからず、属性クエリに対する識別子としては使用できません。
 
 `SubjectConfirmation` 要素の `Method` 属性は、常に `urn:oasis:names:tc:SAML:2.0:cm:bearer` に設定されます。
@@ -213,7 +212,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </Subject>
 ```
 
-#### <a name="conditions"></a>条件
+#### 条件
 この要素は、SAML アサーションの許容される使用方法を定義する条件を指定します。
 
 ```
@@ -229,7 +228,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 * `NotBefore` 属性の値は、`Assertion` 要素の `IssueInstant` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。 Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
 * `NotOnOrAfter` 属性の値は、`NotBefore` 属性の値より 70 分後です。
 
-#### <a name="audience"></a>オーディエンス
+#### オーディエンス
 この要素には、対象を識別する URI が含まれます。 Azure AD は、この要素の値に、サインオンを開始した `AuthnRequest` の `Issuer` 要素の値を設定します。 `Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
 
 ```
@@ -240,7 +239,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 
 `Issuer` の値と同様に、`Audience` の値は Azure AD でクラウド サービスを表すサービス プリンシパル名のいずれかと厳密に一致する必要があります。 ただし、`Issuer` 要素の値が URI 値ではない場合は、応答の `Audience` の値は、プレフィックス `spn:` が付加された `Issuer` 値になります。
 
-#### <a name="attributestatement"></a>AttributeStatement
+#### AttributeStatement
 この要素には、サブジェクトまたはユーザーに関する要求が含まれます。 `AttributeStatement` 要素の例を含む抜粋を次に示します。 省略記号は、要素が複数の属性および属性値を含むことができることを示します。
 
 ```
@@ -258,7 +257,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 * **Name 要求**: `Name` 属性 (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) の値は、認証されたユーザーのユーザー プリンシパル名です (例: `testuser@managedtenant.com`)。
 * **ObjectIdentifier 要求**: `ObjectIdentifier` 属性 (`http://schemas.microsoft.com/identity/claims/objectidentifier`) の値は、Azure AD で認証されたユーザーを表すディレクトリ オブジェクトの `ObjectId` です。 `ObjectId` は、認証されたユーザーの変更不可能で、グローバルに一意であり、再利用が安全な識別子です。
 
-#### <a name="authnstatement"></a>AuthnStatement
+#### AuthnStatement
 この要素は、アサーション サブジェクトが特定の時刻に特定の手段によって認証されたことをアサートします。
 
 * `AuthnInstant` 属性は、Azure AD でユーザーが認証された時刻を指定します。

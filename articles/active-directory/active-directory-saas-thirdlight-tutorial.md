@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: ee7710cfea3a13907c0cc940a98c875bf83607a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル: Azure Active Directory と ThirdLight の統合
 
@@ -177,7 +175,7 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-thirdlight-test-user"></a>ThirdLight テスト ユーザーの作成
 
@@ -196,7 +194,7 @@ ThirdLight の場合、プロビジョニングは手動で行います。
 
 5. プロビジョニングする有効な AAD アカウントの **[Username]、[Name or Description]、[Email]、[Choose a Preset or Group of New Members]** を入力します。
 
-6. **[作成]**をクリックします。
+6. **Create** をクリックしてください。
 
 >[!NOTE]
 >Thirdlight から提供されている他の Thirdlight ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
@@ -256,5 +254,4 @@ ThirdLight の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_203.png
-
 

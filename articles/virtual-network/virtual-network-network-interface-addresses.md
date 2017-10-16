@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
+ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
 ネットワーク インターフェイスのパブリック IP アドレスとプライベート IP アドレスを追加、変更、削除する方法について説明します。 ネットワーク インターフェイスにプライベート IP アドレスを割り当てると、仮想マシンは、Azure 仮想ネットワーク内および接続されたネットワーク内の他のリソースと通信できます。 また、予測できない IP アドレスを使ってインターネットに通信を送信することもできます。 ネットワーク インターフェイスに[パブリック IP アドレス](virtual-network-public-ip-address.md)を割り当てると、インターネットから仮想マシンへの通信を受信できます。 また、予測できる IP アドレスを使って仮想マシンからインターネットに通信を送信することもできます。 詳細については、「[Azure の送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 
@@ -190,6 +188,13 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 プライマリ IP 構成またはセカンダリ IP 構成に、パブリック IPv6 アドレスを割り当てることはできません。
 
+## <a name="skus"></a>SKU
+
+パブリック IP アドレスは基本または標準 SKU で作成されます。  SKU の違いについては、[パブリック IP アドレスの管理](virtual-network-public-ip-address.md)に関するページを参照してください。
+
+> [!NOTE]
+> 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を利用し、所期のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。
+
 ## <a name="next-steps"></a>次のステップ
 異なる IP 構成で仮想マシンを作成する方法については、次の記事をご覧ください。
 
@@ -198,4 +203,3 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 |複数 NIC を持つ VM の作成|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |複数の IPv4 アドレスが割り当てられた 1 つの NIC VM の作成|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |プライベート IPv6 アドレスが割り当てられた 1 つの NIC VM の作成 (Azure Load Balancer の背後)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-

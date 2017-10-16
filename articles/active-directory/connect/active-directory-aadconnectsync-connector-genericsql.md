@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: a84096ba53a308855beedd76d9dec827c025cd57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス
 この記事では Generic SQL コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -307,4 +306,3 @@ Generic SQL コネクタでは、次に示す 4 つのサポートされた方�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
-

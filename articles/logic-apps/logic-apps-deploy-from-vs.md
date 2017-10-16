@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Visual Studio で Azure Logic Apps を作成してデプロイする
 
 [Azure ポータル](https://portal.azure.com/)には Azure Logic Apps を作成および管理するための優れた機能がありますが、Logic Apps の設計、作成、およびデプロイには、Visual Studio を使用できます。 Visual Studio にはロジック アプリ デザイナーなどの高度なツールが用意されており、ユーザーはそれらを使ってロジック アプリを作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。 
@@ -238,4 +236,3 @@ parameters は次のように使用します。
 * [一般的な例とシナリオを確認する](logic-apps-examples-and-scenarios.md)
 * [Azure Logic Apps を使ってビジネス プロセスを自動化する方法を学習する](http://channel9.msdn.com/Events/Build/2016/T694)
 * [Azure Logic Apps を使ってシステムを統合する方法を学習する](http://channel9.msdn.com/Events/Build/2016/P462)
-

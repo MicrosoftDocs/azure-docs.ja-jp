@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98b06b14ca7897cce884f6d80f998661cacb7ea4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>テーブル デザイナー用のフィルター文字列の作成
-## <a name="overview"></a>Overview
-Visual Studio **テーブル デザイナー**に表示される Azure テーブルのデータをフィルター処理するには、フィルター文字列を作成してフィルター フィールドに入力します。 フィルター文字列の構文は、WCF Data Services で定義されており、SQL の WHERE 句に似ています。ただし、文字列は HTTP 要求を介して Table サービスに送信されます。 必要なエンコード処理は**テーブル デザイナー**で自動的に行われます。したがって、目的のプロパティ値を条件としてフィルター処理するときに必要なことは、フィルター フィールドにプロパティ名、比較演算子、条件値、ブール演算子を入力するだけです (ブール演算子は省略可能)。 ストレージ サービスの REST API ([リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=400447)をご覧ください) でテーブルを照会するための URL を作成する場合とは異なり、$filter クエリ オプションを含める必要はありません。
+## <a name="overview"></a>概要
+Visual Studio **テーブル デザイナー**に表示される Azure テーブルのデータをフィルター処理するには、フィルター文字列を作成してフィルター フィールドに入力します。 フィルター文字列の構文は、WCF Data Services で定義されており、SQL の WHERE 句に似ています。ただし、文字列は HTTP 要求を介して Table service に送信されます。 必要なエンコード処理は**テーブル デザイナー**で自動的に行われます。したがって、目的のプロパティ値を条件としてフィルター処理するときに必要なことは、フィルター フィールドにプロパティ名、比較演算子、条件値、ブール演算子を入力するだけです (ブール演算子は省略可能)。 ストレージ サービスの REST API ([リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=400447)をご覧ください) でテーブルを照会するための URL を作成する場合とは異なり、$filter クエリ オプションを含める必要はありません。
 
 WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?LinkId=214805) (OData) に基づいています。 フィルター システム クエリ オプション (**$filter**) の詳細については、 [OData URI 規則仕様](http://go.microsoft.com/fwlink/p/?LinkId=214806)に関するページを参照してください。
 
@@ -59,7 +58,7 @@ WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?
 
     (PartitionKey eq 'Partition1') and (RowKey eq '00001')
 
-ワイルドカードによるクエリは、Table サービスでも、テーブル デザイナーでもサポートされていません。 ただし、目的のプレフィックスに対して比較演算子を使用することで、プレフィックス一致を実行できます。 次の例は、文字 'A' で始まる LastName プロパティを持つエンティティを返します。
+ワイルドカードによるクエリは、Table service でも、テーブル デザイナーでもサポートされていません。 ただし、目的のプレフィックスに対して比較演算子を使用することで、プレフィックス一致を実行できます。 次の例は、文字 'A' で始まる LastName プロパティを持つエンティティを返します。
 
     LastName ge 'A' and LastName lt 'B'
 
@@ -81,7 +80,7 @@ WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?
 
     IsActive eq true
 
-このフィルター式は、論理演算子なしで記述することもできます。 次の例でも、Table サービスは IsActive が **true**であるすべてのエンティティを返します。
+このフィルター式は、論理演算子なしで記述することもできます。 次の例でも、Table service は IsActive が **true**であるすべてのエンティティを返します。
 
     IsActive
 
@@ -95,4 +94,3 @@ DateTime 値を条件としてフィルター処理を行うには、**datetime*
 次の例は、CustomerSince プロパティが 2008 年 7 月 10 日と等しいエンティティを返します。
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
-

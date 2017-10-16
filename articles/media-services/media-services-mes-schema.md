@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
+ms.openlocfilehash: 0d034e2c3827b297173262d294a2e566a6b45fac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: c9333e745c75f134e045ee6d15c3552449d8edc3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
 このトピックでは、[Media Encoder Standard プリセット](media-services-mes-presets-overview.md)のベースとなっている XML スキーマの要素と型をいくつか取り上げます。 ここでは要素とその有効な値について説明します。 完全なスキーマは今後追加される予定です。  
@@ -274,5 +273,4 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

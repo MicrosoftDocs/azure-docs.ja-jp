@@ -3,7 +3,7 @@ title: "Azure Application Gateway で SSL ポリシーを構成する - PowerShe
 description: "このページでは、Azure Application Gateway で SSL ポリシーを構成する方法を説明します"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,15 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: f3d3d2b1ef0957417e09bb2c9b3913cd366aaa4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: ece2549a607ffa06602c26cf77db93f67112d029
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 
 Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する方法について説明します。 SSL ポリシーのバージョンと有効な暗号スイートの別の構成については、[定義済みポリシーの一覧](#predefined-ssl-policies)から選択できます。 要件に基づいて、[カスタム SSL ポリシー](#configure-a-custom-ssl-policy)を定義することもできます。
@@ -132,6 +130,12 @@ $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroup Adatum
 
 # set the SSL policy on the application gateway
 Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $gw -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+
+# validate the SSL policy locally
+Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $gw
+
+# update the gateway with validated SSL policy
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>定義済み SSL ポリシーを使用したアプリケーション ゲートウェイの作成

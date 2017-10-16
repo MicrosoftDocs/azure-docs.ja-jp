@@ -1,6 +1,6 @@
 ---
 title: "ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルで、Azure ポータルを使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
+description: "Azure Resource Manager デプロイメント モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,17 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure ポータルを使用したネットワーク セキュリティ グループのトラブルシューティング
+# <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-nsg-troubleshoot-portal.md)
+> * [Azure Portal](virtual-network-nsg-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 > 
 > 
@@ -150,5 +148,4 @@ NSG 規則を変更する際、特定の VM に追加された規則による影
 * 既定では、VNet をピアリングした場合、VIRTUAL_NETWORK タグはピアリングされている VNet のプレフィックスを含めるように自動的に拡張されます。 これらのプレフィックスは、 **ExpandedAddressPrefix** の一覧で表示でき、VNet ピアリングの接続に関連する問題をトラブルシューティングする際に使用できます。 
 * 有効なセキュリティの規則は、VM の NIC やサブネットに関連付けられている NSG がある場合のみ表示されます。 
 * NIC やサブネットに関連付けられている NSG がなく、VM にパブリック IP アドレスを割り当てている場合は、着信/発信アクセス用にすべてのポートが開きます。 VM にパブリック IP アドレスがある場合は、NIC またはサブネットに NSG を適用することを強くお勧めします。
-
 

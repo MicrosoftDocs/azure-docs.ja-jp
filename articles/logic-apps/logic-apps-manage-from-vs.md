@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>Visual Studio Cloud Explorer でロジック アプリを管理する
 
 [Azure Portal](https://portal.azure.com/) には Azure Logic Apps を設計および管理するための強力な機能が用意されていますが、Visual Studio Cloud Explorer を使用すれば、ロジック アプリをはじめとする多くの Azure 資産を管理できます。 Visual Studio Cloud Explorer を使用すると、発行済みのロジック アプリを参照、管理、編集、およびダウンロードできます。 管理タスクには、実行履歴の有効化、無効化、および実行が含まれます。 
@@ -92,4 +90,3 @@ Cloud Explorer から、現在デプロイされているロジック アプリ�
 * [一般的な例とシナリオを確認する](logic-apps-examples-and-scenarios.md)
 * [ビデオ: Azure Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694)
 * [ビデオ: Azure Logic Apps を使用してシステムを統合する](http://channel9.msdn.com/Events/Build/2016/P462)
-

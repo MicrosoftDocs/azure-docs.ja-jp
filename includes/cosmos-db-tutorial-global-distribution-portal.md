@@ -3,7 +3,7 @@ Azure Cosmos DB のグローバルな分散については、Scott Hanselman と
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-Cosmos DB におけるグローバル データベース レプリケーションのしくみの詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](../articles/documentdb/documentdb-distribute-data-globally.md)に関する記事を参照してください。
+Cosmos DB におけるグローバル データベース レプリケーションのしくみの詳細については、[Cosmos DB を使用したデータのグローバル分散](../articles/cosmos-db/distribute-data-globally.md)に関する記事を参照してください。
 
 ## <a id="addregion"></a>Azure Portal を使用したグローバル データベース リージョンの追加
 Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions]で利用できます。 データベース アカウントの既定の一貫性レベルを選択すると、選択した既定の一貫性レベルとグローバル配信の必要性に応じて、1 つまたは複数のリージョンを関連付けることができます。
@@ -11,7 +11,7 @@ Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions
 1. [Azure Portal](https://portal.azure.com/) で、左側のバーの **[Azure Cosmos DB]** をクリックします。
 2. **[Azure Cosmos DB]** ブレードで、変更するデータベース アカウントを選択します。
 3. アカウントのブレードで、メニューから **[データをグローバルにレプリケートする]** をクリックします。
-4. **[データをグローバルにレプリケートする]** ブレードで、マップ内のリージョンをクリックして、追加または削除するリージョンを選択し、**[保存]** をクリックします。 リージョンを追加するには費用が必要になります。詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)や「[DocumentDB を使用したデータのグローバル分散](../articles/documentdb/documentdb-distribute-data-globally.md)」の記事を参照してください。
+4. **[データをグローバルにレプリケートする]** ブレードで、マップ内のリージョンをクリックして、追加または削除するリージョンを選択し、**[保存]** をクリックします。 リージョンを追加するには費用が必要になります。詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)または「[Azure Cosmos DB を使用したデータのグローバル分散](../articles/cosmos-db/distribute-data-globally.md)」の記事を参照してください。
    
     ![地図でリージョンをクリックして、リージョンを追加又は削除する][1]
     

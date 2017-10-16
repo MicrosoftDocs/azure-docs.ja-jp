@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: d82f27c9a657a97f23b60ade352e4d2a87166233
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: ddb9fa516da66da0484619439848583a29e1f5c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -109,7 +108,7 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](http://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
 
-データは、Microsoft Azure サーバーに保管されます。 Azure ポータルのアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
+データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
 
 Microsoft のスタッフによるデータへのアクセスは制限されます。 Microsoft は、Application Insights の使用をサポートするために必要であれば、ユーザーからアクセス許可を得た上でデータにアクセスします。 
 
@@ -213,5 +212,4 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
 

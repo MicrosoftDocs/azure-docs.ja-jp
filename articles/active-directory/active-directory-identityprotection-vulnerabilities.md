@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2e229cab7b8a498d3015183d438e2bc2465822aa
-ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 364873ff54099a6123e40b12e819d1745751f285
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -37,7 +36,7 @@ ms.lasthandoff: 12/29/2016
 
 Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 のセキュリティ層を提供します。 シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の簡単な照合方法を通じて確実な認証を行うことができます。
 
-ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。 多要素認証は、Identity Protection で使用可能なリスクに基づく条件付きアクセス ポリシーにおいて重要な役割を果たします。
+ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。多要素認証は、Identity Protection で使用可能なリスクに基づく条件付きアクセス ポリシーにおいて重要な役割を果たします。
 
 詳細については、「 [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 
@@ -61,5 +60,4 @@ Azure AD Privileged Identity Management を使用して、特権 ID と、Azure 
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: febecd5f53077c2e3daa0845964e95025b97893b
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 6ea45c40bc428282faf24b4a08f8b0d345adb3fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -111,4 +110,3 @@ Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用する�
 
 <!--Other Web references-->
 [Role-based access control in Azure Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
-

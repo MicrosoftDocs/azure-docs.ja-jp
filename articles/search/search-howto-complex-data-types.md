@@ -15,13 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Azure Search で複合データ型をモデル化する方法
 Azure Search インデックスの設定に使用する外部データセットの中には、下部構造が階層または入れ子となっているために、表形式の行セットに適切に分解できないものが存在します。 このような構造の例として、単一の顧客に複数の住所と電話番号が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデル化の際に使う用語では、このような構造を "*複合データ型*"、"*コンパウンド データ型*"、"*コンポジット データ型*"、"*集合体データ型*" などの用語で呼ぶことがあります。
@@ -139,5 +137,4 @@ Azure Search に複合 JSON データセットのインデックスを作成し�
 
 ## <a name="next-step"></a>次のステップ
 Azure Search UserVoice ページで、[複合データ型のネイティブ サポートに関する投票](https://feedback.azure.com/forums/263029-azure-search)を行ってください。機能の実装に関する要望がほかにもある場合は、入力をお願いします。 Twitter で @liamca 宛てに直接ご連絡いただいてもかまいません。
-
 

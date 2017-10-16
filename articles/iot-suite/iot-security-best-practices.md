@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de7db3f353f1f6c815ee61cbdfbf9b2b38471a8d
-ms.openlocfilehash: 87647756be65f577850fe8209173280b89de15ea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/02/2017
-
-
+ms.openlocfilehash: dcab91856bcebb8f3bfab8cc69b63fad487f8ace
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="internet-of-things-security-best-practices"></a>モノのインターネットのセキュリティのベスト プラクティス
 モノのインターネット (IoT) インフラストラクチャを保護するには、緻密なセキュリティ戦略が必要です。 この戦略では、クラウドでのデータの保護、パブリック インターネット経由で転送しているときのデータの整合性の保護、およびデバイスの安全なプロビジョニングを実行する必要があります。 各レイヤーのセキュリティがインフラストラクチャ全体のセキュリティを構築します。
 
@@ -90,4 +87,3 @@ IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-se
 [lnk-security-architecture]: iot-security-architecture.md
 [lnk-security-deployment]: iot-suite-security-deployment.md
 [lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md
-

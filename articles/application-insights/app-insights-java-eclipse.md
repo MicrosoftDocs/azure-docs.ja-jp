@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
+ms.openlocfilehash: f2f696a3bbe7893c1f521a3e5588f4f93805d6a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Eclipse で Java 用に Application Insights を使う
 Application Insights SDK は、利用状況とパフォーマンスを分析できるようにするために、Java Web アプリケーションからテレメトリを送信します。 Application Insights 用 Eclipse プラグインは、プロジェクトに SDK を自動的にインストールします。これにより、すぐに使用可能なテレメトリに加えて、カスタムのテレメトリの作成に使用できる API が提供されます。   
@@ -72,7 +71,7 @@ Java プロジェクトごとに、残りの手順に従います。
 
 Microsoft Azure の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
+HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから 最新の情報に更新をクリックします)。
 
 ![サーバーの応答、要求の数、エラー ](./media/app-insights-java-eclipse/5-results.png)
 
@@ -236,4 +235,3 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 [metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-javascript.md
-

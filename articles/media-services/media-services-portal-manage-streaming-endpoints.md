@@ -13,17 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
-ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/11/2017
-
+ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
 
 このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。 
@@ -70,6 +67,9 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 * Cross site access policies
 
 これらのプロパティの詳細については、「 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)」をご覧ください。
+
+>[!NOTE]
+>CDN が有効になっている場合、IP アクセスにアクセスすることはできません。 IP アクセスは、CDN を指定していない場合にのみ適用されます。
 
 ストリーミング エンドポイントを構成するには、以下の操作を行います。
 
@@ -121,5 +121,4 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

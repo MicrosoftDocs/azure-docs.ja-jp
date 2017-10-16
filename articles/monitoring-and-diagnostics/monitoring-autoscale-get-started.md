@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: rajram
+ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 68cb624b3ef4a77e7cfc949979e0b1949c2e5535
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -128,7 +127,7 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 [1]:https://portal.azure.com
 [2]: ./media/monitoring-autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/monitoring-autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet
+[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
 [5]: ./media/monitoring-autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/monitoring-autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/monitoring-autoscale-get-started/scale-in-recommendation.png
@@ -139,5 +138,4 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-
 

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 8df9c0d8443d6685253207ed1915c780275014fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>チュートリアル: Azure Active Directory と BenefitHub の統合
 
@@ -120,7 +118,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_attribute.png)
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+5. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ------------------- | -------------------- |    
@@ -186,7 +184,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-benefithub-test-user"></a>BenefitHub テスト ユーザーの作成
 
@@ -247,5 +245,4 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-benefithub-tutorial/tutorial_general_203.png
-
 

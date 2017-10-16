@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 1ef3903bc4c401988c0f8b27dc9f9f0f3ec99466
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: d6867c73bc6ea3c238cceef8a68466d451f3365c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
 ユーザーは、パブリック API またはワンクリック登録ツールを使って、または Azure Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのデータ ソースと、それぞれの公開機能をまとめたものです。 また、各データ ソースを弊社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
@@ -980,4 +978,3 @@ ms.lasthandoff: 07/08/2017
       </td>
     </tr>
 </table>
-

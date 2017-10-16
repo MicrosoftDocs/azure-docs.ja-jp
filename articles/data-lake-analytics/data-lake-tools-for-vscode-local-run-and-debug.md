@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Data Lake Tools: Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ | Microsoft Docs"
 description: "Azure Data Lake Tools for Visual Studio Code を使用してローカル実行とローカル デバッグを行う方法について説明します。"
@@ -17,14 +16,12 @@ ms.tgt_pltfrm:
 ms.workload: big-data
 ms.date: 07/14/2017
 ms.author: jejiang
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 367e4ba792f83d6ee246208306e4c09b69cb49ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="u-sql-local-run-and-local-debug-with-visual-studio-code"></a>Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ
 
 ## <a name="prerequisites"></a>前提条件
@@ -97,4 +94,3 @@ ms.lasthandoff: 08/24/2017
 - Data Lake Analytics の概要については、[Azure Data Lake Analytics の使用開始に関するチュートリアル](data-lake-analytics-get-started-portal.md)のページを参照してください。
 - Data Lake Tools for Visual Studio については、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 - アセンブリの開発に関する情報については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください。
-

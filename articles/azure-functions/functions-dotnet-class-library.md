@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: f45b3f705ba3d11dd20221e3a7a465796d7a86a1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Azure Functions での .NET クラス ライブラリの使用
@@ -36,7 +36,7 @@ Azure Functions は、スクリプト ファイルに加えて、1 つまたは�
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
-Visual Studio で新しい Azure Functions プロジェクトを作成します。 新しいプロジェクト テンプレートによって、*host.json* ファイルと *local.settings.json* ファイルが作成されます。 [host.json で Azure Functions のランタイム設定をカスタマイズする](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)ことができます。 
+Visual Studio で新しい Azure Functions プロジェクトを作成します。 新しいプロジェクト テンプレートによって、*host.json* ファイルと *local.settings.json* ファイルが作成されます。 [host.json で Azure Functions のランタイム設定をカスタマイズする](functions-host-json.md)ことができます。 
 
 *local.settings.json* ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 構造の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md#local-settings)」を参照してください。
 
@@ -46,7 +46,7 @@ Visual Studio で新しい Azure Functions プロジェクトを作成します�
 
 ### <a name="conversion-to-functionjson"></a>function.json への変換
 
-Azure Functions プロジェクトをビルドする場合、`[FunctionName]` で定義された関数名と一致するディレクトリ内に `function.json` ファイルが生成されます。 このファイルは、トリガーとバインドを指定し、プロジェクトのアセンブリ ファイルをポイントします。
+Azure Functions プロジェクトをビルドすると、関数のディレクトリに *function.json* ファイルが作成されます。 ディレクトリ名は、`[FunctionName]` 属性に指定されている関数名と同じです。 *function.json* ファイルには、トリガーとバインドが含まれ、プロジェクトのアセンブリ ファイルをポイントします。
 
 この変換は、NuGet パッケージ [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) によって実行されます。 ソースは、GitHub リポジトリ [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) で利用できます。
 
@@ -266,7 +266,7 @@ Azure Functions は、プログラムによって電子メールを送信する�
 
 属性 `[SendGrid]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid] で定義されます。
 
-Service Bus キュー トリガーの使用と`SendGridMessage`を使用した SendGrid 出力バインドの例を次に示します。
+Service Bus キュー トリガーの使用と、`SendGridMessage` を使用した SendGrid 出力バインドの例を次に示します。
 
 ```csharp
 [FunctionName("SendEmail")]

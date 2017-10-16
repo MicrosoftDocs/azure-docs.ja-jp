@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
+ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 
@@ -349,7 +348,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 現時点では、デバイス ツインの機能を使用するには、MQTT プロトコルを使用する必要があります。
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。
 
 1. デバイス ツイン通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
 
@@ -486,4 +485,3 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 * [IoT Hub の概要](iot-hub-java-java-getstarted.md)に関するチュートリアルでデバイスからテレメトリを送信する。
 * 「[ダイレクト メソッドの使用](iot-hub-java-java-direct-methods.md)」チュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
-

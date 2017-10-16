@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup の失敗のトラブルシューティング: ゲスト エージェントの状態を確認できない | Microsoft Docs"
-description: "\"VM エージェントと通信できませんでした\" というエラーに関連する Azure Backup の失敗の症状の原因と解決策。"
+description: "エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策"
 services: backup
 documentationcenter: 
 author: genlin
@@ -12,17 +12,15 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/17/2017
+ms.topic: troubleshooting
+ms.date: 09/08/2017
 ms.author: genli;markgal;
+ms.openlocfilehash: f3195fa83479986a3e605abce618c78bcdb64dac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 6ed651bb8caafd18cec93e68ac70e27f92133e5c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
 この記事では、VM エージェントと拡張機能との通信の問題に関連する Backup のエラーを解決するためのトラブルシューティング手順について説明します。
@@ -68,6 +66,13 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4: [スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 5: [バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)
 
+## <a name="the-specified-disk-configuration-is-not-supported"></a>指定されたディスク構成がサポートされていません
+
+現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
+- 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>
+- 次に、1 TB を超えるディスクから、新規作成した 1 TB より小さいサイズのディスクにデータをコピーします。 <br>
+- すべてのデータがコピーされたことを確認し、1 TB を超えるディスクを取り外します。
+- バックアップを開始します。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
@@ -148,7 +153,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 | VM で SQL Server のバックアップが構成されている。 | 既定では、VM のバックアップは Windows VM で VSS 完全バックアップとして実行されます。 SQL Server ベースのサーバーを実行し、SQL Server のバックアップが構成されている VM では、スナップショットの実行の遅延が発生する場合があります。<br><br>スナップショットに関する問題により Backup エラーが発生する場合は、次のレジストリ キーを設定してください。<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | VM が RDP でシャットダウンされているため、VM の状態が正しく報告されない。 | リモート デスクトップ プロトコル (RDP) で VM をシャットダウンした場合は、ポータルでその VM の状態が正しいかどうかを確認します。 正しくない場合は、VM のダッシュボードの **[シャットダウン]** オプションを使用して、ポータルで VM をシャットダウンします。 |
 | 同じクラウド サービスから多数の VM が同時にバックアップするように構成されている。 | 同じクラウド サービスの VM については、バックアップ スケジュールを分散させることをお勧めします。 |
-| VM の CPU またはメモリの使用率が高くなっている。 | VM の CPU 使用率が高い (90% を超える) 場合、またはメモリ使用率が高い場合、スナップショット タスクがキューに配置され、遅延し、最終的にタイムアウトになります。 この場合は、オンデマンド バックアップを試してください。 |
+| VM の CPU またはメモリの使用率が高くなっている。 | VM の CPU 使用率が高い (90% を超える) 場合、またはメモリ使用率が高い場合、スナップショット タスクがキューに配置され、遅延し、最終的にタイムアウトになります。この場合は、オンデマンド バックアップを試してください。 |
 | VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。  VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。 VM 内の DHCP オプションは有効のままにしておいてください。 詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関するページをご覧ください。 |
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>バックアップ拡張機能の更新または読み込みに失敗した
@@ -165,7 +170,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 
 拡張機能をアンインストールするには、以下の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) にアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 2. バックアップの問題が発生している VM を見つけます。
 3. **[設定]**をクリックします。
 4. **[拡張機能]** をクリックします。
@@ -173,5 +178,4 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 6. **[アンインストール]** をクリックします。
 
 この手順により、次回のバックアップ時に拡張機能が再インストールされます。
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: rajanaki
+ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ccc2b53e0824042c0f07b9fe63e8777aa68c6dc1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="prerequisites-for-replication-from-on-premises-to-azure-by-using-site-recovery"></a>Site Recovery を使用してオンプレミスから Azure へのレプリケーションを行うための前提条件
 
 > [!div class="op_single_selector"]
@@ -56,22 +54,27 @@ VMware VM または Windows/Linux 物理サーバーのディザスター リカ
 
 ### <a name="configuration-server-or-additional-process-server"></a>構成サーバーまたは追加のプロセス サーバー
 
-オンプレミスのマシンを構成サーバーとしてセットアップし、オンプレミス サイトと Azure 間の通信を調整します。 また、オンプレミスのマシンは、データ レプリケーションも管理します。 <br/></br>
+オンプレミスのマシンを構成サーバーとしてセットアップし、オンプレミス サイトと Azure 間の通信を調整します。 以下の表は、構成サーバーとして構成できる仮想マシンのシステムとソフトウェアの要件をまとめたものです。
 
-*   **VMware vCenter または vSphere ホストの前提条件**
+> [!IMPORTANT]
+> VMware 仮想マシンを保護するために構成サーバーをデプロイするときは、**高可用性 (HA)** 仮想マシンとしてデプロイすることをお勧めします。
 
-    | **コンポーネント** | **要件** |
-    | --- | --- |
-    | **vSphere** | 1 つ以上の VMware vSphere ハイパーバイザーが必要です。<br/><br/>ハイパーバイザーでは、最新の更新プログラムが適用された vSphere バージョン 6.0、5.5、または 5.1 が実行されている必要があります。<br/><br/>vSphere ホストと vCenter サーバーはいずれも、プロセス サーバーと同じネットワーク内にあることが推奨されます。 このネットワークは、専用のプロセス サーバーをセットアップした場合を除き、構成サーバーがあるネットワークです。 |
-    | **vCenter** | vSphere ホストを管理する VMware vCenter サーバーをデプロイすることをお勧めします。 このサーバーでは、最新の更新プログラムが適用された vCenter バージョン 6.0 または 5.5 が実行されている必要があります。<br/><br/>**制限事項**: Site Recovery では、vCenter vMotion のインスタンス間のレプリケーションはサポートされていません。 再保護操作後のマスター ターゲット VM では、Storage DRS と Storage vMotion もサポートされていません。||
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-* **レプリケーション対象のマシンの前提条件**
+### <a name="vmware-vcenter-or-vsphere-host-prerequisites"></a>VMware vCenter または vSphere ホストの前提条件
 
-    | **コンポーネント** | **要件** |
-    | --- | --- |
-    | **オンプレミスのマシン** (VMware VM) | レプリケーション対象の VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/> VM は、Azure VM を作成するための [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしていなければなりません。<br/><br/>保護対象の各マシンのディスク容量は、1,023 GB より大きくすることはできません。 <br/><br/>コンポーネントのインストール用として、インストール ドライブに 2 GB 以上の空き領域が必要です。<br/><br/>マルチ VM 整合性を有効にする場合は、ポート 20004 を VM のローカル ファイアウォールで開く必要があります。<br/><br/>マシン名は 1 文字から 63 文字の長さでなければなりません (文字、数字、およびハイフンを使用できます)。 名前の先頭と末尾は文字または数字でなければなりません。 <br/><br/>Azure 上の名前は、マシンのレプリケーションを有効にした後で変更できます。<br/><br/> |
-    | **Windows マシン** (物理または VMware) | マシンでは、サポートされている以下のいずれかの 64 ビット オペレーティング システムが実行されている必要があります。 <br/>- Windows Server 2012 R2<br/>- Windows Server 2012<br/>- Windows Server 2008 R2 (SP1 以降のバージョンが適用済み)<br/><br/> オペレーティング システムは、C ドライブにインストールされている必要があります。OS ディスクは、ダイナミック ディスクではなく、Windows ベーシック ディスクでなければなりません。 データ ディスクはダイナミックでもかまいません。<br/><br/>|
-    | **Linux マシン** (物理または VMware) | マシンでは、サポートされている以下のいずれかの 64 ビット オペレーティング システムが実行されている必要があります。 <br/>- Red Hat Enterprise Linux 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3<br/>- CentOS: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3<br/>- Ubuntu 14.04 LTS サーバー (Ubuntu でサポートされているカーネル バージョンのリストについては、[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)に関するページを参照)<br/>- Ubuntu 16.04 LTS サーバー (Ubuntu でサポートされているカーネル バージョンのリストについては、[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)に関するページを参照)<br/>-  Debian 7 または Debian 8<br/>-  Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.5、6.4<br/>- SUSE Linux Enterprise Server 11 SP4 または SUSE Linux Enterprise Server 11 SP3<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後、Secure Shell (SSH) クライアントを使用して Linux が実行されている Azure VM に接続する場合は、保護対象のマシン上の SSH サービスがシステム起動時に自動的に開始されるように設定されていることを確認します。 また、保護対象のマシンへの SSH 接続がファイアウォール規則で許可されていることも確認します。<br/><br/>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例えば /etc/ や /usr) は英語のみ使用できます。<br/><br/>以下のディレクトリ (個別のパーティションまたはファイル システムとしてセットアップされている場合) はすべて、ソース サーバー上の同じディスク (OS ディスク) 上に存在する必要があります。<br/>- / (root)<br/>- /boot<br/>- /usr<br/>- /usr/local<br/>- /var<br/>- /etc<br/><br/>現在、メタデータ チェックサムなどの XFS v5 機能は、XFS ファイル システム上の Site Recovery ではサポートされていません。 XFS ファイル システムで v5 機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 **ftype** が **1** に設定されている場合は、XFS v5 機能が使用されています。<br/><br/>Red Hat Enterprise Linux 7 サーバーと CentOS 7 サーバーでは、lsof ユーティリティをインストールして使用可能にする必要があります。<br/><br/>
+| **コンポーネント** | **要件** |
+| --- | --- |
+| **vSphere** | 1 つ以上の VMware vSphere ハイパーバイザーが必要です。<br/><br/>ハイパーバイザーでは、最新の更新プログラムが適用された vSphere バージョン 6.0、5.5、または 5.1 が実行されている必要があります。<br/><br/>vSphere ホストと vCenter サーバーはいずれも、プロセス サーバーと同じネットワーク内にあることが推奨されます。 このネットワークは、専用のプロセス サーバーをセットアップした場合を除き、構成サーバーがあるネットワークです。 |
+| **vCenter** | vSphere ホストを管理する VMware vCenter サーバーをデプロイすることをお勧めします。 このサーバーでは、最新の更新プログラムが適用された vCenter バージョン 6.0 または 5.5 が実行されている必要があります。<br/><br/>**制限事項**: Site Recovery では、vCenter vMotion のインスタンス間のレプリケーションはサポートされていません。 再保護操作後のマスター ターゲット VM では、Storage DRS と Storage vMotion もサポートされていません。|
+
+### <a name="replicated-machine-prerequisites"></a>レプリケーション対象のマシンの前提条件
+
+| **コンポーネント** | **要件** |
+| --- | --- |
+| **オンプレミスのマシン** (VMware VM) | レプリケーション対象の VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/> VM は、Azure VM を作成するための [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしていなければなりません。<br/><br/>保護対象の各マシンのディスク容量は、1,023 GB より大きくすることはできません。 <br/><br/>コンポーネントのインストール用として、インストール ドライブに 2 GB 以上の空き領域が必要です。<br/><br/>マルチ VM 整合性を有効にする場合は、ポート 20004 を VM のローカル ファイアウォールで開く必要があります。<br/><br/>マシン名は 1 文字から 63 文字の長さでなければなりません (文字、数字、およびハイフンを使用できます)。 名前の先頭と末尾は文字または数字でなければなりません。 <br/><br/>Azure 上の名前は、マシンのレプリケーションを有効にした後で変更できます。<br/><br/> |
+| **Windows マシン** (物理または VMware) | マシンでは、サポートされている以下のいずれかの 64 ビット オペレーティング システムが実行されている必要があります。 <br/>- Windows Server 2012 R2<br/>- Windows Server 2012<br/>- Windows Server 2008 R2 (SP1 以降のバージョンが適用済み)<br/><br/> オペレーティング システムは、C ドライブにインストールされている必要があります。OS ディスクは、ダイナミック ディスクではなく、Windows ベーシック ディスクでなければなりません。 データ ディスクはダイナミックでもかまいません。<br/><br/>|
+| **Linux マシン** (物理または VMware) | マシンでは、サポートされている以下のいずれかの 64 ビット オペレーティング システムが実行されている必要があります。 <br/>- Red Hat Enterprise Linux 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3<br/>- CentOS: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3<br/>- Ubuntu 14.04 LTS サーバー (Ubuntu でサポートされているカーネル バージョンのリストについては、[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)に関するページを参照)<br/>- Ubuntu 16.04 LTS サーバー (Ubuntu でサポートされているカーネル バージョンのリストについては、[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)に関するページを参照)<br/>-  Debian 7 または Debian 8<br/>-  Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.5、6.4<br/>- SUSE Linux Enterprise Server 11 SP4 または SUSE Linux Enterprise Server 11 SP3<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後、Secure Shell (SSH) クライアントを使用して Linux が実行されている Azure VM に接続する場合は、保護対象のマシン上の SSH サービスがシステム起動時に自動的に開始されるように設定されていることを確認します。 また、保護対象のマシンへの SSH 接続がファイアウォール規則で許可されていることも確認します。<br/><br/>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例えば /etc/ や /usr) は英語のみ使用できます。<br/><br/>以下のディレクトリ (個別のパーティションまたはファイル システムとしてセットアップされている場合) はすべて、ソース サーバー上の同じディスク (OS ディスク) 上に存在する必要があります。<br/>- / (root)<br/>- /boot<br/>- /usr<br/>- /usr/local<br/>- /var<br/>- /etc<br/><br/>現在、メタデータ チェックサムなどの XFS v5 機能は、XFS ファイル システム上の Site Recovery ではサポートされていません。 XFS ファイル システムで v5 機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 **ftype** が **1** に設定されている場合は、XFS v5 機能が使用されています。<br/><br/>Red Hat Enterprise Linux 7 サーバーと CentOS 7 サーバーでは、lsof ユーティリティをインストールして使用可能にする必要があります。<br/><br/>
 
 
 ## <a name="disaster-recovery-of-hyper-v-vms-to-azure-no-vmm"></a>Azure への Hyper-V VM のディザスター リカバリー (VMM なし)
@@ -125,4 +128,3 @@ VMM クラウドにある Hyper-V の、お客様所有サイトへのディザ�
 |``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | 必要なし | 必要なし | 必要なし | SQL のダウンロードを許可 |
 |``time.windows.com`` | ALLOW | 許可 | 許可 | 許可|
 |``time.nist.gov`` | 許可 | 許可 | 許可 | ALLOW |
-

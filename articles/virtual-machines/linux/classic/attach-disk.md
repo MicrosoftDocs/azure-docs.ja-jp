@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 
@@ -90,7 +89,7 @@ ms.lasthandoff: 04/03/2017
     sudo fdisk /dev/sdc
     ```
 
-4. 表示されるプロンプトで「**n**」と入力すると、パーティションが作成されます。
+4. メッセージが表示されたら、入力 **n** パーティションを作成します。
 
     ![デバイスの作成](./media/attach-disk/fdisknewpartition.png)
 
@@ -235,4 +234,3 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 <!--Link references-->
 [Agent]:../agent-user-guide.md
 [Logon]:../mac-create-ssh-keys.md
-

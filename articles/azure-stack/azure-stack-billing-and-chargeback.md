@@ -1,6 +1,6 @@
 ---
-title: Customer Billing And Chargeback In Azure Stack | Microsoft Docs
-description: Learn how to retrieve resource usage information from Azure Stack.
+title: "Azure Stack でのお客様への請求と配賦 | Microsoft Docs"
+description: "Azure Stack からリソース使用量情報を取得する方法を説明します。"
 services: azure-stack
 documentationcenter: 
 author: AlfredoPizzirani
@@ -12,54 +12,63 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2016
+ms.date: 08/28/2017
 ms.author: alfredop
+ms.openlocfilehash: ea7510c239ee07a9a27f3e682e61a6b08eb5694d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c8e80b9288d3c12a4c3ccb5e4ea5b95fc5049349
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="usage-and-billing-in-azure-stack"></a>Usage and billing in Azure Stack
+# <a name="usage-and-billing-in-azure-stack"></a>Azure Stack での使用量と請求
 
-Usage represents the quantity of resources consumed by a user. Azure Stack collects usage information for each user and uses it to bill them. This article describes how Azure Stack users are billed for resource usage, and how the billing information is accessed for analytics, chargeback, etc.
+使用量とは、ユーザーによって使われたリソースの量のことです。 Azure Stack では、ユーザーごとに使用量情報が収集され、その情報を使ってユーザーへの請求が行われます。 この記事では、Azure Stack ユーザーにどのようにリソース使用量が請求されるかと、分析や配賦などのために請求情報にアクセスする方法を説明します。
 
-Azure Stack contains the infrastructure to collect and aggregate usage data for all resources. You can access this data and export it to a billing system by using a billing adapter, or export it to a business intelligence tool like Microsoft Power BI. After exporting, this billing information is used for analytics or transferred to a chargeback system.
+Azure Stack には、すべてのリソースの使用量データを収集および集計し、そのデータを Azure Commerce に転送するためのインフラストラクチャがあります。 このデータにアクセスして、請求アダプターを使って請求システムにエクスポートすることや、Microsoft Power BI などのビジネス インテリジェンス ツールにエクスポートすることができます。 この請求情報は、エクスポートされた後、分析に使われるか、配賦システムに転送されます。
 
-![Conceptual model of a billing adapter connecting Azure Stack to a Billing application](media/azure-stack-billing-and-chargeback/image1.png)
+![Azure Stack を請求アプリケーションに接続する請求アダプターの概念モデル](media/azure-stack-billing-and-chargeback/image1.png)
 
-## <a name="what-usage-information-can-i-find-and-how"></a>What usage information can I find, and how?
+## <a name="usage-pipeline"></a>使用量パイプライン
 
-Azure Stack Resource providers, such as Compute, Storage, and Network, generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used such as resource name, meter name, meter ID, quantity used etc. To learn about the meters ID resources, refer to the [usage API FAQ](azure-stack-usage-related-faq.md) article. 
+Azure Stack 内の各リソース プロバイダーは、リソース使用率に従って使用量データを出力します。 Usage Service は、この使用量データを定期的に (時間単位または日単位で) 集計し、使用量データベースに保存します。 Azure Stack オペレーターおよびユーザーは、保存された使用量データに使用量 API を使用してローカルでアクセスできます。 
 
-After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal. The Azure billing portal shows the usage data only for the chargeable resources. In addition to the chargeable resources, Azure Stack captures usage data for a broader set of resources, which you can access in your Azure Stack environment through REST APIs or PowerShell. Azure Stack cloud administrators can retrieve the usage data for all user subscriptions whereas a user can get only their usage details.
+[Azure Stack インスタンスを Azure に登録](azure-stack-register.md)している場合は、Azure Commerce に使用量データを送信するように使用量ブリッジが構成されます。 データが Azure で使用可能になったら、Billing Portal または Azure 使用量 API を使用してアクセスできます。 Azure に報告される使用量データの詳細については、[使用量データのレポート](azure-stack-usage-reporting.md)に関する記事をご覧ください。 
 
-## <a name="retrieve-usage-information"></a>Retrieve usage information
+次の図は、使用量パイプラインの主要なコンポーネントを示しています。
 
-To generate the usage data, you should have resources that are running and actively using the system. If you’re not sure whether you have any resources running in Azure Stack Marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it’s running. Use the following PowerShell cmdlets to view the usage data:
+![使用量パイプライン](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
-1. [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)
-2. [Configure PowerShell and sign in to your Azure Stack administrator or user subscription.](azure-stack-powershell-configure.md)
-3. To retrieve the usage data, use the [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell cmdlet:
-   ```PowerShell
+## <a name="what-usage-information-can-i-find-and-how"></a>確認できる使用量情報とその確認方法
+
+計算、ストレージ、ネットワークなど、Azure Stack のリソースプロバイダーでは、サブスクリプションごとに 1 時間間隔で使用量データが生成されます。 使用量データには、リソース名、使われたサブスクリプション、使われた量など、使われたリソースに関する情報が含まれます。測定 ID リソースについて知るには、[使用量 API に関するよくあるご質問](azure-stack-usage-related-faq.md)の記事をご覧ください。 
+
+使用量データが収集されると、そのデータが [Azure に報告され](azure-stack-usage-reporting.md)、請求書が生成されます。請求書は、Azure Billing Portal から表示できます。 
+
+> [!NOTE]
+> 使用量データのレポートは、Azure Stack Development Kit および容量モデルのライセンスを持つ Azure Stack 統合システムのユーザーにとっては必須ではありません。 Azure Stack のライセンスの詳細については、[パッケージと価格](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)に関するデータ シートをご覧ください。
+
+Azure Billing Portal では、課金対象のリソースについてのみ使用量データが表示されます。 Azure Stack では、課金対象のリソースのほかに、幅広い一連のリソースについて使用量情報が取得されます。この情報には、Azure Stack 環境で REST API または PowerShell を使ってアクセスできます。 ユーザーが自分の使用量の詳細のみを取得できるのに対し、Azure Stack オペレーターはすべてのユーザー サブスクリプションについて使用量データを取得できます。
+
+## <a name="retrieve-usage-information"></a>使用量情報を取得する
+
+使用量データを生成するには、実行されていて、システムをアクティブに使っているリソース (アクティブな仮想マシンや、データを格納しているストレージ アカウントなど) が必要です。Azure Stack Marketplace で実行されているリソースがあるかどうか不明な場合は、仮想マシン (VM) をデプロイし、実行されているかどうか仮想マシン監視ブレードを確認します。 使用量データを表示するには、次の PowerShell コマンドレットを使います。
+
+1. [PowerShell for Azure Stack をインストールします。](azure-stack-powershell-install.md)
+2. [Azure Stack ユーザー](user/azure-stack-powershell-configure-user.md)または [Azure Stack オペレーター](azure-stack-powershell-configure-admin.md)の PowerShell 環境を構成します 
+
+3. 使用量データを取得するには、[Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell コマンドレットを使います。
+
+   ```powershell
    Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
    ```
 
-   If usage data is available, it’s returned in as shown in the following screenshot: 
-   
-   ![Usage aggregates](media/azure-stack-billing-and-chargeback/image2.png)
-   
-   PowerShell returns 1,000 lines of usage per call. You can use the continuation parameter to retrieve more than 1,000 lines
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>Next steps
+[Azure Stack の使用量データを Azure に報告する](azure-stack-usage-reporting.md)
 
-[Report Azure Stack usage data to Azure](azure-stack-usage-reporting.md)
+[プロバイダーリソース使用量 API](azure-stack-provider-resource-api.md)
 
-[Provider Resource Usage API](azure-stack-provider-resource-api.md)
+[テナント リソース使用量 API](azure-stack-tenant-resource-usage-api.md)
 
-[Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
-
-[Usage-related FAQ](azure-stack-usage-related-faq.md)
-
+[使用量に関するよくあるご質問](azure-stack-usage-related-faq.md)
 

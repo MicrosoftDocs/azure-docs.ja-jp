@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 98ed23b8031c56ba642427e817e48a4e7a5830fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 31ac18add9c3fd956e0d37b1e0c1a510265c22e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Azure Portal で Windows 仮想マシンを作成する
 
 Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、仮想マシンを作成してそこに Web サーバーをインストールする手順を紹介します。
@@ -48,11 +46,11 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. 設定ブレードで、既定値のまま **[OK]** をクリックします。
+5. **[設定]** は既定値のままにして、**[OK]** をクリックします。 
 
 6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 
-7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM のサマリー ブレードが自動的に表示されます。
+7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
@@ -94,13 +92,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
 
-IIS がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の VM ブレードで確認できます。
+IIS がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の *[Virtual Machines]* で確認できます。
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png) 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ブレードでリソース グループを選択し、**[削除]** をクリックします。
+必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、VM のリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -108,4 +106,3 @@ IIS がインストールされ、ご利用の VM に対してポート 80 が�
 
 > [!div class="nextstepaction"]
 > [Azure Windows 仮想マシンのチュートリアル](./tutorial-manage-vm.md)
-

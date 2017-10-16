@@ -1,6 +1,6 @@
 ---
-title: "OMS の IT Service Management Connector との ITSM 接続 | Microsoft Docs"
-description: "ITSM 製品/サービスを OMS の IT Service Management Connector に接続して、ITSM 作業項目を一元的に監視、管理します。"
+title: "Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs"
+description: "ITSM 製品/サービスを Azure Log Analytics の IT Service Management Connector に接続して、ITSM 作業項目を一元的に監視して管理します。"
 documentationcenter: 
 author: JYOTHIRMAISURI
 manager: riyazp
@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: e4f2e0a23aa52a0e02e7047916b77fb15107defa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
 この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector に接続して、作業項目を一元的に管理する方法について説明します。 IT Service Management Connector の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -39,7 +38,7 @@ ms.lasthandoff: 06/16/2017
 以下の前提条件を満たしていることを確認してください。
 
 - IT Service Management Connector がインストールされている。
-詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
+詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 - ハイブリッド接続が作成および構成されている。 詳細については、「[ハイブリッド接続の構成](#configure-the-hybrid-connection)」をご覧ください。
 - サポートされている Service Manager のバージョン (2012 R2 または 2016) を使用している。
@@ -176,7 +175,7 @@ Service Manager インスタンスを OMS の IT Service Management Connector �
 
 以下の前提条件を満たしていることを確認してください。
 
-- IT Service Management Connector がインストールされている。 詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
+- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - ServiceNow のバージョンがサポートされている ( Fuji、Geneva、Helsinki)。
 
 ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。
@@ -269,8 +268,10 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 以下の前提条件を満たしていることを確認してください。
 
-- IT Service Management Connector がインストールされている。 詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
+
+- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。
+
 - ユーザー ロールが管理者である。
 
 ### <a name="connection-procedure"></a>接続手順
@@ -293,7 +294,7 @@ Provance 接続を作成するには、次の手順に従います。
 | **ユーザー名**   | IT Service Management Connector に接続できるユーザー名を入力します。    |
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**: ユーザー名とパスワードは、認証トークンを生成するためにのみ使用されます。OMS サービス内には格納されません。|
 | **サーバー URL**   | IT Service Management Connector に接続する Provance インスタンスの URL を入力します。 |
-| **クライアント ID**   | Provance インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。  クライアント ID の詳細については、[Active Directory 認証の構成方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。 |
+| **クライアント ID**   | Provance インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。  クライアント ID の詳細については、[Active Directory 認証の構成方法](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。 |
 | **データ同期スコープ**   | IT Service Management Connector を介して OMS に同期する Provance 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。|
@@ -313,7 +314,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 以下の前提条件を満たしていることを確認してください。
 
-- IT Service Management Connector がインストールされている。 詳細については、「[構成](log-analytics-itsmc-overview.md#configuration)」をご覧ください。
+- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - クライアント ID が生成されている。 詳細については、「[Cherwell のクライアント ID を生成する](#generate-client-id-for-cherwell)」をご覧ください。
 - ユーザー ロールが管理者である。
 
@@ -367,4 +368,3 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
  - [OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
 
 - [接続に関する Log Analytics を表示する](log-analytics-itsmc-overview.md#using-the-solution)
-

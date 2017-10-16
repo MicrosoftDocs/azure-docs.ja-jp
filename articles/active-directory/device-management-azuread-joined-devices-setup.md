@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs"
-description: "Azure Active Directory 参加済みデバイスの構成方法について説明します。"
+title: "Azure Active Directory 参加済みデバイスの設定 | Microsoft Docs"
+description: "Azure Active Directory 参加済みデバイスの設定方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,14 +15,13 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 415086809efe779c6bcae32719d8be1b48764905
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 303660fa53919ec22a032931aab729fd36676b82
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-configure-azure-active-directory-joined-devices"></a>Azure Active Directory 参加済みデバイスの構成方法
+# <a name="set-up-azure-active-directory-joined-devices"></a>Azure Active Directory 参加済みデバイスの設定
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳しくは、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
@@ -125,7 +124,6 @@ Azure AD ポータルでデバイスの設定を確認することもできま�
 - [Azure Active Directory のデバイス管理の概要](device-management-introduction.md)
 - [Azure Portal によるデバイスの管理](device-management-azure-portal.md)
 - 
-
 
 
 

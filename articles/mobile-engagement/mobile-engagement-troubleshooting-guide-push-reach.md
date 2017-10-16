@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>プッシュとリーチに関する問題のトラブルシューティング ガイド
 次に説明するのは、Azure Mobile Engagement が、ユーザーに情報を送信する方法に関して発生する可能性のある問題です。
@@ -100,5 +99,4 @@ ms.lasthandoff: 11/17/2016
 * 2 つ以上のキャンペーンを同時に開始すると、ユーザー ベースのスキャンに時間がかかる場合があります (一度に 1 つのキャンペーンのみを最大で 4 回開始してみます。また、アクティブなユーザーのみを対象にすると、古いユーザーをスキャンする必要がありません)。
 * リーチ キャンペーンの [Campaign (キャンペーン)] セクションで [Ignore Audience, push will be sent to users via the API (対象ユーザーを無視して API 経由でユーザーにプッシュを送信する)] オプションを使用すると、キャンペーンは自動的に送信されず、Reach API 経由で手動で送信する必要があります。
 * リーチのカスタム カテゴリを使用してアプリ内通知を表示する場合は、通知の正しいライフサイクルに従う必要があります。そうしないと、ユーザーが通知を閉じたときに、通知が消去されないことがあります。
-
 

@@ -16,13 +16,11 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: adegeo
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>自動スケールと仮想マシン スケール セットの使用方法
 スケール セット内の仮想マシンの自動スケールとは、パフォーマンス要件を満たすために、必要に応じてセット内の仮想マシンを作成または削除することを意味します。 作業の量が多くなると、アプリケーションで効率よく作業を実行できるようにするために、追加リソースが必要になる場合があります。
@@ -252,4 +250,3 @@ Azure Portal を使用して自動スケーリングを設定する例につい�
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法をご確認ください。
 
 * [高度な自動スケールのシナリオ](virtual-machine-scale-sets-advanced-autoscale.md)を紹介します。
-

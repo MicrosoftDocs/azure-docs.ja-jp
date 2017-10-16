@@ -14,16 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 47c178c66ec98fe5d333edd725b64465026e73ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
-
 # <a name="step-2-review-the-prerequisites-for-hyper-v-with-vmm-to-azure-replication"></a>手順 2: Azure への Hyper-V (VMM あり) のレプリケーションの前提条件を確認する
 
 [シナリオのアーキテクチャ](vmm-to-azure-walkthrough-architecture.md)を確認したら、この記事を読んでデプロイの前提条件をご確認ください。 
@@ -45,4 +41,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 3: 容量を計画する](vmm-to-azure-walkthrough-capacity.md)方法に関するページに進む
-

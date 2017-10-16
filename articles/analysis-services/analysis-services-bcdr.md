@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0a9bdf3afba87ba1e7a1047907ab9eeb0ef8a842
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 84b4c59bac1feeb8611b3a8d783d093ba073e532
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analysis-services-high-availability"></a>Analysis Services の高可用性
 この記事では、Azure Analysis Services サーバーの高可用性の確保について説明します。 
 
@@ -40,5 +38,4 @@ ms.lasthandoff: 06/03/2017
 ## <a name="related-information"></a>関連情報
 [バックアップと復元](analysis-services-backup.md)   
 [Azure Analysis Services を管理する](analysis-services-manage.md) 
-
 

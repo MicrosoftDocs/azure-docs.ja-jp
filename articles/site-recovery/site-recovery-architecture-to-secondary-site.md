@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: fca95c63964b955db7ddfbe53250702cc8af122e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery"></a>Site Recovery でのセカンダリ サイトへのオンプレミスのマシンのレプリケーションのしくみ
 
@@ -106,4 +104,3 @@ InMage Scout で次のアーキテクチャ コンポーネントを使用して
 ## <a name="next-steps"></a>次のステップ
 
 [サポート マトリックス](site-recovery-support-matrix-to-sec-site.md)を見直す
-

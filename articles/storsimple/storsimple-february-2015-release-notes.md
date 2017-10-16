@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c059fd74854813615754e67547497b7ededbe4dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-03-release-notes---february-2015"></a>StorSimple 8000 シリーズ Update 0.3 リリース ノート - 2015 年 2 月
 ## <a name="overview"></a>Overview
@@ -83,5 +81,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 
 ## <a name="virtual-device-updates-in-the-february-release"></a>2 月のリリースでの仮想デバイスの更新プログラム
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。 この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
-
 

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.translationtype: HT
-ms.sourcegitcommit: 8727e15448a74b68277c5bdd82c573e817254f80
 ms.openlocfilehash: da567097be38ac649c6bf1de1508de24d21cb877
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成 
 この記事では、仮想マシンなどのリソースを Azure にプロビジョニングする Terraform のインストールと構成に必要な手順について説明します。 Azure の資格情報を作成し、その資格情報を使ってクラウド リソースを Terraform で安全にプロビジョニングする方法について説明します。
 
@@ -130,4 +128,3 @@ export ARM_TENANT_ID=your_tenant_id
 
 ## <a name="next-steps"></a>次のステップ
 以上で Terraform のインストールと Azure 資格情報の構成は完了です。Azure サブスクリプションへのインフラストラクチャのデプロイを開始できます。 次は、[Terraform によるインフラストラクチャの作成](terraform-create-complete-vm.md)方法について学習します。
-

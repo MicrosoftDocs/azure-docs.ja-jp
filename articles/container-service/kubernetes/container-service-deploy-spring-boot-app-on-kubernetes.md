@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-the-azure-container-service"></a>Azure Container Service で Spring Boot アプリケーションを Kubernetes クラスターにデプロイする
 
 **[Spring Framework]** は、Java 開発者による Web、モバイル、および API アプリケーションの作成を支援する一般的なオープンソース フレームワークです。 このチュートリアルでは、[Spring Boot] (Spring の使用をすばやく開始するための規約駆動型手法) を使用して作成されたサンプル アプリを使用します。
@@ -365,4 +363,3 @@ Azure でカスタム Docker イメージを使用する方法に関するその
 [KB05]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB05.png
 [KB06]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB06.png
 [KB07]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB07.png
-

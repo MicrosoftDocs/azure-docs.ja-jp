@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33c65bf2eecff3914f3227c76f7d638a4507e1f6
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple デバイスのデバイス モードの変更
 この記事では、StorSimple デバイスのさまざまな動作モードについて簡単に説明します。 StorSimple デバイスの動作モードには、通常モード、メンテナンス モード、回復モードの 3 つがあります。 
@@ -90,10 +90,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple デバイスに [通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md) する方法について説明します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

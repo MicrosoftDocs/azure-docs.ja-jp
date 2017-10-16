@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 0fc5a8eb3d033d60bf6082d61bf1698924ab91c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
 問題をトラブルシューティングするには、次のように Azure AD でのアプリケーション構成を確認する必要があります。
@@ -63,7 +61,7 @@ SAML 要求内の発行者属性が Azure AD で構成された識別子の値�
 
 Azure AD で識別子の値を更新し、それが SAML 要求でアプリケーションによって送信される値に一致するようになったら、アプリケーションにサインインできるようになります。
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。
 
 *エラー AADSTS50011: 応答アドレス 'https://contoso.com' は、アプリケーションに対して構成された応答アドレスと一致しません。*
 
@@ -94,7 +92,7 @@ SAML 要求の AssertionConsumerServiceURL 値が、Azure AD で構成されて�
 8.  **[ドメインと URL]** セクションに移動します。 [応答 URL] テキスト ボックスの値が SAML 要求内の AssertionConsumerServiceURL 値と一致していることを確認するか、一致するように値を更新します。  
     * [応答 URL] テキスト ボックスが表示されていない場合は、**[詳細な URL 設定の表示]** チェック ボックスをオンにしてください。
 
-Azure AD で応答 URL の値を更新し、その URL 値が、SAML 要求に入れてアプリケーションから送信される値に一致するようになれば、アプリケーションにサインインできるはずです。
+Azure AD で応答 URL の値を更新し、その URL 値が、アプリケーションが SAML 要求に含めて送信する値に一致していれば、アプリケーションにサインインできます。
 
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない
 
@@ -267,4 +265,3 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
+ms.translationtype: HT
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: f306784adcb807b399fbfbedf08bffdd2998ed02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Web アプリケーションからの Azure Key Vault の使用
@@ -38,7 +37,8 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 * Web アプリケーション。 Web アプリとして Azure にデプロイされた ASP.NET MVC アプリケーションの手順について説明します。
 
 > [!NOTE]
-> このチュートリアルでは、 [Azure Key Vault の概要](key-vault-get-started.md)に関するページに記載されている手順を完了している必要があります。これにより、シークレットへの URI と、Web アプリケーションのクライアント ID およびクライアント シークレットを入手できます。
+>* このサンプルは、AAD の ID を手動でプロビジョニングする従来の方法に基づいています。 現在では、プレビューに管理対象サービス ID (MSI) と呼ばれる新機能があり、AAD の ID を自動的にプロビジョニングすることができます。 詳細については、次の[リンク](https://docs.microsoft.com/azure/active-directory/msi-overview)を参照してください。 
+>* このチュートリアルでは、 [Azure Key Vault の概要](key-vault-get-started.md)に関するページに記載されている手順を完了している必要があります。これにより、シークレットへの URI と、Web アプリケーションのクライアント ID およびクライアント シークレットを入手できます。
 > 
 > 
 
@@ -71,7 +71,7 @@ Web アプリケーションでインストールしておく必要のあるパ�
     <add key="SecretUri" value="secreturi" />
 
 
-今後 Azure の Web アプリとしてアプリケーションをホストしない場合は、web.config に実際のクライアント ID、クライアント シークレット、およびシークレットの URI の値を追加する必要があります。 追加しない場合は、これらのダミーの値をそのままにしてください。セキュリティ レベルを上げるために、Azure ポータルで実際の値を追加する予定です。
+今後 Azure の Web アプリとしてアプリケーションをホストしない場合は、web.config に実際のクライアント ID、クライアント シークレット、およびシークレットの URI の値を追加する必要があります。追加しない場合は、これらのダミーの値をそのままにしてください。セキュリティ レベルを上げるために、Azure ポータルで実際の値を追加する予定です。
 
 ## <a id="gettoken"></a>アクセス トークンを取得するメソッドの追加
 Key Vault API を使用するには、アクセス トークンが必要です。 Key Vault クライアントによって Key Vault API の呼び出しが処理されますが、アクセス トークンを取得する関数を指定する必要があります。  
@@ -123,7 +123,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 
 
 ## <a id="portalsettings"></a>Azure ポータルのアプリ設定の追加 (省略可能)
-Azure の Web アプリがある場合は、Azure ポータルでアプリ設定の実際の値を追加できます。 これにより、実際の値は web.config ファイルに存在しなくなりますが、個別のアクセス制御機能があるポータルによって保護されます。 これらの値は、web.config で入力した値の代わりに使用されます。 名前が同じであるかどうかを確認してください。
+Azure の Web アプリがある場合は、Azure ポータルでアプリ設定の実際の値を追加できます。 これにより、実際の値は web.config ファイルに存在しなくなりますが、個別のアクセス制御機能があるポータルによって保護されます。 これらの値は、web.config で入力した値の代わりに使用されます。名前が同じであるかどうかを確認してください。
 
 ![Azure ポータルに表示されるアプリケーションの設定][1]
 

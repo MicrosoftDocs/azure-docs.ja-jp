@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 93300ba995f2a556cb90fc657db5cf9ad56b9846
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、Microsoft Azure Service Bus のメッセージング API によって生成される例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
@@ -91,12 +89,10 @@ ConnectionsQuotaExceeded for namespace xxx.
 #### <a name="common-causes"></a>一般的な原因
 このエラーには 2 つの一般的な原因があります。配信不能キューと機能しないメッセージ受信者です。
 
-1. **配信不能キュー**
-    リーダーがメッセージを完了できない状態でロックの有効期限が切れたときにメッセージがキュー/トピックに返されます。 これは、リーダーが [BrokeredMessage.Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)を呼び出せない例外がリーダーに発生した場合に発生することがあります。 メッセージは 10 回読み取られた後、既定で配信不能キューに移動します。 この動作は [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) プロパティによって制御され、既定値は 10 です。 メッセージが配信不能キューに溜まるほど、領域が占有されます。
+1. **配信不能キュー** リーダーがメッセージを完了できない状態でロックの有効期限が切れたときにメッセージがキュー/トピックに返されます。 これは、リーダーが [BrokeredMessage.Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)を呼び出せない例外がリーダーに発生した場合に発生することがあります。 メッセージは 10 回読み取られた後、既定で配信不能キューに移動します。 この動作は [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) プロパティによって制御され、既定値は 10 です。 メッセージが配信不能キューに溜まるほど、領域が占有されます。
    
     この問題を解決するには、他のキューの場合と同様に、配信不能キューからメッセージを読み取り、完了します。 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) クラスには、配信不能キューのパスのフォーマットに役立つ [FormatDeadLetterPath](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.formatdeadletterpath.aspx) メソッドも含まれています。
-2. **受信者の停止**
-    受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。 これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.messagecountdetails.aspx) プロパティを確認します。 [ActiveMessageCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagecountdetails.activemessagecount.aspx) プロパティ値が大きいか増えている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
+2. **受信者の停止** 受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。 これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.messagecountdetails.aspx) プロパティを確認します。 [ActiveMessageCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagecountdetails.activemessagecount.aspx) プロパティ値が大きいか増えている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
 
 ### <a name="event-hubs"></a>Event Hubs
 Event Hubs には、Event Hub あたり 20 個のコンシューマー グループという上限があります。 それ以上作成しようとすると、 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)が発生します。 
@@ -115,10 +111,8 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 ### <a name="common-causes"></a>一般的な原因
 この例外の一般的な原因には、次の 2 つがあります。正しくない構成と、一時的なサービス エラーです。
 
-1. **構成が正しくない**
-    操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードに小さすぎる値を設定していないかどうかを確認します。 ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
-2. **一時的なサービス エラー**
-    Service Bus サービスで、要求の処理に遅延が発生する場合 (トラフィック量の多い場合など) があります。 このような場合、操作が成功するまで、遅延後に操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、「 [Azure Status](https://azure.microsoft.com/status/) 」にアクセスして、既知のサービス停止がないかどうかを確認してください。
+1. **構成が正しくない** 操作状態に対して、操作タイムアウトが小さすぎる可能性があります。 クライアント SDK の操作タイムアウトの既定値は 60 秒です。 コードに小さすぎる値を設定していないかどうかを確認します。 ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
+2. **一時的なサービス エラー** Service Bus サービスで、要求の処理に遅延が発生する場合 (トラフィック量の多い場合など) があります。 このような場合、操作が成功するまで、遅延後に操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、「 [Azure Status](https://azure.microsoft.com/status/) 」にアクセスして、既知のサービス停止がないかどうかを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -129,5 +123,4 @@ Service Bus の詳細な .NET API リファレンスについては、「[Azure 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のアーキテクチャ](service-bus-architecture.md)
-
 

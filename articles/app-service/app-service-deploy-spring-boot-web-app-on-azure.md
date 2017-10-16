@@ -14,14 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
+ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-spring-boot-application-to-the-azure-app-service"></a>Spring Boot アプリケーションを Azure App Service にデプロイする
 
 **[Spring Framework]** は、Java 開発者がエンタープライズ レベルのアプリケーションを作成するのに役立つオープン ソースのソリューションであり、そのプラットフォームの上に構築されたより一般的なプロジェクトの 1 つが、スタンドアロンの Java アプリケーションを作成するための簡略化されたアプローチを提供する [Spring Boot] です。
@@ -216,8 +214,8 @@ Web アプリの追加設定の構成の詳細については、「[Configure we
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Azure Portal]: https://portal.azure.com/
-[Configure web apps in Azure App Service (Azure App Service で Web アプリを構成する)]: /azure/app-service-web/web-sites-configure
-[FTP/S を使用した Azure App Service へのアプリのデプロイ]: https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp
+[Configure web apps in Azure App Service (Azure App Service で Web アプリを構成する)]: /azure/app-service/web-sites-configure
+[FTP/S を使用した Azure App Service へのアプリのデプロイ]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
 [無料の Azure アカウント]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
@@ -243,4 +241,3 @@ Web アプリの追加設定の構成の詳細については、「[Configure we
 [AZ08]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ08.png
 [AZ09]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ09.png
 [AZ10]: ./media/app-service-deploy-spring-boot-web-app-on-azure/AZ10.png
-

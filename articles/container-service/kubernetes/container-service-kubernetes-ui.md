@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
+ms.openlocfilehash: e31f90d61fc61f17582372fe9f491a1e21f628b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fbdd3c2450c5385b782d72eb90008a093f6a7298
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Azure Container Service で Kubernetes Web UI を使用する
 
 ## <a name="prerequisites"></a>前提条件
@@ -134,5 +132,4 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 これで、Pod のいずれかを削除することにより、レプリカの数を 2 つに下げます。
 
  
-
 

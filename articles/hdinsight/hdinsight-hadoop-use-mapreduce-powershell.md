@@ -14,15 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c3801573808709f29cb1e563ac803f225a28cafc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: bc4e1b04e8f90e5713468ce38f6f05174affb261
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
 
-Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *コマンドレット* が提供されます。 これは、HDInsight クラスター上で実行される [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
+Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *コマンドレット* が提供されます。 PowerShell は、HDInsight クラスター上で実行されている [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (旧称: Templeton) への REST 呼び出しを内部的に行います。
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
@@ -49,7 +47,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 * **New-AzureRmHDInsightMapReduceJobDefinition**: 指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。
 
-* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる "*ジョブ*" オブジェクトを返します。
+* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 
 * **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 
@@ -65,7 +63,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
         .\mapreducejob.ps1
 
-    スクリプトを実行すると、HDInsight クラスターの名前と、クラスターの HTTPS/管理者アカウント名およびパスワードの入力を求められます。 Azure サブスクリプションの認証が求められる場合もあります。
+    スクリプトを実行すると、HDInsight クラスター名とクラスター ログインの入力を求められます。 Azure サブスクリプションの認証が求められる場合もあります。
 
 3. ジョブが完了すると、次のような出力が返されます。
 
@@ -88,14 +86,14 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 ### <a name="view-output"></a>出力の表示
 
-テキスト エディターで **output.txt** ファイルを開き、ジョブによって生成された文字と文字数を確認します。
+ジョブによって生成された文字と文字数を確認するには、テキスト エディターで **output.txt** ファイルを開きます。
 
 > [!NOTE]
 > MapReduce ジョブの出力ファイルは変更できません。 そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
 ## <a id="troubleshooting"></a>トラブルシューティング
 
-ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。 このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
+ジョブが完了しても情報が返されない場合は、ジョブのエラーを調べてください。 このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
 ```powershell
 # Print the output of the WordCount job.
@@ -107,7 +105,7 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-このコマンドレットは、ジョブの実行時にサーバー上の STDERR に書き込まれた情報を返します。これは、ジョブ失敗の特定に役立ちます。
+このコマンドレットは、ジョブ実行時に STDERR に書き込まれた情報を返します。
 
 ## <a id="summary"></a>概要
 
@@ -123,4 +121,3 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-

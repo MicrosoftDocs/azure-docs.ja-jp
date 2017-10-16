@@ -3,7 +3,7 @@ title: "Azure Storage の概要 | Microsoft Docs"
 description: "クラウドにおける Microsoft のデータ ストレージ Azure Storage について概要を紹介します。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
@@ -13,15 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 163f35682a4fdaa971f715c7429153bfdcf6a584
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-<!-- this is the same version that is in the MVC branch -->
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
 Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 メンテナンスや重大な問題には、Microsoft がお客様に代わって対処します。 
@@ -37,13 +35,9 @@ Azure Storage は、Blob Storage、File Storage、Queue Storage の 3 つのデ�
 * ストレージへのデータの転送とストレージからのデータの転送
 * 公開されている各種ストレージ クライアント ライブラリ 
 
-
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
-
+Azure Storage を今すぐ立ち上げ、使用を開始するには、次のクイック スタートを参照してください。
+* [PowerShell を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-powershell.md)
+* [CLl を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-cli.md)
 
 ## <a name="introducing-the-azure-storage-services"></a>Azure Storage サービスの概要
 
@@ -55,7 +49,7 @@ BLOB は基本的には、お使いのコンピューター (またはタブレ�
 
 Blob Storage に保存したファイルには、URL や REST インターフェイスのほか、いずれかの Azure SDK ストレージ クライアント ライブラリを使って世界中のどこからでもアクセスすることができます。 ストレージ クライアント ライブラリは、Node.js、Java、PHP、Ruby、Python、.NET などさまざまな言語で利用できます。 
 
-BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (VHD ファイル用) の 3 種類があります。
+BLOB には、ブロック BLOB、ページ BLOB (VHD ファイル用)、追加 BLOB の 3 種類があります。
 
 * ブロック BLOB は、約 4.7 TB までの標準的なファイルの保存に使用されます。 
 * ページ BLOB は最大 8 TB のランダム アクセス ファイルの保存に使用されます。 VM に使用される VHD ファイルには、これらが使用されます。
@@ -63,11 +57,10 @@ BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (VHD ファイル
 
 ネットワーク上の制限があるために、有線接続経由で Blob Storage にデータをアップロードまたはダウンロードできない場合は、一連のハード ドライブを Microsoft に送付し、データ センターから直接データをインポートまたはエクスポートできます。 「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage-import-export-service.md)」を参照してください。
 
-## <a name="file-storage"></a>File Storage
+## <a name="azure-files"></a>Azure Files
+[Azure Files](../files/storage-files-introduction.md) では、標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用してアクセスできる可用性の高いネットワーク ファイル共有を設定することができます。 つまり、複数の VM が、読み取りアクセス権と書き込みアクセス権の両方を使用して同じファイルを共有できます。 また、REST インターフェイスまたはストレージ クライアント ライブラリを使用してファイルを読み取ることもできます。 
 
-Azure Files サービスでは、標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用してアクセスできる可用性の高いネットワーク ファイル共有を設定することができます。 つまり、複数の VM が、読み取りアクセス権と書き込みアクセス権の両方を使用して同じファイルを共有できます。 また、REST インターフェイスまたはストレージ クライアント ライブラリを使用してファイルを読み取ることもできます。 
-
-Azure File storage と企業のファイル共有上のファイルとの違いの 1 つは、世界中のどこからでも、ファイルを指し、共有アクセス署名 (SAS) トークンを含む URL を使用して、ファイルにアクセスできることです。 SAS トークンは生成することができます。SAS トークンを使用することで、特定の期間にわたってプライベートな資産への特定のアクセスを許可できます。 
+Azure Files と企業のファイル共有上のファイルとの違いの 1 つは、世界中のどこからでも、ファイルを指し、共有アクセス署名 (SAS) トークンを含む URL を使用して、ファイルにアクセスできることです。 SAS トークンは生成することができます。SAS トークンを使用することで、特定の期間にわたってプライベートな資産への特定のアクセスを許可できます。 
 
 ファイル共有は、多くの一般的なシナリオで使用できます。 
 
@@ -85,14 +78,13 @@ Azure Queue サービスは、メッセージの保管と取得に使用しま�
 
 たとえば、画像をアップロードしてそれぞれにサムネイルを作成する機能をユーザーに提供するとしましょう。 もちろん画像のアップロードの際、サムネイルを作成するまでユーザーに待ってもらうことはできます。 しかし、その代わりの方法として、キューを使うこともできます。 ユーザーからのアップロードが完了したら、メッセージをキューに書き込みます。 その後、Azure Functions でキューからメッセージを取得して、サムネイルを作成するのです。 この処理では、各段階を個別にスケーリングすることができるので、用途に応じたチューニングの自由度が高まります。
 
-<!-- this bookmark is used by other articles; you'll need to update them before this goes into production ROBIN-->
 ## <a name="table-storage"></a>テーブル ストレージ
-<!-- add a link to the old table storage to this paragraph once it's moved -->
-Cosmos DB に、新たに Standard Azure Table Storage が加わりました。 Azure Table Storage の Premium テーブルにも対応しているので、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用することができます。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
+
+Cosmos DB に、新たに Standard Azure Table Storage が加わりました。 ドキュメントについては、[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)を参照してください。 Azure Table Storage の Premium テーブルにも対応しているので、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用することができます。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
 
 ## <a name="disk-storage"></a>ディスク ストレージ
 
-Azure Storage チームは Disks も所有していて、そこには仮想マシンで使用される管理ディスクと非管理対象ディスクのすべての機能が含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
+Azure Storage には、仮想マシンで使用される管理ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類 
 
@@ -125,7 +117,7 @@ BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の�
 
 各ストレージ アカウントには認証キーが 2 つあり、どちらを使っても、すべての操作を実行することができます。 キーが 2 つあるため、キーを時折ロール オーバーしてセキュリティを強化することができます。 アカウント名と共にキーを手に入れると、ストレージ アカウントのあらゆるデータに無制限でアクセスできるため、キーを安全に保つことがきわめて重要となります。 
 
-このセクションでは、ストレージ アカウントとそのデータのセキュリティを確保する 2 とおりの方法を見ていきます。 ストレージ アカウントとデータのセキュリティについて詳しくは、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
+このセクションでは、ストレージ アカウントとそのデータのセキュリティを確保する 2 つの方法について説明します。 ストレージ アカウントとデータのセキュリティについて詳しくは、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
 
 ### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Azure AD を使ってストレージ アカウントへのアクセスのセキュリティを確保する
 
@@ -145,7 +137,7 @@ Blob service を通じて、コンテナーとその BLOB (または特定の BL
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化 
 
-Storage サービスの暗号化 (SSE) は、Azure Storage アカウントの Files サービス (プレビュー) と Blob service のどちらでも有効にすることができます。 有効にした場合、特定のサービスに書き込まれるすべてのデータが、書き込みの前に暗号化されます。 データを読み取るときは、暗号化が解除されたうえでデータが返されます。 
+Storage サービスの暗号化 (SSE) は、Azure Storage アカウントの Files サービス (プレビュー) と Blob service のどちらでも有効にすることができます。 有効にした場合、特定のサービスに書き込まれるすべてのデータは、書き込みの前に暗号化されます。 データを読み取るときは、暗号化が解除されてからデータが返されます。 
 
 ### <a name="client-side-encryption"></a>クライアント側暗号化
 
@@ -227,11 +219,9 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [File Storage の詳細](../storage-files-introduction.md)
 * [Queue Storage の詳細](../queues/storage-queues-introduction.md)
 
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
+Azure Storage を今すぐ立ち上げ、使用を開始するには、次のクイック スタートを参照してください。
+* [PowerShell を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-powershell.md)
+* [CLl を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-cli.md)
 
 <!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 
@@ -273,9 +263,6 @@ To learn more about Azure Storage, explore these resources:
 * [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Create a storage account](../storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
-<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
 ### <a name="for-administrators"></a>管理者向け
@@ -284,15 +271,15 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-net-developers"></a>.NET 開発者向け
 * [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [.NET での Azure Files 用の開発](../files/storage-dotnet-how-to-use-files.md)
 * [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [.NET を使用して Azure Queue Storage を使用する](../storage-dotnet-how-to-use-queues.md)
-* [Windows で Azure File Storage を使用する](../storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>Java/Android 開発者向け
 * [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)
+* [Java を使用して Azure Files 用に開発する](../files/storage-java-how-to-use-file-storage.md)
 * [Java からテーブル ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-java.md)
 * [Java から Queue ストレージを使用する方法](../storage-java-how-to-use-queue-storage.md)
-* [Java からファイル ストレージを使用する方法](../storage-java-how-to-use-file-storage.md)
 
 ### <a name="for-nodejs-developers"></a>Node.js 開発者向け
 * [Node.js から BLOB ストレージを使用する方法](../blobs/storage-nodejs-how-to-use-blob-storage.md)
@@ -311,7 +298,6 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-python-developers"></a>Python 開発者向け
 * [Python から BLOB ストレージを使用する方法](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Python を使用して Azure Files 用に開発する](../files/storage-python-how-to-use-file-storage.md)
 * [Python から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Python から Queue ストレージを使用する方法](../storage-python-how-to-use-queue-storage.md)   
-* [Python から File Storage を使用する方法](../storage-python-how-to-use-file-storage.md) 
--->
+* [Python から Queue ストレージを使用する方法](../storage-python-how-to-use-queue-storage.md)

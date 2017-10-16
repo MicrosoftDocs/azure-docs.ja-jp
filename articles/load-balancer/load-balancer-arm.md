@@ -3,7 +3,7 @@ title: "Azure Resource Manager による Load Balancer のサポート | Microso
 description: "Azure Resource Manager で Load Balancer に PowerShell を使用します。 ロード バランサーにテンプレートを使用します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: tysonn
 ms.assetid: d0394f11-ee5a-4407-9d86-79c936297265
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
-ms.openlocfilehash: d06c924f384a2684b5a91c202039c581796c1091
-
+ms.openlocfilehash: 6ba329e55f03cf984ae795c1d3a509e196064e2a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Resource Manager は、Azure のサービスの優先管理フレームワークです。 Azure Resource Manager ベースの API とツールを使用して Azure Load Balancer を管理できます。
 
@@ -46,7 +48,7 @@ Azure リソース マネージャーでは、宣言型のテンプレートを�
 
 [ネットワーク リソースの詳細](../virtual-network/resource-groups-networking.md)
 
-Azure Load Balancer を使用したクイックスタート テンプレートは、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にあります。ここでは、コミュニティで作成された一連のテンプレートがホストされています。
+Azure Load Balancer を使用したクイックスタート テンプレートについては、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)を参照してください。GitHub リポジトリには、コミュニティで作成された一連のテンプレートがホストされています。
 
 テンプレートの例を次に示します。
 
@@ -68,9 +70,3 @@ Azure Resource Manager コマンドレット、コマンド ライン ツール�
 [インターネットに接続するロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
 
 [ロード バランサーの TCP アイドル タイムアウト設定](load-balancer-tcp-idle-timeout.md)を管理する方法を確認します。 これは、ロード バランサーの背後にあるサーバーに対してアプリケーションの接続を維持する必要がある場合に重要となります。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

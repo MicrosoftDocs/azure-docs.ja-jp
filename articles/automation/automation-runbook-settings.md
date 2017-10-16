@@ -3,7 +3,7 @@ title: "Runbook の設定 | Microsoft Docs"
 description: "Azure Automation の Runbook の構成設定について説明し、Azure 管理ポータルと Windows PowerShell のそれぞれで設定を変更する方法について取り上げます。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: ac8b5372aa06eac8c9a701f0621dbb675fbb565c
-ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-
-
+ms.openlocfilehash: 534ea7e3f2f8e5640db4d351c2bb3245f29b6eec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-settings"></a>Runbook の設定
 Azure Automation 内の各 Runbook には、それぞれを識別し、ログ記録の動作を変更するのに役立つ設定が複数あります。 これらの各設定を以下に示し、その後にそれらの変更方法手順を記します。
@@ -58,10 +58,4 @@ Runbook の設定変更は、Azure Portal で対象 Runbook の **[設定]** ブ
 ## <a name="next-steps"></a>次のステップ
 * [Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページで、Runbook の出力とエラー メッセージを作成および取得する方法について確認します 
 * [Runbook の作成またはインポート](automation-creating-importing-runbook.md)に関するページで、コミュニティまたはその他のソースによって開発された Runbook を追加する方法、または独自の Runbook を作成する方法を確認します 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

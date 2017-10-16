@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: a691aad9e4aa21799640efc9c96ac90d38d7bf31
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.openlocfilehash: c2565a742ce4f6ab5f7639a54c4a475f00cbc260
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-key-vault-using-cli"></a>CLI を使用した Key Vault の管理
 
@@ -265,5 +263,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 ## <a name="next-steps"></a>次のステップ
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
-
 

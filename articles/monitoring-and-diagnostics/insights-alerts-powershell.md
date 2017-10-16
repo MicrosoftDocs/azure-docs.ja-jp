@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 50127242cdf156771d0610e58cf2fc41281adae7
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitor での Azure サービス メトリック アラートの作成
 > [!div class="op_single_selector"]
@@ -97,7 +96,7 @@ ms.lasthandoff: 03/31/2017
      Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 
      ```
-     Get-AzureRmMetricDefinition の使用可能なオプションの一覧を入手するには、Get-MetricDefinitions を実行します。
+     Get-AzureRmMetricDefinition の使用可能なオプションの一覧を入手するには、`Get-Help Get-AzureRmMetricDefinition -Detailed` を実行します。
 5. 次の例では、Web サイト リソースにアラートを設定します。 アラートは、5 分間を通してすべてのトラフィックを受け取り続けたときにトリガーされ、その後 5 分間トラフィックを受け取らなくなった時点で再度トリガーされます。
 
     ```PowerShell
@@ -131,8 +130,7 @@ ms.lasthandoff: 03/31/2017
 ## <a name="next-steps"></a>次のステップ
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
-* アクティビティ ログ イベントにアラートを構成する方法は[ここ](monitoring-activity-log-alerts.md)でご覧いただけます。
+* [アクティビティ ログ イベントに対するアラートの構成](monitoring-activity-log-alerts.md)に関する詳細情報を確認します。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログ収集の概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手して、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
-

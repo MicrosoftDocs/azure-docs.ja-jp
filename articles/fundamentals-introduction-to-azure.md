@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: 298679883416a871016563aa789522413ff4c019
-
-
+ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Microsoft Azure の概要
 Microsoft Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。  この記事を読めば、クラウド コンピューティングに関する知識がまったくなくても、Azure の基礎を理解することができます。
@@ -102,7 +102,7 @@ Azure Web Apps でもこのような Web アプリケーションを作成でき
 Cloud Services は、Azure Web Apps が提供する以上にプラットフォームを厳密に制御する必要があるが、基になるオペレーティング システムを制御する必要はない場合に、大規模なスケールアウトをサポートするために適しています。
 
 #### <a name="choosing-a-compute-model"></a>計算モデルの選択
-[Azure Web Apps、Cloud Services、および Virtual Machines の比較](app-service-web/choose-web-site-cloud-service-vm.md) に関するページに、コンピューティング モデルの選択方法について詳細が記載されています。
+[Azure Web Apps、Cloud Services、および Virtual Machines の比較](app-service/choose-web-site-cloud-service-vm.md) に関するページに、コンピューティング モデルの選択方法について詳細が記載されています。
 
 ## <a name="data-management"></a>データ管理
 アプリケーションにはデータが必要です。そして、アプリケーションが異なれば必要なデータも異なります。 このため、Azure にはデータの格納および管理を行うさまざまな方法が用意されています。 Azure には多数のストレージ オプションがありますが、すべて非常に耐久性の高いストレージを実現する目的で設計されています。  これらのオプションのいずれでも、常にデータの 3 つのコピーが Azure データセンターで同期した状態で保持されます。Azure で geo 冗長性を使用して 300 マイル以上離れた別のデータセンターにバックアップしている場合は、6 つのコピーが保持されます。     
@@ -310,7 +310,7 @@ Azure API Management は、組織がより簡単に、規模に応じて安全�
 * ユーザーが持っているもの (携帯電話など、簡単には複製できない信頼できるデバイス)
 * ユーザー自身 (生体認証)
 
-そのため、ユーザーのサインイン時に、モバイル アプリ、電話のコール、またはテキスト メッセージとパスワードを組み合わせて ID を検証するように要求することができます。 既定では、Azure Active Directory は、ユーザーのサインインの唯一の認証方式としてパスワードの使用をサポートしています。 MFA と Azure AD を併用することもできれば、MFA SDK を使用することで MFA とカスタム アプリケーションおよびディレクトリを併用することもできます。 また、Multi-Factor Authentication Server を使用することで、オンプレミスのアプリケーションと併用することもできます。
+そのため、ユーザーのサインイン時に、モバイル アプリ、電話のコール、またはテキスト メッセージとパスワードを組み合わせて ID を検証するように要求することができます。 既定では、Azure Active Directory は、ユーザーのサインインの唯一の認証方式としてパスワードの使用をサポートしています。MFA と Azure AD を併用することもできれば、MFA SDK を使用することで MFA とカスタム アプリケーションおよびディレクトリを併用することもできます。 また、Multi-Factor Authentication Server を使用することで、オンプレミスのアプリケーションと併用することもできます。
 
 **MFA のシナリオ**
 
@@ -537,9 +537,3 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 これで全体像を把握できたため、次のステップは最初の Azure アプリケーションを記述することです。 言語を選択して[適切な SDK を入手し](/downloads/)、作成してみましょう。 クラウド コンピューティングはこれからの基本です。今すぐ始めましょう。
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

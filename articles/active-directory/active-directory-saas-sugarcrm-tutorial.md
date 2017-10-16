@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: c27aef24e859522b8001ecb747906abdca14d87a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>チュートリアル: Azure Active Directory と Sugar CRM の統合
 
@@ -191,7 +190,7 @@ Sugar CRM で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-sugar-crm-test-user"></a>Sugar CRM テスト ユーザーの作成
 
@@ -291,5 +290,4 @@ Sugar CRM の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sugarcrm-tutorial/tutorial_general_203.png
-
 

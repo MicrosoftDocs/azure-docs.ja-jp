@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5bc983ef1ffaac5d6de7bbc2cdf51838d8051aac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
 
@@ -152,7 +151,7 @@ Rsyslog データは既定で常に収集されます。
 
 ## <a name="review-your-data"></a>データを確認する
 
-パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。 「 [Azure Ruby から Table Storage を使用する方法](../../../storage/storage-ruby-how-to-use-table-storage.md) 」を確認して、Azure CLI スクリプトを使用してストレージ テーブルのデータにアクセスする方法を学びます。
+パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。 「 [Azure Ruby から Table Storage を使用する方法](../../../cosmos-db/table-storage-how-to-use-ruby.md) 」を確認して、Azure CLI スクリプトを使用してストレージ テーブルのデータにアクセスする方法を学びます。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
@@ -166,4 +165,3 @@ Rsyslog データは既定で常に収集されます。
 ## <a name="known-issues"></a>既知の問題
 
 * Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトによってのみアクセスできます。
-

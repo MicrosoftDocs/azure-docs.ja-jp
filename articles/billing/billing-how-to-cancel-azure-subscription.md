@@ -13,15 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: c415fada30aa0b0bd9b9d1e416bc37ef30653f68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 51fe2ab891e86ae4bd7402622231af47f35aa01d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Azure のサブスクリプションの取り消し
 
@@ -37,31 +35,11 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Azure Portal を使用したサブスクリプションの取り消し
 
-1. [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
-
+1. Azure ポータルの [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
 1. 取り消すサブスクリプションを選択し、**[サブスクリプションの取り消し]** をクリックします。
 
     ![[キャンセル] ボタンを示すスクリーン ショット](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-
 1. 画面の指示に従って、取り消しを完了します。
-
-## <a name="cancel-subscription-using-the-azure-account-center"></a>Azure アカウント センターを使用したサブスクリプションの取り消し
-
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
-
-1. **[詳細および使用量を表示するにはサブスクリプションをクリックします]**で、取り消すサブスクリプションを選択します。
-
-    ![選択されたサブスクリプション例を示すスクリーンショット](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
-
-1. ページの右側にある **[サブスクリプションの取り消し]**を選択します。
-
-    ![[サブスクリプションの取り消し] ボタンを示すスクリーンショット](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
-
-1. **[はい、サブスクリプションをキャンセルします。]**を選択します。
-
-    ![[キャンセル] ダイアログを示すスクリーン ショット](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
-
-1. Click ![チェック マーク ボタン](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) をクリックしてダイアログ ウィンドウを閉じ、サブスクリプション ページに戻ります。
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>サブスクリプションの取り消し後の流れ
 
@@ -69,9 +47,9 @@ ms.lasthandoff: 07/06/2017
 
 その後、サービスが無効になります。 つまり、仮想マシンの割り当てが解除され、一時 IP アドレスが解放され、ストレージが読み取り専用になります。
 
-無料試用版を使用している場合や、利用可能なクレジットがある場合を除き、最後の課金サイクルと取り消し日の間に発生した未払いの使用料金があれば課金されます。 課金サイクルの終わりに、最後の請求書が送信されます。
+請求期間の途中でキャンセルした場合、期間終了後の一般的な請求日に、最終的な課金内容が送信されます。 
 
-Microsoft では、お客様によってサブスクリプションが取り消されたあと、お客様がデータにアクセスする必要がある場合やその決定を変更する場合に備えて、データを完全に削除する前に 90 日間保管します。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
+Microsoft では、お客様がデータにアクセスする必要がある場合や、サブスクリプションの取り消しをキャンセルされた場合に備えて、データを完全に削除する前に 90 日間保管します。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
 
 ## <a name="reactivate-subscription"></a>サブスクリプションの再アクティブ化
 
@@ -82,4 +60,3 @@ Microsoft では、お客様によってサブスクリプションが取り消�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 まだ他に質問がある場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

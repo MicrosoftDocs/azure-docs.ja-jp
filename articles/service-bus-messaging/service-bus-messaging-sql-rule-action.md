@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: b4cc2ce4d05b035829584a610d52e6079a13a9c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/24/2017
-
-
+ms.openlocfilehash: 7379b7f58563675f28d77928d933c0d9c7992e71
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文
 
 *SqlRuleAction* は [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して実行される、SQL 言語ベースの構文で記述された一連のアクションを表します。   
@@ -226,4 +223,3 @@ ms.lasthandoff: 03/24/2017
 
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-

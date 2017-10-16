@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: db04507d50b6dfe767ede4479fe0b02af2461576
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: bffa481a498b130ef1f2388a5ba856da5d164ee0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="backup-and-restore"></a>バックアップと復元
 
-Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
+Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
 
 > [!NOTE]
 > ストレージ アカウントを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
@@ -83,7 +81,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
 
 ## <a name="restore"></a>復元
-復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
+復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 
 
@@ -112,7 +110,6 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ## <a name="related-information"></a>関連情報
 
-[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)  
+[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)  
 [高可用性](analysis-services-bcdr.md)     
 [Azure Analysis Services を管理する](analysis-services-manage.md)
-

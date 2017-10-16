@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 868b2cc1559053057d17b34c03e2e31347f399bf
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-portal-to-assign-and-manage-resource-policies"></a>Azure Portal によるリソース ポリシーの割り当てと管理
 Azure Portal を使用して、リソース ポリシーをリソース グループやサブスクリプションに割り当てることができます。 割り当てるポリシーを選択したり、そのポリシーにパラメーター値を指定してポリシーの設定をカスタマイズしたりを簡単に行うことができるユーザー インターフェイスが用意されています。 
@@ -84,5 +83,4 @@ Azure Portal を使用して、リソース ポリシーをリソース グル�
 * ポリシーを定義する JSON 構文について詳しくは、「[リソース ポリシーの概要](resource-manager-policy.md)」をご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 * [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でポリシー スキーマが公開されています。 
-
 

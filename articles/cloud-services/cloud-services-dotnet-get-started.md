@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
+ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -36,14 +35,14 @@ ms.lasthandoff: 08/22/2017
 アプリケーションでは、 [キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
 ## <a name="alternative-architecture-websites-and-webjobs"></a>代替アーキテクチャ: Websites および WebJobs
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service-web/choose-web-site-cloud-service-vm.md)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## <a name="what-youll-learn"></a>学習内容
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
 * ASP.NET MVC の Web ロールと worker ロールを使用して、Visual Studio クラウド サービス プロジェクトを作成する方法
 * Azure ストレージ エミュレーターを使用してクラウド サービス プロジェクトをローカルでテストする方法
 * Azure ストレージ アカウントを使用してクラウド プロジェクトを Azure クラウド サービスに発行し、テストする方法
-* ファイルを Azure BLOB サービスにアップロードして保存する方法
+* ファイルを Azure Blob service にアップロードして保存する方法
 * Azure Queue サービスを使用して階層間の通信を行う方法
 
 ## <a name="prerequisites"></a>前提条件
@@ -128,7 +127,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 5. アプリケーションをデプロイするリージョンを選択します。
 
     このフィールドは、クラウド サービスがホストされるデータセンターを指定します。 運用アプリケーションの場合は、顧客に最も近いリージョンを選択してください。 このチュートリアルでは、自分に最も近いリージョンを選択してください。
-5. **[作成]**をクリックします。
+5. **Create** をクリックしてください。
 
     次の画像では、クラウド サービスは CSvccontosoads.cloudapp.net という URL で作成されます。
 
@@ -157,7 +156,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 9. 新しいサーバーについて **[選択]** をクリックします。
 
     ![新しい SQL Database サーバー](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. **[作成]**をクリックします。
+10. **Create** をクリックしてください。
 
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 Azure ストレージ アカウントは、キューおよび BLOB データをクラウドに格納するためのリソースを提供します。
@@ -180,7 +179,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
     クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。 データ センター内の帯域幅は無料です。
 
     Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。 このチュートリアルでは、アフィニティ グループを使用しません。 詳細については、 [Azure でアフィニティ グループを作成する方法に関するページ](http://msdn.microsoft.com/library/jj156209.aspx)を参照してください。
-7. **[作成]**をクリックします。
+7. **Create** をクリックしてください。
 
     ![新しいストレージ アカウント ](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -783,4 +782,3 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Cloud Services の管理方法](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-

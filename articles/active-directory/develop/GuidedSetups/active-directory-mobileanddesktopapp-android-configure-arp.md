@@ -15,21 +15,18 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b034bf99351c5b33c51d9a8401434160bddb15be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: c09937582118ebcc5b8cbc1f43a0a2019f2f7a89
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
 この手順では、アプリケーション ID をプロジェクトに追加する必要があります。
 
-1.    `MainActivity` を開きます ([`app`]  >  [`java`]  >  [*`{host}.{namespace}`*] の順)。
-2.    `final static String CLIENT_ID` で始まる行を以下に置き換えます。
+1.  `MainActivity` を開きます ([`app`]  >  [`java`]  >  [*`{host}.{namespace}`*] の順)。
+2.  `final static String CLIENT_ID` で始まる行を以下に置き換えます。
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
@@ -56,4 +53,3 @@ final static String CLIENT_ID = "[Enter the application Id here]";
 ### <a name="what-is-next"></a>次の手順
 
 [テストおよび検証](active-directory-mobileanddesktopapp-android-test.md)
-

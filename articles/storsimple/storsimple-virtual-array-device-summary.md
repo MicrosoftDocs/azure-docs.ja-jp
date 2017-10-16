@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 35413d597c3b6b1c7600241a78572b63f982d175
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array に接続されている StorSimple デバイス マネージャーのデバイスの概要ブレードを使用する
 
@@ -54,10 +55,4 @@ StorSimple デバイス ブレードには、StorSimple デバイスを管理す
 - [StorSimple Virtual Array での共有の管理](storsimple-virtual-array-manage-shares.md)
     
 - [StorSimple Virtual Array でのボリュームの管理](storsimple-virtual-array-manage-volumes.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

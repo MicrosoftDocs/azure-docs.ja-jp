@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>SAP コネクタを使用した、Logic Apps からオンプレミスの SAP システムへの接続 
 
 オンプレミス データ ゲートウェイを使用すると、データを管理し、オンプレミスのリソースに安全にアクセスできます。 このトピックでは、オンプレミスの SAP システムに Logic Apps を接続する方法を説明します。 この例では、ロジック アプリは HTTP 経由で IDOC を要求し、応答を返信します。    
@@ -36,7 +34,7 @@ ms.lasthandoff: 07/28/2017
 
 - データ ゲートウェイをインストールしたのと同じコンピューターに、最新の SAP クライアント ライブラリをダウンロードし、インストールします。 次のいずれかの SAP バージョンを使用してください。 
     - SAP サーバー
-        - .NET Connector (NCo) 3.0 をサポートする任意の SAP サーバー
+        - .NET コネクタ (NCo) 3.0 をサポートする任意の SAP サーバー
  
     - SAP クライアント
         - SAP .NET Connector (NCo) 3.0
@@ -92,4 +90,3 @@ SAP コネクタがロジック アプリに追加されたので、他の機能
 
 - [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) で検証、変換、および BizTalk に似たその他の機能を使用する。 
 - ロジック アプリから[オンプレミスのデータへの接続](../logic-apps/logic-apps-gateway-connection.md)
-

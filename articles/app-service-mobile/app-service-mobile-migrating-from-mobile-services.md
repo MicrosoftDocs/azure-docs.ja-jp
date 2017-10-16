@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 16cf05f62602e494affed49e466209b68413e53a
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 06e85d02d82bcc7d57989c1dce97028b24b9f317
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
@@ -33,7 +33,6 @@ Azure Mobile Service を移行すれば、コードを変更せずにモバイ�
 Microsoft では、次のような Azure App Service の機能を最大限に活用できるように Azure Mobile Service の移行を推奨しています。
 
 * [Web ジョブ] や [custom domain names] などの新しいホスト機能。
-* [ハイブリッド接続]に加えて、[VNet] を使用したオンプレミス リソースへの接続。
 * New Relic または [Application Insights]による監視とトラブルシューティング。
 * [ステージング スロット]、ロールバック、本稼動テストなど、組み込み DevOps ツール。
 * [自動スケール]、負荷分散、[パフォーマンス監視]。
@@ -389,7 +388,7 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
-[ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
+[Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
 [ログ]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md

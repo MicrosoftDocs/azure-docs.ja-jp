@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 56e8f5cf3886c740853a40781c42b3e36144134b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array のベスト プラクティス
 ## <a name="overview"></a>Overview
@@ -109,7 +107,7 @@ StorSimple Virtual Array のサイズを変更するときは、次の要素を�
 想定外の拡大を考慮して、1.25 ～ 1.5 TB のローカル ディスクをプロビジョニングすることになります。
 
 ### <a name="group-policy"></a>グループ ポリシー
-グループ ポリシーは、ユーザーとコンピューターに対して特定の構成を実装できるインフラストラクチャです。 グループ ポリシーの設定は、グループ ポリシー オブジェクト (GPO) に格納されます。グループ ポリシー オブジェクトは、Active Directory ドメイン サービス (AD DS) のコンテナーであるサイトやドメイン、組織単位 (OU) に関連付けられています。 
+グループ ポリシーは、ユーザーとコンピューターに対して特定の構成を実装できるインフラストラクチャです。 グループ ポリシーの設定は、グループ ポリシー オブジェクト (GPO) に格納されます。グループ ポリシー オブジェクトは、Active Directory Domain Services (AD DS) のコンテナーであるサイトやドメイン、組織単位 (OU) に関連付けられています。 
 
 仮想アレイがドメインに参加している場合は、そのドメインに GPO を適用することができます。 これらの GPO によってウイルス対策ソフトウェアなどのアプリケーションがインストールされ、StorSimple Virtual Array の動作に悪影響が生じる場合があります。
 
@@ -146,7 +144,7 @@ StorSimple Virtual Array は、1 つのストレージ アカウントに関連�
   
   * 遅延を最小限に抑えるために、ストレージ アカウントは、StorSimple Virtual Array のデプロイ先となるリモート オフィス/支社に最も近いリージョンに作成することをお勧めします。
   * 異なるリージョン間でストレージ アカウントを移動することはできないことに注意してください。 同様に、異なるサブスクリプション間でサービスを移動することもできません。
-  * データセンター間の冗長性が確保されたストレージ アカウントを使用してください。 geo 冗長ストレージ (GRS)、ゾーン冗長ストレージ (ZRS)、ローカル冗長ストレージ (LRS) はいずれも、仮想アレイで使用することができます。 各種ストレージ アカウントの詳細については、「 [Azure Storage のレプリケーション](../storage/storage-redundancy.md)」をご覧ください。
+  * データセンター間の冗長性が確保されたストレージ アカウントを使用してください。 geo 冗長ストレージ (GRS)、ゾーン冗長ストレージ (ZRS)、ローカル冗長ストレージ (LRS) はいずれも、仮想アレイで使用することができます。 各種ストレージ アカウントの詳細については、「 [Azure Storage のレプリケーション](../storage/common/storage-redundancy.md)」をご覧ください。
 
 ### <a name="shares-and-volumes"></a>共有とボリューム
 StorSimple Virtual Array には、共有 (ファイル サーバーとして構成されているとき) またはボリューム (iSCSI サーバーとして構成されているとき) をプロビジョニングすることができます。 共有とボリュームを作成する際のベスト プラクティスは、構成するサイズと種類に関係します。
@@ -156,7 +154,7 @@ StorSimple Virtual Array には、共有 (ファイル サーバーとして構�
 
 仮想デバイスに共有またはボリュームをプロビジョニングするうえでのベスト プラクティスは次のとおりです。
 
-* 階層化共有のプロビジョニング サイズに対する相対的なファイル サイズが、階層化のパフォーマンスに影響する場合があります。 処理するファイルが大きいと、階層化に時間がかかる可能性があります。 複数の大きなファイルを処理するときは、最も大きなファイルのサイズを共有のサイズの 3% 未満にすることをお勧めします。
+* 階層化共有のプロビジョニング サイズに対する相対的なファイル サイズが、階層化のパフォーマンスに影響する場合があります。 処理するファイルが大きいと、階層化に時間がかかる可能性があります。複数の大きなファイルを処理するときは、最も大きなファイルのサイズを共有のサイズの 3% 未満にすることをお勧めします。
 * 仮想アレイには最大 16 ボリューム/共有を作成できます。 ローカルで固定された階層型のボリューム/共有のサイズの制限については、常に「[StorSimple Virtual Array の制限](storsimple-ova-limits.md)」をご覧ください。
 * ボリュームを作成するときは、想定されるデータ消費量と将来的な増大を考慮してください。 ボリュームを後から拡大することはできません。
 * ボリュームの作成後に、StorSimple 上のボリュームのサイズを縮小することはできません。
@@ -286,5 +284,4 @@ Windows のインデックス作成プロセスを使用する場合、次のガ
 
 ## <a name="see-also"></a>関連項目
 StorSimple Manager サービスを介して [StorSimple Virtual Array を管理する方法](storsimple-virtual-array-manager-service-administration.md) を学習します。
-
 

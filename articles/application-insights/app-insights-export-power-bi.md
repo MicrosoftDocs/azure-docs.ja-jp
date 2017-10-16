@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 02c51e6a576b5a91044eae784c72d7529497b814
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 350a65b1c6432baf258e014c9e63133d2b29e34f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス分析ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -119,5 +118,4 @@ Application Insights のクエリをインポートするには、Power BI の�
 ## <a name="next-steps"></a>次のステップ
 * [Power BI - 詳細](http://www.powerbi.com/learning/)
 * [Analytics のチュートリアル](app-insights-analytics-tour.md)
-
 

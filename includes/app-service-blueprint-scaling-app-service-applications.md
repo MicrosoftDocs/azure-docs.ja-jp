@@ -1,4 +1,4 @@
-* [Azure App Service のスケーリング](../articles/app-service-web/web-sites-scale.md)
+* [Azure App Service のスケーリング](../articles/app-service/web-sites-scale.md)
   
   * 冗長性と信頼性について
   * ステートフル アプリケーションとステートレス アプリケーション

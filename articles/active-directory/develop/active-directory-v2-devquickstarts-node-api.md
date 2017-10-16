@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: d42b96b0fb02b6c2df364d5e19f3345991ee03b1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Node.js を使用した Web API のセキュリティ保護
 > [!NOTE]
@@ -31,7 +29,7 @@ ms.lasthandoff: 05/04/2017
 
 Azure Active Directory (Azure AD) v2.0 エンドポイントを使用する場合は、[OAuth 2.0](active-directory-v2-protocols.md)アクセス トークンを使用して、Web API を保護できます。 OAuth 2.0 アクセス トークンでは、個人の Microsoft アカウントと職場または学校のアカウントの両方を持つユーザーが、Web API に安全にアクセスできます。
 
-*Passport* は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップできます。 Passport では、包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter、その他のオプションをサポートします。 Azure AD 用の認証手法を開発しました。 この記事では、モジュールをインストールして Azure AD `passport-azure-ad` プラグインを追加する方法について説明します。
+*Passport* は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップできます。 Passport では、包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。 Microsoft は Azure AD 用の認証手法を開発しました。 この記事では、モジュールをインストールした後に Azure AD `passport-azure-ad` プラグインを追加する方法について説明します。
 
 ## <a name="download"></a>ダウンロード
 このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs)で管理されています。 チュートリアルを実行するには、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip)したり、次のようにスケルトンを複製したりすることができます。
@@ -41,7 +39,7 @@ Azure Active Directory (Azure AD) v2.0 エンドポイントを使用する場�
 このチュートリアルの最後のところで、完成したアプリケーションを取得することもできます。
 
 ## <a name="1-register-an-app"></a>1: アプリを登録する
-[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従ってアプリを登録します。 次を確実に行います。
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従ってアプリを登録します。 以下を実行します。
 
 * アプリに割り当てられた**アプリケーション ID** をコピーしておきます。 このチュートリアルで必要になります。
 * アプリ用の **モバイル** プラットフォームを追加します。
@@ -753,7 +751,7 @@ return done(null, user, token);
 passport.use(oidcStrategy);
 ```
 
-Passport は、Twitter や Facebook などのすべての戦略に、同様のパターンを使用します。 すべての戦略記述者がこのパターンに従います。 パラメーターとして token と `done` を使用する `function()` の戦略を渡します。 戦略は、すべての作業が終わった後で返されます。 再度要求しなくて済むように、ユーザーを格納し、トークンを保存します。
+Passport は、Twitter や Facebook などのすべての戦略に、同様のパターンを使用します。 すべての戦略記述者がこのパターンに従います。 パラメーターとして token と `done` を使用する `function()` の戦略を渡します。 すべての作業が終わった後で戦略が返されます。 再度要求しなくて済むように、ユーザーを格納し、トークンを保存します。
 
 > [!IMPORTANT]
 > 上記のコードでは、サーバーに対して認証可能なすべてのユーザーを受け入れます。 これは、自動登録と呼ばれます。 運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。 これは、コンシューマー アプリで通常見られるパターンです。 アプリによって Facebook への登録は許可されるものの、後で追加情報の入力が求められます。 このチュートリアルでコマンドライン プログラムを使用していなければ、返されるトークン オブジェクトからメールを抽出できます。 その後、ユーザーに追加情報の入力を要求できます。 これはテスト サーバーなので、ユーザーをメモリ内データベースに直接追加します。
@@ -833,7 +831,7 @@ curl を再度使用して、エンドポイントに対して OAuth 2.0 保護�
 OAuth 2.0 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。 そのためには、追加のチュートリアルを確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-参考のため、完成済みサンプル (構成値を除く) が [.zip ファイル](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip)として提供されています。 GitHub から複製することもできます。
+参考のため、完成済みサンプル (構成値を除く) が [.zip ファイル](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip)で提供されています。 GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
@@ -841,10 +839,9 @@ OAuth 2.0 互換のクライアントを使用することなく、このサー�
 
 次にその他のリソースを示します。
 
-* [Azure AD v2.0 開発者向けガイド](active-directory-appmodel-v2-overview.md)
+* [Azure AD v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)
 * [Stack Overflow "azure-Active Directory" タグ](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 サインアップして、セキュリティの問題が発生したときに通知を受け取ることをお勧めします。 [マイクロソフト テクニカル セキュリティ通知](https://technet.microsoft.com/security/dd252948)のページで、セキュリティ アドバイザリ アラートに登録してください。
-
 

@@ -1,5 +1,4 @@
 ---
-
 title: "インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法 | Microsoft Docs"
 description: "B2B コラボレーションを使用すると、インフォメーション ワーカーは組織のユーザーがアクセスできるように Azure AD に追加することができます"
 services: active-directory
@@ -16,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法
 
 インフォメーション ワーカーは、[アプリケーション アクセス パネル](http://myapps.microsoft.com)を使用して、自分が管理しているグループとアプリケーションに B2B コラボレーション ユーザーを追加できます。
@@ -55,4 +52,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-

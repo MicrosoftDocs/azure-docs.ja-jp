@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
-ms.lasthandoff: 03/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
 このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。 次のシナリオで考えてみましょう。
@@ -33,7 +32,7 @@ Traffic Manager が Web サイトのパフォーマンスに対して影響を�
 
 Traffic Manager は、DNS ネーム サーバー、API サービス、ストレージ層、エンドポイント監視サービスなど、いくつかのコンポーネントで構成されます。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
 
-DNS 名前解決は短時間で処理され、結果はキャッシュに保存されます。 初期 DNS lookup の速度は、クライアントが名前解決に使用する DNS サーバーに依存します。 通常、クライアントは DNS lookup を約&50; ミリ秒以内で完了します。 lookup の結果は、DNS の Time-to-live (TTL) に設定されている時間キャッシュに保存されます。 Traffic Manager の TTL の既定値は 300 秒です。
+DNS 名前解決は短時間で処理され、結果はキャッシュに保存されます。 初期 DNS lookup の速度は、クライアントが名前解決に使用する DNS サーバーに依存します。 通常、クライアントは DNS lookup を約 50 ミリ秒以内で完了します。 lookup の結果は、DNS の Time-to-live (TTL) に設定されている時間キャッシュに保存されます。 Traffic Manager の TTL の既定値は 300 秒です。
 
 トラフィックは Traffic Manager を通過しません。 DNS lookup が完了すると、クライアントは Web サイトのインスタンスの IP アドレスを持ちます。 クライアントは、Traffic Manager を通過せずに、そのアドレスに直接接続します。 ユーザーが選択した Traffic Manager のポリシーは、DNS のパフォーマンスに影響しません。 ただし、パフォーマンス ルーティング方法が、アプリケーションの動作に悪影響を与えることがあります。 たとえば、ポリシーによってトラフィックが北米からアジアでホストされているインスタンスにリダイレクトされる場合、それらのセッションのネットワーク待機時間がパフォーマンスの問題となることがあります。
 
@@ -41,7 +40,7 @@ DNS 名前解決は短時間で処理され、結果はキャッシュに保存�
 
 Traffic Manager プロファイルの動作とパフォーマンスを理解するために使用できる Web サイトが複数あります。 これらのサイトの多くは無料で利用できますが、制限事項がある場合があります。 一部のサイトでは、強化された監視とレポート機能を有料で提供しています。
 
-これらのサイトのツールは DNS 待機時間を測定し、世界各地にあるクライアントの場所の解決された IP アドレスを表示します。 これらのツールのほとんどは DNS の結果をキャッシュに保存しません。 そのため、ツールではテストを実行するたびに完全な DNS lookup が表示されます。 独自のクライアントからテストする場合は、完全な DNS lookup のパフォーマンスを TTL 期間中に&1; 回だけテストできます。
+これらのサイトのツールは DNS 待機時間を測定し、世界各地にあるクライアントの場所の解決された IP アドレスを表示します。 これらのツールのほとんどは DNS の結果をキャッシュに保存しません。 そのため、ツールではテストを実行するたびに完全な DNS lookup が表示されます。 独自のクライアントからテストする場合は、完全な DNS lookup のパフォーマンスを TTL 期間中に 1 回だけテストできます。
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>DNS パフォーマンスを測定するサンプル ツール
 
@@ -51,7 +50,7 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
 * [WebSitePulse](http://www.websitepulse.com/help/tools.php)
 
-    最も簡単なツールの&1; つは WebSitePulse です。 URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、その他のパフォーマンス統計が表示されます。 3 つの異なるテストの場所から選択できます。 今回の例では、最初の実行時には DNS lookup が 0.204 秒かかっていることが分かります。
+    最も簡単なツールの 1 つは WebSitePulse です。 URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、その他のパフォーマンス統計が表示されます。 3 つの異なるテストの場所から選択できます。 今回の例では、最初の実行時には DNS lookup が 0.204 秒かかっていることが分かります。
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
@@ -86,5 +85,4 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
-
 

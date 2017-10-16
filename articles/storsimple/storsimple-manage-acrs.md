@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: a87624b5706c1d9b8c2b9926e5580996a89ce984
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>StorSimple Manager サービスを使用してアクセス制御レコードを管理する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 ACR (アクセス制御レコード) を使用すると、StorSimple デバイス上のボリュームに接続できるホストを指定できます。 ACR は特定のボリュームに設定され、ホストの iSCSI 修飾名 (IQN) を含みます。 ホストがボリュームに接続しようとすると、デバイスは、そのボリュームに関連付けられている ACR を確認し、該当する IQN 名を探します。一致するものがある場合は、接続が確立されます。 **[構成]** ページのアクセス制御レコード セクションには、すべてのアクセス制御レコードとそれに対応するホストの IQN が表示されます。
 
 このチュートリアルでは、次の一般的な ACR に関連するタスクについて説明します。
@@ -86,10 +86,4 @@ ACR を削除するには、Azure クラシック ポータルの **[構成]** �
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

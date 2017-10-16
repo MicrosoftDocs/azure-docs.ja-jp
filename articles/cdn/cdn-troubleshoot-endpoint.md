@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53fdf1fe661167b468ef602634528e4d4173f606
-
-
+ms.openlocfilehash: f59fbd18413fb44026d8c92b7f6940ed2f8a00a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-cdn-endpoints-returning-404-statuses"></a>404 状態を返す CDN エンドポイントのトラブルシューティング
 この記事は、404 エラーを返す [CDN エンドポイント](cdn-create-new-endpoint.md) に関する問題のトラブルシューティングを行う際に役立ちます。
@@ -38,7 +38,7 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 > [!IMPORTANT]
-> CDN エンドポイントが作成されてから登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントはすぐには利用できません。   <b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。  <b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。  このドキュメントの手順を完了しても、404 応答を受け取る場合は、サポート チケットを開く前に数時間待ってからもう一度確認することを検討してください。
+> CDN エンドポイントが作成されてから登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントはすぐには利用できません。  <b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。  <b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。  このドキュメントの手順を完了しても、404 応答を受け取る場合は、サポート チケットを開く前に数時間待ってからもう一度確認することを検討してください。
 > 
 > 
 
@@ -97,10 +97,4 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 たとえば、この例のエンドポイントの場合、ストレージ アカウントのすべてのリソースを使用できるようにするため、 **[配信元のパス]** は空白のままにします。  つまり、`https://cdndocdemo.azureedge.net/publicblob/lorem.txt` への要求では、エンドポイントから `/publicblob/lorem.txt` を要求する `cdndocdemo.core.windows.net` に接続されることになります。  同様に、`https://cdndocdemo.azureedge.net/donotcache/status.png` の要求では、エンドポイントは配信元からの `/donotcache/status.png` を要求します。
 
 しかし、配信元の各パスで CDN を使用しない場合もあります。  つまり、`publicblob` パスを使用する場合に、  **[配信元のパス]** フィールドに「*/publicblob*」と入力すると、配信元へのすべての要求の前にエンドポイントが */publicblob* を挿入します。  これは、`https://cdndocdemo.azureedge.net/publicblob/lorem.txt` の要求では実際に URL の要求部分である `/publicblob/lorem.txt` を使用し、先頭に `/publicblob` が付加されるようになることを意味します。 そのため、配信元からの `/publicblob/publicblob/lorem.txt` が要求されます。  そのパスが実際のファイルに解決されない場合、配信元は 404 状態を返します。  この例の lorem.txt を取得するための正しい URL は、実際には `https://cdndocdemo.azureedge.net/lorem.txt` になります。  URL の要求部分は `/lorem.txt` であるため、*/publicblob* パスを一切指定していなくても、エンドポイントによって `/publicblob` が付加されることで、配信元に渡される要求が `/publicblob/lorem.txt` になることに注意してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: b6746afd508832afbd54153851b6f2ae404af147
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 Azure AD には主要なディレクトリ サービス、高度な ID 管理機能、アプリケーション アクセスの管理機能が統合されています。 また、Azure AD は、リッチな標準ベースのプラットフォームとなっており、開発者は、一元化されたポリシーとルールを基に、開発したアプリケーションへのアクセス制御を行うことができます。 
@@ -78,4 +77,3 @@ Azure Active Directory を強化するには、Azure Active Directory Basic、Pr
 
 ## <a name="next-steps"></a>次のステップ
 [Azure の ID およびアクセス管理の基礎](https://docs.microsoft.com/azure/active-directory/identity-fundamentals)
-

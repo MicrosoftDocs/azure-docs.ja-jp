@@ -1,6 +1,6 @@
 ---
-title: 'App Service overview: Azure Stack | Microsoft Docs'
-description: Overview of App Service on Azure Stack
+title: "App Service の概要: Azure Stack | Microsoft Docs"
+description: "Azure Stack 上の App Service の概要"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -18,55 +18,55 @@ ms.translationtype: HT
 ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 13928744e7d2fc145662c2a0d5c26d512cf02150
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="app-service-on-azure-stack-overview"></a>App Service on Azure Stack overview
+# <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
-Azure App Service on Azure Stack is the Azure offering brought to Azure Stack. The App Service on Azure Stack installer creates the following set of role instances:
+Azure Stack 上の Azure App Service は、Azure Stack に提供される Azure サービスです。 Azure Stack 上の App Service インストーラーは、次の一連のロール インスタンスを作成します。
 
-*  Controller
-*  Management (two instances are created)
+*  コントローラー
+*  管理 (2 つのインスタンスが作成されます)
 *  FrontEnd
-*  Publisher
-*  Worker (in Shared mode)
+*  発行元
+*  ワーカー (共有モードの場合)
 
-In addition, the App Service on Azure Stack installer creates a file server.
+さらに、Azure Stack 上の App Service インストーラーはファイル サーバーを作成します。
     
-## <a name="whats-new-in-the-first-release-candidate-of-app-service-on-azure-stack"></a>What's new in the first release candidate of App Service on Azure Stack?
-![App Service in the Azure Stack portal][1]
+## <a name="whats-new-in-the-first-release-candidate-of-app-service-on-azure-stack"></a>Azure Stack 上の App Service の最初のリリース候補の新機能
+![Azure Stack ポータルの App Service][1]
 
-The first release candidate of App Service on Azure Stack builds on top of the third preview and brings new capabilities and improvements:
+Azure Stack 上の App Service の最初のリリース候補は 3 番目のプレビューに基づくものであり、次の新機能と強化機能を提供します。
 
-* Azure Functions in Azure Stack environments based on Active Directory Federation Services 
-* Single sign-on support for the Functions portal and the advanced developer tools (Kudu)
-* Java support for web, mobile, and API applications
-* Management of worker tiers by virtual machine scale sets to improve scale-out capabilities for service administrators
-* Localization of the admin experience
-* Increased stability of the service
-* Tenant portal experience updates and installation process updates
+* Active Directory フェデレーション サービス (AD FS) に基づく Azure Stack 環境における Azure Functions 
+* Functions ポータルと高度な開発者ツール (Kudu) のシングル サインオン サポート
+* Web、モバイル、および API アプリケーションの Java サポート
+* サービス管理者用のスケール アウト機能を向上させるための仮想マシン スケール セットによるワーカー層の管理
+* 管理者エクスペリエンスのローカライズ
+* サービスの安定性の向上
+* テナント ポータル エクスペリエンスの更新とインストール プロセスの更新
 
-## <a name="limitations-of-the-technical-preview"></a>Limitations of the technical preview
+## <a name="limitations-of-the-technical-preview"></a>テクニカル プレビューの制限事項
 
-There is no support for the App Service on Azure Stack preview releases, although we do monitor the Azure Stack MSDN Forum. Do not put production workloads on this preview release. There is also no upgrade between App Service on Azure Stack preview releases. The primary purposes of these preview releases are to show what we're providing and to obtain feedback. 
+Azure Stack 上の App Service プレビュー リリースのサポートはありませんが、Azure Stack MSDN フォーラムは監視されています。 このプレビュー リリースに実稼働ワークロードをかけないでださい。 また、Azure Stack 上の App Service プレビュー リリース間のアップグレードはありません。 これらのプレビュー リリースの主な目的は、提供内容を示すことと、フィードバックを得ることです。 
 
-## <a name="what-is-an-app-service-plan"></a>What is an App Service plan?
+## <a name="what-is-an-app-service-plan"></a>App Service プランとは
 
-The App Service resource provider uses the same code that Azure App Service uses. As a result, some common concepts are worth describing. In App Service, the pricing container for applications is called the App Service plan. It represents the set of dedicated virtual machines used to hold your apps. Within a given subscription, you can have multiple App Service plans. 
+App Service のリソース プロバイダーは、Azure App Service で使用するものと同じコードを使用します。 したがって、一部の一般的な概念のみを示します。 App Service では、アプリケーションの価格コンテナーを App Service プランと呼びます。 アプリを保持するために使用される専用の仮想マシンのセットを表します。 特定のサブスクリプション内で、複数の App Service プランを利用できます。 
 
-In Azure, there are shared and dedicated workers. A shared worker supports high-density multitenant app hosting, and there is only one set of shared workers. Dedicated servers are used by only one tenant and come in three sizes: small, medium, and large. The needs of on-premises customers can't always be described by using those terms. In App Service on Azure Stack, resource provider administrators can define the worker tiers they want to make available. Administrators can define multiple sets of shared workers or different sets of dedicated workers based on their unique hosting needs. By using those worker-tier definitions, they can then define their own pricing SKUs.
+Azure には、共有ワーカーと専用ワーカーがあります。 共有ワーカーは高密度のマルチテナント アプリ ホスティングをサポートします。この共有ワーカーは 1 セットしかありません。 専用サーバーは 1 つのテナントでのみ使用され、小、中、大という 3 つのサイズがあります。 オンプレミスの顧客のニーズは、必ずしもこれらの用語を使用して説明されるわけではありません。 Azure Stack 上の App Service では、リソース プロバイダー管理者は、使用可能にするワーカー層を定義できます。 管理者は、独自のホスティング ニーズに基づき、複数の共有ワーカー セットや、異なる専用ワーカー セットを定義できます。 これらのワーカー層の定義を使用することで、独自の価格 SKU を定義できます。
 
-## <a name="portal-features"></a>Portal features
+## <a name="portal-features"></a>ポータルの機能
 
-App Service on Azure Stack uses the same UI that Azure App Service uses, as is true with the back end. Some features are disabled and aren't functional in Azure Stack. The Azure-specific expectations or services that those features require aren't yet available in Azure Stack. 
+Azure Stack 上の App Service では、Azure App Service と同じ UI が使用されます。これはバックエンドに当てはまります。 Azure Stack では一部の機能が無効になり、機能しません。 Azure Stack では、このような機能に必要な Azure 固有の期待値やサービスはまだ使用できません。 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-- [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md)
-- [Install the App Service resource provider](azure-stack-app-service-deploy.md)
+- [Azure Stack 上の App Service を開始する前に](azure-stack-app-service-before-you-get-started.md)
+- [App Service リソース プロバイダーのインストール](azure-stack-app-service-deploy.md)
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md), like the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).
+[SQL Server リソース プロバイダー](azure-stack-sql-resource-provider-deploy.md)や [MySQL リソース プロバイダー](azure-stack-mysql-resource-provider-deploy.md)など、他の[サービスとしてのプラットフォーム (PaaS) サービス](azure-stack-tools-paas-services.md)を試すこともできます。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-overview/AppService_Portal.png

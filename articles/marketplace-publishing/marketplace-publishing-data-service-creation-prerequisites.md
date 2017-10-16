@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 52827723477677bc292c645e2390c435fbad3ee4
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-the-azure-marketplace"></a>Azure Marketplace 用のデータ サービス プランを作成するための技術的前提条件
 > [!IMPORTANT]
@@ -67,9 +67,3 @@ OData サービスは、バックエンドのデータベースとの競合が�
 または、プロセス全体や各発行フェーズの個別の記事を復習する場合は、「 [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)」の記事を参照してください。
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

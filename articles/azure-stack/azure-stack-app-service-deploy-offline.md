@@ -1,6 +1,6 @@
 ---
-title: 'Deploy App Service in an offline environment: Azure Stack | Microsoft Docs'
-description: Detailed guidance on how to deploy App Service in a disconnected Azure Stack environment secured by AD FS.
+title: "オフライン環境に App Service をデプロイする: Azure Stack | Microsoft Docs"
+description: "AD FS によって保護されている切断された Azure Stack 環境に App Service をデプロイする方法についての詳細なガイダンスです。"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -15,259 +15,259 @@ ms.topic: article
 ms.date: 7/3/2017
 ms.author: anwestg
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: bdcb06de072b4e86aae29f6531b0e9ddf2817a91
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: b733851d4459ead1ae437604a27ca7720e2a3a87
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Add an App Service resource provider to a disconnected Azure Stack environment secured by AD FS
+# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されている切断された Azure Stack 環境に追加する
 
-You must add an [Azure App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack deployment:
+次のような場合、[Azure App Service リソースプロバイダー](azure-stack-app-service-overview.md)をお客様の Azure Stack デプロイに追加する必要があります。
 
-* If you're running Azure Stack in an isolated environment secured by Active Directory Federation Services (AD FS). 
-* If you want to give your tenants the capability to create web, mobile, and API applications--and Azure Functions applications--with their Azure Stack subscription. 
+* Active Directory フェデレーション サービス (AD FS) によって保護されている分離された環境で Azure Stack を実行している場合。 
+* Azure Stack サブスクリプションを使う Web アプリケーション、モバイル アプリケーション、API アプリケーション、および Azure Functions アプリケーションを作る機能をテナントに与える場合。 
 
-To do so, follow the steps in this article.
+実行するには、この記事で示されている手順に従ってください。
 
-## <a name="download-the-required-components"></a>Download the required components
+## <a name="download-the-required-components"></a>必須コンポーネントをダウンロードする
 
-1. Download the [App Service on Azure Stack preview installer](http://aka.ms/appsvconmasrc1installer).
+1. [App Service on Azure Stack プレビュー インストーラー](http://aka.ms/appsvconmasrc1installer)をダウンロードします。
 
-2. Download the [App Service on Azure Stack deployment helper scripts](http://aka.ms/appsvconmasrc1helper).
+2. [App Service on Azure Stack デプロイ ヘルパー スクリプト](http://aka.ms/appsvconmasrc1helper)をダウンロードします。
 
-3. Extract the files from the helper scripts zip file. The following files and folder structure appear:
+3. ヘルパー スクリプトの zip ファイルからファイルを展開します。 次のファイルおよびフォルダー構造が表示されます。
 
    - Create-AppServiceCerts.ps1
    - Create-IdentityApp.ps1
-   - Modules
+   - モジュール
       - AzureStack.Identity.psm1
       - GraphAPI.psm1
 
-## <a name="create-an-offline-installation-package"></a>Create an offline installation package
+## <a name="create-an-offline-installation-package"></a>オフライン インストール パッケージを作成する
 
-To deploy App Service in an isolated environment, you must create an offline installation package from a machine that connects to the Internet.
+分離された環境で App Service をデプロイするには、インターネットに接続しているマシンからオフライン インストール パッケージを作る必要があります。
 
-1. Run the App Service on Azure Stack preview installer (AppService.exe) from a machine that's connected to the Internet.
+1. インターネットに接続しているマシンから App Service on Azure Stack プレビュー インストーラー (AppService.exe) を実行します。
 
-2. Click the **Advanced** tab, and click **Create offline installation package**.
+2. **[詳細設定]** タブ、**[オフライン インストール パッケージを作成する]** の順にクリックします。
 
-    ![App Service on Azure Stack Create offline installation package][1]
+    ![App Service on Azure Stack の [オフライン インストール パッケージを作成する]][1]
 
-3. The App Service installer creates an offline installation package, displays the path, and gives an option to open the folder.
+3. App Service インストーラーによりオフライン インストール パッケージが作られると、パスが表示されて、フォルダーを開くオプションが表示されます。
 
-   ![App Service on Azure Stack Offline installation package][2]
+   ![App Service on Azure Stack のオフライン インストール パッケージ][2]
 
-4. Copy the App Service on Azure Stack preview installer (AppService.exe) and the offline installation package to the Azure Stack host machine.
+4. App Service on Azure Stack プレビュー インストーラー (AppService.exe) とオフライン インストール パッケージを Azure Stack ホスト マシンにコピーします。
 
-## <a name="create-certificates-required-by-app-service-on-azure-stack"></a>Create certificates required by App Service on Azure Stack
+## <a name="create-certificates-required-by-app-service-on-azure-stack"></a>App Service on Azure Stack に必要となる証明書を作成する
 
-This first script works with the Azure Stack certificate authority to create three certificates that App Service needs. Run the script on the Azure Stack host and ensure that you're running PowerShell as azurestack\administrator.
+この 1 つ目のスクリプトでは、Azure Stack 証明機関と連携して、App Service で必要となる 3 つの証明書が作られます。 スクリプトを Azure Stack ホストで実行して、PowerShell を azurestack\administrator として実行していることを確認します。
 
-1. In a PowerShell session running as azurestack\administrator, execute the **Create-AppServiceCerts.ps1** script from the location where you extracted the helper scripts.  The script creates three certificates in the same folder as the create certificates script that are needed by App Service.
+1. azurestack\administrator として実行している PowerShell セッションで、ヘルパー スクリプトを展開した場所から **Create-AppServiceCerts.ps1** スクリプトを実行します。  このスクリプトでは、App Service で必要となる証明書作成スクリプトと同じフォルダーに、3 つの証明書が作られます。
 
-2. Enter a password to secure the .pfx files, and make a note of it. You need to enter it in the App Service on Azure Stack installer.
+2. .pfx ファイルを保護するためのパスワードを入力し、そのパスワードを書き留めておきます。 それを App Service on Azure Stack インストーラーに入力する必要があります。
 
-### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 parameters
+### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 のパラメーター
 
-| Parameter | Required/optional | Default value | Description |
+| パラメーター | 必須/省略可能 | 既定値 | Description |
 | --- | --- | --- | --- |
-| pfxPassword | Required | Null | Password used to protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack region and domain suffix |
-| CertificateAuthority | Required | AzS-CA01.azurestack.local | Certificate authority endpoint |
+| pfxPassword | 必須 | Null | 証明書の秘密キーを保護するためのパスワード |
+| DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス |
+| CertificateAuthority | 必須 | AzS-CA01.azurestack.local | 証明機関のエンドポイント |
 
-## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>Complete the offline installation of App Service on Azure Stack
+## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>App Service on Azure Stack のオフライン インストールを実行する
 
 > [!NOTE]
-> You *must* use an elevated account (local or domain administrator) to execute the installer. If you sign in as azurestack\azurestackuser, you're prompted for elevated credentials.
+> 管理者特権のアカウント (ローカルまたはドメイン管理者) を使ってインストーラーを実行する*必要があります*。 azurestack\azurestackuser としてサインインすると、管理者特権の資格情報を求められます。
 
-1. Run appservice.exe as azurestack\administrator.
+1. azurestack\administrator として appservice.exe を実行します。
 
-2. Click the **Advanced** tab, and click **Complete offline installation**.
+2. **[詳細設定]** タブ、**[オフライン インストールが完了しました]** の順にクリックします。
 
-    ![App Service on Azure Stack Complete offline installation][3]
+    ![App Service on Azure Stack の [オフライン インストールが完了しました]][3]
 
-3. Specify the location of the offline installation package you previously created, and click **Next**.
+3. 先ほど作ったオフライン インストール パッケージの場所を指定し、**[次へ]** をクリックします。
 
-    ![App Service on Azure Stack location of offline installation package][4]
+    ![App Service on Azure Stack のオフライン インストール パッケージの場所][4]
 
-4. Review and accept the Microsoft Software Prerelease License Terms, and click **Next**.
+4. Microsoft ソフトウェア プレリリース ライセンス条項を確認のうえ同意し、**[次へ]** をクリックします。
 
-5. Review and accept the third-party license terms, and click **Next**.
+5. サード パーティのライセンス条項を確認のうえ同意し、**[次へ]** をクリックします。
 
-6. Review the App Service cloud configuration information, and click **Next**.
+6. App Service クラウド構成情報を確認し、**[次へ]** をクリックします。
 
-    ![App Service on Azure Stack cloud configuration][5]
-
-    > [!NOTE]
-    > The App Service on Azure Stack installer provides the default values for a one-node Azure Stack installation. If you customized options when you deployed Azure Stack (for example, the domain suffix), you need to edit the values in this window accordingly. For example, if you use the domain suffix mycloud.com, your admin Azure Resource Manager endpoint needs to change to adminmanagement.[region].mycloud.com.
-
-7. Click the **Connect** button next to the **Azure Stack Subscriptions** box. Enter your admin account, for example, azurestackadmin@azurestack.local. Enter your password, and click **Sign In**.
-
-8. Select your subscription in the **Azure Stack Subscriptions** box.
-
-9. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying. For example, select **local**. Click **Next**.
-
-    ![App Service on Azure Stack subscription selection][6]
-
-10. Enter the **Resource Group Name** for your App Service deployment. By default, it's set to **APPSERVICE-LOCAL**.
-
-11. Enter the **Storage Account Name** you want App Service to create as part of the installation. By default, it's set to **appsvclocalstor**.
-
-12. Enter the SQL Server details for the instance that's used to host the App Service resource provider databases. Click **Next**, and the installer validates the SQL connection properties.
-
-13. Click the **Browse** button next to the **App Service default SSL certificate file** box. Go to the **_.appservice.local.AzureStack.external** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps). If you specified a different location and domain suffix when you created the certificate, select the corresponding certificate.
-
-14. Enter the certificate password that you set when you created the certificate.
-
-15. Click the **Browse** button next to the **Resource provider SSL certificate file** box. Go to the **api.appservice.local.AzureStack.external** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps). If you specified a different location and domain suffix when you created the certificate, select the corresponding certificate.
-
-16. Enter the certificate password that you set when you created the certificate.
-
-17. Click the **Browse** button next to the **Resource provider root certificate file** box. Go to the **AzureStackCertificationAuthority** certificate [created earlier](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps).
-
-18. Click **Next**. The installer verifies the certificate password provided.
-
-    ![App Service on Azure Stack certificate details][8]
-
-19. Review the App Service role configuration. The defaults are populated with the minimum recommended instance SKUs for each role. A summary of core and memory requirements is provided to help plan your deployment. After you make your selections, click **Next**.
-
-    - **Controller**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The Controller role is responsible for managing and maintaining the health of the App Service cloud.
-    - **Management**: By default, one Standard A2 instance is selected. To provide failover, we recommend two instances. The Management role is responsible for the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service.
-    - **Publisher**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The Publisher role is responsible for publishing content via FTP and web deployment.
-    - **FrontEnd**: By default, one Standard A1 instance is selected. This is the minimum we recommend. The FrontEnd role is responsible for routing requests to App Service applications.
-    - **Shared Worker**: By default, one Standard A1 instance is selected, but you might want to add more. As an administrator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one core. The Shared Worker role is responsible for hosting web, mobile, or API applications and Azure Functions apps.
-
-    ![App Service on Azure Stack role configuration][9]
+    ![App Service on Azure Stack のクラウド構成][5]
 
     > [!NOTE]
-    > In the technical previews, the App Service resource provider installer also deploys a Standard A1 instance to operate as a simple file server to support the Azure Resource Manager. This remains for a single-node point of contact. For production workloads, at general availability the App Service installer enables the use of a high-availability file server.
+    > App Service on Azure Stack インストーラーには、1 つのノードでの Azure Stack インストールのために既定値が用意されています。 Azure Stack のデプロイ時にオプションをカスタマイズした場合は (たとえば、ドメイン サフィックス)、それに応じてこのウィンドウ内の値を編集する必要があります。 たとえば、ドメイン サフィックス mycloud.com を使う場合は、管理 Azure Resource Manager エンドポイントを adminmanagement.[region].mycloud.com に変更する必要があります。
 
-20. Choose your deployment **Windows Server 2016** VM image from those available in the compute resource provider for the App Service cloud. Click **Next**. 
+7. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。 管理者アカウントを入力します。たとえば、azurestackadmin@azurestack.local などです。 パスワードを入力し、**[サインイン]** をクリックします。
 
-    ![App Service on Azure Stack VM image selection][10]
+8. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで自分のサブスクリプションを選びます。
 
-21. Enter a user name and password for the Worker roles configured in the App Service cloud. Enter a user name and password for all other App Service roles. Click **Next**.
+9. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、**[ローカル]** を選びます。 **[次へ]** をクリックします。
 
-    ![App Service on Azure Stack credential entry][11]
+    ![App Service on Azure Stack のサブスクリプション選択][6]
 
-22. On the summary screen, verify the selections you made. To make changes, go back through the screens and modify your selections. If the configuration is how you want it, select the check box. To start the deployment, click **Next**. 
+10. お客様の App Service デプロイの **[リソース グループ名]** を入力します。 既定では、**[APPSERVICE-LOCAL]\(APPSERVICE-LOCAL\)** に設定されています。
 
-    ![App Service on Azure Stack selection summary][12]
+11. インストールの一環として、App Service で作成する **[ストレージ アカウント名]** を入力します。 既定では、**[appsvclocalstor]\(appsvclocalstor\)** に設定されています。
 
-23. Track the installation progress. App Service on Azure Stack takes about 45 to 60 minutes to deploy based on the default selections.
+12. App Service リソースプロバイダー データベースをホストするために使うインスタンスについて、SQL Server の詳細を入力します。 **[次へ]** をクリックします。インストーラーにより、SQL 接続のプロパティが検証されます。
 
-    ![App Service on Azure Stack installation progress][13]
+13. **[App Service default SSL certificate file]\(App Service の既定の SSL 証明書ファイル\)** ボックスの横にある **[参照]** をクリックします。 [先ほど作った](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) **_.appservice.local.AzureStack.external** 証明書に移動します。 証明書を作ったときに別の場所とドメイン サフィックスを指定した場合は、対応する証明書を選びます。
 
-24. After the installer successfully finishes, click **Exit**.
+14. 証明書を作ったときに設定した証明書パスワードを入力します。
 
-## <a name="configure-an-ad-fs-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Configure an AD FS service principal for virtual machine scale set integration on Worker tiers and SSO for the Azure Functions portal and advanced developer tools
+15. **[Resource provider SSL certificate file]\(リソースプロバイダーの SSL 証明書ファイル\)** ボックスの横にある **[参照]** をクリックします。 [先ほど作った](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) **api.appservice.local.AzureStack.external** 証明書に移動します。 証明書を作ったときに別の場所とドメイン サフィックスを指定した場合は、対応する証明書を選びます。
+
+16. 証明書を作ったときに設定した証明書パスワードを入力します。
+
+17. **[Resource provider root certificate file]\(リソースプロバイダーのルート証明書ファイル\)** ボックスの横にある **[参照]** をクリックします。 [先ほど作った](#Create-Certificates-To-Be-Used-By-Azure-Stack-Web-Apps) **AzureStackCertificationAuthority** 証明書に移動します。
+
+18. **[次へ]** をクリックします。 インストーラーにより、指定された証明書パスワードが確認されます。
+
+    ![App Service on Azure Stack の証明書の詳細][8]
+
+19. App Service のロール構成を確認します。 ロールごとに、お勧めの最小インスタンス SKU が既定値として設定されます。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
+
+    - **コントローラー**: 既定では、1 つの Standard A1 インスタンスが選ばれます。 これは、お勧めの最小限の設定です。 コントローラー ロールは、App Service クラウドの正常性の管理と維持を担当します。
+    - **管理**: 既定では、1 つの Standard A2 インスタンスが選ばれます。 フェールオーバーを利用するには、2 つのインスタンスを使うことをお勧めします。 管理ロールは、App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを担当します。
+    - **発行者**: 既定では、1 つの Standard A1 インスタンスが選ばれます。 これは、お勧めの最小限の設定です。 発行者ロールは、FTP および Web デプロイを介したコンテンツの発行を担当します。
+    - **フロントエンド**: 既定では、1 つの Standard A1 インスタンスが選ばれます。 これは、お勧めの最小限の設定です。 フロントエンド ロールは、App Service アプリケーションへの要求のルーティングを担当します。
+    - **共有ワーカー**: 既定では、1 つの Standard A1 インスタンスが選ばれますが、さらに追加できます。 管理者は、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つのコアが必要です。 共有ワーカー ロールは、Web アプリケーション、モバイル アプリケーション、API アプリケーション、Azure Functions アプリのホストを担当します。
+
+    ![App Service on Azure Stack のロール構成][9]
+
+    > [!NOTE]
+    > テクニカル プレビューでは、App Service リソースプロバイダー インストーラーにより、1 つの Standard A1 インスタンスもデプロイされます。このインスタンスは単純なファイル サーバーとして機能し、Azure Resource Manager をサポートします。 これは、単一ノードの接点として残されています。 実稼働ワークロードについては、一般提供開始時に、App Service インストーラーにより、高可用性ファイル サーバーを使うことができるようになります。
+
+20. App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、お客様のデプロイの **Windows Server 2016** VM イメージを選びます。 **[次へ]** をクリックします。 
+
+    ![App Service on Azure Stack の VM イメージ選択][10]
+
+21. App Service クラウドで構成されている Worker ロールについて、ユーザー名とパスワードを入力します。 その他すべての App Service ロールについて、ユーザー名とパスワードを入力します。 **[次へ]** をクリックします。
+
+    ![App Service on Azure Stack の 資格情報入力][11]
+
+22. 概要画面で、選択した内容を確認します。 変更するには、画面を戻り、選択した内容を変更します。 構成が希望どおりの場合は、チェック ボックスをオンにします。 デプロイを始めるには、**[次へ]** をクリックします。 
+
+    ![選択した App Service on Azure Stack の概要][12]
+
+23. インストールの進行状況を追跡します。 App Service on Azure Stack を既定の選択内容に基づいてデプロイするには、45 分から 60 分ほどかかります。
+
+    ![App Service on Azure Stack のインストールの進行状況][13]
+
+24. インストーラーが正常に完了したら、**[終了]** をクリックします。
+
+## <a name="configure-an-ad-fs-service-principal-for-virtual-machine-scale-set-integration-on-worker-tiers-and-sso-for-the-azure-functions-portal-and-advanced-developer-tools"></a>Worker 層での仮想マシン スケール セット統合のために AD FS サービス プリンシパルを、Azure Functions ポータルと高度な開発者ツールのために SSO を構成する
 
 >[!NOTE]
-> These steps apply to AD FS secured Azure Stack environments only.
+> 次の手順は、AD FS で保護されている Azure Stack 環境のみに適用されます。
 
-Administrators need to configure SSO to:
+次のことを行うには、管理者は SSO を構成する必要があります。
 
-* Configure a service principal for virtual machine scale set integration on Worker tiers.
-* Enable the advanced developer tools within App Service (Kudu).
-* Enable the use of the Azure Functions portal experience. 
+* Worker 層での仮想マシン スケール セット統合のためにサービス プリンシパルを構成する。
+* App Service 内の高度な開発者ツール (Kudu) を有効にする。
+* Azure Functions ポータルのエクスペリエンスを有効にする。 
 
-Follow these steps:
+次の手順に従います。
 
-1. Open a PowerShell instance as azurestack\azurestackadmin.
+1. azurestack\azurestackadmin として PowerShell インスタンスを開きます。
 
-2. Go to the location of the scripts downloaded and extracted in the [prerequisite step](#Download-Required-Components).
+2. [前提条件の手順](#Download-Required-Components)でダウンロードして展開したスクリプトの場所に移動します。
 
-3. [Install and configure an Azure Stack PowerShell environment](azure-stack-powershell-configure.md). Follow the instructions to create an AzureStackAdmin environment, and sign in to the AzureStackAdmin environment.
+3. [Azure Stack PowerShell 環境をインストール](azure-stack-powershell-install.md)して[構成](azure-stack-powershell-configure-admin.md)します。
 
-4. In the same PowerShell session, run the **CreateIdentityApp.ps1** script. When you're prompted for your Azure Active Directory (Azure AD) tenant ID, enter **ADFS**.
+4. 同じ PowerShell セッションで、**CreateIdentityApp.ps1** スクリプトを実行します。 Azure Active Directory (Azure AD) テナント ID を求められたら、**「ADFS」**と入力します。
 
-5. In the **Credential** window, enter your AD FS service admin account and password. Click **OK**.
+5. **[資格情報]** ウィンドウで、AD FS サービスの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
 
-6. Enter the certificate file path and certificate password for the [certificate created earlier](# Create certificates to be used by App Service on Azure Stack). The certificate created for this step by default is sso.appservice.local.azurestack.external.pfx.
+6. [先ほど作った証明書](# Create certificates to be used by App Service on Azure Stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、sso.appservice.local.azurestack.external.pfx です。
 
-7. The script creates a new application in the tenant Azure AD and generates a new PowerShell script.
+7. このスクリプトでは、テナント Azure AD で新しいアプリケーションが作られ、新しい PowerShell スクリプトが生成されます。
 
-8. Copy the identity app certificate file and the generated script to the **CN0-VM** by using a remote desktop session.
+8. リモート デスクトップ セッションを使って、ID アプリ証明書ファイルと生成されたスクリプトを **CN0-VM** にコピーします。
 
-9. Return to **CN0-VM**.
+9. **CN0-VM** に戻ります。
 
-10. Open an administrator PowerShell window, and browse to the directory where the script file and certificate were copied in step 7.
+10. 管理者用 PowerShell ウィンドウを開き、手順 7 でスクリプト ファイルと証明書をコピーしたディレクトリに移動します。
 
-11. Run the script file. This script file enters the properties in the App Service on Azure Stack configuration and initiates a repair operation on all FrontEnd and Management roles.
+11. スクリプト ファイルを実行します。 このスクリプト ファイルでは、App Service on Azure Stack 構成にプロパティが入力され、すべてのフロントエンド ロールと管理ロールでの修復操作が開始されます。
 
-| Parameter | Required/optional | Default value | Description |
+| パラメーター | 必須/省略可能 | 既定値 | Description |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Mandatory | Null | Use **ADFS** for the AD FS environment |
-| TenantAzure Resource ManagerEndpoint | Mandatory | management.local.azurestack.external | The tenant Azure Resource Manager endpoint |
-| AzureStackCredential | Mandatory | Null | The AD FS service admin account |
-| CertificateFilePath | Mandatory | Null | Path to the identity application certificate file generated earlier |
-| CertificatePassword | Mandatory | Null | Password used to protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack region and domain suffix |
-| AdfsMachineName | Optional | AD FS machine name, for example, AzS-ADFS01.azurestack.local |
+| DirectoryTenantName | 必須 | Null | AD FS 環境のために **ADFS** を使います |
+| TenantAzure Resource ManagerEndpoint | 必須 | management.local.azurestack.external | テナントの Azure Resource Manager のエンドポイント |
+| AzureStackCredential | 必須 | Null | AD FS サービスの管理者アカウント |
+| CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへのパス |
+| CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するためのパスワード |
+| DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス |
+| AdfsMachineName | 省略可能 | AD FS マシン名。たとえば、AzS-ADFS01.azurestack.local など |
 
 
-## <a name="validate-the-app-service-on-azure-stack-installation"></a>Validate the App Service on Azure Stack installation
+## <a name="validate-the-app-service-on-azure-stack-installation"></a>App Service on Azure Stack インストールを検証する
 
-1. In the Azure Stack admin portal, browse to the resource group created by the installer. By default, this group is **APPSERVICE-LOCAL**.
+1. Azure Stack 管理ポータルで、インストーラーによって作られたリソース グループを参照します。 既定では、このグループは **APPSERVICE-LOCAL** です。
 
-2. Locate the **CN0-VM**. To connect to the VM, click **Connect** on the **Virtual Machine** blade.
+2. **CN0-VM** を見つけます。 VM に接続するには、**[仮想マシン]** ブレードで **[接続]** をクリックします。
 
-3. On the desktop of this VM, double-click **Web Cloud Management Console**.
+3. この VM のデスクトップで、**[Web Cloud Management Console]\(Web クラウド管理コンソール\)** をダブルクリックします。
 
-4. Go to **Managed Servers**.
+4. **[管理されたサーバー]** に移動します。
 
-5. When all the machines display **Ready** for one or more Workers, proceed to step 6.
+5. すべてのマシンで、1 つ以上の Worker について **[準備完了]** と表示されたら、手順 6 に進みます。
 
-6. Close the remote desktop machine, and return to the machine where you executed the App Service installer.
+6. リモートのデスクトップ マシンを終了して、App Service インストーラーを実行したマシンに戻ります。
 
     > [!NOTE]
-    > You don't need to wait for one or more Workers to display **Ready** to complete the installation of App Service on Azure Stack. However, you need a minimum of one Worker that's ready to deploy a web, mobile, or API app or Azure Functions.
+    > 1 つ以上の Worker に **[準備完了]** と表示されて App Service on Azure Stack のインストールが完了するまで待つ必要はありません。 ただし、少なくとも 1 つの Worker で、Web アプリ、モバイル アプリ、API アプリ、Azure Functions をデプロイする準備ができている必要があります。
     
-    ![App Service on Azure Stack Managed Servers status][14]
+    ![App Service on Azure Stack の管理されたサーバーのステータス][14]
 
-## <a name="test-drive-app-service-on-azure-stack"></a>Test drive App Service on Azure Stack
+## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる
 
-After you deploy and register the App Service resource provider, test it to make sure that tenants can deploy web, mobile, and API apps.
+App Service リソースプロバイダーをデプロイして登録したら、テストしてテナントで Web アプリ、モバイル アプリ、API アプリをデプロイできることを確認します。
 
 > [!NOTE]
-> You need to create an offer that has the Microsoft.Web namespace within the plan. Then you need to have a tenant subscription that subscribes to this offer. For more information, see  [Create offer](azure-stack-create-offer.md) and [Create plan](azure-stack-create-plan.md).
+> プラン内に Microsoft.Web 名前空間があるサービスを作る必要があります。 その後、このサービスをサブスクライブするテナント サブスクリプションが必要となります。 詳細については、[サービスの作成](azure-stack-create-offer.md)と[プランの作成](azure-stack-create-plan.md)に関するページをご覧ください。
 >
 
-You *must* have a tenant subscription to create applications that use App Service on Azure Stack. The only capabilities that a service admin can complete within the admin portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
+App Service on Azure Stack を使うアプリケーションを作るには、テナント サブスクリプションが*必要となります*。 管理ポータル内でサービス管理者が実行できる機能は、App Service のリソースプロバイダー管理に関連するものだけです。 これらの機能には、容量の追加、デプロイ ソースの構成、Worker 層と SKU の追加などがあります。
 
-As of the third technical preview, to create web, mobile, and API apps you must use the tenant portal and have a tenant subscription.  
+3 番目のテクニカル プレビューの時点では、Web アプリ、モバイル アプリ、API アプリを作るには、テナント ポータルを使うことと、テナント サブスクリプションがあることが必要になります。  
 
-1. In the Azure Stack tenant portal, click **New** > **Web + Mobile** > **Web App**.
+1. Azure Stack テナント ポータルで、**[新規]**  >  **[Web + モバイル]**  >  **[Web アプリ]** の順にクリックします。
 
-2. On the **Web App** blade, type a name in the **Web app** box.
+2. **[Web アプリ]** ブレードで、**[Web アプリ]** ボックスに名前を入力します。
 
-3. Under **Resource Group**, click **New**. Then type a name in the **Resource Group** box.
+3. **[リソース グループ]** の下にある **[新規]** をクリックします。 次に、**[リソース グループ]** ボックスに名前を入力します。
 
-4. Click **App Service plan/Location** > **Create New**.
+4. **[App Service プラン/場所]** > **[新規作成]** の順にクリックします。
 
-5. On the **App Service plan** blade, type a name in the **App Service plan** box.
+5. **[App Service プラン]** ブレードで、**[App Service プラン]** ボックスに名前を入力します。
 
-6. Click **Pricing tier** > **Free-Shared** or **Shared-Shared** > **Select** > **OK** > **Create**.
+6. **[価格レベル]**  >  **[Free-Shared]\(無料 - 共有\)** または **[Shared-Shared]\(共有 - 共有\)**  >  **[選択]**  >  **[OK]**  >  **[作成]** の順にクリックします。
 
-7. In under a minute, a tile for the new web app appears on the dashboard. Click the tile.
+7. 1 分以内に、ダッシュボードに新規 Web アプリのタイルが表示されます。 タイルをクリックします。
 
-8. On the **Web App** blade, click **Browse** to view the default website for this app.
+8. **[Web アプリ]** ブレードで、**[参照]** をクリックして、このアプリの既定の Web サイトを表示します。
 
-## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Deploy a WordPress, DNN, or Django website (optional)
+## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>WordPress、DNN、Django の Web サイトをデプロイする (省略可能)
 
-1. In the Azure Stack tenant portal, click **+**. Go to the Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn’t require any additional resource providers such as SQL or MySQL.
+1. Azure Stack テナント ポータルで、**+** をクリックします。 Azure Marketplace にアクセスし、Django Web サイトをデプロイし、正常に完了するまで待ちます。 Django Web プラットフォームでは、ファイル システム ベースのデータベースが使われます。 SQL や MySQL など、追加のリソースプロバイダーは必要ありません。
 
-2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1@Server1*, with the user name and server name of your choice.
+2. MySQL リソースプロバイダーもデプロイした場合は、Marketplace から WordPress Web サイトをデプロイできます。 データベース パラメーターを求められたら、お好きなユーザー名とサーバー名で、ユーザー名を *User1@Server1* の形式で入力します。
 
-3. If you also deployed a SQL Server resource provider, you can deploy a DNN website from the Marketplace. When you're prompted for database parameters, pick a database in the computer running SQL Server that's connected to your resource provider.
+3. SQL Server リソースプロバイダーもデプロイした場合は、Marketplace から DNN Web サイトをデプロイできます。 データベース パラメーターを求められたら、使用しているリソースプロバイダーに接続された SQL Server を実行しているコンピューター内のデータベースを選びます。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md).
+その他の [Platform as a Service (PaaS) サービス](azure-stack-tools-paas-services.md)を試してみることもできます。
 
-- [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
-- [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
+- [SQL Server リソースプロバイダー](azure-stack-sql-resource-provider-deploy.md)
+- [MySQL リソースプロバイダー](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy-offline/app-service-offline-step1.png

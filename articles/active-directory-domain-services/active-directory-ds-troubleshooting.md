@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
-ms.lasthandoff: 03/18/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -63,7 +62,7 @@ Azure AD ディレクトリに "Azure AD Domain Services Sync" という名前�
 3. Azure AD Domain Services を有効にする Azure AD テナント (ディレクトリ) を選択します。
 4. **[アプリケーション]** タブに移動します。
 5. ドロップダウンで **[自分の会社が所有するアプリケーション]** のオプションを選択します。
-6. **[Azure AD ドメイン サービス同期]**というアプリケーションを探します。 アプリケーションが存在する場合は、削除に進みます。
+6. **[Azure AD ドメイン サービス同期]**というアプリケーションを探します。アプリケーションが存在する場合は、削除に進みます。
 7. アプリケーションが削除されたら、もう一度 Azure AD ドメイン サービスの有効化を試します。
 
 ### <a name="invalid-configuration"></a>構成が無効です
@@ -158,4 +157,3 @@ Azure AD では、ユーザー オブジェクトが誤って削除されない�
 
 ## <a name="contact-us"></a>お問い合わせ
 [フィードバックの共有およびサポートについては](active-directory-ds-contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。
-

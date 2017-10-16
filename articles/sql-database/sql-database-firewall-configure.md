@@ -5,7 +5,7 @@ keywords: "データベース ファイアウォール"
 services: sql-database
 documentationcenter: 
 author: BYHAM
-manager: jhubbard
+manager: craigg
 editor: cgronlun
 tags: 
 ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
@@ -15,18 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 04/10/2017
+ms.date: 09/15/2017
 ms.author: rickbyh
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 71c7eaf2272245bd681387947812f7d5c0f58094
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: a683481c9ebcdb8be6f9fefe442541e222482823
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
+
+#### <a name="virtual-netowrk-rules-as-alternatives-to-ip-rules"></a>IP 規則に代わる手段としての仮想ネットワーク規則
+
+IP 規則に加えて、ファイアウォールは*仮想ネットワーク規則*も管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の Virtual Network サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
 
 ## <a name="overview"></a>概要
 
@@ -67,7 +71,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>ファイアウォール規則の作成と管理
-最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://msdn.microsoft.com/library/azure/dn546724.aspx)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create)、または [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) を使用して作成できます。 それ以降のサーバーレベルのファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。 
+最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create)、または [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules) を使用して作成できます。 それ以降のサーバーレベルのファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。 
 
 > [!IMPORTANT]
 > データベース レベルのファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。 
@@ -79,7 +83,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 > [SQL Database 監査](sql-database-auditing.md)を使用して、サーバー レベルおよびデータベース レベルのファイアウォールの変更を監査できます。
 >
 
-### <a name="azure-portal"></a>Azure ポータル
+## <a name="manage-firewall-rules-using-the-azure-portal"></a>Azure Portal を使ってファイアウォール規則を管理する
 
 Azure ポータルでサーバー レベルのファイアウォール規則を設定するには、Azure SQL Database または Azure Database 論理サーバーの [概要] ページに移動します。
 
@@ -101,15 +105,11 @@ Azure ポータルでサーバー レベルのファイアウォール規則を�
 
 サーバーの概要ページが開き、完全修飾サーバー名 (**mynewserver20170403.database.windows.net** など) や追加の構成オプションが表示されます。
 
-1. サーバーの概要ページからサーバー レベルの規則を設定するには、次の画像に示すように、[設定] の下の左側のメニューで **[ファイアウォール]** をクリックします。 
-
-     ![論理サーバーの概要](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
+1. サーバーの概要ページからサーバー レベルの規則を設定するには、[設定] の下の左側のメニューで **[ファイアウォール]** をクリックします。 
 
 2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、**[保存]** をクリックします。 現在の IP アドレスに対してサーバーレベルのファイアウォール規則が作成されます。
 
-     ![サーバーのファイアウォール規則の設定](./media/sql-database-migrate-your-sql-server-database/server-firewall-rule-set.png)
-
-### <a name="transact-sql"></a>Transact-SQL
+## <a name="manage-firewall-rules-using-transact-sql"></a>Transact-SQL を使ってファイアウォール規則を管理する
 | カタログ ビューまたはストアド プロシージャ | Level | 説明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
@@ -139,13 +139,13 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```   
 
-### <a name="azure-powershell"></a>Azure PowerShell
+## <a name="manage-firewall-rules-using-azure-powershell"></a>Azure PowerShell を使ってファイアウォール規則を管理する
 | コマンドレット | Level | Description |
 | --- | --- | --- |
-| [Get-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546731.aspx) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
-| [New-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546724.aspx) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
-| [Set-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546739.aspx) |サーバー |既存のサーバー レベルのファイアウォール規則のプロパティを更新 |
-| [Remove-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546727.aspx) |サーバー |サーバー レベルのファイアウォール規則を削除 |
+| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
+| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
+| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |サーバー |既存のサーバー レベルのファイアウォール規則のプロパティを更新 |
+| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |サーバー |サーバー レベルのファイアウォール規則を削除 |
 
 
 次の例では、PowerShell を使用してサーバー レベルのファイアウォール規則を設定します。
@@ -160,7 +160,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 > クイック スタートを念頭に置いた PowerShell の例については、「[DB の作成 - PowerShell](sql-database-get-started-powershell.md)」と「[Create a single database and configure a firewall rule using PowerShell (PowerShell を使用して単一のデータベースを作成し、ファイアウォール規則を構成する)](scripts/sql-database-create-and-configure-database-powershell.md)」を参照してください。
 >
 
-### <a name="azure-cli"></a>Azure CLI
+## <a name="manage-firewall-rules-using-azure-cli"></a>Azure CLI を使ってファイアウォール規則を管理する
 | コマンドレット | Level | Description |
 | --- | --- | --- |
 | [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。|
@@ -180,13 +180,12 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 > クイック スタートを念頭に置いた Azure CLI の例については、「[DB の作成 - Azure CLI](sql-database-get-started-cli.md)」と「[Create a single database and configure a firewall rule using Azure CLI (Azure CLI を使用して単一のデータベースを作成し、ファイアウォール規則を構成する)](scripts/sql-database-create-and-configure-database-cli.md)」を参照してください。
 >
 
-### <a name="rest-api"></a>REST API
+## <a name="manage-firewall-rules-using-rest-api"></a>REST API を使ってファイアウォール規則を管理する
 | API | Level | Description |
 | --- | --- | --- |
-| [ファイアウォール規則の一覧表示](https://msdn.microsoft.com/library/azure/dn505715.aspx) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
-| [ファイアウォール規則の作成](https://msdn.microsoft.com/library/azure/dn505712.aspx) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |
-| [ファイアウォール規則の設定](https://msdn.microsoft.com/library/azure/dn505707.aspx) |サーバー |既存のサーバー レベルのファイアウォール規則のプロパティを更新 |
-| [ファイアウォール規則の削除](https://msdn.microsoft.com/library/azure/dn505706.aspx) |サーバー |サーバー レベルのファイアウォール規則を削除 |
+| [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/FirewallRules/ListByServer) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
+| [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/FirewallRules/CreateOrUpdate) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |
+| [ファイアウォール規則の削除](https://docs.microsoft.com/rest/api/sql/FirewallRules/Delete) |サーバー |サーバー レベルのファイアウォール規則を削除 |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>サーバー レベルのファイアウォール規則とデータベース レベルのファイアウォール規則の違い
 Q. 個々のデータベースのユーザーを別のデータベースから完全に分離する必要がありますか?   

@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 8221f34641f2e59bbcaf05c3a17f23411df6b634
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Batch ソリューションの診断の評価と監視のログ イベント
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/07/2017
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Batch アカウント](batch-account-create-portal.md)
-* [Azure Storage アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
   Batch 診断ログを保持するには、Azure がログを格納するための Azure Storage アカウントを作成する必要があります。 このストレージ アカウントを指定してから、Batch アカウントの[診断ログを有効化](#enable-diagnostic-logging)します。 ログ収集を有効化するときに指定するストレージ アカウントは、[アプリケーション パッケージ](batch-application-packages.md)と[タスク出力の保持](batch-task-output.md)の記事で参照されているリンクされたストレージ アカウントとは異なります。
   
@@ -108,4 +107,3 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 [task_start]: https://msdn.microsoft.com/library/azure/mt743616.aspx
 [task_complete]: https://msdn.microsoft.com/library/azure/mt743612.aspx
 [task_fail]: https://msdn.microsoft.com/library/azure/mt743607.aspx
-

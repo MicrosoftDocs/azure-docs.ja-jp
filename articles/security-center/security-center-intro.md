@@ -15,11 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="introduction-to-azure-security-center"></a>Azure Security Center 入門

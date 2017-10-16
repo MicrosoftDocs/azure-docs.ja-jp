@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8df8cdfd0b265b11e6a11f0a5eb7ad8f0e669ca2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: 21229ad7277ce03e5276fe965d73b5e5eba12424
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
 
@@ -72,7 +70,7 @@ while(true)
 
 ## <a name="export-devices"></a>デバイスのエクスポート
 
-**ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/storage-security-guide.md#data-plane-security) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.md) BLOB コンテナーにエクスポートすることができます。
+**ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.yml) BLOB コンテナーにエクスポートすることができます。
 
 このメソッドでは、制御対象の BLOB コンテナーにデバイス情報のバックアップを確実に作成することができます。
 
@@ -197,7 +195,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
-* [Azure Storage](../storage/index.md) BLOB コンテナーの URI を、ジョブへの*入力*として使用するために格納する*文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
+* [Azure Storage](../storage/index.yml) BLOB コンテナーの URI を、ジョブへの*入力*として使用するために格納する*文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
 
    ```csharp
    SharedAccessBlobPermissions.Read
@@ -372,7 +370,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>コンテナーの SAS URI の取得
 
-次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md) を生成する方法を示します。
+次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) を生成する方法を示します。
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -414,4 +412,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

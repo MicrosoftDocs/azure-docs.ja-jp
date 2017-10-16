@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5036ce23e602c7723f5fafef60ab45d533c1fe7d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 8e782e45b706cadec66e7404dd9abc2e01dea917
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ: Application Insights データ モデル
 
@@ -85,4 +84,3 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - Application Insights で [ASP.NET Core を構成する](app-insights-asp-net.md)方法を確認します。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

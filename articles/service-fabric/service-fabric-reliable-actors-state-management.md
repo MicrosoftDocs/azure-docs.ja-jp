@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
 Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、Reliable Services と同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
@@ -412,4 +410,3 @@ class MyActorImpl extends FabricActor implements  MyActor
 Reliable Actors に格納される状態は、ディスクに書き込まれて、高可用性のためにレプリケートされる前に、シリアル化される必要があります。 [Actor 型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)についてさらに学習してください。
 
 次に、[アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)についてさらに学習してください。
-

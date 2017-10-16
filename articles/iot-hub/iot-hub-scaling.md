@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 03eeecc575be3073066a203cdd4ec6944bb23afc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 2cb263103da05b10c24aab71d81c43eb25987565
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-your-iot-hub-solution"></a>IoT Hub ソリューションのスケーリング
 Azure IoT Hub は、100 万台のデバイスの同時接続をサポートできます。 詳細については、[IoT Hub の価格][lnk-pricing]に関するページを参照してください。 各 IoT Hub ユニットでは、毎日一定数のメッセージが許可されます。
@@ -63,4 +62,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

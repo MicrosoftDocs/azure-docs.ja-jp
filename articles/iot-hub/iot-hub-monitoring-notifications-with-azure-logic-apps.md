@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
+ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ca27c55f97d1b1d9694bf79282b7714283927ee7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -51,7 +50,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間の作成を作成する
 
-1. [Azure Portal](https://portal.azure.com/) で、[**新規作成**]  >  [**エンタープライズ統合**]  >  [**Service Bus**] をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、[**新規作成**]  >  [**エンタープライズ統合**]  >  [**Service Bus**をクリックします。
 1. 次の情報を指定します。
 
    **名前**: Service Bus の名前。
@@ -61,16 +60,16 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    **[リソース グループ]**: IoT ハブと同じリソース グループを使用します。
 
    **場所**: IoT Hub で使用するのと同じ場所を使用します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
    ![Azure Portal に Service Bus 名前空間を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1_create-service-bus-namespace-azure-portal.png)
 
 ### <a name="add-a-service-bus-queue"></a>Service Bus キューを追加する
 
-1. Service bus 名前空間を開き、[**+ キュー**] をクリックします。
-1. キューの名前を入力して、[**作成**] をクリックします。
-1. Service Bus キューを開き、[**共有アクセス ポリシー**]  >  [**+ 追加**] をクリックします。
-1. ポリシーの名前を入力し、[**管理**] をオンにし、[**作成**] をクリックします。
+1. Service bus 名前空間を開き、**+ キュー**をクリックします。
+1. キューの名前を入力して、**作成**をクリックします。
+1. Service Bus キューを開き、**共有アクセス ポリシー**  >  **+ 追加**をクリックします。
+1. ポリシーの名前を入力し、**管理** をオンにし、**作成**をクリックします。
 
    ![Azure Portal で Service Bus キューを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2_add-service-bus-queue-azure-portal.png)
 
@@ -112,7 +111,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
-1. [Azure Portal](https://portal.azure.com/) で、[**新規作成**]  >  [**エンタープライズ統合**]  >  [**ロジック アプリ**] をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、[**新規作成**]  >  [**エンタープライズ統合**]  >  [**ロジック アプリ**をクリックします。
 1. 次の情報を入力します。
 
    **名前**: ロジック アプリの名前。
@@ -120,7 +119,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    **[リソース グループ]**: IoT ハブと同じリソース グループを使用します。
 
    **場所**: IoT Hub で使用するのと同じ場所を使用します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="configure-the-logic-app"></a>ロジック アプリを構成する
 
@@ -147,12 +146,12 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    1. [保存] ボタンをクリックして、変更を保存します。
 
 1. SMTP サービス接続を作成します。
-   1. [**新しいステップ**]  >  [**アクションの追加**] をクリックします。
-   1. 「`SMTP`」と入力し、検索結果の [**SMTP サービス**] をクリックして、[**SMTP - 電子メールの送信**] をクリックします。
+   1. **新しいステップ**  >  **アクションの追加**をクリックします。
+   1. 「`SMTP`」と入力し、検索結果の **SMTP サービス**をクリックして、**SMTP - 電子メールの送信**をクリックします。
 
       ![Azure Portal でロジック アプリの SMTP 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9_create-smtp-connection-logic-app-azure-portal.png)
 
-   1. メールボックスの SMTP 情報を入力し、[**作成**] をクリックします。
+   1. メールボックスの SMTP 情報を入力し、**作成**をクリックします。
 
       ![Azure Portal でロジック アプリの SMTP 接続情報を入力する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10_enter-smtp-connection-info-logic-app-azure-portal.png)
 
@@ -176,4 +175,3 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリが正常に作成されました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

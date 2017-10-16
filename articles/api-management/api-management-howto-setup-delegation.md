@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 0be893406c6a20193b10b728fff2cec06f562069
-ms.lasthandoff: 12/20/2016
-
-
+ms.openlocfilehash: 2637ab6405f2d4ea1da84981295a144874dfa4f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
@@ -34,7 +33,7 @@ ms.lasthandoff: 12/20/2016
 3. 委任エンドポイントにより、ユーザーにサインインまたはサインアップを求める UI にリダイレクトされるか、ユーザーにサインインまたはサインアップを求める UI が表示されます。
 4. サインインまたはサインアップが成功すると、ユーザーが最初の API Management 開発者ポータル ページにリダイレクトされます。
 
-これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。 チェックボックスをクリックして、[サインインおよびサインアップの委任] を有効にします。
+これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。チェックボックスをクリックして、[サインインおよびサインアップの委任] を有効にします。
 
 ![[委任] ページ][api-management-delegation-signin-up]
 
@@ -180,4 +179,3 @@ var signature = digest.toString('base64');
 [コードの例を次に示します]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
+ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ac35031290ec9ca6af3a8b05dc6fc82737fda0dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ
 
@@ -259,5 +258,4 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: jroth
+ms.openlocfilehash: c3bd4329e8a22ce8503d6593560d29c2a3135e83
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 8d7b9dc3df9c68a18c95fe71b100b516becd4b5c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)
 
@@ -205,4 +204,3 @@ PowerShell を使用した仮想マシンのプロビジョニングの詳細に
 Azure Portal を使用して SQL Virtual Machines を作成する方法についても興味がある場合は、 [Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページをご覧ください。 チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
 
 これらのリソースのほかにも、 [Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](../sql/virtual-machines-windows-sql-server-iaas-overview.md)もご覧になることをお勧めします。
-

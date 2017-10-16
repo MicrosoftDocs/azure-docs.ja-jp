@@ -1,5 +1,5 @@
-### <a name="need-some-help"></a>サポートが必要な場合
-Azure フォーラムに質問を投稿してください。 [MSDN にアクセス](http://go.microsoft.com/fwlink/?LinkId=780719)
+### <a name="need-some-help"></a>いくつかのヘルプが必要ですか。
+Azure フォーラムで質問を投稿します。 - [MSDN を参照してください。](http://go.microsoft.com/fwlink/?LinkId=780719)
 
-質問に `azure-functions`というキーワードのタグを付けてください。 [Stack Overflow にアクセス](http://stackoverflow.com/questions/tagged/azure-functions)
+キーワードを使用して質問をタグ`azure-functions`です。 - [スタック オーバーフローを参照してください。](http://stackoverflow.com/questions/tagged/azure-functions)
 

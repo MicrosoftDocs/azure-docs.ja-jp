@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: ed759edbf4548bc0d6c041ca825ddb392430795b
 ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -31,7 +31,7 @@ StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サー�
 
 ## <a name="back-up-shares-and-volumes"></a>共有やボリュームをバックアップする
 
-バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは&2; つの方法、つまり、**スケジュールされた**バックアップまたは**手動**バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法、つまり、**スケジュールされた**バックアップまたは**手動**バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
 
 ## <a name="change-the-backup-start-time"></a>バックアップの開始時刻を変更する
 
@@ -39,7 +39,7 @@ StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サー�
 > このリリースでは、スケジュールされたバックアップは既定のポリシーによって作成されます。既定のポリシーは毎日決まった時刻に実行し、デバイスのすべての共有/ボリュームをバックアップします。 現時点では、スケジュールされたバックアップ用にカスタム ポリシーを作成することはできません。
 
 
-StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日に&1; 回、指定の時刻 (22:30) に開始し、デバイスのすべての共有/ボリュームをバックアップします。 バックアップの開始時刻は変更できますが、バックアップの頻度と保有数 (保持するバックアップの数) を変更することはできません。 こうしたバックアップでは仮想デバイス全体がバックアップされます。 これが、デバイスのパフォーマンスや、デバイスにデプロイされているワークロードに影響を及ぼす可能性があるため、 このようなバックアップはピーク時を避けてスケジュールすることをお勧めします。
+StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日に 1 回、指定の時刻 (22:30) に開始し、デバイスのすべての共有/ボリュームをバックアップします。 バックアップの開始時刻は変更できますが、バックアップの頻度と保有数 (保持するバックアップの数) を変更することはできません。 こうしたバックアップでは仮想デバイス全体がバックアップされます。 これが、デバイスのパフォーマンスや、デバイスにデプロイされているワークロードに影響を及ぼす可能性があるため、 このようなバックアップはピーク時を避けてスケジュールすることをお勧めします。
 
  既定のバックアップの開始時刻を変更するには、[Azure Portal](https://portal.azure.com/) で次の手順を実行します。
 
@@ -114,5 +114,4 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
-
 

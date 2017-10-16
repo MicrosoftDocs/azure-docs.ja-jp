@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Azure Mobile Engagement Web SDK のアップグレード手順
 以前のバージョンの Azure Mobile Engagement Web SDK を既に Web アプリケーションに統合している場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
@@ -114,16 +114,10 @@ Mobile Engagement では、接続文字列を使用して、アプリケーシ�
       [...]
     };
 
-アプリケーションの接続文字列が Azure ポータルに表示されます。
+アプリケーションの接続文字列が Azure Portal に表示されます。
 
 ### <a name="javascript-apis"></a>JavaScript API
 グローバル JavaScript オブジェクト `window.capptain` の名前が `window.azureEngagement` に変更されましたが、API 呼び出しには `window.engagement` エイリアスを使用できます。 そのエイリアスを使用して、SDK の構成を定義することはできません。
 
 たとえば、`capptain.deviceId` は `engagement.deviceId` になり、`capptain.agent.startActivity` は `engagement.agent.startActivity` になります。他も同様です。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

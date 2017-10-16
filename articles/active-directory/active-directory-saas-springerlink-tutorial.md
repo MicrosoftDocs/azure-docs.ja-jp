@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: b9aec6f8f293cdd31456a7f50e3efe792804c7c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
 
@@ -178,7 +177,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -235,5 +234,4 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_203.png
-
 

@@ -16,13 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: e2474b2f69ee0301ba00bd2a49afa90f83935cb6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: d1fdfc4f739e65ff532b159eefaffe1622ad0963
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
 
@@ -109,7 +107,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 
 各患者の **SSN** と **BirthDate** 情報を暗号化します。 **SSN** 列では決定論的な暗号化を使用します。この場合、等値のルックアップ、結合、グループ化を実行できます。 **BirthDate** 列ではランダム化された暗号化を使用します。この場合、操作は実行できません。
 
-**[暗号化の種類]** として、**SSN** 列には **[決定論的]** を、**BirthDate** 列には **[ランダム化]** を選択します。 **[次へ]**をクリックします。
+**[暗号化の種類]** として、**SSN** 列には **[決定論的]** を、**BirthDate** 列には **[ランダム化]** を選択します。 **[次へ]** をクリックします。
 
 ![[列の暗号化]](./media/sql-database-always-encrypted/column-selection.png)
 
@@ -519,5 +517,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
 

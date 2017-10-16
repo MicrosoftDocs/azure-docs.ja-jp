@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1549eb40b0ca79522cc5475057c3af7ff4c7fd1c
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 14da9256def60d678ef5cae795fef1c373914b5c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 Key Vault のアクセス制御ポリシーでは、エントリは 16 個までしかサポートされません。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
 
 前提条件は次のとおりです。
-* [Azure Active Directory V2 PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30)。
+* [Azure Active Directory V2 PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureAD)。
 * [Azure PowerShell のインストール](/powershell/azure/overview)。
 * 次のコマンドを実行するには、Azure Active Directory テナント内でグループを作成または編集するためのアクセス許可が必要です。 アクセス許可を持っていない場合は、Azure Active Directory 管理者に連絡する必要があります。
 
@@ -58,4 +57,3 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 ## <a name="next-steps"></a>次のステップ
 
 [キー コンテナーをセキュリティ保護する](key-vault-secure-your-key-vault.md)方法について確認します。
-

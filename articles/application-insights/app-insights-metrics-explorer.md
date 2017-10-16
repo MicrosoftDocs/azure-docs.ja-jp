@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: bwren
+ms.openlocfilehash: a13500284caab79bbe221060ccf3d925ffb1fab5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 749ae20a8f9f7247268bd27714b03f7c0dd5b735
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
@@ -209,4 +208,3 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 [alerts]: app-insights-alerts.md
 [start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
-

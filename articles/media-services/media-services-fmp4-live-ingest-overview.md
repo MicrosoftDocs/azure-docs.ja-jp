@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
+ms.openlocfilehash: 6250b73504bec765b8299060a29e84e771791cc9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d1a9328333bb8198d77e4b5d11fd8c6637a9e440
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様
 この仕様では、Azure Media Services 用 Fragmented MP4 ベースのライブ ストリーミング インジェストのプロトコルと形式について説明します。 Media Services は、顧客が Azure をクラウド プラットフォームとして使用して、ライブ イベントをストリーム配信し、リアルタイムでコンテンツをブロードキャストできるライブ ストリーミング サービスを提供しています。 このドキュメントでは、冗長性の高い、堅牢なライブ インジェスト メカニズムを構築する上でのベスト プラクティスについても説明します。
@@ -202,4 +201,3 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 [image5]: ./media/media-services-fmp4-live-ingest-overview/media-services-image5.png
 [image6]: ./media/media-services-fmp4-live-ingest-overview/media-services-image6.png
 [image7]: ./media/media-services-fmp4-live-ingest-overview/media-services-image7.png
-

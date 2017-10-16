@@ -14,21 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 3/10/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.lasthandoff: 03/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
-ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は使い慣れていないかもしれませんが、おそらく以前に使用したことがあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
+ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
 
  ![Azure Search Job Portal Demo][1]
 
-ファセット ナビゲーションは、検索するための別のエントリ ポイントです。 これは、複雑な検索式の手動入力の代わりに機能します。 ファセットを使用すると探しているものを見つけることができ、結果がゼロにならないことが保証されます。 開発者は、ファセットを使用することで検索コーパスのナビゲーションに最も有用な検索条件を公開できます。 オンライン小売アプリケーションでは、ブランド、カテゴリ (子ども用の靴など)、サイズ、価格、人気、評価などに対してファセット ナビゲーションが作成されることがよくあります。 
+ファセット ナビゲーションは、検索するための別のエントリ ポイントです。 複雑な検索式を手動で入力する代わりに使用できる便利な方法です。 ファセットを使用すると、探しているものが見つけやすくなり、検索結果がゼロ件になることはありません。 開発者は、ファセットを使用することで検索コーパスのナビゲーションに最も有用な検索条件を公開できます。 オンライン小売アプリケーションでは、ブランド、カテゴリ (子ども用の靴など)、サイズ、価格、人気、評価などに対してファセット ナビゲーションが作成されることがよくあります。 
 
-ファセット ナビゲーションの実装方法は、検索テクノロジによって異なります。 Azure Search のファセット ナビゲーションは、スキーマに事前に属しているフィールドを使用して、クエリ時に作成されます。
+ファセット ナビゲーションの実装方法は、検索テクノロジによって異なります。 Azure Search では、クエリ時にあらかじめスキーマに設定されている属性のフィールドを使ってファセット ナビゲーションが構築されます。
 
 -   アプリケーションで作成するクエリでは、 *ファセット クエリ パラメーター* を送信して、そのドキュメント結果セットに対して使用できるファセット フィルターの値を受け取る必要があります。
 
@@ -443,5 +442,4 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
 [Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: f9bcaa8e55be6e8fddaf88ebc3f18f5dbb2811e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-6-prepare-hyper-v-hosts-for-replication-to-azure"></a>手順 6: Azure へのレプリケーションのために Hyper-V ホストを準備する
 
 この記事の手順を使って、Azure Site Recovery と対話するようにオンプレミスの Hyper-V ホストを準備します。
@@ -45,5 +43,4 @@ Site Recovery のデプロイ中に、Hyper-V サイトにレプリケートす�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 7: コンテナーを作成する](hyper-v-site-walkthrough-create-vault.md)方法に関するページに進む
-
 

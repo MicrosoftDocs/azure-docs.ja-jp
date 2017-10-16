@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 1568bbba999018e26493654e0286a6b8d93f3ae7
-
-
+ms.openlocfilehash: 73bf4451ba1b71807e22440beecc73a7e8045c5e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-publish-a-product-in-azure-api-management"></a>Azure API Management で成果物を作成して発行する方法
 Azure API Management の成果物には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 成果物が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。 このトピックでは、成果物を作成し、API を追加し、発行して開発者が利用できるようにする方法について説明します。
@@ -151,9 +151,3 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 [Next steps]: #next-steps
 [How to create and use groups to manage developer accounts in Azure API Management]: api-management-howto-create-groups.md
 [How create and configure advanced product settings in Azure API Management]: api-management-howto-product-with-rules.md 
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

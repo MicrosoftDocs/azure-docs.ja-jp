@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
+ms.openlocfilehash: 2078d0694fc4dd6e83ecd2792588b4254980cd78
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 85ac34444cc54b9c6fe9d5d3fcd1ab53bf1dc0d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Azure Container Service および Kubernetes との Jenkins の統合 
 このチュートリアルでは、Jenkins プラットフォームを使用して、Azure Container Service Kubernetes への複数コンテナー アプリケーションの継続的インテグレーションを設定するプロセスについて説明します。 このワークフローでは、Docker Hub のコンテナー イメージを更新し、デプロイ ロールアウトを使用して Kubernetes ポッドをアップグレードします。 
 
@@ -209,4 +207,3 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 - Azure Container Registry をデプロイし、安全なリポジトリにイメージを格納します。 「[Azure Container Registry のドキュメント](https://docs.microsoft.com/azure/container-registry)」を参照してください。
 - Jenkins でのサイド バイ サイド デプロイと自動化されたテストを含む、より複雑なワークフローを構築します。
 - Jenkins と Kubernetes を使用した CI/CD の詳細については、[Jenkins のブログ](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/)を参照してください。
-

@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 2a7c761062dcf5da016a2e106274839f5f6c0d13
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
-
+ms.openlocfilehash: 5bb6d17ffd047ae91476c52750f293414d1dfdd5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケール アウト
 **Elastic Database** ツールを使用すると、Azure SQL Database を簡単にスケールアウトできます。 これらのツールと機能では、 **Azure SQL Database** の実質的に無制限のデータベースのリソースを使用して、トランザクションの作業負荷に対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
@@ -105,5 +103,4 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 [2]:./media/sql-database-elastic-scale-introduction/h_versus_vert.png
 [3]:./media/sql-database-elastic-scale-introduction/overview.png
 [4]:./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
-
 

@@ -3,7 +3,7 @@ title: "Azure Automation の Runbook の種類 | Microsoft Docs"
 description: "Azure Automation で使用できる Runbook の種類、および使用する種類を決定するときの考慮事項について説明します。 "
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e859aef473b433fbf4efb639962f3a3ce0a23d7b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.openlocfilehash: 4bf4a3d755afeee9930204a2dbae9ff9fada3517
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
-Azure Automation がサポートする 4 種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
+Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
 | 型 | Description |
 |:--- |:--- |
@@ -31,6 +29,8 @@ Azure Automation がサポートする 4 種類の Runbook について次の表
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks) |Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
 | [PowerShell](#powershell-runbooks) |Windows PowerShell スクリプトに基づくテキスト Runbook です。 |
 | [PowerShell ワークフロー](#powershell-workflow-runbooks) |Windows PowerShell ワークフローに基づくテキスト Runbook です。 |
+| [Python](#python-runbooks) |Python に基づくテキスト Runbook です。 |
+| [Bash](#bash-runbooks) |Bash に基づくテキスト Runbook です。 |
 
 ## <a name="graphical-runbooks"></a>グラフィック Runbook
 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) とグラフィカル PowerShell ワークフロー Runbookは、Azure ポータルのグラフィカル エディターで作成および編集します。  ファイルにエクスポートして別の Automation アカウントにインポートできますが、別のツールで作成または編集することはできません。  グラフィカル Runbook は PowerShell のコードを生成しますが、そのコードを直接表示または変更することはできません。 グラフィカル Runbook をいずれかの [テキスト形式](automation-runbook-types.md)に変換すること、またはテキスト Runbook をグラフィカル形式に変換することはできません。 インポート時には、グラフィカル Runbook からグラフィカル PowerShell ワークフロー Runbook への変換、およびこの逆の変換を行うことができます。
@@ -84,6 +84,10 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 * グラフィカル Runbook は、実行する前にコンパイルする必要があるため、PowerShell Runbook より開始に時間がかかります。
 * PowerShell Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
 
+## <a name="python-runbooks"></a>Python Runbook
+
+## <a name="bash-runbooks"></a>Bash Runbook
+
 ## <a name="considerations"></a>考慮事項
 特定の Runbook に使用する種類を決定するときは、さらに次のことを考慮する必要があります。
 
@@ -94,5 +98,4 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 * Runbook を作成またはインポートする方法については、「 [Runbook の作成またはインポート](automation-creating-importing-runbook.md)
-
 

@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 92b37ea86e4744a46efd81e4731c7949413011e3
-ms.openlocfilehash: f85d46d513dc4600c09112e1a52e207681da6f38
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 930546e0b5847ee088dc08a48e8a0f9d610c5839
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-documentation"></a>Security のドキュメント
 
@@ -117,6 +116,5 @@ Azure のセキュリティを使用して、クラウド内のサービスや�
 </ul>
 
 ---
-
 
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 92ff0b4b7664ad2d33b54d02290c55a213d4e610
 ms.openlocfilehash: edd2f9446515531f1147a8abf99295b618b89b25
-ms.lasthandoff: 02/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamwork"></a>チュートリアル: Azure Active Directory と Teamwork の統合
 
@@ -47,11 +46,11 @@ Teamwork と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
+- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Teamwork の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -121,7 +120,7 @@ Teamwork で Azure AD のシングル サインオンを構成してテストす
 
 4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)     
+    ![[シングル サインオンの構成]](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)   
 
 5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
@@ -171,7 +170,7 @@ Teamwork で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 
 

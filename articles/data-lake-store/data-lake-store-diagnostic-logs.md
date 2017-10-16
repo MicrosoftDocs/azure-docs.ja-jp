@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
 Data Lake Store アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
@@ -28,7 +27,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 「 [Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
+* **Azure Data Lake Store アカウント**。 「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを有効にする
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
@@ -73,7 +72,7 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
 3. ログをダウンロードするには、各ログ エントリに対する **[ダウンロード]** リンクをクリックします。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
-1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
+1. Data Lake Store とログが関連付けられている Azure Storage アカウント ブレードを開き、BLOBをクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
    
     ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
    
@@ -183,5 +182,4 @@ Azure Data Lake Store では、ログ データの処理と分析方法のサン
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-
 

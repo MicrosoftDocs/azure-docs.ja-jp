@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/15/2017
 ms.author: markgal;arunak
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 19e2aafe3de106be32f3d90c63c0ea03c626f272
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -78,4 +76,3 @@ Recovery Services コンテナーは、Azure Portal を使用して簡単に作�
 [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>
 [Windows Server のバックアップ](backup-configure-vault.md)
-

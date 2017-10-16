@@ -14,13 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: ee96a30d10f882da936f554152fab8a9c6897807
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>Python からサービス管理を使用する方法
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除など**) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -172,7 +170,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
     sms.delete_deployment('myhostedservice', 'v1')
 
 ## <a name="CreateStorageService"> </a>方法: ストレージ サービスを作成する
-[ストレージ サービス](../storage/storage-create-storage-account.md)を使用すると、Azure の [BLOB](../storage/storage-python-how-to-use-blob-storage.md)、[テーブル](../storage/storage-python-how-to-use-table-storage.md)、[キュー](../storage/storage-python-how-to-use-queue-storage.md)にアクセスできます。 ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所が必要です。 次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
+[ストレージ サービス](../storage/common/storage-create-storage-account.md)を使用すると、Azure の [BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[テーブル](../cosmos-db/table-storage-how-to-use-python.md)、[キュー](../storage/queues/storage-python-how-to-use-queue-storage.md)にアクセスできます。 ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所が必要です。 次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
 
     from azure import *
     from azure.servicemanagement import *
@@ -428,4 +426,3 @@ Windows 仮想マシンをキャプチャする方法の詳細については、
 
 
 [cloud service]:/services/cloud-services/
-

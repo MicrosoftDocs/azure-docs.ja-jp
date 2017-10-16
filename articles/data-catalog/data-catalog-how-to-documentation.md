@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: ffe951f60afb57524568fe1ed3b3668d0088e124
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-data-sources"></a>データ ソースの文書化
 ## <a name="introduction"></a>はじめに
@@ -52,4 +51,3 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="summary"></a>概要
 **Azure Data Catalog** でデータ ソースを文書化することにより、ニーズに応じた詳細度でデータ資産の概要を作成できます。  既存のコンテンツ リポジトリに保存されているコンテンツは、リンクを使って関連付けることで、既にある文書やデータ資産を一元化することができます。 ユーザーは適切なデータ資産を発見したうえで、ドキュメント全体を余さず利用することができます。
-

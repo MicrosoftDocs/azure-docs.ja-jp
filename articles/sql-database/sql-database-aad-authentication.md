@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/11/2017
+ms.date: 09/12/2017
 ms.author: rickbyh
+ms.openlocfilehash: 246c89be85a4ccd2e8f7fab0ae8128e7285123a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: c83d482eaf476388a174dfb02ae6ef53ebe921bc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する
 Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Microsoft Azure SQL Database および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。 次のような利点があります。
@@ -69,7 +68,7 @@ Azure AD 認証を使用すると、SQL Database サーバーの管理者アカ�
 ## <a name="permissions"></a>アクセス許可
 新しいユーザーを作成するには、データベースにおける `ALTER ANY USER` アクセス許可が必要です。 `ALTER ANY USER` アクセス許可は、任意のデータベース ユーザーに付与できます。 `ALTER ANY USER` アクセス許可は、サーバーの管理者アカウント、そのデータベースの `CONTROL ON DATABASE`または `ALTER ON DATABASE` アクセス許可を持つデータベース ユーザー、`db_owner` データベース ロールのメンバーも保持しています。
 
-Azure SQL Database または SQL Data Warehouse に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。 最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure AD 管理者を使用してデータベースに接続する必要があります。 これについては、以下の手順 4. ～ 5. で説明します。 Azure SQL Database または SQL Data Warehouse サーバーに対して Azure AD 管理者が作成された場合にのみ、任意の Azure AD 認証が可能です。 Azure Active Directory 管理者がサーバーから削除された場合、SQL Server 内に以前に作成された既存の Azure Active Directory ユーザーは、Azure Active Directory 資格情報を使用してもデータベースにアクセスできなくなります。
+Azure SQL Database または SQL Data Warehouse に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。 最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure AD 管理者を使用してデータベースに接続する必要があります。 これは、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」で説明されています。 Azure SQL Database または SQL Data Warehouse サーバーに対して Azure AD 管理者が作成された場合にのみ、任意の Azure AD 認証が可能です。 Azure Active Directory 管理者がサーバーから削除された場合、SQL Server 内に以前に作成された既存の Azure Active Directory ユーザーは、Azure Active Directory 資格情報を使用してもデータベースにアクセスできなくなります。
 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD の機能と制限事項
 Azure AD の次のメンバーを、Azure SQL Server または SQL Data Warehouse にプロビジョニングできます。
@@ -79,7 +78,6 @@ Azure AD の次のメンバーを、Azure SQL Server または SQL Data Warehous
 * ネイティブ メンバーまたはフェデレーション ドメインのメンバーである別の Azure AD からインポートされたメンバー。
 * セキュリティ グループとして作成された Active Directory グループ。
 
-Microsoft アカウント (outlook.com、hotmail.com、live.com など) またはその他のゲスト アカウント (gmail.com、yahoo.com など) はサポートされていません。 アカウントとパスワードを使用して [https://login.live.com](https://login.live.com) にログインできる場合は、Azure SQL Database または Azure SQL Data Warehouse の Azure AD 認証でサポートされていない Microsoft アカウントを使用しています。
 
 ## <a name="connecting-using-azure-ad-identities"></a>Azure AD の ID を使用した接続
 
@@ -127,5 +125,4 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 [13]: ./media/sql-database-aad-authentication/13connect-to-db.png
-
 

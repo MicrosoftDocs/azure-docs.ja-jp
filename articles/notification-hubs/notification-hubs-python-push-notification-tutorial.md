@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9ceedb9940759427fc8cec74a1307e42472563a6
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -266,7 +266,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 結果として HTTP URL が取得する通知ハブの送信要求には、"test"クエリ文字列が追加されます。 
 
-## <a name="a-namecomplete-tutorialacomplete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
+## <a name="complete-tutorial"></a>チュートリアルの完了
 ここで、Python バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
 Notification Hubs クライアントを初期化します (「 [Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
@@ -322,7 +322,7 @@ Python コードを実行すると、ターゲット デバイスに表示され
 
 ## <a name="examples"></a>次に例を示します。
 ### <a name="enabling-debug-property"></a>デバッグ プロパティを有効にする
-Notification Hubs の初期化中にデバッグ フラグを有効にすると、詳細な HTTP 要求と応答ダンプだけでなく、次のような NotificationOutcome が表示され、要求で渡される HTTP ヘッダーや Notification Hubs から受信した HTTP 応答について把握できるようになります。       ![][1]
+Notification Hubs の初期化中にデバッグ フラグを有効にすると、詳細な HTTP 要求と応答ダンプだけでなく、次のような NotificationOutcome が表示され、要求で渡される HTTP ヘッダーや Notification Hubs から受信した HTTP 応答について把握できるようになります。![][1]
 
 通知ハブの結果についての詳細が表示されます。 
 
@@ -389,10 +389,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [3]: ./media/notification-hubs-python-backend-how-to/SendWithOneTag.png
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

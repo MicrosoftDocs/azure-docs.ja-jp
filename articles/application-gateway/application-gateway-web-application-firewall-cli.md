@@ -3,7 +3,7 @@ title: "Web アプリケーション ファイアウォールの構成: Azure Ap
 description: "この記事では、既存または新規のアプリケーション ゲートウェイで Web アプリケーション ファイアウォールの使用を開始する方法について説明します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: c9c740a3a1a28a1a9a4f2abf579fe2adb54e4f47
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 999d1ad3ee54d84e155254655dbb7a39ac60572c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Azure CLI を使用して新規または既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを構成する
 
@@ -161,4 +160,3 @@ az network public-ip show \
 WAF ルールのカスタマイズ方法については、「[Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ](application-gateway-customize-waf-rules-cli.md)」を参照してください。
 
 [scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
-

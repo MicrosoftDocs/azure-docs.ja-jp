@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 170dc58363b12ec671c2fab8c80c7720d3dbf352
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>チュートリアル: Azure Active Directory と Tidemark の統合
 
@@ -45,7 +44,7 @@ Tidemark と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、こちらから 1 か月の評価版を入手できます: [評価版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -117,7 +116,7 @@ Tidemark で Azure AD のシングル サインオンを構成してテストす
     | `https://<subdomain>.tidemark.com/login` |
     | `https://<subdomain>.tidemark.net/login` |
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
+    b. **[識別子]** ボックスに、次のパターンで URL を入力します。 
     | |
     |--|
     | `https://<subdomain>.tidemark.com/saml` |
@@ -172,7 +171,7 @@ Tidemark で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-tidemark-test-user"></a>Tidemark テスト ユーザーの作成
 
@@ -235,5 +234,4 @@ Tidemark で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-tidemark-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tidemark-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tidemark-tutorial/tutorial_general_203.png
-
 

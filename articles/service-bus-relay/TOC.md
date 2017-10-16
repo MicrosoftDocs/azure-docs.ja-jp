@@ -9,10 +9,13 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF リレー](relay-wcf-dotnet-get-started.md)
+## [WCF Relay のチュートリアル](service-bus-relay-tutorial.md)
+## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)
 
 # 方法
 ## 計画と設計
 ### [認証とセキュリティ](relay-authentication-and-authorization.md)
+#### [ACS から SAS への移行](relay-migrate-acs-sas.md)
 ### [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
 ## 開発
 ### [利用可能な API](relay-api-overview.md)

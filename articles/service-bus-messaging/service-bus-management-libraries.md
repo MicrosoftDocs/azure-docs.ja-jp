@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 384066affe46bfd2917a3a14e4cfa7d2fc8a25f1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 1db00dc1f91e8976b622030450445babbe547ad8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 
 Azure Service Bus 管理ライブラリは、Service Bus の名前空間とエンティティを動的にプロビジョニングできます。 これにより、複雑なデプロイとメッセージング シナリオが可能になり、プロビジョニングするエンティティをプログラムを使用して決定できます。 現在、これらのライブラリは .NET で使用できます。
@@ -83,4 +81,3 @@ Service Bus 管理ライブラリの使用を開始するには、Azure Active D
 ## <a name="next-steps"></a>次のステップ
 * [.NET 管理のサンプル](https://github.com/Azure-Samples/service-bus-dotnet-management/)
 * [Microsoft.Azure.Management.ServiceBus API リファレンス](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
-

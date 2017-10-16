@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
-ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: a3eaf61fcfdc9dbb70561e9a81dc2b31d68d7c9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
 
@@ -169,5 +168,4 @@ Active Directory Domain Services を使用して、ドメイン コントロー�
         </a>
     </li>
 </ul>
-
 

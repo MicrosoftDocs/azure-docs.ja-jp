@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
+ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 470d4a57adf161b41a0b41061bec3840ddbf7f27
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -77,7 +76,7 @@ Shared Access Signature には、次の 2 つのフォームがあります。
 
 保存済みのアクセス ポリシーを常に使用することをお勧めします。 保存済みのポリシーを使用している場合、必要に応じて署名を失効させるか、有効期限を延長することができます。 ドキュメント内のこれらの手順は、保存済みのアクセス ポリシーを使用して、SAS を生成します。
 
-Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ### <a name="create-a-stored-policy-and-sas-using-c"></a>C\# を使用して保存済みのポリシーと SAS を作成する
 
@@ -310,4 +309,3 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs
-

@@ -3,7 +3,7 @@ title: "内部ロード バランサーの概要 | Microsoft Docs"
 description: "内部ロード バランサーとその機能の概要。Azure でのロード バランサーの機能と内部エンドポイントを構成するための考えられるシナリオ"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: tysonn
 ms.assetid: 36065bfe-0ef1-46f9-a9e1-80b229105c85
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: d324aaf8ec2c8766d5cf11452158d14c19cba4d9
-ms.lasthandoff: 04/13/2017
-
+ms.openlocfilehash: ec07c77119c2da408da21fbdc7877d0b43d16556
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="internal-load-balancer-overview"></a>内部ロード バランサーの概要
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 インターネットに接続するロード バランサーとは異なり、内部ロード バランサー (ILB) はクラウド サービス内のリソースにのみトラフィックを送信するか、VPN を使用して Azure インフラストラクチャにアクセスします。 インフラストラクチャは、クラウド サービスまたは仮想ネットワークの負荷分散された仮想 IP アドレス (VIP) へのアクセスを制限することで、インターネット エンドポイントに VIP が直接公開されないようにします。 これにより、内部の基幹業務 (LOB) アプリケーションを Azure で実行し、クラウド内やオンプレミスのリソースからアクセスできるようになります。
 
@@ -88,4 +89,3 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-

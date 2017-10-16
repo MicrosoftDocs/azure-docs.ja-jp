@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 09/14/2017
 ms.author: terrylan
+ms.openlocfilehash: 4b88b5015fcf44e8979b8b1a3aa1eb26f0fbb704
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 2ffbaca614d667db565197f3c13b1658fffc2a7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-center-platform-migration-faq"></a>Security Center プラットフォームの移行についてよく寄せられる質問
 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 ここでは、プラットフォームの移行についてよく寄せられる質問に答えます。
@@ -70,6 +69,41 @@ Security Center では、Microsoft Monitoring Agent を使用して、ユーザ�
 
 復旧するには、削除したワークスペースに接続されている VM 上の Microsoft Monitoring Agent を削除します。 Security Center によってエージェントが再インストールされ、新しい既定のワークスペースが作成されます。
 
+### <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>既存の Log Analytics ワークスペースを使用するにはどうすればよいですか?
+
+Security Center によって収集されたデータを保存する既存の Log Analytics ワークスペースを選択できます。 既存の Log Analytics ワークスペースを使用する場合、次の要件があります。
+
+- 選択した Azure サブスクリプションにワークスペースを関連付ける必要があります。
+- ワークスペースにアクセスするには、少なくとも読み取りアクセス許可が必要です。
+
+既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
+
+1. **[セキュリティ ポリシー - データ収集]** で、**[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
+
+   ![別のワークスペースを使用する][5]
+
+2. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
+
+   > [!NOTE]
+   > プルダウン メニューには、Azure サブスクリプション内の、アクセスできるワークスペースだけが表示されます。
+   >
+   >
+
+3. [ **保存**] を選択します。
+4. **[保存]** をクリックすると、監視対象の VM を再構成するかどうかをたずねられます。
+
+   - 新しいワークスペース設定を**新しい VM にのみ適用**する場合は、**[いいえ]** を選択します。 この場合、新しいワークスペース設定は、エージェントの新しいインストール (Microsoft Monitoring Agent がインストールされていない、新たに検出された VM) にのみ適用されます。
+   - 新しいワークスペース設定を**すべての VM に適用**する場合は、**[はい]** を選択します。 この場合、Security Center によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。
+
+   > [!NOTE]
+   > [はい] を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Security Center によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。
+   >
+   >
+
+   - 操作を取り消すには、**[キャンセル]** をクリックします。
+
+      ![監視対象の VM を再構成する][6]
+
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>VM の拡張機能として既に Microsoft Monitoring Agent がインストールされている場合はどうなりますか?
 Security Center は、ユーザー ワークスペースへの既存の接続を上書きしません。 Security Center は、VM のセキュリティ データを既に接続されているワークスペースに保存します。
 
@@ -80,14 +114,13 @@ Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 
 Microsoft Monitoring Extension を削除すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 Security Center は、VM に拡張機能が存在せず、拡張機能を再インストールすることが 24 時間以内に判断されます。
 
 ### <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成を停止するにはどうすればよいですか?
-セキュリティ ポリシーでサブスクリプションのデータ収集を無効にすることはできますが、推奨はされません。 データ収集を無効にすると、Security Center の推奨とアラートが制限されます。 データ収集は、Standard 価格レベルのサブスクリプションでは必須です。 データ収集を無効にするには:
+セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center の推奨事項とアラートが制限されます。 自動プロビジョニングは、Standard 価格レベルのサブスクリプションでは必須です。 自動プロビジョニングを無効にするには、次の手順に従います。
 
 1. Standard レベルのサブスクリプションを構成する場合、そのサブスクリプションのセキュリティ ポリシーを開き、**[Free]** レベルを選択します。
 
    ![[価格レベル] ][1]
 
-2. 次に、**[セキュリティ ポリシー - データ収集]** ブレードで **[オフ]** を選択してデータ収集を無効にします。
-
+2. 次に、**[セキュリティ ポリシー - データ収集]** ブレードで **[オフ]** を選択して自動プロビジョニングを無効にします。
    ![データ収集][2]
 
 ### <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか?
@@ -159,4 +192,5 @@ Security Center プラットフォームの移行の詳細については、以�
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
-
+[5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
+[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3674670e10500d2992539ab60fbdb31b666fcf9a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync と Azure Active Directory Sync のアップグレード
 Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日でサポートが終了するため、Azure AD Connect へアップグレードする絶好の機会です。
 
@@ -31,7 +29,7 @@ Azure AD Connect は、オンプレミス ディレクトリと Azure AD およ�
 DirSync の最終リリースは 2014 年 7 月、Azure AD Sync の最新リリースは 2015 年 5 月にリリースされています。
 
 ## <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
-Azure AD Connect は DirSync と Azure AD Sync の後継となります。 Azure AD Connect は、この 2 つがサポートされるすべてのシナリオを結合します。 詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+Azure AD Connect は DirSync と Azure AD Sync の後継となります。Azure AD Connect は、この 2 つがサポートされるすべてのシナリオを結合します。 詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 ## <a name="deprecation-schedule"></a>廃止のスケジュール
 | Date | コメント |
@@ -71,4 +69,3 @@ FIM または MIM の Azure AD コネクタは、**廃止とは発表されて�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

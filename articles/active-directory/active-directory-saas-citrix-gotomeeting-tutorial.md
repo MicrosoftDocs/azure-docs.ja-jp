@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: c1ac144c4fa43312ec26fce03cd0ee1bfcf73d4b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-gotomeeting"></a>チュートリアル: Azure Active Directory と Citrix GoToMeeting の統合
 
@@ -173,7 +171,7 @@ Citrix GoToMeeting で Azure AD シングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-citrix-gotomeeting-test-user"></a>Citrix GoToMeeting テスト ユーザーの作成
 
@@ -240,5 +238,4 @@ Citrix GoToMeeting で Azure AD シングル サインオンを構成してテ�
 [201]: ./media/active-directory-saas-citrix-gotomeeting-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-citrix-gotomeeting-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-citrix-gotomeeting-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b110b2e3041cf7839d1bf1c4d384b28b243efbd8
-ms.openlocfilehash: c1653c769a6b42d18ffb0da71220ce06c6556587
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: cbf8f729d0ebfb271bb0d8702ac043442b42c262
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。
@@ -53,4 +52,3 @@ Office 365 グループは、オンプレミスの AD DS では配布グルー�
 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」に進んでください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

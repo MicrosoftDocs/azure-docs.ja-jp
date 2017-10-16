@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 0a09b35e98dc0b2f5283c2a707a3a2b8ac9a39f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-physical-servers-to-azure-with-site-recovery"></a>Site Recovery を使用して物理サーバーを Azure にレプリケートする
 
@@ -98,5 +96,4 @@ ms.lasthandoff: 06/29/2017
 初期レプリケーションが完了した後で差分レプリケーションが実行されているときに、テスト フェールオーバーを実行して、すべてが予期したとおりに動作することを確認できます。
 
 [手順 11: テスト フェールオーバーを実行する](physical-walkthrough-test-failover.md)方法に関するページに進む
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する
 このドキュメントでは、Azure 仮想マシンに論理ボリューム マネージャー (LVM) を構成する方法を説明します。 仮想マシンにアタッチされているすべてのディスクに LVM を構成できますが、既定では、ほとんどのクラウド イメージでは OS ディスクに構成された LVM はありません。 これは、ディストリビューションと種類が同じ別の VM に OS ディスクがアタッチされている場合のボリューム グループの重複に伴う問題、つまり回復シナリオにおける問題を予防するためです。 したがって、LVM は、データ ディスクでのみ使用することをお勧めします。
@@ -178,4 +177,3 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     # sudo yum install util-linux
     # sudo fstrim /datadrive
     ```
-

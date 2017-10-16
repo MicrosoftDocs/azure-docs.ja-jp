@@ -8,6 +8,8 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 仮想マシンで実行されるアプリケーションは、Azure Metadata Service for [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) または Azure Metadata Service for [Linux](../articles/virtual-machines/linux/instance-metadata-service.md) を使って、今後の更新についての情報を収集できます。
 
+計画済みメンテナンスを管理する場合の「方法」については、[Linux](../articles/virtual-machines/linux/maintenance-notifications.md) または [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) の計画済みメンテナンスの通知の処理に関するページを参照してください。
+
 ## <a name="in-place-vm-migration"></a>インプレース VM 移行
 
 完全な再起動が不要である更新については、インプレースのライブ移行が使用されます。 更新中、仮想マシンは約 30 秒間一時停止状態になり、RAM 内のメモリは保持されます。その間に、ホスティング環境によって必要な更新プログラムとパッチが適用されます。 その後仮想マシンが再開され、仮想マシンの時計が自動的に同期されます。

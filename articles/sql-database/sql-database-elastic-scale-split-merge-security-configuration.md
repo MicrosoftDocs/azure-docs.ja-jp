@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: 7e6ccf51a4b75eef16a7df5c1a1018954af8e5dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -436,7 +434,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 9. すべてのダイアログ ウィンドウで **[OK]** をクリックします。
 
 ## <a name="upload-certificate"></a>証明書のアップロード
-[Azure ポータル](https://portal.azure.com/)
+[Azure Portal](https://portal.azure.com/)
 
 1. **[クラウド サービス]**を選択します。
 2. クラウド サービスを選択します。
@@ -454,5 +452,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 このデータベースに格納されている資格情報が暗号化されます。 ただし、ベスト プラクティスとして、サービス デプロイメントにおける Web ロールとワーカー ロールの両方を最新に保ち、両者がメタデータのデータベースと保存された資格情報の暗号化と解読に使用する証明書へアクセスする際の安全性が保たれるようにします。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 

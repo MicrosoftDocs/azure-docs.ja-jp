@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/14/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 6dca59ddd5fe524b7778abe770b6387f8bb24f01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
-
+ms.openlocfilehash: ca7282e5bc9bac7677d382fd9c263f05be9ef196
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-marketplace-documentation"></a>Azure Marketplace のドキュメント
 
@@ -61,6 +60,5 @@ Azure Marketplace について紹介します。Azure Marketplace は、新興�
         </a>
     </li>    
 </ul>
-
 
 

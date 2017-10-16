@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
-ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
@@ -39,16 +38,16 @@ ms.lasthandoff: 01/05/2017
 **アプリケーション データ**: ユニバーサル Windows アプリは、設定データを Roaming フォルダーに書き込むことができます。このフォルダーに書き込まれたデータはすべて自動的に同期されます。 この機能を利用するようにアプリを設計するかどうかは、アプリ開発者ごとの判断となります。 ローミングを使用するようにユニバーサル Windows アプリを開発する方法の詳細については、[アプリ データ ストレージ API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) と[アプリ データのローミングに関する Windows 8 アプリ開発者ブログ](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)を参照してください。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>設定の同期に使用されるアカウントは
-Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。 Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
+Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
 
 プライマリ アカウントは、Windows へのサインインに使用するアカウントとして定義されています。 Microsoft アカウントや Azure Active Directory (Azure AD) アカウント、オンプレミスの Active Directory アカウント、ローカル アカウントが該当します。 Windows 10 のユーザーは、プライマリ アカウントに加え、1 つまたは複数のセカンダリ クラウド アカウントを各自のデバイスに追加することができます。 一般に、セカンダリ アカウントとは、Microsoft アカウントや Azure AD アカウントのほか、Gmail や Facebook といったアカウントのことを指します。 セカンダリ アカウントで、シングル サインオンや Windows ストアなど追加のサービスにアクセスすることはできますが、設定の同期機能にアクセスすることはできません。
 
 Windows 10 における設定の同期機能に使用できるのは、デバイスのプライマリ アカウントだけです (「[Windows 8 における Microsoft アカウントでの設定の同期を Windows 10 における Azure AD での設定の同期にアップグレードするとどうなりますか](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)」を参照)。
 
-デバイス上の異なるユーザー アカウントのデータがミックスされることはありません。 設定の同期には次の&2; つの規則があります。
+デバイス上の異なるユーザー アカウントのデータがミックスされることはありません。 設定の同期には次の 2 つの規則があります。
 
 * Windows の設定は常にプライマリ アカウントでローミングされます。
-* アプリのデータは、そのアプリを取得する際に使われたアカウントでタグ付けされます。 同期されるのは、プライマリ アカウントでタグ付けされたアプリだけです。 アプリの所有権タグは、Windows ストアやモバイル デバイス管理 (MDM) 経由でアプリをサイド ローディングしたときに決定されます。
+* アプリのデータは、そのアプリを取得する際に使われたアカウントでタグ付けされます。 同期されるのは、プライマリ アカウントでタグ付けされたアプリだけです。アプリの所有権タグは、Windows ストアやモバイル デバイス管理 (MDM) 経由でアプリをサイド ローディングしたときに決定されます。
 
 アプリの所有者を特定できない場合は、プライマリ アカウントでローミングされます。 デバイスが Windows 8 や Windows 8.1 から Windows 10 にアップグレードされると、すべてのアプリが Microsoft アカウントで取得されたようにタグ付けされます。 これは、ほとんどのユーザーがアプリを Windows ストアを通じて取得し、Windows 10 以前の Azure AD アカウントでは Windows ストアのサポートがなかったために起こります。 オフライン ライセンスでインストールされたアプリは、そのデバイス上のプライマリ アカウントでタグ付けされます。
 
@@ -73,13 +72,13 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>複数テナントの Azure AD アカウントが存在する場合、設定は同期されますか
 異なる Azure AD テナントに属している複数の Azure AD アカウントが同じデバイスに存在する場合、その各 Azure AD テナントについて、Azure Rights Management Service (Azure RMS) と通信するようにデバイスのレジストリを更新する必要があります。  
 
-1. 各 Azure AD テナントの GUID を見つけます。 Azure クラシック ポータルを開いて Azure AD テナントを選択します。 テナントの GUID は、お使いのブラウザーのアドレス バーに表示される URL で確認できます。 次に例を示します。 `https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
+1. 各 Azure AD テナントの GUID を見つけます。 Azure クラシック ポータルを開いて Azure AD テナントを選択します。 テナントの GUID は、お使いのブラウザーのアドレス バーに表示される URL で確認できます。 次に例を示します。`https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
 2. GUID を特定したら、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** を追加する必要があります。
    **テナント ID の GUID** キーから、**AllowedRMSServerUrls** という名前の新しい複数行文字列値 (REG-MULTI-SZ) を作成します。 そのデータに対して、デバイスがアクセスする他の Azure テナントのライセンス配布ポイントの URL を指定します。
 3. ライセンス配布ポイントの URL は、 **Get-AadrmConfiguration** コマンドレットを実行して確認できます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>既存の Windows デスクトップ アプリケーションに使用されるローミングの設定に関しては、どのような選択肢がありますか
-ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の&2; つの選択肢があります。
+ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の 2 つの選択肢があります。
 
 * [Desktop Bridge](http://aka.ms/desktopbridge) を使用する。既存の Windows デスクトップ アプリをユニバーサル Windows プラットフォームに移行できます。 そこから、ごくわずかな変更をコードに加えることで、Azure AD のアプリ データ ローミングを利用できるようになります。 既存のデスクトップ アプリは、そのデータのローミングに必要なアプリ ID を Desktop Bridge から得ることができます。
 * [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) を使用する。Win32 アプリについては、UE-V を使用して既存の Windows デスクトップ アプリ用のカスタム設定テンプレートを作成し、ローミングを有効にできます。 この方法を選んだ場合、アプリの開発者がそのコードを変更する必要はありません。 UE-V は、オンプレミスの Active Directory ローミングに限られ、Microsoft Desktop Optimization Pack を購入済みであることが必要となります。
@@ -129,4 +128,3 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-

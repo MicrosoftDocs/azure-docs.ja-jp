@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dc5f98fd548512801c705f942e30df5e6b95d542
-ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/31/2017
-
+ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -129,7 +128,7 @@ Swift バージョンでは、プッシュ操作は必ずしも必要ではな�
 
 Objective-C と Swift のどちらのバージョンでも、**pullWithQuery** メソッドを使用して、取得するレコードをフィルター処理するクエリを指定できます。 この例のクエリでは、リモートの `TodoItem` テーブルのすべてのレコードを取得します。
 
-**pullWithQuery** の 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。 増分同期では、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して、前回の同期以降に変更されたレコードだけを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、クエリ ID として `nil` を渡します。 この方法では、プル操作のたびにすべてのレコードを取得するため、非効率的になる可能性があります。
+**pullWithQuery** の 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `updatedAt` と呼ばれます) を使用して、前回の同期以降に変更されたレコードだけを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。 増分同期を解除するには、クエリ ID として `nil` を渡します。 この方法では、プル操作のたびにすべてのレコードを取得するため、非効率的になる可能性があります。
 
 Objective-C のアプリは、データを変更または追加したとき、ユーザーが更新操作を実行したとき、および起動時に同期します。
 
@@ -287,4 +286,3 @@ Core Data ローカル ストアを使用するときは、[正しいシステ�
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
-

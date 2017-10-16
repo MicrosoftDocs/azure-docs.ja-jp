@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/06/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
 ms.openlocfilehash: 0ca1ccd273317d67537d31724d566625a4eb2c85
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-access-control"></a>Azure SQL Database のアクセス制御
 SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 
@@ -68,4 +67,3 @@ SQL Database は、2 種類の認証をサポートしています。
 - ユーザーとログインの詳細については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。 
 - プロアクティブな監視の詳細については、[データベース監査](sql-database-auditing.md)と[SQL Database の脅威の検出](sql-database-threat-detection.md)に関するページを参照してください。
 - チュートリアルについては、「[Azure SQL Database のセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
-

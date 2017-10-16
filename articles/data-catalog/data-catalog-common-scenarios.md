@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 63f951fbfc9ab5adad8f9225c2827abcbdb7f784
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: e01e6fa3b9871541bf9573963ced05848a3726e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure Data Catalog の一般的なシナリオ
 この記事では、Azure Data Catalog を使用して組織が既存のデータ ソースからさらなる価値を得ることができる一般的なシナリオを紹介します。
@@ -68,4 +67,3 @@ Azure Data Catalog を使用すると、組織はこの作業のサイクルを�
 通常、データ エキスパートは、電子メール経由、またはチームの SharePoint サイトで Word 文書を共有して、知識を文書化する取り組みをします。 この取り組みは有用かもしれませんが、どのようなドキュメントがどこに存在するかをどのようにして知ることができるか、という検出に関する新しい問題が生じます。
 
 Azure Data Catalog を使用することで、組織はこうした組織固有の知識を保存および共有するための一元化された場所を持ち、簡単に検出できるようになります。 Data Catalog では、データ エキスパートは、データ資産に直接注釈を付け、既存のドキュメントへのリンクを提供できます。 組織のメンバーがカタログを使用してデータ ソースを検出すると、データ ソースだけでなく、以前は組織のエキスパートの頭の中だけにあった知識も検索することになります。
-

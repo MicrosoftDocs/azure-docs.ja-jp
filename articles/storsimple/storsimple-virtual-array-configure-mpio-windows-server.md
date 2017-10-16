@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/01/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: c75c6ed40754aee964e2b68f4f569dc1422507f2
-ms.lasthandoff: 05/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>Windows Server ホストで StorSimple Virtual Array 向けにマルチパス I/O を構成する
 ## <a name="overview"></a>概要
@@ -127,7 +127,7 @@ Windows Server で MPIO が構成されると、StorSimple アレイに作成さ
     
     5. 目的のセッション (パス) を追加した後、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、ターゲットを選択し、**[プロパティ]** をクリックします。 **[プロパティ]** ダイアログ ボックスの [セッション] タブで、可能なパスの順列に対応する 4 つのセッション ID を確認します。 セッションを取り消すには、セッション ID の横にあるチェック ボックスをオンにして、 **[切断]**をクリックします。
 
-    6. セッション内に示されるデバイスを表示するには、 **[デバイス]** タブを選択します。 選択したデバイスの MPIO ポリシーを構成するには、 **[MPIO]**をクリックします。
+    6. セッション内に示されるデバイスを表示するには、 **[デバイス]** タブを選択します。選択したデバイスの MPIO ポリシーを構成するには、 **[MPIO]**をクリックします。
 
     7. **[詳細]** ダイアログ ボックスが表示されます。 **[MPIO]** タブで、適切な **[負荷分散ポリシー]** の設定を選択できます。 **[アクティブ]** または **[スタンバイ]** のパスの種類を表示することもできます。
 12. 追加のセッション (パス) をターゲットに追加するには、手順 8. ～ 11. を繰り返します。 ホスト上の 2 つのインターフェイスと仮想アレイ上の 2 つのインターフェイスを使用して、各ターゲットに合計 4 つのセッションを追加できます。 
@@ -157,5 +157,4 @@ Windows Server で MPIO が構成されると、StorSimple アレイに作成さ
    
 ## <a name="next-steps"></a>次のステップ
 [StorSimple デバイス マネージャー サービスを使用した StorSimple Virtual Array の管理](storsimple-virtual-array-manager-service-administration.md)の詳細を確認します。
-
 

@@ -1,10 +1,10 @@
 ---
-title: "Wingtip SaaS の概要 - Azure SQL Database マルチテナント アプリ | Microsoft Docs"
-description: "Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使って、Wingtip SaaS アプリについて説明します。"
+title: "Azure SQL Database マルチテナント アプリの例 - Wingtip SaaS | Microsoft Docs"
+description: "Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使って、Wingtip SaaS の例について説明します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 6d4a5df599137e95ca5458fae74b8daa565b0338
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
-
+ms.openlocfilehash: 68a9d97a881f3a7628a08b66091c3feb4c4dbbfe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-to-the-wingtip-saas-application"></a>Wingtip SaaS アプリケーションの概要
+# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL Database のマルチ テナント SaaS アプリの例の概要
 
 *Wingtip SaaS* アプリケーションは、SQL Database の独自のメリットを示すためのサンプルのマルチテナント アプリです。 このアプリは、SaaS アプリケーション パターンとしてテナント単位のデータベースを使用して、複数のテナントにサービスを提供します。 アプリの目的は、複数の SaaS の設計と管理のパターンを含む各種の SaaS シナリオを実現している Azure SQL Database の機能を紹介することにあります。 このアプリをすぐに使い始めるために、Wingtip SaaS アプリを 5 分以内でデプロイできます。
 

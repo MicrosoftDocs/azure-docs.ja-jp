@@ -1,6 +1,6 @@
 ---
-title: Publish a custom marketplace item in Azure Stack (cloud operator) | Microsoft Docs
-description: As a cloud operator, learn how to publish a custom marketplace item in Azure Stack.
+title: "Azure Stack でのカスタム Marketplace アイテムの発行 (クラウド オペレーター) | Microsoft Docs"
+description: "Azure Stack オペレーターとして、Azure Stack でカスタム Marketplace アイテムを発行する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,34 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
+ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be61e746d97fbce166f44262fcc33e2f7118fd82
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>The Azure Stack Marketplace overview
-The Marketplace is a collection of services, applications, and resources customized for Azure Stack, like networks, virtual machines, storage, and so on. Users come here to create new resources and deploy new applications. Think of it as a shopping catalog where users can browse and choose the items they want to use. To use a Marketplace item, users must subscribe to an offer that grants them access to the item.
+# <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
-As a cloud operator, you decide which items to add (publish) to the Marketplace. You can publish things like databases, App Services, and so on. This makes them visible to all your users. You can publish custom items that you create. You can also publish items from a growing [list of Azure Marketplace items](azure-stack-marketplace-azure-items.md). When you publish an item to the Marketplace, users can see it within five minutes.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-To open the Marketplace, click **New**.
+Marketplace は、ネットワーク、仮想マシン、ストレージなどの Azure Stack 向けにカスタマイズされたサービス、アプリケーション、リソースのコレクションです。 ユーザーはここで、新しいリソースを作成して、新しいアプリケーションをデプロイします。 ユーザーが使用する商品を参照し、選択できるショッピング カタログと考えてください。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるサービスにサブスクライブする必要があります。
+
+Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 これにより、すべてのユーザーに対してそれらが表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
+
+Marketplace を開くには、 **[新規]**をクリックします。
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
-## <a name="marketplace-items"></a>Marketplace items
-An Azure Stack Marketplace item is a service, application, or resource that your users can download and use. All Azure Stack Marketplace items are visible to all your users.
+## <a name="marketplace-items"></a>Marketplace アイテム
+Azure Stack Marketplace の項目は、ユーザーがダウンロードおよび使用できるサービス、アプリケーション、またはリソースです。 すべての Azure Stack Marketplace のアイテムは、すべてのユーザーに表示されます。
 
-Every Marketplace item has:
+各 Marketplace アイテムには以下のものが含まれます。
 
-* An Azure Resource Manager template for resource provisioning
-* Metadata, like strings, icons, and other marketing collateral
-* Formatting information to display the item in the portal
+* リソース プロビジョニングの Azure リソース マネージャー テンプレート
+* 文字列、アイコン、その他のマーケティング資料などのメタデータ
+* ポータルでアイテムを表示するための書式設定情報
 
-Every item published to the Marketplace uses a format called the Azure Gallery Package (azpkg). Add deployment or runtime resources (like code, zip files with software, or virtual machine images) to Azure Stack separately, not as part of the Marketplace Item. 
+Marketplace に発行されるすべてのアイテムでは、Azure ギャラリー パッケージ (azpkg) と呼ばれる形式を使用します。 デプロイまたは実行時リソース (コード、ソフトウェアの zip ファイル、または仮想マシン イメージなど) を Marketplace アイテムの一部ではなく、Azure Stack に個別に追加します。 
 
-## <a name="next-steps"></a>Next steps
-[Create and publish a marketplace item](azure-stack-create-and-publish-marketplace-item.md)
-
+## <a name="next-steps"></a>次のステップ
+[Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)
 

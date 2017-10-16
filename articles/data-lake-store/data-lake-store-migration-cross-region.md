@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a0eecbb50b001325c91d1d721bf8de7244f04674
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>リージョン間で Data Lake Store を移行する
 
@@ -29,7 +28,7 @@ Azure Data Lake Store が新しいリージョンで利用できるようにな�
 
 * **Azure サブスクリプション**。 詳細については、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * **2 つの異なるリージョンの Data Lake Store アカウント**。 詳細については、[Azure Data Lake Store の使用](data-lake-store-get-started-portal.md)に関するページをご覧ください。
-* **Azure Data Factory**。 詳細については、[Azure Data Factory の概要](../data-factory/data-factory-introduction.md)に関するページをご覧ください。
+* **Azure Data Factory**。 詳細については、[Azure Data Factory の概要](../data-factory/introduction.md)に関するページをご覧ください。
 
 
 ## <a name="migration-considerations"></a>移行に関する考慮事項
@@ -44,7 +43,7 @@ Azure Data Lake Store が新しいリージョンで利用できるようにな�
 
 * **Data Lake Store アカウント名**。 新しいリージョンの新しいアカウント名はグローバルに一意である必要があります。 たとえば、米国東部 2 の古い Data Lake Store アカウントの名前が contosoeastus2.azuredatalakestore.net である場合、 北ヨーロッパの新しい Data Lake Store アカウントに contosonortheu.azuredatalakestore.net という名前を付けることができます。
 
-* **ツール**。 Data Lake Store のファイルをコピーする場合は、[Azure Data Factory のコピー アクティビティ](../data-factory/data-factory-azure-datalake-connector.md)を使用することをお勧めします。 Data Factory では、パフォーマンスと信頼性に優れたデータ移動がサポートされています。 Data Factory によってコピーされるのは、フォルダー階層とファイルの内容のみであることに注意してください。 古いアカウントで使用しているアクセス制御リスト (ACL) はすべて、新しいアカウントに手動で適用する必要があります。 最良のシナリオのパフォーマンス目標も含めた詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](../data-factory/data-factory-copy-activity-performance.md)」をご覧ください。 より迅速にデータをコピーしたい場合は、追加のクラウド データ移動単位の使用が必要になることがあります。 他の一部のツール (AdlCopy など) では、リージョン間のデータのコピーがサポートされていません。  
+* **ツール**。 Data Lake Store のファイルをコピーする場合は、[Azure Data Factory のコピー アクティビティ](../data-factory/connector-azure-data-lake-store.md)を使用することをお勧めします。 Data Factory では、パフォーマンスと信頼性に優れたデータ移動がサポートされています。 Data Factory によってコピーされるのは、フォルダー階層とファイルの内容のみであることに注意してください。 古いアカウントで使用しているアクセス制御リスト (ACL) はすべて、新しいアカウントに手動で適用する必要があります。 最良のシナリオのパフォーマンス目標も含めた詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](../data-factory/copy-activity-performance.md)」をご覧ください。 より迅速にデータをコピーしたい場合は、追加のクラウド データ移動単位の使用が必要になることがあります。 他の一部のツール (AdlCopy など) では、リージョン間のデータのコピーがサポートされていません。  
 
 * **帯域幅の料金**。 Azure リージョンからデータが転送されるため、[帯域幅の料金](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)が適用されます。
 
@@ -54,4 +53,3 @@ Azure Data Lake Store が新しいリージョンで利用できるようにな�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
-

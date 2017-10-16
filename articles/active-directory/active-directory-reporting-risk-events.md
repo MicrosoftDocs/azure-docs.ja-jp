@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -184,4 +183,3 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 リスク イベントの検出は既に ID 保護の重要な側面となっていますが、リスク イベントに手動で対処することも、条件付きアクセス ポリシーを構成して自動応答を実装することもできます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
  
-

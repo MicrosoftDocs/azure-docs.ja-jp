@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4acea8e7f4714754e6b3e54e9aaa622219ca9f7f
-ms.openlocfilehash: f16d981a0dc33295c1981d9c282beb1d3243d9ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/03/2016
-
-
+ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>PowerShell でのクラウド サービスのスケールの設定方法
 
@@ -81,4 +79,3 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 ## <a name="next-steps"></a>次のステップ
 
 PowerShell からクラウド サービスの自動スケールを構成することはできません。 自動スケールの構成については、「[クラウド サービスの自動スケールの方法](cloud-services-how-to-scale-portal.md)」を参照してください。
-

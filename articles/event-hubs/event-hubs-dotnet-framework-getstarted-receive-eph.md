@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/12/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: c97cd41e503b5f2792f55e27038a2e07e254826e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 5d2f6f53af182a8ac0430de0ca3701a9a30e0bf4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs からイベントを受信する
 
@@ -186,4 +185,3 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 [Azure Storage account]:../storage/common/storage-create-storage-account.md
 [Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
 [Azure portal]: https://portal.azure.com
-

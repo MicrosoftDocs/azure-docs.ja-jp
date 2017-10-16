@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 818f6513625a2677668dd6b6869ef969fe015bf7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
@@ -148,7 +146,6 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 [3]: ./media/network-watcher-packet-capture-manage-portal/figure3.png
 [4]: ./media/network-watcher-packet-capture-manage-portal/figure4.png
 [agent]: ./media/network-watcher-packet-capture-manage-portal/agent.png
-
 
 
 

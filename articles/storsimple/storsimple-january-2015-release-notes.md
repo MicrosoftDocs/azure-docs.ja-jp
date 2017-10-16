@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/16/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9b5773f0152a8ff377169041b28fa1782288217
-
-
+ms.openlocfilehash: 2fc50f7faddb4b61ea5e7d328469fc3cc0eb6f3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-02-release-notes---january-2015"></a>StorSimple 8000 シリーズ Update 0.2 リリース ノート - 2015 年 1 月
 ## <a name="overview"></a>概要
@@ -71,10 +71,4 @@ ms.openlocfilehash: e9b5773f0152a8ff377169041b28fa1782288217
 
 ## <a name="virtual-device-updates-in-the-january-release"></a>1 月のリリースでの仮想デバイスの更新プログラム
 このリリースには、仮想デバイスの更新されたイメージが含まれています。 2015 年 1 月 20 日以降に作成されたすべての仮想デバイスには、ソフトウェア バージョンが 6.3.9600.17361 と表示されます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

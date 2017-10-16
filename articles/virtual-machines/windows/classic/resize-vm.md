@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルで作成された Windows VM のサイズ変更
 この記事では、クラシック デプロイメント モデルで作成された Windows VM のサイズを Azure Powershell を使用して変更する方法について説明します。
@@ -69,5 +68,4 @@ VM をホストしているハードウェア クラスターで使用できな�
 
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
 

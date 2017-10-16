@@ -34,7 +34,7 @@
        1. ACR の **[名前]** を入力します。
        2. **[ISCSI イニシエーターの名前]**に Windows ホストの iSCSI 修飾名 (IQN) を指定します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
 
-    9. ページの下部にある **[Create]**」を参照してください。 指定した設定でボリュームが作成されます。
+    9. **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
         ![Click Create](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

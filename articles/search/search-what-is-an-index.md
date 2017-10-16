@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
 ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-index"></a>Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
 > 
 
 ## <a name="what-is-an-index"></a>インデックスとは
-*インデックス*とは、Azure Search サービスで使用される*ドキュメント*などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の&1; 単位の検索可能なデータです。 たとえば、e コマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
+*インデックス*とは、Azure Search サービスで使用される*ドキュメント*などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、e コマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
 
 ドキュメントを追加/アップロードして検索クエリを Azure Search に送信する場合、検索サービス内の特定のインデックスへの要求を送信していることになります。
 
@@ -65,10 +65,4 @@ Azure Search のインデックス属性の詳細については、[このペー
 インデックスを設計する際は、計画フェーズに時間をかけ、それぞれの決定項目を十分に検討してください。 各フィールドには [適切な属性](https://docs.microsoft.com/rest/api/searchservice/Create-Index)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。 デプロイ後にインデックスを変更するには、再構築とデータの再読み込みが必要になります。
 
 データ ストレージの要件が随時変更される環境でも、パーティションを追加または削除することで容量を増減できます。 詳細については、「[Microsoft Azure で Search サービスを管理する](search-manage.md)」または「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

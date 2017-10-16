@@ -12,16 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 6/5/2016
+ms.date: 9/13/2017
 ms.custom: loading
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6938b92d8e5b46d908dc5b2155bdfdc89bb1dc8c
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 7594a0730477fe3f3bd34b0b6207478de70c7595
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase を使用するためのガイド
@@ -46,21 +44,9 @@ Azure ストレージ アカウント キーの交換は、次のシンプルな
 2. プライマリ ストレージ アクセス キーに基づいた 1 つ目のデータベース スコープ資格情報を削除します
 3. Azure にログインし、次回に備えてプライマリ アクセス キーを再生成します
 
-## <a name="query-azure-blob-storage-data"></a>Azure BLOB ストレージ データのクエリ
-外部テーブルに対するクエリでは、リレーショナル テーブルであるかのように、単にテーブル名が使用されます。
 
-```sql
--- Query Azure storage resident data via external table.
-SELECT * FROM [ext].[CarSensor_Data]
-;
-```
 
-> [!NOTE]
-> 外部テーブルに対するクエリが、 *"クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました"*というエラーで失敗する場合があります。 これは、外部データに *ダーティ* なレコードが含まれていることを示します。 データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。 これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
-> 
-> 
-
-## <a name="load-data-from-azure-blob-storage"></a>Azure BLOB ストレージからのデータのロード
+## <a name="load-data-with-external-tables"></a>外部テーブルを使用してデータを読み込む
 この例では、Azure BLOB ストレージから SQL Data Warehouse データベースにデータをロードします。
 
 データを直接格納すると、クエリのデータ転送に要する時間が削減されます。 columnstore インデックスを使用してデータを格納すると、分析クエリに対するクエリのパフォーマンスが最大で 10 倍改善されます。
@@ -86,6 +72,12 @@ FROM   [ext].[CarSensor_Data]
 
 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] に関するページを参照してください。
 
+> [!NOTE]
+> 外部テーブルを使用した読み込みが、"*クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました*" というエラーで失敗する場合があります。 これは、外部データに *ダーティ* なレコードが含まれていることを示します。 データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。 これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+> 
+> 
+
+
 ## <a name="create-statistics-on-newly-loaded-data"></a>新しくロードしたデータの統計を作成する
 Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。  クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。  統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。  この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
 
@@ -97,8 +89,8 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="export-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをエクスポートする
-このセクションでは、SQL Data Warehouse から Azure BLOB ストレージにデータをエクスポートする方法を示します。 この例では、すべてのコンピューティング ノードからデータを同時にエクスポートする高パフォーマンス Transact-SQL ステートメントである CREATE EXTERNAL TABLE AS SELECT を使用します。
+## <a name="export-data-with-external-tables"></a>外部テーブルを使用してデータをエクスポートする
+このセクションでは、外部テーブルを使用して SQL Data Warehouse から Azure BLOB ストレージにデータをエクスポートする方法を示します。 この例では、すべてのコンピューティング ノードからデータを同時にエクスポートする高パフォーマンス Transact-SQL ステートメントである CREATE EXTERNAL TABLE AS SELECT を使用します。
 
 次の例では、dbo.Weblogs テーブルの列の定義とデータを使用して、外部テーブル Weblogs2014 を作成します。 外部テーブルの定義は、SQL Data Warehouse に格納されます。また、SELECT ステートメントの結果は、データ ソースで指定された BLOB コンテナーにある "/archive/log2014/" ディレクトリにエクスポートされます。 データは、指定されたテキスト ファイル形式でエクスポートされます。
 
@@ -132,6 +124,21 @@ WHERE
 ```   
  これで、user_A と user_B は他の部門のスキーマからロックアウトされます。
  
+## <a name="polybase-performance-optimizations"></a>PolyBase によるパフォーマンスの最適化
+PolyBase による最適な読み込みパフォーマンスを実現するには、以下を行うことをお勧めします。
+- 大きな圧縮ファイルは小さな圧縮ファイルに分割します。 現在サポートされている圧縮の種類は分割可能ではありません。 その結果、1 つの大きなファイルの読み込みは、パフォーマンスに影響を与えます。
+- 最速で読み込むには、ラウンド ロビン式ヒープ ステージング テーブルに読み込みます。 これは、ストレージ層からデータ ウェアハウスにデータを移動する最も効率的な方法になります。
+- すべてのファイル形式は、異なるパフォーマンス特性を持っています。 最速で読み込むには、圧縮されたテキスト区切りファイルを使用します。 UTF-8 と UTF-16 のパフォーマンスの違いはごくわずかです。
+- ストレージ層とデータ ウェアハウスを併置して、待機時間を最小限に抑えます。
+- 大規模な読み込みジョブが予想される場合は、データ ウェアハウスをスケール アップします。
+
+## <a name="polybase-limitations"></a>PolyBase の制限事項
+SQL DW の PolyBase には、読み込みジョブを設計するときに考慮する必要がある次の制限事項があります。
+- 1 行の幅は 1,000,000 バイトを超えることはできません。 これは、定義済みの (n)varchar(max) 列を含むテーブル スキーマとは無関係に適用されます。 つまり、外部テーブルの (n)varchar(max) 列は、最大 1,000,000 バイトの幅が可能であり、データ型によって定義される 2 GB の制限は適用されません。
+- SQL Server または Azure SQL Data Warehouse から ORC ファイル形式にデータをエクスポートする場合、テキストが多く使用されている列は、java のメモリ不足エラーにより、わずか 50 列に制限される可能性があります。 これを回避するには、列のサブセットのみをエクスポートします。
+
+
+
 
 
 ## <a name="next-steps"></a>次のステップ

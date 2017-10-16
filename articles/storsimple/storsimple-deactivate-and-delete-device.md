@@ -15,13 +15,11 @@ ms.workload: na
 ms.date: 05/17/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>StorSimple Manager サービスを介した StorSimple 8000 シリーズ デバイスの非アクティブ化と削除
 ## <a name="overview"></a>概要
@@ -96,5 +94,4 @@ StorSimple 仮想デバイスの場合、非アクティブ化すると仮想マ
 * 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「 [デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 * 技術的な詳細については、 [Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。 
-
 

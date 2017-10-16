@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 30ccdc62e68ff86d693b9eb3477c65e4e6a1fe3f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 103643ace17961cd4e2e37313f75c775e3dcd8cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/30/2017
 
   >[!Note]
   > Windows Server 2016 ホストと 2012 R2 ホストが混在する System Center Virtual Machine Manager 2016 クラウドは、現在サポートされていません。
-
+  > 既存の SCVMM 2012 R2 から 2016 へのアップグレードを含む構成は、現在サポートされていません。
 ### <a name="host-servers"></a>ホスト サーバー
 
 **デプロイ** | **サポート**

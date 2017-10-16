@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9abec188a5677942fd9eb9192c4067d2851a1969
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: c8f98536048a85ebb3f061d840457130579196d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションを構成する方法
 
 この記事では、Azure AD 内にアプリケーション プロキシ アプリケーションを構成して、オンプレミスのアプリケーションをクラウドに公開する方法を説明しています。
@@ -75,4 +73,3 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)
-

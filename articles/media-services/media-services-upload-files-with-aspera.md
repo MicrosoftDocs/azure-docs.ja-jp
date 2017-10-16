@@ -1,6 +1,6 @@
 ---
 title: "Aspera を使用した Azure Media Services アカウントへのファイルのアップロード | Microsoft Docs"
-description: "このチュートリアルでは、Azure 上の **Aspera Server On Demand** サービスを使って、Media Services アカウントに関連付けられているストレージ アカウントにファイルをアップロードする手順について説明します。"
+description: "このチュートリアルを使用して Media Services アカウントに関連付けられているストレージ アカウントにファイルをアップロードする手順を説明します。、* * Aspera Server で必要に応じて * * Azure 上のサービスです。"
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 86cb6a979d3aa429c0f501a5ebf37db4bff8ba99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする
 
@@ -137,5 +136,4 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

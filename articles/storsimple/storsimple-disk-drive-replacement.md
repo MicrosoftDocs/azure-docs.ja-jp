@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8f6da61b02a1289be0fa3444fd4dcfbe487068f
-
-
+ms.openlocfilehash: 0659ab9d304dbfcce72e8c3c79edad68e70b9630
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-device"></a>StorSimple デバイスのディスク ドライブを交換する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Microsoft Azure StorSimple デバイスの正常に動作していない、または障害が発生しているハード ディスク ドライブを取り外して交換する方法について説明します。 ディスク ドライブを交換するには、次の操作を行う必要があります。
 
 * 改ざん防止ロックを解除する
@@ -55,7 +55,7 @@ ms.openlocfilehash: d8f6da61b02a1289be0fa3444fd4dcfbe487068f
 2. 開口部の赤色のインジケーターが消えるまで、キーを反時計方向に回します。
 3. キーを抜きます。
    
-    ![ ロック解除されたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![ロック解除されたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741057.png)
    
     **図 2** ロック解除されたディスク ドライブ
 4. これで、ディスク ドライブを取り外すことができます。
@@ -114,10 +114,4 @@ StorSimple デバイスから障害が発生したドライブを取り外した
 
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

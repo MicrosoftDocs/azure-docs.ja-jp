@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 7a8700e70f64851a0c5e5e8c6b31ec7a6884a96c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/21/2017
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
 これにより、次のような結果が生成されます。  
- ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
+ ![Get MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get MsolDirSyncProvisioningError")  
 
 #### <a name="by-property-type"></a>プロパティの型ごと
 プロパティの型ごとにエラーを表示するには、**UserPrincipalName** 引数か **ProxyAddresses** 引数に、次のように **-PropertyName** フラグを追加します。
@@ -127,7 +126,7 @@ Office 365 管理センターでディレクトリ同期エラーを表示する
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
 
 ProxyAddress の競合に関する電子メール通知の例を、次に示します。  
-    ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Active Users")  
+    ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")  
 
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
@@ -165,7 +164,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **ID 同期のエラー レポート**:
 
 *この問題を解決する方法の手順*のリンクが正しくありません。  
-    ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Active Users")  
+    ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")  
 
 これが [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) を指すようにする必要があります。
 
@@ -173,5 +172,4 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 * [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-
 

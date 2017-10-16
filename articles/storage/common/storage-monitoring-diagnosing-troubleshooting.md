@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
+ms.openlocfilehash: 1a9c9354b665294778886441cc6d7f02adb1163f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 12db22d1444dc07a45db430c01407f9398e13bad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -30,7 +29,7 @@ ms.lasthandoff: 08/22/2017
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。 Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。 監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。 そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。 Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。 Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
 
 > [!NOTE]
-> 現時点では、Azure File Storage はログ記録をサポートしていません。
+> 現時点では、Azure Files はログ記録をサポートしていません。
 > 
 
 Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「 [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting.md)」を参照してください。
@@ -71,8 +70,8 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
   * [開発またはテストでのストレージ エミュレーターの使用に起因する問題]
   * [Azure SDK for .NET のインストールで問題が発生する]
   * [Storage サービスで別の問題が発生する]
-  * [Windows での Azure File Storage のトラブルシューティング](../files/storage-troubleshoot-windows-file-connection-problems.md)   
-  * [Linux での Azure File Storage のトラブルシューティング](../files/storage-troubleshoot-linux-file-connection-problems.md)
+  * [Windows での Azure Files に関する問題のトラブルシューティング](../files/storage-troubleshoot-windows-file-connection-problems.md)   
+  * [Linux での Azure Files に関する問題のトラブルシューティング](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [付録]
   * [付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ]
   * [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]
@@ -133,7 +132,7 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 [Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような外部から監視する方法の例としては、 [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 、Application Insights for Visual Studio Team Services が提供しているサービスがあります。 Application Insights for Visual Studio Team Services の詳細については、付録「[付録 5: Application Insights for Visual Studio Team Services を使用した監視](#appendix-5)」を参照してください。
 
 ### <a name="monitoring-capacity"></a>容量監視
-ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、Blob serivce の容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。 格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「[Storage Analytics Metrics のテーブルのスキーマ](http://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。
+ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。 格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「[Storage Analytics Metrics のテーブルのスキーマ](http://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。
 
 > [!NOTE]
 > ストレージ アカウントの容量制限に近づいていることを示す早期警告として、これらの値を監視する必要があります。 Azure Portal で、ストレージの合計使用量が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
@@ -202,9 +201,9 @@ Storage サービスのパフォーマンスを監視するには、時間単位
 次のリソースは、ストレージ関連の状態コードおよびエラー コードの理解に役立ちます。
 
 * [REST API の一般的なエラー コード](http://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [Blob serivce のエラー コード](http://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [BLOB サービスのエラー コード](http://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Queue サービスのエラー コード](http://msdn.microsoft.com/library/azure/dd179446.aspx)
-* [Table service のエラー コード](http://msdn.microsoft.com/library/azure/dd179438.aspx)
+* [テーブル サービスのエラー コード](http://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [File サービスのエラー コード](https://msdn.microsoft.com/library/azure/dn690119.aspx)
 
 ### <a name="storage-emulator-issues"></a>Storage エミュレーターの問題
@@ -236,7 +235,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 各種ログ ファイルを使用したエンド ツー エンド トレースは、潜在的な問題を調査するための有用な手法です。 メトリック データからの日時情報を使用すると、問題のトラブルシューティングに役立つ詳細な情報についてログ ファイルを調べるときにどこから開始するとよいかが分かります。
 
 ### <a name="correlating-log-data"></a>ログ データの関連付け
-クライアント アプリケーション、ネットワーク トレース、およびサーバー側ストレージ ログからのログを表示する際、各種ログ ファイルの要求を相関付ける機能が重要になります。 ログ ファイルには、相関 ID として役立つ多数の各種フィールドが含まれます。 クライアント要求 ID は、各種ログのエントリを相関付けるために使用する最も役立つフィールドです。 ただし、サーバー要求 ID またはタイムスタンプのどちらかを使用すると役立つ場合もあります。 以下のシナリオは、こうしたオプションの詳細を示しています。
+クライアント アプリケーション、ネットワーク トレース、およびサーバー側ストレージ ログからのログを表示する際、各種ログ ファイルの要求を相関付ける機能が重要になります。 ログ ファイルには、相関 ID として役立つ多数の各種フィールドが含まれます。 クライアント要求 ID は、各種ログのエントリを相関付けるために使う最も役立つフィールドです。 ただし、サーバー要求 ID またはタイムスタンプのどちらかを使うと役立つ場合もあります。 以下のシナリオは、こうしたオプションの詳細を示しています。
 
 ### <a name="client-request-id"></a>クライアント要求 ID
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
@@ -246,7 +245,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 * サーバー側の Storage Logging ログの場合、クライアント要求 ID は クライアント要求 ID 列に表示されます。
 
 > [!NOTE]
-> 複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。 クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
+> 複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。 クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。 クライアントから送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 > 
 > 
 
@@ -362,7 +361,7 @@ Storage サービスが正常な要求に関して算出するのはメトリッ
 #### <a name="investigating-client-performance-issues"></a>クライアントのパフォーマンス上の問題に関する調査
 クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。 この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
 
-Table service および Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳細については、「[Nagle's Algorithm is Not Friendly towards Small Requests](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」(小さな要求に不親切な Nagle アルゴリズム) の投稿を参照してください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table service または Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
+Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳細については、「[Nagle's Algorithm is Not Friendly towards Small Requests](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」(小さな要求に不親切な Nagle アルゴリズム) の投稿を参照してください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -382,7 +381,7 @@ Wireshark によるネットワーク問題のトラブルシューティング�
 Microsoft Message Analyzer によるネットワーク問題のトラブルシューティングについて詳しくは、『[付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]』を参照してください。
 
 ### <a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>メトリックでは AverageE2ELatency も AverageServerLatency も低いのにクライアントで大きな遅延が発生している
-このシナリオの場合、最も可能性が高い原因は、Storage サービスに到達するストレージ要求の遅延です。 クライアントの要求が Blob serivce にうまく送られない原因を調査する必要があります。
+このシナリオの場合、最も可能性が高い原因は、Storage サービスに到達するストレージ要求の遅延です。 クライアントの要求が BLOB サービスにうまく送られない原因を調査する必要があります。
 
 要求送信でクライアントに遅延が生じる理由の 1 つとして、使用可能な接続またはスレッドの数が制限されていることが考えられます。
 
@@ -574,7 +573,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 | 認証の種類| SAS                          |
 | サービスの種類       | BLOB                         |
 | 要求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | [要求 ID ヘッダー]  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | クライアント要求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -598,7 +597,7 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 この JavaScript の問題を回避するには、クライアントがアクセスする Storage サービスにクロス オリジン リソース共有 (CORS) を構成します。 詳細については、 [Azure Storage サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)に関するページをご覧ください。
 
-以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して Blob Storage サービスの BLOB へのアクセスを許可する Blob serivce を構成する方法を示しています。
+以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して Blob Storage サービスの BLOB へのアクセスを許可する BLOB サービスを構成する方法を示しています。
 
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
@@ -617,15 +616,15 @@ client.SetServiceProperties(sp);
 ```
 
 #### <a name="network-failure"></a>ネットワーク エラー
-状況によっては、ネットワーク パケットの紛失が原因で、Storage サービスが HTTP 404 メッセージをクライアントに返すことがあります。 たとえば、クライアント アプリケーションがエンティティを Table service から削除するときに、クライアントが、Table service からの "HTTP 404 (未検出)" 状態メッセージを報告するストレージ例外をスローすることがあります。 Table Storage サービスのテーブルを調べると、要求どおりにサービスがエンティティを削除したことがわかります。
+状況によっては、ネットワーク パケットの紛失が原因で、Storage サービスが HTTP 404 メッセージをクライアントに返すことがあります。 たとえば、クライアント アプリケーションがエンティティを Table サービスから削除するときに、クライアントが、Table サービスからの "HTTP 404 (未検出)" 状態メッセージを報告するストレージ例外をスローすることがあります。 Table Storage サービスのテーブルを調べると、要求どおりにサービスがエンティティを削除したことがわかります。
 
-クライアントにおける例外の詳細には、Table service によって割り当てられた要求 ID (7e84f12d…) が含まれます。この情報を使用し、ログ ファイルの **request-id-header** 列で検索することによりサーバー側のストレージ ログにある要求の詳細を検索できます。 メトリックを使用して、このようなエラーが発生した時刻を特定し、エラーがメトリックに記録された時刻に基づいてログ ファイルを検索することもできます。 このログ エントリには、状態メッセージ "HTTP (404) Client Other Error" を出して削除が失敗したことが示されます。 同じログ エントリの **client-request-id** 列には、クライアントによって生成された要求 ID (813ea74f…) も含まれています。
+クライアントにおける例外の詳細には、Table Service によって割り当てられた要求 ID (7e84f12d…) が含まれます。この情報を使用し、ログ ファイルの **request-id-header** 列で検索することによりサーバー側のストレージ ログにある要求の詳細を検索できます。 メトリックを使用して、このようなエラーが発生した時刻を特定し、エラーがメトリックに記録された時刻に基づいてログ ファイルを検索することもできます。 このログ エントリには、状態メッセージ "HTTP (404) Client Other Error" を出して削除が失敗したことが示されます。 同じログ エントリの **client-request-id** 列には、クライアントによって生成された要求 ID (813ea74f…) も含まれています。
 
 また、サーバー側のログには、同じエンティティに対する同じクライアントの成功した削除操作を示す、同じ **client-request-id** 値 (813ea74f…) のエントリがもう 1 つ含まれています。 この成功した削除操作は、失敗した削除要求の直前に発生しています。
 
-このシナリオの最も可能性の高い原因としては、クライアントがエンティティに対する削除要求を Table service に送信し、要求が成功したのに、(おそらく一時的なネットワーク上の問題で) サーバーからの確認を受信しなかったことが考えらます。 そのため、クライアントが自動的に操作を再試行しますが (同じ **client-request-id**を使用)、エンティティは既に削除されているので、この再試行は失敗します。
+このシナリオの最も可能性の高い原因としては、クライアントがエンティティに対する削除要求を Table サービスに送信し、要求が成功したのに、(おそらく一時的なネットワーク上の問題で) サーバーからの確認を受信しなかったことが考えらます。 そのため、クライアントが自動的に操作を再試行しますが (同じ **client-request-id**を使用)、エンティティは既に削除されているので、この再試行は失敗します。
 
-このような問題が頻繁に発生する場合は、クライアントが Table service からの確認を受信できない理由を調べる必要があります。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
+このような問題が頻繁に発生する場合は、クライアントが Table サービスからの確認を受信できない理由を調べる必要があります。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
 
 ### <a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作も 2 つの要求をサーバーに送信することに注目してください (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
@@ -740,7 +739,7 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 ### <a name="appendix-2"></a>付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ
 [Wireshark](http://www.wireshark.org/) は、さまざまなネットワーク プロトコルの詳細なパケット情報を表示できるネットワーク プロトコル アナライザーです。
 
-以下の手順は、Wireshark をインストールしたローカル マシンから Azure ストレージ アカウントの Table service へのトラフィックに関する詳細なパケット情報をキャプチャする方法を示しています。
+以下の手順は、Wireshark をインストールしたローカル マシンから Azure ストレージ アカウントの Table サービスへのトラフィックに関する詳細なパケット情報をキャプチャする方法を示しています。
 
 1. ローカル マシンで Wireshark を起動します。
 2. [ **Start** ] セクションで、インターネットに接続されているローカル ネットワーク インターフェイスを選択します。
@@ -748,7 +747,7 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 4. フィルターを [ **Capture Filter** ] テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](http://wiki.wireshark.org/CaptureFilters)を確認してください。
    
    ![][6]
-5. **[開始]**をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table service エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
+5. **[開始]**をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
 6. 終了したら、メイン メニューで **[Capture]**、**[Stop]** の順にクリックします。
 7. キャプチャしたデータを Wireshark キャプチャ ファイルに保存するには、メイン メニューで **[File]**、**[Save]** の順にクリックします。
 
@@ -756,7 +755,7 @@ WireShark は、[ **packetlist** ] ウィンドウに存在するエラーをす
 
 ![][7]
 
-アプリケーション層で見られる形で TCP データを表示するように選択することもできます。このためには、TCP データを右クリックしてから **[Follow TCP Stream]** を選択します。 これは、特に、キャプチャ フィルターを使用せずにダンプをキャプチャした場合に便利です。 詳細については、[Follow TCP Stream](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html) に関する記事を参照してください。
+アプリケーション レイヤーで見られる形で TCP データを表示するように選択することもできます。このためには、TCP データを右クリックしてから **[Follow TCP Stream]** を選択します。 これは、特に、キャプチャ フィルターを使用せずにダンプをキャプチャした場合に便利です。 詳細については、[Follow TCP Stream](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html) に関する記事を参照してください。
 
 ![][8]
 
@@ -889,4 +888,3 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [8]: ./media/storage-monitoring-diagnosing-troubleshooting/wireshark-screenshot-3.png
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
-

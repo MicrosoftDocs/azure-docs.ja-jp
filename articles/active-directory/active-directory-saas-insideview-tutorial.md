@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: f2b0a1d4bc44f8d0cd57c61e2d78950cb6a99854
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル: Azure Active Directory と InsideView の統合
 
@@ -188,7 +186,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-insideview-test-user"></a>InsideView テスト ユーザーの作成
 
@@ -253,5 +251,4 @@ InsideView で作成したユーザーまたは連絡先を入手するには、
 [201]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_203.png
-
 

@@ -3,7 +3,7 @@ title: "Azure Application Gateway の正常性監視の概要 | Microsoft Docs"
 description: "Azure Application Gateway の監視機能の概要"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,15 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
-ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 899115d213e626f17e58c2e5f01313f760f9e7f4
-ms.lasthandoff: 03/27/2017
-
-
+ms.author: davidmu
+ms.openlocfilehash: 83a0b1be1aba48146aa1aaedb36ad9d9d23f17d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
 既定では、Azure Application Gateway はバック エンド プールにあるすべてのリソースの状態を監視して、異常とみなしたリソースをプールから自動的に削除します。 Application Gateway は異常なインスタンスを継続的に監視し、このインスタンスが利用可能になり正常性プローブに応答するようになると、正常バック エンド プールに戻します。 Application Gateway は、バックエンドの HTTP 設定で定義されているポートを使用して正常性プローブを送信します。 この構成により、顧客がバックエンドへの接続に使用しているポートをプローブで確実にテストできます。
@@ -82,4 +80,3 @@ ms.lasthandoff: 03/27/2017
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイト モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
-

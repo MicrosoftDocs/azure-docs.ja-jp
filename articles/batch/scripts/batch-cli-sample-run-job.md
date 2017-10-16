@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Azure CLI を使用して Azure Batch でジョブを実行する
 
 このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。 最後に、ジョブのタスクに関する情報を Batch サービスで効率的にクエリする方法を示します。
@@ -35,7 +33,7 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "ジョブの実行")]
+[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
 ## <a name="clean-up-job"></a>ジョブのクリーンアップ
 
@@ -51,17 +49,16 @@ az batch job delete --job-id myjob
 
 | コマンド | メモ |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Batch アカウントに対して認証します。  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | Batch ジョブを作成します。  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | Batch ジョブのプロパティを更新します。  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | 指定された Batch ジョブの詳細を取得します。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | 指定された Batch ジョブにタスクを追加します。  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | 指定したジョブに関連するタスクを一覧表示します。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Batch アカウントに対して認証します。  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Batch ジョブを作成します。  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | Batch ジョブのプロパティを更新します。  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | 指定された Batch ジョブの詳細を取得します。  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 指定された Batch ジョブにタスクを追加します。  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | 指定したジョブに関連するタスクを一覧表示します。  |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Batch CLI サンプル スクリプトは、[Azure Batch CLI のドキュメント](../batch-cli-samples.md)のページにあります。
-

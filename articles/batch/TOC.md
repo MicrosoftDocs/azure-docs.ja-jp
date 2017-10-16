@@ -42,7 +42,7 @@
 #### [ジョブとタスクを実行する](./scripts/batch-cli-sample-run-job.md)
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
-## [PowerShell](/powershell/module/azurerm.batch)
+## [Azure PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
@@ -63,12 +63,11 @@
 
 # 関連項目
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
-## [Batch と Data Factory を使用したデータ処理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [Batch と Data Factory を使用したデータ処理](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Azure クラウドでの Batch ソリューションと HPC ソリューション](batch-hpc-solutions.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
-## [大規模なコンピューティング リソース](big-compute-resources.md)
 ## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)

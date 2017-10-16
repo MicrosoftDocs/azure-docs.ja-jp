@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
-ms.openlocfilehash: d17fa0ffb0c55d49487804cd28d8903107069f06
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: ce6b2805e7281dff7752a73ada86be11d7e01fc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法
 Azure Active Directory Identity Protection では、構成されている条件が満たされた場合にユーザーをブロックするポリシーを構成できます。 通常、ブロックされたユーザーは、ブロックを状態した状態になるようにヘルプ デスクに連絡します。 このトピックでは、ブロックされたユーザーのブロックを解除するための手順について説明します。
@@ -58,4 +57,3 @@ Azure Active Directory Identity Protection を使用すると、ユーザーを�
 
 ## <a name="next-steps"></a>次のステップ
  Azure AD Identity Protection の詳細については、 「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」を参照してください。
-

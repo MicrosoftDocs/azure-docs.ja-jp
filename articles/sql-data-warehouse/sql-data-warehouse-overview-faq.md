@@ -15,15 +15,12 @@ ms.workload: data-services
 ms.custom: overview
 ms.date: 3/1/2017
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 49cbfca4f733356548b6c8f491fead9e2d7fdf5c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 
 ## <a name="general"></a>全般

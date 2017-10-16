@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 2dea669f03c893632c08d30feeb3173efc2d8243
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>チュートリアル: Azure Active Directory と Lucidchart の統合
 
@@ -182,7 +180,7 @@ Lucidchart で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-lucidchart-test-user"></a>Lucidchart テスト ユーザーの作成
 
@@ -247,5 +245,4 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 [201]: ./media/active-directory-saas-lucidchart-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-lucidchart-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-lucidchart-tutorial/tutorial_general_203.png
-
 

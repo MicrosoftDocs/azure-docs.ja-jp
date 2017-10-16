@@ -1,6 +1,6 @@
 ---
-title: Region management in Azure Stack | Microsoft Docs
-description: Overview of region management in Azure Stack.
+title: "Azure Stack でのリージョン管理 | Microsoft Docs"
+description: "Azure Stack でのリージョン管理の概要。"
 services: azure-stack
 documentationcenter: 
 author: efemmano
@@ -12,44 +12,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/25/2017
 ms.author: efemmano
+ms.openlocfilehash: d1310f0cb9a820366ab8712a782785e955a24134
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 15a3bc9dce3cc76f98816ba5c88066fdc23cdbe1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="region-management-in-azure-stack"></a>Region management in Azure Stack
-Azure Stack has the concept of regions, which are logical entities comprised of the hardware resources that make up the Azure Stack infrastructure. Inside Region management, you can find all resources that are required to successfully operate the Azure Stack infrastructure lifecycle.
+# <a name="region-management-in-azure-stack"></a>Azure Stack でのリージョン管理
 
-The Azure Stack Development Kit is a single-node deployment, and equals one region. If you set up another instance of the Azure Stack Development Kit on separate hardware, this instance is a different region.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="information-available-through-the-region-management-tile"></a>Information available through the Region Management tile
-Azure Stack has a set of region management capabilities available in the **Region management** tile. This tile is available to a cloud administrator on the default dashboard in the administrator portal. Through this tile, you can monitor and update your Azure Stack region and its components, which are region-specific.
+Azure Stack にはリージョンの概念があります。リージョンは、Azure Stack インフラストラクチャを構成するハードウェア リソースから成る論理エンティティです。 リージョン管理内部では、Azure Stack インフラストラクチャのライフ サイクルを正常に運用するために必要なすべてのリソースを見つけることができます。
 
- ![The region management tile](media/azure-stack-manage-region/image1.png)
+1 つの統合システム デプロイ (*Azure Stack クラウド*  と呼ばれます) が 1 つのリージョンを構成します。 各 Azure Stack 開発キットには、**local** という名前の 1 つのリージョンがあります。 2 番目の Azure Stack 統合システムをデプロイするか、または別のハードウェア上に開発キットの別のインスタンスを設定すると、この Azure Stack クラウドは別のリージョンになります。
 
- If you click a region in the Region management tile, you can access the following information:
+## <a name="information-available-through-the-region-management-tile"></a>[リージョンの管理] タイルから使用可能な情報
+Azure Stack には、**[Region management]** (リージョン管理) タイルで使用できる一連のリージョン管理機能があります。 このタイルは、管理者ポータルの既定のダッシュボードで Azure Stack オペレーターが使用できます。 このタイルを使用して、Azure Stack リージョンと、リージョン固有のそのコンポーネントを監視および更新できます。
 
-  ![Description of panes on the Region management blade](media/azure-stack-manage-region/image2.png)
+ ![[Region Management] (リージョン管理) タイル](media/azure-stack-manage-region/image1.png)
 
-1. **The resource menu**. Here, you can access specific infrastructure management areas, and view and manage tenant resources such as storage accounts and virtual networks.
+ [Region management] (リージョン管理) タイルでリージョンをクリックすると、次の情報にアクセスできます。
 
-2. **Alerts**. This tile lists system-wide alerts and provides details on each of those alerts.
+  ![[Region management] (リージョン管理) ブレードのウィンドウの説明](media/azure-stack-manage-region/image2.png)
 
-3. **Updates**. In this tile, you can view the current version of your Azure Stack infrastructure.
+1. **リソース メニュー**。 ここでは、特定のインフラストラクチャ管理領域にアクセスし、ストレージ アカウントや仮想ネットワークなどのユーザー リソースを表示および管理できます。
 
-4. **Resource providers**. Resource providers is the place to manage the tenant functionality offered by the components required to run Azure Stack. Each resource provider comes with an administrative experience. This experience can include alerts for the specific provider, metrics, and other management capabilities specific to the resource provider.
+2. **[Alerts]** (アラート)。 このタイルは、システム全体のアラートを一覧表示し、それらのアラートごとの詳細を示します。
+
+3. **[Updates]** (更新)。 このタイルでは、Azure Stack インフラストラクチャの現在のバージョンを表示できます。
+
+4. **リソース プロバイダー**。 リソース プロバイダーは、Azure Stack の実行に必要なコンポーネントによって提供されるテナント機能を管理する場所です。 リソース プロバイダーごとに管理エクスペリエンスが異なります。 このエクスペリエンスには、プロバイダー固有のアラート、メトリック、およびリソース プロバイダー固有のその他の管理機能が含まれます。
  
-5. **Infrastructure roles**. Infrastructure roles are the components necessary to run Azure Stack. Only the infrastructure roles that report alerts are listed. By clicking a role, you can view the alerts associated with the specific role and the role instances where this role is running. Although there is the capability to start, restart, or shut down an infrastructure role instance, do **not** do this in a development kit environment. These options are designed only for a multi-node environment, where there is more than one role instance per infrastructure role. Restarting a role instance (especially AzS-Xrp01) in the development kit causes system instability.
+5. **インフラストラクチャ ロール**。 インフラストラクチャ ロールは、Azure Stack の実行に必要なコンポーネントです。 アラートをレポートするインフラストラクチャ ロールのみが一覧表示されます。 ロールをクリックすると、特定のロールおよびそのロールが実行されているロール インスタンスに関連付けられているアラートを表示できます。 インフラストラクチャ ロール インスタンスを起動、再起動、またはシャット ダウンする機能はありますが、開発キット環境ではこれらの操作を実行**しないでください**。 これらのオプションは、インフラストラクチャ ロールあたり複数のロール インスタンスが存在するマルチノード環境専用に設計されています。 開発キットでロール インスタンス (特に AzS-Xrp01) を再起動すると、システムが不安定になります。
 
-## <a name="next-steps"></a>Next steps
-[Monitor health and alerts in Azure Stack](azure-stack-monitor-health.md)
+## <a name="next-steps"></a>次のステップ
+[Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)
 
-[Manage updates in Azure Stack](azure-stack-updates.md)
-
+[Azure Stack での更新の管理](azure-stack-updates.md)
 
 
 

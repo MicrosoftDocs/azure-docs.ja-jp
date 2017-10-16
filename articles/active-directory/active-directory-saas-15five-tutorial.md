@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: ea36774747a0fcfa4ace1aefb2d46dba815d92c4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>チュートリアル: Azure Active Directory と 15Five の統合
 
@@ -161,7 +159,7 @@ In 15Five, assign the value of the で Azure AD のシングル サインオン�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-15five-test-user"></a>15Five テスト ユーザーの作成
 
@@ -244,5 +242,4 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 [201]: ./media/active-directory-saas-15five-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-15five-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-15five-tutorial/tutorial_general_203.png
-
 

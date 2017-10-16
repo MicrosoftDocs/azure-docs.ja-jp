@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 83981d5bec14c06c509f1a8a4153dc23298f5ce0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
@@ -152,5 +151,4 @@ activationContext.ReportApplicationHealth(healthInformation);
 * [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
 * [サービスの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
 * [アプリケーションの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>手順 4: Azure レプリケーション用に Azure のコンテナーを設定する
 
 [ネットワークを計画した](azure-to-azure-walkthrough-network.md)後、この記事に従って、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、他の Azure リージョンへレプリケートしている Azure 仮想マシン (VM) に対してコンテナーを設定します。
@@ -50,4 +48,3 @@ ms.lasthandoff: 08/02/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 5: レプリケーションを有効にする](azure-to-azure-walkthrough-enable-replication.md)」に進む
-

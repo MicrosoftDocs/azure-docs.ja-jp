@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: OpenID Connect による Web サインイン
 OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
@@ -77,7 +76,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |応答の種類。これには、OpenID Connect の ID トークンが含まれている必要があります。 Web アプリが Web API を呼び出すためのトークンも必要とする場合は、ここで行なったように `code+id_token` を使用できます。 |
@@ -102,7 +101,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | id_token |アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容に関する詳細は、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」に含まれています。 |
 | code |アプリが要求した承認コード (`response_type=code+id_token` を使用した場合)。 アプリは、承認コードを使用してターゲット リソースのアクセス トークンを要求できます。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
@@ -117,7 +116,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -171,7 +170,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは `POST` 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
@@ -193,7 +192,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
@@ -211,7 +210,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -236,7 +235,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |元の更新トークンの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは POST 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
@@ -258,7 +257,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
@@ -276,7 +275,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -292,7 +291,7 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
 | post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
@@ -308,5 +307,4 @@ p=b2c_1_sign_in
 1. [B2C テナントを作成し](active-directory-b2c-get-started.md)、要求でテナントの名前を使用します。
 2. [アプリケーションを作成](active-directory-b2c-app-registration.md)して、アプリケーション ID を取得します。 アプリ内に Web アプリ/Web API を含めます。 必要に応じて、アプリケーション シークレットを作成します。
 3. [ポリシーを作成し](active-directory-b2c-reference-policies.md) 、ポリシー名を取得します。
-
 

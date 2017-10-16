@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 09/12/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;oldportal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/13/2017
-
+ms.openlocfilehash: 992f4563064d7a292cf4fdd90a9a3c84cdec91c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dedicated-groups-in-azure-active-directory"></a>Azure Active Directory の専用グループ
 Azure Active Directory (Azure AD) では、専用グループ機能によって Azure AD 事前定義済みグループのメンバーシップが自動的に作成および設定されます。 専用グループのメンバーは、Azure クラシック ポータル、Windows PowerShell コマンドレット、プログラムのいずれの方法でも追加したり削除したりすることはできません。
@@ -36,7 +35,7 @@ Azure Active Directory (Azure AD) では、専用グループ機能によって 
 
 **専用グループを有効にするには**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
+1. [Azure Portal](https://portal.azure.com) で **[Active Directory]** を選択し、該当する組織のディレクトリを開きます。
 2. **[グループ]** タブを選択し、編集するグループを開きます。
 3. **[構成]** タブを選択し、**[専用グループの有効化]** を **[はい]** に設定します。
 
@@ -61,4 +60,3 @@ All Users 専用グループには、ゲストや外部ユーザーを含む、�
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

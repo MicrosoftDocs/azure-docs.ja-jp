@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory での B2B コラボレーションと B2C の比較 | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションと Azure AD B2C の違いは何でしょうか。"
 services: active-directory
@@ -16,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 44cbbc149787a2d6cf2e0e8750b98d33b52f6136
-ms.lasthandoff: 03/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
 Azure Active Directory (Azure AD) B2B コラボレーションと Azure AD B2C は、両方とも Azure AD で外部ユーザーと共同で作業できます。 しかし、どのような違いがあるのでしょうか。
@@ -56,4 +53,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 * [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
 * [B2B コラボレーションのサポートの利用](active-directory-b2b-support.md)
-

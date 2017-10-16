@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/12/2017
 ms.author: anuragm;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM のアプリケーション整合性バックアップ (プレビュー)
 
 この記事では、Linux の事前/事後スクリプト フレームワークと、それらを使用して Azure Linux VM のアプリケーション整合性バックアップを作成する方法について説明します。
@@ -87,11 +84,11 @@ ms.lasthandoff: 05/12/2017
 
 | エラー | エラー メッセージ | 推奨される操作 |
 | ------------------------ | -------------- | ------------------ |
-| Pre-ScriptExecutionFailed |Pre-Script returned an error so backup may not be application consistent. (事前スクリプトからエラーが返されました。バックアップのアプリケーション整合性は確保されていない可能性があります。)    | スクリプトのエラー ログを参照して問題を解決してください。|  
-|    Post-ScriptExecutionFailed |    The post-script returned an error that might impact application state. (アプリケーションの状態に影響する可能性のあるエラーが事後スクリプトから返されました。) |    スクリプトのエラー ログを参照して問題を解決し、アプリケーションの状態をチェックしてください。 |
-| Pre-ScriptNotFound |    The pre-script was not found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事前スクリプトが見つかりませんでした。) |    バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事前スクリプトが存在することを確認してください。|
-| Post-ScriptNotFound |    The post-script wasn't found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事後スクリプトが見つかりませんでした。) |    バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事後スクリプトが存在することを確認してください。|
-| IncorrectPluginhostFile |    The **Pluginhost** file, which comes with the VmSnapshotLinux extension, is corrupted, so pre-script and post-script cannot run and the backup won't be application-consistent. (VmSnapshotLinux 拡張機能に付属の Pluginhost ファイルが壊れているため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。)    | **VmSnapshotLinux** 拡張機能をアンインストールしてください。次回のバックアップで自動的に再インストールされて問題が解決します。 |
+| Pre-ScriptExecutionFailed |Pre-Script returned an error so backup may not be application consistent. (事前スクリプトからエラーが返されました。バックアップのアプリケーション整合性は確保されていない可能性があります。)   | スクリプトのエラー ログを参照して問題を解決してください。|  
+|   Post-ScriptExecutionFailed |    The post-script returned an error that might impact application state. (アプリケーションの状態に影響する可能性のあるエラーが事後スクリプトから返されました。) |    スクリプトのエラー ログを参照して問題を解決し、アプリケーションの状態をチェックしてください。 |
+| Pre-ScriptNotFound |  The pre-script was not found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事前スクリプトが見つかりませんでした。) |   バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事前スクリプトが存在することを確認してください。|
+| Post-ScriptNotFound | The post-script wasn't found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事後スクリプトが見つかりませんでした。) |   バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事後スクリプトが存在することを確認してください。|
+| IncorrectPluginhostFile | The **Pluginhost** file, which comes with the VmSnapshotLinux extension, is corrupted, so pre-script and post-script cannot run and the backup won't be application-consistent. (VmSnapshotLinux 拡張機能に付属の Pluginhost ファイルが壊れているため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。) | **VmSnapshotLinux** 拡張機能をアンインストールしてください。次回のバックアップで自動的に再インストールされて問題が解決します。 |
 | IncorrectJSONConfigFile | The **VMSnapshotScriptPluginConfig.json** file is incorrect, so pre-script and post-script cannot run and the backup won't be application-consistent. (VMSnapshotScriptPluginConfig.json ファイルが正しくないため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。) | [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) からコピーをダウンロードして再度構成してください。 |
 | InsufficientPermissionforPre-Script | For running scripts, "root" user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
 | InsufficientPermissionforPost-Script | For running scripts, root user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
@@ -100,4 +97,3 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
-

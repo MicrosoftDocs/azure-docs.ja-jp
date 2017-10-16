@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
+ms.openlocfilehash: 1943e87ffd991d099ab655af5a7d16d7f1608d22
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 2d0f9d7f32ad79f49d58165d734b9df4af862835
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期の概要 (プレビュー)
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
@@ -46,7 +45,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
     ![Azure SQL データベースの一覧](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
-3.  **[SQL データベース]** ブレードで、データ同期のハブ データベースとして使用する既存の SQL データベースを選択します。 [SQL データベース] ブレードが開きます。
+3.  **[SQL データベース]** ブレードで、データ同期のハブ データベースとして使用する既存の SQL データベースを選択します。[SQL データベース] ブレードが開きます。
 
 4.  選択したデータベースの [SQL データベース] ブレードで、**[別のデータベースに同期]** を選択します。 [データ同期] ブレードが開きます。
 
@@ -63,7 +62,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
     2.  **[メタデータ データベースの同期]** セクションで、新しいデータベースを作成するか (推奨)、既存のデータベースを使用するかを選択します。
 
         > [!NOTE]
-        > Microsoft では、新しい空のデータベースを作成して同期メタデータ データベースとする方法をお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンのすべての同期グループが使用する同期メタデータ データベースとして自動的に共有されます。 同期メタデータ データベース、その名前、およびそのサービス レベルは、変更することができません。変更したい場合は、いったん削除する必要があります。
+        > Microsoft では、新しい空のデータベースを作成して同期メタデータ データベースとする方法をお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンのすべての同期グループが使用する同期メタデータ データベースとして自動的に共有されます。 同期メタデータ データベースやその名前は、削除しないと変更できません。
 
         **[新しいデータベース]** を選択した場合は、**[新しいデータベースの作成]** を選択します。 **[SQL データベース]** ブレードが開きます。 **[SQL データベース]** ブレードで、新しいデータベースの名前を指定し、構成します。 **[OK]** をクリックします。
 
@@ -162,7 +161,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
         ![SQL Server データベースの追加と構成](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    10. **[SQL Server の構成]** ダイアログ ボックスで、SQL Server 認証と Windows 認証のどちらを使用して接続するかを選択します。 SQL Server 認証を選択した場合は、既存の資格情報を入力します。 SQL Server 名と、同期するデータベースの名前を指定します。 **[接続テスト]** を選択して、設定をテストします。 次に、**[保存]** を選択します。 登録したデータベースが、一覧に表示されます。
+    10. **[SQL Server の構成]** ダイアログ ボックスで、SQL Server 認証と Windows 認証のどちらを使用して接続するかを選択します。 SQL Server 認証を選択した場合は、既存の資格情報を入力します。 SQL Server 名と、同期するデータベースの名前を指定します。**[接続テスト]** を選択して、設定をテストします。 次に、**[保存]** を選択します。 登録したデータベースが、一覧に表示されます。
 
         ![SQL Server データベースが登録されました](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
@@ -190,7 +189,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
     ![同期するテーブルの選択](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
 
-3.  既定では、テーブル内のすべての列が選択されます。 同期の必要がない列がある場合は、その列のチェック ボックスをオフにします。 主キー列は、選択されたままにしておいてください。
+3.  既定では、テーブル内のすべての列が選択されます。 同期の必要がない列がある場合は、その列のチェック ボックスをオフにします。主キー列は、選択されたままにしておいてください。
 
     ![同期するフィールドの選択](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
 
@@ -205,4 +204,3 @@ SQL Database および SQL データ同期の詳細については、以下を�
 -   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 -   [SQL Database の概要](sql-database-technical-overview.md)
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
-

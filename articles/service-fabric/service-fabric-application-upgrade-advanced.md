@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar;chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
-ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
+ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの追加と削除
@@ -100,4 +99,3 @@ app1/
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
 「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
-

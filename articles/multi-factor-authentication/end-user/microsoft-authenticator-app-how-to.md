@@ -15,14 +15,12 @@ ms.date: 08/15/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
+ms.openlocfilehash: e1e979319e53d222be33032acd0a79697dd09ab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 6bcb6d9f7a1e9b241fa70690016b03d6eb5887ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 Microsoft Authenticator アプリは、職場または学校アカウント (bsimon@contoso.com など)、または Microsoft アカウント (bsimon@outlook.com など) に追加のセキュリティ レベルを提供します。
 
@@ -109,4 +107,3 @@ Microsoft Authenticator による Touch ID の設定はシンプルです。 PIN
 アカウントをアプリに追加すると、すべて正しく構成されているかどうかを確認するテスト検証を行うように求められることがあります。 検証したら、これで完了です。 次回サインインするまで何も行う必要はありません。
 
 アプリで確認コードを使用するように選択した場合は、それらがホーム ページに表示されるようになります。 それらは、30 秒ごとに変更されるため、必要に応じて常に新しいコードが得られます。 ただし、サインインし、確認コードを入力するように求められるまでは、何もする必要はありません。  
-

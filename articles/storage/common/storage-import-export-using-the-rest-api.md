@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b780385ad0af34bcb15639683d1aa5d689b38b50
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Azure Import/Export サービス REST API の使用
 
@@ -58,4 +57,3 @@ Import/Export サービスに対する要求では、`api-version` パラメー�
 ## <a name="next-steps"></a>次のステップ
 
 * [ストレージの Import/Export REST](/rest/api/storageimportexport)
-

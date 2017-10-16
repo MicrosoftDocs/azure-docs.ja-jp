@@ -13,15 +13,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 07/25/2017
 ms.author: genli
+ms.openlocfilehash: f7810d519da500a33c2e1cd15b8de54835f304d4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 2c42ff5b7ab87e8ef8af2c244a1313fb55503c37
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
@@ -85,7 +84,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
     ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
-    Azure Portal で VM を選択し、**[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
+    Azure Portal で VM を選択し、**[概要]** タブをクリックします。**[再起動]** ボタンをクリックします。
    
     ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **アプリケーションを再デプロイする**。 このトラブルシューティングの手順では、プラットフォームやネットワークの根底にある問題を修正するために、Azure 内の別のホストに VM を再デプロイします。
@@ -215,7 +214,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
-    Azure Portal で VM を選択し、**[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
+    Azure Portal で VM を選択し、**[概要]** タブをクリックします。**[再起動]** ボタンをクリックします。
    
     ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
@@ -234,5 +233,4 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、 [リモート デスクトップのトラブルシューティング](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 * VM で実行されているアプリケーションへのアクセスにおけるトラブルシューティング手順については、[Azure VM で実行されているアプリケーションへのアクセスのトラブルシューティング](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 * Secure Shell (SSH) を使用した Azure の Linux VM への接続で問題が発生している場合は、[Azure の Linux VM への SSH 接続のトラブルシューティング](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
-
 

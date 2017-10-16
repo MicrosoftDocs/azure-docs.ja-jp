@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 65964a322f0adab4f648fb350bedb77b46bf9054
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>他の Azure サービスに接続する関数を Azure Functions を使用して作成する
 
@@ -192,5 +191,4 @@ Azure Functions の詳細については、次のトピックを参照してく�
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
 

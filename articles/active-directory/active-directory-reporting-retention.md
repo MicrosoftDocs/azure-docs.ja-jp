@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: aa7a69c933abfda3bf4d1ac1a298c4ba684efd7e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
-
+ms.openlocfilehash: 047f18acf192c75ac5904d7cfe10f19ad18e2888
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 04/06/2017
 | レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | ディレクトリ監査        | 7 日        | 30 日             | 30 日             |
-| サインイン アクティビティ       | 7 日        | 30 日             | 30 日             |
+| サインイン アクティビティ       | 該当なし           | 30 日             | 30 日             |
 
 **セキュリティ シグナル**
 

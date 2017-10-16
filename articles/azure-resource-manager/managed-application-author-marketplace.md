@@ -10,14 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 58ac7665abf7e75a43bb0b92bdf6f41005c3efe8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージ アプリケーション
 
  MSP、ISV、およびシステム インテグレーター (SI) は、Azure マネージ アプリケーションを使用して、各自のソリューションを、すべての Azure Marketplace ユーザーに提供できます。 このようなソリューションにより、顧客のメンテナンスとサービスのオーバーヘッドは削減されます。 発行者は Marketplace を通じてインフラストラクチャとソフトウェアを販売できます。 また、サービスと運用サポートをマネージ アプリケーションに付加できます。 詳細については、[マネージ アプリケーションの概要](managed-application-overview.md)に関するページをご覧ください。
@@ -234,7 +232,7 @@ RBAC の詳細については、[Azure Portal での RBAC の使用](../active-d
 
 ![Marketplace のプラン](./media/managed-application-author-marketplace/publishvm15.png)
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure ポータル
 
 マネージ アプリケーションの概要には、次のフィールドが表示されます。
 
@@ -279,4 +277,3 @@ Hero ロゴ アイコンに関するガイドラインに従ってください�
 * Marketplace からマネージ アプリケーションを使用する方法については、「[Consume Azure managed applications in the Marketplace (Marketplace での Azure マネージ アプリケーションの使用)](managed-application-consume-marketplace.md)」を参照してください。
 * サービス カタログ マネージ アプリケーションの発行については、「[サービス カタログ マネージ アプリケーションの作成と発行](managed-application-publishing.md)」を参照してください。
 * サービス カタログ マネージ アプリケーションの使用については、「[サービス カタログ マネージ アプリケーションの使用](managed-application-consumption.md)」を参照してください。
-

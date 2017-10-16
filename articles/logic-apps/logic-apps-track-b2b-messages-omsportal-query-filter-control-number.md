@@ -14,28 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 2748d3d3daf7c13dca05f663a4a088598e1b3605
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で AS2、X12、および EDIFACT メッセージのクエリを実行する
 
 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを見つけるには、特定の条件に基づいてアクションをフィルター処理するクエリを作成します。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 
 ## <a name="requirements"></a>必要条件
 
-* 診断ログが設定されているロジック アプリ。 [ロジック アプリの作成方法](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事と[ロジック アプリのログの設定方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
+* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](../logic-apps/logic-apps-create-a-logic-app.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントの作成方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事と[ロジック アプリのログの設定方法](../logic-apps/logic-apps-monitor-b2b-message.md)に関する記事を参照してください。
 
 * [診断データの Log Analytics への発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と[OMS でのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
 
 > [!NOTE]
-> 上の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための OMS ワークスペースと同じ OMS ワークスペースを使用する必要があります。 
+> 上の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための同じ OMS ワークスペースを使用する必要があります。 
 >  
 > OMS ワークスペースを持っていない場合は、[OMS ワークスペースの作成方法](../log-analytics/log-analytics-get-started.md)に関する記事を参照してください。
 
@@ -48,9 +46,9 @@ ms.lasthandoff: 07/21/2017
 
 1. [Azure ポータル](https://portal.azure.com)で、**[その他のサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
-   ![Log Analytics の検索](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
+   ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. **[Log Analytics]** で、OMS ワークスペースを検索して選択します。
+2. **[Log Analytics]** で、OMS ワークスペースを見つけて選択します。
 
    ![OMS ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 

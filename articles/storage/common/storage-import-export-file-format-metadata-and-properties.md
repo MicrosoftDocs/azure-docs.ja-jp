@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.lasthandoff: 04/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export サービスのメタデータとプロパティ ファイルの形式
 インポートまたはエクスポート ジョブの一部として 1 つ以上の BLOB のメタデータとプロパティを指定できます。 インポート ジョブの一部として作成されている BLOB のメタデータまたはプロパティを設定するには、インポートするデータを含むハード ドライブでメタデータまたはプロパティ ファイルを提供します。 エクスポート ジョブの場合、メタデータとプロパティは返されるハード ドライブに含まれるメタデータまたはプロパティ ファイルに書き込まれます。  
@@ -73,4 +72,3 @@ ms.lasthandoff: 04/25/2017
 ## <a name="next-steps"></a>次のステップ
 
 BLOB のメタデータとプロパティの設定の詳細な規則については、「[Set Blob Properties](/rest/api/storageservices/set-blob-properties)」 (BLOB プロパティの設定)、「[Set Blob Metadata](/rest/api/storageservices/set-blob-metadata)」 (BLOB メタデータの設定)、「[Setting and Retrieving Properties and Metadata for Blob Resources](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」 (BLOB リソースのプロパティとメタデータの設定と取得) をご覧ください。
-

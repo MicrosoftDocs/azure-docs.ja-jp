@@ -12,7 +12,7 @@
 > 
 > 
 
-1. ブラウザーで、 [Azure ポータル](https://portal.azure.com)を開きます。
+1. ブラウザーで、[Azure Portal](https://portal.azure.com) を開きます。
 2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメイン]** の順に選択します。
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)

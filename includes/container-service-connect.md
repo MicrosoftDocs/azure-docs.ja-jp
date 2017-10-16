@@ -162,7 +162,7 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
     ![PuTTY configuration 1](./media/container-service-connect/putty1.png)
 
-4. **[SSH]、[認証]** の順に選択します。 認証用の秘密キー ファイル (.ppk 形式) のパスを追加します。 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのツールを使用すると、クラスターの作成に使用された SSH キーからこのファイルを生成できます。
+4. **[SSH]、[認証]** の順に選択します。認証用の秘密キー ファイル (.ppk 形式) のパスを追加します。 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのツールを使用すると、クラスターの作成に使用された SSH キーからこのファイルを生成できます。
 
     ![PuTTY configuration 2](./media/container-service-connect/putty2.png)
 

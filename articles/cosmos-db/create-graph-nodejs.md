@@ -15,18 +15,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
+ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
 Azure Cosmos DB は、Microsoft が提供するグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイックスタートの記事では、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。  
+このクイック スタートの記事では、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,9 +47,9 @@ Azure Cosmos DB は、Microsoft が提供するグローバルに分散された
 
 GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開き、`cd` コマンドで作業ディレクトリに移動します。  
+1. Git ターミナル ウィンドウ (Git Bash など) を開き、`cd` コマンドで作業ディレクトリに移動します。
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 
+2. 次のコマンドを実行して、サンプル リポジトリを複製します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -99,11 +98,11 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
 
-   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。その場合は、**[URI]** の値を使用し、https:// を削除し、documents を graphs に変更してください。
+   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、https:// を削除し、documents を graphs に変更してください。
 
    Gremlin エンドポイントは、`mygraphdb.graphs.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.graphs.azure.com` や `mygraphdb.graphs.azure.com:433` は不可)。
 
-3. config.js の config.primaryKey の値に、Azure Portal の **[キー]** ページに表示される **[プライマリ キー]** の値を設定します。 
+3. config.js の config.primaryKey の値に、Azure Portal の **[キー]** ページに表示される **[Primary Key]\(主キー\)** の値を設定します。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -127,7 +126,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
-1. ターミナル ウィンドウを開き、`cd` コマンドを使用して、プロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。  
+1. ターミナル ウィンドウを開き、`cd` コマンドを使用して、プロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。
 
 2. `npm install` を実行し、`gremlin`など、必要な npm モジュールをインストールします。
 
@@ -137,9 +136,9 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コレクションの順に展開し、**[グラフ]** をクリックします。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コレクションの順に展開し、**[グラフ]** を選択します。
 
-**[フィルターの適用]** をクリックすると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
+**[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
 
 試しに `g.V()` に「`.has('firstName', 'Thomas')`」と入力して、フィルターをテストします。 値の大文字と小文字が区別されることに注意してください。
 
@@ -151,8 +150,9 @@ module.exports = config;
 
 このアプリの使用を続ける予定がない場合は、次の手順を実行して、この記事で作成したすべてのリソースを削除します。 
 
-1. Azure Portal の左側のナビゲーション メニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前を入力してから **[削除]** をクリックします。
+1. Azure Portal の左側のナビゲーション メニューで、**[リソース グループ]** を選択します。 次に、作成したリソースの名前を選択します。 
+
+2. リソース グループ ページで **[削除]** を選択します。 削除するリソースの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -160,4 +160,3 @@ module.exports = config;
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)
-

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d1cd23eac464d48ebc6dd618c52c252444b47e21
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: d407c29f99fd7537590ec787febd84a9e3f4f353
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="leverage-other-services-with-sql-data-warehouse"></a>SQL Data Warehouse と他のサービスの併用
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを並行して活用できます。  具体的には、現在のところ、次のサービスと密接に統合するための措置を講じています。
@@ -78,4 +76,3 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 <!--MSDN references-->
 
 <!--Other Web references-->
-

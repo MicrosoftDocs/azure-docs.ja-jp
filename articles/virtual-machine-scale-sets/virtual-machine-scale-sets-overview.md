@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/03/2017
+ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8b2fbc230faf01797109114d6ebdffe5ec50e48b
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: bdd0fd0d1919f61fe586f495adadaf4eabde2dae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
@@ -123,7 +122,7 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
    そのようなアプローチの[こちらの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)では、[Azure Container Service](https://azure.microsoft.com/services/container-service/) によって、コンテナー オーケストレーターを使用するスケール セットに基づいてクラスターがデプロイされます。
 
 ## <a name="scale-set-performance-and-scale-guidance"></a>Scale Sets のパフォーマンスとスケールのガイダンス
-* スケール セットでは、最大 1,000 個の VM がサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合は、上限が 100 個になります。 大規模なスケール セットを使用する際の考慮事項については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。
+* スケール セットでは、最大 1,000 個の VM がサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合は、上限が 300 個になります。 大規模なスケール セットを使用する際の考慮事項については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。
 * Scale Sets を使用するために Azure ストレージ アカウントを事前作成する必要はありません。 スケール セットでは Azure 管理ディスクがサポートされているため、ストレージ アカウントあたりのディスク数に関してパフォーマンスを懸念しなくて済みます。 詳細については、「[Azure VM Scale Sets と管理ディスク](virtual-machine-scale-sets-managed-disks.md)」をご覧ください。
 * VM のプロビジョニング時間を短縮して予測できるものにし、I/O パフォーマンスを向上させるために、Azure Storage ではなく Azure Premium Storage を使用することを検討してください。
 * 作成できる VM の数は、デプロイ先のリージョンのコア クォータによって制限されます。 コンピューティング クォータの制限を緩和するには、現時点で Azure Cloud Services で使用するためのコアの上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。 クォータを照会するには、Azure CLI コマンド `azure vm list-usage` を実行します。 または、PowerShell コマンド `Get-AzureRmVMUsage` を実行します。
@@ -131,7 +130,7 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
 ## <a name="frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
 **Q.** Scale Sets には何個の VM を設定できますか?
 
-**A.** Scale Sets には、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 100 個の VM を含めることができます。 
+**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。 
 
 **Q.** Scale Sets 内でデータ ディスクはサポートされていますか?
 

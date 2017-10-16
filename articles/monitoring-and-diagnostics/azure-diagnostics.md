@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-diagnostics"></a>Azure 診断について
 Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在時点でのサポート対象は、Azure Cloud Service Web および Worker ロール、Microsoft Windows を実行している Azure Virtual Machines、および Service Fabric となっています。 その他の Azure サービスには、独自の独立した診断があります。
@@ -48,7 +47,7 @@ Azure 診断拡張機能は、このデータを Azure ストレージ アカウ
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure 診断リンクを使用してください。
 
 ## <a name="web-apps"></a>Web Apps
-Web Apps では Azure 診断が使用されないので注意してください。 Azure 診断に相当する情報については、[Web Apps](../app-service-web/web-sites-enable-diagnostic-log.md) に関するページを参照してください。
+Web Apps では Azure 診断が使用されないので注意してください。 Azure 診断に相当する情報については、[Web Apps](../app-service/web-sites-enable-diagnostic-log.md) に関するページを参照してください。
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services で Azure 診断を使用する
 * Visual Studio を使用する場合は、[Visual Studio を使用した Cloud Services アプリケーションのトレース](../vs-azure-tools-debug-cloud-services-virtual-machines.md)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。
@@ -79,4 +78,3 @@ Web Apps では Azure 診断が使用されないので注意してください�
 * [Azure 診断でのパフォーマンス カウンターの使用](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md)について説明します。
 * [Application Insights への Azure 診断情報の送信](azure-diagnostics-configure-application-insights.md)について説明します。
 * Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、[Azure 診断のトラブルシューティング](azure-diagnostics-troubleshooting.md)に関するページを参照してください。
-

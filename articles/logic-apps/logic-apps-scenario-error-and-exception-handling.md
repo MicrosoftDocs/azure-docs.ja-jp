@@ -16,13 +16,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
@@ -493,4 +491,3 @@ lLogic Apps 例外管理 API アプリケーションのソース コードは�
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [ロジック アプリの自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
-

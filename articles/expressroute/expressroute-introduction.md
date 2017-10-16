@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: cherylmc
+ms.openlocfilehash: 7390462d79506e63989baadac2b2cee00eef325d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a998ec92ad58932c5f71e84fbffcd7783cbb459b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -114,4 +113,3 @@ ExpressRoute に関してよく寄せられる質問については、「[Expres
   * [ExpressRoute 回線のピアリングの構成](expressroute-howto-routing-portal-resource-manager.md)
   * [ExpressRoute 回線に仮想ネットワークを接続する](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
-

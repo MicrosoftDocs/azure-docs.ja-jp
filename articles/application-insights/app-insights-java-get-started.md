@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: f017b8ca42ff3560e17d8aac303a4f834d298540
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 25d9d914ab27edb548cf6e6139d0d0395208ed24
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -37,7 +36,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)できます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
-1. [Microsoft Azure Portal](https://portal.azure.com) にサインインします。
+1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
 2. Application Insights リソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
@@ -119,7 +118,7 @@ SDK を手動で追加する:
 ## <a name="3-add-an-application-insights-xml-file"></a>3.Application Insights の xml ファイルを追加する
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
-インストルメンテーション キーについては、Azure Portal で入手したキーを使用してください。
+インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
 ```XML
 
@@ -144,7 +143,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
       <!-- These initializers add context data to each event -->
 
       <TelemetryInitializers>
-        <Add   type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
@@ -158,7 +157,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
-* Application Insights キーは Azure Portal からシステム プロパティ (-DAPPLICATION_INSIGHTS_IKEY=your_ikey) として動的に渡されることがあります。 定義されたプロパティがない場合、Azure App Settings で環境変数 (APPLICATION_INSIGHTS_IKEY) がチェックされます。 プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。 このシーケンスは、さまざまな環境のさまざまな InstrumentationKeys を動的に管理するのに役立ちます。
+* Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION_INSIGHTS_IKEY=your_ikey) として動的に渡されることがあります。 定義されたプロパティがない場合、Azure App Settings で環境変数 (APPLICATION_INSIGHTS_IKEY) がチェックされます。 プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。 このシーケンスは、さまざまな環境のさまざまな InstrumentationKeys を動的に管理するのに役立ちます。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>インストルメンテーション キーの他の設定方法
 Application Insights SDK は、次の順序でキーを探します。
@@ -227,9 +226,9 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
 開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。
 
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6.Application Insights でのテレメトリを表示する
-[Microsoft Azure Portal](https://portal.azure.com) の Application Insights リソースに戻ります。
+[Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
+HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから 最新の情報に更新をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
@@ -399,4 +398,3 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md
-

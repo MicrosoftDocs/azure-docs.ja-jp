@@ -13,12 +13,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 2/6/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 22013ec8e5531a2f61d811300bce016fcde5ab86
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: c91367ef11c9d531bebac7c069d2df586607ec29
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>管理スナップショットを使って Azure Managed Disk として保存された VHD のコピーを作成する
 バックアップのために Managed Disk のスナップショットを作成するか、スナップショットから Managed Disk を作成してトラブルシューティングのためにテスト仮想マシンに接続します。 管理スナップショットは、VM の Managed Disk の完全なポイントインタイム コピーです。 VHD の読み取り専用のコピーを作成し、既定では Standard Managed Disk として保存します。 
@@ -77,9 +76,8 @@ az snapshot create -g myResourceGroup --source "$osDiskId" --name osDisk-backup
 6. Azure データセンターの場所を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成する Managed Disk を選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスのディスクに保存する必要がある場合を除き、**[Standard_LRS]** をお勧めします。
-9. **[作成]**をクリックします。
+9. **Create** をクリックしてください。
 
 スナップショットを使って Managed Disk を作成し、高パフォーマンスが必要な VM に接続する計画がある場合は、`az snapshot create` コマンドで `--sku Premium_LRS` パラメーターを使います。 Premium Managed Disk として保存されるようにスナップショットが作成されます。 Premium Managed Disks はソリッド ステート ドライブ (SSD) なので高パフォーマンスですが、料金は Standard ディスク (HDD) より高くなります。
-
 
 

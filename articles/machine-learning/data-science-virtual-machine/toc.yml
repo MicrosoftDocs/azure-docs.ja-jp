@@ -1,0 +1,52 @@
+- name: データ サイエンス仮想マシンのドキュメント
+  items: null
+- name: 概要
+  items:
+    - name: データ サイエンス VM とは
+      href: overview.md
+    - name: ディープ ラーニング VM とは
+      href: deep-learning-dsvm-overview.md
+- name: 作業開始
+  items:
+    - name: Windows データ サイエンス VM の作成
+      href: provision-vm.md
+    - name: Ubuntu データ サイエンス VM の作成
+      href: dsvm-ubuntu-intro.md
+    - name: CentOS データ サイエンス VM の作成
+      href: linux-dsvm-intro.md
+    - name: ディープ ラーニング VM の作成
+      href: provision-deep-learning-dsvm.md
+- name: 方法
+  items:
+    - name: Windows データ サイエンス VM の使用
+      href: vm-do-ten-things.md
+    - name: Linux データ サイエンス VM の使用
+      href: linux-dsvm-walkthrough.md
+    - name: ディープ ラーニング VM の使用
+      href: use-deep-learning-dsvm.md
+- name: リファレンス
+  items:
+    - name: ディープ ラーニングと AI のフレームワーク
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: ML とデータ サイエンスのツール
+      href: dsvm-ml-data-science-tools.md
+    - name: 言語
+      href: dsvm-languages.md
+    - name: 開発ツール
+      href: dsvm-tools-development.md
+    - name: データ取り込みツール
+      href: dsvm-tools-ingestion.md
+    - name: データの探索と視覚化のツール
+      href: dsvm-tools-explore-and-visualize.md
+    - name: データ プラットフォーム
+      href: dsvm-data-platforms.md
+    - name: サンプルとチュートリアル
+      href: dsvm-samples-and-walkthroughs.md
+- name: リソース
+  items:
+    - name: ブログ
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: MSDN フォーラム
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=dsvm'

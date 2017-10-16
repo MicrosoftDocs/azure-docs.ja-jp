@@ -3,7 +3,7 @@ title: "Azure Application Gateway でのマルチテナント バックエンド
 description: "このページでは、Application Gateway によるマルチテナント バックエンドのサポートの概要について説明します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.service: application-gateway
@@ -12,18 +12,16 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: c29ff60a50e68c75b4e8f62713d6d1fffd2123d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: d944904db5b0bf176b214249ad59611e2b794ae0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Application Gateway によるマルチテナント バックエンドのサポート
 
-Azure Application Gateway では、仮想マシン スケール セット、ネットワーク インターフェイス、パブリック/プライベート IP、または完全修飾ドメイン名 (FQDN) が、バックエンド プールの一部としてサポートされます。 既定では、クライアントからの受信 HTTP ホスト ヘッダーは、変更されることなくそのままバックエンドに送信されます。 [Azure Web Apps](../app-service-web/app-service-web-overview.md) や [API Management](../api-management/api-management-key-concepts.md) など、多くのサービスが本質的にマルチテナントであり、適切なエンドポイントに解決するために特定のホスト ヘッダーまたは SNI 拡張機能を使用します。 Application Gateway では、バックエンド HTTP 設定に基づいて受信 HTTP ホスト ヘッダーを上書きできるようになりました。 これにより、マルチテナント バックエンドの Azure Web Apps と API Management がサポートされます。 この機能は、Standard SKU と WAF SKU の両方で利用できます。 マルチテナント バックエンドのサポートはさらに、SSL 終了とエンド ツー エンド SSL のシナリオにも対応しています。
+Azure Application Gateway では、仮想マシン スケール セット、ネットワーク インターフェイス、パブリック/プライベート IP、または完全修飾ドメイン名 (FQDN) が、バックエンド プールの一部としてサポートされます。 既定では、クライアントからの受信 HTTP ホスト ヘッダーは、変更されることなくそのままバックエンドに送信されます。 [Azure Web Apps](../app-service/app-service-web-overview.md) や [API Management](../api-management/api-management-key-concepts.md) など、多くのサービスが本質的にマルチテナントであり、適切なエンドポイントに解決するために特定のホスト ヘッダーまたは SNI 拡張機能を使用します。 Application Gateway では、バックエンド HTTP 設定に基づいて受信 HTTP ホスト ヘッダーを上書きできるようになりました。 これにより、マルチテナント バックエンドの Azure Web Apps と API Management がサポートされます。 この機能は、Standard SKU と WAF SKU の両方で利用できます。 マルチテナント バックエンドのサポートはさらに、SSL 終了とエンド ツー エンド SSL のシナリオにも対応しています。
 
 ![Web アプリのシナリオ](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -41,4 +39,3 @@ Azure Application Gateway では、仮想マシン スケール セット、ネ�
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーション ゲートウェイを設定して Web アプリケーションをバックエンド プール メンバーにする方法を学習するために、「[Application Gateway を使用した App Service Web Apps の構成](application-gateway-web-app-powershell.md)」を参照してください。
-

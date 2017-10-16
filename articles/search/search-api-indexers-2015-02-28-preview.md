@@ -14,13 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
 > [!NOTE]
@@ -798,4 +796,3 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td>サポートされていません。Azure Search では現在のところ、プリミティブ型と文字列の集合のみをサポートしています。</td>
 </tr>
 </table>
-

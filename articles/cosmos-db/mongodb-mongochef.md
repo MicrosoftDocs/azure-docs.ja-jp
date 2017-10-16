@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 54c9799bd646b827f602e2ea2f9a15a4fc853f00
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Azure Cosmos DB: MongoDB 用 API アカウントで MongoChef を使用する
 
@@ -118,4 +116,3 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB: MongoDB 用 API の[サンプル](mongodb-samples.md)を確認します。
-

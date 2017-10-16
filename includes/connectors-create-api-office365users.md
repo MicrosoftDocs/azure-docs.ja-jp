@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [Office 365 Users](https://office365.com) アカウント  
 
-ロジック アプリで Office 365 Users アカウントを使用するには、Office 365 Users アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで Office 365 Users アカウントを使用するには、Office 365 Users アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 Office 365 Users アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
+ms.openlocfilehash: a7a1179f815395028c4d0324e2bfb6fbed77229c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7db677614c23a3447e3e40ae867711a754b06d0d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威の検出
 ## <a name="introduction"></a>はじめに
 
@@ -157,7 +155,7 @@ Azure Automation は、PowerShell に基づいた Runbook を使用して管理�
 
 ユーザーは Azure でホストされる DSC リソースを作成または管理することができ、これをクラウドやオンプレミスのシステムに適用して定義したり、その構成を自動的に施行するか、セキュリティ構成がポリシー内に確実に留まるようにするために役立つ、誤差に関するレポートを取得することができます。
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションに対してだけでなく、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に対してもポリシーを定義できるため、より詳細な定義が可能になります。
 
@@ -290,7 +288,7 @@ SQL Database の脅威検出機能は、次の検出方法論を使用します�
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway の Web アプリケーション ファイアウォール
 
-[Web アプリケーション ファイアウォール](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)は、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview) の機能で、標準の[アプリケーション配信コントロール機能](https://kemptechnologies.com/in/application-delivery-controllers)に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[OWASP の上位 10 件の一般的 Web 脆弱性](https://www.owasp.org/index.php/Top_10_2010-Main)の大部分に対する保護を提供することで、これを実現します。
+[Web アプリケーション ファイアウォール](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)は、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview) の機能で、標準の[アプリケーション配信コントロール機能](https://kemptechnologies.com/in/application-delivery-controllers)に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[OWASP の上位 10 件の一般的 Web 脆弱性](https://www.owasp.org/index.php/Top_10_2010-Main)の大部分に対する保護を提供することで、これを実現します。
 
 ![Application Gateway の Web アプリケーション ファイアウォール](./media/azure-threat-detection/azure-threat-detection-fig13.png)
 
@@ -432,4 +430,3 @@ Azure Security Center の高度な検出機能を使用すると、Microsoft Azu
 - [Azure SQL Database の脅威の検出](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)
 
 Azure SQL Database の脅威の検出は、そのデータベースに対する潜在的な脅威の問題に対処するのに役立ちます。
-

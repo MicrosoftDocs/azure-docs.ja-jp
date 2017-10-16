@@ -14,15 +14,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 10/9/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 32a2508997d7f50b0b2989d76d0574951d81a73f
-ms.openlocfilehash: a2eb813bc96cd58762ce077d2c0710ed4bc7bde6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 1fc0cb2b036e835450ee0fc404cce12439fabc77
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定
 Azure サブスクリプションのアカウント管理者である場合は、Azure 課金アラート サービスを使用して、Azure アカウントの課金アクティビティを監視、管理するのに役立つ、カスタマイズされた課金アラートを作成できます。
@@ -62,4 +61,3 @@ EA のお客様は、加入契約の下にある各部署ごとに、使用金�
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png 
-

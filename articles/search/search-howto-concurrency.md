@@ -1,6 +1,6 @@
 ---
-title: "Azure Search でリソースへの同時書き込みを管理する方法"
-description: "オプティミスティック同時実行制御を使用して、Azure Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。"
+title: "Azure Search でリソースへの書き込みを同時実行を管理する方法"
+description: "更新または削除するには Azure Search のインデックス、インデクサー、データ ソースに空中衝突を回避するのにには、オプティミスティック同時実行制御を使用します。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -15,43 +15,42 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/21/2017
 ms.author: heidist
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: aee1b7376d4829e3e2f5a232525e3c3cb4df9d8e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search で同時実行を管理する方法
+# <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search で、同時実行を管理する方法
 
-インデックスやデータ ソースなどの Azure Search リソースを管理するときは、リソースを安全に更新することが重要であり、アプリケーションの異なるコンポーネントによってリソースが同時にアクセスされる場合は特にそうです。 2 つのクライアントが調整なしでリソースを同時に更新すると、競合状態になる可能性があります。 これを回避するために、Azure Search では*オプティミスティック同時実行制御モデル*を提供します。 リソースのロックはありません。 代わりに、偶発的な上書きを避ける要求を作成できるよう、リソースのバージョンを識別する ETag がすべてのリソースに存在します。
+インデックスおよびデータ ソースなどの Azure Search のリソースを管理するには、ときにすることが重要リソースを安全に、更新リソースは、アプリケーションのさまざまなコンポーネントで同時にアクセスする場合に特にです。 2 つのクライアントは、同時に調整なしのリソースを更新するときに競合状態が可能です。 これを回避するには、Azure Search が用意されています、*オプティミスティック同時実行制御モデル*です。 リソースのロックはありません。 代わりに、ETag が回避偶発的な要求を作成できるように、リソースのバージョンを識別するすべてのリソースが上書きされます。
 
 > [!Tip]
-> [サンプル C# ソリューション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)の概念コードは、Azure Search で同時実行制御がどのように機能するかを説明します。 コードでは、同時実行制御を呼び出す条件を作成します。 [次のコード フラグメント](#samplecode)に目を通すだけでもほとんどの開発者にとっては十分と思われますが、コードを実行したい場合は、appsettings.json を編集してサービス名と管理者 API キーを追加します。 サービス URL を `http://myservice.search.windows.net` とした場合、サービス名は `myservice` です。
+> 内の概念的なコード、[サンプル c# ソリューション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)Azure Search での同時実行制御のしくみについて説明します。 コードでは、同時実行制御を呼び出すための条件を作成します。 読み取り、[次のコード片](#samplecode)を実行する場合は、ほとんどの開発者サービス名と管理 api キーを追加するされる appsettings.json の編集のための十分な可能性があります。 サービスの URL を指定された`http://myservice.search.windows.net`、サービス名は`myservice`します。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-オプティミスティック同時実行制御は、インデックス、インデクサー、データ ソース、および synonymMap リソースに書き込む API 呼び出しでのアクセス条件チェックによって実装されます。 
+オプティミスティック同時実行制御を実装を介してアクセス条件を確認インデックス、インデクサー、データ ソース、および synonymMap リソースへの書き込み API 呼び出しで。 
 
-すべてのリソースには、オブジェクトのバージョン情報を提供する[*エンティティ タグ (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) があります。 最初に ETag をチェックして、リソースの ETag がローカル コピーと一致することを確認することにより、典型的なワークフロー (取得、ローカル変更、更新) における同時更新を回避できます。 
+すべてのリソースが、 [*エンティティ タグ (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag)オブジェクトのバージョン情報を提供します。 ETag を最初に確認するには、一般的なワークフローで同時に更新を回避できます (get、変更をローカルで、更新)、リソースの ETag と一致するローカル コピーを確保します。 
 
-+ REST API では、要求ヘッダーで [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
-+ .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
++ REST API を使用して、 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)要求ヘッダーにします。
++ .NET SDK は、設定、accessCondition オブジェクトを通じて ETag を設定、 [If-match |場合: 一致-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)リソースにします。 継承する任意のオブジェクト[IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) accessCondition オブジェクトが存在します。
 
-リソースを更新するたびに、その ETag が自動的に変化します。 同時実行管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`IsAccessConditionFailed()` 拡張メソッドが true を返す) `CloudException` として明示されます。
+リソースを更新するたびに、ETag が自動的に変更します。 同時実行の管理を実装するときに、クライアント上で変更したリソースのコピーとして同じ ETag にリモート リソースを必要とする更新の要求での事前条件を配置することはしています。 同時実行プロセスは、リモート リソースを既に変更した場合は、ETag、前提条件と一致しないと HTTP 412 で、要求は失敗します。 明らかに、.NET SDK を使用している場合、`CloudException`場所、`IsAccessConditionFailed()`拡張メソッドが true を返します。
 
 > [!Note]
-> 同時実行のメカニズムは 1 つしかありません。 どの API がリソース更新に使用されるかによらず、常にそのメカニズムが使用されます。 
+> 同時実行の 1 つだけのメカニズムがあります。 リソースの更新の API の使用に関係なく常に使用されます。 
 
 <a name="samplecode"></a>
 ## <a name="use-cases-and-sample-code"></a>ユース ケースとサンプル コード
 
-次のコードでは、キーの更新操作に対する accessCondition チェックの例を示します。
+次のコードでは、accessCondition がキーの更新操作のチェックを示します。
 
-+ リソースがもう存在しない場合、更新は失敗します
-+ リソースのバージョンが変わると、更新は失敗します
++ リソースが存在しない場合、更新プログラムが失敗します。
++ リソースのバージョンが変更された場合、更新プログラムが失敗します。
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>[DotNetETagsExplainer プログラム](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)からのサンプル コード
+### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>サンプル コード[DotNetETagsExplainer プログラム](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
 ```
     class Program
@@ -172,13 +171,13 @@ ms.lasthandoff: 07/25/2017
 }
 ```
 
-## <a name="design-pattern"></a>設計パターン
+## <a name="design-pattern"></a>デザイン パターン
 
-オプティミスティック同時実行制御を実装するための設計パターンには、アクセス条件チェック、アクセス条件のテストを再試行し、変更の再適用を試みる前に更新済みリソースを必要に応じて取得するループを含めるようにします。 
+デザイン パターンを実装するオプティミスティック同時実行したときに、アクセス条件を再試行ループを含める必要がありますでは、アクセス条件のテストを確認し、必要に応じて変更を再度適用する前に更新済みのリソースを取得します。 
 
-このコード スニペットでは、既に存在するインデックスに synonymMap を追加する例を示します。 このコードは [Azure Search のシノニム (プレビュー) C# チュートリアル](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk)からの引用です。 
+このコード スニペットは、既に存在するインデックスに synonymMap の追加を示しています。 このコードは、 [Azure Search のシノニム (プレビュー) c# チュートリアル](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk)です。 
 
-スニペットでは "hotels" インデックスを取得し、更新操作時にオブジェクトのバージョンをチェックし、条件に適合しない場合は例外をスローした後、操作を (最大 3 回) 再試行します。この際、最新バージョンを取得するために、まずサーバーからインデックスを取得します。
+スニペットは、「ホテル」インデックスを取得、更新操作のオブジェクトのバージョンを確認、条件が失敗した場合、例外をスローし操作を再試行 (3 回まで)、最新バージョンを取得するサーバーからのインデックスの取得を開始しますします。
 
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
@@ -214,14 +213,14 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-[シノニム C# サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)を確認し、既存のインデックスを安全に更新する方法について理解を深めます。
+確認、[シノニム c# サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)安全に既存のインデックスを更新する方法の詳細なコンテキストです。
 
-次のサンプルのいずれかに変更を加え、ETag または AccessCondition オブジェクトを含めてみます。
+Etag または AccessCondition オブジェクトを含めるには、次のサンプルのいずれかを変更してください。
 
-+ [Github の REST API サンプル](https://github.com/Azure-Samples/search-rest-api-getting-started) 
-+ [Github の .NET SDK サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started) このソリューションには、この記事で紹介したコードを含む "DotNetEtagsExplainer" プロジェクトが含まれています。
++ [Github に REST API のサンプル](https://github.com/Azure-Samples/search-rest-api-getting-started) 
++ [Github の .NET SDK サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started)です。 このソリューションには、この記事で紹介したコードを含む"DotNetEtagsExplainer"プロジェクトが含まれています。
 
 ## <a name="see-also"></a>関連項目
 
-  [一般的な HTTP 要求ヘッダーと応答ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
-  [HTTP ステータス コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [インデックス操作 (REST API)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)
+  [共通の HTTP 要求と応答ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
+  [HTTP ステータス コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)[インデックス操作 (REST API)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)

@@ -15,12 +15,11 @@ ms.date: 07/17/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 4e8028ab43ed02ef0c0a1374326b07f72f97d9d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 43ddeebfea4c914b8377d3363ba3d0c12db0adca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>ロール ベースのアクセス制御のアクセス レポートを作成する
 サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。 アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
@@ -63,5 +62,4 @@ Azure コマンド ライン インターフェイス (CLI) でアクセス変�
 ## <a name="next-steps"></a>次のステップ
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)
 * [PowerShell を使用して RBAC を管理する](role-based-access-control-manage-access-powershell.md)方法を確認します。
-
 

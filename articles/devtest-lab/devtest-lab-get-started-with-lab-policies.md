@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの基本ポリシーの管理
 
 Azure DevTest Labs では、各ラボのポリシー (設定) を管理することで、ラボのコストを制御し、無駄を最小限に抑えることができます。 この記事では、ポリシーを使用するにあたり、最も重要な 2 つのポリシーを設定する方法について説明します。1 つは 1 人のユーザーによって作成または要求できる仮想マシン (VM) の数を制限するポリシー、もう 1 つは自動シャットダウンを構成するポリシーです。 すべてのラボのポリシーを設定する方法については、[Azure DevTest Labs でのラボのポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。  
@@ -92,4 +89,3 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure DevTest Labs でのラボのポリシーの定義](devtest-lab-set-lab-policy.md) - 他のラボのポリシーを変更する方法について説明します 
-

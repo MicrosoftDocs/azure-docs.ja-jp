@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 0651f497de446bd6b66f8eaccd7114d262925afd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 3a768c30cb874d42d7b4fbd2eeaa6c0e23904e10
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application-to-use-kerberos-constrained-delegation"></a>Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法
 
 発行されたアプリケーションに対して SSO を実現する手法は、アプリケーションごとに異なる場合があります。手軽に SSO を実現する手段として Azure アプリケーション プロキシに用意されている選択肢の一つが、Kerberos の制約付き委任 (KCD) です。 この方法では、バックエンド アプリケーションに対し、ユーザーの代理で制約付きの Kerberos 認証を実行するようにコネクタ ホストが構成されます。
@@ -171,4 +169,3 @@ Kerberos が利用できない場合は、IIS でアプリケーションの認�
 
 ## <a name="next-steps"></a>次のステップ
 [管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
-

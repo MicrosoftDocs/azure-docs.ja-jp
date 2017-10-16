@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
 この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
@@ -264,7 +263,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    
    **Bash スクリプト ラッパー**
    
-   Linux ノードが多数存在し、なおかつその一部でのみジョブを実行する場合、固定ホスト ファイルの使用はお勧めしません。どのノードがジョブに割り当てられるかを把握できないためです。 この場合は、**mpirun** の bash スクリプト ラッパーを作成し、ホスト ファイルを自動的に作成してください。 この記事の最後にある bash スクリプト ラッパーのサンプル (hpcimpirun.sh) を探し、/openfoam/hpcimpirun.sh として保存できます。 そのサンプル スクリプトでは、次の処理が実行されます。
+   Linux ノードが多数存在し、なおかつその一部でのみジョブを実行する場合、固定ホスト ファイルの使用はお勧めしません。どのノードがジョブに割り当てられるかを把握できないためです。 この場合は、**mpirun** の bash スクリプト ラッパーを作成し、ホスト ファイルを自動的に作成してください。 この記事の最後にある bash スクリプト ラッパーのサンプル (hpcimpirun.sh) を探し、/openfoam/hpcimpirun.sh として保存できます。そのサンプル スクリプトでは、次の処理が実行されます。
    
    1. RDMA ネットワークを介して MPI ジョブを実行するために、 **mpirun**の環境変数に加え、いくつかのコマンド パラメーターを設定します。 この場合、次の変数が設定されます。
       
@@ -603,4 +602,3 @@ exit ${RTNSTS}
 [isosurface]:media/hpcpack-cluster-openfoam/isosurface.png
 [isosurface_color]:media/hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]:media/hpcpack-cluster-openfoam/linux_processes.png
-

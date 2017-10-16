@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
+ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 8ac757a84a932c434b508aa33c343c866a40bf02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
 [Azure 仮想マシン](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) には、いくつかのサポート Azure リソースが必要です。 この記事では、Python を使って VM リソースを作成、管理、削除する方法について説明します。 学習内容は次のとおりです。
@@ -500,7 +498,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンでは 1 つ以上の[データ ディスク](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
+仮想マシンでは 1 つ以上の[データ ディスク](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を保持することができ、それらは VHD として格納されます。
 
 1. 仮想マシンにデータ ディスクを追加するには、.py ファイルの変数の後に次の関数を追加します。 
 
@@ -576,5 +574,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 - デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - [Azure Python ライブラリ](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。
-
 

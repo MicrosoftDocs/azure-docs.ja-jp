@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 9258613161a61e36b1d0c5796d5763c916d66859
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="replicate-azure-vms-between-regions-with-azure-site-recovery"></a>Azure Site Recovery を使用したリージョン間での Azure VM のレプリケーション
 
 >この記事では、1 つの Azure リージョンにある Azure 仮想マシン (VM) を別のリージョンにある Azure VM にレプリケートするために必要な手順の概要を示します。 
@@ -74,6 +72,5 @@ Azure VM に送信接続が設定されていること、オンプレミスか�
 初期レプリケーションが完了した後で差分レプリケーションが実行されているときに、テスト フェールオーバーを実行して、すべてが予期したとおりに動作することを確認できます。
 
 「[手順 6: テスト フェールオーバーを実行する](azure-to-azure-walkthrough-test-failover.md)」に進む
-
 
 

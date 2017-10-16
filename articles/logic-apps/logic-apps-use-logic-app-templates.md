@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: 17486fd41b471356648656b65ca66e1234313d4c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 89272869f7dfaa34cbd2ad32d67dca0955e6158b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-workflow-using-a-pre-built-template-or-pattern-to-get-started-quickly"></a>ビルド済みのテンプレートまたはパターンを使用してワークフローをすばやく構成する
 
@@ -71,5 +69,4 @@ Twitter、Slack、電子メールなどのソーシャル メディア サービ
  ![](../../includes/media/app-service-logic-templates/template6.png)  
 
 既存のロジック アプリ テンプレートにさらに手順を追加する方法や一般的な編集を行う方法の詳細については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
-
 

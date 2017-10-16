@@ -14,13 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -116,4 +114,3 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [3]: ./media/search-get-started-Nodejs/create-search-portal-3.PNG
 [5]: ./media/search-get-started-Nodejs/AzSearch-Nodejs-configjs.png
 [9]: ./media/search-get-started-Nodejs/rogerwilliamsschool.png
-

@@ -1,6 +1,6 @@
 ---
 title: "RBAC を使用したアクセスとアクセス許可の管理 - Azure RBAC | Microsoft Docs"
-description: "Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
+description: "Azure Portal で Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: andredm
 ms.reviewer: rqureshi
+ms.openlocfilehash: 0462fe8ff75bdda397decb301c459795886e9e58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 68213a40755ae7dc675556c595da032b408be261
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure Portal でのロールベースの Access Control の基礎を確認する
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースのアクセス制御 (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
@@ -68,4 +67,3 @@ Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure �
 * [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md)の基礎を確認する
 * [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
 * 独自の [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)
-

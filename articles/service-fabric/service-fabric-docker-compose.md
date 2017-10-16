@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/25/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: e05d1a3d6111e3bbc34008226bcd1fdf35935450
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 519bab9d226f9d00ae0fa21348823d2d6b6cd2c9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose アプリケーションのサポート (プレビュー)
@@ -34,26 +34,26 @@ Docker は、複数コンテナー アプリケーションの定義に [docker-
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Service Fabric に Docker Compose ファイルをデプロイする
 
-以下のコマンドでは、他の Service Fabric アプリケーションのように監視および管理できる (前の例の `fabric:/TestContainerApp` という名前の) Service Fabric アプリケーションが作成されます。 正常性クエリに指定したアプリケーション名を使用することができます。
+以下のコマンドでは、他の Service Fabric アプリケーションのように監視および管理できる (`TestContainerApp` という名前の) Service Fabric アプリケーションが作成されます。 正常性クエリに指定したアプリケーション名を使用することができます。
 
 ### <a name="use-powershell"></a>PowerShell の使用
 
-PowerShell で次のコマンドを実行して、docker-compose.yml ファイルから Service Fabric Compose アプリケーションを作成します。
+PowerShell で次のコマンドを実行して、docker-compose.yml ファイルから Service Fabric Compose のデプロイを作成します。
 
 ```powershell
-New-ServiceFabricComposeApplication -ApplicationName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
+New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` および `RegistryPassword` は、コンテナー レジストリのユーザー名とパスワードです。 アプリケーションが完成したら、次のコマンドを使用して、その状態を確認できます。
+`RegistryUserName` および `RegistryPassword` は、コンテナー レジストリのユーザー名とパスワードです。 デプロイが完成したら、次のコマンドを使用して、その状態を確認できます。
 
 ```powershell
-Get-ServiceFabricComposeApplicationStatus -ApplicationName fabric:/TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp -GetAllPages
 ```
 
-PowerShell で Compose アプリケーションを削除するには、次のコマンドを使用します。
+PowerShell で Compose のデプロイを削除するには、次のコマンドを使用します。
 
 ```powershell
-Remove-ServiceFabricComposeApplication  -ApplicationName fabric:/TestContainerApp
+Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) の使用
@@ -61,7 +61,7 @@ Remove-ServiceFabricComposeApplication  -ApplicationName fabric:/TestContainerAp
 次の Service Fabric CLI コマンドを使用することもできます。
 
 ```azurecli
-sfctl compose create --application-id fabric:/TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --application-id TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
 ```
 
 アプリケーションを作成したら、次のコマンドを使用して、その状態を確認できます。

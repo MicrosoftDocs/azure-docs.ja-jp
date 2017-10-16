@@ -17,24 +17,25 @@
 
 # 方法
 ## 回線の作成と変更
-### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-circuit-arm.md)
+### [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+### [Azure PowerShell](expressroute-howto-circuit-arm.md)
 ### [Azure CLI](howto-circuit-cli.md)
 ## ピアリング構成の作成と変更
 ### [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-routing-arm.md)
+### [Azure PowerShell](expressroute-howto-routing-arm.md)
 ### [Azure CLI](howto-routing-cli.md)
 ## ExpressRoute 回線への仮想ネットワークのリンク
-### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-linkvnet-arm.md)
+### [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
 ## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 ### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
-### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
 ## Microsoft ピアリングにルート フィルターを構成する
 ### [Azure ポータル](how-to-routefilter-portal.md)
-### [PowerShell](how-to-routefilter-powershell.md)
+### [Azure PowerShell](how-to-routefilter-powershell.md)
+### [Azure CLI](how-to-routefilter-cli.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成
@@ -45,7 +46,7 @@
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
 ### [ルーティングを最適化する](expressroute-optimize-routing.md)
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
-### [ExpressRoute の NAT](expressroute-routing-nat.md)
+### [ExpressRoute の NAT](expressroute-nat.md)
 
 ## トラブルシューティング
 ### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
@@ -53,7 +54,7 @@
 ### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
 
 # リファレンス
-## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
+## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
 ## [Azure CLI](/cli/azure/network/express-route)
 ## [REST ()](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)

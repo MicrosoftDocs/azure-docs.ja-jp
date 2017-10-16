@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: c8386ffc5d68260eeb75edf7efb77db1163dcef8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 78996fdb1bbb9bc2e532f80dc9611efad389119e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
@@ -111,5 +110,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 [platforms]: app-insights-platforms.md
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
-
 

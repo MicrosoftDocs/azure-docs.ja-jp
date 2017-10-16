@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory のアプリケーション アクセスとシングル サインオンとは  | Microsoft Docs"
+title: "Azure Active Directory のアプリケーション アクセスとシングル サインオンとは | Microsoft Docs"
 description: "Azure Active Directory を使用して、業務上必要なすべての SaaS アプリケーションと Web アプリケーションへのシングル サインオンを有効にします。"
 services: active-directory
 documentationcenter: 
-author: asmalser-msft
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
-ms.author: curyand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: cb41fbd7ca931df52ba8e5304459bb04298a108c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
+ms.date: 09/11/2017
+ms.author: curtand
+ms.reviewer: asmalser
+ms.custom: it-pro
+ms.openlocfilehash: 97df68d446755414cbd427d59f399d6430580f42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -205,4 +206,3 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [4]: ./media/active-directory-appssoaccess-whatis/officeapphub.png
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
-

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0d2ff3ce90c355ba63f3fb66982baa621091ae6e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: 3edfd34d368228be32afef48688739639a3b03ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのパーティション分割
 > [!div class="op_single_selector"]
@@ -376,4 +374,3 @@ DROP TABLE #partitions;
 
 
 <!-- Other web references -->
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 0ee70bda954cf0a193d43b5b47702e7b2c37844d
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-mysql-on-azure"></a>MySQL を Azure でインストールする方法
 この記事では、Linux を実行している Azure 仮想マシンに MySQL をインストールして構成する方法を説明します。
@@ -178,5 +177,4 @@ putty を使用して作成した Linux VM に接続します。 初めて Azure
 
 ### <a name="next-step"></a>次のステップ
 MySQL の使用法などの情報は [こちら](https://www.mysql.com/)です。
-
 

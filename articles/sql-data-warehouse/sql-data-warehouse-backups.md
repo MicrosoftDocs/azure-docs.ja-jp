@@ -15,12 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
+ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ef2e6e7a19c7ed1730fdec5eca73c941e1b319c4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse のバックアップ
 SQL Data Warehouse には、データ ウェアハウスのバックアップ機能の一部として、ローカル バックアップと地理的バックアップの両方が用意されています。 これらのバックアップには、Azure Storage BLOB のスナップショットと地理冗長ストレージが含まれます。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元する、または別の地理的リージョンに復元するには、データ ウェアハウスのバックアップを使用します。 この記事では、SQL Data Warehouse のバックアップの詳細について説明します。
@@ -35,15 +34,15 @@ SQL Data Warehouse では、ローカル冗長 (LRS) の Azure Premium Storage �
 
 関連情報:
 
-* Azure Premium Storage については、[Azure Premium Storage の概要](../storage/storage-premium-storage.md)に関するページをご覧ください。
-* ローカルの冗長ストレージの詳細については、[Azure Storage のレプリケーション](../storage/storage-redundancy.md#locally-redundant-storage)に関するページをご覧ください。
+* Azure Premium Storage については、[Azure Premium Storage の概要](../storage/common/storage-premium-storage.md)に関するページをご覧ください。
+* ローカルの冗長ストレージの詳細については、[Azure Storage のレプリケーション](../storage/common/storage-redundancy.md#locally-redundant-storage)に関するページをご覧ください。
 
 ## <a name="azure-storage-blob-snapshots"></a>Azure Storage BLOB のスナップショット
 Azure Premium Storage を使用する利点として、SQL Data Warehouse は Azure Storage BLOB のスナップショットを使用して、ローカルでデータ ウェアハウスをバックアップします。 データ ウェアハウスをスナップショットの復元ポイントに復元できます。 スナップショットは最小 8 時間ごとに開始され、7 日間使用できます。  
 
 関連情報:
 
-* Azure BLOB のスナップショットについては、「[BLOB のスナップショットの作成](../storage/storage-blob-snapshots.md)」をご覧ください。
+* Azure BLOB のスナップショットについては、「[BLOB のスナップショットの作成](../storage/blobs/storage-blob-snapshots.md)」をご覧ください。
 
 ## <a name="geo-redundant-backups"></a>地理冗長のバックアップ
 24 時間ごとに、SQL Data Warehouse は、Standard ストレージに完全なデータ ウェアハウスを保存します。 完全なデータ ウェアハウスは、最新のスナップショットの時間に一致するように作成されます。 標準ストレージは、読み取りアクセス (RA GRS) を持つ地理冗長ストレージ アカウントに属しています。 Azure Storage RA-GRS 機能は、バックアップ ファイルを [ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートします。 この geo レプリケーションにより、プライマリ リージョンのスナップショットにアクセスできない場合でも、データ ウェアハウスを復元できます。 
@@ -62,8 +61,8 @@ Azure Premium Storage を使用する利点として、SQL Data Warehouse は Az
 
 関連情報:
 
-* geo 冗長ストレージの詳細については、「 [Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
-* RA-GRS ストレージの詳細については、「 [読み取りアクセス geo 冗長ストレージ](../storage/storage-redundancy.md#read-access-geo-redundant-storage)」を参照してください。
+* geo 冗長ストレージの詳細については、「 [Azure Storage のレプリケーション](../storage/common/storage-redundancy.md)」を参照してください。
+* RA-GRS ストレージの詳細については、「 [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage)」を参照してください。
 
 ## <a name="data-warehouse-backup-schedule-and-retention-period"></a>データ ウェアハウスのバックアップのスケジュールとリテンション期間
 SQL Data Warehouse では、4 ～ 8 時間ごとにオンラインのデータ ウェアハウスにスナップショットを作成し、各スナップショットを 7 日間保持します。 過去 7 日間の復元ポイントのいずれかに、オンラインのデータベースを復元できます。 
@@ -119,5 +118,4 @@ SQL データ ウェアハウスのバックアップの主な用途は、リテ
 * データ ウェアハウスを復元するには、「[Azure SQL Data Warehouse の復元](sql-data-warehouse-restore-database-overview.md)」をご覧ください。
 
 <!-- ### Tutorials -->
-
 

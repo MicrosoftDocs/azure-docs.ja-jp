@@ -1,6 +1,6 @@
 ---
-title: "Azure VPN ゲートウェイに接続するためのサード パーティの VPN デバイス構成について | Microsoft Docs"
-description: "この記事では、サード パーティの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。"
+title: "Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成 | Microsoft Docs"
+description: "この記事では、Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成の概要について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,44 +15,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
+ms.openlocfilehash: b3806d16d3b78347e183ecbd2ab5a463a2142110
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 72dab85bb882b05d72cef26bef70437695b70416
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-3rd-party-vpn-device-configurations"></a>サード パーティの VPN デバイス構成の概要
-この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイのセットアップを使って、同じパラメーターで異なるオンプレミスの VPN デバイスに接続します。
+# <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
+この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
 
 ## <a name="device-requirements"></a>デバイスの要件
-Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイートを S2S VPN トンネルに使います。 Azure VPN ゲートウェイで使用する IPsec/IKE プロトコル パラメーターと既定の暗号アルゴリズムについて詳しくは、「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」をご覧ください。 [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続について、暗号アルゴリズムとキーの強度の正確な組み合わせを指定することもできます。
+Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイートをサイト間 (S2S) VPN トンネルに使います。 Azure VPN ゲートウェイで使用される IPsec/IKE パラメーターと暗号アルゴリズムの一覧については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続を対象に、暗号アルゴリズムとキーの強度を具体的に指定することもできます。
 
 ## <a name ="singletunnel"></a>単一の VPN トンネル
-1 番目のトポロジは、Azure VPN ゲートウェイとオンプレミスの VPN デバイスの間の単一の S2S VPN トンネルで構成されます。 VPN トンネル間に BGP を構成することもできます。
+サンプルの 1 つ目の構成は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスとの間にある単一の S2S VPN トンネルから成ります。 必要に応じて、[VPN トンネル上にボーダー ゲートウェイ プロトコル (BGP)](#bgp) を構成することもできます。
 
-![単一のトンネル](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
+![単一の S2S VPN トンネルの図](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-詳しい手順については、「[Azure Portal でサイト間接続を作成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)」をご覧ください。 以降のセクションでは、パラメーターの一覧を示し、作業を始めるときに参考になる PowerShell スクリプトのサンプルを提供します。
+単一の VPN トンネルを設定する具体的な手順については、[サイト対サイト接続の構成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。 以降のセクションでは、サンプル構成の接続パラメーターについて詳しく説明すると共に、基本的な PowerShell スクリプトを紹介します。
 
-### <a name="network-and-vpn-gateway-information"></a>ネットワークと VPN ゲートウェイの情報
-このセクションでは、上の例に対するパラメーターの一覧を示します。
+### <a name="connection-parameters"></a>接続パラメーター
+このセクションでは、前のセクションで説明した例に使用されている一連のパラメーターを列挙しています。
 
 | **パラメーター**                | **値**                    |
 | ---                          | ---                          |
-| VNet アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
+| 仮想ネットワーク アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN Gateway IP         | Azure VPN Gateway IP         |
 | オンプレミス アドレス プレフィックス | 10.51.0.0/16<br>10.52.0.0/16 |
 | オンプレミス VPN デバイス IP    | オンプレミス VPN デバイス IP    |
-| *VNet BGP ASN                | 65010                        |
-| *Azure BGP ピア IP           | 10.12.255.30                 |
-| *オンプレミス BGP ASN         | 65050                        |
-| *オンプレミス BGP ピア IP     | 10.52.255.254                |
+| * 仮想ネットワーク BGP ASN                | 65010                        |
+| * Azure BGP ピア IP           | 10.12.255.30                 |
+| * オンプレミス BGP ASN         | 65050                        |
+| * オンプレミス BGP ピア IP     | 10.52.255.254                |
 
-* (*) BGP 専用のオプション パラメーター
+\* BGP 専用のオプション パラメーター。
 
 ### <a name="sample-powershell-script"></a>PowerShell スクリプトのサンプル
-詳しい説明については、「[PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」をご覧ください。 このセクションでは、作業を始めるときに役立つサンプル スクリプトを提供します。
+このセクションでは、作業を始めるときに役立つサンプル スクリプトを提供します。 詳しい手順については、[PowerShell を使用して S2S VPN 接続を作成する方法](vpn-gateway-create-site-to-site-rm-powershell.md)に関するページを参照してください。
 
 ```powershell
 # Declare your variables
@@ -117,17 +116,18 @@ $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a> [オプション] "UsePolicyBasedTrafficSelectors" でカスタム IPsec/IKE ポリシーを使用する
-VPN デバイスが "任意の環境間" のトラフィック セレクター (ルート ベース/VTI ベースの構成) をサポートしていない場合は、[こちらの記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)で説明されているように、カスタム IPsec/IKE ポリシーを作成して "UsePolicyBasedTrafficSelectors" オプションを構成する必要があります。
+### <a name ="policybased"></a> (オプション) UsePolicyBasedTrafficSelectors でカスタム IPsec/IKE ポリシーを使用する
+VPN デバイスが任意の環境間のトラフィック セレクター (ルートベース/VTI ベースの構成など) をサポートしていない場合は、[UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) オプションを使ってカスタム IPsec/IKE ポリシーを作成します。
 
 > [!IMPORTANT]
-> 接続で "UsePolicyBasedTrafficSelectors" オプションを有効にするために、IPsec/IKE ポリシーを作成する必要があります。
+> 接続で **UsePolicyBasedTrafficSelectors** オプションを有効にするためには、IPsec/IKE ポリシーを作成する必要があります。
 
-次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
+
+このサンプル スクリプトでは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーが作成されます。
 * IKEv2: AES256、SHA384、DHGroup24
 * IPsec: AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
 
-その後、ポリシーを適用し、接続で "UesPolicyBasedTrafficSelectors" を有効にします。
+このスクリプトでは、接続に IPsec/IKE ポリシーを適用して **UsePolicyBasedTrafficSelectors** オプションを有効にします。
 
 ```powershell
 $ipsecpolicy5 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -138,22 +138,21 @@ $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>[オプション] S2S VPN 接続で BGP を使用する
-必要に応じて、BGP を接続で使うことができます。 「[PowerShell を使用して Azure VPN Gateway で BGP を構成する方法](vpn-gateway-bgp-resource-manager-ps.md)」をご覧ください。 2 つの違いがあります。
+### <a name ="bgp"></a>(オプション) S2S VPN 接続で BGP を使用する
+S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイに BGP](vpn-gateway-bgp-resource-manager-ps.md) を使用することができます。 このアプローチには 2 つの違いがあります。
 
-オンプレミスのアドレス プレフィックスには、1 つのホスト アドレス (オンプレミスの BGP ピア IP アドレス) を指定できます。
+* オンプレミスのアドレス プレフィックスには、1 つのホスト アドレスを指定できます。 オンプレミスの BGP ピア IP アドレスは次のように指定します。
 
-```powershell
-New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
-```
+    ```powershell
+    New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
+    ```
 
-接続を作成するときは、"-EnableBGP" を $True に設定する必要があります。
+* 接続を作成するときに、**-EnableBGP** オプションを $True に設定する必要があります。
 
-```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
-```
+    ```powershell
+    New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
+    ```
 
 ## <a name="next-steps"></a>次のステップ
-アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する手順については、[クロスプレミス接続と VNet 間接続のアクティブ/アクティブ VPN Gateway の構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
-
+アクティブ/アクティブ VPN ゲートウェイを設定する具体的な手順については、[クロスプレミス接続と VNet 間接続にアクティブ/アクティブ VPN ゲートウェイを構成する方法](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
 

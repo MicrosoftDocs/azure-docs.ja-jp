@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: rayne
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: f5b334e594e3d002e1862b25c4faba7163efa7d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-3-plan-capacity-and-scaling-for-vmware-to-azure-replication"></a>手順 3: VMware から Azure へのレプリケーションの容量とスケーリングを計画する
 
@@ -126,7 +124,7 @@ CPU に基づくサイズ設定に関する推奨事項を次の表に示しま�
     ![プロセス サーバーの切り替え](./media/vmware-walkthrough-capacity/migrate-ps3.png)
 3. **[ターゲット プロセス サーバーの選択]** で、使用するプロセス サーバーを選択し、そのサーバーで処理する VM を選択します。
 4. 情報アイコンをクリックします。 負荷の決定に役立つように、選択した各 VM を新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。
-5. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。
+5. 新しいプロセス サーバーへのレプリケーションを開始するには、チェック マークをクリックします。
 
 ## <a name="control-network-bandwidth"></a>ネットワーク帯域幅の管理
 
@@ -166,5 +164,4 @@ CPU に基づくサイズ設定に関する推奨事項を次の表に示しま�
 
 ## <a name="next-steps"></a>次のステップ
 
-[手順 4: ネットワークを計画する](vmware-walkthrough-network.md)方法に関するページに進む。
-
+「[手順 4: ネットワークを計画する](vmware-walkthrough-network.md)」に進みます。

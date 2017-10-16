@@ -1,6 +1,6 @@
 ---
-title: Using SQL databases on Azure Stack | Microsoft Docs
-description: Learn how you can deploy SQL databases as a service on Azure Stack and the quick steps to deploy the SQL Server resource provider adapter
+title: "Azure Stack での SQL データベースの使用 | Microsoft Docs"
+description: "SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します"
 services: azure-stack
 documentationCenter: 
 author: JeffGoldner
@@ -17,70 +17,70 @@ ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 018d556d52aa1a1f436460d9811c43f9b45bd440
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Use SQL databases on Microsoft Azure Stack
+# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
 
-Use the SQL Server resource provider adapter to expose SQL databases as a service of Azure Stack. After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create databases for cloud-native apps, websites that are based on SQL, and workloads that are based on SQL without having to provision a virtual machine (VM) that hosts SQL Server each time.
+SQL Server リソース プロバイダー アダプターを使用して、SQL データベースを Azure Stack のサービスとして公開します。 リソース プロバイダーをインストールし、それを 1 つ以上の SQL Server インスタンスに接続した後で、SQL Server をホストする仮想マシン (VM) を毎回プロビジョニングすることなく、クラウドネイティブ アプリのデータベース、SQL ベースの Web サイト、SQL ベースのワークロードを作成できます。
 
-The resource provider does not support all the database management capabilities of [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). For example, elastic database pools and the ability to scale database performance aren't supported. The API is not compatible with SQL DB.
+リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能がサポートされるわけではありません。 たとえば、エラスティック データベース プールと、データベース パフォーマンスをスケールする機能はサポートされません。 API は、SQL DB と互換性がありません。
 
 
-## <a name="sql-server-resource-provider-adapter-architecture"></a>SQL Server Resource Provider Adapter architecture
-The resource provider is not based on, nor does it offer all the database management capabilities of Azure SQL Database. For example, elastic database pools and the ability to dial database performance up and down automatically aren't available. However, the resource provider does support similar create, read, update, and delete (CRUD) operations.
+## <a name="sql-server-resource-provider-adapter-architecture"></a>SQL Server リソース プロバイダー アダプターのアーキテクチャ
+リソース プロバイダーは、Azure SQL Database のどのデータベース管理機能にも基づかず、これらの機能の提供もしません。 たとえば、エラスティック データベース プールと、データベースのパフォーマンスを自動的に増減する機能は使用できません。 ただし、リソース プロバイダーでは、同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされます。
 
-The resource provider is made up of three components:
+リソース プロバイダーは、次の 3 つのコンポーネントで構成されています。
 
-- **The SQL resource provider adapter VM**, which is a Windows virtual machine running the provider services.
-- **The resource provider itself**, which processes provisioning requests and exposes database resources.
-- **Servers that host SQL Server**, which provide capacity for databases, called Hosting Servers. 
+- **SQL リソース プロバイダー アダプター VM**。これはプロバイダー サービスを実行する Windows 仮想マシンです。
+- **リソース プロバイダー自体**。これはプロビジョニング要求を処理し、データベース リソースを公開します。
+- **SQL Server をホストするサーバー**。これはデータベースに容量を提供し、ホスティング サーバーと呼ばれます。 
 
-This release no longer creates a SQL instance. You must create one (or more) and/or provide access to external SQL instances. There are a number of options available to you including templates in the [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) and Marketplace items. 
+このリリースでは、SQL インスタンスは作成されなくなりました。 1 つ (以上) の外部 SQL インスタンスを作成するか、外部 SQL インスタンスへのアクセスを提供する必要があります。 使用可能ないくつかのオプションとして、[Azure Stack クイックスタート ギャラリー](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows)のテンプレートと Marketplace 項目があります。 
 
 >[!NOTE]
-If you have downloaded any SQL Marketplace items, make sure you also download the SQL IaaS Extension or these will not deploy.
+いずれかの SQL Marketplace 項目をダウンロードした場合は、SQL IaaS 拡張機能をダウンロードしてください。そうしないと、これらはデプロイされません。
 
 
-## <a name="deploy-the-resource-provider"></a>Deploy the resource provider
+## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 
-1. If you have not already done so, register your development kit and download the Windows Server 2016 EVAL image downloadable through Marketplace Management. You can also use a script to create a [Windows Server 2016 image](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). The .NET 3.5 runtime is no longer required.
+1. まだ行っていない場合は、開発キットを登録し、Marketplace 管理を通じてダウンロード可能な Windows Server 2016 EVAL イメージをダウンロードします。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます。 .NET 3.5 ランタイムは必要なくなりました。
 
-2. [Download the SQL resource provider binaries file](https://aka.ms/azurestacksqlrp) and extract it on the development kit host.
+2. [SQL リソース プロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestacksqlrp)し、開発キットのホストに抽出します。
 
-3. Sign in to the development kit host and extract the SQL RP installer file to a temporary directory.
+3. 開発キットのホストにサインインし、SQL RP インストーラー ファイルを一時ディレクトリに抽出します。
 
-4. The Azure Stack root certificate is retrieved and a self-signed certificate is created as part of this process. 
+4. このプロセスの一環として、Azure Stack ルート証明書が取得され、自己署名証明書が作成されます。 
 
-    __Optional:__ If you need to provide your own, prepare the certificates and copy to a local directory if you wish to customize the certificates (passed to the installation script). You need the following certificates:
+    __省略可能:__ 独自に提供する必要がある場合は証明書を準備し、(インストール スクリプトに渡される) 証明書をカスタマイズする場合はローカル ディレクトリにコピーします。 以下の証明書が必要です。
 
-    a. A wildcard certificate for *.dbadapter.\<region\>.\<external fqdn\>. This certificate must be trusted, such as would be issued by a certificate authority (that is, the chain of trust must exist without requiring intermediate certificates.) (A single site certificate can be used with the explicit VM name you provide during install.)
+    a. *.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書。 証明機関によって発行されるなど、この証明書が信頼されている必要があります (つまり、中間証明書を必要とせずに信頼チェーンが存在する必要があります)。(1 つのサイト証明書を、インストール時に指定した明示的な VM 名で使用できます)。
 
-    b. The root certificate used by the Azure Resource Manager for your instance of Azure Stack. If it is not found, the root certificate will be retrieved.
+    b. Azure Stack のインスタンスの Azure Resource Manager で使用されるルート証明書。 これが見つからない場合は、ルート証明書が取得されます。
 
 
-5. Open a **new** elevated PowerShell console and change to the directory where you extracted the files. Use a new window to avoid problems that may arise from incorrect PowerShell modules already loaded on the system.
+5. **新しい**管理者特権の PowerShell コンソールを開き、ファイルを抽出したディレクトリに変更します。 新しいウィンドウを使用すると、システムに不適切な PowerShell モジュールが既に読み込まれている場合に発生する可能性のある問題を回避できます。
 
-6. If you have installed any versions of the AzureRm or AzureStack PowerShell modules other than 1.2.9 or 1.2.10, you will be prompted to remove them or the install will not proceed. This includes versions 1.3 or greater.
+6. 1.2.9 または 1.2.10 以外の任意のバージョンの AzureRm または AzureStack PowerShell モジュールをインストールした場合は、それらを削除するように求められるか、インストールが続行されません。 これには、バージョン 1.3 以上も含まれます。
 
-7. Run the DeploySqlProvider.ps1 script with the parameters listed below.
+7. 以下に示すパラメーターを指定して DeploySqlProvider.ps1 スクリプトを実行します。
 
-The script performs these steps:
+スクリプトでは次の手順が実行されます。
 
-* If necessary, download a compatible version of Azure PowerShell.
-* Upload the certificates and other artifacts to a storage account on your Azure Stack.
-* Publish gallery packages so that you can deploy SQL databases through the gallery.
-* Deploy a VM using the Windows Server 2016 image created in step 1 and install the resource provider.
-* Register a local DNS record that maps to your resource provider VM.
-* Register your resource provider with the local Azure Resource Manager (Tenant and Admin).
+* 必要に応じて、Azure PowerShell の互換バージョンをダウンロードします。
+* Azure Stack 上のストレージ アカウントに証明書とその他のアーティファクトをアップロードします。
+* ギャラリー パッケージを公開して、ギャラリーを通じて SQL データベースをデプロイできるようにします。
+* 手順 1 で作成した Windows Server 2016 イメージを使用して VM をデプロイし、リソース プロバイダーをインストールします。
+* リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
+* リソース プロバイダーをローカル Azure Resource Manager (テナントと管理者) に登録します。
 
 > [!NOTE]
-> If the installation takes more than 90 minutes, it may fail and you see a failure message on the screen and in the log file, but the deployment is retried from the failing step. Systems that do not meet the recommended memory and core specifications may not be able to deploy the SQL RP.
+> インストールに要する時間が 90 分を超える場合は、インストールが失敗し、スクリーンとログ ファイルにエラー メッセージが表示されることがありますが、デプロイは失敗した手順から再試行されます。 推奨されるメモリとコア仕様を満たしていないシステムは、SQL RP をデプロイできないことがあります。
 >
 
-Here's an example you can run from the PowerShell prompt (but change the account information and portal endpoints as needed):
+PowerShell プロンプトから実行できる例を次に示します (ただし、必要に応じてアカウント情報とポータル エンドポイントを変更してください)。
 
 ```
 # Install the AzureRM.Bootstrapper module
@@ -119,121 +119,121 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 <extracted file directory>\DeploySQLProvider.ps1 -DirectoryTenantID $tenantID -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -ResourceGroupName "SqlRPRG" -VmName "SqlVM" -ArmEndpoint "https://adminmanagement.local.azurestack.external" -TenantArmEndpoint "https://management.local.azurestack.external" -DefaultSSLCertificatePassword $PfxPass
  ```
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 parameters
-You can specify these parameters in the command line. If you do not, or any parameter validation fails, you are prompted to provide the required ones.
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
+これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
-| Parameter Name | Description | Comment or Default Value |
+| パラメーター名 | Description | コメントまたは既定値 |
 | --- | --- | --- |
-| **DirectoryTenantID** | The Azure or ADFS Directory ID (guid). | _required_ |
-| **AzCredential** | Provide the credentials for the Azure Stack Service Admin account. You must use the same credentials as you used for deploying Azure Stack). | _required_ |
-| **VMLocalCredential** | Define the credentials for the local administrator account of the SQL resource provider VM. This password is also used for the SQL **sa** account. | _required_ |
-| **ResourceGroupName** | Define a name for a Resource Group in which items created by this script will be stored. For example, *SqlRPRG*. |  _required_ |
-| **VmName** | Define the name of the virtual machine on which to install the resource provider. For example, *SqlVM*. |  _required_ |
-| **DependencyFilesLocalPath** | Your certificate files must be placed in this directory as well. | _optional_ |
-| **DefaultSSLCertificatePassword** | The password for the .pfx certificate | _required_ |
-| **MaxRetryCount** | Define how many times you want to retry each operation if there is a failure.| 2 |
-| **RetryDuration** | Define the timeout between retries, in seconds. | 120 |
-| **Uninstall** | Remove the resource provider and all associated resources (see notes below) | No |
-| **DebugMode** | Prevents automatic cleanup on failure | No |
+| **DirectoryTenantID** | Azure または ADFS ディレクトリ ID (guid)。 | "_必須_" |
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用する必要があります。 | "_必須_" |
+| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報を定義します。 このパスワードは、SQL **sa** アカウントにも使用されます。 | "_必須_" |
+| **ResourceGroupName** | このスクリプトによって作成された項目の格納先となるリソース グループの名前を定義します。 たとえば、"*SqlRPRG*" などです。 |  "_必須_" |
+| **VmName** | リソース プロバイダーをインストールする仮想マシンの名前を定義します。 たとえば、"*SqlVM*" などです。 |  "_必須_" |
+| **DependencyFilesLocalPath** | 証明書ファイルはこのディレクトリにも配置する必要があります。 | "_省略可能_" |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | "_必須_" |
+| **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
+| **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |
+| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ |
 
 
-## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Verify the deployment using the Azure Stack Portal
+## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用してデプロイを確認する
 
 > [!NOTE]
->  After the installation script completes, you will need to refresh the portal to see the admin blade.
+>  インストール スクリプトが完了したら、ポータルを最新の情報に更新して [管理者] ブレードを表示する必要があります。
 
 
-1. On the Console VM desktop, click **Microsoft Azure Stack Portal** and sign in to the portal as the service administrator.
+1. コンソール VM デスクトップで、**[Microsoft Azure Stack Portal]\(Microsoft Azure Stack ポータル\)** をクリックして、ポータルにサービス管理者としてサインインします。
 
-2. Verify that the deployment succeeded. Click **Resource Groups** &gt; click the resource group you used and then make sure that the essentials part of the blade (upper half) reads **_date_ (Succeeded)**.
+2. デプロイが成功したことを確認します。 **[リソース グループ]** &gt; 使用したリソース グループをクリックし、ブレードの重要な部分 (上半分) が **["_date_" (Succeeded)]\(日付 (成功)\)** になっていることを確認します。
 
-      ![Verify Deployment of the SQL RP](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+      ![SQL RP のデプロイの確認](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
-## <a name="provide-capacity-by-connecting-to-a-hosting-sql-server"></a>Provide capacity by connecting to a hosting SQL server
+## <a name="provide-capacity-by-connecting-to-a-hosting-sql-server"></a>ホスティング SQL Server に接続して容量を提供する
 
-1. Sign in to the Azure Stack admin portal as a service admin
+1. Azure Stack 管理ポータルにサービス管理者としてサインインします
 
-2. Create a SQL virtual machine, unless you have one already available. Marketplace Management offers some options for deploying SQL VMs.
+2. 使用可能な SQL 仮想マシンがない場合は作成します。 Marketplace 管理は、SQL VM をデプロイするためのオプションをいくつか提供します。
 
-3. Click **Resource Providers** &gt; **SQLAdapter** &gt; **Hosting Servers** &gt; **+Add**.
+3. **[リソース プロバイダー]** &gt; **[SQLAdapter]** &gt; **[Hosting Servers]\(ホスティング サーバー\)** &gt; **[+追加]** をクリックします。
 
-    The **SQL Hosting Servers** blade is where you can connect the SQL Server Resource Provider to actual instances of SQL Server that serve as the resource provider’s backend.
+    **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** ブレードでは、リソース プロバイダーのバックエンドとして機能する SQL Server の実際のインスタンスに SQL Server リソース プロバイダーを接続できます。
 
-    ![Hosting Servers](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.PNG)
+    ![ホスティング サーバー](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.PNG)
 
-4. Fill the form with the connection details of your SQL Server instance.
+4. SQL Server インスタンスの接続詳細をフォームに入力します。
 
-    ![New Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.PNG)
+    ![新しいホスティング サーバー](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.PNG)
 
     > [!NOTE]
-    > As long as the SQL instance can be accessed by the tenant and admin Azure Resource Manager, it can be placed under control of the resource provider. The SQL instance __must__ be allocated exclusively to the RP.
+    > SQL インスタンスがテナントと管理者の Azure Resource Manager によってアクセスできる限り、リソース プロバイダーの管理下に置くことができます。 SQL インスタンスは RP に排他的に割り当てられている__必要があります__。
 
-5. As you add servers, you must assign them to a new or existing SKU to differentiate service offerings. For example, you could have a SQL Enterprise instance providing database capacity and automatic backup, reserve high-performance servers for individual departments, etc. The SKU name should reflect the properties so that tenants can place their databases appropriately and all hosting servers in a SKU should have the same capabilities.
+5. サーバーを追加する際に、サービス内容を区別するために新規または既存の SKU に割り当てる必要があります。 たとえば、データベース容量と自動バックアップを提供する SQL Enterprise インスタンスを使用したり、個々の部門用に高パフォーマンス サーバーを予約したりできます。テナントがデータベースを適切に配置でき、SKU 内のすべてのホスティング サーバーが同じ機能を持つように、SKU 名はプロパティを反映する必要があります。
 
-    An example:
+    例:
 
-    ![SKUs](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+    ![SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 >[!NOTE]
-SKUs can take up to an hour to be visible in the portal. You cannot create a database until the SKU is created.
+SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU が作成されるまでは、データベースを作成できません。
 
 
-## <a name="create-your-first-sql-database-to-test-your-deployment"></a>Create your first SQL database to test your deployment
+## <a name="create-your-first-sql-database-to-test-your-deployment"></a>最初の SQL データベースを作成してデプロイをテストします
 
-1. Sign in to the Azure Stack admin portal as service admin.
+1. Azure Stack 管理ポータルにサービス管理者としてサインインします。
 
-2. Click **+ New** &gt;**Data + Storage"** &gt; **SQL Server Database (preview)** &gt; **Add**.
+2. **[+新規]** &gt; **[データ + ストレージ]** &gt; **[SQL Server Database (preview)]\(SQL Server データベース (プレビュー)\)** &gt; **[追加]** をクリックします。
 
-3. Fill in the form with database details, including a **Database Name**, **Maximum Size**, and change the other parameters as necessary. You are asked to pick a SKU for your database. As hosting servers are added, they are assigned a SKU and databases are created in that pool of hosting servers that make up the SKU.
+3. **[データベース名]**、**[最大サイズ]** などのデータベースの詳細をフォームに入力し、必要に応じて他のパラメーターを変更します。 データベースの SKU の選択を求められます。 ホスティング サーバーが追加されると、それらに SKU が割り当てられ、SKU を構成するホスティング サーバーのプールにデータベースが作成されます。
 
     ![New database](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
 
-4. Fill in the Login Settings: **Database login**, and **Password**. This is a SQL Authentication credential that is created for your access to this database only. The login user name must be globally unique. Either create a new login setting or select an existing one. You can reuse login settings for other databases using the same SKU.
+4. ログイン設定: **[データベース ログイン]** と **[パスワード]** を入力します。 これは、このデータベースのみにアクセスするために作成される SQL 認証資格情報です。 ログイン ユーザー名はグローバルに一意である必要があります。 新しいログイン設定を作成するか、既存の設定を選択します。 同じ SKU を使用して他のデータベースのログイン設定を再利用することができます。
 
-    ![Create a new database login](./media/azure-stack-sql-rp-deploy/create-new-login.png)
-
-
-5. Submit the form and wait for the deployment to complete.
-
-    In the resulting blade, notice the “Connection string” field. You can use that string in any application that requires SQL Server access (for example, a web app) in your Azure Stack.
-
-    ![Retrieve the connection string](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
-
-## <a name="add-capacity"></a>Add capacity
-
-Add capacity by adding additional SQL hosts in the Azure Stack portal and associate them with an appropriate SKU. If you wish to use another instance of SQL instead of the one installed on the provider VM, click **Resource Providers** &gt; **SQLAdapter** &gt; **SQL Hosting Servers** &gt; **+Add**.
-
-## <a name="making-sql-databases-available-to-tenants"></a>Making SQL databases available to tenants
-
-Create plans and offers to make SQL databases available for tenants. You must create a plan, add the Microsoft.SqlAdapter service to the plan, and add an existing Quota, or create a new one. If you create a quota, you can specify the capacity to allow the tenant.
-    ![Create plans and offers to include databases](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="tenant-usage-of-the-resource-provider"></a>Tenant usage of the Resource Provider
-
-Self-service databases are provided through the tenant portal experience.
-
-## <a name="removing-the-sql-adapter-resource-provider"></a>Removing the SQL Adapter Resource Provider
-
-In order to remove the resource provider, it is essential to first remove any dependencies.
-
-1. Ensure you have the original deployment package that you downloaded for this version of the Resource Provider.
-
-2. All tenant databases must be deleted from the resource provider (this will not delete the data). This should be performed by the tenants themselves.
-
-3. Administrator must delete the hosting servers from the SQL Adapter
-
-4. Administrator must delete any plans that reference the SQL Adapter.
-
-5. Administrator must delete any SKUs and quotas associated to the SQL Adapter.
-
-6. Rerun the deployment script with the -Uninstall parameter, Azure Resource Manager endpoints, DirectoryTenantID, and credentials for the service administrator account.
+    ![新しいデータベース ログインの作成](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 
+5. フォームを送信し、デプロイが完了するまで待ちます。
 
-## <a name="next-steps"></a>Next steps
+    結果のブレードで、[接続文字列] フィールドに注目してください。 Azure Stack で SQL Server アクセスを必要とする任意のアプリケーション (たとえば、Web アプリ) でその文字列を使用できます。
+
+    ![接続文字列の取得](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+
+## <a name="add-capacity"></a>容量を追加する
+
+Azure Stack ポータルに SQL ホストを追加し、それらに適切な SKU を関連付けることで、容量を追加します。 プロバイダー VM にインストールされているのとは別の SQL のインスタンスを使用する場合は、**[リソース プロバイダー]** &gt; **[SQLAdapter]** &gt; **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** &gt; **[+追加]** をクリックします。
+
+## <a name="making-sql-databases-available-to-tenants"></a>SQL データベースをテナントで使用できるようにする
+
+プランとオファーを作成して、SQL データベースをテナントで使用できるようにします。 プランを作成し、Microsoft.SqlAdapter サービスをプランに追加し、既存のクォータを追加するか、新しいクォータを作成する必要があります。 クォータを作成する場合は、テナントに対応できる容量を指定できます。
+    ![プランとオファーを作成してデータベースに含める](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
+
+## <a name="tenant-usage-of-the-resource-provider"></a>テナントでのリソース プロバイダーの使用
+
+セルフサービス データベースは、テナント ポータル エクスペリエンスを通じて提供されます。
+
+## <a name="removing-the-sql-adapter-resource-provider"></a>SQL アダプター リソース プロバイダーの削除
+
+リソース プロバイダーを削除するには、最初に依存関係を削除することが重要です。
+
+1. このバージョンのリソース プロバイダーについてダウンロードした元のデプロイ パッケージがあることを確認します。
+
+2. リソース プロバイダーからすべてのテナント データベースを削除する必要があります (データは削除されません)。 これは、テナント自体で実行する必要があります。
+
+3. 管理者は、SQL アダプターからホスティング サーバーを削除する必要があります
+
+4. 管理者は、SQL アダプターを参照するプランをすべて削除する必要があります。
+
+5. 管理者は、SQL アダプターに関連付けられている SKU とクォータをすべて削除する必要があります。
+
+6. -Uninstall パラメーター、Azure Resource Manager エンドポイント、DirectoryTenantID、サービス管理者アカウントの資格情報を指定してデプロイ スクリプトを再実行します。
 
 
-Try other [PaaS services](azure-stack-tools-paas-services.md) like the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) and the [App Services resource provider](azure-stack-app-service-overview.md).
+
+## <a name="next-steps"></a>次のステップ
+
+
+[MySQL Server リソース プロバイダー](azure-stack-mysql-resource-provider-deploy.md)や [App Services リソース プロバイダー](azure-stack-app-service-overview.md)のような他の [PaaS サービス](azure-stack-tools-paas-services.md)を試します。
 

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 11/14/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Azure Active Directory を使用して Azure の HPC Pack クラスターを管理する
 [Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) では、Azure の HPC クラスターをデプロイする管理者向けに [Azure Active Directory](../../active-directory/index.md) (Azure AD) との統合をサポートしています。
@@ -230,5 +229,4 @@ Set-HpcTokenCache -UserName <AADUsername> -Password $SecurePassword -scheduler h
       ```powershell
       Set-HpcJobCredential -Credential $mycreds -Scheduler https://<Azure load balancer DNS name> -ExtendedData <data>
       ```
-
 

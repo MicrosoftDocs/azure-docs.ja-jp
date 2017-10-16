@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: genemi
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 082abf57b139b9f7d44774dce3a80e20b97f0e3b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Microsoft SQL Server の接続ライブラリとフレームワーク
 
@@ -57,4 +56,3 @@ Microsoft の[チュートリアル](http://aka.ms/sqldev)をご覧ください�
 - [Java を使用して SQL Database に接続する](sql-database-connect-query-java.md)
 - [Python を使用して SQL Database に接続する](sql-database-connect-query-python.md)
 - [Ruby を使用して SQL Database に接続する](sql-database-connect-query-ruby.md)
-

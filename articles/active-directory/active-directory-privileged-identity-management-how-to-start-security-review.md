@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: billmath
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8c9bac62a92947ea888f1ccdbd300f5b40cb3e07
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 2b516e2f05aa883c5e37f5864e5ee8a2b37d3a46
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを開始する方法
 ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。 このドキュメントでは、Azure AD Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
@@ -51,7 +50,7 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 ### <a name="choose-a-role-to-review"></a>確認するロールを選択する
 各レビューでは、1 つのロールに重点を置いています。 特定のロールのブレードからアクセス レビューを開始した場合を除き、ここでロールを選択する必要があります。
 
-1.  **[役割メンバーシップをレビューする]**
+1. **[役割メンバーシップをレビューする]**
    
     ![ロール メンバーシップを確認する - スクリーン ショット][3]
 2. 一覧から 1 つのロールを選択します。
@@ -59,7 +58,7 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 ### <a name="decide-who-will-perform-the-review"></a>レビューを実行するユーザを決定する
 レビューを実行するための 3 つのオプションがあります。 他のユーザーにレビューを割り当てて完了してもらうか、自分でレビューするか、または各ユーザーが自身のアクセスを確認できます。
 
-1.  **[レビュー担当者の選択]**
+1. **[レビュー担当者の選択]**
    
     ![レビュー担当者を選択する - スクリーン ショット][4]
 2. いずれかのオプションを選択してください。
@@ -88,4 +87,3 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 [2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
 [3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
 [4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png
-

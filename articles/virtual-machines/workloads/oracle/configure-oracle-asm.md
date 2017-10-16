@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
 ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、Azure 仮想マシンの基本的デプロイと Oracle Automated Storage Management (ASM) のインストールと構成について扱います。  学習内容は次のとおりです。
@@ -430,7 +428,7 @@ Oracle ASM を構成するとき、インストールと構成を完了するた
    > キーには、`ssh-rsa` という文字列を含める必要があります。 また、キーの内容は 1 行のテキストである必要があります。
    >  
 
-6. クライアント システムで、PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[Auth]\(認証\)** の順に移動します。 **[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
+6. クライアント システムで、PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[Auth]\(認証\)** の順に移動します。**[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
 
    ![SSH 認証オプションのスクリーン ショット](./media/oracle-asm/setprivatekey.png)
 
@@ -589,4 +587,3 @@ az group delete --name myResourceGroup
 [チュートリアル: Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
 
 [Oracle DB の構築](oracle-design.md)を確認する
-

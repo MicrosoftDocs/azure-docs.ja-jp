@@ -1,0 +1,188 @@
+- name: Azure Monitor のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Monitor
+      href: monitoring-overview-azure-monitor.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: メトリックの条件に基づくアラート
+      href: monitor-quick-resource-metric-alert-portal.md
+    - name: サブスクリプションのアクティビティに基づくアラート
+      href: monitor-quick-audit-notify-action-in-subscription.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: パフォーマンスとスケジュールに基づく自動スケール
+      href: monitor-tutorial-autoscale-performance-schedule.md
+    - name: 監視データのアーカイブ
+      href: monitor-tutorial-archive-monitoring-data.md
+- name: 概念
+  items:
+    - name: 監視データのソース
+      href: monitoring-data-sources.md
+    - name: ロールのアクセス許可とセキュリティ
+      href: monitoring-roles-permissions-security.md
+    - name: パートナー統合
+      href: monitoring-partners.md
+    - name: その他の概要
+      items:
+        - name: Azure の監視ツール
+          href: monitoring-overview.md
+        - name: メトリック
+          href: monitoring-overview-metrics.md
+        - name: アラート
+          href: monitoring-overview-alerts.md
+        - name: 自動スケール
+          href: monitoring-overview-autoscale.md
+        - name: アクティビティ ログ
+          href: monitoring-overview-activity-logs.md
+        - name: アクション グループ
+          href: monitoring-action-groups.md
+        - name: 診断ログ
+          href: monitoring-overview-of-diagnostic-logs.md
+        - name: Azure 診断拡張機能
+          href: azure-diagnostics.md
+    - name: スキーマ
+      items:
+        - name: Azure 診断拡張機能のスキーマ
+          href: azure-diagnostics-schema.md
+          items:
+            - name: 1
+              href: azure-diagnostics-schema-1dot0.md
+            - name: 1.2
+              href: azure-diagnostics-schema-1dot2.md
+            - name: 1.3 以降
+              href: azure-diagnostics-schema-1dot3-and-later.md
+- name: ハウツー ガイド
+  items:
+    - name: チュートリアル
+      items:
+        - name: Azure Monitor のチュートリアル
+          href: monitoring-get-started.md
+        - name: 自動スケールのチュートリアル
+          href: monitoring-autoscale-get-started.md
+        - name: 多次元メトリックス エクスプローラー
+          href: monitoring-metric-charts.md
+        - name: Azure CLI 1.0 のサンプル
+          href: insights-cli-samples.md
+        - name: Azure PowerShell のサンプル
+          href: insights-powershell-samples.md
+    - name: アラートの使用
+      items:
+        - name: Azure Portal でほぼリアルタイムのアラートを構成する
+          href: monitoring-near-real-time-metric-alerts.md
+        - name: Azure Portal でアラートを構成する
+          href: insights-alerts-portal.md
+        - name: CLI を使用してアラートを構成する
+          href: insights-alerts-command-line-interface.md
+        - name: Azure PowerShell でアラートを構成する
+          href: insights-alerts-powershell.md
+        - name: メトリック アラートで webhook を呼び出す
+          href: insights-webhooks-alerts.md
+        - name: Resource Manager テンプレートでのメトリック アラートの作成
+          href: monitoring-enable-alerts-using-template.md
+    - name: 自動スケールの使用
+      items:
+        - name: ベスト プラクティス
+          href: insights-autoscale-best-practices.md
+        - name: 一般的なメトリック
+          href: insights-autoscale-common-metrics.md
+        - name: 一般的なパターン
+          href: monitoring-autoscale-common-scale-patterns.md
+        - name: カスタム メトリックを使用した自動スケール
+          href: monitoring-autoscale-scale-by-custom-metric.md
+        - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
+          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: VM スケール セットでのマシンの自動スケール
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: 自動スケールで webhook と電子メール通知を構成する
+          href: insights-autoscale-to-webhook-email.md
+    - name: アクティビティ ログの使用
+      items:
+        - name: アクティビティ ログでのイベントの表示
+          href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: アクティビティ ログ イベントでアラートを構成する
+          href: monitoring-activity-log-alerts.md
+        - name: アクティビティ ログをアーカイブする
+          href: monitoring-archive-activity-log.md
+        - name: アクティビティ ログの Event Hubs へのストリーム
+          href: monitoring-stream-activity-logs-event-hubs.md
+        - name: リソース マネージャーの監査操作
+          href: ../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: Resource Manager でアクティビティ ログ アラートを作成する
+          href: monitoring-create-activity-log-alerts-with-resource-manager-template.md
+        - name: アクティビティ ログ アラートに移行する
+          href: monitoring-migrate-management-alerts.md
+    - name: サービスの通知を使用する
+      items:
+        - name: サービスの通知を表示する
+          href: monitoring-service-notifications.md
+        - name: サービスの通知でアラートを構成する
+          href: monitoring-activity-log-alerts-on-service-notifications.md
+    - name: アクション グループの使用
+      items:
+        - name: webhook スキーマの詳細情報
+          href: monitoring-activity-log-alerts-webhook.md
+        - name: SMS アラート動作
+          href: monitoring-sms-alert-behavior.md
+        - name: アラートのレート制限
+          href: monitoring-alerts-rate-limiting.md
+        - name: Resource Manager を使用してアクション グループを作成する
+          href: monitoring-create-action-group-with-resource-manager-template.md
+    - name: 診断ログの使用
+      items:
+        - name: Archive
+          href: monitoring-archive-diagnostic-logs.md
+        - name: Event Hubs へのストリーム
+          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
+        - name: Resource Manager テンプレートを使用して診断設定を有効にする
+          href: monitoring-enable-diagnostic-logs-using-template.md
+    - name: REST API の使用
+      items:
+        - name: REST API を使用したチュートリアル
+          href: monitoring-rest-api-walkthrough.md
+    - name: Azure 診断拡張機能の使用
+      items:
+        - name: Application Insights への送信
+          href: azure-diagnostics-configure-application-insights.md
+        - name: Event Hubs への送信
+          href: azure-diagnostics-streaming-event-hubs.md
+        - name: トラブルシューティング
+          href: azure-diagnostics-troubleshooting.md
+    - name: Azure Monitor メトリックス エクスプローラーを使用する
+      items:
+        - name: メトリック グラフの作成
+          href: monitoring-metric-charts.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/monitor?view=azure-cli-latest
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.insights
+    - name: REST ()
+      href: /rest/api/monitor/
+    - name: サポートされるメトリック
+      href: monitoring-supported-metrics.md
+    - name: 診断ログのサービス、カテゴリ、スキーマ
+      href: monitoring-diagnostic-logs-schema.md
+    - name: アクティビティ ログのイベント スキーマ
+      href: monitoring-activity-log-schema.md
+    - name: Azure 診断拡張機能のスキーマ
+      href: azure-diagnostics-schema.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
+    - name: クイック スタート テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=monitoring'
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=monitor'

@@ -20,7 +20,7 @@
       帯域幅の使用状況に関する情報がある場合は、 **[帯域幅テンプレートの選択]**を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。 詳細な手順については、[帯域幅テンプレートの追加](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)に関する記事をご覧ください。
 
       ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. **[作成]**をクリックします。
+   7. **Create** をクリックしてください。
 
         ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
-ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/22/2016
-
+ms.openlocfilehash: 079d16bbf75cd2b3b94269d684e1ae1a0e6aa967
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ 2 種類の自動通知電子メールが送信されます。
@@ -42,25 +41,24 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 * Identity Protection の関連するレポートへのリンク
 
 <br>
-![修復](./media/active-directory-identityprotection-notifications/400.png "Remediation")
+![修復](./media/active-directory-identityprotection-notifications/400.png "修復")
 <br>
 
 週間ダイジェスト電子メールの送信は無効化できます。
 <br><br>
-![ユーザーのリスク](./media/active-directory-identityprotection-notifications/62.png "User risks")
+![ユーザーのリスク](./media/active-directory-identityprotection-notifications/62.png "ユーザー リスク")
 <br>
 
 **関連する構成ダイアログ ボックスを開くには**:
 
 1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。
    <br><br>
-   ![ユーザー リスク ポリシー](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
+   ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection-notifications/401.png "ユーザー ポリシーのリスク")
    <br>
 2. **[全般]** セクションで **[通知]** をクリックします。
    <br><br>
-   ![ユーザー リスク ポリシー](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
+   ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection-notifications/405.png "ユーザー ポリシーのリスク")
    <br>
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-

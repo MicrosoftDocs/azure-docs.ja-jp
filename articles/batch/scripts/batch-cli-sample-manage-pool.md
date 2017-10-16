@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 2556b02459886390b803407c5cb828687229a44e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="managing-azure-batch-pools-with-azure-cli"></a>Azure CLI を使用した Azure Batch プールの管理
 
 これらのスクリプトでは、Azure Batch サービスでコンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるツールの一部を示します。
@@ -39,11 +37,11 @@ Batch プールは、クラウド サービスの構成 (Windows のみ)、ま�
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>クラウド サービス構成サンプル スクリプトによるプール
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "クラウド サービスのプールを管理する")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "Manage Cloud Services Pools")]
 
 ## <a name="pool-with-virtual-machine-configuration-sample-script"></a>仮想マシン構成サンプル スクリプトによるプール
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "仮想マシンのプールを管理する")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "Manage Virtual Machine Pools")]
 
 ## <a name="clean-up-pools"></a>プールのクリーンアップ
 
@@ -60,24 +58,23 @@ az batch pool delete --pool-id mypool-linux
 
 | コマンド | メモ |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Batch アカウントに対して認証します。  |
-| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#list) | Batch アカウントで使用できるアプリケーションを一覧表示します。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#create) | VM のプールを作成します。  |
-| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#set) | プールのプロパティを更新します。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#list) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#resize) | 指定したプールで実行されている VM の数を変更します。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#show) | プールのプロパティを表示します。  |
-| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#delete) | 指定したプールを削除します。  |
-| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#enable) | プールで自動スケーリングを有効にし、式を適用します。  |
-| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#disable) | プールで自動スケーリングを無効にします。  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#list) | 指定したプール内のすべてのコンピューティング ノードを一覧表示します。  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#reboot) | 指定したコンピューティング ノードを再起動します。  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#delete) | 指定したプールから、一覧表示されているノードを削除します。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Batch アカウントに対して認証します。  |
+| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#az_batch_application_summary_list) | Batch アカウントで使用できるアプリケーションを一覧表示します。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | VM のプールを作成します。  |
+| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_set) | プールのプロパティを更新します。  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | 指定したプールで実行されている VM の数を変更します。  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | プールのプロパティを表示します。  |
+| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_delete) | 指定したプールを削除します。  |
+| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | プールで自動スケーリングを有効にし、式を適用します。  |
+| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | プールで自動スケーリングを無効にします。  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | 指定したプール内のすべてのコンピューティング ノードを一覧表示します。  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | 指定したコンピューティング ノードを再起動します。  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | 指定したプールから、一覧表示されているノードを削除します。  |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Batch CLI サンプル スクリプトは、[Azure Batch CLI のドキュメント](../batch-cli-samples.md)のページにあります。
-
 

@@ -4,21 +4,37 @@
 
 # クイック スタート
 ## [.NET アプリケーションの作成](service-fabric-quickstart-dotnet.md)
+## [Linux コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers-linux.md)
+## [Windows コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers.md)
 
 # Tutorials (チュートリアル)
 ## .NET アプリのデプロイ
 ### [1 - .NET アプリケーションの構築](service-fabric-tutorial-create-dotnet-app.md)
 ### [2 - アプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3 - CI/CD の構成](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+### [4 - 監視と診断](service-fabric-tutorial-monitoring-aspnet.md)
 
-## アプリのリフト アンド シフト
+## 既存の .NET アプリのコンテナー格納
 ### [1 - Azure でのセキュリティで保護されたクラスターの作成](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
+### [3 - コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)
+
+## Linux コンテナー アプリの作成
+### [1 - コンテナー イメージの作成](service-fabric-tutorial-create-container-images.md)
+### [2 - コンテナーのパッケージ化とデプロイ](service-fabric-tutorial-package-containers.md)
+### [3 - フェールオーバーとスケール](service-fabric-tutorial-containers-failover.md)
+
+## クラスターの作成と管理
+### 1 - Azure でのクラスターの作成
+#### [1a - Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b - Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+### [2 - Service Fabric での API Management のデプロイ](service-fabric-tutorial-deploy-api-management.md)
 
 # サンプル
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
-## [PowerShell](service-fabric-powershell-samples.md)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric)
+## [Azure PowerShell](service-fabric-powershell-samples.md)
 ## [Service Fabric CLI](samples-cli.md)
+
 # 概念
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [全体像](service-fabric-content-roadmap.md)
@@ -64,6 +80,8 @@
 #### [サービスの状態](service-fabric-concepts-state.md)
 #### [サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 #### [サービスの可用性](service-fabric-availability-services.md)
+#### [レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)
+#### [再構成](service-fabric-concepts-reconfiguration.md)
 #### サービス通信
 ##### [概要](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS サービス](service-fabric-dnsservice.md)
@@ -88,7 +106,6 @@
 
 ## クラスターを作成および管理する
 ### [概要](service-fabric-deploy-anywhere.md)
-### [Linux 上の Service Fabric](service-fabric-linux-overview.md)
 ### 計画と準備
 #### [容量計画](service-fabric-cluster-capacity.md)
 #### [障害復旧](service-fabric-disaster-recovery.md)
@@ -127,6 +144,8 @@
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
+
+## [Service Fabric CLI のセットアップ](service-fabric-cli.md)
 
 ## アプリケーションのビルド
 ### [Visual Studio での最初の C# アプリの作成](service-fabric-create-your-first-application-in-visual-studio.md)
@@ -179,7 +198,6 @@
 ### Reliable Actors サービスの構築
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-actors-get-started.md)
-##### [Linux での Java](service-fabric-reliable-actors-get-started-java.md)
 ##### [Linux での Java アクター](service-fabric-create-your-first-linux-application-with-java.md)
 #### [通知の送信](service-fabric-reliable-actors-events.md)
 #### [タイマーとアラームの設定](service-fabric-reliable-actors-timers-reminders.md)
@@ -222,13 +240,13 @@
 
 ### アプリケーションをデプロイまたは削除する
 #### [ローカル クラスターへのアプリケーションのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
-#### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### アプリケーションのアップグレード
-#### [PowerShell を使用したアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)
+#### [Azure PowerShell を使用したアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)
 #### [Visual Studio を使用したアップグレード](service-fabric-application-upgrade-tutorial.md)
 #### [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 
@@ -277,8 +295,6 @@
 
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
-
-### [Service Fabric CLI を使用したクラスターの管理](service-fabric-cli.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する
@@ -323,9 +339,21 @@
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # リファレンス
-## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
+## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI](/cli/azure/sf)
+## [Service Fabric CLI](service-fabric-sfctl.md)
+### [sfctl application](service-fabric-sfctl-application.md)
+### [sfctl chaos](service-fabric-sfctl-chaos.md)
+### [sfctl cluster](service-fabric-sfctl-cluster.md)
+### [sfctl compose](service-fabric-sfctl-compose.md)
+### [sfctl is](service-fabric-sfctl-is.md)
+### [sfctl node](service-fabric-sfctl-node.md)
+### [sfctl partition](service-fabric-sfctl-partition.md)
+### [sfctl replica](service-fabric-sfctl-replica.md)
+### [sfctl rpm](service-fabric-sfctl-rpm.md)
+### [sfctl service](service-fabric-sfctl-service.md)
+### [sfctl store](service-fabric-sfctl-store.md)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST ()](/rest/api/servicefabric)

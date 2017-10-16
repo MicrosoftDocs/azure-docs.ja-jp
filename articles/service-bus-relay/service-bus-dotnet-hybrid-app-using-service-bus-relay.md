@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 366922a083b9d18ef50e04eb8b459d2725315e1e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.openlocfilehash: d15c30dad9fb4bbe9082d6a3c72cd20ed42bbc3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Azure WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
 ## <a name="introduction"></a>はじめに
@@ -232,7 +230,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
     ![][18]
 
 7. **[新しい ASP.NET Web アプリケーション]** ダイアログに戻り、**[OK]** をクリックして MVC アプリを作成します。
-8. 次に、新しい Web アプリの Azure リソースを構成する必要があります。 [この記事の「Azure に発行する」セクション](../app-service-web/app-service-web-get-started-dotnet.md)の手順に従います。 完了したら、このチュートリアルに戻り、次の手順に進んでください。
+8. 次に、新しい Web アプリの Azure リソースを構成する必要があります。 [この記事の「Azure に発行する」セクション](../app-service/app-service-web-get-started-dotnet.md)の手順に従います。 完了したら、このチュートリアルに戻り、次の手順に進んでください。
 10. ソリューション エクスプローラーで **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに、名前として「**Product.cs**」と入力します。 **[追加]**をクリックします。
 
     ![][17]
@@ -483,4 +481,3 @@ Azure Relay の詳細については、次のリソースを参照してくだ�
 [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
 [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-

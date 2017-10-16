@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure VM スケール セットと接続されたデータ ディスク
 Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)で、接続されたデータ ディスクを備えた仮想マシンがサポートされるようになりました。 データ ディスクは、Azure Managed Disks で作成したスケール セットのストレージ プロファイルに定義できます。 以前は、スケール セット内の VM で使用できる直接接続されたストレージのオプションは、OS ドライブと一時ドライブだけでした。
@@ -128,6 +127,5 @@ Azure Managed Disks と、スケール セットに接続されたデータ デ�
 スケール セットに対する接続されたディスクのサポートの初期の実装では、スケール セット内の個々の VM に対し、データ の接続や接続解除を行うことはできません。
 
 スケール セット内の接続されたデータ ディスクに対する Azure Portal でのサポートは、最初は制限されています。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
-
 
 

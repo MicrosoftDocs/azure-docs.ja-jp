@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 5f5cb4b9b6fcee6b56ccdcb6223afddd9de90fec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-2-review-the-prerequisites-for-physical-server-to-azure-replication"></a>手順 2: 物理サーバーを Azure にレプリケートするための前提条件を確認する
 
 次の表にまとめられている前提条件を確認します。
@@ -53,4 +51,3 @@ ms.lasthandoff: 06/29/2017
 
 - 完全なデプロイを行う場合は、「[手順 3: 容量を計画する](physical-walkthrough-capacity.md)」に進みます。
 - 簡単なテスト配置を行う場合は、「[手順 4: ネットワークを計画する](physical-walkthrough-network.md)」に進みます。
-

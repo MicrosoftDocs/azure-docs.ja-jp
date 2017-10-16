@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Marketplace イメージを利用し、Azure VM で HPC Pack クラスターのヘッド ノードを作成する
 Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)と Azure Portal を使用して、HPC クラスターのヘッド ノードを作成します。 この HPC Pack VM イメージは、HPC Pack 2012 R2 更新プログラム 3 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。 このヘッド ノードを Azure の HPC Pack の概念実証デプロイとして利用し、 クラスターにコンピューティング ノードを追加して HPC ワークロードを実行できます。
@@ -59,7 +58,7 @@ Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](
 6. 次のいずれかのオプションを選択して、VM を Active Directory ドメイン フォレストに参加させます。
    
    * 既存のドメイン フォレストを持つ Azure 仮想ネットワークで VM を作成した場合は、標準のサーバー マネージャーまたは Windows PowerShell ツールを使用して、その VM をフォレストに参加させます。 それから再起動します。
-   * (既存のドメイン フォレストのない) 新しい仮想ネットワークで VM を作成した場合は、VM をドメイン コントローラーとして昇格させます。 Active Directory ドメイン サービスのロールをヘッド ノードにインストールして構成するための標準的な手順を使用します。 詳細については、「 [新しい Windows Server 2012 Active Directory フォレストのインストール](https://technet.microsoft.com/library/jj574166.aspx)」を参照してください。
+   * (既存のドメイン フォレストのない) 新しい仮想ネットワークで VM を作成した場合は、VM をドメイン コントローラーとして昇格させます。 Active Directory Domain Services のロールをヘッド ノードにインストールして構成するための標準的な手順を使用します。 詳細については、「 [新しい Windows Server 2012 Active Directory フォレストのインストール](https://technet.microsoft.com/library/jj574166.aspx)」を参照してください。
 7. VM が実行され、Active Directory フォレストに参加したら、次のように HPC Pack サービスを開始します。
    
     a. ローカル管理者グループに属するドメイン アカウントを利用し、ヘッド ノード VM に接続します。 たとえば、ヘッド ノード VM を作成したときに設定した管理者アカウントを使用します。
@@ -82,4 +81,3 @@ Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](
 <!--Image references-->
 [headnode]: ./media/hpcpack-cluster-headnode/headnode.png
 [marketplace]: ./media/hpcpack-cluster-headnode/marketplace.png
-

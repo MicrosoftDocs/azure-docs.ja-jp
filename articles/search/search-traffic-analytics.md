@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/05/2017
 ms.author: betorres
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-search-traffic-analytics"></a>検索トラフィックの分析とは
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。
 
@@ -176,11 +175,11 @@ Power BI Desktop テンプレートをインスタンス化するには、Applic
 
 Power BI Desktop テンプレートに含まれるメトリックは次のとおりです。
 
-*    クリック率 (CTR): 検索総数に対する特定のドキュメントをクリックしたユーザー数の割合。
-*    クリックされていない検索語句: クリックが登録されていない上位クエリの語句
-*    最もクリックされたドキュメント: 過去 24 時間、7 日間、30 日間の ID 別の最もクリックされたドキュメント
-*    語句とドキュメントの一般的な組み合わせ: クリック数で並べ替えられた、結果的に同じドキュメントがクリックされた語句
-*    クリック時間: 検索クエリ後の経過時間でバケット化されたクリック
+*   クリック率 (CTR): 検索総数に対する特定のドキュメントをクリックしたユーザー数の割合。
+*   クリックされていない検索語句: クリックが登録されていない上位クエリの語句
+*   最もクリックされたドキュメント: 過去 24 時間、7 日間、30 日間の ID 別の最もクリックされたドキュメント
+*   語句とドキュメントの一般的な組み合わせ: クリック数で並べ替えられた、結果的に同じドキュメントがクリックされた語句
+*   クリック時間: 検索クエリ後の経過時間でバケット化されたクリック
 
 ![Application Insights から読み取るための Power BI テンプレート][3]
 
@@ -196,4 +195,3 @@ Application Insights の詳細については、[こちら](https://go.microsoft
 [1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png
 [2]: ./media/search-traffic-analytics/AzureSearch-AppInsightsData.png
 [3]: ./media/search-traffic-analytics/AzureSearch-PBITemplate.png
-

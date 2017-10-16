@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 696f8025d0d7a65f59be650fac0a6e0e68f1a2ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 > [!div class="op_single_selector"]
@@ -37,7 +36,7 @@ ms.lasthandoff: 08/22/2017
 * Standard Storage VM
 * Premium Storage VM
 * Managed Disks で実行されている VM
-* Azure Disk Encryption を使用して BEK と KEK で暗号化された VM
+* Azure Disk Encryption を使って暗号化された VM
 * VSS を使用する Windows VM と、カスタム プリスナップショット スクリプトおよびポストスナップショット スクリプトを使用する Linux VM のアプリケーション整合性バックアップ
 
 Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) に関するページを参照してください。
@@ -345,4 +344,3 @@ Azure VM のバックアップ コストは、保護されているインスタ�
 
 ## <a name="questions"></a>疑問がある場合は、
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
-

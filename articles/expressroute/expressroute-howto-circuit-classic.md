@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
+ms.openlocfilehash: 93ddc2975db34053c6a776d1c3b931536f3f8ec7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3b12bbb21ebf6a0160227c4a281c420cf192d6f7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の作成と変更 (クラシック)
 > [!div class="op_single_selector"]
@@ -58,11 +57,11 @@ Azure PowerShell モジュールを使用するようにコンピューターを
 
 3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
 
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+        Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_id"
 
-4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
+4. 選択されたサブスクリプション ID が既定として設定されているかどうかを確認します。
 
-        Add-AzureAccount
+        Get-AzureSubscription -default
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>手順 1. ExpressRoute 用の PowerShell モジュールをインポートする
@@ -346,5 +345,4 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-classic.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
-
 

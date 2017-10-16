@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6ee3d1319e7727b1134472a1b62a3de7a3571997
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 1a5e97e2a6aca440c9643569014ffce41a614324
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-i-forgot-my-azure-ad-password"></a>Azure AD パスワードを忘れた場合
 
@@ -117,4 +116,3 @@ ms.lasthandoff: 07/06/2017
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "認証データを確認する"
 [Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "パスワードを変更する"
 [Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "パスワードがリセットされました"
-

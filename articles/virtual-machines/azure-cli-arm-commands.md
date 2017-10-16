@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
-ms.lasthandoff: 04/19/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
 この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
@@ -969,7 +968,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
- network lb address-pool delete [オプション] <resource-group> <lb-name> <name>
+    ネットワーク lb アドレス プールの削除 [オプション] < リソース グループ >< lb 名 ><name>
 
 ロード バランサーからバックエンド IP プールの範囲のリソースを削除します。
 
@@ -1333,7 +1332,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    network public-ip list [オプション] <resource-group> リソース グループ内のすべてのパブリック IP リソースを一覧表示します。
+    network public-ip list [オプション] &lt;resource-group&gt; リソース グループ内のすべてのパブリック IP リソースを一覧表示します。
 
     azure network public-ip list -g myresourcegroup
 
@@ -1354,7 +1353,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    network public-ip show [オプション] <resource-group> <name>
+    ネットワークのパブリック ip は < リソース グループ > の [オプション] を表示します。<name>
 
 リソース グループ内のパブリック IP リソースのパブリック IP プロパティが表示されます。
 
@@ -1784,4 +1783,3 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     vm image list-offers [options] <location> <publisher>
     vm image list-skus [options] <location> <publisher> <offer>
     vm image list [options] <location> <publisher> [offer] [sku]
-

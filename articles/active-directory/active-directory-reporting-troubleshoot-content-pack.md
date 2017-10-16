@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: a47810d89fb3db839d1d59942ee90610afaeb6a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: c880e9eb6d48bd1e38075fbd867d3906ec67b547
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
 
@@ -68,6 +66,5 @@ Power BI Content Pack for Azure Active Directory (プレビュー) を操作し�
 ## <a name="next-steps"></a>次のステップ
 
 Power BI Content Pack for Azure Active Directory (プレビュー) をインストールするには、[こちら](https://powerbi.microsoft.com/en-us/blog/azure-active-directory-meets-power-bi/)をクリックします。
-
 
 

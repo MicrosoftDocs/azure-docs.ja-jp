@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Azure Mobile Engagement デモ アプリ
 有用なリソースを検索し、Azure Mobile Engagement について理解を深めることができるように、**iOS**、**Android**、**Windows** の各プラットフォーム用の Azure Mobile Engagement デモ アプリを発行しました。
@@ -185,9 +185,3 @@ ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
 [31]: ./media/mobile-engagement-demo-apps/in-app-pop-up.png
 [32]: ./media/mobile-engagement-demo-apps/notification-poll.png
 [33]: ./media/mobile-engagement-demo-apps/notification-data-push.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

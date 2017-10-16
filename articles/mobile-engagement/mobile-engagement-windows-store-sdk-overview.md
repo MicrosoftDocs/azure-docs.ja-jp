@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>Azure Mobile Engagement 向け Windows ユニバーサル SDK 統合
 このドキュメントでは、Azure Mobile Engagement Windows ユニバーサル SDK で使用できる統合と構成のすべてのオプションについて説明します。
@@ -53,7 +53,7 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 
 ### <a name="from-330-to-340"></a>3.3.0 から 3.4.0 に移行
 #### <a name="test-logs"></a>テスト ログ
-SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。 これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の&1; つに更新します。
+SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。 これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
@@ -73,10 +73,4 @@ Reach オーバーレイの機能を強化しました。 これは SDK NuGet �
 
 ### <a name="upgrade-from-older-versions"></a>古いバージョンからのアップグレード
 [Upgrade Procedures](mobile-engagement-windows-store-upgrade-procedure.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

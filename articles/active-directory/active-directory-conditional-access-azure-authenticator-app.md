@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 5dd6701f25c69f5e870d3add79c312f9aeec6bf4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-authenticator-for-android"></a>Android 用の Azure Authenticator
 IT 管理者から、勤務先のリソースにアクセスする際に Microsoft Azure Authenticator を使用してサインインすることが推奨される場合があります。 このアプリケーションには、次の 2 つのサインイン オプションが用意されています。
@@ -39,7 +37,7 @@ Azure Authenticator アプリは Google Play Store からインストールで�
 
 1. アプリのホーム画面で、使用許諾契約 (EULA) に同意します。
 2. [アカウントのアクティブ化] 画面で、右側のコンテキスト メニューをタップして **[職場アカウント]**を選択します。
-3. [アカウントの追加] 画面で、** [職場アカウント]**を選択します。
+3. [アカウントの追加] 画面で * * 作業アカウント * * を選択します。
 4. [デバイス管理者のアクティブ化] 画面で、 **[アクティブ化]**をタップします。
 5. [プライバシー ポリシー] 画面で、チェック ボックスをオンにして **[確認]**をタップします。
 6. [社内参加] 画面で、組織から提供されたユーザー ID を入力して **[参加]**をタップします。
@@ -120,5 +118,4 @@ Samsung 製 Android デバイスでは、Azure Authenticator アプリをアン�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 **キーストア エラー**が表示される場合は、ロック画面の PIN が設定されていない可能性があります。 この問題を回避するには、Azure Authenticator アプリをアンインストールし、ロック画面の PIN を構成してから、アプリを再インストールします。
-
 

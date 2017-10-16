@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 6f43423096f0e74f41afea275e4ec9801dc2cea5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.openlocfilehash: f6121a447acec69d354f5c1fbc7499561f471197
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -140,4 +139,3 @@ Found 1 items
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-wasb-distcp.md)
-

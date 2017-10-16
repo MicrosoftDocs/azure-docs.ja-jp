@@ -9,21 +9,17 @@ editor:
 tags: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: da8c1bf3d283e7514e1ab13fd31d7d581771ea4f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
-
+ms.openlocfilehash: f419c2286bc503ca79036b02a1793467b7b97a11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
 [!INCLUDE [virtual-machines-understand-vm-reboot](../../../includes/virtual-machines-understand-vm-reboot.md)]
-

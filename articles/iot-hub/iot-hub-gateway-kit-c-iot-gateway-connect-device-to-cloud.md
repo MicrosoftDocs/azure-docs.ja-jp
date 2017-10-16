@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 4fb77ed0241d15338c2574fd22828507c3e40cb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>IoT ゲートウェイを使用してモノをクラウドに接続する - SensorTag から Azure IoT Hub へ
 
@@ -172,4 +171,3 @@ Bluetooth Low Energy (BLE) サンプル アプリケーションは、Azure IoT 
 ## <a name="next-steps"></a>次のステップ
 
 [Azure IoT Edge でセンサー データを変換するための IoT ゲートウェイを使用する](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-

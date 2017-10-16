@@ -44,7 +44,7 @@
    
    1. ドキュメントを SharePoint にアップロードします。 
    2. 構成した UNC パスを参照します。 RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
-6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳しくは、「[コンテンツを SharePoint 2013 の RBS 外に移行する]」[6]か「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)]」[7]をご覧ください。
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳細については、次を参照してください[SharePoint 2013 で RBS の内外にコンテンツを移行][ 6]または[RBS (SharePoint Foundation 2010) の内外にコンテンツを移行][。7].
 7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。 
    
    1. SQL Management Studio を起動します。

@@ -1,3 +1,5 @@
+- name: Azure Storage のドキュメント
+  href: index.yml
 - name: 概要
   items:
     - name: はじめに

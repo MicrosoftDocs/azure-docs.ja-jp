@@ -15,13 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 32c236c7082e48990f41a1a9069cea53d0cab96f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
-
+ms.openlocfilehash: 3da53852eaad7a37f19d906d2ee27b72d35c513f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -34,7 +32,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>アプリケーションにサインインする手段としての Azure AD のサポート
 **サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。  開発者としては、保存して保護するパスワードが 1 つ減ります。  忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。  Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。  数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。  [Azure AD サインインのサポートの追加](active-directory-authentication-scenarios.md)に関する詳細を参照してください。
 
-**アプリケーションへのサインアップが簡単になります。**  アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。  ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。  すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。  [Azure AD アカウント ログイン用のアプリケーションのサインアップ](../../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)の詳細を参照してください。
+**アプリケーションへのサインアップが簡単になります。**  アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。  ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。  すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。  [Azure AD アカウント ログイン用のアプリケーションのサインアップ](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)の詳細を参照してください。
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>ユーザーの参照、ユーザーのプロビジョニングの管理、およびアプリケーションへのアクセスの制御
 **ディレクトリのユーザーを参照します。**  他のユーザーを招待したりアクセスを許可するときは、Graph API を使用して組織内のユーザーを検索して参照できます。電子メール アドレスを入力する必要はありません。  ユーザーは、組織の詳細な階層の表示も含めて、使い慣れたアドレス帳スタイルのインターフェイスを使用して参照できます。  [Graph API](active-directory-graph-api.md) に関する詳細を参照してください。
@@ -83,5 +81,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 [コード作成の開始](active-directory-developers-guide.md#get-started)
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
-
 

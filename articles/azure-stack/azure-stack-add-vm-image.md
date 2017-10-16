@@ -1,6 +1,6 @@
 ---
-title: Adding a VM image to Azure Stack | Microsoft Docs
-description: Add your organization's custom Windows or Linux VM image for tenants to use
+title: "VM イメージを Azure Stack に追加する | Microsoft Docs"
+description: "テナントが使用するために組織のカスタム イメージ (Windows または Linux VM) を追加する"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -12,35 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: sngun
+ms.openlocfilehash: de8540397b63093457382cf427a65ea0e48b93e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: e726ef05632c7983a45fae191bb0a2ad18fc2553
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Make a custom virtual machine image available in Azure Stack
+# <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure Stack でカスタム仮想マシン イメージを提供する
 
-Azure Stack enables operators to make custom virtual machine images available to their users. These images can be referenced by Azure Resource Manager templates or added to the Azure Marketplace UI with the creation of a Marketplace item. 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="add-a-vm-image-to-marketplace-with-powershell"></a>Add a VM image to marketplace with PowerShell
+Azure Stack を使用して、オペレーターがカスタム仮想マシン イメージをユーザーに提供できます。 このようなイメージは、Azure Resource Manager テンプレートで参照したり、Marketplace 項目を作成して Azure Marketplace UI に追加したりすることができます。 
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)
+## <a name="add-a-vm-image-to-marketplace-with-powershell"></a>PowerShell を使用して VM イメージを Marketplace に追加する
 
-* [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).  
+[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)、または [VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合は Windows ベースの外部クライアントから、次の前提条件を実行します
 
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+* [PowerShell for Azure Stack をインストール](azure-stack-powershell-install.md)します。  
 
-* Prepare a Windows or Linux operating system virtual hard disk image in VHD format (not VHDX).
+* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。  
+
+* Windows または Linux オペレーティング システム仮想ハード ディスク イメージを (VHDX ではなく) VHD 形式で準備します。
    
-   * For Windows images, the article [Upload a Windows VM image to Azure for Resource Manager deployments](../virtual-machines/windows/upload-generalized-managed.md) contains image preparation instructions in the **Prepare the VHD for upload** section.
-   * For Linux images, follow the steps to prepare the image or use an existing Azure Stack Linux image as described in the article [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md).  
+   * Windows イメージの場合は、[Resource Manager デプロイのために Windows VM イメージを Azure にアップロードする方法](../virtual-machines/windows/upload-generalized-managed.md)に関する記事の**アップロードのための VHD の準備**のセクションに、イメージを準備する手順が説明されています。
+   * Linux イメージの場合は、「[Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md)」(Linux 仮想マシンの Azure Stack へのデプロイ) の説明に従って、イメージを準備するか既存の Azure Stack Linux イメージを使用します。  
 
-Now run the following steps to add the image to the Azure Stack marketplace:
+次の手順を実行して、Azure Stack Marketplace にイメージを追加します。
 
-1. Import the Connect and ComputeAdmin modules:
+1. Connect モジュールと ComputeAdmin モジュールをインポートします。
    
    ```powershell
    Set-ExecutionPolicy RemoteSigned
@@ -50,19 +51,25 @@ Now run the following steps to add the image to the Azure Stack marketplace:
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
    ``` 
 
-2. Sign in to your Azure Stack environment. Run the following script depending on if your Azure Stack environment is deployed by using AAD or AD FS (Make sure to replace the AAD tenant name): 
+2. Azure Stack 環境にサインインします。 Azure Stack 環境が AAD と AD FS のどちらを使用してデプロイされているかに応じて、次のスクリプトを実行します (環境の構成に従って、必ず AAD tenantName、GraphAudience エンドポイント、および ArmEndpoint の値を置き換えてください)。 
 
-   a. **Azure Active Directory**, use the following cmdlet:
+   a. **Azure Active Directory** の場合は、次のコマンドレットを使用します。
 
    ```PowerShell
-   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
+   #Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+     -ArmEndpoint $ArmEndpoint 
 
    Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
    $TenantID = Get-AzsDirectoryTenantId `
      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
@@ -73,17 +80,23 @@ Now run the following steps to add the image to the Azure Stack marketplace:
      -TenantId $TenantID 
    ```
 
-   b. **Active Directory Federation Services**, use the following cmdlet:
+   b. **Active Directory フェデレーション サービス (AD FS)** の場合は、次のコマンドレットを使用します。
     
    ```PowerShell
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
    # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
      -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
+     -GraphAudience $GraphAudience `
      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `
@@ -95,7 +108,7 @@ Now run the following steps to add the image to the Azure Stack marketplace:
      -TenantId $TenantID 
    ```
     
-3. Add the VM image by invoking the `Add-AzsVMImage` cmdlet. In the Add-AzsVMImage cmdlet, specify the osType as Windows or Linux. Include the publisher, offer, SKU, and version for the VM image. See the [Parameters](#parameters) section for information about the allowed parameters. These parameters are used by Azure Resource Manager templates to reference the VM image. Following is an example invocation of the script:
+3. `Add-AzsVMImage` コマンドレットを呼び出して、VM イメージを追加します。 Add-AzsVMImage コマンドレットには、osType として Windows または Linux を指定します。 VM イメージについて、publisher、offer、SKU、version も指定してください。 使用できるパラメーターの詳細については、「[パラメーター](#parameters)」セクションをご覧ください。 これらのパラメーターは、Azure Resource Manager テンプレートが VM イメージを参照するために使用されます。 スクリプトの呼び出し例を次に示します。
      
      ```powershell
      Add-AzsVMImage `
@@ -107,20 +120,20 @@ Now run the following steps to add the image to the Azure Stack marketplace:
        -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
      ```
 
-The command does the following:
+このコマンドは、次の処理を実行します。
 
-* Authenticates to the Azure Stack environment
-* Uploads the local VHD to a newly created temporary storage account
-* Adds the VM image to the VM image repository and
-* Creates a Marketplace item
+* Azure Stack 環境に対する認証
+* ローカル VHD を新規作成された一時ストレージ アカウントにアップロード
+* VM イメージを VM イメージ リポジトリに追加
+* Marketplace 項目の作成
 
-To verify that the command ran successfully, go to Marketplace in the portal, and then verify that the VM image is available in the **Virtual Machines** category.
+コマンドが正常に実行されたことを確認するには、ポータルで Marketplace に移動して、VM イメージが **[仮想マシン]** カテゴリにあることを確認します。
 
-![VM image added successfully](./media/azure-stack-add-vm-image/image5.PNG) 
+![VM イメージが正常に追加](./media/azure-stack-add-vm-image/image5.PNG) 
 
-## <a name="remove-a-vm-image-with-powershell"></a>Remove a VM image with PowerShell
+## <a name="remove-a-vm-image-with-powershell"></a>PowerShell を使用して VM イメージを削除する
 
-When you no longer need the virtual machine image that you have uploaded earlier, you can delete it from the marketplace by using the following cmdlet:
+以前にアップロードした仮想マシン イメージが必要なくなった場合は、次のコマンドレットを使用して Marketplace から削除できます。
 
 ```powershell
 Remove-AzsVMImage `
@@ -130,55 +143,55 @@ Remove-AzsVMImage `
   -version "1.0.0" `
 ```
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
-| Parameter | Description |
+| パラメーター | Description |
 | --- | --- |
-| **publisher** |The publisher name segment of the VM image that users use when deploying the image. An example is ‘Microsoft’. Do not include a space or other special characters in this field. |
-| **offer** |The offer name segment of the VM Image that users use when deploying the VM image. An example is ‘WindowsServer’. Do not include a space or other special characters in this field. |
-| **sku** |The SKU name segment of the VM Image that users use when deploying the VM image. An example is ‘Datacenter2016’. Do not include a space or other special characters in this field. |
-| **version** |The version of the VM Image that users use when deploying the VM image. This version is in the format *\#.\#.\#*. An example is ‘1.0.0’. Do not include a space or other special characters in this field. |
-| **osType** |The osType of the image must be either ‘Windows’ or ‘Linux’. |
-| **osDiskLocalPath** |The local path to the OS disk VHD that you are uploading as a VM image to Azure Stack. |
-| **dataDiskLocalPaths** |An optional array of the local paths for data disks that can be uploaded as part of the VM image. |
-| **CreateGalleryItem** |A Boolean flag that determines whether to create an item in Marketplace. By default, it is set to true. |
-| **title** |The display name of Marketplace item. By default, it is set to the Publisher-Offer-Sku of the VM image. |
-| **description** |The description of the Marketplace item. |
-| **location** |The location to which the VM image should be published. By default, this value is set to local.|
-| **osDiskBlobURI** |Optionally, this script also accepts a Blob storage URI for osDisk. |
-| **dataDiskBlobURIs** |Optionally, this script also accepts an array of Blob storage URIs for adding data disks to the image. |
+| **publisher** |イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、"Microsoft" です。 このフィールドではスペースや他の特殊文字は使用できません。 |
+| **offer** |VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、"WindowsServer" です。 このフィールドではスペースや他の特殊文字は使用できません。 |
+| **sku** |VM イメージをデプロイするときにユーザーが使用する VM イメージの SKU 名のセグメント。 たとえば、"Datacenter2016" です。 このフィールドではスペースや他の特殊文字は使用できません。 |
+| **version** |VM イメージをデプロイするときにユーザーが使用する VM イメージのバージョン。 このバージョンの形式は *\#.\#.\#* です。 たとえば、"1.0.0" です。 このフィールドではスペースや他の特殊文字は使用できません。 |
+| **osType** |イメージの osType には "Windows" または "Linux" を指定する必要があります。 |
+| **osDiskLocalPath** |VM イメージとして Azure Stack にアップロードする OS ディスク VHD のローカル パス。 |
+| **dataDiskLocalPaths** |VM イメージの一部としてアップロードできるデータ ディスクのローカル パスの配列 (省略可能)。 |
+| **CreateGalleryItem** |Marketplace に項目を作成するかどうかを決定するブール値フラグ。 既定値は true です。 |
+| **title** |Marketplace 項目の表示名。 既定では、VM イメージの Publisher-Offer-Sku に設定されています。 |
+| **description** |Marketplace 項目の説明。 |
+| **location** |VM イメージの発行先の場所。 既定では、この値は local に設定されます。|
+| **osDiskBlobURI** |必要に応じて、このスクリプトでは osDisk の BLOB Storage URI を処理できます。 |
+| **dataDiskBlobURIs** |必要に応じて、このスクリプトでは、データ ディスクをイメージに追加するために BLOB Storage URI の配列も処理できます。 |
 
-## <a name="add-a-vm-image-through-the-portal"></a>Add a VM image through the portal
+## <a name="add-a-vm-image-through-the-portal"></a>ポータルから VM イメージを追加する
 
 > [!NOTE]
-> This method requires creating the Marketplace item separately.
+> この方法では、Marketplace 項目を個別に作成する必要があります。
 
-One requirement of images is that they can be referenced by a Blob storage URI. Prepare a Windows or Linux operating system image in VHD format (not VHDX), and then upload the image to a storage account in Azure or Azure Stack. If your image is already uploaded to the Blob storage in Azure or Azure Stack, you can skip step1.
+イメージの 1 つの要件は、BLOB Storage URI で参照できることです。 Windows または Linux オペレーティング システムのイメージを VHD 形式 (VHDX ではない) で準備して、そのイメージを Azure のストレージ アカウントまたは Azure Stack にアップロードします。 イメージが既に Azure の BLOB Storage または Azure Stack にアップロードされている場合、手順 1 をスキップできます。
 
-1. [Upload a Windows VM image to Azure for Resource Manager deployments](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) or for a Linux image, follow the instructions described in the [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md) article. You should understand the following considerations before you upload the image:
+1. [Resource Manager のデプロイのために Windows VM イメージを Azure にアップロードする](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)か、Linux イメージの場合は、「[Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md)」(Azure Stack への Linux 仮想マシンのデプロイ) の説明に従います。 イメージをアップロードする前に、次の考慮事項を理解しておりく必要があります。
 
-   * It's more efficient to upload an image to Azure Stack Blob storage than to Azure Blob storage because it takes less time to push the image to the Azure Stack image repository. 
+   * Azure BLOB Storage よりも Azure Stack BLOB Storage の方がイメージを効率よくアップロードできます。イメージを Azure Stack イメージ リポジトリにプッシュする方が時間がかからないためです。 
    
-   * When uploading the [Windows VM image](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), make sure to substitute the **Login to Azure** step with the [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md)  step.  
+   * [Windows VM イメージ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)をアップロードするときは、**Azure へのログイン**の手順の代わりに [Azure Stack オペレーターの PowerShell 環境を構成](azure-stack-powershell-configure-admin.md)する手順を実行してください。  
 
-   * Make a note of the Blob storage URI where you upload the image, which is in the following format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd
+   * イメージのアップロード先の BLOB Storage URI をメモしておきます。形式は *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd です
 
-   * To make the blob anonymously accessible, go to the storage account blob container where the VM image VHD was uploaded to **Blob,** and then select **Access Policy**. If you want, you can instead generate a shared access signature for the container and include it as part of the blob URI.
+   * BLOB に匿名でアクセスできるようにするには、VM イメージ VHD が **BLOB** にアップロードされたストレージ アカウントの BLOB コンテナーに移動し、**[アクセス ポリシー]** を選択します。 必要であれば、このコンテナーの共有アクセス署名を生成し、それを BLOB URI に含めることができます。
 
-   ![Navigate to storage account blobs](./media/azure-stack-add-vm-image/image1.png)
+   ![ストレージ アカウント BLOB に移動](./media/azure-stack-add-vm-image/image1.png)
 
-   ![Set blob access to public](./media/azure-stack-add-vm-image/image2.png)
+   ![BLOB のアクセスを公開に設定](./media/azure-stack-add-vm-image/image2.png)
 
-2. Sign in to Azure Stack as operator > From the menu, click **More services** > **Resource Providers** > select  **Compute** > **VM images** > **Add**
+2. Azure Stack にオペレーターとしてサインインし、メニューで **[その他のサービス]**  >  **[リソースプロバイダー]** をクリックし、**[Compute]**  >  **[VM イメージ]**  >  **[追加]** をクリックします
 
-3. On the **Add a VM Image** blade, enter the publisher, offer, SKU, and version of the virtual machine image. These name segments refer to the VM image in Resource Manager templates. Make sure to select the **osType** correctly. For **OD Disk Blob URI**, enter the Blob URI where the image was uploaded and click **Create** to begin creating the VM Image.
+3. **[Add a VM Image]\(VM イメージの追加\)** ブレードで、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** を選択してください。 **[OD Disk Blob URI]\(OD ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。**[作成]** をクリックすると VM イメージの作成が開始します。
    
-   ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
+   ![イメージの作成を開始](./media/azure-stack-add-vm-image/image4.png)
 
-   When the image is successfully created, the VM image status changes to ‘Succeeded’.
+   イメージが正常に作成されると、VM イメージの状態が [成功] に変わります。
 
-4. To make the virtual machine image more readily available for user consumption in the UI, it is best to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
+4. 仮想マシン イメージをユーザーが UI ですぐに使用できるようにするには、[Marketplace 項目の作成](azure-stack-create-and-publish-marketplace-item.md)が最適です。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Provision a virtual machine](azure-stack-provision-vm.md)
+[仮想マシンのプロビジョニング](azure-stack-provision-vm.md)

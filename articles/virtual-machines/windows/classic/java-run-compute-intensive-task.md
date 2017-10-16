@@ -15,12 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 290a9dc5ca67495da18d88b61dce1d8b6becea61
-ms.lasthandoff: 03/25/2017
-
-
+ms.openlocfilehash: 8c51c0bb37e25ad61fe58a85dd641dabe0a1958c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 > [!IMPORTANT] 
@@ -55,20 +54,20 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 2. **[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
    **[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
-4. **[次へ]**をクリックします。
+4. **[次へ]** をクリックします。
 5. **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
    1. 仮想マシンの名前を指定します。
    2. 仮想マシンに使用するサイズを指定します。
    3. **[ユーザー名]** フィールドに、管理者の名前を入力します。 この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
    4. **[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。 これは、Administrator アカウントのパスワードです。
-   5. **[次へ]**をクリックします。
+   5. **[次へ]** をクリックします。
 6. 次の **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
    1. **[クラウド サービス]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
    2. **[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。 一意であることを示す表示になるように、必要に応じてこの値を修正してください。
    3. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。 このチュートリアルでは、 **[米国西部]**などのリージョンを指定します。
    4. **[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
    5. **[可用性セット]** は、**[(なし)]** を選択します。
-   6. **[次へ]**をクリックします。
+   6. **[次へ]** をクリックします。
 7. 最後の **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
    1. 既定のエンドポイント エントリをそのまま使用します。
    2. **[完了]**をクリックします。
@@ -523,4 +522,3 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 [properties_pane]:media/java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
 [default_key]:media/java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../../../java-add-certificate-ca-store.md
-

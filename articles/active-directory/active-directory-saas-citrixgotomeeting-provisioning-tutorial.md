@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1ddfcd991431a11e5c3e306bd5905003d094ac18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-citrix-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: Citrix GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -93,6 +91,5 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [シングル サインオンの構成](active-directory-saas-citrix-gotomeeting-tutorial.md)
-
 
 

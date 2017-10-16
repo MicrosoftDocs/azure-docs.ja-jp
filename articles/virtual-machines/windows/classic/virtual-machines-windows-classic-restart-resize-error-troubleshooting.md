@@ -9,19 +9,17 @@ editor:
 tags: top-support-issue
 ms.assetid: aa854fff-c057-4b8e-ad77-e4dbc39648cc
 ms.service: virtual-machines-windows
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: required
 ms.date: 06/13/2017
 ms.devlang: na
 ms.author: delhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 7fe0636366c60d4679cfc69bd96cd532695b080e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
-
+ms.openlocfilehash: e2053a0a78519a1c4a503dc1f620d99cfe20b69c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 > [!div class="op_single_selector"]
@@ -85,5 +83,4 @@ VM サイズを小さくできない場合は、次の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 Azure で Windows VM を作成するときに問題が発生する場合は、[Azure での Windows 仮想マシンの作成に関するデプロイの問題のトラブルシューティング](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
-
 

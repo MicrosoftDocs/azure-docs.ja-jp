@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/25/2017
 ms.author: carlrab
+ms.openlocfilehash: 3a58c50d1187b9cca9490ad725b14617b4a98efe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 63833db74eb5889611d4aeb45d00542217730910
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 
 Azure SQL Database は、Microsoft Cloud ("Azure") のサービスとしてのリレーショナル データベース (DBaaS) です。 このチュートリアルでは、Azure Portal および [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用して以下の操作を行う方法を学習します。 
@@ -55,7 +53,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 空の SQL Database を作成するには、次の手順に従います。 
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
 2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
 
@@ -83,7 +81,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 5. **[選択]**をクリックします。
 
-6. **[価格レベル]** をクリックして、サービス レベル、DTU 数、ストレージの容量を指定します。 DTU の量とストレージの容量に関して、サービス レベルごとに利用できるオプションを調べます。 
+6. **[価格レベル]** をクリックして、サービス レベル、DTU 数、ストレージの容量を指定します。 DTU 数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 
 
 7. このチュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **100 DTU (S3)** と **400** GB のストレージを選択します。
 
@@ -157,7 +155,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
    | 設定       | 推奨値 | Description | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
-   | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
+   | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |
    | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
@@ -341,4 +339,3 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 > [!div class="nextstepaction"]
 >[C# と ADO.NET で Azure SQL データベースを設計し、接続する](sql-database-design-first-database-csharp.md)
-

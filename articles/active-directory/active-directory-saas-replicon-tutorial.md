@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 2aeeceb61191962b62892b8409218684f76c6fa8
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
 このチュートリアルでは、Azure と Replicon の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
@@ -85,7 +84,7 @@ ms.lasthandoff: 04/03/2017
      > 
      > 
  
-  3. **[次へ]**をクリックします。
+  3. **[次へ]** をクリックします。
 
 4. **[Replicon でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータをコンピューターのローカルに保存します。
    
@@ -153,5 +152,4 @@ Replicon の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-replicon-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
 

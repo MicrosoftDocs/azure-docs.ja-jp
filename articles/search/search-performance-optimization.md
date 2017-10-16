@@ -14,13 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure Search のパフォーマンスと最適化に関する考慮事項
 優れた検索機能は、多くのモバイル アプリケーションと Web アプリケーションの成功の鍵となります。 不動産から中古車市場、オンライン カタログまで、高速検索と適切な結果はカスタマー エクスペリエンスに影響を及ぼします。 このドキュメントは、特に、スケーラビリティ、複数の言語のサポート、またはカスタム ランキングの非常に複雑な要件がある高度なシナリオで、Azure Search を最大限に活用する方法のベスト プラクティスを示すことを目的としています。  また、内部の概要を説明し、実際の顧客アプリで効果的に機能する方法についても説明します。
@@ -49,7 +47,7 @@ Bing や Google などの検索エンジンとこれらが提供する高いパ�
 受信する調整済みの要求が多すぎる場合や、クエリ負荷の増加によって対象待機時間の割合を超えた場合は、次の 2 つの方法のいずれかで待機時間の割合を減らすことができます。
 
 1. **レプリカを増やす:** レプリカはデータのコピーのようなものです。レプリカにより、Azure Search は複数のコピーに対して要求の負荷を分散させることができます。  複数のレプリカでの負荷分散とデータのレプリケーションはすべて Azure Search によって管理されます。サービスに割り当てられたレプリカの数はいつでも変更できます。  Standard Search サービスでは最大 12 個、Basic Search サービスでは最大 3 個のレプリカを割り当てることができます。 レプリカは [Azure Portal](search-create-service-portal.md) または [PowerShell](search-manage-powershell.md) から調整できます。
-2. **Search のレベルを上げる:** Azure Search には[複数のレベル](https://azure.microsoft.com/pricing/details/search/)が用意されており、レベルごとに異なるパフォーマンス レベルを提供します。  クエリの数が非常に多いため、レプリカを最大数まで増やしても、現在のレベルでは待機時間の割合を十分に低くしておくことができない場合があります。  この場合、多数のドキュメントと負荷がきわめて高いクエリ ワークロードを使用するシナリオに最適な Azure Search S3 など、Search のより高いレベルのいずれかを利用することを検討します。
+2. **Search のレベルを上げる:** Azure Search には[複数のレベル](https://azure.microsoft.com/pricing/details/search/)が用意されており、レベルごとに異なるパフォーマンス レベルを提供します。  クエリの数が非常に多いため、レプリカを最大数まで増やしても、現在のレベルでは待機時間の割合を十分に低くしておくことができない場合があります。この場合、多数のドキュメントと負荷がきわめて高いクエリ ワークロードを使用するシナリオに最適な Azure Search S3 など、Search のより高いレベルのいずれかを利用することを検討します。
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>個々の低速クエリに対応するための Azure Search のスケーリング
 待機時間の割合が高くなる可能性があるもう 1 つの理由は、1 つのクエリが完了するまでに時間がかかりすぎることです。  この場合、レプリカを追加しても待機時間の割合は改善されません。  この状況に対応するには、次の 2 つの方法があります。
@@ -115,4 +113,3 @@ STA は、その Azure Search の観点から待機時間の割合を把握す�
 [1]: ./media/search-performance-optimization/geo-redundancy.png
 [2]: ./media/search-performance-optimization/scale-indexers.png
 [3]: ./media/search-performance-optimization/geo-search-traffic-mgr.png
-

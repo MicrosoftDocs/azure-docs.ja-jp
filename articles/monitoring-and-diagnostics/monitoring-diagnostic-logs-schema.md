@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/25/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: aa4fa6e0310b2725005dfa34e3225c89fb4282d6
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 23da12e518d88109fd7271fd363b6c1f099c5ab6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
@@ -40,15 +40,19 @@ ms.lasthandoff: 08/24/2017
 | Data Lake Analytics |[Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
+| IoT Hub Device Provisioning Service | スキーマは使用できません。 |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
+| パブリック IP アドレスの DDoS Protection | スキーマは使用できません。 |
 | 復旧サービス | スキーマは使用できません。|
 | Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
 | Server Management | スキーマは使用できません。 |
 | Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| SQL Database | [Azure SQL Database 診断ログ](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[ジョブの診断ログ](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Virtual Networks | スキーマは使用できません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|カテゴリ|カテゴリの表示名|
@@ -64,6 +68,8 @@ ms.lasthandoff: 08/24/2017
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|要求数|要求ログ|
+|Microsoft.Devices/provisioningServices|DeviceOperations|デバイス操作|
+|Microsoft.Devices/provisioningServices|ServiceOperations|サービス操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
@@ -75,6 +81,8 @@ ms.lasthandoff: 08/24/2017
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
+|Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保護通知|
+|Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM 保護アラート|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
@@ -82,8 +90,18 @@ ms.lasthandoff: 08/24/2017
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery レプリケートされた項目|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Azure Site Recovery レプリケーション状態|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 回復ポイント|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
+|Microsoft.Sql/servers/databases|QueryStore|クエリ ストア|
+|Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
+|Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
+|Microsoft.Sql/servers/databases|Errors|Errors|
+|Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
+|Microsoft.Sql/servers/databases|Timeouts|タイムアウト|
+|Microsoft.Sql/servers/databases|Blocks|ブロック|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.StreamAnalytics/streamingjobs|実行|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|作成|
 

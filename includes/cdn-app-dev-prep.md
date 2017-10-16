@@ -6,7 +6,7 @@ CDN 管理コードを記述する前に、使用しているコードが Azure 
 * リソース グループにアクセス許可を適用して、Azure AD テナントの承認されたユーザーのみが CDN プロファイルを操作できるようにする
 
 ### <a name="creating-the-resource-group"></a>リソース グループの作成
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 左上の **[新規]** ボタンをクリックし、**[管理]**、**[リソース グループ]** の順にクリックします。
 
     ![Creating a new resource group](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
+ms.openlocfilehash: c9ef5913859cf3a55a2de2107a9304f1d28a4829
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 25eb3b5d379f58022e9e516c51f67c52becf9087
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Azure Container Service アプリケーションへのパブリック アクセスを有効にする
 ACS [パブリック エージェント プール](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) のすべての DC/OS コンテナーは、自動的にインターネットに公開されます。 既定では、ポート **80**、**443**、**8080** が開かれ、それらのポートでリッスンしているすべての (パブリック) コンテナーにアクセスできます。 この記事では、Azure Container Service のアプリケーションのために、さらに多くのポートを開く方法について説明します。
@@ -88,5 +87,4 @@ ACS [パブリック エージェント プール](container-service-mesos-marat
 [パブリックとプライベートの DC/OS エージェント](container-service-dcos-agents.md)の違いについて学習します。
 
 [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)の詳細をお読みください。
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -152,7 +151,7 @@ LOB コンポーネントのアドレスとエンティティ名には特殊文�
 **マップのテスト** プロパティが Visual Studio に表示されない現象は、 **[プロパティ]** ウィンドウと **[ソリューション エクスプローラー]** ウィンドウが同時にドックされていない場合に発生します。 これを解決するには、**[プロパティ]** ウィンドウと **[ソリューション エクスプローラー]** ウィンドウをドックします。  
 
 ### <a name="datetime-reformat-drop-down-is-grayed-out"></a>[DateTime 再フォーマット] ボックスの一覧がグレー表示される
-"DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。 これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。 この問題を解決するには、次の手順に従って、ディスプレイを **[小 - 100% (既定)]** に設定します。  
+"DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。 この問題を解決するには、次の手順に従って、ディスプレイを **[小 - 100% (既定)]** に設定します。  
 
 1. **コントロール パネル**を開き、**[デスクトップのカスタマイズ]** をクリックします。
 2. **[ディスプレイ]**をクリックします。
@@ -222,5 +221,4 @@ BizTalk Services プレビュー サブスクリプションに XML ブリッジ
 
 ### <a name="concepts"></a>概念
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
 

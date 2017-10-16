@@ -1,6 +1,6 @@
 ---
-title: View public IP address consumption in Azure Stack | Microsoft Docs
-description: Administrators can view the consumption of public IP addresses in a region
+title: "Azure Stack でパブリック IP アドレスの使用量を表示する | Microsoft Docs"
+description: "管理者は、リージョン内のパブリック IP アドレスの使用量を表示できます。"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -12,54 +12,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/18/2017
+ms.date: 9/25/2017
 ms.author: scottnap
+ms.openlocfilehash: 7651565eebf6272f307a4ce4790ca19b41bfa826
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6b7da3c1b4e9bcaa302d4c763eb73d0dd1832124
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="view-public-ip-address-consumption-in-azure-stack"></a>View public IP address consumption in Azure Stack
-As a cloud administrator, you can view the number of public IP addresses that have been allocated to tenants, the number of public IP addresses that are still available for allocation, and the percentage of public IP addresses that have been allocated in that location.
+# <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 
-The **Public IP pools usage** tile shows the total number of public IP addresses that have been consumed across all public IP address pools on the fabric, whether they have been used for tenant IaaS VM instances, fabric infrastructure services, or public IP address resources that were explicitly created by tenants.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-The purpose of this tile is to give Azure Stack administrators a sense of the overall number of public IP addresses that have been consumed in this location. This helps administrators determine whether they are running low on this resource.
+クラウド管理者は、テナントに割り当てられているパブリック IP アドレスの数、割り当てに使用できるパブリック IP アドレスの数、および特定の場所に割り当て済みのパブリック IP アドレスの数を表示できます。
 
-On the **Resource providers**, **Network** blade, the **Public IP addresses** menu item under **Tenant Resources** lists only those public IP addresses that have been *explicitly created by tenants*. As such, the number of **Used** public IP addresses on the **Public IP pools usage** tile is always different from (larger than) the number on the **Public IP Addresses** tile under **Tenant Resources**.
+**[パブリック IP プールの使用量]** タイルに、ファブリックのすべてのパブリック IP アドレス プール内の使用済みのパブリック IP アドレスの合計数が表示されます。この数値には、テナントの IaaS VM インスタンスとファブリック インフラストラクチャ サービスによって使用されているものや、テナントによって明示的に作成されたパブリック IP アドレス リソースが含まれます。
 
-## <a name="view-the-public-ip-address-usage-information"></a>View the public IP address usage information
-To view the total number of public IP addresses that have been consumed in the region:
+このタイルの目的は、特定の場所で全体としてどの程度のパブリック IP アドレスが使用されているかを Azure Stack 管理者に直観的に理解させることです。 これにより、管理者は、このリソースをローコストで運用しているかどうかを判断できます。
 
-1. In the Azure Stack administrator portal, click **More services**, under **Administrative Resources**, click **Resource providers**.
-2. From the list of **Resource Providers**, select **Network**.
-3. The **Network** blade displays the **Public IP pools usage** tile in the **Overview** section.
+**[リソース プロバイダー]** の **[ネットワーク]** ブレードで、**[テナント リソース]** の下にある **[パブリック IP アドレス]** メニュー項目は、"*テナントによって明示的に作成されている*" パブリック IP アドレスのみを表示します。 このため、**[パブリック IP プールの使用量]** タイルの **[使用済み]** パブリック IP アドレスの数は、**[テナント リソース]** の **[パブリック IP アドレス]** タイルの数と一致することはなく、常にその数よりも大きくなります。
 
-![Network Resource Provider blade](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+## <a name="view-the-public-ip-address-usage-information"></a>パブリック IP アドレスの使用量情報を表示する
+リージョンで使用されているパブリック IP アドレスの合計数を表示するには:
 
-Keep in mind that the **Used** number represents the number of public IP addresses from all public IP address pools in that location that are assigned. The **Free** number represents the number of public IP addresses from all public IP address pools that have not been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in all public IP address pools in that location.
+1. Azure Stack 管理者ポータルで、**[管理リソース]** の下の **[その他のサービス]** をクリックし、**[リソース プロバイダー]** をクリックします。
+2. **[リソース プロバイダー]** の一覧から **[ネットワーク]** を選択します。
+3. **[ネットワーク]** ブレードの **[概要]** セクションに、**[パブリック IP プールの使用量]** タイルが表示されます。
 
-## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>View the public IP addresses that were created by tenant subscriptions
-To see a list of public IP addresses that were explicitly created by tenant subscriptions in a specific region, click **Public IP addresses** under **Tenant Resources**.
+![[リソース プロバイダー] の [ネットワーク] ブレード](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
 
-![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+**[使用済み]** の数は、その場所にあるすべてのパブリック IP アドレス プール内の割り当て済みのパブリック IP アドレスの数を表していることに注意してください。 **[フリー]** の数値は、その場所にあるすべてのパブリック IP アドレス プール内の未割り当てでありまだ使用可能であるパブリック IP アドレスの数を表しています。 **[% 使用]** の数値は、使用済みまたは割り当て済みの数を、その場所にあるすべてのパブリック IP アドレス プール内のパブリック IP アドレスの合計数に対する割合として表わしています。
 
-You might notice that some public IP addresses that have been dynamically allocated appear in the list but do not have an address associated with them yet. This is because the address resource has been created in the Network Resource Provider, but not in the Network Controller yet.
+## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>テナントのサブスクリプションによって作成されたパブリック IP アドレスを表示する
+特定のリージョンでテナントのサブスクリプションによって明示的に作成されたパブリック IP アドレスの一覧を表示するには、**[テナント リソース]** の下の **[パブリック IP アドレス]** をクリックします。
 
-The Network Controller does not assign an address to this resource until it is actually bound to an interface, a network interface card (NIC), a load balancer, or a virtual network gateway. When the public IP address is bound to an interface, the Network Controller allocates an IP address to it, and it appears in the **Address** field.
+![テナントのパブリック IP アドレス](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
 
-## <a name="view-the-public-ip-address-information-summary-table"></a>View the public IP address information summary table
-There are a number of different cases in which public IP addresses are assigned that determine whether the address appears in one list or another.
+動的に割り当て済みのパブリック IP アドレスが一覧に表示されるが、まだアドレスが関連付けられていない場合があります。 これは、アドレス リソースはネットワーク リソース プロバイダー内に作成されているが、ネットワーク コントローラー内にはまだ作成されていないためです。
 
-| **Public IP address assignment case** | **Appears in usage summary** | **Appears in tenant public IP addresses list** |
+ネットワーク コントローラーは、このリソースがインターフェイス、ネットワーク インターフェイス カード (NIC)、ロード バランサー、または仮想ネットワーク ゲートウェイに実際にバインドされるまで、アドレスの割り当てを行いません。 パブリック IP アドレスがインターフェイスにバインドされると、ネットワーク コントローラーは IP アドレスの割り当てを行い、それが **[アドレス]** フィールドに表示されます。
+
+## <a name="view-the-public-ip-address-information-summary-table"></a>パブリック IP アドレス情報の表示に関するまとめ
+パブリック IP アドレスの割り当てはさまざまな状況で実行され、状況に応じてどの一覧に表示されるかが決まります。
+
+| **プライベート IP アドレスの割り当て状況** | **使用状況の概要に表示** | **テナントのパブリック IP アドレスの一覧に表示** |
 | --- | --- | --- |
-| Dynamic public IP address not yet assigned to an NIC or load balancer (temporary) |No |Yes |
-| Dynamic public IP address assigned to an NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a tenant NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
-| Public IP address implicitly created for IaaS VM instances and used for outbound NAT on the virtual network. These are created behind the scenes whenever a tenant creates a VM instance so that VMs can send information out to the Internet. |Yes |No |
+| NIC またはロード バランサーにまだ割り当てられていない動的パブリック IP アドレス (一時的) |いいえ |あり |
+| NIC またはロード バランサーに割り当て済みの動的パブリック IP アドレス |あり |あり |
+| テナントの NIC またはロード バランサーに割り当て済みの静的パブリック IP アドレス |あり |あり |
+| ファブリック インフラストラクチャ サービス エンドポイントに割り当て済みの静的パブリック IP アドレス |あり |いいえ |
+| IaaS VM インスタンス用に暗黙的に作成され、仮想ネットワークのアウトバウンド NAT で使用されるパブリック IP アドレス。 これらは、テナントが VM インスタンスを作成するたびにバック グラウンドで作成され、VM が情報をインターネットに送信できるようにします。 |あり |いいえ |
 
-## <a name="next-steps"></a>Next steps
-[Manage Storage Accounts in Azure Stack](azure-stack-manage-storage-accounts.md)
+## <a name="next-steps"></a>次のステップ
+[Azure Stack でストレージ アカウントを管理する](azure-stack-manage-storage-accounts.md)

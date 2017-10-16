@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
 ## <a name="overview"></a>概要
@@ -55,7 +54,7 @@ Mobile Services により、現在既にハイブリッド接続を使用して�
 Mobile services では、バックエンド コードのすべてのインスタンスが S VM で実行されていました。 *Azure App Service* では、より豊富なオプション セットから VM のサイズを選択することができます。 また、さまざまなパフォーマンス メトリックに基づいて、すばやくスケールアップまたはスケールアウトして顧客の受信負荷を処理することもできます。
 
 ## <a name="be-in-the-know"></a>状況の把握
-監視と警告を使用して問題にリアルタイムで対応し、自動的に担当者やチームに通知します。 高度なアプリ分析と New Relic や AppInsights の監視機能を統合して、モバイル アプリの実行状況に対する洞察を深めます。 *Azure App Service* を使用することで、さまざまなパフォーマンス メトリックに基づき、プログラムまたは Azure ポータルを使用してアラートを設定できるようになりました。
+監視と警告を使用して問題にリアルタイムで対応し、自動的に担当者やチームに通知します。 高度なアプリ分析と New Relic や AppInsights の監視機能を統合して、モバイル アプリの実行状況に対する洞察を深めます。 *Azure App Service* を使用することで、さまざまなパフォーマンス メトリックに基づき、プログラムまたは Azure Portal を使用してアラートを設定できるようになりました。
 
 ## <a name="keep-your-assets-safe"></a>資産の安全性の保持
 バックエンドとデータベースを自動的にバックアップします。 コードとデータは災害からセキュリティ保護されていて簡単に復元できるため、安心して業務を遂行することができます。
@@ -64,4 +63,3 @@ Mobile services では、バックエンド コードのすべてのインスタ
 *Azure App Service* を使用することにより、モバイル アプリ用に複数のプライベートなテスト環境とステージング環境を作成できるようになりました。 これらを使用して、デプロイ前にテストを実行します。 ダウンタイムなしで運用環境と交換します。 Web アプリは事前に読み込まれ、優れたカスタマー エクスペリエンスを実現します。
 
 こちらの *チュートリアル* に従って、既存のモバイル サービスに [App Service](app-service-mobile-migrating-from-mobile-services.md)を活用することができます。
-

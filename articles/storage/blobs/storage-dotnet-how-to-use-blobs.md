@@ -3,7 +3,7 @@ title: ".NET を使用して Azure Blob Storage (オブジェクト ストレー
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: 87594d2688e3cd01f5e7db8f5be8ca513969e774
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 70c7d6a5e1b9aa9a13481893e0baa56538be097c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>.NET を使用して Azure Blob Storage を使用する
 
@@ -62,7 +61,7 @@ using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ### <a name="parse-the-connection-string"></a>接続文字列を解析する
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-blob-service-client"></a>BLOB サービス クライアントの作成
+### <a name="create-the-blob-service-client"></a>Blob service クライアントの作成
 **CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
 
 ```csharp
@@ -401,5 +400,4 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
 ### <a name="conceptual-guides"></a>概念的なガイド
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [.NET 用の File Storage の概要](../files/storage-dotnet-how-to-use-files.md)
-* [Web ジョブ SDK で Azure Blob Storage を使用する方法](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-
+* [Web ジョブ SDK で Azure Blob Storage を使用する方法](https://github.com/Azure/azure-webjobs-sdk/wiki)

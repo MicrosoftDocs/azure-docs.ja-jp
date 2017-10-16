@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: ac982bc153d523de29940af9b9e2609a39cd48a6
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Linux 仮想マシンからディスクを切断する方法
 > [!IMPORTANT] 
@@ -33,5 +32,4 @@ ms.lasthandoff: 03/27/2017
 
 * [データ ディスクを Linux 仮想マシンに接続する方法](attach-disk.md)
 * [クラシック デプロイ モデルでの Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-
 

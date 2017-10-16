@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 5ce000814f2f5899a7338fdefb39c4873c006b1d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
 Azure Traffic Manager には、エンドポイントの監視と自動フェールオーバーの機能が組み込まれています。 この機能を使用して、Azure リージョンの障害を含むエンドポイント障害に対する回復性を備えた高可用性アプリケーションを提供できます。
@@ -161,4 +159,3 @@ Traffic Manager でサポートされている [トラフィック ルーティ�
 [Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
 
 [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を行う。
-

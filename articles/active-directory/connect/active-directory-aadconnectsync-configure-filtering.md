@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
+ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
 
@@ -35,7 +33,7 @@ ms.lasthandoff: 07/25/2017
 この記事では、各種フィルター処理方法の構成について説明します。
 
 > [!IMPORTANT]
-> 公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 サポートされていないアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。 結果的に、Microsoft ではこのようなデプロイについてテクニカル サポートを提供できなくなります。
+> 公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 サポートされていないアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについてテクニカル サポートを提供できなくなります。
 
 ## <a name="basics-and-important-notes"></a>基本事項と注意事項
 Azure AD Connect Sync では、いつでもフィルター処理を有効にできます。 最初に既定の構成でディレクトリ同期を実行した後、フィルター処理を構成した場合、フィルター処理により除外されるオブジェクトは、Azure AD に対する同期の対象外になります。 この変更により、以前同期されてからフィルター処理された Azure AD のオブジェクトは、すべて Azure AD から削除されます。
@@ -137,7 +135,7 @@ November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250
         ![コネクタ実行プロファイル 4](./media/active-directory-aadconnectsync-configure-filtering/runprofilesdeletestep.png)  
     3. 変更を確認します。 同期の対象となるすべてのドメインが各実行プロファイルにステップとして表示されている必要があります。
 4. **[実行プロファイルの構成]** ダイアログ ボックスを閉じるには、**[OK]** をクリックします。
-5.  構成を完了するには、**フル インポート**と**差分同期**を実行する必要があります。 続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
+5.  構成を完了するには、**フル インポート**と**差分同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 ## <a name="organizational-unitbased-filtering"></a>組織単位ベースのフィルター処理
 OU ベースのフィルター処理を変更する場合は、インストール ウィザードを実行して、[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を変更することをお勧めします。 インストール ウィザードは、このトピックに記載されているすべてのタスクを自動化します。
@@ -161,7 +159,7 @@ OU ベースのフィルター処理を変更する場合は、インストー�
    * グループ ベースのフィルター処理を使用する場合は、グループが配置される OU を含める必要があります。
    * フィルター処理の構成が完了した後で追加された新しい OU を同期するか同期しないかを構成することができます。 詳細については、次のセクションを参照してください。
 7. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。
-8. 構成を完了するには、**フル インポート**と**差分同期**を実行する必要があります。 続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
+8. 構成を完了するには、**フル インポート**と**差分同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 ### <a name="synchronize-new-ous"></a>新しい OU を同期する
 フィルター処理を構成した後で作成された新しい OU は、既定では同期されます。 チェック ボックスがオンの場合、同期されることを示します。 一部のサブ OU を選択解除することもできます。 この操作を有効にするには、白地に青のチェック マークが表示された状態になるまでチェック ボックスをクリックします (既定の状態)。 その後、同期しないサブ OU を選択解除します。
@@ -216,7 +214,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
 7. **[変換の追加]** をクリックし、**[FlowType]** として **[Constant]** を、**[ターゲット属性]** として **[cloudFiltered]** に選択します。 **[ソース]** テキスト ボックスに「**True**」を入力します。 **[追加]** をクリックして規則を保存します。  
    ![Inbound 3 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
-8. 構成を完了するには、**完全同期**を実行する必要があります。 続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
+8. 構成を完了するには、**完全同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 #### <a name="positive-filtering-only-sync-these"></a>肯定のフィルター処理 (同期対象の指定)
 肯定のフィルター処理を式で表すことは、否定の場合と比べて難易度が上がります。同期の対象とするかどうかが不明確なオブジェクト (会議室など) も考慮しなければならないためです。 既定の規則 **[In from AD - User Join]** の既定のフィルターもオーバーライドします。 カスタム フィルターを作成するときは、重要なシステム オブジェクト、レプリケーション競合オブジェクト、特殊なメールボックス、Azure AD Connect のサービス アカウントなどが含まれていないことを確認してください。
@@ -242,7 +240,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 10. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
 11. **[変換の追加]** をクリックし、**[FlowType]** として **[Constant]** を、**[ターゲット属性]** として **[cloudFiltered]** に選択します。 **[ソース]** ボックスに、「**True**」を入力します。 **[追加]** をクリックして規則を保存します。  
     ![Inbound 3 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
-12. 構成を完了するには、**完全同期**を実行する必要があります。 続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
+12. 構成を完了するには、**完全同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 必要であれば、1 つ目のタイプの規則をさらに作成し、同期対象のオブジェクトを増やすこともできます。
 
@@ -254,12 +252,12 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
 2. **[スタート]** メニューから、**同期規則エディター**を起動します。
 3. **[規則の種類]** の **[送信]** をクリックします。
-4. **[Out to AAD – User Join]** という規則を探し、**[編集]** をクリックします。
+4. 使用する Connect のバージョンに応じて、**Out to AAD – User Join** と **Out to AAD - User Join SOAInAD** のいずれかの規則を選択し、**[編集]** をクリックします。
 5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
 6. **[説明]** ページの **[優先順位]** の値を、まだ使用していない値 (50 など) に設定します。
 7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、**[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** で「**@contoso.com**」を入力し、**[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**@contoso.com**」を入力します。
 8. **[保存]**をクリックします。
-9. 構成を完了するには、**完全同期**を実行する必要があります。 続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
+9. 構成を完了するには、**完全同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 
 ## <a name="apply-and-verify-changes"></a>変更の適用と検証
 構成を変更したら、それらの変更をシステム内の既存のオブジェクトに適用する必要があります。 まだ同期エンジンに存在しないオブジェクトを処理 (さらに、同期エンジンがソース システムをもう一度読み取ってその内容を検証) しなければならないケースも考えられます。
@@ -303,4 +301,3 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 ## <a name="next-steps"></a>次のステップ
 - [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の詳細を確認してください。
 - [オンプレミス ID と Azure AD の統合](active-directory-aadconnect.md)の詳細を確認してください。
-

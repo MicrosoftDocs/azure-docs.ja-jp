@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 7963a07a2b9d529e89302f32e5ffd56c51687ffa
-ms.contentlocale: ja-jp
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library (MSAL) を使用して Microsoft Graph API のトークンを取得する
 
 1.  `MainActivity` を開きます (`app` > `java` > `{domain}.{appname}` の順に選択します)。
@@ -380,4 +378,3 @@ private void updateSignedOutUI() {
 上記の `onSignOutClicked` は、MSAL ユーザー キャッシュからユーザーを削除します。これにより、効率的に MSAL に現在のユーザーを忘れさせ、後続の要求が対話形式で行われた場合にのみトークンを取得できるようにすることができます。
 このサンプルのアプリケーションではユーザーが 1 人であることを想定していますが、MSAL では複数のアカウントを使用して同時にサインインするケース (たとえば、電子メール アプリケーションなどで 1 人のユーザーが複数のアカウントを持つケース) がサポートされています。
 <!--end-collapse-->
-

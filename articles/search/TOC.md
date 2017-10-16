@@ -37,8 +37,8 @@
 
 ## 管理
 ### Azure Search を管理する
-#### [Azure Portal](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### [Azure ポータル](search-manage.md)
+#### [Azure PowerShell](search-manage-powershell.md)
 ### [使用状況と統計情報を監視する](search-monitor-usage.md)
 ### [検索トラフィックの分析](search-traffic-analytics.md)
 ### [パフォーマンスと最適化](search-performance-optimization.md)

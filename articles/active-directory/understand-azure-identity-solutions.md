@@ -13,12 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
+ms.openlocfilehash: e368f14638c480a632afa7c17023aa8ae4c8833f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b7328eea378dde886419be8a4ab5b6f69c0b0d24
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
@@ -40,7 +39,7 @@ Microsoft Azure には、複雑さのレベルがさまざまな IDaaS (Identity
 |Azure AD ディレクトリ | それぞれの Azure テナントは、テナントのユーザー、グループ、およびアプリケーションが含まれる、信頼された専用 Azure AD ディレクトリを保持します。 これは、テナント リソースに対する ID およびアクセス管理機能を実行するために使用されます。 Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサインアップすると、組織を表す一意の Azure AD ディレクトリが自動的にプロビジョニングされます。そのため、"*テナント*"、*Azure AD*、および "*Azure AD ディレクトリ*" の各用語が同じ意味で使用される場合があります。 |
 |カスタム ドメイン | Microsoft クラウド サービスのサブスクリプションに最初にサインアップしたときに、テナント (組織) は *.onmicrosoft.com* ドメイン名を使用します。 ただし、ほとんどの組織では、ビジネス用のドメイン名やエンド ユーザーが会社のリソースへのアクセスに使用するドメイン名を 1 つ以上所有しています。 *alice@contoso.onmicrosoft.com* ではなく *alice@contoso.com* のような、ユーザーが見慣れたドメイン名にするために、Azure AD にカスタム ドメイン名を追加できます。 |
 |Azure AD アカウント | Azure AD または他の Microsoft クラウド サービス (Office 365 など) を使用して作成される ID です。 このアカウントは Azure AD に保存され、組織のクラウド サービスのすべてのサブスクリプションにアクセスできます。 |
-|Azure サブスクリプション管理者| アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 アカウント管理者は、[アカウント センター](https://account.windowsazure.com/Home/Index)を使用して、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行できます。 |
+|Azure サブスクリプション管理者| アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 アカウント管理者は、[アカウント センター](https://account.azure.com/Subscriptions)を使用して、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行できます。 |
 |Azure AD 全体管理者 | Azure AD 全体管理者は、すべての Azure AD 管理機能を利用できます。 既定では、Microsoft クラウド サービス サブスクリプションにサインアップしたユーザーが自動的に全体管理者になります。 複数の全体管理者を置くこともできますが、[他の管理者ロール](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)をユーザーに割り当てることができるのは全体管理者に限られます。 |
 |Microsoft アカウント | Microsoft アカウント (個人用) では、Outlook (Hotmail)、OneDrive、Xbox LIVE、Office 365 など、コンシューマー向け Microsoft 製品とクラウド サービスにアクセスできます。 これらの ID は、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成および保存されます。|
 |職場または学校アカウント | 職場または学校アカウント (企業または教育機関で使用するために管理者が発行) は、Azure、Intune、Office 365 など、大規模企業向け Microsoft クラウド サービスへのアクセスを提供します。|
@@ -128,4 +127,3 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 [Azure の概念実証環境で詳しく学ぶ](https://aka.ms/aad-poc)
 
 [Azure AD を運用環境にデプロイする](https://aka.ms/aad-onboard)
-

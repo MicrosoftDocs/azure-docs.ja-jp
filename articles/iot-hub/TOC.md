@@ -32,6 +32,7 @@
 ##### [ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [IoT Hub へのゲートウェイの接続](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [ゲートウェイを使用したデータ変換](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
 
 ## IoT の拡張シナリオ
 ### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
@@ -82,7 +83,9 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.JS](iot-hub-node-node-c2d.md)
-### [デバイスからファイルをアップロードする](iot-hub-csharp-csharp-file-upload.md)
+### デバイスからファイルをアップロードする
+#### [.NET](iot-hub-csharp-csharp-file-upload.md)
+#### [Java](iot-hub-java-java-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
@@ -96,31 +99,34 @@
 ### デバイス管理の開始
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-device-management-getstarted.md)
 ### ツインのプロパティの使用方法
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-how-to-configure.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-how-to-configure.md)
 ### デバイス ジョブを使用したデバイスのファームウェアの更新
 #### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-firmware-update.md)
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
 #### [Java](iot-hub-java-java-schedule-jobs.md)
 ## 管理
 ### IoT Hub の作成 
-#### [ポータルの使用](iot-hub-create-through-portal.md)
-#### [PowerShell の使用](iot-hub-create-using-powershell.md)
-#### [CLI 2.0 の使用](iot-hub-create-using-cli.md)
+#### [Azure Portal の使用](iot-hub-create-through-portal.md)
+#### [Azure PowerShell の使用](iot-hub-create-using-powershell.md)
+#### [Azure CLI の使用](iot-hub-create-using-cli.md)
 #### [CLI の使用](iot-hub-create-using-cli-nodejs.md)
 #### [REST API の使用](iot-hub-rm-rest.md)
-#### [PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
+#### [Azure PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
 #### [.NET からテンプレートを使用する](iot-hub-rm-template.md)
 ### ファイルのアップロードを構成する
-#### [ポータルの使用](iot-hub-configure-file-upload.md)
-#### [PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
-#### [CLI 2.0 の使用](iot-hub-configure-file-upload-cli.md)
+#### [Azure Portal の使用](iot-hub-configure-file-upload.md)
+#### [Azure PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
+#### [Azure CLI の使用](iot-hub-configure-file-upload-cli.md)
 ### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
 ### [使用状況のメトリック](iot-hub-metrics.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)

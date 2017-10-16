@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/29/2017
 ms.author: byvinyal
+ms.openlocfilehash: e2c67bed2162773156ebf1f0f99593aeb2adf019
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -55,7 +54,6 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
-* [Azure RemoteApp](#azure-remoteapp-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
@@ -68,6 +66,7 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
+* [IoT Hub Device Provisioning Service](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics / Operational Insights](#log-analytics-limits)
 * [Media Services](#media-services-limits)
@@ -230,6 +229,9 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 ### <a name="iot-hub-limits"></a>IoT Hub の制限
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
 
+### <a name="iot-hub-device-provisioning-service-limits"></a>IoT Hub Device Provisioning Service の制限
+[!INCLUDE [azure-iotdps-limits](../includes/iot-dps-limits.md)]
+
 ### <a name="data-factory-limits"></a>Data Factory の制限
 [!INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
@@ -247,9 +249,6 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 
 ### <a name="azure-event-grid-limits"></a>Azure Event Grid の制限
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
-
-### <a name="azure-remoteapp-limits"></a>Azure RemoteApp の制限
-[!INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
@@ -290,5 +289,4 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 [Azure Virtual Machines および Cloud Services のサイズ](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Cloud Services のサイズ](cloud-services/cloud-services-sizes-specs.md)
-
 

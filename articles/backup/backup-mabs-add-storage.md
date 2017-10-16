@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 751b9b495fd368dff1f72429707f5f33a0ccb569
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-storage-to-azure-backup-server-v2"></a>Azure Backup Server v2 へのストレージの追加
 
-Azure Backup Server v2 には、System Center 2016 Data Protection Manager Modern Backup Storage が付属しています。 Modern Backup Storage を使用すると、ストレージを 50% 削減でき、バックアップ速度が 3 倍に高速化され、より効率的なストレージを利用できます。 また、ワークロード対応型ストレージも提供されます。 
+Azure Backup Server v2 には、System Center 2016 Data Protection Manager Modern Backup Storage がついてきます。 Modern Backup Storage を使用すると、ストレージを 50% 削減でき、バックアップ速度が 3 倍に高速化され、より効率的なストレージを利用できます。 また、ワークロード対応型ストレージも提供されます。 
 
 > [!NOTE]
 > Modern Backup Storage を使用するには、Backup Server v2 を Windows Server 2016 で稼働させる必要があります。 Backup Server v2 を以前のバージョンの Windows Server で稼働させると、Azure Backup Server は Modern Backup Storage を利用できません。 代わりに、Backup Server v1 の場合と同様に、ワークロードを保護します。 詳細については、Backup Server のバージョンの[保護マトリックス](backup-mabs-protection-matrix.md)をご覧ください。
@@ -104,5 +102,4 @@ Backup Server をインストールしたら、サーバーを準備する方法
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
 - [Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 - [Backup Server を使用した SQL Server のバックアップ](backup-azure-sql-mabs.md)
-
 

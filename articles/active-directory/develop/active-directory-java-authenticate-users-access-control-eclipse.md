@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e0f8d92495c976040113f8edc0d4c789920c549
-ms.openlocfilehash: e22dca7b666720edfcbfd1b871d98b9468441fbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: 698403d181e1fee09bb4692290c92203ded97ba4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。 ACS の詳細については、「 [次のステップ](#next_steps) 」を参照してください。
@@ -96,7 +94,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 4. 名前空間の名前を入力します。 名前が一意であるかが確認されます。
 5. 名前空間が使用されるリージョンを選択します。 パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、[作成] をクリックします。
 6. 複数のサブスクリプションがある場合は、ACS 名前空間に使用するサブスクリプションを選択します。
-7. **[作成]**をクリックします。
+7. **Create** をクリックしてください。
 
 名前空間が作成されて有効化されます。 新しい名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。 
 
@@ -171,7 +169,7 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
    
     ![ACS サンプル用の JSP ファイルの追加][add_jsp_file_acs]
    
-    **[次へ]**をクリックします。
+    **[次へ]** をクリックします。
 4. **[Select JSP Template (JSP テンプレートの選択)]** ダイアログ ボックスで、**[New JSP File (html) (新しい JSP ファイル (html))]** を選択し、**[完了]** をクリックします。
 5. index.jsp ファイルが Eclipse で開いたら、**Hello ACS World!** を表示するためのテキストを追加します。 既存の `<body>` 要素に追加します。 更新した `<body>` の内容は次のようになります。
    
@@ -299,5 +297,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
-
 

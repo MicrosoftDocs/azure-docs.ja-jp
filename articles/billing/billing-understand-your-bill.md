@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
+ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 2bf75dc55d190522597eb8958d378aa1469027b7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
+
+>[!NOTE]
+>この記事は、Enterprise Agreement (EA) のお客様には適用されません。 EA 顧客の場合は、[エンタープライズ ポータルで請求書ドキュメントを見つけることができます](https://ea.azure.com/helpdocs/understandingYourInvoice)。  
 
 請求書の PDF および詳細な毎日の使用状況ファイルの CSV ダウンロードのコピーを取得するには、[Azure 課金の請求書および毎日の使用状況データの取得](billing-download-azure-invoice-daily-usage-date.md)に関する記事をご覧ください。 
 
@@ -48,7 +50,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
  | --- | --- |
 |請求サイクル | 請求期間 |
  |名前 |測定カテゴリ |
- |種類 |測定サブカテゴリ |
+ |型 |測定サブカテゴリ |
  |リソース |測定名 |
  |リージョン |測定リージョン |
  |消費量 |消費量 |
@@ -108,4 +110,3 @@ Azure Portal で料金を確認することもできます。Azure Portal は、
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

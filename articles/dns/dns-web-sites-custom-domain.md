@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: d4b0aa817c3fd7f3304b5122ac584166d8079d3c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>カスタム ドメインにおける Web アプリの DNS レコードの作成
 
 Azure DNS を使用すると、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、ユーザーが FQDN として contoso.com または www.contoso.com を使用してそのアプリにアクセスできるようにします。
@@ -57,7 +55,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 割り当てられた $rs 変数を使って、前に作成したレコード セット "@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
 
-Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service-web/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
+Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -202,5 +200,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="next-steps"></a>次のステップ
 
-[App Service のカスタム ドメイン名の構成](../app-service-web/web-sites-custom-domain-name.md) に関するページの手順に進み、カスタム ドメインを使用するように Web アプリを構成します。
-
+[App Service のカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md) に関するページの手順に進み、カスタム ドメインを使用するように Web アプリを構成します。

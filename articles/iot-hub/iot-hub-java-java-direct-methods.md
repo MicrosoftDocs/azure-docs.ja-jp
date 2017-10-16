@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
+ms.openlocfilehash: 4fb759ecd7767c126bc22165494652039ba1caa4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5fa42c4fe7ad04bc74f70b023715bb61f81806ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-direct-methods-java"></a>ダイレクト メソッドの使用 (Java)
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 08/09/2017
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 現時点では、ダイレクト メソッドを使用するには、MQTT プロトコルを使用する必要があります。
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 
 
 1. IoT Hub に状態コードを返すには、次の入れ子になったクラスを **App** クラスに追加します。
 
@@ -335,4 +334,3 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
 [lnk-maven-device-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
-

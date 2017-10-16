@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 7b24bb8391f5d9d4a3e084445aed83bc59295044
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
-
+ms.openlocfilehash: d922cd972528882a921c8b5a4c5af251fd3e61a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
@@ -38,4 +36,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

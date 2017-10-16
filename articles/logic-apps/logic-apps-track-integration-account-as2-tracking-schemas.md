@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: e9c9cfda4dda1ec3f1b002016118bd49d540e90a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 31bd296dc5ed5ac6998a6c05ee80fd38b12d662c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>AS2 メッセージおよび MDN の追跡を開始または有効にして、成功、失敗、メッセージのプロパティを監視する
 Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して企業間 (B2B) 取引の監視に役立てることができます。
@@ -139,4 +137,3 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
 * [B2B カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)についての詳細情報。   
 * [X12 追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)についての詳細情報。   
 * [Operations Management Suite ポータルでの B2B メッセージ追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
-

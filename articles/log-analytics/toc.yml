@@ -1,0 +1,243 @@
+- name: Azure Log Analytics のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Log Analytics とは
+      href: log-analytics-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 収集 - Azure VM
+      href: log-analytics-quick-collect-azurevm.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - データの分析
+      href: log-analytics-tutorial-viewdata.md
+    - name: 2 - データの視覚化
+      href: log-analytics-tutorial-dashboards.md
+    - name: 3 - データに基づくアラート
+      href: log-analytics-tutorial-response.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: 概念
+  items:
+    - name: Log Analytics についてよく寄せられる質問
+      href: log-analytics-faq.md
+    - name: データの使用
+      href: log-analytics-usage.md
+    - name: アクセスを管理する
+      href: log-analytics-manage-access.md
+    - name: サービス プロバイダー向けの機能
+      href: log-analytics-service-providers.md
+    - name: ログ検索
+      items:
+        - name: ログ検索についてよく寄せられる質問
+          href: log-analytics-log-search-faq.md
+        - name: ログ検索の概要
+          href: log-analytics-log-search-new.md
+        - name: ログ検索ポータル
+          href: log-analytics-log-search-portals.md
+- name: 方法
+  items:
+    - name: データを収集する
+      items:
+        - name: 接続先ソース
+          items:
+            - name: Windows エージェント
+              href: log-analytics-windows-agents.md
+            - name: Linux エージェント
+              href: log-analytics-agent-linux.md
+            - name: Azure Virtual Machines
+              href: log-analytics-azure-vm-extension.md
+            - name: Azure リソース
+              href: log-analytics-azure-storage.md
+            - name: Operations Manager
+              href: log-analytics-om-agents.md
+            - name: 構成マネージャー
+              href: log-analytics-sccm.md
+            - name: OMS ゲートウェイ
+              href: log-analytics-oms-gateway.md
+        - name: データ ソース
+          items:
+            - name: データ ソースの概要
+              href: log-analytics-data-sources.md
+            - name: Windows イベント
+              href: log-analytics-data-sources-windows-events.md
+            - name: カスタム JSON データ
+              href: log-analytics-data-sources-json.md
+            - name: 収集されたパフォーマンス データ
+              href: log-analytics-data-sources-collectd.md
+            - name: Nagios と Zabbix のアラート
+              href: log-analytics-data-sources-alerts-nagios-zabbix.md
+            - name: syslog
+              href: log-analytics-data-sources-syslog.md
+            - name: パフォーマンス カウンター
+              href: log-analytics-data-sources-performance-counters.md
+            - name: Linux アプリケーション パフォーマンス
+              href: log-analytics-data-sources-linux-applications.md
+            - name: IIS ログ
+              href: log-analytics-data-sources-iis-logs.md
+            - name: カスタム ログ
+              href: log-analytics-data-sources-custom-logs.md
+            - name: カスタム フィールド
+              href: log-analytics-custom-fields.md
+    - name: データのクエリを実行する
+      items:
+        - name: ログ検索の概要
+          href: log-analytics-log-searches.md
+        - name: 検索リファレンス
+          href: log-analytics-search-reference.md
+          items:
+            - name: 正規表現
+              href: log-analytics-log-searches-regex.md
+        - name: 検索結果からのアクションの実行
+          href: log-analytics-log-search-takeaction.md
+        - name: コンピューター グループ
+          href: log-analytics-computer-groups.md
+    - name: 新しいログ検索
+      items:
+        - name: ワークスペースのアップグレード
+          href: log-analytics-log-search-upgrade.md
+        - name: 従来の言語からの切り替え
+          href: log-analytics-log-search-transition.md
+        - name: Flow コネクタ
+          href: log-analytics-flow-tutorial.md
+    - name: データを分析する
+      items:
+        - name: ダッシュボード
+          href: log-analytics-dashboards.md
+        - name: ビュー デザイナー
+          href: log-analytics-view-designer.md
+        - name: Power BI
+          href: log-analytics-powerbi.md
+    - name: アラートを作成する
+      items:
+        - name: アラートについて
+          href: log-analytics-alerts.md
+        - name: アラート アクション
+          href: log-analytics-alerts-actions.md
+        - name: アラート ルールの作成
+          items:
+            - name: OMS ポータル
+              href: log-analytics-alerts-creating.md
+            - name: REST API
+              href: log-analytics-api-alerts.md
+            - name: Resource Manager テンプレート
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md
+        - name: webhook アクションのサンプル
+          href: log-analytics-alerts-webhooks.md
+        - name: Alert Management ソリューション
+          href: log-analytics-solution-alert-management.md
+    - name: ソリューションの使用
+      items:
+        - name: ソリューションの概要
+          href: log-analytics-add-solutions.md
+        - name: ターゲット ソリューション
+          href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: アクティビティ ログ分析
+          href: log-analytics-activity.md
+        - name: AD 評価
+          href: log-analytics-ad-assessment.md
+        - name: AD レプリケーションの状態
+          href: log-analytics-ad-replication-status.md
+        - name: エージェントの正常性
+          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: アラートの管理
+          href: log-analytics-solution-alert-management.md
+        - name: Application Insights コネクタ
+          href: log-analytics-app-insights-connector.md
+        - name: Azure の SQL 分析
+          href: log-analytics-azure-sql.md
+        - name: Azure Web Apps Analytics
+          href: log-analytics-azure-web-apps-analytics.md
+        - name: 容量とパフォーマンス
+          href: log-analytics-capacity.md
+        - name: 変更の追跡
+          href: log-analytics-change-tracking.md
+        - name: コンテナー
+          href: log-analytics-containers.md
+        - name: DNS Analytics
+          href: log-analytics-dns.md
+        - name: IT Service Management Connector
+          href: log-analytics-itsmc-overview.md
+          items:
+            - name: IT Service Management 接続
+              href: log-analytics-itsmc-connections.md
+        - name: Key Vault
+          href: log-analytics-azure-key-vault.md
+        - name: Logic Apps B2B メッセージ
+          items:
+            - name: Logic Apps B2B メッセージ ソリューション
+              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Logic Apps B2B カスタム追跡スキーマ
+              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: マルウェアの評価
+          href: log-analytics-malware.md
+        - name: ネットワーク分析
+          href: log-analytics-azure-networking-analytics.md
+        - name: ネットワーク パフォーマンス監視
+          href: log-analytics-network-performance-monitor.md
+        - name: Office 365
+          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SCOM 評価
+          href: log-analytics-scom-assessment.md
+        - name: セキュリティ監査
+          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Azure PowerShell を使用した Service Fabric
+          href: log-analytics-service-fabric.md
+          items:
+            - name: Azure Resource Manager を使用した Service Fabric
+              href: log-analytics-service-fabric-azure-resource-manager.md
+        - name: サービス マップ
+          href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SQL の評価
+          href: log-analytics-sql-assessment.md
+        - name: Surface Hub
+          href: log-analytics-surface-hubs.md
+        - name: 更新管理
+          href: ../operations-management-suite/oms-solution-update-management.md
+        - name: VMware
+          href: log-analytics-vmware.md
+        - name: Windows Analytics
+          items:
+            - name: Update Compliance
+              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+            - name: Upgrade Readiness
+              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+        - name: 送信データ
+          href: log-analytics-wire-data.md
+    - name: 開発
+      items:
+        - name: データ コレクター API
+          href: log-analytics-data-collector-api.md
+        - name: PowerShell コマンドレット
+          href: log-analytics-powershell-workspace-configuration.md
+        - name: Resource Manager テンプレート
+          href: log-analytics-template-workspace-configuration.md
+        - name: Log Search API
+          href: log-analytics-log-search-api.md
+          items:
+            - name: Python
+              href: log-analytics-log-search-api-python.md
+        - name: アラート API
+          href: log-analytics-api-alerts.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.operationalinsights
+    - name: REST ()
+      href: /rest/api/loganalytics
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=log-analytics'
+    - name: Windows Analytics
+      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'

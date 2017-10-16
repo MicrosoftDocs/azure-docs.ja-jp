@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 873df52da976597ddfaa8f777b90382bfa7723fc
-ms.openlocfilehash: aa54ec3d982ea4422422bd4e520d2211aad57159
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 67bcb3c7fe33341103f28bc70e8cc2acbb924cae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-shard-querying"></a>マルチシャード クエリ実行
 ## <a name="overview"></a>Overview
@@ -77,5 +75,4 @@ ms.lasthandoff: 01/24/2017
 **[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** のクラスとメソッド。
 
 [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用してシャードを管理します。 ライブラリには、[Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) と呼ばれる名前空間があり、これを使用すると、1 つのクエリと結果を使用して複数のシャードを照会できます。 この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。 また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。  
-
 

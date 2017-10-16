@@ -1,6 +1,6 @@
 ---
 title: "Linux と Windows での Azure Service Fabric の違い | Microsoft Docs"
-description: "Linux での Azure Service Fabric プレビューと Windows での Azure Service Fabric の違いについて説明します。"
+description: "Linux での Azure Service Fabric と Windows での Azure Service Fabric の違いについて説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,34 +12,25 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/19/2017
 ms.author: subramar
+ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 7b80bb7d4a4e6a1b4cf47ce87200f47339785c53
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い
+# <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux での Service Fabric と Windows での Service Fabric の違い
 
-Linux での Service Fabric はプレビュー版であるため、Windows ではサポートされているものの Linux ではまだサポートされていない機能が一部存在します。 いずれ Linux での Service Fabric が一般公開されるときに、これらの一連の機能は Windows と同様に使用できるようになります。 今後のリリースで、この機能差は小さくなっていきます。 リリースされている最新バージョン (Windows ではバージョン 5.6、Linux ではバージョン 5.5) では、次の違いがあります。 
+Windows ではサポートされていても、Linux ではサポートされていない機能が一部存在します。 リリースごとに、この機能差は縮小され、最終的な機能は同一になります。 リリースされている最新バージョン (Windows ではバージョン 6.0、Linux ではバージョン 6.0) では、次の違いがあります。 
 
-* Reliable Collection (と信頼できるステートフル サービス) 
-* ReverseProxy 
-* スタンドアロン インストーラー 
-* マニフェスト ファイルの XML スキーマ検証 
-* コンソール リダイレクト 
-* Fault Analysis Service (FAS)
-* Docker Compose およびコンテナーのボリュームとログ ドライバー 
-* コンテナーとサービスのリソース ガバナンス 
-* DNS サービス
-* Azure Active Directory のサポート
-* 特定の PowerShell コマンドと同等の CLI コマンド 
-* Linux クラスターに対して実行できる PowerShell コマンドは、一部のものに限られています (詳しくは次のセクションを参照)。
-
->[!NOTE]
->運用環境クラスターでのコンソールのリダイレクトは、Windows でもサポートされていません。
+* すべてのプログラミング モデル (Java/C# Reliable Actors、Reliable Stateless Services および Reliable Stateful Services) はプレビュー段階にあります。
+* Envoy (ReverseProxy) は、Linux 上のプレビュー段階にあります。
+* Linux 用スタンドアロンのインストーラーは、まだ提供されていません。
+* コンソールのリダイレクト (Linux または Windows の運用環境クラスターではサポートされていません)
+* Linux 上の Fault Analysis Service (FAS)
+* Service Fabric サービス (DNS サービスは Linux 上のコンテナーではサポートされています) 用の DNS サービス
+* 特定の Powershell コマンドに相当する CLI コマンド (以下の一覧参照。大部分がスタンドアロン クラスターにのみ適用)
 
 開発ツールも Windows と Linux で異なります。 Windows では Visual Studio、PowerShell、VSTS、ETW が使用され、Linux では Yeoman、Eclipse、Jenkins、LTTng が使用されます。
 
@@ -67,7 +58,6 @@ Linux での Service Fabric はプレビュー版であるため、Windows で�
 * Start-ServiceFabricPartitionRestart
 * Stop-ServiceFabricChaos
 * Stop-ServiceFabricTestCommand
-* Cmd
 * Get-ServiceFabricNodeConfiguration
 * Get-ServiceFabricClusterConfiguration
 * Get-ServiceFabricClusterConfigurationUpgradeStatus
@@ -108,4 +98,3 @@ Linux での Service Fabric はプレビュー版であるため、Windows で�
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
-

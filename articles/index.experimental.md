@@ -1,14 +1,13 @@
---- 
+---
 layout: HubPage
-hide_bc: true
+hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
+ms.openlocfilehash: aba00d7c90d173ecf58fedc1b8af5d1be418358c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 282e1da4a5ec8ccb3c6119c6de6fd37b83bbb71e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -161,7 +160,7 @@ ms.lasthandoff: 07/24/2017
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/cosmos-db/">Cosmos DB</a></li>
+                                                    <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
                                                 <h4>AI と Cognitive Services</h4>
                                                 <ul class="noBullet">
@@ -299,7 +298,7 @@ ms.lasthandoff: 07/24/2017
                                         <li>
                                             <a href="/azure/cosmos-db/">
                                                 <img src="media/index/cosmosdb.svg" alt="" />
-                                                <p>Cosmos DB</p>
+                                                <p>Azure Cosmos DB</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1044,7 +1043,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Linux 仮想マシン</h3>
-                                                    <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニングします</p>
+                                                    <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1063,7 +1062,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Windows 仮想マシン</h3>
-                                                    <p>SQL Server、SharePoint などでの仮想マシンのプロビジョニング</p>
+                                                    <p>SQL Server、SharePoint などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1082,7 +1081,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>Linux および Windows の仮想マシンの管理と数十から数千への拡張</p>
+                                                    <p>数十から数千の Linux および Windows 仮想マシンの管理とスケーリング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1101,7 +1100,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web Apps</h3>
-                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1120,7 +1119,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>コンテナーを使用して Linux 上に Web アプリをデプロイします</p>
+                                                    <p>コンテナーを使用して Linux 上に Web アプリをデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1138,7 +1137,7 @@ ms.lasthandoff: 07/24/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>関数</h3>
+                                                    <h3>Functions</h3>
                                                     <p>サーバー不要のコードを使用してイベントを処理します</p>
                                                 </div>
                                             </div>
@@ -1177,7 +1176,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整します</p>
+                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1238,7 +1237,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Network</h3>
-                                                    <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続します</p>
+                                                    <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1257,7 +1256,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Load Balancer</h3>
-                                                    <p>優れた可用性とネットワーク パフォーマンスをアプリケーションに提供します</p>
+                                                    <p>優れた可用性とネットワーク パフォーマンスをアプリケーションに提供</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1295,7 +1294,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>VPN Gateway</h3>
-                                                    <p>安全なクロスプレミス接続を確立します</p>
+                                                    <p>安全なクロスプレミス接続を確立</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1352,7 +1351,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
+                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1390,7 +1389,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
-                                                    <p>ネットワーク シナリオ レベルで状態を監視して診断します</p>
+                                                    <p>ネットワーク シナリオ レベルで状態を監視して診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1533,7 +1532,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Apps</h3>
-                                                    <p>モバイル アプリ用のバックエンドを構築およびホストします</p>
+                                                    <p>モバイル アプリ用のバックエンドを構築およびホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1647,7 +1646,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Engagement</h3>
-                                                    <p>アプリの使用率とユーザーのリテンション期間を増加させます</p>
+                                                    <p>アプリの使用率とユーザーのリテンション期間を増加</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1709,7 +1708,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Registry</h3>
-                                                    <p>あらゆる種類の Azure デプロイ間でコンテナー イメージを格納して管理します</p>
+                                                    <p>あらゆる種類の Azure デプロイ間でコンテナー イメージを格納して管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1828,7 +1827,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1846,8 +1845,8 @@ ms.lasthandoff: 07/24/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cosmos DB</h3>
-                                                    <p>管理された、サービスとしての NoSQL ドキュメント データベース</p>
+                                                    <h3>Azure Cosmos DB</h3>
+                                                    <p>あらゆるスケールに対応するグローバル分散型のマルチモデル データベース</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2356,7 +2355,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Hubs</h3>
-                                                    <p>何百万ものデバイスから製品利用統計情報を受信します</p>
+                                                    <p>何百万ものデバイスから製品利用統計情報を受信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2456,7 +2455,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化します</p>
+                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2475,7 +2474,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Bus</h3>
-                                                    <p>プライベートとパブリックのクラウド環境間で接続します</p>
+                                                    <p>プライベートとパブリックのクラウド環境間で接続</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2494,7 +2493,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2570,7 +2569,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>BizTalk Services</h3>
-                                                    <p>エンタープライズとクラウドをシームレスに統合します</p>
+                                                    <p>エンタープライズとクラウドをシームレスに統合</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2613,7 +2612,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>暗号化キーと秘密情報の管理方法について確認します</p>
+                                                    <p>暗号化キーとシークレットの管理方法について確認</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2632,7 +2631,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory</h3>
-                                                    <p>オンプレミスのディレクトリを同期してシングル サインオンを可能にします</p>
+                                                    <p>オンプレミスのディレクトリを同期してシングル サインオンを可能に</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2689,7 +2688,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>高度な認証により、データとアプリへのアクセスを保護します</p>
+                                                    <p>高度な認証により、データとアプリへのアクセスを保護</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2708,7 +2707,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>セキュリティ情報</h3>
-                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて理解します</p>
+                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて確認</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2751,7 +2750,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DevTest Labs</h3>
-                                                    <p>再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築します</p>
+                                                    <p>再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2770,7 +2769,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Insights</h3>
-                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2789,7 +2788,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2832,7 +2831,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Insights</h3>
-                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2965,7 +2964,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>課金</h3>
-                                                    <p>Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法を調べます</p>
+                                                    <p>Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法を調べる</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3046,7 +3045,7 @@ ms.lasthandoff: 07/24/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure US Government</h3>
-                                                    <p>Azure の専用インスタンスに、米国政府の業務向けのアプリケーションを構築してホストします</p>
+                                                    <p>Azure の専用インスタンスに、米国政府の業務向けのアプリケーションを構築してホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3117,7 +3116,7 @@ ms.lasthandoff: 07/24/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Azure Libraries for .NET の取得</a>
+                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">.NET 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/net/">作業開始</a>
@@ -3603,4 +3602,3 @@ ms.lasthandoff: 07/24/2017
         </ul>
     </div>
 </div>
-

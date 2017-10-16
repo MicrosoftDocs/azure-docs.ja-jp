@@ -14,13 +14,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 69e50e7fe0e1f302e96c309878b8dea6869dff4a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -150,7 +148,7 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 ## <a id="howto_recieve_sms"></a>方法: SMS メッセージを受信する
 前の例では、 **発信** 通話を開始しました。 今度は、Twilio へのサインアップ時に受け取った電話番号を使用して、 **受信** SMS メッセージを処理します。
 
-まず、[Twilio ダッシュボード][twilio_account]にログインします。 上部のナビゲーションで [Numbers] をクリックし、自分の Twilio 番号をクリックします。 構成できる URL が 2 つ表示されます。 Voice Request URL と、SMS Request URL です。 これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。 これらの URL は "Web フック" とも呼ばれます。
+まず、[Twilio ダッシュボード][twilio_account]にログインします。 上部のナビゲーションで Numbersをクリックし、自分の Twilio 番号をクリックします。 構成できる URL が 2 つ表示されます。 Voice Request URL と、SMS Request URL です。 これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。 これらの URL は "Web フック" とも呼ばれます。
 
 今回は受信 SMS メッセージを処理するので、URL を `http://yourdomain.cloudapp.net/sms_url`に更新します。 ページの下部にある [Save Changes] をクリックします。 `web.rb` に戻り、アプリケーションをプログラミングして次の処理を追加します。
 
@@ -196,4 +194,3 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: http://www.windowsazure.com/develop/ruby/tutorials/web-app-with-linux-vm/
-

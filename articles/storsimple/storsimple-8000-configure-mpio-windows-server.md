@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple デバイスのマルチパス IO の構成
 
@@ -192,5 +190,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 ## <a name="next-steps"></a>次のステップ
 
 「[StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-8000-modify-device-config.md)」の詳細を確認する。
-
 

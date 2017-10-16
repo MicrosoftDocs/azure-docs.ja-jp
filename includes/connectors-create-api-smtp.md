@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) アカウント  
 
-ロジック アプリで SMTP アカウントを使用するには、SMTP アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで SMTP アカウントを使用するには、SMTP アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 SMTP アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

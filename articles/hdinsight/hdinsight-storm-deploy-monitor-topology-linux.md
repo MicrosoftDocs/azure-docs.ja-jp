@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: b9e82463030807d2674594e73f762fe93515d423
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 218e818f48adee0b4e7ecb0b184098a9e3273afd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -54,7 +52,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="submit-a-topology-visual-studio"></a>トポロジを送信する: Visual Studio
 
-HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。 次の例では、サンプル アプリケーションを使用します。 HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
+HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。 次の例では、サンプル アプリケーションを使用します。 HDInsight Tools を使用して作成する方法の詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 1. Data Lake Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、[Data Lake Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
@@ -97,11 +95,11 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 ## <a name="submit-a-topology-programmatically"></a>トポロジの送信: プログラムで
 
-クラスターでホストされている Nimbus サービスと通信することにより、プログラムを使用して HDInsight の Storm にトポロジをデプロイできます。 [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) に用意されている Java アプリケーションの例を参照してください。
+Nimbus サービスを使用してトポロジをプログラムによってデプロイできます。 [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) に用意されている Java アプリケーションの例を参照してください。
 
 ## <a name="monitor-and-manage-visual-studio"></a>監視と管理: Visual Studio
 
-Visual Studio を使用してトポロジが正常に送信されたら、クラスターの **Storm トポロジ** ビューが表示されます。 実行中のトポロジに関する情報を表示するには、一覧からトポロジを選択します。
+Visual Studio を使用してトポロジが送信されたら、**Storm トポロジ** ビューが表示されます。 実行中のトポロジに関する情報を表示するには、一覧からトポロジを選択します。
 
 ![Visual Studio モニター](./media/hdinsight-storm-deploy-monitor-topology/vsmonitor.png)
 
@@ -207,9 +205,9 @@ Storm UI のメイン ページには、次の情報が表示されます。
 * **コンポーネントの概要**: スパウトやボルトの基本情報
 * **スパウト/ボルトの統計**: スパウトやボルトの統計。 ページで残りのエントリの時間枠を設定するには、**[Window]** 列にあるリンクを使用します。
 * **入力の状態** (ボルトのみ): ボルトが消費する入力ストリームに関する情報
-* **出力の状態**: このスパウトやボルトから出力されるストリームに関する情報
+* **出力の状態**: スパウトやボルトから出力されるストリームに関する情報
 * **エグゼキュータ**: スパウトやボルトのインスタンスに関する情報 特定のエグゼキュータの **[ポート]** エントリを選択して、このインスタンスで生成された診断情報のログを閲覧します
-* **エラー**: このスパウトやボルトのエラー情報。
+* **エラー**: スパウトやボルトのエラー情報。
 
 ## <a name="monitor-and-manage-rest-api"></a>監視と管理: REST API
 
@@ -227,7 +225,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI は、
 クラスター ヘッド ノードの完全修飾ドメイン名 (FQDN) はいくつかの方法で確認できます。
 
 * **SSH セッションから**: SSH セッションからクラスターに `headnode -f` コマンドを使用します。
-* **Ambari Web から**: ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API が実行されているノードの FQDN はページの一番上で確認できます。
+* **Ambari Web から**: ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
 * **Ambari REST API から**: `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **PASSWORD** をクラスターの管理者パスワードに替えます。 **CLUSTERNAME** をクラスター名に置き換えます。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
 ### <a name="authentication"></a>認証
@@ -239,11 +237,10 @@ REST API への要求では、HDInsight クラスターの管理者名とパス�
 
 ### <a name="return-values"></a>戻り値
 
-REST API から返される情報は、クラスターと同じ Azure Virtual Network 上にあるクラスターや仮想マシン上でのみ使用できます。 たとえば、Zookeeper サービスに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
+REST API から返される情報は、クラスター内からのみ利用可能です。 たとえば、Zookeeper サーバーに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Storm ダッシュボードを使用してトポロジをデプロイおよび監視する方法について説明しました。次に、[Maven を使用して Java ベースのトポロジを開発する](hdinsight-storm-develop-java-topology.md)方法について説明します。
+[Maven を使用して Java ベースのトポロジを開発](hdinsight-storm-develop-java-topology.md)する方法について説明します。
 
 その他の Storm トポロジ例は、「 [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
-

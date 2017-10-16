@@ -14,14 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
+ms.openlocfilehash: feaced0d0784b5724fb1e30be5e66cb7c808d77f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-app-to-linux-vms-using-jenkins-and-team-services"></a>Jenkins と Team Services を使用してアプリを Linux VM に配置する
 
 継続的インテグレーション (CI) と継続的配置 (CD) は、コードの構築、リリース、配置に使用できるパイプラインです。 Team Services には、Azure への配置に使用できる機能が一式そろった CI/CD 自動化ツールが用意されています。 Jenkins は、よく使われているサードパーティの CI/CD サーバーベースのツールであり、CI/CD 自動化機能も備えています。 CI/CD の両方を使用して、クラウド アプリまたはサービスの提供方法をカスタマイズすることができます。

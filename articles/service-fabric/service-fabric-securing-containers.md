@@ -14,21 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 3e41e293cc5340c0e32cf2cc6ef7ab7534330884
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: a262730aec6ce5a1c6f3b7d2d41056a6e6edfbe0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="container-security"></a>コンテナーのセキュリティ
 
 Service Fabric には、コンテナー内のサービスから、Windows または Linux クラスター (バージョン 5.7 以降) のノードにインストールされている証明書にアクセスできるしくみがあります。 また、Service Fabric は、Windows コンテナーについて gMSA (グループの管理されたサービス アカウント) もサポートしています。 
 
 ## <a name="certificate-management-for-containers"></a>コンテナーの証明書管理
 
-証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 この証明書は、クラスターのノードにインストールする必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
+証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 この証明書は、クラスターのすべてのノードの LocalMachine にインストールする必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -36,16 +34,28 @@ Service Fabric には、コンテナー内のサービスから、Windows また
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-アプリケーションの起動時に、ランタイムは証明書を読み取り、各証明書の PFX ファイルとパスワードを生成します。 次の環境変数を使用して、コンテナー内のこの PFX ファイルとパスワードにはアクセスすることができます。 
+Windows クラスターの場合、アプリケーションの起動時に、ランタイムは証明書を読み取り、各証明書の PFX ファイルとパスワードを生成します。 次の環境変数を使用して、コンテナー内のこの PFX ファイルとパスワードにはアクセスすることができます。 
 
-* **Certificate_[CodePackageName]_[CertName]_PFX**
-* **Certificate_[CodePackageName]_[CertName]_Password**
+* **Certificate_ServicePackageName_CodePackageName_CertName_PFX**
+* **Certificate_ServicePackageName_CodePackageName_CertName_Password**
 
-コンテナー サービスまたはプロセスが、PFX ファイルをコンテナーにインポートする責任を負います。 証明書をインポートするには、コンテナー プロセス内で`setupentrypoint.sh` スクリプトまたは実行済みのカスタム コードを使用できます。 PFX ファイルをインポートする C# のサンプル コードは次のとおりです。
+Linux クラスターの場合、証明書 (PEM) は X509StoreName で指定されているストアからコンテナーに単にコピーされます。 Linux での対応する環境変数は次のとおりです。
+
+* **Certificate_ServicePackageName_CodePackageName_CertName_PEM**
+* **Certificate_ServicePackageName_CodePackageName_CertName_PrivateKey**
+
+または、必要な形式の証明書が既にあり、コンテナー内の証明書にアクセスするだけの場合は、アプリ パッケージ内にデータ パッケージを作成し、アプリケーション マニフェストで次のように指定します。
+
+```xml
+  <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
+   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
+ ```
+
+コンテナーへの証明書ファイルのインポートは、コンテナー サービスまたはプロセスによって行われます。 証明書をインポートするには、`setupentrypoint.sh` スクリプトを使うか、コンテナー プロセス内でカスタム コードを実行します。 PFX ファイルをインポートする C# のサンプル コードは次のとおりです。
 
 ```c#
-    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_NodeContainerService.Code_MyCert1_PFX");
-    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_NodeContainerService.Code_MyCert1_Password");
+    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
+    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
     string password = File.ReadAllLines(passwordFilePath, Encoding.Default)[0];
     password = password.Replace("\0", string.Empty);
@@ -54,7 +64,7 @@ Service Fabric には、コンテナー内のサービスから、Windows また
     store.Add(cert);
     store.Close();
 ```
-この PFX 証明書は、アプリケーションやサービスを認証する場合や、他のサービスとの通信をセキュリティで保護する場合に使用できます。
+この PFX 証明書は、アプリケーションやサービスの認証、または他のサービスとのセキュリティで保護された通信に、使うことができます。 既定では、ファイルは SYSTEM の ACL にだけ登録されます。 サービス の必要に応じて、他のアカウントの ACL に登録できます。
 
 
 ## <a name="set-up-gmsa-for-windows-containers"></a>Windows コンテナーの gMSA を設定する
@@ -72,4 +82,3 @@ gMSA (グループの管理されたサービス アカウント) を設定す�
 
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 * [Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bf015f8f646ecce6821379affd4d041329967fc8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/04/2017
-
+ms.openlocfilehash: b2ad45e76320c59d18dce7b39166679801b4170a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure Network Watcher の IP フロー検証の概要
 
 IP フロー検証機能を使用すると、仮想マシンから送受信されるパケットの許可または拒否の状況を 5 タプルの情報に基づいて検証できます。 この情報は、方向、プロトコル、ローカル IP、リモート IP、ローカル ポート、リモート ポートで構成されます。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則の名前が返されます。 管理者は、任意の送信元または送信先の IP を選択でき、IP フロー検証機能を使用してインターネットまたはオンプレミス環境との接続の問題をすばやく診断できます。
@@ -37,7 +35,6 @@ Network Watcher のインスタンスは、IP フロー検証を実行する予�
 ポータルを使用して特定の仮想マシンでのパケットの許可または拒否の状況を確認する方法については、次の記事をご覧ください。 [ポータルを使用して VM でトラフィックが許可されているかどうかを IT フロー検証で確認する方法](network-watcher-check-ip-flow-verify-portal.md)
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
-
 
 
 

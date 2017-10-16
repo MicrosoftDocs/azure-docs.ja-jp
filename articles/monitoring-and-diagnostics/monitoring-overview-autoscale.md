@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ed9bfe928699d040aa4283da5a8690318932738c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 413828d79d79c181c662bc7cfb4114345de57f90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -125,4 +124,3 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 * [自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](insights-autoscale-to-webhook-email.md)
 * [自動スケールの REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 * [仮想マシン スケール セットの自動スケールに関するトラブルシューティング](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

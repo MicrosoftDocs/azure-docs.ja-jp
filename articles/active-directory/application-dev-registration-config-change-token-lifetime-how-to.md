@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 54c30123bb582f515dfb0324cdfd897a6c4af5c0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/14/2017
-
+ms.openlocfilehash: a28eacd820ed28a6470992ce86b060e886c00bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法
 
 Azure AD Premium では、非機密クライアントに対して発行されたトークンの有効期間をアプリ開発者とテナント管理者が構成できます。 トークンの有効期間ポリシーは、テナント全体またはアクセスされるリソースに対して設定されます。
@@ -38,5 +35,4 @@ Azure AD Premium では、非機密クライアントに対して発行された
 [トークンの有効期間の構成](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>
 
 [Azure AD のトークン リファレンス](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims)
-
 

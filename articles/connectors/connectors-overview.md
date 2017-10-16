@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
 ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.lasthandoff: 01/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-connectors-in-a-logic-app"></a>ロジック アプリでのコネクタの使用
 コネクタは、サービス、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。  Logic Apps がサポートするコネクタの完全な一覧については、 [こちらを参照](apis-list.md)してください。  コネクタは、ロジック アプリでトリガーまたはアクションとして使用できますが、使用には構成された *"接続"* が必要な場合があります (例: Twitter アカウントがユーザーの代わりにアクセスしたり投稿することを承認する場合)。
@@ -64,4 +63,3 @@ Azure で接続の表示と管理を行うには、**[参照]** をクリック�
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
 [2]: ./media/connectors-overview/configureAction.png
-

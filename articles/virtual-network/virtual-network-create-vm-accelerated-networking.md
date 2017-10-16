@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 2e887230a102f5c6289ca2eec0e4700a0e1fdfde
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: c852a1297261504015a3a985fe14a38957d1a64a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った仮想マシンの作成
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/21/2017
 * **VM サイズ:** "汎用" タイプと "コンピューティングの最適化" タイプのインスタンス サイズ (8 コア以上)。 詳細については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM サイズに関する記事を参照してください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
 * **Azure Resource Manager (ARM) のみによるデプロイ:** ASM/RDFE によるデプロイでは高速ネットワークを使用できません。
 
-これらの制限に対する変更については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)に関するページでお知らせします。
+これらの制限に対する変更については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview/)に関するページでお知らせします。
 
 ## <a name="create-a-windows-vm"></a>Windows VM の作成
 VM の作成には、Azure Portal または Azure [PowerShell](#windows-powershell) を使用できます。
@@ -450,4 +449,3 @@ Red Hat Enterprise Linux または CentOS 7.3 VM を作成するには、SR-IOV 
     ```
 
 bond0 が構成され、高速のネットワーク パスが有効になっている状態で VM が開始されます。  `ifconfig` を実行して確認します。
-

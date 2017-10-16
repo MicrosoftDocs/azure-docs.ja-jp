@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rsinha
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: c485e8a3d12e7d2dcbfd6304a67aaa4fc2838b3f
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 3cf019bf9a08574c984e92985452df438f3eeb77
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric のアーキテクチャ
 Service Fabric は複数層のサブシステムで構築されています。 これらのサブシステムを使用すると、次のようなアプリケーションを作成できます。
@@ -63,5 +62,4 @@ Service Fabric は複数層のサブシステムで構築されています。 �
 
 ## <a name="testability-subsystem"></a>テスト容易性サブシステム
 テスト容易性サブシステムは、テスト サービス専用に設計され Service Fabric 上に構築されている一連のツールです。 このツールを使用すると、開発者は検証意義のあるエラーを容易に誘発してテスト シナリオを実行することができ、サービスがその有効期間内に直面する可能性のある状態と遷移を、完全に管理下にある安全な方法で、試行および検証できます。 また、テスト容易性は可用性を失うことなく、予測されるさまざまなエラーを繰り返すことができる、より長いテストを実行するメカニズムも提供します。 これにより、ユーザーは運用環境でテストを実行できます。
-
 

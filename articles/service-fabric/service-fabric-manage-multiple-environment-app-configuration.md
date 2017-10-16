@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: mikkelhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: eaf1daf8d9f973fe82ba9e82c60a2a82f2681786
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 671cc9b0f7b7b37fcf5b052f7e34bc98e66b2838
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-application-parameters-for-multiple-environments"></a>複数の環境のアプリケーション パラメーターを管理する
 Azure Service Fabric クラスターは、1 台～ 数千台のコンピューターで作成することができます。 アプリケーション バイナリは、変更を行わなくても、このようなさまざまな環境で実行することができますが、デプロイ先のコンピューターの台数に応じて、異なる方法でアプリケーションを構成する場合がよくあります。
@@ -227,4 +226,3 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]:./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
-

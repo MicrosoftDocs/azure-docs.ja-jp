@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
-ms.lasthandoff: 03/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 
 Traffic Manager の設定をテストするには、場所が異なる複数のクライアントからテストを実行する必要があります。 次に、Traffic Manager プロファイルのエンドポイントを 1 つずつダウンさせていきます。
@@ -75,4 +74,3 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 * [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 * [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
-

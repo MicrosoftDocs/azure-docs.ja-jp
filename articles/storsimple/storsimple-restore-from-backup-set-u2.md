@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
-ms.lasthandoff: 04/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>バックアップ セットからの StorSimple ボリュームの復元 (Update 2)
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
@@ -53,7 +52,7 @@ Update 4 以降を実行しているデバイスでは、ヒートマップ ベ�
 ヒートマップ ベースの追跡は、階層化ボリュームにのみ対応しています。ローカル固定ボリュームはサポートされていません。 また、ボリュームを別のデバイスに複製するときも、ヒートマップ ベースの復元はサポートされていません。 インプレース復元があり、復元するボリュームのローカル スナップショットがデバイス上に存在する場合は、(データがローカルで既に使用可能であるため) リハイドレートされません。 既定では、復元時に、ヒートマップに基づいてデータを事前にリハイドレートするリハイドレート ジョブが開始されます。 Update 4 では、Windows PowerShell コマンドレットを使用して、実行中のリハイドレート ジョブの照会、リハイドレート ジョブの取り消し、リハイドレート ジョブの状態の取得を行うことができます。
 
 * `Get-HcsRehydrationJob` - このコマンドレットは、リハイドレート ジョブの状態を取得します。 1 つのボリュームに対して 1 つのリハイドレート ジョブがトリガーされます。
-* `Set-HcsRehydrationJob` - このコマンドレットを使用すると、リハイドレートの実行中に、リハイドレート ジョブを一時停止、停止、再開できます。    
+* `Set-HcsRehydrationJob` - このコマンドレットを使用すると、リハイドレートの実行中に、リハイドレート ジョブを一時停止、停止、再開できます。 
 
 リハイドレート コマンドレットの詳細については、[StorSimple 用 Windows PowerShell コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)をご覧ください。
 
@@ -120,5 +119,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを管理する](storsimple-manage-volumes-u2.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
 

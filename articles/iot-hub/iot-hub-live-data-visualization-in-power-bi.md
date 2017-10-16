@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -66,7 +65,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    ![Azure での Stream Analytics ジョブの作成](media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
@@ -79,7 +78,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
    **[ソース]**: **[IoT ハブ]** を選択します。
 
    **[コンシューマー グループ]**: 先ほど作成したコンシューマー グループを選択します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
    ![Azure で Stream Analytics ジョブに入力を追加する](media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
 
@@ -99,7 +98,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
    **[データセット名]**: データセットの名前を入力します。
 
    **[テーブル名]**: テーブルの名前を入力します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
    ![Azure で Stream Analytics ジョブに出力を追加する](media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -160,4 +159,3 @@ Power BI を使用して、Azure IoT ハブからのリアルタイム センサ
 このほかにも、Azure IoT Hub からのデータを視覚化する方法があります。 [Azure Web Apps を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

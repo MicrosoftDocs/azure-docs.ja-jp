@@ -1,6 +1,6 @@
 ---
-title: Create a plan in Azure Stack | Microsoft Docs
-description: As a cloud administrator, create a plan that lets subscribers provision virtual machines.
+title: "Azure Stack でのプランの作成 | Microsoft Docs"
+description: "クラウド管理者として、サブスクライバーが仮想マシンをプロビジョニングできるプランを作成する方法を説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,55 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
+ms.openlocfilehash: 30759dca746fd7fd02653556cb105f419f5bf854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ff34bcd6ba485806baf7963e11393633dd893fa7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-plan-in-azure-stack"></a>Create a plan in Azure Stack
-[Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
+# <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
 
-1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external). Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-2. To create a plan and offer that tenants can subscribe to, click **New** > **Tenant Offers + Plans** > **Plan**.
+[プラン](azure-stack-key-features.md)は、1 つ以上のサービスをグループ化したものです。 プロバイダーは、ユーザーに提供するプランを作成できます。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 この例では、コンピューティング、ネットワーク、およびストレージの各リソース プロバイダーを含むプランを作成する方法を示します。 このプランのサブスクライバーは仮想マシンをプロビジョニングすることができます。
+
+1. Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサインインします。 [PowerShell スクリプトの実行](azure-stack-run-powershell-script.md)に関するセクションの手順 5 で作成したアカウントの資格情報を入力します。
+
+2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[新規]** > **[テナントのプラン]** > **[プラン]** をクリックします。
 
    ![](media/azure-stack-create-plan/image01.png)
-3. In the **New Plan** blade, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that tenants see. Only the admin can see the Resource Name. It's the name that admins use to work with the plan as an Azure Resource Manager resource.
+3. **[新しいプラン]** ブレードに **[表示名]** と **[リソース名]** を入力します。 表示名は、ユーザーに表示されるプランのフレンドリ名です。 リソース名は、管理者のみが表示できます。 この名前を使用して、管理者はプランを Azure リソース マネージャーのリソースとして操作します。
 
    ![](media/azure-stack-create-plan/image02.png)
-4. Create a new **Resource Group**, or select an existing one, as a container for the plan.
+4. プランのコンテナーとして、新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。
 
    ![](media/azure-stack-create-plan/image02a.png)
-5. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
+5. **[サービス]** をクリックし、**[Microsoft.Compute]**、**[Microsoft.Network]**、および **[Microsoft.Storage]** を選択し、**[選択]** をクリックします。
 
    ![](media/azure-stack-create-plan/image03.png)
-6. Click **Quotas**, click **Microsoft.Storage (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+6. **[クォータ]** をクリックし、**[Microsoft.Storage (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
 
    ![](media/azure-stack-create-plan/image04.png)
-7. If you're creating a new quota, enter a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+7. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
 
    ![](media/azure-stack-create-plan/image06.png)
-8. Click **Microsoft.Network (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+8. **[Microsoft.Network (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
 
     ![](media/azure-stack-create-plan/image07.png)
-9. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+9. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
 
     ![](media/azure-stack-create-plan/image08.png)
-10. Click **Microsoft.Compute (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+10. **[Microsoft.Compute (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
 
     ![](media/azure-stack-create-plan/image09.png)
-11. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+11. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
 
     ![](media/azure-stack-create-plan/image10.png)
-12. In the **Quotas** blade, click **OK**, and then in the **New Plan** blade, click **Create** to create the plan.
+12. **[クォータ]** ブレードの **[OK]** をクリックし、**[新しいプラン]** ブレードの **[作成]** をクリックしてプランを作成します。
 
     ![](media/azure-stack-create-plan/image11.png)
-13. To see your new plan, click **All resources**, then search for the plan and click its name.
+13. 新しいプランを表示するには、**[すべてのリソース]** をクリックしてプランを検索し、プラン名をクリックします。
 
     ![](media/azure-stack-create-plan/image12.png)
 
-### <a name="next-steps"></a>Next steps
-[Create an offer](azure-stack-create-offer.md)
-
+### <a name="next-steps"></a>次のステップ
+[オファーの作成](azure-stack-create-offer.md)

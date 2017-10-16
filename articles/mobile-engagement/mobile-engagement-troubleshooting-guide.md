@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1947600f6167dff6ec4fa104b0f98200bcf2a2e1
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 93b5e3f4892f974bf9df28955956136528470e03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement - トラブルシューティング ガイド
 ## <a name="introduction"></a>はじめに
@@ -31,7 +30,7 @@ ms.lasthandoff: 11/17/2016
 1. 「 [チュートリアルの概要](mobile-engagement-windows-store-dotnet-get-started.md)
 2. 最新バージョンのプラットフォーム SDK を使用しています。 
 3. エミュレーターのみに特有の問題もあるため、実際のデバイスとエミュレーターの両方でテストを行います。 
-4.  [ここ](../azure-subscription-service-limits.md)
+4. [ここ](../azure-subscription-service-limits.md)
 5. Mobile Engagement サービス バックエンドに接続できない場合またはデータが継続的に読み込まれないという状況が発生している場合は、 [ここ](https://azure.microsoft.com/status/)
 
 ## <a name="monitor-issues"></a>「監視」に関する問題
@@ -115,5 +114,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
    * Device ID
    * Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
    * 表示されるエラー メッセージとシナリオを含むエラーの詳細
-
 

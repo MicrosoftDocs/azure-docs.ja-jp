@@ -15,14 +15,12 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
 この記事では、アプリケーションをリモートで発行およびアクセスするために Azure Active Directory (Azure AD) アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。
@@ -178,4 +176,3 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi;andkjell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c5b54c80d9a74d72b242f8d7dd55e2dcadbfa48e
-ms.openlocfilehash: 96d568b6d264fa484e09ee81cdbc779a6f65eb0d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 495e926a1975128707212ba571d47cfc7c9507b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
@@ -54,5 +53,4 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 

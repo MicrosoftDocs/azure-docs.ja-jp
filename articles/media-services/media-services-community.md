@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 735f8d81ce089727b14b8b67de7233ab71fc5abd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
 この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われ、新しいビデオとポッドキャストを参照したり、質問を聞いてフィードバックをもらったりすることができます。   
@@ -38,7 +37,7 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="discussion"></a>ディスカッション
 ### <a name="twitter"></a>Twitter
- [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter ハンドルを使用して、AMS のニュースと更新情報を Twitter で入手することができます。 また、 [@AzureSupport](https://twitter.com/azuresupport) twitter ハンドルを使用して、Twitter でサポートを依頼することができます。  
+[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter ハンドルを使用して、AMS のニュースと更新情報を Twitter で入手することができます。 また、 [@AzureSupport](https://twitter.com/azuresupport) twitter ハンドルを使用して、Twitter でサポートを依頼することができます。  
 
 ### <a name="online-forums"></a>オンライン フォーラム
 次のフォーラムを使用して、現在の製品と機能に関する質問をすることができます。
@@ -60,5 +59,4 @@ Azure Media Services のメインの電子メール アドレスは **mediaservi
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure Media Explorer |amse@microsoft.com |
 | ワークフロー デザイナー |mepd@microsoft.com |
-
 

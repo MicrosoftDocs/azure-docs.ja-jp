@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 588c87749f049eff5b9e0729f6769c8367ba41e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
@@ -155,5 +153,4 @@ azure network dns zone delete MyResourceGroup contoso.com
 DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-getstarted-create-recordset-cli-nodejs.md)をご覧ください。
 
 Azure DNS にドメインを委任する方法については[こちら](dns-domain-delegation.md)をご覧ください。
-
 

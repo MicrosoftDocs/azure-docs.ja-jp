@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 00b2f08ef40266ad4b99adfa9c8632bd817f9a81
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ee8e282feacfb6b5db2f746b468fe2cd26cb0a52
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Azure Storage BLOB から Data Lake Store へのデータのコピー
@@ -175,7 +174,7 @@ For example:
 
 ## <a name="performance-considerations-for-using-adlcopy"></a>AdlCopy を使用するときのパフォーマンスに関する考慮事項
 
-AdlCopy では、数千ものファイルとフォルダーを含むデータのコピーに対応していますが、 大規模なデータセットのコピーで問題が発生した場合は、ファイルやフォルダーを、小さなサブフォルダーに分散させてください。 AdlCopy はアドホック コピー用に構築されています。 定期的にデータをコピーする場合は、コピー操作を完全に管理できる [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) の使用を検討してください。
+AdlCopy では、数千ものファイルとフォルダーを含むデータのコピーに対応していますが、 大規模なデータセットのコピーで問題が発生した場合は、ファイルやフォルダーを、小さなサブフォルダーに分散させてください。 AdlCopy はアドホック コピー用に構築されています。 定期的にデータをコピーする場合は、コピー操作を完全に管理できる [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) の使用を検討してください。
 
 ## <a name="release-notes"></a>リリース ノート
 * 1.0.13 - 複数の adlcopy コマンドにわたって同じ Azure Data Lake Store アカウントにデータをコピーする場合は、実行するたびに資格情報を再入力する必要がなくなりました。 Adlcopy は複数の実行にまたがる情報をキャッシュするようになりました。

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: ffa2eaf3680e68ac14aabf49b6308caeb173fd43
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: c247a7abd3d1682f8ccd1940e506ef54f9409263
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Ibiza ポータルを使用して Time Series Insights 環境のイベント ソースを作成する
 
 Time Series Insights のイベント ソースは、Azure Event Hubs のようなイベント ブローカーから派生しています。 Time Series Insights は直接イベント ソースに接続するため、ユーザーがコードを 1 行も記述する必要なく、データ ストリームを取り込みます。 現在 Time Series Insights では、Azure Event Hubs と Azure IoT Hub がサポートされています。 将来的にはさらにイベント ソースが追加される予定です。
@@ -55,4 +53,3 @@ Time Series Insights のイベント ソースは、Azure Event Hubs のよう�
 
 * イベント ソースに[イベントを送信する](time-series-insights-send-events.md)
 * [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境を表示する
-

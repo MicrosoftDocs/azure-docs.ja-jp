@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple デバイスのバックアップ バッテリ モジュールを交換する
 ## <a name="overview"></a>概要
@@ -86,7 +86,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
 4. 交換が完了したら、Azure クラシック ポータルで、**[デバイス]**  >  **[メンテナンス]**  >  **[ハードウェアの状態]** をクリックします。 バッテリーの状態を確認して、正常に取り付けられていることを確認します。 緑色の状態は、バッテリーが正常な状態であることを示しています。
 
 ## <a name="maintain-the-backup-battery-module"></a>バックアップ バッテリ モジュールを保守する
-StorSimple デバイスでは、停電中にバックアップ バッテリ モジュールがコントローラーに電力を供給します。 これにより、StorSimple デバイスはシャットダウンする前に適切な方法で重要なデータを保存できます。 PCM 内の&2; つの完全に充電されたバッテリにより、システムは&2; つの連続する停電に対処できます。
+StorSimple デバイスでは、停電中にバックアップ バッテリ モジュールがコントローラーに電力を供給します。 これにより、StorSimple デバイスはシャットダウンする前に適切な方法で重要なデータを保存できます。 PCM 内の 2 つの完全に充電されたバッテリにより、システムは 2 つの連続する停電に対処できます。
 
 Azure クラシック ポータルの **[メンテナンス]** ページの **[ハードウェアの状態]** では、バッテリの故障または寿命が近いことが示されます。 バッテリの状態は、**[共有コンポーネント]** の **[PCM 0 のバッテリー]** または **[PCM 1 のバッテリー]** で示されます。 このページでは、寿命が近い場合は **[低下]** と表示され、寿命に達した場合は **[失敗]** と表示されます。 
 
@@ -110,10 +110,4 @@ Azure クラシック ポータルの **[メンテナンス]** ページの **[�
 
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

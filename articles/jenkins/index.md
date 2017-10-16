@@ -12,12 +12,11 @@ ms.topic: landing-page
 ms.date: 06/20/2017
 ms.author: carolz
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
     <h1>Azure 上の Jenkins®</h1>
@@ -46,4 +45,3 @@ ms.lasthandoff: 08/31/2017
 <h4>      
 Jenkins® は、Software in the Public Interest, Inc. の登録商標です。[Jenkins® のロゴ](https://wiki.jenkins.io/display/JENKINS/Logo)は、[Jenkins プロジェクト](https://jenkins.io)の [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) に基づいて使用が許諾されています。</h4>
 </div>
-

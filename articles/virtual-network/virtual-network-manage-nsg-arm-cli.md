@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: dcb0455fe223e99b4f1b0035b1d1109ecf5ee268
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したネットワーク セキュリティ グループの管理
 
@@ -352,5 +351,4 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
     ```
 ## <a name="next-steps"></a>次のステップ
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
-
 

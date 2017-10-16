@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
+ms.openlocfilehash: 95e31d0ca5983e0946ad6fb993e7a89a6a63d2c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 7ff58a488298573372b32f4daa495c9da1c0eaa2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -113,7 +112,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 レプリケーションは、サイト間 VPN 経由では実行されません。 サイト間 VPN は、Azure 仮想ネットワークで作成できます。 これは Site Recovery のレプリケーションに干渉しません。
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
-はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#public-peering)を設定する必要があります。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#private-peering)を使用して、それらのマシンにアクセスできます。
+はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を設定する必要があります。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使用して、それらのマシンにアクセスできます。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>仮想マシンを Azure にレプリケートするための前提条件はありますか。
 Azure にレプリケートする仮想マシンは、 [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に適合している必要があります。
@@ -133,7 +132,7 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 * [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](site-recovery-deploy-with-powershell-resource-manager.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントが必要ですか。
-* **Azure クラシック ポータル**: Azure クラシック ポータルで Site Recovery をデプロイする場合は、[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。 Premium Storage は現在サポートされていません。 アカウントは、Site Recovery コンテナーと同じリージョンにある必要があります。
+* **Azure クラシック ポータル**: Azure クラシック ポータルで Site Recovery をデプロイする場合は、[Standard geo 冗長ストレージ アカウント](../storage/common/storage-redundancy.md#geo-redundant-storage)が必要です。 Premium Storage は現在サポートされていません。 アカウントは、Site Recovery コンテナーと同じリージョンにある必要があります。
 * **Azure Portal**: Azure Portal で Site Recovery をデプロイする場合は、LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされるようになりました。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。
@@ -220,4 +219,3 @@ Azure パック、クラウド プラットフォーム システム、および
 ## <a name="next-steps"></a>次のステップ
 * [Azure Site Recovery の概要](site-recovery-overview.md)
 * こちら [Site Recovery アーキテクチャ](site-recovery-components.md)  
-

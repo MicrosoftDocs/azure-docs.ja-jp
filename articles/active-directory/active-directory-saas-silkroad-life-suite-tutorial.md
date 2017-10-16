@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: ecf4e31ecea00d003fc47ea4cebb781ca58957f7
-ms.lasthandoff: 03/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合
 このチュートリアルの目的は、SilkRoad Life Suite と Azure Active Directory (Azure AD) を統合する方法を説明することです。 
@@ -136,13 +135,13 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
    
     ![Azure AD のシングル サインオン][21] 
  4. **[応答 URL]** テキスト ボックスに値を貼り付けます。  
- 5. **[次へ]**をクリックします。
+ 5. **[次へ]** をクリックします。
 
 6. **[SilkRoad Life Suite でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Azure AD のシングル サインオン][9]  
  1. [証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。  
- 2. **[次へ]**をクリックします。
+ 2. **[次へ]** をクリックします。
 
 7. **SilkRoad** アプリケーションで、**[Authentication Sources (認証ソース)]** をクリックします。
    
@@ -208,7 +207,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_05.png)  
  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。  
  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。 
- 3. **[次へ]**をクリックします。
+ 3. **[次へ]** をクリックします。
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
@@ -217,7 +216,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
  2. **[姓]** ボックスに「**Simon**」と入力します。 
  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。 
  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
- 5. **[次へ]**をクリックします。
+ 5. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
@@ -305,7 +304,6 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 [203]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_205.png
-
 
 
 

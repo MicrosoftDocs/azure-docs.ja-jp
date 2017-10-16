@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-virtual-network"></a>最初の仮想ネットワークの作成
 
 ここでは 2 つのサブネットから成る仮想ネットワーク (VNet) を作成し、2 台の仮想マシン (VM) を作成して、それぞれの VM をいずれかのサブネットに接続する方法について説明します。以下の図を参照してください。
@@ -253,4 +251,3 @@ MyDBServer VM にパブリック IP アドレス リソースが割り当てら�
 - [ネットワーク インターフェイス](virtual-network-network-interface.md)
 - [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 - [仮想マシン](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-

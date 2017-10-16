@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する
 この記事では、Microsoft HPC Pack クラスターを Azure にデプロイし、InfiniBand で相互接続された複数の Linux コンピューティング ノードで [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) ジョブを実行する方法について説明します。
@@ -119,7 +118,7 @@ HPC Pack クラスター マネージャー ツールを起動します。 数�
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Windows と Linux のノードに使用する Azure Files 共有のセットアップ
 Azure Files サービスを使用して、スクリプト、アプリケーション パッケージ、およびデータ ファイルを保存できます。 Azure Files は、永続ストアとして Azure BLOB ストレージ上に CIFS 機能を提供します。 スケーラビリティの点では決して秀でたソリューションではありませんが、きわめてシンプルであり、専用の VM を必要としません。
 
-Azure Files 共有は、「[Windows で Azure File Storage を使用する](../../../storage/storage-dotnet-how-to-use-files.md)」の手順に従って作成します。
+Azure Files 共有は、「[Windows で Azure File Storage を使用する](../../../storage/files/storage-dotnet-how-to-use-files.md)」の手順に従って作成します。
 
 ストレージ アカウントの名前 **saname**、ファイル共有名 **sharename**、ストレージ アカウント キー **sakey** はメモしておいてください。
 
@@ -334,4 +333,3 @@ Azure 上の Intel MPI では、MPI 関連のオプションを次のように�
 <!--Image references-->
 [hndeploy]:media/hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]:media/hpcpack-cluster-starccm/ClusterManager.png
-

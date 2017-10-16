@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 6e26b0af2a16a872c8e02b736e24019b47ed5780
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
 Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイクル (SDL) の主要な要素です。 これを使用すると、ソフトウェア アーキテクトは早い段階で潜在的なセキュリティの問題を特定し、危険を軽減することができます。早い段階であれば、問題の解決は比較的容易で、コスト効率も良くなります。 そのため、開発総コストを大幅に軽減できます。 また、このツールはセキュリティの専門家ではないユーザーを想定して設計され、脅威モデルの作成と分析に関するわかりやすいガイダンスが用意されているため、すべての開発者が簡単に脅威をモデリングできます。 
@@ -45,7 +43,7 @@ Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイク�
 
 次の表は、Threat Modeling Tool を初めて使用する場合に重要なリンクの一覧です。
 
-| 手順  | 説明                                                                                   |
+| 手順  | Description                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [Threat Modeling Tool をダウンロードします](https://aka.ms/tmtpreview)                                |
 | **2** | [ファースト ステップ ガイドを読みます](./azure-security-threat-modeling-tool-getting-started.md)    |

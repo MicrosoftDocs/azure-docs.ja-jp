@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 552794a2c7bba6f551ada5f431cacc236e7732a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 28f775afaf72b11eec0c22f755e4dbd6a485c895
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="how-does-hyper-v-replication-to-azure-work-in-site-recovery"></a>Site Recovery での Azure への Hyper-V レプリケーションのしくみ
 
 
@@ -67,9 +64,7 @@ Hyper-V VM の Azure へのレプリケートに関係するコンポーネン�
 1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
 2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) を呼び出します。
 3. ジョブが [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
-4. ジョブは **[ジョブ]** タブで監視できます。
-        ![ジョブ一覧](media/site-recovery-hyper-v-azure-architecture/image1.png)
-        ![保護のドリルダウンの有効化](media/site-recovery-hyper-v-azure-architecture/image2.png)
+4. ジョブは **[ジョブ]** タブで監視できます。    ![ジョブ一覧](media/site-recovery-hyper-v-azure-architecture/image1.png) ![[保護を有効にする] の詳細](media/site-recovery-hyper-v-azure-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>初期データをレプリケーする
 
@@ -126,4 +121,3 @@ Hyper-V VM の Azure へのレプリケートに関係するコンポーネン�
 ## <a name="next-steps"></a>次のステップ
 
 [サポート マトリックス](site-recovery-support-matrix-to-azure.md)を見直す
-

@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
+ms.openlocfilehash: 1f335b8b04821e1c0ab26af3df20c3318e9c26cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a8f4f34aa99c4a9966957cac213ec9170de80a46
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>ジョブのスケジュールとブロードキャスト (.NET/Node.js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IoT Hub を使用して、数百万のデバイスを更新するジョブのスケジュールと追跡を行います。 ジョブを使用して、
+Azure IoT Hub を使用して、数百万のデバイスを更新するジョブのスケジュールと追跡を行います。 ジョブを使用して、次の操作を行います。
 
 * 必要なプロパティを更新する
 * タグを更新する
@@ -41,7 +40,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 このチュートリアルでは、次の操作方法について説明します。
 
 * バックエンド アプリから呼び出し可能な **lockDoor** と呼ばれるダイレクト メソッドを実装するデバイス アプリを作成します。 また、デバイス アプリはバックエンド アプリから必要なプロパティの変更を受信します。
-* 複数のデバイスで **lockDoor** ダイレクト メソッドを呼び出すジョブを作成するバックエンド アプリを作成します。 もう 1 つのジョブは、必要なプロパティの更新を複数のデバイスに送信します。
+* 複数のデバイスで **lockDoor** ダイレクト メソッドを呼び出すジョブを作成するバックエンド アプリの作成。 もう 1 つのジョブは、必要なプロパティの更新を複数のデバイスに送信します。
 
 このチュートリアルが終わると、次の Node.js コンソール デバイス アプリと .NET (C#) コンソール バックエンド アプリが完成しています。
 
@@ -52,7 +51,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* Node.js バージョン 0.12.x 以降。 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+* Node.js バージョン 4.0.x 以降。 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -275,4 +274,3 @@ IoT Hub およびリモートによるファームウェアのワイヤレス更
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-

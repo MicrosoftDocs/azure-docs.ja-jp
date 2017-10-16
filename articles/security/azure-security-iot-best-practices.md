@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cdb1436d33fed61210724d55ffbf06f653f24f7c
-
-
+ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="internet-of-things-security-best-practices"></a>モノのインターネットのセキュリティのベスト プラクティス
 モノのインターネット (IoT) インフラストラクチャのセキュリティ保護は、IoT ソリューションに関わるすべてのユーザーにとって重要な作業です。 関連のあるデバイスの数が多く、これらのデバイスに分散型の性質があるため、数百万の IoT デバイスの侵害に関係するセキュリティ イベントの影響は重大で、広範囲にわたって影響を与える可能性があります。
@@ -63,10 +63,4 @@ IoT ソリューションのオペレーターの場合は、以下のベスト 
 * **頻繁に監査を行う**: セキュリティ インシデントに対応するときには、セキュリティ関連の問題について IoT インフラストラクチャを監査することが重要です。
 * **IoT インフラストラクチャを物理的に保護する**:  IoT インフラストラクチャに対する最悪のセキュリティ攻撃は、デバイスへの物理的なアクセスによって開始されます。
 * **クラウドの資格情報を保護する**: IoT デプロイの構成と操作に使用されるクラウド認証の資格情報は、IoT システムへのアクセスを取得して侵害するための最も簡単な手段となりえます。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

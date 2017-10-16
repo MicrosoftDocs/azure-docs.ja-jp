@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 902929fba9e2486d97323ab52505ba6db3fe0aab
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="views-in-sql-data-warehouse"></a>SQL Data Warehouse のビュー
 SQL Data Warehouse では、ビューが特に役立ちます。 ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。  この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
@@ -80,4 +79,3 @@ SQL Data Warehouse のビューはメタデータ専用です。  そのため�
 [CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
 
 <!--Other Web references-->
-

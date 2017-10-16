@@ -5,6 +5,7 @@
 ## Runbook のチュートリアル
 ### [グラフィカル Runbook を作成する](automation-first-runbook-graphical.md)
 ### [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+### [初めての Python Runbook](automation-first-runbook-textual-python2.md)
 ### [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 # 方法
 ## 認証とセキュリティ
@@ -37,10 +38,14 @@
 ### [Azure Automation Runbook に JSON オブジェクトを渡す](automation-pass-json-string.md)
 ## Hybrid Runbook Worker
 ### [Hybrid Runbook Worker のデプロイ](automation-hybrid-runbook-worker.md)
+### [Azure Automation の Windows Hybrid Runbook Worker](automation-windows-hrw-install.md)
+### [Azure Automation の Linux Hybrid Runbook Worker](automation-linux-hrw-install.md)
 ### [worker での Runbook の実行](automation-hrw-run-runbooks.md)
+### [Azure Automation の Hybrid Runbook Worker の削除](automation-remove-hrw.md)
 ## 構成管理のデプロイ (DSC)
 ### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
+### [目的の状態へのサーバーの構成と Azure Automation での誤差の管理](tutorial-configure-servers-desired-state.md)
 ### [管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 ### [DSC 構成のコンパイル](automation-dsc-compile.md)
 ### [Chocolatey を使用した継続的なデプロイ](automation-dsc-cd-chocolatey.md)
@@ -64,8 +69,12 @@
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ### [Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする](automation-deploy-template-runbook.md)
 ## 解決方法
-### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
+#### [複数の VM の更新プログラムの管理](manage-update-multi.md)
+#### [SCCMr と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)
+### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
+### [VM での変更の追跡](automation-vm-change-tracking.md)
+### [インベントリ コレクションでの VM の管理](automation-vm-inventory.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ## 監視
 ### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
@@ -77,8 +86,8 @@
 ### [一般的なエラーのトラブルシューティング](automation-troubleshooting-automation-errors.md)
 ### [Hybrid Runbook Worker のトラブルシューティング](automation-troubleshooting-hybrid-runbook-worker.md)
 # リファレンス
-## [PowerShell](/powershell/module/azurerm.automation)
-## [PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/module/azurerm.automation)
+## [Azure PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST ()](/rest/api/automation)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt163781)

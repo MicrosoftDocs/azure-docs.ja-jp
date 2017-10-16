@@ -16,10 +16,10 @@ ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 257f661dbc5ff23db53591a1b2db59a8dbeac2dc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
@@ -29,10 +29,6 @@ ms.lasthandoff: 08/28/2017
 * デバイス ツインの構造: "*タグ*"、"*必要なプロパティ*"、"*報告されるプロパティ*"、
 * デバイス ツインでデバイス アプリとバックエンドが実行できる操作。
 
-> [!NOTE]
-> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事を参照してください。
-> 
-> 
 
 ### <a name="when-to-use"></a>使用時の注意
 次の場合にデバイス ツインを使用します。
@@ -219,10 +215,6 @@ ms.lasthandoff: 08/28/2017
 
 [Azure IoT device SDK][lnk-sdks] を使用すると、多数の言語とプラットフォームで上述の操作を簡単に使用できます。 必要なプロパティを同期させるための IoT Hub プリミティブの詳細については、「[デバイスの再接続フロー][lnk-reconnection]」を参照してください。
 
-> [!NOTE]
-> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。
-> 
-> 
 
 ## <a name="reference-topics"></a>参照トピック:
 以下の参照トピックは、IoT Hub へのアクセスの制御に関する詳細情報を提供しています。

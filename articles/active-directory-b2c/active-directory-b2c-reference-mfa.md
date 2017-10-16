@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 62ec48ab067cf02bc8409aca6da704a5418ec270
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
 Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) と直接統合しているので、コンシューマー向けアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 また、コードを 1 行も記述することなく、これを実現できます。 現時点では、電話かテキスト メッセージによる検証がサポートされています。 サインアップおよびサインイン ポリシーを既に作成していても、Multi-Factor Authentication を有効にできます。
@@ -58,5 +57,4 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 ## <a name="multi-factor-authentication-on-other-policies"></a>他のポリシーでの Multi-Factor Authentication
 前のサインアップ/サインイン ポリシーで説明したように、サインアップまたはサインイン ポリシーおよびパスワード リセット ポリシーで Multi-Factor Authentication を有効にすることもできます。 プロファイル編集ポリシーでもまもなく利用できるようになります。
-
 

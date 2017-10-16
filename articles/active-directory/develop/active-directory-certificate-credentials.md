@@ -15,15 +15,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
 Azure Active Directory では、OAuth 2.0 クライアント資格情報の付与フローや On-Behalf-Of フローなどで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
@@ -105,4 +102,3 @@ Azure AD で証明書資格情報をクライアント アプリケーション�
 ```
 
 編集内容をアプリケーション マニフェストに保存し、Azure AD にアップロードします。 keyCredentials プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
-

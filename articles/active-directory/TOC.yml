@@ -1,0 +1,84 @@
+- name: アクセスの管理の概要
+  href: manage-access-to-azure-resources.md
+- name: Azure でのリソース アクセス
+  href: active-directory-understanding-resource-access.md
+- name: ロール ベースのアクセス制御 (RBAC)
+  href: role-based-access-control-what-is.md
+  items:
+    - name: アクセス権の割り当てを管理する
+      items:
+        - name: ユーザー別
+          href: role-based-access-control-manage-assignments.md
+        - name: リソース別
+          href: role-based-access-control-configure.md
+    - name: 組み込みのロール
+      href: role-based-access-built-in-roles.md
+    - name: カスタム ロール
+      href: role-based-access-control-custom-roles.md
+    - name: 内部ユーザーと外部ユーザーのカスタム ロールの割り当て
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: レポート
+      href: role-based-access-control-access-change-history-report.md
+    - name: その他のロール管理方法
+      items:
+        - name: Azure CLI の場合
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: PowerShell の場合
+          href: role-based-access-control-manage-access-powershell.md
+        - name: REST の場合
+          href: role-based-access-control-manage-access-rest.md
+    - name: テナント管理者のアクセス権の昇格
+      href: role-based-access-control-tenant-admin-access.md
+    - name: トラブルシューティング
+      href: role-based-access-control-troubleshooting.md
+    - name: リソース プロバイダー操作
+      href: role-based-access-control-resource-provider-operations.md
+- name: RBAC のための Privileged Identity Management (PIM)
+  href: pim-azure-resource.md
+- name: Azure 管理の条件付きアクセス
+  href: conditional-access-azure-management.md
+- name: 管理対象のサービス ID
+  href: msi-overview.md
+  items:
+    - name: サインイン方法またはトークンの取得方法
+      href: msi-how-to-get-access-token-using-msi.md
+    - name: Azure VM 用の MSI の構成
+      items:
+        - name: Azure Portal の場合
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: PowerShell の場合
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: Azure CLI の場合
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Azure Resource Manager テンプレートの場合
+          href: msi-qs-configure-template-windows-vm.md
+        - name: Azure SDK の場合
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: Azure リソースへの MSI アクセスの割り当て
+      items:
+        - name: Azure Portal の場合
+          href: msi-howto-assign-access-portal.md
+        - name: PowerShell の場合
+          href: msi-howto-assign-access-powershell.md
+        - name: Azure CLI の場合
+          href: msi-howto-assign-access-cli.md
+    - name: MSI を使用した Azure Resource Manager へのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: MSI を使用した Azure ストレージへのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: MSI を使用した Azure AD 以外のリソースへのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: FAQ と既知の問題
+      href: msi-known-issues.md

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8a6a8027b93d0d5b353c41c103d2c9ad5faa70c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 0b6f9e8192a4c6808beb61acb0f93ef5ec73e956
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -281,4 +280,3 @@ Microsoft の [Web テスト](app-insights-monitor-web-app-availability.md)は�
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
-

@@ -3,7 +3,7 @@ title: ".NET アプリ向け Azure Application Insights スナップショット
 description: "例外が運用 .NET アプリでスローされるときにデバッグ スナップショットが自動的に収集される"
 services: application-insights
 documentationcenter: 
-author: qubitron
+author: pharring
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0761339dfdaaaed418a1414472393ce8e0f37b9c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
-例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](app-insights-overview.md) のスナップショット デバッガー (プレビュー) により、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。 スナップショットが、Application Insights ポータルの[例外](app-insights-asp-net-exceptions.md)に表示されます。
+例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](app-insights-overview.md) のスナップショット デバッガー (プレビュー) により、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](app-insights-asp-net-exceptions.md)に表示されます。
 
 ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 ソース コードによるデバッグ エクスペリエンスをさらに向上させるには、Visual Studio 2017 Enterprise でスナップショットを開きます。このためには、[Visual Studio 向けのスナップショット デバッガー拡張機能をダウンロード](https://aka.ms/snapshotdebugger)します。
 
@@ -68,26 +68,13 @@ ms.lasthandoff: 08/17/2017
 
 1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](app-insights-asp-net-core.md)にします。
 
+> [!NOTE]
+> お使いのアプリケーションが、2.1.1 以降のバージョンの Microsoft.ApplicationInsights.AspNetCore パッケージを参照していることを確認します。
+
 2. [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
-3. `ConfigureServices`アプリケーションのクラスのメソッド`Startup`を変更し、スナップショット コレクターのテレメトリ プロセッサを追加します。 追加する必要があるコードは、Microsoft.ApplicationInsights.ASPNETCore NuGet パッケージの参照されるバージョンによって異なります。
+3. `ConfigureServices`アプリケーションのクラスのメソッド`Startup`を変更し、スナップショット コレクターのテレメトリ プロセッサを追加します。
 
-   Microsoft.ApplicationInsights.AspNetCore 2.1.0 の場合、次を追加します。
-   ```C#
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   ...
-   class Startup
-   {
-       // This method is called by the runtime. Use it to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
-           // TODO: Add any other services your application needs here.
-       }
-   }
-   ```
-
-   Microsoft.ApplicationInsights.AspNetCore 2.1.1 の場合、次を追加します。
    ```C#
    using Microsoft.ApplicationInsights.SnapshotCollector;
    ...
@@ -175,7 +162,7 @@ Azure サブスクリプションの所有者は、スナップショットを�
 
 ## <a name="how-snapshots-work"></a>スナップショットのしくみ
 
-アプリケーションの開始時に、スナップショット要求についてアプリケーションを監視する、個別のスナップショット アップローダー プロセスが作成されます。 スナップショットが要求されると、実行中のプロセスのシャドウ コピーが約 10 分 から 20 分で実行されます。 次に、シャドウ プロセスが分析され、メイン プロセスがユーザーへのトラフィックの実行と提供を続ける間にスナップショットが作成されます。 次に、スナップショットの表示に必要な関連するシンボル (.pdb) ファイルと共にスナップショットが Application Insights にアップロードされます。
+アプリケーションの開始時に、スナップショット要求についてアプリケーションを監視する、個別のスナップショット アップローダー プロセスが作成されます。 スナップショットが要求されると、実行中のプロセスのシャドウ コピーが約 10 ～ 20 ミリ秒で実行されます。 次に、シャドウ プロセスが分析され、メイン プロセスがユーザーへのトラフィックの実行と提供を続ける間にスナップショットが作成されます。 次に、スナップショットの表示に必要な関連するシンボル (.pdb) ファイルと共にスナップショットが Application Insights にアップロードされます。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 

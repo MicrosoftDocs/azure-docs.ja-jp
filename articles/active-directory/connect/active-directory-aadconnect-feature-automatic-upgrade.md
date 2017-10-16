@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9541cd195e8afa6e692a5a0214b0d614e429c33b
-ms.openlocfilehash: 234f06a858987b03ec2ed0bbe0899423d8f0bcdd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/20/2016
-
+ms.openlocfilehash: 894e387b4b83ed859139b4aecb3d8bb5df9ab56f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
 
 ## <a name="overview"></a>Overview
 Azure AD Connect のインストールを常に最新の状態に保つことは、 **自動アップグレード** 機能によって、これまでよりも簡単になりました。 この機能は、高速インストールと DirSync のアップグレード用に既定で有効になっています。 インストールは新しいバージョンのリリース時に自動的にアップグレードされます。
-
 自動アップグレードは、次の場合に既定で有効です。
 
 * 簡単設定インストールと DirSync のアップグレード。
@@ -45,6 +43,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 `Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。
 
 自動アップグレードでは、アップグレード インフラストラクチャに Azure AD Connect Health を使用しています。 自動アップグレードを動作させるには、「 **Office 365 URL および IP アドレス範囲** 」に記載されているように、 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)用にプロキシ サーバーで URL を開いておく必要があります。
+
 
 **Synchronization Service Manager** UI がサーバーで実行されている場合は、UI が閉じられるまで、アップグレードが中断されます。
 
@@ -87,6 +86,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeAbortedSyncExeInUse |サーバーで [Sychronization Service Manager UI](active-directory-aadconnectsync-service-manager-ui.md) が開いています。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |インストール ウィザードが実行されているか、同期がスケジューラ以外の場所でスケジュールされました。 |
 | **UpgradeNotSupported** | |
+| UpgradeNotSupportedAdfsSignInMethod | ユーザーがサインイン方法として Adfs を選択しました。 | 
 | UpgradeNotSupportedCustomizedSyncRules |ユーザーが構成に独自のカスタム ルールを追加しました。 |
 | UpgradeNotSupportedDeviceWritebackEnabled |ユーザーが [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) 機能を有効にしました。 |
 | UpgradeNotSupportedGroupWritebackEnabled |ユーザーが [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback) 機能を有効にしました。 |
@@ -95,9 +95,10 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |
 | UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
 | UpgradeNotSupportedNonMsolAccount |[AD Connector アカウント](active-directory-aadconnect-accounts-permissions.md#active-directory-account)は、既定の MSOL_ アカウントではなくなりました。 |
+| UpgradeNotSupportedNotConfiguredSignInMethod | AAD Connect を設定する場合は、サインオン方法の選択時に *[構成しない]* を選択します。 | 
+| UpgradeNotSupportedPtaSignInMethod | ユーザーがサインイン方法として [パススルー認証] を選択しました。 |
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |
 | UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback) 機能を有効にしました。 |
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

@@ -56,7 +56,7 @@ Azure Data Factory は次の形式をサポートしています。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする:  `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ### <a name="specifying-jsonformat"></a>JsonFormat の指定
-**JSON ファイルをそのまま Azure Cosmos DB にインポートしたり、Azure Cosmos DB からエクスポートしたりするには**、Azure Cosmos DB コネクタの「[JSON ドキュメントのインポート/エクスポート](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents)」セクションで詳細を確認してください。
+**JSON ファイルをそのまま Azure Cosmos DB にインポートしたり、Azure Cosmos DB からエクスポートしたりするには**、Azure Cosmos DB コネクタの「[JSON ドキュメントのインポート/エクスポート](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents)」セクションで詳細を確認してください。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 

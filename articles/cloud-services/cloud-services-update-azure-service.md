@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 2ba9676ed2afce7f18446642527971f5001b5ca7
-ms.lasthandoff: 04/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 
@@ -190,4 +189,3 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 [Cloud Services の管理方法](cloud-services-how-to-manage.md)  
 [クラウド サービスの監視方法](cloud-services-how-to-monitor.md)  
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)  
-

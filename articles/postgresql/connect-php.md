@@ -11,14 +11,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 009cc7941dc5d60153f1ab27adb9b86866b9a3f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 9beb92895056b51f40988fc6c47dfa6f80ca3294
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL: PHP を使用した接続とデータの照会
 このクイックスタートでは、[PHP](http://php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、PHP を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 06/30/2017
 - [DB の作成 - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-php"></a>PHP のインストール
-独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)を作成します。
+独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/app-service-web-overview.md)を作成します。
 
 ### <a name="windows"></a>Windows
 - [PHP 7.1.4 非スレッド セーフ バージョン (x64)](http://windows.php.net/download#php-7.1) をダウンロードします。
@@ -223,4 +221,3 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
-

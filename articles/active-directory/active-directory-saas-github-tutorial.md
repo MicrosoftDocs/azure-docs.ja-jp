@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 9dc12bc2e313bcb2000724d035156c5054d14e1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>チュートリアル: Azure Active Directory と GitHub の統合
 
@@ -209,7 +208,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 
 ### <a name="creating-a-github-test-user"></a>GitHub テスト ユーザーの作成
@@ -302,4 +301,3 @@ GitHub の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-github-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-github-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-github-tutorial/tutorial_general_203.png
-

@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-with-net-backend"></a>Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。 このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 クライアントを認証するために ASP.NET WebAPI バックエンドが使用されます。 認証されたクライアント ユーザーを使用して、タグがバックエンドによって通知登録に自動的に追加されます。 このタグは、バックエンドが特定のユーザーに対する通知を生成するための送信で使用されます。 アプリ バックエンドを使用した通知登録の詳細については、ガイド トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」をご覧ください。 このチュートリアルは、「[Notification Hubs の使用]」チュートリアルで作成した通知ハブを基に作成されています。
 
 また、「 [安全なプッシュ] 」チュートリアルの前提条件でもあります。 このチュートリアルの手順を完了した後は、このチュートリアルのコードにプッシュ通知を安全に送信するための変更を加える方法を示した「 [安全なプッシュ] 」チュートリアルに進むことができます。
@@ -205,7 +205,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 
 
-1. ソリューション エクスプローラーで、**共有**プロジェクトの **App.xaml.cs** ファイルを開きます。  `InitNotificationsAsync()` in the `OnLaunched()` への呼び出しを見つけます。 `InitNotificationsAsync()`への呼び出しをコメント アウトするか削除します。 上で追加したボタン ハンドラーが通知登録を初期化します。
+1. ソリューション エクスプローラーで、**共有**プロジェクトの **App.xaml.cs** ファイルを開きます。 `InitNotificationsAsync()` in the `OnLaunched()` への呼び出しを見つけます。 `InitNotificationsAsync()`への呼び出しをコメント アウトするか削除します。 上で追加したボタン ハンドラーが通知登録を初期化します。
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -345,9 +345,3 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [安全なプッシュ]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [通知ハブを使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

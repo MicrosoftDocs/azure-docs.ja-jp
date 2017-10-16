@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
-ms.openlocfilehash: 6ad91429794e465be7cb26963d032d9357143053
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 2328fe6e6b35ce523f8bf90cbe6159c7ba23d697
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -46,13 +45,13 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 > [!NOTE]
 > 1 つ目の電話番号にアクセスできず、アカウントへのサインインでヘルプが必要な場合は、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」のヘルプ トピックをご覧ください。  
 
-**代表電話番号を変更するには:**   
+**代表電話番号を変更するには:**  
 
 1. [追加のセキュリティ確認] ページで、現在の電話番号のテキスト ボックスを選択し、新しい電話番号を入力します。  
 2. [ **保存**] を選択します。  
 3. この番号が確認オプションに使用する番号である場合は、保存する前にその新しい番号を確認する必要があります。  
 
-**予備の電話番号を追加するには:**   
+**予備の電話番号を追加するには:**  
 
 1. [追加のセキュリティ確認] ページで、**[代替の認証用電話]** の横のチェック ボックスをオンにします。  
 2. 予備の話番号をテキスト ボックスに入力します。  
@@ -71,4 +70,3 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 ## <a name="next-steps"></a>次のステップ
 * 「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」でトラブルシューティングのヒントとヘルプを習得します。
 * 2 段階認証をサポートしていないアプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
-

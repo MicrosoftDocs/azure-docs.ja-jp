@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: c28604e3b7058f830c69eedc5d7f25d65e2448a8
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f66eabcbb386d5e7b31268a7b04063ff2cefbaf2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
@@ -111,6 +111,16 @@ ms.lasthandoff: 08/30/2017
 **Q:** yum update を使用して Linux Red Hat VM に更新プログラムを適用できますか。
 
 **A:**はい、Red Hat Linux VM の更新プログラムまたは修正プログラムを実行できます。 詳細については、「[Applying updates to a encrypted Azure IaaS Red Hat VM using Yum Update](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/)」(yum update を使用して暗号化された Azure IaaS Red Hat VM に更新プログラムを適用する) を参照してください。
+
+**Q:** Linux 用 Azure ディスクに推奨される暗号化ワークフローは何ですか。
+
+**A:** Linux で最善の結果を得るためには次のワークフローをお勧めします。
+* 目的の OS ディストリビューションとバージョンに対応する、変更されていないストック ギャラリー イメージを使用します。
+* 暗号化するマウント済みのドライブをバックアップします。  これにより、暗号化が完了する前に VM が再起動された場合などに、障害から復旧できます。
+* 暗号化 (VM の特性や、インストールされているデータ ディスクのサイズによっては数時間から数日かかることがあります)
+* 必要に応じて、イメージをカスタマイズし、イメージにソフトウェアを追加します。
+
+このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE) を使用できます。
 
 **Q:** 質問やフィードバックはどこに投稿すればよいでしょうか。
 

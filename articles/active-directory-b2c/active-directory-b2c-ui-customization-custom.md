@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: d5a3c0a323b31696d39e3d2b36317dec3a2337d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 08/22/2017
 
 この HTML コンテンツを Blob Storage にホストするには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **ハブ** メニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
 3. ストレージ アカウント用に一意の**名前**を入力します。
 4. **[デプロイ モデル]** は **[リソース マネージャー]** のまま残してかまいません。
@@ -186,4 +185,3 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 ## <a name="next-steps"></a>次のステップ
 
 カスタマイズできる UI 要素の詳細については、[組み込みポリシーにおける UI カスタマイズのリファレンス ガイド](active-directory-b2c-reference-ui-customization.md)を参照してください。
-

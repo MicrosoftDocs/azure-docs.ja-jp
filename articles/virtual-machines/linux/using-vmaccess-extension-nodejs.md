@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 278bf1785aac71068ab94cf9916af69a204c44be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>VMAccess 拡張機能と Azure CLI 1.0 を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する
 この記事では、Azure VMAcesss 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、ユーザー アカウントの管理、またはSSHD 構成のリセットを行う方法を説明します。 この記事では以下が必要です。
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
 * `azure login` でログインした [Azure CLI](../../cli-install-nodejs.md)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である *必要があります* 。
+* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である** "必要があります"。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
@@ -271,5 +270,4 @@ Azure VMAccess 拡張機能を使用して Linux を更新することは、実�
 [Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 

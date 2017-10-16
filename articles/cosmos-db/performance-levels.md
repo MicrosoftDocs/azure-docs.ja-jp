@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
@@ -179,4 +178,3 @@ Azure Cosmos DB の価格設定とデータ管理の詳細については、以�
 1.  [Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
 2.  [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
 3.  [要求ユニット](request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。
-

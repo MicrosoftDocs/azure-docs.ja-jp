@@ -1,5 +1,4 @@
 ---
-
 title: "Azure SQL Data Warehouse - Data Factory へのデータの読み込み | Microsoft Docs"
 description: "このチュートリアルでは、Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込み、データ ソースとして SQL Server データベースを使用します。"
 services: sql-data-warehouse
@@ -16,19 +15,15 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
-ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/09/2017
-
-
-
+ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Data Factory による SQL Data Warehouse へのデータの読み込み
 
-Azure Data Factory を使用して、[サポートされているソース データ ストア](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)からデータを Azure SQL Data Warehouse に読み込むことができます。 たとえば、Data Factory を使用して、Azure SQL Database や Oracle データベースのデータを SQL Data Warehouse に読み込めます。 この記事のチュートリアルでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを読み込む方法について説明します。
+Azure Data Factory を使用して、[サポートされているソース データ ストア](../data-factory/copy-activity-overview.md)からデータを Azure SQL Data Warehouse に読み込むことができます。 たとえば、Data Factory を使用して、Azure SQL Database や Oracle データベースのデータを SQL Data Warehouse に読み込めます。 この記事のチュートリアルでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを読み込む方法について説明します。
 
 **Time estimate**: このチュートリアルでは、前提条件が満たされると、完了までに約 10 ～ 15 分かかります。
 
@@ -38,7 +33,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 
 - オンラインの **SQL Data Warehouse** が必要です。 データ ウェアハウスがまだない場合は、[Azure SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)方法に関するトピックを参照してください。
 
-- **Azure ストレージ アカウント**が必要です。 ストレージ アカウントがまだない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md)」をご覧ください。 最大のパフォーマンスを引き出すため、ストレージ アカウントとデータ ウェアハウスは同じ Azure リージョンに配置してください。
+- **Azure ストレージ アカウント**が必要です。 ストレージ アカウントがまだない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)」をご覧ください。 最大のパフォーマンスを引き出すため、ストレージ アカウントとデータ ウェアハウスは同じ Azure リージョンに配置してください。
 
 ## <a name="configure-a-data-factory"></a>データ ファクトリ ページを構成する
 1. [Azure ポータル][]にログインします。
@@ -75,7 +70,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
     > [!NOTE]
     > ソース データ ストアがオンプレミスまたは Azure IaaS 仮想マシンにある場合は、データ管理ゲートウェイが必要です。 ゲートウェイは、データ ファクトリと 1 対 1 の関係にあります。 別のデータ ファクトリからは使用できませんが、同じデータ ファクトリでは複数のデータ読み込みタスクで使用できます。 ゲートウェイは、データ読み込みタスクを実行するときに複数のデータ ストアへの接続に使用できます。
     >
-    > ゲートウェイの詳細については、「[Data Management Gateway](../data-factory/data-factory-data-management-gateway.md)」に関する記事をご覧ください。
+    > ゲートウェイの詳細については、「[Data Management Gateway](../data-factory/v1/data-factory-data-management-gateway.md)」に関する記事をご覧ください。
 
 3. **[ゲートウェイの作成]** ダイアログ ボックスが表示されます。 [名前] に「**GatewayForDWLoading**」と入力して、**[作成]** をクリックします。
 
@@ -114,7 +109,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 
     ![スキーマをマップする](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
-4. **[次へ]**にログインします。
+4. **[次へ]** をクリックします。
 
 ## <a name="configure-the-performance-settings"></a>パフォーマンスの設定を構成する
 パフォーマンスの構成では、Azure ストレージ アカウントを構成します。このアカウントは、[PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) を使用してデータを SQL Data Warehouse にすばやく読み込む前に、データをステージングする目的で使用されます。 ストレージ内の暫定データは、コピーの完了後に自動的にクリーンアップされます。
@@ -157,9 +152,9 @@ SQL Data Warehouse にデータベースを移行するには、[移行の概要
 
 Azure Data Factory とそのデータ移動機能の詳細については、次の記事をご覧ください。
 
-- [Azure Data Factory の概要](../data-factory/data-factory-introduction.md)
-- [コピー アクティビティを使用したデータの移動](../data-factory/data-factory-data-movement-activities.md)
-- [Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Data Factory の概要](../data-factory/introduction.md)
+- [コピー アクティビティを使用したデータの移動](../data-factory/copy-activity-overview.md)
+- [Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](../data-factory/connector-azure-sql-data-warehouse.md)
 
 SQL Data Warehouse のデータを探索するには、次の記事をご覧ください。
 
@@ -168,4 +163,3 @@ SQL Data Warehouse のデータを探索するには、次の記事をご覧く�
 
 <!-- Azure references -->
 [Azure ポータル]: https://portal.azure.com
-

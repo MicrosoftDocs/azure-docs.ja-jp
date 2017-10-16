@@ -16,13 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。
@@ -107,7 +105,7 @@ Windows や SQL Server に基づく SAP IDES ソリューションをデプロ�
 
     ![SAP CAL の基本モード: インスタンスの作成](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. ページの下部にある **[Create]**」を参照してください。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。 
+3. **Create** をクリックしてください。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。 
 
     ![SAP CAL のインスタンス](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
@@ -126,5 +124,4 @@ Windows や SQL Server に基づく SAP IDES ソリューションをデプロ�
 数時間のうちに、正常な SAP IDES システムが Azure にデプロイされます。
 
 SAP CAP サブスクリプションを購入した場合、SAP が SAP CAL を介した Azure へのデプロイを全面的にサポートします。 サポート キューは BC-VCM-CAL です。
-
 

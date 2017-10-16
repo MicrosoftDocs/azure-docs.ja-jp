@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a5bc3a72eccc48ec26ef5f029d780175d66080c0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -144,7 +143,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 この手順は省略可能で、サービスでストレージ アカウントの自動作成を有効にしていない場合にのみ実行する必要があります。
 
-別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。
+別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。
 
 既存の Microsoft Azure ストレージ アカウントを追加するには、[Azure Portal](https://ms.portal.azure.com/) の [StorSimple Device Manager service (StorSimple デバイス マネージャー サービス)] ページで、次の手順を実行します。
 
@@ -171,5 +170,4 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 * [Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)
-
 

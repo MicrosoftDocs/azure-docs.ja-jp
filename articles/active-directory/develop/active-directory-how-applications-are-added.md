@@ -15,13 +15,11 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 65c8a2c020d5ef7ce47905927a248b9e73d2ed1b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
-
+ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 Azure Active Directory のインスタンスでアプリケーションの一覧を表示したときに最初に理解しにくいことの 1 つは、アプリケーションの元の場所と追加された理由を理解することです。  この記事では、ディレクトリでのアプリケーションの表現方法と、アプリケーションがディレクトリに追加された方法を理解するのに役立つコンテキストについて説明します。
@@ -146,4 +144,3 @@ Azure AD にアプリケーションを追加する方法およびアプリ用�
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]:../media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
-

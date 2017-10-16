@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
-translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
 ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure ポータルでプライベート テンプレートを使ってみる
+# <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure Portal でプライベート テンプレートを使ってみる
 [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートは、デプロイの定義に使う宣言型のテンプレートです。 ソリューションでデプロイするリソースを定義し、さまざまな環境に応じた値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
 この新しい**テンプレート**機能は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) の拡張機能として、[Azure Portal](https://portal.azure.com) 内で **Microsoft.Gallery** リソース プロバイダーと共に使用できます。この機能を使用すると、ユーザーは個人用ライブラリからプライベート テンプレートを作成、管理、デプロイすることができます。
 
-このドキュメントでは、Azure ポータルを使ってプライベート **テンプレート** を追加、管理、共有する方法について説明します。
+このドキュメントでは、Azure Portal を使ってプライベート **テンプレート** を追加、管理、共有する方法について説明します。
 
 ## <a name="guidance"></a>ガイダンス
 次の推奨事項は、ソリューションを操作する際に **テンプレート** を最大限に活用するのに役立ちます。
@@ -43,7 +43,7 @@ ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 Azure ポータルで **テンプレート** リソースを作成する方法は 2 とおりあります。
 
 ### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>方法 1: 実行中のリソース グループから新しいテンプレート リソースを作成する
-1. Azure ポータルで既存のリソース グループに移動します。 **[設定]** で **[テンプレートのエクスポート]** を選択します。
+1. Azure Portal で既存のリソース グループに移動します。 **[設定]** で **[テンプレートのエクスポート]** を選択します。
 2. Resource Manager テンプレートをエクスポートしたら、**[テンプレートの保存]** ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。 [テンプレートのエクスポート] の詳細については、 [こちら](../azure-resource-manager/resource-manager-export-template.md)を参照してください。
    <br /><br />
    ![リソース グループのエクスポート](media/rg-export-portal1.PNG)  <br />
@@ -132,10 +132,4 @@ Azure ポータルで **テンプレート** リソースを作成する方法�
 * Resource Manager テンプレートの作成の詳細については、 [テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * Resource Manager テンプレートで使用できる関数を理解するには、 [テンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)
 * テンプレートのデザインのガイダンスについては、 [Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

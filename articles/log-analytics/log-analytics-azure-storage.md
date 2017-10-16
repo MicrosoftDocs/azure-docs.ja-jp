@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 79122493a8639dba1c1d6c92072dd682dae040a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -71,7 +70,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
 
 * 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
-* 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs)」を参照してください。
+* 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)」を参照してください。
 
 ### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
 2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](/powershell/azure/overview) が必要です。
@@ -153,4 +152,3 @@ Azure テンプレート ギャラリーには、サービスからデータを�
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-

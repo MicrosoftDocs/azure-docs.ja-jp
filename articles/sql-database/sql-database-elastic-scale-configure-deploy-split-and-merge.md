@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7a702354de137e1bca033146626dad1ca53fd3ed
-ms.openlocfilehash: b644ef0a8da726b2b23a4bfc81516c112be2de2e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/17/2017
-
-
+ms.openlocfilehash: 6e2fea882c248fa095a9d450ed54a7b4e64b45e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -41,8 +39,8 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。 [保存] アイコンをクリックします。
    
    ![使用できるサービス][1]
-3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure ポータルにアクセスします。 左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure ポータルにアクセスします。 左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
+3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure Portal にアクセスします。 左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
+4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure Portal にアクセスします。 左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
 
 ## <a name="configure-your-split-merge-service"></a>Split-Merge サービスの構成
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
@@ -95,7 +93,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 6. **[完了]**、**[OK]** の順にクリックします。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>クラウド サービスへの PFX ファイルのアップロード
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure Portal](https://portal.azure.com) にアクセスします。
 2. **[クラウド サービス]**を選択します。
 3. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
 4. 上部メニューで **[証明書]** をクリックします。
@@ -344,5 +342,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [3]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/staging.png
 [4]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/upload.png
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
-
 

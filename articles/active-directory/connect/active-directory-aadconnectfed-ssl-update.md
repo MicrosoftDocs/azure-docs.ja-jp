@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
----    
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
+---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
 ## <a name="overview"></a>概要
@@ -86,7 +84,7 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 * **新しい AD FS SSL 証明書のサブジェクト名はどのようなものにする必要がありますか。**
 
-    Azure AD Connect は、証明書のサブジェクト名/代替サブジェクト名にフェデレーション サービスの名前が含まれるかどうかを確認します。 たとえば、フェデレーション サービス名が fs.contoso.com である場合、サブジェクト名/代替サブジェクト名も fs.contoso.com である必要があります。  ワイルドカード証明書も受け付けられます。
+    Azure AD Connect は、証明書のサブジェクト名/代替サブジェクト名にフェデレーション サービスの名前が含まれるかどうかを確認します。 たとえば、フェデレーション サービス名が fs.contoso.com である場合、サブジェクト名/代替サブジェクト名も fs.contoso.com である必要があります。ワイルドカード証明書も受け付けられます。
 
 * **WAP サーバー ページで資格情報を再度要求されるのはなぜですか。**
 
@@ -108,4 +106,3 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 - [Azure AD Connect とフェデレーション](active-directory-aadconnectfed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](active-directory-aadconnect-federation-management.md)
-

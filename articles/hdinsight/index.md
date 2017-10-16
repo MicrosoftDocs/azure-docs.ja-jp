@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
+ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6f16d77f3590bedf9338afc784110c2acff80592
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
 
 HDInsight のクラウドで Hadoop を使用して、ストリーミング データや履歴データを分析する方法について説明します。 チュートリアルなどのドキュメントでは、クラスターの作成、ビッグ データの処理と分析、Hadoop エコシステムでの Hadoop、Spark、HBase、R-Server、Storm などのテクノロジによるソリューションの開発を行う方法を紹介します。
@@ -133,6 +131,24 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
         </div>
         </a>
     </li>
+<li>
+        <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight 開発者ガイド</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
 </ul>
 
@@ -180,6 +196,5 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
         </div>
     </li>
 </ul>
-
 
 

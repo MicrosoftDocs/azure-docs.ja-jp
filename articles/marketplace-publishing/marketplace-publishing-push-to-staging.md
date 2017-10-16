@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>マーケティング コンテンツを使用したプラン作成の実行
 発行処理のこの手順では、特定のマーケティング コンテンツと Azure Marketplace でのプランと SKU の詳細を指定する必要があります。 たとえば、製品、会社のロゴ、価格プラン、プランの詳細、プランまたは SKU をステージング環境へプッシュするために必要なその他の情報を指定します。 この情報は、Azure ポータルでマーケティング コンテンツとして使用されます。 このプロセスは、[発行ポータル][link-pubportal]で開始します。
@@ -103,7 +103,8 @@ ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
 
 ![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
-**注意:** Virtual Machine プランについては、一度 Azure ポータルにプラン/SKU がステージングされたら、以下のフィールドは変更できません。
+
+            **注意:** Virtual Machine プランについては、一度 Azure Portal にプラン/SKU がステージングされたら、以下のフィールドは変更できません。
 
 * **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [Offer Identifier (プラン識別子)]
 * **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
@@ -261,10 +262,11 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 
 *Azure Marketplace Web サイト上のプランの説明の価格詳細*
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure Portal
 ![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
 
-*Azure ポータルでのプランの一覧*
+
+            *Azure Portal でのプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-02.png)
 
@@ -287,9 +289,3 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 
 [link-pubportal]:https://publish.windowsazure.com
 [link-push-to-production]:marketplace-publishing-push-to-production.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-state"></a>サービスの状態
 **サービスの状態**とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、たとえば、サービスが機能するために読み取りや書き込みをする、データ構造およびメンバー変数が含まれます。 サービスの設計方法によっては、ディスクに保存されているファイルやその他のリソースが含まれる場合もあります。 たとえば、データとトランザクション ログを格納するためにデータベースで使用するファイルが含まれます。
@@ -42,4 +41,3 @@ Service Fabric の概念について詳しくは、次の記事をご覧くだ�
 * [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
 * [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 * [Service Fabric の Reliable Services](service-fabric-reliable-services-introduction.md)
-

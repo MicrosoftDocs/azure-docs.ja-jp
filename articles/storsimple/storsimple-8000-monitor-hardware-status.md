@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 90724099842eac513c39dccf113ad1c0a63983f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>StorSimple デバイス マネージャー サービスを使用してハードウェア コンポーネントと状態を監視する
 ## <a name="overview"></a>概要
@@ -148,5 +146,4 @@ ms.lasthandoff: 07/08/2017
 * 機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「 [StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
 * 障害が発生したハードウェア コンポーネントを交換するには、「 [StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
 * デバイスの問題が解決しない場合は、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md)。
-
 

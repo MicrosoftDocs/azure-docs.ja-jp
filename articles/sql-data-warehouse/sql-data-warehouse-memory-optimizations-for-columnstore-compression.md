@@ -15,14 +15,12 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
+ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: a0452c4dedc218dff17404c4ecee70d788e49644
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
 行グループの品質は、行グループ内の行数によって決まります。 メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
@@ -142,7 +140,7 @@ OPTION (MAXDOP 1);
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](sql-data-warehouse-manage-compute-overview.md#scale-compute)に関するセクションを参照してください。
-- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」を参照してください。
+- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」を参照してください。
 
 たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](sql-data-warehouse-develop-concurrency.md)に関する記事を参照してください。
 
@@ -164,4 +162,3 @@ SQL Data Warehouse でのパフォーマンスを向上させるその他の方�
 <!--MSDN references-->
 
 <!--Other Web references-->
-

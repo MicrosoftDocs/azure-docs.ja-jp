@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 6481c9ef0ca71419ccfa6f7956f4702985743df3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
 
@@ -182,7 +181,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-rally-software-test-user"></a>Rally Software テスト ユーザーの作成
 
@@ -271,5 +270,4 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 [201]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_203.png
-
 

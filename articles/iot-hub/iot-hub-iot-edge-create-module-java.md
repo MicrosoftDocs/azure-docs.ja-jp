@@ -11,12 +11,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: junyi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 682feb4d889ecd881abe1a70d36e0a5a4df3d910
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 0c430272225d79737baec2be15ed7c93991cdeac
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-java"></a>Azure IoT Edge モジュールを Java で作成する
 
@@ -299,5 +298,4 @@ public void receive(Message message) {
 
 > [!IMPORTANT]
 > Ctrl + C キーを使用して IoT Edge ゲートウェイを終了することはお勧めしません。 これを行うと、プロセスが異常終了する可能性があるためです。
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/11/2017
 ms.author: kraigb
+ms.openlocfilehash: af1205f8c3e477d123d4835c80a68b3afd6ee5ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: b939f2af75723739ffab16d9a75ea8f6484e5e05
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>サービス構成とプロファイルを管理する方法
 ## <a name="overview"></a>概要
@@ -102,5 +101,4 @@ ms.lasthandoff: 08/12/2017
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、 [Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)
-
 

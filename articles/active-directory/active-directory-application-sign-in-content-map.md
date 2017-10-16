@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 2e6995d730089e194dcac989151af13df28a173a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 742b4578118bde878385c12cc7c9e4438f89cb33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problems-when-signing-in-to-applications"></a>アプリケーションへのサインインに関する問題
 
 
@@ -44,4 +42,3 @@ ms.lasthandoff: 04/18/2017
   * [フェデレーション シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [カスタム開発されたアプリケーションにサインインできない](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-custom-dev/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Azure AD アプリケーション プロキシを使用して、オンプレミスのアプリケーションにサインインできない](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-on-premises-application-proxy/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

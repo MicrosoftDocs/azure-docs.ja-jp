@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-a-scale-out-process-server"></a>スケールアウト プロセス サーバーの管理
 
 スケールアウト プロセス サーバーは、Site Recovery サービスとオンプレミス インフラストラクチャ間でのデータ転送の調整役として機能します。 この記事では、スケールアウト プロセス サーバーを設定、構成、管理する方法について説明します。
@@ -148,4 +146,3 @@ net start obengine
 |4 vCPU (2 ソケット * 2 コア @ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
 |8 vCPU (2 ソケット * 4 コア @ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |
 |12 vCPU (2 ソケット * 6 コア @ 2.5 GHz)、24 GB メモリ |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 225 台のマシンをレプリケートします。 |
-

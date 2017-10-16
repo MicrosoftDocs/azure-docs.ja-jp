@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 9119a4523c66415925223b5de10ca0fb4a7147b2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -211,7 +210,7 @@ DNS サーバーに移動して、ILB の CNAME を作成します。 CNAME に�
 ### <a name="7-configuring-the-web-application-proxy-server"></a>7.Web アプリケーション プロキシ サーバーを構成する
 **7.1.AD FS サーバーに到達するための構成を Web アプリケーション プロキシ サーバーに対して行う**
 
-Web アプリケーション プロキシ サーバーが ILB の内側にある AD FS サーバーに到達するためには、%systemroot%\system32\drivers\etc\hosts にその ILB のレコードを作成する必要があります。 識別名 (DN) は、フェデレーション サービスの名前 (例: fs.contoso.com) となることに注意してください。 また IP には、ILB の IP アドレスを入力する必要があります (この例では 10.3.0.8)。
+Web アプリケーション プロキシ サーバーが ILB の内側にある AD FS サーバーに到達するためには、%systemroot%\system32\drivers\etc\hosts にその ILB のレコードを作成する必要があります。 識別名 (DN) は、フェデレーション サービスの名前 (例: fs.contoso.com) となることに注意してください。また IP には、ILB の IP アドレスを入力する必要があります (この例では 10.3.0.8)。
 
 **7.2.Web アプリケーション プロキシ ロールをインストールする**
 
@@ -221,7 +220,7 @@ WAP のデプロイ方法について詳しくは、「 [Web アプリケーシ�
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.インターネット接続 (パブリック) ロード バランサーをデプロイする
 **8.1.インターネット接続 (パブリック) ロード バランサーを作成する**
 
-Azure ポータルで [ロード バランサー] を選択し、[追加] をクリックします。 [ロード バランサーの作成] パネルで次の情報を入力します。
+Azure ポータルで ロード バランサー を選択し、追加をクリックします。 [ロード バランサーの作成] パネルで次の情報を入力します。
 
 1. **[名前]**: ロード バランサーの名前。
 2. **[スキーム]**: [パブリック] - このオプションを選択することで、作成するロード バランサーにパブリック アドレスが必要であるという情報が Azure に提供されます。
@@ -239,7 +238,7 @@ Azure ポータルで [ロード バランサー] を選択し、[追加] をク
 
 1. 対象のパブリック IP アドレスをクリックします。 パブリック IP とその設定に必要なパネルが開きます。
 2. [構成] をクリックします。
-3. DNS ラベルを指定します。 これが、任意の場所からアクセスできるパブリック DNS ラベルになります (例: contosofs.westus.cloudapp.azure.com)。 外部 DNS には、この外部ロード バランサーの DNS ラベル (contosofs.westus.cloudapp.azure.com) に解決されるフェデレーション サービスのエントリ (例: fs.contoso.com) を追加してください。
+3. DNS ラベルを指定します。 これが、任意の場所からアクセスできるパブリック DNS ラベルになります (例: contosofs.westus.cloudapp.azure.com)。外部 DNS には、この外部ロード バランサーの DNS ラベル (contosofs.westus.cloudapp.azure.com) に解決されるフェデレーション サービスのエントリ (例: fs.contoso.com) を追加してください。
 
 ![Configure internet facing load balancer](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 
@@ -355,5 +354,4 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 * [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
 

@@ -11,35 +11,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: cf3058832ba656a1a18aea194bf4e5ce4e800e76
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します。
 
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタのサイレント インストール
-複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、Azure AD アプリケーション プロキシ コネクタの無人インストールおよび登録を有効にする Windows PowerShell スクリプトの作成方法について説明します。
+このトピックでは、Azure AD アプリケーション プロキシ コネクタの無人インストールと登録を可能にする Windows PowerShell スクリプトの作成方法について説明します。
 
 この機能は次の場合に便利です。
 
-* UI レイヤーがないコンピューターや、RDP 経由で接続できないコンピューターにコネクタをインストールする。
+* ユーザー インターフェイスが有効でない、または Remote Desktop でアクセスできない Windows サーバーにコネクタをインストールする。
 * 一度に多数のコネクタをインストールし、登録する。
 * コネクタのインストールと登録を別の手順の一部として統合する。
 * コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
 
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 ただし、Windows PowerShell を使用して、登録情報を入力する資格情報オブジェクトを作成できます。 または、独自のトークンを作成し、それを使用して登録情報を入力できます。
+[アプリケーション プロキシ コネクタ](application-proxy-understand-connectors.md)を機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力しますが、このプロセスを PowerShell を使用して自動化できます。
+
+無人インストールには 2 つの手順があります。 最初に、コネクタをインストールします。 次に、コネクタを Azure AD に登録します。 
 
 ## <a name="install-the-connector"></a>コネクタをインストールする
-次のように、コネクタを登録せずにコネクタ MSI をインストールします。
+次の手順に従って、コネクタを登録なしでインストールします。
 
 1. コマンド プロンプトを開きます。
-2. 次のコマンドを実行します。/q はサイレント インストールを意味します。つまり、インストールで使用許諾契約書への同意を求めるメッセージは表示されません。
+2. 次のコマンドを実行します。/q はサイレント インストールを意味します。 サイレント インストールでは、使用許諾契約書への同意を求めるメッセージは表示されません。
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
@@ -50,18 +51,18 @@ ms.lasthandoff: 08/24/2017
 * オフラインで作成したトークンを使用してコネクタを登録する
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
-1. 次のコマンドを実行して Windows PowerShell 資格情報オブジェクトを作成します。 *\<username\>* と *\<password\>* は、ディレクトリのユーザー名とパスワードに置き換えてください。
+1. 管理者のユーザー名とディレクトリのパスワードを格納する Windows PowerShell 資格情報オブジェクト `$cred` を作成します。 *\<username\>* と *\<password\>* を置き換えて、次のコマンドを実行します。
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. **C:\Program Files\Microsoft AAD App Proxy Connector** に移動し、作成済みの PowerShell 資格情報オブジェクトを使用してスクリプトを実行します。 *$cred* は、作成した PowerShell 資格情報オブジェクトの名前に置き換えてください。
+2. **C:\Program Files\Microsoft AAD App Proxy Connector** に移動し、作成済みの `$cred` オブジェクトを使用してスクリプトを実行します。
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>オフラインで作成したトークンを使用してコネクタを登録する
-1. コード スニペットの値を使用する AuthenticationContext クラスを使用して、オフライン トークンを作成します。
+1. 次のコード スニペットの値を使用して、AuthenticationContext クラスを使用するオフライン トークンを作成します。
 
         using System;
         using System.Diagnostics;
@@ -129,6 +130,5 @@ ms.lasthandoff: 08/24/2017
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
-
 
 

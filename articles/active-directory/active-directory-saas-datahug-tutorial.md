@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
 ms.openlocfilehash: ec431dd5ccfa53e4b975e46da247704dd1e15c2c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル: Azure Active Directory と Datahug の統合
 
@@ -102,11 +100,11 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Datahug** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![Configure Single Sign-On][4]
+    ![[シングル サインオンの構成]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-datahug-tutorial/tutorial_datahug_samlbase.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-datahug-tutorial/tutorial_datahug_samlbase.png)
 
 3. **[Datahug のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
 
@@ -180,7 +178,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-datahug-test-user"></a>Datahug テスト ユーザーの作成
 
@@ -204,7 +202,7 @@ Datahug の場合、プロビジョニングは手動で行います。
     ![従業員の追加](./media/active-directory-saas-datahug-tutorial/3.png)
 
     > [!NOTE] 
-    > **[Send welcome email]** チェック ボックスをオンにすると、ユーザーに登録メールを送信できます。    
+    > **[Send welcome email]** チェック ボックスをオンにすると、ユーザーに登録メールを送信できます。  
     > Salesforce のアカウントを作成する場合は、ウェルカム メールを送信しないでください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -262,5 +260,4 @@ Datahug の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-datahug-tutorial/tutorial_general_203.png
-
 

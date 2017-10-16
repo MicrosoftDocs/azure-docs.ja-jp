@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure App Service での認証と承認 | Microsoft Docs"
 description: "Azure App Service の認証/承認の機能の概念リファレンスと概要"
 services: app-service
@@ -14,13 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/20/2017
-
-
+ms.openlocfilehash: 4ba4155515e587038ffe2dbca064ad27aca97445
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
@@ -31,10 +29,9 @@ App Service では、サード パーティの ID プロバイダーがアカウ
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 
 * [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
-* [Azure App Service の API Apps でのユーザー認証][apia-user]
-* [Azure App Service の使用 - 第 2 部][web-getstarted]
+* [Azure App Service での API Apps のユーザー認証][apia-user]
 
-## <a name="how-authentication-works-in-app-service"></a>App Service の認証のしくみ
+## <a name="how-authentication-works-in-app-service"></a>App Service の承認のしくみ
 いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーから ID とシークレットが提供されるので、それらを App Service に提供します。 これにより信頼関係が完成し、App Service は、ID プロバイダーから、認証トークンなどのユーザー アサーションを検証できるようになります。
 
 こうしたプロバイダーのいずれかを使用してユーザーをサインインさせるには、そのプロバイダーのユーザーをサインインさせるエンドポイントにユーザーをリダイレクトする必要があります。 顧客が Web ブラウザーを使用している場合は、App Service を使用して、認証されていないすべてのユーザーを、ユーザーをサインインさせるエンドポイントに自動的に転送できます。 それ以外の場合は、顧客を `{your App Service base URL}/.auth/login/<provider>` に転送する必要があります。ここで、`<provider>` は、aad、facebook、google、microsoft、twitter のいずれかの値になります。 モバイルおよび API のシナリオについては、この記事の後のセクションで説明します。
@@ -71,9 +68,9 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 > 
 > 
 
-サービス間シナリオでは、App Service は Azure Active Directory を使用してアプリケーションを保護できます。 呼び出し元のアプリケーションは、Azure Active Directory からクライアント ID とクライアント シークレットを提供することで取得した Azure Active Directory サービスのプリンシパル認証トークンを提供するだけで済みます。 このシナリオの ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証][apia-service]に関するチュートリアルで紹介されています。
+サービス間シナリオでは、App Service は Azure Active Directory を使用してアプリケーションを保護できます。 呼び出し元のアプリケーションは、Azure Active Directory からクライアント ID とクライアント シークレットを提供することで取得した Azure Active Directory サービスのプリンシパル認証トークンを提供するだけで済みます。 このシナリオの ASP.NET API アプリを使った例が、[API Apps の サービス プリンシパル認証][apia-service] に関するチュートリアルで紹介されています。
 
-App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
+App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、 [App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md) で説明されています。
 
@@ -92,7 +89,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
   
     この場合、認証/承認の機能は無効になります。 認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
 
-前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 **[*<プロバイダー名>* でのログイン] **を選択した場合、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 [***<プロバイダー名>* でのログイン**] を選択した場合、すべての要求が認証される必要があります。 **[要求の許可 (操作不要)]** では、承認に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
 
 ## <a name="working-with-user-identities-in-your-application"></a>アプリケーションでのユーザー ID の使用
 App Service では、特殊なヘッダーを使用して、アプリケーションにユーザー情報の一部を渡します。 外部要求ではこれらのヘッダーが禁じられており、App Service の認証/承認によって設定された場合にのみ、使用できます。 いくつかのヘッダーの例は次のとおりです。
@@ -152,16 +149,11 @@ Google のクライアント主導のフローを使用する場合は、次の�
 
 * [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
-### <a name="api-applications"></a>API アプリケーション
-次のチュートリアルで、API Apps を保護する方法を示しています。
+<!-- ### API applications
+The following tutorials show how to protect your API apps:
 
-* [Azure App Service の API Apps でのユーザー認証][apia-user]
-* [Azure App Service での API Apps のサービス プリンシパル認証][apia-service]
-
-[apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
-[apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
-
-[web-getstarted]: ../app-service-web/app-service-web-get-started-2.md#authenticate-your-users
+* [User authentication for API Apps in Azure App Service][apia-user]
+* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
@@ -171,15 +163,14 @@ Google のクライアント主導のフローを使用する場合は、次の�
 [Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
 [Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
 
-[AAD]: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Google]: app-service-mobile-how-to-configure-google-authentication.md
+[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-

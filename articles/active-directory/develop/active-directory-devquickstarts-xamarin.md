@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c40d273f102339fac8ea633c870b869d10106a7
-ms.openlocfilehash: ccbc051f49220e824782ed4831a31ab1a716570a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/17/2017
-
-
+ms.openlocfilehash: 54ee403f283bc5dc79911e2e813dd513ff595828
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-xamarin-apps"></a>Azure AD と Xamarin アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -63,7 +61,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 この操作によって、ユーザーがアプリで Graph API に照会できるようになります。
 
 ## <a name="step-3-install-and-configure-adal"></a>手順 3: ADAL をインストールして構成する
-アプリを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL と Azure AD が通信できるようにするには、アプリの登録に関する情報を入力する必要があります。
+アプリを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL が Azure AD と通信できるようにするには、ADAL にアプリの登録に関する情報を入力する必要があります。
 
 1. パッケージ マネージャー コンソールを使用して ADAL を DirectorySearcher プロジェクトに追加します。
 
@@ -91,7 +89,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 2. DirectorySearcherLib プロジェクトで、DirectorySearcher.cs を開きます。
 3. クラス メンバーの値を Azure Portal で入力した値に置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
 
-  * *tenant* は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
+  * *tenant* には、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) を指定します。
   * *clientId* はアプリのクライアント ID であり、ポータルからコピーしたものです。
   * *returnUri* は、ポータルで入力したリダイレクト URI です (例:  http://DirectorySearcher )。
 
@@ -196,4 +194,3 @@ ADAL を使用することにより、共通 ID 機能を容易にアプリに�
 ここからは、さらに ID シナリオに進むことができます。 たとえば、[Azure AD を使用して .NET Web API を保護](active-directory-devquickstarts-webapi-dotnet.md)してみましょう。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

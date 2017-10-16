@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: bfb41f254d74bef843461a058ee5b2ced7fc45ec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: f23443d438c95a784f655fb9a5f20dfcf37be189
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
@@ -181,10 +180,10 @@ Azure で使用する UPN の値を指定するための属性を選択する場
 ### <a name="custom-domain-state-and-upn"></a>カスタム ドメインの状態と UPN
 確認済みのドメインを UPN のサフィックスとして使用することが重要です。
 
-John は、contoso.com に属するユーザーです。 Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にサインインする必要があるとします。 この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
+John は、contoso.com に属するユーザーです。Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にサインインする必要があるとします。この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
-組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。 そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
+組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
 
 ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-add-domain.md) 」を参照してください。
 
@@ -192,4 +191,3 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

@@ -1,5 +1,4 @@
 ---
-
 title: "招待を使用せずに B2B コラボレーション ユーザーを Azure Active Directory に追加する | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションの招待を利用しないでゲスト ユーザーが他のゲスト ユーザーを Azure AD に追加することができます。"
 services: active-directory
@@ -16,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 91b9477cdb679851e7d8d2942c06999a05f64e46
-ms.lasthandoff: 03/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>招待を使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 
 パートナーの担当者などのユーザーに、招待を利用しなくてもパートナーのユーザーを組織に追加することを許可できます。 行う必要があるのは、パートナー組織に使用しているディレクトリにユーザー列挙権限を付与することだけです。 

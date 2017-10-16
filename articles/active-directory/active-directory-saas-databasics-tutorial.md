@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/08/2017
 ms.author: jeedes
+ms.openlocfilehash: 3a9776e6d11a54220a3b055d59e89d2eb4161a1a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 26943282701302b61252e17850b71381afb1629b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>チュートリアル: Azure Active Directory と DATABASICS の統合
 
@@ -124,11 +123,14 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-databasics-tutorial/tutorial_general_400.png)
 
-6. **DATABASICS** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [DATABASICS サポート チーム](https://www.data-basics.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+6. DATABASICS 側でシングル サインオンを構成するには、下記の URL を使用してフォームに入力します。 フォームを送信すると、[DATABASICS クライアント サポート チーム](https://www.data-basics.com/support/)から連絡があります。
+    
+    [https://www.data-basics.com/support/submit-sso-onboarding-request/](https://www.data-basics.com/support/submit-sso-onboarding-request/)
+
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+ 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -160,7 +162,7 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-databasics-test-user"></a>DATABASICS テスト ユーザーの作成
 
@@ -222,5 +224,4 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_203.png
-
 

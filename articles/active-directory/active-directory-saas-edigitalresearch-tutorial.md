@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: f877a1dd844c40c913f3121e5288952653c312cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル: Azure Active Directory と eDigitalResearch の統合
 
@@ -165,7 +164,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-edigitalresearch-test-user"></a>eDigitalResearch テスト ユーザーの作成
 
@@ -233,5 +232,4 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 [201]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_203.png
-
 

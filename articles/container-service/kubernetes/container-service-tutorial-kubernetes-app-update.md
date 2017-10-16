@@ -14,20 +14,18 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 081f36c975c4a2d137fa20e346d6b6739b6997fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 72cdbfe2fe65e5152ca748cbb3989e3ef980ee50
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="update-an-application-in-kubernetes"></a>Kubernetes でアプリケーションを更新する
 
-Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新のロールアウトがステージングされます。 このステージングされた更新により、アプリケーションは更新中も実行を続けることができ、デプロイで問題が発生した場合のロールバック メカニズムが提供されます。 
+Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。 
 
 この 7 部構成の 6 番目のチュートリアルでは、サンプルの Azure Vote アプリを更新します。 以下のタスクを行います。
 
@@ -43,20 +41,18 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 
 これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 
 
+アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 内部には、`azure-vote` という名前のディレクトリと `docker-compose.yml` という名前のファイルがあります。
+
 これらの手順を実行していない場合で、順番に進めたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./container-service-tutorial-kubernetes-prepare-app.md)」に戻ってください。 
 
 ## <a name="update-application"></a>アプリケーションを更新する
 
-このチュートリアルの手順を実行するには、Azure Vote アプリケーションのコピーを複製しておく必要があります。 必要な場合は、次のコマンドでこの複製コピーを作成します。
+このチュートリアルでは、アプリケーションを変更し、更新したアプリケーションを Kubernetes クラスターにデプロイします。 
+
+アプリケーションのソース コードは、`azure-vote` ディレクトリ内にあります。 適当なコード エディターまたはテキスト エディターで `config_file.cfg` ファイルを開きます。 この例では、 `vi` が使用されます。
 
 ```bash
-git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
-```
-
-適当なコード エディターまたはテキスト エディターで `config_file.cfg` ファイルを開きます。 このファイルは、複製されたリポジトリの次のディレクトリにあります。
-
-```bash
- /azure-voting-app-redis/azure-vote/azure-vote/config_file.cfg
+vi azure-vote/azure-vote/config_file.cfg
 ```
 
 `VOTE1VALUE` と `VOTE2VALUE` の値を変更して、ファイルを保存します。
@@ -69,35 +65,39 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-[docker-compose](https://docs.docker.com/compose/) を使用してフロントエンド イメージを再作成し、更新したアプリケーションを実行します。
+ファイルを保存して閉じます。
+
+## <a name="update-container-image"></a>コンテナー イメージの更新
+
+[docker-compose](https://docs.docker.com/compose/) を使用してフロントエンド イメージを再作成し、更新したアプリケーションを実行します。 引数 `--build` は、Docker Compose にアプリケーション イメージの再作成を指示するために使用されます。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml up --build -d
+docker-compose up --build -d
 ```
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-`http://localhost:8080` に移動し、更新したアプリケーションを確認します。
+ブラウザーで http://localhost:8080 に移動して、更新したアプリケーションを確認します。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>イメージにタグを付けてプッシュする
 
-コンテナー レジストリの loginServer で *azure-vote-front* イメージにタグを付けます。
+コンテナー レジストリの loginServer で `azure-vote-front` イメージにタグを付けます。 
 
-Azure Container Registry を使っている場合は、[az acr list](/cli/azure/acr#list) コマンドでログイン サーバー名を取得します。
+[az acr list](/cli/azure/acr#list) コマンドを使用して、ログイン サーバー名を取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-[docker tag](https://docs.docker.com/engine/reference/commandline/tag/) を使用してイメージにタグを付けます。 `<acrLoginServer>` を、Azure Container Registry のログイン サーバー名またはパブリック レジストリのホスト名で置き換えます。
+[docker tag](https://docs.docker.com/engine/reference/commandline/tag/) を使用してイメージにタグを付けます。 `<acrLoginServer>` を、Azure Container Registry のログイン サーバー名またはパブリック レジストリのホスト名で置き換えます。 また、イメージのバージョンは `redis-v2` に更新されます。
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を、Azure Container Registry のログイン サーバー名またはパブリック レジストリのホスト名で置き換えます。
+[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を Azure Container Registry のログイン サーバー名に置き換えます。
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -121,7 +121,7 @@ azure-vote-front-233282510-dhrtr   1/1       Running   0          10m
 azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 ```
 
-azure-vote-front イメージを複数のポッドで実行していない場合は、*azure-vote-front* のデプロイを拡張します。
+azure-vote-front イメージを複数のポッドで実行していない場合は、`azure-vote-front` のデプロイを拡張します。
 
 
 ```azurecli-interactive
@@ -152,7 +152,7 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 ## <a name="test-updated-application"></a>更新されたアプリケーションをテストする
 
-*azure-vote-front* サービスの外部 IP アドレスを取得します。
+`azure-vote-front` サービスの外部 IP アドレスを取得します。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front

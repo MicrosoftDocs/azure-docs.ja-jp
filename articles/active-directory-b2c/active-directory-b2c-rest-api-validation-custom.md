@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
 ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。  
@@ -134,4 +132,3 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 [プロファイルの編集とユーザー登録を変更してユーザーから追加情報を収集する](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)
-

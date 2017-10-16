@@ -4,7 +4,7 @@
   items:
     - name: Functions について
       href: functions-overview.md
-    - name: Flow、Logic Apps、Functions、WebJobs の比較
+    - name: サーバーレス サービスの比較
       href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: クイック スタート
   expanded: true
@@ -17,23 +17,25 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: トリガー
       items:
+        - name: BLOB ストレージ
+          href: functions-create-storage-blob-triggered-function.md
+        - name: Azure Cosmos DB
+          href: functions-create-cosmos-db-triggered-function.md
         - name: Timer
           href: functions-create-scheduled-function.md
         - name: 汎用 webhook
           href: functions-create-generic-webhook-triggered-function.md
         - name: GitHub webhook
           href: functions-create-github-webhook-triggered-function.md
-        - name: BLOB ストレージ
-          href: functions-create-storage-blob-triggered-function.md
         - name: Queue Storage
           href: functions-create-storage-queue-triggered-function.md
     - name: 統合
       items:
         - name: Storage
           href: functions-integrate-storage-queue-output-binding.md
-        - name: Cosmos DB
+        - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: チュートリアル
+- name: Tutorials (チュートリアル)
   items:
     - name: 1 - Functions と Logic Apps
       href: functions-twitter-email.md
@@ -41,6 +43,8 @@
       href: functions-create-serverless-api.md
     - name: 3 - OpenAPI 定義の作成
       href: functions-openapi-definition.md
+    - name: 4 - Event Grid でのイメージのサイズ変更
+      href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: サンプル
   items:
     - name: コード サンプル
@@ -100,16 +104,20 @@
         - name: Open API 2.0 定義の作成
           href: functions-api-definition-getting-started.md
         - name: PowerApps および Microsoft Flow にエクスポートする
-          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          href: app-service-export-api-to-powerapps-and-flow.md
         - name: PowerApps から関数を呼び出す
           href: functions-powerapps-scenario.md
+        - name: Microsoft Flow から関数を呼び出す
+          href: functions-flow-scenario.md
+        - name: 管理対象のサービス ID の使用
+          href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: リファレンス
   items:
     - name: バインド
       items:
         - name: BLOB ストレージ
           href: functions-bindings-storage-blob.md
-        - name: Cosmos DB
+        - name: Azure Cosmos DB
           href: functions-bindings-documentdb.md
         - name: Event Hubs
           href: functions-bindings-event-hubs.md
@@ -119,6 +127,8 @@
           href: functions-bindings-external-table.md
         - name: HTTP と webhook
           href: functions-bindings-http-webhook.md
+        - name: Microsoft Graph
+          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -135,6 +145,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
+    - name: host.json のリファレンス
+      href: functions-host-json.md
+    - name: アプリ設定のリファレンス
+      href: functions-app-settings.md
     - name: OpenAPI リファレンス
       href: functions-api-definition.md
 - name: リソース
@@ -147,6 +161,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: ビデオ
+      href: 'https://www.youtube.com/c/AzureFunctions'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
     - name: スタック オーバーフロー

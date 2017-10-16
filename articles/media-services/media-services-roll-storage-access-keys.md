@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8e0f0905748923177269b6d5df27be900770fece
-ms.openlocfilehash: a2802dbf1d8a22c33b20dd4e71fcf26d9780f86a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 304e72e0d2d4a7e95df513e6d5481def9eae3f68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する
 
@@ -78,4 +77,3 @@ Media Services は、指定されたストレージ キーに依存します。 
 
 ### <a name="acknowledgments"></a>謝辞
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
-

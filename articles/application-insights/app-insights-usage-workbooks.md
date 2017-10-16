@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: bwren
+ms.openlocfilehash: 75028b4fbda43d90f56690a33c7eb624fce049c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4e7ca1f4b3ca7734b00f4d9ce60b466ecf2aeb3f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Application Insights のインタラクティブなブックで使用状況データを調査して共有する
 
 Workbooks は、[Azure Application Insights](app-insights-overview.md) のデータ視覚化、[分析クエリ](app-insights-analytics.md)、およびテキストをインタラクティブなドキュメントに結合します。 Workbooks は同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。 つまり、ブックの作成に使用するクエリやコントロールはそのブックを読んでいる他のユーザーも使用できるため、検索や拡張および校正を簡単に行うことができます。
@@ -127,4 +125,3 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
     - [ユーザー フロー](app-insights-usage-flows.md)
     - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
     
-

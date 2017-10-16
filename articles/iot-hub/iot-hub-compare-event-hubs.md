@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 12389b4be03b714d99edcf3fd621bd2d9c586540
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.openlocfilehash: a37df79a38a35b61cca72918d4d893a4bfc83b7e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT Hub と Azure Event Hubs の比較
 デバイスからのテレメトリ データの収集は、IoT Hub の主なユース ケースの 1 つです。 このため、IoT Hub はしばしば [Azure Event Hubs][Azure Event Hubs] と比較されます。 IoT Hub のように、Event Hubs は、低遅延の動作と高い信頼性を確保しながら、クラウドに対する膨大なイベントとテレメトリ データの入口として利用できるイベント処理サービスです。
@@ -66,4 +65,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-

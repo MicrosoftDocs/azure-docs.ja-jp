@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/22/2017
 ms.author: jgao
+ms.openlocfilehash: 65a93003eb829a2eaf4684d2a6ecacf74b0adc75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 7818093e42c34ee671a035cde783a6622fb2a798
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -104,9 +103,12 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 ## <a name="next-steps"></a>次のステップ
 この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。 同様に、SQL Database に HDInsight サービスからデータを取得することもできます。 また、HDInsight サービスにデータをアップロードすることもできます。 詳細については、次を参照してください。
 
-* [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
+* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](./hdinsight-connect-hive-power-bi.md)。
+* [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)。
+* [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
+* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
+* [HDInsight にデータをアップロードする](./hdinsight-upload-data.md)。
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
@@ -116,6 +118,5 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [hdinsight-get-started]: hdinsight-hadoop-tutorial-get-started-windows.md
 
 [hive-odbc-driver-download]: http://go.microsoft.com/fwlink/?LinkID=286698
-
 
 

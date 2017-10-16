@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
+ms.openlocfilehash: 8e50ea660df0a3ca1fbd23f7b610a7e57eb737d1
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 042e2f4117a35e80694a1643dd95fa54d508f1f7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 > [!div class="op_single_selector"]
-> * [Azure ポータル]()
+> * [Azure ポータル](active-directory-assign-admin-roles-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-assign-admin-roles.md)
 >
 >
@@ -187,4 +186,3 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * [ユーザーの管理](active-directory-create-users.md)
 * [パスワードの管理](active-directory-manage-passwords.md)
 * [グループの管理](active-directory-manage-groups.md)
-

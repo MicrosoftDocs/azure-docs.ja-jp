@@ -16,14 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 9458b3b619649d094ddab1638e146571d9268fb0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: 2fee04ee11210b9081fc7edb64da1f0210f1bd06
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
 Azure Resource Manager テンプレートを使用して、関数アプリをデプロイできます。 この記事では、これを行う際に必要なリソースとパラメーターについて説明します。 関数アプリの[トリガーとバインド](functions-triggers-bindings.md)によっては、追加のリソースのデプロイが必要になる可能性があります。
@@ -38,7 +36,7 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 
 関数アプリには次のリソースが必要です。
 
-* [Azure Storage](../storage/index.md) アカウント
+* [Azure Storage](../storage/index.yml) アカウント
 * ホスティング プラン (従量課金プランまたは App Service プラン)
 * 関数アプリ 
 
@@ -293,4 +291,3 @@ Azure Functions を開発および構成する方法について学習します�
 
 [従量課金プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
 [Azure App Service プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
-

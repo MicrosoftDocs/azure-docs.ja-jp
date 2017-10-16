@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: nepeters
+ms.openlocfilehash: 4117b6020d2d75a953fd5f032b378e49d2c752ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: a6f417ea6575b81258998ae3b31c10e9df59b603
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 08/08/2017
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用のカスタム スクリプト拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。
+Windows 用のカスタム スクリプト拡張機能は、Windows 10 クライアント、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。
 
 ### <a name="script-location"></a>スクリプトの場所
 
@@ -49,7 +48,7 @@ Windows 用のカスタム スクリプト拡張機能では、ターゲット�
 ```json
 {
     "apiVersion": "2015-06-15",
-    "type": "extensions",
+    "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -151,4 +150,3 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ### <a name="support"></a>サポート
 
 この記事についてさらにヘルプが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム] (https://azure.microsoft.com/en-us/support/forums/) で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/en-us/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
-

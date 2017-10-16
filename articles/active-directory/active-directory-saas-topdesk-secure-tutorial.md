@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
 ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
-ms.lasthandoff: 02/23/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
 このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。  
@@ -105,7 +104,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
 
 6. 別の Web ブラウザーのウィンドウで、 **Azure クラシック ポータル** に管理者としてログインします。
 
-7. **TOPdesk - Secure** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+7. **TOPdesk - Secure**アプリケーション統合ページで、をクリックして**でのシングル サインオンを構成する**を開くには、* * シングル サインオンの構成 * * ダイアログ。
    
     ![シングル サインオンの構成](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Configure Single Sign-On")
 
@@ -121,7 +120,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
    
     b. **[TOPdesk - Secure 応答 URL]** テキストボックスに、**TOPdesk - Secure AssertionConsumerService URL** (例: "*https://qssolutions.topdesk.net/tas/public/login/saml*") を貼り付けます。
    
-    c. **[次へ]**をクリックします。
+    c. **[次へ]** をクリックします。
 
 10. **[TOPdesk - Secure でのシングル サインオンの構成]** ページで、メタデータ ファイルをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターのローカルに保存します。
     
@@ -206,7 +205,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>ユーザーを TOPdesk - Secure に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **TOPdesk - Secure** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
+2. * * TOPdesk - Secure * * アプリケーション統合ページで、をクリックして**ユーザーの割り当て**です。
    
     ![ユーザーの割り当て](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Assign Users")
 
@@ -215,5 +214,4 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
 

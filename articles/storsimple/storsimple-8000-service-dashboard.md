@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: d987a4ae170f21532a886552cbe1eb5a0d25fc3f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 
@@ -88,5 +87,4 @@ StorSimple デバイス マネージャー内で実行されるさまざまな�
 ## <a name="next-steps"></a>次のステップ
 
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
-
 

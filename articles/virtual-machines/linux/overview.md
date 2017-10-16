@@ -9,18 +9,17 @@ editor:
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: d0c6523b4d90c29781d256b2882b0935b50e2af9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 84406b3068a6705bf0a4c5f17ace5a586398da4f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
@@ -39,7 +38,7 @@ Microsoft は、単一インスタンス仮想マシン向けに、業界をリ�
 
 Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
 
-また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../../storage/storage-managed-disks-overview.md)に関するページをご覧ください。
+また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../windows/managed-disks-overview.md)に関するページをご覧ください。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure Virtual Machines とインスタンス
 Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace からは、Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS、FreeBSD などのディストリビューションが提供されています。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) リストを拡充しています。
@@ -60,7 +59,7 @@ Azure に VM をデプロイするとき、あらかじめ用意された一連�
 
 注: DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。SSD をベースとした高性能かつ低レイテンシのストレージによって、I/O 負荷の高いワークロードに対応します。 Premium Storage は特定のリージョンで使用できます。 詳細については、次のリンクを参照してください。
 
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md)
+* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md)
 
 ## <a name="automation"></a>Automation
 適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます (Phoenix サーバー)。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
@@ -120,7 +119,7 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
 ## <a name="storage"></a>Storage
-* [Microsoft Azure Storage の概要](../../storage/storage-introduction.md)
+* [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
 * [Azure CLI を使用して Linux VM にディスクを追加する](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Portal で Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -139,4 +138,3 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。
 
 * [Azure CLI を使用した一般的なタスクの増え続けるサンプル スクリプトの一覧を確認する](cli-samples.md)
-

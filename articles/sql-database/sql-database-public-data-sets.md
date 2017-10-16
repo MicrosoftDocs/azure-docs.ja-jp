@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 03/20/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 53ae23dba61cf835c6a4826b528772b1cd2e1622
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: b6f8d327123fc0ebe13790cbb3760f6eba90f5b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 
@@ -60,4 +59,3 @@ ms.lasthandoff: 03/29/2017
 | [GitHub Archive](https://www.githubarchive.org/) | "GitHub Archive は、公開されている GitHub の (イベントの) タイムラインを記録してアーカイブし、今後の分析で簡単にアクセスできるようにするためのプロジェクトです。" | JSON でエンコードされたイベント アーカイブを、Web クライアントから .gz (Gzip) 形式でダウンロードします。 |
 | [GHTorrent プロジェクトの GitHub アクティビティ データ](http://ghtorrent.org/) | "GHTorrent プロジェクトは、GitHub REST API を通じて提供されるデータの、スケーラブルで照会可能なオフライン ミラーです。 GHTorrent は、GitHub の公開されているイベントのタイムラインを監視します。 イベントごとに、その内容と依存関係を徹底的に取得します。" | MySQL データ ダンプは CSV 形式です。 |
 | [Stack Overflow データ ダンプ](https://archive.org/details/stackexchange) | "これは、Stack Overflow を含む Stack Exchange ネットワーク上でユーザーが投稿したすべてのコンテンツの匿名化されたダンプです。" | "Stack Overflow などの各サイトは、bzip2 圧縮を使用する 7-zip で圧縮した XML ファイルで構成された、個別のアーカイブとしてフォーマットされます。 各サイトのアーカイブには、Posts、Users、Votes、Comments、PostHistory、PostLinks が含まれます。" |
-

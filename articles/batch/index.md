@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
+ms.openlocfilehash: 31e15ecb995f0a5b1164296132db15e8de7e4363
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: bf3e8b9e8976e2b68bc0da6a3beb1dacfaef6066
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="batch-documentation"></a>Batch のドキュメント
 
@@ -193,6 +192,5 @@ Batch を使用して、大規模な並列コンピューティングやハイ�
         </div>
     </li>
 </ul>
-
 
 

@@ -15,14 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/24/2016
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: f9f3a7b2369818791ffac1c8eeccef45216c2ff0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Azure Search 用の SKU または価格レベルの選択
 Azure Search では、特定の価格レベルまたは SKU で[サービスがプロビジョニングされます](search-create-service-portal.md)。 指定できる選択肢には、**Free**、**Basic**、**Standard** があります。このうち **Standard** は、複数の構成および容量で指定できます。
 
@@ -115,4 +113,3 @@ Azure Search では、価格レベルにより、利用できる機能ではな�
 
 * [ポータルで Search サービスを作成する](search-create-service-portal.md)
 * [サービスをスケールするためにパーティションとレプリカの割り当てを変更する](search-capacity-planning.md)
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
-ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/21/2017
-
-
+ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery の Hyper-V Capacity Planner ツールを実行する
 
@@ -135,4 +133,3 @@ Azure にレプリケートする場合、この手順は必要ありません�
 * [VMM クラウドの Hyper-V VM を Azure にレプリケートする](site-recovery-vmm-to-azure.md)
 * [Hyper-V VM (VMM なし) を Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md)
 * [VMM サイト間で Hyper-V VM をレプリケートする](site-recovery-vmm-to-vmm.md)
-

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/15/2017
+ms.date: 09/07/2017
 ms.author: larryfr
+ms.openlocfilehash: 39234ca792983178cfd4304e001271ea30e28ae6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1976c52bd7fa56bb07104e205ab3699b2dfa4c50
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>HDInsight での Apache Kafka の概要 (プレビュー)
 
@@ -40,9 +39,9 @@ Kafka には、次の機能が用意されています。
 
 * フォールト トレラント: パーティションをノード間でレプリケートできるため、フォールト トレランスを提供します。
 
-* Azure Managed Disks との統合: Managed Disks は、HDInsight クラスターの仮想マシンで使われるディスクのスケールとスループットを高める機能を提供します。
+* Azure Managed Disks との統合: Managed Disks は、HDInsight クラスターの仮想マシンで使われるディスクのスケーリングとスループットを高める機能を提供します。
 
-    HDInsight 上の Kafka では Managed Disks は既定で有効になり、ノードごとに使われるディスクの数は HDInsight の作成時に構成できます。 Managed Disks について詳しくは、「[Azure Managed Disks の概要](../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+    HDInsight 上の Kafka では Managed Disks が既定で有効になります。 ノードごとに使われるディスクの数は HDInsight の作成時に構成できます。 Managed Disks について詳しくは、「[Azure Managed Disks の概要](../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
     HDInsight 上の Kafka での Managed Disks の構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](hdinsight-apache-kafka-scalability.md)」をご覧ください。
 
@@ -55,6 +54,15 @@ Kafka には、次の機能が用意されています。
 * **集計**: ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
 
 * **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
+
+## <a name="architecture"></a>アーキテクチャ
+
+![Kafka クラスターの構成](./media/hdinsight-apache-kafka-introduction/kafka-cluster.png)
+
+この図は、コンシューマー グループ、パーティション分割、レプリケーションを使ってイベントの並列読み取りとフォールト トレランスを実現する標準的な Kafka の構成を示しています。 Apache ZooKeeper は、Kafka クラスターの状態管理におけるトランザクションの同時実行性、回復性、短い待ち時間の実現を目指して構築されています。 Kafka では、"*トピック*" 内にレコードが格納されます。 レコードは、*プロデューサー*によって生成され、*コンシューマー*によって消費されます。 プロデューサーは、Kafka の*ブローカー*からレコードを取得します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。 コンシューマーごとに 1 つのパーティションを作成することで、ストリーミング データの並列処理が可能となっています。 レプリケーションによって複数ノードにパーティションが分散されて、ノード (ブローカー) の機能不全に対する保護措置が講じられています。 *(L)* で示されたパーティションは、各パーティションのリーダーです。 プロデューサー トラフィックは、ZooKeeper によって管理された状態に基づいて、各ノードのリーダーにルーティングされます。
+
+> [!IMPORTANT]
+> 基になる Azure データ センターのハードウェア (ラック) は、Kafka では認識されません。 基になるハードウェア間でパーティションを正しく調整する方法については、[データの高可用性構成 (Kafka)](hdinsight-apache-kafka-high-availability.md) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

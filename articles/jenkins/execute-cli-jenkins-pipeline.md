@@ -15,14 +15,12 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: b93e787050613b241ea116e7263f63835bd211fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
 
@@ -93,7 +91,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
- [az webapp create](/cli/azure/appservice/web#create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
+ [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
 ```azurecli-interactive
 az webapp create \
@@ -184,7 +182,7 @@ Web アプリに WAR ファイルが正常にデプロイされたことを確�
 
 Azure Web App on Linux はデプロイを行う別の方法をサポートしていて、この方法では Docker を使用します。 デプロイを行うには、Web アプリとサービス ランタイムを Docker イメージにパッケージ化する Dockerfile を用意する必要があります。 プラグインはイメージを作成して、Docker レジストリに転送し、Web アプリにイメージをデプロイします。
 
-* Linux 上で実行される Azure Web App を作成するには、[こちら](/azure/app-service-web/app-service-linux-how-to-create-web-app)の手順に従ってください。
+* Linux 上で実行される Azure Web App を作成するには、[こちら](../app-service/containers/quickstart-nodejs.md)の手順に従ってください。
 * こちらの[記事](https://docs.docker.com/engine/installation/linux/ubuntu/)の手順に従って、Docker を Jenkins インスタンスにインストールします。
 * [こちら](/azure/container-registry/container-registry-get-started-azure-cli)の手順に従って、Azure ポータルにコンテナー レジストリを作成します。
 * 追加した同じ [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) リポジトリで、**Jenkinsfile2** ファイルを編集します。
@@ -233,4 +231,3 @@ Azure Web App on Linux はデプロイを行う別の方法をサポートして
 > * GitHub レポジトリを準備する
 > * Jenkins パイプラインを作成する
 > * パイプラインを実行し、Web アプリを確認する
-

@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/02/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: aa1c4ea379c10dff246e2f924a345f9fa444aa64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: cdac6362f0d51b3144024efd28af09eb6d97515f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
 Azure Container Registry は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 この記事では、Azure Container Registry に格納されているコンテナー イメージを Azure Container Instances にデプロイする方法について説明します。
@@ -34,10 +32,10 @@ Azure Container Registry は、Docker コンテナー イメージ用の Azure �
 Azure CLI には、Azure Container Instances でコンテナーを作成および管理するためのコマンドが含まれています。 `create` コマンドでプライベート イメージを指定する場合は、コンテナー レジストリでの認証に必要なイメージ レジストリ パスワードも指定できます。
 
 ```azurecli-interactive
-az container create --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --image-registry-password myRegistryPassword --resource-group myresourcegroup
+az container create --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --registry-password myRegistryPassword --resource-group myresourcegroup
 ```
 
-`create` コマンドでは、`image-registry-login-server` と `image-registry-username` の指定もサポートされます。 ただし、Azure Container Registry のログイン サーバーは常に *registryname*.azurecr.io であり、既定のユーザー名は *registryname* であるため、これらの値が明示的に指定されていない場合はイメージ名から推測されます。
+`create` コマンドでは、`registry-login-server` と `registry-username` の指定もサポートされます。 ただし、Azure Container Registry のログイン サーバーは常に *registryname*.azurecr.io であり、既定のユーザー名は *registryname* であるため、これらの値が明示的に指定されていない場合はイメージ名から推測されます。
 
 ## <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 

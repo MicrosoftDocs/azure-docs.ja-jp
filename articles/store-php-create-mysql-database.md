@@ -15,19 +15,17 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 66f4b7a5f8eb3f6f125c9420b40caffca3d43dd6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: c072cb3a7d376d1e3c2b9f741f5410106e701256
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>Azure で MySQL データベースを作成して接続する
-このチュートリアルでは、[Azure Portal](https://portal.azure.com) (プロバイダーは [ClearDB](http://www.cleardb.com/)) で MySQL データベースを作成する方法と、[Azure App Service](app-service/app-service-value-prop-what-is.md) で実行されている PHP Web アプリからそのデータベースに接続する方法について説明します。
+このチュートリアルでは、[Azure Portal](https://portal.azure.com) (プロバイダーは [ClearDB](http://www.cleardb.com/)) で MySQL データベースを作成する方法と、[Azure App Service](app-service/app-service-web-overview.md) で実行されている PHP Web アプリからそのデータベースに接続する方法について説明します。
 
 > [!NOTE]
-> MySQL データベースは、 [Marketplace アプリ テンプレート](app-service-web/app-service-web-create-web-app-from-marketplace.md)の一部として作成することもできます。
+> MySQL データベースは、 <a href="https://portal.azure.com/#create/WordPress.WordPress" target="_blank">Marketplace アプリ テンプレート</a>の一部として作成することもできます。
 >
 >
 
@@ -70,75 +68,5 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
 
 これで、どの Web アプリでもその接続情報を使用できるようになりました。 単純な PHP アプリから接続情報を使用する方法を示すサンプルは、 [こちら](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql)で入手できます。
 
-## <a name="connect-a-laravel-web-app-from-the-php-get-started-tutorial"></a>Laravel Web アプリの接続 (PHP の入門チュートリアルから)
-「[Azure への PHP Web アプリの作成、構成、デプロイ](app-service-web/app-service-web-php-get-started.md)」のチュートリアルを完了したばかりで、Azure で [Laravel](https://www.laravel.com/) Web アプリを実行しているとします。 その場合、Laravel アプリにデータベース機能を簡単に追加できます。 以下の手順に従ってください。
-
-> [!NOTE]
-> 以下の手順では、「 [Azure への PHP Web アプリの作成、構成、デプロイ](app-service-web/app-service-web-php-get-started.md)」のチュートリアルが完了していることを前提としています。
->
->
-
-1. ローカル開発環境で、MySQL データベースを参照するように Laravel アプリを構成します。 そのためには、Laravel アプリのルート ディレクトリの `.env` を開き、MySQL データベース オプションを構成します。
-
-        DB_CONNECTION=mysql
-        DB_HOST=<HOSTNAME_from_properties_blade>
-        DB_PORT=<PORT_from_properties_blade>
-        DB_DATABASE=<see_note_below>
-        DB_USERNAME=<USERNAME_from_properties_blade>
-        DB_PASSWORD=<PASSWORD_from_properties_blade>
-
-   > [!NOTE]
-   > **[プロパティ]** ブレードでは、MySQL データベースの名前が **[データベース名]** フィールドに表示されている場合と表示されていない場合があります。 **[接続文字列]** フィールドで Database パラメーターを確認することをお勧めします。    
-   >
-   > ![Create a MySQL database in Azure - in progress](./media/store-php-create-mysql-database/connect-db-1-database-name.png)
-   >
-   >
-2. 現時点で MySQL にアクセスできることを確認するための最も簡単な方法は、 [Laravel の既定の認証スキャフォールディング](https://laravel.com/docs/5.2/authentication#authentication-quickstart)を使用することです。
-   コマンド ライン ターミナルで、Laravel アプリのルート ディレクトリから以下のコマンドを実行します。
-
-         php artisan migrate
-         php artisan make:auth
-
-    最初のコマンドは `database/migrations` ディレクトリの定義済みの移行に基づいて Azure にテーブルを作成し、2 番目のコマンドはユーザー登録と認証用の基本的なビューとルートをスキャフォールディングします。
-3. ここで開発サーバーを実行します。
-
-        php artisan serve
-4. ブラウザーで http://localhost:8000 に移動し、次のように新しいユーザーを登録します。
-
-    ![Connect to MySQL database in Azure - register user](./media/store-php-create-mysql-database/connect-db-2-development-server.png)
-
-    UI の指示に従って、登録を完了します。 登録が完了すると、ログイン状態になります。
-
-    ![Connect to MySQL database in Azure - register user](./media/store-php-create-mysql-database/connect-db-3-registered-user.png)
-
-    これで、Azure の MySQL データベースに対してアプリを開発できるようになりました。
-5. ここでは、単に `.env` 設定を Azure Web アプリにレプリケートする必要があります。 以下の Azure CLI コマンドを実行します。
-
-        azure site appsetting add DB_CONNECTION=mysql
-        azure site appsetting add DB_HOST=<HOSTNAME_from_properties_blade>
-        azure site appsetting add DB_PORT=<PORT_from_properties_blade>
-        azure site appsetting add DB_DATABASE=<Database_param_from_CONNECTION_INFO_from_properties_blade>
-        azure site appsetting add DB_USERNAME=<USERNAME_from_properties_blade>
-        azure site appsetting add DB_PASSWORD=<PASSWORD_from_properties_blade>
-
-6. 次に、以前 `php artisan make:auth`の実行中に行ったローカルの変更をコミットして Azure にプッシュします。
-
-        git add .
-        git commit -m "scaffold auth views and routes"
-        git push azure master
-7. Azure Web アプリに移動します。
-
-        azure site browse
-8. 前に作成したユーザー資格情報を使用して、ログインします。
-
-    ![Connect to MySQL database in Azure - browse to Azure web app](./media/store-php-create-mysql-database/connect-db-4-browse-azure-webapp.png)
-
-    ログインすると、わかりやすいログイン後の画面が表示されます。
-
-    ![Connect to MySQL database in Azure - logged in](./media/store-php-create-mysql-database/connect-db-5-logged-in.png)
-
-    これで、Azure の PHP Web アプリが MySQL データベースのデータにアクセスできるようになりました。
-
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
-

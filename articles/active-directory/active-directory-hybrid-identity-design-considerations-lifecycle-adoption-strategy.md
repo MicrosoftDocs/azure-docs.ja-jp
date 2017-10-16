@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 18b40486a66d8e092a8af299460145989a1ab99d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
 このタスクでは、「 [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)」で定義したビジネス要件を満たすために、ハイブリッド ID ソリューションの ID 管理戦略を定義します。
@@ -100,5 +99,4 @@ ID の同期プロセス
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

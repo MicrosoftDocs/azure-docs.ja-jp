@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
+ms.openlocfilehash: f2b9aad02a1ae3d5117ffd59b448eabe65a936fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 83821ed2f7db1c7dea88a1b4424d405959a206db
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -41,11 +40,11 @@ Linux オペレーティング システム (OS) ディスクの暗号化には�
 
 ## <a name="unable-to-encrypt"></a>暗号化できない
 
-場合によっては、ディスクの暗号化が「OS ディスクの暗号化が開始されました」というメッセージが表示されたまま先へ進まず、SSH が無効になっているように見えることがあります。 暗号化プロセスは、ストック ギャラリー イメージで終了するまでに 3 ～ 16 時間かかる可能性があります。 数テラバイトのデータ ディスクを追加した場合、プロセスは数日かかることもあります。 
+場合によっては、ディスクの暗号化が「OS ディスクの暗号化が開始されました」というメッセージが表示されたまま先へ進まず、SSH が無効になっているように見えることがあります。 暗号化プロセスは、ストック ギャラリー イメージで終了するまでに 3 ～ 16 時間かかる可能性があります。 数テラバイトのデータ ディスクを追加した場合、プロセスは数日かかることもあります。
 
 Linux OS ディスクの暗号化シーケンスは、OS ドライブを一時的にマウント解除します。 その後、OS ディスク全体のブロック単位の暗号化を実行した後、OS ディスクを暗号化された状態で再マウントします。 Windows の Azure Disk Encryption とは異なり、Linux のディスク暗号化では、暗号化が行われている間、VM を同時に使用することはできません。 暗号化を完了するために必要な時間は、VM のパフォーマンス特性によって大幅に異なる可能性があります。 これらの特性には、ディスクのサイズとストレージ アカウントのストレージが Standard であるか Premium (SSD) であるかが含まれます。
 
-暗号化の状態を確認するには、[Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 次に例を示します。
+暗号化の状態を確認するには、[Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 For example:
 
 
 ```
@@ -85,15 +84,15 @@ VM は、キー コンテナーにアクセスできる必要があります。 
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core のトラブルシューティング
 
-Windows Server 2016 Server Core では、**bdehdcfg** コンポーネントは既定では使用できません。 Azure Disk Encryption はこのコンポーネントを必要とします。 次の手順に従って、**bdehdcfg** コンポーネントを追加してください。
+Windows Server 2016 Server Core では既定で、bdehdcfg コンポーネントを使用できません。 このコンポーネントは、Azure Disk Encryption で必要です。 これは、VM の有効期間中 1 回のみ実行される、OS ボリュームからのシステム ボリュームの分割に使用されます。 これらのバイナリは、以後の暗号化操作には必要ありません。
 
-   1. 次の 4 つのファイルを Windows Server 2016 Data Center VM から Server Core イメージの **c:\windows\system32** フォルダーにコピーします。
+この問題を解決するには、次の 4 つのファイルを Windows Server 2016 Data Center VM から Server Core 上の同じ場所にコピーします。
 
    ```
-   bdehdcfg.exe
-   bdehdcfglib.dll
-   bdehdcfglib.dll.mui
-   bdehdcfg.exe.mui
+   \windows\system32\bdehdcfg.exe
+   \windows\system32\bdehdcfglib.dll
+   \windows\system32\en-US\bdehdcfglib.dll.mui
+   \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
    2. 次のコマンドを入力します。
@@ -102,11 +101,11 @@ Windows Server 2016 Server Core では、**bdehdcfg** コンポーネントは�
    bdehdcfg.exe -target default
    ```
 
-   3. このコマンドは、550 MB のシステム パーティションを作成します。 システムを再起動します。 
-   
+   3. このコマンドは、550 MB のシステム パーティションを作成します。 システムを再起動します。
+
    4. DiskPart を使用してボリュームを確認した後、次に進みます。  
 
-次に例を示します。
+For example:
 
 ```
 DISKPART> list vol
@@ -124,4 +123,3 @@ DISKPART> list vol
 - [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Azure Virtual Machine を暗号化する](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
-

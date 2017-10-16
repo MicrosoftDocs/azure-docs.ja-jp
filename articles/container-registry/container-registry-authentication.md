@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: aa2a6bf3d7d9ec22020036851fc0f2bca37e31bf
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75c5f00255e1a55dd84ba0cf17dbef56b0253334
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
@@ -53,7 +53,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 サービス プリンシパルは 1 つのレジストリに対して複数個割り当てることができます。これにより、異なるユーザーまたはアプリケーションのアクセスを定義できます。 また、サービス プリンシパルを使用すると、次に示す例のような開発者または DevOps のシナリオでレジストリへの "ヘッドレス" 接続を可能にします。
 
-  * レジストリから DC/OS、Docker Swarm、Kubernetes などのオーケストレーション システムへのコンテナーのデプロイ。 さらに、[Container Service](../container-service/index.yml)、[App Service](../app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにコンテナー レジストリをプルすることもできます。
+  * レジストリから DC/OS、Docker Swarm、Kubernetes などのオーケストレーション システムへのコンテナーのデプロイ。 さらに、[Container Service](../container-service/index.yml)、[App Service](../app-service/index.yml)、[Batch](../batch/index.md)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにコンテナー レジストリをプルすることもできます。
 
   * コンテナー イメージを作成してレジストリにプッシュする継続的インテグレーションおよびデプロイ ソリューション (Visual Studio Team Services、Jenkins など)。
 

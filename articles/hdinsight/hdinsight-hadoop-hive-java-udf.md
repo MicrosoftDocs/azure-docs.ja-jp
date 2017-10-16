@@ -13,14 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/26/2017
 ms.author: larryfr
+ms.openlocfilehash: 896874f66457ddf29379fa6585953a117587c032
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
 
@@ -206,7 +205,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 1. SSH セッションから、次のコマンドを使用して BeeLineクライアントを開始します。
 
     ```bash
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
     このコマンドは、クラスターのログイン アカウントに既定値の **admin** を使用していることを前提としています。
@@ -249,4 +248,3 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
-

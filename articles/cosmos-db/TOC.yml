@@ -93,14 +93,20 @@
           href: local-emulator.md
         - name: 証明書のエクスポート
           href: local-emulator-export-ssl-certificates.md
+    - name: 6 - Functions との統合
+      items:
+        - name: HTTP trigger
+          href: tutorial-functions-http-trigger.md
 - name: サンプル
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: cli-samples.md
-    - name: Azure PowerShell
+    - name: PowerShell
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: サーバーレス データベース
+      href: serverless-computing-database.md
     - name: グローバル配信
       href: distribute-data-globally.md
     - name: パーティション分割
@@ -268,6 +274,8 @@
           href: geospatial.md
         - name: インデックス作成
           href: indexing-policies.md
+        - name: Visual Studio での接続済みサービス
+          href: connected-service.md
     - name: 管理
       items:
         - name: コスト効率の優れた読み取りと書き込み
@@ -282,8 +290,14 @@
           href: set-throughput.md
         - name: SLA の監視
           href: monitor-accounts.md
+        - name: メトリックの使用
+          href: use-metrics.md
+        - name: 診断ログの記録
+          href: logging.md
         - name: キーと整合性の管理
           href: manage-account.md
+        - name: Azure ストレージ エクスプローラー
+          href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
         - name: セキュリティ
           items:
             - name: 保存時の暗号化
@@ -309,7 +323,7 @@
         - name: Azure Search と統合する
           href: ../search/search-howto-index-documentdb.md
         - name: Azure Data Factory を使用してデータを移動する
-          href: ../data-factory/data-factory-azure-documentdb-connector.md
+          href: ../data-factory/connector-azure-cosmos-db.md
         - name: Azure Stream Analytics でリアルタイム データを分析する
           href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
         - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
@@ -350,6 +364,8 @@
       items:
         - name: .NET
           href: table-sdk-dotnet.md
+        - name: Python
+          href: table-sdk-python.md
     - name: Graph API
       items:
         - name: .NET
@@ -358,6 +374,8 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure Cosmos DB を無料で試す
+      href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
     - name: FAQ

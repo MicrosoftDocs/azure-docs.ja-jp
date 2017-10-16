@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
@@ -121,7 +120,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 次の表は、クラスターのセットアップに必要な証明書の一覧です。
 
-|証明書情報の設定 |説明|
+|証明書情報の設定 |Description|
 |-------------------------------|-----------|
 |ClusterCertificate|    クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|
 |ServerCertificate| この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|
@@ -193,4 +192,3 @@ Azure Service Fabric セキュリティを使用すると、別のユーザー �
 ## <a name="next-steps"></a>次のステップ
 - クラスターのセキュリティの概念については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)」と [Azure Portal に関する記事](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)を参照してください。
 - Service Fabric のクラスターのセキュリティについては、「[Service Fabric クラスターのセキュリティに関するシナリオ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)」を参照してください。
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/03/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
 ms.openlocfilehash: 5dd5ffc7c08fcc9263b91ca5ac86de5163f91657
-ms.lasthandoff: 03/04/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>StorSimple デバイスのコントローラー モジュールを交換する
 ## <a name="overview"></a>Overview
@@ -60,7 +59,7 @@ ms.lasthandoff: 03/04/2017
 > 
 
 ## <a name="replace-a-single-controller"></a>1 台のコントローラーを交換する
-Microsoft Azure StorSimple デバイスの&2; 台のコントローラーの一方が故障した場合、異常動作する場合、または存在しない場合は、1 台のコントローラーを交換する必要があります。 
+Microsoft Azure StorSimple デバイスの 2 台のコントローラーの一方が故障した場合、異常動作する場合、または存在しない場合は、1 台のコントローラーを交換する必要があります。 
 
 ### <a name="single-controller-replacement-logic"></a>シングル コントローラー交換ロジック
 シングル コントローラー交換では、最初に故障したコントローラーを取り外す必要があります  (デバイスの残りのコントローラーはアクティブなコントローラーです)。交換したコントローラーを挿入すると、次の操作が行われます。
@@ -79,7 +78,7 @@ Microsoft Azure StorSimple デバイスのコントローラーの一方が故�
 > 
 > 
 
-#### <a name="to-remove-a-single-failed-controller-module"></a>故障した&1; 台のコントローラー モジュールを取り外すには
+#### <a name="to-remove-a-single-failed-controller-module"></a>故障した 1 台のコントローラー モジュールを取り外すには
 1. Azure クラシック ポータルで StorSimple Manager サービスに移動し、 **[デバイス]** タブをクリックして、監視対象デバイスの名前をクリックします。
 2. **[メンテナンス] > [ハードウェアの状態]** に移動します。 コントローラー 0 またはコントローラー 1 のいずれかの状態が赤で故障を示している必要があります。
    
@@ -106,7 +105,7 @@ Microsoft Azure StorSimple デバイスのコントローラーの一方が故�
 8. コントローラーが再起動した後、Azure クラシック ポータルで **[コントローラーの状態]** と **[クラスターの状態]** を調べて、コントローラーが正常な状態に戻ってスタンバイ モードになっていることを確認します。
 
 > [!NOTE]
-> シリアル コンソールでデバイスを監視している場合は、交換手順からコントローラーが復旧している間に再起動が複数回表示される可能性があります。 シリアル コンソール メニューが表示されると、交換が完了したことがわかります。 コントローラーの交換を開始してから&2; 時間以内にメニューが表示されない場合は、 [マイクロソフトのサポートに問い合わせて](storsimple-contact-microsoft-support.md)ください。
+> シリアル コンソールでデバイスを監視している場合は、交換手順からコントローラーが復旧している間に再起動が複数回表示される可能性があります。 シリアル コンソール メニューが表示されると、交換が完了したことがわかります。 コントローラーの交換を開始してから 2 時間以内にメニューが表示されない場合は、 [マイクロソフトのサポートに問い合わせて](storsimple-contact-microsoft-support.md)ください。
 >
 > Update 4 以降は、デバイスの Windows PowerShell インターフェイスでコマンドレット `Get-HCSControllerReplacementStatus` を使用して、コントローラーの交換プロセスの状態を監視することもできます。
 > 
@@ -243,10 +242,9 @@ Azure クラシック ポータルで **[デバイス]** > **[メンテナンス
 
 | ラベル | Description |
 |:--- |:--- |
-| 1 ～&6; |DATA 0 ～ 5 のネットワーク ポート |
+| 1 ～ 6 |DATA 0 ～ 5 のネットワーク ポート |
 | 7 |青い LED |
 
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
-
 

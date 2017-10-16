@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 1cefc0341789a4751d4e3ee687048ccd291559e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: 9ff67dcb5ecb00440f73f979fd8d2b79a570c674
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを検出する方法
 ## <a name="introduction"></a>はじめに
@@ -38,7 +37,7 @@ Data Catalog での検出では、検索とフィルター処理という 2 つ�
 ## <a name="search-syntax"></a>検索構文
 既定の自由テキストの検索は単純かつ直観的ですが、Data Catalog の検索構文を使用して検索結果をより細かく制御することもできます。 Data Catalog 検索では、次の手法をサポートしています。
 
-| 手法 | 最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、 | 例 |
+| 手法 | 用途 | 例 |
 | --- | --- | --- |
 | 基本的な検索 |1 つまたは複数の検索語句を使用した基本的な検索です。 いずれかのプロパティが指定した 1 つまたは複数の語句と一致するすべての資産が返されます。 |`sales data` |
 | プロパティ スコープ |検索語句が指定したプロパティと一致するデータ ソースのみを返します。 |`name:finance` |
@@ -67,4 +66,3 @@ Data Catalog でデータ ソースを登録すると、構造メタデータと
 
 ## <a name="next-steps"></a>次のステップ
 * データ ソースの検出方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」を参照してください。
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
+ms.openlocfilehash: eada8f2bcd2488d5ed36b0c24aa3d1b917815517
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -121,5 +120,4 @@ REST を使った AMS API へのアクセスについては、「[REST で Azure
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

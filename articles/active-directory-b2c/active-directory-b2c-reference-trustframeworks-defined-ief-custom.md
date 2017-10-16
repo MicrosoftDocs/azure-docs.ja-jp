@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4e2de9c4d1c0f92970911e132fffaacbd01d9ad0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する
 
 Identity Experience Framework を使う Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーは、組織に集中型のサービスを提供します。 このサービスは、大規模な関係者コミュニティで ID フェデレーションの複雑さを軽減します。 複雑さは、1 つの信頼関係と、1 つのメタデータ交換に削減されます。
@@ -130,4 +128,3 @@ Identity Experience Framework を活用した Azure AD B2C カスタム ポリ�
 ユーザー体験には、証明書利用者と他の参加者の間に "ネットワーク上の" 相互運用性を組み込むために使用される、プロトコル プロファイルとメタデータが含まれています。 また、TF 仕様の一部として発行されたポリシーへのコンプライアンスを強制するために、ID 情報の交換要求/応答メッセージに適用されるランタイム運用ルールもあります。 ユーザー体験は、カスタマー エクスペリエンスのカスタマイズの鍵となる概念です。 システムがプロトコル レベルでどのように機能するかも明らかにされます。
 
 このようなしくみを基に、証明書利用者アプリケーションとポータルでは、コンテキストに応じて Identity Experience Framework を活用した Azure AD B2C カスタム ポリシーを呼び出し、その際に特定のポリシーの名前を渡すことで、面倒やリスクを伴わずに必要な動作と情報交換を正確に行うことができます。
-

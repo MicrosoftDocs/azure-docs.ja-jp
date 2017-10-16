@@ -16,14 +16,12 @@ ms.date: 04/02/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
+ms.openlocfilehash: f4e67815cfe03c775dae83d214aea4f2ac37fcdc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: d12115be61ca00dfb86dd822ccae9f9096fa796a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]
 > この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
@@ -92,4 +90,3 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
 SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](microsoft-authenticator-app-how-to.md)」を参照してください。
-

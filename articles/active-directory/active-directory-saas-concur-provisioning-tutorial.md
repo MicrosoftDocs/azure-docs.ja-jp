@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: cd35b6e2dc3171e9cffdb820bbc5b0d45ff58e07
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-concur-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Concur の構成
 
@@ -125,5 +123,4 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [シングル サインオンの構成](active-directory-saas-concur-tutorial.md)
-
 

@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b93827ec35916759c26e5e58186acaff1f160a35
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 20ac1392949a6f604e68d984cb50273b61051037
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から Azure Database for PostgreSQL サーバーにアクセスできます。 
@@ -32,8 +31,8 @@ ms.lasthandoff: 05/10/2017
 
   ![Azure Portal - [自分の IP を追加] のクリック](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
-検索エンジンまたはその他のオンライン ツールを使用して、独自の IP アドレスを確認します (たとえば、「what is my IP」を Bing 検索します)。
+3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、規則が期待どおりに機能するように開始 IP と終了 IP の変更が必要になる場合があります。
+検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、「what is my IP」を Bing 検索します)。
 
   ![「What is my IP」の Bing 検索](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
@@ -54,6 +53,5 @@ ms.lasthandoff: 05/10/2017
 * 既存の規則を削除するには、省略記号 [...] をクリックして、[削除] をクリックします。 **[保存]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
-- 同様に、スクリプトを作成して [Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則を作成および管理](howto-manage-firewall-using-cli.md)することができます。
-- Azure Database for PostgreSQL サーバーに接続する方法のヘルプについては、「[Connection libraries for Azure Database for PostgreSQL (Azure Database for PostgreSQL の接続ライブラリ)](concepts-connection-libraries.md)」をご覧ください。
-
+- 同様に、スクリプトを作成し、[Azure CLI を使用して Azure Database for PostgreSQL ファイアウォール規則を作成および管理](howto-manage-firewall-using-cli.md)できます。
+- Azure Database for PostgreSQL サーバーに接続する方法のヘルプについては、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」をご覧ください。

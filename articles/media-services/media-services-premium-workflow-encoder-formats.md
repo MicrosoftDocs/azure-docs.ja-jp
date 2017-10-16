@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef5db062ac320995ff8bfa64f38c89d860957868
-ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/28/2017
-
+ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
 > [!NOTE]
@@ -131,5 +130,4 @@ ms.lasthandoff: 01/28/2017
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

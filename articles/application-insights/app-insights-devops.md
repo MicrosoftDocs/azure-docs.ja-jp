@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
+ms.openlocfilehash: de94633cabaa7a1562a5a4839a8a8924da91a283
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9b5556fabd2ccfc026037a411a2f8e83f97ffb81
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -175,5 +174,4 @@ Application Insights の操作は簡単です。 主なオプションは次の�
 * 既に実行中の Web アプリをインストルメント化します。 これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。 [Java](app-insights-java-live.md)、[IIS サーバー](app-insights-monitor-performance-live-website-now.md)のほか、[Azure Web Apps](app-insights-azure.md) でも使用できます。
 * 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) アプリだけでなく、[Node.js](app-insights-nodejs.md) や[他の種類](app-insights-platforms.md)のホストでも実行できます。 
 * 短いコード スニペットを追加して、 [任意の Web ページ](app-insights-javascript.md) をインストルメント化します。
-
 

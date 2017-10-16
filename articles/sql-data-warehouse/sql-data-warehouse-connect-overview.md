@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c3c30e51b81886ebc875df7c815a17dfa633a5f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への接続
 この記事は、初めて SQL Data Warehouse に接続する際に役立つガイドとして書かれています。
@@ -96,6 +94,5 @@ Visual Studio を使用して接続とクエリの実行を行うには、[Visua
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
-
 
 

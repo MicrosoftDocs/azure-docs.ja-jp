@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
+ms.openlocfilehash: 8c981046ff41d3927ff60d6dc4f40366ae25ba74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 928e33392924a7461a4a03ac16ff0994680e68f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -80,9 +78,9 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 ## <a name="add-the-microsoft-account-application-key-to-azure-ad-b2c"></a>Azure AD B2C に Microsoft アカウント アプリケーション キーを追加する
 Microsoft アカウントとのフェデレーションには、Microsoft アカウントのクライアント シークレットがアプリケーションに代わって Azure AD B2C を信頼する必要があります。 Azure AD B2C テナントに Microsoft アカウント アプリケーション シークレットを格納する必要があります。   
 
-1.  Azure AD B2C テナントに移動し、**[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します
+1.  Azure AD B2C テナントに移動し、**[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
 2.  **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
-3.  **[+追加]** をクリックします。
+3.  **[+ 追加]** をクリックします。
 4.  **[オプション]** には **[Manual] \(手動)** を使用します。
 5.  **[名前]** には `MSASecret` を使用します。  
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。
@@ -97,7 +95,7 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 拡張ポリシー ファイルに `<ClaimsProvider>` ノードを追加することで、Microsoft アカウントをクレーム プロバイダーとして定義します。
 
 1.  作業ディレクトリから拡張ポリシー ファイル (TrustFrameworkExtensions.xml) を開きます。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
-2.  `<ClaimsProviders>` セクションを探します
+2.  `<ClaimsProviders>` セクションを探します。
 3.  `ClaimsProviders` 要素の下に次の XML スニペットを追加します。
 
     ```xml
@@ -161,8 +159,8 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 `<ClaimsProviderSelections>` 要素は、クレーム プロバイダーの選択オプションとその順序の一覧を定義します。  `<ClaimsProviderSelection>` 要素は、サインアップ/サインイン ページの ID プロバイダーのボタンに類似しています。 Microsoft アカウントのために `<ClaimsProviderSelection>` 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。 この要素を追加するには、次の手順を実行します。
 
 1.  コピーしたばかりのユーザー体験内で、`Id="SignUpOrSignIn"` を含む `<UserJourney>` ノードを見つけます。
-2.  `Order="1"` を含む `<OrchestrationStep>` ノードを特定します
-3.  `<ClaimsProviderSelections>` ノードの下に次の XML スニペットを追加します。
+2.  `Order="1"` を含む `<OrchestrationStep>` ノードを見つける
+3.  `<ClaimsProviderSelections>` ノード下に次の XML スニペットを追加します。
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
@@ -172,7 +170,7 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Microsoft アカウントと通信してトークンを受信します。 Microsoft アカウント クレーム プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
 
 1.  `<UserJourney>` ノード内で、`Order="2"` が含まれている `<OrchestrationStep>` を見つけます。
-2.  `<ClaimsExchanges>` ノードの下に次の XML スニペットを追加します。
+2.  `<ClaimsExchanges>` ノード下に次の XML スニペットを追加します。
 
 ```xml
 <ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
@@ -189,7 +187,7 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 3.  **[すべてのポリシー]** ブレードを開きます。
 4.  **[ポリシーのアップロード]** を選択します。
 5.  **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
-6.  TrustFrameworkExtensions.xml を**アップロード**し、検証に失敗しないことを確認します
+6.  TrustFrameworkExtensions.xml を**アップロード**し、検証に失敗しないことを確認します。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>[今すぐ実行] を使用してカスタム ポリシーをテストする
 
@@ -206,8 +204,8 @@ Microsoft アカウント ID プロバイダーをユーザーの `ProfileEdit` 
 ### <a name="display-the-button"></a>ボタンを表示する
 1.  ポリシーの拡張ファイル (例: TrustFrameworkExtensions.xml) を開きます。
 2.  コピーしたばかりのユーザー体験内で、`Id="ProfileEdit"` を含む `<UserJourney>` ノードを見つけます。
-3.  `Order="1"` を含む `<OrchestrationStep>` ノードを特定します
-4.  `<ClaimsProviderSelections>` ノードの下に次の XML スニペットを追加します。
+3.  `Order="1"` を含む `<OrchestrationStep>` ノードを見つける
+4.  `<ClaimsProviderSelections>` ノード下に次の XML スニペットを追加します。
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
@@ -215,7 +213,7 @@ Microsoft アカウント ID プロバイダーをユーザーの `ProfileEdit` 
 
 ### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
 1.  `<UserJourney>` ノード内で、`Order="2"` が含まれている `<OrchestrationStep>` を見つけます。
-2.  `<ClaimsExchanges>` ノードの下に次の XML スニペットを追加します。
+2.  `<ClaimsExchanges>` ノード下に次の XML スニペットを追加します。
 
 ```xml
 <ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
@@ -228,4 +226,3 @@ Microsoft アカウント ID プロバイダーをユーザーの `ProfileEdit` 
 
 ## <a name="download-the-complete-policy-files"></a>完全なポリシー ファイルをダウンロードする
 省略可能: これらのサンプル ファイルを使う代わりに、カスタム ポリシーの概要チュートリアルの完了後に独自のカスタム ポリシーを使ってシナリオを構築することをお勧めします。  [参照用のサンプル ポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)
-

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
+ms.openlocfilehash: 94aa3bfc700cad3de9fc5516c0c9a4d86ade3fed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: ffbdd93adbe9c89b0e7614f73e93627f6bc45fb5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-run-a-test-failover-of-physical-servers-to-azure"></a>手順 11: Azure への物理サーバーのテスト フェールオーバーを実行する
 
-この記事では、Azure Portal で [Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの物理サーバーから Azure へのテスト フェールオーバーを実行する方法について説明します。
+この記事では、Azure ポータルで [Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの物理サーバーから Azure へのテスト フェールオーバーを実行する方法について説明します。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="managed-disk-considerations"></a>管理ディスクに関する考慮事項
 
-[管理ディスク](../storage/storage-managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
+[管理ディスク](../virtual-machines/windows/managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
 
 - サーバーの保護を有効にすると、VM データがストレージ アカウントにレプリケートされます。 管理ディスクは、フェールオーバーが発生した場合にのみ作成されて VM に接続されます。
 - 管理ディスクは、Resource Manager モデルを使用してデプロイされた Azure VM に対してのみ作成することができます。  
@@ -100,7 +99,7 @@ ms.lasthandoff: 08/11/2017
 
 4. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、マシンをクリックしてそのプロパティを開くか、コンテナー名 > **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** で **[テスト フェールオーバー]** ジョブをクリックします。
 
-5. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure も表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
+5. フェールオーバーの完了後は、Azure ポータルの **[仮想マシン]** にレプリカの Azure も表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
 
 6. フェールオーバー後の接続の準備が完了したら、Azure VM に接続できるようになります。
 
@@ -120,4 +119,3 @@ ms.lasthandoff: 08/11/2017
 ## <a name="next-steps"></a>次のステップ
 
 - 必要に応じて[フェールオーバーを実行](site-recovery-failover.md)します。
-

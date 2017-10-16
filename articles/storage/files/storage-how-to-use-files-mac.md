@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bc3d67745afb8bbffe7ec3462e995104daff9632
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) は、業界標準を使用して Azure でネットワーク ファイル共有を作成および使用できるようにする、Microsoft のサービスです。 Azure ファイル共有は、macOS Sierra (10.12) および El Capitan (10.11) でマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
+[Azure Files](storage-files-introduction.md) は、業界標準を使用して Azure でネットワーク ファイル共有を作成および使用できるようにする、Microsoft のサービスです。 Azure ファイル共有は、macOS Sierra (10.12) および El Capitan (10.11) でマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
 
 > [!Note]  
 > SMB 経由で Azure ファイル共有をマウントする前に、SMB パケット署名を無効にすることをお勧めします。 そうしないと、macOS から Azure ファイル共有にアクセスするときにパフォーマンスが低下する可能性があります。 SMB 接続は暗号化されるため、接続のセキュリティには影響しません。 Terminal で次のコマンドを実行すると、この [SMB パケット署名の無効化についての Apple サポート記事](https://support.apple.com/HT205926)で説明されているように、SMB パケット署名が無効になります。  
@@ -65,7 +63,7 @@ ms.lasthandoff: 08/22/2017
     ![マウントされた Azure ファイル共有のスナップショット](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>次のステップ
-Azure File Storage の詳細については、次のリンクを参照してください。
+Azure Files の詳細については、次のリンクをご覧ください。
 
 * [Apple サポート記事 - Mac 上のファイル共有に接続する方法](https://support.apple.com/HT204445)
 * [FAQ](../storage-files-faq.md)

@@ -1,6 +1,4 @@
-<a id="use-the-azure-portal" class="xliff"></a>
-
-## Azure ポータルの使用
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 1. 再デプロイする VM を選択し、*[設定]* ブレードで *[再デプロイ]* をクリックします。 次の例に示すように、[再デプロイ] が含まれる **[サポート + トラブルシューティング]** セクションが表示されるまで必要に応じてスクロールしてください。
    
     ![Azure VM ブレード](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)

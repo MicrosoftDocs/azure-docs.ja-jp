@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 534fa3718d22eb17a99b654b5f5cb404de53eceb
-ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/19/2017
-
+ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 
 このトピックでは、REST API を使用して Azure Media Services (AMS) テレメトリを構成するときの一般的な手順について説明します。 
@@ -245,4 +243,3 @@ ms.lasthandoff: 01/19/2017
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

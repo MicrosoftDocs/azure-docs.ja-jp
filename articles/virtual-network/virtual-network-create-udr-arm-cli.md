@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: e5d9519998346619093f443b740c8904283f76e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用してユーザー定義ルート (UDR) を作成する
 
@@ -227,5 +226,4 @@ ms.lasthandoff: 08/09/2017
     パラメーター:
 
     **--ip-forwarding**: *true* または *false*。
-
 

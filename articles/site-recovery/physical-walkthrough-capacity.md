@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: rayne
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 971ad6dd39f94aa7944f6ed3b31bc3acc605d9a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-3-plan-capacity-and-scaling-for-physical-server-to-azure-replication"></a>手順 3: Azure に物理サーバーをレプリケートするための容量とスケーリングを計画する
 
@@ -48,9 +46,9 @@ ms.lasthandoff: 06/29/2017
 
 ベスト プラクティスとして、保護対象のマシンと同じネットワークおよび LAN セグメントに構成サーバーを配置します。 管理サーバーを別のネットワークに配置することもできますが、保護対象のマシンは管理サーバーに対して、レイヤー 3 のネットワーク可視性が必要です。
 
-## <a name="sizing-recommendations"></a>サイズに関する推奨事項
+## <a name="sizing-recommendations"></a>サイズ設定に関する推奨事項
 
-CPU に基づくサイズに関する推奨事項を次の表に示します。
+CPU に基づくサイズ設定に関する推奨事項を次の表に示します。
 
 **CPU** | **メモリ** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン**
 --- | --- | --- | --- | ---
@@ -111,7 +109,7 @@ CPU に基づくサイズに関する推奨事項を次の表に示します。
 
 ## <a name="control-network-bandwidth"></a>ネットワーク帯域幅の管理
 
-[Deployment Planner ツール](site-recovery-deployment-planner.md)を実行してレプリケーションに必要な帯域幅 (初回のレプリケーションと差分) を計算した後、次の 2 つのオプションを使用してレプリケーションに使用する帯域幅の量を制御できます。
+[Deployment Planner ツール](site-recovery-deployment-planner.md)を実行して、レプリケーションに必要な帯域幅 (初期レプリケーションと差分) を計算した後、次の 2 つのオプションを使用してレプリケーションに使用する帯域幅の量を制御できます。
 
 * **帯域幅を調整する**: Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
 * **帯域幅に影響を与える**: レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
@@ -148,4 +146,3 @@ CPU に基づくサイズに関する推奨事項を次の表に示します。
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 4: ネットワークを計画する](physical-walkthrough-network.md)」に進みます。
-

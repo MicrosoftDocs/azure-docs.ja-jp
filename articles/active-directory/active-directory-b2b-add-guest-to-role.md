@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory B2B コラボレーション ユーザーをロールに追加する | Microsoft Docs"
 description: "Azure Active Directory でゲスト ユーザーをロールに追加します"
 services: active-directory
@@ -17,14 +16,12 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
-ms.lasthandoff: 03/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
 
 Azure Active Directory (Azure AD) B2B コラボレーション ユーザーはゲスト ユーザーとしてディレクトリに追加され、ディレクトリのゲスト アクセス許可は既定で制限されています。 一部のゲスト ユーザーを組織内の上位の特権ロールに入れる必要がある場合があります。 上位の特権ロールの定義をサポートするために、ゲスト ユーザーを組織のニーズに合わせて任意のロールに追加することができます。
@@ -55,4 +52,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
 * [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 * [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
-

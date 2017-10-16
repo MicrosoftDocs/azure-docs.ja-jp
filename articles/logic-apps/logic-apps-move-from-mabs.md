@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="move-from-biztalk-services-to-logic-apps"></a>BizTalk Services から Logic Apps に移動する
 
 Microsoft Azure BizTalk Services (MABS) は廃止されました。 MABS 統合ソリューションを Azure Logic Apps に移動するには、このトピックを使用します。 
@@ -31,8 +28,8 @@ Microsoft Azure BizTalk Services (MABS) は廃止されました。 MABS 統合�
 
 BizTalk Services は、次の 2 つのサブサービスで構成されています。
 
-1.    Microsoft BizTalk Services ハイブリッド接続
-2.    EAI および EDI ブリッジ ベースの統合
+1.  Microsoft BizTalk Services ハイブリッド接続
+2.  EAI および EDI ブリッジ ベースの統合
 
 ハイブリッド接続の移動を検討している場合は、[Azure App Service ハイブリッド接続](../app-service/app-service-hybrid-connections.md)が、このサービスの変更と機能を説明しています。 Azure ハイブリッド接続は、BizTalk Services ハイブリッド接続を置き換えます。 Azure ハイブリッド接続は Azure App Service で使用可能であり、Azure Portal で提供されます。 Azure ハイブリッド接続はまた、既存の BizTalk Services ハイブリッド接続と、ポータルで作成する新しいハイブリッド接続を管理するための新しいハイブリッド接続マネージャーも提供します。 Azure App Service ハイブリッド接続は一般公開 (GA) されています。
 
@@ -132,4 +129,3 @@ BizTalk Services で高可用性 (HA) を実現するには、処理の負荷を
 * [Logic Apps とは](logic-apps-what-are-logic-apps.md)
 * [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)または[既製のテンプレート](logic-apps-use-logic-app-templates.md)の使い方に関するページ  
 * ロジック アプリで[利用できるすべてのコネクタの一覧](../connectors/apis-list.md)
-

@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする
 
 U-SQL スクリプトを開発するとき、通常は、クラウドに送信する前に、U-SQL スクリプトをローカルで実行してテストします。 このシナリオのために、Azure Data Lake には、Azure Data Lake U-SQL SDK と呼ばれる Nuget パッケージが用意されています。このパッケージを使用して、U-SQL のローカル実行のスケーリングとテストを簡単に行うことができます。 この U-SQL テストを CI (継続的インテグレーション) システムと統合して、コンパイルとテストを自動化することもできます。
@@ -31,7 +28,7 @@ GUI ツールを使用した U-SQL スクリプトの手動でのローカル実
 
 ## <a name="install-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK をインストールする
 
-Azure Data Lake U-SQL SDK は、[こちら](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)で Nuget.org から入手できます。 使用する前に、次の依存関係が用意されていることを確認する必要があります。
+Azure Data Lake U-SQL SDK は、[こちら](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)で Nuget.org から入手できます。使用する前に、次の依存関係が用意されていることを確認する必要があります。
 
 ### <a name="dependencies"></a>依存関係
 
@@ -398,4 +395,3 @@ E_CSC_SYSTEM_INTERNAL: 内部エラーです。 ファイルを読み込めな�
 * より複雑なクエリを表示する場合は、[Azure Data Lake Analytics を使用した Web サイトのログの分析](data-lake-analytics-analyze-weblogs.md)に関するページをご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。
 * 頂点実行ビューの使用方法については、「[Data Lake Tools for Visual Studio での頂点実行ビューの使用](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
-

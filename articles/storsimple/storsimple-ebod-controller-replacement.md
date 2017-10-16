@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 23d819ddc3bbcbaf2847cdcc9191407ead0ff43d
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple デバイスの EBOD コントローラーを交換する
 ## <a name="overview"></a>Overview
@@ -102,10 +102,4 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

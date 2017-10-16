@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: fe67a94a2b56fbc72035582f7ee1625b12b21ead
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.openlocfilehash: 1a30cadaab7e053184f0be133f1da5bfddc1fd91
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-5-prepare-azure-resources-for-hyper-v-replication-to-azure"></a>手順 5: Azure への Hyper-V レプリケーション用の Azure リソースを準備する
 
 この記事の手順に従って Azure リソースを準備して、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの Hyper-V VM (System Center VMM なし) を Azure にレプリケートできるようにします。
@@ -30,7 +28,7 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="before-you-start"></a>開始する前に
 
-[前提条件](hyper-v-site-walkthrough-prerequisites.md)を読みます
+[前提条件](hyper-v-site-walkthrough-prerequisites.md)を必ず確認してください。
 
 ## <a name="set-up-an-azure-account"></a>Azure アカウントを設定する
 
@@ -52,10 +50,10 @@ ms.lasthandoff: 06/23/2017
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
-- Azure にレプリケートされたデータを保持するために、Standard/Premium [Azure Storage アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)をセットアップします。
-- [Premium Storage](../storage/storage-premium-storage.md) は、通常、IO を集中的に行うワークロードをホストするために常に高い IO パフォーマンスと低遅延時間が必要になる仮想マシンで使用します。
+- Azure にレプリケートされたデータを保持するために、Standard/Premium [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)をセットアップします。
+- [Premium Storage](../storage/common/storage-premium-storage.md) は、通常、IO を集中的に行うワークロードをホストするために常に高い IO パフォーマンスと低遅延時間が必要になる仮想マシンで使用します。
 - レプリケートされたデータを Premium アカウントを使用して保存する場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを保存するために、Standard ストレージ アカウントも必要になります。
-- フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
+- フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/common/storage-create-storage-account.md)または[クラシック モード](../storage/common/storage-create-storage-account.md)でセットアップします。
 - ストレージ アカウントをセットアップしてから、以下の作業を開始することをお勧めします。 行わない場合は、Site Recovery のデプロイ中に行う必要があります。 アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 - 同じサブスクリプション内のリソース グループ間、または異なるサブスクリプション間で、Site Recovery で使用されるストレージ アカウントを移動することはできません。
 
@@ -63,4 +61,3 @@ ms.lasthandoff: 06/23/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 6: Hyper-V リソースを準備する](hyper-v-site-walkthrough-prepare-hyper-v.md)方法に関するページに進む
-

@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4f14dbf4b66f10290cd4f98d56a005f97cc6a207
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
 
@@ -218,4 +217,3 @@ Facebook をセットアップするには:
 このファースト ステップ ガイドで使用したベース ファイルには、他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。 サインインをセットアップする方法については、「[Azure Active Directory B2C: Azure AD のアカウントを使用してサインインする](active-directory-b2c-setup-aad-custom.md)」の記事を参照してください。
 
 Identity Experience Framework を使用する Azure AD B2C のカスタムのポリシーの概要については、「[Azure Active Directory B2C: カスタム ポリシー](active-directory-b2c-overview-custom.md)」の記事を参照してください。 
-

@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 174ac449e803ed5327468a38ea7264cb9923a877
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -74,9 +73,9 @@ Jenkins で Blob service を使用するには、Azure Storage プラグイン�
 1. Jenkins ダッシュボードで、 **[Manage Jenkins]**をクリックします。
 2. **[Manage Jenkins (Jenkins の管理)]** ページで **[Configure System (システムの構成)]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
-   1. [Azure  Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
-   2. 同様に、[Azure  Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
-   3. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、 [Azure  Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。 
+   1. [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
+   2. 同様に、[Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
+   3. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、[Azure Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。 
    4. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。 
    5. [省略可能] Jenkins CI で利用できるストレージ アカウントを追加する場合には、 **[Add more Storage Accounts]**をクリックします。
    6. **[Save]** をクリックして設定を保存します。
@@ -111,7 +110,7 @@ Jenkins で Blob service を使用するには、Azure Storage プラグイン�
 12. **[Save]** をクリックして設定を保存します。
 13. Jenkins ダッシュボードで、**[Build Now (今すぐビルド)]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
-    1. [Azure  Portal](https://portal.azure.com) にログインします。
+    1. [Azure Portal](https://portal.azure.com) にログインします。
     2. **[Storage]**をクリックします。
     3. Jenkins に使用したストレージ アカウント名をクリックします。
     4. **[コンテナー]**をクリックします。
@@ -155,4 +154,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」をご覧ください。
+詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。

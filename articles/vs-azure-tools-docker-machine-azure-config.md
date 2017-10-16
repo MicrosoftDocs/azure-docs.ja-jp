@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Docker マシンを利用し、Azure で Docker ホストを作成する
 [Docker](https://www.docker.com/) コンテナーを実行するには、Docker デーモンを実行しているホスト VM が必要です。
@@ -36,7 +34,7 @@ ms.lasthandoff: 06/07/2017
 
 Azure ドライバーにはサブスクリプション ID が必要です。 [Azure CLI](cli-install-nodejs.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。 
 
-**Azure ポータルの使用**
+**Azure Portal の使用**
 
 * 左側のナビゲーション ページから**サブスクリプション**を選択し、サブスクリプション ID をコピーします。
 
@@ -122,5 +120,4 @@ docker-machine を使用すると、個々の Docker ホストの検証のため
 コンテナーの運用ホスティングについては、「 [Azure Container Service の概要](http://aka.ms/AzureContainerService)
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「 [Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)
-
 

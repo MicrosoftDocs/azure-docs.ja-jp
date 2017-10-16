@@ -30,12 +30,12 @@
 ## ビジネス インテリジェンス
 ### [Azure VM での SQL Server Business Intelligence](virtual-machines-windows-classic-ps-sql-bi.md)
 ### [Azure でホストされた Web サイトでの ReportViewer の使用](virtual-machines-windows-classic-sql-server-reportviewer.md)
-### [レポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)
+### [レポート サーバーを実行する Azure VM を Azure PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)
 ## [パフォーマンスのベスト プラクティス](../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## [アプリケーション パターン](../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # リファレンス
-## [PowerShell クラシック](/powershell/azure/overview?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server ドライバー](https://docs.microsoft.com/sql/connect/sql-server-drivers)

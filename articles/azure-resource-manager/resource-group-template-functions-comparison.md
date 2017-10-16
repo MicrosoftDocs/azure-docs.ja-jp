@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: 3291d545bc7a66ffa9b4845acd890a714cf84ef8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 521e5ed06c138bcd374913588f06a2e6c1e99963
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
 
@@ -38,7 +37,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
 | arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
@@ -68,7 +67,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="example"></a>例
 
-この例のテンプレートでは、さまざまな型の値が等しいかどうかを確認します。 すべての既定値は True を返します。
+この[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json)では、さまざまな型の値が等しいかどうかを確認します。 すべての既定値は True を返します。
 
 ```json
 {
@@ -140,8 +139,19 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | checkArrays | ブール値 | True |
 | checkObjects | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-次の例では、[not](resource-group-template-functions-logical.md#not) と **equals** を使用します。
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
+```
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)では、[not](resource-group-template-functions-logical.md#not) と **equals** を使用します。
 
 ```json
 {
@@ -155,6 +165,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 前の例からの出力は次のようになります。
@@ -163,6 +174,17 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | ---- | ---- | ----- |
 | checkNotEquals | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
+```
 
 ## <a name="greater"></a>greater
 `greater(arg1, arg2)`
@@ -171,7 +193,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
@@ -182,7 +204,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="example"></a>例
 
-この例のテンプレートでは、一方の値がもう一方の値よりも大きいかどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json)では、一方の値がもう一方の値よりも大きいかどうかを確認します。
 
 ```json
 {
@@ -228,6 +250,17 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | checkInts | ブール値 | False |
 | checkStrings | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
+```
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
@@ -236,7 +269,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
@@ -247,7 +280,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="example"></a>例
 
-この例のテンプレートでは、一方の値がもう一方の値以上かどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json)では、一方の値がもう一方の値以上かどうかを確認します。
 
 ```json
 {
@@ -293,7 +326,17 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | checkInts | ブール値 | False |
 | checkStrings | ブール値 | True |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
+```
 
 ## <a name="less"></a>less
 `less(arg1, arg2)`
@@ -302,7 +345,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
@@ -313,7 +356,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="example"></a>例
 
-この例のテンプレートでは、一方の値がもう一方の値よりも小さいかどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json)では、一方の値がもう一方の値よりも小さいかどうかを確認します。
 
 ```json
 {
@@ -359,6 +402,17 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | checkInts | ブール値 | True |
 | checkStrings | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
+```
 
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
@@ -367,7 +421,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
@@ -378,7 +432,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 ### <a name="example"></a>例
 
-この例のテンプレートでは、一方の値がもう一方の値以下かどうかを確認します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json)では、一方の値がもう一方の値以下かどうかを確認します。
 
 ```json
 {
@@ -424,12 +478,21 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 | checkInts | ブール値 | True |
 | checkStrings | ブール値 | False |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
+```
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
 

@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 09/22/2017
 ms.author: nitinme
+ms.openlocfilehash: 7853988f91372f2ab563481e441c0d6db4a7fd96
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: ada1c3d1482c68834dbbf5eabbd045a7e0c01f9f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-interactive-queries-on-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターに対して対話型クエリを実行する
 
@@ -66,6 +65,7 @@ ms.lasthandoff: 07/25/2017
 
 5. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
+        from pyspark.sql import *
         from pyspark.sql.types import *
 
     PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストと Hive コンテキストが自動的に作成されます。
@@ -119,7 +119,6 @@ ms.lasthandoff: 07/25/2017
 
 > [!div class="nextstepaction"]
 >[Azure HDInsight でデータ視覚化ツールを使用する Spark BI](hdinsight-apache-spark-use-bi-tools.md)
-
 
 
 

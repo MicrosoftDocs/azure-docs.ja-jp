@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: 0508868e3b00c5771cc26038a3dd71fde6625a84
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C: コンシューマー向けにセルフサービスによるパスワードのリセットをセットアップする
 セルフサービスのパスワード リセット機能を使用すると、コンシューマー (ローカル アカウントにサインアップしたユーザー) はパスワードを自分でリセットできます。 これによりサポート スタッフの負担を大幅に軽減でき、アプリケーションを定期的に使用するコンシューマーが何百万人もいるような場合に特に効果的です。 現在、回復の手段としては検証済みの電子メール アドレスのみがサポートされています。 将来的には、他の回復方法 (検証済みの電話番号、セキュリティの質問など) が追加される予定です。
@@ -47,5 +45,4 @@ ms.lasthandoff: 05/05/2017
 > [セルフサービスによるパスワードのリセット] ページは、 [会社のブランド機能](../active-directory/active-directory-add-company-branding.md)を使用してカスタマイズできます。
 > 
 > 
-
 

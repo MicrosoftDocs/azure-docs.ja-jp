@@ -17,12 +17,14 @@
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Azure Container Service では、特定のオーケストレーターが推奨されますか。 
 基本的には、推奨される特定のオーケストレーターはありません。 サポートされているオーケストレーターのいずれかを使用した経験をお持ちの場合は、その経験を Azure Container Service でも活かすことができます。 ただし、データのトレンドから判断すると、ビッグ データや IoT のワークロードについては DC/OS に運用環境での実績があり、クラウド ネイティブのワークロードには Kubernetes が適しているようです。また、Docker Swarm は Docker ツールとの統合や習得の容易さに定評があります。
 
-また、シナリオによっては、他の Azure サービスを使用してカスタムのコンテナー ソリューションを構築し、管理することもできます。 使用できる Azure サービスには、[Virtual Machines](../articles/virtual-machines/linux/overview.md)、[Service Fabric](../articles/service-fabric/service-fabric-overview.md)、[Web Apps](../articles/app-service-web/app-service-web-overview.md)、[Batch](../articles/batch/batch-technical-overview.md) などがあります。  
+また、シナリオによっては、他の Azure サービスを使用してカスタムのコンテナー ソリューションを構築し、管理することもできます。 使用できる Azure サービスには、[Virtual Machines](../articles/virtual-machines/linux/overview.md)、[Service Fabric](../articles/service-fabric/service-fabric-overview.md)、[Web Apps](../articles/app-service/app-service-web-overview.md)、[Batch](../articles/batch/batch-technical-overview.md) などがあります。  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure Container Service と ACS Engine の違いは何ですか。 
 Azure Container Service は SLA による保証が付いた Azure サービスで、Azure Portal の各種機能、Azure コマンドライン ツール、Azure API が付属しています。 Azure Container Service を使用すると、比較的少ない選択肢を選んで構成するだけで、標準のコンテナー オーケストレーション ツールを実行するクラスターを簡単に実装して管理できます。 
 
 [ACS Engine](http://github.com/Azure/acs-engine) はオープンソース プロジェクトで、パワー ユーザーがクラスター構成を各レベルでカスタマイズするのに適しています。 インフラとソフトウェアの両方の構成に変更を加えることができるため、ACS Engine には SLA が用意されていません。 サポートは、Microsoft の公式チャネルではなく、GitHub のオープンソース プロジェクトを通じて提供されます。 
+
+詳細については、[コンテナーのサポート ポリシー](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers)を参照してください。
 
 ## <a name="cluster-management"></a>クラスターの管理
 

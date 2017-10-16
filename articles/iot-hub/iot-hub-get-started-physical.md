@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub と物理デバイス入門チュートリアル
 
@@ -53,4 +52,3 @@ ms.lasthandoff: 08/25/2017
 [Th_Ard]: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
 [M0_Ard]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
 [NUC_Lnx]: iot-hub-gateway-kit-c-lesson1-set-up-nuc.md
-

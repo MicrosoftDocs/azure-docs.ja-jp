@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 
@@ -155,4 +154,3 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 ## <a name="next-steps"></a>次のステップ
 * Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
-

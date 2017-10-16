@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: sethm;darosa
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: c4fd365ec8eeb389f0df9f53cd2f2a18f4c9b52a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
 
 Azure Event Hubs Capture を利用すると、Event Hubs のストリーミング データを任意の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) のアカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-features.md#capacity)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
@@ -117,4 +115,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-

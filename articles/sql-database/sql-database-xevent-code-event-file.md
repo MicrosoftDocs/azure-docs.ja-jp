@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: aeaed63e00b77f885312204f17f024af462dbf25
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e8c7a9af11ac4c22be00426337ab7c8b8ff0860f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
@@ -543,7 +543,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
-* [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
+* [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](http://msdn.microsoft.com/library/dn466430.aspx)

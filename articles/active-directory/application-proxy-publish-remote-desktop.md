@@ -5,36 +5,33 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2017
+ms.date: 09/06/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: a66081596f2e8234f6169faa58c571420e706c45
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
-この記事では、リモート ユーザーが生産性を維持できるようにアプリケーション プロキシを使用してリモート デスクトップ サービス (RDS) をデプロイする方法について説明します。
+リモート デスクトップ サービスと Azure AD アプリケーション プロキシが連携し、企業ネットワークの外にいるユーザーの生産性を向上させます。 
 
 この記事の対象読者は次のとおりです。
-- リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することを希望している、現在 Azure AD アプリケーション プロキシを使用しているお客様。
+- リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することを希望している、現在アプリケーション プロキシを使用しているお客様。
 - Azure AD アプリケーション プロキシを使用してデプロイの攻撃対象領域を削減することを希望している、現在リモート デスクトップ サービスを使用しているお客様。 このシナリオでは、2 段階検証と条件付きアクセス制御の限定セットを RDS に付与します。
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>アプリケーション プロキシが RDS の標準デプロイにどのように適合するか
 
-RDS の標準デプロイには、Windows Server で実行されるさまざまなリモート デスクトップ ロール サービスが含まれています。 [リモート デスクトップ サービスのアーキテクチャ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)を見ると、複数のデプロイ オプションがあります。 [Azure AD アプリケーション プロキシを使用した RDS デプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (次の図に示します) とその他のデプロイ オプションの最も顕著な違いは、アプリケーション プロキシのシナリオには、コネクタ サービスを実行しているサーバーからの永続的な送信接続があることです。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。
+RDS の標準デプロイには、Windows Server で実行されるさまざまなリモート デスクトップ ロール サービスが含まれています。 [リモート デスクトップ サービスのアーキテクチャ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)を見ると、複数のデプロイ オプションがあります。 他の RDS デプロイ オプションとは異なり、[Azure AD アプリケーション プロキシを使用した RDS デプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (次の図に示します) には、コネクタ サービスを実行しているサーバーからの永続的な送信接続があります。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。
 
 ![アプリケーション プロキシは RDS VM とパブリック インターネットの間に位置する](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
 
@@ -47,7 +44,7 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 
 ## <a name="requirements"></a>必要条件
 
-- RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイは単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
+- RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
 
 - [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](active-directory-application-proxy-enable.md)必要があります。
 
@@ -76,7 +73,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 
-RDS デプロイに管理者として接続し、デプロイの RD ゲートウェイ サーバーの名前を変更します。 これにより、Azure AD アプリケーション プロキシを介して接続が行われるようになります。
+RDS デプロイに管理者として接続し、デプロイの RD ゲートウェイ サーバーの名前を変更します。 この構成により、Azure AD アプリケーション プロキシ サービスを介して接続が行われるようになります。
 
 1. RD 接続ブローカーのロールを実行している RDS サーバーに接続します。
 2. **サーバー マネージャー**を起動します。
@@ -88,7 +85,7 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 
   ![RDS の [展開プロパティ] 画面](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. コレクションごとに、次のコマンドを実行します。 *\<yourcollectionname\>* と *\<proxyfrontendurl\>* は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
+8. 各コレクションに対してこのコマンドを実行します。 *\<yourcollectionname\>* と *\<proxyfrontendurl\>* は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -124,7 +121,7 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 | 事前認証    | Internet Explorer と RDS ActiveX アドオンを使用する Windows 7 または Windows 10 |
 | パススルー | Microsoft リモート デスクトップ アプリケーションをサポートするその他の任意のオペレーティング システム |
 
-事前認証フローでは、パススルー フローよりも高い安全性が提供されます。 事前認証では、オンプレミスのリソースにシングル サインオン、条件付きアクセス、2 段階認証などの Azure AD 認証機能を活用できます。 また、認証されたトラフィックのみが、ネットワークに到達できます。
+事前認証フローでは、パススルー フローよりも高い安全性が提供されます。 事前認証では、オンプレミスのリソースにシングル サインオン、条件付きアクセス、2 段階認証などの Azure AD 認証機能を使用できます。 また、認証されたトラフィックのみが、ネットワークに到達できます。
 
 この記事に記載された手順を 2 か所変更するだけで、パススルー認証を使用できます。
 1. [RD ホスト エンドポイントの発行](#publish-the-rd-host-endpoint)の手順 1 の事前認証方法を**パススルー**に設定します。
@@ -134,4 +131,3 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)  
 [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)
-

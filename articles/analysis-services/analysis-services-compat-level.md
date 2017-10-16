@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: owend
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: b11ba54c2cdc2675ec535368e7076613a5290212
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表形式モデルの互換性レベル
 
 *互換性レベル*とは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 通常、互換性レベルの変更は、SQL Server のメジャー リリースと一致します。 これらの変更は Azure Analysis Services にも実装され、両方のプラットフォーム間のパリティを維持します。 互換性レベルの変更は、表形式モデルで使用可能な機能にも影響します。 たとえば、DirectQuery とテーブル オブジェクトのメタデータは、互換性レベルによって実装が異なります。 
@@ -58,4 +56,3 @@ Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モ�
 ## <a name="next-steps"></a>次のステップ
   [Azure Portal でモデルを作成する](analysis-services-create-model-portal.md)   
   [Analysis Services を管理する](analysis-services-manage.md)  
-

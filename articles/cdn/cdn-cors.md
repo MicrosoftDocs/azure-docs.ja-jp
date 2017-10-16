@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
 CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
 ## <a name="how-it-works"></a>動作のしくみ
-CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の&2; 種類があります。
+CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類があります。
 
 ### <a name="for-simple-requests"></a>単純な要求の場合:
 
@@ -67,9 +67,9 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
 
-ルール エンジンを使用してこれを行う方法は&2; つあります。  どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは完全に無視されます。CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
+ルール エンジンを使用してこれを行う方法は 2 つあります。  どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは完全に無視されます。CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる&1; つの正規表現
+#### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる 1 つの正規表現
 この場合、許可するオリジンがすべて含まれた正規表現を作成します。 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
@@ -95,10 +95,4 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 ### <a name="azure-cdn-standard"></a>Azure CDN Standard
 Azure CDN Standard プロファイルでは、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、 [クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。  CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用する必要があります。 これを行うと、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

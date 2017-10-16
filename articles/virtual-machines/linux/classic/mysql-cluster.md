@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>負荷分散セットを使用して Linux の MySQL をクラスター化する
 > [!IMPORTANT]
@@ -339,4 +338,3 @@ Pacemaker が DRBD リソース、マウント ポイント、MySQL サービス
 * ロード バランサーの応答には少なくとも 5 秒必要なため、アプリケーションはクラスター対応であると共に、タイムアウトに寛容である必要があります。 アプリケーション内キュー、クエリ ミドルウェアなど、他のアーキテクチャが役立つ可能性もあります。
 * 管理しやすいペースで書き込みが実行されるためには MySQL の調整が必要です。また、メモリ損失を最小化するため、できるだけ頻繁にキャッシュをディスクにフラッシュします。
 * DRBD はデバイスをリプリケートするためのメカニズムとして、仮想スイッチで VM を相互に接続しているため、書き込み性能は、仮想スイッチでの接続状態に左右されます。
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte;bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 4a3ee3c4d1fa9b626a51f24997603adceed8311f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upgrade-your-azure-log-analytics-workspace-to-new-log-search"></a>新しいログ検索への Azure Log Analytics ワークスペースのアップグレード
 
 > [!NOTE]
@@ -84,4 +82,3 @@ ms.lasthandoff: 08/28/2017
 - [新しい言語のチュートリアル](https://go.microsoft.com/fwlink/?linkid=856078)を確認します。
 - 新しいクエリ言語で[ログ検索ポータルを使用したチュートリアル](log-analytics-log-search-log-search-portal.md)を実行します。
 - 新しい[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)の概要を確認します。
-

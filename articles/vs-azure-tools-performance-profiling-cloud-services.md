@@ -14,15 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7bd8de649ba2975c47f7e84feb0438c51756a697
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: eafcc2f9d53bcdae63036df070e5adec24cbc252
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>クラウド サービスのパフォーマンスのテスト
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 クラウド サービスのパフォーマンスは次の方法でテストすることができます。
 
 * Azure 診断を使用して、要求と接続に関する情報を収集し、顧客の観点からサービスを実行する方法を示すサイトの統計情報を確認します。 開始するには、「 [Azure Cloud Services および Virtual Machines 用の診断の構成](http://go.microsoft.com/fwlink/p/?LinkId=623009)」を参照してください。
@@ -114,5 +113,4 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 [クラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
-
 

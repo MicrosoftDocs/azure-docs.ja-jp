@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: bf46da35a55608d7e4656c9dd3ad9d5f2253e225
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -214,7 +213,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-mimecast-personal-portal-test-user"></a>Mimecast Personal Portal テスト ユーザーの作成
 
@@ -308,5 +307,4 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 [201]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_203.png
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 88541f6054df1476866d68fdc1c9690a73ada83c
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: d09a020b903e5f43afe03b86c675bcc1eb536cbc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットで仮想マシンを管理する
 この記事では、仮想マシン スケール セットで仮想マシンを管理する方法を紹介します。
@@ -213,5 +212,4 @@ ms.lasthandoff: 04/27/2017
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
 スケール セットから仮想マシンを削除する場合は、ID が最も大きい仮想マシンから順に削除されます。
-
 

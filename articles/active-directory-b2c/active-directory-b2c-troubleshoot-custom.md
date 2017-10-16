@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: ログの収集
 
 この記事では、カスタム ポリシーの問題を診断できるよう、Azure AD B2C からログを収集する手順を説明します。
@@ -118,4 +116,3 @@ traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された�
 ## <a name="next-steps"></a>次のステップ
 
 Application Insights でデータを探索すると、B2C の基盤となる Identity Experience Framework が独自の ID エクスペリエンスを提供するためにどのように機能するかを理解できます。
-

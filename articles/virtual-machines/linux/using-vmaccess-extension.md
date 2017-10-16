@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM へのアクセスのリセット | Microsoft Docs"
-description: "VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上のユーザーを管理し、アクセスをリセットする方法"
+description: "VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,17 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
+ms.openlocfilehash: 3596b50b68cabf212218825566c0f8313f054f65
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 587c73278a9a92776276a811c5c4c8d3db773de3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
-この記事では、Azure VMAcesss 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、ユーザー アカウントの管理、またはSSH 構成のリセットを行う方法を説明します。 これらの手順は、[Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
+この記事では、Azure VMAccess 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、管理ユーザー アカウントの管理、または SSH 構成のリセットを行う方法を説明します。 これらの手順は、[Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>VMAccess 拡張機能の使用方法
@@ -67,8 +66,8 @@ az vm user reset-ssh \
   --name myVM
 ```
 
-## <a name="create-a-user"></a>ユーザーの作成
-次の例では、`myVM` という名前の VM 上に、認証用の SSH キーを使用して `myNewUser` という名前のユーザーを作成します。
+## <a name="create-an-administrativesudo-user"></a>管理/sudo ユーザーの作成
+次の例では、**sudo** のアクセス許可を持つ `myNewUser` という名前のユーザーを作成します。 アカウントでは、`myVM` という名前の VM 上で認証用 SSH キーを使用します。 この方法は、現在の資格情報を紛失したり、忘れたりした場合に、VM へのアクセスを回復できるように設計されています。 ベスト プラクティスとしては、**sudo** のアクセス許可を持つアカウントを制限する必要があります。
 
 ```azurecli
 az vm user update \
@@ -77,6 +76,8 @@ az vm user update \
   --username myNewUser \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
+
+
 
 ## <a name="delete-a-user"></a>ユーザーの削除
 次の例では、`myVM` という名前の VM 上のユーザー `myNewUser` を削除します。
@@ -158,9 +159,9 @@ az vm extension set \
   --protected-settings reset_sshd.json
 ```
 
-### <a name="manage-users"></a>ユーザーの管理
+### <a name="manage-administrative-users"></a>管理ユーザーの管理
 
-認証用の SSH キーを使用するユーザーを作成するには、`create_new_user.json` という名前のファイルを作成し、次の形式の設定を追加します。 `username`と `ssh_key` パラメーターは、独自の値に置き換えてください。
+認証に SSH キーを使用する、**sudo** のアクセス許可を持つユーザーを作成するには、`create_new_user.json` という名前のファイルを作成し、次の形式の設定を追加します。 `username` と `ssh_key` パラメーターは、独自の値に置き換えてください。 この方法は、現在の資格情報を紛失したり、忘れたりした場合に、VM へのアクセスを回復できるように設計されています。 ベスト プラクティスとしては、**sudo** のアクセス許可を持つアカウントを制限する必要があります。
 
 ```json
 {
@@ -234,5 +235,4 @@ Azure VMAccess 拡張機能を使用して Linux を更新することは、実�
 [Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
-
 

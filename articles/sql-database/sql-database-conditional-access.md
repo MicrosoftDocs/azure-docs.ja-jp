@@ -9,15 +9,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 0dcec61c03a84197e2c351761c743683caa98a06
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 
 SQL Database と SQL Data Warehouse の両方で Microsoft の条件付きアクセスがサポートされています。 次の手順では、条件付きアクセス ポリシーを適用するように SQL Database を構成する方法を示します。  
@@ -51,4 +48,3 @@ Azure SQL Database と Database and Data Warehouse での多要素認証に関�
 ## <a name="next-steps"></a>次のステップ  
 
 チュートリアルについては、「[Azure SQL Database のセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
-

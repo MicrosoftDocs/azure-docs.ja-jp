@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: db7ee5251f2e2016081e55ca4b295e284c8b08cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
-
+ms.openlocfilehash: 69c5d09b6608484210870e1a69c51b112b497810
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 06/15/2017
 
   >[!Note]
   > Windows Server 2016 ホストと 2012 R2 ホストが混在する VMM 2016 クラウドは、現在サポートされていません。
-
+  > 既存の SCVMM 2012 R2 から 2016 へのアップグレードを含む構成は、現在サポートされていません。
 ### <a name="host-servers"></a>ホスト サーバー
 
 **デプロイ** | **サポート**
@@ -139,4 +137,3 @@ RDM | はい | 該当なし
 
 - [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](site-recovery-vmm-to-vmm.md)
 - [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
-

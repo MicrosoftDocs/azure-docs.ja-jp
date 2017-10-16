@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: 270d1aec5855ee3bb9cc121526d311ab78d989c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-documentation"></a>IoT Hub のドキュメント 
 
 IoT Hub を使用して、何十億台ものモノのインターネット資産 (IoT) を接続、監視、制御する方法について説明します。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントでは、IoT デバイスとソリューション バック エンド間に信頼性のある双方向通信をデプロイする方法を紹介します。 
@@ -168,4 +166,3 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
         </div>
     </li>
 </ul>
-

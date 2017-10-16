@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -58,7 +57,7 @@ Azure Portal のコンテキストに基づくレポートでは、既存のレ�
 
 ![[サインイン] ビュー](./media/active-directory-reporting-migration/483.png "[サインイン] ビュー")
 
-**[サインイン]** ビューには、すべてのユーザーのサインインが表示されます。 この情報を使用して、アプリケーションの使用状況に関する情報を取得できます。 アプリケーションの使用状況に関する情報は、**[管理]** セクションの **[エンタープライズ アプリケーション]**で概要を確認することもできます。
+**[サインイン]** ビューには、すべてのユーザーのサインインが表示されます。この情報を使用して、アプリケーションの使用状況に関する情報を取得できます。 アプリケーションの使用状況に関する情報は、**[管理]** セクションの **[エンタープライズ アプリケーション]**で概要を確認することもできます。
 
 ![[エンタープライズ アプリケーション]](./media/active-directory-reporting-migration/484.png "[エンタープライズ アプリケーション]")
 
@@ -83,7 +82,7 @@ Azure Portal では単一のビューが用意されていますが、特定の�
 
 ### <a name="application-usage"></a>アプリケーションの使用状況
 
-すべてのアプリまたは 1 つのアプリの使用状況に関する詳細を表示するには、**[アクティビティ]** の下の **[サインイン]** を選択します。 結果を絞り込むために、ユーザー名またはアプリケーション名でフィルター処理できます。
+すべてのアプリまたは 1 つのアプリの使用状況に関する詳細を表示するには、**[アクティビティ]** の下の **[サインイン]** を選択します。結果を絞り込むために、ユーザー名またはアプリケーション名でフィルター処理できます。
 
 ![[サインイン イベントのフィルター処理] ページ](./media/active-directory-reporting-migration/07.png "[サインイン イベントのフィルター処理] ページ")
 
@@ -156,4 +155,3 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 ## <a name="next-steps"></a>次のステップ
 
 レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
-

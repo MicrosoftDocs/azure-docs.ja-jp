@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 649cc1a78f3a9f343533cb18fb7d763e4f9ea196
 ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
-ms.lasthandoff: 02/04/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-visual-studio-docker-development"></a>Visual Studio Docker 開発のトラブルシューティング
 
 Visual Studio Tools for Docker プレビューを使用する際に、プレビューの性質によりいくつかの問題が発生する可能性があります。
@@ -147,4 +145,3 @@ docker info
     ```
 1. Visual Studio を開きます。
 1. シナリオをもう一度実行します。
-

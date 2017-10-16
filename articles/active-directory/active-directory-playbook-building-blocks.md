@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
+ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 671f2d386aca23bc5c02d0e0ab23e6d9d79a8693
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -340,7 +339,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | アプリが割り当てられているグループからユーザーを削除します。 | [Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する](active-directory-groups-members-azure-portal.md) |
-| プロビジョニングが解除されるまで数分待ちます。 | [Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化: 自動プロビジョニングのしくみ](active-directory-saas-app-provisioning.md#how-does-automated-provisioning-work) |
+| プロビジョニングが解除されるまで数分待ちます。 | [Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化: 自動プロビジョニングのしくみ](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | 別のブラウザー セッションで、インフォメーション ワーカーとして MyApps ポータルにログインし、そのタイルがなくなっていることを確認します。 | http://myapps.microsoft.com |
 
 
@@ -575,4 +574,3 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 
 [!INCLUDE [active-directory-playbook-toc](../../includes/active-directory-playbook-steps.md)]
-

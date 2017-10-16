@@ -12,16 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: b3a4e8f9c8580ad4c7899964dbfe99ad74e0c744
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
@@ -54,7 +50,7 @@ await conainer.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>コンテナーの Shared Access Signature を取得する
 
-コンテナーを作成した後は、コンテナーに対する書き込みアクセス権を持つ Shared Access Signature (SAS) を取得します。 SAS は、コンテナーへの委任されたアクセスを提供します。 SAS は、指定した一式のアクセス許可を、指定した期間にわたって付与します。 Batch サービスでは、タスクの出力をコンテナーに書き込むために、書き込みアクセス許可を持つ SAS が必要になります。 SAS の詳細については、「[Azure Storage での Shared Access Signatures \(SAS\) の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+コンテナーを作成した後は、コンテナーに対する書き込みアクセス権を持つ Shared Access Signature (SAS) を取得します。 SAS は、コンテナーへの委任されたアクセスを提供します。 SAS は、指定した一式のアクセス許可を、指定した期間にわたって付与します。 Batch サービスでは、タスクの出力をコンテナーに書き込むために、書き込みアクセス許可を持つ SAS が必要になります。 SAS の詳細については、「[Azure Storage での Shared Access Signatures \(SAS\) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 Azure Storage API を使用して SAS を取得すると、API から SAS トークン文字列が返されます。 このトークン文字列には、アクセス許可と SAS の有効期間を含む、SAS のすべてのパラメーターが含まれています。 SAS を使用して Azure Storage のコンテナーにアクセスするには、SAS トークン文字列をリソース URI に追加する必要があります。 このリソース URI と、追加された SAS トークンにより、Azure Storage への認証済みアクセスが提供されます。
 
@@ -146,7 +142,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)」を参照してください。
+Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)」を参照してください。
 
 
 ## <a name="diagnose-file-upload-errors"></a>ファイルのアップロード エラーを診断する
@@ -198,4 +194,3 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-

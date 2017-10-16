@@ -15,13 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
 
@@ -210,7 +208,6 @@ SQL Server に RDP 接続するには、次の手順に従います。
 4. **sqlserver-0** のブレードで **[接続]** をクリックします。 ブラウザーから、リモート接続オブジェクトを開くか保存するかをたずねられます。 **[開く]**をクリックします。
 5. **リモート デスクトップ接続** で、このリモート接続の発行元が識別できないことが通知される場合があります。 **[接続]**をクリックします。
 6. Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。 **[別のアカウントを使用する]**をクリックします。 **[ユーザー名]** に「**contoso\DomainAdmin**」と入力します。 このアカウントは、テンプレートで管理者ユーザー名を設定したときに構成したものです。 テンプレートを構成したときに選択した複雑なパスワードを使用します。
-7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。 **[はい]**をクリックします。
+7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。**[はい]**をクリックします。
 
 これで SQL Server 仮想マシンに RDP 接続できました。 SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続して、可用性グループが構成済みであることを確認できます。
-

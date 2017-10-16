@@ -11,25 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 09/07/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
+ms.openlocfilehash: e5ac068e37d921530272e5eb3dc76d976a86a742
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
-> [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure ポータルで[ロール ベースのアクセス制御](role-based-access-control-configure.md)を使用して、Azure リソースをさらに細かく管理することもできます。
-> 
-> 
 
-2013 年 10 月、Azure クラシック ポータルと Service Management API は Azure Active Directory に統合されました。これは、Azure リソースへのアクセスを管理する際のユーザー エクスペリエンスの向上を目指し、その基盤を構築することを目的としています。 Azure Active Directory には、ユーザー管理、オンプレミスのディレクトリ同期、多要素認証、アプリケーション アクセス制御など、優れた機能が用意されています。 当然、こうした機能も、Azure リソースの管理に伴う作業すべてで使用できます。
-
-Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)がアクセスする Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。 各サブスクリプションはサービス管理者 (SA) を有し、SA は[Azure クラシック ポータル](https://manage.windowsazure.com/)を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
+Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)がアクセスする Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。 各サブスクリプションはサービス管理者 (SA) を有し、SA は[Azure Portal](https://portal.azure.com/) を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
 
 <br><br>![Azure アカウント][1]
 
@@ -67,4 +60,3 @@ Azure クラシック ポータル内では、Microsoft アカウントを使用
 [2]: ./media/active-directory-understanding-resource-access/IC707932.png
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
-

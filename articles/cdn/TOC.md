@@ -6,7 +6,7 @@
 
 # 方法
 ## 統合
-### [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
@@ -19,7 +19,7 @@
 ####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [PowerShell で管理する](cdn-manage-powershell.md)
+### [Azure PowerShell を使用して管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
@@ -37,11 +37,13 @@
 ### [HTTP/2 のサポート](cdn-http2.md)
 
 ## 分析
-### [使用量パターンを分析する](cdn-analyze-usage-patterns.md)
-### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)
-### [リアルタイム統計情報を表示する](cdn-real-time-stats.md)
-### [エッジ ノードのパフォーマンスを分析する](cdn-edge-performance.md)
-### [診断ログを使用してメトリックをエクスポートする](cdn-log-analysis.md)
+### [Azure CDN の使用パターンの分析](cdn-log-analysis.md)
+#### [Verizon からのコア レポート](cdn-analyze-usage-patterns.md)
+#### [Azure 診断ログ](cdn-azure-diagnostic-logs.md)
+### Azure CDN from Verizon の分析ツール
+#### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)
+#### [リアルタイム統計情報を表示する](cdn-real-time-stats.md)
+#### [エッジ ノードのパフォーマンスを分析する](cdn-edge-performance.md)
 
 ## 開発
 ### [.NET](cdn-app-dev-net.md)
@@ -53,7 +55,7 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST ()](/rest/api/cdn/)

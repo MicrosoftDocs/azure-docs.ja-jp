@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ca8537a7e35e44efafb9b0a9d6ddefe069067475
-ms.openlocfilehash: de55bf7d9e68146745c90b96f280c8a71e27b2f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>ロジック アプリの統合アカウントでアーティファクト メタデータを管理する
 
 統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリの実行時にそのメタデータを取得することができます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定することができます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 現在、アーティファクトでは UI を通じてメタデータを作成することはできませんが、REST API を使用してメタデータを作成することができます。 Azure Portal でパートナー、契約、またはスキーマを作成または選択する際にメタデータを追加するには、**[JSON として編集]** を選択します。 ロジック アプリ内でアーティファクト メタデータを取得するには、統合アカウント アーティファクト検索機能を使用できます。
@@ -33,7 +31,7 @@ ms.lasthandoff: 03/02/2017
 
 2. 統合アカウントにアーティファクトを追加します (たとえば、[パートナー](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner)、[契約](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements)、[スキーマ](logic-apps-enterprise-integration-schemas.md))。
 
-3.    アーティファクトを選択し、**[JSON として編集]** を選択して、メタデータの詳細を入力します。
+3.  アーティファクトを選択し、**[JSON として編集]** を選択して、メタデータの詳細を入力します。
 
     ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/image1.png)
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 03/02/2017
 
 3. ロジック アプリ デザイナーで、ロジック アプリに*要求*や *HTTP* などのトリガーを追加します。
 
-4.    **[次のステップ]** > **[アクションの追加]** の順に選択します。 *統合*を検索し、**[統合アカウントのアーティファクトの検索]** を選択します。
+4.  **[次のステップ]** > **[アクションの追加]** の順に選択します。 *統合*を検索し、**[統合アカウントのアーティファクトの検索]** を選択します。
 
     ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/image2.png)
 
@@ -70,4 +68,3 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="next-steps"></a>次のステップ
 * [契約についての詳細情報](logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
-

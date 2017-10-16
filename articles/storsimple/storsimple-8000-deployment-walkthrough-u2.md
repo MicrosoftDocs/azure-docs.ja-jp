@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3d2023c3e129cfdea27f343a41b3cc373c0c3b8f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -198,5 +197,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Cloud Appliance の構成](storsimple-8000-cloud-appliance-u2.md)を行います。
 * [StorSimple デバイス マネージャー サービス](storsimple-8000-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
-
 

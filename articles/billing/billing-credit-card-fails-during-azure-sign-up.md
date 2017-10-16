@@ -16,13 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: cjiang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c1ce4284bc058096387986c8706ddc7317ee724
-ms.openlocfilehash: c2fd2a8f9eac4ef4d6f67ed924c77daa86cb81a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/11/2017
-
-
+ms.openlocfilehash: bad37f2447ac8de727326914b611f81effc9cf3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="your-debit-card-or-credit-card-is-declined-at-azure-sign-up"></a>Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否される
 Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否されたり使用できなかったりした場合、次のいずれかの問題に該当する可能性があります。
@@ -43,4 +41,3 @@ Azure へのサインアップ時にデビット カードまたはクレジッ�
 
 ## <a name="need-more-help-contact-support"></a>さらにサポートが必要な場合 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

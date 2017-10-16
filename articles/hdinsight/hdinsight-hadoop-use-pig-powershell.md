@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: ce088b22ca45bc40252c909697153ce9e847592e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight で Pig ジョブを使用する
 
@@ -50,8 +49,8 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
 * **Login-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
-* **New-AzureRmHDInsightPigJobDefinition**: 指定された Pig Latin ステートメントを使用して、*ジョブ定義* を作成します。
-* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる *ジョブ* オブジェクトを返します。
+* **New-AzureRmHDInsightPigJobDefinition**: 指定された Pig Latin ステートメントを使用して "*ジョブ定義*" を作成します。
+* **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 * **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 * **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得する場合に使用します。
 
@@ -81,7 +80,7 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
 ## <a id="troubleshooting"></a>トラブルシューティング
 
-ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。 このジョブに関するエラー情報を表示するには、次のコマンドを **pigjob.ps1** ファイルの末尾に追加して保存し、再実行します。
+ジョブが完了しても情報が返されない場合は、エラー ログを調べてください。 このジョブに関するエラー情報を表示するには、次のコマンドを **pigjob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
@@ -91,7 +90,7 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
+このコマンドレットは、ジョブ処理中に STDERR に書き込まれた情報を返します。
 
 ## <a id="summary"></a>概要
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に Pig ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。
@@ -105,4 +104,3 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-

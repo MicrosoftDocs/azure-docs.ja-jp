@@ -12,15 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
+ms.openlocfilehash: 4a20091b59f2643ea71cce99c159a5075706e35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: db2e0bd43161aad02ffce61b4cd9325892844dde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
 このチュートリアルでは、DC/OS クラスターにより Azure Container Service に Vamp を設定します。 Vamp デモ サービス "sava" をカナリア リリースし、スマート トラフィック フィルタリングを適用して、Firefox とのサービスの非互換性を解決します。 
@@ -299,5 +296,4 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 * Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](http://vamp.io/documentation/tutorials/create-a-workflow/)として実行します。
 
 * その他の [VAMP チュートリアル](http://vamp.io/documentation/tutorials/overview/)もご覧ください。
-
 

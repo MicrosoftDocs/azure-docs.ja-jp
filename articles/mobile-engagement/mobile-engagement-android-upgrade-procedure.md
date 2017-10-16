@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97ce7f4d682ec12470db4248d046a8367840f0bd
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-procedures"></a>アップグレードの手順
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
@@ -170,7 +169,7 @@ Engagement では、接続文字列を使用してアプリケーション ID �
             engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure ポータルに表示されます。
+アプリケーションの接続文字列が Azure Portal に表示されます。
 
 `EngagementAgent.init` メソッドは `CapptainAgent.configure` に置き換えられるため、このメソッドに対する呼び出しをすべて削除してください。
 
@@ -414,5 +413,4 @@ Proguard の構成はブランド変更の影響を受けるため、ルール�
             -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
               <methods>;
             }
-
 

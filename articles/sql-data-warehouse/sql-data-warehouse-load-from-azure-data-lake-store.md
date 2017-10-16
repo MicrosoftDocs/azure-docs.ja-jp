@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 01/25/2017
+ms.date: 09/06/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 6f8d220a64e04b7dfa021aacf68dadf0d55393bf
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: c58aec1ea9bc79b335a115007500d77f8e752850
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要な手順を 1 つずつ説明します。
 外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、ベスト プラクティスとしては、SQL Data Warehouse にデータをインポートすることをお勧めします。
-予想所要時間: 10 分 (前提条件が満たされている場合)。
+
 このチュートリアルで学習する内容は次のとおりです。
 
 1. Azure Data Lake Store から読み込む外部データベース オブジェクトを作成する。
@@ -89,8 +89,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。
-ADL URI は、Azure Portal と www.portal.azure.com で確認できます。
+この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 Azure Portal で ADL URI を見つけるには、Azure Data Lake Store に移動し、[基本] パネルを確認します。
 
 ```sql
 -- C: Create an external data source
@@ -214,7 +213,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="achievement-unlocked"></a>結果
 データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
-##<a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 [テーブル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)と [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) に関する開発リソースを確認してください。
 
 

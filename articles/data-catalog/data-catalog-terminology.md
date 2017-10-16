@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9e1009bc20679a907e4bd2387865a6000b4a898
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 557b529f45c7fbc286b7e1893d4b4688e088ed91
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 ## <a name="catalog"></a>カタログ
@@ -81,6 +80,5 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 登録は、データ資産メタデータをデータ ソースから抽出し、Azure Data Catalog サービスにコピーする操作です。 登録されたデータ資産は、注釈を付けて検索することができます。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)  - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
+* [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md) - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
 * [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。  
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0e5ca582714a80da8c0f63e1b06f6c3019efe849
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -38,11 +37,11 @@ ms.lasthandoff: 04/27/2017
 
 複数の VNet が同じリージョンに存在する場合は、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使いません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。 
 
-## <a name="before-beginning"></a>作業を開始する前に
+## <a name="before"></a>開始する前に
 
 次の手順では、各 VNet 用に動的またはルート ベースのゲートウェイを構成してゲートウェイ間の VPN 接続を作成する際に必要な設定について説明します。 この構成は、静的またはポリシー ベースのゲートウェイをサポートしていません。
 
-### <a name="prerequisites"></a>前提条件
+### <a name="pre"></a>前提条件
 
 * 両方の VNet が既に作成されている。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
@@ -76,7 +75,7 @@ Virtual Network Gateway name = RMGateway <br>
 Gateway IP addressing configuration = gwipconfig
 
 ## <a name="createsmgw"></a>セクション 1 - クラシック VNet を構成する
-### <a name="part-1---download-your-network-configuration-file"></a>パート 1 - ネットワーク構成ファイルをダウンロードする
+### <a name="1-download-your-network-configuration-file"></a>1.ネットワーク構成ファイルをダウンロードする
 1. 管理特権を使って PowerShell コンソールで Azure アカウントにログインします。 次のコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 構成のこの部分を完了するには、SM PowerShell コマンドレットを使用します。
 
   ```powershell
@@ -89,7 +88,7 @@ Gateway IP addressing configuration = gwipconfig
   ```
 3. ダウンロードした .xml ファイルを開き、編集します。 ネットワーク構成ファイルの例については、 [ネットワークの構成スキーマ](https://msdn.microsoft.com/library/jj157100.aspx)に関するページを参照してください。
 
-### <a name="part-2--verify-the-gateway-subnet"></a>パート 2 - ゲートウェイ サブネットを確認する
+### <a name="2-verify-the-gateway-subnet"></a>2.ゲートウェイ サブネットを確認する
 **VirtualNetworkSites** 要素にゲートウェイ サブネットがまだ作成されていない場合は、VNet に追加します。 ネットワーク構成ファイルを使用する場合は、ゲートウェイ サブネットの名前が "GatewaySubnet" である必要があります。それ以外の場合は、Azure でこれを認識してゲートウェイ サブネットとして使用することができません。
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -112,7 +111,7 @@ Gateway IP addressing configuration = gwipconfig
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="part-3---add-the-local-network-site"></a>パート 3 - ローカル ネットワーク サイトを追加する
+### <a name="3-add-the-local-network-site"></a>3.ローカル ネットワーク サイトを追加する
 追加するローカル ネットワーク サイトは、接続先の RM VNet を表します。 まだ存在していない場合は、**LocalNetworkSites** 要素をファイルに追加します。 構成のこの時点では、Resource Manager の VNet のゲートウェイをまだ作成していないため、VPNGatewayAddress は任意の有効なパブリック IP アドレスにすることができます。 ゲートウェイを作成したら、このプレースホルダー IP アドレスを、RM ゲートウェイに割り当てられている正しいパブリック IP アドレスに置き換えます。
 
     <LocalNetworkSites>
@@ -124,7 +123,7 @@ Gateway IP addressing configuration = gwipconfig
       </LocalNetworkSite>
     </LocalNetworkSites>
 
-### <a name="part-4---associate-the-vnet-with-the-local-network-site"></a>パート 4 - VNet をローカル ネットワーク サイトに関連付ける
+### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4.VNet をローカル ネットワーク サイトに関連付ける
 このセクションでは、VNet の接続先のローカル ネットワーク サイトを指定します。 ここでは、先ほど参照した Resource Manager の VNet が該当します。 名前が一致することを確認します。 この手順では、ゲートウェイは作成しません。 ゲートウェイの接続先となるローカル ネットワークを指定します。
 
         <Gateway>
@@ -135,7 +134,7 @@ Gateway IP addressing configuration = gwipconfig
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-### <a name="part-5---save-the-file-and-upload"></a>パート 5 - ファイルを保存してアップロードする
+### <a name="5-save-the-file-and-upload"></a>5.ファイルを保存してアップロードする
 ファイルを保存してから、次のコマンドを実行して Azure にインポートします。 必要に応じて、ファイル パスを環境に合わせて変更してください。
 
 ```powershell
@@ -148,7 +147,7 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
         --------------------        -----------                      ---------------                                                
         Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
 
-### <a name="part-6---create-the-gateway"></a>パート 6 - ゲートウェイを作成する
+### <a name="6-create-the-gateway"></a>6.ゲートウェイを作成する
 
 このサンプルを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 ネットワーク構成ファイルには、クラシック仮想ネットワークの値が含まれています。 デプロイメント モデルでの違いのため、Azure Portal でクラシック VNet の設定を作成するときに、クラシック VNet の名前がネットワーク構成ファイルで変更される場合があります。 たとえば、Azure Portal を使って、"Classic VNet" という名前のクラシック VNet を、"ClassicRG" という名前のリソース グループに作成した場合、ネットワーク構成ファイルでは "Group ClassicRG Classic VNet" という名前に変換されます。 スペースを含む VNet の名前を指定するときは、引用符を使って値を囲みます。
 
@@ -161,7 +160,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 **Get-AzureVNetGateway** コマンドレットを使用すると、ゲートウェイの状態を確認できます。
 
-## <a name="creatermgw"></a>セクション 2: RM VNet ゲートウェイを構成する
+## <a name="creatermgw"></a>セクション 2 - RM VNet ゲートウェイを構成する
 RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従います。 クラシック VNet のゲートウェイのパブリック IP アドレスを取得するまで、手順を開始しないでください。 
 
 1. PowerShell コンソールで Azure アカウントにログインします。 次のコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。
@@ -236,7 +235,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
-## <a name="section-3-modify-the-classic-vnet-local-site-settings"></a>セクション 3: クラシック VNet ローカル サイトの設定を変更する
+## <a name="localsite"></a>セクション 3 - クラシック VNet ローカル サイトの設定を変更する
 
 このセクションでは、クラシック VNet を使います。 Resource Manager VNet ゲートウェイに接続するために使われるローカル サイトの設定を指定するときに使ったプレースホルダー IP アドレスを置き換えます。 
 
@@ -256,7 +255,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
   ```
 
-## <a name="connect"></a>セクション 4: ゲートウェイ間の接続を作成する
+## <a name="connect"></a>セクション 4 - ゲートウェイ間の接続を作成する
 ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 その場合は、**Add-azureaccount** を使用します。
 
 1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、**-VNetName** はクラシック VNet の名前で、**-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
@@ -283,7 +282,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   $vnet01gateway -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
   ```
 
-## <a name="section-5-verify-your-connections"></a>セクション 5: 接続を確認する
+## <a name="verify"></a>セクション 5 - 接続を確認する
 
 ### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>クラシック VNet から Resource Manager VNet への接続を確認するには
 
@@ -308,6 +307,5 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
 
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
-
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 

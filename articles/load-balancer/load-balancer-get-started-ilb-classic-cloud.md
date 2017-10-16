@@ -3,7 +3,7 @@ title: "Azure Cloud Services 用の内部ロード バランサーの作成 | Mi
 description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
@@ -14,17 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8dbc951416d577fa7f534c2eab1605c6bee61fce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-<a id="get-started-creating-an-internal-load-balancer-classic-for-cloud-services" class="xliff"></a>
-
-# クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
+# <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -34,9 +30,7 @@ ms.lasthandoff: 06/28/2017
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
-<a id="configure-internal-load-balancer-for-cloud-services" class="xliff"></a>
-
-## クラウド サービスの内部ロード バランサーを構成する
+## <a name="configure-internal-load-balancer-for-cloud-services"></a>クラウド サービスの内部ロード バランサーを構成する
 
 内部ロード バランサーは、仮想マシンとクラウド サービスの両方でサポートされています。 リージョンの仮想ネットワークの外部にあるクラウド サービスで作成された内部ロード バランサー エンドポイントは、そのクラウド サービス内でのみアクセスできます。
 
@@ -45,9 +39,7 @@ ms.lasthandoff: 06/28/2017
 > [!IMPORTANT]
 > 以下の手順の前提条件は、クラウド デプロイのために仮想ネットワークを作成しておくことです。 内部負荷分散を作成するには仮想ネットワーク名とサブネット名が必要です。
 
-<a id="step-1" class="xliff"></a>
-
-### 手順 1.
+### <a name="step-1"></a>手順 1.
 
 Visual Studio でクラウド デプロイのサービス構成ファイル (.cscfg) を開き、ネットワーク構成の最後の "`</Role>`" 項目の下に、内部負荷分散を作成するための次のセクションを追加します。
 
@@ -75,9 +67,7 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 ロード バランサー スキーマの詳細については、「 [ロード バランサーの追加](https://msdn.microsoft.com/library/azure/dn722411.aspx)」を参照してください。
 
-<a id="step-2" class="xliff"></a>
-
-### 手順 2.
+### <a name="step-2"></a>手順 2.
 
 サービス定義 (.csdef) ファイルを変更し、内部負荷分散にエンドポイントを追加します。 ロール インスタンスが作成された直後に、サービス定義ファイルによりそのロール インスタンスが内部負荷分散に追加されます。
 
@@ -101,12 +91,9 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 ネットワーク トラフィックの負荷は testLB ロード バランサーを使用して分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
 

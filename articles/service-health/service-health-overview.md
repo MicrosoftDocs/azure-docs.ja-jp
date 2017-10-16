@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 001dc1fa2a0fd7e132101944a87be3f8552d8738
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-health"></a>Azure Service Health
 Azure Service Health は、Azure サービスの問題がお使いのサービスにいつ影響を及ぼすかに関するカスタマイズした情報をタイムリーに提供します。  また、今後の定期的なメンテナンスに備えるのに役立ちます。
@@ -59,4 +58,4 @@ Service Health をフィルター処理して、ビジネス クリティカル�
 Azure Service Health は Azure Monitor に対応しているため、ビジネス上重要なリソースが影響を受けると、メールやテキスト メッセージ、webhook の通知を使用してユーザーに警告します。 適切な Service Health イベントに対してアクティビティ ログのアラートをセットアップします。 組織内の適切なユーザーにそのアラートをルーティングするには、アクション グループを使用します。 詳しくは、[Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
 
 # <a name="next-steps"></a>次のステップ
-アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳しくは、[Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。 
+アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事を参照してください。 

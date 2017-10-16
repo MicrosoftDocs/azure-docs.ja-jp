@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 07ef1fd3d81d795c9164741d22b5a689f86bd720
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool の軽減策
 
 Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイクル (SDL) の主要な要素です。 これを使用すると、ソフトウェア アーキテクトは早い段階で潜在的なセキュリティの問題を特定し、危険を軽減することができます。早い段階であれば、問題の解決は比較的容易で、コスト効率も良くなります。 そのため、開発総コストを大幅に軽減できます。 また、このツールはセキュリティの専門家ではないユーザーを想定して設計され、脅威モデルの作成と分析に関するわかりやすいガイダンスが用意されているため、すべての開発者が簡単に脅威をモデリングできます。
@@ -32,7 +30,7 @@ Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイク�
 
 Threat Modeling Tool の軽減策は、Web アプリケーションのセキュリティ フレームに基づいて分類されます。このフレームの構成要素は、次のとおりです。
 
-| カテゴリ | 説明 |
+| カテゴリ | Description |
 | -------- | ----------- |
 | **[監査とログ記録](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | だれがいつ何をしたか。 監査とログ記録とは、アプリケーションがセキュリティ関連のイベントを記録する方法のことです |
 | **[認証](./azure-security-threat-modeling-tool-authentication.md)** | 自分がだれであるか。 認証は、エンティティが他のエンティティの ID を証明するプロセスであり、通常はユーザー名、パスワードなどの資格情報を使用します |

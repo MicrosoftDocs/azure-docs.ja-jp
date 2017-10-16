@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB Graph API の概要 | Microsoft Docs"
-description: "Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って低待機時間で大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。"
+description: "Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って待ち時間の短い大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。"
 services: cosmos-db
 author: dennyglee
 documentationcenter: 
@@ -12,31 +12,39 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: denlee
+ms.openlocfilehash: b6cc51ad2bab294035f3ed8f300423d1d320df1f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: af4c67accf43c2f4f1498e3cafad6e9087a923af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル配布](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 Azure Cosmos DB は、次の機能を提供します。これらの機能はすべて、[業界最先端の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。
 
-最初に、Kirill Gavrylyuk が Azure Cosmos DB でグラフを利用する方法について解説している次のビデオを視聴することをお勧めします。
+* [ターンキー グローバル配信](distribute-data-globally.md)
+* 世界規模での[スループットとストレージのエラスティック スケーリング](partition-data.md)
+* 99 パーセンタイルで 10 ミリ秒未満の待ち時間
+* [明確に定義された 5 種類の整合性レベル](consistency-levels.md)
+* 高可用性の保証 
+
+Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。
+
+Kirill Gavrylyuk が Azure Cosmos DB でグラフを利用する方法について解説している次のビデオを視聴することをお勧めします。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
 > 
 > 
+
 Azure Cosmos DB Graph API には次のものが含まれています。
 
-- グラフのモデリング
-- トラバーサル API
-- ターンキーのグローバル配布
-- 10 ミリ秒未満の読み取り待機時間と 99 パーセンタイルで 15 ミリ秒未満を実現したストレージとスループットのエラスティック スケーリング
-- インスタント クエリの可用性による自動インデックス設定
-- 調整可能な整合性レベル
-- 可用性 99.99% を含む包括的な SLA
+- グラフのモデリング。
+- トラバーサル API。
+- ターンキー グローバル配信。
+- 10 ミリ秒未満の読み取り待ち時間と 99 パーセンタイルで 15 ミリ秒未満を実現したストレージとスループットのエラスティック スケーリング。
+- インスタント クエリの可用性による自動インデックス設定。
+- 調整可能な整合性レベル。
+- 可用性 99.99% を含む包括的な SLA。
 
 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) か、または [Apache Spark GraphX](spark-connector-graph.md) などの、TinkerPop と互換性のあるその他のグラフ システムを使用できます。
 
@@ -58,7 +66,7 @@ Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://ti
 グラフ データベースが提供する高速トラバーサルと、深さ優先探索、幅優先探索、ダイクストラ法などのグラフ アルゴリズムを組み合わせることで、ソーシャル ネットワーク、コンテンツ管理、レコメンデーションなどのさまざまな分野の問題を解決できます。
 
 ## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Azure Cosmos DB による地球規模のグラフ
-Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。  
+Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。
 
 ![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
@@ -74,15 +82,15 @@ Azure Cosmos DB は、市場の他のグラフ データベースと比較した
 
 * 使い慣れた Gremlin 構文を使用した高速のクエリとトラバーサル
 
- 異種の頂点と辺を格納し、使い慣れた Gremlin 構文を使用してこれらのドキュメントを照会できます。 Azure Cosmos DB では、同時実行性の高い、ロックのないログ構造のインデックス作成技術を利用して、すべてのコンテンツのインデックスを自動的に作成します。 そのため、スキーマのヒント、セカンダリ インデックス、またはビューを指定しなくても、豊富なリアルタイム クエリとトラバーサルが可能になります。 詳細については、[Gremlin を使用したグラフの照会](gremlin-support.md)に関する記事をご覧ください。
+ 異種の頂点と辺を格納し、使い慣れた Gremlin 構文を使用してこれらのドキュメントを照会できます。 Azure Cosmos DB では、同時実行性の高い、ロックのないログ構造のインデックス作成技術を利用して、すべてのコンテンツのインデックスを自動的に作成します。 そのため、スキーマのヒント、セカンダリ インデックス、またはビューを指定しなくても、豊富なリアルタイム クエリとトラバーサルが可能になります。 詳細については、[Gremlin を使用したグラフの照会](gremlin-support.md)に関する記事を参照してください。
 
 * 完全管理型
 
- Azure Cosmos DB を使用すると、データベースやコンピューター リソースを管理する手間がかかりません。 Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、スケールの管理、複雑なデータ層のアップグレードへの対応は不要です。 すべてのグラフが自動的にバックアップされ、リージョンの障害から保護されます。 Azure Cosmos DB アカウントを簡単に追加し、必要に応じて容量をプロビジョニングできるので、データベースの運用と管理ではなく、アプリケーションに注力できます。
+ Azure Cosmos DB を使用すると、データベースやコンピューター リソースを管理する手間がかかりません。 Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、スケールの管理、複雑なデータ層のアップグレードを手作業で行う必要はありません。 すべてのグラフが自動的にバックアップされ、リージョンの障害から保護されます。 Azure Cosmos DB アカウントを簡単に追加し、必要に応じて容量をプロビジョニングできるので、データベースの運用と管理ではなく、アプリケーションに注力できます。
 
 * インデックスの自動作成
 
- 既定では、Azure Cosmos DB はグラフのノードおよび辺内のすべてのプロパティのインデックスを自動的に作成するので、スキーマや、セカンダリ インデックスの作成は不要です。
+ 既定では、Azure Cosmos DB はグラフのノードおよび辺内のすべてのプロパティのインデックスを自動的に作成するため、スキーマや、セカンダリ インデックスの作成は不要です。
 
 * Apache TinkerPop との互換性
 
@@ -94,7 +102,7 @@ Azure Cosmos DB は、市場の他のグラフ データベースと比較した
 
 Azure Cosmos DB では、同じコンテナーやデータベース内でドキュメントやグラフなどの複数のモデルを使用することもできます。 ドキュメント コレクションを使用してグラフ データをドキュメントと共に格納できます。 JSON に対する SQL クエリと Gremlin クエリの両方を使用して、同じデータをグラフとして照会できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="get-started"></a>作業開始
 Graph API をサポートする Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure Portal を使用して、Azure Cosmos DB アカウントを作成できます。 アカウントを作成すると、Gremlin の WebSocket フロントエンドを提供する `https://<youraccount>.graphs.azure.com` などのサービス エンドポイントが Azure Portal で提供されます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
 
 次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
@@ -111,7 +119,10 @@ Azure Cosmos DB では、NuGet を使用して、[Azure Cosmos DB SDK](documentd
 | --- | --- |
 | [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
 
-[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成したり、コストをかけたりせずに、Graph API を使用してローカルで開発とテストを行うことができます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
+[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成したり、コストをかけたりせずに、上記の .NET Graph API を使用してローカルで開発とテストを行うことができます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
+
+> [!NOTE]
+> [Azure Cosmos DB エミュレーター](local-emulator.md)に対する Gremlin クエリの検証は、.NET Graph API を介してのみサポートされます。
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB のグラフ サポートのシナリオ
 Azure Cosmos DB のグラフ サポートを使用できるシナリオを以下に示します。
@@ -130,11 +141,10 @@ Azure Cosmos DB のグラフ サポートを使用できるシナリオを以下
 
 * モノのインターネット
 
- ネットワークと、グラフとしてモデル化された IoT デバイス間の接続により、デバイスと資産の状態や、ネットワークのある部分の変更が別の部分に及ぼす可能性のある影響について理解を深めることができます。
+ ネットワークと、グラフとしてモデル化された IoT デバイス間の接続により、デバイスと資産の状態について理解を深めることができます。 さらに、ネットワークのある部分の変更が別の部分に及ぼす可能性のある影響についても学習できます。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB のグラフ サポートの詳細については、以下をご覧ください。
 
 * [Azure Cosmos DB グラフ チュートリアル](create-graph-dotnet.md)を開始する
-* [Gremlin を使用して Azure Cosmos DB のグラフを照会する](gremlin-support.md)方法を確認する
-
+* [Gremlin を使用して Azure Cosmos DB のグラフを照会する](gremlin-support.md)方法を確認する。

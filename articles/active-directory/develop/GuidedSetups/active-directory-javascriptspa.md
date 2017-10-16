@@ -15,16 +15,14 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4b24bc8dd66176b5d9895337c2c000db4c143298
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 26354e03a44ddbd8340b805e4898eda8c2e25f2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [1. Introduction](active-directory-singlepageapp-javascriptspa-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-singlepageapp-javascriptspa-setup.md)]
 [!INCLUDE [3. Use](active-directory-singlepageapp-javascriptspa-use.md)]
 [!INCLUDE [4. Configure](active-directory-singlepageapp-javascriptspa-configure.md)]
 [!INCLUDE  [5. Test and Validate](active-directory-singlepageapp-javascriptspa-test.md)]
-

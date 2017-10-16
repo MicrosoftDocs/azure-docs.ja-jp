@@ -12,14 +12,14 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 08/30/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
-
+ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure Search インデクサーのフィールド マッピング
 Azure Search インデクサーを使用する際、入力データがターゲット インデックスのスキーマと大きく異なっているのに気づく場合があります。 このような場合に、 **フィールド マッピング** を使用してデータを必要な形式に変換できます。
 
@@ -32,7 +32,7 @@ Azure Search インデクサーを使用する際、入力データがターゲ�
 ## <a name="setting-up-field-mappings"></a>フィールド マッピングの設定
 フィールド マッピングは、 [インデクサーの作成](https://msdn.microsoft.com/library/azure/dn946899.aspx) API を使用して新しいインデクサーを作成するときに追加できます。 フィールド マッピングは、 [インデクサーの更新](https://msdn.microsoft.com/library/azure/dn946892.aspx) API を使用してインデックス作成インデクサーで管理できます。
 
-フィールド マッピングは、次の 3 つの部分で構成されます。
+フィールド マッピングは、3 つの部分で構成されます。
 
 1. `sourceFieldName`。データ ソース内のフィールドを表します。 このプロパティは必須です。
 2. `targetFieldName` (省略可能)。Search インデックス内のフィールドを表します。 省略すると、データ ソースと同じ名前が使用されます。
@@ -81,30 +81,46 @@ api-key: [admin key]
 
 <a name="base64EncodeFunction"></a>
 
-### <a name="base64encode"></a>base64Encode
+## <a name="base64encode"></a>base64Encode
 入力文字列の *URL の安全な* Base64 エンコードを実行します。 入力は UTF-8 でエンコードされていることを前提としています。
 
-#### <a name="sample-use-case"></a>サンプル ユース ケース
-URL の安全な文字を Azure Search ドキュメント キーにのみ表示できます (お客様が参照 API を使用してドキュメントに対処する必要がある場合など)。 データに URL の安全でない文字が含まれ、それを使用して検索インデックスにキー フィールドを設定する場合に、この関数を使用します。   
+### <a name="sample-use-case---document-key-lookup"></a>サンプル ユース ケース - ドキュメント キーの検索
+Azure Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要がある場合などのため)。 データに URL の安全でない文字が含まれ、それを使用して検索インデックスにキー フィールドを設定する場合に、この関数を使用します。 キーがエンコードされたら、base64 デコードを使用して元の値を取得できます。 詳細については、[base64 のエンコードおよびデコード](#base64details)に関するセクションを参照してください。
 
 #### <a name="example"></a>例
 ```JSON
 
 "fieldMappings" : [
   {
-    "sourceFieldName" : "Path",
-    "targetFieldName" : "UrlSafePath",
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode" }
   }]
 ```
 
+### <a name="sample-use-case---retrieve-original-key"></a>サンプル ユース ケース - 元のキーの取得
+BLOB パス メタデータをドキュメント キーとして備えた BLOB のインデックスを作成する、BLOB インデクサーがあります。 エンコードされたドキュメント キーを取得した後、パスをデコードし、BLOB をダウンロードします。
+
+#### <a name="example"></a>例
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
+  }]
+```
+
+キーでドキュメントを参照する必要がなく、エンコードされたコンテンツをデコードする必要がない場合は、マッピング関数の `parameters` を省略することができます。省略すると、`useHttpServerUtilityUrlTokenEncode` は既定値の `true` になります。 それ以外の場合は、どの設定にするかを決めるために、[base64 の詳細](#base64details)に関するセクションを参照してください。
+
 <a name="base64DecodeFunction"></a>
 
-### <a name="base64decode"></a>base64Decode
+## <a name="base64decode"></a>base64Decode
 入力文字列の Base64 デコードを実行します。 入力値は *URL の安全な* Base64 でエンコードされた文字列と想定されます。
 
-#### <a name="sample-use-case"></a>サンプル ユース ケース
-BLOB カスタム メタデータ値を、ASCII でエンコードする必要がある場合。 Base64 エンコードを使用して、BLOB のカスタム メタデータ内の任意の Unicode 文字列を表すことができます。 ただし、意味のある検索を行うために、検索インデックスを設定する際に、エンコードされたデータを "通常の" 文字列に戻すときにこの関数を使用できます。  
+### <a name="sample-use-case"></a>サンプル ユース ケース
+BLOB カスタム メタデータ値を、ASCII でエンコードする必要がある場合。 base64 エンコードを使用して、BLOB のカスタム メタデータ内の任意の UTF-8 文字列を表すことができます。 ただし、意味のある検索を行うために、検索インデックスを設定する際に、エンコードされたデータを "通常の" 文字列に戻すときにこの関数を使用できます。
 
 #### <a name="example"></a>例
 ```JSON
@@ -113,25 +129,45 @@ BLOB カスタム メタデータ値を、ASCII でエンコードする必要�
   {
     "sourceFieldName" : "Base64EncodedMetadata",
     "targetFieldName" : "SearchableMetadata",
-    "mappingFunction" : { "name" : "base64Decode" }
+    "mappingFunction" : { "name" : "base64Decode", "parameters" : { "useHttpServerUtilityUrlTokenDecode" : false } }
   }]
 ```
 
+どの `parameters` も指定しない場合、`useHttpServerUtilityUrlTokenDecode` の既定値は `true` です。 どの設定にするかを決めるには、[base64 の詳細](#base64details)に関するセクションを参照してください。
+
+<a name="base64details"></a>
+
+### <a name="details-of-base64-encoding-and-decoding"></a>base64 のエンコードおよびデコードの詳細
+Azure Search では、2 つの base64 エンコードがサポートされています。HttpServerUtility URL トークンと、パディングなしの URL 対応 base64 エンコードです。 検索のためにドキュメント キーをエンコードしたり、インデクサーによってデコードされるように値をエンコードしたり、インデクサーによってエンコードされたフィールドをデコードしたりする場合は、マッピング関数と同じエンコードを使用する必要があります。
+
+.NET Framework を使用する場合は、エンコードとデコードのために `useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `true` に設定できます。 そうすると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) のように動作し、`base64Decode` は [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) のように動作します。
+
+.NET Framework を使用していない場合は、`useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `false` に設定する必要があります。 使用するライブラリによっては、base64 エンコードおよびデコードのユーティリティ関数が Azure Search とは異なる場合があります。
+
+次の表では、文字列 `00>00?00` の異なる base64 エンコードを比較しています。 base64 関数に必要な追加処理 (ある場合) を判断するには、ライブラリ エンコード関数を文字列 `00>00?00` に適用し、出力を想定出力 `MDA-MDA_MDA` と比較します。
+
+| エンコード | base64 エンコード出力 | ライブラリ エンコード後の追加処理 | ライブラリ デコード前の追加処理 |
+| --- | --- | --- | --- |
+| パディング付きの base64 | `MDA+MDA/MDA=` | URL で使用できる文字を使用し、パディングを削除する | 標準 base64 文字を使用し、パディングを追加する |
+| パディングなしの base64 | `MDA+MDA/MDA` | URL で使用できる文字を使用する | 標準 base64 文字を使用する |
+| パディング付きの URL 対応 base64 | `MDA-MDA_MDA=` | パディングを削除する | パディングを追加する |
+| パディングなしの URL 対応 base64 | `MDA-MDA_MDA` | なし | なし |
+
 <a name="extractTokenAtPositionFunction"></a>
 
-### <a name="extracttokenatposition"></a>extractTokenAtPosition
+## <a name="extracttokenatposition"></a>extractTokenAtPosition
 指定された区切り記号を使用して文字列フィールドを分割し、結果として得られる分割の指定位置でトークンを取得します。
 
 たとえば、入力が `Jane Doe`、`delimiter` が `" "` (空白)、`position` が 0 の場合、結果は `Jane` になり、`position` が 1 の場合、結果は `Doe` になります。 位置が、存在しないトークンを参照する場合、エラーが返されます。
 
-#### <a name="sample-use-case"></a>サンプル ユース ケース
+### <a name="sample-use-case"></a>サンプル ユース ケース
 データ ソースに `PersonName` フィールドが含まれ、それを 2 つの別々の `FirstName` および `LastName` フィールドとしてインデックスする必要がある場合、 この関数を使用して、空白文字を区切り記号として使って入力を分割できます。
 
-#### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>パラメーター
 * `delimiter`: 入力文字列を分割するときに区切り記号として使用する文字列。
 * `position`: 入力文字列の分割後に取得するトークンの整数の 0 から始まる位置。    
 
-#### <a name="example"></a>例
+### <a name="example"></a>例
 ```JSON
 
 "fieldMappings" : [
@@ -149,15 +185,15 @@ BLOB カスタム メタデータ値を、ASCII でエンコードする必要�
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+## <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
 文字列の JSON 配列として書式設定された文字列を、インデックス内の `Collection(Edm.String)` フィールドの入力に使用できる文字列配列に変換します。
 
-たとえば、入力文字列が `["red", "white", "blue"]` の場合、`Collection(Edm.String)` 型のターゲット フィールドに `red`、`white`、`blue` の 3 つの値が入力されます。 JSON 文字列配列として解析できない入力値では、エラーが返されます。
+たとえば、入力文字列が `["red", "white", "blue"]` の場合、`Collection(Edm.String)` 型のターゲット フィールドに `red`、`white`、`blue` の 3 つの値が設定されます。 JSON 文字列配列として解析できない入力値では、エラーが返されます。
 
-#### <a name="sample-use-case"></a>サンプル ユース ケース
+### <a name="sample-use-case"></a>サンプル ユース ケース
 Azure SQL データベースには、Azure Search の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列コレクション フィールドに値を入力するには、ソース データを JSON 文字列配列とし書式設定して、この関数を使用します。
 
-#### <a name="example"></a>例
+### <a name="example"></a>例
 ```JSON
 
 "fieldMappings" : [
@@ -165,11 +201,6 @@ Azure SQL データベースには、Azure Search の `Collection(Edm.String)` �
 ]
 ```
 
+
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

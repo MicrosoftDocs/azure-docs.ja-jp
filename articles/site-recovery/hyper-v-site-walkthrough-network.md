@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 100b9d8a55c2c163e7a04680f0f7d7963315ee73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-4-plan-networking-for-hyper-v-to-azure-replication"></a>手順 4: Hyper-V から Azure へのレプリケーションのネットワークを計画する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの Hyper-V VM (System Center VMM なし) を Azure にレプリケートする場合のネットワーク計画の考慮事項について説明します。
@@ -91,4 +89,3 @@ Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケ�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 5: Azure を準備する](hyper-v-site-walkthrough-prepare-azure.md)方法に関するページに進む
-

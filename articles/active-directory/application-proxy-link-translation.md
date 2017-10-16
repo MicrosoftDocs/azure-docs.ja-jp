@@ -15,14 +15,12 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 57218346d236b376d2227e0ffaea6c6dd5ebe855
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
 Azure AD アプリケーション プロキシを使うと、リモートのユーザーまたは自分のデバイスを使っているユーザーがオンプレミスのアプリを使用できるようになります。 ただし、一部のアプリは、HTML に埋め込まれたローカル リンクと共に開発されました。 現時点では、アプリをリモートで使用しているときには、それらのリンクは正常に機能しません。 お互いをポイントするオンプレミス アプリケーションが複数ある場合、お客様のユーザーは、オフィスにいないときにそのリンクが機能し続けることを期待します。 
@@ -92,4 +90,3 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 [Azure AD アプリケーション プロキシとともにカスタム ドメインを使用](active-directory-application-proxy-custom-domains.md)して、同じ内部および外部 URL を含める
 
 [SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)
-

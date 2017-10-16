@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: mikerou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
 Azure での Service Fabric クラスターのスケーリングの基礎については、[クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)に関する記事で説明されています。 その記事では、Service Fabric クラスターを仮想マシン スケール セット上に構築する方法のほか、手動か、自動スケール ルールを利用して Service Fabric クラスターをスケーリングする方法が示されています。 このドキュメントでは、より高度なシナリオで Azure のスケーリング操作をプログラムで調整する方法を説明します。 
@@ -94,7 +91,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ## <a name="scaling-in"></a>スケールイン
 
-スケールインは、スケールアウトに似ています。 実際の仮想マシン スケール セットの変更も、実質的には同じです。 しかし、先ほど説明したとおり、Service Fabric では、Gold または Silver の耐久性レベルを持つノードの場合だけは、ノードが削除されると自動的にクリーンアップが行われます。 そのため、Bronze の耐久性レベルでスケールインする場合は、Service Fabric クラスターを操作して削除するノードをシャットダウンした後に、ノードの状態の削除を行う必要があります。
+スケールインは、スケールアウトに似ています。実際の仮想マシン スケール セットの変更も、実質的には同じです。 しかし、先ほど説明したとおり、Service Fabric では、Gold または Silver の耐久性レベルを持つノードの場合だけは、ノードが削除されると自動的にクリーンアップが行われます。 そのため、Bronze の耐久性レベルでスケールインする場合は、Service Fabric クラスターを操作して削除するノードをシャットダウンした後に、ノードの状態の削除を行う必要があります。
 
 ノードのシャットダウンを準備する際は、削除するノード (最後に追加されたノード) を探して非アクティブ化する必要があります。 非シード ノードの場合、`NodeInstanceId` と比較することで新しいノードを検出できます。 
 
@@ -143,7 +140,7 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 ## <a name="potential-drawbacks"></a>潜在的な欠点
 
-上記のコード スニペットで示したように、独自のスケーリング サービスを作成すると、アプリケーションのスケーリング動作において最高レベルの制御とカスタマイズ性を得ることができます。 これは、アプリケーションをいつ、どのようにスケールインまたはスケールアウトするかについて、細かい制御が必要なシナリオに役立てることができます。 ただし、制御を細かくすると、代わりにコードが複雑になります。 このアプローチでは、スケーリング コードに責任を持つことを意味し、これは簡単なことではありません。
+上記のコード スニペットで示したように、独自のスケーリング サービスを作成すると、アプリケーションのスケーリング動作において最高レベルの制御とカスタマイズ性を得ることができます。 これは、アプリケーションをいつ、どのようにスケールインまたはスケールアウトするかについて、細かい制御が必要なシナリオに役立てることができます。ただし、制御を細かくすると、代わりにコードが複雑になります。 このアプローチでは、スケーリング コードに責任を持つことを意味し、これは簡単なことではありません。
 
 Service Fabric のスケーリングの方法は、シナリオによって異なります。 スケーリングが頻繁でなければ、ノードを手動で追加または削除する機能だけでおそらく十分です。 さらに複雑なシナリオの場合は、自動スケール ルールと、プログラムでスケーリングを行う機能を公開している SDK が強力な代替手段となります。
 
@@ -154,4 +151,3 @@ Service Fabric のスケーリングの方法は、シナリオによって異�
 - [手動でのスケーリングまたは自動スケール ルールを使用したスケーリング](./service-fabric-cluster-scale-up-down.md)
 - [.NET 用 Fluent Azure Management ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (Service Fabric クラスターの基盤となる仮想マシン スケール セットの操作に便利です)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric クラスターとそのノードの操作に便利です)
-

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8087f27a692e1e2d0f2d9434b065ddb902de0d57
-
-
+ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="portals-you-will-need"></a>必要なポータル
-プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure ポータルの概要を、やり取りする順番で示します。                                                                            
+プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure Portal の概要を、やり取りする順番で示します。                                                                            
 
 ## <a name="developer-center"></a>デベロッパー センター
 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
@@ -35,7 +35,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 > 
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
-配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com など)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
+理想的には、これは、配布リストまたはセキュリティ グループ (@ など azurepublishing*partnercompany*.com)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
 
 > [!TIP]
 > 個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。
@@ -51,7 +51,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
 発行ポータルに初めてサインインする際には、前述の配布リストまたはセキュリティ グループを使用する必要があります。 他のユーザーは後で共同管理者として追加できます。 このようにして、デベロッパー センターの登録データにマップされます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure Portal
 [https://portal.azure.com](https://portal.azure.com)
 
 ### <a name="description"></a>説明
@@ -62,10 +62,4 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 
 ## <a name="see-also"></a>関連項目
 * [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

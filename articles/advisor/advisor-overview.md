@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 35678142550f9f887562f311a5e7d9516495cf53
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 96925f251cf4984a11516a962740e19a7b9589dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
 Azure Advisor の主な機能と、よく寄せられる質問について説明します。
@@ -89,4 +87,3 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
-

@@ -15,15 +15,12 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
 Azure Cosmos DB の ODBC ドライバーを使用すると、SQL Server Integration Services、Power BI Desktop、Tableau などの BI 分析ツールを使って Azure Cosmos DB に接続できるため、これらのソリューションで Azure Cosmos DB データを分析したり視覚化したりできます。
@@ -152,4 +149,3 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 ## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB の詳細については、[Azure Cosmos DB](introduction.md) に関するページを参照してください。
-

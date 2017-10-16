@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2db8af1badf908ec69e4d994755bad87e8653dee
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Azure Mobile Engagement の概念
 Mobile Engagement は、サポートされているすべてのプラットフォームに共通の概念をいくつかを定義します。 この記事では、それらの概念について簡単に説明します。
@@ -87,5 +86,4 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 * [Azure モバイル エンゲージメントの Windows Phone Silverlight SDK 概要](mobile-engagement-windows-phone-sdk-overview.md)
 * [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
 * [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
-
 

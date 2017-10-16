@@ -6,15 +6,15 @@
 仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
 * VM を別の VM サイズに変更します。<br>
-  **[すべて参照]** > **[仮想マシン (クラシック)]** > お使いの仮想マシン > **[設定]** > **[サイズ]** の順にクリックします。 詳細な手順については、「 [Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
+    **[すべて参照]** > **[仮想マシン (クラシック)]** > お使いの仮想マシン > **[設定]** > **[サイズ]** の順にクリックします。 詳細な手順については、「 [Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 * クラウド サービスからすべての VM を削除して、VM を再作成します。<br>
-  **[すべて参照]** > **[仮想マシン (クラシック)]** > お使いの仮想マシン > **[削除]** の順にクリックします。 次に、**[新規]** > **[Compute]** > 仮想マシン イメージの順にクリックします。
+    **[すべて参照]** > **[仮想マシン (クラシック)]** > お使いの仮想マシン > **[削除]** の順にクリックします。 次に、**[新規]** > **[Compute]** > 仮想マシン イメージの順にクリックします。
 
 ### <a name="troubleshoot-common-allocation-failures-in-the-azure-resource-manager-deployment-model"></a>Azure リソース マネージャー デプロイメント モデルでの一般的な割り当てエラーのトラブルシューティング
 仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
 * 同じ可用性セット内のすべての VM を停止 (割り当て解除) し、それぞれを再起動します。<br>
-  停止するには、**[リソース グループ]** > 対象とするリソース グループ > **[リソース]** > 対象とする可用性セット > **[Virtual Machines]** > 対象とする仮想マシン > **[停止]** の順にクリックします。
+    停止するには、**[リソース グループ]** > 対象とするリソース グループ > **[リソース]** > 対象とする可用性セット > **[Virtual Machines]** > 対象とする仮想マシン > **[停止]** の順にクリックします。
   
     すべての VM が停止した後で、最初の VM を選択し、 **[起動]**をクリックします。
 
@@ -99,7 +99,7 @@ GeneralError*
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>割り当てシナリオ: ステージング環境/運用環境のデプロイメント (サービスとしてのプラットフォームのみ)
 **エラー**
 
-New_General *または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -112,7 +112,7 @@ New_General *または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)
 **エラー**
 
-New_General *または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -125,7 +125,7 @@ New_General *または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>割り当てシナリオ: アフィニティ グループ ベースの仮想ネットワーク
 **エラー**
 
-New_General *または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported*
 
 **クラスターの固定の原因**
 
@@ -151,7 +151,7 @@ New_General *または New_VMSizeNotSupported*
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>割り当てシナリオ: VM のサイズの変更、または既存の可用性セットへの VM の追加
 **エラー**
 
-Upgrade_VMSizeNotSupported *または GeneralError*
+Upgrade_VMSizeNotSupported* または GeneralError*
 
 **クラスターの固定の原因**
 
@@ -188,6 +188,8 @@ GeneralError*
 **対処法**
 
 割り当てる新しい VM サイズを選択します。 これでうまくいかない場合は、後でもう一度やり直してください。
+
+<a name="Error string lookup"></a>
 
 ## <a name="error-string-lookup"></a>エラーの文字列の参照
 **New_VMSizeNotSupported***

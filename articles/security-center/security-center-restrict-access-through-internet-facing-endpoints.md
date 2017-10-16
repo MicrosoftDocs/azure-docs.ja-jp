@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限 | Microsoft Docs"
-description: "このドキュメントでは、**インターネットに接続するエンドポイント経由のアクセスを制限する**という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、\"インターネットに接続するエンドポイント経由のアクセスの制限\" という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
 ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.lasthandoff: 02/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限
-Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する&1; つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 "あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
+Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 "あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
 
 この推奨事項は、ソースとして "任意" が指定された Web 以外のすべてのポートに対して生成されます。
 
@@ -75,4 +74,3 @@ Azure Security Center では、ネットワーク セキュリティ グルー�
 [4]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/inbound-security-rules.png
 [5]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/default-rules.png
 [6]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/edit-inbound-rule.png
-

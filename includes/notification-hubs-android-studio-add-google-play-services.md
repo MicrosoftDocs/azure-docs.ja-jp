@@ -1,5 +1,5 @@
 1. Android Studio のツールバーのアイコンをクリックするか、またはメニューから **[ツール]**  ->  **[Android]**  ->  **[SDK マネージャー]** を順にクリックして、Android SDK マネージャーを開きます。 まだインストールしていない場合は、プロジェクトで使用する目的のバージョンの Android SDK を探し、**[Show Package Details (パッケージの詳細を表示)]** をクリックして開き、**[Google APIs (Google API)]** をオンにします。
-2. **[SDK Tools]** タブをクリックします。 Google Play Services をまだインストールしていない場合は、次に示すように **[Google Play Services]** をクリックします。 次に、 **[適用]** をクリックしてインストールします。 
+2. **[SDK Tools]** タブをクリックします。Google Play Services をまだインストールしていない場合は、次に示すように **[Google Play Services]** をクリックします。 次に、 **[適用]** をクリックしてインストールします。 
    
     SDK のパスは後の手順で使用するので、メモしておいてください。 
    

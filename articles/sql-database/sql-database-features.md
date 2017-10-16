@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/25/2017
 
 ---
+
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
 Azure SQL Database は、SQL Server と共通コード ベースを共有します。また、データベース レベルでほとんどの同じ機能をサポートします。 Azure SQL Database と SQL Server の機能の主な違いは、インスタンス レベルにあります。 
@@ -93,7 +94,7 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 | [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | いいえ |
 | [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ |
 | [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | ほとんどの場合 - 個々の述語に関する記事を参照してください |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | いいえ |
+| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | プレビュー リリース: [Machine Learning の新機能](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) に関する記事をご覧ください  |
 | [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ |
 | [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ | 
 | [バックアップからデータベースを復元する](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 組み込みのバックアップからのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事を参照してください |
@@ -109,7 +110,7 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 | [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | × - [SQL Database の監査](sql-database-auditing.md)に関する記事を参照してください |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | × - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) に関する記事を参照してください |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | あり |
-| SQL Server プロファイラー | [サポートされています](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください |
+| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください |
 | [SQL Server レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [トランザクション レプリケーションとスナップショット レプリケーションのサブスクライバーのみ](sql-database-cloud-migrate.md) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | いいえ |
 | [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | あり |
@@ -120,7 +121,6 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 | [テーブル パーティション](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | ○ - プライマリ ファイルグループのみ |
 | [一時テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | ローカルおよびデータベース スコープのグローバル一時テーブルのみ |
 | [テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | あり |
-| [トランザクション](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | いいえ |
 | [変数](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | あり | 
 | [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | あり |
 | [Windows Server フェールオーバー クラスタリング](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | × - [フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください |

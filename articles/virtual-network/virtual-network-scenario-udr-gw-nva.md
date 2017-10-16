@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
-
-
+ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
 大型 Azure 顧客の間の一般的なシナリオは、オンプレミス データセンターからバック層へのアクセスを許可する一方でインターネットへの公開を行う 2 層アプリケーションを用意する必要があることです。 このドキュメントでは、ユーザー定義ルート (UDR)、VPN Gateway、およびネットワーク仮想アプライアンスを使用して、次の要件を満たす 2 層環境をデプロイするシナリオについて説明します。
@@ -167,10 +167,4 @@ AZF2 は、次のルールを含む Azure の仮想アプライアンスを表�
 3. **AZURERG**の一部であるリソースをプロビジョニングします。
 4. **onpremvnet** から **azurevnet** へのトンネルをプロビジョニングします。
 5. すべてのリソースがプロビジョニングされた後、**onpremvm2** にログオンし、10.0.3.101 への ping を実行して、**onpremsn2** と **azsn3** 間の接続をテストします。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

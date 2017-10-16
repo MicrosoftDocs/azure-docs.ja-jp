@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
-translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>Azure Marketplace 用のソリューション テンプレートを作成するための技術的前提条件
 始める前にプロセスをよく読み、各ステップをどこで、なぜ実行するのかを理解してください。 可能な限り、会社の情報と他のデータを準備し、必要なツールをダウンロードし、技術コンポーネントを作成してから、プラン作成プロセスを開始する必要があります。  
@@ -36,9 +36,3 @@ ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
 ここでは、前提条件を確認し、必要なタスクを完了しました。次のステップはソリューション テンプレート プランの作成です。「[Azure Marketplace 向けソリューション テンプレートの作成ガイド](marketplace-publishing-solution-template-creation.md)」を参照してください。 パブリッシャー タスクのメイン ページに戻るには、「[Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)」を参照してください。
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
-
-
-
-<!--HONumber=Dec16_HO4-->
-
-

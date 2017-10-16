@@ -1,6 +1,6 @@
 ---
-title: Redeploy Azure Stack | Microsoft Docs
-description: Redeploy Azure Stack.
+title: "Azure Stack の再デプロイ | Microsoft Docs"
+description: "Azure Stack を再デプロイします。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,23 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 891cde9b16bbbb51729129b6ad7a0f3794307baa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="redeploy-azure-stack"></a>Redeploy Azure Stack
-To redeploy Azure Stack, you must start over from scratch as described below.
+# <a name="redeploy-azure-stack"></a>Azure Stack の再デプロイ
+Azure Stack を再デプロイするには、次に説明するように、最初から開始する必要があります。
 
-## <a name="steps-to-redeploy-azure-stack"></a>Steps to redeploy Azure Stack
-1. On the development kit host, open an elevated PowerShell console > navigate to the asdk-installer.ps1 script > run it > click **Reboot**.
-2. Select the base operating system (not **Azure Stack**) and click **Next**.
-3. After the development kit host reboots, delete the CloudBuilder.vhdx file that was used as part of the previous deployment.
-4. [Deploy the development kit](azure-stack-run-powershell-script.md).
+## <a name="steps-to-redeploy-azure-stack"></a>Azure Stack を再デプロイする手順
+1. 開発キット ホストで、管理者特権での PowerShell コンソールを開き、asdk-installer.ps1 スクリプトに移動して、それを実行し、**[再起動]** をクリックします。
+2. ベース オペレーティング システム (**Azure Stack** でなく) を選択し、**[次へ]** をクリックします。
+3. 開発キット ホストが再起動したら、以前のデプロイの一部として使用されていた CloudBuilder.vhdx ファイルを削除します。
+4. [開発キットをデプロイ](azure-stack-run-powershell-script.md)します。
 
-## <a name="next-steps"></a>Next steps
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
-
+## <a name="next-steps"></a>次のステップ
+[Azure Stack への接続](azure-stack-connect-azure-stack.md)
 

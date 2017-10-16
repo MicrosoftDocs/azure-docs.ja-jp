@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 0c627802ccfba230dcde2dafffee26cb1c895791
-ms.contentlocale: ja-jp
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure)でアプリケーションを登録します。
@@ -57,4 +55,3 @@ ms.contentlocale: ja-jp
 </li>
 </ol>
 <!-- End Docs -->
-

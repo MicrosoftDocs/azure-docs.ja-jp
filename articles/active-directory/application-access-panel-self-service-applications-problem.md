@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 217726709a1fdb02275de5a76a1352ea9c350600
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problem-using-self-service-application-access"></a>アプリケーションのセルフ サービス アクセス使用に関する問題点
 
 セルフ サービス アプリケーションへのアクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ビジネス グループによる、アクセス パネルからユーザーに割り当てられたパスワード シングル サインオン アプリケーションに対する資格情報の管理を許可できます。
@@ -99,4 +97,3 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="next-steps"></a>次のステップ
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md)
-

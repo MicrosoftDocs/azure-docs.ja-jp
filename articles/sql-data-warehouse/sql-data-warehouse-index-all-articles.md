@@ -15,12 +15,11 @@ ms.topic: article
 ms.custom: reference
 ms.date: 03/30/2017
 ms.author: barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>Azure SQL Data Warehouse サービスに関するすべてのトピック
 このトピックでは、 **SQL Data Warehouse** サービスに直接適用されるすべてのトピックを示します。 この Web ページでは、 **Ctrl + F**を使用してキーワード検索することで、現在関心があるトピックを見つけることができます。
@@ -165,5 +164,4 @@ ms.lasthandoff: 04/03/2017
 | 85 |[脅威の検出の概要](sql-data-warehouse-security-threat-detection.md) |脅威の検出を開始する方法 |
 | 86 |[SQL Data Warehouse の容量制限](sql-data-warehouse-service-capacity-limits.md) |SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。 |
 | 87 |[Azure SQL Data Warehouse のトラブルシューティング](sql-data-warehouse-troubleshoot.md) |Azure SQL Data Warehouse のトラブルシューティングを行います。 |
-
 

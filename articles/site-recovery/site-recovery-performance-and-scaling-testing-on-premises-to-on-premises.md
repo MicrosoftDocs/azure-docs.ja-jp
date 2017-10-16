@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Site Recovery を使用したオンプレミス間での Hyper-V レプリケーションの結果のテスト
 
@@ -188,4 +186,3 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 ## <a name="next-steps"></a>次のステップ
 
 [オンプレミスの 2 つの VMM サイト間のレプリケーション設定](site-recovery-vmm-to-vmm.md)
-

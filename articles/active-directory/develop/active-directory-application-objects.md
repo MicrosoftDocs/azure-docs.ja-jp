@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト | Microsoft Docs"
+title: "Azure Active Directory のアプリケーションおよびサービス プリンシパル オブジェクト"
 description: "Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明"
 documentationcenter: dev-center-name
-author: dstrockis
+author: bryanla
 manager: mbaldwin
 services: active-directory
 editor: 
@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2016
-ms.author: dastrock
+ms.date: 09/26/2017
+ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 6ee0c0b5e606b1fd9fc9eecc877d2718b7079ecb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
-
-
+ms.openlocfilehash: 53ab4c04901994982b451149c4a82a5b72c9fc82
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト (Azure AD)
-「アプリケーション」という用語の意味が、Azure AD のコンテキストで使用する場合に誤解されることがあります。 この記事の目的は、Azure AD アプリケーションの統合について概念的な側面と具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録および同意の例を示しながら明らかにして、この用語の意味をよりわかりやすくすることです。
+「アプリケーション」という用語の意味が、Azure AD のコンテキストで使用する場合に誤解されることがあります。 この記事の目的は、Azure AD アプリケーション統合の概念的および具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録と同意の例を示しながら明らかにすることです。
 
 ## <a name="overview"></a>概要
-Azure AD と統合されているアプリケーションは、ソフトウェアとしての側面以外の意味を持ちます。 「アプリケーション」は、アプリケーション ソフトウェアを指すだけではなく、実行時の認証/承認の「メッセージ交換」における Azure AD の登録やロールを指すなど、概念的な用語として頻繁に使用されます。 定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。 メッセージ交換プロトコルは [OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)で定義されています。これにより、クライアントとリソースが、それぞれリソースのデータにアクセスし、保護できるようになります。 次にもう 1 段階掘り下げ、Azure AD アプリケーション モデルにおいて、デザイン時および実行時にアプリケーションが内部的にはどのように表されるのかを見てみましょう。 
+Azure AD と統合されているアプリケーションは、ソフトウェアとしての側面以外の意味を持ちます。 "アプリケーション" は、アプリケーション ソフトウェアだけでなく、実行時の認証/承認の "会話" におけるその Azure AD の登録やロールも指す概念的な用語としてよく使用されます。 定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。 メッセージ交換プロトコルは [OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)で定義されています。これにより、クライアントとリソースが、それぞれリソースのデータにアクセスし、保護できるようになります。 次にもう 1 段階掘り下げ、Azure AD アプリケーション モデルにおいて、デザイン時および実行時にアプリケーションが内部的にはどのように表されるのかを見てみましょう。 
 
 ## <a name="application-registration"></a>アプリケーションの登録
 [Azure Portal][AZURE-Portal] で Azure AD アプリケーションを登録すると、Azure AD テナントに、アプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトが作成されます。
@@ -39,9 +37,9 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 サービス プリンシパル オブジェクトは、特定のテナントでアプリケーションを使用する場合のポリシーとアクセス許可を定義しており、実行時にアプリケーションを表す、セキュリティ プリンシパルの基となる情報を提供します。 サービス プリンシパル オブジェクトのプロパティのスキーマは、Azure AD Graph [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって定義されています。 
 
 #### <a name="application-and-service-principal-relationship"></a>アプリケーションとサービス プリンシパルのリレーションシップ
-アプリケーション オブジェクトはアプリケーションの*グローバル*な表現 (すべてのテナント用) であり、サービス プリンシパル オブジェクトはアプリケーションの*ローカル*な表現 (特定のテナント用) と考えることができます。 アプリケーション オブジェクトは、対応するサービス プリンシパル オブジェクトの作成に使用するために、一般的な既定のプロパティが*派生*するテンプレートとして機能します。 そのため、アプリケーション オブジェクトには、ソフトウェア アプリケーションとの間に 1 対 1 のリレーションシップがあり、対応するサービス プリンシパル オブジェクトとの間に 1 対多のリレーションシップがあります。
+アプリケーション オブジェクトはアプリケーションの*グローバル*な表現 (すべてのテナント用) であり、サービス プリンシパル オブジェクトはアプリケーションの*ローカル*な表現 (特定のテナント用) と考えることができます。 アプリケーション オブジェクトは、対応するサービス プリンシパル オブジェクトの作成に使用するために、一般的な既定のプロパティが*派生*するテンプレートとして機能します。 そのため、アプリケーション オブジェクトにはソフトウェア アプリケーションとの 1 対 1 の関係と、対応するサービス プリンシパル オブジェクトとの 1 対多の関係が存在します。
 
-サービス プリンシパルは、テナントによりセキュリティで保護されたリソースにサインインしたり、アクセスするための ID を設定できるように、アプリケーションを使用するテナントごとに作成する必要があります。 シングル テナント アプリケーションには、通常アプリケーション登録時に使用するために作成され、同意されたサービス プリンシパルが (そのホーム テナントに) 1 つだけがあります。 マルチテナント Web アプリケーションまたは API にも、そのテナントからユーザーが使用に同意したテナントごとに作成されたサービス プリンシパルがあります。  
+サービス プリンシパルは、テナントによってセキュリティ保護されているリソースにサインインまたはアクセスするための ID を確立できるように、アプリケーションが使用される各テナントで作成する必要があります。 シングルテナント アプリケーションには、アプリケーション登録中に作成され、使用が同意されたサービス プリンシパルが (そのホーム テナントに) 1 つだけあります。 マルチテナント Web アプリケーション/API には、そのテナントのユーザーが使用に同意した各テナントで作成されたサービス プリンシパルもあります。  
 
 > [!NOTE]
 > アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。 マルチテナント アプリケーションの場合は、[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通じてアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
@@ -78,4 +76,3 @@ Azure AD Graph API または [Azure AD PowerShell コマンドレット](https:/
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AZURE-Portal]: https://portal.azure.com
-

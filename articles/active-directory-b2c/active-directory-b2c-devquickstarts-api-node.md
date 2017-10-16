@@ -14,13 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
-ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/14/2017
-
-
+ms.openlocfilehash: 2315f5d0ebb142561c65224cd9d06299466a7ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -37,7 +35,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トーク�
 このサンプルを使用するには、次の手順を実行する必要があります。
 
 1. アプリケーションを Azure AD に登録する。
-2. Passport の `azure-ad-passport` プラグインを使用するようにアプリケーションをセットアップする。
+2. Passport の `passport-azure-ad` プラグインを使用するようにアプリケーションをセットアップする。
 3. "to-do list" Web API を呼び出すように、クライアント アプリケーションを構成する。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
@@ -762,4 +760,3 @@ Restify と OAuth を使用して REST API を実装しました。 既に十分
 これ以降は、次のような、さらに高度なトピックに進むことができます。
 
 [B2C で iOS を使用して Web API に接続する](active-directory-b2c-devquickstarts-ios.md)
-

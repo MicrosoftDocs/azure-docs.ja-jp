@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-resource-policies-to-storage-accounts"></a>ストレージ アカウントにリソース ポリシーを適用する
 このトピックでは、Azure ストレージ アカウントに適用できる複数の[リソース ポリシー](resource-manager-policy.md)を示します。 これらのポリシーは、組織にデプロイされているストレージ アカウントの一貫性を保証します。 
 
 ## <a name="define-permitted-storage-account-types"></a>許可されているストレージ アカウントの種類の定義
 
-次のポリシーは、デプロイ可能な[ストレージ アカウントの種類](../storage/storage-redundancy.md)を制限します。
+次のポリシーは、デプロイ可能な[ストレージ アカウントの種類](../storage/common/storage-redundancy.md)を制限します。
 
 ```json
 {
@@ -58,7 +56,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="define-permitted-access-tier"></a>許可されているアクセス層の定義
 
-次のポリシーは、ストレージ アカウントに対して指定可能な[アクセス層](../storage/storage-blob-storage-tiers.md)の種類を指定します。
+次のポリシーは、ストレージ アカウントに対して指定可能な[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)の種類を指定します。
 
 ```json
 {
@@ -88,7 +86,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="ensure-encryption-is-enabled"></a>暗号化が有効になっていることの確認
 
-次のポリシーは、[ストレージ サービスの暗号化](../storage/storage-service-encryption.md)にすべてのストレージ アカウントを必要とします。
+次のポリシーは、[ストレージ サービスの暗号化](../storage/common/storage-service-encryption.md)にすべてのストレージ アカウントを必要とします。
 
 ```json
 {
@@ -117,5 +115,4 @@ ms.lasthandoff: 03/31/2017
 ## <a name="next-steps"></a>次のステップ
 * (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。 
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
 

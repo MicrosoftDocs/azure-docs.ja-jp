@@ -13,15 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 09/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: bdf4cd89d5ad0392337dfe761108608d506adf18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
-
+ms.openlocfilehash: 110085f8a4ef0b22b1b4982615eabc29487f9413
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-a-preconfigured-solution"></a>構成済みソリューションのカスタマイズ
 

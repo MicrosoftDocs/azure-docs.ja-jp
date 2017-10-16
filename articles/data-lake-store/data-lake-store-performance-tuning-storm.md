@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>HDInsight での Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
 
@@ -123,7 +122,7 @@ Data Lake Store のパフォーマンスを最適化するには、ボルトで�
 
 ## <a name="troubleshoot-common-problems"></a>一般的な問題のトラブルシューティング
 ここでは、一般的なトラブルシューティングのシナリオをいくつか紹介します。
-* **タイムアウトするタプルの数が多い。** トポロジの各ノードを確認して、ボトルネックの場所を特定します。 この問題の最も一般的な原因として、ボルトがスパウトに追いつくことができないことがあります。 その結果、処理を待機しているタプルで内部バッファーがいっぱいになります。 タイムアウト値を引き上げるか、スパウトでの保留の最大数を引き下げることを検討してください。
+* **タイムアウトするタプルの数が多い。**トポロジの各ノードを確認して、ボトルネックの場所を特定します。 この問題の最も一般的な原因として、ボルトがスパウトに追いつくことができないことがあります。 その結果、処理を待機しているタプルで内部バッファーがいっぱいになります。 タイムアウト値を引き上げるか、スパウトでの保留の最大数を引き下げることを検討してください。
 
 * **プロセスの実行における待ち時間の合計が長いが、ボルトでのプロセスの待ち時間は短い。** この場合、いずれかのタプルが十分な速さで処理されていない可能性があります。 十分な数の受信確認があることを確認してください。 考えられる別の原因としては、ボルトが処理を開始するまでにキューで待機する時間が長すぎることが挙げられます。 スパウトでの保留の最大数を減らしてください。
 
@@ -141,4 +140,3 @@ Data Lake Store によって提供される帯域幅の制限に達すると、�
 Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。
 
 実行できる他のサンプルについては、[GitHub のこちらのサンプル](https://github.com/hdinsight/storm-performance-automation)を参照してください。
-

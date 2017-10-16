@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 9d59e7f0e8f326c40be86e199d7712f6c565cc13
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントのアプリの種類
 Azure Active Directory (Azure AD) v2.0 エンドポイントは、さまざまな最新アプリ アーキテクチャ向けの認証をサポートしています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Azure AD v2.0 を使用して作成できるアプリの種類について説明します。 この記事の情報は、[コードを詳しく確認する](active-directory-appmodel-v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。
@@ -123,4 +121,3 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 ![デーモン アプリの認証フロー](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 デーモン アプリを作成するには、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションのクライアントの資格情報に関する記述を参照するか、または [.NET サンプル アプリ](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)をお試しください。
-

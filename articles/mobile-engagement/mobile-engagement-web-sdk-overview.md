@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 770a83131a3e661771db50b22ce7de25b2d541cf
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk"></a>Azure Mobile Engagement Web SDK
 Web アプリに Azure Mobile Engagement を統合する方法について詳しく説明したページには、ここからアクセスできます。 独自の Web アプリで作業を開始する前に試してみる場合は、 [15 分間チュートリアル](mobile-engagement-web-app-get-started.md)をご覧ください。
@@ -130,10 +130,4 @@ Azure ポータルにアプリケーションの接続文字列が表示され�
 たとえば、`capptain.deviceId` は `engagement.deviceId` になり、`capptain.agent.startActivity` は `engagement.agent.startActivity` になります。他も同様です。
 
 以前のバージョンの Azure Mobile Engagement Web SDK を既にアプリケーションに統合している場合は、 [アップグレード手順](mobile-engagement-web-upgrade-procedure.md)をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 2b6eb113e5725260bc04f50e9218939bf28b1ff0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
@@ -228,7 +226,7 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
 
 ### <a name="creating-a-zscaler-zscloud-test-user"></a>Zscaler ZSCloud テスト ユーザーの作成
 
@@ -318,5 +316,4 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_203.png
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 78936ac34cc582684e938efa74133426f1b53741
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>テンプレートを使用してユーザー定義のルート (UDR) を作成する
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 04/27/2017
     "name": "[parameters('frontEndRouteTableName')]",
     "location": "[resourceGroup().location]",
     "tags": {
-      "displayName": "UDR - FrontEnd"    
+      "displayName": "UDR - FrontEnd"   
     },
     "properties": {
       "routes": [
@@ -407,4 +406,3 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 > [!TIP]
 > すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイのプロビジョニング状態が *Succeded* になっていることを確認します。
 > 
-

@@ -1,6 +1,6 @@
 ---
-title: Delegating offers in Azure Stack | Microsoft Docs
-description: Learn how to put other people in charge of creating offers and signing up users for you.
+title: "Azure Stack でのオファーの委任 | Microsoft Docs"
+description: "他のユーザーにオファーの作成とユーザーのサインアップを任せる方法を説明します。"
 services: azure-stack
 documentationcenter: 
 author: AlfredoPizzirani
@@ -14,133 +14,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: alfredop
+ms.openlocfilehash: 48b75233e1a485e8fb3fbce9776a6ef398c4e99c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: af591c51fec3326941980dbe5ffb08ca432d1d51
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="delegating-offers-in-azure-stack"></a>Delegating offers in Azure Stack
+# <a name="delegating-offers-in-azure-stack"></a>Azure Stack でのオファーの委任
 
-As the Azure Stack cloud operator, you often want to put other people in charge of creating offers and signing up users for you. For example, if you are a service provider and you want resellers to sign up customers and manage them on your behalf. It can also happen in an enterprise if you are part of a central IT group and want divisions or subsidiaries to sign up users without your intervention.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Delegation helps you with these tasks, helping you to reach and manage more users than you would be able to do directly. The following illustration shows one level of delegation, but Azure Stack supports multiple levels. Delegated providers can in turn delegate to other providers, up to five levels.
+Azure Stack オペレーターとして、オファー作成とユーザー サインアップを他のユーザーに担当してもらいたいことがよくあります。 たとえば、あなたがサービス プロバイダーで、再販業者に顧客のサインアップと管理を担当してもらいたい場合です。 あるいは、あなたが組織における中枢の IT グループにいて、部門や子会社でユーザーのサインアップをして欲しい場合も同様です。
+
+委任の機能はこうしたタスクの手助けをするもので、自分で直接行うよりも多くのユーザーに接触し管理することができます。 次の図では委任の 1 つのレベルを示していますが、Azure Stack は複数のレベルをサポートしています。 委任されたプロバイダーは、最大で 5 つのレベルまで他のプロバイダーを委任できます。
 
 ![](media/azure-stack-delegated-provider/image1.png)
 
-Azure Stack cloud operators can delegate the creation of offers and tenants to other users by using the delegation functionality.
+Azure Stack オペレーターは、委任機能を使用して、オファーとユーザーの作成を他のユーザーに委任できます。
 
-## <a name="roles-and-steps-in-delegation"></a>Roles and steps in delegation
-To understand delegation, keep in mind that there are three roles involved:
+## <a name="roles-and-steps-in-delegation"></a>委任のロールと手順
+委任を理解するには、関連する 3 つのロールがあることを頭に入れておいてください。
 
-* The **cloud operator** manages the Azure Stack infrastructure, creates an offer template, and delegates others to offer it to their users.
-* The delegated Azure Stack operators are called **delegated providers**. They can belong to other organizations (such as other Azure Active Directory tenants).
-* **Users** sign up for the offers and use them for managing their workloads, creating VMs, storing data, etc.
+* Azure Stack オペレーターは Azure Stack インフラストラクチャの管理、オファー テンプレートの作成を行い、他のユーザーが彼らのユーザーにそれを提供することを委任します。
+* 委任された Azure Stack オペレーターは、**委任されたプロバイダー**と呼ばれます。 他の組織 (他の Azure Active Directory ユーザーなど) に属すことができます。
+* **ユーザー**はオファーにサインアップして、それらを使用してワークロードの管理、VM の作成、データの格納などを行います。
 
-As shown in the following graphic, there are two steps in setting up delegation.
+以下の図に示すように、委任の設定には 2 つの手順があります。
 
-1. **Identify the delegated providers** by subscribing them to an offer based on a plan that contains only the subscriptions service.
-   Users who subscribe to this offer acquire some of the Azure Stack operator’s capabilities, including the ability to extend offers and sign users up for them.
-2. **Delegate an offer to the delegated provider**, this offer functions as a template for what the delegated provider can offer. The delegated provider is now able to take the offer, choose a name for it (but not change its services and quotas), and offer it to customers.
+1. サブスクリプション サービスのみを含むプランに基づいたオファーにサブスクライブすることで、**委任されたプロバイダーを識別**します。
+   このオファーにサブスクライブするユーザーは、オファーを拡張しそれにユーザーをサインアップする機能などの、Azure Stack オペレーターの機能の一部を取得します。
+2. **委任されたプロバイダーにオファーを委任**します。このオファーは、委任されたプロバイダーが提供できるテンプレートとして機能します。 委任されたプロバイダーはこれで、オファーを取得し、その名前を選択し (そのサービスとクォータは変更できません)、お客様に提供できるようになりました。
 
 ![](media/azure-stack-delegated-provider/image2.png)
 
-To act as delegated providers, users need to establish a relationship with the main provider; in other words, they need to create a subscription. In this scenario, this subscription identifies the delegated providers as having the right to present offers on behalf of the main provider.
+委任されたプロバイダーとして機能するには、ユーザーはメインのプロバイダーとの関係を確立する必要があります。つまり、サブスクリプションを作成する必要があります。 このシナリオでは、このサブスクリプションは、メイン プロバイダーの代わりにオファーを提供する権限を持つものとして委任されたプロバイダーを識別します。
 
-Once this relationship is established, the cloud operator can delegate an offer to the delegated provider. The delegated provider is now able to take the offer, rename it (but not change its substance), and offer it to its customers.
+このリレーションシップが確立されると、Azure Stack オペレーターは委任されたプロバイダーにオファーを委任できます。 委任されたプロバイダーはこれで、オファーを取得し、その名前を変更し (その内容は変更できません)、お客様に提供できるようになりました。
 
-The following sections describe how to establish a delegated provider, delegate an offer, and verify that users can sign up for it.
+以降のセクションでは、委任されたプロバイダーの確立、オファーの委任、それにユーザーがサインアップできるかの確認の方法について説明します。
 
-## <a name="set-up-roles"></a>Set up roles
+## <a name="set-up-roles"></a>ロールの設定
 
-To see a delegated provider at work, you need additional Azure Active Directory accounts in addition to your cloud operator account. If you do not have them, create the two accounts. The accounts can belong to any AAD tenant. We refer to them as the delegated provider (DP) and the user.
+職場における委任されたプロバイダーを理解するには、Azure Stack オペレーター アカウントに加えて追加の Azure Active Directory アカウントが必要です。 それらを持っていない場合は、2 つのアカウントを作成します。 アカウントは、任意の AAD ユーザーに属することができます。 これらは、委任されたプロバイダー (DP) およびユーザーと呼びます。
 
-| **Role** | **Organizational rights** |
+| **ロール** | **組織の権限** |
 | --- | --- |
-| Delegated Provider |User |
+| 委任されたプロバイダー |User |
 | User |User |
 
-## <a name="identify-the-delegated-providers"></a>Identify the delegated providers
-1. Sign in as cloud operator.
-2. Create the offer that enables users to become delegated providers. This requires that you create a plan and an offer based on it:
+## <a name="identify-the-delegated-providers"></a>委任されたプロバイダーを識別する
+1. Azure Stack オペレーターとしてサインインします。
+2. ユーザーを委任されたプロバイダーにするようなオファーを作成します。 これには、プランとそれに基づくオファーを作成することが必要です。
    
-   a.  [Create a plan](azure-stack-create-plan.md).
-       This plan should include only the subscriptions service. In this article, we use a plan called PlanForDelegation.
+   a.  [プランを作成します](azure-stack-create-plan.md)。
+       このプランは、サブスクリプション サービスのみを含んでいる必要があります。 この記事では、PlanForDelegation という名前のプランを使用します。
    
-   b.  [Create an offer](azure-stack-create-offer.md) based on this plan. In this article, we use an offer called OfferToDP.
+   b.  このプランに基づいて、[オファーを作成](azure-stack-create-offer.md)します。 この記事では、OfferToDP と呼ばれるオファーを使用します。
    
-   c.  Once the creation of the offer is complete, add the delegated provider as a subscriber to this offer by clicking **Subscriptions** &gt; **Add** &gt; **New Tenant Subscription**.
+   c.  オファーの作成が完了したら、**[サブスクリプション]** &gt; **[追加]** &gt; **[新しいテナント サブスクリプション]** とクリックして、委任されたプロバイダーを利用者としてこのオファーに追加します。
    
    ![](media/azure-stack-delegated-provider/image3.png)
 
 > [!NOTE]
-> As with all Azure Stack offers, you have the option of making the offer public and letting users sign up for it, or keeping it private and have the cloud operator manage the sign-up. Delegated providers are usually a small group and you want to control who is admitted to it, so keeping this offer private makes sense in most cases.
+> すべての Azure Stack オファーと同様に、オファーをパブリックにしてユーザーにサインアップさせる、または、プライベートのままにして Azure Stack オペレーターがサインアップを管理する、というオプションがあります。 委任されたプロバイダーは通常は小規模なグループで、参加しているユーザーを管理したいため、たいていの場合このオファーはプライベートにしておくのが適切です。
 > 
 > 
 
-## <a name="cloud-operator-creates-the-delegated-offer"></a>Cloud operator creates the delegated offer
+## <a name="azure-stack-operator-creates-the-delegated-offer"></a>Azure Stack オペレーターが委任されたオファーを作成する
 
-You have now established your delegated provider. The next step is to create the plan and offer that you are going to delegate, and which your customers will use. You should define this offer exactly as you want the customers to see it, because the delegated provider will not be able to change the plans and quotas it includes.
+委任されたプロバイダーはすでに確立しました。 次の手順は、委任することになる、そしてお客様が使用することになる、プランとオファーの作成です。 このオファーは、お客様に表示させたいとおりに定義する必要があります。委任されたプロバイダーはそこに含まれるプランとクォータを変更できないためです。
 
-1. As cloud operator, [create a plan](azure-stack-create-plan.md) and [an offer](azure-stack-create-offer.md) based on it. For this article, we use an offer called DelegatedOffer.
+1. Azure Stack オペレーターとして、[プランを作成し](azure-stack-create-plan.md)、それに基づいた[オファー](azure-stack-create-offer.md)を作成することが必要です。 この記事には、DelegatedOffer と呼ばれるオファーを使用します。
    
    > [!NOTE]
-   > This offer does not have to be public. It can be made public if you choose, but, in most cases, you only want delegated providers to have access to it. Once you delegate a private offer as described in the following steps, the delegated provider has access to it.
+   > このプランをパブリックにする必要はありません。 これをパブリックにすることもできますが、ほとんどの場合、委任されたプロバイダーのみにアクセス権を与えたいでしょう。 次の手順にあるようにプライベート オファーを委任すると、委任されたプロバイダーはアクセス権を持ちます。
    > 
    > 
-1. Delegate the offer. Go to DelegatedOffer, and in the Settings pane, click **Delegated Providers** &gt; **Add**.
-2. Select the delegated provider’s subscription from the drop-down list box and click **Delegate**.
+1. オファーを委任します。 DelegatedOffer に移動し、[設定] ウィンドウで **[委任されたプロバイダー]** &gt; **[追加]** とクリックします。
+2. ドロップダウン リスト ボックスから、委任されたプロバイダーのサブスクリプションを選択し、**[委任]** をクリックします。
 
 > ![](media/azure-stack-delegated-provider/image4.png)
 > 
 > 
 
-## <a name="delegated-provider-customizes-the-offer"></a>Delegated provider customizes the offer
+## <a name="delegated-provider-customizes-the-offer"></a>委任されたプロバイダーがオファーをカスタマイズする
 
-Sign in to the **tenant portal** as the delegated provider and create a new offer using the delegated offer as a template.
+委任されたプロバイダーとしてユーザー ポータルにサインインし、委任されたオファーをテンプレートとして使用して新しいオファーを作成します。
 
-1. Click **New** &gt; **Tenant Offers + Plans** &gt; **Offer**.
+1. **[新規作成]** &gt; **[テナントのプラン]** &gt; **[オファー]** とクリックします。
 
     ![](media/azure-stack-delegated-provider/image5.png)
 
 
-1. Assign a name to the offer. Here we choose ResellerOffer. Select the delegated offer to base it on and then click **Create**.
+1. オファーに名前を割り当てます。 ここでは、ResellerOffer を選択します。 基になる委任されたオファーを選択し、**[作成]** をクリックします。
    
    ![](media/azure-stack-delegated-provider/image6.png)
 
     >[!NOTE] 
-    > Note the difference compared to offer creation as experienced by the cloud operator. The delegated provider does not construct the offer from base plans and add-on plans; they can only choose from offers that have been delegated to them, and can't make changes to those offers.
+    > Azure Stack オペレーターによるオファー作成との違いに注意してください。 委任されたプロバイダーは、基本プランとアドオン プランからはプランを作成しません。委任されているオファーから選択できるだけであり、それらのオファーに変更を加えることはできません。
 
-1. Make the offer public by clicking **Browse** &gt; **Offers**, selecting the offer, and clicking **Change State**.
-2. The delegated provider exposes these offers through their own portal URL. These offers are visible only through the delegated portal. To find and change this URL:
+1. **[参照]** &gt; **[オファー]** とクリックし、オファーを選択し **[状態の変更]** をクリックして、オファーをパブリックにします。
+2. 委任されたプロバイダーは、独自のポータル URL からこれらのオファーを公開します。 これらのオファーは、委任されたポータルを介してのみ表示されます。 この URL を検索し変更するには、以下を行います。
    
-    a.  Click **Browse**&gt; **More services**&gt; **Subscriptions**&gt; Select the delegated provider subscription, in our case its *DPSubscription*&gt; **Properties**.
+    a.  **[参照]**&gt; **[サービス]**&gt; **[サブスクリプション]**&gt; とクリックし、委任されたプロバイダーのサブスクリプション (ここでは *[DPSubscription])* &gt; **[プロパティ]** を選択します。
    
-    b.  Copy the portal URL to a separate location, such as Notepad.
+    b.  ポータル URL を、メモ帳など別の場所にコピーします。
    
     ![](media/azure-stack-delegated-provider/dpportaluri.png)  
    
-   You have now completed the creation of a delegated offer as a delegated provider. Sign out as the delegated provider. Close the browser tab you have been using.
+   これで、委任されたプロバイダーとして、委任されたオファーの作成が完了しました。 委任されたプロバイダーとしてサインアウトします。 使用していたブラウザー タブを閉じます。
 
-## <a name="sign-up-for-the-offer"></a>Sign up for the offer
-1. In a new browser window, go to the delegated portal URL you saved in the previous step. Sign in to the portal as user. Note: Use the delegated portal for this step. The delegated offer are not visible otherwise.
-2. In the dashboard, click **Get a subscription**. You will see that only the delegated offers created by the delegated provider are presented to the user:
+## <a name="sign-up-for-the-offer"></a>オファーのサインアップ
+1. 新しいブラウザー ウィンドウで、前の手順で保存した、委任されたポータル URL に移動します。 ユーザーとしてポータルにサインインします。 注: この手順には委任されたポータルを使用します。 委任されたオファーは、それ以外の場合では表示されません。
+2. ダッシュ ボードで、**[Get a subscription]\(サブスクリプションを取得\)** をクリックします。 委任されたプロバイダーによって作成された、委任されたオファーのみがユーザーに表示されることがわかります。
 
 > ![](media/azure-stack-delegated-provider/image8.png)
 > 
 > 
 
-This concludes the process of offer delegation. The user can now sign up for this offer by getting a subscription for it.
+これで、オファー委任のプロセスは終了です。 サブスクリプションを取得することによって、ユーザーは今すぐこのオファーにサインアップできます。
 
-## <a name="multiple-tier-delegation"></a>Multiple-tier delegation
+## <a name="multiple-tier-delegation"></a>複数階層の委任
 
-Multiple-tier delegation allows the delegated provider to delegate the offer to other entities. This allows, for example, the creation of deeper reseller channels, in which the provider managing Azure Stack delegates an offer to a distributor, who in turn delegates to reseller.
-Azure Stack supports up to five levels of delegation.
+複数階層の委任では、委任されたプロバイダーが他のエンティティにオファーを委任することができます。 これにより、たとえば、より深い再販業者チャネルを作成でき、Azure Stack を管理するプロバイダーがディストリビューターにオファーを委任し、さらにディストリビューターが再販業者に委任します。
+Azure Stack は、最大 5 つのレベルの委任をサポートします。
 
-To create multiple tiers of offer delegation, the delegated provider in turn delegates the offer to the next provider. The process is the same for the delegated provider as it was for the cloud operator (see [Cloud operator creates the delegated offer](#cloud-operator-creates-the-delegated-offer)).
+オファー委任の複数階層を作成するには、委任されたプロバイダーは次のプロバイダーにオファーを委任します。 このプロセスは、Azure Stack オペレーターと同様、委任されたプロバイダーで同じです (「[Azure Stack オペレーターが委任されたオファーを作成する](#cloud-operator-creates-the-delegated-offer)」をご覧ください)。
 
-## <a name="next-steps"></a>Next steps
-[Provision a VM](azure-stack-provision-vm.md)
-
+## <a name="next-steps"></a>次のステップ
+[VM のプロビジョニング](azure-stack-provision-vm.md)
 

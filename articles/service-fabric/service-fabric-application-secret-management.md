@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: cc6ef8f3ef5371ac3092686afddc9198516916fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/09/2016
-
-
+ms.openlocfilehash: d71924cda8bb3bffbe221946d80dba150359e38e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションでのシークレットの管理
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -187,4 +185,3 @@ SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Param
 
 <!-- Images -->
 [overview]:./media/service-fabric-application-secret-management/overview.png
-

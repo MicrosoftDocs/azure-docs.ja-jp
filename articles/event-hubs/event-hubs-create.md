@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 816bf1426704d3391550e80c0700f1b011683a94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
@@ -33,19 +31,19 @@ ms.lasthandoff: 08/02/2017
    
     ![](./media/event-hubs-create/create-event-hub1.png)
 1. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic または Standard) を選択します。 Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。 
-1. **[作成]** をクリックして、名前空間を作成します。 システムがリソースを完全にプロビジョニングするまで、数分間待つことが必要な場合があります。
-2. 名前空間のポータルの一覧で、新しく作成した名前空間をクリックします。
-2. **[共有アクセス ポリシー]** をクリックし、**[RootManageSharedAccessKey]** をクリックします。
+1. **[作成]** をクリックして、名前空間を作成します。 システム リソースを完全にプロビジョニングするまで、しばらく時間を待機する必要があります。
+2. 名前空間のポータルの一覧で、新しく作成された名前空間をクリックします。
+2. をクリックして**共有アクセス ポリシー**、クリックして**RootManageSharedAccessKey**です。
     
     ![](./media/event-hubs-create/create-event-hub7.png)
 
-3. コピー ボタンをクリックして **RootManageSharedAccessKey** 接続文字列をクリップボードにコピーします。 後で使用するため、メモ帳などの一時的な場所に、この接続文字列を保存します。
+3. コピー ボタンをクリックして **RootManageSharedAccessKey** 接続文字列をクリップボードにコピーします。 後で使用する、メモ帳などの一時的な場所にこの接続文字列を保存します。
     
     ![](./media/event-hubs-create/create-event-hub8.png)
 
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
-1. Event Hubs 名前空間の一覧で、新しく作成された名前空間をクリックします。      
+1. イベント ハブ名前空間の一覧で、新しく作成された名前空間をクリックします。      
    
     ![](./media/event-hubs-create/create-event-hub2.png) 
 

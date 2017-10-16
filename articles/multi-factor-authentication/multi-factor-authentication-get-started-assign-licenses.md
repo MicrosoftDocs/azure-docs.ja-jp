@@ -16,12 +16,11 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
-ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/15/2017
-
+ms.openlocfilehash: 45522bf526c4aeab1d6ccc8891a55a0436ff9320
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>Azure MFA、Azure AD Premium、または Enterprise Mobility のライセンスをユーザーに割り当てる
 Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを購入済みである場合、Multi-Factor Auth プロバイダーを作成する必要はありません。 ユーザーにライセンスを割り当てたら、ユーザーに対して MFA の有効化を始めることができます。
@@ -44,4 +43,3 @@ Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセ�
 ## <a name="next-steps"></a>次のステップ
 
 - 詳しくは、「[Microsoft Azure Active Directory とは](../active-directory/active-directory-licensing-what-is.md)」をご覧ください
-

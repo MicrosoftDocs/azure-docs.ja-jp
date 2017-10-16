@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 99d18aa55ea7bd7abcb50ba32c8f6a5f130ec031
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してカスタム ディスク イメージをアップロードし、Linux VM を作成する
 この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム イメージから Linux VM を作成する方法について説明します。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
@@ -139,7 +138,7 @@ azure group create myResourceGroup --location "WestUS"
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-VM は、ストレージ アカウント内にページ BLOB として保存されます。 Azure BLOB ストレージの詳細については [こちら](../../storage/storage-introduction.md#blob-storage)をご覧ください。 カスタム ディスク イメージと VM 用に、ストレージ アカウントを作成します。 カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
+VM は、ストレージ アカウント内にページ BLOB として保存されます。 Azure BLOB ストレージの詳細については [こちら](../../storage/common/storage-introduction.md#blob-storage)をご覧ください。 カスタム ディスク イメージと VM 用に、ストレージ アカウントを作成します。 カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
 
 次の例では、`mystorageaccount` という名前のストレージ アカウントを以前に作成したリソース グループに作成します。
 
@@ -149,7 +148,7 @@ azure storage account create mystorageaccount --resource-group myResourceGroup \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 `azure storage account keys list` コマンドを実行すると、アクセス キーを表示できます。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 `azure storage account keys list` コマンドを実行すると、アクセス キーを表示できます。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 
@@ -247,5 +246,4 @@ azure group deployment create --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
-
 

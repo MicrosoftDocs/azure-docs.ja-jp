@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
+ms.openlocfilehash: e69fff29be5b12c3c0004b4101eba69c7da87d3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="installing-python-and-the-sdk"></a>Python と SDK のインストール
 Python は、Windows でのセットアップが容易であり、Mac、Linux、および [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about) ではプレインストールされています。 このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
@@ -98,7 +97,7 @@ Azure サービスごとに個別にインストールできます。
 
 PTVS の使用はオプションですが、使用することをお勧めします。この PTVS によって、Python と Web のプロジェクト/ソリューション サポート、デバッグ、プロファイル、対話型ウィンドウ、テンプレートの編集、Intellisense を利用できるためです。
 
-PTVS では、[Cloud Services](cloud-services/cloud-services-python-ptvs.md) と [Websites](app-service-web/web-sites-python-ptvs-django-mysql.md) へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
+PTVS では、[Cloud Services](cloud-services/cloud-services-python-ptvs.md) と [Websites](app-service/app-service-web-overview.md) へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
 
 PTVS は、既存の Visual Studio 2013、2015、2017 インストールに対応しています。  ダウンロードなどの詳細については、 [Python Tools for Visual Studio]に関するページをご覧ください。  
 
@@ -117,7 +116,7 @@ Linux 仮想マシンのセットアップの詳細については、[Linux を�
 
 Git のデプロイを使って Python Web アプリケーションを開発できます。また、どのオペレーティング システムからでも Azure Web サイトを公開できます。  ご利用のリポジトリを Azure にプッシュする場合、自動的に仮想環境が作られ、pip によって必要なパッケージがインストールされます。
 
-Azure Websites を開発して公開する詳細については、[Django を使った Websites の作成](app-service-web/web-sites-python-create-deploy-django-app.md)に関するページ、[Bottle を使った Websites の作成](app-service-web/web-sites-python-create-deploy-bottle-app.md)に関するページ、および [Flask を使った Websites の作成](app-service-web/web-sites-python-create-deploy-flask-app.md)に関するページをご覧ください。 さまざまな WSGI 互換フレームワークの使用についての一般的な情報については、[Azure Websites での Python の構成](app-service-web/web-sites-python-configure.md)に関するページをご覧ください。
+WSGI 互換フレームワークの使用の詳細については、[Azure Websites での Python の構成](app-service/web-sites-python-configure.md)に関する記事を参照してください。
 
 ## <a name="additional-software-and-resources"></a>その他のソフトウェアとリソース:
 * [Azure SDK for Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
@@ -145,22 +144,9 @@ Azure Websites を開発して公開する詳細については、[Django を使
 [Django Project - A mature web framework/CMS]: http://www.djangoproject.com
 [IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[IPython Notebook on Azure]: virtual-machines-linux-jupyter-notebook.md
-[Cloud Services]: cloud-services-python-ptvs.md
-[Websites]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
-[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
-[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
-[Create a Virtual Machine Running Linux]: virtual-machines-linux-quick-create-cli.md
-[Creating Websites with Django]: web-sites-python-create-deploy-django-app.md
-[Creating Websites with Bottle]: web-sites-python-create-deploy-bottle-app.md
-[Creating Websites with Flask]: web-sites-python-create-deploy-flask-app.md
-[Configuring Python with Azure Websites]: web-sites-python-configure.md
-[table storage]: storage-python-how-to-use-table-storage.md
-[queue storage]: storage-python-how-to-use-queue-storage.md
 [blob storage]:storage/blobs/storage-python-how-to-use-blob-storage.md
-

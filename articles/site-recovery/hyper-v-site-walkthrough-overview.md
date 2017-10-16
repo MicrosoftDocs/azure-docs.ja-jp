@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: da10b213bc2543942b5ac77cf5c5d8547c00220c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="replicate-hyper-v-virtual-machines-without-vmm-to-azure"></a>Hyper-V 仮想マシン (VMM なし) を Azure にレプリケートする 
 
 > [!div class="op_single_selector"]
@@ -56,19 +54,19 @@ ms.lasthandoff: 06/23/2017
 
 ## <a name="step-3-plan-capacity"></a>手順3: 容量を計画する
 
-完全なデプロイを行う場合は、必要なレプリケーション リソースを把握する必要があります。 これを行うのに役立つツールがいくつかあります。 手順 2 に進みます。 環境をテストするためのクイック セットアップを行っている場合は、この手順をスキップできます。
+完全なデプロイを行う場合は、必要なレプリケーション リソースを把握する必要があります。 これに役立つツールがいくつかあります。 手順 2. に進みます。 環境をテストするための簡単なセットアップを行っている場合は、この手順をスキップできます。
 
 [手順 3: 容量を計画する](hyper-v-site-walkthrough-capacity.md)方法に関するページに進む
 
 ## <a name="step-4-plan-networking"></a>手順 4: ネットワークを計画する
 
-フェールオーバーの発生後に Azure VM がネットワークに接続され、正しい IP アドレスが割り当てられるようにするには、ネットワークを計画する必要があります。
+フェールオーバーの発生後に Azure VM がネットワークに接続され、正しい IP アドレスが割り当てられるようにするには、ネットワークの計画を行う必要があります。
 
 [手順 4: ネットワークを計画する](hyper-v-site-walkthrough-network.md)方法に関するページに進む
 
 ##  <a name="step-5-prepare-azure-resources"></a>手順 5: Azure リソースを準備する
 
-開始する前に、Azure ネットワークとストレージを設定します。 この操作はデプロイ中に行うことができますが、開始する前に行うことをお勧めします。
+開始する前に、Azure ネットワークとストレージを設定します。 この操作はデプロイ中に実行できますが、開始する前に行うことをお勧めします。
 
 [手順 5: Azure を準備する](hyper-v-site-walkthrough-prepare-azure.md)方法に関するページに進む
 
@@ -109,4 +107,3 @@ Hyper-V サーバーが Site Recovery のデプロイ要件を満たしている
 初期レプリケーションが完了した後で差分レプリケーションが実行されているときに、テスト フェールオーバーを実行して、すべてが予定どおりに動作することを確認できます。
 
 [手順 11: テスト フェールオーバーを実行する](hyper-v-site-walkthrough-test-failover.md)方法に関するページに進む
-

@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: partners
 ms.date: 01/30/2017
 ms.author: kevin;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 892a7f2727ab899ef539ac4ae06a8669512e6fef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供している Microsoft パートナー企業について説明しています。

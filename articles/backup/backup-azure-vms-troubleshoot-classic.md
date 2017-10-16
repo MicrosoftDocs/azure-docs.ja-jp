@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: trinadhk;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 284a1b64fbb15d0aa800182c6671d447e191b76a
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -115,4 +114,3 @@ Windows VM 上で VM エージェントのバージョンを確認する方法:
 
 1. Azure 仮想マシンにログオンし、フォルダー *C:\WindowsAzure\Packages* に移動します。 WaAppAgent.exe ファイルを探します。
 2. このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。
-

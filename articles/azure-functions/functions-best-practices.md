@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 1e0d4a29f59e48cac675e567fd84384b1b60d35f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 645a5dd16e72619e7c2470ab8f03098f0fa6c7f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
 この記事では、関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
@@ -99,5 +97,4 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 Azure Functions は Azure App Service を使用するため、App Service のガイドラインも認識しておく必要があります。
 * [パターンとプラクティスによる HTTP パフォーマンスの最適化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
-
 

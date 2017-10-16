@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
 ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Android アプリ用 Azure Mobile Engagement の使用
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -48,7 +48,7 @@ ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
 1. **Android Studio** を開始し、ポップアップ画面で **[Start a new Android Studio project (新しい Android Studio プロジェクトを開始する)]** を選択します。
 
     ![][1]
-2. アプリ名と会社のドメインを入力します。 後で必要になるため、入力内容をメモします。 **[次へ]**をクリックします。
+2. アプリ名と会社のドメインを入力します。 後で必要になるため、入力内容をメモします。 **[次へ]** をクリックします。
 
     ![][2]
 3. ターゲット フォーム ファクターと API レベルを選び、 **[Next]**をクリックします。
@@ -170,9 +170,3 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 [9]: ./media/mobile-engagement-android-get-started/app-connection-info-page.png
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -3,7 +3,7 @@ title: "Azure Network Watcher の接続チェックの概要 | Microsoft Docs"
 description: "このページでは、Network Watcher の接続機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,46 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: gwallace
+ms.author: jdial
+ms.openlocfilehash: 16ceef9c923b6a933a5caf752991b466346e0ebc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 83a88df8c20c89a72047884b69c52e12adf1549b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-connectivity-check-in-azure-network-watcher"></a>Azure Network Watcher の接続チェックの概要
 
 Network Watcher の接続機能を使用すると、仮想マシンから仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 ネットワークのシナリオは複雑であり、ネットワーク セキュリティ グループ、ファイアウォール、ユーザー定義ルート、および Azure が提供するリソースを使用して実装されます。 構成が複雑であるため、接続に関する問題のトラブルシューティングは困難です。 Network Watcher を使用すると、接続に関する問題を検出するまでの時間を減らすのに役立ちます。 返される結果は、接続に関する問題がプラットフォームによるものか、ユーザーの構成が問題であるかの洞察を提供します。 接続は、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、および [REST API](network-watcher-connectivity-rest.md) を使用してチェックできます。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 > [!IMPORTANT]
 > 接続チェックには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
-
-## <a name="register-the-preview-capability"></a>プレビュー機能の登録
-
-登録される必要があるこの機能を使用するために、接続チェックは現在パブリック プレビューにあります。 これを行うには、次の PowerShell サンプルを実行します。
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-登録が正しく行われたことを確認するには、次の PowerShell サンプルを実行します。
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
-```
-
-この機能が適切に登録されると、出力は次のようになります。
-
-```
-FeatureName         ProviderName      RegistrationState
------------         ------------      -----------------
-AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
-```
 
 ## <a name="response"></a>応答
 
@@ -115,5 +88,4 @@ AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
 
 <!--Image references-->
 [1]: ./media/network-watcher-next-hop-overview/figure1.png
-
 

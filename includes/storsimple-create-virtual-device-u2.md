@@ -22,7 +22,7 @@
       > 
    7. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。 物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。 
       
-       仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security)」をご覧ください。
+       仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](../articles/storsimple/storsimple-security.md)」をご覧ください。
    8. チェック アイコンをクリックして仮想デバイスを作成します。 デバイスは、プロビジョニングされるまで約 30 分かかることがあります。
       
       ![StorSimple 仮想デバイスの作成ステージ](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)

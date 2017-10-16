@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: ankryach
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 1444b517664355e8e240ea181d707c464d7ec5bb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 
@@ -304,4 +303,3 @@ namespace TimeSeriesInsightsQuerySample
 ## <a name="next-steps"></a>次のステップ
 
 クエリ API の完全なリファレンスについては、[クエリ API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) に関するドキュメントをご覧ください。
-

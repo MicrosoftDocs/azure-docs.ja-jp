@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/24/2017
 ms.author: venkatja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 4b8d5fdab1744b2db658917f91d6dac05db30d2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: 4e10a009eb67706d927ece5692134d802094cdf9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -80,4 +79,3 @@ IoT Hub またはイベント ハブでは、登録時に、データを読み�
 名前と値が次の規則に準拠していることを確認してください。
 * タイムスタンプ プロパティ名は_大文字と小文字が区別されます_。
 * イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティ値は、_yyyy-MM-ddTHH:mm:ss.FFFFFFFK_ の形式である必要があります。 例: 2008-04-12T12:53Z
-

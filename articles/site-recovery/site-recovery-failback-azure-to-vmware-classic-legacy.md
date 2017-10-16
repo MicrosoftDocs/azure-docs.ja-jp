@@ -14,17 +14,15 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e6d0539c35d403c24ddd5e0b5d49f4d6116eead
-ms.openlocfilehash: 86f7e0565fe30af613f06764a494cbb996abcabe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/30/2017
-
-
+ms.openlocfilehash: 3053fc622c6343898e2007b8aaafbe1fa8e6934e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-legacy"></a>Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+> * [Azure Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
 > * [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 >
@@ -119,7 +117,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 1. 仮想マシンをシャットダウンします。
 2. 左側のパネルで VM のエントリを右クリックし、**[Edit Settings]** を選択します。
-3. **[Options]** タブをクリックします。 **[Advanced] \> [General item]**  >  **[Configuration Parameters]** の順に選択します。 **[Configuration Parameters]** オプションは、マシンのシャット ダウン時にのみ使用されます。
+3. **[Options]** タブをクリックします。**[Advanced] \> [General item]**  >  **[Configuration Parameters]** の順に選択します。 **[Configuration Parameters]** オプションは、マシンのシャット ダウン時にのみ使用されます。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。 そのような行が存在し、値が **[False]** の場合は、**[True]** (大文字と小文字の区別なし) に設定します。 そのような行が存在し、値が [True] の場合は、 **[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。 そのような行が存在しない場合、 **[Add Row]**をクリックします。
@@ -184,7 +182,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 1. RHEL 6-64 ユニファイド・エージェント バイナリを、新たに作成した OS にコピーします。
 2. 次のコマンドを実行して、バイナリを解凍します: **tar -zxvf \<ファイル名\>**
 3. 次のコマンドを実行して、アクセス許可を付与します: \# **chmod 755 ./ApplyCustomChanges.sh**
-4. 次のスクリプトを実行します: **\# ./ApplyCustomChanges.sh**。 スクリプトは、サーバー上で 1 回のみ実行してください。 スクリプトの実行後に、サーバーを再起動します。
+4. 次のスクリプトを実行します: **\# ./ApplyCustomChanges.sh**。スクリプトは、サーバー上で 1 回のみ実行してください。 スクリプトの実行後に、サーバーを再起動します。
 
 ### <a name="install-the-linux-server"></a>Linux サーバーをインストールする
 1. [ダウンロード](http://go.microsoft.com/fwlink/?LinkID=529757) します。
@@ -356,4 +354,3 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 ## <a name="next-steps"></a>次のステップ
 * [強化されたデプロイを使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md) 方法についての記事をお読みください。
-

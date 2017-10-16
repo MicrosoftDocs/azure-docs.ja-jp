@@ -1,4 +1,3 @@
-
 ---
 title: "Azure の SSL 証明書を使用した IIS のセキュリティ保護 | Microsoft Docs"
 description: "Azure 上の Windows VM で SSL 証明書を使用して IIS Web サーバーをセキュリティ保護する方法について説明します。"
@@ -17,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6567853e9ef3cad63595dc0afe7a793bdc5d972c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>Azure 上の Windows 仮想マシンで SSL 証明書を使用して IIS Web サーバーをセキュリティ保護する
 Web サーバーをセキュリティ保護するには、Secure Sockets Later (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の Windows 仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 

@@ -15,7 +15,7 @@
 * ブラウザーで HTTP URL ではなく HTTPS URL にアクセスしていることを確認します。 Visual Studio の既定では、HTTP URL でプロファイルが発行され、プロジェクトのデプロイ後にブラウザーで開くときに HTTP が使用されます。
 * JavaScript フロント エンドに対する認証の場合、JavaScript コードが呼び出す API アプリで CORS が正しく構成されていることを確認します。 問題が CORS 関連である可能性がある場合は、許可される配信元 URL として "*" を試してみます。 
 * JavaScript フロント エンドの場合、ブラウザーの Developer Tools の [Console] タブを開いて詳細なエラー情報を表示し、[Network] の HTTP 要求を確認します。 ただし、[Console] のエラー メッセージは誤解を招く内容の場合があります。 CORS のエラーを示すメッセージが表示されていても、実際の問題は認証の場合があります。 これを確認するには、認証を一時的に無効にしてアプリを実行します。
-* .NET API アプリの場合、[customErrors モードを Off](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview) に設定して、可能な限り多くの情報をエラー メッセージで得られるようにします。
-* .NET API アプリの場合、[リモート デバッグ セッション](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を開始して、ADAL を使用してベアラー トークンを取得するコード、または予測されるサービス プリンシパル ID に対して要求を確認するコードに渡される変数の値を確認します。 コードはさまざまなソースの構成値を選択することができるので、意外な結果になることがあります。 たとえば、Azure App Service Environment 設定を構成するときに、`ida:ClientID` を間違って `ida:ClientId` と入力すると、Azure App Service 設定を無視して Web.config ファイルが検索され、`ida:ClientId` の値が取得される可能性があります。 
+* .NET API アプリの場合、[customErrors モードを Off](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview) に設定して、可能な限り多くの情報をエラー メッセージで得られるようにします。
+* .NET API アプリの場合、[リモート デバッグ セッション](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を開始して、ADAL を使用してベアラー トークンを取得するコード、または予測されるサービス プリンシパル ID に対して要求を確認するコードに渡される変数の値を確認します。 コードはさまざまなソースの構成値を選択することができるので、意外な結果になることがあります。 たとえば、Azure App Service Environment 設定を構成するときに、`ida:ClientID` を間違って `ida:ClientId` と入力すると、Azure App Service 設定を無視して Web.config ファイルが検索され、`ida:ClientId` の値が取得される可能性があります。 
 * 通常の Internet Explorer ウィンドウでうまくいかない場合は、既存のログインが妨げになっている可能性があるので、InPrivate を試し、Chrome または Firefox を使ってみてください。
 

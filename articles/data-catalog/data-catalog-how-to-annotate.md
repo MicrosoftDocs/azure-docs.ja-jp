@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba15ebc176ada48943fb6afa5f9c723e3d906099
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 4518fc126c717cc79ca7950c0b1ddcd9f1d8c7d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-annotate-data-sources"></a>データ ソースに注釈を付ける方法
 ## <a name="introduction"></a>はじめに
@@ -69,4 +68,3 @@ Data Catalog にデータ ソースを登録すると、構造メタデータと
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。
-

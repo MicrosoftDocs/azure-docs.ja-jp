@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: fa33a031a9e05f3079f1ed68d2ac0902b3070fa6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 91af774560860b35913e57b49fb7a1dd59f5640f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 Microsoft は、組織の IT インフラストラクチャの管理に役立つソフトウェアやサービスを提供すると同時に、お客様のプライバシーとデータの保護に努めています。 他者にデータを委託する場合、信頼には厳格なセキュリティが必要であることを把握しております。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -157,7 +155,7 @@ Azure Virtual Machines 上で実行される Windows エージェントの場合
 前述のように、エージェントからのデータが SSL 経由で Microsoft Azure データ センターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
-Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データはその後、[Microsoft Azure Storage](../storage/storage-introduction.md) で BLOB として暗号化されていない状態で保存されます。 ただし、各 Azure Storage BLOB には、そのユーザーのみがアクセスできる一意のキーのセットがあります。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、Azure Storage BLOB 用の生データを処理します。
+Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データはその後、[Microsoft Azure Storage](../storage/common/storage-introduction.md) で BLOB として暗号化されていない状態で保存されます。 ただし、各 Azure Storage BLOB には、そのユーザーのみがアクセスできる一意のキーのセットがあります。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、Azure Storage BLOB 用の生データを処理します。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 OMS ポータルで Log Analytics にサインインするには、設定済みの組織アカウントまたは Microsoft アカウントを使用します。 OMS ポータルと OMS の Log Analytics 間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 OMS ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、OMS ポータル セッションが終了します。
@@ -166,4 +164,3 @@ OMS ポータルを使用してデータを CSV ファイルにエクスポー�
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-

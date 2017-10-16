@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database を使用するマルチテナント アプリで新しいテナントをプロビジョニングする | Microsoft Docs"
-description: "Wingtip SaaS アプリで新しいテナントをプロビジョニングしてカタログに登録する方法について説明します"
+description: "Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します。"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -16,14 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
+ms.openlocfilehash: febf9d9f8a32a95ae61734cc2d3632bb74f6c8f5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 8fa4c4f95386a92c8c818eef1a5b4de5a086fe07
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する
+# <a name="learn-how-to-provision-and-catalog-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログ化し、カタログに登録する方法について説明します。
 
 このチュートリアルでは、SaaS パターンのプロビジョニングおよびカタログと、Wingtip SaaS アプリケーションでの実装方法について学びます。 新規のテナント データベースを作成して初期化し、アプリケーションのテナント カタログに登録します。 カタログ とは、SaaS アプリケーションの多数のテナントとそのデータの間のマッピング情報を保持するためのデータベースを指します。 カタログは、アプリケーションの要求を正しいデータベースに転送するうえで重要な役割を果たします。  
 
@@ -176,4 +175,3 @@ Resource Manager テンプレートは、…\Learning Modules\Common\ フォル�
 * [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [エラスティック データベース クライアント ライブラリ](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library)
 * [Windows PowerShell ISE でスクリプトをデバッグする方法](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
-

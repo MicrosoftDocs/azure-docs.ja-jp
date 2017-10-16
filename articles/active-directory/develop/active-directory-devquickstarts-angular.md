@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 797b6236afad45e3e308ce073a8beb90cb7e94a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: 4153910bc03f112f84c26cda6f9c78f11028b934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-secure-angularjs-single-page-apps-by-using-azure-ad"></a>Azure AD を使用して AngularJS シングルページ アプリの保護をサポートする
 
@@ -162,4 +160,3 @@ adal.js を使用すると、共通 ID 機能を容易にアプリケーショ�
 ここからは、さらなるシナリオに進むことができます。 [シングルページ アプリからの CORS Web API の呼び出し](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)を試してみてください。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

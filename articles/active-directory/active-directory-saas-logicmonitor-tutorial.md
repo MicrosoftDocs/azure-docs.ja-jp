@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: e49960cac868f80af3e9165a9f75e49be87515f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>チュートリアル: Azure Active Directory と LogicMonitor の統合
 
@@ -184,7 +182,7 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-logicmonitor-test-user"></a>LogicMonitor テスト ユーザーの作成
 
@@ -270,5 +268,4 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 [201]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_203.png
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
 ms.openlocfilehash: 9f085dfa1fe4db36d58cb976bb550a46bf241ac7
-ms.lasthandoff: 03/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-azure-cli-10"></a>Azure CLI 1.0 を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 03/28/2017
 8. 次のコマンドを入力して、NIC および関連付けられた IP 構成を表示します。
 
     ```azurecli
-    azure network nic show --resource-group $RgName    --name myNic1
+    azure network nic show --resource-group $RgName --name myNic1
     ```
 9. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載されたご使用のオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。
 
@@ -161,7 +160,7 @@ ms.lasthandoff: 03/28/2017
         --domain-name-label mypublicdns3
         ```
 
-         静的プライベート IP アドレスと、関連付けられた *myPublicIP3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
+        静的プライベート IP アドレスと、関連付けられた *myPublicIP3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
 
         ```azurecli
         azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic --name IPConfig-4 \
@@ -178,7 +177,7 @@ ms.lasthandoff: 03/28/2017
 
         返された出力で IPConfig-3 に関する次のような行を探します。
 
-        ```            
+        ```         
         Name               Provisioning state  Primary  Private IP allocation Private IP version  Private IP address  Subnet    Public IP
         default-ip-config  Succeeded           true     Static                IPv4                10.0.0.4            mySubnet  myPublicIP
         IPConfig-2         Succeeded           false    Static                IPv4                10.0.0.5            mySubnet  myPublicIP2
@@ -215,4 +214,3 @@ ms.lasthandoff: 03/28/2017
 4. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」の手順に従って、NIC に追加したプライベート IP アドレスを、VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-

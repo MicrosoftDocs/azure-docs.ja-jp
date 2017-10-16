@@ -18,11 +18,19 @@
 
 # 方法
 
-## 回避
-### [セキュリティ ポリシーの設定](security-center-policies.md)
-### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
-### [セキュリティの推奨事項の実装](security-center-recommendations.md)
+## セキュリティ ポリシー
+### [概要](security-center-policies-overview.md)
+### [データ収集](security-center-enable-data-collection.md)
+### [セキュリティ ポリシー](security-center-policies.md)
+### [電子メール通知](security-center-provide-security-contact-details.md)
+### [[価格レベル]](security-center-pricing.md)
 
+## [オンボード](security-center-onboarding.md)
+## [イベント](security-center-events-dashboard.md)
+## [Search](security-center-search.md)
+
+## 回避
+### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)
 #### [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)
 #### [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)
@@ -41,19 +49,16 @@
 ### [仮想マシンの推奨事項](security-center-virtual-machine-recommendations.md)
 #### [ディスク暗号化の適用](security-center-apply-disk-encryption.md)
 #### [システムの更新の適用](security-center-apply-system-updates.md)
-#### [データ収集を有効にする](security-center-enable-data-collection.md)
 #### [Enable encryption for storage account](security-center-enable-encryption-for-storage-account.md)
 #### [VM エージェントの有効化](security-center-enable-vm-agent.md)
 #### [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)
-#### [セキュリティの連絡先詳細の提供](security-center-provide-security-contact-details.md)
 #### [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md)
-#### [Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [OS バージョンの更新](security-center-update-os-version.md)
 #### [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md)
-
 ### [セキュリティ正常性の監視](security-center-monitoring.md)
 ### [パートナー ソリューションの監視](security-center-partner-solutions.md)
+### [ID とアクセス](security-center-identity-access.md)
 
 ## 検出と応答
 ### [検出機能](security-center-detection-capabilities.md)
@@ -62,7 +67,17 @@
 ### [アラートの検証](security-center-alert-validation.md)
 ### [セキュリティ インシデントの管理](security-center-incident.md)
 ### [Azure ログ統合](security-center-integrating-alerts-with-log-integration.md)
+### [脅威インテリジェンス マップ](security-center-threat-intel.md)
 ### [脅威インテリジェンス レポート](security-center-threat-report.md)
+### [カスタム アラート](security-center-custom-alert.md)
+### [調査](security-center-investigation.md)
+
+## クラウドの防御
+### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
+### [アダプティブ アプリケーション制御](security-center-adaptive-application.md)
+
+## オートメーションとオーケストレーション
+### [プレイブック](security-center-playbooks.md)
 
 ## トラブルシューティング
 ### [トラブルシューティング ガイド](security-center-troubleshooting-guide.md)
@@ -76,7 +91,6 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
-## [料金](security-center-pricing.md)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=security-center)

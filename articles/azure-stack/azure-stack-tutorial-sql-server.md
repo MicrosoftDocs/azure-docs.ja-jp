@@ -1,6 +1,6 @@
 ---
-title: Make SQL databases available to your Azure Stack users | Microsoft Docs
-description: Tutorial to install the SQL Server resource provider and create offers that let Azure Stack users create SQL databases.
+title: "SQL データベースを Azure Stack ユーザーから使用可能にする | Microsoft Docs"
+description: "SQL Server リソース プロバイダーをインストールし、Azure Stack ユーザーが SQL データベースを作成できるようにするオファーを作成するためのチュートリアル。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,79 +11,79 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: bba8257bc4477f985d1a9399e65a1338d237f134
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Make SQL databases available to your Azure Stack users
+# <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
 
-As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create SQL databases that they can use with their cloud-native apps, websites, and workloads. By providing these custom, on-demand, cloud-based databases to your users, you can save them time and resources. To set this up, you will:
+Azure Stack クラウド管理者として、ユーザー (テナント) が自分のクラウド ネイティブなアプリ、Web サイト、およびワークロードで使用できる SQL データベースを作成できるようにするオファーを作成できます。 これらのカスタムの、オンデマンドで、クラウド ベースのデータベースをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
-> * Deploy the SQL Server resource provider
-> * Create an offer
-> * Test the offer
+> * SQL Server リソース プロバイダーのデプロイ
+> * オファーの作成
+> * オファーのテスト
 
-## <a name="deploy-the-sql-server-resource-provider"></a>Deploy the SQL Server resource provider
+## <a name="deploy-the-sql-server-resource-provider"></a>SQL Server リソース プロバイダーのデプロイ
 
-The deployment process is described in detail in the [Use SQL databases on Azure Stack article](azure-stack-sql-resource-provider-deploy.md), and is comprised of the following primary steps:
+このデプロイ プロセスは [Azure Stack 上での SQL データベースの使用の記事](azure-stack-sql-resource-provider-deploy.md)で詳細に説明されており、次の主要な手順で構成されています。
 
-1.  [Deploy the SQL resource provider]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2.  [Verify the deployment]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
-3.  [Provide capacity by connecting to a hosting SQL server]( azure-stack-sql-resource-provider-deploy.md#provide-capacity-by-connecting-to-a-hosting-sql-server).
+1. [SQL リソース プロバイダーをデプロイします]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider)。
+2. [デプロイを検証します]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
+3. ホスティング SQL Server に接続して容量を提供します。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>オファーの作成
 
-1.  [Set a quota](azure-stack-setting-quotas.md) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
-2.  [Create a plan](azure-stack-create-plan.md). Name it *TestSQLServerPlan*, select the **Microsoft.SQLAdapter** service, and **SQLServerQuota** quota.
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *SQLServerQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.SQLAdapter]** を選択します。
+2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestSQLServerPlan* という名前を付け、**[Microsoft.SQLAdapter]** サービスおよび **[SQLServerQuota]** クォータを選択します。
 
     > [!NOTE]
-    > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQLAdapter**.
+    > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、Wordpress には **Microsoft.MySQLAdapter** が必要です。
     > 
     >
 
-3.  [Create an offer](azure-stack-create-offer.md), name it **TestSQLServerOffer** and select the **TestSQLServerPlan** plan.
+3.  [オファーを作成し](azure-stack-create-offer.md)、それに **TestSQLServerOffer** という名前を付け、**[TestSQLServerPlan]** プランを選択します。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>オファーのテスト
 
-Now that you've deployed the SQL Server resource provider and created an offer, you can sign in as a user, subscribe to the offer, and create a database.
+これで SQL Server リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、データベースを作成できます。
 
-### <a name="subscribe-to-the-offer"></a>Subscribe to the offer
-1. Sign in to the Azure Stack portal (https://portal.local.azurestack.external) as a tenant.
-2. Click **Get a subscription** and then type **TestSQLServerSubscription** under **Display Name**.
-3. Click **Select an offer** > **TestSQLServerOffer** > **Create**.
-4. Click **More services** > **Subscriptions** > **TestSQLServerSubscription** > **Resource providers**.
-5. Click **Register** next to the **Microsoft.SQLAdapter** provider.
+### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
+1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
+2. **[Get a subscription] (サブスクリプションの取得)** をクリックし、**[Display Name] (表示名)** の下に「**TestSQLServerSubscription**」と入力します。
+3. **[Select an offer] (オファーの選択)** > **[TestSQLServerOffer]** > **[作成]** をクリックします。
+4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[Resource providers] (リソース プロバイダー)** をクリックします。
+5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[Register] (登録)** をクリックします。
 
-### <a name="create-a-sql-database"></a>Create a SQL database
+### <a name="create-a-sql-database"></a>SQL Database の作成
 
-1. Click **+** > **Data + Storage** > **SQL Database**.
-2. Leave the defaults for the fields, or you can use these examples:
-    - **Database Name**: SQLdb
-    - **Max Size in MB**: 100
-    - **Subscription**: TestSQLOffer
-    - **Resource Group**: SQL-RG
-3. Click **Login Settings**, enter credentials for the database, and then click **OK**.
-4. Click **SKU** > select the SQL SKU that you created for the SQL Hosting Server > **OK**.
-5. Click **Create**.
+1. **+** > **[データ + ストレージ]** > **[SQL Database]** をクリックします。
+2. 各フィールドの既定値のままにします。または、次の例を使用できます。
+    - **[データベース名]**: SQLdb
+    - **[Max Size in MB] (最大サイズ (MB))**: 100
+    - **[サブスクリプション]**: TestSQLOffer
+    - **[リソース グループ]**: SQL-RG
+3. **[Login Settings] (ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。
+4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
+5. **Create** をクリックしてください。
 
-In this tutorial, you learned how to:
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Deploy the SQL Server resource provider
-> * Create an offer
-> * Test the offer
+> * SQL Server リソース プロバイダーのデプロイ
+> * オファーの作成
+> * オファーのテスト
 
-Advance to the next tutorial to learn how to:
+次のチュートリアルに進み、次の操作方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [Make web, mobile, and API apps available to your users]( azure-stack-tutorial-app-service.md)
-
+> [Web、モバイル、および API アプリをユーザーから使用可能にする]( azure-stack-tutorial-app-service.md)
 

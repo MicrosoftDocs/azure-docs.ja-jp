@@ -11,16 +11,16 @@
 ### [ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
 ### [.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
 ### [REST で API にアクセスする](media-services-rest-connect-with-aad.md)
-### [CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
-### [PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
+### [Azure CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+### [Azure PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
 
 ## ビデオ オン デマンドの配信
-### [ポータル](media-services-portal-vod-get-started.md)
+### [Azure ポータル](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
 ### [REST ()](media-services-rest-get-started.md)
 ## ライブ ストリーミングの実行
-### [ポータル](media-services-portal-live-passthrough-get-started.md)
+### [Azure ポータル](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 方法
@@ -29,7 +29,7 @@
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST ()](media-services-rest-manage-entities.md)
 ### [ストリーミング エンドポイント](media-services-streaming-endpoints-overview.md)
-#### [ポータル](media-services-portal-manage-streaming-endpoints.md)
+#### [Azure ポータル](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### Storage
 #### [ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
@@ -38,7 +38,7 @@
 
 ## コンテンツをアップロードする
 ### ファイルをアカウントにアップロードする
-#### [ポータル](media-services-portal-upload-files.md)
+#### [Azure ポータル](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST ()](media-services-rest-upload-files.md)
 ### [Aspera を使用した大きなファイルのアップロード](media-services-upload-files-with-aspera.md)
@@ -52,7 +52,7 @@
 #### [Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)
 #### [MES を使用したビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)
 #### Media Encoder Standard を使用したエンコード
-##### [ポータル](media-services-portal-encode.md)
+##### [Azure ポータル](media-services-portal-encode.md)
 ##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 ##### [REST ()](media-services-rest-encode-asset.md)
 #### [MES による高度なエンコード](media-services-advanced-encoding-with-mes.md)
@@ -109,7 +109,7 @@
 #### [ポータル](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
-#### [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
+#### [Azure ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成](media-services-live-encoders-overview.md)
 #### [Elemental Live エンコーダー](media-services-configure-elemental-live-encoder.md)
@@ -120,7 +120,7 @@
 ### [フラグメント化 MP4 ライブ取り込みの仕様](media-services-fmp4-live-ingest-overview.md)
 
 ## [保護](media-services-content-protection-overview.md)
-### [ポータルでコンテンツ保護を構成する](media-services-portal-protect-content.md)
+### [Azure Portal でコンテンツ保護を構成する](media-services-portal-protect-content.md)
 ### [ストリームの AES-128 クリア キーを構成する](media-services-protect-with-aes128.md)
 ### [REST を使用してストレージ暗号化でコンテンツを暗号化する](media-services-rest-storage-encryption.md)
 ### [Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)
@@ -140,14 +140,14 @@
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST ()](media-services-rest-create-contentkey.md)
 ### コンテンツ キー承認ポリシーを構成する
-#### [ポータル](media-services-portal-configure-content-key-auth-policy.md)
+#### [Azure ポータル](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST ()](media-services-rest-configure-content-key-auth-policy.md)
 ### [Safari での AES 暗号化 HLS の再生](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
 ### [認証トークンを渡す](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [分析](media-services-analytics-overview.md)
-### [ポータルを使用したメディアの分析](media-services-portal-analyze.md)
+### [Azure Portal を使用したメディアの分析](media-services-portal-analyze.md)
 ### [Indexer 2 による処理](media-services-process-content-with-indexer2.md)
 ### [Indexer による処理](media-services-index-content.md)
 #### [タスク プリセット](indexer-task-preset.md)
@@ -165,10 +165,10 @@
 
 ## スケール
 ### [メディア処理](media-services-scale-media-processing-overview.md)
-#### [ポータル](media-services-portal-scale-media-processing.md)
+#### [Azure ポータル](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
 ### ストリーミング エンドポイント
-#### [ポータル](media-services-portal-scale-streaming-endpoints.md)
+#### [Azure ポータル](media-services-portal-scale-streaming-endpoints.md)
 
 ## [コンテンツの配信](media-services-deliver-content-overview.md)
 ### [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)
@@ -177,7 +177,7 @@
 #### [REST を使用したフィルターの作成](media-services-rest-dynamic-manifest.md)
 ### [Media Services Extension での CDN キャッシュ ポリシー](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### コンテンツを発行する
-#### [ポータル](media-services-portal-publish.md)
+#### [Azure ポータル](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
 #### [REST ()](media-services-rest-deliver-streaming-content.md)
 ### [ダウンロードで配信する](media-services-deliver-asset-download.md)
@@ -200,7 +200,7 @@
 ## 監視
 ### ジョブの進行状況をチェックする
 #### [REST ()](media-services-rest-check-job-progress.md)
-#### [ポータル](media-services-portal-check-job-progress.md)
+#### [Azure ポータル](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
 ### [Queue Storage を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-queues.md)
 ### [webhook を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-webhooks.md)
@@ -213,8 +213,8 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
-## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
-## [PowerShell (サービス管理)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
+## [Azure PowerShell (サービス管理)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST ()](/rest/api/media/mediaservice)  
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 2123c5f26d77045bd22af56a844fdbf222930e7b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。
@@ -478,4 +477,3 @@ task copyDeps<< {
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Service Fabric CLI を使用した Service Fabric クラスターの対話操作](service-fabric-cli.md)
-

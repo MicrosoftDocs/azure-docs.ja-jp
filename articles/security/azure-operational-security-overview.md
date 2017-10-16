@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: f2153e783adb955cf9055b09ba9aa2592f51e4b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)は、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワークです。
 
@@ -162,4 +160,3 @@ OMS の Security and Audit ソリューションについて詳しくは、次�
 - [Operations Management Suite | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)。
 - [Operations Management Suite の Security and Audit ソリューションでのセキュリティの警告に対する監視と対応](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-responding-alerts)。
 - [Operations Management Suite の Security and Audit ソリューションでのリソースの監視](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-monitoring-resources)。
-

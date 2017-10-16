@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: f894191baced710fc0f5a8c8692df98033341a48
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Azure Kubernetes クラスターを CoScale を使用して監視する
 
 この記事では、Azure Container Service の Kubernetes クラスター内のすべてのノードとコンテナーを監視する [CoScale](https://www.coscale.com/) エージェントのデプロイする方法を説明します。 この構成を行うには、CoScale のアカウントが必要です。 
@@ -89,5 +87,4 @@ CoScale エージェントは、クラスター内の新しいマシンに自動
 ## <a name="next-steps"></a>次のステップ
 
 CoScale 監視ソリューションの詳細については、[CoScale のドキュメントと](http://docs.coscale.com/)と[ブログ](https://www.coscale.com/blog)を参照してください。 
-
 

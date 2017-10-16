@@ -15,13 +15,11 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -140,7 +138,7 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTPS を使用した接続を選択できるようになります  (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
-5. [...] をクリックし、**[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
+5. ...をクリックし、**リモート管理証明書をダウンロードする** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 6. **[保存]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする
@@ -243,5 +241,4 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-8000-windows-powershell-administration.md)の詳細を確認する。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細を確認する。
-
 

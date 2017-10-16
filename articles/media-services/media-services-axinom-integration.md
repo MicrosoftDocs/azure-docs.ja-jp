@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c02b75dc2c783b96dc9e1256051b8c6df290d425
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Media Services (AMS) で Google Widevine の動的な保護がサポートされるようになりました (詳細については、 [Mingfei のブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) を参照してください)。 さらに、Azure Media Player (AMP) では、Widevine がサポートされるようになりました (詳細については、 [AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/) を参照してください)。 これは、MSE と EME を搭載する最新のブラウザー上でマルチネイティブ DRM (PlayReady と Widevine) による CENC で保護された DASH コンテンツのストリーミングにおける大きな成果です。
 
 Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると Widevine ライセンス テンプレートを構成し、Widevine ライセンスを取得できます。 [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。
@@ -201,5 +200,4 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 
 ### <a name="acknowledgments"></a>謝辞
 この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
-
 

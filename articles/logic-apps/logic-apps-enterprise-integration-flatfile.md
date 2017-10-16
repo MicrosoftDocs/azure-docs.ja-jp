@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 
@@ -86,5 +84,4 @@ ms.lasthandoff: 01/31/2017
 
 ## <a name="next-steps"></a>次のステップ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
 

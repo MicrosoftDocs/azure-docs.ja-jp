@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
 ms.author: kdotchko
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1a8dd3d024fbe1e85a43c5b4f98901ab59c5797f
-ms.openlocfilehash: e0a7c813da53bc6ab49a456f13227b62725c5fc4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: b2ad2c6f5eeec2f803e2d2f5f98831b551efa8b1
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # IoT Hub に対するその他のプロトコルのサポート
 Azure IoT Hub は MQTT、AMQP、および HTTP プロトコルを介した通信をネイティブでサポートします。 場合によっては、デバイスまたはフィールド ゲートウェイでこれらの標準プロトコルをいずれも使用できず、プロトコルの適応が必要になることがあります。 このような場合は、カスタム ゲートウェイを使用できます。 カスタム ゲートウェイによって IoT Hub に対するトラフィックをブリッジすることにより、IoT Hub エンドポイントにプロトコルを適応できます。 IoT Hub に対するプロトコルの適用を可能にするには、 [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) をカスタム ゲートウェイとして使用します。
@@ -50,4 +49,3 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-

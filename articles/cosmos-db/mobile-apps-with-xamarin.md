@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
 ms.openlocfilehash: 4dfe9c755f3e7d5414ae04dd4027defd6cef2e4a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 ほとんどのモバイル アプリでは、クラウドにデータを格納する必要があります。Azure Cosmos DB は、モバイル アプリ向けのクラウド データベースです。 モバイル開発者が必要なすべてのものを備えています。 必要に応じて拡大縮小できる、完全に管理されたサービスとしてのデータベースです。 ユーザーが世界中どこにいても、アプリケーションにデータを透過的に提供できます。 [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md) を使用すると、中間層なしで、Xamarin モバイル アプリが Azure Cosmos DB と直接やり取りすることができます。
@@ -43,7 +42,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 次のチュートリアルでは、Xamarin と Azure Cosmos DB を使用してモバイル アプリケーションを構築する方法について説明します。 このチュートリアルの完全なソース コードについては、[GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) に関するページを参照してください。
 
 ### <a name="get-started"></a>作業開始
-Azure Cosmos DB の利用を開始するのは簡単です。 Azure Portal に移動して、新しい Azure Cosmos DB アカウントを作成します。 **[クイック スタート]** タブをクリックします。 Azure Cosmos DB アカウントにあらかじめ接続されている Xamarin Forms のタスク一覧のサンプルをダウンロードします。 
+Azure Cosmos DB の利用を開始するのは簡単です。 Azure Portal に移動して、新しい Azure Cosmos DB アカウントを作成します。 **[クイック スタート]** タブをクリックします。Azure Cosmos DB アカウントにあらかじめ接続されている Xamarin Forms のタスク一覧のサンプルをダウンロードします。 
 
 ![モバイル アプリ向けの Azure Cosmos DB の [クイック スタート]](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
@@ -105,7 +104,6 @@ Azure Cosmos DB は、管理された DBaaS (database as a service) です。 �
 * [.NET アプリケーション](documentdb-dotnet-samples.md)向けの他のコード サンプルを探す。
 * [Azure Cosmos DB のリッチ クエリ機能](documentdb-sql-query.md)について確認する。
 * [Azure Cosmos DB の地理空間サポート](geospatial.md)について確認する。
-
 
 
 

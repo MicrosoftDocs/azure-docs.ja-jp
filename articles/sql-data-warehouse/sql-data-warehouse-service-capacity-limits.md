@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3a9ea64c464a74c70e75634a3e5c1e49862a74e7
-ms.openlocfilehash: c6b44392c0b3a241d41ae55bd6bb3f544d867e9e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
-
-
+ms.openlocfilehash: 52026a58a5b6e26a660f9e1374e67036c67ac525
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -106,4 +104,3 @@ ms.lasthandoff: 02/22/2017
 <!--MSDN references-->
 [Row-Overflow Data Exceeding 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
 [Internal error: An expression services limit has been reached]: https://support.microsoft.com/kb/913050
-

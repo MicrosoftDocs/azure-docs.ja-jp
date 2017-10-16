@@ -7,13 +7,12 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-translationtype: Human Translation
-ms.sourcegitcommit: d408dbd55fa667e150bb42ff0d1e4b3236c438e9
 ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 
 [ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) を使用すると、Azure のアクセス権をきめ細かく管理できます。
@@ -91,7 +90,7 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 
     ![新しいサポート要求](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Joe が [All support requests (すべてのサポート要求)] をクリックすると、このサブスクリプションで作成されたサポート要求の一覧が表示されます。 ![サポート案件の詳細ビュー](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. 「要求をすべてサポート」をクリックすると Joe はこのサブスクリプション用に作成されたサポート リクエストの一覧を表示できます![ケースの詳細ビュー](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Azure Portal でのサポート要求アクセス権の削除
 
@@ -103,14 +102,8 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 
 Joe がポータルにログインし、サポート要求を作成しようとすると、次のエラーが発生します。
 
-![サブスクリプション エラー&2;](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
+![サブスクリプション エラー 2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
 Joe が [All support requests (すべてのサポート要求)] をクリックしても、サポート要求は表示されません。
 
-![サポート案件の詳細ビュー&2;](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+![サポート案件の詳細ビュー 2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d2dd84007832c56f5893f0ea9f5effcf5ec5816b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Azure Active Directory テナントにアプリケーションを登録する
 
 Azure Portal を使用して、Azure Active Directory (Azure AD) テナントにアプリケーションを登録できます。 これにより、アプリケーションのアプリケーション ID が作成され、トークンを受信できるようになります。
@@ -64,4 +62,3 @@ Azure Portal を使用して、既存のアプリケーションの設定を簡�
 
 1. Azure AD を使用した認証を実行するアプリケーションの詳細なチュートリアルについては、[クイック スタート](active-directory-developers-guide.md)をご覧ください。
 2. コード サンプルの完全な一覧については、[GitHub](https://github.com/azure-samples) をご覧ください。
-

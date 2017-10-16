@@ -1,6 +1,6 @@
 ---
-title: Download marketplace items from Azure | Microsoft Docs
-description: I can download marketplace items from Azure to my Azure Stack deployment.
+title: "Azure から Marketplace の項目をダウンロードする | Microsoft Docs"
+description: "Azure から Azure Stack のデプロイに Marketplace の項目をダウンロードすることができます。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/03/2017
 ms.author: erikje
+ms.openlocfilehash: 4d7c335a3c68cc9bb8cb0c823883716a3dd6620a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4baa1b675d2930cd111b5b8368ac081dc2b77841
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Download marketplace items from Azure to Azure Stack
+# <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-As you decide what content to include in your Azure Stack marketplace, you should consider the content available from the Azure marketplace. You can download from a curated list of Azure marketplace items that have been pre-tested to run on Azure Stack. New items are frequently added to this list, so make sure check back for new content.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-To download marketplace items, you must first [register Azure Stack with Azure](azure-stack-register.md). 
+Azure Stack Marketplace に含めるコンテンツを決定するときは、Azure Marketplace から利用可能なコンテンツを検討する必要があります。 Azure Stack 上で動くことがテスト済みの Azure Marketplace の項目の精選された一覧からダウンロードすることができます。 一覧には新しい項目が頻繁に追加されるので、ときどき新しいコンテンツを確認してください。
 
-## <a name="download"></a>Download
-1. Sign in to the Azure Stack administrator portal (https://portal.local.azurestack.external).
-2. Some marketplace items can be very large.  Check to make sure you have enough space on your system by clicking **Resource Providers** > **Storage**.
+Marketplace の項目をダウンロードするには、最初に [Azure Stack を Azure に登録](azure-stack-register.md)します。 
+
+## <a name="download"></a>ダウンロード
+1. Azure Stack 管理ポータル (https://portal.local.azurestack.external) にサインインします。
+2. Marketplace の項目の中には非常に大きいものがあります。  **[リソース プロバイダー]** > **[ストレージ]** をクリックして、システムに十分な領域があることを確認してください。
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
 
-3. Click **More Services** > **Marketplace Management**.
+3. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** をクリックします。
 
     ![](media/azure-stack-download-azure-marketplace-item/image02.png)
 
-4. Click **Add from Azure** to see a list of items available for download. You can click on each item in the list to view its description and download size.
+4. **[Add from Azure]\(Azure から追加\)** をクリックして、ダウンロードできる項目の一覧を表示します。 一覧の各項目をクリックして、説明とダウンロード サイズを見ることができます。
 
     ![](media/azure-stack-download-azure-marketplace-item/image03.png)
 
-5. Select the item you want in the list and then click **Download**. This starts downloading the VM image for the item you selected. Download times vary.
+5. 一覧で必要な項目を選び、**[ダウンロード]** をクリックします。 選んだ項目の VM イメージのダウンロードが始まります。 ダウンロードの時間は項目によって異なります。
 
     ![](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-6. After the download completes, you can deploy your new marketplace item as either a cloud operator or tenant user. Click **+New**, search among the categories for the new marketplace item, and then select the item.
-7. Click **Create** to open up the creation experience for the newly downloaded item. Follow the step-by-step instructions to deploy your item.
+6. ダウンロードが完了したら、Azure Stack オペレーターまたはユーザーとして、新しい Marketplace の項目をデプロイできます。 **[+ 新規]** をクリックして、カテゴリの中から新しい Marketplace の項目を探し、選択します。
+7. **[作成]** をクリックして、新しくダウンロードした項目の作成エクスペリエンスを開きます。 表示される手順に従って項目をデプロイします。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
-
+[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)

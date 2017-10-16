@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
+ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 8a9d7c7f3f8aefa5312e5e3313dbd581d6df900a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを作成するためのベスト プラクティス
 このガイドラインは、信頼性が高く使いやすい Azure Resource Manager テンプレートを作成するのに役立ちます。 このガイドラインはあくまで提案です。 必須ではありません (必須と示されている場合を除く)。 状況によっては、以下の手法や例のバリエーションが必要になる場合があります。
@@ -395,7 +394,6 @@ JSON 検証ツールを使用してテンプレートを渡すことをお勧め
 
 ## <a name="next-steps"></a>次のステップ
 * 仮想マシン用のソリューションの構築に関するガイダンスについては、「[Run a Windows VM in Azure (Azure での Windows VM の実行)](../guidance/guidance-compute-single-vm.md)」および「[Run a Linux VM in Azure (Azure での Linux VM の実行)](../guidance/guidance-compute-single-vm-linux.md)」を参照してください。
-* ストレージ アカウントのセットアップのガイダンスについては、[Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関するページをご覧ください。
+* ストレージ アカウントのセットアップのガイダンスについては、[Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関するページをご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス](resource-manager-subscription-governance.md)」を参照してください。
-
 

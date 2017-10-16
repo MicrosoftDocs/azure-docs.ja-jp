@@ -10,17 +10,15 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
-このクイックスタートでは、Ubuntu Linux VM に [Jenkins](https://jenkins.io) をインストールする方法について説明します。Azure で動作するように構成されたプラグインとツールのインストールも行います。 最終的には、[GitHub](https://github.com) からのサンプル Java アプリをビルドする Jenkins サーバーが Azure で稼働することになります。
+このクイックスタートでは、Azure で動作するよう構成されているプラグインとツールを備えた [Jenkins](https://jenkins.io) を Ubuntu Linux VM にインストールする方法について説明します。 最終的には、[GitHub](https://github.com) からのサンプル Java アプリをビルドする Jenkins サーバーが Azure で稼働することになります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,11 +43,11 @@ Web ブラウザーから [Jenkins の Marketplace イメージ](https://azurema
 * **[リソース グループ]** には「**myJenkinsResourceGroup**」を使用します。
 * **[場所]** ドロップダウンから **[米国東部]** の [Azure リージョン](https://azure.microsoft.com/regions/)を選択します。
 
-**[OK]** を選択して、**[Configure additional options]\(追加オプションの構成\)** タブに移動します。一意のドメイン名を入力して Jenkins サーバーを指定し、**[OK]** を選択します。
+**[OK]** を選択して、**[Configure additional options]\(追加オプションの構成\)** タブに移動します。Jenkins サーバーを識別する一意のドメイン名を入力して、**[OK]** を選択します。
 
 ![追加オプションの設定](./media/install-jenkins-solution-template/ap-addtional.png)  
 
- 検証に成功したら、**[概要]** タブから再度 **[OK]** を選択します。最後に、**[購入]** を選択して Jenkins VM を作成します。 サーバーの準備が完了すると、Azure Portal に次のような通知が表示されます。   
+ 検証に成功したら、**[概要]** タブから再度 **[OK]** を選択します。最後に、**[購入]** を選択して Jenkins VM を作成します。 サーバーの準備が完了すると、Azure Portal に通知が表示されます。   
 
 ![Jenkins の準備が完了したことを示す通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
@@ -113,4 +111,3 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 
 > [!div class="nextstepaction"]
 > [Azure VM を Jenkins エージェントとして追加する](jenkins-azure-vm-agents.md)
-

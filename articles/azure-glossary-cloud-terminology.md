@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 08/16/2017
 ms.author: monicar
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 800eadb6cc558303553a204771b18cec525a2af9
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
@@ -30,8 +30,8 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
 
 ## <a name="account"></a>アカウント
-Azure サブスクリプションの利用や管理に使われる、職場または学校アカウント、あるいは個人の Microsoft アカウント。  
-[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)を見る
+Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
+「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="api-app"></a>API アプリ
 [App Service アプリ](#app-service-app)の別名。
@@ -88,7 +88,7 @@ Azure サブスクリプションに適用される価格、クレジット、�
 [Azure のプランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>ポータル
-Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。  [Azure ポータル](http://portal.azure.com/)と[クラシック ポータル](http://manage.windowsazure.com/)の 2 つのポータルがあります。 両方のポータルで使用できるサービスもあれば、どちらか一方のポータルでしか使用できないサービスもあります。 「 [Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/) 」に、どのポータルでどのサービスを利用可能かがまとめてあります。
+Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。  [Azure Portal](http://portal.azure.com/) と[クラシック ポータル](http://manage.windowsazure.com/)の 2 つのポータルがあります。 両方のポータルで使用できるサービスもあれば、どちらか一方のポータルでしか使用できないサービスもあります。 「 [Azure Portalの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」に、どのポータルでどのサービスを利用可能かがまとめてあります。
 
 ## <a name="region"></a>region
 国境とは一致せず、1 つ以上のデータセンターが含まれる geo 内の領域。 リージョン レベルでは、価格、リージョンごとのサービス、プランの種類が公開されます。 リージョンは通常、別のリージョンとペアになっています。その距離は数百マイル離れていることもあります。 リージョン ペアは、障害復旧と高可用性が求められる場面に対応するためのメカニズムとして利用できます。 リージョンは "*場所*" とも呼ばれます。  
@@ -107,7 +107,7 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 「[Resource Manager テンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 
 ## <a name="resource-provider"></a>リソース プロバイダー
-Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure ポータル、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
+Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
 「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
 ## <a name="role"></a>role
@@ -119,11 +119,11 @@ Resource Manager でデプロイおよび管理できるリソースを提供す
 「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」をご覧ください。
 
 ## <a name="sas"></a>Shared Access Signature (SAS)
-アカウント キーを公開することなく、リソースへの制限付きアクセスを付与することができる署名。 たとえば、[Azure Storage は SAS を使用](storage/storage-dotnet-shared-access-signature-part-1.md)して、クライアントに LOB などのオブジェクトへのアクセス権を付与します。 [IoT Hub は SAS を使用](iot-hub/iot-hub-devguide-security.md#security-tokens)して、デバイスに利用統計情報を送信する許可を与えます。
+アカウント キーを公開することなく、リソースへの制限付きアクセスを付与することができる署名。 たとえば、[Azure Storage は SAS を使用](storage/common/storage-dotnet-shared-access-signature-part-1.md)して、クライアントに LOB などのオブジェクトへのアクセス権を付与します。 [IoT Hub は SAS を使用](iot-hub/iot-hub-devguide-security.md#security-tokens)して、デバイスに利用統計情報を送信する許可を与えます。
 
 ## <a name="storage-account"></a>ストレージ アカウント
 Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスにアクセスできるアカウント。 ストレージ アカウント名は、Azure Storage データ オブジェクトの一意の名前空間を定義します。  
-「[Azure ストレージ アカウントについて](storage/storage-create-storage-account.md)」をご覧ください。
+「[Azure ストレージ アカウントについて](storage/common/storage-create-storage-account.md)」をご覧ください。
 
 ## <a name="subscription"></a>サブスクリプション
 Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたプランに応じて決まります。

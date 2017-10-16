@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 95c2f4fe40590a8d809f634fb5b2c92d07421bb0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
@@ -167,4 +166,3 @@ ms.lasthandoff: 08/01/2017
 - [Windows 仮想マシン](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
 - 同じ Azure の場所の 2 つの仮想ネットワークを接続するには、仮想ネットワーク間の[仮想ネットワーク ピアリング](create-peering-different-deployment-models.md)を作成します。 仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) にピアリングすることはできますが、2 つの仮想ネットワーク (クラシック) 間でピアリングを作成することはできません。
 - [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。
-

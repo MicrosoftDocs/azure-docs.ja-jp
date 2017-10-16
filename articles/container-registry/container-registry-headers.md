@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: cristyg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: dd4feff057269ed7106990bb63eed7fcffa2dbec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.openlocfilehash: 2090d4c951e2261529bf1b7b361510d5822060a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Azure Container Registry リポジトリ
 
@@ -59,4 +58,3 @@ Microsoft の利用統計情報収集を支援していただくため、パー�
 
 ## <a name="next-steps"></a>次のステップ
 [レジストリとサポートされているサービスまたはオーケストレーターについて学習してください。](container-registry-intro.md)
-

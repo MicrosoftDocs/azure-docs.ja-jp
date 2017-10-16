@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: fac7f969f943312fca1eacc41dca3b8e65cf2024
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: 4f343b4d4b5cb3c8be9605e9ab43200072b193e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
 現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。 これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。 アプリ パスワードによってこれが発生します。
@@ -60,7 +59,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 1. Azure クラシック ポータルにサインインします。
 2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
 3. 確認ページの上部の [アプリ パスワード] を選択します。
-4. **[作成]**をクリックします。
+4. **Create** をクリックしてください。
 5. アプリ パスワードの名前を入力し、 **[次へ]**
 6. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
 
@@ -88,7 +87,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 4. **[アプリ パスワード]** を選択します。
    ![[アプリ パスワード] を選択する - スクリーンショット](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
-5. ページの下部にある **[Create]**」を参照してください。
+5. **Create** をクリックしてください。
 6. アプリ パスワードの名前を入力し、 **[次へ]**をクリックします。
 7. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
    ![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
@@ -116,4 +115,3 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
 - SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する
-

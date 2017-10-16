@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
+ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 484db494e7975df950543d19bf841a4df7cdd139
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
 このチュートリアルでは、Windows コンテナー内の既存の ASP.NET アプリケーションを Azure にデプロイする方法を示します。
@@ -131,11 +129,11 @@ Azure の Service Fabric で実行するためにアプリケーションを準�
 ### <a name="expose-the-port-for-the-app"></a>アプリのポートの公開
 構成した Service Fabric クラスターでは、クラスターへの着信トラフィックを分散する Azure Load Balancer で既定でポート *80* がオープンされます。 docker-compose.yml ファイルを使用して、このポートでコンテナーを公開できます。
 
-Visual Studio で**ソリューション エクスプローラー**を開き、**docker-compose** を見つけて **docker-compose.override.yml** というファイルを開きます。
+Visual Studio で**ソリューション エクスプローラー**を開き、**docker-compose** を見つけて **docker-compose.yml** というファイルを開きます。
 
 `fabrikamfiber.web:` ノードを変更し、`ports:` という名前の子ノードを追加します。
 
-文字列エントリ `- "80:80"` を追加します。
+文字列エントリ `- "80:80"` を追加します。 docker-compose.yml ファイルは、次のようになります。
 
 ```yml
   version: '3'
@@ -217,6 +215,8 @@ Fabrikam Call Center ソリューションをコンテナー化してデプロ�
 > * 既存のアプリケーションのコンテナー格納
 > * Visual Studio と VSTS を使用した継続的インテグレーションのセットアップ
 
+チュートリアルの次の部分で、[コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)をセットアップする方法を学習します。
+
 <!--   NOTE SURE WHAT WE SHOULD DO YET HERE
 
 Advance to the next tutorial to learn how to bind a custom SSL certificate to it.
@@ -251,4 +251,3 @@ Advance to the next tutorial to learn how to bind a custom SSL certificate to it
 [image-source-control]: media/service-fabric-host-app-in-a-container/add-to-source-control.png
 [image-publish-repo]: media/service-fabric-host-app-in-a-container/publish-repo.png
 [image-setup-ci]: media/service-fabric-host-app-in-a-container/configure-continuous-integration.png
-

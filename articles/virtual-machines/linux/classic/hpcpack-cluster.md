@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
+ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。
@@ -186,7 +185,7 @@ Linux ノードは、 **[ヒート マップ]** ビューにも表示されま�
 ### <a name="azure-file-storage"></a>Azure File ストレージ
 [Azure File](https://azure.microsoft.com/services/storage/files/) サービスは、標準の SMB 2.1 プロトコルを使用してファイル共有を公開します。 Azure の VM とクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。また、オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。 
 
-Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/storage-file-how-to-use-files-windows.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「[Linux で Azure File Storage を使用する方法](../../../storage/storage-how-to-use-files-linux.md)」をご覧ください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
+Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/files/storage-how-to-use-files-windows.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
 
 次の例では、ストレージ アカウントへの Azure File 共有を作成します。 ヘッド ノードに共有をマウントするには、コマンド プロンプトを開き、次のコマンドを入力します。
 
@@ -316,4 +315,3 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) ツー�
 [nfsshare]:media/hpcpack-cluster/nfsshare.png
 [nfsperm]:media/hpcpack-cluster/nfsperm.png
 [nfsmanage]:media/hpcpack-cluster/nfsmanage.png
-

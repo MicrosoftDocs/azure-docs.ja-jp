@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 413e72e9a39fcde84f56bfc61a6bc72dbadf1c97
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
 > [!div class="op_single_selector"]
@@ -137,4 +135,3 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 ## <a name="additional-resources"></a>その他のリソース
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
 [Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c024d8d47ab9b78399d8eb8b4df1f764f2877339
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 2023fa7b318f9f76ce1e1ea0a46110297be9a001
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する
 この記事では、Azure PowerShell コマンドレットを使用して Cloud Services コンテナーを簡単に作成する方法について説明します。 次の手順に従ってください。
@@ -53,4 +52,3 @@ Get-help New-AzureService
 ### <a name="next-steps"></a>次のステップ
 * クラウド サービス デプロイの管理については、[Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx)、[Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx)、[Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx) の各コマンドの説明を参照してください。 詳細については、 [クラウド サービスを構成する方法](cloud-services-how-to-configure.md) に関するページも参考になります。
 * Azure にクラウド サービス プロジェクトを発行する方法については、[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md)に関するページの **PublishCloudService.ps1** コード サンプルを参照してください。
-

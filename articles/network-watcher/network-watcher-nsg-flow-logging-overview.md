@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: c24c2c4e297497e106691d62be76ad0591bb33de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/04/2017
-
+ms.openlocfilehash: be29b993592e494053353aac1067bfb7eff90ed7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
 ネットワーク セキュリティ グループ フロー ログは、ネットワーク セキュリティ グループを介して IP トラフィックの送信と受信に関する情報を表示できるようにする Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信、受信フロー、フロー (送信元/送信先 IP、送信元/送信先ポート、プロトコル) についての 5 組の情報が適用される NIC、トラフィックが許可されているか、拒否されているかを示しています。
@@ -40,7 +38,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 フロー ログには複数のプロパティがあります。 次の一覧は、NSG フロー ログ内で返されるプロパティの一覧です。
 
-* **time** - イベントがトリガーされた時間
+* **time** - イベントがログに記録された時間
 * **systemId** - ネットワーク セキュリティ グループのリソース ID。
 * **category** - イベントのカテゴリ名で、常に NetworkSecurityGroupFlowEvent
 * **resourceid** - NSG のリソース ID
@@ -50,16 +48,16 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
     * **flows** - フローのコレクション。 このプロパティには異なるルールに対して複数のエントリがあります
         * **rule** - フローが一覧表示されているルール
             * **flows** - フローのコレクション
-                * **mac** - フローが収集された VM に関する NIC の MAC アドレス
+                * **mac** - フローが収集された VM の NIC の MAC アドレス
                 * **flowTuples** - コンマで区切る形式で表現されたフローの組に対して複数のプロパティを含む文字列
                     * **Time Stamp** - UNIX EPOCH 形式でフローが発生した際のタイム スタンプ
                     * **Source IP** - 発信元 IP
                     * **Destination IP** - 宛先 IP
                     * **Source Port** - 発信ポート
                     * **Destination Port** - 宛先ポート
-                    * **Protocol**フローのプロトコル。 有効な値は TCP の **T** と UDP の **U** です
+                    * **Protocol** - フローのプロトコル。 有効な値は TCP の **T** と UDP の **U** です
                     * **Traffic Flow** - トラフィック フローの方向。 有効な値は受信の **I** と送信の **O** です。
-                    * **Traffic** - トラフィックが許可または拒否されたかどうか。 有効な値は許可の **A** と拒否の **D** です。
+                    * **Traffic** - トラフィックが許可された、または拒否された。 有効な値は許可の **A** と拒否の **D** です。
 
 
 以下はフロー ログの例です。 ご覧の通り、前のセクションで説明されているプロパティの一覧に従って、複数のレコードが存在します。 
@@ -106,11 +104,10 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 
-NSG のログ記録については、「[ネットワーク セキュリティ グループ (NSGs) のログ分析](../virtual-network/virtual-network-nsg-manage-log.md)」をご覧ください。
+NSG のログ記録については、「[ネットワーク セキュリティ グループ (NSG) のログ分析](../virtual-network/virtual-network-nsg-manage-log.md)」をご覧ください。
 
 VM におけるトラフィックの許可または拒否を確認するには、[IP フローの確認によるトラフィックの検証](network-watcher-check-ip-flow-verify-portal.md)に関するページをご覧ください
 
 <!-- Image references -->
 [1]: ./media/network-watcher-nsg-flow-logging-overview/figure1.png
-
 

@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b689a0033103231d560c9ba4b349e675f304e35c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: b5a6bad6eca3f0262d5cc2ac01fb3a4eb3676e5e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>Overview
@@ -76,5 +75,4 @@ Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
-
 

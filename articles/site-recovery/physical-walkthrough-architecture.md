@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 843c3f1b54f50fe50b162ed242deab717a080830
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: 697fbcdb4c5d5a900deb980db7cca9cf2f9fa36d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-1-review-the-architecture-for-physical-server-replication-to-azure"></a>手順 1: Azure に物理サーバーをレプリケートするためのアーキテクチャを確認する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの Windows/Linux 物理サーバーを Azure にレプリケートするときに使用されるコンポーネントとプロセスについて説明します。
@@ -49,15 +47,15 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
-1. オンプレミスと Azure のコンポーネントを含むデプロイをセットアップします。 Recovery Services コンテナーで、レプリケーションのソースとターゲットの指定、構成サーバーのセットアップ、レプリケーション ポリシーの作成、モビリティ サービスのデプロイ、レプリケーションの有効化、およびテスト フェールオーバーを行います。
-2.  レプリケーション ポリシーに従ってマシンのレプリケーションが実行されると、データの最初のコピーが Azure Storage にレプリケートされます。
+1. オンプレミスのコンポーネントと Azure コンポーネントを含むデプロイをセットアップします。 Recovery Services コンテナーで、レプリケーションのソースとターゲットの指定、構成サーバーのセットアップ、レプリケーション ポリシーの作成、モビリティ サービスのデプロイ、レプリケーションの有効化、およびテスト フェールオーバーを行います。
+2.  レプリケーション ポリシーに従ってマシンがレプリケートされると、データの初回コピーが Azure Storage にレプリケートされます。
 4. 初回のレプリケーションの終了後、Azure への差分変更のレプリケーションが開始されます。 マシンの追跡された変更は .hrl ファイルに保持されます。
     - レプリケートするマシンは、レプリケーション管理のために、受信ポート HTTPS 443 で構成サーバーと通信します。
     - レプリケートするマシンは、受信ポート HTTPS 9443 でレプリケーション データをプロセス サーバーに送信します (変更可能)。
     - 構成サーバーは、送信ポート HTTPS 443 経由で Azure によるレプリケーション管理を調整します。
     - プロセス サーバーは、ソース マシンからデータを受信し、そのデータを最適化して暗号化し、送信ポート 443 を介して Azure Storage に送信します。
     - マルチ VM 整合性を有効にすると、レプリケーション グループ内のマシンは、ポート 20004 を介して相互に通信します。 フェールオーバー時にクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを共有するレプリケーション グループに複数のマシンをグループ化する場合にマルチ VM が使用されます。 これは、これらのマシンが同じワークロードを実行していて、一貫性を持たせる必要がある場合に役立ちます。
-5. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#public-peering)を使用することもできます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
+5. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を使用することもできます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
 
 **図 2: 物理サーバーから Azure へのレプリケーション**
 
@@ -88,4 +86,3 @@ ms.lasthandoff: 06/29/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 2: 前提条件と制限事項を確認する](physical-walkthrough-prerequisites.md)」に進みます。
-

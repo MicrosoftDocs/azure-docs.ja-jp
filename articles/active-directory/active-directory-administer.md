@@ -15,12 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
+ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1390ba45f52473129dce6b904690b040af8f7e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-azure-ad-directory"></a>Azure AD ディレクトリの管理
 
@@ -59,12 +58,14 @@ Microsoft クラウド サービスのサブスクリプションをまだ持っ
 
 ### <a name="how-to-change-the-default-directory-for-a-subscription"></a>サブスクリプションの既定のディレクトリを変更する方法
 
-1. 所有権を譲渡するサブスクリプションのアカウント管理者であるアカウントで [Azure アカウント センター](https://account.windowsazure.com/Home/Index)にサインインします。
+1. 所有権を譲渡するサブスクリプションのアカウント管理者であるアカウントで [Azure アカウント センター](https://account.azure.com/Subscriptions)にサインインします。
 2. サブスクリプションの所有者となるユーザーが、譲渡先のディレクトリに存在することを確認します。
 3. **[サブスクリプションの譲渡]** をクリックします。
 4. 譲渡先を指定します。 譲渡先には、承認用のリンクが記載された電子メールが自動的に送信されます。
 5. 譲渡先のユーザーは、リンクをクリックして指示に従います (支払情報の入力など)。 受信者が継承すると、サブスクリプションが譲渡されます。 
 6. サブスクリプションの所有権が問題なく譲渡されると、サブスクリプションの既定のディレクトリが、譲渡先のユーザーが属しているディレクトリに変更されます。
+
+詳細については、「[別のアカウントに Azure サブスクリプションの所有権を譲渡する](../billing/billing-subscription-transfer.md)」を参照してください
 
 ### <a name="manage-the-default-directory-in-azure"></a>Azure の既定のディレクトリを管理する
 Azure にサインアップすると、ご利用のサブスクリプションに既定の Azure AD ディレクトリが関連付けられます。 Azure AD を使用するのにコストは一切かかりません。また、ディレクトリは無料のリソースです。 別途ライセンスを取得することによって、追加機能 (サインイン時に会社のブランドを表示する機能や、セルフサービスによるパスワード リセット機能など) を利用できる有料の Azure AD サービスが存在します。 既定の *.onmicrosoft.com ドメインではなく、ご利用の DNS 名を使用してカスタム ドメインを作成することもできます。
@@ -121,4 +122,3 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 * [Stack Overflow (Azure 関連の質問)](http://stackoverflow.com/questions/tagged/azure)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)
-

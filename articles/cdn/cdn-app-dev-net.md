@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2d7b2f5feefc4d25c36a5fd30ca1d666b904f58
-
-
+ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -340,10 +340,4 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 Azure CDN Management Library for .NET に関連するドキュメントについては、 [MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
 
 [PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 09/20/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 6ef296fb98478be9240f0231c8ad39cd2a0af995
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: d614352a62dc7aca012e9b144473604ae9829af9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
@@ -57,11 +57,7 @@ ms.lasthandoff: 08/24/2017
 
    ![インストール場所とライセンス条項](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. **[オンプレミスのデータ ゲートウェイ (推奨)]** を選択します。 Azure Analysis Services では、パーソナル モードはサポートしていません。
-
-   ![ゲートウェイの種類を選択する](media/analysis-services-gateway-install/aas-gateway-installer-shared.png)
-
-4. Azure にサインインするアカウントを入力します。 アカウントは、テナントの Azure Active Directory でなければなりません。 このアカウントがゲートウェイ管理者で使用されます。 
+3. Azure にサインインするアカウントを入力します。 アカウントは、テナントの Azure Active Directory でなければなりません。 このアカウントがゲートウェイ管理者で使用されます。 
 
    ![Azure にサインインするアカウントを入力する](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 

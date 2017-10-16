@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: ca20927377e84e76c8148deef075f2d6bfb11137
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
+ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する
 Cloud Explorer を使用すると、Azure リソースやリソース グループを表示し、そのプロパティを調べることができます。また、開発者は Visual Studio 内から重要な診断操作を実行できます。 
@@ -103,4 +102,3 @@ Azure アカウント サブスクリプションで特定の名前のリソー�
 ![Finding resources in Cloud Explorer](./media/vs-azure-tools-resources-managing-with-cloud-explorer/search-for-resources.png)
 
 **検索**ボックスに文字を入力すると、その文字に一致するリソースだけがリソース ツリーに表示されます。
-

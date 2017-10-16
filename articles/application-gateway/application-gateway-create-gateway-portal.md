@@ -3,7 +3,7 @@ title: "アプリケーション ゲートウェイを作成する - Azure Porta
 description: "ポータルを使用してアプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: 17d09ce98c40717d1db0927f791a7c97ea7835e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: d3c39cfe3159cd4059a81f966fb551175188278b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-application-gateway-with-the-portal"></a>ポータルを使用してアプリケーション ゲートウェイを作成する
 
@@ -128,4 +127,3 @@ Application Gateway を作成するために必要な手順を次に示します
 [4]: ./media/application-gateway-create-gateway-portal/figure4.png
 [5]: ./media/application-gateway-create-gateway-portal/figure5.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
-

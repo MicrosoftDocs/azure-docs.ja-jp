@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7f4981feb0b2f524bab095d76000e01aa88bc81f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
@@ -112,7 +112,7 @@ Windows 向けの HDInsight が提供終了になった後、Windows 向けの�
 Azure HDInsight バージョン 3.3 が Windows 向け HDInsight の最終バージョンです。 Windows 向け HDInsight が提供終了になる前に、Windows 向けのバージョン 3.3 以前のすべての HDInsight クラスターを Linux 向け HDInsight バージョン 3.5 以降に移行する必要があります。 クラスターを Linux 向け HDInsight に移行しても、新しいクラスターの作成や既存のサイズ変更の機能は保持されます。 
 
 ### <a name="what-do-i-need-to-do"></a>何をする必要がありますか?
-2018 年 7 月 31 日までに、Windows 向け HDInsight クラスターをサポート対象の Linux 向け HDInsight クラスターに移行します。 詳細については、[HDInsight の移行のドキュメント](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)をご覧ください。 Azure HDInsight のバージョンの詳細については、[サポートされているバージョン](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)の一覧をご覧ください。 
+2018 年 7 月 31 日までに、Windows 向け HDInsight クラスターをサポート対象の Linux 向け HDInsight クラスターに移行します。 詳細については、[HDInsight の移行のドキュメント](hdinsight-migrate-from-windows-to-linux.md)をご覧ください。 Azure HDInsight のバージョンの詳細については、[サポートされているバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)の一覧をご覧ください。 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>クラスター OS の種類はどこでわかりますか。
 Azure Portal で [HDInsight クラスターの概要] ページに移動し、**[要点]** の下の **[クラスターの種類]** を見つけます。 クラスター OS の種類は、そのページに一覧表示されます。 
@@ -121,7 +121,7 @@ Azure Portal で [HDInsight クラスターの概要] ページに移動し、**
 Windows 向けの HDInsight クラスターは現状のまま動作しますが、Windows 向けの新しい HDInsight クラスターを作成することや、Windows 向けの既存の HDInsight のサイズを変更することはできません。 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>クラスターには .NET との依存関係が存在します。 この依存関係は Linux でどのように解決すればいいですか。
-[Mono プロジェクト](http://www.mono-project.com/)を使用して、Linux 向けクラスターの依存関係を解決できます。 .NET のオープン ソースの実装は、Linux 向けの HDInsight クラスターで利用できます。 詳細については、[HDInsight の移行のドキュメント](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)をご覧ください。 
+[Mono プロジェクト](http://www.mono-project.com/)を使用して、Linux 向けクラスターの依存関係を解決できます。 .NET のオープン ソースの実装は、Linux 向けの HDInsight クラスターで利用できます。 詳細については、[HDInsight の移行のドキュメント](hdinsight-migrate-from-windows-to-linux.md)をご覧ください。 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Windows 向けの HDInsight を初めて使用します。 Windows 向けの HDInsight クラスターはどうすれば作成できますか。
 2017 年 7 月 3 日現在、Windows 向けの新しい HDInsight クラスターを作成できるのは既存の Windows 向けの HDInsight ユーザーのみです。 新規ユーザーは、PowerShell または SDK を使用して、Azure Portal で、Windows 向けの HDInsight クラスターを作成することはできません。 新規ユーザーは Linux 向けの HDInsight クラスターを作成することをお勧めします。 既存のユーザーは、Windows 向けの HDInsight 提供終了日まで Windows 向けの新しい HDInsight クラスターを作成できます。 
@@ -138,7 +138,7 @@ Windows 向けの HDInsight クラスターは現状のまま動作しますが�
 HDInsight バージョン 3.4 以降では、Microsoft は Linux OS でのみ HDInsight をリリースしています。 その結果、HDInsight 内のコンポーネントの一部は、Linux でのみ使用できます。 これらには、Apache Ranger、Kafka、Interactive Hive、Spark、HDInsight の各種アプリケーション、および プライマリ ファイル システムとしての Azure Data Lake Store が含まれています。 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
-サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの_サポート有効期限_が切れている場合、HDInsight クラスターはサポート対象外となります。 サポートされているバージョンの詳細については、[サポートされている HDInsight クラスター バージョン](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)の一覧をご覧ください。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
+サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの_サポート有効期限_が切れている場合、HDInsight クラスターはサポート対象外となります。 サポートされているバージョンの詳細については、[サポートされている HDInsight クラスター バージョン](hdinsight-migrate-from-windows-to-linux.md)の一覧をご覧ください。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
 
 * 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 * 数式 2: HDInsight クラスター バージョン X+1 が Azure Portal で使用可能になった日付に 90 日を加える。

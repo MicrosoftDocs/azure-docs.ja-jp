@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell (プレビュー) のクイック スタート | Microsoft Docs"
-description: "Azure Cloud Shell のクイック スタート"
+title: "Azure Cloud Shell (プレビュー) の Bash のクイックスタート | Microsoft Docs"
+description: "Cloud Shell の Bash のクイックスタート"
 services: 
 documentationcenter: 
 author: jluk
@@ -12,28 +12,34 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
+ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 148dc64efd7b4379afad046f21fc2bd97f8f6718
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
-# <a name="quickstart-for-using-the-azure-cloud-shell"></a>Azure Cloud Shell を使用するためのクイック スタート
+このドキュメントでは、[Azure Portal](https://ms.portal.azure.com/) で Azure Cloud Shell の Bash を使う方法について詳しく説明します。
 
-このドキュメントでは、[Azure Portal](https://ms.portal.azure.com/) での Azure Cloud Shell の使い方を詳しく説明します。
+> [!NOTE]
+> [Azure Cloud Shell の PowerShell](quickstart-powershell.md) のクイックスタートもあります。
 
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 1. Azure Portal 上部のナビゲーションから **Cloud Shell** を起動します。 <br>
-![](media/shell-icon.png)
+![](media/quickstart/shell-icon.png)
 2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。
 3. [Create storage]\(ストレージの作成\) を選択します。
 
 > [!TIP]
 > Azure CLI 2.0 では、ユーザーの認証が各セッションで自動的に行われます。
+
+### <a name="select-the-bash-environment"></a>Bash 環境を選ぶ
+1. シェル ウィンドウの左側で環境ドロップダウンを選びます <br>
+![](media/quickstart/env-selector.png)
+2. Bash を選びます
 
 ### <a name="set-your-subscription"></a>サブスクリプションの設定
 1. 自分が利用できるサブスクリプションを一覧表示します。 <br>
@@ -61,17 +67,16 @@ ms.lasthandoff: 08/17/2017
 1. Azure Portal の検索バーで VM 名を検索します。
 2. [接続] をクリックし、`ssh username@ipaddress` を実行します。
 
-![](media/sshcmd-copy.png)
+![](media/quickstart/sshcmd-copy.png)
 
-SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表示されます。
-![](media/ubuntu-welcome.png)
+SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表示されます。 <br>
+![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>クリーンアップしています 
 リソース グループとそこに含まれるリソースを削除するには、 <br>
 `az group delete -n MyRG` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
+[Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
-[Azure File Storage について](../storage/storage-files-introduction.md) <br>
-
+[Azure File Storage について](../storage/files/storage-files-introduction.md) <br>

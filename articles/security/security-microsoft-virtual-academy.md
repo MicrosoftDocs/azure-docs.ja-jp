@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: baf6476c6dfc0db29d51d5b0b1643b1ff099a808
-
-
+ms.openlocfilehash: c5ebc3cb13359d824f022859078e4feb2b6869a0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy の Azure セキュリティ関連コース
 Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
@@ -64,9 +64,3 @@ Microsoft Azure のインフラストラクチャ機能の使用方法につい�
 [Azure Rights Management Services Core Skills (Azure Rights Management サービスの主要なスキル)](https://mva.microsoft.com/en-us/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
 
 組織で情報保護が "必須" の要件である理由と、組織の知的財産がデバイスとクラウド間のどこにあっても Rights Management で保護できるしくみについて説明します。 Microsoft のエキスパートから、実践的な経験と技術的なノウハウを学んでください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

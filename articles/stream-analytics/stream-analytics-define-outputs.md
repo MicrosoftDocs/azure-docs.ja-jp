@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 91ee74f01b2e84244245dbe43408589f04af6338
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 52d131384c61b57d31873530304c644d6e9c11f1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics の出力: ストレージのオプション、分析
@@ -302,7 +302,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性の高いパフォーマンス、および迅速な開発を実現します。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。
 
 以下に、Azure Cosmos DB 出力を作成するためのプロパティ名とその説明の詳細を示します。
 

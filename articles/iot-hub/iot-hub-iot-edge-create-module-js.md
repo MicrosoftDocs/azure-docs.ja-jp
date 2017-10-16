@@ -11,12 +11,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: sushi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 12e0702c31f36368fd95127abeede1a0d4ff2c87
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: ba466f47e157d805600c41fa3d84ed5a0363969c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Azure IoT Edge モジュールを Node.js で作成する
 
@@ -290,4 +289,3 @@ receive: function (message) {
 
 > [!IMPORTANT]
 > Ctrl + C キーを使用して IoT Edge アプリケーションを終了することはお勧めしません。 その方法では、プロセスが異常終了する可能性があるためです。
-

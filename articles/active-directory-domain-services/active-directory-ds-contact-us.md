@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD ドメイン サービス - お問い合わせ
 ## <a name="contact-the-product-team"></a>製品チームへのお問い合わせ
@@ -36,4 +35,3 @@ ms.lasthandoff: 08/24/2017
 **[Azure Active Directory User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/)**より Azure AD Domain Services についてのご意見をお待ちしております。
 
 弊社が確認できるように、質問またはご意見の先頭に **"AADDS"**という単語を付けてください。
-

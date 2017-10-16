@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
-ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
-
-
+ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>チュートリアル: Azure Active Directory と Halosys の統合
 
@@ -124,7 +124,7 @@ Halosys で Azure AD のシングル サインオンを構成してテストす�
 
     a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[サインオン URL]** ボックスに、`https://<company-name>.Halosys.com/client-api/api` の形式で、Halosys アプリケーションにサインオンする際にユーザーが使用する URL を入力します。
 
-    b.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company-name>.Halosys.com`    
+    b.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company-name>.Halosys.com`   
          
 4. **[Halosys でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -168,13 +168,13 @@ Halosys で Azure AD のシングル サインオンを構成してテストす�
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+5. **このユーザーについてお知らせ** ダイアログ ページで、次の手順を実行します: ![Azure AD のテスト ユーザーを作成します。](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
 
     a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
 
-    c. ページの下部にある **[次へ]**」を参照してください。
+    c. **[次へ]** をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
 
@@ -264,9 +264,3 @@ Halosys で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

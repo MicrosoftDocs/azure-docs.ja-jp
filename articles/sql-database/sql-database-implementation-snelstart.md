@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: 0c37a035cfc782e05dd72da7323fe244eadc4ce9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/12/2017
-
-
+ms.openlocfilehash: 3861814974b95f0c65879158cb02ec727a25c99f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
@@ -109,5 +107,4 @@ SnelStart の目下の目標は、顧客満足度をさらに高めていくこ�
 * Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure SQL Data Warehouse の詳細については、 [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * SnelStart の詳細については、 [SnelStart](http://www.snelstart.nl)をご覧ください。
-
 

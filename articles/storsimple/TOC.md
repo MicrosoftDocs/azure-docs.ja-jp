@@ -36,6 +36,7 @@
 #### [ジョブを管理する](storsimple-virtual-array-manage-jobs.md)
 #### [デバイスのパスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)
 #### [Windows Server ホストで MPIO を構成する](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [アラートを使用した監視](storsimple-virtual-array-manage-alerts.md)
 #### [診断とトラブルシューティング](storsimple-virtual-array-diagnose-problems.md)
 #### [サポート要求を記録する](storsimple-virtual-array-log-support-ticket.md)
 
@@ -56,6 +57,7 @@
 ### [ソリューションとは](storsimple-overview.md)
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-8000-security.md)
+### [FAQ - Azure Portal に移行する](storsimple-8000-move-azure-portal-faq.md)
 
 ## 作業開始
 
@@ -162,6 +164,7 @@
 ##### [サポート パッケージを作成する](storsimple-8000-create-manage-support-package.md)
 
 ### 移行
+#### [サブスクリプションとストレージ アカウント](storsimple-8000-migrate-classic-azure-portal.md)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新

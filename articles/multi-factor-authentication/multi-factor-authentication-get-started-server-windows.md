@@ -15,12 +15,11 @@ ms.date: 06/06/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
-ms.openlocfilehash: e3ad33dd12b4fb831ba43738bc5af4e5561a0682
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: 7e6384ea8fea686b5cad1a3bc3007252b9cfcd65
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 Azure Multi-Factor Authentication Server の [Windows 認証] セクションを使用して、アプリケーションの Windows 認証を有効にして構成します。 Windows 認証を設定する前に、次の点に留意してください。
@@ -51,4 +50,3 @@ Azure Multi-Factor Authentication Server の [Windows 認証] セクションを
 - [Azure MFA Server のサード パーティ VPN アプライアンスを構成する](multi-factor-authentication-advanced-vpn-configurations.md)
 
 - [Azure MFA の NPS 拡張機能で既存の認証インフラストラクチャを強化する](multi-factor-authentication-nps-extension.md)
-

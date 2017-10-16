@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: f3fbca281dbbfca7ff9392d003429719c589afbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。
@@ -265,7 +263,7 @@ Azure Portal からタグ付きのリソースを表示することもできま�
 
 リソース ロックでは、CanNotDelete と ReadOnly の 2 つの値を現在サポートしています。 CanNotDelete では、(適切な権限を持つ) ユーザーはリソースの読み取りまたは変更を引き続き行うことができますが、リソースを削除することはできません。 ReadOnly では、許可されたユーザーがリソースを削除することも変更することもできません。
 
-Resource Manager のロックは、管理ウィンドウで実行され、<https://management.azure.com> に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に対する ReadOnly ロックは、ユーザーによるデータベースの削除または変更を禁止しますが、データベースに対するデータの作成、更新、または削除は禁止しません。
+Resource Manager のロックは、管理ウィンドウで実行され、<https://management.azure.com> に送信される操作で構成される操作のみに適用されます。ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に対する ReadOnly ロックは、ユーザーによるデータベースの削除または変更を禁止しますが、データベースに対するデータの作成、更新、または削除は禁止しません。
 
 **ReadOnly** を適用すると、読み取り操作のように見えるいくつかの操作には追加のアクションが必要となるため、予期しない結果を招く可能性があります。 たとえば、 **ReadOnly** ロックをストレージ アカウントに設定すると、すべてのユーザーがキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
 
@@ -493,4 +491,3 @@ Azure のアプリケーションとサービスを監視するためにさま�
 - [Azure サブスクリプション ガバナンスの実装例](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-examples)
 
 - [Microsoft Azure Government](https://docs.microsoft.com/azure/azure-government/)
-

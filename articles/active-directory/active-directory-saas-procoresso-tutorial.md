@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 042a41eaa6bb21670b4c12068f1b017222f64b99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -194,13 +192,13 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-procore-sso-test-user"></a>Procore SSO のテスト ユーザーの作成
 
 以下の手順に従って、Procore の側でテスト ユーザーを作成します。
 
-1. Procore 企業サイトに管理者としてログインします。    
+1. Procore 企業サイトに管理者としてログインします。  
 
 2. [TOOLBOX] \(ツールボックス) ドロップ ダウンで **[Directory] \(ディレクトリ)** をクリックして、企業のディレクトリ ページを開きます。
 
@@ -218,7 +216,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     d. **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
 
-    e. **[作成]**をクリックします。
+    e. **Create** をクリックしてください。
 
 4. 新しく追加された連絡先の詳細を確認して更新します。
 
@@ -284,5 +282,4 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 [201]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-procoresso-tutorial/tutorial_general_203.png
-
 

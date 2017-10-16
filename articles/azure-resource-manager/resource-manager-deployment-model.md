@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 このトピックでは、Azure Resource Manager デプロイメント モデルとクラシック デプロイメント モデル、リソースの状態、各リソースのデプロイにそのモデルが使われた理由について説明します。 Resource Manager デプロイメント モデルとクラシック デプロイメント モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルには、完全に互換性があるわけではありません。 このトピックでは、その相違点について説明します。
@@ -219,5 +217,4 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 ## <a name="next-steps"></a>次のステップ
 * 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
 * テンプレートをデプロイするためのコマンドについては、「 [AAzure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
-
 

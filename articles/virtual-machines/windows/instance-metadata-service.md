@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: harijay
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 55b97b89cb297dc08dc73f6714c5159d4565a97c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-instance-metadata-service-for-windows-vms"></a>Windows VM 用の Azure Instance Metadata Service
 
 
@@ -49,7 +47,7 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 
 この表は、他の Azure クラウドでサービスが利用可能になった時点で更新されます。
 
-Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure Portal](http://portal.azure.com) から VM を作成し、この後の例に従います。
+Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](http://portal.azure.com)から VM を作成し、この後の例に従います。
 
 ## <a name="usage"></a>使用法
 
@@ -398,11 +396,10 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 7. このサービスは仮想マシン スケール セット インスタンスで機能しますか。
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。 
 6. このサービスのサポートを受けるにはどうすればよいですか。
-   * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure Portal でサポート問題を作成します。 
+   * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure ポータルでサポート問題を作成します。 
 
    ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
     
 ## <a name="next-steps"></a>次のステップ
 
 - Instance Metadata Service によって提供される[スケジュールされたイベント](scheduled-events.md) API **(パブリック プレビュー段階)** を参照します。
-

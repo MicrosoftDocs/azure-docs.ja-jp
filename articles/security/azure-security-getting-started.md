@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
-ms.lasthandoff: 03/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure セキュリティの概要
 IT 資産を構築し、クラウド プロバイダーに移行したとしましょう。このとき、移行したアプリケーションやデータをどこまで保護できるかは、採用したプロバイダーがクラウド ベースの資産のセキュリティ管理のためにどのようなサービスと体制を用意しているかに応じて変わってきます。
@@ -195,4 +194,3 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
-

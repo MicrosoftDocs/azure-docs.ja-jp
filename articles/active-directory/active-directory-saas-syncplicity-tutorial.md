@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 1321fa71bcd625d6ea754432bfb402d3919e38f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>チュートリアル: Azure Active Directory と Syncplicity の統合
 
@@ -190,7 +188,7 @@ Syncplicity で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-syncplicity-test-user"></a>Syncplicity テスト ユーザーの作成
 AAD ユーザーがサインインできるようにするには、ユーザーを Syncplicity アプリケーションにプロビジョニングする必要があります。 このセクションでは、Syncplicity で AAD ユーザー アカウントを作成する方法について説明します。
@@ -283,5 +281,4 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 [201]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-syncplicity-tutorial/tutorial_general_203.png
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Notification Hubs の使用 (Kindle アプリ) | Microsoft Docs"
-description: "このチュートリアルでは、Azure Notification Hubs を使用して Kindle アプリケーションにプッシュ通知を送信する方法について学習します。"
+title: "Kindle 用アプリの Azure Notification Hubs の概要 |Microsoft ドキュメント"
+description: "このチュートリアルでは、Azure Notification Hubs を使用して、プッシュ通知を kindle 用アプリケーションに送信する方法を学習します。"
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,43 +14,43 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Notification Hubs の使用 (Kindle アプリ)
+# <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Kindle 用アプリの Notification Hubs を概要します。
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、Azure Notification Hubs を使用して Kindle アプリケーションにプッシュ通知を送信する方法について説明します。
-Amazon Device Messaging (ADM) を使用してプッシュ通知を受信する空の Kindle アプリケーションを作成します。
+このチュートリアルでは、Azure Notification Hubs を使用して、プッシュ通知を kindle 用アプリケーションに送信する方法を示します。
+Amazon デバイス メッセージング (ADM) を使用して、プッシュ通知を受信する空の kindle 用アプリケーションを作成します。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルには、次のものが必要です。
+このチュートリアルでは、次の項目が必要です。
 
-* <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>から Android SDK を入手します (Eclipse の使用を想定)。
-* 「<a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">開発環境を設定する</a>」の手順に従い、Kindle の開発環境を設定します。
+* Android SDK が (仮定 Eclipse を使用すること) を取得、 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>です。
+* 手順に従います<a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">開発環境の設定</a>kindle 用の開発環境を設定します。
 
-## <a name="add-a-new-app-to-the-developer-portal"></a>開発者ポータルへの新しいアプリの追加
-1. 最初に、 [Amazon 開発者ポータル]でアプリを作成します。
+## <a name="add-a-new-app-to-the-developer-portal"></a>開発者ポータルに新しいアプリを追加します。
+1. アプリを最初に、作成、 [Amazon developer portal]です。
    
     ![][0]
-2. **アプリケーション キー**をコピーします。
+2. コピー、**アプリケーション キー**です。
    
     ![][1]
-3. ポータルで、アプリの名前をクリックし、 **[Device Messaging]** タブをクリックします。
+3. ポータルで、アプリの名前をクリックし、 **Device Messaging**タブです。
    
     ![][2]
-4. **[Create a New Security Profile (新しいセキュリティ プロファイルの作成)]** をクリックし、新しいセキュリティ プロファイル (たとえば、**TestAdm セキュリティ プロファイル**) を作成します。 その後、 **[保存]**をクリックします。
+4. をクリックして**セキュリティ プロファイルを新しく作成**、し、新しいセキュリティ プロファイルを作成 (たとえば、 **TestAdm セキュリティ プロファイル**)。 次に、**[保存]** をクリックします。
    
     ![][3]
-5. **[セキュリティ プロファイル]** をクリックして、作成したセキュリティ プロファイルを表示します。 後で使用するために **[Client ID (クライアント ID)]** と **[Client Secret (クライアント シークレット)]** の値をコピーします。
+5. をクリックして**セキュリティ プロファイル**先ほど作成したセキュリティ プロファイルを表示します。 コピー、**クライアント ID**と**クライアント シークレット**後で使用する値。
    
     ![][4]
 
-## <a name="create-an-api-key"></a>API キーの作成
+## <a name="create-an-api-key"></a>API キーを作成します。
 1. 管理者特権でコマンド プロンプトを開きます。
 2. Android SDK フォルダーに移動します。
 3. 次のコマンドを入力します。
@@ -58,33 +58,33 @@ Amazon Device Messaging (ADM) を使用してプッシュ通知を受信する�
         keytool -list -v -alias androiddebugkey -keystore ./debug.keystore
    
     ![][5]
-4. **keystore** パスワードに「**android**」と入力します。
-5. **MD5** フィンガープリントをコピーします。
-6. 開発者ポータルに戻り、**[Messaging (メッセージング)]** タブで **[Android/Kindle]** をクリックし、アプリのパッケージの名前 (たとえば、**com.sample.notificationhubtest**)、**MD5** の値を入力し、**[Generate API Key (API キーの生成)]** をクリックします。
+4. **キーストア**パスワードを入力**android**です。
+5. コピー、 **MD5**指紋です。
+6. 上の開発者ポータルでバックアップ、**メッセージング** タブで、をクリックして**Android/kindle 用**アプリのパッケージの名前を入力し、(たとえば、 **com.sample.notificationhubtest**) および**MD5**値に設定して、をクリックして**API キーの生成**です。
 
-## <a name="add-credentials-to-the-hub"></a>ハブへの資格情報の追加
-ポータルで、クライアント シークレットとクライアント ID を通知ハブの **[構成]** タブに追加します。
+## <a name="add-credentials-to-the-hub"></a>ハブに資格情報を追加します。
+ポータルでクライアント シークレットとクライアント ID を追加、**構成**通知ハブのタブです。
 
-## <a name="set-up-your-application"></a>アプリケーションの設定
+## <a name="set-up-your-application"></a>アプリケーションを設定します。
 > [!NOTE]
-> アプリケーションを作成する場合は、API レベル 17 以上を使用します。
+> アプリケーションを作成するときは、少なくとも使用 API レベル 17 です。
 > 
 > 
 
-ADM ライブラリを Eclipse プロジェクトに追加します。
+ADM ライブラリを Eclipse のプロジェクトに追加します。
 
-1. ADM ライブラリを取得するには、 [SDK をダウンロード]します。 SDK zip ファイルを解凍します。
-2. Eclipse で、プロジェクトを右クリックし、 **[プロパティ]**をクリックします。 左側の **[Java Build Path (Java のビルド・パス)]** を選択し、上部の **[Libraries (ライブラリ)]** タブを選択します。 **[Add External Jar (外部 Jar の追加)]** をクリックし、Amazon SDK を解凍したディレクトリから `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` ファイルを選択します。
+1. ADM ライブラリを取得する[SDK をダウンロードして]です。 SDK zip ファイルを抽出します。
+2. Eclipse で、プロジェクトを右クリックし、をクリックして**プロパティ**です。 選択**Java ビルド パス**左側のクリックして、* * ライブラリ * * 上部にあるタブ。 をクリックして**外部 Jar の追加**、ファイルを選択して`\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`Amazon SDK を展開したディレクトリからです。
 3. NotificationHubs Android SDK (リンク) をダウンロードします。
-4. パッケージを解凍し、`notification-hubs-sdk.jar` ファイルを Eclipse の `libs` フォルダーにドラッグします。
+4. パッケージを解凍し、ファイルをドラッグ`notification-hubs-sdk.jar`に、 `libs` Eclipse 内のフォルダーです。
 
-アプリケーション マニフェストを編集して、ADM をサポートするようにします。
+ADM をサポートするために、アプリ マニフェストを編集します。
 
-1. ルート マニフェスト要素に Amazon 名前空間を追加します。
+1. マニフェストのルート要素には、Amazon 名前空間を追加します。
 
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
 
-1. マニフェスト要素の下の最初の要素としてアクセス許可を追加します。 **[YOUR PACKAGE NAME]** を、アプリケーションを作成するときに使用したパッケージに置き換えます。
+1. マニフェストの要素の下の最初の要素としてのアクセス許可を追加します。 Substitute **[、パッケージ名]**パッケージ アプリの作成に使用するとします。
    
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
@@ -100,7 +100,7 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-2. 次の要素をアプリケーション要素の最初の子として挿入します。 忘れずに、**[YOUR SERVICE NAME]** を次のセクションで作成する ADM メッセージ ハンドラーの名前 (パッケージを含む) に置き換え、**[YOUR PACKAGE NAME]** をアプリの作成時に使ったパッケージ名に置き換えてください。
+2. Application 要素の最初の子として、次の要素を挿入します。 代わりに注意してください**[、サービス名]** (パッケージを含む)、次のセクションで作成すると、置換 ADM メッセージ ハンドラーの名前を持つ**[、パッケージ名]**使用するアプリを作成したパッケージ名を持つ。
    
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -125,11 +125,11 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
             </intent-filter>
         </receiver>
 
-## <a name="create-your-adm-message-handler"></a>ADM メッセージ ハンドラーの作成
-1. `com.amazon.device.messaging.ADMMessageHandlerBase` を継承する新しいクラスを作成し、次の図に示すように `MyADMMessageHandler` という名前を付けます。
+## <a name="create-your-adm-message-handler"></a>ADM メッセージ ハンドラーを作成します。
+1. 継承する新しいクラスを作成する`com.amazon.device.messaging.ADMMessageHandlerBase`し名前を付けます`MyADMMessageHandler`次の図に示すように、します。
    
     ![][6]
-2. 次の `import` ステートメントを追加します。
+2. 次の追加`import`ステートメント。
    
         import android.app.NotificationManager;
         import android.app.PendingIntent;
@@ -138,7 +138,7 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
         import android.support.v4.app.NotificationCompat;
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
-3. 作成したクラスに次のコードを追加します。 ハブ名および接続文字列 (listen) を置き換えます。
+3. 作成したクラスでは、次のコードを追加します。 ハブの名前と接続文字列 (リッスン) の代わりに注意してください。
    
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
@@ -184,28 +184,28 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
              mBuilder.setContentIntent(contentIntent);
              mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
-4. 次のコードを `OnMessage()` メソッドに追加します。
+4. 次のコードを追加、`OnMessage()`メソッド。
    
         String nhMessage = intent.getExtras().getString("msg");
         sendNotification(nhMessage);
-5. 次のコードを `OnRegistered` メソッドに追加します。
+5. 次のコードを追加、`OnRegistered`メソッド。
    
             try {
         getNotificationHub(getApplicationContext()).register(registrationId);
             } catch (Exception e) {
         Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
             }
-6. 次のコードを `OnUnregistered` メソッドに追加します。
+6. 次のコードを追加、`OnUnregistered`メソッド。
    
          try {
              getNotificationHub(getApplicationContext()).unregister();
          } catch (Exception e) {
              Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
          }
-7. `MainActivity` メソッドで、次の import ステートメントを追加します。
+7. `MainActivity`メソッドを次の import ステートメントを追加します。
    
         import com.amazon.device.messaging.ADM;
-8. `OnCreate` メソッドの末尾に次のコードを追加します。
+8. 末尾に次のコードを追加、`OnCreate`メソッド。
    
         final ADM adm = new ADM(this);
         if (adm.getRegistrationId() == null)
@@ -225,24 +225,24 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
                }.execute(null, null, null);
         }
 
-## <a name="add-your-api-key-to-your-app"></a>アプリへの API キーの追加
-1. Eclipse で、プロジェクトのディレクトリ資産に **api_key.txt** という名前の新しいファイルを作成します。
-2. ファイルを開き、Amazon 開発者ポータルで生成した API キーをコピーします。
+## <a name="add-your-api-key-to-your-app"></a>アプリに追加して、API キー
+1. Eclipse でという名前の新しいファイルを作成する**api_key.txt**プロジェクトの資産をディレクトリにします。
+2. ファイルを開き、Amazon developer portal で生成した API キーをコピーします。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行します。
 1. エミュレーターを起動します。
-2. エミュレーターで、上部からスワイプして **[設定]**、**[マイ アカウント]** の順にクリックし、有効な Amazon アカウントで登録します。
+2. エミュレーターでは、最上位からスワイプし、をクリックして**設定**、クリックして**マイ アカウント**Amazon の有効なアカウントを登録します。
 3. Eclipse で、アプリを実行します。
 
 > [!NOTE]
-> 問題が発生した場合は、エミュレーター (またはデバイス) の時間を確認します。 時刻値は正確である必要があります。 Kindle エミュレーターの時刻を変更するには、Android SDK platform-tools ディレクトリで次のコマンドを実行します。
+> 問題が発生する場合は、エミュレーター (またはデバイス) の時間を確認します。 時刻の値を正確にする必要があります。 Kindle エミュレーターの時間を変更するには、Android SDK プラットフォーム ツール ディレクトリから次のコマンドを実行できます。
 > 
 > 
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
-## <a name="send-a-message"></a>メッセージの送信
-.NET を使用してメッセージを送信するには:
+## <a name="send-a-message"></a>メッセージを送信します。
+.NET を使用してメッセージを送信します。
 
         static void Main(string[] args)
         {
@@ -254,8 +254,8 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 ![][7]
 
 <!-- URLs. -->
-[Amazon 開発者ポータル]: https://developer.amazon.com/home.html
-[SDK をダウンロード]: https://developer.amazon.com/public/resources/development-tools/sdk
+[Amazon developer portal]: https://developer.amazon.com/home.html
+[SDK をダウンロードして]: https://developer.amazon.com/public/resources/development-tools/sdk
 
 [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
 [1]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
@@ -265,9 +265,3 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 [5]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-cmd-window.png
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

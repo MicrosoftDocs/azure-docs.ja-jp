@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 86357949c8e6927f78ca5bb8b7e20a6b88c37ef3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
 
 
@@ -48,9 +46,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>ユーザーを LinkedIn Sales Navigator に割り当てる際の重要なヒント
 
-*    単一の Azure AD ユーザーを LinkedIn Sales Navigator に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+*   単一の Azure AD ユーザーを LinkedIn Sales Navigator に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*    ユーザーを LinkedIn Sales Navigator に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+*   ユーザーを LinkedIn Sales Navigator に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
 
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator へのユーザー プロビジョニングの構成
@@ -93,9 +91,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 8) シングル サインオンのために LinkedIn Sales Navigator を既に構成している場合は、検索フィールドで LinkedIn Sales Navigator のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Sales Navigator** を検索します。 検索結果から LinkedIn Sales Navigator を選択してアプリケーションの一覧に追加します。
 
-9)    LinkedIn Sales Navigator のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+9)  LinkedIn Sales Navigator のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-10)    **[プロビジョニング モード]** を **[自動]** に設定します。
+10) **[プロビジョニング モード]** を **[自動]** に設定します。
 
 ![LinkedIn Sales Navigator のプロビジョニング](./media/active-directory-saas-linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
@@ -126,4 +124,3 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-

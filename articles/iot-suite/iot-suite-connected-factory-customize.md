@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
@@ -173,7 +172,7 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事を参照してください。
 
 * [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル][lnk-rm-walkthrough]
-* [コネクテッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
+* [コネクティッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
 * [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
 * [FAQ][lnk-faq]

@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e2e10d3531fbbe2ed09dc34a6c3b14ff5df1a937
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>テンプレートを使用して複数の NIC を持つ VM を作成する
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -317,5 +316,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
         data:    Tags: null
         data:
         info:    group create command OK
-
 

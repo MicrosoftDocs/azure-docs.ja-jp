@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 7076b476ba71c5d94ae4728e5f6032b0d7e047ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -112,13 +110,13 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 
-    a. **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<companyname>.tenants.brightspace.com/samlLogin`|
     | `https://<companyname>.desire2learn.com/shibboleth-sp`|
 
-    b. **[応答 URL]** ボックスに、 `https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Brightspace by Desire2Learn サポート チーム](https://www.d2l.com/contact/)に問い合わせてください。
@@ -168,7 +166,7 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-brightspace-by-desire2learn-test-user"></a>Brightspace by Desire2Learn テスト ユーザーの作成
 
@@ -234,5 +232,4 @@ Brightspace by Desire2Learn の場合、ユーザー アカウントは [Brights
 [201]: ./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_general_203.png
-
 

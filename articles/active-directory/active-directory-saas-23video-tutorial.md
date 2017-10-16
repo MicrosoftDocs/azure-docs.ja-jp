@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: ffcd665506c21e25c84367af5b6a3afb8e319af7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル: Azure Active Directory と 23 Video の統合
 
@@ -166,7 +164,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-23-video-test-user"></a>23 Video テスト ユーザーの作成
 
@@ -252,4 +250,3 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 [400]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_10.png
 [401]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_11.png
 [402]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_12.png
-

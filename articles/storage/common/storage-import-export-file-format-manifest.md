@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.lasthandoff: 04/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export サービスのマニフェスト ファイルの形式
 ドライブ マニフェスト ファイルは、Azure Blob Storage の BLOB とインポートまたはエクスポート ジョブを構成するドライブ上のファイル間のマッピングを表します。 インポート操作の場合、マニフェスト ファイルはドライブの準備プロセスの一部として作成され、ドライブが Azure データ センターに送信される前にそのドライブに格納されます。 エクスポート操作の場合、マニフェストは Azure Import/Export サービスによって作成され、ドライブに保存されます。  
   
@@ -137,4 +135,3 @@ block-list ::=
 ## <a name="next-steps"></a>次のステップ
  
 * [ストレージの Import/Export REST API](/rest/api/storageimportexport/)
-

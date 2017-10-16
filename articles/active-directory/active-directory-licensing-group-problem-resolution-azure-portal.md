@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory のグループのライセンスに関する問題を解決する | Microsoft Docs"
 description: "Azure Active Directory でグループベースのライセンスを使用している場合にライセンス割り当ての問題を特定して解決する方法"
 services: active-directory
@@ -17,12 +16,11 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
+ms.translationtype: HT
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 955efc9e6b209195935d1f7c13f96c6a42536b2a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -108,6 +106,35 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 グループに指定したすべてのライセンスは、Azure AD によって各ユーザーに割り当てられます。 Azure AD が、ビジネス ロジックの問題 (ライセンス数の不足、ユーザーに対して有効な他のサービスとの競合など) が原因でいずれかの製品を割り当てることができない場合、グループの他のライセンスも割り当てられません。
 
 割り当てが失敗したユーザーとその失敗の影響を受けている製品を確認できます。
+
+## <a name="how-to-manage-licenses-for-products-with-prerequisites"></a>前提条件のある製品のライセンス管理方法は?
+
+一部の Microsoft Online 製品は "アドオン" です。アドオンを特定のユーザーやグループに対して有効にするには、前提条件のサービス プランが必要です。前提条件がなければ、アドオンを割り当てることはできません。 グループごとにライセンスを与える場合、前提条件とアドオンのサービス プランが同じグループに存在する必要があります。 この措置によって、そのグループに追加されたユーザーに、完全に動作する製品が与えられます。 次の例について考察してみましょう。
+
+*Microsoft Workplace Analytics* はアドオン製品です。 同じ名前の単一サービス プランが含まれています。 このサービス プランは、次の前提条件のいずれかも割り当てられているときにのみ、ユーザーまたはグループに割り当てることができます。
+- *Exchange Online (プラン 1)*
+- または *Exchange Online (プラン 2)*
+
+この製品だけをグループに割り当てようとすると、ポータルからエラーが返されます。エラー通知をクリックすると、次の詳細が表示されます。
+
+![グループ、前提条件がない](media/active-directory-licensing-group-problem-resolution-azure-portal/group-prerequisite-required.png)
+
+詳細をクリックすると、次のエラー メッセージが表示されます。
+
+*[License operation failed.Make sure that the group has necessary services before adding or removing a dependent service.**The service Microsoft Workplace Analytics requires Exchange Online (Plan 2) to be enabled as well.]\(ライセンス操作に失敗しました。依存サービスを追加または削除する前に、必要なサービスがグループに含まれていることを確認してください。Microsoft Workplace Analytics というサービスを有効にするには Exchange Online (プラン 2) が必要です。\)***
+
+このアドオン ライセンスをグループに割り当てるには、そのグループに前提条件のサービス プランが含まれている必要があります。 たとえば、完全版 *Office 365 E3* 製品が既に含まれている既存のグループを更新し、それにアドオン製品を追加できます。
+
+必要最低限の製品だけを含むスタンドアロン グループを作成し、アドオンを機能させることもできます。選ばれたユーザーにのみ、この方法でアドオン製品のライセンスを供与できます。 この例では、次の製品を同じグループに割り当てました。
+- *Office 365 Enterprise E3*、*Exchange Online (プラン 2)* サービス プランだけが有効
+- *Microsoft Workplace Analytics*
+
+![グループ、前提条件がある](media/active-directory-licensing-group-problem-resolution-azure-portal/group-addon-with-prerequisite.png)
+
+今後は、このグループに追加されたあらゆるユーザーが E3 製品のライセンスを 1 つ、Workplace Analytics 製品のライセンスを 1 つ使用できます。 同時にユーザーは完全版 E3 製品を与える別のグループに属することもできます。使用できるその製品のライセンスは 1 つだけです。
+
+> [!TIP]
+> 前提条件のサービス プランごとに複数のグループを作成できます。 たとえば、*Office 365 Enterprise **E1*** と *Office 365 Enterprise **E3*** の両方をユーザーに使用する場合、2 つのグループを作成して *Microsoft Workplace Analytics* にライセンスを供与できます。前提条件として E1 を利用するグループが 1 つ、E3 を利用するグループが 1 つです。 これによって、追加のライセンスを使用することなく、E1 ユーザーと E3 ユーザーにアドオンを配布できます。
 
 ## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Exchange Online でプロキシ アドレスの重複があるために、ユーザーのライセンス割り当てがエラーを記録することなく失敗する
 

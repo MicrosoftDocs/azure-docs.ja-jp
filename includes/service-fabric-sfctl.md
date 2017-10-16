@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> Service Fabric との交信に使用される CLI ユーティリティが 2 つあります。 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) は、Azure でホストされる Service Fabric クラスターなどの Azure リソースを管理するために使用します。 Service Fabric CLI は、Service Fabric クラスターに直接接続し (ホストされている場所に関係なく)、クラスター、アプリケーション、およびサービスを管理するために使用します。 

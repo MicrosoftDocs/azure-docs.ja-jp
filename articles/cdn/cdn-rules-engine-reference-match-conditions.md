@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
-ms.lasthandoff: 01/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件について詳しく説明します。
 
-ルールの&2; 番目の部分は、一致条件です。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して一連の機能が実行されます。
+ルールの 2 番目の部分は、一致条件です。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して一連の機能が実行されます。
 
 たとえば、特定の場所のコンテンツの要求、特定の IP アドレスまたは国から生成された要求、あるいはヘッダー情報をフィルター処理するために使用されます。
 
@@ -125,5 +123,4 @@ URL Query Wildcard (URL クエリ ワイルドカード) | 指定値を要求の
 * [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
 * [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
-
 

@@ -14,17 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
+ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 5672bb1e17dac4ae0aaa67f936676d6c2fc5ef12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
 次の表に示す情報を使って、Azure Backup Server の使用中に発生したエラーのトラブルシューティングを行うことができます。
+
+## <a name="error-invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>エラー: 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません 
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
+
+## <a name="error-the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>エラー: Server の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました 
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
+
+## <a name="error-setup-could-not-update-registry-metadata"></a>エラー: セットアップでレジストリのメタデータを更新できませんでした
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) に従います。
 
 
 ## <a name="installation-issues"></a>インストールに関する問題
@@ -77,4 +87,3 @@ ms.lasthandoff: 08/05/2017
 | 操作 | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | Office 365 アカウントを使用して電子メール通知を設定しようとしています。 | エラー ID: 2013| **原因:**<br/> Office 365 アカウントを使用しようとしています。 <br/> **推奨される操作:**<br/> まず、Exchange で DPM サーバーが “受信コネクタで匿名リレーを許可する” と設定されていることを確認します。 この構成方法についてのリンクを次に示します: http://technet.microsoft.com/en-us/library/bb232021.aspx <br/> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、このリレーとして IIS を設定することができます。 <br/> IIS https://technet.microsoft.com/en-us/library/aa995718(v=exchg.65).aspx を使用して、DPM サーバーが SMTP を O365 にリレーし、IIS が O365 にリレーするよう設定する必要があります。 <br/> 重要な注意事項: 手順 3 の g、ii では、ドメイン\ユーザーではなく、user@domain.com 形式を使用してください。 <br/> DPM で SMTP サーバーとしてローカル サーバー名を使用するよう設定し、ポート 587、電子メールの送信元となるユーザー メールを設定します。 <br/> SMTP の DPM のセットアップ ページのユーザー名とパスワードには、ドメイン DPM があるドメイン アカウントのものを入力します。 <br/> 注: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない場合があるため、この方法でテストすることをお勧めします。 <br/> DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。<br/> HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> SMTPPassword と SMTPUserName キーを削除します。 <br/> もう一度起動したときに、UI からそれらを追加して戻すことができます。
-

@@ -15,13 +15,11 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: e736bf626cd379e1bffe2dbf023e86addb09539f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
-
-
+ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>ロジック アプリのデプロイとリリース管理に使用するテンプレートの作成
 
@@ -110,4 +108,3 @@ OAuth 接続を承認するには、Logic Apps デザイナーでロジック �
 
 <!-- Image References -->
 [1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png
-

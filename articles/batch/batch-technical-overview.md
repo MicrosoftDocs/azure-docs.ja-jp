@@ -15,13 +15,11 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 8a850f8b1cccda631786f89f2c88647604fba9ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
-
-
+ms.openlocfilehash: a99f96db0c1e8bcd0cf29c564e5badf0eb728e56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-intrinsically-parallel-workloads-with-batch"></a>Batch で並列ワークロードを本質的に実行する
 
@@ -48,7 +46,7 @@ Batch は本質的に並列 (「驚異的並列」とも呼ばれています) �
 
 また、Batch を使用すると、最終的により少ないステップで並列計算を実行できるほか、 [Message Passing Interface (MPI)](batch-mpi.md) アプリケーションなどのより複雑な HPC ワークロードを実行できます。
 
-Batch と Azure 内の他の HPC ソリューション オプションとの比較については、「 [Batch と HPC ソリューション](batch-hpc-solutions.md)」を参照してください。
+Batch と Azure 内の他の HPC ソリューション オプションとの比較については、[HPC、Batch、Big Compute ソリューション](../virtual-machines/linux/high-performance-computing.md)に関するページを参照してください。
 
 [!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
 
@@ -88,4 +86,3 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
-

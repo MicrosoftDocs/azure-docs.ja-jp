@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 8aa00757ff11ed9086cd178e4c7190b93ee62701
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: a893a6d009dd018ad440964419e0a5a1963084b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のアプリケーションとサービスの可用性の問題: よくあるご質問 (FAQ)
 
@@ -47,4 +46,3 @@ Web サーバーが最初の要求を受信すると、まずコードを再コ�
 IIS の既定の動作を変更する場合は、スタートアップ タスクを使用する必要があります。これは、Web ロール インスタンスに手動で変更を適用すると、その変更は最終的に失われてしまうためです。
 
 詳細については、「[クラウド サービスのスタートアップ タスクを構成して実行する方法](cloud-services-startup-tasks.md)」を参照してください。
-

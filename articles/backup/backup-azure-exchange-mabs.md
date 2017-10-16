@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure にバックアップするために Microsoft Azure Backup Server (MABS) を構成する方法を説明します。  
@@ -54,7 +52,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 
    * ディスクを使用した短期的な保護を利用する
    * オンライン保護を利用する
-6. **[次へ]**をクリックします。
+6. **[次へ]** をクリックします。
 7. Exchange Server データベースの整合性を確認する場合は、 **[Eseutil を実行してデータの整合性をチェックする]** オプションを選択します。
 
     このオプションを選択すると、Exchange サーバー上で **eseutil** コマンドを実行したときに I/O トラフィックが生成されるのを防ぐために、MABS 上でバックアップの整合性チェックが実行されます。
@@ -64,7 +62,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
    > ![eseutil エラー](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. **[次へ]**をクリックします。
+8. **[次へ]** をクリックします。
 9. **[コピー バックアップ]** 用のデータベースを選択し、**[次へ]** をクリックします。
 
    > [!NOTE]
@@ -113,4 +111,3 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Backup FAQ](backup-azure-backup-faq.md)
-

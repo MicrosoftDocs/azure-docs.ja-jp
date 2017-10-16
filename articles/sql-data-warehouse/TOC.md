@@ -8,9 +8,10 @@
 # 作業の開始
 
 ## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
+## [エラスティック クエリのチュートリアル](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
-## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # 方法
@@ -19,9 +20,9 @@
 
 ### [Backup の概要](sql-data-warehouse-backups.md)
 ### [復元の概要](sql-data-warehouse-restore-database-overview.md)
-#### [Azure Portal](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
-#### [REST](sql-data-warehouse-restore-database-rest-api.md)
+#### [Azure ポータル](sql-data-warehouse-restore-database-portal.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [REST ()](sql-data-warehouse-restore-database-rest-api.md)
 
 ## 接続
 
@@ -34,7 +35,7 @@
 
 ## 作成
 ### [Azure ポータル](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 開発
@@ -79,6 +80,8 @@
 ### [Power BI](sql-data-warehouse-integrate-power-bi.md)
 ### [Power BI の視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md)
+
+### [SQL Database と SQL Data Warehouse で使用するエラスティック クエリ](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 ## Load
 
@@ -139,18 +142,22 @@
 # リファレンス
 
 ## [容量制限](sql-data-warehouse-service-capacity-limits.md)
-## [T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
-## [T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)
-## [T-SQL システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [SQL DW 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
+### [SQL DW ステートメント](sql-data-warehouse-reference-tsql-statements.md)
+## [システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [サポート](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## パートナー

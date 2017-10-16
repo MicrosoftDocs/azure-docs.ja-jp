@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.openlocfilehash: 992c438ab2dac8dc20ba284bd095afbcd801a62f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
 
@@ -93,8 +91,6 @@ ms.lasthandoff: 06/03/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
-[Azure Web Apps をオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Azure Web アプリからオンプレミスの SQL Server に接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
 
 ## <a name="see-also"></a>関連項目
 [Microsoft Azure での BizTalk Services の管理用 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)
@@ -103,7 +99,3 @@ ms.lasthandoff: 06/03/2017
 [BizTalk Services: [ダッシュボード]、[監視]、[スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
-[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
-[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
-

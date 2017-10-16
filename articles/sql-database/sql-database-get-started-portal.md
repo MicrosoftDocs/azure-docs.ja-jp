@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/25/2017
 ms.author: carlrab
+ms.openlocfilehash: e1e9dcd5b2b58e02b0c320c808f9042f7e032d50
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 6bf1b94b38fffe31dd67a5146c3c9c5e9367084e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/30/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -39,7 +38,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 以下の手順に従い、Adventure Works LT サンプル データを含む SQL データベースを作成します。 
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
 2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
 
@@ -186,4 +185,3 @@ Azure でサンプル データベースを作成できたので、Azure Portal 
 - [Java](sql-database-connect-query-java.md)
 - [Python](sql-database-connect-query-python.md)
 - [Ruby](sql-database-connect-query-ruby.md)
-

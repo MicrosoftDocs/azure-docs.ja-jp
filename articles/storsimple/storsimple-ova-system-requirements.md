@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/17/2017
+ms.date: 10/10/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 4a2c86cee40dbd1dc2c37d58e69bdf35b0046c4d
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 178bdfd7bf2eb162e7a94f3eef9c44c5ff646fb9
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/25/2017
 | **ハイパーバイザー** | **バージョン** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 以降 |
-| VMware ESXi |5.5 以降 |
+| VMware ESXi |5.5 および 6.0 |
 
 ### <a name="virtual-device-requirements"></a>仮想デバイスの要件
 | **コンポーネント** | **要件** |
@@ -130,5 +130,4 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 
 ## <a name="next-step"></a>次のステップ
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)
-
 

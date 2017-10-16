@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
+ms.openlocfilehash: 95b367e7cd74405088190c1fe19cf92990759d90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 8ff39e31d790b9d7040ec0398a42fb104890915f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Azure Portal で Azure Analysis Services サーバーを作成する
 この記事では、Azure サブスクリプションで Analysis Services サーバー リソースを作成する手順について説明します。
@@ -49,7 +48,7 @@ ms.lasthandoff: 08/04/2017
    * **[リソース グループ]**: Azure リソースのコレクション管理のサポートを目的としたコンテナーです。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
    * **[場所]**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。
    * **[価格レベル]**: 価格レベルを選びます。 最大 400 GB の表形式モデルがサポートされます。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
-4. **[作成]**をクリックします。
+4. **Create** をクリックしてください。
 
 通常、作成にかかる時間は 1 分未満であり、たいていはわずか数秒で終わります。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、**[その他のサービス]** > **[Analysis Services]** に移動し、サーバーの準備ができていることを確認します。
 
@@ -60,5 +59,4 @@ ms.lasthandoff: 08/04/2017
 サーバーを作成した後は、SSDT または SSMS を使ってサーバーに[モデルをデプロイ](analysis-services-deploy.md)できます。
 
 サーバーにデプロイするモデルがオンプレミスのデータ ソースに接続する場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をネットワーク内のコンピューターにインストールする必要があります。
-
 

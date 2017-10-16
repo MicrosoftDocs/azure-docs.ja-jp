@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
+ms.openlocfilehash: 7b7e5f0f089cc87c9e63eee1fd3d29b7a2c0d49f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -28,7 +27,6 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 
 > [!IMPORTANT]
 > オンプレミスの VPN デバイスと VPN ゲートウェイの間で接続の問題が発生している場合は、「[デバイスの互換性に関する既知の問題](#known)」を参照してください。
->
 >
 
 ### <a name="items-to-note-when-viewing-the-tables"></a>表を確認するときの注意事項:
@@ -56,9 +54,9 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X シリーズ |Barracuda Firewall 6.5 |[構成ガイド](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |互換性なし |
 | Brocade            |Vyatta 5400 vRouter   |仮想ルーター 6.6R3 GA|[構成ガイド](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |互換性なし |
 | Check Point |セキュリティ ゲートウェイ |R77.30 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |互換性なし |
+| Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[構成ガイド*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
 | F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |  |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
@@ -69,12 +67,15 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Juniper |SSG |ScreenOS 6.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |[構成のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |該当なし |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |互換性なし |
-| Openswan |Openswan |2.6.32 |(近日対応予定) |互換性なし |
 | Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased: 6.1.5 以降<br>RouteBased: 7.1.4 |[構成ガイド](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成ガイド](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |サポートされていません|[構成ガイド](https://www.sonicwall.com/en-us/support/knowledge-base/170505320011694) |
 | WatchGuard |すべて |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
-(*) ISR 7200 シリーズのルーターは、PolicyBased の VPN だけをサポートしています。
+> [!NOTE]
+>
+> (*) Cisco ASA バージョン 8.4 以降では IKEv2 のサポートが追加されており、"UsePolicyBasedTrafficSelectors" オプションでカスタム IPsec/IKE ポリシーを使用して、Azure VPN ゲートウェイに接続できます。 こちらの[ハウツー記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)を参照してください。
+>
+> (**) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
 
 ## <a name="additionaldevices"></a>未検証の VPN デバイス
 
@@ -105,9 +106,10 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 ## <a name="ipsec"></a>IPsec/IKE パラメーター
 
-> [!NOTE]
-> 以下の表に記載した値は VPN ゲートウェイでサポートされていますが、VPN ゲートウェイから特定のアルゴリズムやパラメーターの組み合わせを指定 (または選択) する機構は現在ありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。 また、**MSS** は **1350** で固定する必要があります。
-> 
+> [!IMPORTANT]
+> 1. 下の表には、Azure VPN ゲートウェイが既定の構成で使用するアルゴリズムとパラメーターの組み合わせが示されています。 Azure Resource Manager デプロイメント モデルで作成されたルートベースの VPN ゲートウェイでは、個別の接続ごとにカスタム ポリシーを指定できます。 詳細な手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください。
+>
+> 2. また、TCP **MSS** は **1350** で固定する必要があります。 お使いの VPN デバイスで MSS クランプがサポートされていない場合、別の方法として、トンネル インターフェイスの **MTU** を **1400** バイトに設定することができます。
 >
 
 以下の表では、次のようになっています。

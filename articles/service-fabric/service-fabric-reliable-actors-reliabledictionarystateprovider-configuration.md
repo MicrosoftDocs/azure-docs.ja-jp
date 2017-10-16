@@ -12,18 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/29/2017
+ms.date: 10/2/2017
 ms.author: sumukhs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: e787f48f14539dff3035c51e14243c7bd9dcbb73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 5dcd1b4f5a070e9a09b6f8338928d93d10227d38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-<a id="configuring-reliable-actors--reliabledictionaryactorstateprovider" class="xliff"></a>
-# Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
+# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
 
 Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
@@ -35,14 +32,12 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 
 ReliableDictionaryActorStateProvider の構成に影響を与えるグローバル設定もあります。
 
-<a id="global-configuration" class="xliff"></a>
-## グローバル構成
+## <a name="global-configuration"></a>グローバル構成
 グローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストを変更すると、ReliableDictionaryActorStateProvider を使用するすべてのサービスおよび信頼性できるステートフル サービスに影響があることに注意してください。
 
 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
-<a id="configuration-names" class="xliff"></a>
-### 構成名
+### <a name="configuration-names"></a>構成名
 | 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
@@ -51,8 +46,7 @@ ReliableDictionaryActorStateProvider の構成に影響を与えるグローバ�
 | SharedLogPath |完全修飾パス名 |"" |クラスター内のすべてのノードの Reliable Services のうち、サービス固有の構成で SharedLogPath が指定されていないすべてのサービスによって使用される共有ログ ファイルの完全修飾パスを指定します。 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 | SharedLogSizeInMB |メガバイト |8192 |共有ログ用に静的に割り当てるディスク領域の MB 数を指定します。 2048 以上の値を指定する必要があります。 |
 
-<a id="sample-cluster-manifest-section" class="xliff"></a>
-### クラスター マニフェストのセクションの例
+### <a name="sample-cluster-manifest-section"></a>クラスター マニフェストのセクションの例
 ```xml
    <Section Name="KtlLogger">
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
@@ -63,34 +57,28 @@ ReliableDictionaryActorStateProvider の構成に影響を与えるグローバ�
    </Section>
 ```
 
-<a id="remarks" class="xliff"></a>
-### 解説
+### <a name="remarks"></a>解説
 ロガーには、非ページ カーネル メモリから割り当てられるメモリのグローバル プールがあります。ノード上のすべての Reliable Services は、Reliable Services レプリカに関連付けられている専用ログに書き込まれる前の状態データのキャッシュに、このプールを使用できます。 プールのサイズは、WriteBufferMemoryPoolMinimumInKB および WriteBufferMemoryPoolMaximumInKB の設定によって制御されます。 WriteBufferMemoryPoolMinimumInKB は、このメモリ プールの初期サイズと、メモリ プールを縮小できる最小サイズの両方を指定します。 WriteBufferMemoryPoolMaximumInKB は、メモリ プールが拡大できる最大サイズです。 開かれている各 Reliable Services レプリカは、WriteBufferMemoryPoolMaximumInKB 以下のシステムによって決定される大きさまで、メモリ プールのサイズを増やすことができます。 メモリ プールのメモリをさらに使用する必要がある場合、メモリの要求はメモリが使用可能になるまで遅延されます。 そのため、書き込みバッファー メモリ プールが特定の構成に対して小さすぎる場合、パフォーマンスが低下します。
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用されて、クラスター内のすべてのノードに対する既定の共有ログの GUID と場所を定義します。 既定の共有ログは、settings.xml でサービス固有の設定が指定されていないすべての Reliable Services に使用されます。 最善のパフォーマンスを得るには、競合が減るように、共有ログ ファイルを専用のディスクに配置する必要があります。
 
 SharedLogSizeInMB では、すべてのノードで既定の共有ログに前もって割り当てるディスク領域の量を指定します。  SharedLogSizeInMB を指定するために SharedLogId と SharedLogPath を指定する必要はありません。
 
-<a id="replicator-security-configuration" class="xliff"></a>
-## レプリケーターのセキュリティ構成
+## <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
 レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 
-<a id="section-name" class="xliff"></a>
-### セクション名
+### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-<a id="replicator-configuration" class="xliff"></a>
-## レプリケーター構成
+## <a name="replicator-configuration"></a>レプリケーター構成
 状態をローカルにレプリケートして永続化することでアクターの状態プロバイダーの状態の信頼性を高める必要があるレプリケーターを構成する場合は、レプリケーター構成を使用します。
 既定の構成は Visual Studio テンプレートによって生成され、これで十分なはずです。 このセクションでは、レプリケーターのチューニングに使用できる追加の構成について説明します。
 
-<a id="section-name" class="xliff"></a>
-### セクション名
+### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-<a id="configuration-names" class="xliff"></a>
-### 構成名
+### <a name="configuration-names"></a>構成名
 | 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
@@ -104,8 +92,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の guid を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 
-<a id="sample-configuration-file" class="xliff"></a>
-## サンプル構成ファイル
+## <a name="sample-configuration-file"></a>サンプル構成ファイル
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -126,8 +113,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 </Settings>
 ```
 
-<a id="remarks" class="xliff"></a>
-## 解説
+## <a name="remarks"></a>解説
 BatchAcknowledgementInterval パラメーターは、レプリケーションの待機時間を制御します。 値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。
 BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。 これは、トランザクションのコミットの待機時間に直結します。
 
@@ -138,5 +124,4 @@ OptimizeForLowerDiskUsage を true に設定すると、ログ ファイルの�
 MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書き込むことのできるレコードの最大サイズを定義します。 ほとんどすべてのケースで、最適なレコードのサイズは既定の 1,024 KB ですが、 サービスで大きなデータ項目を状態情報に含めようとしている場合、この値を増やさなければならない場合があります。 小さいレコードは小さいレコードに必要な領域しか使用しないため、MaxRecordSizeInKB を 1024 より小さくしてもほとんど効果はありません。 これを変更する必要があるのは、まれなケースだけであると予想されます。
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。 最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。 共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。 これを変更する必要があるのは、まれなケースだけであると予想されます。
-
 

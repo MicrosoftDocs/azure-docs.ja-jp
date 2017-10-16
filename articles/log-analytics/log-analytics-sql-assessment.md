@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: d2aed3315fe60ace46dfb4176dc13aa417257b0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションを使用して SQL Server 環境を最適化する
 
@@ -249,4 +248,3 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) を実行して、詳細な SQL 評価データと推奨事項を表示します。
-

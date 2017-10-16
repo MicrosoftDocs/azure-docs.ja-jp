@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/24/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: bb55a7a4bff0fd4319de6f6ce958686ad8a4142b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-volume-containers"></a>StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
 ## <a name="overview"></a>概要
@@ -61,5 +59,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md) 
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
 

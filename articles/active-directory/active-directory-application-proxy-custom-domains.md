@@ -15,14 +15,12 @@ ms.date: 08/01/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 1dde300780c8d1f7ea9eee4c92de06bcf70a1f12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
 Azure Active Directory アプリケーション プロキシ経由でアプリケーションを公開するとき、離れた場所で作業しているユーザーのために外部 URL を作成します。 この URL には、既定のドメインである *yourtenant-msappproxy.net* が与えられます。 たとえば Expenses という名前のアプリを発行し、テナントの名前が Contoso である場合、外部 URL は https://expenses-contoso.msappproxy.net となります。 独自のドメイン名を使用する場合、アプリケーションのカスタム ドメインを構成します。 
@@ -88,6 +86,5 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 * Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)。
 * 発行されたアプリに対する[条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)。
 * [Azure AD にカスタム ドメイン名を追加する](active-directory-domains-add-azure-portal.md)
-
 
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 1e989c72fc03697bf6d2e515ff53003703665d1a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>Azure Import/Export ジョブの取り消しと削除
 
  ジョブが `Packaging` 状態になる前に取り消しを要求するには、[ジョブ プロパティの更新](/rest/api/storageimportexport/jobs#Jobs_Update)操作を呼び出して `CancelRequested` 要素を `true` に設定します。 ジョブの取り消しはベストエフォートで実行されます。 ドライブでデータ転送が実行中である場合は、取り消しが要求された後でも、データの転送が継続されることがあります。
@@ -33,4 +31,3 @@ ms.lasthandoff: 08/23/2017
 ## <a name="next-steps"></a>次のステップ
 
 * [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
-

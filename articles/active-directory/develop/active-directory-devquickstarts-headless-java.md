@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 4e6d859ee621a730e0d2c1062d3a31e7c053e798
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: 91e4a7b2ac454465d5cce4948a4d5f0b542d2b55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Azure AD を使用して API にアクセスするための Java コマンド ライン アプリを使用する
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -270,5 +268,4 @@ public class PublicClient {
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
-
 

@@ -12,34 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/12/2017
 ms.author: curtand
-ms.custom: oldportal;it-pro;
+ms.custom: it-pro
+ms.openlocfilehash: e1b88f7d43ba29589e5f1f4a8036c716ae984ae4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 82fbeb379e90add09f7c569111053f6e9b1bc9c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-owners-for-a-group"></a>グループの所有者の管理
 リソースの所有者がリソースへのアクセスを Azure AD グループに割り当てたら、そのグループの所有者がグループのメンバーシップを管理します。 実質的には、リソースの所有者が、ユーザーをリソースに割り当てる権限をグループの所有者に委任することになります。
 
-> [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
+## <a name="add-an-owner-to-a-group"></a>グループに所有者を追加する
 
-## <a name="assigning-group-ownership"></a>グループの所有権の割り当て
-**グループに所有者を追加するには**
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
-2. **[グループ]** タブを選択し、所有者の追加先となるグループを開きます。
+1. [Azure AD 管理センター](https://aad.portal.azure.com)で、**[ユーザーとグループ]** を選択します。
+2. **[すべてのグループ]** を選択し、所有者を追加するグループを開きます。
 3. **[所有者の追加]**を選択します。
 4. **[所有者の追加]** ページで、このグループの所有者として追加するユーザーを選択し、その名前が **[選択済み]** ウィンドウに追加されていることを確認します。
 
-**グループから所有者を削除するには**
+## <a name="remove-an-owner-from-a-group"></a>グループから所有者を削除する
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
-2. **[グループ]** タブをクリックし、所有者を削除するグループを開きます。
+1. [Azure AD 管理センター](https://aad.portal.azure.com)で、**[ユーザーとグループ]** を選択します。
+2. **[すべてのグループ]** を選択し、所有者を削除するグループを開きます。
 3. **[所有者]** タブをクリックします。
 4. このグループから削除する所有者を選択し、 **[削除]**をクリックします。
 
@@ -51,4 +46,3 @@ ms.lasthandoff: 07/26/2017
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

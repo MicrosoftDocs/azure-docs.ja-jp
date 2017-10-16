@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/01/2017
 ms.author: BernardoAMunoz
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 040d58a81a9b41fe660e4276d698bf884f90bb6c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-health-overview"></a>Azure Resource Health の概要
  
@@ -91,7 +90,6 @@ Resource Health には、**[その他のサービス]** をクリックしてフ
 Resource Health について詳しくは、次のリソースをご覧ください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
-
 
 
 

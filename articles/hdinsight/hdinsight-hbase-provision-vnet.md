@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2017
 ms.author: jgao
+ms.openlocfilehash: 77ddfc0210fdbd6aea44bc50e18406e4d9c285c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c78f1b16328c5b3a92f530ca06e6f5aeaeefca78
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure Virtual Network での HDInsight HBase クラスターの作成
 [Azure Virtual Network][1] での Azure HDInsight HBase クラスターの作成方法について説明します。
@@ -252,7 +251,6 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 * [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 * [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight の Hadoop 環境での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
-* [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [Virtual Network の概要][vnet-overview]
 
 [1]: http://azure.microsoft.com/services/virtual-network/
@@ -260,7 +258,6 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 [3]: http://technet.microsoft.com/library/hh847889.aspx
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [vnet-overview]: ../virtual-network/virtual-networks-overview.md
 [vm-create]: ../virtual-machines/virtual-machines-windows-hero-tutorial.md
 
@@ -300,4 +297,3 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
 [azure-preview-portal]: https://portal.azure.com
-

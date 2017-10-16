@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/17/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
-ms.openlocfilehash: 809b010fbbc0b5c1cbc2d5d5474374a4467defb4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: d498eac2d0dfe7d271bdb5e47159faa113545ab4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Data Catalog 用のキーボード ショートカット
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Data Catalog データ ソース登録ツール用のキーボード ショートカット
@@ -86,5 +85,4 @@ ms.lasthandoff: 01/24/2017
 | [検索の一致] メニューを切り替える。 |Alt + S |
 | **[開く]** メニューを切り替える。 |Alt + O |
 | 資産がコンテナーの場合、コンテナーを探索する。 |ALT + L |
-
 

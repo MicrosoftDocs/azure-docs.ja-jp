@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -56,7 +54,7 @@ Service Fabric ステートフル サービスのコンテキストでのパー�
 クライアントからの要求は複数のコンピューターに分散され、アプリケーションの全体的なパフォーマンスが改善され、データ チャンクへのアクセスの競合が軽減されるので、結果としてスケールアウトが達成されます。
 
 ## <a name="plan-for-partitioning"></a>パーティション分割の計画
-サービスを実装する前に、スケールアウトに必要なパーティション分割戦略を考えておく必要があります。 さまざまな方法がありますが、どの方法でも、アプリケーションで達成する必要があることを中心に考えます。 この記事では、重要度が高いいくつかの側面について検討してみましょう。
+サービスを実装する前に、スケールアウトに必要なパーティション分割戦略を考えておく必要があります。さまざまな方法がありますが、どの方法でも、アプリケーションで達成する必要があることを中心に考えます。 この記事では、重要度が高いいくつかの側面について検討してみましょう。
 
 最初の手順として、パーティション分割する必要がある状態の構造について考えることをお勧めします。
 

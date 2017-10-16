@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.lasthandoff: 04/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
 クラウド サービス worker ロールまたは Web ロールのサービス定義ファイルで、ランタイム構成値を環境変数として公開できます。 次の XPath 値がサポートされています (これは API 値に対応します)。
@@ -168,5 +167,4 @@ ms.lasthandoff: 04/20/2017
 [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) パッケージを作成します。
 
 ロールの [リモート デスクトップ](cloud-services-role-enable-remote-desktop.md) を有効にします。
-
 

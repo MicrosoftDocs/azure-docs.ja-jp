@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 0ee19b46a0e882571f6193471be69fa097d98936
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
-
+ms.openlocfilehash: f51fa4639aaa60686cc349683713c6e5f9732bb9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -133,7 +132,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
     </PropertyGroup>
     ```
 
-    これにより、 *プロジェクト名*.BuildInfo.config という名前のファイルが生成されます。 これは発行プロセスで BuildInfo.config という名前に変更されます。
+    これにより、 *プロジェクト名*.BuildInfo.config という名前のファイルが生成されます。これは発行プロセスで BuildInfo.config という名前に変更されます。
 
     Visual Studio でビルドすると、ビルド ラベルにはプレースホルダー (AutoGen_...) が含まれます。 一方、MSBuild でビルドすると、適切なバージョン番号が設定されます。
 
@@ -161,4 +160,3 @@ Visual Studio Team Services を使用する場合は、新しいバージョン�
 
 * [複数のロール用の共有リソース](app-insights-monitor-multi-role-apps.md)
 * [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](app-insights-api-filtering-sampling.md#add-properties)
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/09/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: b78e9b7161207a74880e912241d5e965b353d1c5
-ms.lasthandoff: 03/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>チュートリアル: Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合
 
 このチュートリアルでは、Splunk Enterprise and Splunk Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
@@ -127,13 +125,13 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
   1. **[サインオン URL]** ボックスに、ユーザーが Splunk Enterprise and Splunk Cloud アプリケーションにサインオンするために使用する URL を、`https://<splunkserverUrl>/en-US/app/launcher/home` の形式で入力します。
   2. **[識別子]** ボックスに、Splunk サーバーの URL を入力します。
   3. **[応答 URL]** ボックスに、`https://<splunkserver>/saml/acs` の形式で URL を入力します。
-  4. **[次へ]**をクリックします。
+  4. **[次へ]** をクリックします。
  
 4. **[Splunk Enterprise and Splunk Cloud でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_05.png)
   1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
-  2. **[次へ]**をクリックします。
+  2. **[次へ]** をクリックします。
 
 5. アプリケーション用に構成された SSO を入手するには、Splunk Enterprise and Splunk Cloud サポート チームに連絡し、次のものを情報として提供します。
 
@@ -172,7 +170,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_05.png) 
   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-  3. **[次へ]**をクリックします。
+  3. **[次へ]** をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
   
@@ -181,7 +179,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
   2. **[姓]** ボックスに「**Simon**」と入力します。
   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-  5. **[次へ]**をクリックします。
+  5. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
@@ -254,4 +252,3 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
 [203]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_205.png
-

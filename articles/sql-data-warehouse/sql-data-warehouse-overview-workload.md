@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Data Warehouse の操作について | Microsoft Docs"
-description: 'SQL Data Warehouse''s elasticity lets you grow, shrink, or pause compute power by using a sliding scale of data warehouse units (DWUs). This article explains the data warehouse metrics and how they relate to DWUs. '
+description: "SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。 この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。 "
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 79fedaabc438bc4cd884af6b494e43d32361950a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-warehouse-workload"></a>データ ウェアハウスのワークロード
 データ ウェアハウスのワークロードは、データ ウェアハウスに対して発生するすべての操作を指します。 データ ウェアハウスのワークロードには、ウェアハウスへのデータの読み込み、データ ウェアハウスでの分析の実行とレポート作成、データ ウェアハウスでのデータの管理、およびデータ ウェアハウスからのデータのエクスポートというプロセス全体が含まれます。 これらのコンポーネントの深度や幅は、多くの場合データ ウェアハウスの成熟度レベルと比例します。
@@ -79,4 +77,3 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 <!--MSDN references-->
 
 <!--Other web references-->
-

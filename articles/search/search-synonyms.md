@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
 
@@ -166,4 +165,3 @@ Solr 形式は同等の明示的なシノニム マッピングをサポート�
 - 開発 (非運用) 環境に既存のインデックスがある場合は、小さな辞書で実験して、シノニムの追加によって、スコアリング プロファイル、検索結果の強調表示、検索候補への影響など、検索操作がどのように変わるかを確認します。
 
 - [検索トラフィック分析を有効にし](search-traffic-analytics.md)、事前定義済みの Power BI レポートを使用して、最も使われた用語と、ドキュメントを返さない用語を調べます。 これらの洞察を使用して、インデックスでドキュメントに解決する必要がある非生産的クエリのシノニムを含めるように辞書を変更します。
-

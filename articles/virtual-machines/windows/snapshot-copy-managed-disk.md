@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bb913050fd3388d4632e6f75b36415006f370cbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: c19b5156bc23b06de48bc7a6dc786f576f78127d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>管理スナップショットを使って Azure Managed Disk として保存された VHD のコピーを作成する
-バックアップのために Managed Disk のスナップショットを作成するか、スナップショットから Managed Disk を作成してトラブルシューティングのためにテスト仮想マシンに接続します。 管理スナップショットは、VM の Managed Disk の完全なポイントインタイム コピーです。 VHD の読み取り専用のコピーを作成し、既定では Standard Managed Disk として保存します。 Managed Disks の詳細については、「[Azure Managed Disks overview (Azure Managed Disks の概要)](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+バックアップのために Managed Disk のスナップショットを作成するか、スナップショットから Managed Disk を作成してトラブルシューティングのためにテスト仮想マシンに接続します。 管理スナップショットは、VM の Managed Disk の完全なポイントインタイム コピーです。 VHD の読み取り専用のコピーを作成し、既定では Standard Managed Disk として保存します。 Managed Disks の詳細については、「[Azure Managed Disks overview (Azure Managed Disks の概要)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 価格の詳細については、「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
 
@@ -47,14 +46,14 @@ Managed Disk のスナップショットを作成するには、Azure Portal ま
 6. Azure データセンターの場所を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成する Managed Disk を選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスのディスクに保存する必要がある場合を除き、**[Standard_LRS]** をお勧めします。
-9. **[作成]**をクリックします。
+9. **Create** をクリックしてください。
 
 ### <a name="use-powershell-to-take-a-snapshot"></a>PowerShell を使用し、スナップショットを作成する
 次の手順では、コピーする VHD ディスクの取得方法、スナップショット構成の作成方法、AzureRmSnapshot コマンドレット<!--Add link to cmdlet when available-->を用いたディスクのスナップショットの取得方法を示します。 
 
 1. パラメーターを設定する。 
 
- ```powershell
+ ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
 $location = 'southeastasia' 
 $dataDiskName = 'ContosoMD_datadisk1' 
@@ -68,20 +67,19 @@ $snapshotName = 'ContosoMD_datadisk1_snapshot1'
 
 2. コピーされる VHD ディスクを取得する。
 
- ```powershell
+ ```azurepowershell-interactive
 $disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
 ```
 3. スナップショットの構成を作成する。 
 
- ```powershell
+ ```azurepowershell-interactive
 $snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
 ```
 4. スナップショットを取得する。
 
- ```powershell
+ ```azurepowershell-interactive
 New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
 ```
 スナップショットを使って Managed Disk を作成し、高パフォーマンスが必要な VM に接続する計画がある場合は、New-AzureRmSnapshot コマンドで `-AccountType Premium_LRS` パラメーターを使います。 スナップショットが作成され、Premium Managed Disk として保存されます。 Premium Managed Disks は、Standard Managed Disks よりも高価格です。 なので、このパラメーターを使用する前に Premium Managed Disks が本当に必要なことを確認してください。
-
 
 

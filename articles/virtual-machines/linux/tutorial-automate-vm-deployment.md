@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: 4e2d07a03902a8c837150da8d50ab9abec8d1c95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 6adf4e43aa80c28c6f5f8d8a071966323ba85723
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux 仮想マシンを初回起動時にカスタマイズする方法
 前のチュートリアルでは、仮想マシン (VM) に SSH 接続して NGINX を手動でインストールする方法について説明しました。 VM を迅速かつ一貫した方法で作成するには、一般的に、何らかの形で自動化することが必要です。 VM を初回起動時にカスタマイズする一般的なアプローチには、[cloud-init](https://cloudinit.readthedocs.io) を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -286,4 +284,3 @@ Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddres
 
 > [!div class="nextstepaction"]
 > [カスタム VM イメージを作成する](./tutorial-custom-images.md)
-

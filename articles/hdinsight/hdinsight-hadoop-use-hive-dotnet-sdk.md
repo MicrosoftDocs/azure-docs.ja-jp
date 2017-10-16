@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 09/15/2017
 ms.author: jgao
+ms.openlocfilehash: eb83a681df1a1836dbf970c4de14937aaea6b2f5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
@@ -30,13 +29,15 @@ HDInsight .NET SDK を使用して Hive クエリを送信する方法につい�
 
 > [!NOTE]
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
-> 
-> 
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](./hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+
+    > [!WARNING]
+    > 2017 年 9 月 15 日の時点で、HDInsight .NET SDK でサポートされているのは、Azure ストレージ アカウントから Hive クエリの結果を返すことのみです。 プライマリ ストレージとして Azure Data Lake Store を使用している HDInsight クラスターでこの例を使用する場合、.NET SDK を使用して検索結果を取得することはできません。
+
 * **Visual Studio 2013/2015/2017**。
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの送信
@@ -69,7 +70,8 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                 private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
-   
+                
+                // Only Azure Storage accounts are supported by the SDK
                 private const string DefaultStorageAccountName = "<Default Storage Account Name>";
                 private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
                 private const string DefaultStorageContainerName = "<Default Blob Container Name>";
@@ -151,6 +153,5 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-
 
 

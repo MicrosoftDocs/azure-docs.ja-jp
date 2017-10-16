@@ -15,25 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/20/2017
 ms.author: larryfr
+ms.openlocfilehash: eb67f33eb29bdfdbc5589561be481460510b07ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: db5dff01c0459db746eace0c9a4535aeccd4dcfa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive で Beeline クライアントを使用する
 
 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight で Hive クエリを実行する方法について説明します。
 
-Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の表は、Beeline で使用する接続文字列を示します。
+Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
-| Beeline の実行場所 | parameters |
-| --- | --- | --- |
-| ヘッド ノードまたはエッジ ノードへの SSH 接続 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
-| クラスターの外部 | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
+* __Beeline を使用したヘッドノードまたはエッジ ノードへの SSH 接続__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+* __クライアントで Beeline を使用した、Azure 仮想ネットワーク経由での HDInsight への接続__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+* __クライアントで Beeline を使用した、パブリック インターネット経由での HDInsight への接続__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]
 > `admin` をクラスターのクラスター ログイン アカウントに置き換えます。
@@ -41,6 +39,8 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 > `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 >
 > `clustername` を、使用する HDInsight クラスターの名前に置き換えます。
+>
+> 仮想ネットワーク経由でクラスターに接続するときは、`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名で置き換えます。
 
 ## <a id="prereq"></a>前提条件
 
@@ -55,20 +55,25 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 ## <a id="beeline"></a>Beeline を使用する
 
-1. Beeline を開始するときに、HDInsight クラスターの HiveServer2 に接続文字列を指定する必要があります。 クラスターの外部からコマンドを実行するには、クラスター ログイン アカウント名 (既定では `admin`) とパスワードも指定する必要があります。 次の表を使用して、使用する接続文字列の形式とパラメーターを見つけます。
+1. Beeline を開始するときに、HDInsight クラスターの HiveServer2 に接続文字列を指定する必要があります。
 
-    | Beeline の実行場所 | parameters |
-    | --- | --- | --- |
-    | ヘッド ノードまたはエッジ ノードへの SSH 接続 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
-    | クラスターの外部 | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
+    * パブリック インターネット経由で接続するときは、クラスター ログイン アカウント名 (既定は `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `<clustername>.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
 
-    たとえば、次のコマンドを使用して、SSH セッションからクラスターへの Beeline を開始できます。
+        ```bash
+        beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+        ```
 
-    ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
-    ```
+    * SSH セッションからクラスターのヘッドノードに接続するときは、ポート `10001` 上の `headnodehost` のアドレスに接続することができます。
 
-    このコマンドは、Beeline クライアントを起動し、クラスターのヘッド ノード上の HiveServer2 に接続します。 コマンドが完了すると、`jdbc:hive2://headnodehost:10001/>` プロンプトが表示されます。
+        ```bash
+        beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
+        ```
+
+    * Azure 仮想ネットワーク経由で接続するときは、クラスターのヘッドノードの完全修飾ドメイン名 (FQDN) を指定する必要があります。 この接続はクラスター ノードに直接行われるため、接続にはポート `10001` が使用されます。
+
+        ```bash
+        beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+        ```
 
 2. Beeline コマンドは `!` 文字で始まります。たとえば、`!help` でヘルプが表示されます。 ただし、`!` は、いくつかのコマンドでは省略できます。 たとえば、`help` も機能します。
 
@@ -218,7 +223,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 ## <a id="remote"></a>Beeline をリモートで使用する
 
-Beeline をローカルにインストールしている場合、または [sutoiku/beeline](https://hub.docker.com/r/sutoiku/beeline/) などの Docker イメージを通して使用する場合は、次のパラメーターを使用する必要があります。
+Beeline をローカルにインストールしている場合にパブリック インターネット経由で接続するときは、次のパラメーターを使用します。
 
 * __接続文字列__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2'`
 
@@ -229,6 +234,12 @@ Beeline をローカルにインストールしている場合、または [suto
 接続文字列の `clustername` を HDInsight クラスターの名前に置き換えます。
 
 `admin` をクラスター ログインの名前に置き換え、`password` をクラスター ログインのパスワードに置き換えます。
+
+Beeline をローカルにインストールしている場合に Azure 仮想ネットワーク経由で接続するときは、次のパラメーターを使用します。
+
+* __接続文字列__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+
+ヘッドノードの完全修飾ドメイン名を検索するには、[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するドキュメントの情報を使用してください。
 
 ## <a id="sparksql"></a>Spark での Beeline の使用
 
@@ -280,4 +291,3 @@ Hive で Tez を使用する場合は、次のドキュメントを参照して�
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-

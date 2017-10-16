@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: fcde562484f4401e9f936614b9978f839f4aa290
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>チュートリアル: Azure Active Directory と RolePoint の統合
 
@@ -114,7 +112,7 @@ RolePoint で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.rolepoint.com/login` のパターンを使用して URL を入力します。
     
-    b. **[識別子]** ボックスに、 `https://app.rolepoint.com/<instancename>` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://app.rolepoint.com/<instancename>` の形式で URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 ここでは、識別子に一意の文字列値を使用することをお勧めします。値の取得方法については、[RolePoint サポート チーム](mailto:info@rolepoint.com)にお問い合わせください。 
@@ -163,7 +161,7 @@ RolePoint で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-rolepoint-test-user"></a>RolePoint テスト ユーザーの作成
 
@@ -225,5 +223,4 @@ RolePoint で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_203.png
-
 

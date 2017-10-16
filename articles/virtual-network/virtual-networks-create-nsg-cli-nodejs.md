@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: ca8c182651e3c9f2f1f3a85b94361755d8e638d4
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-network-security-groups-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用したネットワーク セキュリティ グループの作成
 
@@ -274,5 +273,4 @@ ms.lasthandoff: 03/21/2017
         Configurations/ipconfig1
         data:    
         info:    network vnet subnet set command OK
-
 

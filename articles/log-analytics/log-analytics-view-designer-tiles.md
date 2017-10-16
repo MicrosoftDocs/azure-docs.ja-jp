@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Log Analytics ビュー デザイナー タイル リファレンス
 Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用できるタイルについて、タイルごとに設定を説明しています。
@@ -180,4 +179,3 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 ## <a name="next-steps"></a>次のステップ
 * 各タイルのクエリをサポートする[ログ検索](log-analytics-log-searches.md)について学習します。
 * カスタム ビューに[視覚化パーツ](log-analytics-view-designer-parts.md)を追加します。
-

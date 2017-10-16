@@ -12,7 +12,6 @@
 # 作業開始
 ##[ASP.NET](cache-web-app-howto.md)
 ##[.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-##[WordPress](../app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md?toc=%2fazure%2fredis-cache%2ftoc.json)
 ##[Node](cache-nodejs-get-started.md)
 ##[Java](cache-java-get-started.md)
 ##[Python](cache-python-get-started.md)
@@ -25,7 +24,7 @@
 ###[仮想ネットワークでキャッシュをセキュリティ保護する](cache-how-to-premium-vnet.md)
 ###[クラスタリングによってキャッシュを分散する](cache-how-to-premium-clustering.md)
 ## 自動化
-###[PowerShell でデプロイして管理する](cache-howto-manage-redis-cache-powershell.md)
+###[Azure PowerShell でデプロイして管理する](cache-howto-manage-redis-cache-powershell.md)
 ###[Azure CLI でデプロイして管理する](cli-samples.md)
 ###[Redis Cache のプロビジョニング](cache-redis-cache-arm-provision.md)
 ###[Redis Cache で Web アプリをプロビジョニングする](cache-web-app-arm-with-redis-cache-provision.md)
@@ -33,13 +32,13 @@
 ###[セッション状態プロバイダー](cache-aspnet-session-state-provider.md)
 ###[出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
 ## 管理
-###[ポータルで構成する](cache-configure.md)
+###[Azure Portal での構成](cache-configure.md)
 ###[geo レプリケーションの構成](cache-how-to-geo-replication.md)
 ###[データをインポート/エクスポートする](cache-how-to-import-export-data.md)
 ###[Reboot](cache-administration.md#reboot)
 ###[更新のスケジュール](cache-administration.md#schedule-updates)
 ## 監視とトラブルシューティング
-###[ポータルで監視する](cache-how-to-monitor.md)
+###[Azure Portal での監視](cache-how-to-monitor.md)
 ###[キャッシュに関する問題のトラブルシューティング](cache-how-to-troubleshoot.md)
 ###[例外のアラートを設定する](cache-how-to-monitor.md#operations-and-alerts)
 ## スケール
@@ -50,8 +49,8 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=redis-cache)
-## [PowerShell](/powershell/module/azurerm.rediscache)
-## [Azure CLI 2.0 プレビュー](/cli/azure/redis)
+## [Azure PowerShell](/powershell/module/azurerm.rediscache)
+## [Azure CLI プレビュー](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis クライアント](http://redis.io/clients)

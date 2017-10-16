@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: 29d4a361f98c63dab30155855d603a809eb804c8
 ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>HDInsight の Spark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
 
@@ -30,7 +30,7 @@ Spark のパフォーマンスをチューニングするときは、クラス�
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **Azure Data Lake Store で実行中の Spark クラスター**。  詳細については、「[HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)」を参照してください。
-* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store Performance Tuning Guidance (Data Lake Store のパフォーマンス チューニング ガイドライン)](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。 
+* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。 
 
 ## <a name="parameters"></a>parameters
 
@@ -48,7 +48,7 @@ Spark ジョブを実行するときは、以下が ADLS のパフォーマン�
 
 **Executor-cores** Executor あたりに使用するコアの量を設定します。この量で、Executor ごとに実行できる並列スレッドの数が決定されます。  たとえば、executor-cores = 2 の場合、各 Executor は 2 つの並列タスクを実行できます。  必要な executor-cores はジョブによって決まります。  大量の I/O を使用するジョブでは、タスクあたりのメモリの消費量は多くないため、各 Executor はより多くの並列タスクを処理できます。
 
-HDInsight で Spark を実行する場合は、既定では、各物理コアに対して&2; つの仮想 YARN コアが定義されます。  この数によって、同時実行と複数スレッド間のコンテキスト切り替え量のバランスをうまくとります。  
+HDInsight で Spark を実行する場合は、既定では、各物理コアに対して 2 つの仮想 YARN コアが定義されます。  この数によって、同時実行と複数スレッド間のコンテキスト切り替え量のバランスをうまくとります。  
 
 ## <a name="guidance"></a>ガイダンス
 
@@ -65,7 +65,7 @@ I/O 集中型のジョブの同時実行性を向上させる一般的な方法�
     executor-cores = 4
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。  さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。  Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
-**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  
+**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 注: ウィンドウには、既定の YARN コンテナーのサイズも表示されます。  YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
     Total YARN memory = nodes * YARN memory per node
@@ -118,10 +118,4 @@ Num-executors を大きな数に設定してもパフォーマンスは必ずし
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)
     num-executors = 16    
-
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

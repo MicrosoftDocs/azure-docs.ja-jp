@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 09/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 76de1d40e8c24abda33e99a137f4a6c263f60a8b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 156c5d0b007e33a9181d2847fc7b517c6f816494
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントのスケール設定
 ## <a name="overview"></a>概要
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/06/2017
 > 
 > 
 
-**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** ストリーミング エンドポイントを持つユーザーは、既定で 1 つのストリーミング ユニット (SU) を取得します。 ストリーミング エンドポイントは、SU を追加することで拡張できます。 各 SU は、アプリケーションに追加の帯域幅の容量を提供します。 ストリーミング エンドポイントの種類と CDN 構成について詳しくは、「[ストリーミング エンドポイントの概要](media-services-portal-manage-streaming-endpoints.md)」トピックをご覧ください。
+**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** ストリーミング エンドポイントを持つユーザーは、既定で 1 つのストリーミング ユニット (SU) を取得します。 ストリーミング エンドポイントは、SU を追加することで拡張できます。 各 SU は、アプリケーションに追加の帯域幅の容量を提供します。 ストリーミング エンドポイントの種類と CDN 構成について詳しくは、「[ストリーミング エンドポイントの概要](media-services-streaming-endpoints-overview.md)」トピックをご覧ください。
  
 このトピックでは、ストリーミング エンドポイントを拡大縮小する方法を示します。
 
@@ -43,7 +42,8 @@ ms.lasthandoff: 07/06/2017
 2. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** を選択します。
 3. 次に、スケールを設定するストリーミング エンドポイントをクリックします。 
 
-    [!NOTE] スケールできるのは **Premium** ストリーミング エンドポイントだけです。
+    > [!NOTE] 
+    > スケールできるのは **Premium** ストリーミング エンドポイントだけです。
 
 4. スライダーを移動してストリーミング ユニットの数を指定します。
 
@@ -56,5 +56,4 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

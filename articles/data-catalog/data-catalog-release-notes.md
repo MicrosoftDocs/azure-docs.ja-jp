@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 60abdc490cefc7362ca6ed0dec7dbfd53984201f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: d3db9bee0558cac5fb4f5b8fb4ab67a35ce0f141
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure Data Catalog リリース ノート
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure Data Catalog の 2015 年 11 月 20 日リリースのノート
@@ -78,4 +77,3 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。 タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
-

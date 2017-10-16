@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
+ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -113,9 +112,9 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 * Azure Portal: クラシック仮想ネットワーク、[VPN 接続]、[サイト対サイト VPN 接続]、ローカル サイト名、[ローカル サイト]、[クライアント アドレス空間] の順に移動します。 
 * クラシック ポータル: [ローカル ネットワーク] の [ネットワーク] ページで、仮想ネットワークのゲートウェイを経由して送信する範囲をそれぞれ追加します。 
 
-### <a name="can-i-configure-forced-tunneling"></a>強制トンネリングを構成できますか。
+### <a name="can-i-configure-force-tunneling"></a>強制トンネリングを構成できますか。
 
-はい。 [強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
+はい。 [強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)に関するページを参照してください。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Azure で自社の VPN サーバーをセットアップし、オンプレミス ネットワークへの接続に使用することはできますか。
 
@@ -159,9 +158,13 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="P2S"></a>ポイント対サイト接続
+## <a name="P2S"></a>ポイント対サイト - ネイティブ Azure 証明書認証
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
+[!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+
+## <a name="P2SRADIUS"></a>ポイント対サイト - RADIUS 認証
+
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
 ## <a name="V2VMulti"></a>VNet 間接続とマルチサイト接続
 
@@ -229,4 +232,3 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 * VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 * VPN Gateway の構成設定の詳細については、「[VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」をご覧ください。
-

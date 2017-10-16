@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ad01761f7498512bbce82d85e9e5a3db618191e
-ms.openlocfilehash: 16bf75f97e735d3d5feab4d0d1446ca34c00ccfa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/06/2017
-
+ms.openlocfilehash: 32a693c059a1b4261f33a3d6f50f397365e9dac4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。 この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -76,9 +75,9 @@ ms.lasthandoff: 02/06/2017
 
 * 連絡先はメール対応である必要があります。 次のルールで検証されます。
   * `IsPresent([proxyAddresses]) = True)` proxyAddresses 属性に入力する必要があります。
-  * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 @ が存在することで、コンテンツが電子メールであることが確認されます。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`」を参照してください。 "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`」を参照してください。 メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
+  * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 存在、@ ためコンテンツが、電子メール アドレスであることを確認します。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`」を参照してください。 持つエントリがある"SMTP:"がある場合、以下のことができ、@ でなければ、文字列内にあるですか?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`」を参照してください。 メール属性が設定されである場合、以下のことができますが、@ でなければ、文字列内にあるか。
 
 次の連絡先オブジェクトは Azure AD に同期 **されません** 。
 
@@ -237,5 +236,4 @@ NULL
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 

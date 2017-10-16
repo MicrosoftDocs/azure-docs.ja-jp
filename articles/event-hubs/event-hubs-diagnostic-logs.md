@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/27/2017
-ms.author: sethm;babanisa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: bcc8427d57a001f73d321fbf35c5226a047b68d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs 診断ログ
 
@@ -30,6 +28,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 * **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
+
 既定では、診断ログは無効になっています。 診断ログを有効にするには
 
 1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
@@ -137,5 +136,4 @@ Example:
 ## <a name="next-steps"></a>次のステップ
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hubs API 概要](event-hubs-api-overview.md)
-* [Event Hubs の使用](event-hubs-csharp-ephcs-getstarted.md)
-
+* [Event Hubs の使用](event-hubs-dotnet-standard-getstarted-send.md)

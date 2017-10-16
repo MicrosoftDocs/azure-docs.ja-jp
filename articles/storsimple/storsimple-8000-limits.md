@@ -15,12 +15,11 @@ ms.workload: TBD
 ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 シリーズのシステム制限とは
 
@@ -60,5 +59,4 @@ StorSimple は、データセンターのスケーラブルかつフレキシブ
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple のシステム要件](storsimple-8000-system-requirements.md)を確認します。
-
 

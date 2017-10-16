@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/22/2016
-
+ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
@@ -404,5 +403,4 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ## <a name="next-steps"></a>次のステップ
 * [アラートの詳細を確認します](insights-receive-alert-notifications.md)
 * [診断の設定を追加](monitoring-enable-diagnostic-logs-using-template.md) します
-
 

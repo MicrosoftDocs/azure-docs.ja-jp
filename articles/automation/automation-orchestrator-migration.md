@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
 ms.openlocfilehash: 457888b4d38875b912ad87d44e96ab727e3ee3ee
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) へ移行する
 [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。  [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
@@ -135,9 +135,3 @@ Orchestrator の Runbook は、 **Runbook の呼び出し** 活動を使用し�
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 * [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
 * [System Center Orchestrator Migration Toolkit のダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=47323)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

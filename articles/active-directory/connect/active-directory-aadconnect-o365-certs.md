@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: 51eafa16bd918a065f896ba89dec54d2340b5c69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>Overview
@@ -110,7 +109,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
+この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
@@ -152,7 +151,7 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 
 1. Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開きます。
 2. $cred=Get-Credential を実行します。 このコマンドレットで資格情報の入力を求められたら、クラウド サービス管理者アカウントの資格情報を入力します。
-3. Connect-MsolService –Credential $cred を実行します。 このコマンドレットでクラウド サービスに接続します。 クラウド サービスに接続している状況を作った後で、ツールによってインストールされた追加のコマンドレットを実行する必要があります。
+3. Connect-MsolService –Credential $cred を実行します。このコマンドレットでクラウド サービスに接続します。 クラウド サービスに接続している状況を作った後で、ツールによってインストールされた追加のコマンドレットを実行する必要があります。
 4. AD FS のプライマリ フェデレーション サーバー以外のコンピューターでこれらのコマンドを実行している場合は、Set-MSOLAdfscontext -Computer <AD FS primary server> を実行します。この <AD FS primary server> は、プライマリ AD FS サーバーの内部 FQDN 名です。 このコマンドレットで AD FS に接続している状況を作ります。
 5. Update-MSOLFederatedDomain –DomainName <domain> を実行します。 このコマンドレットは、AD FS の設定でクラウド サービスを更新し、両者の信頼関係を構成します。
 
@@ -165,4 +164,3 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成した場合は、トークン署名証明書に関して何らかの対処が必要かどうかを Azure AD Connect を使用して検出できます。 証明書を更新する必要がある場合は、Azure AD Connect を使用して更新できます。
 
 詳細については、「 [信頼の修復](active-directory-aadconnect-federation-management.md)」を参照してください。
-

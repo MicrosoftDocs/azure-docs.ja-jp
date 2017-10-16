@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 63e1820033e051b72601291c5206772192e68769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: bcdcbd9e781dc9686f4be18e16bf046de6981a9d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -148,7 +147,7 @@ Azure Virtual Machines で異なる VM の種類から選択できるのと同�
 
 "使用可能" または "提供終了" と示されている上記の各種構成については、「[SAP Support Note #2316233 – SAP HANA on Microsoft Azure (Large Instances) (SAP サポート ノート #2316233 – SAP HANA on Microsoft Azure (L インスタンス))](https://launchpad.support.sap.com/#/notes/2316233/E)」をご覧ください。 "注文可能" と示されている構成については、間もなく SAP ノートで確認できるようになります。 ただし、それらのインスタンス SKU は、HANA L インスタンス サービスを利用できる 6 か所の Azure リージョン用に既に注文できます。
 
-選択する構成は、ワークロード、CPU リソース、および必要なメモリによって異なります。 OLTP ワークロードでは、OLAP ワークロード用に最適化された SKU を活用できます。 
+選択する構成は、ワークロード、CPU リソース、および必要なメモリによって異なります。 OLTP ワークロードでは、OLAP ワークロード用に最適化された SKU を使用できます。 
 
 すべてのプランのハードウェア ベースは、SAP HANA TDI 認定を受けています。 ただし、ハードウェアの 2 種類のクラスを区別し、SKU を次のように分けています。
 
@@ -183,12 +182,24 @@ HANA L インスタンス ユニットで複数のアクティブな SAP HANA �
 | SKU | メモリ サイズ | ストレージ サイズ | 複数のデータベースとサイズ |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 768 GB HANA インスタンス x 1<br /> または 512 GB インスタンス x 1 + 256 GB インスタンス x 1<br /> または 256 GB インスタンス x 3 | 
-| S72m | 768 GB | 3 TB | 512 GB HANA インスタンス x 3<br />または 512 GB インスタンス x 1 + 1 TB インスタンス x 1<br />または 256 GB インスタンス x 6<br />または 1.5 TB インスタンス x 1 | 
+| S72m | 1.5 TB | 6 TB | 512 GB HANA インスタンス x 3<br />または 512 GB インスタンス x 1 + 1 TB インスタンス x 1<br />または 256 GB インスタンス x 6<br />または 1.5 TB インスタンス x 1 | 
 | S192m | 4 TB | 16 TB | 512 GB インスタンス x 8<br />または 1 TB インスタンス x 4<br />または 512 GB インスタンス x 4 + 1 TB インスタンス x 2<br />または 768 GB インスタンス x 4 + 512 GB インスタンス x 2<br />または 4 TB インスタンス x 1 |
 | S384xm | 8 TB | 22 TB | 2 TB インスタンス x 4<br />または 4 TB インスタンス x 2<br />または 3 TB インスタンス x 2 + 2 TB インスタンス x 1<br />または 2.5 TB インスタンス x 2 + 3 TB インスタンス x 1<br />または 8 TB インスタンス x 1 |
 
 
 大体おわかりでしょうか。 他のバリエーションもあることは確かです。 
+
+### <a name="using-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA のデータ階層化および拡張ノードの使用
+SAP では、さまざまな SAP NetWeaver リリースの SAP BW および SAP BW/4HANA のデータ階層化モデルをサポートしています。 データ階層化モデルに関する詳細については、このドキュメントおよびこのドキュメントで参照している SAP のブログ (「[SAP BW/4HANA AND SAP BW ON HANA WITH SAP HANA EXTENSION NODES (SAP HANA 拡張ノードを持つ SAP BW/4HANA および SAP BW-on-HANA)](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)」) を参照してください。
+HANA L インスタンスを使用すると、この FAQ および SAP のブログ ドキュメントで述べられているように、SAP HANA 拡張ノードのオプション 1 の構成を使用できます。 オプション 2 の構成は次の HANA L インスタンス SKU を使用して設定できます: S72m、S192、S192m、S384、S384m。  
+ドキュメントを参照してもすぐには利点が見つからないかもしれません。 しかし、SAP のサイズ変更ガイドラインを見ると、オプション 1 およびオプション 2 の SAP HANA 拡張ノードの使用による利点が分かります。 次に例を示します。
+
+- SAP HANA のサイズ変更ガイドラインでは通常、メモリの 2 倍のデータ ボリュームが必要です。 従って、ホット データで SAP HANA インスタンスを実行している場合、メモリの 50% 以下しかデータが入っていません。 残りのメモリは、SAP HANA が作業を実行するために残しておくのが理想です。
+- つまり、2 TB のメモリを持つ HANA L インスタンス S192 ユニットで SAP BW データベースを実行すると、データ ボリュームとしては 1 TB しかありません。
+- オプション 1 の追加の SAP HANA 拡張ノード、また S192 HANA L インスタンス SKU を使用する場合は、データ ボリュームに追加で 2 TB の容量が得られます。 オプション 2 の構成では、ウォーム データ ボリューム用に 4 TB が追加されます。 ホット ノードと比較した場合、オプション 1 ではデータ格納に "ウォーム" 拡張ノードの全メモリ容量を使用することができ、オプション 2 の SAP HANA 拡張ノード構成ではデータ ボリュームに 2 倍のメモリを使用することができます。
+- その結果、オプション 1 ではデータ容量が 3 TB、ホット データとウォーム データの割合が 1:2 になり、オプション 2 の拡張ノード構成ではデータ容量が 5 TB、ホット/ウォームの割合が1:4 になります。
+
+ただし、メモリに対してデータ ボリュームが大きいほど、求めるウォーム データがディスク ストレージに保存されている可能性が高くなります。
 
 
 ## <a name="operations-model-and-responsibilities"></a>運用モデルと責任
@@ -471,6 +482,5 @@ HANA L インスタンスと Azure VM 間で転送されるデータは暗号化
 
 > [!IMPORTANT] 
 > 複数の ExpressRoute 回線を使用する場合は、トラフィックを適切にルーティングするために、AS パス プリペンドとローカル プリファレンス BGP の設定を使用してください。
-
 
 

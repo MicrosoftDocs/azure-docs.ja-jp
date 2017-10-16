@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: efac6e1ecc00359f1622d380333140bc055c83e0
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
 ## <a name="overview"></a>Overview
@@ -35,10 +35,4 @@ ms.openlocfilehash: efac6e1ecc00359f1622d380333140bc055c83e0
     await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
 スケジュール設定された、送信可能な通知の数に制限はありません。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

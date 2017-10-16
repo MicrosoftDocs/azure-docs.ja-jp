@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 3ed000affd326eb1bd7c99773ec021ad6e03cc3b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -90,7 +88,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
    > 保護エージェントがインストールされていると、ウィザードにサーバーが表示されます。 MABS ではその構造も示されます。 ConfigureSharePoint.exe を実行したので、MABS は SharePoint VSS ライター サービスおよびその対応する SQL Server Database と通信し、SharePoint ファームの構造、関連するコンテンツ データベース、および対応する項目を認識します。
    >
    >
-4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な "*保護方法*" を選択します。 **[次へ]**をクリックします。
+4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な "*保護方法*" を選択します。 **[次へ]** をクリックします。
 
     ![データ保護方法の選択](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -161,7 +159,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。 **日付、回復時刻**の順に選択した後、正しい**データベース、SharePoint ファーム、回復ポイント、アイテム**を順番に選択します。
 
     ![MABS の SharePoint 保護 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]**をクリックします。
+6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]** をクリックします。
 
     ![回復の選択の確認](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 実行する回復の種類を選択して、 **[次へ]**をクリックします。
@@ -185,7 +183,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     MABS は、SharePoint アイテムをホストしているコンテンツ データベースを、一時的な SQL Server インスタンスにアタッチします。 MABS は、コンテンツ データベースからアイテムを回復し、MABS 上のステージング ファイルの場所に格納します。 次に、ステージングの場所に回復されたアイテムを、SharePoint ファーム上のステージング場所にエクスポートする必要があります。
 
     ![ステージングの場所 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. **[回復オプションの指定]**を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]**をクリックします。
+10. **[回復オプションの指定]**を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]** をクリックします。
 
     ![回復オプション](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -240,4 +238,3 @@ A: SharePoint データベースは SQL AlwaysOn で構成されているので�
 
 ## <a name="next-steps"></a>次のステップ
 * SharePoint の MABS 保護に関する詳細 - [Video シリーズ「DPM Protection of SharePoint (SharePoint の DPM 保護)」](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-

@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー
 Azure Cosmos DB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された[複数リージョンのデータベース アカウント](distribute-data-globally.md)が用意されています。 Cosmos DB アカウントには、高可用性、10 ミリ秒未満の遅延、[明確に定義された整合性レベル](consistency-levels.md)、マルチホーム API による透過的なリージョン内フェールオーバー、世界規模でスループットとストレージを柔軟にスケーリングする機能が備わっています。 
@@ -121,7 +120,6 @@ Azure のリージョン内障害やデータセンターの停止はめった�
 ## <a id="NextSteps"></a>次のステップ
 * Cosmos DB の[グローバル配布](distribute-data-globally.md)サポートについて確認する
 * [Azure Cosmos DB とのグローバルな整合性](consistency-levels.md)について確認する
-* Azure Cosmos DB の [DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md) を使用して複数のリージョンで開発する
+* Azure Cosmos DB を使用して複数の領域を使用して開発[DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md)
 * Azure DocumentDB を使用して[複数リージョン ライター アーキテクチャ](multi-region-writers.md)を作成する方法を確認する
-
 

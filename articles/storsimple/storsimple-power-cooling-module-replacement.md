@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/18/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2a956de58b279a013913631a077d7b03c6327f72
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>StorSimple デバイスの電源冷却モジュールを交換する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Microsoft Azure StorSimple デバイスの電源冷却モジュール (PCM) は、主エンクロージャと EBOD エンクロージャを通して制御される電源と冷却ファンで構成されます。 各エンクロージャで認定されている PCM のモデルは 1 つだけあります。 主エンクロージャでは 764 W PCM が、EBOD エンクロージャでは 580 W PCM が認定されています。 主エンクロージャと EBOD エンクロージャの PCM は異なりますが、交換手順は同じです。
 
 このチュートリアルでは、次の方法について説明します。
@@ -146,10 +146,4 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

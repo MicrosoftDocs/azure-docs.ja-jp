@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でユーザーの勤務情報を追加または変更する | Microsoft Docs"
 description: "Azure Active Directory で、電話番号や部門名など、ユーザーの勤務先情報を追加する方法について説明します。"
 services: active-directory
@@ -16,13 +15,11 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: a7197ed0f08d38bb604641115a424b98ba5b5908
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
-
+ms.openlocfilehash: 9f4031da7c6dfbd329d14c52f3a569084edacf20
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Azure Active Directory でユーザーの勤務先情報を追加または変更する
 この記事では、Azure Active Directory (Azure AD) でユーザーの勤務先情報 (電話番号や部門名など) を追加または変更する方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-external-azure-portal.md)に関する記事をご覧ください。
@@ -47,4 +44,3 @@ ms.lasthandoff: 05/08/2017
 * [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
 * [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 * [Azure Active Directory でディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
-

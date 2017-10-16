@@ -10,12 +10,11 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 920656aabe21191470f2611279977a763ac14c36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: 26f8e12c493904f722cad5191ee053feff20f7fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-access-server-logs-using-azure-cli"></a>Azure CLI を使用した PostgreSQL のサーバー ログの構成とアクセス
 PostgreSQL サーバーのエラー ログは、コマンド ライン インターフェイス (Azure CLI) を使用してダウンロードできます。 ただし、トランザクション ログへのアクセスはサポートされていません。 
@@ -50,4 +49,3 @@ az postgres server-logs download --name 20170414-mypgserver-20170401-postgresql.
 ## <a name="next-steps"></a>次のステップ
 - サーバー ログの詳細については、「[Azure Database for PostgreSQL のサーバー ログ](concepts-server-logs.md)」をご覧ください。
 - サーバー パラメーターの詳細については、「[サーバー構成パラメーターのカスタマイズ](howto-configure-server-parameters-using-cli.md)」をご覧ください。
-

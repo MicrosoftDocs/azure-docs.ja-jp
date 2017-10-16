@@ -12,15 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/28/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: c58de22e29b6403e88bf22bdfe704a25757cdfca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.openlocfilehash: 965ffc0f8cec26cccbe6e6459731afc234111f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 Service Fabric Explorer は、Azure Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 Service Fabric クラスター内で直接ホストされているので、ローカル クラスターが実行されている場所に関係なく、いつでも使用できます。
@@ -129,4 +127,3 @@ Azure クラスターの場合、完全な URL は Azure Portal の [Cluster Ess
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
-

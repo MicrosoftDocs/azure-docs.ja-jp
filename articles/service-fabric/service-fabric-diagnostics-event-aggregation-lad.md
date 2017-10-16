@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/17/2017
 ms.author: dekapur
+ms.openlocfilehash: 5e5c6d3cf840a80be08473a300c01555d69cf57d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: bcc3a229369a065cfcfbd32eadbf3f6ae6fe0036
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
@@ -41,21 +39,17 @@ Service Fabric では、操作イベントやランタイム イベントなど�
 ### <a name="application-events"></a>アプリケーション イベント
  ソフトウェアをインストルメント化するときに指定した、アプリケーションとサービスのコードから生成されたイベント。 テキスト ベースのログ ファイルを書き込む任意のログ記録ソリューションを使用できます (たとえば、LTTng)。 詳細については、アプリケーションでトレースを実行する方法を LTTng に関するドキュメントで参照してください。
 
-[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
 ## <a name="deploy-the-diagnostics-extension"></a>診断拡張機能のデプロイ
-ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 手順は、Azure Portal と Azure Resource Manager のどちらを使用するかに応じて変わります。
+ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 
 
-クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、**[診断]** を **[オン]** に設定します。 クラスターを作成した後、ポータルを使用してこの設定を変更することはできません。
+クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、**[診断]** を **[オン]** に設定します。 クラスターの作成後、ポータルを使用してこの設定を変更することはできません。そのため、Resource Manager テンプレートで適切な変更を行う必要があります。
 
-次に、ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、ストレージ アカウントに配置します。 このプロセスについては、 [LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。 この手順に従うと、トレースへのアクセスを取得できます。 トレースは、好みのビジュアライザーにアップロードできます。
+これにより、LAD エージェントが指定されたログ ファイルを監視するように構成されます。 新しい行がファイルに追加されるたびに、指定したストレージ (テーブル) に送信される syslog エントリが作成されます。
 
-診断拡張機能は Azure Resource Manager を使用してデプロイすることもできます。 このプロセスは、Windows と Linux とで似ています。Windows クラスター向けのプロセスについては、「[Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)」を参照してください。
-
-[Operations Management Suite Log Analytics with Linux](https://blogs.technet.microsoft.com/hybridcloud/2016/01/28/operations-management-suite-log-analytics-with-linux/)」で説明されているとおりに Operations Management Suite を使用することもできます。
-
-この構成を完了すると、指定されたログ ファイルが LAD エージェントによって監視されます。 新しい行がファイルに追加されるたびに、指定したストレージに送信される syslog エントリが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [OMS エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 

@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 80142d9f27abed181bca6f5f536b950198e66e20
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="usage-analysis-for-web-applications-with-application-insights"></a>Application Insights による Web アプリケーションの利用状況の分析
 
 最も人気のある Web アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](app-insights-overview.md) では、ユーザーの Web アプリの使用方法に関する強力な洞察を得ることができます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
@@ -44,7 +42,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>ユーザー ID とセッション ID をテレメトリに含める
 Application Insights で一定期間にわたってユーザーを追跡するためには、それらのユーザーを識別する手段が必要となります。 ユーザー ID やセッション ID を必要としない使用状況ツールはイベント ツールだけです。
 
-これらの ID の送信方法については、[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)をご覧ください。
+[このプロセス](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)を使用してユーザー ID とセッション ID の送信を開始します。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>使用状況の人口統計データや統計を調査する
 ユーザーがアプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 
@@ -176,4 +174,3 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
    - [ユーザー フロー](app-insights-usage-flows.md)
    - [ブック](app-insights-usage-workbooks.md)
    - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
-

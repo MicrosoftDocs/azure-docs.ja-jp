@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>自動スクリプトを使用した Service Manager Web アプリの作成 (プレビュー)
 
 次のスクリプトを使用して、Service Manager インスタンスの Web アプリを作成します。 Service Manager 接続の詳細については、[Service Manager Web アプリ](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)に関する記事をご覧ください。
@@ -323,4 +320,3 @@ if(!$err)
 ```
 ## <a name="next-steps"></a>次のステップ
 [ハイブリッド接続の構成](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)。
-

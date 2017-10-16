@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Import/Export のログ ファイルの形式 | Microsoft Docs"
 description: "インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します。"
 author: muralikk
@@ -15,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.lasthandoff: 03/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
@@ -189,8 +187,8 @@ properties-status ::=
 |`FileNameTooLong`|ファイル名が長すぎます。|  
 |`FileNotFound`|ファイルが見つかりませんでした。|  
 |`FileAccessDenied`|ファイルへのアクセスが拒否されました。|  
-|`BlobRequestFailed`|BLOB にアクセスする BLOB サービスの要求に失敗しました。|  
-|`BlobRequestForbidden`|BLOB にアクセスする BLOB サービスの要求は許可されていません。 無効なストレージ アカウント キーまたはコンテナー SAS が原因の可能性があります。|  
+|`BlobRequestFailed`|BLOB にアクセスする Blob service の要求に失敗しました。|  
+|`BlobRequestForbidden`|BLOB にアクセスする Blob service の要求は許可されていません。 無効なストレージ アカウント キーまたはコンテナー SAS が原因の可能性があります。|  
 |`RenameFailed`|BLOB (インポート ジョブの場合) またはファイル (エクスポート ジョブの場合) の名前を変更できませんでした。|  
 |`BlobUnexpectedChange`|BLOB (エクスポート ジョブの場合) で予期しない変更が発生しました。|  
 |`LeasePresent`|BLOB にはリースがあります。|  
@@ -219,7 +217,7 @@ properties-status ::=
 |`Corrupted`|ページ範囲またはブロックは破損しています (コンテンツがハッシュと一致していません)。|  
 |`FileUnexpectedEnd`|予期しないファイルの終わりが発生しました。|  
 |`BlobUnexpectedEnd`|予期しない BLOB の終わりが発生しました。|  
-|`BlobRequestFailed`|ページ範囲またはブロックにアクセスする BLOB サービスの要求に失敗しました。|  
+|`BlobRequestFailed`|ページ範囲またはブロックにアクセスする Blob service の要求に失敗しました。|  
 |`IOFailed`|ページ範囲またはブロックの処理中に、ディスクまたはネットワークの I/O エラーが発生しました。|  
 |`Failed`|ページ範囲またはブロックの処理中に、不明なエラーが発生しました。|  
 |`Cancelled`|以前のエラーにより、ページ範囲またはブロックのさらなる処理が停止しました。|  
@@ -237,7 +235,7 @@ properties-status ::=
 |`Corrupted`|メタデータ ファイルは破損しています (コンテンツがハッシュと一致していません)。|  
 |`XmlReadFailed`|メタデータのコンテンツは、必要な形式に準拠していません。|  
 |`XmlWriteFailed`|メタデータ XML の書き込みに失敗しました。|  
-|`BlobRequestFailed`|メタデータにアクセスする BLOB サービスの要求に失敗しました。|  
+|`BlobRequestFailed`|メタデータにアクセスする Blob service の要求に失敗しました。|  
 |`IOFailed`|メタデータの処理中に、ディスクまたはネットワークの I/O エラーが発生しました。|  
 |`Failed`|メタデータの処理中に、不明なエラーが発生しました。|  
 |`Cancelled`|以前のエラーにより、メタデータのさらなる処理が停止しました。|  
@@ -255,7 +253,7 @@ properties-status ::=
 |`Corrupted`|プロパティ ファイルは破損しています (コンテンツがハッシュと一致していません)。|  
 |`XmlReadFailed`|プロパティのコンテンツは、必要な形式に準拠していません。|  
 |`XmlWriteFailed`|プロパティ XML の書き込みに失敗しました。|  
-|`BlobRequestFailed`|プロパティにアクセスする BLOB サービスの要求に失敗しました。|  
+|`BlobRequestFailed`|プロパティにアクセスする Blob service の要求に失敗しました。|  
 |`IOFailed`|プロパティの処理中に、ディスクまたはネットワークの I/O エラーが発生しました。|  
 |`Failed`|プロパティの処理中に、不明なエラーが発生しました。|  
 |`Cancelled`|以前のエラーにより、プロパティのさらなる処理が停止しました。|  
@@ -361,4 +359,3 @@ properties-status ::=
 ## <a name="next-steps"></a>次のステップ
  
 * [ストレージの Import/Export REST API](/rest/api/storageimportexport/)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
+ms.openlocfilehash: 74b04cb7737011423556cbd956ecef770ac82ad4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database 顧客実装技術スタディ
 
@@ -38,3 +37,4 @@ ms.lasthandoff: 07/21/2017
 
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): この簡単なケース スタディは、完全に管理されたサービスとしてのソフトウェア (SaaS) オファリングをお客様に提供するために、Dynamics 365 for Operations 製品チームが Azure SQL Database に移行した経験から得たベスト プラクティスと教訓に重点を置いています。 Azure SQL Database を使用することで、Dynamics 365 for Operations チームは非常に少ない人員でサービスを管理および運営し、データベースの自動バックアップ、データベースのバックアップ保持、高可用性およびディザスター リカバリー機能など、すぐに使用できる管理容易性機能を利用して簡単にスケーリングすることができました。 単純な自動化によるデータベースのプロビジョニング機能と共に使用することで、Azure SQL Database は大規模なサービスに対応できる優れたプラットフォームとなりました。
 
+- [Microsoft OneDrive および SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states): このケース スタディの要約は、Microsoft OneDrive と SharePoint Online の Azure SQL Database への移行に関する背景事情と、この移行によってほぼ無制限のエラスティックな容量管理が可能になり、運用コストとインフラストラクチャのオーバーヘッドも大幅に削減できるようになった方法を説明しています。

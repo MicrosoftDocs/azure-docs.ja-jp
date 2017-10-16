@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: d65301d1ca71f62b52c97f1de772a61c33933b8a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
+ms.openlocfilehash: 6ae5c9019f292a18bc4ae8afe8d615977e8e6c9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-network-documentation"></a>Virtual Network のドキュメント
 
@@ -160,6 +159,5 @@ ms.lasthandoff: 03/18/2017
         </div>
     </li>
 </ul>
-
 
 

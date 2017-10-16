@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: f959823b3a7c5b0262f693ecad1e6efc4eec4f35
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
-
+ms.openlocfilehash: 11d228cc633fee8c6a2984e2eb23690a43d4c0fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="delete-an-azure-redis-cache"></a>Azure Redis Cache の削除
 
 このシナリオでは、Azure Redis Cache を削除する方法について説明します。
@@ -41,7 +39,7 @@ ms.lasthandoff: 04/15/2017
 
 | コマンド | メモ |
 |---|---|
-| [az redis delete](https://docs.microsoft.com/cli/azure/redis#delete) | Redis Cache インスタンスを削除します。 |
+| [az redis delete](https://docs.microsoft.com/cli/azure/redis#az_redis_delete) | Redis Cache インスタンスを削除します。 |
 
 
 ## <a name="next-steps"></a>次のステップ

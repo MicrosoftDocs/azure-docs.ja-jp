@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>MQ コネクタを使用してロジック アプリから IBM MQ サーバーに接続する 
 
 Microsoft Connector for MQ は、オンプレミスの、または Azure 内の MQ サーバーに保管されているメッセージの送信と取得を行います。 このコネクタには、TCP/IP ネットワーク経由でリモート IBM MQ サーバーと通信する Microsoft MQ クライアントが含まれています。 このドキュメントは、MQ コネクタを使用するためのスターター ガイドです。 まずキューの 1 つのメッセージを参照することから始め、次いでその他のアクションを試してみるようお勧めします。    
@@ -126,4 +124,3 @@ MQ コネクタには、次のアクションがあります。 トリガーは�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-

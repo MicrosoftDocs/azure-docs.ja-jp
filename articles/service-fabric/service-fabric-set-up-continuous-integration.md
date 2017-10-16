@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2016
 ms.author: mthalman;mikhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 76a1e013e824910c7a489e345b6563ae3951378f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-service-fabric-continuous-integration-and-deployment-with-visual-studio-team-services"></a>Visual Studio Team Services による Service Fabric の継続的インテグレーションとデプロイの設定
 この記事では、Visual Studio Team Services (VSTS) を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する手順について説明します。
@@ -132,5 +130,4 @@ Service Fabric アプリケーションの継続的インテグレーション�
 * [Team Services のドキュメント ホーム](https://www.visualstudio.com/docs/overview)
 * [Team Services でのビルド管理](https://www.visualstudio.com/docs/build/overview)
 * [Team Services でのリリース管理](https://www.visualstudio.com/docs/release/overview)
-
 

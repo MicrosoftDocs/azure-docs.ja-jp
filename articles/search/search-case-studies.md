@@ -1,5 +1,5 @@
 ---
-title: 'Who''s using Azure Search: case studies and customer stories | Microsoft Docs'
+title: "Azure Search を使用しているユーザー: ケース スタディとお客様の事例 |Microsoft ドキュメント"
 description: "Microsoft Azure のホスト型のクラウド検索サービスである Azure Search に関するケース スタディとお客様事例"
 services: search
 documentationcenter: 
@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Azure Search を使用しているユーザー: ケース スタディとお客様事例
 以下の組織が Azure Search の高度な機能をオンライン アプリケーションに統合することで業務を改善した事例について説明します。
@@ -53,4 +52,3 @@ Weichert Realtors はクラウドに移行中です。また、それによっ�
 [4]: ./media/search-case-studies/medihoo_m.png
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
-

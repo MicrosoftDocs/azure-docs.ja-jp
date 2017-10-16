@@ -1,6 +1,6 @@
 ---
-title: Azure Stack plan, offer, quota, and subscription overview | Microsoft Docs
-description: As a cloud operator, I want to understand Azure Stack plans, offers, quotas, and subscriptions.
+title: "Azure Stack のプラン、オファー、クォータ、サブスクリプションの概要 | Microsoft Docs"
+description: "クラウド オペレーターとして Azure Stack のプラン、オファー、クォータ、およびサブスクリプションを理解したいと思っています。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
+ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9f19d4ea53fb07bff97a5cd06d10af74f605bf1c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="plan-offer-quota-and-subscription-overview"></a>Plan, offer, quota, and subscription overview
+# <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
-Azure Stack lets you deliver a wide variety of services, like virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a cloud operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Offers contain one or more plans, and each plan includes one or more services. By creating plans and combining them into different offers, you control
-- which services and resources users can access
-- the amount of those resources that users can consume
-- which regions have access to the resources
+[Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 Azure Stack オペレーターは、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
 
-When you deliver a service, you'll follow these high-level steps:
+オファーには、1 つ以上のプランが含まれ、各プランには 1 つ以上のサービスが含まれます。 プランを作成し、それらを異なるオファーに結合することで、次のことを制御します。
+- ユーザーがアクセスできるサービスとリソース
+- ユーザーが使用できるこれらのリソースの量
+- リソースに対してアクセス権を持つリージョン
 
-1. Add a service that you want to deliver to your users.
-2. Create a plan that contains one or more services. When creating a plan, you will select or create quotas that define the resource limits of each service in the plan.
-3. Create an offer that contains one or more plans (including base plans and optional add-on plans).
+サービスを提供する場合、次の大まかな手順に従います。
 
-After you have created the offer, your users can subscribe to it to access the services and resources it provides. Users can subscribe to as many offers as they want. The following diagram shows a simple example of a user who has subscribed to two offers. Each offer has a plan or two, and each plan gives them access to services.
+1. ユーザーに提供するサービスを追加します。
+2. 1 つ以上のサービスを含むプランを作成します。 プランを作成するときに、プラン内の各サービスのリソースの制限を定義するクォータを選択または作成します。
+3. 1 つ以上のプランを含む (基本プランとオプションのアドオン プランを含む) オファーを作成します。
+
+オファーを作成すると、ユーザーがそれをサブスクライブして、そのオファーが提供するサービスとリソースにアクセスできます。 ユーザーは、必要な数だけオファーをサブスクライブできます。 次の図は、2 つのオファーをサブスクライブしているユーザーの簡単な例を示しています。 各オファーには 1 つまたは 2 つのプランがあり、各プランはサービスへのアクセスを提供します。
 
 ![](media/azure-stack-key-features/image4.png)
 
-## <a name="plans"></a>Plans
+## <a name="plans"></a>プラン
 
-Plans are groupings of one or more services. As a cloud operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When creating plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
+プランは、1 つまたは複数のサービスをグループ化したものです。 Azure Stack オペレーターは、ユーザーに提供する[プランを作成](azure-stack-create-plan.md)します。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 プランを作成するときに、基本プランを定義するクォータを設定していることを確認し、オプションのアドオン プランを含めることを検討してください。
 
-### <a name="quotas"></a>Quotas
+### <a name="quotas"></a>Quotas (クォータ)
 
-To help you manage your cloud capacity, you select or create a quota for each service in a plan. Quotas define the upper resource limits that a user subscription can provision or consume. For example, a quota might allow a user to create up to five virtual machines. Quotas can limit a variety of resources, like virtual machines, RAM, and CPU limits.
+クラウドの容量の管理に役立てるため、プラン内の各サービスにクォータを選択または作成します。 クォータは、ユーザー サブスクリプションでプロビジョニングまたは使用できるリソースの上限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 クォータは、仮想マシン、RAM、CPU などのさまざまなリソースを制限できます。
 
-Quotas can be configured by region. For example, a plan containing compute services from Region A could have a quota of two virtual machines, 4-GB RAM, and 10 CPU cores. In the Azure Stack Development Kit, only one region (named *local*) is available.
+クォータはリージョンごとに構成できます。 たとえば、リージョン A のコンピューティング サービスを含むプランには、2 台の仮想マシン、4 GB の RAM、10 個の CPU コアで構成されるクォータを設定できます。 Azure Stack Development Kit では、(*ローカル*という名前の) 1 つのリージョンだけが使用できます。
 
-### <a name="base-plan"></a>Base plan
+### <a name="base-plan"></a>基本プラン
 
-When creating an offer, the service administrator can include a base plan. These base plans are included by default when a user subscribes to that offer. When a user subscribes, they have access to all the resource providers specified in those base plans (with the corresponding quotas).
+オファーを作成するときに、サービス管理者は基本プランを含めることができます。 この基本プランは、ユーザーがそのオファーをサブスクライブすると、既定で含まれます。 ユーザーはサブスクライブすると、この基本プランで指定されたすべてのリソース プロバイダーにアクセスできます (対応するクォータが適用されます)。
 
-### <a name="add-on-plans"></a>Add-on plans
+### <a name="add-on-plans"></a>アドオン プラン
 
-You can also include optional add-on plans in an offer. Add-on plans are not included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.
+オファーにはオプションのアドオン プランを含めることもできます。 既定では、サブスクリプションにアドオン プランは含まれません。 アドオン プランは、サブスクライバーが自身のサブスクリプションに追加できるオファーで使用可能な (クォータが適用された) 追加プランです。 たとえば、基本プランと制限されたリソースを試用版として提供し、サービスの導入を決めたお客様にアドオン プランでより多くのリソースを提供することができます。
 
-## <a name="offers"></a>Offers
+## <a name="offers"></a>オファー
 
-Offers are groups of one or more plans that you create so that users can subscribe to them. For example, Offer Alpha can contain Plan A containing a set of compute services and Plan B containing a set of storage and network services. 
+オファーは、ユーザーがプランをサブスクライブできるように作成した 1 つ以上のプランのグループです。 たとえば、Alpha というオファーには、一連のコンピューティング サービスを含むプラン A と、一連のストレージ サービスとネットワーク サービスを含むプラン B を含めることができます。 
 
-When you [create an offer](azure-stack-create-offer.md), you must include at least one base plan, but you can also create add-on plans that users can add to their subscription.
-
-
-## <a name="subscriptions"></a>Subscriptions
-
-A subscription is how users access your offers. If you’re a cloud operator at a service provider, your users (tenants) buy your services by subscribing to your offers. If you’re a cloud operator at an organization, your users (employees) can subscribe to the services you offer without paying. Each combination of a user with an offer is a unique subscription. Thus, a user can have subscriptions to multiple offers, but each subscription applies to only one offer. Plans, offers, and quotas apply only to each unique subscription – they can’t be shared between subscriptions. Each resource that a user creates is associated with one subscription.
+[オファーを作成](azure-stack-create-offer.md)するときに、少なくとも 1 つの基本プランを含める必要がありますが、ユーザーが自身のサブスクリプションに追加できるアドオン プランを作成することもできます。
 
 
-### <a name="default-provider-subscription"></a>Default provider subscription
+## <a name="subscriptions"></a>サブスクリプション
 
-The Default Provider Subscription is automatically created when you deploy the Azure Stack Development Kit. This subscription can be used to manage Azure Stack, deploy further resource providers, and create plans and offers for users. For security and licensing reasons, it should not be used to run customer workloads and applications. 
+サブスクリプションは、ユーザーがオファーにアクセスする方法です。 サービス プロバイダーの Azure Stack オペレーターの場合、ユーザー (テナント) は、オファーをサブスクライブすることでサービスを購入します。 組織の Azure Stack オペレーターの場合、提供するサービスをユーザー (従業員) が無料でサブスクライブできます。 ユーザーとオファーの各組み合わせは、一意のサブスクリプションです。 したがって、ユーザーは複数のオファーのサブスクリプションを持つことができますが、各サブスクリプションは 1 つのオファーにのみ適用されます。 プラン、オファー、クォータは、それぞれ一意のサブスクリプションにのみ適用されます。サブスクリプション間で共有することはできません。 ユーザーが作成する各リソースは、1 つのサブスクリプションに関連付けられます。
 
-## <a name="next-steps"></a>Next steps
 
-[Create a plan](azure-stack-create-plan.md)
+### <a name="default-provider-subscription"></a>既定のプロバイダー サブスクリプション
 
+既定のプロバイダー サブスクリプションは、Azure Stack Development Kit をデプロイするときに、自動的に作成されます。 このサブスクリプションは、Azure Stack の管理、他のリソース プロバイダーのデプロイ、およびユーザーのためのプランおよびオファーの作成に使用できます。 セキュリティとライセンス上の理由から、このサブスクリプションを顧客ワークロードとアプリケーションの実行に使用しないでください。 
+
+## <a name="next-steps"></a>次のステップ
+
+[プランの作成](azure-stack-create-plan.md)

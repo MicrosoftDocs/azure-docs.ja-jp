@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 97dbb3fa0531f2f679badb6bb9752f2e42fc9cb3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル: Azure Active Directory と Printix の統合
 
@@ -115,7 +113,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
     **[サインオン URL]** ボックスに、`https://<subdomain>.printix.net` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Printix クライアント サポート チーム](mailto:support@printix.net)に問い合わせてください。 
+    > この値は実際のものではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Printix クライアント サポート チーム](mailto:support@printix.net)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -183,7 +181,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-printix-test-user"></a>Printix テスト ユーザーの作成
 
@@ -251,5 +249,4 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-printix-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-printix-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-printix-tutorial/tutorial_general_203.png
-
 

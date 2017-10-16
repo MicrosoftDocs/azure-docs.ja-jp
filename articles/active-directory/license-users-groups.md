@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeffgilb
 custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: c4509cdb003687083d0456c1957b19cf35ee056a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>クイックスタート: Azure Active Directory におけるライセンス ユーザー
 ライセンス ベースの Azure AD サービスは、Azure テナントの Azure Active Directory (Azure AD) サブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は Azure AD 管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 Enterprise Mobility + Security、Azure AD Premium、Azure AD Basic を購入すると、有効期間や前払いライセンスを含め、サブスクリプションでテナントが更新されます。 割り当てられているライセンスの数や使用可能なライセンスの数などのサブスクリプション情報は、Azure Portal で **Azure Active Directory** の **[ライセンス]** タイルを開いて確認できます。 **[ライセンス]** ブレードは、ライセンスの割り当ての管理にも最適です。

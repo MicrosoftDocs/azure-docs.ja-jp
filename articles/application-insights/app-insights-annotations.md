@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2d568a38f66605da63054d1797ce23653e6204d4
-ms.openlocfilehash: ff5d64bc00bc5fb3617160db852c7d08f8b3677b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/20/2017
-
+ms.openlocfilehash: f7eb2f3cba535eb64db5544c498289c9e895987a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 [メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)により自動で作成されます。 [PowerShell から作成する](#create-annotations-from-powershell)ことにより、任意のイベントにフラグを設定する注釈を作成することもできます。
@@ -107,4 +106,3 @@ VSTS リリース テンプレートごとに別個の API キーを取得する
 
 * [作業項目を作成する](app-insights-diagnostic-search.md#create-work-item)
 * [PowerShell でのオートメーション](app-insights-powershell.md)
-

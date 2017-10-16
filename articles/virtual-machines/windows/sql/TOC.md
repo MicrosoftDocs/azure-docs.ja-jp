@@ -16,8 +16,8 @@
 #### [自動 - テンプレート使用](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [手動 - 前提条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [手動 - チュートリアル](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load Balancer - ポータル](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Load Balancer - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [ロード バランサー - Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [ロード バランサー - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [複数リージョン](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### フェールオーバー クラスター インスタンス
 #### [構成](virtual-machines-windows-portal-sql-create-failover-cluster.md)
@@ -36,7 +36,7 @@
 ## [アプリケーション パターン](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 # リファレンス
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
 ## [SQL Server ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)

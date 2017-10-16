@@ -8,7 +8,7 @@
 
 # 作業開始
 ## [Azure Portal でサーバーを作成する](analysis-services-create-server.md)
-## [PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
+## [Azure PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
 ## [Visual Studio からモデルをデプロイする](analysis-services-deploy.md)
 ## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
 
@@ -16,6 +16,7 @@
 ## [サーバーの管理](analysis-services-manage.md)
 ## [データベース ユーザーの管理](analysis-services-database-users.md)
 ## [サーバー管理者の管理](analysis-services-server-admins.md)
+## [サーバー メトリックの監視](analysis-services-monitor.md)
 ## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ## [バックアップと復元](analysis-services-backup.md)
@@ -42,14 +43,14 @@
 ### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # リファレンス
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST ()](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # リソース
-## [GitHub の Analysis Services コード サンプル](https://github.com/Microsoft/Analysis-Services)
+## [サンプル](analysis-services-samples.md)
 ## [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

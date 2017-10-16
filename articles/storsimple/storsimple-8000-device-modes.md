@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: dd160ede1189b0de544c8cf5db3b13228d212419
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple デバイスのデバイス モードの変更
 
@@ -165,5 +163,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 ## <a name="next-steps"></a>次のステップ
 
 StorSimple デバイスに [通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md) する方法について説明します。
-
 

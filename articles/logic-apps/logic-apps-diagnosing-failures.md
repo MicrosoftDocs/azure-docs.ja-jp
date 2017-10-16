@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 25f4520bae3089ce9f11efcf6acd176255043e70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 814e6f93088cdd96b0a663d2a7494b5a11470d99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-logic-app-failures"></a>ロジック アプリの障害の診断
 ロジック アプリの機能でエラーや障害が発生した場合、障害の発生源を確認できる方法がいくつかあります。  
@@ -87,4 +85,3 @@ Azure ポータルには、各段階で各ロジック アプリを診断する�
 [2]: ./media/logic-apps-diagnosing-failures/runhistory.png
 [3]: ./media/logic-apps-diagnosing-failures/triggeroutputslink.png
 [4]: ./media/logic-apps-diagnosing-failures/actionoutputs.png
-

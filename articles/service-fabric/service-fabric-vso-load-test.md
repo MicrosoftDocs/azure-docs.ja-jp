@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e8e270ce865d4da3ee219958b308db2c1c89b11b
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-test-your-application-by-using-visual-studio-team-services"></a>Visual Studio Team Services を使用してアプリケーションのロード テストを実行する
 この記事では、Microsoft Visual Studio ロード テスト機能を使用して、アプリケーションのストレス テストを実行する方法について説明します。 この機能では、Azure Service Fabric のステートフル サービス バックエンドとステートレス サービス Web フロントエンドが使用されます。 この記事で使用するサンプル アプリケーションは、飛行機の位置特定シミュレーターです。 ユーザーが飛行機の ID、出発時刻、および目的地を指定すると、 アプリケーションのバックエンドによって要求が処理され、フロントエンドによって条件に一致する飛行機がマップに表示されます。
@@ -125,9 +125,3 @@ Visual Studio Team Services のロード テストで提供されている API �
 [7]: ./media/service-fabric-vso-load-test/RunTest.png
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

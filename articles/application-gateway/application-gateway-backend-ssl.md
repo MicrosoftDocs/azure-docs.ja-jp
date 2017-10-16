@@ -15,12 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL の概要
 
@@ -47,4 +46,3 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
 <!--Image references-->
 
 [1]: ./media/application-gateway-backend-ssl/scenario.png
-

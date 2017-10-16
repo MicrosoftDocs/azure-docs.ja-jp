@@ -3,7 +3,7 @@ title: "Runbook の入力パラメーター | Microsoft Docs"
 description: "Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 4d3dff2c-1f55-498d-9a0e-eee497e5bedb
@@ -14,19 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0f8308b73a70fc3758a53063bc69d16480df8f02
-
-
+ms.openlocfilehash: e5a2afdc0dbe6171b27c11400f460eac46147f37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
+
 Runbook の入力パラメーターを利用すれば、開始時にデータを渡すことができて Runbook の柔軟性が上がります。 パラメーターにより、Runbook アクションの対象を特定のシナリオや環境に設定できます。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオを紹介します。
 
 ## <a name="configure-input-parameters"></a>入力パラメーターを構成する
-入力パラメーターは PowerShell、PowerShell Workflow、グラフィカル Runbook で構成できます。 Runbook にはデータ型の異なる複数のパラメーターを指定することも、パラメーターをまったく指定しないこともできます。 入力パラメーターには必須と任意があります。任意のパラメーターには既定値を割り当てることができます。 Runbook の入力パラメーターには、利用可能ななんらかの方法で Runbook を起動するときに、値を割り当てることができます。 たとえば、ポータルや Web サービスから Runbook を起動することができます。 また、別の Runbook のインラインで呼び出される子 Runbook として Runbook を起動することもできます。
+
+入力パラメーターは PowerShell、PowerShell Workflow、Python、グラフィカル Runbook で構成できます。 Runbook にはデータ型の異なる複数のパラメーターを指定することも、パラメーターをまったく指定しないこともできます。 入力パラメーターには必須と任意があります。任意のパラメーターには既定値を割り当てることができます。 Runbook の入力パラメーターには、利用可能ななんらかの方法で Runbook を起動するときに、値を割り当てることができます。 たとえば、ポータルや Web サービスから Runbook を起動することができます。 また、別の Runbook のインラインで呼び出される子 Runbook として Runbook を起動することもできます。
 
 ## <a name="configure-input-parameters-in-powershell-and-powershell-workflow-runbooks"></a>PowerShell と PowerShell Workflow の Runbook で入力パラメーターを構成する
+
 Azure Automation の PowerShell Runbook と [PowerShell Workflow Runbook](automation-first-runbook-textual.md) では、次の属性で定義されている入力パラメーターを利用できます。  
 
 | **プロパティ** | **説明** |
@@ -40,7 +43,7 @@ Windows PowerShell では、検証、エイリアス、パラメーター セッ
 
 PowerShell Workflow Runbook のパラメーター定義には次の一般形式があります。複数のパラメーターはコンマで分けられます。
 
-   ```
+   ```powershell
      Param
      (
          [Parameter (Mandatory= $true/$false)]
@@ -73,6 +76,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
 
 
 ## <a name="configure-input-parameters-in-graphical-runbooks"></a>グラフィカル Runbook の入力パラメーターを構成する
+
 入力パラメーターで [グラフィカル Runbook を構成](automation-first-runbook-graphical.md) するために、仮想マシン (1 台の VM またはリソース グループ内の全 VM) の詳細を出力するグラフィカル Runbook を作成します。 Runbook の構成は、以下で説明するように、2 つの主要なアクティビティから成ります。
 
 [**Azure 実行アカウントを使用した Runbook の認証**](automation-sec-configure-azure-runas-account.md)で、Azure 認証します。
@@ -112,14 +116,26 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
      * カスタム既定値: \<仮想マシンを含むリソース グループの名前>
 5. パラメーターを追加したら、 **[OK]**をクリックします。  パラメーターが **[入力と出力]**ブレードに表示されます。 **[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
+## <a name="configure-input-parameters-in-python-runbooks"></a>Python Runbook の入力パラメーターを構成する
+
+PowerShell、PowerShell Workflow、およびグラフィカル Runbook とは異なり、Python Runbook は名前付きパラメーターを取りません。
+すべての入力パラメーターは、引数の値の配列として解析されます。
+`sys` モジュールを Python スクリプトにインポートし、`sys.argv` 配列を使用することで、配列にアクセスします。
+重要な点は、配列の最初の要素 `sys.argv[0]` がスクリプトの名前であるため、実際の最初の入力パラメーターは `sys.argv[1]` であるということです。
+
+Python Runbook で入力パラメーターを使用する方法の例は、「[My first Python runbook in Azure Automation (初めての Azure Automation の Python Runbook)](automation-first-runbook-textual-python2.md)」をご覧ください。
+
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>Runbook の入力パラメーターに値を割り当てる
+
 次のシナリオでは、Runbook の入力パラメーターに値を割り当てることができます。
 
 ### <a name="start-a-runbook-and-assign-parameters"></a>Runbook を起動し、パラメーターを割り当てる
+
 Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK など、Runbook はさまざまな方法で起動できます。 以下では、Runbook を起動し、パラメーターを割り当てるためのさまざまな方法について説明します。
 
 #### <a name="start-a-published-runbook-by-using-the-azure-portal-and-assign-parameters"></a>Azure ポータルを使用して公開済み Runbook を起動し、パラメーターを割り当てる
-[Runbook を起動する](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を構成できます。
+
+[Runbook を起動する](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を入力できます。
 
 ![Start using the portal](media/automation-runbook-input-parameters/automation-04-startrunbookusingportal.png)
 
@@ -133,6 +149,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 > 
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる
+
 * **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx)を使用して、リソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
@@ -158,6 +175,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 > 
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>SDK で Runbook を起動し、パラメーターを割り当てる
+
 * **Azure Resource Manager メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
   
   ```
@@ -267,10 +285,4 @@ Webhook を利用して Runbook を実行すると、定義した入力パラメ
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 * テキスト Runbook を編集する方法については、「 [テキスト Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
 * グラフィカル Runbook を編集する方法については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

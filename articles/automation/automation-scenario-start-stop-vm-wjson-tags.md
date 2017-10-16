@@ -3,7 +3,7 @@ title: "JSON 形式のタグを使用した Azure VM の状態のスケジュー
 description: "この記事では、タグに関する JSON 文字列を使って VM の起動とシャットダウンのスケジュールを自動化する方法を示します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6afed5d2-e939-4749-8b2c-9312b4c16fb2
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: cae4020741003be54b133efa121b3c09b859a176
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure Automation シナリオ: JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する
 お客様は多くの場合、サブスクリプション コストを削減し、ビジネス要件や技術要件に対応するために、仮想マシンの起動とシャットダウンのスケジュールを設定することを望みます。
@@ -242,4 +241,3 @@ Azure Portal で Test-ResourceSchedule Runbook ジョブの詳細を表示する
 * PowerShell スクリプトのサポート機能の詳細については、 [Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログ記事を参照してください。
 * Runbook のログ記録と出力の詳細については、「 [Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
 * Azure 実行アカウントの詳細と、それを使用して Runbook を認証する方法については、「[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md)」を参照してください。
-

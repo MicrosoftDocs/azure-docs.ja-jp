@@ -11,12 +11,11 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: a3f81d16be7b01d9162c02f07a42f25ae8edac26
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: 0856b86ce3d5510dfaa395d17705a2c7d5675cde
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
     <h1>Azure 上の OpenShift</h1>

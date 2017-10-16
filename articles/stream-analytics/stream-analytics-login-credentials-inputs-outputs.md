@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
 ## <a name="abstract"></a>要約
@@ -89,7 +88,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
    ![graphic17][graphic17]
 5. ユーザー名、パスワードを入力し、[ログオン] をクリックします。  
    ![graphic18][graphic18]
-6. [新しいクエリ] をクリックします。  
+6. 新しいクエリをクリックします。  
    ![graphic19][graphic19]
 7. 次のクエリを入力し、<login_name> をユーザー名、<enterStrongPasswordHere> を自分の新しいパスワードに置き換えます。  
    `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
@@ -101,7 +100,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
    ![graphic22][graphic22]
 11. ユーザー名、パスワードを入力し、[ログオン] をクリックします。  
    ![graphic23][graphic23]
-12. [新しいクエリ] をクリックします。  
+12. 新しいクエリをクリックします。  
    ![graphic24][graphic24]
 13. 次のクエリを入力し、<user_name> を、このデータベースのコンテキストでこのログインを識別するために使用する名前 (たとえば、<login_name> に指定したものと同じ値を入力できます) に置き換え、<login_name> を新しいユーザー名に置き換えます。  
    `CREATE USER <user_name> FROM LOGIN <login_name>`
@@ -246,5 +245,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
 [graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
-
 

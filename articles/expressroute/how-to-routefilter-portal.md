@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2017
+ms.date: 09/11/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: f17bf3e475a33cfc617e8a026e9606b3792101f3
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: c813dbc0e703c20c869a8f6fc2bb70c2b0e7a807
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="configure-route-filters-for-microsoft-peering"></a>Microsoft ピアリングにルート フィルターを構成する
@@ -113,6 +113,10 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 [回線の追加] ボタンを選択し、ドロップダウン リストから、ExpressRoute 回線を選択することで、ルート フィルターを回線にアタッチできます。
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddCktToRouteFilter.png)
+
+接続プロバイダーによって ExpressRoute 回線のピアリングが構成される場合は、[回線の追加] ボタンを選択する前に ExpressRoute 回線ブレードから回線を更新します。
+
+![ルート フィルターを作成する](.\media\how-to-routefilter-portal\RefreshExpressRouteCircuit.png)
 
 ## <a name="getproperties"></a>ルート フィルターのプロパティを取得するには
 

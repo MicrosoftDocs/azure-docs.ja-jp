@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 891640526b25c030f7e01d79e981aad517dfafb4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
-Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions により開発の生産性が大幅に向上するだけでなく、C#、F#、Node.js、Python、PHP などの開発言語も使用できるようになります。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure でサーバー不要のアプリケーションを作成できます。
+Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Python、PHP などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure でサーバー不要のアプリケーションを作成できます。
 
 このトピックでは、Azure Functions の概要について説明します。 Azure Functions の利用をすぐに開始する場合は、「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。 Azure Functions の詳細な技術情報をお探しの場合は、 [開発者向けリファレンス](functions-reference.md)を参照してください。
 
@@ -37,7 +37,7 @@ Azure Functions の主要な機能を次に示します。
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  
 * **簡単な手順で統合** - Azure サービスと、サービスとしてのソフトウェア (SaaS) のプランを簡単に活用できます。 例については、「[統合](#integrations)」セクションをご覧ください。  
-* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的な統合を設定し、GitHub や Visual Studio Team Services などの [サポート対象開発ツール](../app-service-web/web-sites-deploy.md#deploy-using-an-ide)を使ってコードをデプロイすることもできます。  
+* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的インテグレーションを設定し、[GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md) や [Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) などの [サポート対象開発ツール](../app-service/app-service-deploy-local-git.md)を使ってコードをデプロイすることもできます。  
 * **オープン ソース** - Azure Functions ランタイムはオープン ソースであり、 [GitHub](https://github.com/azure/azure-webjobs-sdk-script)で提供されています。  
 
 ## <a name="what-can-i-do-with-functions"></a>Functions でできること
@@ -45,15 +45,15 @@ Azure Functions は、データの処理、システムの統合、モノのイ�
 
 Functions には、次のような主要なシナリオを開始するためのテンプレートが用意されています。
 
-* **BlobTrigger** - Azure Storage BLOB がコンテナーに追加されたときに、それを処理します。 この関数は、画像のサイズ変更に利用できます。
-* **EventHubTrigger** - Azure イベント ハブに送信されたイベントに応答します。 アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット (IoT) のシナリオで、特に役立ちます。
-* **汎用 webhook** - webhook をサポートする任意のサービスからの webhook HTTP 要求を処理します。
-* **GitHub webhook** - GitHub リポジトリで発生するイベントに応答します。 例については、「 [webhook または API Azure Function を作成する](functions-create-a-web-hook-or-api-function.md)」をご覧ください。
-* **HTTPTrigger** - HTTP 要求を使用して、コードの実行をトリガーします。
-* **QueueTrigger** - Azure Storage キューにメッセージが配信されたときに応答します。 例については、「[Azure サービスにバインドする Azure Function を作成する](functions-create-an-azure-connected-function.md)」をご覧ください。
-* **ServiceBusQueueTrigger** - メッセージ キューをリッスンし、コードを他の Azure サービスまたはオンプレミスのサービスに接続します。 
-* **ServiceBusTopicTrigger** - トピックをサブスクライブすることで、コードを他の Azure サービスまたはオンプレミスのサービスに接続します。 
-* **TimerTrigger** - 事前定義されたスケジュールに従ってクリーンアップなどのバッチ タスクを実行します。 例については、「 [イベント処理用の Azure の機能の作成](functions-create-an-event-processing-function.md)」をご覧ください。
+* **HTTPTrigger** - HTTP 要求を使用して、コードの実行をトリガーします。 例については、[最初の関数の作成](functions-create-first-azure-function.md)に関するページをご覧ください。
+* **TimerTrigger** - 事前定義されたスケジュールに従ってクリーンアップなどのバッチ タスクを実行します。 例については、[タイマーによってトリガーされる関数の作成](functions-create-scheduled-function.md)に関するページをご覧ください。
+* **GitHub webhook** - GitHub リポジトリで発生するイベントに応答します。 例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-github-webhook-triggered-function.md)」を参照してください。
+* **汎用 webhook** - webhook をサポートする任意のサービスからの webhook HTTP 要求を処理します。 例については、「[ジェネリック webhook でトリガーされる関数の作成](functions-create-generic-webhook-triggered-function.md)」を参照してください。
+* **BlobTrigger** - Azure Storage BLOB がコンテナーに追加されたときに、それを処理します。 この関数は、画像のサイズ変更に利用できます。 詳細については、[Blob Storage のバインディング](functions-bindings-storage-blob.md)に関するページをご覧ください。
+* **QueueTrigger** - Azure Storage キューにメッセージが配信されたときに応答します。 例については、[他の Azure サービスに接続する関数の作成](functions-create-an-azure-connected-function.md)に関するページをご覧ください。
+* **EventHubTrigger** - Azure イベント ハブに送信されたイベントに応答します。 アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット (IoT) のシナリオで、特に役立ちます。 詳細については、[Event Hubs のバインディング](functions-bindings-event-hubs.md)に関するページをご覧ください。
+* **ServiceBusQueueTrigger** - メッセージ キューをリッスンし、コードを他の Azure サービスまたはオンプレミスのサービスに接続します。 詳細については、[Service Bus のバインディング](functions-bindings-service-bus.md)に関するページをご覧ください。
+* **ServiceBusTopicTrigger** - トピックをサブスクライブすることで、コードを他の Azure サービスまたはオンプレミスのサービスに接続します。 詳細については、[Service Bus のバインディング](functions-bindings-service-bus.md)に関するページをご覧ください。
 
 Azure Functions は、コードの実行を開始する機能である "*トリガー*" と、データの入出力用コードを単純化する機能である "*バインド*" をサポートしています。 Azure Functions のトリガー機能とバインド機能について詳しくは、「 [Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」をご覧ください。
 
@@ -71,12 +71,12 @@ Azure Functions は、さまざまな Azure サービスや サード パーテ�
 * Twilio (SMS メッセージ)
 
 ## <a name="pricing"></a>Azure Functions の価格
-Azure Functions には 2 種類の料金プランがあり、ニーズに合わせて選択できます。 
+Azure Functions には、2 種類の価格プランがあります。 ニーズに最適なものを以下から選択します。 
 
 * **従量課金プラン** - 関数が実行されるときに、必要なすべてのコンピューティング リソースが Azure から適用されます。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。 
 * **App Service プラン** - 関数を Web アプリ、モバイル アプリ、API アプリと同様に実行できます。 既に App Service を他のアプリケーションに使用している場合、追加コストなしで、同じプランで関数を実行できます。 
 
-価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。 関数のスケーリングの詳細については、「 [Azure Functions のスケーリング方法](functions-scale.md)」をご覧ください。
+ホスティング プランの詳細については、[Azure Functions のホスティング プランの比較](functions-scale.md)に関するページをご覧ください。 価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)  
@@ -87,7 +87,7 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
   関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/app-service-value-prop-what-is.md)  
-  Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。 
+* [Azure App Service とは](../app-service/app-service-web-overview.md)  
+  Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。 
 
 

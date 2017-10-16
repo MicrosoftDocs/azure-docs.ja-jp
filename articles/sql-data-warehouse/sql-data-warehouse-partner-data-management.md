@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: partners
 ms.date: 12/27/2016
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 70bc2363172199455785e90753560cc2281432b1
-ms.openlocfilehash: eeb858514af80d1e6074b7c86ead5955f0d22ad2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: 2fc8d1876e8a26252e83928857f5e7e9bf6ad47f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse データ管理パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -100,4 +98,3 @@ ms.lasthandoff: 01/05/2017
 [sql_sentry_twitter]:https://twitter.com/SQLSentry
 
 <!--Video links-->
-

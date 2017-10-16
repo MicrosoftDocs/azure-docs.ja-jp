@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 509a77a5059a39f964a1d89099998a07fd2cbfd5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 0128b333f04847ab646dcb0759fcef5f7e86ffd9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>スケーラブルなクラウド データベースの構築
 Azure SQL Database 用のスケーラブルなツールと機能を使用して、データベースのスケール アウトを簡単に実現できます。 具体的には、 **Elastic Database クライアント ライブラリ** を使用して、スケールアウトされたデータベースを作成および管理できます。 この機能により、数百から数千もの Azure SQL データベースを使用して、シャード化されたアプリケーションを簡単に開発できます。 [エラスティック ジョブ](sql-database-elastic-jobs-powershell.md) を使用すると、こうしたデータベースを容易に操作できます。
@@ -74,5 +72,4 @@ Azure SQL Database 用のスケーラブルなツールと機能を使用して�
 <!--Anchors-->
 <!--Image references-->
 [1]:./media/sql-database-elastic-database-client-library/glossary.png
-
 

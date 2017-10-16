@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
+ms.openlocfilehash: 7d683f950e8847a18f38158a8f8727b1274fc711
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: a50a265feff8c0aec28825eb0bc4e33585ea5a02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。 コード サンプルでは [Web ジョブ SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。 Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。 コード サンプルでは [Web ジョブ SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) Version 1.x を使用しています。 Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>BLOB が作成または更新されたときに、関数を開始する方法
 このセクションでは、 **BlobTrigger** 属性を使用する方法を示しています。
 
- **注**: Web ジョブ SDK は、ログ ファイルをスキャンして新しい BLOB や変更された BLOB を監視します。 このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。  アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、[QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することが推奨されます。
+ **注**: Web ジョブ SDK は、ログ ファイルをスキャンして新しい BLOB や変更された BLOB を監視します。 このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。  アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、**QueueTrigger** 属性を使用することが推奨されます。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>拡張子を持つ BLOB 名の 1 つのプレース ホルダー
 次のコード サンプルは、*入力*コンテナーに表示される テキスト BLOB を *出力*コンテナーにコピーします。
@@ -142,7 +141,7 @@ Azure ストレージ アカウントを直接操作する場合は、メソッ�
 ## <a name="how-to-handle-poison-blobs"></a>有害な BLOB の処理方法
 **BlobTrigger** 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。 失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。 既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。 5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison*という名前のキューにメッセージを追加します。
 
-再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
+再試行回数の最大値の設定は変更可能です。 同じ **MaxDequeueCount** 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
@@ -204,7 +203,7 @@ BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が�
 BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
 
 ## <a name="related-topics-covered-by-the-queues-article"></a>キューの記事で扱う関連トピック
-キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
+キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください
 
 その記事では、以下のような関連トピックが紹介されています。
 
@@ -220,5 +219,4 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
-
 

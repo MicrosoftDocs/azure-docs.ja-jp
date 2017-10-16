@@ -31,14 +31,14 @@
 
    ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. IP リソースを右クリックし、[プロパティ] をクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
+    b. IP リソースを右クリックし、プロパティをクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
 
     c. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
-    <!-----------------------Server 2016 ではこのオプションが表示されない
-    1. このアドレスに対して NetBIOS を無効にし、 **[OK]**をクリックします。 ソリューションが複数の Azure VNet にまたがる場合は、IP リソースごとにこの手順を繰り返します。 
+    <!-----------------------I don't see this option on server 2016
+    1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
 4. <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定します。
@@ -61,7 +61,7 @@
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. **[依存関係]** タブをクリックします。 IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
+    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 

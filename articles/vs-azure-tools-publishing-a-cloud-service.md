@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/14/2017
 ms.author: kraigb
+ms.openlocfilehash: e617d600dbc8287eea737fc4969833e873365288
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 23cea0486a769d4f446f5114016d5accbe8113cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publishing-a-cloud-service-using-the-azure-tools"></a>Azure Tools を使用したクラウド サービスの発行
 Azure Tools for Microsoft Visual Studio を使用することで、Azure アプリケーションを Visual Studio から直接発行できます。 Visual Studio では、クラウド サービスのステージング環境または運用環境への統合された発行をサポートしています。
@@ -148,5 +147,4 @@ Web Deploy を使用して、Web ロールを更新するための要件を次�
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio から Azure への発行の詳細については、「 [Azure アプリケーションの発行ウィザード](vs-azure-tools-publish-azure-application-wizard.md)」をご覧ください。
-
 

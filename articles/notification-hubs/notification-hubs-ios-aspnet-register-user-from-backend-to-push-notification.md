@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 > [!div class="op_single_selector"]
@@ -111,7 +111,7 @@ ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
    > 
 8. PushToUserAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
    
-   * (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }
+   * (void) アプリケーション:(UIApplication *) アプリケーション didReceiveRemoteNotification:(NSDictionary *) ユーザー情報 {NSLog (@"% @"、ユーザー情報)。  UIAlertView * アラート = [UIAlertView アロケーション] initWithTitle:@"Notification"メッセージ: [ユーザー情報 objectForKey:@"inAppMessage"] デリゲート: nil cancelButtonTitle: @"OK"otherButtonTitles:nil、nil] です。  [アラートの表示] です。}
    
    アプリケーションが実行中に通知を受信すると、このメソッドは UI にアラートを表示します。
 9. PushToUserViewController.m ファイルを開き、次の実装でキーボードを返します。
@@ -220,9 +220,3 @@ ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
 [Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users-aspnet
 
 [Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

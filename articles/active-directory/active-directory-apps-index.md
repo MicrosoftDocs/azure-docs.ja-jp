@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: asteen
+ms.openlocfilehash: e3cc6bddd67b70f603d5c0d26af6563ae207e3db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ea2dc2762b556da837fa1d6674e01aba32face92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -210,7 +209,6 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)
 
-[Azure Active Directory ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)
+[Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
-

@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: cf25772bd9d92b59401aa5da76e6bbd5fa5ee3e5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
 Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
@@ -95,5 +94,4 @@ SAML 2.0 をサポートするすべてのアプリケーションは、 [この
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 > 
 > 
-
 

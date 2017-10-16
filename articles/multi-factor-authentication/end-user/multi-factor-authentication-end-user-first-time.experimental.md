@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 3499a7b23a7b4bdd44b5d9e8d7e750681efc3825
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -107,5 +106,4 @@ IT 部門が 2 段階認証の使用を開始するように要求する場合�
 * 推奨されるオプションを変更し、[2 段階認証設定を管理します](multi-factor-authentication-end-user-manage-settings.md)
 * 2 段階認証をサポートしていないネイティブ デバイス アプリに[アプリ パスワード](multi-factor-authentication-end-user-app-passwords.md)を設定します。
 * 携帯電話サービスを利用していない場合でも、迅速で安全な認証のために [Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)をご確認ください。
-
 

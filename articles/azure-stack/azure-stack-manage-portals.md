@@ -1,6 +1,6 @@
 ---
-title: Using the administrator and user portals in Azure Stack | Microsoft Docs
-description: Learn the differences between the administrator and user portals in Azure Stack.
+title: "Azure Stack での管理者ポータルの使用 | Microsoft Docs"
+description: "Azure Stack オペレーターが管理者ポータルを使用する方法を学習します。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,66 +12,73 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: twooley
+ms.openlocfilehash: 3a1be7a08fab8ad0253f26e6a0683617bff4b7c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 066de8278d1ef4406cde837da4c7c65304854383
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-the-administrator-and-user-portals-in-azure-stack"></a>Using the administrator and user portals in Azure Stack
+# <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
-There are two portals in Azure Stack; the administrator portal and the user portal (also referred to as the *tenant* portal). The portals are backed by separate instances of Azure Resource Manager.
+*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
 
-The following table shows how to connect to the portals and to Resource Manager endpoints in an Azure Stack Development Kit environment.
+Azure Stack には、管理者ポータルとユーザー ポータル (*テナント* ポータルとも呼ばれることもあります) の 2 つのポータルがあります。 Azure Stack オペレーターは、管理者ポータルを使用して Azure Stack の日常的な管理と操作を行うことができます。 
 
-|  Portal | Portal URL | Resource Manager endpoint URL |   
-| -------- | ------------- | ------- |  
-| Administrator | https://adminportal.local.azurestack.external  | https://adminmanagement.local.azurestack.external  |  
-| User | https://portal.local.azurestack.external | https://management.local.azurestack.external  |
+## <a name="access-the-administrator-portal"></a>管理者ポータルへのアクセス
+
+開発キット環境の場合は、最初に、リモート デスクトップ接続または仮想プライベート ネットワーク (VPN) を使用して[開発キットのホストに接続](azure-stack-connect-azure-stack.md)できることを確認する必要があります。
+
+管理者ポータルにアクセスするには、ポータルの URL を参照し、Azure Stack オペレーターの資格情報を使用してサインインします。 統合システムの場合は、ポータルの URL は Azure Stack のデプロイのリージョン名と外部 FQDN (完全修飾ドメイン名) によって異なります。
+
+| 環境 | 管理者ポータルの URL |   
+| -- | -- | 
+| 開発キット| https://adminportal.local.azurestack.external  |
+| 統合システム | https://adminportal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
-## <a name="the-administrator-portal"></a>The administrator portal
+ ![管理者ポータル](media/azure-stack-manage-portals/image1.png)
 
-The administrator portal enables a cloud operator to perform administrative and operational tasks. A cloud operator can do things such as:
-* monitor health and alerts
-* manage capacity
-* populate the marketplace
-* create plans and offers
-* create subscriptions for tenants
+管理者ポータルでは、次のような操作を行えます。
 
-A cloud operator can also create resources such as virtual machines, virtual networks, and storage accounts.
+* インフラストラクチャ (システム正常性、更新プログラム、容量など) の管理
+* マーケットプレースの設定
+* プランの作成
+* ユーザーのサブスクリプションの作成
 
- ![The administrator portal](media/azure-stack-manage-portals/image1.png)
-
- ## <a name="the-user-portal"></a>The user portal
-
- The user portal does not provide access to any of the administrative or operational capabilities of the administrator portal. In the user portal, a user can subscribe to public offers, and use the services that are made available through those offers.
-
-  ![The user portal](media/azure-stack-manage-portals/image2.png)
+**[Quickstart tutorial]\(クイック スタート チュートリアル\)**タイルに、最も一般的なタスクのオンライン ドキュメントへのリンクがあります。
  
- ## <a name="subscription-behavior"></a>Subscription behavior
- 
- Make sure that you understand the following differences between subscription behavior in the two portals.
+管理ポータルにはオペレーターが仮想マシン、仮想ネットワーク、ストレージ アカウントなどのリソースを作成するための機能がありますが、リソースを作成してテストするためには、[ユーザー ポータルにサインイン](user/azure-stack-use-portal.md)する必要があります。 (管理ポータルの [Quickstart tutorial]\(クイック スタート チュートリアル\) タイルにある **[仮想マシンの作成]** リンクから仮想マシンを作成できますが、この手順は初期デプロイ後に Azure Stack を検証するときにのみ使用します。)
 
- Administrator portal:
-* There is only one subscription that is available in the administrator portal. This subscription is the *Default Provider Subscription*. You can't add any other subscriptions for use in the administrator portal.
-* As a cloud operator, you can add subscriptions for your users (including yourself) from the administrator portal. Users (including yourself) can access and use these subscriptions from the user portal.
+## <a name="subscription-behavior"></a>サブスクリプションの操作
+ 
+管理者ポータルで利用できるサブスクリプションは 1 つだけです。 そのサブスクリプションは*既定プロバイダー サブスクリプション*です。 管理者ポータルで使用するために他のサブスクリプションを追加することはできません。
+
+Azure Stack オペレーターは、管理者ポータルからユーザー (自分自身を含む) のサブスクリプションを追加できます。 ユーザー (自分自身を含む) は、ユーザー ポータルからこれらのサブスクリプションにアクセスして使用できます。 ユーザー ポータルでは、管理者ポータルの管理機能または運用機能のいずれにもアクセスできません。
+
+管理者ポータルとユーザー ポータルは、Azure Resource Manager の個別のインスタンスでサポートされます。 Resource Manager が別々になっているため、ポータルをまたいでサブスクリプションを使用することはできません。 たとえば、Azure Stack オペレーターとしてユーザー ポータルにサインインした場合は、既定プロバイダー サブスクリプションにアクセスすることはできません。 そのため、どの管理機能にもアクセスできません。 パブリック プランから自分のサブスクリプションを作成することはできますが、テナント ユーザーと見なされます。
 
   >[!NOTE]
-  Because of the Azure Resource Manager separation, subscriptions do not cross portals. For example, if you as a cloud operator signs in to the user portal, you can't access the Default Provider Subscription. Therefore, you don't have access to any administrative functions. You can create subscriptions for yourself from public offers, but you are considered a tenant user.
+  開発キット環境では、ユーザーが Azure Stack オペレーターと同じテナント ディレクトリに属している場合、ユーザーは管理者ポータルへのサインインをブロックされません。 ただし、どの管理機能にもアクセスできません。 また、管理者ポータルからは、サブスクリプションを追加することも、ユーザー ポータルで利用できるプランにアクセスすることもできません。
 
-User portal:
-* In the user portal, an account can have multiple subscriptions.
+## <a name="administrator-portal-tips"></a>管理者ポータルに関するヒント
 
-  >[!NOTE]
-  In the development kit environment, if a tenant user belongs to the same directory as the cloud operator, they are not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions. Also, they can't add subscriptions or access offers that are made available to them in the user portal.
+### <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
 
-## <a name="next-steps"></a>Next steps
+ダッシュボードには、既定のタイルのセットが含まれています。 **[ダッシュボードの編集]** をクリックして既定のダッシュボードを変更したり、**[新しいダッシュボード]** をクリックしてカスタムのダッシュボードを追加したりできます。 ダッシュボードにはタイルを簡単に追加できます。 たとえば、**[新規]** をクリックし、**[プラン]** を右クリックし、**[ダッシュボードにピン留めする]** をクリックします。
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+### <a name="quick-access-to-online-documentation"></a>オンライン ドキュメントへのクイック アクセス
 
-[Region management in Azure Stack](azure-stack-region-management.md)
+Azure Stack オペレーター向けドキュメントにアクセスするには、管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[ヘルプとサポート]** をクリックします。
 
+### <a name="quick-access-to-help-and-support"></a>ヘルプとサポートへのクイック アクセス
+
+管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[新しいサポート要求]** をクリックすると、次のいずれかが行われます。
+
+- 統合システムを使用している場合は、Microsoft カスタマー サポート サービス (CSS) のサポート チケットを直接開くことができるサイトが開きます。 Microsoft サポートと OEM (Original Equipment Manufacturer) ハードウェア ベンダーのサポートのどちらに連絡するかについては、「[Azure Stack の管理の基本](azure-stack-manage-basics.md)」の「サポートが受けられる場所」セクションをご覧ください。
+- 開発キットを使用している場合は、Azure Stack フォーラムのサイトが直接開きます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Stack でのリージョンの管理](azure-stack-region-management.md)

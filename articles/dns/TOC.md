@@ -4,31 +4,34 @@
 ## [DNS ゾーンとレコード](dns-zones-records.md)
 ## [Azure DNS による DNS 委任](dns-domain-delegation.md)
 ## [DNS に関する FAQ](dns-faq.md)
+## [プライベート DNS ゾーンの使用](private-dns-overview.md)
 
 # 作業の開始
 
 ## DNS ゾーンとレコードの作成
-### [ポータル](dns-getstarted-portal.md)
-### [PowerShell](dns-getstarted-powershell.md)
+### [Azure ポータル](dns-getstarted-portal.md)
+### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
-### [Azure CLI 2.0](dns-getstarted-cli.md)
+### [Azure CLI](dns-getstarted-cli.md)
 
+## プライベート DNS ゾーンとレコードの作成
+### [PowerShell](private-dns-getstarted-powershell.md)
 ## [Azure DNS にドメインを委任する](dns-delegate-domain-azure-dns.md)
 ## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
 
 # 方法
 
 ## DNS ゾーンの管理
-### [ポータル](dns-operations-dnszones-portal.md)
-### [PowerShell](dns-operations-dnszones.md)
+### [Azure ポータル](dns-operations-dnszones-portal.md)
+### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## DNS レコードの管理
-### [ポータル](dns-operations-recordsets-portal.md)
-### [PowerShell](dns-operations-recordsets.md)
+### [Azure ポータル](dns-operations-recordsets-portal.md)
+### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+### [Azure CLI](dns-operations-recordsets-cli.md)
 
 ## 逆引き DNS の管理
 ### [概要](dns-reverse-dns-overview.md)
@@ -46,7 +49,7 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
-## [PowerShell](/powershell/module/azurerm.dns)
+## [Azure PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
@@ -61,7 +64,7 @@
 ## [仮想マシン](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Web アプリ](/azure/app-service-web/)
+## [Web アプリ](/azure/app-service/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)

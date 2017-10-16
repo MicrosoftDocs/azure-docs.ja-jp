@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API の概要
 
@@ -44,5 +43,4 @@ Azure Active Directory は多様なレポートを提供しています。 こ�
 
 ## <a name="next-steps"></a>次のステップ
 提供されているすべての Azure AD Graph API エンドポイントを確認するには、次のリンクを使用してください。[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta)
-
 

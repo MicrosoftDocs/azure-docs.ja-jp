@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 4442d0038a0604d3297871907c1d05d8d3916dcf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 476e103c7101621e116c5155241f56f1cb9036df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -62,7 +61,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
     | **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
 
-2. ページの下部にある **[Create]**」を参照してください。 選択した言語で、毎分実行する関数が作成されます。
+2. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。
 
 3. ログに書き込まれたトレース情報を表示して、実行を確認します。
 

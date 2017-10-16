@@ -1,6 +1,6 @@
 ---
-title: Register Azure Stack | Microsoft Docs
-description: Register Azure Stack with your Azure subscription.
+title: "Azure Stack の登録 | Microsoft Docs"
+description: "Azure サブスクリプションを使用して Azure Stack を登録します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,66 +12,68 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: f71ec571fee8e59ea9061cd619914b81a5bf701a
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 13ac0afb9ebfe568f1d8b1db2fedfd28cb05c3e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/27/2017
 
 ---
-# <a name="register-azure-stack-with-your-azure-subscription"></a>Register Azure Stack with your Azure Subscription
+# <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
-For Azure Active Directory deployments, you can register Azure Stack with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+Azure Active Directory デプロイの場合は、[Azure Stack](azure-stack-poc.md) を Azure に登録して、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データ レポートを設定したりできます。 
 
 > [!NOTE]
->Registration is recommended because it enables you to test important Azure Stack functionality, like marketplace syndication and usage reporting. After you register Azure Stack, usage is reported to Azure commerce. You can see it under the subscription you used for registration. Azure Stack Development Kit users will not be charged for any usage they report.
+>登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 Azure Stack Development Kit のユーザーは、レポートする使用状況に対して課金されることはありません。
 >
 
 
-## <a name="get-azure-subscription"></a>Get Azure subscription
+## <a name="get-azure-subscription"></a>Azure サブスクリプションの取得
 
-Before registering Azure Stack with Azure, you must have:
+Azure を使用して Azure Stack を登録する前に、以下のものが必要です。
 
-- The subscription ID for an Azure subscription. To get the ID, sign in to Azure, click **More services** > **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the **Subscription ID**. China, Germany, and US government cloud subscriptions are not currently supported.
-- The username and password for an account that is an owner for the subscription (MSA/2FA accounts are supported)
-- The Azure Active Directory for the Azure subscription. You can find this directory in Azure by hovering over your avatar at the top right corner of the Azure portal. 
-- Registered the Azure Stack resource provider (see the **Register Azure Stack Resource Provider** section below for details)
+- Azure サブスクリプションのサブスクリプション ID。 ID を取得する場合は、Azure にサインインし、**[More services]** (その他のサービス) > **[Subscriptions]** (サブスクリプション) をクリックして、使用するサブスクリプションをクリックすると、**[Essentials]** (Essentials) の下に **[Subscription ID]** (サブスクリプション ID) が表示されます。 中国、ドイツ、および米国政府機関向けのクラウド サブスクリプションは、現在サポートされていません。
+- サブスクリプションの所有者であるアカウントのユーザー名とパスワード (MSA/2FA アカウントがサポートされます)
+- Azure サブスクリプションの Azure Active Directory。 Azure でこのディレクトリを検索するには、Azure Portal の右上隅にあるアバターにポインターを合わせます。 
+- 登録済みの Azure Stack リソース プロバイダー (詳細については、下の「**Azure Stack リソース プロバイダーの登録**」を参照してください)
 
-If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.
+これらの要件を満たす Azure サブスクリプションがない場合は、[ここで無料の Azure アカウントを作成](https://azure.microsoft.com/en-us/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。
 
 
 
-## <a name="register-azure-stack-resource-provider-in-azure"></a>Register Azure Stack resource provider in Azure
+## <a name="register-azure-stack-resource-provider-in-azure"></a>Azure での Azure Stack リソース プロバイダーの登録
 > [!NOTE] 
-> This step only needs to be completed once in an Azure Stack environment.
+> この手順は、Azure Stack 環境で 1 回だけ実行する必要があります。
 >
 
-1. Start Powershell ISE as an administrator.
-2. Log in to the Azure account that is an owner of the Azure subscription with -EnvironmentName parameter set to "AzureCloud".
-3. Register the Azure resource provider "Microsoft.AzureStack".
+1. PowerShell ISE を管理者として起動します。
+2. -EnvironmentName パラメーターを「AzureCloud」に設定して、Azure サブスクリプションの所有者である Azure アカウントにログインします。
+3. Azure リソース プロバイダー「Microsoft.AzureStack」を登録します。
 
-Example: 
+例: 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
 ```
 
 
-## <a name="register-azure-stack-with-azure"></a>Register Azure Stack with Azure
+## <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
 > [!NOTE]
->All these steps must be completed on the host computer.
+>これらの手順はすべて、ホスト コンピューターで完了する必要があります。
 >
 
-1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). 
-2. Copy the [RegisterWithAzure.ps1 script](https://go.microsoft.com/fwlink/?linkid=842959) to a folder (such as C:\Temp).
-3. Start PowerShell ISE as an administrator.    
-4. Run the RegisterWithAzure.ps1 script, replacing the following placeholders:
-    - *YourAccountName* is the owner of the Azure subscription
-    - *YourID* is the Azure subscription ID that you want to use to register Azure Stack
-    - *YourDirectory* is the name of your Azure Active Directory tenant that your Azure subscription is a part of.
+1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。 
+2. [RegisterWithAzure.ps1 スクリプト](https://go.microsoft.com/fwlink/?linkid=842959)をフォルダー (C:\Temp など) にコピーします。
+3. PowerShell ISE を管理者として起動します。    
+4. RegisterWithAzure.ps1 スクリプトを実行し、次のプレースホルダーを置き換えます。
+    - *YourAccountName* は、Azure サブスクリプションの所有者です。
+    - *YourID* は、Azure Stack の登録に使用する Azure サブスクリプション ID です。
+    - *YourDirectory* は、Azure サブスクリプションがその一部である Azure Active Directory テナントの名前です。
 
     ```powershell
     RegisterWithAzure.ps1 -azureSubscriptionId YourID -azureDirectoryTenantName YourDirectory -azureAccountId YourAccountName
@@ -85,17 +87,17 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
     -azureAccountId serviceadmin@contoso.onmicrosoft.com
     ```
     
-5. At the two prompts, press Enter.
-6. In the pop-up login window, enter your Azure subscription credentials.
+5. 2 つのプロンプトで、Enter キーを押します。
+6. ログインのポップアップ ウィンドウで、Azure サブスクリプションの資格情報を入力します。
 
-## <a name="verify-the-registration"></a>Verify the registration
+## <a name="verify-the-registration"></a>登録の確認
 
-1. Sign in to the administrator portal (https://adminportal.local.azurestack.external).
-2. Click **More Services** > **Marketplace Management** > **Add from Azure**.
-3. If you see a list of items available from Azure (such as WordPress), your activation was successful.
+1. 管理者ポータル (https://adminportal.local.azurestack.external) にサインインします。
+2. **[More Services]** (その他のサービス) > **[Marketplace Management]** (Marketplace の管理) > **[Add from Azure]** (Azure から追加) をクリックします。
+3. Azure (WordPress など) から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+[Azure Stack への接続](azure-stack-connect-azure-stack.md)
 
 

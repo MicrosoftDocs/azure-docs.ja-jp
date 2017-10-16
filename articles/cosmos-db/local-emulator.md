@@ -175,7 +175,7 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
 
 [MongoDB 向けの Azure Cosmos DB プロトコル サポート](mongodb-introduction.md)を使用している場合、次の接続文字列を使用してください。
 
-    mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true&3t.sslSelfSignedCerts=true
+    mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
 Azure Cosmos DB Emulator には、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio) などの既存のツールを使用して接続できます。 [Azure Cosmos DB データ移行ツール](https://github.com/azure/azure-documentdb-datamigrationtool)を使用して、Azure Cosmos DB Emulator と Azure Cosmos DB サービスの間でデータを移行することもできます。
 

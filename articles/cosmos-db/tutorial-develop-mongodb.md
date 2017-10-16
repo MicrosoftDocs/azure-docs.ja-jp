@@ -16,12 +16,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 47ec9998c68455a90b505c917156d9b6b0fe0f24
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: a0598d32b5bad240c0a5d77a6e19285115a9f6b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続
 
@@ -41,8 +40,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。  
 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+
 > [!TIP]
-> * 既に Azure Cosmos DB アカウントをお持ちですか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
+> * もう Azure Cosmos DB アカウント作成しましたか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
 > * 既に Azure DocumentDB アカウントをお持ちでしたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
 > * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
 >
@@ -59,7 +61,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="set-up-your-mongodb-app"></a>MongoDB アプリをセットアップする
 
-ここでは MongoDB アカウント用 API に接続する MongoDB アプリケーションをすぐにセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)」のチュートリアルに最小限の変更を加えて説明します。  
+ここでは MongoDB アカウント用 API に接続する MongoDB アプリケーションをすぐにセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service/app-service-web-tutorial-nodejs-mongodb-app.md)」のチュートリアルに最小限の変更を加えて説明します。  
 
 1. チュートリアルのコードに 1 か所変更を加えます。  Dal.cs のコードを次の内容に置き換えてください。
 
@@ -226,5 +228,4 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 > [!div class="nextstepaction"]
 > [MongoDB データの Azure Cosmos DB へのインポート](mongodb-migrate.md)
-
 

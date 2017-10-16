@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2016
 ms.author: telmos
-translationtype: Human Translation
-ms.sourcegitcommit: b574360cce92350a9bf52c21678bf0e91ceb270e
 ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>VM とロール インスタンスの名前解決
 Azure を使用して IaaS、PaaS、ハイブリッド ソリューションをホストする方法によっては、作成する VM とロール インスタンスが互いに通信するように許可することが必要になる場合があります。 IP アドレスを使用してこの通信を行うこともできますが、簡単に記憶できて変更されない名前を使用する方が、はるかに簡単です。 
 
-Azure でホストされているロール インスタンスと VM がドメイン名を内部 IP アドレスに解決する必要がある場合、次の&2; つの方法のいずれかを使用できます。
+Azure でホストされているロール インスタンスと VM がドメイン名を内部 IP アドレスに解決する必要がある場合、次の 2 つの方法のいずれかを使用できます。
 
 * [Azure で提供される名前解決](#azure-provided-name-resolution)
 * [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server) (Azure で提供される DNS サーバーにクエリを転送する可能性がある) 
@@ -93,7 +93,7 @@ dnsmasq など、多様な DNS キャッシュ パッケージを利用できま
   * ネットワーク サービスを再起動し ("service network restart")、ローカル DNS リゾルバーとしてキャッシュを設定する
 
 > [!NOTE]
-> 'dnsmasq' パッケージは、Linux で使用可能な多くの DNS キャッシュの&1; つにすぎません。  使用する前に、目的とするニーズに適合するかどうかと、その他のキャッシュがインストールされていないことを確認してください。
+> 'dnsmasq' パッケージは、Linux で使用可能な多くの DNS キャッシュの 1 つにすぎません。  使用する前に、目的とするニーズに適合するかどうかと、その他のキャッシュがインストールされていないことを確認してください。
 > 
 > 
 
@@ -178,10 +178,4 @@ Resource Manager デプロイ モデル:
 * [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710)
 * [仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100)
 * [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

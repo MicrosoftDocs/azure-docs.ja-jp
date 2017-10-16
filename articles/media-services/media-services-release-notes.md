@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
+ms.openlocfilehash: 202cd5441401a91736a55ccba095fa08dc95aa26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 3ecd6ff8edf189b9389cd239b20236a2a228ed94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 このリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -115,7 +114,7 @@ Azure Media Services では、Apple FairPlay を使用して HTTP ライブ ス�
 ## <a id="jan_changes_16"></a>2016 年 1 月のリリース
 エンコード予約ユニットは、エンコーダー名と混同しないように名前を変更されました。
 
-Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は Azure ポータル (と請求書) に S1 というラベルが表示され、Standard と Premium をご利用の場合はそれぞれ S2 と S3 が表示されます。 
+Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は Azure Portal (と請求書) に S1 というラベルが表示され、Standard と Premium をご利用の場合はそれぞれ S2 と S3 が表示されます。 
 
 ## <a id="dec_changes_15"></a>2015 年 12 月のリリース
 
@@ -556,5 +555,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [複数のストレージ アカウントでの Media Services アセットの管理]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 1f1c453267ea17d749a251539f4232131dae53d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -186,4 +185,3 @@ CheckForMS17-010
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health のバージョン履歴](active-directory-aadconnect-health-version-history.md)
-

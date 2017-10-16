@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/18/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple デバイスのデプロイメントのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -381,7 +381,7 @@ StorSimple デバイスで Update 1 を実行している場合、Verbose スイ
 デバイスは現在の Web プロキシ構成では接続できませんでした。 原因としては、Web プロキシ構成またはネットワーク接続の問題が考えられます。 この場合は、Web プロキシの設定が正しく、Web プロキシ サーバーがオンラインになっており、アクセスできることを確認する必要があります。 
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Sync-HcsTime コマンドレットを使用したトラブルシューティング
-デバイスの時刻を表示するには、このコマンドレットを使用します。 デバイスの時刻が NTP サーバーでオフセットになる場合、このコマンドレットを使用して時間を NTP サーバーと強制同期します。 NTP サーバーとデバイス間のオフセットが 5 分以上の場合は、警告が表示されます。 オフセットが 15 分を超えている場合、デバイスはオフラインになります。 それでもこのコマンドレットを使用して時間を強制同期できます。 ただし、オフセットが 15 時間を超える場合、時間を強制同期することはできず、エラー メッセージが表示されます。
+デバイスの時刻を表示するには、このコマンドレットを使用します。 デバイスの時刻が NTP サーバーでオフセットになる場合、このコマンドレットを使用して時間を NTP サーバーと強制同期します。 NTP サーバーとデバイス間のオフセットが 5 分以上の場合は、警告が表示されます。 オフセットが 15 分を超えている場合、デバイスはオフラインになります。 それでもこのコマンドレットを使用して時間を強制同期できます。ただし、オフセットが 15 時間を超える場合、時間を強制同期することはできず、エラー メッセージが表示されます。
 
 **サンプル出力 – Sync-HcsTime を使用した時間の強制同期**
 
@@ -565,9 +565,3 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

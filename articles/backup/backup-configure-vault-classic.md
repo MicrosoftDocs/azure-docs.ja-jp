@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: a8daa6a4655b72936b6299c0fa5b80459ffa5da3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>クラシック ポータルを使用して Windows サーバーまたはワークステーションを Azure にバックアップします
 > [!div class="op_single_selector"]
@@ -171,4 +170,3 @@ VM や他のワークロードのバックアップの詳細については、�
 * [IaaS VM のバックアップ](backup-azure-vms-prepare.md)
 * [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
 * [DPM を使用して Azure へのワークロードをバックアップするための準備](backup-azure-dpm-introduction.md)
-

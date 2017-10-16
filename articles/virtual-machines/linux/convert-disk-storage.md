@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 0380b4aaa23b4aaba4c67d05e2d62f3ef41d6a32
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
 管理ディスクには、[Premium](../../storage/storage-premium-storage.md) (SSD ベース) と [Standard](../../storage/storage-standard-storage.md) (HDD ベース) という 2 つのストレージ オプションがあります。 パフォーマンス上のニーズに基づいて、この 2 つのオプションを最小限のダウンタイムで簡単に切り替えることができます。 この機能は、管理されていないディスクに対して使用することはできません。 ただし、2 つのオプションを簡単に切り替えるために、簡単に[管理ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
@@ -110,5 +108,4 @@ az vm start --ids $vmId
 ## <a name="next-steps"></a>次のステップ
 
 [スナップショット](snapshot-copy-managed-disk.md)を使用して、VM の読み取り専用コピーを取得します。
-
 

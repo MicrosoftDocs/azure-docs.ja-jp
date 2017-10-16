@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 81de65b0e825dec64383f52b02c5ee56c9434807
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 エンドポイントの変更点
 Azure Active Directory を使い慣れている場合、または以前にアプリを Azure AD に統合した場合は、v2.0 エンドポイントで予想外の違いを体験する可能性があります。  このドキュメントでは、それらの違いについて説明します。
@@ -38,7 +36,7 @@ v2.0 エンドポイントを使用すると、開発者は、1 つの認証エ�
 Microsoft アカウントと Azure AD アカウントのアプリを 1 つの単純なプロセスで統合できるようになりました。  1 組のエンドポイント、1 つのライブラリ、1 回のアプリ登録によって、コンシューマー向けおよびエンタープライズ向けの両方の環境にアクセスできます。  v2.0 エンドポイントの詳細については、 [概要](active-directory-appmodel-v2-overview.md)のページを参照してください。
 
 ## <a name="new-app-registration-portal"></a>新しいアプリ登録ポータル
-v2.0 エンドポイントで動作するアプリを登録するには、新しいアプリ登録ポータル [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) を使用する必要があります。  このポータルでは、アプリケーション ID の取得、アプリのサインイン ページの外観のカスタマイズなどを行うことができます。  ポータルにアクセスするために必要なのは、Microsoft の強化されたアカウント (個人アカウントまたは職場/学校アカウントのいずれか) だけです。
+v2.0 エンドポイントで動作するアプリを登録するには、新しいアプリ登録ポータル [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) を使用する必要があります。このポータルでは、アプリケーション ID の取得、アプリのサインイン ページの外観のカスタマイズなどを行うことができます。  ポータルにアクセスするために必要なのは、Microsoft の強化されたアカウント (個人アカウントまたは職場/学校アカウントのいずれか) だけです。
 
 ## <a name="one-app-id-for-all-platforms"></a>1 つのアプリ ID ですべての製品に対応
 Azure Active Directory を使用している場合は、1 つのプロジェクトに対して異なる複数のアプリが登録されている可能性があります。  たとえば、Web サイトと iOS アプリの両方を構築する場合は、2 つの異なるアプリケーション ID を使用して、それぞれを別々に登録する必要がありました。 Azure AD アプリの登録ポータルでは、登録時にこの区別を強制していました。
@@ -127,4 +125,3 @@ v2.0 エンドポイントによって発行されたトークンでの要求は
 
 ## <a name="limitations"></a>制限事項
 v2.0 エンドポイントを使用する場合に注意する必要があるいくつかの制限があります。  これらの制限事項が実際のシナリオに当てはまるかどうかについては、「 [v2.0 の制限事項に関するドキュメント](active-directory-v2-limitations.md) 」を参照してください。
-

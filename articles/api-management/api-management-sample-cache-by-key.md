@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 24cbe51ef5a453d06e9f70e1e2146479935c5bf5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 4a41e4e0be44e855ead253ad76fe5a3af52070ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management のカスタム キャッシュ
 Azure API Management サービスは、リソース URL をキーとして使用する [HTTP 応答のキャッシュ](api-management-howto-cache.md) を標準でサポートしています。 このキーは、要求ヘッダーで `vary-by` プロパティを使用して変更できます。 この変更操作は、HTTP 応答全体 ("表現" とも呼ばれます) をキャッシュする際だけでなく、表現の一部をキャッシュする際にも役立つことがあります。 新しい [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) ポリシーと [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) ポリシーを使用すると、ポリシー定義内からデータの任意の部分の格納と取得を実行できます。 また、外部サービスからの応答をキャッシュできるようになるため、以前に導入された [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) ポリシーに値を追加することもできます。
@@ -281,5 +280,4 @@ Azure API Management のキャッシュを使用すると、あらゆる種類�
 
 ## <a name="next-steps"></a>次のステップ
 これらのポリシーによって可能になった別のシナリオがある場合や、実現したいが現時点では不可能だと感じているシナリオがある場合は、このトピック用の Disqus スレッドでご意見をお寄せください。
-
 

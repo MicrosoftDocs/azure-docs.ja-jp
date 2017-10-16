@@ -15,13 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
 
@@ -239,4 +237,3 @@ new CloudTask("B", "cmd.exe /c echo B")
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: one-to-one dependency"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: one-to-many dependency"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: task id range dependency"
-

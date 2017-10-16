@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup: Azure Portal を使用して仮想マシンを復元する | Microsoft Docs"
-description: "Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元する"
+description: "Azure ポータルを使用して復旧ポイントから Azure 仮想マシンを復元する"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/15/2017
+ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: e1fe2b94d462a30f09cb23ab905542aa121ba46b
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c4723a7d174991f5bf679bf3e8c97fe2338926a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/29/2017
 
 ---
-# <a name="use-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用した仮想マシンの復元
+# <a name="use-azure-portal-to-restore-virtual-machines"></a>Azure ポータルを使用した仮想マシンの復元
 > [!div class="op_single_selector"]
 > * [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
-> * [Azure Portal での VM の復元](backup-azure-arm-restore-vms.md)
+> * [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
 >
 >
 
@@ -44,7 +44,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 2. 復元タイプの選択 - 新しい VM を作成するかディスクを復元し、必要なパラメーターを指定する。 
 
 ## <a name="select-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
-1. [Azure Portal](http://portal.azure.com/)
+1. [Azure ポータル](http://portal.azure.com/)
 2. Azure メニューで **[参照]** をクリックし、サービスの一覧で「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
     ![Open Recovery Services vault](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
@@ -93,7 +93,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 9. 復元ポイントを設定すると、**[復元]** ブレードに **[復元の構成]** が自動的に開きます。
 
 ## <a name="choosing-a-vm-restore-configuration"></a>VM の復元構成の選択
-復元ポイントを選択したので、次に復元 VM の構成を選択します。 復元 VM の構成には、Azure Portal または PowerShell を使用できます。
+復元ポイントを選択したので、次に復元 VM の構成を選択します。 復元 VM の構成には、Azure ポータルまたは PowerShell を使用できます。
 
 1. 現在 **[復元]** ブレードを表示していない場合は、表示します。 いずれかの[復元ポイントが選択されている](#select-restore-point-for-restore)状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
 
@@ -164,7 +164,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 [ディスクの復元操作が完了](#Track-the-restore-operation)したら、復元操作の一環として生成されたテンプレートを使用して、バックアップ構成とは異なる構成で新しい VM を作成するか、復元ポイントからの新しい VM の作成時に作成されたリソースの名前をカスタマイズできます。 
 
 > [!NOTE]
-> テンプレートは、2017 年 3 月 1 日以降に作成された回復ポイントに対する復元ディスクの一部として追加されます。 こうしたテンプレートは、暗号化されていない管理対象外ディスク VM に適用できます。 暗号化された VM と管理対象ディスク については、今後のリリースでサポートされる予定です。 
+> テンプレートは、2017 年 3 月 1 日以降に作成された回復ポイントに対する復元ディスクの一部として追加されます。 こうしたテンプレートは、管理対象外ディスク VM に適用できます。 管理対象ディスク VM については、今後のリリースでサポートされる予定です。 
 >
 >
 
@@ -202,7 +202,7 @@ VM が稼働しているプライマリ データ センターが被災した場
 Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 Active Directory 復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 背景情報について詳しくは、「[Backup and Restore considerations for virtualized Domain Controllers (仮想化されたドメイン コントローラーのバックアップと復元についての考慮事項)](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)」と「[Planning for Active Directory Forest Recovery (Active Directory Forest Recovery の計画)](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)」をご覧ください。
 
 ### <a name="single-dc-in-a-single-domain"></a>1 つのドメインに 1 つの DC がある
-VM は、(他の VM と同様に) Azure Portal から復元するか、または PowerShell を使用して復元することができます。
+VM は、(他の VM と同様に) Azure ポータルから復元するか、または PowerShell を使用して復元することができます。
 
 ### <a name="multiple-dcs-in-a-single-domain"></a>1 つのドメインに複数の DC がある
 同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ドメインの最後の DC の場合や、分離ネットワークの回復を実行した場合は、フォレスト回復の手順に従う必要があります。

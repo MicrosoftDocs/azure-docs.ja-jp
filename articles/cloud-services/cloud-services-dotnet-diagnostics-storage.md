@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 16ce99cab9077450a5cfa8e95f7e306ffc1afb6d
-
-
+ms.openlocfilehash: 374cc179e13c00e439415e3df16e0c6d5ccba5e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
@@ -34,7 +34,7 @@ ServiceConfiguration.cscfg ファイル内で使用するストレージ アカ�
 
 この接続文字列を変更することで、Azure ストレージ アカウントのアカウント情報を指定できます。
 
-収集される診断データの種類に応じて、Azure 診断では BLOB サービスまたは Table サービスのいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
+収集される診断データの種類に応じて、Azure 診断では Blob service または Table service のいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
 
 | データ ソース | ストレージ形式 |
 | --- | --- |
@@ -84,10 +84,4 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 ## <a name="next-steps"></a>次のステップ
 [Azure 診断で Cloud Services アプリケーションのフローをトレースする](cloud-services-dotnet-diagnostics-trace-flow.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

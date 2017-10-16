@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
-
+ms.openlocfilehash: aed104c9c74606e0ad69fc2d0bfb2f38d85d795d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Azure Media Services でのフェールオーバー ストリーミングの実装
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 03/15/2017
 1. "データ センター B" に Media Services アカウントを設定します。
 2. ターゲットの Media Services アカウントに、空のターゲット資産を作成します。
 3. 書き込み用の Shared Access Signature ロケーターを作成します。 これは、ターゲット資産に関連付けられているターゲットのストレージ アカウントのコンテナーに対し、空のターゲット資産が書き込みアクセスするために使用します。
-4. Azure Storage SDK を使用し、"データ センター A" のコピー元のストレージ アカウントと "データ センター B" のターゲット ストレージ アカウントとの間で BLOB (資産ファイル) をコピーします。 これらのストレージ アカウントには対象の資産が関連付けられています。
+4. Azure Storage SDK を使用して、ソースでストレージ アカウント"のデータ センター A"と「データ センター b.」のターゲット ストレージ アカウントの blob (アセット ファイル) をコピーするには これらのストレージ アカウントは、関心のある資産に関連付けられます。
 5. ターゲットの BLOB コンテナーにコピーされた BLOB (資産ファイル) をターゲット資産に関連付けます。 
 6. "データ センター B" の資産の配信元ロケーターを作成し、"データ センター A" の資産用に生成されたロケーター ID を指定します。
 
@@ -948,5 +947,4 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Service Fabric クラスター設定の変更 | Microsoft Docs"
 description: "この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。"
@@ -15,27 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
+ms.openlocfilehash: cedfba78d8d1186618cf4f61154c5d88a00eb12b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: d71fdcf2a054a9b9ac1d74ddd3a6b43d151fa87d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
-このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、ポータルまたは Azure Resource Manager テンプレートを使用してカスタマイズできます。
+このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
 
 > [!NOTE]
-> ポータル経由では、設定の一部を利用できない可能性があります。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
+> ポータルで利用できるのは一部の設定のみです。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
 > 
 
-## <a name="customizing-service-fabric-cluster-settings-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Service Fabric クラスター設定のカスタマイズ
+## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
 次の手順は、*MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示しています。
 
 1. https://resources.azure.com へ移動します。
-2. [サブスクリプション]、[リソース グループ]、[Microsoft.ServiceFabric]、クラスター名の順に展開してサブスクリプションに移動します。
-3. 右上隅の [読み取り/書き込み] を選択します。
-4. [編集] を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
+2. **[サブスクリプション]** -> **[リソース グループ]** -> **[Microsoft.ServiceFabric]** -> **\<クラスター名>** の順に展開してサブスクリプションに移動します。
+3. 右上隅の **[読み取り/書き込み]** を選択します。
+4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
 
 ```
       {
@@ -49,10 +47,9 @@ ms.lasthandoff: 08/09/2017
       }
 ```
 
-## <a name="fabric-settings-that-you-can-customize"></a>カスタマイズできる Fabric の設定
-カスタマイズできる Fabric の設定を次に示します。
+次に、カスタマイズできる Fabric の設定の一覧をセクション別に整理して示します。
 
-### <a name="section-name-diagnostics"></a>セクション名: Diagnostics
+## <a name="diagnostics"></a>診断
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ConsumerInstances |String |DCA コンシューマー インスタンスのリスト。 |
@@ -66,12 +63,12 @@ ms.lasthandoff: 08/09/2017
 | EnableTelemetry |ブール値、既定値は true |テレメトリを有効または無効にします。 |
 | EnableCircularTraceSession |ブール値、既定値は false |循環トレース セッションを使用する必要があるかどうかを示すフラグ。 |
 
-### <a name="section-name-traceetw"></a>セクション名: Trace/Etw
+## <a name="traceetw"></a>Trace/Etw
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | Level |int、既定値は 4 |Trace/Etw のレベルには、1、2、3、4 の値を指定できます。 サポート対象となるために、トレース レベルは 4 のままにする必要があります。 |
 
-### <a name="section-name-performancecounterlocalstore"></a>セクション名: PerformanceCounterLocalStore
+## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | IsEnabled |ブール値、既定値は true |ローカル ノードでのパフォーマンス カウンターの収集が有効になっているかどうかを示すフラグ。 |
@@ -80,7 +77,7 @@ ms.lasthandoff: 08/09/2017
 | MaxCounterBinaryFileSizeInMB |int、既定値は 1 |各パフォーマンス カウンター バイナリ ファイルの最大サイズ (MB)。 |
 | NewCounterBinaryFileCreationIntervalInMinutes |int、既定値は 10 |新しいパフォーマンス カウンター バイナリ ファイルを作成するまでの最大間隔 (秒単位)。 |
 
-### <a name="section-name-setup"></a>セクション名: Setup
+## <a name="setup"></a>[Setup]
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | FabricDataRoot |string |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
@@ -89,7 +86,7 @@ ms.lasthandoff: 08/09/2017
 | ServiceStartupType |String |Fabric ホスト サービスのスタートアップの種類。 |
 | SkipFirewallConfiguration |ブール値、既定値は false |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |
 
-### <a name="section-name-transactionalreplicator"></a>セクション名: TransactionalReplicator
+## <a name="transactionalreplicator"></a>TransactionalReplicator
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | MaxCopyQueueSize |uint、既定値は 16384 |レプリケーション操作を保持するキューの初期サイズの最大値を定義します。 この値は 2 の累乗にする必要があります。 ランタイムにキューがこのサイズに達すると、プライマリ レプリケーターとセカンダリ レプリケーターの間で操作が調整されます。 |
@@ -113,7 +110,7 @@ ms.lasthandoff: 08/09/2017
 | SlowApiMonitoringDuration |秒単位。既定値は 300 | 警告正常性イベントが発生するまでの API の期間を指定します。|
 | MinLogSizeInMB |int、既定値は 0 |トランザクション ログの最小サイズ。 この設定を下回るサイズまでログを切り捨てることはできません。 0 は、レプリケーターが他の設定に従って最小ログ サイズを決定することを示します。 この値を大きくすると、関連するログ レコードが切り捨てられる可能性が低くなるため、部分的なコピーと増分バックアップが実行される可能性が高くなります。 |
 
-### <a name="section-name-fabricclient"></a>セクション名: FabricClient
+## <a name="fabricclient"></a>FabricClient
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | NodeAddresses |string、既定値は "" |ネーム サービスとの通信に使用できるさまざまなノード上のアドレス (接続文字列) のコレクション。 最初に、クライアントはアドレスのいずれかをランダムに選択して接続します。 複数の接続文字列が指定されている場合、通信エラーやタイムアウト エラーによって接続が失敗すると、クライアントは次のアドレスに順次切り替えて使用します。 再試行セマンティクスの詳細については、ネーム サービス アドレスの再試行のセクションを参照してください。 |
@@ -127,38 +124,38 @@ ms.lasthandoff: 08/09/2017
 | RetryBackoffInterval |時間 (秒単位)、既定値は 3 |timespan を秒単位で指定します。 操作を再試行するまでのバックオフ間隔。 |
 | MaxFileSenderThreads |uint、既定値は 10 |並列転送されるファイルの最大数。 |
 
-### <a name="section-name-common"></a>セクション名: Common
+## <a name="common"></a>一般
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | PerfMonitorInterval |時間 (秒単位)、既定値は 1 |timespan を秒単位で指定します。 パフォーマンスの監視間隔。 0 または負の値に設定すると、監視が無効になります。 |
 
-### <a name="section-name-healthmanager"></a>セクション名: HealthManager
+## <a name="healthmanager"></a>HealthManager
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | EnableApplicationTypeHealthEvaluation |ブール値、既定値は false |クラスターの正常性評価ポリシー: アプリケーションの種類ごとの正常性評価を有効にします。 |
 
-### <a name="section-name-fabricnode"></a>セクション名: FabricNode
+## <a name="fabricnode"></a>FabricNode
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | StateTraceInterval |秒単位。既定値は 300 |timespan を秒単位で指定します。 FM/FMM で各ノードおよび実行中のノードの状態をトレースする間隔。 |
 
-### <a name="section-name-nodedomainids"></a>セクション名: NodeDomainIds
+## <a name="nodedomainids"></a>NodeDomainIds
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | UpgradeDomainId |string、既定値は "" |ノードが属するアップグレード ドメインを示します。 |
 | PropertyGroup |NodeFaultDomainIdCollection |ノードが属する障害ドメインを示します。 障害ドメインは、データセンター内のノードの場所を示す URI によって定義されます。  障害ドメインの URI は、fd:/fd/ の後に URI パス セグメントが続く形式になります。|
 
-### <a name="section-name-nodeproperties"></a>セクション名: NodeProperties
+## <a name="nodeproperties"></a>NodeProperties
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | PropertyGroup |NodePropertyCollectionMap |ノードのプロパティの文字列キーと値のペアのコレクション。 |
 
-### <a name="section-name-nodecapacities"></a>セクション名: NodeCapacities
+## <a name="nodecapacities"></a>NodeCapacities
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | PropertyGroup |NodeCapacityCollectionMap |さまざまなメトリックのノード容量のコレクション。 |
 
-### <a name="section-name-fabricnode"></a>セクション名: FabricNode
+## <a name="fabricnode"></a>FabricNode
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | StartApplicationPortRange |int、既定値は 0 |ホスティング サブシステムによって管理されるアプリケーション ポートの開始。 Hosting で EndpointFilteringEnabled が true の場合は必須です。 |
@@ -180,12 +177,12 @@ ms.lasthandoff: 08/09/2017
 | UserRoleClientX509FindValue |string、既定値は "" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
 | UserRoleClientX509FindValueSecondary |string、既定値は "" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
 
-### <a name="section-name-paas"></a>セクション名: Paas
+## <a name="paas"></a>Paas
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ClusterId |string、既定値は "" |ファブリックで構成の保護に使用される X509 証明書ストア。 |
 
-### <a name="section-name-fabrichost"></a>セクション名: FabricHost
+## <a name="fabrichost"></a>FabricHost
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | StopTimeout |秒単位。既定値は 300 |timespan を秒単位で指定します。 ホストされるサービスのアクティブ化、非アクティブ化、アップグレードのタイムアウト。 |
@@ -198,7 +195,7 @@ ms.lasthandoff: 08/09/2017
 | EnableRestartManagement |ブール値、既定値は false |サーバーの再起動を有効します。 |
 
 
-### <a name="section-name-failovermanager"></a>セクション名: FailoverManager
+## <a name="failovermanager"></a>FailoverManager
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | UserReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60.0 * 30 |timespan を秒単位で指定します。 永続化されたレプリカがダウンすると、Windows Fabric はレプリカが復帰するまでこの期間待機します。この期間が過ぎると、(状態のコピーを必要とする) 新しい代替レプリカが作成されます。 |
@@ -206,7 +203,7 @@ ms.lasthandoff: 08/09/2017
 | UserStandByReplicaKeepDuration |秒単位。既定値は 3600.0 * 24 * 7 |timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
 | UserMaxStandByReplicaCount |int、既定値は 1 |ユーザー サービス用にシステムが保持するスタンバイ レプリカの既定の最大数。 |
 
-### <a name="section-name-namingservice"></a>セクション名: NamingService
+## <a name="namingservice"></a>NamingService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | TargetReplicaSetSize |int、既定値は 7 |ネーム サービス ストアのパーティションごとのレプリカ セットの数。 レプリカ セットの数が増えると、ノードの障害によって情報が失われる可能性が低減されるため、ネーム サービス ストア内の情報の信頼性レベルが高まります。ただし、その代償として Windows Fabric の負荷が増加し、名前付けデータの更新の実行に時間がかかるようになります。|
@@ -228,35 +225,35 @@ ms.lasthandoff: 08/09/2017
 | GatewayServiceDescriptionCacheLimit |int、既定値は 0 |Naming Gateway の LRU サービス記述キャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 |
 | PartitionCount |int、既定値は 3 |作成するネーム サービス ストアのパーティションの数。 各パーティションは、インデックスに対応する 1 つのパーティション キーを所有します。そのため、パーティション キー [0; PartitionCount) が存在します。 ネーム サービスのパーティション数が増えると、バックアップ レプリカ セットで保持される平均データ量が減るため、ネーム サービスが実行できるスケールが増加します。ただし、その代償として (PartitionCount*ReplicaSetSize のサービス レプリカを保持する必要があるため) リソース使用率が増加します。|
 
-### <a name="section-name-runas"></a>セクション名: RunAs
+## <a name="runas"></a>RunAs
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | RunAsAccountName |string、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
 |RunAsAccountType|string、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。|
 |RunAsPassword|string、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
-### <a name="section-name-runasfabric"></a>セクション名: RunAs_Fabric
+## <a name="runasfabric"></a>RunAs_Fabric
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | RunAsAccountName |string、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
 |RunAsAccountType|string、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
 |RunAsPassword|string、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
-### <a name="section-name-runashttpgateway"></a>セクション名: RunAs_HttpGateway
+## <a name="runashttpgateway"></a>RunAs_HttpGateway
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | RunAsAccountName |string、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
 |RunAsAccountType|string、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
 |RunAsPassword|string、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
-### <a name="section-name-runasdca"></a>セクション名: RunAs_DCA
+## <a name="runasdca"></a>RunAs_DCA
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | RunAsAccountName |string、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
 |RunAsAccountType|string、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
 |RunAsPassword|string、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
-### <a name="section-name-httpgateway"></a>セクション名: HttpGateway
+## <a name="httpgateway"></a>HttpGateway
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 |IsEnabled|ブール値、既定値は false | HttpGateway を有効または無効にします。 HttpGateway は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
@@ -264,7 +261,7 @@ ms.lasthandoff: 08/09/2017
 |MaxEntityBodySize |uint、既定値は 4194304 |  HTTP 要求の予想される本文の最大サイズを指定します。 既定値は 4 MB です。 本文のサイズがこの値を超えている場合、HttpGateway は要求を失敗させます。 最小読み取りチャンク サイズは 4096 バイトです。 そのため、この値は 4096 以上にする必要があります。 |
 |HttpGatewayHealthReportSendInterval |秒単位。既定値は 30 | timespan を秒単位で指定します。 HTTP ゲートウェイが、累積した正常性レポートを Health Manager に送信する間隔。 |
 
-### <a name="section-name-ktllogger"></a>セクション名: KtlLogger
+## <a name="ktllogger"></a>KtlLogger
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 |AutomaticMemoryConfiguration |int、既定値は 1 | メモリ設定を自動的に構成するか、動的に構成するかを示すフラグ。 0 の場合は、メモリ構成設定が使用され、システムの状態に基づいて変更されることはありません。 1 の場合は、メモリ設定が自動的に構成され、システムの状態に基づいて変更される場合があります。 |
@@ -275,7 +272,7 @@ ms.lasthandoff: 08/09/2017
 |SharedLogId |string、既定値は "" |共有ログ コンテナーの一意の GUID。 ファブリック データ ルート下の既定のパスを使用する場合は、"" を使用します。 |
 |SharedLogSizeInMB |int、既定値は 8192 | 共有ログ コンテナーに割り当てる MB 数。 |
 
-### <a name="section-name-applicationgatewayhttp"></a>セクション名: ApplicationGateway/Http
+## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 |IsEnabled |ブール値、既定値は false | HttpApplicationGateway を有効または無効にします。 HttpApplicationGateway は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
@@ -289,7 +286,7 @@ ms.lasthandoff: 08/09/2017
 |GatewayX509CertificateFindValue | string、既定値は "" | HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。 |
 |GatewayX509CertificateFindValueSecondary | string、既定値は "" |HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。|
 
-### <a name="section-name-management"></a>セクション名: Management
+## <a name="management"></a>管理
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ImageStoreConnectionString |SecureString | ImageStore のルートへの接続文字列。 |
@@ -301,7 +298,7 @@ ms.lasthandoff: 08/09/2017
 |DisableChecksumValidation | ブール値、既定値は false | この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
 |DisableServerSideCopy | ブール値、既定値は false | この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にすることができます。 |
 
-### <a name="section-name-healthmanagerclusterhealthpolicy"></a>セクション名: HealthManager/ClusterHealthPolicy
+## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ConsiderWarningAsError |ブール値、既定値は false |クラスターの正常性評価ポリシー: 警告をエラーとして処理します。 |
@@ -310,7 +307,7 @@ ms.lasthandoff: 08/09/2017
 |MaxPercentDeltaUnhealthyNodes | int、既定値は 10 |クラスターのアップグレードの正常性評価ポリシー: 異常な差分ノードの最大許容パーセンテージ。この値を超えると、クラスターは異常と見なされます。 |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes | int、既定値は 15 |クラスターのアップグレードの正常性評価ポリシー: アップグレード ドメインの異常な差分ノードの最大許容パーセンテージ。この値を超えると、クラスターは異常と見なされます。|
 
-### <a name="section-name-faultanalysisservice"></a>セクション名: FaultAnalysisService
+## <a name="faultanalysisservice"></a>FaultAnalysisService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | TargetReplicaSetSize |int、既定値は 0 |NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
@@ -323,7 +320,7 @@ ms.lasthandoff: 08/09/2017
 | CompletedActionKeepDurationInSeconds | int、既定値は 604800 | 終了状態のアクションを保持するおおよその期間。  クリーンアップの処理は StoredActionCleanupIntervalInSeconds で指定された間隔でのみ実行されるため、このパラメーターは StoredActionCleanupIntervalInSeconds にも左右されます。 604800 は 7 日間です。 |
 | StoredChaosEventCleanupIntervalInSeconds | int、既定値は 3600 |クリーンアップのためにストアを監査する頻度。イベント数が 30000 を超えると、クリーンアップが開始されます。 |
 
-### <a name="section-name-filestoreservice"></a>セクション名: FileStoreService
+## <a name="filestoreservice"></a>FileStoreService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | NamingOperationTimeout |秒単位。既定値は 60 |timespan を秒単位で指定します。 名前付け操作を実行する際のタイムアウト。 |
@@ -349,7 +346,7 @@ ms.lasthandoff: 08/09/2017
 | SecondaryAccountNTLMX509StoreName | string、既定値は "MY" |NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前。 |
 | SecondaryAccountNTLMX509Thumbprint | string、既定値は ""| NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書の拇印。 |
 
-### <a name="section-name-imagestoreservice"></a>セクション名: ImageStoreService
+## <a name="imagestoreservice"></a>ImageStoreService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | 有効 |ブール値、既定値は false |ImageStoreService の Enabled フラグ。 |
@@ -365,7 +362,7 @@ ms.lasthandoff: 08/09/2017
 | ClientListTimeout | 時間 (秒単位)、既定値は 600 | timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのリスト要求のタイムアウト値。 |
 | ClientDefaultTimeout | 時間 (秒単位)、既定値は 180 | timespan を秒単位で指定します。 イメージ ストア サービスに対するアップロード/ダウンロード要求以外のすべての要求 (存在確認、削除など) のタイムアウト値。 |
 
-### <a name="section-name-imagestoreclient"></a>セクション名: ImageStoreClient
+## <a name="imagestoreclient"></a>ImageStoreClient
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ClientUploadTimeout |時間 (秒単位)、既定値は 1800 | timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのアップロード要求のタイムアウト値。 |
@@ -374,12 +371,12 @@ ms.lasthandoff: 08/09/2017
 |ClientListTimeout | 時間 (秒単位)、既定値は 600 |timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのリスト要求のタイムアウト値。 |
 |ClientDefaultTimeout | 時間 (秒単位)、既定値は 180 | timespan を秒単位で指定します。 イメージ ストア サービスに対するアップロード/ダウンロード要求以外のすべての要求 (存在確認、削除など) のタイムアウト値。 |
 
-### <a name="section-name-tokenvalidationservice"></a>セクション名: TokenValidationService
+## <a name="tokenvalidationservice"></a>TokenValidationService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | プロバイダー |string、既定値は "DSTS" |有効にするトークン検証プロバイダーのコンマ区切りリスト (有効なプロバイダー: DSTS、AAD)。 現時点では、1 つのプロバイダーだけをいつでも有効にすることができます。 |
 
-### <a name="section-name-upgradeorchestrationservice"></a>セクション名: UpgradeOrchestrationService
+## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | TargetReplicaSetSize |int、既定値は 0 |UpgradeOrchestrationService の TargetReplicaSetSize。 |
@@ -391,7 +388,7 @@ ms.lasthandoff: 08/09/2017
 | AutoupgradeEnabled | ブール値、既定値は true | 目標状態ファイルに基づく自動ポーリングとアップグレード アクション。 |
 | UpgradeApprovalRequired | ブール値、既定値は false | コードのアップグレードを続行する前に管理者の承認を必須にするための設定。 |
 
-### <a name="section-name-upgradeservice"></a>セクション名: UpgradeService
+## <a name="upgradeservice"></a>UpgradeService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | PlacementConstraints |string、既定値は "" |アップグレード サービスの PlacementConstraints。 |
@@ -408,7 +405,7 @@ ms.lasthandoff: 08/09/2017
 | OnlyBaseUpgrade | ブール値、既定値は false | UpgradeService の OnlyBaseUpgrade。 |
 | TestCabFolder | string、既定値は "" | UpgradeService の TestCabFolder。 |
 
-### <a name="section-name-securityclientaccess"></a>セクション名: Security/ClientAccess
+## <a name="securityclientaccess"></a>Security/ClientAccess
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | CreateName |string、既定値は "Admin" |名前付け URI を作成するためのセキュリティ構成。 |
@@ -495,7 +492,7 @@ ms.lasthandoff: 08/09/2017
 | GetClusterConfigurationUpgradeStatus | string、既定値は "Admin\"|\|User" | パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
 | GetClusterConfiguration | string、既定値は "Admin\"|\|User" | パーティションで GetClusterConfiguration を誘発します。 |
 
-### <a name="section-name-reconfigurationagent"></a>セクション名: ReconfigurationAgent
+## <a name="reconfigurationagent"></a>ReconfigurationAgent
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ApplicationUpgradeMaxReplicaCloseDuration | 時間 (秒単位)、既定値は 900 |timespan を秒単位で指定します。 レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。 |
@@ -506,7 +503,7 @@ ms.lasthandoff: 08/09/2017
 | FabricUpgradeMaxReplicaCloseDuration | 時間 (秒単位)、既定値は 900 | timespan を秒単位で指定します。 終了しないままになっているレプリカのサービス ホストを終了するまでの RA の最大待機期間。 |
 | IsDeactivationInfoEnabled | ブール値、既定値は true | RA がプライマリの再選出を行うために非アクティブ化情報を使用するかどうかを指定します。新しいクラスターの場合、この構成を true に設定する必要があります。アップグレード対象となる既存のクラスターの場合、これを有効にする方法については、リリース ノートをご覧ください。 |
 
-### <a name="section-name-placementandloadbalancing"></a>セクション名: PlacementAndLoadBalancing
+## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | TraceCRMReasons |ブール値、既定値は true |CRM が発行した、操作イベント チャネルへの移動の理由をトレースするかどうかを指定します。 |
@@ -558,12 +555,12 @@ ms.lasthandoff: 08/09/2017
 |PartiallyPlaceServices | ブール値、既定値は true | サービス レプリカに適したノードの数が限られている場合に、クラスター内のすべてのサービス レプリカを "全部かゼロか" 方式で配置するかどうかを指定します。|
 |InterruptBalancingForAllFailoverUnitUpdates | ブール値、既定値は false | 各種フェールオーバー ユニットの更新時に、高速または低速の均衡化の実行を中断させる必要があるかどうかを指定します。 "false" を指定すると、FailoverUnit が作成または削除された場合、FailoverUnit でレプリカが不足している場合、プライマリ レプリカの場所が変更された場合、またはレプリカの数が変更された場合に、均衡化の実行は中断されます。 それ以外の場合は、均衡化の実行が中断されることはありません。たとえば、FailoverUnit に追加のレプリカがある場合、レプリカ フラグが変更された場合、パーティションのバージョンだけが変更された場合などです。 |
 
-### <a name="section-name-security"></a>セクション名: セキュリティ
+## <a name="security"></a>セキュリティ
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ClusterProtectionLevel |None または EncryptAndSign |セキュリティで保護されていないクラスターの場合は None (既定)、セキュリティで保護されたクラスターの場合は EncryptAndSign です。 |
 
-### <a name="section-name-hosting"></a>セクション名: Hosting
+## <a name="hosting"></a>ホスティング
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | ServiceTypeRegistrationTimeout |秒単位。既定値は 300 |Fabric に登録する ServiceType の最大許容時間 |
@@ -572,18 +569,18 @@ ms.lasthandoff: 08/09/2017
 | ActivationMaxRetryInterval |秒単位。既定値は 300 |アクティブ化が連続して失敗するたびに、ActivationMaxFailureCount で指定された回数までアクティブ化が再試行されます。 ActivationMaxRetryInterval は、アクティブ化が失敗してから再試行されるまでの待機時間を指定します |
 | ActivationMaxFailureCount |整数。既定値は 10 |失敗したアクティブ化の再試行が行われる回数。再試行は、この回数だけ実行されてから停止します |
 
-### <a name="section-name-failovermanager"></a>セクション名: FailoverManager
+## <a name="failovermanager"></a>FailoverManager
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | PeriodicLoadPersistInterval |秒単位。既定値は 10 |これにより、FM が新しい負荷レポートを確認する頻度が決まります |
 
-### <a name="section-name-federation"></a>セクション名: Federation
+## <a name="federation"></a>フェデレーション
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | LeaseDuration |秒単位。既定値は 30 |ノードとその近隣ノードの間のリース期間。 |
 | LeaseDurationAcrossFaultDomain |秒単位。既定値は 30 |障害ドメイン全体におけるノードとその近隣ノードの間のリース期間。 |
 
-### <a name="section-name-clustermanager"></a>セクション名: ClusterManager
+## <a name="clustermanager"></a>ClusterManager
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | UpgradeStatusPollInterval |秒単位。既定値は 60 |アプリケーションのアップグレード状態をポーリングする頻度。 この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります |
@@ -616,5 +613,4 @@ ms.lasthandoff: 08/09/2017
 クラスター管理の詳細については、次の記事を参照してください。
 
 [Azure クラスターの証明書の追加、ロール オーバー、削除 ](service-fabric-cluster-security-update-certs-azure.md) 
-
 

@@ -15,14 +15,12 @@ ms.date: 07/25/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 149af1f68e574f78127a9c2de8a0e79ed8774d29
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
 統合 Windows 認証でセキュリティ保護されているアプリケーション プロキシを使って公開されているオンプレミスのアプリケーションにシングル サインオンを提供できます。 これらのアプリケーションにアクセスするには Kerberos チケットが必要です。 アプリケーション プロキシは、Kerberos の制約付き委任 (KCD) を使って、これらのアプリケーションをサポートします。 
@@ -79,7 +77,7 @@ Sharepointserviceaccount には、SPS コンピューター アカウントか�
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
 2. アプリケーションがエンタープライズ アプリケーションの一覧に表示されたら、アプリケーションを選択して **[シングル サインオン]** をクリックします。
 3. シングル サインオン モードを **[統合 Windows 認証]** に設定します。  
-4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。 この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
+4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
 5. ユーザーの代わりに使うコネクタに**委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#Working-with-different-on-premises-and-cloud-identities)」をご覧ください。
 
    ![高度なアプリケーションの構成](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  
@@ -130,5 +128,4 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-
 

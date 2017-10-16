@@ -16,12 +16,11 @@ ms.workload: functions
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e182f95bde376cecd78f4e805c3de67ff466c8f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: f3c9fc67c082a759432f1db0b44b42513f2fb733
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 
@@ -46,4 +45,3 @@ ms.lasthandoff: 05/10/2017
 
 |**Connect app to resources**||
 -->
-

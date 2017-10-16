@@ -3,7 +3,7 @@ title: "Load Balancer カスタム プローブと正常性状態の監視 | Mic
 description: "Azure Load Balancer でカスタム プローブを使用して、Load Balancer の背後にあるインスタンスを監視する方法を説明します"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: ce2550ca8301fd12d61cca143b2851b84f1a0f50
-ms.openlocfilehash: 01afa3a08bbb56d4c6b8b18c5eb07f49706c6482
-
+ms.openlocfilehash: 102c07ff0994b3b411f2a13d7a43c5398d5dfd42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="understand-load-balancer-probes"></a>Load Balancer プローブを理解する
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer には、プローブを使用してサーバー インスタンスの正常性を監視する機能があります。 プローブが応答できない場合、Load Balancer は異常なインスタンスへの新しい接続の送信を停止します。 既存の接続への影響はなく、新しい接続が正常なインスタンスに送信されます。
 
@@ -94,9 +96,3 @@ HTTP 正常性プローブまたは TCP プローブの構成の詳細につい�
 ## <a name="use-log-analytics-for-load-balancer"></a>Load Balancer のログ分析を使用する
 
 [Load Balancer のログ分析](load-balancer-monitor-log.md) を使用すると、プローブの正常性状態とプローブの数を確認できます。 ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

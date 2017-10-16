@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: e59b750e44fa6f6586ecd542dd888aedd2574ebb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/25/2017
-
+ms.openlocfilehash: 1b188b2a057da56c0c44bdbf52086ebb037edb6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-windows-virtual-machines-in-visual-studio"></a>Visual Studio で Windows 仮想マシンを作成して管理する
 [!INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
-
 

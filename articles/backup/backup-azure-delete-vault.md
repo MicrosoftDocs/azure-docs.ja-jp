@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 Azure Backup サービスには、バックアップ コンテナーと Recovery Services コンテナーの 2 種類のコンテナーがあります。 最初にあったのは、バックアップ コンテナーです。 次に、拡張 Resource Manager デプロイメントをサポートするために、Recovery Services コンテナーが加わりました。 拡張された機能とコンテナーに保存する必要がある情報の依存関係のために、バックアップ コンテナーまたは Recovery Services コンテナーの削除は混乱を招く可能性があります。 この記事では、クラシック ポータルと Azure Portal でコンテナーを削除する方法について説明します。  
@@ -203,7 +202,7 @@ DPM サーバーの保護に使用されているコンテナーを削除する�
 
   ![Windows Server を選択](./media/backup-azure-delete-vault/select-windows-server.png)
 
-6. タブの一覧で **[ダッシュボード]** をクリックして、そのタブを開きます。 登録されているサーバーや、クラウドで保護されている Azure 仮想マシンがないことを確認します。 また、ストレージにデータがないことも確認します。 **[削除]** をクリックして、コンテナーを削除します。
+6. タブの一覧で **[ダッシュボード]** をクリックして、そのタブを開きます。登録されているサーバーや、クラウドで保護されている Azure 仮想マシンがないことを確認します。 また、ストレージにデータがないことも確認します。 **[削除]** をクリックして、コンテナーを削除します。
 
     ![[バックアップ データの削除]](./media/backup-azure-delete-vault/classic-portal-list-of-tabs-dashboard.png)
 
@@ -227,4 +226,3 @@ DPM サーバーの保護に使用されているコンテナーを削除する�
 5. 一覧からサーバーを削除するには、サーバーの名前を右クリックし、 **[削除]**をクリックします。
     **[削除]** ブレードが開きます。
 6. **[削除]** ブレードで、サーバーの名前を指定します。 長い名前である場合は、[バックアップ管理サーバー] の一覧からコピーして貼り付けることができます。 その後、 **[削除]**をクリックします。  
-

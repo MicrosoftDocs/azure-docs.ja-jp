@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 2a6559551f608cf435e89997392a6a0ba995c583
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Stream Analytics ウィンドウ関数の概要
 リアルタイム ストリーミング シナリオでは、多くの場合、テンポラル ウィンドウに含まれるデータでのみ操作を実行する必要があります。 ウィンドウ化関数のネイティブ サポートは Azure Stream Analytics の主要機能で、複雑なストリーム処理のジョブで開発者の生産性に大きな変化をもたらします。 Stream Analytics により、開発者は、[**タンブリング**](https://msdn.microsoft.com/library/dn835055.aspx)、[**ホッピング**](https://msdn.microsoft.com/library/dn835041.aspx)、[**スライディング**](https://msdn.microsoft.com/library/dn835051.aspx) ウィンドウを使用して、ストリーミング データで一時的な操作を実行できます。 すべての [ウィンドウ](https://msdn.microsoft.com/library/dn835019.aspx) 操作が、ウィンドウ **終了** 時に結果を出力していることに注意してください。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 イベントにはウィンドウ終了のタイム スタンプが提供され、すべてのウィンドウ関数が固定長で定義されています。 最後に、すべてのウィンドウ関数を [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx) 句で使用する必要があることにも注意してください。
@@ -51,5 +50,4 @@ ms.lasthandoff: 08/29/2017
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

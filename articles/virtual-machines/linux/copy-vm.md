@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 006123a4ab7d1c0208a7e5f33b6f05f9374511fc
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7983061a933370803669480296d7625106e1360c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---                    
                
@@ -53,7 +53,7 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 
 VM をコピーするには、基となる仮想ハード ディスクのコピーを作成します。 このプロセスでは、ソース VM と同じ構成および設定が含まれる管理ディスクとして、特殊な VHD を作成します。
 
-Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 
+Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../windows/managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 
 
 1.  [az vm list](/cli/azure/vm#list) で、各 VM とその OS ディスクの名前を一覧表示します。 次の例では、**myResourceGroup** という名前のリソース グループに含まれているすべての VM の一覧を表示します。
     

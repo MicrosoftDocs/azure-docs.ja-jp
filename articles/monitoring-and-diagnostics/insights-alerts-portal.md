@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 745a9c016bd037f1051025a2c5a468c3935e4550
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Azure Monitorでの Azure サービス メトリック アラートの作成 - Azure Portal
 > [!div class="op_single_selector"]
@@ -30,12 +29,12 @@ ms.lasthandoff: 03/31/2017
 >
 
 ## <a name="overview"></a>概要
-この記事では、Azure ポータルを使用して Azure メトリック アラートを設定する方法について説明します。   
+この記事では、Azure ポータルを使用して Azure メトリック アラートを設定する方法について説明します。 
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
-* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
+* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 [アクティビティ ログのアラート](monitoring-activity-log-alerts.md)について詳しく学習します。
 
 メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
@@ -44,7 +43,12 @@ ms.lasthandoff: 03/31/2017
 * Webhook を呼び出す
 * Azure Runbook の実行を開始する (Azure ポータルからのみ)
 
-メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
+> [!NOTE]
+> Azure Monitor では、パブリック プレビューでほぼリアルタイムのメトリック アラートをサポートするようになりました。 これらはアクション グループを使用します。 [ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)について詳しく学習します。
+>
+>
+
+メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
 * [Azure ポータル](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -64,7 +68,7 @@ ms.lasthandoff: 03/31/2017
 
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 
-5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間継続して 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間継続して 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。   
+5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として "直近 5 分" を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間継続して 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間継続して 80% を下回ったときにトリガーされます。 CPU のメトリック測定は、1 分ごとに発生します。
 
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。
 
@@ -87,9 +91,9 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
+* [ほぼリアルタイムのメトリック アラート (プレビュー)](monitoring-near-real-time-metric-alerts.md) について詳しく学習します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
-* アクティビティ ログ イベントにアラートを構成する方法は[ここ](monitoring-activity-log-alerts.md)でご覧いただけます。
+* [アクティビティ ログ イベントに対するアラートの構成](monitoring-activity-log-alerts.md)に関する詳細情報を確認します。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログの概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
-

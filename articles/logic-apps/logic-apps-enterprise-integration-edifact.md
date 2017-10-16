@@ -15,13 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e3aeaee3a71ae8b024153996431fba203a1cdfce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の EDIFACT メッセージを交換する
 
@@ -44,7 +42,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT 契約の作成 
 
-1.    [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[その他のサービス]** をクリックします。
+1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[その他のサービス]** をクリックします。
 
     > [!TIP]
     > **[その他のサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
@@ -87,7 +85,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 契約のプロパティを設定したので、この契約でパートナーから受信した受信メッセージを識別して処理する方法を構成できます。
 
-1.    **[追加]** で、**[受信設定]** をクリックします。
+1.  **[追加]** で、**[受信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
     **[受信設定]** は、[識別子]、[受信確認]、[スキーマ]、[制御番号]、[検証]、[内部設定] のセクションに分かれています。
@@ -160,7 +158,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 この契約でパートナーに送信する送信メッセージを識別して処理する方法を構成できます。
 
-1.    **[追加]** で、**[送信設定]** をクリックします。
+1.  **[追加]** で、**[送信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
     **[送信設定]** は、[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[文字セットと区切り記号]、[制御番号]、[検証] のセクションに分かれています。
@@ -242,11 +240,11 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 ## <a name="find-your-created-agreement"></a>作成された契約の検索
 
-1.    契約のプロパティをすべて設定したら、**[追加]** ブレードで、**[OK]** を選択して、契約の作成を終了し、統合アカウント ブレードに戻ります。
+1.  契約のプロパティをすべて設定したら、**[追加]** ブレードで、**[OK]** を選択して、契約の作成を終了し、統合アカウント ブレードに戻ります。
 
     これで、新しく追加した契約が **[契約]** リストに表示されます。
 
-2.    また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
+2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
 
     ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
@@ -255,5 +253,4 @@ EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/c
 
 ## <a name="learn-more"></a>詳細情報
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
 

@@ -12,15 +12,13 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 09/07/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: f8a6705879905d5cf419fc8c5c2322cb5536d244
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.openlocfilehash: 6ff6f1c331d5a77e7ac0a47af6806f5d90fb0fdc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-desired-properties-to-configure-devices-node"></a>必要なプロパティを使用してデバイスを構成する (Node)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -37,7 +35,7 @@ ms.lasthandoff: 05/09/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [デバイス ツインの概要][lnk-twin-tutorial]に関するチュートリアルを行った場合は、既に IoT ハブと、**myDeviceId** というデバイス ID があるため、「[シミュレートされたデバイス アプリを作成する][lnk-how-to-configure-createapp]」セクションに進んでください。
@@ -170,7 +168,7 @@ ms.lasthandoff: 05/09/2017
     ```
     npm install azure-iothub node-uuid --save
     ```
-3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **SetDesiredAndQuery.js** ファイルを作成します。
+3. テキスト エディターを使用して、**setdesiredandqueryapp** フォルダーに新しい **SetDesiredAndQuery.js** ファイルを作成します。
 4. **SetDesiredAndQuery.js** ファイルに次のコードを追加し、**{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
    
         'use strict';
@@ -277,4 +275,3 @@ ms.lasthandoff: 05/09/2017
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 [lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
-

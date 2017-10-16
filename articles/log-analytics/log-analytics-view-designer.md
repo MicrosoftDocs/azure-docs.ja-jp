@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -99,4 +98,3 @@ OMS のメイン ダッシュボードでビュー デザイナー タイルを�
 ## <a name="next-steps"></a>次のステップ
 * [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。
 * [視覚化パーツ](log-analytics-view-designer-parts.md)をカスタム ビューに追加します。
-

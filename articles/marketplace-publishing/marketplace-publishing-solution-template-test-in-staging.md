@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
 ms.author: hascipio; v-divte
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>ステージングでのソリューション テンプレート プランのテスト
 ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。 ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。 プランをステージングにプッシュするには認定を受ける必要があります。
 
-プランがステージングされると、 [Azure ポータル](https://portal.azure.com/)でプランを表示したり、テストしたりできるようになります。
+プランがステージングされると、[Azure Portal](https://portal.azure.com/) でプランを表示したり、テストしたりできるようになります。
 
-次の手順に従って、プランをステージングにプッシュし、 [Azure ポータル](https://portal.azure.com/)でテストしてください。
+次の手順に従って、プランをステージングにプッシュし、[Azure Portal](https://portal.azure.com/) でテストしてください。
 
 1. [[発行ポータル]](https://publish.windowsazure.com) > **[ソリューション テンプレート]** タブ > 使用するプラン > **[発行]** > **[ステージングにプッシュ]** の順に移動します。
 2. プランのプレビューおよびテストに使用する Azure サブスクリプションの一覧を指定します。
@@ -45,10 +45,4 @@ ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
 > 
 
 公開元のタスクの詳細については、「 [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

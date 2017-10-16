@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
 ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Azure App Service の Web Apps 機能を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/16/2017
 
 ## <a name="what-you-do"></a>作業内容
 
-- Azure Portal で Web アプリを作成する。
+- Azure ポータルで Web アプリを作成する。
 - コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
 - IoT ハブからセンサー データを読み取る Web アプリを構成する。
 - Web アプリでホストされる Web アプリケーションをアップロードする。
@@ -122,4 +121,3 @@ Web アプリを使用して、IoT ハブからのリアルタイム センサ�
 Azure IoT Hub からのデータを視覚化する別の方法については、[Power BI を使用して IoT Hub からのリアルタイム センサー データを視覚化する](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

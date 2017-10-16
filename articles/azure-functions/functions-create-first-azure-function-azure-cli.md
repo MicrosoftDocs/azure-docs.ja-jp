@@ -7,19 +7,17 @@ author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 08/22/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
+ms.openlocfilehash: ab35963dc9d10134799270e6ab3e6593be0e601a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-function-using-the-azure-cli"></a>Azure CLI での初めての関数の作成
 
 このクイックスタート チュートリアルでは、Azure Functions を使用して最初の関数を作成する方法について説明します。 Azure CLI を使用して、関数をホストするサーバーレス インフラストラクチャである Function App を作成します。 関数コード自体は、GitHub サンプル レポジトリからデプロイされます。    
@@ -37,7 +35,7 @@ ms.lasthandoff: 08/23/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
@@ -45,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 [az group create](/cli/azure/group#create) でリソース グループを作成します。 Azure リソース グループとは、Function App、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。  
-Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
+Cloud Shell を使用していない場合は、まず `az login` でサインインします。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -56,7 +54,7 @@ az group create --name myResourceGroup --location westeurope
 
 Functions は、関数に関する状態その他の情報を維持するために Azure Storage アカウントを使用します。 [az storage account create](/cli/azure/storage/account#create) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
 
-次のコマンドで、`<storage_name>` プレースホルダーをグローバルで一意な独自のストレージ アカウント名に置き換えます。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+次のコマンドでは、`<storage_name>` プレースホルダーをグローバルに一意なストレージ アカウント名で置き換えます。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
@@ -86,7 +84,7 @@ az storage account create --name <storage_name> --location westeurope --resource
 
 関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#create) コマンドを使用します。 
 
-次のコマンドで、`<app_name>` プレースホルダーを独自の一意の Function App 名に、`<storage_name>` をストレージ アカウント名に置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 
+次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
@@ -170,4 +168,3 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-

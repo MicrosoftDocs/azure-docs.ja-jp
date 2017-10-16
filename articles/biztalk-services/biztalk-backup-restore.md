@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
 
@@ -63,7 +61,7 @@ BizTalk サービスのバックアップは、 [BizTalk サービスの REST AP
 バックアップが完了すると、入力したバックアップ名が付けられたコンテナーがストレージ アカウントの下に作成されます。 このコンテナーには、BizTalk サービスのバックアップ構成が含まれています。
 
 #### <a name="backupschedule"></a>バックアップのスケジュール
-1. Azure クラシック ポータルで、**[BizTalk Services]** を選択し、バックアップのスケジュールを設定する BizTalk サービスを選択した後、**[構成]** タブを選択します。
+1. Azure クラシック ポータルで、**BizTalk Services** を選択し、バックアップのスケジュールを設定する BizTalk サービスを選択した後、**構成** タブを選択します。
 2. **[バックアップ ステータス]** を **[自動]** に設定します。 
 3. **[ストレージ アカウント]** で、どのアカウントにバックアップを保存するかを選択し、**[頻度]** にバックアップ作成の間隔を入力し、バックアップを保持する期間の長さを **[リテンション期間の日数]** に入力します。
    
@@ -91,13 +89,13 @@ BizTalk サービスのダッシュボードにステータスが [ **失敗** ]
 * 同じ EDI ランタイム データが復元されます。 EDI ランタイム バックアップでは、コントロール番号が保存されます。 復元されるコントロール番号は、バックアップの時点から順番に付けられます。 前回のバックアップ後にメッセージが処理された場合、このバックアップ コンテンツを復元するとコントロール番号が重複する可能性があります。
 
 #### <a name="restore-a-backup"></a>バックアップの復元
-1. Azure クラシック ポータルで **[新規]**  >  **[App Services]**  >  **[BizTalk サービス]**  >  **[復元]** の順に選択します。
+1. Azure クラシック ポータルで **新規**  >  **App Services**  >  **BizTalk サービス**  >  **復元** の順に選択します。
    
     ![バックアップの復元][Restore]
 2. [ **バックアップ URL**] で、フォルダーのアイコンを選択し、BizTalk サービス構成バックアップが保存されている Azure ストレージ アカウントを展開します。 コンテナーを展開し、右のウィンドウで対応するバックアップの .txt ファイルを選択します。 
    <br/><br/>
    **[Open (開く)]**を選択します。
-3. **[BizTalk サービスのリストア]** ページで、**[BizTalk サービス名]** に名前を入力し、復元される BizTalk サービスの **[ドメイン URL]**、**[エディション]**、**[リージョン]** を確認します。 **新しい SQL データベース インスタンスを作成する**  を選択します。
+3. **BizTalk サービスのリストア** ページで、**BizTalk サービス名** に名前を入力し、復元される BizTalk サービスの **ドメイン URL**、**エディション**、**リージョン** を確認します。 **新しい SQL データベース インスタンスを作成する**  を選択します。
    
     ![][RestoreBizTalkService]
    
@@ -111,7 +109,7 @@ BizTalk サービスのダッシュボードにステータスが [ **失敗** ]
 1. 新しいストレージ アカウントを作成するか、BizTalk サービス用の既存のストレージ アカウントを入力します。
 2. チェックマークを選択して復元を開始します。
 
-復元が正常に完了すると、新しい BizTalk サービスが Azure クラシック ポータルの [BizTalk サービス] ページに "中断" という状態で表示されます。
+復元が正常に完了すると、新しい BizTalk サービスが Azure クラシック ポータルの BizTalk サービス ページに "中断" という状態で表示されます。
 
 ### <a name="postrestore"></a>バックアップの復元後
 BizTalk サービスは常に、[ **中断** ] 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
@@ -213,5 +211,4 @@ Azure BizTalk Services を Azure クラシック ポータルで作成するに�
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
-
 

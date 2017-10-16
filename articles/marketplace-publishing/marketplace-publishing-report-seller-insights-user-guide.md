@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-dabosl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 292598b79b9b9749de8c4994de32349625611195
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
-
+ms.openlocfilehash: cd5db703ab0b89b8597c99c0d536bc07f883ebc6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-marketplace-seller-insights-portal"></a>Azure Marketplace の Seller Insights Portal を使用する方法
 
@@ -109,7 +107,7 @@ Seller Insights Portal にサインインするには、個人の Microsoft ア�
 ## <a name="orders-and-usage"></a>注文と使用状況
 ### <a name="overview"></a>概要
 
-*パネル A* では、**[Orders and Usage ]** (注文と使用状況) タブを選択できます。  ここの **[レポートの種類]** で、**[Orders]** (注文) または **[Usage]** (使用状況) を選択し、スライダーを使用して興味のあるデータを選択します。
+*パネル A* では、**[Orders and Usage ]** (注文と使用状況) タブを選択できます。ここの **[レポートの種類]** で、**[Orders]** (注文) または **[Usage]** (使用状況) を選択し、スライダーを使用して興味のあるデータを選択します。
 
 *パネル B* では、毎月のデータを選択できます。 パネル A の **[レポートの種類]** での選択に応じて、**[Orders]** (注文) または **[Usage]** (使用状況) を選択します。表示されるデータは、入力した日付とパネル A でスライダーを使用して適用したフィルターが反映されます。
 
@@ -418,4 +416,3 @@ Seller Insights Portal にサインインするには、個人の Microsoft ア�
 [33]: ./media/marketplace-publishing-report-seller-insights-user-guide/support-fill-out-and-submit.png
 [34]: ./media/marketplace-publishing-report-seller-insights-user-guide/feedback-form.png
 [35]: ./media/marketplace-publishing-report-seller-insights-user-guide/help.png
-

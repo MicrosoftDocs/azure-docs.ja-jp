@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 63f2d88ad59661b7fbcffd0aaeb94c58d40bdb73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した YARN のトラブルシューティング
 
 Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発生する主な問題とその解決策について説明します。
@@ -35,7 +33,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 新しい YARN キューを作成し、すべてのキューの間で容量の割り当てのバランスを取るには、Ambari で次の手順を実行します。 
 
 この例では、次の 2 つの既存のキュー (**default** と **thriftsvr**) 両方の容量を 50% から 25% に変更し、新しいキュー (Spark) が容量の 50% を使用できるようにします。
-| キュー | 容量 | 最大容量 |
+| キュー | Capacity | 最大容量 |
 | --- | --- | --- | --- |
 | default | 25% | 50% |
 | thrftsvr | 25% | 50% |
@@ -143,7 +141,6 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 - [SSH を使用して HDInsight (Hadoop) に接続する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN の概念とアプリケーション](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
-
 
 
 

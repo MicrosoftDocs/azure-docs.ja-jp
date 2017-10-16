@@ -19,8 +19,19 @@
 ### [メッセージをバッチ処理する](logic-apps-batch-process-send-receive-messages.md)
 ### [ロジック アプリの定義を作成する](logic-apps-author-definitions.md)
 ### [ロジック アプリを呼び出し、トリガーし、入れ子にする](logic-apps-http-endpoint.md)
-### [ロジック アプリ用のカスタム API を作成する](logic-apps-create-api-app.md)
-### [ロジック アプリ用のカスタム API を呼び出す](logic-apps-custom-hosted-api.md)
+### カスタム コネクタを開発する
+#### [カスタム コネクタの概要](custom-connector-overview.md)
+#### [Web API からコネクタを作成する](custom-connector-build-web-api-app-tutorial.md)
+#### [Azure AD を使用してコネクタをセキュリティで保護する](custom-connector-azure-active-directory-authentication.md)
+#### [Postman で API を記述する](custom-connector-api-postman-collection.md)
+#### [カスタム コネクタの OpenAPI を拡張する](custom-connector-openapi-extensions.md)
+#### [コネクタを登録する](logic-apps-custom-connector-register.md)
+#### [コネクタの認定を受ける](custom-connector-submit-certification.md)
+#### [カスタム コネクタに関する FAQ](custom-connector-faq.md)
+### カスタム API を開発する
+#### [ロジック アプリ用のカスタム API を作成する](logic-apps-create-api-app.md)
+#### [カスタム API の呼び出しをセキュリティで保護する](logic-apps-custom-api-authentication.md)
+#### [カスタム API をデプロイして呼び出す](logic-apps-custom-api-host-deploy-call.md)
 ### [エラーと例外を処理する](logic-apps-exception-handling.md)
 ### [コンテンツ タイプを処理する](logic-apps-content-type.md)
 ### [ロジック アプリをセキュリティで保護する](logic-apps-securing-a-logic-app.md)
@@ -32,6 +43,7 @@
 ### [パートナー](logic-apps-enterprise-integration-partners.md)
 ### [アグリーメント](logic-apps-enterprise-integration-agreements.md)
 ### [B2B の処理](logic-apps-enterprise-integration-b2b.md)
+### [EDI メッセージをバッチとして送信する](logic-apps-scenario-edi-send-batch-messages.md)
 ### [XML の処理](logic-apps-enterprise-integration-xml.md)
 ### [フラット ファイルの処理](logic-apps-enterprise-integration-flatfile.md)
 ### [XML を検証する](logic-apps-enterprise-integration-xml-validation.md)
@@ -73,12 +85,11 @@
 #### [X12 の追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## 例、シナリオ、チュートリアル
-### [概要](logic-apps-examples-and-scenarios.md)
+## [例、シナリオ、チュートリアル](logic-apps-examples-and-scenarios.md)
 ### [サーバーなしのソーシャル ダッシュ ボードを作成する](logic-apps-scenario-social-serverless.md)
 ### [Azure Functions を使用してロジック アプリを呼び出す](logic-apps-scenario-function-sb-trigger.md)
 ### [エラーと例外の処理を追加する](logic-apps-scenario-error-and-exception-handling.md)
-### [B2B の処理](logic-apps-enterprise-integration-b2b.md)
+### [B2B の処理](logic-apps-enterprise-integration-b2b.md) 
 
 ## 価格と課金
 ### [料金](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -98,7 +109,7 @@
 ## [ワークフロー定義言語](logic-apps-workflow-definition-language.md)
 ## [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## コネクタ: 詳細のトピック
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob Storage](../connectors/connectors-create-api-azureblobstorage.md)

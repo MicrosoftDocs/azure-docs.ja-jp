@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-translationtype: Human Translation
-ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
 ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは PHP で記述されています。
@@ -28,7 +28,7 @@ ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な使用シナリオを次に示します。
 
 * 顧客に受信通知を自動送信する
-* 顧客に広告メールを月&1; 回送信するための配布リストを管理する
+* 顧客に広告メールを月 1 回送信するための配布リストを管理する
 * ブロックされた電子メールや顧客の応答性などを表す測定値をリアルタイムで収集する
 * 傾向を認識するために役立つレポートを生成する
 * 顧客の問い合わせを転送する
@@ -398,9 +398,3 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 [トランザクション メール配信]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Composer]: https://getcomposer.org/download/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

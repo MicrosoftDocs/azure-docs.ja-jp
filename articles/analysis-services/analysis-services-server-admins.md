@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 25c8b49401486edfad0a1a60fe2258a586f6adc2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.openlocfilehash: a1b58125dafdf73f245b6a8cd0f4917513b22ea9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザーまたはグループである必要があります。 Azure Portal のサーバー用コントロール ブレードで **[Analysis Services 管理者]** を使用するか、SSMS のサーバー プロパティを使用して、サーバー管理者を管理できます。 
@@ -43,5 +42,4 @@ ms.lasthandoff: 06/23/2017
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)  
-
 

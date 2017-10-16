@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/31/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.openlocfilehash: 47b17c0d81e8597d3125949b26906cc356a9af11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
 この記事では、送信プロキシ サーバーと連携するように Azure Active Directory (Azure AD) アプリケーション プロキシ コネクタを構成する方法について説明します。 この記事は、既存のプロキシがあるネットワーク環境のお客様を対象としています。
@@ -31,23 +31,11 @@ ms.lasthandoff: 08/07/2017
 
 コネクタの動作方法について詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-understand-connectors.md)」をご覧ください。
 
-## <a name="configure-the-outbound-proxy"></a>送信プロキシの構成
-
-環境内に送信プロキシがある場合は、適切なアクセス許可を持つアカウントを使って送信プロキシを構成します。 インストーラーはインストールを実行するユーザーのコンテキストで実行されるため、Microsoft Edge または別のインターネット ブラウザーを使用して構成を確認できます。
-
-Microsoft Edge でプロキシ設定を構成するには、次の手順を実行します。
-
-1. **[設定]** > **[詳細設定を表示]** > **[プロキシ セットアップを開く]** > **[手動プロキシ セットアップ]** の順に移動します。
-2. **[プロキシ サーバーを使う]** を **[オン]** に設定し、**[ローカル (イントラネット) のアドレスにはプロキシ サーバーを使わない]** チェック ボックスをオフにして、ローカル プロキシ サーバーを反映するようにアドレスとポートを変更します。
-3. 必要なプロキシ設定を入力します。
-
-   ![プロキシ設定のダイアログ ボックス](./media/application-proxy-working-with-proxy-servers/proxy-bypass-local-addresses.png)
-
 ## <a name="bypass-outbound-proxies"></a>送信プロキシをバイパス
 
-コネクタには、送信要求を行う基になる OS コンポーネントがあります。 これらのコンポーネントは、自動的にネットワーク上のプロキシ サーバーの特定を試みます。 Web プロキシ自動発見 (WPAD) は、環境で有効になっている場合に使用されます。
+コネクタには、送信要求を行う基になる OS コンポーネントがあります。 これらのコンポーネントは、Web プロキシ自動発見 (WPAD) を使って自動的にネットワーク上のプロキシ サーバーの特定を試みます。
 
-この OS コンポーネントは、wpad.domainsuffix の DNS 参照を実行することで、プロキシ サーバーの検出を試みます。 これが DNS で解決すると、wpad.dat の IP アドレスに対して HTTP 要求が作成されます。 この要求が、環境におけるプロキシ構成スクリプトになります。 コネクタは、このスクリプトを使用して送信プロキシ サーバーを選択します。 ただし、プロキシで追加の構成設定が必要なため、コネクタのトラフィックがプロキシを経由しないことがあります。
+この OS コンポーネントは、wpad.domainsuffix の DNS 参照を実行することで、プロキシ サーバーの検出を試みます。 この参照が DNS で解決すると、wpad.dat の IP アドレスに対して HTTP 要求が作成されます。 この要求が、環境におけるプロキシ構成スクリプトになります。 コネクタは、このスクリプトを使用して送信プロキシ サーバーを選択します。 ただし、プロキシで追加の構成設定が必要なため、コネクタのトラフィックがプロキシを経由しないことがあります。
 
 オンプレミスのプロキシをバイパスして Azure サービスへの直接接続を使用するように、コネクタを構成できます。 管理する構成が 1 つ少なくて済むため、(ネットワーク ポリシーで許可されている場合) この方法をお勧めします。
 
@@ -67,7 +55,7 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
   </appSettings>
 </configuration>
 ```
-コネクタ アップデーター サービスもプロキシをバイパスするようにするには、C:\Program Files\Microsoft AAD App Proxy Connector Updater にある ApplicationProxyConnectorUpdaterService.exe.config ファイルに同じような変更を加えます。
+コネクタ アップデーター サービスもプロキシをバイパスするようにするには、ApplicationProxyConnectorUpdaterService.exe.config ファイルに同じような変更を加えます。 このファイルは C:\Program Files\Microsoft AAD App Proxy Connector Updater にあります。
 
 既定の .config ファイルに戻す必要がある場合に備えて、元のファイルのコピーを作成するようにしてください。
 
@@ -81,9 +69,12 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 
 送信トラフィックしかないため、ファイアウォール経由で受信アクセスを構成する必要はありません。
 
+>[!NOTE]
+>アプリケーション プロキシは、他のプロキシに対する認証をサポートしていません。 コネクタ/アップデータのネットワーク サービス アカウントは、認証を求められることなく、プロキシに接続できる必要があります。
+
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>手順 1: コネクタと関連サービスが送信プロキシを経由するように構成する
 
-先ほど説明したように、WPAD が環境内で有効になっていて、適切に構成されている場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
+環境内で WPAD を有効にし、適切に構成している場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
 
 これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、*proxyserver:8080* を変更します。
 
@@ -104,7 +95,7 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 </configuration>
 ```
 
-次に、C:\Program Files\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config にあるファイルに同じような変更を加えて、コネクタ アップデーター サービスがプロキシを使用するように構成します。
+次に、C:\Program Files\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config ファイルに同じような変更を加えて、コネクタ アップデーター サービスがプロキシを使用するように構成します。
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>手順 2: プロキシがコネクタと関連サービスのトラフィックの通過を許可するように構成する
 
@@ -128,7 +119,7 @@ Microsoft Edge でプロキシ設定を構成するには、次の手順を実�
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
-* [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。
+* [Azure データセンターの全 IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。
 
 #### <a name="proxy-authentication"></a>プロキシの認証
 
@@ -141,88 +132,58 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 >[!NOTE]
 >Service Bus を HTTPS 経由で実行する場合は、ポート 443 が使用されます。 ただし、既定では、Service Bus は直接 TCP 接続を試みて、直接接続に失敗した場合にのみ HTTPS に戻ってきます。
 
-Service Bus のトラフィックも送信プロキシ サーバー経由で送信されるようにするには、コネクタがポート 9350、9352、5671 で Azure サービスに直接接続できないようにしてください。
-
 #### <a name="ssl-inspection"></a>SSL インスペクション
-コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには SSL インスペクションを使用しないでください。
+コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには SSL インスペクションを使用しないでください。 コネクタは証明書を使用してアプリケーション プロキシ サービスに対する認証を行いますが、その証明書が SSLインスペクションの間に失われることがあります。 
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>コネクタのプロキシの問題とサービスの接続の問題のトラブルシューティング
 これですべてのトラフィックがプロキシを経由します。 問題が生じた場合は、次のトラブルシューティング情報が役に立ちます。
 
-コネクタの接続の問題を特定してトラブルシューティングを行う最善の方法は、コネクタ サービスの開始時にそのサービス上でネットワーク キャプチャを実行することです。 これは手間のかかる作業なため、ネットワーク トレースのキャプチャおよびフィルター処理に関する簡単なヒントを見てみましょう。
+コネクタの接続の問題を特定してトラブルシューティングを行う最善の方法は、コネクタ サービスの開始時にネットワーク キャプチャを実行することです。 ネットワーク トレースをキャプチャおよびフィルター処理する際に役立つヒントを簡単に紹介します。
 
-任意の監視ツールを使用することができます。 この記事の目的上、ここでは Microsoft ネットワーク モニター 3.4 を使用しています。 [これは Microsoft Web サイトからダウンロード](https://www.microsoft.com/download/details.aspx?id=4865)できます。
+任意の監視ツールを使用することができます。 ここでは、Microsoft Message Analyzer を使用しています。 [これは Microsoft Web サイトからダウンロード](https://www.microsoft.com/download/details.aspx?id=44226)できます。
 
-次のセクションで使用する例とフィルターはネットワーク モニター限定ですが、紹介する原則はどの分析ツールにも適用できます。
-
-### <a name="take-a-capture-by-using-network-monitor"></a>ネットワーク モニターを使ってキャプチャを実行する
-
-キャプチャを開始するには、次の手順を実行します。
-
-1. ネットワーク モニターを開き、**[New Capture (新規キャプチャ)]** をクリックします。
-2. **[開始]** をクリックします。
-
-   ![ネットワーク モニター ウィンドウ](./media/application-proxy-working-with-proxy-servers/network-capture.png)
-
-キャプチャが完了したら、**[停止]** をクリックしてキャプチャを終了します。
+以下に示すのは Message Analyzer の例ですが、原則はどの分析ツールでも同じです。
 
 ### <a name="take-a-capture-of-connector-traffic"></a>コネクタ トラフィックのキャプチャを実行する
 
 最初のトラブルシューティングでは、次の手順を実行します。
 
 1. services.msc で、Azure AD アプリケーション プロキシ コネクタ サービスを停止します。
-2. ネットワーク キャプチャを開始します。
-3. Azure AD アプリケーション プロキシ コネクタ サービスを開始します。
-4. ネットワーク キャプチャを停止します。
 
    ![services.msc の Azure AD アプリケーション プロキシ コネクタ サービス](./media/application-proxy-working-with-proxy-servers/services-local.png)
 
-### <a name="look-at-the-requests-from-the-connector-to-the-proxy-server"></a>コネクタからプロキシ サーバーへの要求を調べる
+2. Message Analyzer を管理者として実行します。
+3. **[Start Local Trace]\(ローカル トレースの開始\)** を選択します。
 
-ネットワーク キャプチャを取得したので、これをフィルター処理できるようになりました。 トレースを調べるカギは、キャプチャをフィルター処理する方法を理解することです。
+   ![ネットワーク キャプチャの開始](./media/application-proxy-working-with-proxy-servers/start-local-trace.png)
 
-次のフィルターを使用します (8080 はプロキシ サービスのポート)。
+3. Azure AD アプリケーション プロキシ コネクタ サービスを開始します。
+4. ネットワーク キャプチャを停止します。
 
-**(http.Request or http.Response) and tcp.port==8080**
+   ![ネットワーク キャプチャの停止](./media/application-proxy-working-with-proxy-servers/stop-trace.png)
 
-このフィルターを **[Display Filter (ディスプレイ フィルター)]** ウィンドウに入力し、**[適用]** を選択すると、フィルターに基づいてキャプチャされたトラフィックがフィルター処理されます。
+### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>コネクタのトラフィックが送信プロキシをバイパスするかどうかを確認する
 
-前述のフィルターにより、プロキシ ポートとの間の HTTP 要求と応答のみが表示されます。 プロキシ サーバーを使用するよう構成されたコネクタの起動時には、フィルターによって次のような情報が表示されます。
+アプリケーション プロキシ コネクタがプロキシ サーバーをバイパスしてアプリケーション プロキシ サービスに直接接続するよう構成している場合は、ネットワーク キャプチャを調べて、TCP 接続が失敗していないかを確認します。 
 
- ![フィルター処理された HTTP 要求と応答の一覧の例](./media/application-proxy-working-with-proxy-servers/http-requests.png)
-
-ここでは、プロキシ サーバーとの通信を示す CONNECT 要求を調べます。 成功すると、HTTP OK (200) の応答が表示されます。
-
-他の応答コード (407 や 502 など) が表示される場合は、プロキシが認証を必要としているか、その他の理由でトラフィックを許可していません。 その場合は、プロキシ サーバー サポート チームのサポートを得てください。
-
-### <a name="identify-failed-tcp-connection-attempts"></a>失敗した TCP 接続の試行を特定する
-
-興味深いその他のよくあるシナリオには、コネクタが直接接続を試みて失敗するケースがあります。
-
-ネットワーク モニターの次のフィルターを使用すると、この問題を簡単に特定できます。
-
-**property.TCPSynRetransmit**
+Message Analyzer のフィルターを使用すると、これらの試みを識別できます。 フィルターのボックスに `property.TCPSynRetransmit` と入力し、**[Apply]\(適用\)** を選択します。 
 
 SYN パケットは、TCP 接続を確立するために最初に送信されるパケットです。 このパケットにより応答が返されない場合は、SYN パケットの送信が再試行されます。 前述のフィルターを使用すると、再送信されたすべての SYN パケットが表示されます。 次に、これらの SYN パケットがコネクタ関連のトラフィックに対応するかどうかを調べます。
 
-次の例は、Service Bus ポート 9352 への失敗した接続試行を示しています。
+コネクタが Azure サービスに直接接続するよう構成している場合、ポート 443 での SynRetransmit の応答は、ネットワークまたはファイアウォールの問題が発生していることを示しています。
 
- ![失敗した接続試行の応答の例](./media/application-proxy-working-with-proxy-servers/failed-connection-attempt.png)
+### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>コネクタのトラフィックが送信プロキシを使用しているかどうかを確認する
 
-前述のような応答が表示される場合は、コネクタが Azure Service Bus サービスに直接接続しようとしています。 コネクタが Azure サービスに直接接続することが考えられる場合、この応答はネットワークまたはファイアウォールの問題が発生していることを明確に示しています。
+アプリケーション プロキシ コネクタのトラフィックがプロキシ サーバーを経由するよう構成している場合は、プロキシへの https 接続が失敗していないかを確認します。 
 
->[!NOTE]
->プロキシ サーバーを使用するよう構成した場合は、この応答は、Service Bus が HTTPS 経由の接続試行に切り替える前に直接 TCP 接続を試みていることを意味する可能性があります。
->
+ネットワーク キャプチャをフィルター処理してこれらの試みを確認するには、Message Analyzer のフィルターで `(https.Request or https.Response) and tcp.port==8080` と入力し、ポート 8080 をご自身のプロキシ サービス ポートに置き換えます。 **[Apply]\(適用\)** を選択してフィルター結果を確認します。 
 
-ネットワーク トレースの分析は、すべてのユーザー向きではありません。 しかしこれは、ネットワークで何が起きているかに関する概要情報を取得できる、価値のあるツールです。
+前述のフィルターにより、プロキシ ポートとの間の HTTPS 要求と応答のみが表示されます。 プロキシ サーバーとの通信を示す CONNECT 要求を調べます。 成功すると、HTTP OK (200) の応答が表示されます。
 
-コネクタの接続の問題に悩んでいるお客様は、サポート チームのチケットを作成してください。 チームが問題の解決をお手伝いします。
-
-アプリケーション プロキシ コネクタのエラーの解決については、[アプリケーション プロキシのトラブルシューティング](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot)に関する記事を参照してください。
+他の応答コード (407 や 502 など) が表示される場合は、プロキシが認証を必要としているか、何らかの理由でトラフィックを許可しないことを示しています。 その場合は、プロキシ サーバー サポート チームのサポートを得てください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)<br>
-[Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法](active-directory-application-proxy-silent-installation.md)
+- [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
 
+- コネクタの接続に問題がある場合は、[Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)に質問を投稿するか、サポート チケットを作成してください。

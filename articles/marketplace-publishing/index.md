@@ -15,12 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2016
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ef11f8d93149057cbd5af212361bc2219cd247da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/23/2016
-
+ms.openlocfilehash: 24340610b959bec1930f5eb9ac1c89755f6bc262
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="to-be-submitted"></a>送信する。
-

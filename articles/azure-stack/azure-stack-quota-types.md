@@ -1,6 +1,6 @@
 ---
-title: Quota types in Azure Stack | Microsoft Docs
-description: Review the different quota types available for services and resources in Azure Stack.
+title: "Azure Stack のクォータの種類 | Microsoft Docs"
+description: "Azure Stack のサービスとリソースで使用可能なさまざまなクォータの種類を確認します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,53 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
+ms.openlocfilehash: 33906514955b76a3d6587b19899a0c76a09018a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 9c65abd596b1a67175a4f91558c318f16ddbb11f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="quota-types-in-azure-stack"></a>Quota types in Azure Stack
-[Quotas](azure-stack-plan-offer-quota-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
+# <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
-## <a name="compute-quota-types"></a>Compute quota types
-| **Type** | **Default value** | **Description** |
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+[クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
+
+## <a name="compute-quota-types"></a>Compute クォータの種類
+| **型** | **既定値** | **説明** |
 | --- | --- | --- |
-| Max number of virtual machines |50 | The maximum number of virtual machines that a subscription can create in this location. |
-| Max number of virtual machine cores |100 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
-| Max number of availability sets |10 | The maximum number of availability sets that can be created in this location. |
-| Max number of virtual machine scale sets |100 | The maximum number of virtual machine scale sets that can be created in this location. |
+| [Max number of virtual machines]\(仮想マシンの最大数\) |50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
+| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) |100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
+| [Max number of availability sets]\(可用性セットの最大数\) |10 | この場所に作成できる可用性セットの最大数です。 |
+| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) |100 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
 
 > [!NOTE]
-> Compute quotas are not enforced in this technical preview.
+> このテクニカル プレビューでは、Compute クォータは強制されていません。
 > 
 > 
 
-## <a name="storage-quota-types"></a>Storage quota types
-| **Item** | **Default value** | **Description** |
+## <a name="storage-quota-types"></a>Storage クォータの種類
+| **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| Maximum capacity (GB) |500 |Total storage capacity that can be consumed by a subscription in this location. |
-| Total number of storage accounts |20 |The maximum number of storage accounts that a subscription can create in this location. |
+| 最大容量 (GB) |500 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
+| [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
-## <a name="network-quota-types"></a>Network quota types
-| **Item** | **Default value** | **Description** |
+## <a name="network-quota-types"></a>Network クォータの種類
+| **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| Max public IPs |50 |The maximum number of public IPs that a subscription can create in this location. |
-| Max virtual networks |50 |The maximum number of virtual networks that a subscription can create in this location. |
-| Max virtual network gateways |1 |The maximum number of virtual network gateways (VPN Gateways) that a subscription can create in this location. |
-| Max network connections |2 |The maximum number of network connections (point-to-point or site-to-site) that a subscription can create across all virtual network gateways in this location. |
-| Max load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
-| Max NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
-| Max network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
+| [Max public IPs]\(パブリック IP の最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるパブリック IP の最大数です。 |
+| [Max virtual networks]\(仮想ネットワークの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワークの最大数です。 |
+| [Max virtual network gateways]\(仮想ネットワーク ゲートウェイの最大数\) |1 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) の最大数です。 |
+| [Max network connections]\(ネットワーク接続の最大数\) |2 |1 つのサブスクリプションで、すべての仮想ネットワーク ゲートウェイにまたがってこの場所に作成できるネットワーク接続 (ポイント対ポイントまたはサイト対サイト) の最大数です。 |
+| [Max load balancers]\(ロード バランサーの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるロード バランサーの最大数です。 |
+| 最大 NIC 数 |100 |1 つのサブスクリプションでこの場所に作成できるネットワーク インターフェイスの最大数です。 |
+| [Max network security groups]\(ネットワーク セキュリティ グループの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるネットワーク セキュリティ グループの最大数です。 |
 
-## <a name="view-an-existing-quota"></a>View an existing quota
-1. Click **More services** > **Resource Providers**.
-2. Select the service with the quota that you want to view.
-3. Click **Quotas**, and select the quota you want to view.
+## <a name="view-an-existing-quota"></a>[View an existing quota]\(既存のクォータの表示\)
+1. **[その他のサービス]** > **[リソース プロバイダー]** をクリックします。
+2. 参照するクォータを使用したサービスを選択します。
+3. **[クォータ]** をクリックして、参照するクォータを選択します。
 
-## <a name="next-steps"></a>Next steps
-[Learn more about plans, offers, and quotas.](azure-stack-plan-offer-quota-overview.md)
+## <a name="next-steps"></a>次のステップ
+[プラン、オファーおよびクォータについて](azure-stack-plan-offer-quota-overview.md)
 
-[Create quotas while creating a plan.](azure-stack-create-plan.md)
-
+[プランの作成時にクォータを作成する](azure-stack-create-plan.md)

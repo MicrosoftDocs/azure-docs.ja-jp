@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ae2a2e477137bc117111b147e1f088d528a55de5
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -239,7 +239,8 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 
-カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。 現在、オンプレミス Active Directory から同期されている複数値の属性はサポートされていません。 
+カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
+現在、オンプレミス Active Directory から同期されている複数値の属性はサポートされていません。
 
 ## <a name="direct-reports-rule"></a>"直接の部下" のルール
 マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直接の部下が変更された場合、グループのメンバシップは自動的に調整されます。
@@ -271,10 +272,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
 | deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
 | deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 任意の文字列値                | (device.deviceCategory -eq "")                              |
+| deviceCategory          | 有効なデバイス カテゴリ名    | (device.deviceCategory -eq "BYOD")                          |
 | deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
 | deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 任意の文字列値                | (device.deviceOwnership -eq "")                             |
+| deviceOwnership         | 個人、会社               | (device.deviceOwnership -eq "Company")                      |
 | domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
 | enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
 | isRooted                | true false                      | (device.deviceOSType -eq true)                              |
@@ -287,6 +288,19 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 > Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
 >
 >
+
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>動的メンバーシップを静的に変更する、またはその逆の変更を行う
+グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
+
+> [!WARNING]
+> 既存の静的グループを動的グループに変更すると、既存のすべてのメンバーはグループから削除され、新しいメンバーを追加するためにメンバーシップ ルールが処理されます。 アプリまたはリソースへのアクセスを制御するためにグループが使用されている場合、元のメンバーは、メンバーシップ ルールが完全に処理されるまでアクセスできなくなる可能性があります。
+>
+> グループの新しいメンバーシップが予期したとおりのものになるように、事前に新しいメンバーシップ ルールをテストすることをお勧めします。
+
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、グループを開きます。
+2. **[構成]** タブを選択して、動的メンバーシップの現在の状態を表示します。
+3. グループを静的にする場合は、**[動的メンバーシップを有効にする]** 設定を **[いいえ]** に切り替えるだけです。 下のツールバーの **[保存]** ボタンをクリックして確認します。 既存のメンバーはグループで保持され、今後はメンバーシップ ルールが処理されることはありません。
+4. グループを動的にするには、設定を **[はい]** に切り替え、必要なメンバーシップ ルールを指定して **[保存]** をクリックします。 既存のメンバーは削除され、新しいルールで新しいメンバーを追加する処理が開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。

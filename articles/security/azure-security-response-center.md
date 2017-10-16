@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35b51ab7fa40e16ebe5170c3dea33b02a653d23b
-
-
+ms.openlocfilehash: bc47589ac769d89b2aa7f7565d08555ace3119d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-security-response-center"></a>Microsoft Security Response Center
 Microsoft Security Response Center (MSRC) は、世界中で最も経験のあるセキュリティの専門家で指揮を執っています。 これらの専門家は、年中 24 時間体制で、セキュリティ インシデントおよびオンプレミスとクラウドの脆弱性を識別、監視、対応、および解決しています。
@@ -39,9 +39,3 @@ Microsoft バウンティ プログラムでは、新しい攻撃手法や新し
 これらのプログラムの詳細については、「[MSRC Bug Bounty](https://technet.microsoft.com/security/dn425036)」ページと「[MSRC のブログ](https://blogs.technet.microsoft.com/msrc/)」をご覧ください。
 
 MSRC の詳細については、「 [MSRC ホーム ページ](https://technet.microsoft.com/library/dn440717.aspx)」をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

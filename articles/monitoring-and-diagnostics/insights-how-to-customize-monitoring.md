@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。 Azure Portal でこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/21/2017
 ## <a name="using-monitoring-charts"></a>監視グラフの使用
 選択した任意の期間における任意のメトリックのグラフを作成できます。
 
-1. [Azure ポータル](https://portal.azure.com/)で、 **[参照]**をクリックし、監視するリソースをクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[参照]**をクリックし、監視するリソースをクリックします。
 2. **[監視]** セクションには、各 Azure リソースにとって最も重要なメトリックが含まれています。 たとえば、Web アプリには "**要求とエラー**" があるのに対し、仮想マシンには "**CPU の割合**" と "**ディスクの読み取りと書き込み**" があります。![監視レンズ](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 3. いずれかのグラフをクリックすると、 **[メトリック]** ブレードが表示されます。 ブレードには、グラフに加えて、メトリック (選択した時間範囲の平均、最小値、最大値など) の集計を示すテーブルが表示されます。 その下には、リソースのアラート ルールが示されます。
     ![[メトリック] ブレード](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
@@ -68,5 +67,4 @@ ms.lasthandoff: 07/21/2017
 * [アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md) します。
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 * [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md) すると、ページがダウンしているかどうかを検出できます。
-
 

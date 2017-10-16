@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 017a66ae1ade5e0f64fc799b7bb6aa97b67791a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: aef9c15636ccaecce07d4fa218a40ed26ebad9df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>HDInsight の R Server 向けの Azure Storage ソリューション
 
@@ -38,9 +36,9 @@ HDInsight で Hadoop クラスターを作成するときに、**Azure ストレ
 - [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
 - [Azure HDInsight クラスターで Data Lake Store を使用する](hdinsight-hadoop-use-data-lake-store.md) 
 
-Azure Storage ソリューションの詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。 
+Azure Storage ソリューションの詳細については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。 
 
-実際のシナリオに応じた最適なストレージを選ぶうえでの指針については、「[Azure BLOB、Azure Files、Azure データ ディスクの使い分け](../storage/storage-decide-blobs-files-disks.md)」を参照してください。 
+実際のシナリオに応じた最適なストレージを選ぶうえでの指針については、「[Azure BLOB、Azure Files、Azure データ ディスクの使い分け](../storage/common/storage-decide-blobs-files-disks.md)」を参照してください。 
 
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>R Server での Azure BLOB ストレージ アカウントの使用
@@ -77,14 +75,14 @@ Azure Storage ソリューションの詳細については、「[Microsoft Azur
         #Specify the input file to analyze in HDFS:
         inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-ディレクトリとファイルの参照はすべて、ストレージ アカウント wasbs://container1@storage1.blob.core.windows.net を指しています。 これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
+ディレクトリとファイルの参照はすべて、ストレージ アカウント wasb://container1@storage1.blob.core.windows.net を指しています。 これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
 
 ここで、**storage2** の **container2** の /private ディレクトリにある mySpecial.csv というファイルを処理するとします。
 
 R コードで、名前ノード参照が **storage2** ストレージ アカウントを指すようにします。
 
 
-    myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
+    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
     myPort <- 0
 
     #Location of the data:
@@ -102,14 +100,14 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
     #Specify the input file to analyze in HDFS:
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 
-ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント wasbs://container2@storage2.blob.core.windows.net を指しています。 これは、先ほど指定した**名前ノード**です。
+ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント wasb://container2@storage2.blob.core.windows.net を指しています。 これは、先ほど指定した**名前ノード**です。
 
 次のように、**storage2** で /user/RevoShare/<SSH username> ディレクトリを構成する必要があります。
 
 
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 
 
@@ -189,8 +187,8 @@ Data Lake Store へのアクセスを付与したら、Azure セカンダリ ス
 
 Azure Files の大きな利点は、サポートされている OS (Windows や Linux など) を使用している任意のシステムで、ファイル共有をマウントして使用できることです。 たとえば、チーム内のメンバーが所有する他の HDInsight クラスターや、Azure VM、オンプレミスのシステムでも使用できます。 詳細については、次を参照してください。
 
-- [Linux で Azure File Storage を使用する方法](../storage/storage-how-to-use-files-linux.md)
-- [Windows で Azure File Storage を使用する方法](../storage/storage-dotnet-how-to-use-files.md)
+- [Linux で Azure File Storage を使用する方法](../storage/files/storage-how-to-use-files-linux.md)
+- [Windows で Azure File Storage を使用する方法](../storage/files/storage-dotnet-how-to-use-files.md)
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -201,5 +199,4 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 * [Hadoop での R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)
 * [HDInsight へ RStudio Server を追加する (クラスター作成時に追加されていない場合)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
-
 

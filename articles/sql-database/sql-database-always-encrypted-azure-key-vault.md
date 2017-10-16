@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 15db9db72a80dc95c615e52b889f6470b2e6eed0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
@@ -152,7 +151,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 
 各患者の **SSN** と **BirthDate** 情報を暗号化します。 SSN 列では決定論的な暗号化を使用します。この場合、等値のルックアップ、結合、グループ化を実行できます。 BirthDate 列ではランダム化された暗号化を使用します。この場合、操作は実行できません。
 
-**[暗号化の種類]** として、SSN 列には **[決定論的]** を、BirthDate 列には **[ランダム化]** を選択します。 **[次へ]**をクリックします。
+**[暗号化の種類]** として、SSN 列には **[決定論的]** を、BirthDate 列には **[ランダム化]** を選択します。 **[次へ]** をクリックします。
 
 ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -163,7 +162,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 
 1. **[Azure Key Vault]**を選択します。
 2. ドロップダウン リストから必要な Key Vault を選択します。
-3. **[次へ]**をクリックします。
+3. **[次へ]** をクリックします。
 
 ![マスター キー構成](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
@@ -641,5 +640,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
 

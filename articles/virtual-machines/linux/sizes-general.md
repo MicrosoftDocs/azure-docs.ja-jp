@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: jonbeck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 409d2df32906ee75eaa85042e8b1278dc31f0638
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: e23d96574afb9a8c60f88a2d6ff02fbb587f3f00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="general-purpose-linux-vm-sizes"></a>Linux VM の汎用サイズ
 
 
@@ -40,5 +38,4 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure コンピューティング ユニット (ACU)](../windows/acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
-
 

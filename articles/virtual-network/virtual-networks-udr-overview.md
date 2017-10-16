@@ -15,13 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 6274e0101f6fb0864c8d1efaef7fcde78b8760c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-defined-routes-and-ip-forwarding"></a>ユーザー定義のルートと IP 転送
 
@@ -112,5 +110,4 @@ Azure PowerShell では、次のように、一部の "NextHopType" 値が異な
 ## <a name="next-steps"></a>次のステップ
 * [リソース マネージャーのデプロイ モデルでルートを作成](virtual-network-create-udr-arm-template.md) し、サブネットに関連付ける方法について説明します。 
 * [クラシック デプロイ モデルでルートを作成](virtual-network-create-udr-classic-ps.md) し、サブネットに関連付ける方法について説明します。
-
 

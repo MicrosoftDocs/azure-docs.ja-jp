@@ -13,15 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
-ms.date: 06/05/2016
+ms.date: 09/19/2016
 ms.author: vvasic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b391b1f7aa37c5a06fc320ce892534187deb4959
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.openlocfilehash: 378e5a6a8cea80a551666c3692f8aa650620f66d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
@@ -43,7 +41,7 @@ Azure Portal では、各データベースで自動チューニング構成を�
 > 一般的な推奨事項は、すべてのデータベースで同じ構成設定を自動的に適用できるように、サーバー レベルで自動チューニング構成を管理することです。 データベースが同じサーバーの他のデータベースとは異なる場合は、個々のデータベースで自動チューニングを構成します。
 >
 
-単一のデータベースで自動チューニングを有効にするには、Azure Portal でデータベースに移動し、**[自動チューニング]** を選択します。 チェックボックスをオンにして、データベースから設定を継承するように単一のデータベースを構成することも、個別にデータベースの構成を指定することもできます。
+単一のデータベースで自動チューニングを有効にするには、Azure Portal でデータベースに移動し、**[自動チューニング]** を選択します。 オプションを選択して、サーバーから設定を継承するように単一のデータベースを構成することも、個別にデータベースの構成を指定することもできます。
 
 ![データベース](./media/sql-database-automatic-tuning-enable/database.png)
 
@@ -53,4 +51,3 @@ Azure Portal では、各データベースで自動チューニング構成を�
 * [自動チューニングに関する記事](sql-database-automatic-tuning.md)を読み、自動チューニングと、パフォーマンスの向上にいかに役立つかを確認します。
 * Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。
-

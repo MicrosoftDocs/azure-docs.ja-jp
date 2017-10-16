@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 62fa6a6d0cccc5545b94d4ae167f2fcc7e4cd0de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
 Network Watcher のパケット キャプチャ機能を使用すると、Azure VM でキャプチャ セッションを開始して管理できます。これは、ポータル、PowerShell、CLI で実行できるほか、SDK と REST API を介してプログラムで実行できます。 パケット キャプチャを使えば、すぐに使用できる形式で情報を取得して、パケット レベルのデータが必要なシナリオに対応できます。 無料で公開されているツールを利用してデータを検査することで、VM との送受信の通信内容を確認して、ネットワーク トラフィックに関する洞察を得ることができます。 パケット キャプチャ データの使用例としては、ネットワークまたはアプリケーションの問題の調査、ネットワークの悪用と侵入の試行の検出、法令順守の維持などがあります。 この記事では、一般的なオープン ソース ツールを使用して、Network Watcher で取得したパケット キャプチャ ファイルを開く方法について説明します。 加えて、接続の待ち時間を計算する方法、異常なトラフィックを特定する方法、ネットワーク統計を確認する方法を例示します。
@@ -136,7 +134,6 @@ Network Watcher のその他の診断機能については、「[Azure network m
 [6]: ./media/network-watcher-deep-packet-inspection/figure6.png
 [7]: ./media/network-watcher-deep-packet-inspection/figure7.png
 [8]: ./media/network-watcher-deep-packet-inspection/figure8.png
-
 
 
 

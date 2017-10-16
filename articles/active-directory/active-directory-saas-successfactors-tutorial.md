@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
-ms.openlocfilehash: a0a101c34ffd4adb6816d9db8313d10b0ffbb3ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
 このチュートリアルの目的は、SuccessFactors と Azure Active Directory (Azure AD) を統合する方法を説明することです。
@@ -331,4 +330,3 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 [27]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_09.png
 [28]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_10.png
 [29]: ./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_10.png
-

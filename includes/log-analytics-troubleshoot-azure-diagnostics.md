@@ -6,11 +6,11 @@
 
 リソース プロバイダーを登録するには、Azure Portal で次の手順を実行します。
 
-1.    左側のナビゲーション ウィンドウで、*[サブスクリプション]* をクリックします。
-2.    エラー メッセージで示されたサブスクリプションを選択します。
-3.    *[リソース プロバイダー]* をクリックします。
-4.    *Microsoft.insights* プロバイダーを探します。
-5.    *[登録]* リンクをクリックします。
+1.  左側のナビゲーション ウィンドウで、*[サブスクリプション]* をクリックします。
+2.  エラー メッセージで示されたサブスクリプションを選択します。
+3.  *[リソース プロバイダー]* をクリックします。
+4.  *Microsoft.insights* プロバイダーを探します。
+5.  *[登録]* リンクをクリックします。
 
 ![microsoft.insights リソース プロバイダーの登録](./media/log-analytics-troubleshoot-azure-diagnostics/log-analytics-register-microsoft-diagnostics-resource-provider.png)
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3750e2875935d2753a819ef8ce540009417d19b5
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: a7ea6141285a0098339f1e071af2592dd4535c12
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse----downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 [監査](sql-data-warehouse-auditing-overview.md) は TDS リダイレクションに対応する SQL クライアントと連動します。
@@ -41,5 +40,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 * Tedious (Node.JS 用)
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。     
-
 

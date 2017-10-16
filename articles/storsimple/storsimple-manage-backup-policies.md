@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b43d5d867d6245a807f6eff5ed3a0c3df10c0dd7
-
-
+ms.openlocfilehash: c1e9d5d0450bab5d371aafb40fd7c5920d39dfdb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-backup-policies"></a>StorSimple Manager サービスを使用してバックアップ ポリシーを管理する
 [!INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
@@ -79,10 +79,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

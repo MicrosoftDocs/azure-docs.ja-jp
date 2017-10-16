@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2017
 ms.author: kraigb
+ms.openlocfilehash: f4cd8ccc3b186cf2b4178b7d8a98d8928c705cbc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 729e953cae9d65e637be0fdaec9027312fdb6c6a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Visual Studio を使用したストレージ エミュレーターの構成と使用
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>概要
-Azure SDK 開発環境には、ローカル開発コンピューター上の Azure で使用可能な Blob service、Queue サービス、Table ストレージ サービスをシミュレートするユーティリティ、ストレージ エミュレーターが付属しています。 Azure ストレージ サービスを使用するクラウド サービスを構築している場合、またはストレージ サービスを呼び出す外部アプリケーションを作成している場合、ストレージ エミュレーターに対してコードをローカルでテストできます。 Azure Tools for Microsoft Visual Studio によって、ストレージ エミュレーターの管理が Visual Studio に統合されます。 Azure Tools は、初回使用時にストレージ エミュレーター データベースを初期化します。Visual Studio からコードが実行またはデバッグされるとストレージ エミュレーター サービスを開始し、Azure ストレージ エクスプローラーを介して、ストレージ エミュレーター データへの読み取り専用アクセスを提供します。
+Azure SDK 開発環境には、ローカル開発コンピューター上の Azure で使用可能な BLOB サービス、キュー サービス、テーブル サービスをシミュレートするユーティリティ、ストレージ エミュレーターが付属しています。 Azure ストレージ サービスを使用するクラウド サービスを構築している場合、またはストレージ サービスを呼び出す外部アプリケーションを作成している場合、ストレージ エミュレーターに対してコードをローカルでテストできます。 Azure Tools for Microsoft Visual Studio によって、ストレージ エミュレーターの管理が Visual Studio に統合されます。 Azure Tools は、初回使用時にストレージ エミュレーター データベースを初期化します。Visual Studio からコードが実行またはデバッグされるとストレージ エミュレーター サービスを開始し、Azure ストレージ エクスプローラーを介して、ストレージ エミュレーター データへの読み取り専用アクセスを提供します。
 
 システム要件やカスタム構成の手順など、ストレージ エミュレーターについて詳しくは、「[開発とテストのための Azure のストレージ エミュレーター使用](storage/common/storage-use-emulator.md)」をご覧ください。
 
@@ -56,5 +55,4 @@ Visual Studio で初めてサービスを実行またはデバッグすると、
 
 ## <a name="viewing-storage-emulator-data-in-server-explorer"></a>サーバー エクスプローラーでのストレージ エミュレーター データの表示
 ストレージ エミュレーターをはじめとするストレージ アカウント内の BLOB とテーブルのデータについては、サーバー エクスプローラーの Azure の [ストレージ] ノードを使用してデータを表示したり設定を変更したりすることができます。 詳細については「[ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)」を参照してください。
-
 

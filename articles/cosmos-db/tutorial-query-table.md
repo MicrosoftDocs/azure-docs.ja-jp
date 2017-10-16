@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: govindk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: Table API (プレビュー) を使用してテーブル データのクエリを実行する方法
 
 Azure Cosmos DB [Table API](table-introduction.md) (プレビュー) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
@@ -118,4 +115,3 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 
 > [!div class="nextstepaction"]
 > [データをグローバルに分散する](tutorial-global-distribution-documentdb.md)
-

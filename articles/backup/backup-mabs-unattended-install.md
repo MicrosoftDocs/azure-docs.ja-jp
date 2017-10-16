@@ -12,13 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/30/2017
 ms.author: markgal;masaran
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Azure Backup Server v2 の無人インストールの実行
 
@@ -72,4 +70,3 @@ Backup Server をインストールしたら、サーバーを準備する方法
 - [Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 - [Backup Server を使用した SQL Server のバックアップ](backup-azure-sql-mabs.md)
 - [Backup Server への Modern Backup Storage の追加](backup-mabs-add-storage.md)
-

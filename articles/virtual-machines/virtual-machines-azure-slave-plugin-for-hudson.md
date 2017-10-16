@@ -14,13 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 0661f26e62a465ccd096773cbabd47268491f22d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
 Hudson 用 Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
@@ -198,5 +196,4 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [add vm template]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-addnewvmtemplate.png
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
-
 

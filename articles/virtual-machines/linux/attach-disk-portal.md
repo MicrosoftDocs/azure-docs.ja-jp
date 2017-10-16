@@ -1,6 +1,6 @@
 ---
 title: "データ ディスクを Linux VM に接続する | Microsoft Docs"
-description: "Azure ポータルでリソース マネージャー デプロイ モデルを使用して、新規または既存のデータ ディスクを Linux VM に接続する方法。"
+description: "ポータルを利用し、新しいデータ ディスクまたは既存のデータ ディスクを Linux VM に接続します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -13,40 +13,36 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 09/25/2017
 ms.author: cynthn
+ms.openlocfilehash: 787f729732accd74c212b3be9520af50a2f04261
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: fb3b4ea612777d0ba801342dacf4b2ece46afed6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>Azure ポータルで Linux VM にデータ ディスクを接続する方法
-この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 Azure Managed Disks または非管理対象ディスクのどちらを使用するかを選択できます。 Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 非管理対象ディスクではストレージ アカウントが必要であり、いくつかの[クォータと制限が適用されます](../../azure-subscription-service-limits.md#storage-limits)。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。
+# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
 
 VM にディスクを接続する前に、次のヒントを確認してください。
 
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* 仮想マシンに接続されているディスクは、実際には Azure に保存されている .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](../../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のどちらのディスクも使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+* 仮想マシンに接続されているディスクは、実際には Azure に保存されている .vhd ファイルです。 詳細については、 [仮想マシン用のディスクと VHD](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. ハブ メニューで **[Virtual Machines]**をクリックします。
+2. 左側のメニューで **[仮想マシン]** をクリックします。
 3. 一覧から仮想マシンを選択します。
-4. [仮想マシン] ブレードにアクセスし、**[要点]** で、**[ディスク]** の順にクリックします。
+4. [仮想マシン] ページにアクセスし、**[要点]** にある **[ディスク]** をクリックします。
    
     ![ディスク設定を開く](./media/attach-disk-portal/find-disk-settings.png)
 
-次の手順に従って、[管理ディスク](#use-azure-managed-disks)または[非管理対象ディスク](#use-unmanaged-disks)のどちらかを接続します。
 
-## <a name="use-azure-managed-disks"></a>Azure Managed Disks の使用
+## <a name="attach-a-new-disk"></a>新しいディスクの接続
 
-### <a name="attach-a-new-disk"></a>新しいディスクの接続
-
-1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
+1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
 2. **[名前]** のドロップダウン メニューをクリックして、**[ディスクの作成]** を選択します。
 
     ![Azure Managed Disks の作成](./media/attach-disk-portal/create-new-md.png)
@@ -63,8 +59,8 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
    ![リソース グループの Azure Managed Disk](./media/attach-disk-portal/view-md-resource-group.png)
 
-### <a name="attach-an-existing-disk"></a>既存のディスクの接続
-1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
+## <a name="attach-an-existing-disk"></a>既存のディスクの接続
+1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
 2. **[名前]** のドロップダウン メニューをクリックして、Azure サブスクリプションにアクセスできる既存の管理ディスク一覧を確認します。 接続する管理ディスクを選択します。
 
    ![既存の Azure Managed Disk の接続](./media/attach-disk-portal/select-existing-md.png)
@@ -75,29 +71,7 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 4. Azure で仮想マシンにディスクが接続されると、仮想マシンのディスク設定の **[データ ディスク]** にそのディスクが表示されます。
 
-## <a name="use-unmanaged-disks"></a>非管理対象ディスクの使用
-
-### <a name="attach-a-new-disk"></a>新しいディスクの接続
-
-1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
-2. 既定の設定を確認し、必要に応じて更新して、 **[OK]**をクリックします。
-   
-   ![ディスク設定を確認する](./media/attach-disk-portal/attach-new.png)
-3. Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]**に新しいディスクが表示されます。
-
-### <a name="attach-an-existing-disk"></a>既存のディスクの接続
-1. **[ディスク]** ブレードで、**[+ Add data disk]** (データ ディスクの追加) をクリックします。
-2. **[既存のディスクの接続]** の **[VHD ファイル]** をクリックします。
-   
-   ![既存のディスクを接続する](./media/attach-disk-portal/attach-existing.png)
-3. **[ストレージ アカウント]**で、アカウントと、.vhd ファイルが格納されているコンテナーを選択します。
-   
-   ![VHD の場所を検索する](./media/attach-disk-portal/find-storage-container.png)
-4. .vhd ファイルを選択します。
-5. **[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。 **[OK]**をクリックします。
-6. Azure で仮想マシンにディスクが接続されると、仮想マシンのディスク設定の **[データ ディスク]** にそのディスクが表示されます。
 
 
 ## <a name="next-steps"></a>次のステップ
-ディスクを追加した後、使用できるように準備する必要があります。 詳細については、「[方法: Linux での新しいデータ ディスクの初期化](add-disk.md)」を参照してください。
-
+Azure CLI を利用し、[データ ディスクを接続する](add-disk.md)こともできます。

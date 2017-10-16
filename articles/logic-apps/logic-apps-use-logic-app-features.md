@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-logic-apps-features"></a>Logic Apps の機能を使用する
 
@@ -122,8 +120,7 @@ Logic App デザイナーがある場合でも、ロジック アプリを定義
 2. `When_a_feed-item_is_published` アクションに移動して、`queries` セクションを見つけて、クエリ値を `"feedUrl": "#@{parameters('currentFeedUrl')}"` で置き換えます。 
 
     2 つ以上の文字列を結合する場合、`concat` 関数を使用することもできます。 
-    たとえば、`"@concat('#',parameters('currentFeedUrl'))"` 
-    は上記と同じように動作します。
+    たとえば、`"@concat('#',parameters('currentFeedUrl'))"`上記と同じように動作します。
 
 3.  完了したら、**[保存]** を選択します。 
 

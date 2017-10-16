@@ -11,16 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/26/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 220e426be20086841854d89831f6c9d67529867f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.openlocfilehash: b8eecb9d546d5922844ede3744d80b951334b5d3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 
@@ -65,7 +63,7 @@ ms.lasthandoff: 06/28/2017
 2.  **[表示]** > **[非表示のデバイスの表示]** を選択します。
 3.  **[ネットワーク アダプター]** を選択します。 
 4.  "Microsoft Hyper-V Network Adapter" という名前のアダプターを確認します。
-5.  使用できないアダプターは淡色表示されることがあります。 アダプターを右クリックし、[アンインストール] を選択します。
+5.  使用できないアダプターは淡色表示されることがあります。アダプターを右クリックし、[アンインストール] を選択します。
 
     ![NIC の図](media/reset-network-interface/nicpage.png)
 

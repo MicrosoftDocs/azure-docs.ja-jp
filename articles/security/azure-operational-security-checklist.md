@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 1877e6ab19d504c8be6130578f17b608f123e20a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-operational-security-checklist"></a>Azure で運用可能なセキュリティのチェックリスト
 Azure でのアプリケーションのデプロイは、すばやく簡単に、高いコスト効率で行うことができます。 運用環境にクラウド アプリケーションをデプロイする前に、検討する必須および推奨の運用上のセキュリティ アクションの一覧に照らしてアプリケーションを評価する際に役立つチェックリストがあると便利です。
 
@@ -57,4 +55,3 @@ Azure では、アプリケーションのデプロイに使用できるイン�
 - [Operations Management Suite (OMS) の概要](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview)。
 - [設計および運用面のセキュリティ](https://www.microsoft.com/trustcenter/security/designopsecurity)。
 - [Azure Security Center 計画および運用](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)。
-

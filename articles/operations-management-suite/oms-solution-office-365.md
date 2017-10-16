@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: dcc44986acbb76eafc3cfacb79acf237802de021
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="office-365-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Office 365 ソリューション
 
@@ -305,4 +304,3 @@ Office 365 ソリューションで期待どおりにデータが収集されな
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * [独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
 * [アラートを作成](../log-analytics/log-analytics-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
-

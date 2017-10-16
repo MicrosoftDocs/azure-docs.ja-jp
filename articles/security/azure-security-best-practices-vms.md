@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -128,4 +127,3 @@ VM のプロセスが必要以上に多くのリソースを消費している�
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使ってリソースの正常性を把握することもできます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 VM によって消費されているリソースが通常よりも多ければ、その異常は、外部リソースからの攻撃、またはその VM で実行されているプロセスが侵害を受けたことによるものであると推測できます。
-

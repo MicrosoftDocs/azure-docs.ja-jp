@@ -14,13 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 057d4d7370207859617eb63238bf425bfa6d3e16
-ms.lasthandoff: 04/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="change-a-blob-path-from-the-default-path-private-preview"></a>BLOB パスを既定のパスから変更する (プライベート プレビュー)
 
 この記事では、既定の BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します。 
@@ -47,7 +46,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
     **[Function App]** ウィンドウが開きます。
 
-5. **[作成]**をクリックします。
+5. **Create** をクリックしてください。
 
     ![[Function App] ウィンドウの [作成] ボタン](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
 
@@ -67,7 +66,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
     ![新しい Function App の構成データを入力する](./media/storsimple-data-manager-change-default-blob-path/enter-new-funcion-app-data.png)
 
-7. **[作成]**をクリックします。  
+7. **Create** をクリックしてください。  
     Function App が作成されます。
 
 8. 左側のウィンドウで、**[その他のサービス]** をクリックして、次の操作を行います。
@@ -96,7 +95,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
        ![新しい C# 関数を作成する](./media/storsimple-data-manager-change-default-blob-path/create-new-csharp-function.png)
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[作成]**をクリックします。  
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **Create** をクリックしてください。  
     **[関数]** ウィンドウが開きます。
 
 11. **[関数]** ウィンドウで、_.csx_ ファイルを実行し、次の操作を行います。
@@ -241,4 +240,3 @@ Azure 関数が作成されました。 この関数は、データ変換ジョ�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換する](storsimple-data-manager-ui.md)
-

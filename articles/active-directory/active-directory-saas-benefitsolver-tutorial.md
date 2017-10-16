@@ -1,146 +1,256 @@
 ---
 title: "チュートリアル: Azure Active Directory と Benefitsolver の統合 | Microsoft Docs"
-description: "Azure Active Directory で Benefitsolver を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+description: "Azure Active Directory と Benefitsolver の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
-ms.assetid: cf4529b1-3fb6-4475-82b7-2ceedcb70b3c
+ms.reviewer: joflore
+ms.assetid: 333394c1-b5a7-489c-8f7b-d1a5b4e782ea
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 08/30/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
-ms.openlocfilehash: 8a13dd5ebd872f86247158379b28bc291a9c9d83
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: f8cf8ceabcb3fea7c22f08ec86155f60527297eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>チュートリアル: Azure Active Directory と Benefitsolver の統合
-このチュートリアルでは、Azure と Benefitsolver の統合について説明します。  
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Benefitsolver と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* 有効な Azure サブスクリプション
-* Benefitsolver でのシングル サインオン (SSO) が有効なサブスクリプション
+Benefitsolver と Azure AD の統合には、次の利点があります。
 
-このチュートリアルを終了すると、Benefitsolver に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+- Benefitsolver にアクセスできる Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Benefitsolver にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-1. Benefitsolver のアプリケーション統合の有効化
-2. シングル サインオン (SSO) の構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+## <a name="prerequisites"></a>前提条件
 
-![シナリオ](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "Scenario")
+Benefitsolver と Azure AD の統合を構成するには、次のものが必要です。
 
-## <a name="enabling-the-application-integration-for-benefitsolver"></a>Benefitsolver のアプリケーション統合の有効化
-このセクションでは、Benefitsolver のアプリケーション統合を有効にする方法を説明します。
+- Azure AD サブスクリプション
+- Benefitsolver でのシングル サインオンが有効なサブスクリプション
 
-### <a name="to-enable-the-application-integration-for-benefitsolver-perform-the-following-steps"></a>Benefitsolver のアプリケーション統合を有効にするには、次の手順を実行します。
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
-   
-   ![Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-   ![アプリケーション](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "Applications")
-4. ページの下部にある **[追加]** をクリックします。
-   
-   ![アプリケーションの追加](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Add application")
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "Add an application from gallerry")
-6. **検索ボックス**に、「**Benefitsolver**」と入力します。
-   
-   ![アプリケーション ギャラリー](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "Application Gallery")
-7. 結果ウィンドウで **[Benefitsolver]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-   ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
-   
-## <a name="configure-single-sign-on"></a>Configure single sign-on
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Benefitsolver に対する認証を行えるようにする方法を説明します。  
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-Benefitsolver アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを **saml トークン属性**構成に追加する必要があります。 
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
-次のスクリーンショットはその例です。
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attributes")
+1. ギャラリーからの Benefitsolver の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-**シングル サインオンを構成するには、次の手順に従います。**
+## <a name="adding-benefitsolver-from-the-gallery"></a>ギャラリーからの Benefitsolver の追加
+Azure AD への Benefitsolver の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Benefitsolver を追加する必要があります。
 
-1. Azure クラシック ポータルの **Benefitsolver** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Configure Single Sign-On")
-2. **[ユーザーの Benefitsolver へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
-3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
-   
-   ![アプリケーションの設定の構成](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
-   
-   1. **[サインオン URL]** ボックスに、「**http://azure.benefitsolver.com**」と入力します。
-   2. **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。  
-   3. **[次へ]**をクリックします。
-4. **[Benefitsolver でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターのローカルに保存します。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Configure Single Sign-On")
-5. ダウンロードしたメタデータ ファイルを Benefitsolver サポート チームに送信します。
-   
-   >[!NOTE]
-   >Benefitsolver サポート チームが、実際に SSO を構成する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
-   >
+**ギャラリーから Benefitsolver を追加するには、次の手順を実行します。**
 
-6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Configure Single Sign-On")
-7. 上部のメニューで、 **属性** to open the **SAML Token 属性** ダイアログを開きます。
-   
-   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "Attributes")
-8. 必要な属性のマッピングを追加するには、次の手順を実行します。
-   
-   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attributes")
-   
-   | 属性名 | 属性値 |
-   | --- | --- |
-   | ClientID |この値は、Benefitsolver サポート チームから入手する必要があります。 |
-   | ClientKey |この値は、Benefitsolver サポート チームから入手する必要があります。 |
-   | LogoutURL |この値は、Benefitsolver サポート チームから入手する必要があります。 |
-   | EmployeeID |この値は、Benefitsolver サポート チームから入手する必要があります。 |
-   
-   1. 上記の表の各データ行で、 **[ユーザー属性の追加]**をクリックします。
-   2. **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
-   3. **[属性値]** ボックスで、その行に対して表示される属性値を選択します。
-   4. **[完了]** をクリックします。
-9. **[変更の適用]**をクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
-Azure AD ユーザーが Benefitsolver にログインできるようにするには、ユーザーを Benefitsolver にプロビジョニングする必要があります。  
+    ![Azure Active Directory のボタン][1]
 
-Benefitsolver の場合、従業員のデータは、人事情報システムの国勢調査ファイルを介して (通常夜間に) アプリケーションに入力されます。  
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
->[!NOTE]
->Benefitsolver から提供されている他の Benefitsolver ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
+    ![[エンタープライズ アプリケーション] ブレード][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+    ![[新しいアプリケーション] ボタン][3]
+
+4. 検索ボックスに「**Benefitsolver**」と入力し、結果ウィンドウで **[Benefitsolver]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+
+    ![結果一覧の Benefitsolver](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Benefitsolver で Azure AD のシングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Benefitsolver ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Benefitsolver の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+Benefitsolver で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+
+Benefitsolver で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Benefitsolver のテスト ユーザーの作成](#create-a-benefitsolver-test-user)** - Benefitsolver で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure ポータルで Azure AD のシングル サインオンを有効にして、Benefitsolver アプリケーションでシングル サインオンを構成します。
+
+**Benefitsolver で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure ポータルの **Benefitsolver** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![シングル サインオン構成のリンク][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_samlbase.png)
+
+3. **[Benefitsolver のドメインと URL]** セクションで、次の手順に従います。
+
+    ![[Benefitsolver のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_url.png)
+
+    a. **[サインオン URL]** ボックスに、`http://<companyname>.benefitsolver.com` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに、`https://<companyname>.benefitsolver.com/saml20` の形式で URL を入力します。
+
+    c. **[応答 URL]** ボックスに、URL として「`https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml`」と入力します。
+
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Benefitsolver クライアント サポート チーム](https://www.businessolver.com/contact)に問い合わせてください。
+
+4. Benefitsolver アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを **saml トークン属性**構成に追加する必要があります。
+
+    ![Benefitsolver の属性セクション](./media/active-directory-saas-benefitsolver-tutorial/tutorial_attribute.png)
+
+5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+    
+    | 属性名| 属性値|
+    |---------------|----------------|
+    | ClientID | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
+    | ClientKey | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
+    | LogoutURL | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
+    | EmployeeID | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
+
+    a. [属性の追加] をクリックして [属性の追加] ダイアログを開きます。
+
+    ![Benefitsolver の属性セクション](./media/active-directory-saas-benefitsolver-tutorial/tutorial_attribute_04.png)
+    
+    ![Benefitsolver の属性セクション](./media/active-directory-saas-benefitsolver-tutorial/tutorial_attribute_05.png)
+
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    
+    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    
+    d. **[OK]**をクリックします。
+
+6. **[SAML 署名証明書]** セクションで、**[Metadata XML]\(メタデータ XML\)** をクリックし、コンピューターにメタデータ ファイルを保存します。
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_certificate.png) 
+
+7. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_400.png)
+
+8. **Benefitsolver** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Benefitsolver サポート チーム](https://www.businessolver.com/contact)に送信する必要があります。
+
+    > [!NOTE]
+    > Benefitsolver サポート チームが、実際に SSO を構成する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-### <a name="to-assign-users-to-benefitsolver-perform-the-following-steps"></a>ユーザーを Benefitsolver に割り当てるには、次の手順を実行します。
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Benefitsolver** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-   
-   ![ユーザーの割り当て](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "Assign Users")
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-   
-   ![はい](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Yes")
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+   ![Azure AD のテスト ユーザーの作成][100]
 
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+
+    ![Azure Active Directory のボタン](./media/active-directory-saas-benefitsolver-tutorial/create_aaduser_01.png)
+
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-benefitsolver-tutorial/create_aaduser_02.png)
+
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+
+    ![[追加] ボタン](./media/active-directory-saas-benefitsolver-tutorial/create_aaduser_03.png)
+
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-benefitsolver-tutorial/create_aaduser_04.png)
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+
+    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+
+    d. **Create** をクリックしてください。
+ 
+### <a name="create-a-benefitsolver-test-user"></a>Benefitsolver テスト ユーザーを作成する
+
+Azure AD ユーザーが Benefitsolver にログインできるようにするには、ユーザーを Benefitsolver にプロビジョニングする必要があります。 Benefitsolver の場合、従業員のデータは、人事情報システムの国勢調査ファイルを介して (通常夜間に) アプリケーションに入力されます。
+
+> [!NOTE]
+> Benefitsolver から提供されている他の Benefitsolver ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Britta Simon に Benefitsolver へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+![ユーザー ロールを割り当てる][200] 
+
+**Benefitsolver に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Benefitsolver]** を選択します。
+
+    ![アプリケーションの一覧の [Benefitsolver] リンク](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_app.png)  
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![[ユーザーとグループ] リンク][202]
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネルで [Benefitsolver] タイルをクリックすると、自動的に Benefitsolver アプリケーションにサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-benefitsolver-tutorial/tutorial_general_203.png
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT (モノのインターネット) のセキュリティ保護 | Microsoft Docs"
-description: " Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 この記事では、Azure の IoT ソリューションをセキュリティで保護する方法について説明します。. "
+description: " Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 この記事では、Azure の IoT ソリューションをセキュリティで保護する方法について説明します。 "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: 3793f5453b74b6c06d9e58b426d89099298e1288
-ms.lasthandoff: 01/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="internet-of-things-security-overview"></a>モノのインターネットのセキュリティの概要
 Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
@@ -68,4 +67,3 @@ IoT インフラストラクチャを保護するには、緻密なセキュリ�
 * [IoT ソリューション開発者](../iot-suite/iot-security-best-practices.md#iot-solution-developer)
 * [IoT ソリューションのデプロイ担当者](../iot-suite/iot-security-best-practices.md#iot-solution-deployer)
 * [IoT ソリューションのオペレーター](../iot-suite/iot-security-best-practices.md#iot-solution-operator)
-

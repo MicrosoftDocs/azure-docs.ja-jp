@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: 416420d855505508735ebd8526e93efdb230ad53
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="installing-rstudio-with-r-server-on-hdinsight"></a>HDInsight の R Server に RStudio をインストールする
 
@@ -135,5 +133,4 @@ HDInsight クラスターのエッジ ノードに RStudio Server をインス�
 
 * [Compute context options for R Server on HDInsight clusters (HDInsight クラスターでの R Server の計算コンテキストのオプション)](hdinsight-hadoop-r-server-compute-contexts.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)
-
 

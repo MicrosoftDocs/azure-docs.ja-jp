@@ -15,14 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9366bae67be7d1abf932d07971d2062c7bd29f3c
-ms.openlocfilehash: 49825cc7455ae082ef750a2a31abbd2d71693c79
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/27/2017
-
-
-
+ms.openlocfilehash: c4199a387f5cdbd477a5e348e48ba8e8b5900075
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータの読み込み
 データを SQL Data Warehouse に読み込むためのシナリオ オプションと推奨事項の概要。
@@ -144,4 +141,3 @@ SQL Data Warehouse は、PolyBase を介した HDInsight からのデータの�
 
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
-

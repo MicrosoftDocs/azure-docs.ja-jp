@@ -16,14 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 29733f6f6b725dd4735219ed221431805558a5e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
 この記事では、**SparkR** で結合したフライト遅延データと気象データから、**ScaleR** のロジスティック回帰モデルを使って、フライトの到着遅延を予測する方法について説明します。 このシナリオでは、ScaleR を使った Spark 上のデータ操作と Microsoft R Server を使った分析とを連携させる機能を具体的に紹介します。 これらのテクノロジを組み合わせることによって、分散処理に最新の機能を適用することができます。
@@ -561,4 +559,3 @@ SparkR の使い方について詳しくは、次のドキュメントをご覧�
 - [Apache SparkR のドキュメント](https://spark.apache.org/docs/2.1.0/sparkr.html)
 
 - [SparkR の概要](https://docs.databricks.com/spark/latest/sparkr/overview.html) (Databricks のサイト)
-

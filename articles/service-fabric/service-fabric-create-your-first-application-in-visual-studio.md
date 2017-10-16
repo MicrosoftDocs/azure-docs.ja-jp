@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2017
+ms.date: 10/04/2017
 ms.author: ryanwi
+ms.openlocfilehash: a4bada3c099e348e2aa188fe08a67ef170ad50ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f93298e6483fd8c9dfda835964aeebd1a430af69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル リライアブル サービス アプリケーションを作成する
 
 Windows に初めての .NET 対応 Service Fabric アプリケーションをわずか数分でデプロイする方法について説明します。 完了すると、リライアブル サービス アプリケーションがデプロイされたローカル クラスターが稼働している状態になります。
@@ -148,4 +146,3 @@ Reliable Services の詳細については、[こちら](service-fabric-reliable
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
-

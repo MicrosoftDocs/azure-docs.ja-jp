@@ -5,6 +5,8 @@
 ## [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)
 ## [エンドポイントの種類](traffic-manager-endpoint-types.md)
 ## [エンドポイントの監視](traffic-manager-monitoring.md)
+## [Real User Measurements](traffic-manager-rum-overview.md)
+## [Traffic View](traffic-manager-traffic-view-overview.md)
 ## [FAQ](traffic-manager-FAQs.md)
 
 # 作業の開始
@@ -16,19 +18,22 @@
 ## [優先順位によるルーティング方法の構成](traffic-manager-configure-priority-routing-method.md)
 ## [重み付けによるルーティング方法の構成](traffic-manager-configure-weighted-routing-method.md)
 ## [パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
+## Real User Measurements を Traffic Manager に送信する 
+### [Visual Studio SDK を使用する](traffic-manager-create-rum-visual-studio.md)
+### [Web ページを使用する](traffic-manager-create-rum-web-pages.md)
 ## [エンドポイントを管理する](traffic-manager-manage-endpoints.md)
 ## [プロファイルを管理する](traffic-manager-manage-profiles.md)
 ## [Traffic Manager の設定の検証](traffic-manager-testing-settings.md)
 ## [負荷分散サービスの結合](traffic-manager-load-balancing-azure.md)
 ## [Traffic Manager のパフォーマンスの測定](traffic-manager-performance-considerations.md)
-## [PowerShell を使用した Traffic Manager の管理](traffic-manager-powershell-arm.md)
+## [Azure PowerShell を使用して Traffic Manager を管理する](traffic-manager-powershell-arm.md)
 ## [インターネット ドメインが Traffic Manager を指すように指定する](traffic-manager-point-internet-domain.md)
 ## トラブルシューティング
 ### [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
-## [PowerShell](/powershell/module/azurerm.trafficmanager)
+## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)

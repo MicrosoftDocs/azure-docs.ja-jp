@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 270fe75e61bb26ad3bb9cae1105e83911bae677d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: SQL を使用してクエリを実行する方法
 
 Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
@@ -148,5 +146,4 @@ SQL クエリについて詳しくは、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [データをグローバルに分散する](tutorial-global-distribution-documentdb.md)
-
 

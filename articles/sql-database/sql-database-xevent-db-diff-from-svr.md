@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
+ms.openlocfilehash: 7e5da1c32484b0b94d2ad32ead6bb7c28f9744aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 6953166f21194f3cbcef3f260b3e7a50d5bf5460
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -54,7 +53,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 
 - PowerShell
-    - [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+    - [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
 
 ## <a name="code-samples"></a>コード サンプル
 
@@ -195,10 +194,10 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 
 ## <a name="related-links"></a>関連リンク
 
-- [Azure Storage における Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)。
+- [Azure Storage における Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)。
 - [Azure Storage コマンドレット](http://msdn.microsoft.com/library/dn806401.aspx)
-- [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
-- [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
+- [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+- [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
@@ -216,4 +215,3 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
-

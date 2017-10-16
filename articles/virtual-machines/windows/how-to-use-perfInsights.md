@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/18/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: f22bd42302b96118dba0d4e5e387c6798a0b8777
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 45953b4512cb2f602edbd837e62b9344c4211d03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法 
@@ -87,18 +87,18 @@ PerfInsights では、固有シナリオにグループ化された数種類の�
 | IOPS         | データ要求数/秒             |
 |              | 読み取り要求数/秒             |
 |              | 書き込み要求数/秒            |
-| 待機時間      | Avg. 秒/データ要求         |
-|              | Avg. 秒/読み取り                 |
-|              | Avg. 秒/書き込み                |
-| IO サイズ      | Avg. バイト/データ要求       |
-|              | Avg. バイト/読み取り               |
-|              | Avg. バイト/書き込み              |
+| 待機時間      | 平均秒数/データ要求         |
+|              | 平均秒数/読み取り                 |
+|              | 平均秒数/書き込み                |
+| IO サイズ      | Avg.バイト/データ要求       |
+|              | Avg.バイト/読み取り               |
+|              | Avg.バイト/書き込み              |
 | スループット   | データ バイト数/秒                |
 |              | 読み取りバイト数/秒                |
 |              | 書き込みバイト数/秒               |
-| キューの長さ | Avg. 読み取りキューの長さ        |
-|              | Avg. 書き込みキューの長さ       |
-|              | Avg. データ キューの長さ        |
+| キューの長さ | Avg.読み取りキューの長さ        |
+|              | Avg.書き込みキューの長さ       |
+|              | Avg.データ キューの長さ        |
 
 ### <a name="custom-configuration"></a>カスタム構成 
 

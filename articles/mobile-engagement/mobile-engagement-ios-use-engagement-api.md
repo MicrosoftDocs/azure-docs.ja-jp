@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf672384407588ddc2c4998f42f6893e2638c592
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>iOS でエンゲージメント API を使用する方法
 このドキュメントは、「iOS でエンゲージメントを統合する方法」を補足し、エンゲージメント API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
@@ -268,4 +267,3 @@ ms.lasthandoff: 11/17/2016
 前の例では、サーバーに送信される JSON は 44 文字です。
 
     {"birthdate":"1983-12-07","gender":"female"}
-

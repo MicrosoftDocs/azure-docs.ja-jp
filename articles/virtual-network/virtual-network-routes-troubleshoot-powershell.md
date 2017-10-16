@@ -15,17 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Azure PowerShell を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-routes-troubleshoot-portal.md)
+> * [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 > 
 > 
@@ -137,5 +135,4 @@ VM に適用されている集約ルートを表示するには、次の手順�
 * VNet のピアリング トラフィックが正常に機能するためには、ピアリングされる VNet のプレフィックスの範囲に **nextHopType** *VNetPeering* を使用するシステム ルートを追加する必要があります。 そのようなルートが存在せず、VNet ピアリングのリンクに問題がないと考えられる場合:
   * 新しく確立されたピアリングのリンクの場合は、数秒待ってから再度実行してください。 サブネット内のすべてのネットワーク インターフェイスにルートを反映させるのに時間がかかる場合がります。
   * ネットワーク セキュリティ グループ (NSG) の規則が、トラフィック フローに影響を与える可能性があります。 詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-powershell.md) 」をご覧ください。
-
 

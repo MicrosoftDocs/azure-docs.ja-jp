@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
 ms.openlocfilehash: 39cb2464eb593a29c4436afb5c14419b704ebff4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft はさまざまな Linux コミュニティと連携し、動作保証済みディストリビューション リストを拡充しています。 それまでの間、Marketplace からご利用いただけないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」のガイドラインに従って、独自の Linux をいつでも使用できます。
@@ -79,4 +77,3 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 Canonical のエンジニアリングおよびオープン コミュニティ体制は、消費者向け個人クラウド サービスも含めて、クライアント、サーバー、およびクラウド コンピューティングにおける Ubuntu の成功を支えています。 Ubuntu における、携帯電話からクラウドまでの統一されたフリー プラットフォームという Canonical のビジョンにより、携帯電話、タブレット、テレビ、およびデスクトップで一貫したインターフェイス ファミリーが提供されます。 このビジョンにより、Ubuntu はパブリック クラウド プロバイダーから家電メーカーに至るまでの多様な企業の最初の選択肢となり、個々の技術者のお気に入りとなっています。
 
 世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC やサーバー、携帯機器など、さまざまな Ubuntu ソリューションを市場に送り出しています。
-

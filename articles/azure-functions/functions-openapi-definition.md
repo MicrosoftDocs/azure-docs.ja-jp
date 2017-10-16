@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: be871b1c5f131b0ff6de1f74ed3e6f12b7a482ce
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 5aed57e69924f03221fc0d9909889358d80df9a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -113,7 +113,7 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 
 ## <a name="generate-the-openapi-definition"></a>OpenAPI 定義を生成する
 
-OpenAPI 定義を生成する準備ができています。 この定義は、[API Apps](../app-service-api/app-service-api-dotnet-get-started.md)、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md) など、他の Microsoft テクノロジだけでなく、サード パーティ製の開発者ツール、たとえば、[Postman](https://www.getpostman.com/docs/importing_swagger) や[その他多数のパッケージ](http://swagger.io/tools/)でも使用できます。
+OpenAPI 定義を生成する準備ができています。 この定義は、API Apps、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md) など、他の Microsoft テクノロジだけでなく、サード パーティ製の開発者ツール、たとえば、[Postman](https://www.getpostman.com/docs/importing_swagger) や[その他多数のパッケージ](http://swagger.io/tools/)でも使用できます。
 
 1. API がサポートする "*動詞*" (ここでは POST) のみを選択します。 これにより、生成された API 定義がさらにきれいになります。
 
@@ -123,7 +123,7 @@ OpenAPI 定義を生成する準備ができています。 この定義は、[A
 
         ![[選択した HTTP メソッド]](media/functions-openapi-definition/selected-http-methods.png)
         
-1. 関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]**  >  **[API 定義]** をクリックします。
+1. 関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]** > **[API 定義]** をクリックします。
 
     ![[API の定義]](media/functions-openapi-definition/api-definition.png)
 
@@ -175,20 +175,9 @@ OpenAPI 定義を生成する準備ができています。 この定義は、[A
     この定義を完全な OpenAPI 定義にするには、さらにメタデータが必要であるため、これは "_テンプレート_" として記述されています。 次の手順でこの定義を変更します。
 
 ## <a name="modify-the-openapi-definition"></a>OpenAPI 定義を変更する
-テンプレートの定義が生成されたので、次は、その定義を変更して、API の操作とデータ構造に関する追加のメタデータを指定します。 このチュートリアルでは、変更後の以下の定義を、**[API 定義]** ウィンドウに貼り付けて、**[保存]** をクリックするだけです。
+テンプレートの定義が生成されたので、次は、その定義を変更して、API の操作とデータ構造に関する追加のメタデータを指定します。 **[API 定義]** で、生成された定義を `post` から定義の一番下まで削除し、下のコンテンツを貼り付けて **[保存]** をクリックします。
 
 ```yaml
-swagger: '2.0'
-info:
-  title: Turbine Repair
-  version: 1.0.0
-host: function-demo-energy.azurewebsites.net
-basePath: /
-schemes:
-  - https
-  - http
-paths:
-  /api/TurbineRepair:
     post:
       operationId: CalculateCosts
       description: Determines if a technician should be sent for repair
@@ -248,7 +237,7 @@ securityDefinitions:
     in: query
 ```
 
-そうはいっても、どのような変更を既定のテンプレートに行ったかを理解することは重要です。
+この場合、更新されたメタデータを貼り付けるだけで済みますが、どのような変更を既定のテンプレートに加えたかを理解することは重要です。
 
 + API が JSON 形式のデータを生成して使用することを指定しました。
 

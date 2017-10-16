@@ -1,6 +1,6 @@
 ---
-title: Install PowerShell for Azure Stack | Microsoft Docs
-description: Learn how to install PowerShell for Azure Stack.
+title: "PowerShell for Azure Stack のインストール | Microsoft Docs"
+description: "PowerShell for Azure Stack をインストールする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -12,26 +12,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: sngun
+ms.openlocfilehash: 5555ee022e74b5d4791c5826ef80b166c4990a61
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 56dc177d8ba661695bd860f5e4664257ca30807a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする  
 
-# <a name="install-powershell-for-azure-stack"></a>Install PowerShell for Azure Stack  
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. In this guide, we walk you through the steps required to install PowerShell for Azure Stack. You can use the steps described in this article either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN.
+Azure Stack を使用するには、Azure Stack と互換性のある Azure PowerShell モジュールが必要です。 このガイドでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 この記事で説明している手順は、Azure Stack Development Kit で、または VPN 経由で接続している場合は Windows ベースの外部クライアントで使用できます。
 
-This article has detailed instructions to install PowerShell for Azure Stack. However, if you want to quickly install and configure PowerShell, you can use the script that is provided in the [Get up and running with PowerShell](azure-stack-powershell-configure-quickstart.md) topic. 
+この記事では、PowerShell for Azure Stack をインストールする手順について詳しく説明しています。 ただし、PowerShell をすばやくインストールして構成する場合は、「[Get up and running with PowerShell](azure-stack-powershell-configure-quickstart.md)」(PowerShell の起動と実行) のトピックにあるスクリプトを使用できます。 
 
 > [!NOTE]
-> The following steps require PowerShell 5.0. To check your version, run $PSVersionTable.PSVersion and compare the "Major" version.
+> 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] (メジャー) のバージョンを比較します。
 
-PowerShell commands for Azure Stack are installed through the PowerShell gallery. To regiser the PSGallery repository, open an elevated PowerShell session from the development kit or from a Windows-based external client if you are connected through VPN and run the following command:
+Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery レポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
 
 ```powershell
 Set-PSRepository `
@@ -39,23 +39,23 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
-## <a name="uninstall-existing-versions-of-powershell"></a>Uninstall existing versions of PowerShell
+## <a name="uninstall-existing-versions-of-powershell"></a>既存のバージョンの PowerShell のアンインストール
 
-Before installing the required version, make sure that you uninstall any existing Azure PowerShell modules. You can uninstall them by using one of the following two methods:
+必要なバージョンをインストールする前に、必ず既存の Azure PowerShell モジュールをアンインストールしてください。 アンインストールには、次の 2 つの方法の 1 つを使用できます。
 
-* To uninstall the existing PowerShell modules, sign in to the development kit, or to the Windows-based external client if you are planning to establish a VPN connection. Close all the active PowerShell sessions and run the following command: 
+* 既存の PowerShell モジュールをアンインストールするには、開発キットにサインインするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにサインインします。 アクティブな PowerShell セッションをすべて終了し、次のコマンドを実行します。 
 
    ```powershell
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* Sign in to the development kit, or to the Windows-based external client if you are planning to establish a VPN connection. Delete all the folders that start with "Azure" from the `C:\Program Files (x86)\WindowsPowerShell\Modules` and `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules from the "AzureStackAdmin" and "global" user scopes. 
+* 開発キットにサインインするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにサインインします。 `C:\Program Files (x86)\WindowsPowerShell\Modules` および `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` フォルダーから、「Azure」で始まるすべてのフォルダーを削除します。 これらのフォルダーを削除すると、「AzureStackAdmin」および「global」ユーザー スコープから既存の PowerShell モジュールがすべて削除されます。 
 
-The following sections describe the steps required to install PowerShell for Azure Stack. PowerShell can be installed on Azure Stack that is operated in connected, partially connected, or in a disconnected scenario. 
+以下のセクションでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 PowerShell は、接続されているシナリオ、部分的に接続されているシナリオ、または接続が切断されたシナリオで運用される Azure Stack にインストールできます。 
 
-## <a name="install-powershell-in-a-connected-scenario"></a>Install PowerShell in a connected scenario 
+## <a name="install-powershell-in-a-connected-scenario"></a>接続されているシナリオでの PowerShell のインストール 
 
-Azure Stack compatible AzureRM modules are installed through API version profiles. Azure Stack requires the **2017-03-09-profile** API version profile, which is available by installing the AzureRM.Bootstrapper module. To learn about API version profiles and the cmdlets provided by them, refer to the [manage API version profiles](azure-stack-version-profiles.md). In addition to the AzureRM modules, you should also install the Azure Stack-specific PowerShell modules. Run the following PowerShell script to install these modules on your development workstation:
+Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には **2017-03-09-profile** API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 API バージョン プロファイル、およびそれらのプロファイルによって提供されるコマンドレットについては、 「[manage API version profiles](azure-stack-version-profiles.md)」(API バージョン プロファイルの管理) を参照してください。 AzureRM モジュールだけでなく、Azure Stack 固有の PowerShell モジュールもインストールする必要があります。 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -71,19 +71,19 @@ Azure Stack compatible AzureRM modules are installed through API version profile
     -RequiredVersion 1.2.10
   ```
 
-To confirm the installation, run the following command:
+インストールを確認するには、次のコマンドを実行します。
 
   ```powershell
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
-  If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
+  インストールに成功した場合、出力に AzureRM および AzureStack モジュールが表示されます。
 
-## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>Install PowerShell in a disconnected or in a partially connected scenario
+## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール
 
-In a disconnected scenario, you must first download the PowerShell modules to a machine that has internet connectivity, and then transfer them to the Azure Stack Development Kit for installation.
+接続が切断されたシナリオでは、まずインターネット接続が確立されたコンピューターに PowerShell モジュールをダウンロードしてから、モジュールを Azure Stack Development Kit に転送してインストールします。
 
-1. Sign in to a computer where you have internet connectivity and use the following script to download the AzureRM, and AzureStack packages onto your local computer:
+1. インターネット接続が確立されたコンピューターにサインインし、次のスクリプトを使用して、AzureRM および AzureStack パッケージをローカル コンピューターにダウンロードします。
 
    ```powershell
    $Path = "<Path that is used to save the packages>"
@@ -105,11 +105,11 @@ In a disconnected scenario, you must first download the PowerShell modules to a 
      -RequiredVersion 1.2.10 
    ```
 
-2. Copy the downloaded packages over to a USB device.
+2. ダウンロードしたパッケージを USB デバイスにコピーします。
 
-3. Sign in to the development kit and copy the packages from the USB device to a location on the development kit. 
+3. 開発キットにサインインし、パッケージを USB デバイスから開発キット上の場所にコピーします。 
 
-4. Now you must register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
+4. ここで、その場所を既定のレポジトリとして登録し、そのレポジトリから AzureRM および AzureStack モジュールをインストールする必要があります。
 
    ```powershell
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -128,9 +128,9 @@ In a disconnected scenario, you must first download the PowerShell modules to a 
      -Repository $RepoName 
    ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-* [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md)
-* [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure.md)  
-* [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)  
-
+* [GitHub からの Azure Stack ツールのダウンロード](azure-stack-powershell-download.md)
+* [Azure Stack ユーザーの PowerShell 環境の構成](user/azure-stack-powershell-configure-user.md)  
+* [Azure Stack オペレーターの PowerShell 環境の構成](azure-stack-powershell-configure-admin.md) 
+* [Azure Stack での API バージョン プロファイルの管理](azure-stack-version-profiles.md)  

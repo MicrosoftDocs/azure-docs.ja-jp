@@ -15,12 +15,11 @@ ms.workload8: na
 ms.date: 08/07/2017
 ms.author: TomSh
 ms.custom: azlog
+ms.openlocfilehash: bfdc7154160bb6bb7dc9c46eb2352ce74310c4de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: bc543cdf3d375076af5b5f17f8ca216dd5bf72b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
 この記事では、Azure ログ統合についてよく寄せられる質問 (FAQ) とその回答を紹介します。 
@@ -133,4 +132,3 @@ Azure Network Watcher では大量のログ情報が生成されます。 これ
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
-

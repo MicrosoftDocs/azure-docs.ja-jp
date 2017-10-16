@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Azure への VMware サーバーのバックアップ
 
@@ -385,4 +384,3 @@ vCenter Server を Azure Backup Server に追加したら、次は保護グル�
 Azure Backup Server を使用して、VMware ワークロードを保護する場合は、Azure Backup Server を使用した [Microsoft Exchange Server](./backup-azure-exchange-mabs.md)、[Microsoft SharePoint ファーム](./backup-azure-backup-sharepoint-mabs.md)、または [SQL Server データベース](./backup-azure-sql-mabs.md)の保護も参考にしてください。
 
 エージェントの登録、保護グループの構成、およびジョブのバックアップに関する問題については、「[Azure Backup Server のトラブルシューティング](./backup-azure-mabs-troubleshoot.md)」をご覧ください。
-

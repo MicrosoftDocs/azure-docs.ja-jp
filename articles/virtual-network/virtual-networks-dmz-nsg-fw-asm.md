@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
 
 この例では、ファイアウォールと 4 台の Windows Server、ネットワーク セキュリティ グループから成る DMZ を作成します。 また、各手順をより深く理解できるように、関連するコマンドを順に説明します。 さらに、「トラフィックに関するシナリオ」セクションでは、DMZ の防御層におけるトラフィックの進行過程を詳しく説明しています。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。 
 
-![Inbound DMZ with NVA and NSG][1]
+![NVA と NSG と受信 dmz に配置][1]
 
 ## <a name="environment-description"></a>環境の説明
 この例で使用するサブスクリプションには、以下のものが含まれています。
@@ -94,11 +94,11 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 新しいルールを作成して名前を付けます ("WebTraffic" など)。 
 
-Destination NAT ルールのアイコンは  ![Destination NAT Icon][2]
+次のように移行先の NAT 規則アイコンが表示されます:![先 NAT アイコン][2]
 
 ルール自体は次のように表示されます。
 
-![Firewall Rule][3]
+![ファイアウォール規則][3]
 
 この場合、HTTP のポート 80 または HTTPS のポート 443 を宛先としてファイアウォールに到達したすべての受信トラフィックは、ファイアウォールの "DHCP1 Local IP" インターフェイスから送出され、IP アドレス 10.0.1.5 の Web サーバーにリダイレクトされます。 トラフィックはポート 80 に着信し、Web サーバーのポート 80 に向かうため、ポートの変更は必要ありません。 しかし仮に Web サーバーの待機ポートが 8080 であった場合、ファイアウォールの受信ポートである 80 を Web サーバーの受信ポートである 8080 に変換する必要があります。その場合は、[Target List] に「10.0.1.5:8080」と入力することになります。
 
@@ -111,7 +111,7 @@ Destination NAT ルールのアイコンは  ![Destination NAT Icon][2]
 ## <a name="rule-activation"></a>ルールのアクティブ化
 このルールを追加したら、そのルールセットをファイアウォールにアップロードしてアクティブ化する必要があります。
 
-![Firewall Rule Activation][4]
+![ファイアウォール ルールのアクティブ化][4]
 
 管理クライアントの右上隅に一連のボタンがあります。 [Send Changes] ボタンをクリックして、変更済みのルールをファイアウォールに送信し、そのうえで [Activate] ボタンをクリックしてください。
 
@@ -579,9 +579,3 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

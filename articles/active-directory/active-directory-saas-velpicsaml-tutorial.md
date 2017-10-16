@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 5325f3cca00167e6b7b687509ce43435447ad2f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル: Azure Active Directory と Velpic SAML の統合
 
@@ -192,7 +190,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-velpic-saml-test-user"></a>Velpic SAML のテスト ユーザーの作成
 
@@ -218,7 +216,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     e. その他の情報は省略可能です。必要に応じて入力してください。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**をクリックします。    
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**をクリックします。  
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -281,5 +279,4 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 [201]: ./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_203.png
-
 

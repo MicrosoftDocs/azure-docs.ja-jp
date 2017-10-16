@@ -16,13 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 863a15d716161bfa9d3e041174504b73a2956e8d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-bing-search-connector"></a>Bing Search コネクタの概要
 Bing Search に接続すると、ニュース、動画など検索できます。 Bing Search では、次の操作を実行できます。 
@@ -38,5 +36,4 @@ Bing Search に接続すると、ニュース、動画など検索できます�
 
 ## <a name="more-connectors"></a>その他のコネクタ
 [API リスト](apis-list.md)に戻ります。
-
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
-ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>例 1 – NSG と Azure Resource Manager テンプレートを使用して簡単な DMZ を構築する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -39,10 +39,10 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 この例で使用するサブスクリプションには、以下のリソースが含まれています。
 
 * 単一リソース グループ
-* 仮想ネットワークと&2; つのサブネット (“FrontEnd” と “BackEnd”)
+* 仮想ネットワークと 2 つのサブネット (“FrontEnd” と “BackEnd”)
 * 両方のサブネットに適用されるネットワーク セキュリティ グループ
 * アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
-* アプリケーション バックエンド サーバーを表す&2; つの Windows サーバー ("AppVM01"、"AppVM02")
+* アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
 * DNS サーバーを表す Windows サーバー ("DNS01")
 * アプリケーション Web サーバーに関連付けられているパブリック IP アドレス
 
@@ -61,7 +61,7 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 次のセクションでは、ネットワーク セキュリティ グループについて、また、この例でネットワーク セキュリティ グループがどのように機能しているのかを、Azure Resource Manager テンプレートの主要な行を追いながら詳しく説明します。
 
 ## <a name="network-security-groups-nsg"></a>ネットワーク セキュリティ グループ (NSG)
-この例では、NSG グループを作成し、そこに&6; つのルールを設定します。 
+この例では、NSG グループを作成し、そこに 6 つのルールを設定します。 
 
 >[!TIP]
 >一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。 どのルールが先に評価されるかは、割り当てる優先度によって決まります。 具体的なルールが一度適用されたトラフィックに対しては、他のルールは評価されません。 NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
@@ -258,8 +258,8 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 >
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*許可*) DNS サーバーに対する Web サーバーの DNS 参照
-1. Web サーバーである IIS01 は、www.data.gov でのデータ フィードを必要としますが、アドレスを解決する必要があります。
-2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の&10;.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
+1. Web サーバーである IIS01 が、www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
+2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の 10.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
 3. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
 4. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
   * NSG ルール 1 (DNS) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
@@ -272,7 +272,7 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 11. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
   1. バックエンド サブネットからフロントエンド サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
   2. サブネット間のトラフィックを許可する既定のシステム ルールであれば、このトラフィックを許可するので、トラフィックは許可されます。
-12. IIS01 は DNS01 から応答を受信します。
+12. IIS01 が DNS01 から応答を受信します。
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*許可*) Web サーバーによる AppVM01 上のファイルへのアクセス
 1. IIS01 が AppVM01 上のファイルを要求します。
@@ -364,8 +364,3 @@ ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
 [HOME]: ../best-practices-network-security.md
 [Template]: https://github.com/Azure/azure-quickstart-templates/tree/master/301-dmz-nsg
 [SampleApp]: ./virtual-networks-sample-app.md
-
-
-<!--HONumber=Jan17_HO1-->
-
-

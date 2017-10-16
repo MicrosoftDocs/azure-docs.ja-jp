@@ -1,5 +1,5 @@
 ---
-title: "Windows Server および Windows Client 向け Azure Hybrid Use Benefit | Microsoft Docs"
+title: "Windows Server 向け Azure Hybrid Use Benefit | Microsoft Docs"
 description: "Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,28 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 5/26/2017
+ms.date: 9/13/2017
 ms.author: xujing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 46b0895dc33fc13a1296301ed096fd3871b38952
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: f34f65eb1d5375caae8831aedaed8a4b6a9cd098
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="azure-hybrid-use-benefit-for-windows-server-and-windows-client"></a>Windows Server および Windows Client 向け Azure Hybrid Use Benefit
-ソフトウェア アシュアランスを取得したお客様は、Azure Hybrid Use Benefit により、オンプレミスの Windows Server および Windows Client ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Use Benefit には、Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2、Windows Server 2016 が含まれます。 Windows Client 向け Azure Hybrid Use Benefit には Windows 10 が含まれます。 詳細については、 [Azure Hybrid Use Benefit のライセンスに関するページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を参照してください。
+# <a name="azure-hybrid-use-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Use Benefit
+ソフトウェア アシュアランスを取得したお客様は、Azure Hybrid Use Benefit により、オンプレミスの Windows Server および Windows Client ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Use Benefit には、Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2、Windows Server 2016 が含まれます。 詳細については、 [Azure Hybrid Use Benefit のライセンスに関するページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を参照してください。
 
->[!IMPORTANT]
->Windows Client 向け Azure Hybrid Use Benefit は現在プレビューの段階にあり、Azure Marketplace では Windows 10 イメージを使用しています。 対象となるのは、Windows 10 Enterprise E3/E5 (ユーザー単位) または Windows VDA (ユーザー単位) (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) (使用条件を満たしているライセンス) を使用する、エンタープライズ契約のお客様のみです。
+> [!IMPORTANT]
+> Azure Marketplace でのエンタープライズ契約のお客様向けに発行された '[HUB]' Windows Server イメージは 2017 年 9 月 11 日に終了となりました。Azure ハイブリッド使用特典の "コスト削減" オプションを使用して標準の Windows Server をご利用ください。 詳しくは、こちらの[記事](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)を参照してください。
 >
+
+> [!NOTE]
+> この記事では、Windows Server イメージのライセンス特典を実装する方法について説明します。 [Windows 10 デスクトップ イメージ](#windows-desktop-multitenant-hosting-deployment)用の手順を実行することもできます。
 >
 
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit の使用方法
 Windows VM を Azure Hybrid Use Benefit でデプロイする方法はいくつかあります。
 
-1. Azure Hybrid Use Benefit (Windows Server 2016、Windows Server 2012R2、Windows Server 2012、および Windows Server 2008SP1) で事前構成された[特定の Marketplace イメージ](#deploy-a-vm-using-the-azure-marketplace)から VM をデプロイできます。
+1. [特定の Marketplace イメージ] から VM をデプロイできます。
 2. [カスタム VM をアップロード](#upload-a-windows-vhd)し、[Resource Manager テンプレート](#deploy-a-vm-via-resource-manager)または [Azure PowerShell](#detailed-powershell-deployment-walkthrough) を使ってデプロイできます。
 
 ## <a name="deploy-a-vm-using-the-azure-marketplace"></a>Azure Marketplace を使って VM をデプロイする

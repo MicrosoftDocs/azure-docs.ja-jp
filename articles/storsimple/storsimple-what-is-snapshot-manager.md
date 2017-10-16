@@ -15,12 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: v-sharos
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 43eb76f2d51c586f3cd44d4d34b307257a655182
 ms.openlocfilehash: 38c197c7bc57110b29b1d8cb789d5b7310823da2
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager の概要
 
@@ -140,5 +139,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)の詳細を確認する。
 * [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)をダウンロードする。
-
 

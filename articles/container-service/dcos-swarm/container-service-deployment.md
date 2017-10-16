@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 0ef256537bf095e2a5d582bd345a9c8dcede2095
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: caf6b470c334793931594df56ee13c4de9c8ba93
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Azure Portal を使用して Docker コンテナーのホスティング ソリューションをデプロイする
 
@@ -212,4 +211,3 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 * [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 * [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 * [Azure Container Service と Kubernetes の使用](../kubernetes/container-service-kubernetes-walkthrough.md)
-

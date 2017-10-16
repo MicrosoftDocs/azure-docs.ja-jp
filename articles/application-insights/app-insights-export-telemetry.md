@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4ad60c18d451ee5f92eafaf5ca81176698496dd2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 6ac3bda5101593b5ca66b4c9035e2fdac9d1e833
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -42,7 +41,7 @@ ms.lasthandoff: 04/12/2017
 
 2. テレメトリをエクスポートするデータ型を選択します。
 
-3. データの保存先となる [Azure ストレージ アカウント](../storage/storage-introduction.md)を作成または選択します。
+3. データの保存先となる [Azure ストレージ アカウント](../storage/common/storage-introduction.md)を作成または選択します。
 
     > [!Warning]
     > 既定では、ストレージの場所は、Application Insights のリソースと同じ地理的リージョンに設定されます。 別のリージョンに保存する場合は、転送の料金が発生する可能性があります。
@@ -199,4 +198,3 @@ Where
 
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
-

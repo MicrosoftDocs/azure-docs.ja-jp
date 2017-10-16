@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 50c463588356cc4725b038cbf89a49b6ce2bdc3b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: eab135d10c0d6df8ca72ac47d6804017a998a3d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-remote-desktop-with-azure-roles"></a>Azure ロールでのリモート デスクトップの使用
 Azure SDK およびリモート デスクトップ サービスを使用すると、Azure のロールと Azure にホストされている仮想マシンにアクセスできます。 Visual Studio では、Azure クラウド サービス プロジェクトからリモート デスクトップ サービスを構成できます。 リモート デスクトップ サービスを有効にするには、1 つ以上のロールを含む作業用プロジェクトを作成し、Azure に発行する必要があります。
@@ -77,5 +76,4 @@ Azure にクラウド サービスを発行したら、サーバー エクスプ
    
     ![Connecting via remote desktop](./media/vs-azure-tools-remote-desktop-roles/IC799162.png)
 3. 以前作成したユーザー名とパスワードを入力します。 これでリモート セッションにログインした状態になります。
-
 

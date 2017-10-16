@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: 36c83ad9424c7c1e0bc096696148dda801bc4257
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: cf1455dc3d55ea3581195f7a315556d134c23a26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>サード パーティのライブラリと Graph API と v2.0 エンドポイントを使用して iOS アプリにサインインを追加する
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
@@ -63,7 +61,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 * ポータルから **リダイレクト URI** をコピーしておきます。 既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 ## <a name="download-the-third-party-nxoauth2-library-and-create-a-workspace"></a>サード パーティ製 NXOAuth2 ライブラリのダウンロードとワークスペースの作成
-このチュートリアルでは、Mac OS X および iOS (Cocoa および Cocoa Touch) 用の OAuth2 ライブラリ OAuth2Client を GitHub からクローンして使用します。 このライブラリのベースとなっているのは、OAuth2 仕様のドラフト 10 です。 このライブラリは、ネイティブ アプリケーション プロファイルを実装し、ユーザーの承認エンドポイントをサポートしています。 これらの条件さえ整えば、Microsoft の ID プラットフォームと連携させることができます。
+このチュートリアルでは、Mac OS X および iOS (Cocoa および Cocoa Touch) 用の OAuth2 ライブラリ OAuth2Client を GitHub からクローンして使用します。 このライブラリのベースとなっているのは、OAuth2 仕様のドラフト 10 です。このライブラリは、ネイティブ アプリケーション プロファイルを実装し、ユーザーの承認エンドポイントをサポートしています。 これらの条件さえ整えば、Microsoft の ID プラットフォームと連携させることができます。
 
 ### <a name="add-the-library-to-your-project-by-using-cocoapods"></a>CocoaPods を使用してプロジェクトにライブラリを追加する
 CocoaPods は、Xcode プロジェクト用の依存関係マネージャーです。 上記のインストール手順は、CocoaPods によって自動的に管理されます。
@@ -571,5 +569,4 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
 
 ## <a name="get-security-updates-for-our-product"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
-
 

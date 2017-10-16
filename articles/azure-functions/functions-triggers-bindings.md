@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 54c75a4c22f094ca50ab2cbf5449c5fa115b32a7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -349,7 +349,7 @@ Azure Functions には、`{rand-guid}` バインド式を使用してバイン�
       "name": "info",
       "type": "httpTrigger",
       "direction": "in",
-      "webHookType": "genericJson",
+      "webHookType": "genericJson"
     },
     {
       "name": "blobContents",
@@ -421,7 +421,8 @@ C# および他の .NET 言語では、*function.json* の宣言型のバイン�
 - [Table Storage](functions-bindings-storage-table.md)
 - [イベント ハブ](functions-bindings-event-hubs.md)
 - [Service Bus](functions-bindings-service-bus.md)
-- [Cosmos DB](functions-bindings-documentdb.md)
+- [Azure Cosmos DB](functions-bindings-documentdb.md)
+- [Microsoft Graph](functions-bindings-microsoft-graph.md)
 - [SendGrid](functions-bindings-sendgrid.md)
 - [Twilio](functions-bindings-twilio.md)
 - [Notification Hubs](functions-bindings-notification-hubs.md)

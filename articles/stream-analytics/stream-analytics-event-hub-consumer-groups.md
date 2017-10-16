@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: ede3137de92e251f4ad020bc1ce3f041918242b2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>イベント ハブ レシーバーを使用した Azure Stream Analytics のデバッグ
 
 Azure Stream Analytics で Azure Event Hubs を使用して、ジョブからデータを取り込んだり出力したりできます。 Event Hubs を使用する際のベスト プラクティスは、複数のコンシューマー グループを使用して、ジョブの拡張性を確保することです。 その理由の 1 つとしては、特定の入力に関する Stream Analytics ジョブのリーダーの数が、1 つのコンシューマー グループ内のリーダーの数に影響することが挙げられます。 レシーバーの正確な数は、スケールアウト トポロジ ロジックの内部実装の詳細に基づいて決まります。 レシーバーの数は外部に公開されません。 リーダーの数は、ジョブのスタート時かジョブのアップグレード中に変更される可能性があります。
@@ -90,4 +88,3 @@ FROM data
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
 * [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

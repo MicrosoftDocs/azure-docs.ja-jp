@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
+ms.openlocfilehash: f3e4eb6fedf850dbb827fd2a10593249d2f17ef1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 67c9f6eca18e2dd77e00b8bc8c7bcc546ea3936e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
 
@@ -62,7 +61,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. [**作成] を選択します。 正常に完了したことが**通知**に表示されます。
 1. 新しく作成された Web アプリケーション **WebApp-GraphAPI-DirectoryExtensions** を選択します。
 1. 設定として **[必要なアクセス許可]** を選択します。
-1. API として **Windows Active Directory** を選択します。
+1. API として **Windows Azure Active Directory** を選択します。
 1. [アプリケーションのアクセス許可] で **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにし、**[保存]** を選択します。
 1. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
 1. [WebApp-GraphAPI-DirectoryExtensions] > [設定] > [プロパティ] の順に移動し、次の識別子をクリップボードにコピーして保存します。
@@ -235,7 +234,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 アプリケーションに送り返される ID トークンには、extension_loyaltyId で始まるカスタム要求として新しい拡張プロパティが含まれます。 例を参照してください。
 
-```
+```json
 {
   "exp": 1493585187,
   "nbf": 1493581587,
@@ -254,8 +253,8 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="next-steps"></a>次のステップ
 
-TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
-```
+### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
+```xml
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
@@ -299,4 +298,3 @@ extension_<app-guid>_ActivationStatus via the Graph API.
 
 >[!NOTE]
 >Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。 カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
-

@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: d8967d4504a8ccabb444c7f3d5635e2d00f287c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 
 保存時の暗号化という語句は、一般的にはソリッド ステート ドライブ (SSD) やハード ディスク (HDD) などの不揮発性メモリ デバイスでデータを暗号化することを意味します。 Cosmos DB では、プライマリ データベースを SSD に保存します。 そのメディア添付ファイルとバックアップは Azure Blob ストレージに保存され、このストレージは通常 HDD でバックアップされます。 Cosmos DB の保存時の暗号化のリリースにより、すべてのデータベース、メディア添付ファイル、バックアップが暗号化されます。 データの転送中 (ネットワーク経由) と保存時 (非揮発性メモリ) にデータが暗号化されることで、エンド ツー エンドの暗号化が実現しました。
@@ -71,4 +68,3 @@ A: エミュレーターは、スタンドアロンの開発/テスト ツール
 
 Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB データベースのセキュリティ](database-security.md)」を参照してください。
 マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/en-us/support/trust-center/)に関するページを参照してください。
-

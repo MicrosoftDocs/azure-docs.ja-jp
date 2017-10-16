@@ -12,13 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
 ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>利用料金支払いのため Azure サブスクリプションを Azure B2C テナントにリンクする
 
@@ -77,4 +75,3 @@ B2C テナント リソースをクリックして、次のことを実行でき
 B2C テナントごとにこれらの手順を完了したら、Azure Direct または Enterprise Agreement の詳細に従って Azure サブスクリプションが課金されます。
 - 選択した Azure サブスクリプションの使用量と課金を確認します
 - [使用状況レポート API](active-directory-b2c-reference-usage-reporting-api.md) を使用して詳しい使用状況レポートを確認します
-

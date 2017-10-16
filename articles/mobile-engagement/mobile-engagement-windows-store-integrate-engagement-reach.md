@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8fc1faac88cab0e3d3755fdf16fe3d7188169961
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows ユニバーサル アプリ Reach SDK 統合
 このガイドの手順を実行する前に、「 [Windows Phone ユニバーサル エンゲージメント SDK 統合](mobile-engagement-windows-store-integrate-engagement.md) 」の統合手順を実行する必要があります。
@@ -280,7 +279,7 @@ Engagement オブジェクトを保持する場合、希望する通知とアナ
 > 
 > 
 
-## <a name="a-idpush-channel-sharinga-push-channel-sharing"></a><a id="push-channel-sharing"></a> プッシュ チャネルの共有
+## <a id="push-channel-sharing"></a> プッシュ チャネルの共有
 アプリケーションで、他の目的でプッシュ通知を使用している場合は、Engagement SDK のプッシュ チャネル共有機能を使用する必要があります。 これはプッシュが実行されないことを防ぐためです。
 
 * Engagement Reach の初期化に独自のプッシュ チャネルを提供できます。 SDK は新しいものを要求する代わりにこれを使用します。
@@ -338,5 +337,4 @@ Engagement オブジェクトを保持する場合、希望する通知とアナ
                 }
               }
               #endregion
-
 

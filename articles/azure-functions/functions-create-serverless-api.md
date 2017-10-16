@@ -11,14 +11,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
+ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f5d0bb05d0e9caebfc6c13d983518d65f7409527
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
 このチュートリアルでは、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.JS、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 このチュートリアルでは、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
@@ -37,37 +35,34 @@ Azure Portal を開きます。 そのためには、Azure アカウントで [h
 
 既定では、HTTP によってトリガーされる関数は任意の HTTP メソッドを受け入れるように構成されます。 また、フォームの既定の URL は次のとおりです: `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`。 クイックスタートの手順に従っている場合、`<funcname>` にはおそらく "HttpTriggerJS1" のように表示されています。 このセクションでは、`/api/hello` ルートに対する GET 要求にのみ応答するように関数を変更します。 
 
-Azure Portal で関数に移動します。 左側のナビゲーションで、**[統合]** を選択します。
+1. Azure Portal で関数に移動します。 左側のナビゲーションで、**[統合]** を選択します。
 
-![HTTP 関数のカスタマイズ](./media/functions-create-serverless-api/customizing-http.png)
+    ![HTTP 関数のカスタマイズ](./media/functions-create-serverless-api/customizing-http.png)
 
-次の表で指定されている HTTP トリガーの設定を使用します。
+1. 次の表で指定されている HTTP トリガーの設定を使用します。
 
-| フィールド | 値の例 | 説明 |
-|---|---|---|
-| [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
-| [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
-| [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
+    | フィールド | 値の例 | 説明 |
+    |---|---|---|
+    | [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
+    | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
+    | [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
+    | 承認レベル | 匿名 | 省略可能: API キーを使用せずに関数にアクセスできるようにします |
 
-ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
+    > [!NOTE] 
+    > ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
 
-**[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
 HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)」をご覧ください。
 
 ### <a name="test-your-api"></a>API のテスト
 
 次に、関数のテストを行い、新しい API サーフェスで機能していることを確認します。
-
-左側のナビゲーションに表示される関数名をクリックして、開発ページに戻ります。
-
-**[関数の URL の取得]** をクリックし、URL をコピーします。 現在、`/api/hello` ルートが使用されていることを確認してください。
-
-URL をブラウザーの新しいタブまたはお使いの REST クライアントにコピーします。 ブラウザーは既定で GET を使用します。
-
-関数を実行し、動作を確認します。 クイックスタートのコードを完成させるためにクエリ文字列として "name" パラメーターを入力する必要がある場合もあります。
-
-また、別の HTTP メソッドを使用してエンドポイントを呼び出し、関数が実行されていないことを確認することもできます。 このためには、cURL、Postman、Fiddler などの REST クライアントを使用する必要があります。
+1. 左側のナビゲーションに表示される関数名をクリックして、開発ページに戻ります。
+1. **[関数の URL の取得]** をクリックし、URL をコピーします。 現在、`/api/hello` ルートが使用されていることを確認してください。
+1. URL をブラウザーの新しいタブまたはお使いの REST クライアントにコピーします。 ブラウザーは既定で GET を使用します。
+1. 関数を実行し、動作を確認します。 クイックスタートのコードを完成させるためにクエリ文字列として "name" パラメーターを入力する必要がある場合もあります。
+1. また、別の HTTP メソッドを使用してエンドポイントを呼び出し、関数が実行されていないことを確認することもできます。 このためには、cURL、Postman、Fiddler などの REST クライアントを使用する必要があります。
 
 ## <a name="proxies-overview"></a>Proxies の概要
 
@@ -75,8 +70,8 @@ URL をブラウザーの新しいタブまたはお使いの REST クライア�
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is) 内の API アプリ
-- [App Service on Linux](https://docs.microsoft.com/azure/app-service/app-service-linux-readme) 内の Docker コンテナー
+- [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) 内の API アプリ
+- [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 内の Docker コンテナー
 - その他のホストされている API
 
 プロキシの詳細については、[Azure Functions Proxies (プレビュー) の操作]に関するページをご覧ください。
@@ -87,44 +82,39 @@ URL をブラウザーの新しいタブまたはお使いの REST クライア�
 
 ### <a name="setting-up-the-frontend-environment"></a>フロントエンド環境のセットアップ
 
-「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリは、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
+「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
 
-ポータルで新しいフロントエンドの Function App に移動します。
+1. ポータルで新しいフロントエンドの Function App に移動します。
+1. **[設定]**を選択します。 次に、**[Azure Functions プロキシの有効化 (プレビュー)]** をオンにします。
+1. **[プラットフォームの設定]**、**[アプリケーションの設定]** の順に選択します。
+1. 下へスクロールして **[アプリの設定]** を表示し、"HELLO_HOST" キーを使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourBackendApp>.azurewebsites.net` などの値を設定します。 これは以前 HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
 
-**[設定]**を選択します。 次に、**[Azure Functions プロキシの有効化 (プレビュー)]** をオンにします。
+    > [!NOTE] 
+    > ハード コーディングよるプロキシの環境依存を防ぐために、ホストの構成に対してアプリ設定を使用することをお勧めします。 アプリ設定を使用すると、プロキシの構成を環境間で移動でき、その環境に合わせたアプリ設定が適用されます。
 
-**[プラットフォームの設定]**、**[アプリケーションの設定]** の順に選択します。
-
-下へスクロールして **[アプリの設定]** を表示し、"HELLO_HOST" キーを使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourApp>.azurewebsites.net` などの値を設定します。 これは以前 HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
-
-> [!NOTE] 
-> ハード コーディングよるプロキシの環境依存を防ぐために、ホストの構成に対してアプリ設定を使用することをお勧めします。 アプリ設定を使用すると、プロキシの構成を環境間で移動でき、その環境に合わせたアプリ設定が適用されます。
-
-**[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>フロントエンドのプロキシの作成
 
-ポータルでフロントエンドの Function App に移動します。
+1. ポータルでフロントエンドの Function App に移動します。
+1. 左側のナビゲーションで、[プロキシ (プレビュー)] の横にあるプラス記号 [+] をクリックします。
+    ![プロキシの作成](./media/functions-create-serverless-api/creating-proxy.png)
+1. 次の表で指定されているプロキシの設定を使用します。 
 
-左側のナビゲーションで、[プロキシ (プレビュー)] の横にあるプラス記号 [+] をクリックします。
-
-![プロキシの作成](./media/functions-create-serverless-api/creating-proxy.png)
-
-次の表で指定されているプロキシの設定を使用します。
-
-| フィールド | 値の例 | 説明 |
-|---|---|---|
-| 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
-| [ルート テンプレート] | /api/hello | このプロキシの呼び出しに使用するルートを決定します |
-| [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
-
-Proxies は `/api` ベース パス プレフィックスを提供しないことに注意してください。パス プレフィックスはルート テンプレートで指定する必要があります。
-
-`%HELLO_HOST%` 構文は、以前作成したアプリ設定を参照します。 解決済みの URL は元の関数を指定します。
-
-**[作成]**をクリックします。
-
-プロキシの URL をコピーし、ブラウザー内、または任意の HTTP クライアントでテストすることで、新しいプロキシを試すことができます。
+    | フィールド | 値の例 | 説明 |
+    |---|---|---|
+    | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
+    | [ルート テンプレート] | /api/hello | このプロキシの呼び出しに使用するルートを決定します |
+    | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
+    
+1. Proxies は `/api` ベース パス プレフィックスを提供しないことに注意してください。パス プレフィックスはルート テンプレートで指定する必要があります。
+1. `%HELLO_HOST%` 構文は、以前作成したアプリ設定を参照します。 解決済みの URL は元の関数を指定します。
+1. **Create** をクリックしてください。
+1. プロキシの URL をコピーし、ブラウザー内、または任意の HTTP クライアントでテストすることで、新しいプロキシを試すことができます。
+    1. 匿名関数の場合は、以下を使用します。
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+    1. 承認がある関数の場合は、以下を使用します。
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>モック API の作成
 
@@ -203,4 +193,3 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
 [Azure Functions Proxies (プレビュー) の操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
-

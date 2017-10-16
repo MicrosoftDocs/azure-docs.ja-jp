@@ -14,12 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: dd9019a6feb86d90fc6219b06bf1e69da4c2b18f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 66f0a9b591b812a52dc6037dcfcb64a2c250f05c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ
 Visual Studio には、Azure クラウド サービスと仮想マシンのデバッグに役立つさまざまなオプションがあります。
@@ -27,7 +26,7 @@ Visual Studio には、Azure クラウド サービスと仮想マシンのデ�
 ## <a name="debug-your-cloud-service-on-your-local-computer"></a>ローカル コンピューターでクラウド サービスをデバッグする
 Azure コンピューティング エミュレーターを使用してローカル コンピューターでクラウド サービスをデバッグすれば、時間とコストの節約になります。 サービスをデプロイする前にローカルでデバッグすると、コンピューティング時間の料金を支払うことなく、信頼性とパフォーマンスを改善できます。 ただし、一部には Azure でクラウド サービスを実行した場合にのみ発生するエラーもあります。 サービスを発行し、デバッガーをロール インスタンスにアタッチするときに、リモート デバッグを有効にすると、このようなエラーをデバッグできます。
 
-エミュレーターは、Azure コンピューティング サービスをシミュレートし、ローカル環境で動作するので、クラウド サービスのテストとデバッグを行ってからデプロイすることができます。 エミュレーターでは、ロール インスタンスのライフサイクルが処理され、ローカル ストレージなどのシミュレートされるリソースにアクセスできます。 Visual Studio でサービスをデバッグまたは実行すると、エミュレーターがバックグラウンド アプリケーションとして自動的に起動され、サービスがエミュレーターにデプロイされます。 エミュレーターを使用すると、ローカル環境で実行されているサービスを表示できます。 完全バージョンまたは Express バージョンのエミュレーターを実行できます (Azure 2.3 以降は、Express バージョンのエミュレーターが既定です)。「[Emulator Express を使用したローカルでのクラウド サービス実行とデバッグ](https://msdn.microsoft.com/library/dn339018.aspx)」を参照してください。
+エミュレーターは、Azure コンピューティング サービスをシミュレートし、ローカル環境で動作するので、クラウド サービスのテストとデバッグを行ってからデプロイすることができます。 エミュレーターでは、ロール インスタンスのライフサイクルが処理され、ローカル ストレージなどのシミュレートされるリソースにアクセスできます。 Visual Studio でサービスをデバッグまたは実行すると、エミュレーターがバックグラウンド アプリケーションとして自動的に起動され、サービスがエミュレーターにデプロイされます。 エミュレーターを使用すると、ローカル環境で実行されているサービスを表示できます。 完全バージョンまたは Express バージョンのエミュレーターを実行できます (Azure 2.3 以降は、Express バージョンのエミュレーターが既定です)。「[Emulator Express を使用したローカルでのクラウド サービス実行とデバッグ](vs-azure-tools-emulator-express-debug-run.md)」を参照してください。
 
 ### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>ローカル コンピューターでクラウド サービスをデバッグするには
 1. メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択し、Azure クラウド サービス プロジェクトを実行します。 または、F5 キーを押します。 コンピューティング エミュレーターが起動することを示すメッセージが表示されます。 エミュレーターが起動すると、システム トレイ アイコンでそのことを確認できます。
@@ -166,4 +165,3 @@ Visual Studio ASP.NET プロジェクトでは、アプリケーションのテ�
 ## <a name="next-steps"></a>次のステップ
 * **Intellitrace** を使用して、リリース サーバーから呼び出しおよびイベントのログを収集します。 [IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/?LinkID=623016)に関するページを参照してください。
 * **Azure 診断** を使用して、ロールが開発環境と Azure のどちらで実行されているかにかかわらず、ロール内で実行されているコードの詳細な情報をログに記録します。 「 [Azure 診断を使用したログ データの収集](http://go.microsoft.com/fwlink/p/?LinkId=400450)」を参照してください。
-

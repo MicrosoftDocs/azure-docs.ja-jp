@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 28526c05c7f364f0fcaaa362fc97857f850040ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: f9b679f167952076db6df17711dc124931a0880c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続ノード API の概要
 
 ## <a name="overview"></a>概要
@@ -213,4 +211,3 @@ WebSocket.relayedConnect(
 Azure リレーの詳細については、次のリンク先を参照してください。
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
 * [使用可能な Relay API](relay-api-overview.md)
-

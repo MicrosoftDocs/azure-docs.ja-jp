@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
+ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: f41132d69dbbc9e5871851220e5f7de933c50efe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Azure Backup コンテナーとサーバーの管理
 > [!div class="op_single_selector"]
@@ -93,7 +92,7 @@ ms.lasthandoff: 08/03/2017
 
 ![構成](./media/backup-azure-manage-windows-server-classic/configure.png)
 
-ストレージの冗長性の詳細については、 [こちらの記事](../storage/storage-redundancy.md)をご覧ください。
+ストレージの冗長性の詳細については、 [こちらの記事](../storage/common/storage-redundancy.md)をご覧ください。
 
 ## <a name="microsoft-azure-backup-agent-tasks"></a>Microsoft Azure Backup エージェントのタスク
 ### <a name="console"></a>コンソール
@@ -199,4 +198,3 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 * [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
-

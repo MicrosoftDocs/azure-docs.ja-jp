@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f9e97bb2352231b46bdf66b1165bf22ec639fddf
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: af135518f66eb8c94c183f28191f016fcd601ae1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 ## <a name="overview"></a>Overview
@@ -164,7 +163,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 
 #### <a name="to-update-cmdlet-help"></a>コマンドレットのヘルプを更新するには
 1. Windows PowerShell を **[管理者として実行]** オプションを指定して起動します。
-2. コマンド プロンプトに  `Update-Help` を入力します。
+2. コマンド プロンプトに「`Update-Help`」と入力します。
 3. 更新されたヘルプ ファイルがインストールされます。
 4. ヘルプ ファイルがインストールされた後、「 `Get-Help Get-Command`」と入力します。 これにより、ヘルプを利用できるコマンドレットの一覧が表示されます。
 
@@ -175,5 +174,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 
 ## <a name="next-steps"></a>次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
-
 

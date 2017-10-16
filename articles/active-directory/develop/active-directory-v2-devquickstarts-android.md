@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 2dfe58c032888ca34e905f4e549fcc4d6e36d324
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: c0a5a818c61f7af7ff04bf890b54e8364f3b21b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
@@ -95,8 +93,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
     ![既定のアプリ モジュール](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
 5. クローンしたリポジトリのモジュールを現在のプロジェクトにインポートします。
    
-    ![gradle プロジェクトのインポート](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG)
-    ![新しいモジュール ページの作成](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
+    ![インポート gradle プロジェクト](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG)![新しいモジュールの作成] ページ](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
 6. 以上の手順を `oidlib-sample` モジュールについても行います。
 7. oidclib の `oidlib-sample` モジュールへの依存関係を確認します。
    
@@ -191,5 +188,4 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 
 ## <a name="get-security-updates-for-our-product"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
-
 

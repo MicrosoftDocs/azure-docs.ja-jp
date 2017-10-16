@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 9d3b4abdd395806b1a53d4f23d45ba8b449978a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -199,5 +197,4 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
 ## <a name="next-steps"></a>次のステップ
 * Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
 * [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
-
 

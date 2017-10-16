@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
 
 Web ベースのポータルであるアクセス パネルを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 これらのアプリケーションは、Azure AD ポータルでユーザーに代わって構成されます。 管理者は、アプリケーションをユーザーに直接、またはユーザーが属するグループにプロビジョニングできます。その結果、ユーザーのアクセス パネルにアプリケーションが表示されます。
@@ -154,4 +152,3 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
-

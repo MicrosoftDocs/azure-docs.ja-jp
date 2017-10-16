@@ -16,12 +16,11 @@ ms.date: 07/06/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 9dbe88a59b68bfb424c43dd89acf55d8c73fdf39
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 この記事では、2 段階認証に関してお客様から寄せられる最も一般的な質問の回答を掲載しています。 
@@ -95,5 +94,4 @@ Microsoft の個人用アカウントで 2 段階認証が有効になってお�
 ## <a name="related-topics"></a>関連トピック
 * [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)  
 * [Microsoft Authenticator アプリケーションに関する FAQ](microsoft-authenticator-app-faq.md)
-
 

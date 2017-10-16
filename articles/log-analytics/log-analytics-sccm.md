@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: aca83d2de9247bedacce0fb03efe141d903d8605
-ms.openlocfilehash: f93d37ad5be4bf7fdc78d83ec68ba56a427b3e35
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 System Center Configuration Manager を OMS の Log Analytics に接続して、デバイス コレクション データを同期することができます。 そうすることで、Configuration Manager 階層からのデータを OMS で使用できます。
@@ -135,4 +134,3 @@ OMS 接続を Configuration Manager に追加し、Configuration Manager サー�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログの検索](log-analytics-log-searches.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8bb0357a1ac2effd1144afd2af1741205592d253
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 23c30c954875598ce3e01db137b0ef8cda9779f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 > [!IMPORTANT] 
@@ -74,7 +73,7 @@ azure login
 <a id="upload"> </a>
 
 ## <a name="step-3-upload-the-image-to-azure"></a>手順 3. Azure にイメージをアップロードする
-VHD ファイルをアップロードするストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、 [新しいストレージ アカウントを作成する](../../../storage/storage-create-storage-account.md)こともできます。
+VHD ファイルをアップロードするストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、 [新しいストレージ アカウントを作成する](../../../storage/common/storage-create-storage-account.md)こともできます。
 
 Azure CLI でイメージをアップロードするには、次のコマンドを使用します。
 
@@ -115,4 +114,3 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 [Step 1: Prepare the image to be uploaded]:#prepimage
 [Step 2: Prepare the connection to Azure]:#connect
 [Step 3: Upload the image to Azure]:#upload
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 692f00bf342e2cd6d3d76754d18751c773aeedc5
 ms.openlocfilehash: 53a8599df2c647613122cd791b680e2e658586b0
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-using-the-storsimple-data-manager-service-ui-private-preview"></a>StorSimple データ マネージャー サービス UI を使用して管理する (プライベート プレビュー)
 
 この記事では、StorSimple データ マネージャー UI を使用して、StorSimple 8000 シリーズ デバイス上にあるデータでデータ変換を実行する方法について説明します。 変換されたデータは、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Search など、他の Azure サービスが使用できます。 
@@ -109,8 +109,3 @@ StorSimple のデータを、ジョブ定義で指定したストレージ ア�
 ## <a name="next-steps"></a>次のステップ
 
 [.NET SDK を使用して StorSimple データ マネージャー ジョブを起動します](storsimple-data-manager-dotnet-jobs.md)。
-
-
-<!--HONumber=Nov16_HO4-->
-
-

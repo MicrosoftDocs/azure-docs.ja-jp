@@ -15,16 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 307373c75bbb87cec683f7a3097f8f159c9d5e61
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル
 
 お客様は、当社の IT 管理 [Azure ポータル](https://portal.azure.com)とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 しかし、当社では、企業が B2B ユーザーのために配布準備ワークフローをカスタマイズして、ユーザーの組織のニーズを満たす必要があることについても認識しています。 これは[当社の API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用することで実現します。

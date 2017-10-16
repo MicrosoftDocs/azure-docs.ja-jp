@@ -11,14 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 09/19/2017
 ms.author: bwren
+ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 8c73344b07e07cc89a18a10648b1a9c82c4b361a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -33,8 +32,8 @@ ms.lasthandoff: 08/17/2017
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1.*](#web-api-1)
-  * [Web API 2.*](#web-api-2)
+  * [Web API 1.*](#web-api-1x)
+  * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio を使用して例外を診断する
@@ -58,15 +57,19 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 ![例外の CodeLens 通知。](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Azure Portal を使用して障害を診断する
-アプリの Application Insights の概要の [障害] タイルには、例外と失敗した HTTP 要求のグラフ、最も頻繁に発生する障害の原因となる要求 URL の一覧が表示されます。
+Application Insights には、監視対象のアプリケーションの障害を診断するのに役立つ、精選された APM エクスペリエンスが用意されています。 開始するには、[調査] セクションにある Application Insights リソース メニューの [Failures]\(失敗\) オプションをクリックします。 要求の失敗率の傾向、失敗した回数、影響を受けるユーザーの数が全画面で表示されます。 右側には、上位 3 つの応答コード、上位 3 つの例外の種類、上位 3 つの失敗した依存関係の種類など、選択した失敗した操作に固有の有用な内訳のいくつかが表示されます。 
 
-![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)
+![障害トリアージ ビュー ([操作] タブ)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
-一覧で失敗したいずれかの例外の種類をクリックして、例外の個々の発生の情報を取得します。これにより、詳細とスタック トレースを確認できます。
+1 回のクリックで、これらの操作の各サブセットの代表的なサンプルを確認できます。 特に例外を診断するには、特定の例外の数をクリックします。すると、その例外が次のように例外の詳細ブレードに表示されます。
 
-![失敗した要求のインスタンスを選択し、例外の詳細で、例外のインスタンスを表示します。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![例外の詳細ブレード](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**または**、要求の一覧から開始して、それに関連する例外を検索することもできます。
+**または**、特定の失敗した操作の例外を調べる代わりに、[例外] タブに切り替えて例外の全体像から開始することができます。
+
+![障害トリアージ ビュー ([例外] タブ)](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
+
+ここでは、監視対象のアプリケーションに関して収集されたすべての例外が表示されます。
 
 *例外が表示されませんか?[例外のキャプチャ](#exceptions)に関するセクションをご覧ください。*
 
@@ -431,7 +434,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 .NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。
 
-この値は、TrackException レポートをカウントすることにより、Application Insights ポータルで算出される「例外」数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
+この値は、TrackException レポートをカウントする Application Insights ポータルで算出される "例外" 数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
 ## <a name="video"></a>ビデオ
 
@@ -441,4 +444,3 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 * [REST、SQL、および依存関係へのその他の呼び出しを監視する](app-insights-asp-net-dependencies.md)
 * [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](app-insights-javascript.md)
 * [パフォーマンス カウンターを監視する](app-insights-performance-counters.md)
-

@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 4248a3769ba8a0fb067b3904d55d487fe67e5778
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: c68f0239bcb95aa5e9d8194f7b358f30588ea600
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -52,7 +52,7 @@ az storage share create -n $ACI_PERS_SHARE_NAME
 
 ## <a name="acquire-storage-account-access-details"></a>ストレージ アカウント アクセスの詳細を取得する
 
-Azure Container Instances で Azure ファイル共有をボリュームとしてマウントするには、ストレージ アカウント名、共有名、ストレージ アクセス キーの 3 つの値が必要です。 
+Azure Container Instances で Azure ファイル共有をボリュームとしてマウントするには、ストレージ アカウント名、共有名、ストレージ アクセス キーの 3 つの値が必要です。
 
 上記のスクリプトでは、ストレージ アカウント名は最後にランダムな値で作成されました。 最後の文字列 (ランダムな部分を含む) にクエリーを実行するには、次のコマンドを使用します。
 
@@ -64,13 +64,13 @@ echo $STORAGE_ACCOUNT
 共有名は既にわかっているため (上記のスクリプトでは *acishare*)、あとはストレージ アカウント キーです。このキーを見つけるには、次のコマンドを使用します。
 
 ```azurecli-interactive
-$STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
 echo $STORAGE_KEY
 ```
 
 ## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Azure Key Vault でストレージ アカウント アクセスの詳細を格納する
 
-ストレージ アカウント キーによりデータへのアクセスが保護されます。したがって、このキーは、Azure Key Vault に格納することをお勧めします。 
+ストレージ アカウント キーによりデータへのアクセスが保護されます。したがって、このキーは、Azure Key Vault に格納することをお勧めします。
 
 Azure CLI を使用してキー コンテナーを作成します。
 
@@ -129,7 +129,7 @@ Azure ファイル共有をボリュームとしてコンテナーにマウン�
             "name": "myvolume",
             "mountPath": "/aci/logs/"
           }]
-        }  
+        }
       }],
       "osType": "Linux",
       "ipAddress": {
@@ -169,7 +169,7 @@ az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
   "parameters": {
     "storageaccountname": {
       "value": "<my_storage_account_name>"
-    },    
+    },
    "storageaccountkey": {
       "reference": {
         "keyVault": {

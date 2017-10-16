@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
 > [!IMPORTANT] 
@@ -182,4 +181,3 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]:https://docs.docker.com/userguide/
 
 [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]:../docker-compose-quickstart.md
-

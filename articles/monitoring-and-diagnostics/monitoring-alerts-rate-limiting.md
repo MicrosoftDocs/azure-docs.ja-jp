@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: bde645624ab1860d19ba18470f55845855a7d1fb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="rate-limiting-for-sms-messages-emails-and-webhook-posts"></a>SMS メッセージ、電子メール、webhook 投稿のレート制限
 レート制限とは、特定の電話番号または電子メール アドレスへの通知が多すぎる場合に、通知が一時停止されることです。 レート制限によって、アラートを管理しやすくなりアクション可能な状態が保証されます。
 
@@ -42,4 +40,3 @@ webhook 用のレート制限はありません。
 * 詳細については、「[SMS アラート動作](monitoring-sms-alert-behavior.md)」を参照してください。
 * [アクティビティ ログ アラートの概要](monitoring-overview-alerts.md)を把握し、アラートを受信する方法について学習します。  
 * [サービスの正常性通知が投稿されるたびにアラートを設定](monitoring-activity-log-alerts-on-service-notifications.md)する方法について学習します。
-

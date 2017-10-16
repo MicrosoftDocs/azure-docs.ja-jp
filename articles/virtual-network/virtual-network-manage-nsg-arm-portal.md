@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-nsgs-using-the-portal"></a>ポータルを使用して NSG を管理する
 
@@ -46,7 +46,7 @@ ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 
-2. **[参照] > ** > **[ネットワーク セキュリティ グループ]** をクリックします。
+2. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
 
     ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure1.png)
 
@@ -199,9 +199,3 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
 ## <a name="next-steps"></a>次のステップ
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-

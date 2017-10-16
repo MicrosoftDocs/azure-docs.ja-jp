@@ -4,21 +4,20 @@ description: "Azure Functions Tools for Visual Studio 2017 を使用して、Azu
 services: functions
 documentationcenter: .net
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
-ms.author: glenga, donnam
+ms.date: 09/06/2017
+ms.author: glenga
+ms.openlocfilehash: 5f0b346ec1c4a42d11ef74ab8ac8701dd45b00eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 1b1f6374d2d84984dc1b0905d46ab1f9adfd79dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -40,11 +39,14 @@ Azure Functions Tools は、[Visual Studio 2017 バージョン 15.3](https://ww
 
 ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
+>[!NOTE]  
+>Visual Studio 2017 バージョン 15.3 をインストールするか、このバージョンにアップグレードした後、Visual Studio 2017 Tools for Azure Functions を手動で更新する必要があります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** > **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+
 関数を作成してデプロイするには、以下も必要になります。
 
 * 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
 
-* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。  
+* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。  
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
@@ -54,7 +56,7 @@ Azure Functions Tools は、[Visual Studio 2017 バージョン 15.3](https://ww
 
 Azure Functions テンプレートを使用して、新しいプロジェクトを作成する場合は、次のファイルを含む空の C# プロジェクトを取得します。
 
-* **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) のリファレンス記事を参照してください。
+* **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
     
 * **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、他の Azure サービスに対する接続文字列などの設定を指定します。 新しいキーを、プロジェクトの関数に必要な各接続の **Values** 配列に追加します。 詳細については、Azure Functions Core Tools トピックの[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記述を参照してください。
 
@@ -135,4 +137,3 @@ Azure Functions Tools の詳細については、[Visual Studio 2017 Tools for A
 
 Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。  
 .NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions での .NET クラス ライブラリの使用](functions-dotnet-class-library.md)」を参照してください。 このトピックでは、Azure Functions でサポートされるバインディングのさまざまな型の宣言に使用する属性の使用例についても説明します。    
-

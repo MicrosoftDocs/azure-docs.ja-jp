@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ce00af5e7382a3d6e80903711bac86ca88191cff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 30d8d4f3565fcc5e4c5c514a74f94c3ce24819e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-advisor-documentation"></a>Azure Advisor のドキュメント
 
@@ -96,4 +95,3 @@ Azure Advisor は、ベスト プラクティスに従って Azure デプロイ�
             </div>
         </div>
     </li>
-

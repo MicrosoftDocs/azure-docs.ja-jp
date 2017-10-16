@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 67f69a5a92c922bc7357c1e4bcc88f55e16d1255
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Windows Phone Silverlight Engagement SDK 統合
 > [!div class="op_single_selector"]
@@ -247,5 +246,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > バーストのしきい値は、1 秒よりも短くすることはできません。 1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。 これにより、SDK はログをリアルタイムで報告するようになります。
 > 
 > 
-
 

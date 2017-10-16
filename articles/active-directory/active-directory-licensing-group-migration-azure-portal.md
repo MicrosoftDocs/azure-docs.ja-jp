@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory で個別にライセンスを付与されたユーザーをグループに移行する方法 | Microsoft Docs"
 description: "Azure Active Directory を使用して個別のユーザー ライセンスをグループベースのライセンスに切り替える方法"
 services: active-directory
@@ -17,15 +16,12 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: d7c5ba12738c4713517743ae8c44e236c5e1a210
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/08/2017
-
-
+ms.openlocfilehash: 6b77dd4e9a6d361a05382397e89b575896fdad84
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Azure Active Directory でライセンスを付与するためにライセンスを持つユーザーをグループに追加する方法
 
 既存のライセンスを組織のユーザーに "直接割り当て" ている、つまり、PowerShell スクリプトやその他のツールを使用して個別のユーザー ライセンスを割り当てている場合があります。 組織のライセンスを管理するためにグループベースのライセンスを使いたくなった場合、既存のソリューションをグループベースのライセンスにシームレスに切り替えるための移行計画が必要になります。
@@ -93,4 +89,3 @@ ms.lasthandoff: 03/08/2017
 * [Azure Active Directory のグループベースのライセンスとは](active-directory-licensing-whatis-azure-portal.md)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ](active-directory-licensing-group-advanced.md)
-

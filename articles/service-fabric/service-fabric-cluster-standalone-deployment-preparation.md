@@ -3,7 +3,7 @@ title: "Azure Service Fabric スタンドアロン クラスターのデプロ�
 description: "運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。"
 services: service-fabric
 documentationcenter: .net
-author: maburlik
+author: dkkapur
 manager: timlt
 editor: 
 ms.service: service-fabric
@@ -11,44 +11,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: maburlik;chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: f332193f9a53260173a1010b8bf9f08726bea427
-ms.lasthandoff: 03/31/2017
-
-
+ms.date: 9/12/2017
+ms.author: dekapur;maburlik;chackdan
+ms.openlocfilehash: 67d47739c27081c4e10bf11988ed121ff02d8bb0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 <a id="preparemachines"></a>
 
-## <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの準備と計画
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 クラスターを作成する前に、次の手順を実行します。
 
-### <a name="step-1-plan-your-cluster-infrastructure"></a>手順 1: クラスターのインフラストラクチャを検討する
-ここでの Service Fabric クラスターの作成先は自分が所有するマシンです。そこで、クラスターがどのような障害に対応するかを決定できます。 たとえば電気系統やインターネット接続を、それらのマシン専用に確保する必要はあるでしょうか。 また、マシンの物理的なセキュリティも考慮してください。 マシンの配置場所とマシンへのアクセスが必要なユーザー これらの点を判断したら、各種の障害ドメイン (手順 4 を参照) にマシンを論理的に対応付けることができます。 運用環境クラスターのインフラストラクチャ計画は、テスト環境のクラスターの場合よりも複雑です。
+## <a name="plan-your-cluster-infrastructure"></a>クラスターのインフラストラクチャを計画する
+ここでの Service Fabric クラスターの作成先は自分が所有するマシンです。そこで、クラスターがどのような障害に対応するかを決定できます。 たとえば電気系統やインターネット接続を、それらのマシン専用に確保する必要はあるでしょうか。 また、マシンの物理的なセキュリティも考慮してください。 マシンの配置場所とマシンへのアクセスが必要なユーザー これらの点を判断したら、各種の障害ドメイン (次の手順を参照) にマシンを論理的に対応付けることができます。 運用環境クラスターのインフラストラクチャ計画は、テスト環境のクラスターの場合よりも複雑です。
 
-### <a name="step-2-prepare-the-machines-to-meet-the-prerequisites"></a>手順 2: マシンの前提条件を満たすための準備をする
-クラスターに追加する各マシンの前提条件は次のとおりです。
-
-* 16 GB 以上の RAM (推奨)。
-* 40 GB 以上の使用可能なディスク領域 (推奨)。
-* 4 コア以上の CPU (推奨)。
-* すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続。
-* Windows Server 2012 R2 または Windows Server 2016。 
-* [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773)(フル インストール)。
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)。
-* [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820) がすべてのマシンで実行されている必要があります。
-
-クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
-
-### <a name="step-3-determine-the-initial-cluster-size"></a>手順 3: クラスターの初期サイズを決める
-スタンドアロン Service Fabric クラスターの各ノードには Service Fabric ランタイムがデプロイされており、それぞれがクラスターのメンバーになります。 標準的な運用デプロイでは、OS インスタンス (物理または仮想) ごとにノードが 1 つ存在します。 クラスターのサイズは、ビジネス ニーズによって決まります。 ただし、最低でも 3 つのノード (コンピューターまたは仮想マシン) を備えたクラスター サイズとする必要があります。
-開発目的では、特定のマシン 1 台に複数のノードを割り当てることができます。 運用環境の場合、Service Fabric がサポートするノードは、物理コンピューターまたは仮想マシン 1 台につき 1 つだけです。
-
-### <a name="step-4-determine-the-number-of-fault-domains-and-upgrade-domains"></a>手順 4: 障害ドメインとアップグレード ドメインの数を決める
-"*障害ドメイン*" (FD) は障害の物理的単位であり、データ センター内の物理インフラストラクチャと直接関連付けられます。 障害ドメインは、同じ単一障害点を持ったハードウェア コンポーネント (コンピューター、スイッチ、ネットワークなど) で構成されます。 障害ドメインとラックとの間に 1:1 の対応はありませんが、大まかにいえば、それぞれのラックが 1 つの障害ドメインと考えてかまいません。 クラスターに含めるノードを検討するときは、3 つ以上の障害ドメインにノードを分散することを強くお勧めします。
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>障害ドメインとアップグレード ドメインの数を決める
+"[*障害ドメイン*" (FD)](service-fabric-cluster-resource-manager-cluster-description.md) は障害の物理的単位であり、データ センター内の物理インフラストラクチャと直接関連付けられます。 障害ドメインは、同じ単一障害点を持ったハードウェア コンポーネント (コンピューター、スイッチ、ネットワークなど) で構成されます。 障害ドメインとラックとの間に 1:1 の対応はありませんが、大まかにいえば、それぞれのラックが 1 つの障害ドメインと考えてかまいません。
 
 各障害ドメインの名前は、ClusterConfig.json に障害ドメインを指定するときに選ぶことができます。 Service Fabric では階層形式の障害ドメインがサポートされているため、実際のインフラストラクチャのトポロジをそこに反映させることが可能です。  有効な障害ドメインの例を次に示します。
 
@@ -67,12 +47,35 @@ ms.lasthandoff: 03/31/2017
 * "upgradeDomain": "DomainRed"
 * "upgradeDomain": "Blue"
 
-アップグレード ドメインと障害ドメインの詳細については、[「Service Fabric クラスターの記述」](service-fabric-cluster-resource-manager-cluster-description.md)を参照してください。
+FD と UD の詳細については、「[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)」を参照してください。
 
-### <a name="step-5-download-the-service-fabric-standalone-package-for-windows-server"></a>手順 5: Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロードする
+ノードのメンテナンスと管理に対してフル コントロールの権限がある (つまり、マシンの更新や交換に責任がある) 場合、稼働中のクラスターを運用環境でサポートするために、そのクラスターが 3 つ以上の FD にまたがるようにする必要があります。 マシンを完全に制御できない環境 (アマゾン ウェブ サービスの VM インスタンス) で実行するクラスターの場合は、クラスターに少なくとも 5 つの FD が必要です。 各 FD は、1 つ以上のノードを持つことができます。 これは、マシンのアップグレードや更新が原因で発生し、タイミングによってはクラスター内のアプリケーションやサービスの実行に干渉しかねない問題を回避するためです。
+
+## <a name="determine-the-initial-cluster-size"></a>クラスターの初期サイズを決める
+
+一般に、クラスター内のノード数はビジネス ニーズに基づいて決まります。つまり、クラスターで実行されるサービスとコンテナーの数、ワークロードを維持するために必要なリソースの数によって決まります。 運用クラスターでは、5 つの FD にまたがるノードを 5 つ以上クラスター内に用意することをお勧めします。 ただし、前述のように、ノードに対するフル コントロールの権限があり、3 つの FD にまたがる場合は、3 つのノードもジョブを実行する必要があります。
+
+ステートフル ワークロードを実行するテスト クラスターには 3 つのノードが必要であるのに対し、ステートレス ワークロードのみを実行するテスト クラスターに必要なノードは 1 つだけです。 開発目的では、特定のマシン 1 台に複数のノードを割り当て可能であることにも注意してください。 ただし、運用環境の場合、Service Fabric がサポートするノードは物理マシンまたは仮想マシン 1 台につき 1 つだけです。
+
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>ノードとして機能するマシンを準備する
+
+クラスターに追加する各マシンの推奨仕様の一部を次に示します。
+
+* 16 GB 以上の RAM
+* 40 GB 以上の使用可能なディスク領域
+* 4 コア以上の CPU
+* すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続
+* Windows Server 2012 R2 または Windows Server 2016
+* [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
+
+クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
+
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロードする
 [Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
 
-### <a name="step-6-modify-cluster-configuration"></a>手順 6: クラスターの構成を変更する
+## <a name="modify-cluster-configuration"></a>クラスターの構成を変更する
 スタンドアロン クラスターを作成するには、クラスターの仕様を示すスタンドアロン クラスター構成ファイル ClusterConfig.json を作成する必要があります。 構成ファイルについては、次のリンクにあるテンプレートを参考にしてください。 <br>
 [スタンドアロン クラスターの構成](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
@@ -88,7 +91,7 @@ ms.lasthandoff: 03/31/2017
 
 <a id="environmentsetup"></a>
 
-### <a name="step-7-environment-setup"></a>手順 7. 環境のセットアップ
+## <a name="environment-setup"></a>環境のセットアップ
 
 クラスター管理者が Service Fabric スタンドアロン クラスターを構成する場合、環境は次の条件に合わせて設定する必要があります。 <br>
 1. クラスターを作成するユーザーには、クラスター構成ファイルにノードとして記載されているすべてのマシンに対する管理者レベルのセキュリティ特権が必要です。
@@ -104,8 +107,8 @@ ms.lasthandoff: 03/31/2017
 3. クラスター ノード マシンはドメイン コントローラーにしないでください。
 4. デプロイ予定のクラスターがセキュリティで保護されたクラスターである場合は、まず必要なセキュリティの前提条件を検証してから、目的の構成に合わせて適切に構成します。
 5. クラスター マシンにインターネットでアクセスできない場合は、クラスター構成で次を設定します。
-* テレメトリの収集を無効にする: *properties* で   *"enableTelemetry": false* と設定します。
-* Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で   *"fabricClusterAutoupgradeEnabled": false* と設定します。
+* テレメトリを無効にする: *properties* で *"enableTelemetry": false* と設定します。
+* Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で *"fabricClusterAutoupgradeEnabled": false* と設定します。
 * また、ネットワーク インターネット アクセスがホワイト リスト ドメインに制限されている場合、自動アップグレードには go.microsoft.com   download.microsoft.com というドメインが必要になります。
 
 6. Service Fabric のウイルス対策の対象外項目を適切に設定します。
@@ -131,7 +134,7 @@ ms.lasthandoff: 03/31/2017
 | FabricRM.exe |
 | FileStoreService.exe |
 
-### <a name="step-8-validate-environment-using-testconfiguration-script"></a>手順 8. TestConfiguration スクリプトを使用して環境を検証する
+## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration スクリプトを使用して環境を検証する
 スタンドアロンのパッケージには、TestConfiguration.ps1 スクリプトが含まれています。 このスクリプトは、上記の条件の一部を検証を検証するベスト プラクティス アナライザーとして用いるものであり、サニティ チェックとして使用して指定の環境にクラスターをデプロイできるかどうかを検証する必要があります。 問題が発生した場合は、「[環境のセットアップ](service-fabric-cluster-standalone-deployment-preparation.md)」のリストを参照してトラブルシューティングを行ってください。 
 
 このスクリプトは、クラスター構成ファイルにノードとして列挙されているすべてのマシンに管理者アクセスできれば、どのマシンでも実行できます。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
@@ -164,4 +167,3 @@ Passed                     : True
 
 ## <a name="next-steps"></a>次のステップ
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
-

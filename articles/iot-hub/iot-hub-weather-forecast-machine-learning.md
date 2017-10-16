@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -94,7 +93,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    ![Azure での Stream Analytics ジョブの作成](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
@@ -110,7 +109,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    ![Azure で Stream Analytics ジョブに入力を追加する](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
@@ -129,7 +128,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    ![Azure で Stream Analytics ジョブに出力を追加する](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>デプロイした Web サービスを呼び出すための関数を Stream Analytics ジョブに追加する
 
@@ -148,7 +147,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    ![Azure で Stream Analytics ジョブに関数を追加する](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリの構成
 

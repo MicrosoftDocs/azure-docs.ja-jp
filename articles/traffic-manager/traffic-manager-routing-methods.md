@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
 Azure Traffic Manager では、さまざまなサービス エンドポイントにネットワーク トラフィックをルーティングする方法を決定するために、4 つのトラフィック ルーティング方法をサポートしています。 Traffic Manager では、受信する DNS クエリごとにトラフィック ルーティング方法が適用されます。 トラフィック ルーティング方法によって、DNS 応答で返されるエンドポイントが決まります。
@@ -136,7 +134,6 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 [1]: ./media/traffic-manager-routing-methods/priority.png
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
-
 
 
 

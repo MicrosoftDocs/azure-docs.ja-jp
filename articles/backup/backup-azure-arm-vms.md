@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 > [!div class="op_single_selector"]
@@ -106,4 +105,3 @@ VM を保護したので、VM の管理タスクおよび VM の復元方法の�
 
 * [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 * [仮想マシンの復元](backup-azure-arm-restore-vms.md)
-

@@ -16,14 +16,12 @@ ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
+ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: f4efac7b74620e68e727292e02a5a904b03d6e2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-office-365-groups-expiration-preview"></a>Office 365 グループの有効期限の構成 (プレビュー)
 
 選択した Office 365 グループの有効期限を設定することで、Office 365 グループのライフサイクルを管理できます。 この有効期限を設定すると、それらのグループの所有者はグループが引き続き必要であればグループを更新するよう求められます。 更新されない Office 365 グループはすべて削除されます。 削除された Office 365 グループは、30 日以内であればグループの所有者または管理者が復元できます。  
@@ -81,4 +79,3 @@ Microsoft PowerShell モジュールをダウンロードしてインストー�
 * [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-

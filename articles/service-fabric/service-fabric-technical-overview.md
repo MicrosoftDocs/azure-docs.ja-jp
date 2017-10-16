@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
+ms.openlocfilehash: 204c415a6dc77af1be78f8b28a1a5cbcd2fa7883
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 2d90baf42d067ad8476995fba524a46f0815b6d5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 このトピックでは、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用れる用語について詳しく説明します。
@@ -48,6 +47,10 @@ Service Fabric は、拡張性と信頼性に優れたマイクロサービス�
 
 * **ステートレス:** サービスの永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure Cosmos DB など) に保存する場合はステートレス サービスを使用します。 永続的なストレージがサービスにまったく存在しない場合は、ステートレス サービスを使用します。 たとえば電卓サービスに値を渡すと、それらの値を使って計算が実行され、結果が返されます。
 * **ステートフル:** Service Fabric の Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理する場合は、ステートフル サービスを使用します。 名前付きサービスを作成するときに (拡張性を得るために) 状態を分散させるパーティションの数を指定します。 さらに、状態をノード間でレプリケートさせる回数を指定します。 それぞれの名前付きサービスは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを持ちます。 名前付きサービスの状態は、プライマリ レプリカに書き込むことで変更します。 その後、状態を同期させるために Service Fabric がその状態をすべてのセカンダリ レプリカにレプリケートします。Service Fabric は、プライマリ レプリカの障害を自動的に検出し、既存のセカンダリ レプリカをプライマリ レプリカに昇格させます。 その後、Service Fabric は、新しいセカンダリ レプリカを作成します。  
+
+**レプリカまたはインスタンス**とは、デプロイされ、実行中のサービスのコード (およびステートフル サービスの状態) を示します。 「[Replicas and Instances](service-fabric-concepts-replica-lifecycle.md)」(レプリカとインスタンス) を参照してください。
+
+**再構成**とは、サービスのレプリカ セット内で行われる任意の変更処理を示します。 [再構成](service-fabric-concepts-reconfiguration.md)に関するページを参照してください。
 
 **サービス パッケージ`ServiceManifest.xml`: サービスの種類を定義した**  ファイルが格納されるディスク上のディレクトリ。 このファイルは、特定の種類のサービスに必要なコード、静的データ、構成パッケージを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 
@@ -81,6 +84,8 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
 
 イメージ ストア サービスへのアプリケーションのデプロイの詳細については、「 [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md) 」をご覧ください。
 
+**Failover Manager Service (FM)**: 各 Service Fabric クラスターには、Failover Manager サービスがあります。このサービスは、サービスの高可用性と整合性に関する関数を実行する処理だけでなく、アプリケーションとクラスターのアップグレードを調整し、他のシステム コンポーネントと対話する処理を担当します。
+
 ## <a name="built-in-programming-models"></a>組み込みのプログラミング モデル
 Service Fabric のサービスを構築するにあたっては、次の .NET Framework プログラミング モデルが用意されています。
 
@@ -97,5 +102,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 * [Service Fabric の概要](service-fabric-overview.md)
 * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 * [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
-
 

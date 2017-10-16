@@ -3,7 +3,7 @@ title: "Application Gateway と Azure Security Center の統合 | Microsoft Docs
 description: "このページでは、Application Gateway を Azure Security Center に統合する方法に関する情報を示します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: 
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 737cdff3140be68cf9d6d396b470dd09c65c52f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.author: davidmu
+ms.openlocfilehash: abed4095bcacac4ca3995acfaafae2f16d5f1532
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway と Azure Security Center の統合の概要
 
 Application Gateway と Security Center を使用して Web アプリケーション リソースを保護する方法について説明します。 Application Gateway Web アプリケーション ファイアウォール (WAF) を [Security Center](../security-center/security-center-intro.md) と統合すると、環境内で保護されていない Web アプリケーションに対する脅威の防止、検出、およびそれらへの対応を行うためのシームレスなビューが提供されます。

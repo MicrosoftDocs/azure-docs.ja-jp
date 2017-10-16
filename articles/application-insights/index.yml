@@ -1,0 +1,83 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Application Insights のドキュメント
+metadata:
+  title: Application Insights のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Application Insights は、複数のプラットフォームでアプリを構築および管理する Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Microsoft が提供するクイックスタート、チュートリアル、リファレンス ドキュメントを利用して、問題を検出および診断する方法と、Web アプリとサービスの使用状況を把握する方法をご確認ください。
+  services: application-insights
+  author: czeumault
+  manager: carolz
+  ms.service: application-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/15/2017
+  ms.author: carolz
+abstract:
+  description: Application Insights は、複数のプラットフォームでアプリを構築および管理する Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Microsoft が提供するクイックスタート、チュートリアル、リファレンス ドキュメントを利用して、問題を検出および診断する方法と、Web アプリとサービスの使用状況を把握する方法をご確認ください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure Application Insights でアプリケーションの監視を開始する方法を確認できます。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
+            text: .NET
+            href: quick-monitor-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: .NET Core
+            href: app-insights-dotnetcore-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
+            text: Node.js
+            href: app-insights-nodejs-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/java.svg'
+            text: Java
+            href: app-insights-java-quick-start
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Web アプリケーションのパフォーマンスと使用状況を継続的に向上させる方法を確認できます。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="app-insights-tutorial-runtime-exceptions">実行時の例外の特定と診断</a>
+          - html: <a href="app-insights-tutorial-performance">パフォーマンスの問題の特定と診断</a>
+          - html: <a href="app-insights-tutorial-alert">アプリケーション正常性の監視とアラート通知</a>
+          - html: <a href="app-insights-tutorial-users">顧客の使用状況と情報の分析</a>
+          - html: <a href="app-insights-tutorial-dashboards">カスタム KPI ダッシュボードの作成</a>
+  - title: 無料の Pluralsight ビデオ トレーニング
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: .NET を用いた Azure での開発
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: Node.js を使用した Azure での開発
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 言語
+            html: '<p><a href="https://docs.loganalytics.io/">Analytics</a></p><p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p><p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p><p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p><p><a href="https://dev.applicationinsights.io/">データ アクセス API</a></p>'
+          - title: データ モデル
+            html: <p><a href="application-insights-data-model-request-telemetry">要求</a></p><p><a href="application-insights-data-model-dependency-telemetry">依存関係</a></p><p><a href="application-insights-data-model-exception-telemetry">例外</a></p><p><a href="application-insights-data-model-trace-telemetry">トレース</a></p><p><a href="application-insights-data-model-event-telemetry">Event</a></p><p><a href="application-insights-data-model-metric-telemetry">メトリック</a></p><p><a href="application-insights-data-model-context">コンテキスト</a></p>
+          - title: テレメトリの関連付け
+            html: <p><a href="application-insights-correlation">テレメトリの関連付け</a></p>
+          - title: コード サンプル
+            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/?service=application-insights">コード サンプル</a></p>'

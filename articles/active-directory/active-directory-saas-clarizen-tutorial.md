@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 3908c354a8551d7b16c759a48ef3e5316bfa11fa
 ms.openlocfilehash: 574c6877bddac8be7d6d541bfabbdc10f6be3101
-ms.lasthandoff: 02/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル: Azure Active Directory と Clarizen の統合
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 02/21/2017
 - ユーザーが自分の Azure AD アカウントで自動的に Clarizen にサインイン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-このチュートリアルのシナリオは、主に次の&2; つの作業で構成されています。
+このチュートリアルのシナリオは、主に次の 2 つの作業で構成されています。
 
 1. ギャラリーからの Clarizen の追加。
 2. Azure AD シングル サインオンの構成とテスト。
@@ -106,7 +105,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
 4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[新しい証明書の作成] のクリック](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)     
+    ![[新しい証明書の作成] のクリック](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)  
 
 5. **[新しい証明書の作成]** ダイアログ ボックスで、カレンダー アイコンをクリックし、期限日を選択します。 その後、 **[保存]**をクリックします。
 
@@ -136,7 +135,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
     ![ユーザー名の下にある [Settings (設定)] のクリック](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
-12. **[Global Settings (グローバル設定)]** タブをクリックします。 次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
+12. **[Global Settings (グローバル設定)]** タブをクリックします。次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
 
     ![[Global Settings (グローバル設定)] タブ](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 
@@ -183,7 +182,7 @@ Azure Portal で Britta Simon というテスト ユーザーを作成します�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
 
 ### <a name="create-a-clarizen-test-user"></a>Clarizen テスト ユーザーの作成
 Clarizen への Azure AD ユーザーのサインインを有効にするには、ユーザー アカウントをプロビジョニングする必要があります。 Clarizen の場合、プロビジョニングは手動で行います。
@@ -259,4 +258,3 @@ Britta Simon に Clarizen へのアクセスを許可することで、Britta Si
 [201]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clarizen-tutorial/tutorial_general_203.png
-

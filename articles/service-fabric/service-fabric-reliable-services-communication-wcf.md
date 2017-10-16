@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a3b0362f0c3b42e4a61348abe306c3beaa6f0c86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。 **CreateServiceReplicaListeners または CreateServiceInstanceListeners** メソッドから返された [ICommunicationListener](service-fabric-reliable-services-communication.md) を介し、選択した通信スタックをプラグインできます。 フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
@@ -28,7 +26,7 @@ Reliable Services フレームワークにより、サービスの作成者は�
 ## <a name="wcf-communication-listener"></a>WCF 通信リスナー
 **ICommunicationListener** の WCF 固有の実装は、**Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** クラスによって提供されます。
 
- `ICalculator`
+`ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -128,5 +126,4 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
-
 

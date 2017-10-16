@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: willzhan;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: a4531b69c44337c4863016810123f7f89bf7f98f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
 Azure Media Services チームは、Azure Media Services にアクセスするために Azure Active Directory (Azure AD) 認証をサポートすることを発表しています。 さらに、Media Services にアクセスするための Azure Access Control サービス認証を廃止する予定であることを公表しています。 すべての Azure サブスクリプションとすべての Media Services アカウントは Azure AD テナントに割り当てられるため、Azure AD 認証のサポートによって、多数のセキュリティ上のメリットがもたらされます。 この変更と移行の詳細については、次のブログの投稿と記事を参照してください (アプリで Media Services .NET SDK を使用する場合)。
@@ -147,4 +145,3 @@ OAuth 2.0 承認付与フローを使用する場合 (ユーザー名とパス�
 ## <a name="next-steps"></a>次のステップ
 
 [アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)を開始します。
-

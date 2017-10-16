@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: 383e04f91eec2f465b381ce30f2d6d24c488b731
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -184,4 +183,3 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 * Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。
 * マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](manage-account.md#keys)に関するページをご覧ください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)に関するページをご覧ください。
-

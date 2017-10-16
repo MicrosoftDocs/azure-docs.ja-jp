@@ -13,14 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]
 >
@@ -165,4 +163,3 @@ api-key: [query key]
 ```
 
 詳細については、「 [Search Documents (Azure Search Service REST API) (ドキュメントの検索 (Azure Search Service REST API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」の「Response (応答)」セクションを参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)」を参照してください。
-

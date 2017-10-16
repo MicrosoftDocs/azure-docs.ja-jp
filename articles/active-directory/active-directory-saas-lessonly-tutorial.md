@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: fc1e1b2de0a138dbe88d794f802b002321948ab8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>チュートリアル: Azure Active Directory と Lesson.ly の統合
 
@@ -121,7 +119,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
     >[!NOTE]
     >一般名を参照するときは、この **companyname** を実際の名前に置き換える必要があります。
     
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<companyname>.lesson.ly/auth/saml/metadata`|
@@ -138,7 +136,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lessonly_06.png)
            
-6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
     | 属性名   | 属性値 |
     | ---------------  | ----------------|
@@ -200,7 +198,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-lessonly-test-user"></a>Lesson.ly テスト ユーザーの作成
 
@@ -265,5 +263,4 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_203.png
-
 

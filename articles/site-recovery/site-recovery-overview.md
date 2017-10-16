@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-site-recovery"></a>Site Recovery とは
 
@@ -79,4 +78,3 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 ## <a name="next-steps"></a>次のステップ
 * [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。
 * [リージョン間の Azure VM のレプリケーション](site-recovery-azure-to-azure.md)、[Azure への VMware のレプリケーション](vmware-walkthrough-overview.md)、[Azure への Hyper-V のレプリケーション](hyper-v-site-walkthrough-overview.md)の概要を確認する。
-

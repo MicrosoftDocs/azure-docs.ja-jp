@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database サービスに関するすべてのトピック
 このトピックでは、Azure **SQL Server Stretch Database** サービスに直接適用されるすべてのトピックを示します。 この Web ページでは、 **Ctrl + F**を使用してキーワード検索することで、現在関心があるトピックを見つけることができます。
@@ -55,12 +55,6 @@ ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
 ## <a name="backup-and-recovery"></a>バックアップと回復
 | &nbsp; | タイトル | 説明 |
 | ---:|:--- |:--- |
-| 14 |[Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md) |Stretch が有効なデータベースをバックアップする方法について説明します。 |
-| 15 |[Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md) |Stretch が有効なデータベースを復元する方法について説明します。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+| 14 |[Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md) |Stretch をバックアップする方法を学習\-データベースを有効にします。 |
+| 15 |[Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md) |Stretch を復元する方法を学習\-データベースを有効にします。 |
 

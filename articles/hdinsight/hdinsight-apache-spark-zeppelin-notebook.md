@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 9a588a28312388a524d91df7363234e0f609660e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: 7f2ba122dfea7fa200fe065d32ab438fdd74691d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスターで Zeppelin Notebook を使用する
 
@@ -105,7 +104,7 @@ HDInsight の Spark クラスターには、Spark ジョブの実行に使用で
     ![Notebook を使用して Spark SQL ステートメントを実行する](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Notebook を使用して Spark SQL ステートメントを実行する")
    
     後続のクエリでは、ドロップダウンから新しい値を選択し、クエリを再実行できます。 **[設定]** をクリックして、出力のキーと値の構成を選択します。 上の画面キャプチャでは、**buildingID** をキーとして、**temp_diff** の平均を値として、**targettemp** をグループとして使用しています。
-7. Livy インタープリターを再起動して、アプリケーションを終了します。 再起動するには、右上隅のログインしている [ユーザー名] をクリックしてインタープリターの [設定] を開き、**[インタープリター]** をクリックします。
+7. Livy インタープリターを再起動して、アプリケーションを終了します。 再起動するには、右上隅のログインしている ユーザー名をクリックしてインタープリターの 設定 を開き、**インタープリター** をクリックします。
    
     ![インタープリターを起動する](./media/hdinsight-apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 8. Livy インタープリターの [設定] までスクロールし、**[再起動]** をクリックします。
@@ -117,7 +116,7 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
 
 この記事では、Jupyter Notebook で [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) パッケージを使用する方法について説明します。
 
-1. インタープリターの [設定] を開きます。 右上隅のログインしている [ユーザー名] をクリックし、**[インタープリター]** をクリックします。
+1. インタープリターの [設定] を開きます。 右上隅のログインしている ユーザー名をクリックし、**インタープリター** をクリックします。
    
     ![インタープリターを起動する](./media/hdinsight-apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 2. Livy インタープリターの [設定] までスクロールし、**[編集]** をクリックします。
@@ -152,7 +151,7 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 
 このような場合は、Zeppelin Notebook からジョブの実行を開始する前に、次の手順を実行する必要があります。 
 
-1. Zeppelin Notebook から Livy インタープリターを再起動します。 再起動するには、右上隅のログインしている [ユーザー名] をクリックしてインタープリターの [設定] を開き、**[インタープリター]** をクリックします。
+1. Zeppelin Notebook から Livy インタープリターを再起動します。 再起動するには、右上隅のログインしている ユーザー名をクリックしてインタープリターの 設定 を開き、**インタープリター** をクリックします。
    
     ![インタープリターを起動する](./media/hdinsight-apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 2. Livy インタープリターの [設定] までスクロールし、**[再起動]** をクリックします。
@@ -193,7 +192,6 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md 
-
 
 
 

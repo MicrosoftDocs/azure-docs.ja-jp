@@ -11,17 +11,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 3b37033e0c96e01c73bef15af1b85116f404c354
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 1ab6a2b949101f60d6eef1ba7603d1c2cf81f90a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
+
+
+
+**Q: macOS デバイスを登録するにはどうしたらよいですか?**
+
+**A:** macOS デバイスを登録するには: 
+
+1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+2.  [macOS デバイスの条件付きアクセス ポリシーを定義する](active-directory-conditional-access-azure-portal.md) 
+
+**解説:**
+
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](active-directory-conditional-access-technical-reference.md#client-apps-condition) が必要です。 
+
+- 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
+
+---
 
 **Q: 最近、デバイスを登録しました。Azure Portal のユーザー情報にデバイスが表示されないのはなぜですか?**
 
@@ -151,5 +167,4 @@ ms.lasthandoff: 09/05/2017
 - [Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
 ---
-
 

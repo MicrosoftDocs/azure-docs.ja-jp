@@ -15,12 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
+ms.openlocfilehash: 32d4b4a7db134975158e53fc964c24b52b14a1e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -45,11 +44,10 @@ ms.lasthandoff: 08/15/2017
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-   または
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-   [Azure Cosmos DB Emulator](local-emulator.md) のローカル インストール (Windows のみ)。
 * [Node.js][Node.js] バージョン v0.10.29 以降
 * [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 * [Git][Git]。
@@ -518,7 +516,7 @@ ms.lasthandoff: 08/15/2017
 5. アプリケーションを停止するために、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** をクリックしてバッチ ジョブを終了します。
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。 この手順については、「 [Azure App Service へのローカル Git デプロイ](../app-service-web/app-service-deploy-local-git.md) 」を参照してください。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。 この手順については、「 [Azure App Service へのローカル Git デプロイ](../app-service/app-service-deploy-local-git.md) 」を参照してください。
 2. Git リモートとして Azure Web サイトを追加します。
    
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
@@ -541,5 +539,4 @@ ms.lasthandoff: 08/15/2017
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/documentdb-node-todo-app
-
 

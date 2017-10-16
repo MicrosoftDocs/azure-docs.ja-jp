@@ -15,14 +15,12 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 173353d67772c2549aa1b8ec9f2a471bd1c65677
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
 Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 
@@ -134,6 +132,5 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
    ```
 
 4. C:\NPS フォルダーの内容を zip 形式で圧縮し、zip ファイルをサポート ケースに添付します。
-
 
 

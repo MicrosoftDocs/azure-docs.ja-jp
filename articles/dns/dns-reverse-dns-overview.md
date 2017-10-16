@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>逆引き DNS と Azure でのサポートの概要
 
 この記事では、逆引き DNS の動作方法の概要および Azure でサポートされている逆引き DNS のシナリオについて説明します。
@@ -115,5 +113,4 @@ IPv4 と IPv6 の両方で、Azure DNS を使って、[逆引き参照ゾーン�
 [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-for-azure-services.md)方法を学習してください。
 <br>
 [Azure サービスの逆引き DNS レコードを管理する](dns-reverse-dns-for-azure-services.md)方法を学習してください。
-
 

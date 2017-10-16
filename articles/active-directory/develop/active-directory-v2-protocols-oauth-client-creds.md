@@ -1,4 +1,3 @@
-
 ---
 title: "Azure AD v2.0 を使用して、セキュリティで保護されたリソースにユーザーの介入なしでアクセスする | Microsoft Docs"
 description: "Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。"
@@ -16,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 93b54c3fc4397573f77b2e157c6f1866786690da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー
 [OAuth 2.0 クライアント資格情報の許可](http://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*デーモン*または*サービス アカウント*と呼ばれます。
@@ -232,4 +229,3 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## サンプル コード
 管理者の同意エンドポイントを使用するクライアント資格情報の許可を実装するアプリケーションの例を参照するには、[v2.0 デーモンのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)を参照してください。
-

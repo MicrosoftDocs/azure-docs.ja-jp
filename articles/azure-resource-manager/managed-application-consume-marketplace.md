@@ -10,14 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/11/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: baf456740bddd562391ed64d707f990c8921d710
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="consume-azure-managed-applications-in-the-marketplace"></a>Marketplace での Azure マネージ アプリケーションの実行
 
 [マネージ アプリケーションの概要](managed-application-overview.md)に関する記事で説明したように、マネージ アプリケーションには、その利用形態を全体として見た場合に 2 つのシナリオが存在します。 1 つは、顧客向けにマネージ アプリケーションを作成する発行元 (ベンダー) のシナリオです。 もう 1 つは、そのマネージ アプリケーションのエンド カスタマー (コンシューマー) のシナリオです。 この記事では、2 番目のシナリオについて説明します。 ここでは、Microsoft Azure Marketplace からマネージ アプリケーションをデプロイする方法について説明します。

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 5edd37a3a042f710e7d1b9e148c24d9a548a4fea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 2e6987d30b56407559f54c02817ee94eff8df46b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools のリリース ノート
 
@@ -295,4 +294,3 @@ Visual Studio の [診断ツール] ページで、ローカルにあるテレ�
 HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。 現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。 詳細については、 [ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) をご覧ください。
-

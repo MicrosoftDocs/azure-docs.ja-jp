@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e00ceb8dd87e00bbdd05146e107c72e6182eb474
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
@@ -204,4 +202,3 @@ Content-Type: application/json
 リソースへの HTTP 要求では、取得したアクセス トークンを使用できます。 アクセス トークンはリソースに対して、特定のタスクを実行する適切なアクセス許可がアプリにあることを確実に示すことができます。  
 
 OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細については、[v2.0 エンドポイント プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
-

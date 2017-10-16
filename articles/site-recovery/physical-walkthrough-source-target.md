@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>手順 7: Azure に物理サーバーをレプリケートするためのソースとターゲットを設定する
 
@@ -61,7 +59,7 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 
-ターゲット環境を設定する前に、Azure Storage アカウントと仮想ネットワークが設定されていることを確認します。
+ターゲット環境を設定する前に、Azure ストレージ アカウントと仮想ネットワークが設定されていることを確認します。
 
 1. **[インフラストラクチャの準備]** > **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
 2. ターゲット デプロイ モデルを Resource Manager ベースとクラシック モードのどちらにするかを指定します。
@@ -74,4 +72,3 @@ ms.lasthandoff: 06/29/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 8: レプリケーション ポリシーを設定する](physical-walkthrough-replication.md)」に進みます。
-

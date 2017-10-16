@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack troubleshooting | Microsoft Docs
-description: Azure Stack troubleshooting.
+title: "Microsoft Azure Stack のトラブルシューティング | Microsoft Docs"
+description: "Azure Stack のトラブルシューティング。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -12,89 +12,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
+ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a7309693d8f7971e42768a13d12fa0a8bd81925a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack troubleshooting
-This document provides common troubleshooting information for Azure Stack. 
+# <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack のトラブルシューティング
 
-Because the Azure Stack Technical Development Kit is offered as an evaluation environment, there is no official support from Microsoft Customer Support Services.  If you are experiencing an issue not documented, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for further assistance and information.  
+*適用対象: Azure Stack 開発キット*
 
-The recommendations for troubleshooting issues that are described in this section are derived from several sources and may or may not resolve your particular issue. Code examples are provided as is and expected results cannot be guaranteed. This section is subject to frequent edits and updates as improvements to the product are implemented.
+このドキュメントでは、Azure Stack の一般的なトラブルシューティング情報を提供します。 
 
-## <a name="deployment"></a>Deployment
-### <a name="deployment-failure"></a>Deployment failure
-If you experience a failure during installation, you can use use the rerun option of the deployment script to restart the deployment from the failed step.  
+Azure Stack Technical Development Kit は評価環境として提供されているため、Microsoft カスタマー サポート サービスによる公式なサポートは提供されません。  記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で追加のサポートと情報について確認してください。  
+
+このセクションで説明されている問題のトラブルシューティングの推奨事項は、複数のソースから取得しており、特定の問題を解決できない場合があります。 コード例はそのまま提供されており、期待される結果を保証できません。 このセクションは、製品の機能強化の実装に合わせて、頻繁に編集および更新されます。
+
+## <a name="deployment"></a>デプロイ
+### <a name="deployment-failure"></a>デプロイの失敗
+インストール時に障害が発生した場合、デプロイ スクリプトの再実行オプションを使用して、失敗した手順からデプロイを再開できます。  
 
 
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>At the end of the deployment, the PowerShell session is still open and doesn’t show any output
-This behavior is probably just the result of the default behavior of a PowerShell command window, when it has been selected. The development kit deployment has actually succeeded but the script was paused when selecting the window. You can verify this is the case by looking for the word "select" in the titlebar of the command window.  Press the ESC key to unselect it, and the completion message should be shown after it.
+### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>デプロイの最後に、PowerShell セッションがまだ開いており、出力が表示されません
+この動作は、PowerShell コマンド ウィンドウが選択されている場合の既定の動作の結果に過ぎない可能性があります。 開発キットのデプロイは実際に成功しましたが、ウィンドウを選択したときに、スクリプトが一時停止しました。 これがそのケースであることを確認するには、コマンド ウィンドウのタイトル バーで、"select" という単語を探します。  ESC キーを押してその選択を解除すると、その後に完了メッセージが表示されるはずです。
 
-## <a name="templates"></a>Templates
-### <a name="azure-template-wont-deploy-to-azure-stack"></a>Azure template won't deploy to Azure Stack
-Make sure that:
+## <a name="templates"></a>テンプレート
+### <a name="azure-template-wont-deploy-to-azure-stack"></a>Azure テンプレートが Azure Stack にデプロイされません
+次のことを確認してください。
 
-* The template must be using a Microsoft Azure service that is already available or in preview in Azure Stack.
-* The APIs used for a specific resource are supported by the local Azure Stack instance, and that you are targeting a valid location (“local” in Azure Stack development kit, vs the “East US” or “South India” in Azure).
-* You review [this article](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md) about the Test-AzureRmResourceGroupDeployment cmdlets, which catch small differences in Azure Resource Manager syntax.
+* テンプレートで、Azure Stack で既に使用できるか、またはプレビュー中である Microsoft Azure サービスを使用している。
+* 特定のリソースに使用される API が、ローカル Azure Stack インスタンスでサポートされており、さらに有効な場所 (Azure Stack Development Kit では "ローカル" ですが、Azure では "米国東部" または "インド南部") を対象にしている。
+* Azure Resource Manager 構文の小さな違いをキャッチする Test-AzureRmResourceGroupDeployment コマンドレットに関する[この資料](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md)を確認している。
 
-You can also use the Azure Stack templates already provided in the [GitHub repository](http://aka.ms/AzureStackGitHub/) to help you get started.
+[GitHub リポジトリ](http://aka.ms/AzureStackGitHub/)で既に提供されている Azure Stack テンプレートを使用して、作業の開始に役立てることもできます。
 
-## <a name="virtual-machines"></a>Virtual machines
-### <a name="default-image-and-gallery-item"></a>Default image and gallery item
-You must first add a Windows Server image and gallery item before deploying VMs in Azure Stack.
+## <a name="virtual-machines"></a>仮想マシン
+### <a name="default-image-and-gallery-item"></a>既定のイメージとギャラリー項目
+Azure Stack に VM をデプロイする前に、まず Windows Server イメージとギャラリー項目を追加する必要があります。
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>After restarting my Azure Stack host, some VMs may not automatically start.
-After rebooting your host, you may notice Azure Stack services are not immediately available.  This is because Azure Stack [infrastructure VMs](azure-stack-architecture.md#virtual-machine-roles) and RPs take a little bit to check consistency, but will eventually start automatically.
+### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Azure Stack ホストの再起動後、一部の VM が自動的に起動しないことがあります。
+ホストの再起動後、Azure Stack サービスがすぐに使用できないことに気付く場合があります。  これは、Azure Stack [インフラストラクチャ VM](azure-stack-architecture.md#virtual-machine-roles) および RP が一貫性をチェックするために少し時間がかかるためですが、最終的に自動的に起動します。
 
-You may also notice that tenant VMs don't automatically start after a reboot of the Azure Stack development kit host.  This is a known issue, and just requires a few manual steps to bring them online:
+また、Azure Stack Development Kit ホストの再起動後に、そのテナント VM が自動的に起動しないことに気付く場合もあります。  これは既知の問題であり、それらをオンラインにするために、いくつかの手動の手順が必要です。
 
-1.  On the Azure Stack development kit host, start **Failover Cluster Manager** from the Start Menu.
-2.  Select the cluster **S-Cluster.azurestack.local**.
-3.  Select **Roles**.
-4.  Tenant VMs will appear in a *saved* state.  Once all Infrastructure VMs are running, right-click the tenant VMs and select **Start** to resume the VM.
+1.  Azure Stack Development Kit ホストで、[スタート] メニューから**フェールオーバー クラスター マネージャー**を起動します。
+2.  クラスター **S-Cluster.azurestack.local** を選択します。
+3.  **[役割]** を選びます。
+4.  テナント VM が*保存済み*状態で表示されます。  すべてのインフラストラクチャ VM が実行されたら、テナント VM を右クリックし、**[開始]** を選択して、VM を再開します。
 
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>I have deleted some virtual machines, but still see the VHD files on disk. Is this behavior expected?
-Yes, this is behavior expected. It was designed this way because:
+### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>一部の仮想マシンを削除しましたが、まだディスクに VHD ファイルが表示されます。 これは期待される動作ですか。
+はい。これは期待される動作です。 これがそのように設計された理由は次のとおりです。
 
-* When you delete a VM, VHDs are not deleted. Disks are separate resources in the resource group.
-* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager (portal, PowerShell) but the disks it may contain are still kept in storage until garbage collection runs.
+* VM を削除しても VHD は削除されません。 ディスクはリソース グループ内の個別のリソースです。
+* ストレージ アカウントが削除されると、削除は Azure Resource Manager (ポータル、PowerShell) にただちに表示されますが、それを格納している可能性のあるディスクは、ガベージ コレクションが実行されるまで、記憶域に維持されます。
 
-If you see "orphan" VHDs, it is important to know if they are part of the folder for a storage account that was deleted. If the storage account was not deleted, it's normal they are still there.
+"孤立" VHD が表示された場合、それが削除されたストレージ アカウントのフォルダーの一部であるかどうかを知ることが重要です。 ストレージ アカウントが削除されていない場合は、まだ存在していても正常です。
 
-You can read more about configuring the retention threshold and on-demand reclamation in [manage storage accounts](azure-stack-manage-storage-accounts.md).
+リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](azure-stack-manage-storage-accounts.md)に関するページを参照してください。
 
-## <a name="storage"></a>Storage
-### <a name="storage-reclamation"></a>Storage reclamation
-It may take up to fourteen hours for reclaimed capacity to show up in the portal. Space reclamation depends on various factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there is no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+## <a name="storage"></a>ストレージ
+### <a name="storage-reclamation"></a>記憶域の再利用
+ポータルに再利用された容量が表示されるまで、最大で 14 時間かかる場合があります。 領域の再利用は、ブロック BLOB ストア内の内部コンテナー ファイルの使用率をなど、さまざまな要因に依存します。 そのため、削除されるデータの量によって、ガベージ コレクターの実行時に再利用可能になる領域の量に対する保証はありません。
 
 ## <a name="powershell"></a>PowerShell
-### <a name="resource-providers-not-registered"></a>Resource Providers not registered
-When connecting to tenant subscriptions with PowerShell, you will notice that the resource providers are not automatically registered. Use the [Connect module](https://github.com/Azure/AzureStack-Tools/tree/master/Connect), or run the following command from PowerShell (after you [install and connect](azure-stack-connect-powershell.md) as a tenant): 
+### <a name="resource-providers-not-registered"></a>リソース プロバイダーが登録されていない
+PowerShell を使用してテナント サブスクリプションに接続したときに、リソース プロバイダーが自動的に登録されていないことに気付きます。 [接続モジュール](https://github.com/Azure/AzureStack-Tools/tree/master/Connect)を使用するか、または PowerShell から次のコマンドを実行します (テナントとして[インストールおよび接続した](azure-stack-connect-powershell.md)後に)。 
   
        Get-AzureRMResourceProvider | Register-AzureRmResourceProvider
 
 ## <a name="cli"></a>CLI
 
-* The CLI interactive mode i.e the `az interactive` command is not yet supported in Azure Stack.
-* To get the list of virtual machine images available in Azure Stack, use the `az vm images list --all` command instead of the `az vm image list` command. Specifying the `--all` option makes sure that response returns only the images that are available in your Azure Stack environment. 
-* Virtual machine image aliases that are available in Azure may not be applicable to Azure Stack. When using virtual machine images, you must use the entire URN parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) instead of the image alias. And this URNmust match the image specifications as derived from the `az vm images list` command.
-* By default, CLI 2.0 uses “Standard_DS1_v2” as the default virtual machine image size. However, this size is not yet available in Azure Stack, so, you need to specify the `--size` parameter explicitly when creating a virtual machine. You can get the list of virtual machine sizes that are available in Azure Stack by using the `az vm list-sizes --location <locationName>` command.
+* CLI 対話モード ( `az interactive`コマンド) はまだ Azure Stack でサポートされていません。
+* Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm images list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。 
+* Azure で使用できる仮想マシン イメージの別名は、Azure Stack に適用できない場合があります。 仮想マシン イメージを使用する場合は、イメージの別名の代わりに、URN パラメーター全体 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) を使用する必要がありますします。 さらに、この URN は `az vm images list` コマンドから派生したイメージ仕様と一致している必要があります。
+* 既定で、CLI 2.0 は、既定の仮想マシン イメージのサイズとして "Standard_DS1_v2" を使用します。 ただし、このサイズはまだ Azure Stack で使用できないため、仮想マシンを作成するときに `--size` パラメーターを明示的に指定する必要があります。 Azure Stack で使用できる仮想マシンのサイズの一覧を取得するには、`az vm list-sizes --location <locationName>` コマンドを使用します。
 
 
-## <a name="windows-azure-pack-connector"></a>Windows Azure Pack Connector
-* If you change the password of the azurestackadmin account after you deploy Azure Stack development kit, you can no longer configure multi-cloud mode. Therefore, it won't be possible to connect to the target Windows Azure Pack environment.
-* After you set up multi-cloud mode:
-    * A user can see the dashboard only after they reset the portal settings. (In the user portal, click the portal settings icon (gear icon in the top-right corner). Under **Restore default settings**, click **Apply**.)
-    * The dashboard titles may not appear. If this issue occurs, you must manually add them back.
-    * Some tiles may not show correctly when you first add them to the dashboard. To fix this issue, refresh the browser.
-
+## <a name="windows-azure-pack-connector"></a>Windows Azure Pack コネクタ
+* Azure Stack Development Kit をデプロイした後に azurestackadmin アカウントのパスワードを変更する場合に、マルチクラウド モードを設定できなくなりました。 そのため、対象となる Windows Azure Pack 環境に接続できません。
+* マルチクラウド モードの設定後:
+    * ユーザはポータル設定のリセット後にのみ、ダッシュボードを表示できます (ユーザー ポータルで、ポータル設定アイコン (右上隅にある歯車アイコン) をクリックします。 **[既定の設定に戻す]** の下の **[適用]** をクリックします)。
+    * ダッシュボードのタイトルが表示されない場合があります。 この問題が発生した場合は、それらを手動で追加する必要があります。
+    * 最初にタイルをダッシュボードに追加したときに、一部のタイルが正しく表示されないことがあります。 この問題を解決するには、ブラウザーを更新します。
 
 
 

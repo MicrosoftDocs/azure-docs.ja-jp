@@ -17,12 +17,11 @@ ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.custom: oldportal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: b19fd8c0c41638ffec5fda32b6b1a855be2abc7b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: e93bfacfd74c0e8f34bc1bab372cc287193e992f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conditional-access-in-the-azure-classic-portal"></a>Azure クラシック ポータルの条件付きアクセス
 
@@ -97,5 +96,4 @@ Azure AD でデバイスベースの証明機関ポリシーを構成する方�
 ### <a name="next-steps"></a>次のステップ
 * [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 * [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
-
 

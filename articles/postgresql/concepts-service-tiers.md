@@ -10,12 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
+ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: e141c15b9999a33206285290b9a34c8616bf3791
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
@@ -105,4 +104,3 @@ Azure Database for PostgreSQL を作成するときは、まず価格レベル�
 ## <a name="next-steps"></a>次のステップ
 - コンピューティング ユニットの詳細については、[コンピューティング ユニットの説明](concepts-compute-unit-and-storage.md)に関するページをご覧ください
 - [Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)の方法について
-

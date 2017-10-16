@@ -12,13 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 826cd984d26b923ba38562e05a2e75c399be9121
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="pool-resize-start-event"></a>プールのサイズ変更の開始イベント
 
  このイベントは、プールのサイズ変更が開始されたときに発生します。 プール サイズ変更は非同期イベントであるため、サイズ変更操作が完了するとプール サイズ変更の完了イベントが発生することが想定されます。
@@ -44,4 +43,3 @@ ms.lasthandoff: 04/22/2017
 |targetDedicated|Int32|プールに要求されたコンピューティング ノード数。|
 |enableAutoScale|ブール値|プールのサイズを自動的に調整し続けるかどうかを指定します。|
 |isAutoPool|ブール値|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
-

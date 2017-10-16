@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 436b3057509a831837159e814490959a2d7455a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 2b015b98b5d5587c9de1f11250386cee86b1f8c4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-get-started-with-simulated-devices-tutorials"></a>Azure IoT Hub とシミュレートされたデバイス入門チュートリアル
 
@@ -47,4 +46,3 @@ ms.lasthandoff: 07/08/2017
 [Sim_Pyth]: iot-hub-python-getstarted.md
 [Sim_Lnx]: iot-hub-linux-iot-edge-get-started.md
 [Sim_Win]: iot-hub-windows-iot-edge-get-started.md
-

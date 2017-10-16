@@ -16,12 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 27758f7e0a48d19f542055cae06d6c0a228215f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する
 この記事では、Azure Active Directory (Azure AD) でグループのメンバーを管理する方法について説明します。
@@ -56,4 +55,3 @@ ms.lasthandoff: 05/08/2017
 * [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-

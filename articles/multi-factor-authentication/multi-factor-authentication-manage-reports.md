@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f76e726c6a67de4b0472c0e97f9e72c31c14c4f2
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 42a87adef740cc2c1d77c9f02eef8aaa5f207258
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
@@ -38,8 +37,8 @@ Azure Multi-Factor Authentication は、個人や組織が使用できるいく�
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側で、[Active Directory] を選択します。
 3. 認証プロバイダーを使用するかどうかに応じて、次の 2 つのオプションのいずれかに従います。
-   * **オプション 1**: [多要素認証プロバイダー] タブをクリックします。 MFA プロバイダーを選択し、下部にある **[管理]** ボタンをクリックします。
-   * **オプション 2**: ディレクトリを選択し、**[構成]** タブをクリックします。 [多要素認証] セクションで、 **[サービス設定の管理]**を選択します。 [MFA サービス設定] ページの下部にある [ポータルに移動する] リンクをクリックします。
+   * **オプション 1**: [多要素認証プロバイダー] タブをクリックします。MFA プロバイダーを選択し、下部にある **[管理]** ボタンをクリックします。
+   * **オプション 2**: ディレクトリを選択し、**[構成]** タブをクリックします。[多要素認証] セクションで、 **[サービス設定の管理]**を選択します。 [MFA サービス設定] ページの下部にある [ポータルに移動する] リンクをクリックします。
 4. Azure Multi-Factor Authentication 管理ポータルで、左側のナビゲーションの **[レポートの表示]** セクションから、表示するレポートの種類を選択します。
 
 <center>![クラウド](./media/multi-factor-authentication-manage-reports/report.png)</center>

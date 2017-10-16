@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 59879dc0b3fc1d7af3e2a1f67f1701f451de9126
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 3. アプリケーションの**名前**を入力し、**[アプリケーションの作成]** をクリックします。
    
     ![Microsoft アカウント - アプリケーション名](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
-4. **[アプリケーション ID]**の値をコピーします。 この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
+4. **[アプリケーション ID]**の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
    
     ![Microsoft account - Application Id](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
 5. **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
@@ -60,5 +59,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 5. **[ID プロバイダーの種類]** をクリックし、**[Microsoft アカウント]** を選択して、**[OK]** をクリックします。
 6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Microsoft アカウント アプリケーションのアプリケーション ID とパスワードを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Microsoft アカウントの構成を保存します。
-
 

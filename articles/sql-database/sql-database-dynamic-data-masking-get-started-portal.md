@@ -6,7 +6,7 @@ documentationcenter:
 author: ronitr
 manager: jhubbard
 editor: 
-ms.assetid: 2
+ms.assetid: "2"
 ms.service: sql-database
 ms.custom: security
 ms.devlang: NA
@@ -15,21 +15,19 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07913359addaa49fe8d408a8e363f554419e4de2
-ms.openlocfilehash: 16db41c83ca5c582aca7581ae9b6a03a3d99ab15
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
-
-
+ms.openlocfilehash: 15184e14d4e1e23b56126bbf9f972c1619dcba80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 
 このトピックでは、Azure Portal で[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使って動的データ マスクを実装することもできます。
 
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure ポータル使用によるデータベースの動的データ マスク設定
-1. [https://portal.azure.com](https://portal.azure.com)で Azure ポータルを起動します。
+## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure Portal 使用によるデータベースの動的データ マスク設定
+1. [https://portal.azure.com](https://portal.azure.com)で Azure Portal を起動します。
 2. マスクするデリケートなデータを含むデータベースの設定ブレードに移動します。
 3. **[動的データ マスク]** タイルをクリックして、**[動的データ マスク]** 構成ブレードを起動します。
    

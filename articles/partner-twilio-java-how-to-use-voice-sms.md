@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 5a1b2ffa160a31b639605242b651dc8d14e7a01b
-ms.lasthandoff: 03/07/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -57,7 +56,7 @@ Twilio 動詞の一覧を次に示します。
 ### <a id="TwiML"></a>TwiML
 TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
 
-たとえば、次の TwiML では、テキスト "**Hello World!**" が音声に変換されます。
+テキストに変換が例として、次の TwiML **Hello World!** 音声。
 
 ```xml
     <?xml version="1.0" encoding="UTF-8" ?>
@@ -66,7 +65,7 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
     </Response>
 ```
 
-アプリケーションで Twilio API を呼び出す場合は、API パラメーターの&1; つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、**TwiMLResponse** オブジェクトを使用することもできます。
+アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、**TwiMLResponse** オブジェクトを使用することもできます。
 
 Twilio の動詞と属性、TwiML の詳細については、[TwiML][twiml] に関するページをご覧ください。 Twilio API の詳細については、[Twilio API][twilio_api] に関するページをご覧ください。
 
@@ -158,11 +157,11 @@ Java Server Page (JSP) ソース ファイルの場合:
 **Message.creator** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
 ## <a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば [http://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt;Response&gt;** 要素が表示されます。もう&1; つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、**&lt;Say&gt;** 要素を格納している **&lt;Response&gt;** 要素が表示されます。
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば [http://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt;Response&gt;** 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、**&lt;Say&gt;** 要素を格納している **&lt;Response&gt;** 要素が表示されます。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。 HTTP 応答を返すサイトは任意の言語で作成できます。このトピックでは、JSP ページで URL をホストするとします。
 
-次の JSP ページでは、通話時の TwiML 応答で "**Hello World**" というテキストが読み上げられます。
+という TwiML 応答で結果の次の JSP ページ**Hello World!** 呼び出しです。
 
 ```xml
     <%@ page contentType="text/xml" %>
@@ -239,4 +238,3 @@ Azure で Java に基づいて Twilio を使用する方法の詳細について
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
-

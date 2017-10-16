@@ -15,13 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>OMS 管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -653,4 +651,3 @@ Runbook で使用する[グローバル モジュール](../automation/automatio
 
 ## <a name="next-steps"></a>次のステップ
 * [ビューをソリューションに追加](operations-management-suite-solutions-resources-views.md)して、収集したデータを視覚化します。
-

@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト
 ここでは、Passport を使用して次の操作を行います。
@@ -419,4 +417,3 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 [Azure AD を使用することによる Web API の保護](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

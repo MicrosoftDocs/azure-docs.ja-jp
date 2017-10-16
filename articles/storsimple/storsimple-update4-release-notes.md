@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/04/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
 ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
-ms.lasthandoff: 04/05/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 シリーズ Update 4 リリース ノート
 
@@ -66,7 +65,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
 次の表は、Update 4 で修正された問題の概要を示しています。    
 
-| いいえ | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
+| 番号 | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- |
 | 1 |フェールオーバー |以前のリリースでは、フェールオーバー後に顧客のサイトでクリーンアップに関する問題が発生していました。 この問題は今回のリリースで修正されました。 |はい |はい |
 | 2 |ローカル固定ボリューム |以前のリリースでは、ローカル固定ボリュームのボリューム作成に関する問題が発生し、ボリュームの作成が失敗することがありました。 このリリースでは、この問題の根本原因が特定され、問題が修正されました。 |はい |なし |
@@ -91,5 +90,4 @@ Update 4 では、新しい問題は見つかっていません。 以前のリ�
 ## <a name="next-step"></a>次のステップ
 
 StorSimple デバイスに [Update 4 をインストールする](storsimple-install-update-4.md)方法を確認します。
-
 

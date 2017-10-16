@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>ロジック アプリ ワークフローから Dynamics 365 に接続する
 
 Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、レコードを作成するフロー、項目を更新するフロー、レコードのリストを返すフローなど、便利なビジネス フローを作成できます。 Dynamics 365 コネクタにより、次のことが可能になります。
@@ -38,27 +36,27 @@ Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、�
 
 ## <a name="create-a-task-when-a-new-lead-is-created-in-dynamics-365"></a>Dynamics 365 で新しい潜在顧客が作成されるたびにタスクを作成する
 
-1.    [Azure にサインイン](https://portal.azure.com)します。
+1.  [Azure にサインイン](https://portal.azure.com)します。
 
-2.    Azure 検索ボックスに「`Logic apps`」と入力し、Enter キーを押します。
+2.  Azure 検索ボックスに「`Logic apps`」と入力し、Enter キーを押します。
 
       ![Find Logic Apps](./media/connectors-create-api-crmonline/find-logic-apps.png)
 
-3.    **[ロジック アプリ]** で **[追加]** をクリックします。
+3.  **[ロジック アプリ]** で **[追加]** をクリックします。
 
       ![LogicApp の追加](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-4.    ロジック アプリを作成するには、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** の各フィールドに必要な値を入力し、**[作成]** をクリックします。
+4.  ロジック アプリを作成するには、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** の各フィールドに必要な値を入力し、**[作成]** をクリックします。
 
-5.    新しいロジック アプリを選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[更新]** をクリックします。
+5.  新しいロジック アプリを選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[更新]** をクリックします。
 
-6.    **[開発ツール]** で **[ロジック アプリ デザイナー]** をクリックします。 テンプレートの一覧で、**[空のロジック アプリ]** をクリックします。
+6.  **[開発ツール]** で **[ロジック アプリ デザイナー]** をクリックします。 テンプレートの一覧で、**[空のロジック アプリ]** をクリックします。
 
-7.    検索ボックスに「`Dynamics 365`」と入力します。 Dynamics 365 のトリガー一覧から、**[Dynamics 365 – レコードが作成されたとき]** を選択します。
+7.  検索ボックスに「`Dynamics 365`」と入力します。 Dynamics 365 のトリガー一覧から、**[Dynamics 365 – レコードが作成されたとき]** を選択します。
 
-8.    Dynamics 365 へのサインインを求められたら、すぐにサインインします。
+8.  Dynamics 365 へのサインインを求められたら、すぐにサインインします。
 
-9.    トリガーの詳細で次の情報を入力します。
+9.  トリガーの詳細で次の情報を入力します。
 
   * **[組織名]**:  ロジック アプリでリッスンする Dynamics 365 インスタンスを選択します。
 
@@ -174,4 +172,3 @@ Logic Apps を使用すると、Dynamics 365 (オンライン) に接続し、�
 
 ## <a name="next-steps"></a>次のステップ
 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-

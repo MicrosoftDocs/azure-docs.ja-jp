@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
 ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションを使用して Active Directory 環境を最適化する
 
@@ -191,4 +190,3 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 * 「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を参照し、詳細な AD 評価データと推奨事項を確認してください。
-

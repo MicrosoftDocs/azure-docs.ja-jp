@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
 Microsoft Connector for Informix は、IBM Informix データベースに格納されているリソースに Logic Apps を接続します。 Informix コネクタには、TCP/IP ネットワーク経由でリモート Informix サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Informix for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM Informix のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-informix.md#supported-informix-platforms-and-versions) をご覧ください。
@@ -279,5 +277,4 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/25/2017
 ms.author: curtand;jeffsta
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 402c1be07b8ee885ee5341128fb3f419611b924d
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2f5a41907e9fa304444b369311e182d3f00ef619
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
@@ -40,10 +40,10 @@ ms.lasthandoff: 08/11/2017
 ディレクトリのプライマリ ドメイン名を変更して、フェデレーションされていない検証済みカスタム ドメインを指定することができます。 ディレクトリのプライマリ ドメインを変更しても、既存のユーザーのユーザー名は変更されません。
 
 ## <a name="add-custom-domain-names-to-your-azure-ad"></a>Azure AD へのカスタム ドメイン名の追加
-1 つの Azure AD ディレクトリに最大 900 個のカスタム ドメイン名を追加できます。 [カスタム ドメイン名を追加](add-custom-domain.md) するプロセスは、最初のカスタム ドメイン名を設定する手順と同じです。
+> 管理対象ドメインの名前は最大 900 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各ディレクトリに最大 450 件のドメイン名を追加できます。 詳細については、「[フェデレーション ドメイン名および管理対象ドメイン名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)」を参照してください。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
-ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。 サブドメインは、Azure AD によって自動的に確認されます。 追加したサブドメインが確認済みであることを確かめるには、ブラウザーでドメインが一覧表示されるページの表示を更新します。
+ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。サブドメインは、Azure AD によって自動的に確認されます。 追加したサブドメインが確認済みであることを確かめるには、ブラウザーでドメインが一覧表示されるページの表示を更新します。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>カスタム ドメイン名の DNS レジストラーを変更する場合にすべきこと
 カスタム ドメイン名の DNS レジストラーを変更しても、中断したり追加の構成タスクを実施したりすることなく、Azure AD でそのカスタム ドメイン名を引き続き使用できます。 Office 365 や Intune など、Azure AD のカスタム ドメイン名を使用するサービスで、自社のカスタム ドメイン名を使用する場合は、各サービスのマニュアルを参照してください。

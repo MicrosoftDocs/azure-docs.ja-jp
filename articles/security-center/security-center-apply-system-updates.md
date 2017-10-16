@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center でシステムの更新プログラムを適用する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項である &quot;**システムの更新プログラムを適用する**&quot; と &quot;**システムの更新後に再起動する**&quot; を実装する方法について説明します。"
+description: "このドキュメントでは、Azure Security Center の推奨事項である \"**システムの更新プログラムを適用する**\" と \"**システムの更新後に再起動する**\" を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,49 +12,75 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 09/11/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 53f4898f31ef19a39e1448235ed14c8fc7df7b3b
-ms.openlocfilehash: 50cdea437db5387813c6a3905d14b6904d2aba34
-ms.lasthandoff: 02/04/2017
-
-
+ms.openlocfilehash: 9f7924f3f0975dc32fdf5b8e1b89a1fb8e9b7d57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
-Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) の監視が毎日行われています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。  また、Linux システムにおける最新の更新プログラムについても確認します。 VM でシステムの更新プログラムが不足している場合は、それらを適用するよう Security Center による推奨が行われます。
-
-> [!NOTE]
-> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
->
->
+Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** ブレードで、**[システムの更新プログラムを適用する]** を選択します。
+システムの更新プログラムの適用は、Security Center に推奨事項として表示されます。 VM またはコンピューターでシステムの更新プログラムが不足している場合、この推奨事項は、**[推奨事項]** と **[コンピューティング]** に表示されます。  推奨事項を選択すると、**[システムの更新プログラムを適用する]** ダッシュボードが開きます。
 
-   ![システムの更新の適用][1]
-2. **[システムの更新プログラムを適用する]** ブレードが開き、システムの更新が行われていない VM の一覧が表示されます。 VM を選択します。
+この例では、**[コンピューティング]** を使用します。
 
-   ![Select a VM][2]
-3. ブレードが開き、選択した VM に不足している更新プログラムの一覧が表示されます。 システムの更新プログラムを選択します。 この例では、KB3156016 を選択します。
+1. Security Center のメイン メニューの **[コンピューティング]** を選択します。
 
-   ![Missing security updates][3]
+   ![[コンピューティング] を選択する][1]
 
-4. **セキュリティ更新プログラム** のブレードの手順に従い、不足している更新プログラムを適用します。
+2. **[コンピューティング]** で、**[不足しているシステムの更新]** を選択します。 **[システムの更新プログラムを適用する]**ダッシュボードが開きます。
 
-   ![Security update][4]
+   ![[システムの更新プログラムを適用する] ダッシュボード][2]
+
+   ダッシュボードの上部には、次の情報が表示されます。
+
+    - システムの更新が不足している Windows および Linux VM およびコンピューターの合計数。
+    - VM とコンピューター全体で不足している重要な更新プログラムの合計数。
+    - VM とコンピューター全体で不足しているセキュリティ更新プログラムの合計数。
+
+  ダッシュボードの下部には、VM とコンピューターのすべての不足している更新プログラムと、インストールされていない更新プログラムの重要度が一覧表示されます。  一覧には次の項目が含まれています。
+
+    - [名前]: 不足している更新プログラムの名前。
+    - なし VM とコンピューターの数: この更新プログラムが適用されていない VM とコンピューターの合計台数です。
+    - [状態]: 推奨事項の現在の状態。
+
+      - [オープン]: 推奨事項への対処がまだ行われていない。
+      - [処理中]: 現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要。
+      - [解決]: 推奨事項が既に完了済み  (問題が解決されていると、エントリが灰色表示になります)。
+
+    - [重大度]: 特定の推奨事項の重大度を示します。
+
+      - [高]: 重要なリソース (アプリケーション、仮想マシン、ネットワーク セキュリティ グループ) に脆弱性が存在しており、注意が必要。
+      - [中]: プロセスを完了または脆弱性を排除するために重大ではないまたは追加の手順が必要。
+      - [低]: 対処する必要はあるものの、直ちに注意する必要はない脆弱性が存在する  (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。
+
+3. 一覧で不足している更新プログラムを選択して詳細を表示します。
+
+   ![不足しているセキュリティ更新プログラム][3]
+
+4. 上部のリボンの **[検索]** アイコンをクリックします。  更新プログラムが不足しているコンピューターにフィルターされた Log Analytics 検索クエリが開きます。
+
+   ![Log Analytics 検索][4]
+
+5. 一覧でコンピューターを選択して詳細を確認します。 そのコンピューターだけを対象にフィルター処理された情報が含まれた別の検索結果が表示されます。
+
+    ![Log Analytics 検索][5]
 
 ## <a name="reboot-after-system-updates"></a>システムの更新後に再起動する
 1. **[推奨事項]** ブレードに戻ります。 システムの更新プログラムを適用した後は、 **[システムの更新後に再起動する]**という新しいエントリが生成されています。 このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。
 
-   ![システムの更新後に再起動する][5]
+   ![システムの更新後に再起動する][6]
 2. **[システムの更新後に再起動する]**を選択します。 これにより、 **[システムの更新を完了するために、再起動は保留中です]** ブレードが開き、システムの更新プログラムの適用プロセスを完了するために再起動が必要な VM の一覧が表示されます。
 
-   ![Restart pending][6]
+   ![Restart pending][7]
 
 Azure から VM を再起動して、プロセスを完了します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
@@ -66,10 +92,10 @@ Azure から VM を再起動して、プロセスを完了します。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
-[1]: ./media/security-center-apply-system-updates/recommendation.png
-[2]:./media/security-center-apply-system-updates/select-vm.png
-[3]: ./media/security-center-apply-system-updates/missing-security-updates.png
-[4]: ./media/security-center-apply-system-updates/security-update.png
-[5]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[6]: ./media/security-center-apply-system-updates/restart-pending.png
-
+[1]: ./media/security-center-apply-system-updates/missing-system-updates.png
+[2]:./media/security-center-apply-system-updates/apply-system-updates.png
+[3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
+[4]: ./media/security-center-apply-system-updates/log-search.png
+[5]: ./media/security-center-apply-system-updates/search-details.png
+[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
+[7]: ./media/security-center-apply-system-updates/restart-pending.png

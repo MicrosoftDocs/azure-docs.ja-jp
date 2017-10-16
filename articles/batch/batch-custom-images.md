@@ -8,14 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>カスタム イメージを使用して仮想マシンのプールを作成する
 
 Azure Batch で仮想マシンのプールを作成する際は、プール内の各コンピューティング ノードのオペレーティング システムを提供する仮想マシン (VM) イメージを指定します。 仮想マシンのプールは、Azure Marketplace イメージを使用するか、自分で準備したカスタム VHD イメージを提供することで作成できます。 カスタム イメージを使用すると、各コンピューティング ノードのプロビジョニング時にオペレーティング システムをどのように構成するかを制御できます。 カスタム イメージには、コンピューティング ノードがプロビジョニングされたときにすぐに使用可能になるアプリケーションと参照データを含めることもできます。
@@ -111,4 +109,4 @@ Azure VM からカスタム イメージを準備するには、次の手順に�
 ## <a name="next-steps"></a>次のステップ
 
 - Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
-- Batch アカウントの作成の詳細については、「[Azure Portal で Batch アカウントを作成する](batch-account-create-portal.md)」を参照してください。
+- Batch アカウントの作成の詳細については、「[Azure ポータルで Batch アカウントを作成する](batch-account-create-portal.md)」を参照してください。

@@ -17,14 +17,12 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory のアプリ、アクセス許可、および同意
 Azure Active Directory では、アプリケーションをディレクトリに追加できます。  そのアプリケーションは、アプリケーションの種類に応じて異なります。  クラシック ポータルでアプリケーションを表示するには、ディレクトリを選んで [アプリケーション] を選択します。
 
@@ -220,5 +218,4 @@ FabrikamMail の場合、次のようになります。
 (**ClientId** は、(作成されたばかりの) FabrikamMail のサービス プリンシパル オブジェクト ID です。**PrincipalId** は、(同意を行ったユーザーの) ユーザー オブジェクト ID です。**ResourceId** は、Exchange のサービス プリンシパル オブジェクト ID です。Scope は、Exchange の同意されたアクセス許可です)。
 
 ユーザーの同意が許可されていない場合、その許可が必要なことを示す画面が表示されます。
-
 

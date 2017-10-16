@@ -14,17 +14,15 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
+ms.openlocfilehash: 05476e35488c104a483f52f88540d33c55e5bc3c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 16070499b7befca26d55259d845d1dbc14110f2a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Azure Container Service で Kubernetes クラスターをデプロイする
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 Azure Container Service を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 この 7 部構成の 3 番目のチュートリアルでは、Azure Container Service の Kubernetes クラスターをデプロイします。 手順は次のとおりです。
@@ -42,27 +40,23 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
-[前のチュートリアル](./container-service-tutorial-kubernetes-prepare-acr.md)では、*myResourceGroup* という名前のリソース グループを作成しました。 まだ作成していない場合、ここでこのリソース グループ作成してください。
-
-```azurecli-interactive
-az group create --name myResourceGroup --location westeurope
-```
-
 [az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
 
-次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。
+次の例では、`myK8sCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル](./container-service-tutorial-kubernetes-prepare-acr.md)で作成しました。
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-数分してコマンドが完了すると、この ACS デプロイに関する情報が JSON 形式で表示されます。
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#create) コマンドに追加して、既定のエージェント数を減らします。 
+
+数分してデプロイが完了すると、この ACS デプロイに関する情報が JSON 形式で表示されます。
 
 ## <a name="install-the-kubectl-cli"></a>kubectl CLI をインストールする
 
 クライアント コンピューターから Kubernetes クラスターに接続するには、[kubectl](https://kubernetes.io/docs/user-guide/kubectl/) (Kubernetes コマンドライン クライアント) を使います。 
 
-Azure CloudShell を使用している場合、`kubectl` は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使います。
+Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使います。
 
 Linux または macOS で実行している場合は、sudo で実行することが必要な場合があります。 Windows では、シェルが管理者として実行されていることを確認します。
 
@@ -74,7 +68,7 @@ Windows では、既定のインストールは *c:\program files (x86)\kubectl.
 
 ## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。
+Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
@@ -111,4 +105,3 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 > [!div class="nextstepaction"]
 > [Kubernetes でアプリケーションをデプロイする](./container-service-tutorial-kubernetes-deploy-application.md)
-

@@ -25,16 +25,21 @@
 ### [JavaScript UDF を統合する](stream-analytics-javascript-user-defined-functions.md)
 ### [REST API と Machine Learning を統合する](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [出力を作成する](stream-analytics-define-outputs.md)
-### [Azure Functions に出力する](stream-analytics-functions-redis.md)
 ### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)
-### [DocumentDB に出力する](stream-analytics-documentdb-output.md)
+### [Cosmos DB に出力する](stream-analytics-documentdb-output.md)
+
+## Visual Studio ツールの使用
+### [インストール](stream-analytics-tools-for-visual-studio-install.md)
+### [作業開始](stream-analytics-tools-for-visual-studio.md)
+### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化
 ### [アラートの追加](stream-analytics-set-up-alerts.md)
 ### [ジョブの監視](stream-analytics-monitoring.md)
 ### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
 ### [PowerShell でジョブを監視する](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [ストリーミング ユニットを最適化する](stream-analytics-streaming-unit-consumption.md)
+### [ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)
+### [クエリ並列処理の利用](stream-analytics-parallelization.md)
 ### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
 ### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
 
@@ -52,13 +57,12 @@
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 
 ## 自動化
-### [Tools for Visual Studio](stream-analytics-tools-for-visual-studio.md)
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
-### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [ワンクリック Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
-## [PowerShell](/powershell/module/azurerm.streamanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST ()](/rest/api/streamanalytics)

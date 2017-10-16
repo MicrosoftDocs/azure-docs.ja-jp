@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/26/2017
 ms.author: billmath
+ms.openlocfilehash: 9d91c59d3e4d73879d95ab193949d54f7b86d6cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
 ## <a name="how-to-deploy-seamless-sso"></a>シームレス SSO をデプロイする方法
 
 Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデスクトップを使用するときに、自動的にサインインを行います。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
-
->[!IMPORTANT]
->シームレス SSO 機能は現在プレビュー段階です。
 
 シームレス SSO をデプロイするには、以下の手順に従います。
 
@@ -73,7 +68,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ## <a name="step-3-roll-out-the-feature"></a>手順 3: 機能をロールアウトする
 
-ユーザーに機能をロールアウトするには、Active Directory のグループ ポリシーによって、2 つの Azure AD URL (https://autologon.microsoftazuread-sso.com および https://aadg.windows.net.nsatc.net) をユーザーのイントラネット ゾーン設定に追加する必要があります。
+この機能をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使用して、ユーザーのイントラネット ゾーンの設定に次の Azure AD URL を追加する必要があります。
+
+- https://autologon.microsoftazuread-sso.com
+- https://aadg.windows.net.nsatc.net
 
 >[!NOTE]
 > 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 Mac 上の Mozilla Firefox および Mac 上の Google Chrome をセットアップする方法については、次のセクションをご覧ください。
@@ -122,7 +120,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 Mac ユーザーがサードパーティの Active Directory グループ ポリシーの拡張機能を使用して、Azure AD の URL を Firefox および Mac 上の Google Chrome にロールアウトする場合については、この記事の範囲外です。
 
-#### <a name="known-limitations"></a>既知の制限事項
+#### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
 シームレス SSO は、Firefox および Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
 
@@ -146,7 +144,7 @@ Mac ユーザーがサードパーティの Active Directory グループ ポリ
 
 ## <a name="step-5-roll-over-keys"></a>手順 5: キーをロール オーバーする
 
-手順 2. では、Azure AD Connect によって、シームレス SSO を有効にしたすべての AD フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、[ここ](active-directory-aadconnect-sso-how-it-works.md)を参照してください。 セキュリティを強化するために、これらのコンピューター アカウントの Kerberos 復号化キーを頻繁にロール オーバーすることをお勧めします。
+手順 2. では、Azure AD Connect によって、シームレス SSO を有効にしたすべての AD フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、[ここ](active-directory-aadconnect-sso-how-it-works.md)を参照してください。 セキュリティを強化するために、これらのコンピューター アカウントの Kerberos 復号化キーを定期的にロール オーバーすることをお勧めします。 ロール オーバーする方法については、[ここ](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)を参照してください。
 
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日ごとに Kerberos 復号化キーをロール オーバーしてください。
@@ -157,4 +155,3 @@ Mac ユーザーがサードパーティの Active Directory グループ ポリ
 - [**よく寄せられる質問**](active-directory-aadconnect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - 機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用
 Azure Data Lake Analytics サービスは、送信されたジョブを[クエリ ストア](#query-store)にアーカイブします。 この記事では、Azure Data Lake Tools for Visual Studio のジョブ ブラウザーとジョブ ビューを使用して過去のジョブ情報を検索する方法について説明します。 
@@ -176,5 +175,4 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
 * 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * 頂点実行ビューの使用方法については、「[Use the Vertex Execution View in Data Lake Tools for Visual Studio (Data Lake Tools for Visual Studio での頂点実行ビューの使用)](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
-
 

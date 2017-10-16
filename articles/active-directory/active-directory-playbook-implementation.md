@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory の PoC 戦略の実装 | Microsoft Docs"
-description: "ID とアクセスを管理するシナリオを調査して、迅速に実装します"
+description: "ID とアクセスを管理するシナリオを確認して、迅速に実装します"
 services: active-directory
 keywords: "Azure Acitve Directory, 戦略, 概念実証, PoC"
 documentationcenter: 
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 298ff9b851f604b89e5672e41ab112b67990b0d6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 10877ee33ec04cf0d350417af59d598eab249aa0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Azure Active Directory の概念実証戦略: 実装
 
 ## <a name="foundation---syncing-ad-to-azure-ad"></a>基礎 - AD を Azure AD に同期する 
 
-ハイブリッド ID は、オンプレミスのディレクトリがあるほとんどの企業顧客の基盤となります。 ここでの目標は、意図的にできるだけ時間をかけずに、実際の ID およびアクセス シナリオの価値を示すことにあります。 
+既にオンプレミスのディレクトリを持つ企業顧客のほとんどにとって、基礎となるのはハイブリッド ID です。 ここでの目標は、意図的にできるだけ時間をかけずに、実際の ID およびアクセス シナリオの価値を示すことにあります。 
 
 | シナリオ | 構成要素| 
 | --- | --- |  
@@ -35,15 +34,15 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="extending-your-on-premises-identity-to-the-cloud"></a>オンプレミスの ID をクラウドに拡張する 
 
-1. Contoso 社の Active Directory 管理者である Bob が、 一連のユーザーを対象としたサービスとして ID を有効にするための要件を取得します。 ターゲット ユーザーの ID は、Azure AD Connect ウィザードの実行後にクラウドで使用できます。 
-2. Bob が、ターゲット ユーザーの 1 人である Susie に、Azure Active Directory アクセス パネルにアクセスし、認証できることを確認するよう依頼します。 Susie には、ブランド化されたログイン ページと、今後のアプリケーション アクセスを有効にする準備ができた空のアクセス パネルが表示されます。
+1. Bob は Contoso 社の Active Directory 管理者です。 彼は、一連のユーザーを対象として、サービスとしての ID を有効にしようとしています。 ターゲット ユーザーの ID は、Azure AD Connect ウィザードの実行後にクラウドで使用できます。 
+2. Bob が、ターゲット ユーザーの 1 人である Susie に、Azure Active Directory アクセス パネルにアクセスし、認証できることを確認するよう依頼します。 Susie にはブランド化されたログイン ページと空のアクセス パネルが表示されます。アクセス パネルはアプリケーション アクセスを有効にするための準備が整っています。
 
 ### <a name="assigning-azure-ad-licenses-using-groups"></a>グループを使用して Azure AD ライセンスを割り当てる 
 
 1. Azure AD の全体管理者である Bob が、Azure AD の初期ロールアウトの一環として、Azure AD のライセンスを、特定のユーザーに割り当てたいと考えています。
 2. Bob が、パイロット ユーザーのグループを作成します。 
 3. Bob が、そのグループにライセンスを割り当てます
-4. インフォメーション ワーカーである Susie が、ジョブ機能の一部としてセキュリティ グループに追加されます
+4. インフォメーション ワーカーである Susie が、彼女の職務の一部としてセキュリティ グループに追加されます
 5. しばらくすると、Susie が Azure AD Premium ライセンスにアクセスできます。 これにより、その他の POC シナリオが後で有効になります。
 
 ## <a name="theme---lots-of-apps-one-identity"></a>テーマ - 多くのアプリ、1 つの ID
@@ -59,20 +58,20 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="integrate-saas-applications---federated-sso"></a>SaaS アプリケーションを統合する - フェデレーション SSO 
 
-1. Azure AD の全体管理者である Bob が、マーケティング部門から要求を受け取って、ServiceNow インスタンスへのアクセスを有効にします。 Bob が Azure AD ドキュメントに記載されているチュートリアルの詳しい手順に従って、アプリへのユーザーの割り当てを、マーケティング チームのリーダーである Kevin に委任します。 
-2. Kevin が、ServiceNow の資格の所有者としてログインし、Susie をアプリに割り当てます。 また、Susie のプロファイルは、ServiceNow で自動的に作成されています
-3. マーケティング部門のインフォメーション ワーカーである Susie が、 Azure AD にログインし、自身が割り当てられたすべての SaaS アプリケーションを myapps ポータルで検索します。 ここから、Susie はシームレスに ServiceNow にアクセスできます。
+1. Azure AD の全体管理者である Bob が、マーケティング部門からの依頼により、ServiceNow インスタンスへのアクセスを有効にしようとしています。 Bob が Azure AD ドキュメントに記載されているチュートリアルの詳しい手順に従って、アプリへのユーザーの割り当てを、マーケティング チームのリーダーである Kevin に委任します。 
+2. Kevin が、ServiceNow の資格の所有者としてログインし、Susie をアプリに割り当てます。 Susie のプロファイルは ServiceNow で自動的に作成されていることもわかります。
+3. Susie はマーケティング部門のインフォメーション ワーカーです。 彼女が Azure AD にログインすると、自身が割り当てられた SaaS アプリケーションがすべて myapps ポータルに表示されています。 ここから、Susie はシームレスに ServiceNow にアクセスできます。
 4. マーケティング部門は、誰が ServiceNow にアクセスしたかを監査する必要があります。 Bob がアクティビティ レポートをダウンロードし、そのレポートを電子メールで Kevin と共有します。  
 
 ### <a name="sso-and-identity-lifecycle-events"></a>SSO と ID のライフサイクル イベント
 
 1. Susie が休暇をとっており、オンプレミスの AD アカウントは、企業ポリシーに従って一時的に無効になっています。 Susie は現在 Azure AD にログインできないため、ServiceNow にアクセスできません。 
-2. Susie がマーケティング部門から営業部門に異動になったため、 Kevin が、ServiceNow に対する Susie のアクセス権を削除します。 Susie が azure ad myapps にログインにしても、ServiceNow タイルは表示されません。 10 分後、Kevin は、Susie のアカウントが ServiceNow 管理コンソールで無効になっていることを確認します。
+2. Susie がマーケティング部門からセールス部門に異動になりました。 Kevin が、ServiceNow に対する Susie のアクセス権を削除します。 Susie が Azure AD の myapps にログインにしても、ServiceNow タイルは表示されません。 10 分後、Kevin は、Susie のアカウントが ServiceNow 管理コンソールで無効になっていることを確認します。
 
 ### <a name="integrate-saas-applications---password-sso"></a>SaaS アプリケーションを統合する - パスワード SSO
 
 1. Bob が、Atlassian HipChat へのアクセスを構成します。 HipChat にはパスワード SSO が統合されており、これにより Susie へのアクセスが許可されます
-2. Susie が myapps ポータルにログインすると、ダウンロード対象の Azure AD IE ブラウザー拡張機能をダウンロードするためのリンクが表示されます
+2. Susie が myapps ポータルにログインすると、Azure AD IE ブラウザー拡張機能をダウンロードするためのリンクが表示されます。これをダウンロードします
 3. Susie がそのリンクをクリックすると、HipChat ユーザー名とパスワード資格情報を入力するよう求められます。 これは 1 回限りの操作で、この操作が完了すると、HipChat にアクセスできます
 4. 数日後、Susie は myapps ポータルを開き、HipChat をもう一度クリックします。 今回は、シームレスにアクセスできます
 5. HipChat アプリケーションの所有者である Kevin が、アプリケーションにアクセスしたユーザーを監査したいと考えています。 Bob が監査レポートをダウンロードし、そのレポートを電子メールで Kevin と共有します。 
@@ -83,20 +82,20 @@ ms.lasthandoff: 04/12/2017
 2. Twitter の資格情報を共有すると、複数の人がその情報にアクセスできるため、信頼性が失われます。 Bob が、Twitter のパスワードの自動ロールオーバーを有効にします。
 3. セールス チームのメンバーである Susie が myapps ポータルにログインすると、Azure AD IE ブラウザー拡張機能をダウンロードするためのリンクが表示されます。 Susie はその拡張機能をインストールします。
 4. Susie は、クリックすることで Twitter に直接アクセスできます。 Susie はパスワードを知りません。
-5. Arnold もセールス チームのメンバーです。 Arnold は、手順 3. ～ 4. で Susie と同じ操作を行います
-6. 営業部門は、誰が Twitter にアクセスしたかを監査する必要があります。 Bob がアクティビティ レポートをダウンロードし、そのレポートを電子メールで Kevin と共有します。 
+5. Arnold もセールス チームのメンバーです。 Arnold は、手順 3. ～ 4. の Susie と同じ操作を行います
+6. セールス部門は、誰が Twitter にアクセスしたかを監査する必要があります。 Bob がアクティビティ レポートをダウンロードし、そのレポートを電子メールで Kevin と共有します。 
 
 ### <a name="secure-remote-access-to-on-premises-applications"></a>オンプレミスのアプリケーションへのリモート アクセスをセキュリティで保護する
 
-1. Azure AD の全体管理者である Bob がリモートで作業しているとき、経費アプリケーションなど、複数の便利なオンプレミス リソースに対する従業員のアクセスの有効化を求める要求が大量に届きます。 Bob は[アプリケーション プロキシのドキュメント](active-directory-application-proxy-enable.md)に従ってコネクタをインストールし、Expenses をアプリケーション プロキシ アプリケーションとして発行します。 
-2. Bob が、外部 Expenses アプリケーション URL を、リモート アクセスを必要とする従業員の 1 人である Susie と共有します。 Susie はリンクにアクセスし、AAD に対して認証を行った後、Expenses アプリにアクセスして、リモートから引き続き生産的に作業を行います。 
-3. その後も Bob は同じプロセスを使用して、必要に応じてユーザーにアクセス権を付与し、追加のオンプレミスのアプリケーションを発行できます。 また、機密性の高いアプリケーションを発行する場合は、そのアプリケーションに対して条件付きアクセスと多要素認証を追加して、セキュリティを強化します。
+1. Azure AD の全体管理者である Bob は、経費アプリケーションなどの便利なオンプレミス リソースのいくつかにリモートで働く従業員がアクセスできるようにしてほしいという依頼を何度も受けています。 Bob は[アプリケーション プロキシのドキュメント](active-directory-application-proxy-enable.md)に従ってコネクタをインストールし、経費アプリケーションをアプリケーション プロキシ アプリケーションとして公開します。 
+2. Bob が、経費アプリケーションの外部 URL を、リモート アクセスを必要とする従業員の 1 人である Susie と共有します。 Susie はリンクにアクセスし、AAD に対して認証を行った後、経費アプリにアクセスして、リモートから引き続き生産的に作業を行います。 
+3. Bob はその後引き続き同じプロセスで追加のオンプレミス アプリケーションを公開し、必要に応じてユーザーにアクセス権を付与します。 また、機密性の高いアプリケーションを発行する場合は、そのアプリケーションに対して条件付きアクセスと多要素認証を追加して、セキュリティを強化します。
 
 ### <a name="synchronize-ldap-identities-to-azure-ad"></a>Azure AD に LDAP ID を同期する
 
-1. Bob の会社の ID インフラストラクチャは複雑です。 ほとんどのユーザーが Windows Server Active Directory Domain Services (ADDS) 内に保持されており、 その中の一部のユーザーは、Active Directory ライトウェイト ディレクトリ サービス (ADLDS) 内の HR システムで管理されています。
+1. Bob の会社の ID インフラストラクチャは複雑です。 ほとんどのユーザーが Windows Server Active Directory Domain Services (ADDS) 内に保持されています。 一部のユーザーは、Active Directory ライトウェイト ディレクトリ サービス (ADLDS) 内の HR システムで管理されています。
 2. Bob の仕事は、(ADDS に含まれないユーザーを含め) すべてのユーザーが SaaS アプリにアクセスできるようにすることです。
-3. Bob が、Azure AD Connect で ADLDS からデータをプルするように Generic LDAP コネクタを構成します。
+3. Bob が、Azure AD Connect で ADLDS からデータをプルするように汎用 LDAP コネクタを構成します。
 4. Bob が同期規則を作成します。これにより、LDAP ユーザーがメタバースと Azure AD に設定されます
 5. LDAP ユーザーである Susie が、同期済み ID を使用して、自身の SaaS アプリにアクセスします
 
@@ -119,21 +118,21 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="secure-administrator-account-access"></a>管理者アカウントのアクセスをセキュリティで保護する
 
-1. Azure AD の全体管理者である Bob が、 サービスの共同管理者として Stuart を確認しました。 
+1. Bob は Azure AD の全体管理者です。 彼は Stuart をサービスの共同管理者にすることにしました。 
 2. Bob は、セキュリティ体制を強化するため、常に MFA が求められるように Stuart のアカウントを構成します
-3. Stuart が Azure Portal にログインするとき、ログインを続行するには、自分の電話番号を登録する必要があります
+3. Stuart が Azure Portal にログインすると、ログインを続行するために自分の電話番号を登録する必要があることがわかります
 4. 以降の Stuart からのログインは Multi-factor Authentication で保護され、電話による本人確認が行われます。
 
 ### <a name="secure-access-to-applications"></a>アプリケーションへのアクセスをセキュリティで保護する
 
-1. Kevin は ServiceNow のビジネス オーナーです。 現在会社が企業ネットワーク外でアクセスするユーザーに求めているのは MFA によるログインです。
+1. Kevin は ServiceNow のビジネス オーナーです。 会社は今後、企業ネットワーク外からアクセスするユーザーに対し MFA によるログインを要求したいと考えています。
 2. Azure AD の全体管理者 Bob が、条件付きアクセス ポリシーを ServiceNow アプリケーションに追加し、外部アクセスに対して MFA を有効にします
-3. インフォメーション ワーカー Susie が myapps ポータルにログインし、ServiceNow タイルをクリックすると、 MFA を求められるようになりました。
+3. インフォメーション ワーカー Susie が myapps ポータルにログインし、ServiceNow タイルをクリックします。 MFA を求められるようになりました。
 
 ### <a name="enable-just-in-time-jit-administration"></a>ジャスト イン タイム (JIT) 管理を有効にする
 
-1. Azure AD の全体管理者である Bob と Stuart が、 管理ロールへの JIT アクセスを有効にして、さらに、特権ロールの使用状況も記録したいと考えています。
-2. Bob が Azure AD テナントで PIM を有効にして、セキュリティ管理者になり、 Bob 自身と Stuart の全体管理者ロールのメンバーシップを、永続的から対象的に変更します。
+1. Bob と Stuart は Azure AD の全体管理者です。 管理ロールへの JIT アクセスを有効にして、さらに、特権ロールの使用状況も記録したいと考えています。
+2. Bob が Azure AD テナントで PIM を有効にして、セキュリティ管理者になります。 Bob 自身と Stuart の全体管理者ロールのメンバーシップを、永続的から対象的に変更します。
 3. 以降、Bob と Stuart が Azure AD 構成を変更するには、その前に Azure Portal で自身のロールをアクティブ化する必要があります。 
 
 ### <a name="protect-identities-based-on-risk"></a>リスクに基づいて ID を保護する 
@@ -164,7 +163,7 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="self-service-access-to-applications"></a>セルフサービスでアプリケーションにアクセスする 
 
-1. ServiceNow のビジネス オーナーである Kevin が、 ユーザーをまとめて追加するのではなく、必要に応じて "サインアップ" したいと考えています
+1. Kevin は ServiceNow のビジネス オーナーです。 ユーザーをまとめて追加するのではなく、必要に応じてユーザーに "サインアップ" してほしいと考えています
 2. Azure AD の全体管理者である Bob が、ServiceNow アプリケーションを変更して、セルフサービス要求を有効にします
 3. インフォメーション ワーカーである Susie が myapps ポータルにログインして、"アプリケーションの追加" ボタンをクリックすると、ServiceNow が推奨アプリケーションとして 表示されます。 その後、myapps ポータルに戻ると、ServiceNow アプリケーションが表示されます。
 

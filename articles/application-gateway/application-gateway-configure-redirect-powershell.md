@@ -3,7 +3,7 @@ title: "Azure Application Gateway に対するリダイレクトの構成 - Powe
 description: "このページでは、PowerShell を使って、Application Gateway にリダイレクトを構成するシナリオを紹介します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.service: application-gateway
@@ -12,15 +12,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 84a25e572a27df2fe46e07c4ab0a4aab5969d68e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>PowerShell で Application Gateway にリダイレクトを構成する
 
 Application Gateway には、定義されている構成に従ってトラフィックをリダイレクトする機能があります。 リダイレクト全般について詳しくは、「[Application Gateway redirect overview (Application Gateway のリダイレクトの概要)](application-gateway-redirect-overview.md)」を参照してください。 この記事では、HTTP から HTTPS へのリダイレクト、パス ベースのリダイレクト、マルチサイトのリダイレクト、外部サイトへのリダイレクトについて、それぞれの例を取り上げています。
@@ -133,7 +131,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="multi-site-redirect"></a>マルチサイトのリダイレクト
 
-次の例では、ポート 80 に 2 つのマルチサイト リスナーを持った新しい Application Gateway を作成します。 1 つは adatum.com 用のリスナー、もう 1 つは adatum.org 用のリスナーです。 adatum.org から adatum.com にトラフィックを誘導するためのリダイレクト規則を作成します。 別途、Application Gateway のパブリック IP アドレスに対する CNAME エイリアスを構成する必要があります。Azure DNS にドメインを委任する方法と、ドメインの CNAME レコードを作成する方法について詳しくは、「[Azure DNS へのドメインの委任](../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
+次の例では、ポート 80 に 2 つのマルチサイト リスナーを持った新しい Application Gateway を作成します。 1 つは adatum.com 用のリスナー、もう 1 つは adatum.org 用のリスナーです。adatum.org から adatum.com にトラフィックを誘導するためのリダイレクト規則を作成します。別途、Application Gateway のパブリック IP アドレスに対する CNAME エイリアスを構成する必要があります。Azure DNS にドメインを委任する方法と、ドメインの CNAME レコードを作成する方法について詳しくは、「[Azure DNS へのドメインの委任](../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
 
 ```powershell
 # Create a new resource group for the application gateway

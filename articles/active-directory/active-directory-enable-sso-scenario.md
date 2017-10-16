@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションの管理
 企業には、実際のワークフローやコンテンツへの対応以外に、すべてのアプリケーションに関して 2 つの基本的な要件があります。
@@ -113,5 +112,4 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 ## <a name="see-also"></a>関連項目
 [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
 

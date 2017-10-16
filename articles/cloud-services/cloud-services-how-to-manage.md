@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 2ee76dfcb579e53975b1f61a6590f8d78dc0961b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services の管理方法
 > [!div class="op_single_selector"]
@@ -155,4 +153,3 @@ Azure クラシック ポータルの **[Cloud Services]** 領域では、サー
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
-

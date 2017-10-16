@@ -1,9 +1,9 @@
 ---
-title: "Azure Functions と Cosmos DB を使用して非構造化データを格納する"
+title: "Azure Cosmos DB と Functions を使用して非構造化データを格納する | Microsoft Docs"
 description: "Azure Functions と Cosmos DB を使用して非構造化データを格納する"
 services: functions
 documentationcenter: functions
-author: rachelappel
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -14,17 +14,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/03/2017
+ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
+ms.openlocfilehash: b64d994dbc8f53418981e33a1dcd3cf513838b92
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 00e9a76fed5743d7d74bafd333b87edf59a4f8bb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>Azure Functions と Cosmos DB を使用して非構造化データを格納する
+# <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、非構造化 JSON データを格納するうえで最適な手段です。 Cosmos DB は、Azure Functions と連携させると、リレーショナル データベースにデータを格納する場合よりもはるかに少ないコードですばやく簡単にデータを格納することができます。
 
@@ -54,10 +53,10 @@ Azure Functions では、入力および出力バインディングによって�
     | ------------ | ---------------- | ------------------------------------------ |
     | **[ドキュメント パラメーター名]** | taskDocument | コード内で Cosmos DB オブジェクトを指す名前。 |
     | **[データベース名]** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
-    | **[コレクション名]** | TaskCollection | Cosmos DB データベースのコレクションの名前。 |
+    | **[コレクション名]** | TaskCollection | データベース コレクションの名前 |
     | **[If true, creates the Cosmos DB database and collection]\(オンの場合、Cosmos DB データベースとコレクションを作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
 
-4. **[Cosmos DB document connection]\(Cosmos DB ドキュメント接続\)** ラベルの横にある **[新規]** を選択し、**[+ 新規作成]** を選択します。 
+4. **[Azure Cosmos DB document connection]\(Cosmos DB ドキュメント接続\)** ラベルの横にある **[新規]** を選択し、**[+ 新規作成]** を選択します。 
 
 5. **[新しいアカウント]** の設定を使用して、次の表で指定されているように設定します。 
 
@@ -65,13 +64,13 @@ Azure Functions では、入力および出力バインディングによって�
 
     | 設定      | 推奨値  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **ID** | データベースの名前 | Cosmos DB データベースの一意の ID  |
+    | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
     | **API** | SQL (DocumentDB) | ドキュメント データベース API を選択します。  |
     | **サブスクリプション** | Azure サブスクリプション | Azure サブスクリプション  |
     | **リソース グループ** | myResourceGroup |  関数アプリが含まれる既存のリソース グループを使用します。 |
     | **場所**  | 西ヨーロッパ | 関数アプリ、または格納されたドキュメントを使用するその他のアプリに近い場所を選択します。  |
 
-6. **[OK]** をクリックしてデータベースを作成します。 データベースの作成には数分かかる場合があります。 データベースが作成されると、データベース接続文字列が関数アプリ設定として格納されます。 このアプリ設定の名前が、**[Cosmos DB account connection]\(Cosmos DB アカウント接続\)** に挿入されます。 
+6. **[OK]** をクリックしてデータベースを作成します。 データベースの作成には数分かかる場合があります。 データベースが作成されると、データベース接続文字列が関数アプリ設定として格納されます。 このアプリ設定の名前が、**[Azure Cosmos DB account connection]\(Azure Cosmos DB アカウント接続\)** に挿入されます。 
  
 8. 接続文字列が設定されてから、**[保存]** を選択し、バインディングを作成します。
 
@@ -129,11 +128,13 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 
     ![Cosmos DB サービスの検索](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-2. 作成したデータベースを選択して、**[データ エクスプローラー]** を選択します。 **[コレクション]** ノードを展開して新しいドキュメントを選択し、ドキュメントにクエリ文字列値といくつかの追加のメタデータが含まれていることを確認します。 
+2. Azure Cosmos DB アカウントを選択してから、**[データ エクスプローラー]** を選択します。 
+
+3. **[コレクション]** ノードを展開して新しいドキュメントを選択し、ドキュメントにクエリ文字列値といくつかの追加のメタデータが含まれていることを確認します。 
 
     ![Cosmos DB エントリの確認](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
 
-非構造化データを Cosmos DB データベースに格納するバインディングを HTTP トリガーに正常に追加することができました。
+Azure Cosmos DB に非構造化データを格納するバインディングを HTTP トリガーに正常に追加できました。
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
@@ -142,4 +143,3 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
 
 Cosmos DB データベースへのバインドの詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b858c6d26b78be4641a46b3453f53d103b512356
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>チュートリアル: Azure Active Directory と LiquidFiles の統合
 
@@ -187,7 +186,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-liquidfiles-test-user"></a>LiquidFiles テスト ユーザーの作成
 
@@ -249,5 +248,4 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_203.png
-
 

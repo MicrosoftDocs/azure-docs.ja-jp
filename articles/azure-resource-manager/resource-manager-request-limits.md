@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 Resource Manager では、サブスクリプションおよびテナントごとに、読み取り要求が 1 時間あたり 15,000 に制限され、書き込み要求が 1 時間あたり 1,200 に制限されています。 これらの制限は、Azure Resource Manager の各インスタンスに適用されますが、すべての Azure リージョンには複数のインスタンスがあり、Azure Resource Manager はすべての Azure リージョンにデプロイされます。  このため、ユーザーの要求は、通常は多数の異なるインスタンスによって処理されるため、実際の上限は上に示したものよりも大幅に高くなります。
@@ -113,4 +111,3 @@ silly: returnObject
 
 * 制限とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 * 非同期の REST 要求の処理の詳細については、「[Track asynchronous Azure operations (非同期の Azure 操作の追跡)](resource-manager-async-operations.md)」を参照してください。
-

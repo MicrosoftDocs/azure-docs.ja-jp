@@ -11,14 +11,12 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
 特定のイベントが Azure リソースまたはサード パーティのリソースで発生したときに、自動[ロジック アプリ ワークフロー](../logic-apps/logic-apps-what-are-logic-apps.md)を開始できます。 こうしたリソースは、そのイベントを [Azure Event Grid](../event-grid/overview.md) に発行できます。 また、そのイベントは、イベント グリッドによって、エンドポイントとしてキュー、webhook、または [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を持つサブスクライバーにプッシュされます。 ロジック アプリはサブスクライバーとして、イベント グリッドからのイベントを待機してから、自動ワークフローを実行してタスクを実行できます。コードを記述する必要はありません。
@@ -51,7 +49,7 @@ ms.lasthandoff: 08/19/2017
 
 最初にロジック アプリを作成し、仮想マシンのリソース グループを監視する Event Grid トリガーを追加します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。 
 
 2. Azure のメイン メニューの左上隅で、**[新規]** > **[エンタープライズ統合]** > **[ロジック アプリ]** を選択します。
 

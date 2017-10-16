@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 ## <a name="overview"></a>概要
@@ -126,7 +126,7 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。 後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
+9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
 
 ## <a name="modify-the-ios-project"></a>iOS プロジェクトを変更する
 アプリ バックエンドを通知の ** ID だけを送信するように変更したので、iOS アプリをその ID を処理してバックエンドからリッチ メッセージを取得するように変更します。
@@ -355,9 +355,3 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

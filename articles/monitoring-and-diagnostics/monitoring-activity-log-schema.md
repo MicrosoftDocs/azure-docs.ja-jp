@@ -1,6 +1,6 @@
 ---
-title: "Azure アクティビティ ログのイベント スキーマ | Microsoft Docs"
-description: "アクティビティ ログに出力されるデータのイベント スキーマを理解する"
+title: "Azure のアクティビティ ログのイベントのスキーマ |Microsoft ドキュメント"
+description: "アクティビティ ログに出力されるデータのイベント スキーマを理解します。"
 author: johnkemnetz
 manager: robb
 services: monitoring-and-diagnostics
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 5c96a1cfa56d1535549cb15d5a7bcf03bd11e723
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: a4ceb822e0ec3e1c1dc31ece1db761834e795f6c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベントのスキーマを説明します。
+# <a name="azure-activity-log-event-schema"></a>Azure のアクティビティ ログ イベント スキーマ
+**Azure のアクティビティ ログ**は、Azure 内で行われたサブスクリプション レベルのイベントに関する洞察を提供するログ。 この記事では、データのカテゴリごとに、イベントのスキーマについて説明します。
 
 ## <a name="administrative"></a>管理
-このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、およびアクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
+このカテゴリには、すべてのレコードが含まれています。 作成、更新、削除、およびアクションの操作は、リソース マネージャーを通してを実行します。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
 
 ### <a name="sample-event"></a>サンプル イベント
 ```json
@@ -106,7 +105,7 @@ ms.lasthandoff: 07/25/2017
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
 | channels |値として、"Admin" または "Operation" を指定します。 |
-| claims |リソース マネージャーでこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
+| 信頼性情報 |Active Directory でユーザーやリソース マネージャーでこの操作を実行するアプリケーションの認証に使用される JWT トークンです。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
 | Description |イベントを説明する静的テキスト。 |
 | eventDataId |イベントの一意の識別子。 |
@@ -124,8 +123,8 @@ ms.lasthandoff: 07/25/2017
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="service-health"></a>サービス正常性
-このカテゴリには、Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"SQL Azure in East US is experiencing downtime" (米国東部の SQL Azure でダウンタイムが発生しています) などがあります。 サービス正常性イベントには、要対応、支援復旧、インシデント、メンテナンス、情報、またはセキュリティという 6 種類があります。イベントの影響を受けるリソースがサブスクリプションにある場合、1 つのイベントのみが表示されます。
+## <a name="service-health"></a>サービスのヘルス
+このカテゴリには、Azure 内で行われたいずれかのサービス正常性のインシデントのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"SQL Azure in East US is experiencing downtime" (米国東部の SQL Azure でダウンタイムが発生しています) などがあります。 サービス正常性イベントには、要対応、支援復旧、インシデント、メンテナンス、情報、またはセキュリティという 6 種類があります。イベントの影響を受けるリソースがサブスクリプションにある場合、1 つのイベントのみが表示されます。
 
 ### <a name="sample-event"></a>サンプル イベント
 ```json
@@ -188,20 +187,20 @@ ms.lasthandoff: 07/25/2017
 -------- | -----------
 channels | 値は "Admin" または "Operation" のいずれか
 correlationId | 通常は文字列形式の GUID。 そのイベントは同じ uber アクションに属し、通常は同じ correlationID を共有します。
-description | イベントの説明。
+description | イベントの説明です。
 eventDataId | イベントの一意の識別子。
 eventName | イベントのタイトル。
-最小限のレベル | イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose”
-resourceProviderName | 影響を受けるリソースのリソース プロバイダーの名前。 不明な場合、これは null になります。
-resourceType| 影響を受けるリソースの種類。 不明な場合、これは null になります。
-subStatus | サービス正常性イベントの場合、通常は null です。
-eventTimestamp | ログ イベントが生成され、アクティビティ ログに送信されたときのタイムスタンプ。
-submissionTimestamp |   イベントがアクティビティ ログで使用できるようになったときのタイムスタンプ。
+level | イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose”
+resourceProviderName | 影響を受けるリソースのリソース プロバイダーの名前。 認識されないと、これが null になります。
+resourceType| 影響を受けるリソースのリソースの種類。 認識されないと、これが null になります。
+subStatus | 通常サービスの正常性イベントの場合は null です。
+eventTimestamp | ログ イベントが生成され、動作状況ログに送信されたときのタイムスタンプ。
+submissionTimestamp |   イベントは、アクティビティ ログの利用可能になったときのタイムスタンプ。
 subscriptionId | このイベントが記録された Azure サブスクリプション。
-status | 操作の状態を説明する文字列。 一般的な値の例: Active、Resolved。
-operationName | 操作の名前。 通常は Microsoft.ServiceHealth/incident/action です。
+status | 操作の状態を説明する文字列。 いくつかの一般的な値: アクティブ、解決します。
+operationName | 操作の名前。 通常 Microsoft.ServiceHealth/incident/action です。
 カテゴリ | "ServiceHealth"
-resourceId | 既知の場合、影響を受けるリソースのリソース ID。 それ以外の場合は、サブスクリプション ID が提供されます。
+resourceId | 既知の場合は、影響を受けるリソースのリソース id です。 それ以外の場合は、サブスクリプション ID が提供されます。
 Properties.title | この通信のローカライズされたタイトル。 既定の言語は英語です。
 Properties.communication | HTML マークアップによる通信のローカライズされた詳細。 既定は英語です。
 Properties.incidentType | 使用可能な値: AssistedRecovery、ActionRequired、Information、Incident、Maintenance、Security
@@ -213,7 +212,7 @@ Properties.stage | AssistedRecovery、ActionRequired、Information、Incident、
 Properties.communicationId | このイベントが関連付けられている通信。
 
 ## <a name="alert"></a>アラート:
-このカテゴリには、Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
+このカテゴリには、Azure のアラートのすべてのライセンス認証のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
 
 ### <a name="sample-event"></a>サンプル イベント
 
@@ -280,53 +279,53 @@ Properties.communicationId | このイベントが関連付けられている通
 | 要素名 | Description |
 | --- | --- |
 | caller | 常に Microsoft.Insights/alertRules |
-| channels | 常に “Admin, Operation” |
-| claims | アラート エンジンの SPN (サービス プリンシパル名)、またはリソースの種類の JSON BLOB。 |
-| correlationId | 文字列形式の GUID。 |
-| description |アラート イベントを説明する静的テキスト。 |
-| eventDataId |アラート イベントの一意識別子。 |
-| 最小限のレベル |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
-| resourceGroupName |メトリックのアラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
-| resourceProviderName |メトリックのアラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 その他のアラートの場合、これはアラート自体のリソース プロバイダーの名前です。 |
-| resourceId | メトリックのアラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
+| channels | 常に"Admin、操作" |
+| 信頼性情報 | 警告エンジンの SPN (サービス プリンシパル名)、またはリソースの種類と JSON blob です。 |
+| correlationId | 文字列形式の GUID です。 |
+| description |アラートのイベントの静的なテキストの説明です。 |
+| eventDataId |アラートのイベントの一意の識別子。 |
+| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| resourceGroupName |メトリックの警告である場合は、影響を受けるリソースのリソース グループの名前。 他のアラートの種類では、これは、警告自体に含まれているリソース グループの名前です。 |
+| resourceProviderName |メトリックの警告である場合は、影響を受けるリソースのリソース プロバイダーの名前。 他のアラートの種類では、これは、警告自体のリソース プロバイダーの名前です。 |
+| resourceId | メトリックの警告である場合は、影響を受けるリソースのリソース ID の名前。 他のアラートの種類では、これは、アラート、リソースそれ自体のリソース ID です。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
-| subStatus | アラートの場合、通常は null です。 |
+| subStatus | 通常アラートの場合は null です。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-### <a name="properties-field-per-alert-type"></a>アラートの種類別のプロパティ フィールド
-アラート イベントのソースに応じて、プロパティ フィールドには異なる値が格納されます。 アラート イベントの一般的なプロバイダーは、アクティビティ ログ アラートとメトリック アラートの 2 つです。
+### <a name="properties-field-per-alert-type"></a>アラートの種類ごとにプロパティ フィールド
+プロパティ フィールドは、アラートのイベントのソースに応じて異なる値が格納されます。 2 つの一般的なアラートのイベント プロバイダーは、アクティビティ ログのアラート メトリックの警告です。
 
 #### <a name="properties-for-activity-log-alerts"></a>アクティビティ ログ アラートのプロパティ
 | 要素名 | Description |
 | --- | --- |
-| properties.subscriptionId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからのサブスクリプション ID。 |
-| properties.eventDataId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからのイベント データ ID。 |
-| properties.resourceGroup | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからのリソース グループ。 |
-| properties.resourceId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからのリソース ID。 |
-| properties.eventTimestamp | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのイベント タイムスタンプ。 |
-| properties.operationName | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからの操作名。 |
-| properties.status | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントからの状態。|
+| properties.subscriptionId | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントからのサブスクリプション ID。 |
+| properties.eventDataId | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントからイベント データ ID です。 |
+| properties.resourceGroup | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントからリソース グループです。 |
+| properties.resourceId | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントからのリソース ID です。 |
+| properties.eventTimestamp | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントのイベントのタイムスタンプ。 |
+| properties.operationName | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントから、操作名。 |
+| properties.status | このアクティビティ ログのアラート ルールをアクティブ化の原因となったアクティビティのログ イベントから状態です。|
 
-#### <a name="properties-for-metric-alerts"></a>メトリック アラートのプロパティ
+#### <a name="properties-for-metric-alerts"></a>メトリックのアラートのプロパティ
 | 要素名 | Description |
 | --- | --- |
-| properties.RuleUri | メトリック アラート ルール自体のリソース ID。 |
-| properties.RuleName | メトリック アラート ルールの名前。 |
-| properties.RuleDescription | (アラート ルールで定義された) メトリック アラート ルールの説明。 |
-| properties.Threshold | メトリック アラート ルールの評価で使用されるしきい値。 |
-| properties.WindowSizeInMinutes | メトリック アラート ルールの評価で使用されるウィンドウ サイズ。 |
-| properties.Aggregation | メトリック アラート ルールで定義されている集計の種類。 |
-| properties.Operator | メトリック アラート ルールの評価で使用される条件演算子。 |
-| properties.MetricName | メトリック アラート ルールの評価で使用されるメトリックのメトリック名。 |
-| properties.MetricUnit | メトリック アラート ルールの評価で使用されるメトリックのメトリック単位。 |
+| プロパティ。RuleUri | メトリックの警告ルール自体のリソース ID です。 |
+| プロパティ。RuleName | メトリックのアラート ルールの名前。 |
+| プロパティ。RuleDescription | メトリックのアラート ルールの定義に従って、アラート ルール) の説明です。 |
+| プロパティ。しきい値 | メトリックのアラート ルールの評価で使用されるしきい値です。 |
+| プロパティ。WindowSizeInMinutes | ウィンドウのサイズがメトリックのアラート ルールの評価に使用します。 |
+| プロパティ。集計 | メトリックの警告ルールで定義されている集計の種類。 |
+| プロパティ。演算子 | 条件演算子メトリックのアラート ルールの評価に使用します。 |
+| プロパティ。MetricName | メトリックのアラート ルールの評価に使用されるメトリックのメトリックの名前です。 |
+| プロパティ。MetricUnit | メトリックのアラート ルールの評価に使用されるメトリックのメトリックの単位。 |
 
-## <a name="autoscale"></a>Autoscale
-このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
+## <a name="autoscale"></a>自動スケール
+このカテゴリには、お客様のサブスクリプションで定義した自動スケール設定に基づく自動スケーリング エンジンの操作に関連するイベントのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 
 ### <a name="sample-event"></a>サンプル イベント
 ```json
@@ -389,25 +388,25 @@ Properties.communicationId | このイベントが関連付けられている通
 | 要素名 | Description |
 | --- | --- |
 | caller | 常に Microsoft.Insights/autoscaleSettings |
-| channels | 常に “Admin, Operation” |
-| claims | 自動スケール エンジンの SPN (サービス プリンシパル名)、またはリソースの種類の JSON BLOB。 |
-| correlationId | 文字列形式の GUID。 |
-| description |自動スケール イベントを説明する静的テキスト。 |
-| eventDataId |自動スケール イベントの一意識別子。 |
-| 最小限のレベル |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| channels | 常に"Admin、操作" |
+| 信頼性情報 | 自動スケーリング エンジンの SPN (サービス プリンシパル名)、またはリソース型を持つ JSON blob。 |
+| correlationId | 文字列形式の GUID です。 |
+| description |自動スケール イベントの静的なテキストの説明です。 |
+| eventDataId |自動スケール イベントの一意の識別子。 |
+| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
 | resourceProviderName |自動スケール設定のリソース プロバイダーの名前。 |
-| resourceId |自動スケール設定のリソース ID。 |
+| resourceId |自動スケール設定のリソース id です。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
-| properties.Description | 自動スケール エンジンが実行していた処理の詳細な説明。 |
-| properties.ResourceName | 影響を受けるリソース (スケール アクションが実行されていたリソース) のリソース ID |
-| properties.OldInstancesCount | 自動スケール アクションが有効になる前のインスタンスの数。 |
-| properties.NewInstancesCount | 自動スケール アクションが有効になった後のインスタンスの数。 |
-| properties.LastScaleActionTime | 自動スケール アクションが発生したときのタイムスタンプ。 |
+| プロパティ。説明 | 自動スケーリング エンジンの実行内容の詳細な説明。 |
+| プロパティ。ResourceName | 影響を受けるリソースのリソース ID (リソースのスケール操作が実行されている) |
+| プロパティ。OldInstancesCount | 自動スケール操作の前にインスタンスの数は、有効になりました。 |
+| プロパティ。NewInstancesCount | 自動スケール操作の実行後のインスタンスの数は、有効になりました。 |
+| プロパティ。LastScaleActionTime | 自動スケール アクションが発生したときのタイムスタンプ。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
-| subStatus | 自動スケールの場合、通常は null です。 |
+| subStatus | 通常自動スケールの場合は null です。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
@@ -415,4 +414,3 @@ Properties.communicationId | このイベントが関連付けられている通
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](monitoring-overview-activity-logs.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d5e9a300dcea137bf0d3db2da2dfb5c2e6a152af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 92753860ec820172e46f483831eb0c1cf1acb038
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
 Visual Studio で Web アプリケーションを作成するときに、Azure への Web サイトの発行を自動化するための Windows PowerShell スクリプトを生成できます。後でこのスクリプトを使用して、Web サイトを Azure App Service の Web アプリとして、または仮想マシンとして Azure に発行できます。 Windows PowerShell スクリプトは、要件に合わせて Visual Studio エディターで編集および拡張できます。また、既存のビルド スクリプト、テスト スクリプト、発行スクリプトと統合することもできます。
@@ -38,7 +37,7 @@ Web プロジェクトのスクリプトの生成に Azure SDK は不要です�
 Azure 開発のために、Visual Studio で PowerShell を使用するための他のツールとリソースが用意されています。 「 [PowerShell Tools for Visual Studio 2015](http://go.microsoft.com/fwlink/?LinkId=404012)」をご覧ください。
 
 ## <a name="generating-the-publish-scripts"></a>発行スクリプトの生成
-[こちらの手順](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。 [Azure App Service の Web アプリの発行スクリプトを生成](app-service-web/app-service-web-get-started-dotnet.md)することもできます。
+[こちらの手順](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。 [Azure App Service の Web アプリの発行スクリプトを生成](app-service/app-service-web-get-started-dotnet.md)することもできます。
 
 ## <a name="scripts-that-visual-studio-generates"></a>Visual Studio によって生成されるスクリプト
 Visual Studio では、**PublishScripts** というソリューション レベルのフォルダーが生成されます。このフォルダーには、仮想マシンまたは Web サイトの発行スクリプトと、スクリプトで使用できる関数が含まれたモジュールの 2 つの Windows PowerShell ファイルが含まれます。 また、Visual Studio では、デプロイするプロジェクトの詳細を指定した JSON 形式のファイルも生成されます。
@@ -141,7 +140,7 @@ JSON ファイルは **[構成]** フォルダーに作成されます。この�
 
 JSON 構成を編集して、発行スクリプトの実行時の動作を変更できます。 `cloudService` セクションと `virtualMachine` セクションは必須ですが、`databases` セクションは不要であれば削除できます。 Visual Studio によって生成される既定の構成ファイルに含まれる空のプロパティは省略可能です。既定の構成ファイルで値が指定されているプロパティは必須です。
 
-Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。 たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。 これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。 存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)でスロットを作成してから、変更した Web サイト名でスクリプトを実行します。 Web アプリのデプロイメント スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](app-service-web/web-sites-staged-publishing.md)」をご覧ください。
+Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。 たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。 これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。 存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)でスロットを作成してから、変更した Web サイト名でスクリプトを実行します。 Web アプリのデプロイメント スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](app-service/web-sites-staged-publishing.md)」をご覧ください。
 
 ## <a name="how-to-run-the-publish-scripts"></a>発行スクリプトの実行方法
 これまでに Windows PowerShell スクリプトを一度も実行したことがない場合は、まず実行ポリシーを設定して、スクリプトを実行できるようにする必要があります。 これは、Windows PowerShell スクリプトが、スクリプトを実行するマルウェアやウイルスに対して脆弱である場合に、それらのスクリプトをユーザーが実行できないようにするためのセキュリティ機能です。
@@ -344,4 +343,3 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 ## <a name="next-steps"></a>次のステップ
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
-

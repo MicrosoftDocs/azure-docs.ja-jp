@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a7ab18ea9e7302f6cd2a89e7c2cce7f5a46c66a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-networking"></a>Azure のネットワーク
 
 Azure には、単独でまたは組み合わせて使用できるさまざまなネットワーク機能が用意されています。 主な機能については、次のリンクをクリックしてください。
@@ -112,7 +110,7 @@ Azure Application Gateway サービスは、アプリケーション配信コン
 
 **ネットワークの負荷分散**
 
-Azure Load Balancer には、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待ち時間のレイヤー 4 負荷分散機能が備わっています。 受信接続と送信接続を管理します。 負荷分散されるパブリックなエンドポイントと内部的なエンドポイントを構成できるほか、 TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義することができます。 ロード バランサーの詳細については、[ロード バランサーの概要](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+Azure Load Balancer には、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待ち時間のレイヤー 4 負荷分散機能が備わっています。 受信接続と送信接続を管理します。 パブリックおよび内部負荷分散エンドポイントを構成することができます。 TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義することができます。 ロード バランサーの詳細については、[ロード バランサーの概要](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 次の図は、インターネットに接続する多層アプリケーションを示しています。外部ロード バランサーと内部ロード バランサーが利用されています。
 
@@ -164,4 +162,3 @@ Azure ネットワーク サービスには、料金がかかるものと無料�
 - 「[最初の仮想ネットワークの作成](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、コンピューターを VNet に接続します。
 - [インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、インターネット トラフィックをパブリック サーバーに負荷分散します。
-

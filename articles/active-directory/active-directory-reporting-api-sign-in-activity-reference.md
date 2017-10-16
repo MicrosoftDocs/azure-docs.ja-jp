@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: d83f1a899ba38dab2c1c1661adede87db6f88c20
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory サインイン アクティビティ レポート API リファレンス
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
@@ -190,5 +189,4 @@ loginStatus には 2 つのオプション (0 - 成功、1 - 失敗) があり�
 ## <a name="next-steps"></a>次のステップ
 * フィルター処理されたサインイン アクティビティの例を参照しますか。 「 [Azure Active Directory サインイン アクティビティ レポート API のサンプル](active-directory-reporting-api-sign-in-activity-samples.md)」を確認してください。
 * Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
-
 

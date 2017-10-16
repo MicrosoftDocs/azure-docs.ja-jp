@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: trinadhk; jimpark;
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: fc52c909df5e91741ec1fa21fb911487be039fdc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-virtual-machines-in-azure"></a>Azure での仮想マシンの復元
 > [!div class="op_single_selector"]
-> * [Azure Portal での VM の復元](backup-azure-arm-restore-vms.md)
+> * [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
 > * [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
 >
 >
@@ -98,7 +97,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure Portal で仮想マシンの [エンドポイントを変更する](../virtual-machines/windows/classic/setup-endpoints.md) 必要がある場合があります。
+仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの [エンドポイントを変更する](../virtual-machines/windows/classic/setup-endpoints.md) 必要がある場合があります。
 
 ## <a name="post-restore-steps"></a>復元後の手順
 Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
@@ -115,7 +114,7 @@ VM が稼働しているプライマリ データ センターが被災した場
 Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 Active Directory 復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 背景情報について詳しくは、「[Backup and Restore considerations for virtualized Domain Controllers (仮想化されたドメイン コントローラーのバックアップと復元についての考慮事項)](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)」と「[Planning for Active Directory Forest Recovery (Active Directory Forest Recovery の計画)](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)」をご覧ください。
 
 ### <a name="single-dc-in-a-single-domain"></a>1 つのドメインに 1 つの DC がある
-VM は、(他の VM と同様に) Azure Portal から復元するか、または PowerShell を使用して復元することができます。
+VM は、(他の VM と同様に) Azure ポータルから復元するか、または PowerShell を使用して復元することができます。
 
 ### <a name="multiple-dcs-in-a-single-domain"></a>1 つのドメインに複数の DC がある
 同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ドメインの最後の DC の場合や、分離ネットワークの回復を実行した場合は、フォレスト回復の手順に従う必要があります。
@@ -167,4 +166,3 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 ## <a name="next-steps"></a>次のステップ
 * [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 * [仮想マシンの管理](backup-azure-manage-vms.md)
-

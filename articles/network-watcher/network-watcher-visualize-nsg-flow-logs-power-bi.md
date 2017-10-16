@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7cac733717b4af048e58cf3d574c5743889100c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: f32c8cd6e32e99bc34d62435bcd1883ba957e716
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
 
 ネットワーク セキュリティ グループのイングレス IP トラフィックとエグレス IP トラフィックの情報は、ネットワーク セキュリティ グループのフロー ログで確認できます。 これらのフロー ログには、規則ごとの送信フローと受信フロー、フローの適用先の NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル) のほか、トラフィックが許可されたか拒否されたかどうかの情報が記録されます。
@@ -136,4 +134,3 @@ Elastick Stack で NSG フロー ログを視覚化する方法については�
 [11]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure11.png
 [12]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure12.png
 [13]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure13.png
-

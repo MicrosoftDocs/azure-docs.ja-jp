@@ -1,9 +1,9 @@
 ---
-title: "Java での Azure File Storage 用の開発 | Microsoft Docs"
-description: "Azure File Storage を使用してファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。"
+title: "Java での Azure Files 用の開発 | Microsoft Docs"
+description: "Azure Files を使ってファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。"
 services: storage
 documentationcenter: java
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
@@ -12,23 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/27/2017
-ms.author: robinsh
+ms.date: 09/19/2017
+ms.author: renash
+ms.openlocfilehash: 8cd3698d4281b933881c45dfa5e7868bd7b0bdaf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ce38944b9d5e663505c5808864ba61a5e2284f3b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="develop-for-azure-file-storage-with-java"></a>Java での Azure File Storage 用の開発
+# <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、ファイル データの格納に Azure File Storage を使用するアプリケーションまたはサービスを開発するための Java の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、Java と Azure File Storage による次のような基本的な操作の実行方法を示します。
+このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための Java の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、Java と Azure Files による次のような基本的な操作の実行方法を示します。
 
 * Azure ファイル共有を作成および削除する
 * ディレクトリを作成および削除する
@@ -36,12 +34,12 @@ ms.lasthandoff: 08/22/2017
 * ファイルのアップロード、ダウンロード、および削除
 
 > [!Note]  
-> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Java SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java][] が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Azure File Storage を使用するようにアプリケーションを設定する
+## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
 Azure ストレージ API を使用するには、ストレージ サービスのアクセス元にする Java ファイルの一番上に次の文を追加します。
 
 ```java
@@ -50,8 +48,8 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Azure のストレージ接続文字列の設定
-Azure File Storage を使用するには、Azure ストレージ アカウントに接続する必要があります。 最初の手順はストレージ アカウントに接続するために使用する接続文字列を構成することです。 そのために静的変数を定義しましょう。
+## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
+Azure Files を使うには、Azure ストレージ アカウントに接続する必要があります。 最初の手順は、ストレージ アカウントに接続するために使用する接続文字列を構成することです。 そのために静的変数を定義しましょう。
 
 ```java
 // Configure the connection-string with your values
@@ -81,14 +79,14 @@ try {
 **CloudStorageAccount.parse** は InvalidKeyException を投げます。そのため、try/catch ブロック内にそれを配置する必要があります。
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
-Azure File Storage のすべてのファイルとディレクトリは **Share** という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、Azure File Storage クライアントを使用する必要があります。
+Azure Files のすべてのファイルとディレクトリは **Share** という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツにアクセスするには、Azure Files クライアントを使う必要があります。
 
 ```java
-// Create the Azure File storage client.
+// Create the Azure Files client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Azure File Storage クライアントを使用し、共有への参照を取得できます。
+Azure Files クライアントを使用すると、共有への参照を取得できます。
 
 ```java
 // Get a reference to the file share
@@ -129,7 +127,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure File Storage では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure Files では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -194,7 +192,7 @@ CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
 ## <a name="download-a-file"></a>ファイルをダウンロードする
-Azure File Storage に頻繁に実行する操作はファイルのダウンロードです。 次の例のコードは SampleFile.txt をダウンロードし、そのコンテンツを表示します。
+Azure Files に頻繁に実行する操作はファイルのダウンロードです。 次の例のコードは SampleFile.txt をダウンロードし、そのコンテンツを表示します。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -211,7 +209,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>ファイルを削除する
-もう 1 つの一般的な Azure File Storage 操作はファイル削除です。 次のコードは「 **sampledir**」という名前のディレクトリ内に保存されている「SampleFile.txt」という名前のファイルを削除します。
+Azure Files でのもう 1 つの一般的な操作はファイルの削除です。 次のコードは「 **sampledir**」という名前のディレクトリ内に保存されている「SampleFile.txt」という名前のファイルを削除します。
 
 ```java
 // Get a reference to the root directory for the share.
@@ -238,5 +236,5 @@ if ( file.deleteIfExists() ) {
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md* [Troubleshooting Azure File storage problems - Windows](storage-troubleshoot-windows-file-connection-problems.md)
-)
+* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md)
+* [Azure Files に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)

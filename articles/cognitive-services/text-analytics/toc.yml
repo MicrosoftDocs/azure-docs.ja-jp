@@ -1,0 +1,60 @@
+- name: Text Analytics のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Text Analytics について
+      href: overview.md
+    - name: サポートされている言語
+      href: text-analytics-supported-languages.md
+- name: クイック スタート
+  items:
+    - name: 'C#'
+      href: Quickstarts/CSharp.md
+    - name: Java
+      href: Quickstarts/Java.md
+    - name: Node.js
+      href: Quickstarts/NodeJS.md
+    - name: Python
+      href: Quickstarts/Python.md
+    - name: Ruby
+      href: Quickstarts/Ruby.md
+    - name: PHP
+      href: Quickstarts/PHP.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: Text Analytics と Power BI
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Text Analytics と Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+- name: ハウツー ガイド
+  items:
+    - name: サインアップ
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: アクセス キーを取得する
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: Text Analytics API を呼び出す
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: 言語を検出する
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: センチメントを分析する
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: キー フレーズを抽出する
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+- name: リファレンス
+  items:
+    - name: API リファレンス
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
+    - name: .NET Standard SDK
+      href: 'https://aka.ms/tasdkdotnet'
+- name: リソース
+  items:
+    - name: 外部とコミュニティのコンテンツ
+      href: text-analytics-resource-external-community.md
+    - name: FAQ
+      href: text-analytics-resource-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: ユーザーの声
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

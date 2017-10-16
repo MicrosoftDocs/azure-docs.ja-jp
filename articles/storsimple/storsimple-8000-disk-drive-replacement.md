@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 073/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 146c9f5c751443608f8f405be949398f9f721053
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: a8616eb51b177a9447a7c466c9d934b9139afedf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのディスク ドライブを交換する
 
@@ -103,13 +102,12 @@ StorSimple デバイスから障害が発生したドライブを取り外した
     **図 6** ドライブ キャリアをシャーシ内にスライドさせる
 3. ドライブ キャリアを挿入した状態で、ドライブ キャリア ハンドルを閉じます。カチッという音がしてロック位置で止まるまで、ドライブ キャリア ハンドルをシャーシ側に押し続けます。
 4. Microsoft によって提供されたロック キー(改ざん防止加工された Torx ドライバー) を使用して、ロック スクリューを時計方向に 45 度回転させてキャリア ハンドルを固定します。
-5. 正しく交換されたこと、またドライブが正常に動作していることを確かめます。 Azure Portal にアクセスし、**[設定]** > **[ハードウェアの正常性]** に移動します。 **[共有コンポーネント]** または **[EBOD 共有コンポーネント]** に、ドライブの状態が、正常な状態であることを示す緑色で表示されます。
-<!---Loc Comment: It seems it should say "Device settings > Hardware health" instead of "Settings > Hardware health"---->
+5. 正しく交換されたこと、またドライブが正常に動作していることを確かめます。 Azure Portal にアクセスし、**[デバイスの設定]** > **[ハードウェアの正常性]** に移動します。 **[共有コンポーネント]** または **[EBOD 共有コンポーネント]** に、ドライブの状態が、正常な状態であることを示す緑色で表示されます。
+
    
    > [!NOTE]
    > 交換後にディスクの状態が緑色に変化するまで、数時間かかる場合があります。
   
 ## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
-
 

@@ -15,15 +15,12 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: barclayn
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: c6aea0b7280ad8f1365c04203c78a1499ba0aa58
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
-
+ms.openlocfilehash: 62d8f80fa1bec3a1b75e316f0b0ee7be8cbefbff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management サブスクリプションの要件
 
 Azure AD Privileged Identity Management は、Azure AD の Premium P2 エディションに付属しています。 Premium P2 のその他の機能と Premium P1 との違いの詳細については、「[Azure Active Directory のエディション](../active-directory-editions.md)」を参照してください。
@@ -64,4 +61,3 @@ Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリ�
 
 - [Azure AD Privileged Identity Management の使用](../active-directory-privileged-identity-management-getting-started.md)
 - [Azure AD Privileged Identity Management におけるロール](../active-directory-privileged-identity-management-roles.md)
-

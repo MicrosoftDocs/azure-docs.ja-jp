@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/29/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3f46d743b85b1133f64309f01074cbc3b430183f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -313,6 +312,8 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 完全な URL は Azure Portal の [Cluster Essentials] ウィンドウにもあります。
 
+ブラウザーを使用して Windows または OS X のセキュリティで保護されたクラスターに接続する場合、クライアント証明書をインポートすると、ブラウザーによって、クラスターへの接続に使用する証明書を要求されます。  Linux マシンでは、高度なブラウザーの設定 (ブラウザーによってしくみが異なる) を使用して証明書をインポートし、ディスク上の証明書の場所をポイントする必要があります。
+
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>セキュリティで保護されたクラスターに Azure Active Directory を使用して接続する
 
 AAD でセキュリティ保護されているクラスターに接続するには、ブラウザーを次の場所にポイントします。
@@ -356,4 +357,3 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 * [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 * [アプリケーションのセキュリティと RunAs](service-fabric-application-runas-security.md)
 * [Service Fabric CLI の概要](service-fabric-cli.md)
-

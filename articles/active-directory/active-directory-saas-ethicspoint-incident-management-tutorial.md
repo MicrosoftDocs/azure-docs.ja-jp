@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: b5ac3afd973b5765ba151e766754934b49ac0e0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合
 
@@ -168,7 +166,7 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>EthicsPoint Incident Management (EPIM) のテスト ユーザーの作成
 
@@ -227,5 +225,4 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
 [201]: ./media/active-directory-saas-ethicspoint-incident-management-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-ethicspoint-incident-management-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-ethicspoint-incident-management-tutorial/tutorial_general_203.png
-
 

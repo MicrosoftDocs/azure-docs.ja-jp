@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: alkohli;
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -65,7 +64,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
     1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
     2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
-    3. ページの下部にある **[Create]**」を参照してください。
+    3. **Create** をクリックしてください。
    
         ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -117,4 +116,3 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-troubleshoot-deployment.md)する方法を確認します
-

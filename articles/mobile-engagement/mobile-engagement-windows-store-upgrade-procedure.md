@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c7b3441892484cf54e2055e9153858171d738e85
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: fe85a99a92fb39082cafe7422b356de1f20f14bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Windows ユニバーサル アプリ SDK のアップグレード手順
 既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
@@ -309,5 +308,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 * GetCapptainPageName は GetEngagementPageName という名前になりました
 
 名前の変更はオーバーライドされたメソッドにも影響することにご注意ください。
-
 

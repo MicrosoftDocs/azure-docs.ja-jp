@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 54346a8e6f42fc81cd727db03c02f0e935db07d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 65509a65c2b34553822cc02d7a7fa5a614adc57f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのユーザー クエリの監視
 SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項、ベスト プラクティス、およびタスクの概要。
@@ -45,4 +43,3 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 
 
 <!--Other Web references-->
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: markgal,masaran
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに回復する
 
 Azure Backup Server は、システム状態をバックアップし、ベア メタル回復 (BMR) 保護を提供します。
@@ -227,5 +225,4 @@ Windows Server バックアップを実行します。
     バージョン識別子を使用してシステム状態の復元を開始します。 コマンド プロンプトに ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>``` と入力します。
 
     回復を開始することを確認します。 コマンド プロンプト ウィンドウでプロセスを表示できます。 復元ログが作成されます。 復元後、サーバーを再起動します。
-
 

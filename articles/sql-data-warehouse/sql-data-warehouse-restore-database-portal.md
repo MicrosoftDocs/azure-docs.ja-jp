@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
-ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/21/2016
-
-
+ms.openlocfilehash: f6bc8671410dc7015a8d2a4bea1ba11f9ae526c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Azure SQL Data Warehouse の復元 (Portal)
 > [!div class="op_single_selector"]
@@ -114,4 +112,3 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 
 <!--Other Web references-->
 [Azure portal]: https://portal.azure.com/
-

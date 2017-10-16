@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1c72b0ddee636090129dab7a5c7ec6ffd452434a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル: Azure Active Directory と QuickHelp の統合
 
@@ -188,7 +186,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-quickhelp-test-user"></a>QuickHelp テスト ユーザーの作成
 
@@ -259,4 +257,3 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [21]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_05.png
 [22]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_06.png
 [23]: ./media/active-directory-saas-quickhelp-tutorial/tutorial_quickhelp_07.png
-

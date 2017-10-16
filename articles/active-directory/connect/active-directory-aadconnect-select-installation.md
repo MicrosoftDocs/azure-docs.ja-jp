@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 81549c4bc0cabcf46bc7dc66d7e6662d7f787b1e
-ms.openlocfilehash: df6353f84f898a1722e3e985244a90dbd6b22522
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/26/2017
-
+ms.openlocfilehash: a5697686bd1f41d581554b27ce78897963e38c74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
 Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
@@ -74,4 +73,3 @@ Azure AD コネクタで Forefront Identity Manager 2010 または Microsoft Ide
 
 ## <a name="next-steps"></a>次のステップ
 使用するオプションに応じて、左側の目次を使用して、詳細な手順が示されている記事を見つけてください。
-

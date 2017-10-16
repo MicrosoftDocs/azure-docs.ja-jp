@@ -3,7 +3,7 @@ title: "Node.js から Blob Storage を使用する方法 | Microsoft Docs"
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: nodejs
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 8b0df222-1ca8-4967-8248-6d6d720947b8
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: e52f38d5fb3c100e4275032f9a2a1234961c672b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e83ad647f6b7c70f34ef0c69b5bf322da5b6d60d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>Node.js から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -64,8 +63,6 @@ var azure = require('azure-storage');
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure Storage の接続文字列の設定
 Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。 これらの環境変数が設定されていない場合は、 **createBlobService**を呼び出すときにアカウント情報を指定する必要があります。
-
-Azure Web アプリの [Azure Portal](https://portal.azure.com) で環境変数を設定する例については、「[Azure Table service を使用する Node.js Web アプリ](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)」をご覧ください。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。 次のコードでは、 **BlobService** オブジェクトを作成します。 **server.js**ファイルの先頭付近に次の内容を追加します。
@@ -415,15 +412,17 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 ## <a name="next-steps"></a>次のステップ
 詳細については、次のリソースを参照してください。
 
-* [Azure Storage SDK for Node の API リファレンス][Azure Storage SDK for Node の API リファレンス]
-* [Azure Storage チームのブログ][Azure Storage チームのブログ]
-* GitHub の [Azure Storage SDK for Node リポジトリ][Azure Storage SDK for Node]。
-* [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)
-* [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Storage SDK for Node の API リファレンス][Azure Storage SDK for Node の API リファレンス]  
+* [Azure Storage チームのブログ][Azure Storage チームのブログ]  
+* GitHub の [Azure Storage SDK for Node リポジトリ][Azure Storage SDK for Node]。  
+* [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)  
+* [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)  
 
-[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
+[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node  
 
-[Azure Table service を使用する Node.js Web アプリ](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)    
-[Web Matrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: https://www.microsoft.com/web/webmatrix/  
-[REST API の使用]: http://msdn.microsoft.com/library/azure/hh264518.aspx [Azure Portal]: https://portal.azure.com [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/ [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
-
+[Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/  
+[Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx  
+[Azure portal]: https://portal.azure.com  
+[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)  
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/  
+[Azure Storage SDK for Node API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html  

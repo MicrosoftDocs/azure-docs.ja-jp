@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 48531d69fcefed27785e0e1ae667274fa48ea1d2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/24/2017
-
+ms.openlocfilehash: a33fb729cff5007e40820af696cfec823a3ecfde
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -69,4 +68,3 @@ Azure AD にエクスポートするようにステージングされた削除�
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
+ms.openlocfilehash: 7766cdb8576e12bd011dc7e01cf3311720eb4162
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: ff90aee308a993ae0d36288191d1496affacce2a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの作成
 
 このサンプルでは、DCOS を実行する Azure Container Service クラスターが作成されます。
@@ -58,8 +56,8 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#create) | ACS クラスターが作成されます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | ACS クラスターが作成されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

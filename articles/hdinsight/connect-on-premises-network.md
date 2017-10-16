@@ -11,16 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 09/21/2017
 ms.author: larryfr
+ms.openlocfilehash: 27a5d0e69ec9c47feab2b23d7c79fe2547edfc08
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 6fc863010cc59e20e7d86ea9344489e574be75f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
 Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプレミス ネットワークに接続する方法について説明します。 このドキュメントでは、次の計画情報を提供します。
@@ -34,9 +32,6 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 * 仮想ネットワーク上の HDInsight によって提供されるポート。
 
 ## <a name="create-the-virtual-network-configuration"></a>仮想ネットワーク構成を作成する
-
-> [!IMPORTANT]
-> Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
 
 次のドキュメントを使用して、オンプレミス ネットワークに接続されている Azure Virtual Network を作成する方法を学習してください。
     
@@ -74,7 +69,10 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 [Bind](https://www.isc.org/downloads/bind/) DNS ソフトウェアを使用する Linux VM を作成するには、次の手順に従います。
 
 > [!NOTE]
-> 次の手順では [Azure Portal](https://portal.azure.com) を使用して Azure Virtual Machine を作成します。 他の方法で仮想マシンを作成する場合は、[VM の作成 - Azure CLI](../virtual-machines/linux/quick-create-cli.md) および [VM の作成 - Azure PowerShell](../virtual-machines/linux/quick-create-portal.md) に関するドキュメントをご覧ください。
+> 次の手順では [Azure Portal](https://portal.azure.com) を使用して Azure Virtual Machine を作成します。 仮想マシンを作成する他の方法については、次のドキュメントを参照してください。
+>
+> * [VM の作成 - Azure CLI](../virtual-machines/linux/quick-create-cli.md)
+> * [VM の作成 - Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
 1. [Azure Portal](https://portal.azure.com) で、__+__、__[コンピューティング]__、__[Ubuntu Server 16.04 LTS]__ の順に選択します。
 
@@ -299,7 +297,9 @@ Azure PowerShell または Azure CLI を使用して NSG を作成する例に�
 
 ## <a name="connecting-to-hdinsight"></a>HDInsight に接続する
 
-HDInsight のほとんどのドキュメントは、インターネット経由でクラスターにアクセスできることを前提にしています。 たとえば、https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できるとします。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスを制限している場合は、このゲートウェイを使用することができません。
+HDInsight のほとんどのドキュメントは、インターネット経由でクラスターにアクセスできることを前提にしています。 たとえば、https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できるとします。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+
+一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスは、クラスター内のノードからのみ使用可能であり、仮想ネットワーク経由で接続しているクライアントでは使用できません。
 
 仮想ネットワーク経由で HDInsight に直接接続するには、次の手順を使用します。
 
@@ -341,4 +341,3 @@ HDInsight のほとんどのドキュメントは、インターネット経由�
 * ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
 
 * ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」に関するページをご覧ください。
-

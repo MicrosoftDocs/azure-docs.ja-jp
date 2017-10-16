@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f1fe97c6b3e2d28b7e17d035bc7e3ecced8a0d0f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 912367636f1b26b3b07fbd5fe3fe8ed053218fd5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin.Forms アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -50,7 +49,7 @@ iOS については、[Apple Developer Program メンバーシップ](https://de
 ### <a name="add-push-notifications-to-the-android-project"></a>Android プロジェクトにプッシュ通知を追加する
 FCM を使用してバックエンドを構成すると、コンポーネントとコードをクライアントに追加して FCM に登録できます。 Mobile Apps バックエンドを通じて Azure Notification Hubs によるプッシュ通知に登録し、通知を受信することもできます。
 
-1. **Droid** プロジェクトで **Components** フォルダーを右クリックし、**[コンポーネントをさらに取得する...]** をクリックします。 "**Google Cloud Messaging Client**" というコンポーネントを検索し、それをプロジェクトに追加します。 このコンポーネントは、Xamarin Android プロジェクトのプッシュ通知をサポートします。
+1. **Droid** プロジェクトで **Components** フォルダーを右クリックし、**[コンポーネントをさらに取得する...]** をクリックします。"**Google Cloud Messaging Client**" というコンポーネントを検索し、それをプロジェクトに追加します。 このコンポーネントは、Xamarin Android プロジェクトのプッシュ通知をサポートします。
 2. MainActivity.cs プロジェクト ファイルを開き、次のステートメントをファイルの先頭に追加します。
 
         using Gcm.Client;
@@ -435,4 +434,3 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
 ms.openlocfilehash: beafd2c65b0506844ff9ea152037ed6f2866e650
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する
 
 このチュートリアルでは、HDInsight Spark クラスターで利用できる Jupyter Notebook を使用して、Data Lake Store アカウントからデータを読み取るジョブを実行します。
@@ -68,7 +66,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Data Lake Store を使用する HDInsight Spark クラスターを使用する
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -143,4 +141,3 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 * [スタンドアロン Scala アプリケーションを作成して、Apache Spark クラスターで実行する](hdinsight-apache-spark-create-standalone-application.md)
 * [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
-

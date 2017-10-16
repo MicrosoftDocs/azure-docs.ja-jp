@@ -1,6 +1,6 @@
 ---
-title: Make virtual machines available to your Azure Stack users| Microsoft Docs
-description: Tutorial to make virtual machines available on Azure Stack
+title: "Azure Stack ユーザーが仮想マシンを使用できるようにする | Microsoft Docs"
+description: "Azure Stack ユーザーが仮想マシンを使用できるようにするためのチュートリアル"
 services: azure-stack
 documentationcenter: 
 author: vhorne
@@ -11,145 +11,151 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 7/10/2017
+ms.topic: tutorial
+ms.date: 9/25/2017
 ms.author: victorh
 ms.custom: mvc
+ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c84347edbd6b8d48f7e1a5ff73ff823a554f3f90
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Make virtual machines available to your Azure Stack users
-As an Azure Stack cloud administrator, you can create offers that your users (sometimes referred to as tenants) can subscribe to. Using their subscription, users can then consume Azure Stack services.
+# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Azure Stack ユーザーが仮想マシンを使用できるようにする
 
-This article shows you how to create an offer, and then test it. For the test, you will log in to the portal as a user, subscribe to the offer, and then create a virtual machine using the subscription.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-What you will learn:
+Azure Stack のクラウド管理者は、ユーザー (テナントとも呼ばれます) がサブスクライブできるオファーを作成できます。 ユーザーはサブスクリプションを使用して Azure Stack サービスを利用できます。
+
+この記事では、オファーを作成し、それをテストする方法について説明します。 テストの場合は、ユーザーとしてポータルにログインし、オファーにサブスクライブしてから、そのサブスクリプションを使用して仮想マシンを作成します。
+
+学習内容
 
 > [!div class="checklist"]
-> * Create an offer
-> * Add an image
-> * Test the offer
+> * オファーの作成
+> * イメージの追加
+> * オファーのテスト
 
 
-In Azure Stack, services are delivered to users using subscriptions, offers, and plans. Users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services.
+Azure Stack では、サブスクリプション、オファー、プランを使用してサービスがユーザーに配信されます。 ユーザーは複数のオファーにサブスクライブできます。 オファーは 1 つまたは複数のプランを含むことができ、プランは 1 つまたは複数のサービスを含むことができます。
 
-![Subscritions, offers, and plans](media/azure-stack-key-features/image4.png)
+![サブスクリプション、オファー、およびプラン](media/azure-stack-key-features/image4.png)
 
-To learn more, see [Key features and concepts in Azure Stack](azure-stack-key-features.md).
+詳細については、「[Azure Stack の主要な機能と概念](azure-stack-key-features.md)」を参照してください。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>オファーの作成
 
-Now you can get things ready for your users. When you start the process, you are first prompted to create the offer, then a plan, and finally quotas.
+これでユーザーのための準備を始められます。 プロセスを開始すると、最初にオファーを、次にプランを、最後にクォータを作成するように指示されます。
 
-3. **Create an offer**
+3. **オファーの作成**
 
-   Offers are groups of one or more plans that providers present to users to purchase or subscribe to.
+   オファーは、プロバイダーがユーザーに提示する 1 つまたは複数のプランのグループで、ユーザーはそれを購入またはサブスクライブします。
 
-   a. [Sign in](azure-stack-connect-azure-stack.md) to the portal as a cloud administrator and then click **New** > **Tenant Offers + Plans** > **Offer**.
-   ![New offer](media/azure-stack-tutorial-tenant-vm/image01.png)
+   a. ポータルにクラウドの管理者として[サインイン](azure-stack-connect-azure-stack.md)してから、**[新規]**  >  **[テナントのプラン]**  >  **[オファー]** とクリックします。
+   ![新しいプラン](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-   b. In the **New Offer** blade, fill in **Display Name** and **Resource Name**, and then select a new or existing **Resource Group**. The Display Name is the offer's friendly name. Only the cloud operator can see the Resource Name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
+   b. **[新しいプラン]** セクションの **[表示名]** と **[リソース名]** に入力し、新規または既存の **[リソース グループ]** を選択します。 表示名は、オファーのフレンドリ名です。 リソース名は、クラウド オペレーターのみが表示できます。 この名前を使用して、管理者はオファーを Azure リソース マネージャーのリソースとして操作します。
 
-   ![Display name](media/azure-stack-tutorial-tenant-vm/image02.png)
+   ![表示名](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-   c. Click **Base plans**, and in the **Plan** blade, click **Add** to add a new plan to the offer.
+   c. **[基本プラン]** をクリックし、**[プラン]** セクションで **[追加]** をクリックして新しいプランをオファーに追加します。
 
-   ![Add a plan](media/azure-stack-tutorial-tenant-vm/image03.png)
+   ![プランの追加](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-   d. In the **New Plan** blade, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that users see. Only the cloud operator can see the Resource Name. It's the name that cloud operators use to work with the plan as an Azure Resource Manager resource.
+   d. **[新しいプラン]** セクションで **[表示名]** と **[リソース名]** を入力します。 表示名は、ユーザーに表示されるプランのフレンドリ名です。 リソース名は、クラウド オペレーターのみが表示できます。 クラウド オペレーターはこの名前を使用して、プランを Azure Resource Manager のリソースとして操作します。
 
-   ![Plan display name](media/azure-stack-tutorial-tenant-vm/image04.png)
+   ![プランの表示名](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-   e. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
+   e. **[サービス]** をクリックし、**[Microsoft.Compute]**、**[Microsoft.Network]**、および **[Microsoft.Storage]** を選択し、**[選択]** をクリックします。
 
-   ![Plan services](media/azure-stack-tutorial-tenant-vm/image05.png)
+   ![プランのサービス](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-   f. Click **Quotas**, and then select the first service for which you want to create a quota. For an IaaS quota, follow these steps for the Compute, Network, and Storage services.
+   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[クォータ]** をクリックしてから、クォータを作成する最初のサービスを選択します。 IaaS クォータの場合は、以下に示す、コンピューティング サービス、ネットワーク サービス、およびストレージ サービスの手順に従います。
 
-   In this example, we first create a quota for the Compute service. In the namespace list, select the **Microsoft.Compute** namespace and then click **Create new quota**.
+   この例では、最初に、コンピューティング サービスのクォータを作成します。 名前空間の一覧で、**[Microsoft.Compute]** 名前空間を選択し、**[新しいクォータの作成]** をクリックします。
    
-   ![Create new quota](media/azure-stack-tutorial-tenant-vm/image06.png)
+   ![新しいクォータの作成](media/azure-stack-tutorial-tenant-vm/image06.png)
 
-   g. On the **Create quota** blade, type a name for the quota and set the desired parameters for the quota and click **OK** .
+   g. **[Create quota]** (クォータの作成) セクションで、クォータの名前を入力し、そのクォータに必要なパラメーターを設定して **[OK]** をクリックします。
 
-   ![Quota name](media/azure-stack-tutorial-tenant-vm/image07.png)
+   ![クォータ名](media/azure-stack-tutorial-tenant-vm/image07.png)
 
-   h. Now, for **Microsoft.Compute**, select the quota that you just created.
+   h. ここで、**Microsoft.Compute** のために、作成したクォータを選択します。
 
-   ![Select quota](media/azure-stack-tutorial-tenant-vm/image08.png)
+   ![クォータの選択](media/azure-stack-tutorial-tenant-vm/image08.png)
 
-   Repeat these steps for the Network and Storage services, and then click **OK** on the **Quotas** blade.
+   これらの手順をネットワーク サービスとストレージ サービスについて繰り返し、**[クォータ]** セクションの **[OK]** をクリックします。
 
-   i. Click **OK** on the **New plan** blade.
+   i. **[New plan]** (新しいプラン) セクションの **[OK]** をクリックします。
 
-   j. On the **Plan** blade, select the new plan and click **Select**.
+   j. **[プラン]** セクションで新しいプランを選択し、**[選択]** をクリックします。
 
-   k. On the **New offer** blade, click **Create**. You will see a notification when the offer has been created.
+   k. **[New offer]** (新しいオファー) セクションで **[作成]** をクリックします。 オファーが作成されると通知が表示されます。
 
-   l. On the dashboard menu, click **Offers** and then click the offer you just created.
+   l. ダッシュ ボード メニューの **[Offer]** (オファー) をクリックしてから、作成したオファーをクリックします。
 
-   m. Click **Change State**, and then click **Public**.
+   m. **[状態の変更]** をクリックし、**[パブリック]** をクリックします。
 
-   ![Public state](media/azure-stack-tutorial-tenant-vm/image09.png)
+   ![[パブリック] の状態](media/azure-stack-tutorial-tenant-vm/image09.png)
 
-## <a name="add-an-image"></a>Add an image
+## <a name="add-an-image"></a>イメージの追加
 
-Before you can provision virtual machines, you must add an image to the Azure Stack marketplace. This example shows you how to add a Windows Server 2016 image, but you can add the image of your choice, including Linux images.
+仮想マシンをプロビジョニングする前に、Azure Stack Marketplace にイメージを追加する必要があります。 Azure Marketplace の Linux イメージを含め、任意のイメージを追加できます。
 
-If you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure, then you can download the Windows Server 2016 VM image from the Azure Marketplace by using the steps described in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) topic.
+接続されるシナリオで運用していて、Azure に Azure Stack インスタンスを登録済みの場合は、「[Azure から Azure Stack に Marketplace の項目をダウンロードする](azure-stack-download-azure-marketplace-item.md)」というトピックに記載されている手順を使用して、Azure Marketplace から Windows Server 2016 の VM イメージをダウンロードできます。
 
-For information about adding different items to the marketplace , see [The Azure Stack Marketplace](azure-stack-marketplace.md).
+Marketplace にさまざまな項目を追加する方法については、「[Azure Stack Marketplace](azure-stack-marketplace.md)」を参照してください。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>オファーのテスト
 
-Now that you’ve created an offer, you can test it. Log in as a user and subscribe to the offer and then add a virtual machine.
+オファーを作成したので、そのテストを行うことができます。 ユーザーとしてログインしてオファーにサブスクライブし、仮想マシンを追加します。
 
-1. **Subscribe to an offer**
+1. **プランへのサブスクライブ**
 
-   Now you can log in to the portal as a user to subscribe to an offer.
+   これで、オファーにサブスクライブするユーザーとしてポータルにログインできます。
 
-   a. On the Azure Stack Deployment Kit computer, log in to `https://portal.local.azurestack.external` as a user and click **Get a Subscription**.
+   a. ユーザーとしてユーザー ポータルにログインし、**[サブスクリプションの取得]** をクリックします。
+   - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
+   - Azure Stack 開発キットを使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
 
-   ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![サブスクリプションの取得](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.
+   b. **[表示名]** フィールドにサブスクリプションの名前を入力し、**[Offer]** (オファー) をクリックして、**[Choose an offer]** (オファーの選択) セクションでいずれかのオファーをクリックしたら、**[作成]** をクリックします。
 
-   ![Create an offer](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![オファーの作成](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.  
+   c. 作成したサブスクリプションを表示するには、**[その他のサービス]**、**[サブスクリプション]** の順にクリックし、作成した新しいサブスクリプションをクリックします。  
 
-   After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
+   オファーをサブスクライブしたら、ポータルを更新して、どのサービスが新しいサブスクリプションの一部であるかを確認します。
 
-2. **Provision a virtual machine**
+2. **仮想マシンのプロビジョニング**
 
-   Now you can log in to the portal as a user to provision a virtual machine using the subscription. 
+   これで、ユーザーとしてポータルにログインし、サブスクリプションを使用して仮想マシンをプロビジョニングすることができます。 
 
-   a. On the Azure Stack Deployment Kit computer, log in to `https://portal.local.azurestack.external` as a user, and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval**.  
+   a. ユーザーとしてユーザー ポータルにログインし、**[新規]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter Eval]** をクリックします。
+      - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
+   - Azure Stack 開発キットを使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
 
-   b. In the **Basics** blade, type a **Name**, **User name**, and **Password**. For **VM disk type**, choose **HDD**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
+   b. **[基本]** セクションで、**[名前]**、**[ユーザー名]**、**[パスワード]** を入力します。 **[VM ディスクの種類]** には、**[HDD]** を選択します。 **[サブスクリプション]**を選択します。 **リソース グループ**を作成するか、既存のリソース グループを選択して、**[OK]** をクリックします。  
 
-   c. In the **Choose a size** blade, click **A1 Basic**, and then click **Select**.  
+   c. **[サイズの選択]** セクションで、**[A1 Basic]** (A1 基本) をクリックしてから **[選択]** をクリックします。  
 
-   d. In the **Settings** blade, click **Virtual network**. In the **Choose virtual network** blade, click **Create new**. In the **Create virtual network** blade, accept all the defaults, and click **OK**. In the **Settings** blade, click **OK**.
+   d. **[設定]** セクションで、**[仮想ネットワーク]** をクリックします。 **[仮想ネットワークの選択]** セクションで **[新規作成]** をクリックします。 **[Create virtual network]** (仮想ネットワークの作成) セクションで、すべての既定値をそのまま使用し、**[OK]** をクリックします。 **[設定]** セクションで **[OK]** をクリックします。
 
    ![Create virtual network](media/azure-stack-provision-vm/image04.png)
 
-   e. In the **Summary** blade, click **OK** to create the virtual machine.  
+   e. **[概要]** セクションで、**[OK]** をクリックして仮想マシンを作成します。  
 
-   f. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
+   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 新しい仮想マシンを表示するには、**[すべてのリソース]** をクリックして仮想マシンを検索し、仮想マシン名をクリックします。
 
-    ![All resources](media/azure-stack-provision-vm/image06.png)
+    ![すべてのリソース](media/azure-stack-provision-vm/image06.png)
 
-What you learned in this tutorial:
+このチュートリアルで学習した内容:
 
 > [!div class="checklist"]
-> * Create an offer
-> * Add an image
-> * Test the offer
+> * オファーの作成
+> * イメージの追加
+> * オファーのテスト
 
 > [!div class="nextstepaction"]
-> [Make web, mobile, and API apps available to your Azure Stack users](azure-stack-tutorial-app-service.md)
+> [Make web, mobile, and API apps available to your Azure Stack users (Azure Stack ユーザーが Web Apps、Mobile Apps、および API Apps を使用できるようにする)](azure-stack-tutorial-app-service.md)

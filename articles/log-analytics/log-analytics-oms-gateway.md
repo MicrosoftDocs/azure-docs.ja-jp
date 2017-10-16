@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: ce2f9311775389366c66323070254f721f0896ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/22/2017
-
+ms.openlocfilehash: a4d3a45d4bf83754fba363cdb3f3688d7218baa4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する
 
 このドキュメントでは、OMS で管理されており、かつ System Center Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに OMS サービスにデータを送信する方法を説明します。 OMS ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、OMS サービスに送ることができます。  
@@ -109,7 +107,7 @@ OMS ゲートウェイは、次の言語で利用できます。
    1. ゲートウェイに使う TCP ポートの番号を入力します。 セットアップにより、Windows ファイアウォールに対してこのポート番号を使った受信ルールが構成されます。  既定値は 8080 です。
       有効なポート番号の範囲は、1 ～ 65535 です。 この範囲の値を入力しないと、エラー メッセージが表示されます。
    2. ゲートウェイがインストールされているサーバーがプロキシを介して通信する必要がある場合は、ゲートウェイが接続する必要のあるプロキシのアドレスを入力します。 たとえば、「 `http://myorgname.corp.contoso.com:80`」のように入力します。  空欄にすると、ゲートウェイはインターネットに直接接続を試みます。  プロキシ サーバーで認証が必要な場合は、ユーザー名とパスワードを入力します。<br><br> ![ゲートウェイ ウィザードのプロキシの構成](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
-   3. **[次へ]**をクリックします。
+   3. **[次へ]** をクリックします。
 5. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、有効にするかどうかを選択できます。 選択を行い、**[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
 6. **[インストール先のフォルダー]** ページでは、既定のフォルダー C:\Program Files\OMS Gateway をそのまま使用するか、ゲートウェイをインストールする場所を入力して、**[次へ]** をクリックします。
 7. **[インストールの準備完了]** ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求されることがあります。 その場合は、**[はい]** をクリックします。
@@ -212,13 +210,13 @@ OMS に直接接続している Windows コンピューターに OMS エージ�
 
 更新の管理ソリューションを使う修正プログラムのためにコンピューターが Hybrid Runbook Worker として自動的に登録される場合は、次の手順に従います。
 
-1. OMS ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。 `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. OMS ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 2. 次の PowerShell コマンドレットを使って、OMS ゲートウェイ サービスを再起動します。`Restart-Service OMSGatewayService`
 
 コンピューターが Hybrid Runbook Worker 登録コマンドレットを使って Azure Automation にオンボードされている場合は、次の手順を使います。
 
 1. OMS ゲートウェイの許可ホスト一覧に、エージェント サービス登録 URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-2. OMS ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。 `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+2. OMS ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 3. OMS ゲートウェイ サービスを再起動します。
     `Restart-Service OMSGatewayService`
 
@@ -292,4 +290,3 @@ Azure Portal にサインインすると、OMS ゲートウェイまたは他の
 
 ## <a name="next-steps"></a>次のステップ
 * [データ ソースを追加](log-analytics-data-sources.md)し、OMS ワークスペース内の接続されたソースからデータを収集して OMS リポジトリに格納します。
-

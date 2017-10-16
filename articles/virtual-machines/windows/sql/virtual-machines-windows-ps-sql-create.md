@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/29/2017
 ms.author: jroth
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 4b8cc80f2d1ed6f09ec917118dc9495d20394b94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-resource-manager"></a>Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)
 > [!div class="op_single_selector"]
@@ -277,7 +276,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 
 これで仮想マシンが作成されました。 仮想マシンのディスク用に指定したストレージ アカウントが Premium Storage アカウントであるため、ブート診断用に Standard Storage アカウントが作成されることに注意してください。
 
-Azure ポータルでこのマシンを表示すると、 [対応するパブリック IP アドレスとその完全修飾ドメイン名](virtual-machines-windows-portal-sql-server-provision.md)を確認できます。
+Azure Portal でこのマシンを表示すると、[対応するパブリック IP アドレスとその完全修飾ドメイン名](virtual-machines-windows-portal-sql-server-provision.md)を確認できます。
 
 ## <a name="example-script"></a>サンプル スクリプト
 このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 Azure サブスクリプションについては、既に **Add-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドでセットアップ済みであることを想定しています。
@@ -343,4 +342,3 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 
 ## <a name="next-steps"></a>次のステップ
 仮想マシンを作成したら、RDP を使用してその仮想マシンに接続し、接続のセットアップを行うことができます。 詳細については、「 [Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-windows-sql-connect.md)」を参照してください。
-

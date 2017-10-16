@@ -29,7 +29,7 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 [IoT Hub は、MQTT、AMQP、HTTP などのプロトコルをサポートします][lnk-protocols]。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
-* AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、({policyName}@sas.root.{iothubName}。デバイス スコープのトークンの場合、{deviceId})。
+* AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、{policyName}@sas.root.{iothubName}。デバイス スコープのトークンの場合、{deviceId})。
 * MQTT: CONNECT パケットは、{ClientId}、**[ユーザー名]** フィールドの {IoThubhostname}/{deviceId}、および **[パスワード]** フィールドの SAS トークンとして {deviceId} を使用します。
 * HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
@@ -82,7 +82,7 @@ Azure IoT Hub とソリューションの一部として使用するその他の
 
 Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytics や Azure Blob Storage などのさまざまなサービスで使用できます。 これらのサービスでは、管理アクセスが可能になります。 これらのサービスと利用可能なオプションの詳細については、以下をご覧ください。
 
-* [Azure DocumentDB][lnk-docdb]: 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 DocumentDB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付け、および豊富な SQL クエリ インターフェイスが提供されます。
+* [Azure Cosmos DB][lnk-cosmosdb]: 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 * [Azure Stream Analytics][lnk-asa]: クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 * [Azure App Services][lnk-appservices]: データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 * [Logic Apps][lnk-logicapps]: Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
@@ -102,7 +102,7 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 [lnk-use-x509]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-tls12]: https://tools.ietf.org/html/rfc5246
 [lnk-service-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components
-[lnk-docdb]: https://azure.microsoft.com/services/documentdb/
+[lnk-cosmosdb]: https://azure.microsoft.com/services/cosmos-db/
 [lnk-asa]: https://azure.microsoft.com/services/stream-analytics/
 [lnk-appservices]: https://azure.microsoft.com/services/app-service/
 [lnk-logicapps]: https://azure.microsoft.com/services/app-service/logic/

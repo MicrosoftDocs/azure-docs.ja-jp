@@ -15,12 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
+ms.openlocfilehash: ea667a889bc6eaed08619ee5e141d8e3e9add7bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 5c4bcda308f001572e1c34e991616fc209250a02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL チュートリアル: DocumentDB API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -54,8 +53,11 @@ Azure Cosmos DB Java SDK 用 DocumentDB API の NoSQL チュートリアルへ�
 ## <a name="prerequisites"></a>前提条件
 次のものを用意してください。
 
-* アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 また、このチュートリアルには、[Azure Cosmos DB Emulator](local-emulator.md) を使用することもできます。
-* [Git](https://git-scm.com/downloads)
+* アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* [Git](https://git-scm.com/downloads)。
 * [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Maven](http://maven.apache.org/download.cgi)。
 
@@ -193,4 +195,3 @@ Azure Cosmos DB では、[replaceDocument](/java/api/com.microsoft.azure.documen
 * プログラミング モデルの詳細については、[Azure Cosmos DB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の開発に関するセクションを参照してください。
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
-

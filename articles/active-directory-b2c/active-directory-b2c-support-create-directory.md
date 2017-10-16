@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 81af4536fc223319369aff262d42149cfbf1a1e9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>Azure Active Directory または Azure Active Directory B2C テナントの作成に関するトラブルシューティング 
 
@@ -36,5 +34,4 @@ ms.lasthandoff: 06/28/2017
     "B2C テナント 'contosob2c' の作成を完了できませんでした。 ガイダンスについては、この[リンク](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409)を参照してください。"
 * 既存の Azure AD B2C テナントを削除し、同じドメイン名を使用して再作成したときに発生する既知の問題があります。 新しい Azure AD B2C テナントを作成する場合は、別のドメイン名を使用する必要があります。
 * これらの解決策で問題が解決しない場合は、Azure サポートに問い合わせてください。 詳細については、[Azure AD B2C のサポート要求の提出](active-directory-b2c-support.md)に関する記事を参照してください。
-
 

@@ -16,13 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 5b9b793d49217acd9f0c6c518596a7afb5600d69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに R をインストールして使用する
 
@@ -43,7 +41,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 R は Azure BLOB Storage (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。  
 
 ## <a name="install-r"></a>R のインストール
-HDInsight クラスターで R をインストールする [サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) は、Azure Storage の読み取り専用 BLOB から入手できます。 このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
+HDInsight クラスターで R をインストールする [サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) は、Azure Storage の読み取り専用 BLOB から入手できます。 このセクションでは、Azure Portal を使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
 > [!NOTE]
 > サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。 HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -115,4 +113,3 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
-

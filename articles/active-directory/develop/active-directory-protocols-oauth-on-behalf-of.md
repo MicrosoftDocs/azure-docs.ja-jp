@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # On-Behalf-Of フローでの委任ユーザー ID を使ったサービス間の呼び出し
 OAuth 2.0 の On-Behalf-Of フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユース ケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Azure Active Directory (Azure AD) からのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
@@ -114,7 +112,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | assertion |必須 | 要求で使用されるトークンの値。 |
 | client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリケーション ID。 Azure 管理ポータルでアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順にクリックします。 |
 | client_assertion_type |必須 |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
-| client_assertion |必須 | 作成する必要があるアサーション (JSON Web Token) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。  証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
+| client_assertion |必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。  証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
 | resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 アプリ ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]**、目的のディレクトリ、アプリケーション名、**[すべての設定]**、**[プロパティ]** の順にクリックします。 |
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | scope |必須 | トークン要求のスコープのスペース区切りリスト。 OpenID Connect の場合、スコープの **openid** を指定する必要があります。|
@@ -202,4 +200,3 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 OAuth 2.0 プロトコルと、クライアント資格情報を使用したサービス間認証を実行する別の方法について詳しく学びます。
 * [OAuth 2.0 クライアント資格情報付与を使用した Azure AD のサービス間の認証](active-directory-protocols-oauth-service-to-service.md)
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md)
-

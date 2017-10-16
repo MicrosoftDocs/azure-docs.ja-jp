@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM での Oracle Golden Gate の実装 | Microsoft Docs"
-description: "Oracle Golden Gate をすばやく取得し、Azure 環境で実行します。"
+description: "Oracle Golden Gate をすばやく起動し、Azure 環境で実行します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
@@ -15,19 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して Azure Marketplace ギャラリー イメージから Oracle 12c データベースをデプロイする方法について説明します。 
 
-このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、段階を追って説明します。
+このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、順を追って説明します。
 
 開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
 
@@ -97,7 +95,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 (`publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。)
+VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 (メモ、`publicIpAddress`です。 このアドレスは使用、VM にアクセスします。)
 
 ```azurecli
 {
@@ -539,7 +537,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
   GGSCI> EDIT PARAMS EXTORA
   ```
-5. vi コマンドを使用して、Extract パラメーター ファイルに次を追加します。 Esc キーを押すか、":wq!" で ファイルを保存します。 
+5. vi コマンドを使用して、Extract パラメーター ファイルに次を追加します。 キーを押すか、Esc キー ': wq!' ファイルを保存します。 
 
   ```bash
   EXTRACT EXTORA
@@ -810,4 +808,3 @@ az group delete --name myResourceGroup
 [可用性が高い仮想マシンの作成のチュートリアル](../../linux/create-cli-complete.md)
 
 [VM デプロイ CLI サンプルを探索する](../../linux/cli-samples.md)
-

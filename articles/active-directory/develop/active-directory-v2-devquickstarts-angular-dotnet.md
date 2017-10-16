@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 0ab6506e14997c0c6d58afa22db63f928d7cceb9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/03/2017
-
-
+ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>AngularJS シングル ページ アプリへのサインインの追加 - .NET
 この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。  v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
@@ -226,7 +224,7 @@ return $http.get('/api/tasks');
 ...
 ```
 
-お疲れさまでした。  Azure AD に統合されたシングル ページ アプリが完成しました。  アプリは、  ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。  個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。  アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、  個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。  ユーザーの To-Do List にタスクを追加し、サインアウトした後で、  他の種類のアカウントを使用してサインインしてみてください。 職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
+お疲れさまでした。  Azure AD に統合されたシングル ページ アプリが完成しました。  アプリは、  ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。  個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。  アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、  個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。  ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。 職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
 v2.0 エンドポイントについての学習を続けるには、 [v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。  その他のリソースについては、以下を参照してください。
 
@@ -236,5 +234,4 @@ v2.0 エンドポイントについての学習を続けるには、 [v2.0 開�
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
 

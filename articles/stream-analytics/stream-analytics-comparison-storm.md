@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Stream Analytics プラットフォームの選択: Apache Storm と Azure Stream Analytics との比較
 Azure にはストリーミング データを分析するソリューションとして [Azure Streaming Analytics](https://docs.microsoft.com/azure/stream-analytics/) や [Azure HDInsight 上の Apache Storm](https://azure.microsoft.com/services/hdinsight/apache-storm/) といった複数のソリューションがあります。 どちらの分析プラットフォームにも PaaS ソリューションのメリットがありますが、 2 つのプラットフォームには機能と構成および管理の方法に大きな違いがあります。 
@@ -560,4 +559,3 @@ Storm Bolt で使用できます。
         </tr>
     </tbody>
 </table>
-

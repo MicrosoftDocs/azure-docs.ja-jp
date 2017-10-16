@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ada8ffbbdc5565a517f5a06cb640a36aaf8879b4
 ms.openlocfilehash: b44b1a5b3e988a51db3325ec8a181651fa84e768
-ms.lasthandoff: 02/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>チュートリアル: Azure Active Directory と Cisco Webex の統合
 このチュートリアルでは、Azure と Cisco Webex の統合について説明します。  
@@ -100,7 +99,7 @@ ms.lasthandoff: 02/17/2017
     >[!TIP]
     >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
     >  
-   3. Base&64; でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
+   3. Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
    4. **[Import SAML Metadata]**をクリックし、Base-64 でエンコードされた証明書を貼り付けます。
    5. Azure クラシック ポータルで、**[Cisco Webex でのシングル サインオンの構成]** ダイアログ ページの **[発行者 URL]** の値をコピーし、**[Issuer for SAML (IdP ID)]** ボックスに貼り付けます。
    6. Azure クラシック ポータルで、**[Cisco Webex でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[Customer SSO Service Login URL]** ボックスに貼り付けます。
@@ -149,5 +148,4 @@ Azure AD ユーザーが Cisco Webex にログインできるようにするに�
    ![はい](./media/active-directory-saas-cisco-webex-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: b83a1621263cac0b23bbd35a49fda213d2e4271a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>チュートリアル: Azure Active Directory と Peoplecart の統合
 
@@ -162,7 +161,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-peoplecart-test-user"></a>Peoplecart テスト ユーザーの作成
 
@@ -225,5 +224,4 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-peoplecart-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-peoplecart-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-peoplecart-tutorial/tutorial_general_203.png
-
 

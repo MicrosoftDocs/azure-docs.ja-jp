@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 0e0123a40d52dfd7a2e29c29cb2239e979089ca9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -178,7 +177,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-clicktime-test-user"></a>ClickTime のテスト ユーザーの作成
 
@@ -266,5 +265,4 @@ ClickTime の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_203.png
-
 

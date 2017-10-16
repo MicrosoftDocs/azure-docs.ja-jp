@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/16/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: 3b3ff8d33959978ddd648e59a6a301f00c247964
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
 
@@ -50,7 +49,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 **HDInsight アプリケーションをインストールするには**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[その他のサービス]** をクリックし、**[HDInsight クラスター]** をクリックします。
 3. HDInsight クラスターをクリックします。  HDInsight クラスターがない場合は、最初に作成する必要があります。  「 [クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
 4. **[構成]** カテゴリにある **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 アプリケーションが見つからない場合は、このバージョンの HDInsight クラスターに対応するアプリケーションがないことを意味します。
@@ -93,7 +92,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 **HDInsight アプリケーションを一覧表示し、プロパティを表示するには**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
 3. HDInsight クラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 [インストール済みアプリ] ブレードには、インストール済みのアプリケーションがすべて一覧表示されます。 
@@ -123,5 +122,4 @@ HTTP エンドポイント資格情報は、HDInsight クラスター向けに�
 * [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 * [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 * [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。
-
 

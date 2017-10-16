@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 08/17/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 54db95fd50e5d61d54d0c03a8589cfe8292c012c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
@@ -81,6 +81,22 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   virtualMachines      Standard_A0 southcentralus
   virtualMachines      Standard_A1 southcentralus
   virtualMachines      Standard_A2 southcentralus
+  ```
+
+- Azure CLI を使用する場合は、`az vm list-skus` コマンドを使用します。 その後、`grep` または同様のユーティリティを使用して出力をフィルター処理できます。
+
+  ```
+  az vm list-skus --output table
+  ResourceType      Locations           Name                    Capabilities                       Tier      Size           Restrictions
+  ----------------  ------------------  ----------------------  ---------------------------------  --------  -------------  ---------------------------
+  availabilitySets  eastus              Classic                 MaximumPlatformFaultDomainCount=3
+  avilabilitySets  eastus              Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  eastus2             Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  eastus2             Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  westus              Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  westus              Aligned                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  centralus           Classic                 MaximumPlatformFaultDomainCount=3
+  availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
   ```
 
 - [ポータル](https://portal.azure.com)を使用するには、ポータルにログインし、インターフェイスからリソースを追加します。 値を設定するときに、そのリソースで利用可能な SKU が表示されます。 デプロイを完了する必要はありません。
@@ -381,7 +397,7 @@ Message: The subscription is not registered to use namespace {resource-provider-
 2. リソース タイプでサポートされた API バージョンに該当しない
 3. リソース タイプでサポートされた場所に該当しない
 
-サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure Portal またはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。 リソース プロバイダーの詳細については、PowerShell か Azure CLI で確認します。
+サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。 リソース プロバイダーの詳細については、PowerShell か Azure CLI で確認します。
 
 **ポータル**
 

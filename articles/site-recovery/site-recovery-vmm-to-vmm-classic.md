@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 89a54a83e6708da8e7fd91923c3ef71d8371f8f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: 768c2598beccba885dd5e43a59ec4684818ccca3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site"></a>VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
 > [!div class="op_single_selector"]
@@ -177,7 +175,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
     ![保護設定の構成](./media/site-recovery-vmm-to-vmm-classic/cloud-settings-replica.png)
 
-この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。 VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。 クラウド設定は **[構成]** タブで変更できます。 ターゲットの場所やターゲット クラウドを変更する場合は、クラウド構成を削除して、クラウドを再構成する必要があります。
+この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。 クラウド設定は **[構成]** タブで変更できます。ターゲットの場所やターゲット クラウドを変更する場合は、クラウド構成を削除して、クラウドを再構成する必要があります。
 
 ### <a name="prepare-for-offline-initial-replication"></a>オフラインでの初期レプリケーションの準備
 オフラインで初期レプリケーションを行うための準備として、次の操作を実行する必要があります。
@@ -284,7 +282,7 @@ Hyper-V レプリカを使用してレプリケートされる VMM 内に既存�
 
 
 ## <a name="privacy-information-for-site-recovery"></a>Site Recovery のプライバシー情報
-次のセクションでは、Microsoft Azure Site Recovery サービス (以降、"本サービス") の追加のプライバシー情報を示します。 Microsoft Azure サービスのプライバシーに関する声明については、 [Microsoft Azure のプライバシーに関する声明のページ](http://go.microsoft.com/fwlink/?LinkId=324899)
+次のセクションでは、Microsoft Azure Site Recovery サービスの追加のプライバシー情報を示します。 
 
 **機能: 登録**
 
@@ -334,4 +332,3 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
 ## <a name="next-steps"></a>次のステップ
 テスト フェールオーバーを実行して、環境が予想どおりに動作することを確認したら、 [こちらで](site-recovery-failover.md) さまざまな種類のフェールオーバーについて確認します。
-

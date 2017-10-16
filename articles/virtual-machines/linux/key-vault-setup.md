@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 846941ae095a7d6f428bd0d189abc9f0c1848aa8
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 2cc9b4c978e9a4deb0c8443c4b0f9e301a7cf492
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン用に Key Vault を設定する方法
 
@@ -61,4 +60,3 @@ az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForD
 
 ## <a name="next-steps"></a>次のステップ
 テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「[Key Vault の作成](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。
-

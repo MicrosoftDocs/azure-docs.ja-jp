@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-service-rest-api-version-2015-02-28-preview"></a>Azure Search サービス REST API: バージョン 2015-02-28-Preview
 この記事は、 `api-version=2015-02-28-Preview`のリファレンス ドキュメントです。 このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx)を拡張するものです。
@@ -159,7 +157,7 @@ HTTPS はすべてのサービス要求に必要です。 **Create Index** 要�
 * `api-key`: 必須。 `api-key` は、
 * Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` はどちらも、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 <a name="RequestData"></a>
 **要求本文の構文**
@@ -753,7 +751,7 @@ HTTPS はすべてのサービス要求に必要です。 **Update Index** 要�
 * `Content-Type`: 必須。 これを `application/json`
 * `api-key`: 必須。 `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文の構文**
 
@@ -867,7 +865,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 
 * `api-key`: 必須。 `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **List Indexes** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -934,7 +932,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Get Index** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -968,7 +966,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 
 * `api-key`: 必須。 `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービス URL に固有の文字列値です。 **Delete Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1005,7 +1003,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Get Index Statistics** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1043,7 +1041,7 @@ HTTPS はすべてのサービス要求に必要です。 **List Indexes** 要�
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Analyze API** 要求には、(クエリ キーではなく) 管理者キーに設定された `api-key` が含まれている必要があります。
 
-要求 URL を作成するには、インデックス名とサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するには、インデックス名とサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1153,7 +1151,7 @@ HTTPS はすべてのサービス要求に必要です。 HTTP POST を使用し
 * `Content-Type`: 必須。 これを `application/json`
 * `api-key`: 必須。 `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービスに固有の文字列値です。 **Add Documents** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1514,7 +1512,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービス URL に固有の文字列値です。 **Search** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1734,7 +1732,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービス URL に固有の文字列値です。 **Lookup Document 要求**では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1782,7 +1780,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 * `Accept`: この値は `text/plain` に設定する必要があります。
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービス URL に固有の文字列値です。 **Count Documents 要求**では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1907,7 +1905,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 * `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。 これはサービス URL に固有の文字列値です。 **Suggestions** 要求では、`api-key` として管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
+要求 URL を作成するにはサービス名も必要です。 サービス名と `api-key` は、Azure Portal のサービス ダッシュボードから取得できます。 ページのナビゲーション ヘルプについては、「 [ポータルで Azure Search サービスを作成する](search-create-service-portal.md) 」を参照してください。
 
 **要求本文**
 
@@ -1970,4 +1968,3 @@ POST の場合:
       "top": 5,
       "suggesterName": "sg"
     }
-

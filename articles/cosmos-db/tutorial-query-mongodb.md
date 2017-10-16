@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法
 
 Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シェル クエリ](https://docs.mongodb.com/manual/tutorial/query-documents/)がサポートされます。 
@@ -155,8 +152,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 **クエリ**
     
     db.families.find( { "isRegistered" : true })
-**結果**
-    ドキュメントは返されません。 
+**結果**ドキュメントは返されません。 
 
 ## <a id="examplequery4"></a>サンプル クエリ 4
 
@@ -316,5 +312,4 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 
 > [!div class="nextstepaction"]
 > [データをグローバルに分散する](tutorial-global-distribution-documentdb.md)
-
 

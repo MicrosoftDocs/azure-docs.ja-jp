@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9fe3f343ef95106c52c4ea3ff22143a5e855c6c7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: a2cd51279476f0964164705cf60b9b4e177972fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problems-configuring-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシの構成に関する問題
 
 
@@ -53,4 +51,3 @@ ms.lasthandoff: 04/18/2017
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタで問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
   * [アプリケーション プロキシ エージェント コネクタのインストールで問題が発生する](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

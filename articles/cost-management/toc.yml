@@ -1,0 +1,31 @@
+- name: Azure Cost Management のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: コスト管理とは
+      href: overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: コスト データの表示
+      href: quick-register-azure-sub.md
+    - name: コスト データの表示 - EA
+      href: quick-register-ea.md
+    - name: コスト データの表示 - CSP
+      href: quick-register-csp.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - 使用状況とコストを確認する
+      href: tutorial-review-usage.md
+    - name: 2 - データへのアクセスを制御する
+      href: tutorial-user-access.md
+    - name: 3 - 支出を予測する
+      href: tutorial-forecast-spending.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: リージョン別の提供状況
+      href: 'https://azure-staging.microsoft.com/en-us/regions/services/'

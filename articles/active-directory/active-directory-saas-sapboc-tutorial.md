@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 6d517c5e302ac36e5bba2053998c75f8f4d42683
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -43,7 +42,7 @@ Azure AD と SAP Business Object Cloud の統合を設定するには、次の�
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境ではテストしないことをお勧めします。
 
-このチュートリアルの手順をテストするための推奨事項:
+このチュートリアルの手順をテストする際の推奨事項:
 
 - 必要な場合を除き、運用環境は使用しないでください。
 - Azure AD の評価環境がない場合は、[1 か月の無料試用版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
@@ -61,7 +60,7 @@ Azure AD への SAP Business Object Cloud の統合を設定するには、ギ�
 
 ギャラリーから SAP Business Object Cloud を追加するには:
 
-1. [Azure ポータル](https://portal.azure.com)の左側のメニューから、**[Azure Active Directory]** を選択します。 
+1. [Azure Portal](https://portal.azure.com) の左側のメニューで、**[Azure Active Directory]** を選択します。 
 
     ![Azure Active Directory のボタン][1]
 
@@ -94,7 +93,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成し�
 1. [Azure AD シングル サインオンを設定する](#set-up-azure-ad-single-sign-on)。 この機能を使用するユーザーを設定します。
 2. [Azure AD のテスト ユーザーを作成する](#create-an-azure-ad-test-user)。 ユーザー Britta Simon を使用して Azure AD シングル サインオンをテストします。
 3. [SAP Business Object Cloud のテスト ユーザーを作成する](#create-an-sap-business-object-cloud-test-user)。 SAP Business Object Cloud で、Azure AD の Britta Simon に対応し、そのユーザーにリンクされているユーザーを作成します。
-4. [Azure AD のテスト ユーザーを割り当てる](#assign-the-azure-ad-test-user)。 Britta Simon を Azure AD シングル サインオンを使用するように設定します。
+4. [Azure AD のテスト ユーザーを割り当てる](#assign-the-azure-ad-test-user)。 Azure AD シングル サインオンを使用するよう Britta Simon を設定します。
 5. [シングル サインオンをテストする](#test-single-sign-on)。 構成が機能することを確認します。
 
 ### <a name="set-up-azure-ad-single-sign-on"></a>Azure AD シングル サインオンを設定する
@@ -134,7 +133,7 @@ SAP Business Object Cloud アプリケーションで Azure AD シングル サ�
 
     ![メタデータ XML の選択](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_certificate.png) 
 
-5. **[保存]** を選択します。
+5. [ **保存**] を選択します。
 
     ![[保存] の選択](./media/active-directory-saas-sapboc-tutorial/tutorial_general_400.png)
 
@@ -173,14 +172,14 @@ SAP Business Object Cloud アプリケーションで Azure AD シングル サ�
     ![[Save]\(保存\) アイコン](./media/active-directory-saas-sapboc-tutorial/save.png)
 
 > [!TIP]
-> アプリのセットアップ中に、[Azure ポータル](https://portal.azure.com)で上記の手順の簡易版を確認できます。 アプリを追加した後、**[Active Directory]** > **[エンタープライズ アプリケーション]** セクションで、**[シングル サインオン]** タブを選択します。ページ下部の **[構成]** セクションで、組み込みのドキュメントにアクセスできます。 詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事を参照してください。
+> アプリのセットアップ中に、[Azure ポータル](https://portal.azure.com)で上記の手順の簡易版を確認できます。 **[Active Directory]** > **[エンタープライズ アプリケーション]** を選択してこのアプリを追加した後、**[シングル サインオン]** タブを選択します。ページ下部の **[構成]** セクションで、組み込みのドキュメントにアクセスできます。 詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)をご覧ください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、Azure ポータルで Britta Simon というテスト ユーザーを作成します。
 
 Azure AD でテスト ユーザーを作成するには:
 
-1. Azure ポータルの左側のメニューから、**[Azure Active Directory]** を選択します。
+1. Azure Portal の左側のメニューで、**[Azure Active Directory]** を選択します。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapboc-tutorial/create_aaduser_01.png) 
 
@@ -247,7 +246,7 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
 Britta Simon を SAP Business Object Cloud に割り当てるには:
 
-1. Azure ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![ユーザーの割り当て][201] 
 
@@ -255,29 +254,29 @@ Britta Simon を SAP Business Object Cloud に割り当てるには:
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+3. 左側のメニューで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] の選択][202] 
 
-4. **[追加]**を選択します。 次に、**[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。
+4. **[追加]**を選択します。 **[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ページ][203]
 
 5. **[ユーザーとグループ]** ページで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ページで、**[選択]** を選択します。
+6. **[ユーザーとグループ]** ページで **[選択]** を選択します。
 
-7. **[割り当ての追加]** ページで **[割り当て]** を選びます。
+7. **[割り当ての追加]** ページで **[割り当て]** を選択します。
 
 ![ユーザー ロールを割り当てる][200] 
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD シングル サインオン構成をテストします。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAP Business Object Cloud] タイルを選択すると、自動的に SAP Business Object Cloud アプリケーションにサインインします。
 
-アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -298,5 +297,4 @@ Britta Simon を SAP Business Object Cloud に割り当てるには:
 [201]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapboc-tutorial/tutorial_general_203.png
-
 

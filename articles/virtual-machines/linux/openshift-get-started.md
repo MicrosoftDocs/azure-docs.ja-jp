@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: jbinder
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
 ms.openlocfilehash: e03da05625e440eab29ccc28a2343d3433fc7607
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-openshift-origin-to-azure-virtual-machines"></a>Azure Virtual Machines に OpenShift Origin をデプロイする 
 
 [OpenShift Origin](https://www.openshift.org/) は、[Kubernetes](https://kubernetes.io/) 上に構築されたオープン ソース コンテナー プラットフォームです。 これは、マルチ テナント アプリケーションのデプロイ、スケーリング、および操作のプロセスを簡略化します。 
@@ -164,4 +162,3 @@ az group delete --name myResourceGroup
 > * クラスターを管理するため、[OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) をインストールして構成する。
 
 これで OpenShift Origin クラスターがデプロイされました。 OpenShift チュートリアルに従って、初めてアプリケーションをデプロイして OpenShift ツールを使用する方法について学習することができます。 開始するには、「[OpenShift Origin の概要](https://docs.openshift.org/latest/getting_started/index.html)」を参照してください。 
-

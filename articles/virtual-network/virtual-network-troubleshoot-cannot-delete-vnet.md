@@ -9,19 +9,17 @@ editor:
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: genli
+ms.openlocfilehash: 3fd0beed7fe76d1cd0861cdc278ac66ead2d0bd3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 55c42a91bb1c5fad289b975ffae8ce4d6e7343dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング: Azure で仮想ネットワークを削除できない
 
 Microsoft Azure で仮想ネットワークを削除しようとすると、エラーが表示されることがあります。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。 

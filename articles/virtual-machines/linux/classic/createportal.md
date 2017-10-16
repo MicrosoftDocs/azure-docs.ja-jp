@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 385102662ef46d7eca51d6e5e10ed7aa77bb1a43
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-custom-virtual-machine-running-linux"></a>Linux を実行するカスタム仮想マシンの作成
 > [!IMPORTANT] 
@@ -30,5 +28,4 @@ ms.lasthandoff: 06/02/2017
 [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-common-classic-createportal.md)]
 
 [!INCLUDE [virtual-machines-create-linuxvm](../../../../includes/virtual-machines-create-linuxvm.md)]
-
 

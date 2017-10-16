@@ -16,16 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01983ac7b60f7fdb237fba27f22cb31fcb3c1b7b
-ms.openlocfilehash: cd1e67ce89a856f325b66087f003b1a9a1ac6f6a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/08/2017
-
-
+ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換する
 
 Resource Manager テンプレートを基に管理ディスクを使用しないスケール セットを作成している場合、管理ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されているプル要求の例を使用してこの操作を行う方法を示します。 完全なプル要求は [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。以降では、該当する差分とその説明を示していきます。
@@ -150,5 +146,4 @@ Resource Manager テンプレートを基に管理ディスクを使用しない
 スケール セットを使用した Resource Manager テンプレートの例については、 [Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
 全般的な情報については、 [VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
-
 

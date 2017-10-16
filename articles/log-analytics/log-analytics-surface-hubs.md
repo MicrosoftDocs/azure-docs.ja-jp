@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
 ms.openlocfilehash: b6ecd0d09589fec85c1633f528afc1165c346b7f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
 
@@ -90,4 +88,3 @@ OMS を使用した Surface Hub の監視は、その他の登録済みデバイ
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、Surface Hub の詳細データを表示します。
 * Surface Hub で問題が発生した場合に通知する[アラート](log-analytics-alerts.md)を作成します。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
-ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
 パケット キャプチャは、ネットワークの侵入検出システム (IDS) を実装し、ネットワーク セキュリティ監視 (NSM) を実行するうえで重要なコンポーネントです。 パケット キャプチャを処理し、ネットワークへの侵入と悪意のあるアクティビティの可能性を示すシグネチャを検出するオープン ソース IDS ツールは複数公開されています。 Network Watcher で取得したパケット キャプチャを使用して、害のある侵入または脆弱性に関してネットワークを分析できます。
@@ -91,7 +89,7 @@ Suricata によって作成されたログには、ネットワークで発生�
     sudo /etc/init.d/elasticsearch start
     ```
 
-    他のインストール方法については [Elasticsearch のインストール](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)に関するページを参照してください。
+    他のインストール方法については[Elasticsearch のインストール](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)のページを参照してください。
 
 1. 次のコマンドを使用して、Elasticsearch が実行されていることを確認します。
 
@@ -245,7 +243,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をダウンロードします。
 
-1. Kibana の **[Management (管理)]** タブで **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルをすべてインポートします。 次に、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 
@@ -297,4 +295,3 @@ Power BI で NSG フロー ログを視覚化する方法については、[Powe
 [5]: ./media/network-watcher-intrusion-detection-open-source-tools/figure5.png
 [6]: ./media/network-watcher-intrusion-detection-open-source-tools/figure6.png
 [7]: ./media/network-watcher-intrusion-detection-open-source-tools/figure7.png
-

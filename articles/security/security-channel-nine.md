@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 35e3f4ee07414927cd93e3fbe54d7c96f4681ba4
-ms.lasthandoff: 01/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Channel 9 で配信中の Azure セキュリティに関するビデオ
 [Channel 9](https://channel9.msdn.com/) は製品を提供する側とお客様を結び付けるコミュニティです。
@@ -56,11 +55,11 @@ Azure 仮想マシン インスタンス上の SQL Server データベースを�
 
 [How to set security in DevTest Labs (DevTest Labs でのセキュリティの設定方法)](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
-ラボの所有者は、Owner と DevTest Labs User という&2; つのラボ ロールを通じて、ラボのアクセスをセキュリティで保護できます。 Owner ロールのユーザーはラボでの完全なアクセス権限を持っていますが、DevTest Labs User ロールのユーザーは制限のあるアクセス権限を持ちます。 このビデオでは、これらのロールのユーザーをラボに追加する方法をお見せします。
+ラボの所有者は、Owner と DevTest Labs User という 2 つのラボ ロールを通じて、ラボのアクセスをセキュリティで保護できます。 Owner ロールのユーザーはラボでの完全なアクセス権限を持っていますが、DevTest Labs User ロールのユーザーは制限のあるアクセス権限を持ちます。 このビデオでは、これらのロールのユーザーをラボに追加する方法をお見せします。
 
 [Managing Secrets for Azure Apps (Azure アプリの機密情報の管理)](https://channel9.msdn.com/events/Build/2016/P456)
 
-Azure にデプロイする重要なアプリはすべて、接続文字列、証明書、キーなどの機密情報を持ちます。 これらの機密情報の管理方法を誤ると、漏えい、障害、コンプライアンス違反などの重大な結果につながります。 最近の複数の調査で指摘されているように、不注意な間違いによるデータ侵害は、敵対者による侵害の&4; 倍にのぼっています。 このセッションでは、重要なアプリ シークレットを管理するためのベスト プラクティスをいくつか紹介します。 常識だと思われるかもしれませんが、こうしたベスト プラクティスを無視している開発者がまだ多数存在しています。 また、これらのベスト プラクティスを実装するために Azure Key Vault を利用する方法も紹介します。 これらのプラクティスに従うと、SOC などの標準の遵守をデモンストレーションできるという利点もあります。 セッションの最初の 10 分はレベル 100 で、どのプラットフォームで開発されるどのクラウド アプリにも適用できます。 残りの部分はレベル 200 ～ 300 で、Azure プラットフォーム上に構築されるアプリに焦点を当てています。
+Azure にデプロイする重要なアプリはすべて、接続文字列、証明書、キーなどの機密情報を持ちます。 これらの機密情報の管理方法を誤ると、漏えい、障害、コンプライアンス違反などの重大な結果につながります。 最近の複数の調査で指摘されているように、不注意な間違いによるデータ侵害は、敵対者による侵害の 4 倍にのぼっています。 このセッションでは、重要なアプリ シークレットを管理するためのベスト プラクティスをいくつか紹介します。 常識だと思われるかもしれませんが、こうしたベスト プラクティスを無視している開発者がまだ多数存在しています。 また、これらのベスト プラクティスを実装するために Azure Key Vault を利用する方法も紹介します。 これらのプラクティスに従うと、SOC などの標準の遵守をデモンストレーションできるという利点もあります。 セッションの最初の 10 分はレベル 100 で、どのプラットフォームで開発されるどのクラウド アプリにも適用できます。 残りの部分はレベル 200 ～ 300 で、Azure プラットフォーム上に構築されるアプリに焦点を当てています。
 
 [Securing your Azure Virtual Network using Network Security Groups with Narayan Annamalai (Narayan Annamalai による、ネットワーク セキュリティ グループを使用した Azure 仮想ネットワークのセキュリティ保護)](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
 
@@ -79,4 +78,3 @@ Azure Active Directory (AD) の Privileged Identity Management は、特権 ID �
 [Azure Key Vault with Amit Bapat (Amit Bapat による Azure Key Vault)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
 Azure Key Vault について、Amit Bapat が Scott に紹介します。 Azure Key Vault を使用すると、キーや (パスワードなどの) 小規模の秘密情報を、ハードウェア セキュリティ モジュール (HSM) に格納されたキーで暗号化できます。 これは、クラウド ベースでハードウェア ベースの、Microsoft Azure 用の機密情報管理です。
-

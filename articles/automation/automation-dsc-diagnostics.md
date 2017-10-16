@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 316031c5297a0201c8db4a9e177298c78962c673
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>OMS Log Analytics への Azure Automation DSC レポート データの転送
 
@@ -197,5 +195,4 @@ Log Analytics によって、Automation DSC のデータの状態をさらに詳
 * 各種検索クエリの作成方法と、Log Analytics での Automation DSC ログの確認方法について詳しくは、[Log Analytics におけるログの検索](../log-analytics/log-analytics-log-searches.md)に関するページをご覧ください。
 * Azure Automation DSC の使用について詳しくは、「[Azure Automation DSC の使用](automation-dsc-getting-started.md)」をご覧ください。
 * OMS Log Analytics とデータ収集ソースの詳細については、 [Log Analytics での Azure Storage データの収集の概要](../log-analytics/log-analytics-azure-storage.md)
-
 

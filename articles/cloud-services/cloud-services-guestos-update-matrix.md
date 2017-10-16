@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/24/2017
+ms.date: 9/14/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be0092e62033da249015b211db148da57bb82765
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: dbbf529dc7a7c30daa78d92f210385d20e139d41
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
@@ -38,6 +38,8 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+###### <a name="september-14-2017"></a>**2017 年 9 月 14 日**
+9 月のゲスト OS ロールアウトは 9 月 14 日に開始され、10 月 9 日にリリースされる予定です。
 
 ###### <a name="august-24-2017"></a>**2017 年 8 月 24 日**
 8 月のゲスト OS がリリースされました。
@@ -65,12 +67,6 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 ###### <a name="april-18-2017"></a>**2017 年 4 月 18 日**
 4 月のゲスト OS ロールアウトは、4 月 18 日に開始し、5 月 9 日にリリースされる予定です。
-
-###### <a name="april-10-2017"></a>**2017 年 4 月 10 日**
-3 月のゲスト OS ロールアウトは、2017 年 3 月 14 日に開始し、2017 年 4 月 10 日にリリースされました。
-
-###### <a name="january-10-2017"></a>**2017 年 1 月 10 日**
-1 月のゲスト OS には、OS ファミリ 2 (Windows 2008 Server R2) のみに影響する修正プログラムが含まれています。 そのため、今月は、OS ファミリ 2 イメージ (WA-GUEST-OS-2.59_201701-01) のみがリリースされています。 その他のすべての OS ファミリについては、12 月の OS (201612-01) が最新です。
 
 
 ## <a name="releases"></a>リリース

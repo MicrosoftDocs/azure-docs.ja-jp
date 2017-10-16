@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Premium へのサインアップ"
+title: "Azure Active Directory Premium へのサインアップ | Microsoft Docs"
 description: "Azure Active Directory Premium Edition にサインアップする方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -11,21 +11,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.date: 09/07/2017
 ms.author: curtand
+ms.reviewer: piotrci
 ms.custom: it-pro;
+ms.openlocfilehash: 4b86ececefd3724b9e7791d2609b146de052f605
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: fe9f4fa6f776a0c2edb572d0526c7520d1c1c7a0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>クイックスタート: Azure Active Directory Premium へのサインアップ
-Azure Active Directory (Azure AD) Premium を使用するためには、ライセンスを購入のうえご利用の Azure サブスクリプションに関連付ける必要があります。 新しい Azure サブスクリプションを作成する場合は、以降のセクションの説明に従ってライセンス プランと Azure AD サービス アクセスをアクティブ化する必要もあります。 
+Azure Active Directory (Azure AD) Premium を使用するためには、ライセンスを購入のうえご利用の Azure サブスクリプションに関連付けてください。 新しい Azure サブスクリプションを作成する場合は、以降のセクションの説明に従ってライセンス プランと Azure AD サービス アクセスをアクティブ化する必要もあります。 
 
 ## <a name="sign-up-for-active-directory-premium"></a>Active Directory Premium へのサインアップ
 Active Directory Premium にはいくつかの方法でサインアップできます。 
+* Azure サブスクリプションまたは Office 365 サブスクリプションを使用する
+* Enterprise Mobility + Security ライセンス プランを使用する
+* マイクロソフト ボリューム ライセンス プランを使用する
 
 ### <a name="azure-or-office-365"></a>Azure または Office 365 
 Azure または Office 365 のサブスクライバーである場合、Azure Active Directory Premium をオンラインでご購入いただけます。 
@@ -48,10 +51,8 @@ Azure Active Directory Premium は、[Microsoft Enterprise Agreement](https://ww
 
 > [!NOTE]
 > Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
-> 
-> 
 
-前の手順で使用したものと同じ Azure サブスクリプションに関して、過去に Azure AD ライセンスを購入してアクティブ化したことがある場合は、そのライセンスが同じディレクトリで自動的にアクティブ化されます。 以降この記事に記載されている手順を行う必要はありません。
+前の手順で使用したものと同じ Azure サブスクリプションに関して、過去に Azure AD ライセンスを購入してアクティブ化したことがある場合は、そのライセンスが同じディレクトリで自動的にアクティブ化されます。 それ以外の場合は、以降この記事に記載されている手順に従ってください。
 
 ## <a name="activate-your-license-plan"></a>ライセンス プランをアクティブ化する
 Microsoft から購入した初めての Azure AD ライセンス プランである場合、 購入が完了したときに確認のメールが生成されて送信されます。 最初のライセンス プランをアクティベートするにはそのメールが必要になります。
@@ -62,7 +63,7 @@ Microsoft から購入した初めての Azure AD ライセンス プランで�
    
     ![[サインイン]][1]
 
-    - 既存のテナントがある場合は、 **[サインイン]** をクリックし、既存の管理者アカウントでサインインします。 ライセンスをアクティブ化する必要があるディレクトリからグローバル管理者の資格情報でサインインしてください。
+    - 既存のテナントがある場合は、 **[サインイン]** をクリックし、既存の管理者アカウントでサインインします。 ライセンスをアクティブ化する必要があるテナントのグローバル管理者の資格情報でサインインしてください。
 
     - 自分のライセンス プランで使用する新しい Azure AD テナントを作成する場合は、**[サインアップ]** をクリックして、**[アカウント プロファイルの作成]** ダイアログを開きます。
 

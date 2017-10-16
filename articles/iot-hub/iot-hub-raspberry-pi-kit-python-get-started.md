@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/31/2017
 ms.author: xshi
+ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 08c4df6a4d7fd3d80f047192125afc9f5831999a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi の Azure IoT Hub への接続 (Python)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -80,7 +78,7 @@ ms.lasthandoff: 08/03/2017
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Jessie with Desktop (.zip ファイル) をダウンロードします](https://www.raspberrypi.org/downloads/raspbian/)。
+   1. [Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル) をダウンロードします。
    1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 1. microSD カードに Raspbian をインストールします。
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
@@ -108,7 +106,7 @@ SSH と I2C を有効にする場合は、[raspberrypi.org](https://www.raspberr
 
 ブレッドボードとジャンパー ワイヤを使用して、次のように LED と BME280 を Pi に接続します。 センサーがない場合は、[このセクションをスキップ](#connect-pi-to-the-network)します。
 
-![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
 BME280 センサーでは、温度と湿度のデータを収集できます。 また、デバイスとクラウドとの間で通信が行われると、LED が点滅します。 
 
@@ -116,27 +114,27 @@ BME280 センサーでは、温度と湿度のデータを収集できます。 
 
 | 開始 (センサーと LED)     | 終了 (ボード)            | ケーブルの色   |
 | -----------------------  | ---------------------- | ------------: |
-| LED VDD (ピン 5G)         | GPIO 4 (ピン 7)         | 白いケーブル   |
-| LED GND (ピン 6G)         | GND (ピン 6)            | 黒いケーブル   |
-| VDD (ピン 18F)            | 3.3V PWR (ピン 17)      | 白いケーブル   |
-| GND (ピン 20F)            | GND (ピン 20)           | 黒いケーブル   |
-| SCK (ピン 21F)            | SPI0 SCLK (ピン 23)     | オレンジ色のケーブル  |
-| SDO (ピン 22F)            | SPI0 MISO (ピン 21)     | 黄色のケーブル  |
-| SDI (ピン 23F)            | SPI0 MOSI (ピン 19)     | 緑のケーブル   |
-| CS (ピン 24F)             | SPI0 CS (ピン 24)       | 青いケーブル    |
+| VDD (ピン 5G)             | 3.3V PWR (ピン 1)       | 白いケーブル   |
+| GND (ピン 7G)             | GND (ピン 6)            | 茶色のケーブル   |
+| SDI (ピン 10G)            | I2C1 SDA (ピン 3)       | 赤いケーブル     |
+| SCK (ピン 8G)             | I2C1 SCL (ピン 5)       | オレンジ色のケーブル  |
+| LED VDD (ピン 18F)        | GPIO 24 (ピン 18)       | 白いケーブル   |
+| LED GND (ピン 17F)        | GND (ピン 20)           | 黒いケーブル   |
 
 クリックすると [Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) が表示されて参照できます。
 
 BME280 が正常に Raspberry Pi に接続されると、下の図のようになります。
 
-![接続された Pi と BME280](media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![接続された Pi と BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>Pi のネットワークへの接続
 
 micro USB ケーブルと AC アダプターを使って、Pi の電源を入れます。 イーサネット ケーブルを使用して Pi を有線ネットワークに接続するか、[Raspberry Pi Foundation の手順](https://www.raspberrypi.org/learning/software-guide/wifi/)に従って、Pi をワイヤレス ネットワークに接続します。 Pi がネットワークに正常に接続されたら、[Pi の IP アドレス](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)をメモしておく必要があります。
 
-![接続先の有線ネットワーク](media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
+![接続先の有線ネットワーク](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
+> [!NOTE]
+> 必ず Pi をコンピューターと同じネットワークに接続してください。 たとえば、コンピューターがワイヤレス ネットワークに接続され、Pi がワイヤード (有線) ネットワークに接続されている場合、devdisco の出力に IP アドレスが表示されないことがあります。
 
 ## <a name="run-a-sample-application-on-pi"></a>Pi でのサンプル アプリケーションの実行
 
@@ -211,4 +209,3 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 コマンド ライン インターフェイスで Raspberry Pi にメッセージを送信したり、Raspberry Pi から IoT Hub に送信されたメッセージを表示したりする方法については、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

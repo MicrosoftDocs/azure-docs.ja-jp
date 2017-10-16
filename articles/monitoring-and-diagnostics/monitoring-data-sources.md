@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
+ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: db2f27906504de6755718c4b6be8302dee097f18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
@@ -35,9 +34,9 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | Storage のメトリック | メトリック | Azure Storage (Azure Storage) | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 課金データ | メトリック | すべての Azure サービス | <ul><li>**REST API:** [Azure Resource Usage API と RateCard API](../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | アクティビティ ログ | イベント | すべての Azure サービス | <ul><li>**REST API:** [Azure Monitor イベント API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Storage BLOB またはイベント ハブ:** [ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor 診断ログ | イベント | [この一覧をご覧ください](monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
+| Azure Monitor 診断ログ | イベント | [この一覧をご覧ください](monitoring-diagnostic-logs-schema.md) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | ゲスト OS ログ ( IIS、ETW、Syslog など) のコンピューティング | イベント | [Windows](../virtual-machines-dotnet-diagnostics.md) と Linux の仮想マシン (v2)、[Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは Storage BLOB:** [Windows または Linux の Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**イベント ハブ:** [Windows Azure 診断](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
-| App Service ログ | イベント | App Services | <ul><li>**ファイル、テーブル、または BLOB Storage:** [Web アプリ診断](../app-service-web/web-sites-enable-diagnostic-log.md)</li></ul> |
+| App Service ログ | イベント | App Services | <ul><li>**ファイル、テーブル、または BLOB Storage:** [Web アプリ診断](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
 | ストレージ ログ | イベント | Azure Storage (Azure Storage) | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Security Center のアラート | イベント | [Azure Security Center] \(Azure Security Center) | <ul><li>**REST API:** [セキュリティ アラート](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
 | Active Directory レポート | イベント | Azure Active Directory | <ul><li>**REST API:** [Azure Active Directory Graph API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
@@ -55,4 +54,3 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 - [Azure Monitor メトリック](monitoring-overview-metrics.md)の詳細を確認する
 - [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)の詳細を確認する
 - [Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)の詳細を確認する
-

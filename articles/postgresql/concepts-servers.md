@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/06/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 43123486f21178a5ba657caa9d4b090922435913
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: c79603a11fa23ad775783157675c07ab67102057
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
 このトピックでは、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -54,4 +53,3 @@ Azure Database for PostgreSQL サーバーを管理するには、Azure Portal �
 - サービスの概要については、[Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](concepts-service-tiers.md)に関するページをご覧ください
 - サービスへの接続については、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」を参照してください。
-

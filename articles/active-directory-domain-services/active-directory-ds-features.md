@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: 機能 | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスの機能"
+description: "Azure Active Directory Domain Services の機能"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 8005be7ded6ea005af086aeaf594963a5f2d4ac2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Features (機能)
@@ -41,4 +39,3 @@ Azure AD Domain Services 管理対象ドメインでは、次の機能を使用�
 * **複数の Azure リージョンで使用可能:** Azure AD ドメイン サービスを使用できる Azure リージョンについては、 [リージョンごとの Azure サービス](https://azure.microsoft.com/regions/#services/) に関するページを参照してください。
 * **高可用性:** Azure AD ドメイン サービスを使用して、ドメインの高可用性を実現できます。 この機能により、サービスの稼働時間とエラーに対する復元性が確実に向上します。 また、組み込みの正常性監視では、インスタンスに障害が発生したときに新しいインスタンスを作成することで障害を自動的に修正し、ドメインに継続的なサービスを提供します。
 * **使い慣れた管理ツールの使用:** Active Directory 管理センターや Active Directory PowerShell などの使い慣れた Windows Server Active Directory 管理ツールを使用して、管理対象ドメインを管理できます。
-

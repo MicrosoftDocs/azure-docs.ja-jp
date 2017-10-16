@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Microsoft Azure 認定プログラムを介した事前承認
 この記事では、ご自身のソリューションを Azure Marketplace に発行して、マーケティング メリットを得られるように、Microsoft Azure 認定を受ける方法について説明します。 Microsoft Azure 認定プログラムとその利点の詳細については、 [http://azure.com/certified](http://azure.com/certified)をご覧ください。
@@ -41,9 +41,3 @@ Microsoft Azure 認定プログラムから事前承認を受けたら、[Micros
 
 ## <a name="see-also"></a>関連項目
 * [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

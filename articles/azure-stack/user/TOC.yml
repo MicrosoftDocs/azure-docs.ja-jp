@@ -1,0 +1,131 @@
+- name: Azure Stack のユーザー ドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: 重要な考慮事項
+      href: azure-stack-considerations.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Windows VM の作成 - ポータル
+      href: azure-stack-quick-windows-portal.md
+    - name: Windows VM の作成 - PowerShell
+      href: azure-stack-quick-create-vm-windows-powershell.md
+    - name: Windows VM の作成 - CLI
+      href: azure-stack-quick-create-vm-windows-cli.md
+    - name: Linux VM の作成 - ポータル
+      href: azure-stack-quick-linux-portal.md
+    - name: Linux VM の作成 - PowerShell
+      href: azure-stack-quick-create-vm-linux-powershell.md
+    - name: Linux VM の作成 - CLI
+      href: azure-stack-quick-create-vm-linux-cli.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: Azure と Azure Stack へのアプリのデプロイ
+      href: azure-stack-solution-pipeline.md
+- name: ハウツー ガイド
+  items:
+    - name: Azure Stack ポータルの使用
+      href: azure-stack-use-portal.md
+    - name: セキュリティとコンプライアンス
+      items:
+        - name: RBAC の管理
+          href: azure-stack-manage-permissions.md
+        - name: サービス プリンシパルの作成
+          href: Azure-stack-create-service-principals.md
+    - name: サービスの使用
+      items:
+        - name: 重要な考慮事項
+          href: azure-stack-considerations.md
+        - name: コンピューティング
+          items:
+            - name: 概要
+              href: azure-stack-compute-overview.md
+            - name: VM に関する考慮事項
+              href: azure-stack-vm-considerations.md
+        - name: ストレージ
+          items:
+            - name: 概要
+              href: azure-stack-storage-overview.md
+            - name: ストレージに関する考慮事項
+              href: azure-stack-acs-differences.md
+            - name: ストレージ開発ツール
+              href: azure-stack-storage-dev.md
+            - name: データ転送ツール
+              href: azure-stack-storage-transfer.md
+            - name: ストレージ エクスプローラーの接続
+              href: azure-stack-storage-connect-se.md
+        - name: ネットワーク
+          items:
+            - name: 概要
+              href: azure-stack-network-overview.md
+            - name: ネットワークに関する考慮事項
+              href: azure-stack-network-differences.md
+            - name: Azure Stack 用の iDNS
+              href: azure-stack-understanding-dns.md
+            - name: Azure Stack の DNS
+              href: azure-stack-dns.md
+        - name: Key Vault
+          items:
+            - name: 概要
+              href: azure-stack-kv-intro.md
+            - name: ポータルを使用した管理
+              href: azure-stack-kv-manage-portal.md
+            - name: PowerShell で管理する
+              href: azure-stack-kv-manage-powershell.md
+            - name: シークレットを使用して VM を作成する
+              href: azure-stack-kv-deploy-vm-with-secret.md
+            - name: 証明書を使用して VM を作成する
+              href: azure-stack-kv-push-secret-into-vm.md
+            - name: Key Vault サンプル アプリ
+              href: azure-stack-kv-sample-app.md
+    - name: アプリの構築
+      items:
+        - name: Azure Stack 向けの開発
+          href: azure-stack-developer.md
+        - name: 開発環境をセットアップする
+          items:
+            - name: Azure Stack PowerShell のインストール
+              href: azure-stack-powershell-install.md
+            - name: ツールのダウンロード
+              href: azure-stack-powershell-download.md
+            - name: PowerShell の構成 - ユーザー
+              href: azure-stack-powershell-configure-user.md
+            - name: Azure Stack CLI のインストールと構成
+              href: azure-stack-connect-cli.md
+            - name: Visual Studio のインストール
+              href: azure-stack-install-visual-studio.md
+            - name: API バージョンのプロファイルの管理
+              href: azure-stack-version-profiles.md
+        - name: ポリシー モジュールの使用
+          href: azure-stack-policy-module.md
+        - name: テンプレートの使用
+          items:
+            - name: テンプレートの概要
+              href: azure-stack-arm-templates.md
+            - name: テンプレートの開発
+              href: azure-stack-develop-templates.md
+            - name: テンプレートの確認
+              href: azure-stack-validate-templates.md
+            - name: ポータルでのデプロイ
+              href: azure-stack-deploy-template-portal.md
+            - name: PowerShell でデプロイする
+              href: azure-stack-deploy-template-powershell.md
+            - name: Visual Studio でのデプロイ
+              href: azure-stack-deploy-template-visual-studio.md
+- name: リファレンス
+  items:
+    - name: Azure Stack PowerShell
+      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
+    - name: Azure Stack CLI
+      href: /cli/azure/?view=azure-cli-2017-03-09-profile
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: 料金情報
+      href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-stack'

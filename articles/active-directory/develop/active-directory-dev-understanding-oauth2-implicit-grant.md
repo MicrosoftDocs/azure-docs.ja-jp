@@ -15,13 +15,11 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/30/2017
-
-
+ms.openlocfilehash: 241c744737515ee0c8d5d833a51121808877e559
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最も多く含むアクセス許可であることで知られています。 それでも、ADAL JS によって実装されるアプローチであり、SPA アプリケーションを作成するときにお勧めするアプローチでもあります。 何のためでしょう。 これはすべてトレードオフの問題です。結局のところ、暗黙的な許可が、ブラウザーで JavaScript を使用して Web API を使用するアプリケーションのために行うことができる最善のアプローチだからです。
@@ -47,7 +45,7 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 * セッションやローカル ストレージなどの HTML5 機能ではトークンのキャッシュと有効期間管理にフル コントロールを許可しますが、Cookie の管理はアプリにとって非透過的です。
 * アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません。
 
-暗黙的な許可フローでは、主にセキュリティ上の理由から、更新トークンを発行しません。 更新トークンはアクセス トークンほどスコープが狭義ではないため、多くの権限を付与すると、リークされた場合のダメージが大きくなります。 暗黙的フローでは、トークンは URL の形式で配信されるため、傍受されるリスクが認証コード付与よりも高くなります。
+暗黙的な許可フローでは、主にセキュリティ上の理由から、更新トークンを発行しません。 更新トークンはアクセス トークンほどスコープが狭義ではないため、多くの権限を付与すると、リークされた場合のダメージが大きくなります。暗黙的フローでは、トークンは URL の形式で配信されるため、傍受されるリスクが認証コード付与よりも高くなります。
 
 ただし、JavaScript アプリケーションには、ユーザーに資格情報を繰り返し求めずにアクセス トークンを更新するための、自由に使用可能な別のメカニズムがあることに注意してください。 アプリケーションは非表示の iframe を使用して、Azure AD の承認エンドポイントに対して新しいトークン要求を実行します。ブラウザーが Azure AD ドメインに対してアクティブなセッション (読み取り: セッション Cookie あり) を持っている限り、この認証要求は正常に行われ、ユーザーの操作は必要ありません。
 
@@ -72,4 +70,3 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 [ACOM-How-To-Integrate]: active-directory-how-to-integrate.md
 [OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
 [OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
-

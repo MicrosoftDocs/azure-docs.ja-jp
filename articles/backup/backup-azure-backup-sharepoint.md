@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: adigan;giridham;jimpark;trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4042b1339ff38ab4da90cd93ba099de724ce49f
-
-
+ms.openlocfilehash: 1bbf3233169fa9966e3dd0fac18ee448f26caa6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 System Center Data Protection Manager (DPM) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 DPM では、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -28,7 +28,7 @@ DPM 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | バージョン | SharePoint のデプロイ | DPM のデプロイの種類 | DPM - System Center 2012 R2 | 保護と回復 |
 | --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br>  SQL AlwaysOn |物理サーバーまたはオンプレミスの Hyper-V 仮想マシン |更新プログラム ロールアップ 5 から、Azure へのバックアップをサポートする |SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn |物理サーバーまたはオンプレミスの Hyper-V 仮想マシン |更新プログラム ロールアップ 5 から、Azure へのバックアップをサポートする |SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
@@ -92,7 +92,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
    > DPM エージェントがインストールされていると、ウィザードにサーバーが表示されます。 DPM ではその構造も示されます。 ConfigureSharePoint.exe を実行したので、DPM は SharePoint VSS ライター サービスおよびその対応する SQL Server Database と通信し、SharePoint ファームの構造、関連するコンテンツ データベース、および対応する項目を認識します。
    > 
    > 
-4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な "*保護方法*" を選択します。 **[次へ]**をクリックします。
+4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な "*保護方法*" を選択します。 **[次へ]** をクリックします。
    
     ![データ保護方法の選択](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
    
@@ -163,7 +163,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
 5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。 **日付、回復時刻**の順に選択した後、正しい**データベース、SharePoint ファーム、回復ポイント、アイテム**を順番に選択します。
    
     ![DPM の SharePoint 保護 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]**をクリックします。
+6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]** をクリックします。
    
     ![回復の選択の確認](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 実行する回復の種類を選択して、 **[次へ]**をクリックします。
@@ -187,7 +187,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
     DPM は、SharePoint アイテムをホストしているコンテンツ データベースを、一時的な SQL Server インスタンスにアタッチします。 DPM サーバーは、コンテンツ データベースからアイテムを回復し、DPM サーバー上のステージング ファイルの場所に格納します。 次に、DPM サーバーのステージングの場所に回復されたアイテムを、SharePoint ファーム上のステージング場所にエクスポートする必要があります。
    
     ![ステージングの場所 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. **[回復オプションの指定]**を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]**をクリックします。
+10. **[回復オプションの指定]**を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]** をクリックします。
     
     ![回復オプション](./media/backup-azure-backup-sharepoint/recovery-options.png)
     
@@ -238,19 +238,13 @@ Q: SQL Server 2014 および SQL 2012 (SP2) は、DPM のどのバージョン�
 A: 更新プログラム ロールアップ 4 を適用した DPM 2012 R2 では両方をサポートしています。
 
 Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
- A: はい、元の SharePoint サイトにアイテムを回復できます。
+A: はい、元の SharePoint サイトにアイテムを回復できます。
 
 Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
- A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
 ## <a name="next-steps"></a>次のステップ
 * SharePoint の DPM 保護に関する詳細 - [Video シリーズ「DPM Protection of SharePoint (SharePoint の DPM 保護)」](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * 「 [System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)
 * 「 [System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

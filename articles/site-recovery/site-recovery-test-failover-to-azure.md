@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 54f62af6abcdd38254fd5379b95baa05656dc90b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Site Recovery での Azure へのフェールオーバーをテストする
 
@@ -53,7 +51,7 @@ ms.lasthandoff: 07/08/2017
     1.  **Custom (カスタム)**: 仮想マシンのテスト フェールオーバーを行う場合は、このオプションを使って特定の復旧ポイントにフェールオーバーできます。
 1. **Azure 仮想ネットワーク**を選びます。テスト用の仮想マシンが作成される Azure 仮想ネットワークを指定します。 Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** の設定で提供されたものと同じ名前のサブネットに、同じ IP を使って、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に提供された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。 同じ IP をサブネットで使うことができない場合、仮想マシンはサブネットで利用できる別の IP アドレスを受け取ります。 [詳しく](#creating-a-network-for-test-failover)は、このセクションをご覧ください。
 1. Azure にフェールオーバーしていて、データ暗号化が有効になっている場合は、**[暗号化キー]** で、プロバイダーのインストール中にデータ暗号化を有効にしたときに発行された証明書を選びます。 仮想マシンで暗号化を有効にしていない場合は、この手順を省略できます。
-1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。 テスト レプリカ マシンも Azure ポータルで確認できます。
+1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。テスト レプリカ マシンも Azure ポータルで確認できます。
 1. 仮想マシンで RDP 接続を開始するには、フェールオーバーされる仮想マシンのネットワーク インターフェイスで、[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)する必要があります。 クラシック仮想マシンにフェールオーバーする場合は、ポート 3389 で[エンドポイントを追加](../virtual-machines/windows/classic/setup-endpoints.md)する必要があります。
 1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
@@ -127,4 +125,3 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="next-steps"></a>次のステップ
 テスト フェールオーバーが正常に行われた後は、[フェールオーバー](site-recovery-failover.md)を試すことができます。
-

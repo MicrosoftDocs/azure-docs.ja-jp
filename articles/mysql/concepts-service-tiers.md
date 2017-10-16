@@ -9,12 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for MySQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 MySQL サーバーに Azure Database を作成するときには、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢から決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
@@ -104,4 +103,3 @@ Azure Database for MySQL を作成する場合、まず最初に価格レベル�
 ## <a name="next-steps"></a>次のステップ
 - コンピューティング ユニットの詳細については、[コンピューティング ユニットの説明](concepts-compute-unit-and-storage.md)に関するページをご覧ください。
 - 「[Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング](scripts/sample-scale-server.md)」をご覧ください。
-

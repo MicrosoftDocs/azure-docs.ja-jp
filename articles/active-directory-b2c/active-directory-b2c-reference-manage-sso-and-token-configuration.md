@@ -12,13 +12,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 068adc72976ec8429312f1909d0fd65460b73e98
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーで SSO とトークンのカスタマイズを管理する
 カスタム ポリシーを使用すると、組み込みポリシーを使用する場合と同じように、トークン、セッション、シングル サインオン (SSO) 構成を制御できます。  各設定の機能については、[こちら](#active-directory-b2c-token-session-sso)のドキュメントを参照してください。
@@ -93,4 +91,3 @@ ACR に設定する場合は、Key="AuthenticationContextReferenceClaimPattern" 
 **Web アプリ セッションの有効期間 (分)** Web アプリ セッションの有効期間を変更するには、`<SessionExpiryInSeconds>` 要素の値を変更する必要があります。  組み込みのポリシーの既定値は、86,400 秒 (1,440 分) です。
 
 **Web アプリのセッション タイムアウト** Web アプリのセッションのタイムアウトを変更するには、`<SessionExpiryType>` の値を変更する必要があります。  指定できる値は、`Absolute` および `Rolling` です。
-

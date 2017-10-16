@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: f0d2202c17bf4d378a625a61e941edf7f3f24636
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>クラスター リソース マネージャーのアーキテクチャの概要
 Service Fabric クラスター リソース マネージャーは、クラスターで実行されている中央のサービスです。 これにより、特にリソースの消費量と任意の配置ルールについて、クラスターにおけるサービスの望まれる状態が管理されます。 
@@ -68,4 +67,3 @@ Service Fabric クラスター リソース マネージャーには、クラス
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
-

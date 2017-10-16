@@ -12,16 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/09/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 02b49e13e8f54c3d55310f4d2b21c7e09c91fe81
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: 565f840e0ac7ec1a68361ac1613da5d42459c979
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>HDInsight 上で Kafka による Spark 構造化ストリーミング (プレビュー) を使用する
 
 Spark 構造化ストリーミングを使って、Azure HDInsight 上で Apache Kafka からデータを読み込む方法を説明します。
@@ -61,7 +59,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     > [!IMPORTANT]
     > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
 
-2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
+2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
    
     ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -83,16 +81,16 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-リソースを作成した後は、リソース グループ ブレードにリダイレクトされます。
+リソースが作成されると、概要ページが表示されます。
 
-![Resource group blade for the vnet and clusters](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![vnet とクラスターのリソース グループ情報](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
 
 ## <a name="get-the-kafka-brokers"></a>Kafka ブローカーを取得する
 
-この例のコードでは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 Kafka ブローカー ホストを検出するために、以下の PowerShell または Bash のサンプルを使用します。
+この例のコードは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 2 つの Kafka ブローカー ホストのアドレスを検出するには、以下の PowerShell または Bash の例を使います。
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -100,22 +98,24 @@ $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name
+$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
 ```bash
-curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
+プロンプトが表示されたら、クラスター ログイン (管理者) アカウントのパスワードを入力します。
+
 > [!NOTE]
-> この例では、`$PASSWORD` にクラスター ログイン用のパスワードを、`$CLUSTERNAME` に Kafka クラスターの名前を含めることを想定しています。
+> この例では、`$CLUSTERNAME` に Kafka クラスターの名前に含めることを前提としています。
 >
 > この例では、[jq](https://stedolan.github.io/jq/) ユーティリティを使って JSON ドキュメントからのデータを解析します。
 
 出力は次のテキストのようになります。
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn2-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn3-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
+`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
 このドキュメントの以降のセクションで使用するため、この情報を保存してください。
 
@@ -141,7 +141,7 @@ curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clust
 
 3. ノートブックの一覧で __Stream-Tweets-To_Kafka.ipynb__ エントリを検索し、横にある __[アップロード]__ ボタンを選択します。
 
-    ![KafkaStreaming.ipynb エントリの横にある [アップロード] ボタンを使用して、Notebook サーバーにアップロード](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
+    ![ノートブックをアップロードするために KafkaStreaming.ipynb エントリの [アップロード] ボタンを使用する](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
 4. 手順 1 ～ 3 を繰り返して、__Spark-Structured-Streaming-From-Kafka.ipynb__ ノートブックを読み込みます。
 

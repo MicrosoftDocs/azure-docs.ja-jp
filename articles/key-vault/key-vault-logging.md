@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: e9a4f16f048833dab49f7db79892fe47a5aeff37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
@@ -275,4 +274,3 @@ Web アプリケーションでの Azure Key Vault の使用方法に関する�
 Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「 [Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](/powershell/module/azurerm.keyvault/#key_vault)」を参照してください。
 
 Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、「 [エンド ツー エンドのキーのローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md)」を参照してください。
-

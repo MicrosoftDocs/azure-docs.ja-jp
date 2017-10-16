@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 48a0eaeb10d406d551c9e5870edde06809bd7544
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: e5f04f3b9135167c0f339c58323ebd931b260109
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -77,7 +75,7 @@ Windows エージェントを OMS サービスに接続して登録するには�
 
 
 ## <a name="download-the-agent-setup-file-from-oms"></a>OMS からエージェントのセットアップ ファイルをダウンロードする
-1. OMS ポータルにある **[概要]** ページで、**[設定]** タイルをクリックします。  上部の **[接続されたソース]** タブをクリックします。  
+1. **OMS ポータル**の [[概要]](https://www.mms.microsoft.com) ページで、**[設定]** タイルをクリックします。  上部の **[接続されたソース]** タブをクリックします。  
     ![[接続されたソース] タブ](./media/log-analytics-windows-agents/oms-direct-agent-connected-sources.png)
 2. **[Windows サーバー]**をクリックして、ご使用のコンピューターのプロセッサの種類に適用できる **[Windows エージェントのダウンロード]** をクリックしてセットアップ ファイルをダウンロードします。
 3. **[ワークスペース ID]**の右側で、コピー アイコンをクリックし、ID をメモ帳に貼り付けます。
@@ -321,4 +319,3 @@ IT インフラストラクチャ内で Operations Manager を使用する場合
 ## <a name="next-steps"></a>次のステップ
 
 - [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
-

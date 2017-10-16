@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-azure-backup-server-v2"></a>Azure Backup Server v2 のインストール
 
 Azure Backup Server では、仮想マシン (VM)、ワークロード、ファイル、フォルダーなどを保護できます。 Azure Backup Server v2 は、Azure Backup Server v1 上にビルドされ、v1 にはない新しい機能を使用できます。 v1 と v2 の機能の比較は、「[Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)」を参照してください。 
@@ -288,5 +286,4 @@ Azure Backup Server v2 をインストールすると、次の 2 つの新しい
 - [Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 - [Backup Server を使用した SQL Server のバックアップ](backup-azure-sql-mabs.md)
 - [Backup Server での Modern Backup Storage の使用](backup-mabs-add-storage.md)
-
 

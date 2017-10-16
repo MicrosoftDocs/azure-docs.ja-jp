@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/28/2017
 ms.author: daredis
+ms.openlocfilehash: 5dffbf03f07e5d0523ef92eb3b74619b6592782f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 4bc09ad13ed0c9dc9257e9c75ec6f9ff3d689a0b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 
@@ -188,7 +187,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 5. [ **Save**] をクリックします。
 
 > [!IMPORTANT]
-> 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[Automation (PowerShell / REST API)](sql-database-auditing.md#subheading-7)」セクションを参照してください。
+> 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[SQL データベースの監査](sql-database-auditing.md)」をご覧ください。
 >
 
 ## <a name="enable-sql-database-threat-detection"></a>SQL Database の脅威の検出を有効にする
@@ -240,7 +239,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 
 
 ## <a name="next-steps"></a>次のステップ
-いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護できるようになります。 このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルでは、いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護する方法を学習しました。  以下の方法について学習しました。 
 
 > [!div class="checklist"]
 > * サーバーまたはデータベースのファイアウォール規則をセットアップする
@@ -250,7 +249,8 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 > * SQL Database の監査を有効にする
 > * SQL Database の脅威の検出を有効にする
 
-> [!div class="nextstepaction"]
->[SQL Database のパフォーマンスを向上させる](sql-database-performance-tutorial.md)
+次のチュートリアルに進み、geo 分散型データベースを実装する方法を学習してください。
 
+> [!div class="nextstepaction"]
+>[地理的に分散したデータベースの実装](sql-database-implement-geo-distributed-database.md)
 

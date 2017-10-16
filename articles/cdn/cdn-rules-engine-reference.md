@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cdn-rules-engine"></a>Azure CDN ルール エンジン
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件と機能について詳しく説明します。
@@ -69,7 +69,7 @@ Character | Description
 ------------------|------------
 \ | バックスラッシュは、続く文字をエスケープします。 これにより、その文字は、正規表現の意味としてではなく、リテラル値として扱われます。 たとえば、次の構文では、アスタリスクをエスケープします。`\*`
 % | パーセント記号の意味は、その使用法によって異なります。<br/><br/> `%{HTTPVariable}`: この構文では、HTTP 変数を識別します。<br/>`%{HTTPVariable%Pattern}`: この構文では、区切り記号として、また HTTP 変数を識別するために、パーセント記号を使用します。<br />`\%`: パーセント記号をエスケープすると、その記号をリテラル値として使用したり、URL エンコードを示したりする場合に使用できます (たとえば、`\%20`)。
-* | アスタリスクでは、直前の文字を&0; 回以上一致すことができます。 
+* | アスタリスクでは、直前の文字を 0 回以上一致すことができます。 
 スペース | 空白文字は一般的にリテラル文字として扱われます。 
 '値' | 一重引用符は、リテラル文字として扱われます。 一重引用符のセットには、特別な意味はありません。
 
@@ -80,9 +80,3 @@ Character | Description
 * [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [Azure CDN の概要](cdn-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

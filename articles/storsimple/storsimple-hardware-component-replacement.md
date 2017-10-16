@@ -15,12 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: f2d197264f066a23468db80686444bd24f6d796f
 ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
 
@@ -66,7 +65,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。 **交換手順** の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
 
-| コンポーネント | # 台数 | プラグイン モジュール? | 交換手順 |
+| コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
 | シャーシ |1 |なし |[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
 | プライマリ コントローラー |2 |はい |[StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
@@ -78,7 +77,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 主エンクロージャと EBOD エンクロージャは、I/O モジュールが異なります。 また、PCM のワット数が異なります。 主エンクロージャの PCM は 764 W です。これに対し、EBOD エンクロージャの PCM は 580 W です。主エンクロージャの PCM には、バックアップ バッテリ モジュールも含まれます。
 
-| コンポーネント | # 台数 | プラグイン モジュール? | 交換手順 |
+| コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
 | シャーシ |1 |なし |[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
 | EBOD コントローラー |2 |はい |[StorSimple デバイスの EBOD コントローラーを交換する](storsimple-ebod-controller-replacement.md) |
@@ -137,5 +136,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
-
 

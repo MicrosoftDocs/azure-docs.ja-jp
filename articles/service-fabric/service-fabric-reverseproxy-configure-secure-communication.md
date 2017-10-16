@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 89102e8b7bc01768742ed3e5e2bd8a9fd6c62ee8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: 568f9638c59282bcd7d3fae058a1588a889c22dc
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
@@ -154,7 +153,7 @@ ApplicationGateway/Http の要素のパラメーター セクションで、**Ap
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>サービスが、セキュリティで保護されたエンドポイントとセキュリティで保護されていないエンドポイントを公開した場合のエンドポイント選択のロジック
 Service Fabric では、1 つのサービスに複数のエンドポイントを構成できます。 「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。
 
-リバース プロキシは、**ListenerName** のクエリ パラメーターに基づいて要求を転送するエンドポイントを 1 つ選択します。 指定されていない場合は、エンドポイント リストから任意のエンドポイントが選択されます。 これは HTTP または HTTPS エンドポイントです。 リバース プロキシが "保護限定モード" で動作すること、つまり セキュリティで保護されたリバース プロキシがセキュリティで保護されていないエンドポイントに要求を転送しないことが求められるシナリオや要件では、 ApplicationGateway/Http の要素のパラメーター セクションで、**SecureOnlyMode** の構成エントリを **true** の値で指定することによって、これを実現できます。   
+リバース プロキシは、**ListenerName** のクエリ パラメーターに基づいて要求を転送するエンドポイントを 1 つ選択します。 指定されていない場合は、エンドポイント リストから任意のエンドポイントが選択されます。 これは HTTP または HTTPS エンドポイントです。 ある可能性がありますシナリオ/要件で運用するため、「セキュリティで保護されたモードのみ」、つまり、リバース プロキシします。 セキュリティで保護されないエンドポイントへの要求を転送するセキュリティで保護されたリバース プロキシをしたくありません。 指定することによってこれを行う、 **SecureOnlyMode**値を持つ構成エントリ**true** ApplicationGateway/Http 要素のパラメーターのセクションでします。   
 
 ```json
 {
@@ -188,7 +187,7 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 **X-Client-Certificate** という名前のカスタム HTTP ヘッダーに、クライアント証明書のデータが転送されます。 ヘッダーの値は、クライアント証明書のデータが Base64 でエンコードされた PEM 形式の文字列です。 サービスで証明書のデータが調査された後に、要求が成功または失敗し、該当する状態コードが表示されます。
 クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。
 
-> リバース プロキシは転送を行うだけで、 クライアント証明書の検証は実行しません。
+> リバース プロキシは、単なるフォワーダーです。 クライアントの証明書のいずれかの検証は実行されません。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -197,4 +196,3 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
 * [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md)
-

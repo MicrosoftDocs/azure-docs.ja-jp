@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 032467e0885d574a7b0f4a1c043e1800e5cc4071
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/11/2017
-
+ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
@@ -81,5 +80,4 @@ ms.lasthandoff: 02/11/2017
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

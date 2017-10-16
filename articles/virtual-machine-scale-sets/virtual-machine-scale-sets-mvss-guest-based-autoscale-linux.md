@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 5de81da3c6b77f1a80876d68def66792b6a21bb9
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -31,7 +31,7 @@ VM とスケール セットから収集される Azure のメトリックには
 
 実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、ゲストベースの自動スケールを使用して Linux スケール セットをデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff minimum-viable-scale-set existing-vnet`) を項目ごとに確認しましょう。
 
-まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../storage/storage-dotnet-how-to-use-tables.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 そのため、[SAS トークン](../storage/storage-dotnet-shared-access-signature-part-1.md)を使用する必要があります。
+まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/table-storage-how-to-use-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 そのため、[SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用する必要があります。
 
 ```diff
      },

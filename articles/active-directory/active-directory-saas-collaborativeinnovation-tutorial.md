@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 5706ba9f4e7c92de77a0edc5146aa150de379c9f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>チュートリアル: Azure Active Directory と Collaborative Innovation の統合
 
@@ -136,7 +134,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-collaborativeinnovation-tutorial/url_update.png)
 
-    b. **namespace** から URL の値を削除します。
+    b. **[名前空間]** から URL の値を削除します。
     
     c. **[OK]** をクリックして設定を保存します。
 
@@ -183,7 +181,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-collaborative-innovation-test-user"></a>Collaborative Innovation テスト ユーザーの作成
 
@@ -248,5 +246,4 @@ Azure AD ユーザーが Collaborative Innovation にログインできるよう
 [201]: ./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-collaborativeinnovation-tutorial/tutorial_general_203.png
-
 

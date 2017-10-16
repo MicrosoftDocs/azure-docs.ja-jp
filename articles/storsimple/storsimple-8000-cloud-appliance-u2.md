@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -265,4 +264,3 @@ DR の前提条件:
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイス マネージャー サービスを使用してクラウド アプライアンスを管理する](storsimple-8000-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-8000-restore-from-backup-set-u2.md)方法について理解します。
-

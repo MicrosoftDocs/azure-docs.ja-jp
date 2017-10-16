@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
 ms.openlocfilehash: 22c72020200138e78835ed7dd2661f18b824c785
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>チュートリアル: Azure Active Directory と iLMS の統合
 
@@ -123,13 +121,13 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
-    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした次のパターンの **[Endpoint (URL) (エンドポイント (URL))]** の値を貼り付けます。`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`        
+    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした次のパターンの **[Endpoint (URL) (エンドポイント (URL))]** の値を貼り付けます。`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
 5. JIT のプロビジョニングを有効にするには、iLMS アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
     ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/4.png)
     
-    **Department、Region**、および **Division** 属性を作成し、これらの属性の名前を iLMS に追加します。 上記の属性はすべて必須です。    
+    **Department、Region**、および **Division** 属性を作成し、これらの属性の名前を iLMS に追加します。 上記の属性はすべて必須です。  
 
     > [!NOTE] 
     > これらの属性をマップするには、iLMS で **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** を有効にする必要があります。 属性の構成を理解するには、[こちら](http://support.inspiredelearning.com/customer/portal/articles/2204526)の手順に従ってください。
@@ -234,7 +232,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-ilms-test-user"></a>iLMS テスト ユーザーの作成
 
@@ -325,5 +323,4 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 [201]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_203.png
-
 

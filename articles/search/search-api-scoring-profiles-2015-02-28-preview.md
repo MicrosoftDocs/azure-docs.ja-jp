@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a67637d149a84313270c03d21acf8a9c1870be05
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scoring-profiles-azure-search-rest-api-version-2015-02-28-preview"></a>スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
 > [!NOTE]
 > この記事では、 [2015-02-28-Preview](search-api-2015-02-28-preview.md)のスコアリング プロファイルについて説明します。 現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) のドキュメントで説明されている `2016-09-01` バージョンとここで説明する `2015-02-28-Preview` バージョンの間に違いはありませんが、API 全体についてのドキュメントを提供するため、ここにも掲載しておきます。
@@ -275,8 +274,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 * `Quadratic`: ブーストが一定の割合で低下する線形補間と比較して、二次方程式の場合は、最初は遅いペースで低下しますが、終了範囲に近づくにつれて低下するペースが速くなります。 tag スコアリング関数では、この補間オプションは使用できません。
 * `Logarithmic`: ブーストが一定の割合で低下する線形補間と比較して、対数の場合は、最初は速いペースで低下しますが、終了範囲に近づくにつれて低下するペースが遅くなります。 tag スコアリング関数では、この補間オプションは使用できません。
 
-<a name="Figure1"></a>
- ![][1]
+<a name="Figure1"></a> ![][1]
 
 <a name="bkmk_boostdur"></a>
 
@@ -303,4 +301,3 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
-

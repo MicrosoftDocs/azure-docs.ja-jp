@@ -1,0 +1,183 @@
+- name: Azure Machine Learning のドキュメント (プレビュー)
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Machine Learning とは
+      href: overview-what-is-azure-ml.md
+    - name: モデル管理の概要
+      href: model-management-overview.md
+- name: クイック スタート
+  items:
+    - name: インストールと作成
+      href: quickstart-installation.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - データの準備
+      href: tutorial-classifying-iris-part-1.md
+    - name: 2 - モデルのビルド
+      href: tutorial-classifying-iris-part-2.md
+    - name: 3 - モデルのデプロイ
+      href: tutorial-classifying-iris-part-3.md
+    - name: 4 - 高度なデータ準備
+      href: tutorial-bikeshare-dataprep.md
+- name: 概念
+  items:
+    - name: 主要な概念
+      href: overview-general-concepts.md
+- name: ハウツー ガイド
+  items:
+    - name: Machine Learning Workbench の使用
+      items:
+        - name: Python IDE での作業
+          href: how-to-configure-your-IDE.md
+        - name: Jupyter Notebook の使用
+          href: how-to-use-jupyter-notebooks.md
+        - name: Git リポジトリとの統合
+          href: using-git-ml-project.md
+        - name: TDSP 使用したプロジェクトの構造化
+          href: how-to-use-tdsp-in-azure-ml.md
+        - name: ローミングとコラボレーションを行う方法
+          href: roaming-and-collaboration.md
+    - name: Visual Studio ツールの使用
+      href: quickstart-visual-studio-tools.md
+    - name: コンピューティング環境の構成
+      items:
+        - name: 実行ターゲットの構成
+          href: experiment-execution-configuration.md
+        - name: DSVM および HDI Spark クラスターの作成
+          href: how-to-create-dsvm-hdi.md
+        - name: GPU によるトレーニング
+          href: how-to-use-gpu.md
+    - name: データの取得と理解
+      items:
+        - name: データ ソース ウィザードを使用したデータへのアクセス
+          href: data-source-wizard.md
+        - name: データ準備の開始
+          href: data-prep-getting-started.md
+        - name: データ準備ガイド
+          href: data-prep-user-guide.md
+        - name: データ準備のための変換
+          items:
+            - name: 列の結合の例
+              href: data-prep-combine-columns-by-example.md
+            - name: 列の派生の例
+              href: data-prep-derive-column-by-example.md
+            - name: 列の分割の例
+              href: data-prep-split-column-by-example.md
+            - name: JSON の展開
+              href: data-prep-expand-json.md
+    - name: モデルの開発
+      items:
+        - name: CLI を使用したあやめの分類
+          href: tutorial-iris-azure-cli.md
+        - name: 実行履歴とモデル メトリックの追跡
+          href: how-to-use-run-history-model-metrics.md
+        - name: 精度が最適で最短時間の実行を見つける方法
+          href: how-to-find-best-accuracy-cli.md
+        - name: ファイルの読み取りと書き込み
+          href: how-to-read-write-files.md
+        - name: MMLSpark ライブラリ
+          href: how-to-use-mmlspark.md
+    - name: モデルをデプロイする
+      items:
+        - name: モデル管理の設定
+          href: deployment-setup-configuration.md
+        - name: Web サービスのデプロイ
+          href: model-management-service-deploy.md
+        - name: Web サービスを使用する
+          href: model-management-consumption.md
+        - name: モデル データ コレクションの使用方法
+          href: how-to-use-model-data-collection.md
+    - name: 実際の例
+      items:
+        - name: ドキュメント コレクションの分析
+          href: scenario-document-collection-analysis.md
+        - name: Q & A 照合
+          href: scenario-qna-matching.md
+        - name: 予測的なメンテナンス
+          href: scenario-predictive-maintenance.md
+        - name: 航空画像の分類
+          href: scenario-aerial-image-classification.md
+        - name: 数テラバイトのデータを活用したサーバー ワークロードの予測
+          href: scenario-big-data.md
+        - name: エネルギー需要の時系列予測
+          href: scenario-time-series-forecasting.md
+        - name: ハイパーパラメーターの分散チューニング
+          href: scenario-distributed-tuning-of-hyperparameters.md
+        - name: 顧客離れ予測
+          href: scenario-churn-prediction.md
+        - name: ディープ ラーニングによるセンチメント分析
+          href: scenario-sentiment-analysis-deep-learning.md
+        - name: 生体エンティティの認識 - TDSP プロジェクト
+          href: scenario-tdsp-biomedical-recognition.md
+        - name: 米国の収益の分類 - TDSP プロジェクト
+          href: scenario-tdsp-classifying-us-incomes.md
+- name: リファレンス
+  items:
+    - name: データの準備
+      items:
+        - name: データ準備のための Python 拡張機能
+          href: data-prep-python-extensibility-overview.md
+        - name: サポートされるデータ ソース
+          href: data-prep-appendix2-supported-data-sources.md
+        - name: サポートされる変換
+          href: data-prep-appendix3-supported-transforms.md
+        - name: サポートされるインスペクター
+          href: data-prep-appendix4-supported-inspectors.md
+        - name: サポートされるデータ変換先
+          href: data-prep-appendix5-supported-destinations.md
+        - name: 実行環境とデータ環境のサポートされる組み合わせ
+          href: data-prep-supported-runtime-data-environments.md
+        - name: Python のフィルター式のサンプル
+          href: data-prep-appendix6-sample-filter-expressions-python.md
+        - name: Python のカスタム DataFlow 変換のサンプル
+          href: data-prep-appendix7-sample-transform-data-flow-python.md
+        - name: Python の変換元接続のサンプル
+          href: data-prep-appendix8-sample-source-connections-python.md
+        - name: Python の変換先接続のサンプル
+          href: data-prep-appendix9-sample-destination-connections-python.md
+        - name: Python の列変換のサンプル
+          href: data-prep-appendix10-sample-custom-column-transforms-python.md
+        - name: データ準備実行 API
+          href: data-prep-python-execution-api.md
+    - name: 実験
+      items:
+        - name: 実行構成
+          href: experiment-execution-configuration-reference.md
+        - name: ロギング API
+          href: reference-logging-api.md
+    - name: モデル管理
+      items:
+        - name: モデル管理 API
+          href: model-management-api-reference.md
+        - name: モデル管理 CLI
+          href: model-management-cli-reference.md
+        - name: モデル データ収集 API
+          href: model-data-collection-api-reference.md
+- name: リソース
+  items:
+    - name: FAQ
+      href: frequently-asked-questions.md
+    - name: 既知の問題とトラブルシューティング ガイド
+      href: known-issues-and-troubleshooting-guide.md
+    - name: Team Data Science Process のドキュメント
+      href: ../team-data-science-process/overview.md
+    - name: データ サイエンス VM のドキュメント
+      href: ../data-science-virtual-machine/overview.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=MachineLearning'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
-
-
+ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="registration-management"></a>登録管理
 ## <a name="overview"></a>概要
@@ -28,7 +28,7 @@ ms.openlocfilehash: 4d1f02951bf93d59f16173bd021ab9340a425071
 Notification Hub にデバイスを登録するには、**登録**または**インストール**を使用します。
 
 #### <a name="registrations"></a>登録
-登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。 タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
+登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
 
 #### <a name="installations"></a>インストール
 インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
@@ -317,10 +317,4 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 
 バックエンドは、登録の更新が複数ある場合の並行処理に対応する必要があります。 Service Bus は、登録管理向けにオプティミスティック同時実行制御を提供しています。 HTTP レベルでは、この処理は登録管理操作に対して ETag を使用して実装されます。 この機能は、Microsoft SDK から透過的に使用されます。並行処理の理由で更新が拒否された場合は、例外がスローされます。 このような例外に対応し、必要に応じて更新を再試行する処理は、アプリ バックエンドの役割です。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

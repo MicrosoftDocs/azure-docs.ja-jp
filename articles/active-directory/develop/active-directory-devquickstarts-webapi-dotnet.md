@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: b028a75836f7c762431bfb9e3fc30822b7dee885
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: f44d75f45073a5d9aa9b1863ed227aba4efcf785
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>Azure AD からのベアラー トークンを使用して Web API の保護を支援する
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -155,4 +153,3 @@ To Do List Service の動作を確認できるようにするには、AAD から
 参考用に、完全なサンプル (環境に応じた構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip) で提供されています。 ここからは、さらに詳細な ID シナリオに進むことができます。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

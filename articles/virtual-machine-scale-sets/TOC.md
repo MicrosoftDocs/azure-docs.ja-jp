@@ -2,7 +2,7 @@
 ## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
 
 # 作業の開始
-## [ポータルでスケール セットをデプロイする](virtual-machine-scale-sets-portal-create.md)
+## [Azure Portal でスケール セットをデプロイする](virtual-machine-scale-sets-portal-create.md)
 ## [PowerShell または Azure CLI を使用してスケール セットをデプロイする](virtual-machine-scale-sets-create.md)
 ## [テンプレートを使用して自動スケール アプリをデプロイする](virtual-machine-scale-sets-deploy-scaling-app-template.md)
 
@@ -17,9 +17,9 @@
 ### [Linux スケール セット テンプレートによるゲストベースの自動スケールの使用](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## デプロイ
-### [ポータルでの作成](virtual-machine-scale-sets-portal-create.md)
+### [Azure Portal での作成](virtual-machine-scale-sets-portal-create.md)
 ### [Visual Studio での作成](virtual-machine-scale-sets-vs-create.md)
-### [PowerShell または Azure CLI での作成](virtual-machine-scale-sets-create.md)
+### [Azure PowerShell または Azure CLI での作成](virtual-machine-scale-sets-create.md)
 ### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
 ### [自動スケールを使用した Linux スケール セット](virtual-machine-scale-sets-linux-autoscale.md)
 ### [自動スケールを使用した Windows スケール セット](virtual-machine-scale-sets-windows-autoscale.md)
@@ -30,8 +30,8 @@
 
 
 
-## Manage
-### [PowerShell を使用した Windows スケール セット](virtual-machine-scale-sets-windows-manage.md)
+## 管理
+### [Azure PowerShell を使用した Windows スケール セット](virtual-machine-scale-sets-windows-manage.md)
 ### [自動スケールとスケール セット](virtual-machine-scale-sets-autoscale-overview.md)
 ### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
@@ -47,7 +47,7 @@
 ### [スケール セットの FAQ](virtual-machine-scale-sets-faq.md)
 
 # リファレンス
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST ()](/rest/api/virtualmachinescalesets/)
 

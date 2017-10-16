@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
+ms.openlocfilehash: a96e7fe671dc051da35168fa7b49ecba53b4c4a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 949f34158f4fc8ee6d86cf3dd408c3c903234109
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
 クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 
@@ -44,4 +42,3 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 ## <a name="next-steps"></a>次のステップ
 [Excel を使用した接続](analysis-services-connect-excel.md)    
 [Power BI を使用した接続](analysis-services-connect-pbi.md)
-

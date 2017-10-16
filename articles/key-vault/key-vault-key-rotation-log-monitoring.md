@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 38c342802ed687985ac6f84f5a590a1a0dcc6c6a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
-
+ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
 ## <a name="introduction"></a>はじめに
@@ -99,7 +97,7 @@ Azure Active Directory の [アプリケーション] タブを開きます。
 
 アプリケーションが Azure Active Directory に追加されると、アプリケーション ページが表示されます。 **[構成]** タブをクリックし、**[クライアント ID]** の値を見つけてコピーします。 後で使用できるように、クライアント ID をメモします。
 
-次に、アプリケーションのキーを生成して、Azure Active Directory とやり取りできるようにします。 これは、**[構成]** タブの **[キー]** セクションで作成できます。 後で使用できるように、Azure Active Directory アプリケーションから新しく生成されたキーをメモします。
+次に、アプリケーションのキーを生成して、Azure Active Directory とやり取りできるようにします。 これは、**[構成]** タブの **[キー]** セクションで作成できます。後で使用できるように、Azure Active Directory アプリケーションから新しく生成されたキーをメモします。
 
 ![Azure Active Directory アプリケーション キー](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
 
@@ -264,7 +262,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 Azure 関数を作成するには、Azure ポータルで **[新規] > [Function App]** を選択します。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
-Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。次に **[この関数を作成する]** をクリックします。
+Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する]** をクリックします。
 
 ![Azure Functions スタート ブレード](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -407,7 +405,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 **[保存]** すると、Azure Functions によって必要なバイナリがダウンロードされます。
 
-**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。 上記のコードでは、タイマーは *myTimer*と呼ばれます。 [CRON 式](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON)を次のように指定します: 0 \* \* \* \* \* (1 分ごとに関数を実行するタイマーの場合)。
+**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。 上記のコードでは、タイマーは *myTimer*と呼ばれます。 [CRON 式](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON)を次のように指定します: 0 \* \* \* \* \* (1 分ごとに関数を実行するタイマーの場合)。
 
 同じ **[統合]** タブで、種類が **Azure Blob Storage** の入力を追加します。 これは sync.txt ファイルを指します。このファイルには、関数によって参照される最後のイベントのタイムスタンプが含まれます。 これは関数内でパラメーター名によって使用できます。 上記のコードの Azure Blob Storage 入力では、パラメーター名は *inputBlob* です。 sync.txt ファイルが存在するストレージ アカウントを選択します (同じストレージ アカウントにすることも別のストレージ アカウントにすることもできます)。 パス フィールドには、ファイルが存在するパスを {container-name}/path/to/sync.txt の形式で指定します。
 
@@ -439,4 +437,3 @@ Logic App が作成されたら、そのアプリに移動し、**[編集]** を
 アクションで、**[Office 365 - send email (Office 365 - メール送信)]**を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
 
 この時点では、1 分ごとに新しい Key Vault 監査ログを確認するエンド ツー エンドのパイプラインがあります。 これは検出した新しいログを Service Bus キューにプッシュします。 新しいメッセージがキューに届くと、ロジック アプリがトリガーされます。 イベント内の *appid* が呼び出し元アプリケーションのアプリケーション ID と一致しない場合、電子メールが送信されます。
-

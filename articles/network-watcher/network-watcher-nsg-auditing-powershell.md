@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
-ms.openlocfilehash: a91da330e677c85f16f6f4e506613576b6507d7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 
 インフラストラクチャのセキュリティ体制の検証は、多くのお客様が直面する課題です。 この課題は Azure の VM にも同様に存在します。 適用するネットワーク セキュリティ グループ (NSG) 規則に基づいて、同様のセキュリティ プロファイルを確保することが重要です。 セキュリティ グループ ビューを使用すれば、NSG 内の VM に適用された規則の一覧を取得できます。 適切な NSG セキュリティ プロファイルを定義し、一週間ごとにセキュリティ グループ ビューを起動して、その出力を適切なプロファイルと比較してレポートを作成することができます。 この方法で、所定のセキュリティ プロファイルに準拠していないすべての VM を簡単に特定できます。
@@ -32,7 +30,7 @@ ms.lasthandoff: 03/31/2017
 
 このシナリオでは、仮想マシンについて返されるセキュリティ グループ ビューの結果と既知の適切な基準を比較します。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -190,7 +188,6 @@ SideIndicator            : <=
 ## <a name="next-steps"></a>次のステップ
 
 設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
-
 
 
 

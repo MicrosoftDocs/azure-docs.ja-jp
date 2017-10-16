@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: f4a02bb7a7c46e7a0e3c75b870c522eae8294339
-ms.lasthandoff: 03/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -68,7 +67,7 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
       <Say>Hello World</Say>
     </Response>
 
-アプリケーションで Twilio API を呼び出す場合は、API パラメーターの&1; つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、`TwiMLResponse` オブジェクトを使用することもできます。
+アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、`TwiMLResponse` オブジェクトを使用することもできます。
 
 Twilio の動詞と属性、TwiML の詳細については、[TwiML][twiml] に関するページをご覧ください。 Twilio API の詳細については、[Twilio API][twilio_api] に関するページをご覧ください。
 
@@ -97,7 +96,7 @@ SSH から仮想マシンに接続できるようになると、任意の Web �
 仮想マシンがポート 80 のみでトラフィックを許可するように構成したことに留意してください。 つまり、このポートを使用するようにアプリケーションを構成します。
 
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
-Python 用 Twilio ライブラリを使用するようにアプリケーションを構成するには、次の&2; つの方法があります。
+Python 用 Twilio ライブラリを使用するようにアプリケーションを構成するには、次の 2 つの方法があります。
 
 * Pip パッケージとして Python 用 Twilio ライブラリをインストールします。 インストールには、次のコマンドを使用できます。
    
@@ -174,7 +173,7 @@ Python 用 Twilio ライブラリをインストールしたら、Python ファ�
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[http://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう&1; つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
+アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[http://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、Python を使用して TwiML を作成するとします。
 
@@ -256,4 +255,3 @@ TwiML 応答を返すように Python アプリケーションを設定したら
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
-

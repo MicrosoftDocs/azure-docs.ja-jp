@@ -3,7 +3,7 @@ title: "リソース グループの削除の自動化 | Microsoft Docs"
 description: "サブスクリプション内のすべてのリソース グループを削除する Runbook が含まれた、PowerShell Workflow バージョンの Azure Automation のシナリオ。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: 
 ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: 6aa3897d44b146483204d43e026d3d158c3e13b6
-
-
+ms.openlocfilehash: 8b23e55a597f293b17183e80eea6c2763aabe9ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-automation-scenario-automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
+# <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。
 
 このシナリオは PowerShell Runbook に基づいており、指定した 1 つ以上のリソース グループをサブスクリプションから削除するために使用されます。 Runbook の既定の設定では、手順を実行する前にテストが行われます。 そのため、この手順を完了する準備が整う前にリソース グループを誤って削除してしまうことはありません。   
@@ -67,9 +67,3 @@ Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示す
 ## <a name="next-steps"></a>次のステップ
 * 独自の Runbook の作成を開始するには、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

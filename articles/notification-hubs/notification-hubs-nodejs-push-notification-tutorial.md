@@ -15,12 +15,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: dc4987b16b2e930641c6c90eff8b65c1bf8d573c
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -71,14 +70,14 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-接続 **connectionstring** の値は、 [Azure ポータル] で次の手順を実行して取得できます。
+接続 **connectionstring** の値は、[Azure Portal] で次の手順を実行して取得できます。
 
 1. 左のナビゲーション ウィンドウで、 **[参照]**をクリックします。
 2. **[Notification Hubs]**を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、 [Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) を参照することができます。
 3. **[設定]**を選択します。
 4. **[アクセス ポリシー]**をクリックします。 共有接続文字列とフル アクセス接続文字列の両方が表示されます。
 
-![Azure ポータル - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
+![Azure Portal - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
 > また、[Azure PowerShell](/powershell/azureps-cmdlets-docs) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](../cli-install-nodejs.md) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
@@ -212,5 +211,4 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure ポータル]: https://portal.azure.com
-
+[Azure Portal]: https://portal.azure.com

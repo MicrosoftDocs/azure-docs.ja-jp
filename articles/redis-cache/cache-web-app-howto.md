@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f23f71cc01eccf17d36885f786de9a7517606803
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Redis Cache で Web アプリを作成する方法
 > [!div class="op_single_selector"]
@@ -71,7 +69,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定値が他の値に設定されている場合があります。 これを変更するには、**[認証の変更]** をクリックし、**[認証なし]** を選択します。
 
-    Visual Studio 2015 で実行している場合は、**[クラウドにホストする]** チェック ボックスをオフにします。 このチュートリアルの以降の手順では、[Azure リソースをプロビジョニング](#provision-the-azure-resources)し、[アプリケーションを Azure に発行](#publish-the-application-to-azure)します。 Visual Studio から **[クラウド内のホスト]** チェック ボックスをオンにした状態で App Service Web アプリをプロビジョニングする例については、 [ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用](../app-service-web/app-service-web-get-started-dotnet.md)に関する記事を参照してください。
+    Visual Studio 2015 で実行している場合は、**[クラウドにホストする]** チェック ボックスをオフにします。 このチュートリアルの以降の手順では、[Azure リソースをプロビジョニング](#provision-the-azure-resources)し、[アプリケーションを Azure に発行](#publish-the-application-to-azure)します。 Visual Studio から **[クラウド内のホスト]** チェック ボックスをオンにした状態で App Service Web アプリをプロビジョニングする例については、 [ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用](../app-service/app-service-web-get-started-dotnet.md)に関する記事を参照してください。
    
     ![Select project template][cache-select-template]
 4. **[OK]** をクリックしてプロジェクトを作成します。
@@ -708,7 +706,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。
 
-[![Deploy to Azure (Azure へのデプロイ)][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
+[![Azure へのデプロイ][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
 この **[Deploy to Azure (Azure へのデプロイ)]** ボタンは、[Web アプリと Redis Cache と SQL Database を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) [Azure クイック スタート](https://github.com/Azure/azure-quickstart-templates) テンプレートを使用して、これらのサービスをプロビジョニングし、SQL Database の接続文字列を設定して、Azure Redis Cache 接続文字列のアプリケーション設定を行います。
 
@@ -827,7 +825,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 * App Service で ASP.NET Web アプリを作成するその他の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Create and deploy an ASP.NET web app in Azure App Service (Azure App Service で ASP.NET Web アプリを作成およびデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)」を参照してください。
   * HealthClinic.biz のデモに関連する他のクイック スタートについては、「 [Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
 * このチュートリアルで使用されている Entity Framework の Code First 手法について、「 [新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542) 」を参照して学習します。
-* [Azure App Service の Web アプリ](../app-service-web/app-service-web-overview.md)について学習します。
+* [Azure App Service の Web アプリ](../app-service/app-service-web-overview.md)について学習します。
 * Azure ポータルでキャッシュを [監視](cache-how-to-monitor.md) する方法について学習します。
 * Azure Redis Cache Premium の機能について詳しく調べます。
   
@@ -868,5 +866,4 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-publish]: ./media/cache-web-app-howto/cache-publish.png
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
-
 

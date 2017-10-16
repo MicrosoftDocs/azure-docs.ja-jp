@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 857647e89b7ac5d9bc72bc4b2ace0ea7279353f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple のローカル固定ボリューム: よく寄せられる質問 (FAQ)
 ## <a name="overview"></a>Overview
@@ -202,5 +200,4 @@ ms.lasthandoff: 07/08/2017
 **Q.** ローカル固定ボリュームを含むボリューム コンテナーをクラウド アプライアンスにフェールオーバーできますか。
 
 **A.** はい、できます。 ローカル固定ボリュームは階層化ボリュームとしてフェールオーバーされます。 ローカル固定ボリュームに関連するアラートの詳細については、 [こちら](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
-
 

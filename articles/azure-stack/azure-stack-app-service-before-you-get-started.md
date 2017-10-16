@@ -1,6 +1,6 @@
 ---
-title: Before you deploy App Service on Azure Stack | Microsoft Docs
-description: Steps to complete before you deploy App Service on Azure Stack
+title: "App Service on Azure Stack をデプロイする前に | Microsoft Docs"
+description: "App Service on Azure Stack をデプロイする前に済ましておく必要がある手順です"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -18,64 +18,64 @@ ms.translationtype: HT
 ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 3cba11acc6279f24d0a47af8978610180724c0a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Before you get started with App Service on Azure Stack
+# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
-You need a few items to install Azure App Service on Azure Stack:
+Azure App Service on Azure Stack をインストールするには、いくつか必要なものがあります。
 
-- A completed deployment of the [Azure Stack development kit](azure-stack-run-powershell-script.md).
-- Enough space in your Azure Stack system for a small deployment of App Service on Azure Stack.  The required space is roughly 20 GB of disk space.
-- A Windows Server VM image for use when you create virtual machines for App Service on Azure Stack.
-- [A server that's running SQL Server](#SQL-Server).
+- [Azure Stack Development Kit](azure-stack-run-powershell-script.md) のデプロイが完了していること。
+- App Service on Azure Stack の小規模なデプロイに十分な領域が Azure Stack システムにあること。  必要なディスク領域は約 20 GB です。
+- App Service on Azure Stack 用の仮想マシンを作成するときに使う Windows Server VM イメージ。
+- [SQL Server を実行しているサーバー](#SQL-Server)。
 
 >[!NOTE] 
-> The following steps *all* take place on the Azure Stack host machine.
+> 以下の手順は "*すべて*"、Azure Stack ホスト コンピューター上で行います。
 
-To deploy a resource provider, you must run the PowerShell Integrated Scripting Environment (ISE) as an administrator. For this reason, you need to allow cookies and JavaScript in the Internet Explorer profile that you use to sign in to Azure Active Directory.
+リソース プロバイダーをデプロイするには、管理者として PowerShell Integrated Scripting Environment (ISE) を実行する必要があります。 このため、Azure Active Directory へのサインインに使う Internet Explorer のプロファイルで、Cookie と JavaScript を許可する必要があります。
 
-## <a name="turn-off-internet-explorer-enhanced-security"></a>Turn off Internet Explorer enhanced security
+## <a name="turn-off-internet-explorer-enhanced-security"></a>Internet Explorer のセキュリティ強化を無効にする
 
-1.  Sign in to the Azure Stack development kit machine as **AzureStack/administrator**, and then open **Server Manager**.
+1.  Azure Stack Development Kit のマシンに **AzureStack/administrator** としてサインインし、**サーバー マネージャー**を開きます。
 
-2.  Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
+2.  管理者とユーザーの両方について、**[Internet Explorer セキュリティ強化の構成]** をオフにします。
 
-3.  Sign in to the Azure Stack development kit machine as an administrator, and then open **Server Manager**.
+3.  Azure Stack Development Kit のマシンに管理者としてサインインし、**サーバー マネージャー**を開きます。
 
-4.  Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
+4.  管理者とユーザーの両方について、**[Internet Explorer セキュリティ強化の構成]** をオフにします。
 
-## <a name="enable-cookies"></a>Enable cookies
+## <a name="enable-cookies"></a>Cookie を有効にする
 
-1.  Select **Start** > **All apps** > **Windows accessories**. Right-click **Internet Explorer** > **More** > **Run as an administrator**.
+1.  **[スタート]** > **[すべてのアプリ]** > **[Windows アクセサリ]** の順に選びます。 **[Internet Explorer]** を右クリックし、 > **[詳細]** > **[管理者として実行]** の順に選択します。
 
-2.  If you're prompted, select **Use recommended security**, and then select **OK**.
+2.  メッセージが表示されたら **[推奨されるセキュリティと互換性の設定を使用する]** を選び、**[OK]** を選びます。
 
-3.  In Internet Explorer, select **Tools** (the gear icon) > **Internet Options** > **Privacy** > **Advanced**.
+3.  Internet Explorer で、**[ツール]** (歯車アイコン) > **[インターネット オプション]** > **[プライバシー]** > **[詳細設定]** の順に選びます。
 
-4.  Select **Advanced**. Make sure that both **Accept** check boxes are selected. Select **OK** twice.
+4.  **[Advanced] \(詳細設定)** を選択します。 **[承諾する]** チェック ボックスがオンになっていることを確認します。 **[OK]** を 2 回選びます。
 
-5.  Close Internet Explorer, and restart the PowerShell ISE as an administrator.
+5.  Internet Explorer を閉じ、管理者として PowerShell ISE を再起動します。
 
-## <a name="install-powershell-for-azure-stack"></a>Install PowerShell for Azure Stack
+## <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする
 
-To install PowerShell for Azure Stack, follow the steps in [Install PowerShell](azure-stack-powershell-install.md).
+PowerShell for Azure Stack をインストールするには、「[PowerShell をインストールする](azure-stack-powershell-install.md)」の手順に従います。
 
-## <a name="use-visual-studio-with-azure-stack"></a>Use Visual Studio with Azure Stack
+## <a name="use-visual-studio-with-azure-stack"></a>Azure Stack で Visual Studio を使う
 
-To use Visual Studio with Azure Stack, follow the steps in [Install Visual Studio](azure-stack-install-visual-studio.md).
+Azure Stack で Visual Studio を使うには、「[Visual Studio のインストール](azure-stack-install-visual-studio.md)」の手順に従います。
 
-## <a name="add-a-windows-server-2016-vm-image-to-azure-stack"></a>Add a Windows Server 2016 VM image to Azure Stack
+## <a name="add-a-windows-server-2016-vm-image-to-azure-stack"></a>Windows Server 2016 VM イメージを Azure Stack に追加する
 
-Because App Service deploys a number of virtual machines, it requires a Windows Server 2016 VM image in Azure Stack. To install a VM image, follow the steps in [Add a default virtual machine image](azure-stack-add-default-image.md).
+App Service は複数の仮想マシンをデプロイするので、Azure Stack には Windows Server 2016 VM イメージが必要です。 VM イメージをインストールするには、「[Windows Server 2016 VM イメージの Azure Stack Marketplace への追加](azure-stack-add-default-image.md)」の手順に従います。
 
 ## <a name="SQL-Server"></a>SQL Server
 
-App Service on Azure Stack requires access to a SQL Server instance to create and host two databases to run the App Service resource provider.  Should you choose to deploy a SQL Server VM on Azure Stack it must have the SQL connectivity level set to **Public**.  You can choose the SQL Server instance to use when you complete the options in the App Service on Azure Stack installer.
+App Service on Azure Stack は、App Service リソース プロバイダーを実行するため、SQL Server インスタンスにアクセスし、2 つのデータベースを作成してホストする必要があります。  SQL Server VM を Azure Stack にデプロイする場合は、SQL の接続レベルが**パブリック**に設定されている必要があります。  App Service on Azure Stack インストーラーでオプションを設定するときに、使う SQL Server インスタンスを選ぶことができます。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-- [Install the App Service resource provider](azure-stack-app-service-deploy.md).
+- [App Service リソース プロバイダーをインストールする](azure-stack-app-service-deploy.md)。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-before-you-get-started/PSGallery.png

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 0bfbbaee7a74df6508584b7c8846fd07c2dc15c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>チュートリアル: Azure Active Directory と Image Relay の統合
 
@@ -218,7 +216,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-image-relay-test-user"></a>Image Relay の テスト ユーザーの作成
 
@@ -236,7 +234,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) 
 
-4. **[作成]**をクリックします。
+4. **Create** をクリックしてください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -296,5 +294,4 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_203.png
-
 

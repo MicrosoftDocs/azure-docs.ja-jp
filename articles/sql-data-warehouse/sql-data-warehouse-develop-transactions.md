@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a0582c71e786ae5365e39a5f161b63e946435b2e
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>SQL Data Warehouse のトランザクション
 予想される通り、SQL Data Warehouse では、トランザクションは、データ ウェアハウスのワークロードの一部としてサポートされます。 ただし、SQL Data Warehouse のパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。 
@@ -36,7 +35,7 @@ SQL Data Warehouse では、ACID トランザクションを実装していま�
 * データは均等に分散されました 
 * 行の平均長は 250 バイトです
 
-| [DWU][DWU] | ディストリビューションあたりの上限 (GiB) | ディストリビューション数 | 最大トランザクション サイズ (GiB) | # ディストリビューションあたりの行数 | トランザクションあたりの最大行数 |
+| [DWU][DWU] | ディストリビューションあたりの上限 (GiB) | ディストリビューション数 | 最大トランザクション サイズ (GiB) | # 配布あたりの行数 | トランザクションあたりの最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -191,4 +190,3 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 <!--MSDN references-->
 
 <!--Other Web references-->
-

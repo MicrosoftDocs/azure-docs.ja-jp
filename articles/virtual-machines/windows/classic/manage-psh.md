@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ba02fb8385afeefd0162ff79074352bb02275b55
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Azure PowerShell を使用した仮想マシンの管理
 > [!IMPORTANT] 
@@ -99,5 +98,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 * 追加のディスク。
 * 既存の負荷分散セットのメンバーとしての設定。
 * 静的 IP アドレス。
-
 

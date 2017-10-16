@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
 Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
@@ -66,4 +63,3 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 - [Azure リソースのセキュリティ正常性を監視する](security-center-monitoring.md)
 - [Security Center でセキュリティのアラートの管理と対応を行う](security-center-managing-and-responding-alerts.md)
 - [パートナー セキュリティ ソリューションを監視する](security-center-partner-solutions.md)
-

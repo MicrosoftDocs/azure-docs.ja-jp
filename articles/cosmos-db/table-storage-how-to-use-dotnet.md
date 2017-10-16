@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 04/10/2017
 ms.author: mimig
+ms.openlocfilehash: fadad88be94552dd1db061146d8dfab86d797f61
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ab77fe512d275a92da19bb5dc03da347922238a5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>.NET を使用して Azure Table Storage を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -64,7 +63,7 @@ using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 ### <a name="parse-the-connection-string"></a>接続文字列を解析する
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-table-service-client"></a>Table サービス クライアントを作成する
+### <a name="create-the-table-service-client"></a>Table service クライアントを作成する
 [CloudTableClient][dotnet_CloudTableClient] クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 Table service クライアントを作成する方法の 1 つを次に示します。
 
 ```csharp
@@ -234,7 +233,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(rangeQuery))
 ```
 
 ## <a name="retrieve-a-single-entity"></a>単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。 次のコードは、[TableOperation][dotnet_TableOperation] を使用して、"Ben Smith" というユーザーを指定します。 このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、[TableResult][dotnet_TableResult].[Result][dotnet_TableResult_Result] の戻り値は **CustomerEntity** オブジェクトです。 クエリでパーティション キーと行キーの両方を指定することが、Table サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。 次のコードは、[TableOperation][dotnet_TableOperation] を使用して、"Ben Smith" というユーザーを指定します。 このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、[TableResult][dotnet_TableResult].[Result][dotnet_TableResult_Result] の戻り値は **CustomerEntity** オブジェクトです。 クエリでパーティション キーと行キーの両方を指定することが、Table service から単一のエンティティを取得するための最速の方法です。
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -265,7 +264,7 @@ else
 ```
 
 ## <a name="replace-an-entity"></a>エンティティを置換する
-エンティティを更新するには、そのエンティティを Table サービスから取得し、エンティティ オブジェクトを変更して、変更を Table サービスに戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 このコードでは、[Insert][dotnet_TableOperation_Insert] を呼び出す代わりに [Replace][dotnet_TableOperation_Replace] を使用しています。 [Replace][dotnet_TableOperation_Replace] により、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。 このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。 このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び [Replace][dotnet_TableOperation_Replace] 操作を実行します。 次のセクションでは、この動作をオーバーライドする方法を説明します。
+エンティティを更新するには、そのエンティティを Table service から取得し、エンティティ オブジェクトを変更して、変更を Table service に戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 このコードでは、[Insert][dotnet_TableOperation_Insert] を呼び出す代わりに [Replace][dotnet_TableOperation_Replace] を使用しています。 [Replace][dotnet_TableOperation_Replace] により、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。 このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。 このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び [Replace][dotnet_TableOperation_Replace] 操作を実行します。 次のセクションでは、この動作をオーバーライドする方法を説明します。
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -466,10 +465,10 @@ do
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * Table Storage のサンプルについては、「 [Getting Started with Azure Table Storage in .NET (.NET での Azure Blob Storage の使用)](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)
-* 利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
+* 利用可能な API の詳細については、Table service のリファレンス ドキュメントを参照してください。
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 * [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
-* Azure Storage で作業するために記述したコードを簡略化する方法については、 [Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
+* Azure Storage で作業するために記述したコードを簡略化する方法については、 [Azure WebJobs SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 * [.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
 * リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../sql-database/sql-database-develop-dotnet-simple.md)」を参照してください。
@@ -496,4 +495,3 @@ do
 [dotnet_TableQuery]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablequery.aspx
 [dotnet_TableResult]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableresult.aspx
 [dotnet_TableResult_Result]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableresult.result.aspx
-

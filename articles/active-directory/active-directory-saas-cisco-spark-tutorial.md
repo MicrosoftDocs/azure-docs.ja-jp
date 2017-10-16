@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: a0a221622afe1c801a331e2319f3a7ace3111dad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>チュートリアル: Azure Active Directory と Cisco Spark の統合
 
@@ -163,7 +161,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
 12. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
 
-13. ブラウザーの**[Cisco Cloud Collaboration Management]** タブに戻ります。 テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
+13. ブラウザーの**[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -198,7 +196,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-cisco-spark-test-user"></a>Cisco Spark テスト ユーザーの作成
 
@@ -280,5 +278,4 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_203.png
-
 

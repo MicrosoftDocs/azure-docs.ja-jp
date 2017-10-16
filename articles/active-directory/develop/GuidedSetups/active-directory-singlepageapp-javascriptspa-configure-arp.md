@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
+ms.openlocfilehash: 708f4ff606d79639de979918a9cacd4ed75db311
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 735559464db4c237ff7498b7350f2385090fa4e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 08/16/2017
 
 > #### <a name="setting-redirect-url-for-python"></a>Python のリダイレクト URL の設定
 > Python の場合、コマンド ラインで Web サーバー ポートを設定できます。 このガイドの設定では、参照用にポート 8080 を使用しますが、他の利用可能なポートを自由にお使いいただけます。 いずれの場合も、下記の手順に従って、アプリケーションの登録情報にリダイレクト URL を設定します。<br/>
-> `http://localhost:8080/` を、このページ上部の `Redirect URL` に設定するか、カスタム TCP ポートを使用している場合 (*[ポート]* = カスタム TCP ポートの番号) は `http://localhost:[port]/` を使用して、[更新] をクリックします
+> `http://localhost:8080/` を、このページ上部の `Redirect URL` に設定するか、カスタム TCP ポートを使用している場合 (*[ポート]* = カスタム TCP ポートの番号) は `http://localhost:[port]/` を使用して、[更新をクリックします
 
 ### <a name="configure-your-javascript-spa-application"></a>JavaScript SPA アプリケーションの構成
 
@@ -52,4 +51,3 @@ var msalconfig = {
     redirectUri: location.origin
 };
 ``` 
-

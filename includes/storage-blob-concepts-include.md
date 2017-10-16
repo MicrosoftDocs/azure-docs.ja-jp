@@ -9,8 +9,8 @@ BLOB ストレージの一般的な用途には、次のようなものがあり
 * バックアップと復元、障害復旧、アーカイブのためのデータを格納する
 * 内部設置型サービスまたは Azure ホステッド サービスで分析する データを格納する
 
-## <a name="blob-service-concepts"></a>BLOB サービスの概念
-BLOB サービスには、次のコンポーネントが含まれます。
+## <a name="blob-service-concepts"></a>Blob service の概念
+Blob service には、次のコンポーネントが含まれます。
 
 ![BLOB アーキテクチャ](./media/storage-blob-concepts-include/blob1.png)
 

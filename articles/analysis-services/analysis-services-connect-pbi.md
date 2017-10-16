@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: b17251f8e88dc02ddf792da41121fe2730bc50e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 3a2af043feddb4a1d6d63f50e838c8a39035449f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
@@ -59,5 +58,4 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 ## <a name="see-also"></a>関連項目
 [Azure Analysis Services に接続する](analysis-services-connect.md)   
 [クライアント ライブラリ](analysis-services-data-providers.md)
-
 

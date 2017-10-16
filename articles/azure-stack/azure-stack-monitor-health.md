@@ -1,10 +1,10 @@
 ---
-title: Monitor health and alerts in Azure Stack | Microsoft Docs
-description: Learn how to monitor health and alerts in Azure Stack.
+title: "Azure Stack での正常性およびアラートの監視 | Microsoft Docs"
+description: "Azure Stack で正常性およびアラートを監視する方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: chasat-MS
-manager: dsavage
+author: twooley
+manager: byronr
 editor: 
 ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
@@ -12,68 +12,66 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: chasat
+ms.date: 09/25/2017
+ms.author: twooley
+ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 93835eabcf9622735aada0f5dfa46028553c25bd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitor health and alerts in Azure Stack
+# <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
-Azure Stack includes infrastructure monitoring capabilities that enable a cloud operator to view health and alerts for an Azure Stack region.
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack has a set of region management capabilities available in the **Region management** tile. This tile, pinned by default in the administrator portal for the Default Provider Subscription, lists all the deployed regions of Azure Stack. It also shows the count of active critical and warning alerts for each region. This tile is your entry point into the health and alert functionality of Azure Stack.
+Azure Stack には、ユーザーが Azure Stack リージョンの正常性とアラートを表示できるようにするインフラストラクチャ監視機能が含まれています。 この **[Region management]\(リージョン管理\)** タイルは、既定で既定プロバイダー サブスクリプションの管理者ポータルに固定されており、Azure Stack のデプロイされたすべてのリージョンを一覧表示します。 このタイルは、各リージョンのアクティブな重大アラートおよび警告アラートの数を表示し、Azure Stack の正常性とアラートの機能へのエントリ ポイントとなっています。
 
- ![The Region Management tile](media/azure-stack-monitor-health/image1.png)
+ ![[Region Management] (リージョン管理) タイル](media/azure-stack-monitor-health/image1.png)
 
- ## <a name="understand-health-in-azure-stack"></a>Understand health in Azure Stack
+ ## <a name="understand-health-in-azure-stack"></a>Azure Stack の正常性について
 
- Health and alerts are managed in Azure Stack by the Health resource provider. Azure Stack infrastructure components register with the Health resource provider during Azure Stack deployment and configuration. This registration enables the display of health and alerts for each component. Health in Azure Stack is a simple concept. If alerts for a registered instance of a component exist, the health state of that component reflects the worst active alert severity; warning, or critical.
+ 正常性とアラートは、正常性リソースプロバイダーによって管理されます。 Azure Stack のインフラストラクチャ コンポーネントは、Azure Stack のデプロイおよび構成時に正常性リソース プロバイダーに登録されます。 この登録により、各コンポーネントの正常性とアラートの表示が有効になります。 Azure Stack の正常性の概念は単純です。 コンポーネントの登録済みインスタンスのアラートが存在する場合、そのコンポーネントの正常性の状態は、アクティブなアラートの最大の重大度、つまり警告または重大を反映します。
  
- ## <a name="view-and-manage-component-health-state"></a>View and manage component health state
+ ## <a name="view-and-manage-component-health-state"></a>コンポーネントの正常性状態の表示および管理
  
- You can view the health state of components in both the Azure Stack administrator portal and through Rest API and PowerShell.
+ Azure Stack オペレーターとして、ユーザーはコンポーネントの正常性の状態を管理者ポータルと REST API および PowerShell から表示できます。
  
-To view the health state in the portal, click the region that you want to view in the **Region management** tile. You can view the health state of infrastructure roles and of resource providers. Note that in this release, the Compute resource provider does not report health state.
+ポータルで正常性の状態を表示するには、**[Region management]** (リージョン管理) タイルで表示するリージョンをクリックします。 インフラストラクチャ ロールとリソース プロバイダーの正常性の状態を表示できます。 このリリースでは、コンピューティング リソースプロバイダーは正常性の状態をレポートしません。
 
-![List of infrastructure roles](media/azure-stack-monitor-health/image2.png)
+![インフラストラクチャ ロールのリスト](media/azure-stack-monitor-health/image2.png)
 
-You can click a resource provider or infrastructure role to view more detailed information.
+リソース プロバイダーまたはインフラストラクチャ ロールをクリックすると、詳細情報を表示できます。
 
 > [!WARNING]
->If you click an infrastructure role, and then click the role instance, there are options in the **Role instance** blade to Start, Restart, or Shutdown. Do **not** use these options in an Azure Stack Development Kit environment. These options are designed only for a multi-node environment, where there is more than one role instance per infrastructure role. Restarting a role instance (especially AzS-Xrp01) in the development kit causes system instability. For troubleshooting assistance, please post your issue to the [Azure Stack forum](https://aka.ms/azurestackforum).
+>インフラストラクチャ ロールとロール インスタンスを順にクリックすると、[Start]\(起動\)、[Restart]\(再起動\)、または [Shutdown]\(シャットダウン\) のオプションが表示されます。 統合システムに更新プログラムを適用する場合は、これらのアクションを使用しないでください。 また、Azure Stack Development Kit 環境では、これらのオプションを使用**しない**でください。 これらのオプションは、インフラストラクチャ ロールあたり複数のロール インスタンスが存在する統合システム環境専用に設計されています。 開発キットでロール インスタンス (特に AzS-Xrp01) を再起動すると、システムが不安定になります。 トラブルシューティングの支援のため、問題を [Azure Stack フォーラム](https://aka.ms/azurestackforum)に投稿してください。
 >
  
-## <a name="view-alerts"></a>View alerts
+## <a name="view-alerts"></a>アラートを表示する
 
-The list of active alerts for each Azure Stack region is available directly from the **Region management** blade. The first tile in the default configuration is the **Alerts** tile, which displays a summary of the critical and warning alerts for the region. You can pin the Alerts tile, like any other tile on this blade, to the dashboard for quick access.   
+各 Azure Stack リージョンのアクティブなアラートのリストは、**[Region management]** (リージョン管理) ブレードから直接使用できます。 既定の構成の最初のタイルは**[Alerts]** (アラート) タイルで、リージョンの重大アラートと警告アラートの概要が表示されます。 アラート タイルは、このブレードの他のタイルと同様、ダッシュボードに固定してすばやくアクセスできます。   
 
-![Alerts tile that shows a warning](media/azure-stack-monitor-health/image3.png)
+![警告が表示された [Alerts] (アラート) タイル](media/azure-stack-monitor-health/image3.png)
 
-By selecting the top portion of the **Alerts** tile, you navigate to the list of all active alerts for the region. If you select either the **Critical** or **Warning** line item within the tile, you navigate to a filtered list of alerts (Critical or Warning). 
+**[Alerts]\(アラート\)** タイルの最上部を選択することで、リージョンのアクティブな全アラートのリストに移動します。 タイル内の **[Critical]** (重大) または **[Warning]** (警告) 行項目のいずれかを選択した場合、フィルター処理されたアラート リスト ([Critical] (重大) または [Warning] (警告)) に移動します。 
 
-![Filtered warning alerts](media/azure-stack-monitor-health/image4.png)
+![フィルター処理された警告アラート](media/azure-stack-monitor-health/image4.png)
   
-The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all Active alerts. All closed alerts are removed from the system after seven days.
+**[Alerts]** (アラート) ブレードは、状態 ([Active] (アクティブ) または [Closed] (終了)) と重大度 ([Critical] (重大) または [Warning] (警告)) の両方でフィルター処理する機能をサポートしています。 既定のビューには、すべてのアクティブなアラートが表示されます。 終了したアラートはすべて、7 日後にシステムから削除されます。
 
-![Filter pane to filter by critical or warning status](media/azure-stack-monitor-health/image5.png)
+![重大または警告の状態に基づいてフィルター処理するフィルター ウィンドウ](media/azure-stack-monitor-health/image5.png)
 
-The Alerts blade also exposes the **View API** action, which displays the Rest API that was used to generate the list view. This action provides a quick way to become familiar with the Rest API syntax that you can use to query alerts. You can use this API in automation or for integration with your existing datacenter monitoring, reporting, and ticketing solutions. 
+また、**[View API]\(APIの表示\)** アクションには、リスト ビューの生成に使用された REST API が表示されます。 このアクションにより、アラートの照会に使用できる REST API 構文をすばやく理解できます。 この API は、自動化、または既存のデータ センターの監視、レポート、およびチケット発行ソリューションとの統合に使用できます。 
 
-![The View API option that shows the Rest API](media/azure-stack-monitor-health/image6.png)
+![REST API を表示する [View API]\(API の表示\) オプション](media/azure-stack-monitor-health/image6.png)
 
-From the Alerts blade, you can select an alert to navigate to the **Alert details** blade. This blade displays all fields that are associated with the alert, and enables quick navigation to the affected component and source of the alert. For example, the following alert occurs if one of the infrastructure role instances goes offline or is not accessible.  
+特定のアラートをクリックすると、アラートの詳細を表示できます。 アラートの詳細は、アラートに関連付けられているすべてのフィールドを表示し、影響を受けるコンポーネントとアラートのソースにすばやく移動できるようにします。 たとえば、インフラストラクチャ ロール インスタンスの 1 つがオフラインになるか、アクセスできない場合、次のアラートが発生します。  
 
-![The Alert Details blade](media/azure-stack-monitor-health/image7.png)
+![[Alert Details]\(アラートの詳細\) ブレード](media/azure-stack-monitor-health/image7.png)
 
-After the infrastructure role instance is back online, this alert automatically closes.
+インフラストラクチャ ロール インスタンスがオンラインに戻ると、このアラートは自動的に閉じます。 根本的な問題が解決されると、多くのアラートは自動的に閉じますが、すべてのアラートがそうなるわけではありません。 修復の手順を実行した後に、**[アラートを閉じる]** を選択することをお勧めします。 問題が解決しなかった場合は、Azure Stack で新しいアラートが生成されます。 問題が解決した場合は、アラートは閉じたままとなり、その他の操作は必要ありません。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Manage updates in Azure Stack](azure-stack-updates.md)
+[Azure Stack での更新の管理](azure-stack-updates.md)
 
-[Region management in Azure Stack](azure-stack-region-management.md)
-
+[Azure Stack でのリージョン管理](azure-stack-region-management.md)

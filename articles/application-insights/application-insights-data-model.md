@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 587d73bc91aa10b79c1d1488f98f05b73801d8c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.openlocfilehash: 511070e139c2d0fb2862e8cc61ed8ead242c71e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
@@ -31,7 +30,7 @@ Application Insights で収集されたデータは、典型的なアプリケ�
 
 * [**要求**](application-insights-data-model-request-telemetry.md) - アプリが受け取る要求をロギングするために生成されます。 たとえば、Application Insights Web SDK は、Web アプリが受け取る HTTP 要求ごとに要求テレメトリ項目を自動的に生成します。 
 
-    **操作**は、要求を処理する実行のスレッドです。 [コードを記述](app-insights-api-custom-events-metrics.md#trackrequest)して、Web ジョブの "ウェイク アップ" または定期的にデータを処理する関数など、他の種類の操作を監視することもできます。  各操作には ID があります。 この ID を使用すると、アプリが要求を処理する際に生成されるすべてのテレメトリを [グループ分け] \(application-insights-correlation.md) できます。 各操作は成功するか失敗します。また、一定の時間がかかります。
+    **操作**は、要求を処理する実行のスレッドです。 [コードを記述](app-insights-api-custom-events-metrics.md#trackrequest)して、Web ジョブの "ウェイク アップ" または定期的にデータを処理する関数など、他の種類の操作を監視することもできます。  各操作には ID があります。 この ID を使用すると、アプリが要求を処理する際に生成されるすべてのテレメトリを[グループ分け](application-insights-correlation.md)できます。 各操作は成功するか失敗します。また、一定の時間がかかります。
 * [**例外**](application-insights-data-model-exception-telemetry.md) - 通常は、操作が失敗する原因になった例外を表します。
 * [**依存関係**](application-insights-data-model-dependency-telemetry.md) - アプリから外部のサービスまたはストレージへの呼び出しを表します (REST API や SQL など)。 ASP.NET では、SQL の依存関係呼び出しは `System.Data` で定義されます。 HTTP エンドポイントの呼び出しは `System.Net` で定義されます。 
 
@@ -41,7 +40,7 @@ Application Insights では、カスタム テレメトリ用にさらに 3 つ�
 * [イベント](application-insights-data-model-event-telemetry.md) - 通常、ユーザーとサービスのやり取りをキャプチャして、使用状況のパターンを分析するために使用されます。
 * [メトリック](application-insights-data-model-metric-telemetry.md) - 定期的なスカラー測定を報告するために使用されます。
 
-すべてのテレメトリ項目は、アプリケーションのバージョンやユーザー セッション ID のような[コンテキスト情報](application-insights-data-model-context.md)を定義できます。 コンテキストは、特定のシナリオのブロックを解除する、一連の厳密に型指定されたフィールドです。 アプリケーションのバージョンが適切に初期化されると、Application Insights は、再デプロイに関連付けられたアプリケーション動作の新しいパターンを検出できます。 セッション ID を使用して、障害やユーザーへの問題の影響を計算できます。 特定の失敗した依存関係、エラー トレース、重大な例外に対するセッション ID 値のカウントを個別に計算すると、影響をよく理解できます。
+すべてのテレメトリ項目は、アプリケーションのバージョンやユーザー セッション ID のような[コンテキスト情報](application-insights-data-model-context.md)を定義できます。コンテキストは、特定のシナリオのブロックを解除する、一連の厳密に型指定されたフィールドです。 アプリケーションのバージョンが適切に初期化されると、Application Insights は、再デプロイに関連付けられたアプリケーション動作の新しいパターンを検出できます。 セッション ID を使用して、障害やユーザーへの問題の影響を計算できます。 特定の失敗した依存関係、エラー トレース、重大な例外に対するセッション ID 値のカウントを個別に計算すると、影響をよく理解できます。
 
 Application Insights Telemetry モデルは、テレメトリをそれが属する操作に[関連付ける](application-insights-correlation.md)方法を定義します。 たとえば、要求で SQL Database を呼び出し、診断情報を記録できます。 これらのテレメトリ項目の相関関係コンテキストを設定し、要求テレメトリに関連付けることができます。
 
@@ -57,4 +56,3 @@ Application Insights データ モデルはシンプルで基本的でありな�
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
 - [サンプリング](app-insights-sampling.md)を使用して、データ モデルに基づいてテレメトリの量を最小限に抑えます。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 82a1888cca687ce60f811c2c3cec6b971d4a0461
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 02df117908fc1790e8cfb9ec0a7218c1b8be856c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Application Insights の Analytics のトラブルシューティング
 [Application Insights Analytics](app-insights-analytics.md)で問題が発生しましたか? ここから開始します。 Analytics は、Azure Application Insights の強力な検索ツールです。
@@ -54,7 +53,7 @@ ms.lasthandoff: 04/12/2017
 1. ブラウザーで [サード パーティの Cookie が有効](#cookies) になっていることを確認します。 
 2. お気に入り、ブックマーク、または保存したリンクを使用して Analytics ポータルを開きましたか? リンクを保存したときに使用した資格情報とは異なる資格情報でサインインしていますか?
 3. (このようなウィンドウをすべて閉じてから) InPrivate または Incognito のブラウザー ウィンドウを使用してみてください。 資格情報を指定する必要があります。 
-4. 別の (通常の) ブラウザー ウィンドウを開いて [Azure](https://portal.azure.com)に移動します。 サインアウトします。 次に、リンクを開き、適切な資格情報を使用してサインインします。
+4. 別の (通常の) ブラウザー ウィンドウを開いて [Azure](https://portal.azure.com)に移動します。 サインアウトします。次に、リンクを開き、適切な資格情報を使用してサインインします。
 5. Microsoft Edge および Internet Explorerのユーザーも、信頼済みゾーンの設定がサポートされていないと、このエラーが表示される場合があります。
    
     [Analytics ポータル](https://analytics.applicationinsights.io)と [Azure Active Directory ポータル](https://portal.azure.com)の両方が同じセキュリティ ゾーン内にあることを確認します。
@@ -109,5 +108,4 @@ URL が無効です。
 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
 

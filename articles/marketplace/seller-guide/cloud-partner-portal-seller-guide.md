@@ -12,12 +12,11 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace 販売者ガイド
 
@@ -235,4 +234,3 @@ Marketplace では、注文、使用状況、顧客に関するレポートが�
 ISV 販売者コミュニティへの皆様のご参加をお待ちしております。
 
 ---
-

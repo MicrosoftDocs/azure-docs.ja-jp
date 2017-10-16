@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: glenga
+ms.openlocfilehash: 2b83dfe2f3e2645713ff7e1acfb4d7f26fe0d0cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 5f4cc3e97ba7adde2aaac471951a3130d79910f6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -185,7 +184,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-この 2 つの方法は等価であり、区別しないで使用できます。  複数の述語を 1 つのクエリに連結する前のオプションのほうが、よりコンパクトでありお勧めです。
+この 2 つの方法は等価であり、区別しないで使用できます。  複数の述語を 1 つのクエリに連結する前のオプション &mdash; のほうが、&mdash;よりコンパクトでありお勧めです。
 
 `Where` 句は、OData サブセットに変換される操作をサポートします。 操作には以下が含まれます。
 
@@ -292,7 +291,7 @@ JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$o
 プロパティ バッグのように使用できる JSON 値が返されます。 JToken と Newtonsoft Json.NET の詳細については、 [Json.NET] サイトをご覧ください。
 
 ### <a name="inserting"></a>方法: モバイル アプリ バックエンドにデータを挿入する
-クライアントのすべての型には、**Id** という名前のメンバーが含まれる必要があります。その既定値は文字列です。 この **Id** は、オフライン同期で CRUD 操作を実行するために必要となります。 次のコードは、[InsertAsync] メソッドを使用してテーブルに新しい行を挿入する方法を示しています。 パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
+クライアントのすべての型には、**Id** という名前のメンバーが含まれる必要があります。その既定値は文字列です。 この **Id** は、オフライン同期で CRUD 操作を実行するために必要となります。次のコードは、[InsertAsync] メソッドを使用してテーブルに新しい行を挿入する方法を示しています。 パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
 
 ```
 await todoTable.InsertAsync(todoItem);
@@ -652,7 +651,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。 この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
@@ -1096,8 +1095,8 @@ public class MyHandler : DelegatingHandler
 [アプリケーションへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Azure モバイル アプリでのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
-[Microsoft アカウント ログインを使用するためのアプリの登録]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Microsoft アカウント ログインを使用するためのアプリの登録]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
+[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
@@ -1143,4 +1142,3 @@ public class MyHandler : DelegatingHandler
 [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Azure のネットワーク セキュリティに関するベスト プラクティス
 Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure Virtual Network に配置して、ネットワークに接続された他のデバイスと接続できます。 Azure Virtual Network の仮想ネットワーク構造では、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続し、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになっています。 Azure の仮想ネットワークに接続された Azure 仮想マシンは、同じ Azure 仮想ネットワーク上のデバイス、異なる Azure 仮想ネットワーク上のデバイス、インターネット上のデバイス、さらにはオンプレミス ネットワーク上のデバイスにも接続できます。
@@ -236,4 +235,3 @@ Azure Security Center の詳細と、使用しているデプロイで有効に�
 Microsoft では、このデータセンター拡張を詳しく把握するうえで役立つ[データセンター拡張機能の参照アーキテクチャ図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)と関連資料を提供しています。 これに記載された実装例を利用して、エンタープライズ データセンターをクラウドに安全に拡張するための計画と設計を作成できます。 このドキュメントを参照し、安全なソリューションの主要要素を理解することをお勧めします。
 
 データセンターを Azure に安全に拡張する方法の詳細については、ビデオ「[Extending Your Datacenter to Microsoft Azure (Microsoft Azure へのデータセンターの拡張)](https://www.youtube.com/watch?v=Th1oQQCb2KA)」をご覧ください。
-

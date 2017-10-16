@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
+ms.openlocfilehash: ecf1fc38d2b9fd54fe5b00db616224a0848179fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 617da1cf41db08d319d6fe9fa7bc96b794a0001e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
 
 Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer は次のように構成できます。
 
@@ -33,38 +33,6 @@ Azure Load Balancer は次のように構成できます。
 * 外部トラフィックを特定の仮想マシンに転送します。
 
 インターネットから到達できるようにするには、クラウド内のすべてのリソースにパブリック IP アドレスが必要です。 Azure のクラウド インフラストラクチャでは、ルーティング不可能な IP アドレスをリソースに使用します。 インターネットとの通信には、ネットワーク アドレス変換 (NAT) とパブリック IP アドレスが使用されます。
-
-## <a name="azure-deployment-models"></a>Azure のデプロイメント モデル
-
-Azure クラシック [デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)と Resource Manager デプロイメント モデルの違いを理解することが重要です。 各モデルで Azure Load Balancer の構成方法が異なります。
-
-### <a name="azure-classic-deployment-model"></a>Azure クラシック デプロイ モデル
-
-クラウド サービス境界内にデプロイされた仮想マシンは、ロード バランサーを使用するためにグループ化できます。 このモデルでは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) がクラウド サービスに割り当てられます。 ロード バランサーはポート変換を実行し、クラウド サービスのパブリック IP アドレスを使用して、ネットワーク トラフィックの負荷を分散します。
-
-負荷分散されるトラフィックは、エンドポイントで定義されています。 ポート変換エンドポイントでは、パブリック IP アドレスに割り当てられたパブリック ポートと、特定の仮想マシンでサービスに割り当てられたローカル ポート間の 1 対 1 の関係を持ちます。 負荷分散エンドポイントでは、パブリック IP アドレスと、クラウド サービス内の仮想マシンでサービスに割り当てられたローカル ポート間の 1 対多の関係を持ちます。
-
-![クラシック デプロイ モデルの Azure Load Balancer](./media/load-balancer-overview/asm-lb.png)
-
-図 1 - クラシック デプロイ モデルの Azure Load Balancer
-
-このデプロイ モデルでロード バランサーが使用するパブリック IP アドレスのドメイン ラベルは、\<クラウド サービス名\>.cloudapp.net です。 次の図は、このモデルの Azure Load Balancer を示しています。
-
-### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
-
-Resource Manager デプロイメント モデルでは、クラウド サービスを作成する必要はありません。 複数の仮想マシン間でトラフィックを明示的にルーティングするためにロード バランサーが作成されます。
-
-パブリック IP アドレスは、ドメイン ラベル (DNS 名) を持つ個別のリソースです。 パブリック IP アドレスは、ロード バランサー リソースに関連付けられます。 ロード バランサー規則と着信 NAT 規則では、負荷分散されたネットワーク トラフィックを受信するリソースのインターネット エンドポイントとしてパブリック IP アドレスを使用します。
-
-プライベートまたはパブリック IP アドレスは、仮想マシンに接続されたネットワーク インターフェイス リソースに割り当てられます。 ネットワーク インターフェイスがロード バランサーのバックエンド IP アドレス プールに追加されると、ロード バランサーは作成された負荷分散規則に基づいて、負荷分散されたネットワーク トラフィックを送信できます。
-
-次の図は、このモデルの Azure Load Balancer を示しています。
-
-![リソース マネージャーの Azure Load Balancer](./media/load-balancer-overview/arm-lb.png)
-
-図 2 - Resource Manager の Azure Load Balancer
-
-ロード バランサーは、Resource Manager ベースのテンプレート、API、ツールを使用して管理できます。 Resource Manager の詳細については、[Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)に関する記事をご覧ください。
 
 ## <a name="load-balancer-features"></a>Load Balancer の機能
 
@@ -76,7 +44,7 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 
     ![ハッシュベースの分散](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    図 3 - ハッシュベースの分散
+    図 - ハッシュベースの分散
 
 * ポート フォワーディング
 
@@ -133,5 +101,4 @@ Load Balancer のバックエンド プールには、Basic レベルを除く�
 - [インターネットに接続するロード バランサー](load-balancer-get-started-internet-portal.md)を作成する
 
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)にについて確認する。
-
 

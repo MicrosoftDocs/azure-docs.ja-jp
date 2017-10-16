@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: ef1b5860ba0a406022bbd11afb366d14bee2c57d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>チュートリアル: Azure Active Directory と Litmos の統合
 
@@ -193,7 +192,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-litmos-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックします。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/active-directory-saas-litmos-tutorial/create_aaduser_03.png)
 
@@ -207,7 +206,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-litmos-test-user"></a>Litmos のテスト ユーザーの作成
 
@@ -295,5 +294,4 @@ Litmos アプリケーションでは、ジャストインタイム プロビジ
 [201]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_203.png
-
 

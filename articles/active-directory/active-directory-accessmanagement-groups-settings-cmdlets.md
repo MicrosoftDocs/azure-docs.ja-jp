@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 2ee71536257d4349fdf8d80bdcb1899a1d244293
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 28054e91e91933b939f4ba700e317d63a614e1d9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
@@ -90,7 +90,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 | **設定** | **説明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで統合グループの作成を許可するかどうかを示すフラグ。 |
+|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで管理者以外のユーザーによる統合グループの作成を許可するかどうかを示すフラグ。 |
 |  <ul><li>GroupCreationAllowedGroupId<li>型: 文字列<li>既定値: “” |EnableGroupCreation == false の場合でも統合グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: 文字列<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
 |  <ul><li>ClassificationDescriptions<li>型: 文字列<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 |
@@ -101,7 +101,6 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: 文字列<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
 |  <ul><li>AllowToAddGuests<li>型: ブール<li>既定: True | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
 |  <ul><li>ClassificationList<li>型: 文字列<li>既定値: “” |統合グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
-|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True | 管理者以外のユーザーが新しい統合グループを作成できるかどうかを示すブール値。 |
 
 
 ## <a name="read-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の読み取り

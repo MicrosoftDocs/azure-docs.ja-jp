@@ -15,13 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/06/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
 次のビデオ、デモ、チュートリアル、サンプル アプリを使って作業をスピードアップできます。
@@ -78,7 +76,7 @@ Azure Search に関する複数セッションのデモとラボです。
 | [Channel9 Build 2016: "Applications That Learn & Adapt (学習し、適応するアプリケーション): Azure Machine Learning + Search"](https://channel9.msdn.com/Events/Build/2016/P458) |2016 年 5 月 |17 分。 Azure Search アプリケーションに "あなたへのおすすめ" 機能を追加する利点と、Machine Learning からユーザー設定に関する洞察を導き出す方法を Liam Cavanagh が説明します。 |
 | [Channel9 Build 2016: "Intelligent Data Driven Applications that Learn and Adapt (学習し、適応するインテリジェントなデータ主導のアプリケーション)"](https://channel9.msdn.com/Events/Build/2016/B857) |2016 年 5 月 |1 時間。 Machine Learning と Azure Search を一緒に使用して高度なデータ主導のアプリケーションを作成する方法を学習します。 |
 | [Channel9 Data Exposed: "Custom Analyzers, Search Analytics, & Portal Querying in Azure Search (Azure Search のカスタム アナライザー、検索分析、およびポータル クエリ)"](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search) |2016 年 1 月 |15 分。 カスタム アナライザーによって、トークナイザーとトークン フィルターの構成が可能になります。 検索分析によって、ユーザーが入力した検索用語や、検索インデックスの有効性についての洞察を得ることができます。 Search エクスプローラーは、ポータルからクエリを実行する、組み込みのクエリ ツールです。 |
-| [Channel9 Data Exposed: Azure Search の拡張機能](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements) |2015 年 11 月 |17 分。 StackExchange データのデータの取り込み。 Azure ポータルでのインデックスの作成。 インデクサーがサポートされているデータ ソースをクロールして Azure Search インデックスにデータをプルする方法について学びます。 言語アナライザー。 Lucene クエリ式。 |
+| [Channel9 Data Exposed: Azure Search の拡張機能](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements) |2015 年 11 月 |17 分。 StackExchange データのデータの取り込み。 Azure Portal でのインデックスの作成。 インデクサーがサポートされているデータ ソースをクロールして Azure Search インデックスにデータをプルする方法について学びます。 言語アナライザー。 Lucene クエリ式。 |
 | [AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/) |2015 年 9 月 |Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスです (プレゼンター: Pablo Castro)。 |
 | [Build 2015: 最新データ](http://channel9.msdn.com/Events/Build/2015/2-663) |2015 年 6 月 |この 29 分のセッションでは、Azure Search が最新のデータ革命にどのように組み込まれるかを説明します (プレゼンター: Shawn Bice、Pablo Castro)。 |
 | [Build 2015: Azure Search を使用した Mobile および WebApps における優れた検索エクスペリエンスの実現](http://channel9.msdn.com/Events/Build/2015/2-745) |2015 年 6 月 |1 時間。 Pablo Castro が Microsoft Build 2015 を使って説明します。 |
@@ -102,5 +100,4 @@ Azure Search に関する複数セッションのデモとラボです。
 | [検索候補を検索アプリケーションに追加する方法](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |一般的にオート コンプリートと呼ばれる検索候補を実行する方法を説明します。 このデモでは、Azure Search の検索候補を活用する MVC4 アプリケーションの作成、Twitter typeahead.js ライブラリを使用した JavaScript での効率的な自動提案コンポーネントの構築、ファジー検索候補を使用して、ユーザーがスペルを間違えても検索候補を表示される方法など、多くのトピックの手順について説明します。 |
 | [TechNet バーチャル ラボ: Microsoft Azure Search アプリケーションの構築](http://go.microsoft.com/?linkid=9874663) |開発環境、ツール、ドキュメント、およびデータが用意されたバーチャル ラボ。 ラボを完了するには、Azure アカウント (試用版のサブスクリプションまたは個人の Azure サブスクリプションのいずれか) が必要です。 |
 | [SQL Server データの Azure Search との同期](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |SQL Server リレーショナル データベースのデータを Azure Search インデックスに読み込む方法を説明したブログ投稿。 |
-
 

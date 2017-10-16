@@ -56,7 +56,7 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [概要](active-directory-b2c-get-started-custom.md)
+### [作業開始](active-directory-b2c-get-started-custom.md)
 ### OIDC/OAUTH2 プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
@@ -67,12 +67,17 @@
 ### RESTful API の統合
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
 #### [追加の要求の取得](active-directory-b2c-rest-api-step-custom.md)
-### ログインのカスタマイズ
+### ユーザー フロー
 #### [ユーザー入力の構成](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
-#### [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity-custom.md)
+#### [パスワードの複雑さ](active-directory-b2c-reference-password-complexity-custom.md)
+
+#### [パスワードの変更](active-directory-b2c-reference-password-change-custom.md)
+
+#### [[サインインしたままにする] を有効にする](active-directory-b2c-reference-kmsi-custom.md)
+
 ### トラブルシューティング
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス

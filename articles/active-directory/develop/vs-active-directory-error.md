@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/05/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: fef47d27bc68e5b11b06dc6b67d7afdb088bad15
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: 4f29f62b2996cae98b02c1ed5fcb59eca09301ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Azure Active Directory の接続ウィザードでエラーを診断する
 ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。   

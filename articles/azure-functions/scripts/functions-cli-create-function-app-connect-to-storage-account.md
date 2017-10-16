@@ -16,12 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 36dbc2c181c9991a27163e3194800f63c6c0e01e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: af90702601d1bd05836dbf2b20cd3e318832b07c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-function-app-into-azure-storage-account"></a>Function App を Azure Storage アカウントに統合する
 
@@ -37,7 +36,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 このサンプルでは、Azure Function App を作成し、ストレージ接続文字列をアプリ設定に追加します。
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Function App を Azure Storage アカウントに統合する")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
@@ -53,14 +52,13 @@ CLI をローカルにインストールして使用する場合、このトピ�
 | コマンド | メモ |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | Azure にログインします。 |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 任意の場所にリソース グループを作成します |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの作成 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | 新しい Function App を作成します |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | クリーンアップ |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 新しい Function App を作成します |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | クリーンアップ |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。
-

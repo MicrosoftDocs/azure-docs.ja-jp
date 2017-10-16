@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: c0c1eb80685d18794bcae7acaa16b777ff21b3e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 13fca37303296355ce601333b13110d04fa5fa4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -76,7 +75,7 @@ Application Insights Trends では、アプリのテレメトリが時系列で�
 > 
 
 ## <a name="filter"></a>フィルター
-ウィンドウの下部にあるフィルター コントロールを使用して、より具体的な傾向を特定します。 フィルターを適用するには、その名前をクリックします。 各種フィルターをすばやく切り替えて、テレメトリの特定のディメンションに隠れている可能性のある傾向を突き止めることができます。 例外の種類など、いずれかのディメンションのフィルターを適用すると、それ以外のディメンションのフィルターは淡色表示されますが、クリックできます。 フィルターの適用を解除するには、もう一度クリックします。 Ctrl キーを押しながらクリックして、同じディメンションの複数のフィルターを選択します。
+ウィンドウの下部にあるフィルター コントロールを使用して、より具体的な傾向を特定します。 フィルターを適用するには、その名前をクリックします。 各種フィルターをすばやく切り替えて、テレメトリの特定のディメンションに隠れている可能性のある傾向を突き止めることができます。 例外の種類など、いずれかのディメンションのフィルターを適用すると、それ以外のディメンションのフィルターは淡色表示されますが、クリックできます。フィルターの適用を解除するには、もう一度クリックします。 Ctrl キーを押しながらクリックして、同じディメンションの複数のフィルターを選択します。
 
 ![Trend filters](./media/app-insights-visual-studio-trends/TrendsFiltering-750.png)
 
@@ -107,5 +106,4 @@ Trends ツールでは、同じ時系列の他のバブルと比べて異常な�
 | **[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio-trends/34.png) |
 | **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio-trends/64.png) |
 | **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio-trends/62.png) |
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: e163f3c2e9a78b057dc2a7a42924c59d0aac3fab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="share-state-to-and-from-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの状態の共有
 このトピックでは、テンプレート内で状態を管理して共有するためのベスト プラクティスを説明します。 このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。 これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
@@ -244,7 +243,7 @@ ms.lasthandoff: 01/24/2017
 上記の例で、生成されたこの変数について説明しています。
 
 #### <a name="networksettings"></a>networkSettings
-容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。 わかりやすい方法の&1; つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
+容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。 わかりやすい方法の 1 つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
 
 以下にネットワーク設定をやり取りする例を示します。
 
@@ -440,4 +439,3 @@ ms.lasthandoff: 01/24/2017
 ## <a name="next-steps"></a>次のステップ
 * テンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)
 * テンプレートで使用できる関数については、「 [Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)
-

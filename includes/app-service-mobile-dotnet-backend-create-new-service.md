@@ -10,7 +10,7 @@
  
 5. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
-6. **[作成]**をクリックします。 サービスが正常にデプロイされるまで数分待ってから次の手順に進んでください。
+6. **Create** をクリックしてください。 サービスが正常にデプロイされるまで数分待ってから次の手順に進んでください。
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png

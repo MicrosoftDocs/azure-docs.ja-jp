@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
 ms.author: chackdan
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレード
 > [!div class="op_single_selector"]
@@ -165,7 +164,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 ### <a name="certificates"></a>証明書
 ポータルを使用すると、クラスターの新しい証明書の追加、または削除を簡単に行うことができます。 [詳細な手順については、こちらのドキュメント](service-fabric-cluster-security-update-certs-azure.md)
 
-![スクリーンショットは、Azure Portal の証明書の拇印を示しています。][CertificateUpgrade]
+![スクリーンショットは、Azure ポータルの証明書の拇印を示しています。][CertificateUpgrade]
 
 ### <a name="application-ports"></a>アプリケーション ポート
 アプリケーション ポートは、ノードの種類に関連付けられた Load Balancer リソースのプロパティを変更することで変更できます。 ポータルを使用することも、リソース マネージャーの PowerShell を直接使用することもできます。
@@ -224,4 +223,3 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 [ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
-

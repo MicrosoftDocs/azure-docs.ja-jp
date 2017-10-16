@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
+ms.openlocfilehash: 325be23cffc9c728a8af6f92a0f3dce6d31da4ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d50a4bdbafccd645ca339b2dd1ab97456704e3ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>クラシック ポータル (レガシ) を使用して Azure Site Recovery で VMware 仮想マシンと物理サーバーを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-vmware-to-azure.md)
+> * [Azure Portal](site-recovery-vmware-to-azure.md)
 > * [クラシック ポータル](site-recovery-vmware-to-azure-classic.md)
 > * [クラシック ポータル (レガシ)](site-recovery-vmware-to-azure-classic-legacy.md)
 >
@@ -122,8 +121,8 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 * **マスター ターゲット サーバーごとのソース数** — 1 台のマスター ターゲット サーバーで複数のソース コンピューターを保護できます。 ただし、1 台のソース マシンを複数のマスター ターゲット サーバーで保護することはできません。これは、ディスクのレプリケート時に、このディスクのサイズをミラーリングする VHD が Azure の Blob Storage に作成され、データ ディスクとしてマスター ターゲット サーバーに接続されるためです。  
 * **ソースごとの 1 日の最大変更率**— ソースごとの推奨される変更率を検討するときは、3 つの要因を考慮する必要があります。 ターゲット ベースの考慮の場合、ソースでの操作ごとにターゲット ディスクでは 2 IOPS が必要です。 これは、ターゲット ディスクでは古いデータが読み取られて、新しいデータが書き込まれるためです。
   * **プロセス サーバーによってサポートされる 1 日あたりの変更率**— 1 台のソース マシンを複数のプロセス サーバーでサポートすることはできません。 1 台のプロセス サーバーでは、1 日あたり最大 1 TB の変更率をサポートできます。 したがって、ソース マシンごとにサポートされる最大の変化量は 1 TB です。
-  * **ターゲット ディスクでサポートされる最大のスループット**— ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。 さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。 各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。 Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
-  * **ストレージ アカウントでサポートされる最大スループット**— 1 つのソースで複数のストレージ アカウントに対応することはできません。 ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。 Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
+  * **ターゲット ディスクでサポートされる最大のスループット**— ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。 さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。 各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。 Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
+  * **ストレージ アカウントでサポートされる最大スループット**— 1 つのソースで複数のストレージ アカウントに対応することはできません。 ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。 Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」を参照してください。
 
 ### <a name="considerations-for-component-servers"></a>コンポーネント サーバーに関する考慮事項
 表 1 は、構成サーバーとマスター ターゲット サーバーの仮想マシンのサイズをまとめたものです。
@@ -180,7 +179,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 マスター ターゲット サーバーの容量計画は以下のことに依存します。
 
 * Azure Storage のパフォーマンスと制限
-  * 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。 [Standard Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)および [Premium Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)の各スケーラビリティ ターゲットについてご確認ください。
+  * 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。 [Standard Storage アカウント](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)および [Premium Storage アカウント](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)の各スケーラビリティ ターゲットについてご確認ください。
 * 1 日の変更率
 * 保持ボリュームのストレージ
 
@@ -199,7 +198,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 | **コンポーネント** | **要件** | **詳細** |
 | --- | --- | --- |
 | **Azure アカウント** |[Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 | |
-| **Azure Storage** |レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。<br/><br/> アカウントは [Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。<br/><br/> アカウントは Azure Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [新しい Azure ポータル](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。<br/><br/> 詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。 | |
+| **Azure Storage** |レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。<br/><br/> アカウントは [Standard geo 冗長ストレージ アカウント](../storage/common/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/common/storage-premium-storage.md)のいずれかとする必要があります。<br/><br/> アカウントは Azure Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [新しい Azure ポータル](../storage/common/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。<br/><br/> 詳細については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」を参照してください。 | |
 | **Azure Virtual Network** |構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。 Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。 | |
 | **Azure リソース** |すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。 詳細については、「 [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。 | |
 | **Azure Virtual Machines** |保護する仮想マシンは、[Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に従う必要があります。<br/><br/> **ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。<br/><br/> **ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。<br/><br/> **クラスタリング** — クラスター化されたサーバーはサポートされません。<br/><br/> **ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。<br/><br/> **ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。<br/><br/> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 マシンが保護された後で、Azure の名前を変更することができます。 | |
@@ -352,7 +351,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。 その他の利用可能な IP アドレスを指定します。
 
 > [!NOTE]
-> [Premium Storage アカウント](../storage/storage-premium-storage.md)を使用して I/O 量が多いワークロードをホストするために一貫性のある高 I/O パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+> [Premium Storage アカウント](../storage/common/storage-premium-storage.md)を使用して I/O 量が多いワークロードをホストするために一貫性のある高 I/O パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 >
 >
 
@@ -396,7 +395,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
    7. コマンド "**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**" を実行します。
 
       ![ターゲット サーバーの登録](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
-7. 10 ～ 15 分間待機してから、**[サーバー]** > **[構成サーバー]** ページの **[サーバーの詳細]** タブでマスター ターゲット サーバーが登録済みとして表示されていることを確認します。 Linux を実行していて、登録されていない場合は、/usr/local/ASR/Vx/bin/hostconfigcli からホストの構成ツールをもう一度実行してください。 root として chmod を実行し、アクセス許可を設定する必要があります。
+7. 10 ～ 15 分間待機してから、**[サーバー]** > **[構成サーバー]** ページの **[サーバーの詳細]** タブでマスター ターゲット サーバーが登録済みとして表示されていることを確認します。Linux を実行していて、登録されていない場合は、/usr/local/ASR/Vx/bin/hostconfigcli からホストの構成ツールをもう一度実行してください。 root として chmod を実行し、アクセス許可を設定する必要があります。
 
     ![ターゲット サーバーの検証](./media/site-recovery-vmware-to-azure-classic-legacy/target-server-list.png)
 
@@ -643,10 +642,10 @@ Site Recovery コンポーネントは随時更新されます。 新しい更�
 3. **[仮想マシンの選択]** で VMware 仮想マシンを保護している場合は、仮想マシンを管理している vCenter サーバー (または仮想マシンが実行している EXSi ホスト) を選択し、マシンを選択します。
 
     ![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)    
-4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。 IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、 [Premium Storage アカウント](../storage/storage-premium-storage.md) を選択します。 ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。 DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
+4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。 IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、 [Premium Storage アカウント](../storage/common/storage-premium-storage.md) を選択します。 ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。 DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
 
    > [!NOTE]
-   > [新しい Azure ポータル](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+   > [新しい Azure ポータル](../storage/common/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
    >
    >
 
@@ -740,4 +739,3 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-

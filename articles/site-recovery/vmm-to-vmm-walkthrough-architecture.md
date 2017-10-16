@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: b78cd0d5a5395873afaddc8856004775f447e8ea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-1-review-the-architecture-for-hyper-v-replication-to-a-secondary-site"></a>手順 1: セカンダリ サイトへの Hyper-V レプリケーションのアーキテクチャを確認する
 
@@ -65,4 +64,3 @@ Hyper-V VM をセカンダリ VMM サイトにレプリケートするために�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 2: 前提条件と制限事項を確認する](vmm-to-vmm-walkthrough-prerequisites.md)方法に関するページに進みます。
-

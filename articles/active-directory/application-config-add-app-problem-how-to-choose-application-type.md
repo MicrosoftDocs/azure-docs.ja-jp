@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 1acd4119ebf9c9fd364d0eddd970c362756309ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: e0d41d1933531c2c633613bcbc1bbcbf075d6a69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>アプリケーションを追加するときに使用するアプリケーションの種類の選択方法
 
 この記事は、Azure AD と統合できる 4 つの主要なアプリケーションの種類について、次の項目を理解するのに役立ちます。
@@ -35,9 +33,9 @@ Azure AD は、4 つの主要なアプリケーションの種類をサポート
 
 -   **Azure AD ギャラリー アプリケーション**– Azure AD でのシングル サインオンのために事前に統合されているアプリケーション。
 
--   **アプリケーション プロキシ アプリケーション** – 外部的へのセキュリティで保護されたシングル サインオンを提供するオンプレミスの環境で実行されるアプリケーション。
+-   **アプリケーション プロキシ アプリケーション** – 外部へのセキュリティで保護されたシングル サインオンを提供するオンプレミスの環境で実行されるアプリケーション。
 
--   **カスタム開発したアプリケーション** – 組織が Azure AD アプリケーション開発プラットフォームでの開発を望んでいるがまだ存在しない可能性のあるアプリケーション。
+-   **カスタム開発アプリケーション** – 組織が Azure AD アプリケーション開発プラットフォームでの開発を望んでいるがまだ存在しない可能性のあるアプリケーション。
 
 -   **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするか、シングル サインオンのために Azure AD と統合する SCIM をサポートしています。
 
@@ -71,7 +69,7 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 Azure AD アプリケーションに対してサポートされている**シングル サインオン** モードの一覧を以下に示します。
 
--   **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とのシングル サインオンと統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
+-   **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とシングル サインオンで統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
 
 -   **リンクされたサインオン** – 既存のシングル サインオン ソリューションに既に接続されているアプリケーションがある場合、または[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)や [Office 365 アプリケーション起動プログラム](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)でユーザーの単純なリンクを公開するだけの場合は、[[リンクされたサインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **シングル サインオン モード**を選びます
 
@@ -100,7 +98,7 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>カスタム開発アプリケーションのシングル サインオン モード
 
-[カスタム開発アプリケーション](#_Custom-Developed_Applications)エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない追加のシングル サインオン モードもサポートします。 チェックの内容は次のとおりです
+[カスタム開発アプリケーション](#_Custom-Developed_Applications) エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない追加のシングル サインオンもサポートします。 チェックの内容は次のとおりです
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) ベースのサインオン
 
@@ -118,11 +116,11 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側にあるナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
@@ -158,11 +156,11 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側にあるナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
@@ -174,4 +172,3 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
-

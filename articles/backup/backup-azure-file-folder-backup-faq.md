@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Backup エージェントの FAQ | Microsoft Docs"
 description: "一般的な質問への回答: Azure Backup エージェントの動作、バックアップとリテンション期間の制限。"
@@ -16,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
+ms.openlocfilehash: 227cdc87f3e2c8ed393145f4bbde7f74606bdf3b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b9d022c780b618825bb2416f3834e4ada280092f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
@@ -61,7 +58,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 そして、 Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS 上のファイルとフォルダーを保護するには、ゲスト Windows OS に Azure Backup エージェントをインストールします。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Azure VM に Azure Backup エージェントをインストールし、Azure VM で提供される一時ストレージ上のファイルとフォルダーをバックアップすることはできますか。 <br/>
-はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップ ジョブは失敗します。 また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
+はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップ ジョブは失敗します。また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>キャッシュ フォルダーの最小サイズ要件を教えてください。 <br/>
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
@@ -128,4 +125,3 @@ Azure Backup エージェントでは NTFS が使用されています。 [フ�
  
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>バックアップ ポリシーを設定してあるのに、"このサーバーに対して Azure Backups は構成されていません" という警告が表示されるのはなぜですか。 <br/>
 ローカル サーバーに保存されているバックアップ スケジュールの設定がバックアップ コンテナーに格納されている設定と異なる場合、このような警告が表示されることがあります。 サーバーまたは設定が既知の正常な状態に復旧されると、バックアップ スケジュールの同期が失われることがあります。 この警告が表示された場合は、 [バックアップ ポリシーを再構成](backup-azure-manage-windows-server.md) した後、 **[今すぐバックアップ]** を実行して、ローカル サーバーと Azure を再同期してください。
-

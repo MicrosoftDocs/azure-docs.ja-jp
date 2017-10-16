@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
 ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +35,7 @@ ms.lasthandoff: 06/08/2017
 このチュートリアルでは、すべての Azure CDN エッジ ノード上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
 
 ## <a name="walkthrough"></a>チュートリアル
-1. [Azure ポータル](https://portal.azure.com)で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。  プロファイル ブレードが開きます。
+1. [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。  プロファイル ブレードが開きます。
 2. リスト内のエンドポイントをクリックします。  エンドポイント ブレードが開きます。
 3. CDN エンドポイント ブレードで、[読み込み] ボタンをクリックします。
    
@@ -72,5 +70,4 @@ ms.lasthandoff: 06/08/2017
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 * [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
-
 

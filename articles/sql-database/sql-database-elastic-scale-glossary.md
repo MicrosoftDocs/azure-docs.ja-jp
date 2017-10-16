@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 0fda4bb948bbed1c14d468519ba67cce9bc4e6c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。 このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。 
@@ -40,7 +38,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **ローカル シャード マップ**: ローカル シャード マップは、シャードに格納され、シャードに存在するシャードレットのマッピングを含みます。
 
-**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス (「ファンアウト クエリ」とも呼ばれます) を使用して返されます。  **data dependent routing**が含まれます。
+**マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス (「ファンアウト クエリ」とも呼ばれます) を使用して返されます。 **data dependent routing**が含まれます。
 
 **マルチテナント**と**シングルテナント**: これは、シングルテナント データベースとマルチテナント データベースを示します。
 
@@ -93,5 +91,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [1]: ./media/sql-database-elastic-scale-glossary/glossary.png
 [2]: ./media/sql-database-elastic-scale-glossary/mappings.png
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
-
 

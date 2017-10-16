@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーのスロットル
 クラスター リソース マネージャーを正しく構成している場合でも、クラスターが中断する場合があります。 たとえば、同時ノードや障害ドメインのエラーが考えられます。このようなことがアップグレードの実行中に発生したとしたらどうなるでしょうか。 クラスター リソース マネージャーは常に、クラスターの再編成と修正を試みるクラスター リソースを使用することで、すべてを修正しようとします。 スロットルは、安定化、つまり、ノードを元に戻し、ネットワーク パーティションを正常化し、修正されたビットをデプロイするためのリソースを提供する、バックネットの役割を果たします。
 
@@ -95,4 +93,3 @@ Service Fabric には、レプリカの移動数のスロットルを行うた�
 ## <a name="next-steps"></a>次のステップ
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
 - Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
-

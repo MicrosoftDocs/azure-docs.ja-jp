@@ -5,21 +5,21 @@
 * シミュレートされたファームウェアの更新をトリガーする
 * 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスと最後にファームウェアの更新が完了した日時を識別できるようにする
 
-手順 1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
+1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
     ```
     npm init
     ```
 
-手順 2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** パッケージと **azure-iot-device-mqtt** Device SDK パッケージをインストールします。
+2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** Device SDK パッケージをインストールします。
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-手順 3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_fwupdate_device.js** ファイルを作成します。
+3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_fwupdate_device.js** ファイルを作成します。
 
-手順 4. **dmpatterns_fwupdate_device.js** ファイルの先頭に、次の "require" ステートメントを追加します。
+4. **dmpatterns_fwupdate_device.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
    
     ```
     'use strict';
@@ -27,14 +27,14 @@
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-手順 5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 `{yourdeviceconnectionstring}`プレース ホルダーを、前に「デバイス ID の作成」セクションでメモしておいた接続文字列に置き換えます。
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 `{yourdeviceconnectionstring}`プレース ホルダーを、前に「デバイス ID の作成」セクションでメモしておいた接続文字列に置き換えます。
    
     ```
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-手順 6. 報告されるプロパティを更新するために使用する次の関数を追加します。
+6. 報告されるプロパティを更新するために使用する次の関数を追加します。
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -51,7 +51,7 @@
     };
     ```
 
-手順 7. ファームウェア イメージのダウンロードと適用をシミュレートする次の関数を追加します。
+7. ファームウェア イメージのダウンロードと適用をシミュレートする次の関数を追加します。
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -74,7 +74,7 @@
     }
     ```
 
-手順 8. 報告されるプロパティを介してファームウェアの更新状態を **waiting** に更新する次の関数を追加します。 通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。 この関数で、そのポリシーを実行するためのロジックが実行されます。 わかりやすくするため、このサンプルでは、ファームウェア イメージのダウンロードに進む前に 4 秒間待ちます。
+8. 報告されるプロパティを介してファームウェアの更新状態を **waiting** に更新する次の関数を追加します。 通常、利用可能な更新プログラムがあるとデバイスに通知され、管理者が定義したポリシーによって更新のダウンロードと適用が開始されます。 この関数で、そのポリシーを実行するためのロジックが実行されます。 わかりやすくするため、このサンプルでは、ファームウェア イメージのダウンロードに進む前に 4 秒間待ちます。
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -90,7 +90,7 @@
     };
     ```
 
-手順 9. 報告されるプロパティを介してファームウェアの更新状態を **downloading** に更新する次の関数を追加します。 次に関数はファームウェアのダウンロードをシミュレートし、最後にファームウェアの更新状態を **downloadFailed** または **downloadComplete** に更新します。
+9. 報告されるプロパティを介してファームウェアの更新状態を **downloading** に更新する次の関数を追加します。 次に関数はファームウェアのダウンロードをシミュレートし、最後にファームウェアの更新状態を **downloadFailed** または **downloadComplete** に更新します。
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -128,7 +128,7 @@
     }
     ```
 
-手順 10. 報告されるプロパティを介してファームウェアの更新状態を **applying** に更新する次の関数を追加します。 次に関数はファームウェア イメージの適用をシミュレートし、最後にファームウェアの更新状態を **applyFailed** または **applyComplete** に更新します。
+10. 報告されるプロパティを介してファームウェアの更新状態を **applying** に更新する次の関数を追加します。 次に関数はファームウェア イメージの適用をシミュレートし、最後にファームウェアの更新状態を **applyFailed** または **applyComplete** に更新します。
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -166,7 +166,7 @@
     }
     ```
 
-手順 11. **firmwareUpdate** ダイレクト メソッドを処理してマルチステージのファームウェア更新プロセスを開始する次の関数を追加します。
+11. **firmwareUpdate** ダイレクト メソッドを処理してマルチステージのファームウェア更新プロセスを開始する次の関数を追加します。
     
     ```
     var onFirmwareUpdate = function(request, response) {
@@ -202,7 +202,7 @@
     }
     ```
 
-手順 12. 最後に、IoT Hub に接続する次のコードを追加します。
+12. 最後に、IoT Hub に接続する次のコードを追加します。
     
     ```
     client.open(function(err) {

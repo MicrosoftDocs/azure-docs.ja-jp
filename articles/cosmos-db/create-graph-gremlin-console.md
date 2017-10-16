@@ -13,12 +13,11 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 07/27/2017
 ms.author: denlee
+ms.openlocfilehash: ef1a54b6b9245ad091171d5c9b2966f8596edbab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: fd5cc93ce1ed2a8c7da090666ef539b338ac61c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 
@@ -28,7 +27,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ![Apache Gremlin コンソールからの Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、および Windows 上で実行します。 これは [Apache TinkerPop サイト](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.5/apache-tinkerpop-gremlin-console-3.2.5-bin.zip)からダウンロードできます。
+Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、および Windows 上で実行します。 これは [Apache TinkerPop サイト](http://tinkerpop.apache.org/downloads.html)からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -307,4 +306,3 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)
-

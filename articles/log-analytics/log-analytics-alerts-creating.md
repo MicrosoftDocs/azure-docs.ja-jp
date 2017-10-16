@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>Log Analytics のアラート ルールの操作
 アラートは、ログ検索を一定の間隔で自動的に実行するアラート ルールによって作成されます。  結果が特定の条件に一致する場合に、アラート レコードが作成されます。  さらに、アラートを事前に通知したり、別のプロセスを呼び出したりするために、1 つ以上のアクションを自動的に実行できます。   
@@ -156,5 +154,4 @@ Runbook アクションは、Azure Automation で Runbook を開始します。
 * アラートを生成する [ログ検索](log-analytics-log-searches.md) の詳細を確認します。
 * アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
 * アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。
-
 

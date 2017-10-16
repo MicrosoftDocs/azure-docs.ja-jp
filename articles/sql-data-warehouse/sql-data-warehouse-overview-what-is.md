@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: overview
 ms.date: 2/28/2017
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 575c49f83c8845edcea984459f3907490c62d269
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の概要
 Azure SQL Data Warehouse は、クラウドベースの超並列処理 (MPP) スケールアウト データベースであり、大規模なデータを処理できます。 
@@ -155,4 +153,3 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [サービス レベル アグリーメント]: https://azure.microsoft.com/en-us/support/legal/sla/
-

@@ -12,15 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/06/2016
 ms.author: cjiang
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 35b8ae033425e16fb53cc3127f300e1fb919a2f2
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 4f97f28118e0fc6e92373f04c45450537723fce5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
@@ -91,5 +90,4 @@ Azure ポータルで、**[参照]** > **[仮想マシン]** > *対象の Window
 
 ## <a name="next-steps"></a>次のステップ
 Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](restart-resize-error-troubleshooting.md)を参照してください。
-
 

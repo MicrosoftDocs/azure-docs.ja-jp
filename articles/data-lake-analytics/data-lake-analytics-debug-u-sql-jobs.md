@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: saveenr
-ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
 ms.openlocfilehash: 2a77c72d3062272305208934d6406d040266c753
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
@@ -114,7 +113,7 @@ The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 1. コードビハインド ソリューションのジョブの場合は、コードビハインドのソース ファイル (通常は `Script.usql.cs`) に C# コードをコピーします。
 2. アセンブリのジョブの場合は、次の手順で更新された .dll アセンブリを ADLA データベースに登録します。
     1. サーバー エクスプローラーまたは Cloud Explorer から、**[ADLA アカウント] > [データベース]** ノードを展開します。
-    2. **[アセンブリ]** を右クリックして新しい .dll アセンブリを ADLA データベースに登録します。![Azure Data Lake Analytics の U-SQL デバッグ (アセンブリ登録)](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)
+    2. 右クリック**アセンブリ**ADLA データベースと新しい .dll アセンブリを登録および: ![Azure データ Lake Analytics U-SQL デバッグ アセンブリを登録します。](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)
 3. ジョブを再送信します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -122,4 +121,3 @@ The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 - [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 - [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
-

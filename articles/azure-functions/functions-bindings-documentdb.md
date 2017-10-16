@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions における Cosmos DB のバインド | Microsoft Docs"
-description: "Azure Functions で Azure Cosmos DB のバインドを使用する方法について説明します。"
+title: "Functions の Azure Cosmos DB バインド | Microsoft Docs"
+description: "Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -9,45 +9,116 @@ editor:
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
 ms.assetid: 3d8497f0-21f3-437d-ba24-5ece8c90ac85
-ms.service: functions
+ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/26/2017
+ms.date: 09/19/2017
 ms.author: glenga
+ms.openlocfilehash: ad058929eb888920823fddf549ada4ce2c6d9eee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fb79e2ad7514ae2cf48b9a5bd486e54b9b407bee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions における Cosmos DB のバインド
+# <a name="azure-cosmos-db-bindings-for-functions"></a>Functions の Azure Cosmos DB バインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure Cosmos DB のバインドを構成したりコーディングしたりする方法について説明します。 Azure Functions は、Cosmos DB の入力および出力バインドをサポートしています。
+この記事では、Azure Functions で Azure Cosmos DB のバインドを構成したりコーディングしたりする方法について説明します。 Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Cosmos DB の詳細については、[Cosmos DB の概要](../documentdb/documentdb-introduction.md)と[Cosmos DB コンソール アプリケーションの作成](../documentdb/documentdb-get-started.md)に関するページを参照してください。
+Azure Cosmos DB のサーバーレス コンピューティングの詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](..\cosmos-db\serverless-computing-database.md)」をご覧ください。
+
+<a id="trigger"></a>
+<a id="cosmosdbtrigger"></a>
+
+## <a name="azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガー
+
+Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmos-db/change-feed.md)を使用して、パーティション間の変更をリッスンします。 トリガーは、パーティションに_リース_を保存するために使用する 2 つ目のコレクションを必要とします。
+
+トリガーが機能するためには、監視されるコレクションと、リースを含むコレクションの両方が使用できる必要があります。
+
+Azure Cosmos DB のトリガーは、次のプロパティをサポートしています。
+
+|プロパティ  |Description  |
+|---------|---------|
+|**type** | `cosmosDBTrigger` に設定する必要があります。 |
+|**name** | 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 | 
+|**direction** | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**connectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
+|**databaseName** | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
+|**collectionName** | 監視されているコレクションの名前。 |
+| **leaseConnectionStringSetting** | (省略可能) リース コレクションを保持するサービスへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
+| **leaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
+| **leaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
+| **createLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
+| **leaseCollectionThroughput** | (省略可能) リース コレクションの作成に割り当てる要求ユニットの量を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。
+
+>[!NOTE] 
+>リース コレクションに接続するために使用される接続文字列には書き込み権限が必要です。
+
+これらのプロパティは、Azure Portal の関数の [統合] タブで、または `function.json` プロジェクト ファイルを編集することで、設定できます。
+
+## <a name="using-an-azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガーの使用
+
+このセクションには、Azure Cosmos DB のトリガーを使用する方法の例が含まれています。 その例は、次のようなトリガー メタデータを前提にしています。
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "<connection-app-setting>",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+ 
+ポータルの関数アプリから Azure Cosmos DB のトリガーを作成する方法の例については、「[Azure Cosmos DB によってトリガーされる関数の作成](functions-create-cosmos-db-triggered-function.md)」をご覧ください。 
+
+### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
+```cs 
+    #r "Microsoft.Azure.Documents.Client"
+    using Microsoft.Azure.Documents;
+    using System.Collections.Generic;
+    using System;
+    public static void Run(IReadOnlyList<Document> documents, TraceWriter log)
+    {
+        log.Verbose("Documents modified " + documents.Count);
+        log.Verbose("First document Id " + documents[0].Id);
+    }
+```
+
+
+### <a name="trigger-sample-in-javascript"></a>JavaScript でのトリガー サンプル
+```javascript
+    module.exports = function (context, documents) {
+        context.log('First document Id modified : ', documents[0].id);
+
+        context.done();
+    }
+```
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>DocumentDB API 入力バインド
-DocumentDB API 入力バインドでは、Cosmos DB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
+DocumentDB API 入力バインドでは、Azure Cosmos DB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
 
 DocumentDB API 入力バインドには、*function.json* に次のプロパティがあります。
 
 |プロパティ  |Description  |
 |---------|---------|
-|**name**     | 関数でドキュメントを表すバインド パラメーターの名前。  |
+|**name**     | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**type**     | `documentdb` に設定する必要があります。        |
 |**databaseName** | ドキュメントを含むデータベース。        |
 |**collectionName**  | ドキュメントを含むコレクションの名前。 |
 |**id**     | 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。 詳細については、「[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)」を参照してください。 |
-|**sqlQuery**     | 複数のドキュメントを取得するときに使用する Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。例: `SELECT * FROM c where c.departmentId = {departmentId}`        |
-|**接続**     |Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**sqlQuery**     | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。例: `SELECT * FROM c where c.departmentId = {departmentId}`        |
+|**接続**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**direction**     | `in` に設定する必要があります。         |
 
 設定できるのは **id** と **sqlQuery** のいずれかです。 どちらも設定しないと、コレクション全体が取得されます。
@@ -189,7 +260,7 @@ DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データ�
 |**databaseName** | ドキュメントが作成されたコレクションを含むデータベース。     |
 |**collectionName**  | ドキュメントが作成されたコレクションの名前。 |
 |**createIfNotExists**     | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。  |
-|**接続**     |Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**接続**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**direction**     | `out` に設定する必要があります。         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>DocumentDB API 出力バインドの使用
@@ -229,7 +300,7 @@ function.json の `bindings` 配列に次の DocumentDB API 出力バインド�
 }
 ```
 
-ここで、各レコードに対して次の形式の Cosmos DB ドキュメントを作成するとします。
+ここで、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成するとします。
 
 ```json
 {
@@ -331,4 +402,3 @@ module.exports = function (context) {
   context.done();
 };
 ```
-

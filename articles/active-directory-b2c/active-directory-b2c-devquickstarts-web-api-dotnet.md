@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: .NET Web アプリから .NET Web API を呼び出す
 
@@ -187,5 +186,4 @@ public async Task<ActionResult> Index()
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
 最後に、アプリをビルドして実行します。 サインアップおよびサインインを行い、サインインしているユーザーのタスクを作成します。 サインアウトし、別のユーザーとしてサインインします。 そのユーザーのタスクを作成します。 API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したトークンからユーザー ID を抽出したためです。 スコープも操作してみてください。 "書き込み" アクセス許可を削除し、タスクを追加してみます。 スコープを変更するたびに、必ずサインアウトしてください。
-
 

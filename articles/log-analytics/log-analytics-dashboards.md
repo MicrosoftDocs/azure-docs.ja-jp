@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 
@@ -89,4 +88,3 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 
 ## <a name="next-steps"></a>次のステップ
 * Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。
-

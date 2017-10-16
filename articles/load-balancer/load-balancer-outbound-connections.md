@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 5/31/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/21/2017
 ---
 
 # <a name="understanding-outbound-connections-in-azure"></a>Azure の送信用接続の詳細
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure の仮想マシン (VM) は、パブリック IP アドレス空間で Azure 外部のエンドポイントと通信できます。 VM がパブリック IP アドレス空間の宛先への送信フローを開始すると、Azure は VM のプライベート IP アドレスをパブリック IP アドレスにマッピングし、戻りトラフィックが VM に届くようにします。
 

@@ -48,7 +48,7 @@
 
     ![Windows 仮想マシンのコンテナーの指定](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
 
-6. **[VHD]** パネルに、コンテナーに保持されているディスク ドライブの一覧が表示されます。 いずれかのディスクをクリックし、[選択] をクリックします。
+6. **[VHD]** パネルに、コンテナーに保持されているディスク ドライブの一覧が表示されます。 いずれかのディスクをクリックし、選択をクリックします。
 
     ![Windows 仮想マシンのディスク イメージの指定](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
 

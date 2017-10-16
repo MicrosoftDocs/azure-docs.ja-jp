@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: asgang
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0478acb27f7e1f8ca85f43ac244b5bdb70109a93
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e0047a996c9bfd7d950b32f0871ddd7608924b42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -62,7 +62,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 7. データのレプリケーションに使用する Azure Storage アカウントを選択します。 以下の点に注意してください。
 
    * Premium または Standard ストレージ アカウントを選択できます。 Premium アカウントを選択した場合は、継続的なレプリケーション ログ用に追加の Standard ストレージ アカウントを指定する必要があります。 アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-   * 自分が所有しているアカウント以外のストレージ アカウントを使用する場合は、*概要で説明されている、Resource Manager を使用してストレージ アカウントを作成するためのプレースホルダー リンク*を作成できます。 Resource Manager を使用してストレージ アカウントを作成する場合は、**[新規作成]** をクリックします。 クラシック モデルを使用してストレージ アカウントを作成する場合は、 [Azure Portal](../storage/storage-create-storage-account-classic-portal.md) で作成できます。
+   * 自分が所有しているアカウント以外のストレージ アカウントを使用する場合は、*概要で説明されている、Resource Manager を使用してストレージ アカウントを作成するためのプレースホルダー リンク*を作成できます。 Resource Manager を使用してストレージ アカウントを作成する場合は、**[新規作成]** をクリックします。 クラシック モデルを使用してストレージ アカウントを作成する場合は、 [Azure Portal](../storage/common/storage-create-storage-account.md) で作成できます。
 
 8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 クラシック モデルを使用してネットワークを作成する場合は、[Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) で作成できます。 該当する場合は、サブネットを選択します。 次に、 **[OK]**をクリックします
 

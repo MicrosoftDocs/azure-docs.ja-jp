@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 
@@ -174,12 +173,11 @@ DR が開始された後、デバイスの復元が完了する前にクラウ�
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性ディザスター リカバリー (BCDR)
 
-ビジネス継続性障害復旧 (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。 このような状況が発生すると、StorSimple デバイス マネージャー サービスと、関連する StorSimple デバイスに影響が及ぶ可能性があります。
+ビジネス継続性ディザスター リカバリー (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。 このような状況が発生すると、StorSimple デバイス マネージャー サービスと、関連する StorSimple デバイスに影響が及ぶ可能性があります。
 
 障害が発生する直前に登録された StorSimple デバイスがある場合は、これらの StorSimple デバイスの削除が必要になることがあります。 障害復旧後、これらのデバイスを再作成して構成できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
-
 

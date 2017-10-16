@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
-
+ms.openlocfilehash: 5a159ed0ba38899b21212518d41ff995895904ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
 
 Time Series Insights 環境は、受信とストレージの容量を備えた Azure リソースです。 導入ユーザーは、Azure Portal を使用して、必要な容量を備えた環境をプロビジョニングします。
@@ -56,4 +54,3 @@ Time Series Insights 環境は、受信とストレージの容量を備えた A
 * [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境にアクセスするために[データ アクセス ポリシーを定義する](time-series-insights-data-access.md)
 * [イベント ソースを作成する](time-series-insights-add-event-source.md)
 * イベント ソースに[イベントを送信する](time-series-insights-send-events.md)
-

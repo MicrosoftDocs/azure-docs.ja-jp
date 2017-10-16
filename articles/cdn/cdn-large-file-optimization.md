@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>Azure Content Delivery Network を介した大容量ファイルのダウンロードの最適化
 
@@ -127,4 +126,3 @@ Verizon では最適化機能が既定で有効になっています。 最大�
 ### <a name="azure-content-delivery-network-from-verizon"></a>Azure Content Delivery Network from Verizon
 
 一般的な Web 配信の最適化で大きなファイルを配信できます。
-

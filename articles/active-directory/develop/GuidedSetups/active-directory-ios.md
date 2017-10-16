@@ -15,16 +15,14 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c1cad034162844a889967253dbdc1d3a5ec48ab7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 608fe00d478945516b25b672709cd358c5e55ddb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [1. Introduction](active-directory-mobileanddesktopapp-ios-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-mobileanddesktopapp-ios-setup.md)]
 [!INCLUDE [3. Use](active-directory-mobileanddesktopapp-ios-use.md)]
 [!INCLUDE [4. Configure](active-directory-mobileanddesktopapp-ios-configure.md)]
 [!INCLUDE  [5. Test and Validate](active-directory-mobileanddesktopapp-ios-test.md)]
-

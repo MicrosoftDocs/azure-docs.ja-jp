@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 70483cc7edf0aa9eaac03bbd0dc9b7e8b946a7ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。
@@ -126,7 +125,7 @@ Azure Data Lake Store では、データ ストアへのアクセスをネット
 ![ファイアウォール設定と IP アクセス](./media/data-lake-store-secure-data/firewall-ip-access.png "ファイアウォール設定と IP アドレス")
 
 ## <a name="remove-security-groups-for-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントのセキュリティ グループを削除する
-Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
+Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure Portal と Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
 
 1. Data Lake Store アカウントのブレードで、**[設定]** をクリックします。 **[設定]** ブレードで **[ユーザー]** をクリックします。
    
@@ -159,5 +158,4 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 * [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
 * [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
-
 

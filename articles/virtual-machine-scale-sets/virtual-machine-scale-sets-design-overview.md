@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
+ms.openlocfilehash: 0b05359938f4da544c4cb2a6fe60cfaf228478e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 このトピックでは、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
@@ -51,7 +50,7 @@ ms.lasthandoff: 08/09/2017
 ## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure Managed Disksでのスケール セット
-スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../storage/storage-managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
+スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
 - スケール セットの VM の一連の Azure ストレージ アカウントの事前作成が必要ありません。
 - スケール セット内の VM に対して[接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)を定義できます。
 - [セット内で最大 1,000 個の VM をサポート](virtual-machine-scale-sets-placement-groups.md)するようにスケール セットを構成できます。 
@@ -74,8 +73,7 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 
 ユーザー管理のストレージ アカウントに構成されているスケール セットは、現在 100 個の VM に制限されています (また、このスケールには 5 つのストレージ アカウントが推奨されます)。
 
-(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure Managed Disks で構成した場合に最大 100 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
+(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure Managed Disks で構成した場合に最大 300 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
 VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要
 Azure Data Catalog は、完全に管理されたクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
@@ -363,5 +362,4 @@ Azure Data Catalog では、個々の資産を削除することも、複数の�
 * [データ資産を文書化する方法](data-catalog-how-to-documentation.md)
 * [データ資産への接続方法](data-catalog-how-to-connect.md)
 * [データ資産を管理する方法](data-catalog-how-to-manage.md)
-
 

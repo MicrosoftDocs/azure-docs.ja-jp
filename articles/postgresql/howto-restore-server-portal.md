@@ -9,14 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/20/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 49d1a893f4c7c7d99bf30ac7f7665c05019b02f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 3fbdb7741481bd3620466c3489d3609f9ea6961f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
 ## <a name="backup-happens-automatically"></a>自動バックアップ
@@ -29,7 +27,7 @@ Azure Database for PostgreSQL を使用するとき、このデータベース �
 ## <a name="restore-in-the-azure-portal"></a>Azure Portal で復元する
 Azure Database for PostgreSQL では、過去の特定の時点までサーバーのコピーを新しいサーバーに復元できます。 この新しいサーバーを使用して、データを回復できます。 
 
-たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルを新しいサーバーのコピーから取得できます。
+たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルとデータを新しいサーバーのコピーから取得できます。
 
 次の手順では、サンプルのサーバーを特定の時点まで復元します。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
@@ -55,4 +53,3 @@ Azure Database for PostgreSQL では、過去の特定の時点までサーバ�
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)
-

@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/07/2017
 ms.author: mimig
+ms.openlocfilehash: e8ac4bef5af7a98857278b82304bb58f1ac6e342
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: e9808af4aa875c5199279825325688afc69e6de6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -64,12 +63,31 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 ここで言う "*コンテナー*" とは、DocumentDB API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
+はい。契約することなく、期間限定のアカウントに無料でサインアップできます。 サインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスするか、[Try Azure Cosmos DB に関する FAQ](#try-cosmos-db) セクションで詳細を確認してください。
+
 Azure を初めて使用する場合は、[Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。それにより、30 日間の使用権と、すべての Azure サービスを試すためのクレジットが与えられます。 Visual Studio サブスクリプションを持っている場合は、どの Azure サービスでも使用できる[無料の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)も与えられます。 
 
 また、[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成しなくても、ローカルでのアプリケーションの開発とテストを無料で行うことができます。 Azure Cosmos DB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Azure Cosmos DB に関するその他の支援を得るにはどうすればよいですか?
 支援が必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) または [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)を利用するか、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) にメールを送って、Azure Cosmos DB エンジニアリング チームとの 1 対 1 のチャットをスケジュールしてください。 
+
+<a id="try-cosmos-db"></a>
+## <a name="try-azure-cosmos-db-subscriptions"></a>Try Azure Cosmos DB サブスクリプション
+
+現在、一定期間に限り、サブスクリプション不要で、課金も契約もなしで Azure Cosmos DB をご利用いただけます。 Try Azure Cosmos DB サブスクリプションにサインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスしてください。 このサブスクリプションは、[Azure 無料試用版](https://azure.microsoft.com/free/)とは別のもののため、Azure 無料試用版または Azure 有料サブスクリプションに加えて使用できます。 
+
+Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユーザー ID に関連付けられた他のサブスクリプションの横に表示されます。 
+
+Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
+
+* SQL (DocumentDB API)、Gremlin (Graph API)、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
+* MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
+* 10 GB のストレージ容量。
+* グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です。
+* 最大スループット 5K RU/秒。
+* サブスクリプションの有効期限は 24 時間後に切れます。これは、合計で最大 48 時間まで延長できます。
+* Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。 
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Azure Cosmos DB にサインアップするにはどうすればよいですか?
@@ -210,7 +228,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 ### <a name="which-tools-work-with-the-table-api-preview"></a>Table API (プレビュー) で動作するのはどのツールですか? 
 以前のバージョンの Azure Explorer (0.8.9) を使用できます。
 
-以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API (プレビュー) に対応します。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/storage-explorers.md)」をご覧ください。 
+以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API (プレビュー) に対応します。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。 
 
 ### <a name="do-powershell-or-azure-cli-work-with-the-new-table-api-preview"></a>PowerShell または Azure CLI は新しい Table API (プレビュー) で動作しますか?
 Table API (プレビュー) 用の PowerShell と Azure CLI のサポートを追加する予定です。 
@@ -426,4 +444,3 @@ DocumentDB は、Azure サービスとしてポータルに表示されなくな
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
-

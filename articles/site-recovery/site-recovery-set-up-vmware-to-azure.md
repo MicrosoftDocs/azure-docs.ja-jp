@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
+ms.openlocfilehash: 49cc01e54158b68e440f1efbfe2f8b0d076a5692
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>ソース環境のセットアップ (VMware から Azure へ)
 > [!div class="op_single_selector"]
 > * [VMware から Azure](./site-recovery-set-up-vmware-to-azure.md)
@@ -37,7 +35,11 @@ ms.lasthandoff: 07/21/2017
 - 構成サーバーをインストールする仮想マシン。
 
 ## <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
-構成サーバー ソフトウェアは、可用性の高い VMware 仮想マシン上にデプロイする必要があります。 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
+次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
+
+> [!IMPORTANT]
+> VMware 仮想マシンを保護するために構成サーバーをデプロイするときは、**高可用性 (HA)** 仮想マシンとしてデプロイすることをお勧めします。
+
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
@@ -99,4 +101,3 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="next-steps"></a>次のステップ
 Azure で[ターゲット環境を設定](./site-recovery-prepare-target-vmware-to-azure.md)します。
-

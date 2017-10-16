@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Premium Azure Redis Cache の Redis クラスタリングの構成方法 | Microsoft Docs"
 description: "Premium レベルの Azure Redis Cache インスタンス用に Redis を作成して管理する方法について説明します"
 services: redis-cache
@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 2fdf42c99395dd7a32ab68b0cf8d9504df3800ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
-
+ms.openlocfilehash: 86a4a605dbb3b11924c14ff42238009742f72898
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
@@ -48,7 +46,7 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 ![クラスタリング][redis-cache-clustering]
 
-クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックし、スライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、**[OK]** をクリックします。
+クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックし、クスライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、**[OK]** をクリックします。
 
 各シャードは Azure によって管理されるプライマリ/レプリカ キャッシュ ペアであり、キャッシュの合計サイズはシャードの数に価格レベルで選択したキャッシュ サイズを掛けることによって計算されます。 
 
@@ -173,7 +171,6 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
-
 
 
 

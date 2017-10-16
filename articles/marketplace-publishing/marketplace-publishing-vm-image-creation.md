@@ -14,12 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 8f87f2c0caccded5b0f24052deee6cefaad08013
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -113,7 +112,7 @@ Microsoft Azure ポータルから承認された基本イメージに基づい�
     b.    Azure でイメージで開発する場合は、最初から US ベースの Microsoft Azure リージョンのいずれかを使用することを検討してください。 これにより認定でイメージを送信した際に、お客様に代わりマイクロソフトが実行することで VHD コピー プロセスが高速化されます。
 
     ![図][img-portal-vm-location]
-7. **[作成]**をクリックします。 VM がデプロイを開始します。 数分でデプロイメントが完了し、SKU のイメージの作成を開始できます。
+7. **Create** をクリックしてください。 VM がデプロイを開始します。 数分でデプロイメントが完了し、SKU のイメージの作成を開始できます。
 
 ### <a name="33-develop-your-vhd-in-the-cloud"></a>3.3 クラウドでの VHD の開発
 リモート デスクトップ プロトコル (RDP) を使用してクラウドで VHD を開発することを強くお勧めします。 プロビジョニングではユーザー名とパスワードを指定して RDP に接続します。
@@ -383,8 +382,7 @@ Microsoft Azure Storage Explorer を使用して SAS URL を生成するため�
 
 5.  ストレージ アカウントに移動し、コンテナーを選択します。
 
-6.  <seg>
-  **[Get Shared Access Signature..]** (Shared Access Signature の取得..) を選択します。</seg> **コンテナー**の右クリックを使用
+6.  **[Get Shared Access Signature..]** (Shared Access Signature の取得..) を選択します。 **コンテナー**の右クリックを使用
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
@@ -496,7 +494,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 4. **[SKU]** セクションでプロパティを入力します。
 5. **[オペレーティング システム ファミリ]**でオペレーティング システム VHD に関連付けられたオペレーティング システムの種類をクリックします。
 6. **[オペレーティング システム]** ボックスにオペレーティング システムの詳細を入力します。 オペレーティング システム ファミリ、種類、バージョン、更新の形式で記載してください。 たとえば、「Windows Server Datacenter 2014 R2」などと入力します。
-7. 最大 6 個の推奨される仮想マシン サイズを選択します。 これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。 **これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
+7. 最大 6 個の推奨される仮想マシン サイズを選択します。 これらは、イメージの購入およびデプロイ時に Azure Portal の [価格レベル] ブレードで顧客に表示されるものです。 **これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
 8. バージョンを入力します。 バージョン フィールドには、製品とその更新プログラムを識別するためのセマンティック バージョンがカプセル化されています。
    * バージョンの形式は X.Y.Z で、X、Y、Z は整数です。
    * 異なる SKU のイメージは、メジャー バージョンおよびマイナー バージョンが異なっていてもかまいません。
@@ -569,4 +567,3 @@ SKU の詳細について入力が完了したら、[Azure Marketplace のマー
 [link-openssl]:https://www.openssl.org/
 [link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]:https://www.python.org/
-

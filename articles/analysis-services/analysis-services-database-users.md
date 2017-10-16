@@ -13,15 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/26/2016
+ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c1a8321c3c03dc9022048e39b3c8614ae683b955
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
-
+ms.openlocfilehash: d0bc7d7514f111b4bbde33bd60ae21264bd797fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -152,5 +150,4 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
   [サーバー管理者の管理](analysis-services-server-admins.md)   
   [PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)  
   [Tabular Model Scripting Language (TMSL) のリファレンス](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
-
 

@@ -1,9 +1,7 @@
 
 <a name="cs_0_csharpprogramexample_h2"/>
 
-<a id="c-program-example" class="xliff"></a>
-
-## C# プログラムの例
+## <a name="c-program-example"></a>C# プログラムの例
 
 この記事の以降のセクションでは、ADO.NET を使って SQL データベースに Transact-SQL ステートメントを送る C# プログラムを紹介します。 次の操作を C# プログラムで行います。
 
@@ -21,14 +19,12 @@
 - T-SQL ソース コードを返すメソッド。
 - T-SQL をデータベースに送信する 2 つのメソッド。
 
-<a id="to-compile-and-run" class="xliff"></a>
-
-#### コンパイルして実行するには
+#### <a name="to-compile-and-run"></a>コンパイルして実行するには
 
 この C# プログラムは、論理的には 1 つの .cs ファイルです。 ただし物理的には、プログラムが複数のコード ブロックに分割されています。これによって各ブロックが見やすくなり、また理解しやすくなっています。 このプログラムをコンパイルして実行するには、次の手順に従います。
 
 1. Visual Studio で C# プロジェクトを作成します。
-    - プロジェクトの種類には、"*コンソール*" アプリケーションを選んでください。**[テンプレート]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]** の順に選択します。
+    - プロジェクトの種類にする必要があります、*コンソール*アプリケーションで、次の階層のようなものから:**テンプレート** > **Visual c#** > **Windows クラシック デスクトップ** > **コンソール アプリケーション (.NET Framework)**です。
 3. **Program.cs** ファイルから、ひな形となる短いコード行を削除します。
 3. 以下に示した各ブロックをコピーして Program.cs に貼り付けます。ここに記載されている順序で貼り付けてください。
 4. Program.cs の **Main** メソッドで次の値を編集します。
@@ -47,9 +43,7 @@
 >
 
 <a name="cs_1_connect"/>
-<a id="c-block-1-connect-by-using-adonet" class="xliff"></a>
-
-### C# ブロック 1: ADO.NET を使った接続
+### <a name="c-block-1-connect-by-using-adonet"></a>C# ブロック 1: ADO.NET を使った接続
 
 - [[次へ]](#cs_2_createtables)
 
@@ -105,9 +99,7 @@ namespace csharp_db_test
 
 
 <a name="cs_2_createtables"/>
-<a id="c-block-2-t-sql-to-create-tables" class="xliff"></a>
-
-### C# ブロック 2: テーブルを作成するための T-SQL
+### <a name="c-block-2-t-sql-to-create-tables"></a>C# ブロック 2: テーブルを作成するための T-SQL
 
 - [前へ](#cs_1_connect) &nbsp; / &nbsp; [次へ](#cs_3_insert)
 
@@ -139,9 +131,7 @@ CREATE TABLE tabEmployee
       }
 ```
 
-<a id="entity-relationship-diagram-erd" class="xliff"></a>
-
-#### エンティティ関係図 (ERD: Entity Relationship Diagram)
+#### <a name="entity-relationship-diagram-erd"></a>エンティティ関係図 (ERD: Entity Relationship Diagram)
 
 前の CREATE TABLE ステートメントでは、2 つのテーブルの間に "*外部キー*" (FK) リレーションシップを作成するために **REFERENCES** キーワードが使われています。  tempdb を使用している場合は、先頭に二重ダッシュを付けて `--REFERENCES` キーワードをコメントアウトしてください。
 
@@ -151,9 +141,7 @@ CREATE TABLE tabEmployee
 
 
 <a name="cs_3_insert"/>
-<a id="c-block-3-t-sql-to-insert-data" class="xliff"></a>
-
-### C# ブロック 3: データを挿入するための T-SQL
+### <a name="c-block-3-t-sql-to-insert-data"></a>C# ブロック 3: データを挿入するための T-SQL
 
 - [前へ](#cs_2_createtables) &nbsp; / &nbsp; [次へ](#cs_4_updatejoin)
 
@@ -185,9 +173,7 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-<a id="c-block-4-t-sql-to-update-join" class="xliff"></a>
-
-### C# ブロック 4: 結合を使ってデータを更新する T-SQL
+### <a name="c-block-4-t-sql-to-update-join"></a>C# ブロック 4: 結合を使ってデータを更新する T-SQL
 
 - [前へ](#cs_3_insert) &nbsp; / &nbsp; [次へ](#cs_5_deletejoin)
 
@@ -215,9 +201,7 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-<a id="c-block-5-t-sql-to-delete-join" class="xliff"></a>
-
-### C# ブロック 5: 結合を使ってデータを削除する T-SQL
+### <a name="c-block-5-t-sql-to-delete-join"></a>C# ブロック 5: 結合を使ってデータを削除する T-SQL
 
 - [前へ](#cs_4_updatejoin) &nbsp; / &nbsp; [次へ](#cs_6_selectrows)
 
@@ -249,9 +233,7 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-<a id="c-block-6-t-sql-to-select-rows" class="xliff"></a>
-
-### C# ブロック 6: 行を選択する T-SQL
+### <a name="c-block-6-t-sql-to-select-rows"></a>C# ブロック 6: 行を選択する T-SQL
 
 - [前へ](#cs_5_deletejoin) &nbsp; / &nbsp; [次へ](#cs_6b_datareader)
 
@@ -279,9 +261,7 @@ SELECT
 
 
 <a name="cs_6b_datareader"/>
-<a id="c-block-6b-executereader" class="xliff"></a>
-
-### C# ブロック 6b: ExecuteReader
+### <a name="c-block-6b-executereader"></a>C# ブロック 6b: ExecuteReader
 
 - [前へ](#cs_6_selectrows) &nbsp; / &nbsp; [次へ](#cs_7_executenonquery)
 
@@ -317,9 +297,7 @@ SELECT
 
 
 <a name="cs_7_executenonquery"/>
-<a id="c-block-7-executenonquery" class="xliff"></a>
-
-### C# ブロック 7: ExecuteNonQuery
+### <a name="c-block-7-executenonquery"></a>C# ブロック 7: ExecuteNonQuery
 
 - [前へ](#cs_6b_datareader) &nbsp; / &nbsp; [次へ](#cs_8_output)
 
@@ -357,9 +335,7 @@ SELECT
 
 
 <a name="cs_8_output"/>
-<a id="c-block-8-actual-test-output-to-the-console" class="xliff"></a>
-
-### C# ブロック 8: コンソールへの実際のテスト出力
+### <a name="c-block-8-actual-test-output-to-the-console"></a>C# ブロック 8: コンソールへの実際のテスト出力
 
 - [前へ](#cs_7_executenonquery)
 

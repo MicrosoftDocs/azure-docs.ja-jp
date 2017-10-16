@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
+ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Operations Management Suite (OMS) と Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 
 監視と豊富なデバッグ情報の獲得のために、ロジック アプリの作成と同時に Log Analytics をオンにできます。 Log Analytics では、Operations Management Suite (OMS) ポータルを通じて、ロジック アプリの実行を監視して診断ログを収集できます。 Logic Apps の管理ソリューションを OMS に追加すると、ロジック アプリの実行の状態の集計や、その状態、実行時間、再送信の状態、および相関関係 ID などの詳細情報を取得します。
@@ -133,11 +131,10 @@ ms.lasthandoff: 08/16/2017
      ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
 
      [Azure Log Analytics] ページで、クエリを更新して表から結果を確認できます。 
-     このクエリは [Kusto クエリ言語](https://docs.loganalytics.io/learn/tutorials/getting_started_with_queries.html)を使用します。他の結果を表示するには編集します。 
+     このクエリは [Kusto クエリ言語](https://docs.loganalytics.io/docs/Language-Reference)を使用します。他の結果を表示するには編集します。 
 
      ![Azure Log Analytics - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [B2B メッセージを監視する](../logic-apps/logic-apps-monitor-b2b-message.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 08/28/2017
 
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure ストレージ アカウントを使用する
 
-1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
+1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
 
     ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
 
@@ -242,4 +241,3 @@ Azure Data Lake Analytics では、ログ データの処理と分析方法に�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-

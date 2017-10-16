@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.openlocfilehash: 6ea959f1e95ea46c07eec3afa9d46bfeb72ca3e4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
 > [!NOTE]

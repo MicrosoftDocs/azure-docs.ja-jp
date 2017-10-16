@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の開始 | Microsoft Docs"
 description: "Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6ee756b4-9200-4eb2-9bda-ec156853803b
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: 7537a50d3d9b773f48bc498f946ea5f63f6d530b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 844831b63d5263987ed05370125fbe9f01913ab9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
@@ -184,5 +183,4 @@ jsmith
 ## <a name="next-steps"></a>次のステップ
 * この記事の Runbook アーキテクチャは、Hybrid Runbook Worker で Azure とオンプレミスのリソースを管理する Runbook の概要を示しています。  自社のデータセンターで Automation Runbook を実行する方法については、 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)に関する記事をご覧ください。
 * 他の Runbook で特定の関数または一般的な関数に使用されるモジュールの Runbook の作成方法については、 [子 Runbook](automation-child-runbooks.md)に関する記事をご覧ください。
-
 

@@ -4,7 +4,7 @@ description: "Docker VM 拡張機能を使用して、Resource Manager テンプ
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
 ms.service: virtual-machines-linux
@@ -12,14 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/11/2017
+ms.date: 09/26/2017
 ms.author: iainfou
+ms.openlocfilehash: 0cef78edaeec9d45aa733b1912d82d5a058ba289
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 63d0d80999fd57d014c74d5c6aef3733ec2afe85
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 Docker は一般的なコンテナー管理とイメージング プラットフォームで、Linux 上のコンテナーを簡単に操作できます。 Azure では、ニーズに応じた様々な方法で Docker をデプロイできます。 この記事では、Azure CLI 2.0 での Docker VM 拡張機能と Azure Resource Manager テンプレートの使用について説明します。 これらの手順は、[Azure CLI 1.0](dockerextension-nodejs.md) を使用して実行することもできます。
@@ -35,13 +34,13 @@ Docker マシンや Azure Container Service などの他のデプロイ方法に
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Azure Docker VM 拡張機能を使ってテンプレートをデプロイする
 Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、「[Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)」(Docker を使用した Ubuntu VM の簡単なデプロイ) で確認できます。 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
-最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
+最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
-az group create --name myResourceGroup --location westus
+az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 次のように *newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の値を指定します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 次のように *newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -68,20 +67,31 @@ az vm show \
 
 このコマンドが *Succeeded* を返すと、デプロイは完了しており、次の手順で VM に SSH 接続できます。
 
-## <a name="deploy-your-first-nginx-container"></a>最初の nginx コンテナーのデプロイ
-DNS 名など、VM の詳細を表示するには、`az vm show -g myResourceGroup -n myDockerVM -d --query [fqdns] -o tsv` を使用します。 次のように、ローカル コンピューターから新しい Docker ホストに SSH 接続します。
+## <a name="deploy-your-first-nginx-container"></a>最初の NGINX コンテナーのデプロイ
+DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#show) を使用します。
 
-```bash
-ssh azureuser@mypublicdns.westus.cloudapp.azure.com
+```azurecli
+az vm show \
+    --resource-group myResourceGroup \
+    --name myDockerVM \
+    --show-details \
+    --query [fqdns] \
+    --output tsv
 ```
 
-Docker ホストにログインした後、nginx コンテナーを実行します。
+新しい Docker ホストに SSH 接続します。 独自の DNS 名を次のように指定します。
+
+```bash
+ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
+```
+
+Docker ホストにログインした後、NGINX コンテナーを実行します。
 
 ```bash
 sudo docker run -d -p 80:80 nginx
 ```
 
-nginx イメージがダウンロードされてコンテナーが起動され、出力は次の例のようになります。
+NGINX イメージがダウンロードされてコンテナーが起動され、出力は次の例のようになります。
 
 ```bash
 Unable to find image 'nginx:latest' locally
@@ -101,7 +111,7 @@ Docker ホストで実行しているコンテナーの状態を、次のよう�
 sudo docker ps
 ```
 
-出力は次の例のようになり、nginx コンテナーが実行していて、TCP ポート 80 と 443 が転送されていることが示されます。
+出力は次の例のようになり、NGINX コンテナーが実行していて、TCP ポート 80 と 443 が転送されていることが示されます。
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
@@ -145,5 +155,4 @@ Azure での Docker のデプロイの他のオプションについて詳しく
 * [Docker マシンと Azure ドライバーを使用する](docker-machine.md)  
 * [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](docker-compose-quickstart.md)
 * [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
-
 

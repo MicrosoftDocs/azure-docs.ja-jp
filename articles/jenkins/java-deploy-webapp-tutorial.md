@@ -10,18 +10,16 @@ ms.topic: article
 ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
-ms.custom: Jenkins
+ms.custom: Jenkins, devcenter
+ms.openlocfilehash: 3a2635ac968d843226f05dc51cf4a5f078235c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 22288cd1468b410df77b27721ccda32c3d033e47
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Jenkins による Azure App Service への継続的インテグレーションとデプロイの設定
 
-このチュートリアルでは Jenkins を使用して、[Azure App Service Web App on Linux](/azure/app-service-web/app-service-linux-intro) に対して、[Spring Boot](http://projects.spring.io/spring-boot/) フレームワークで開発したサンプル Java Web アプリの継続的インテグレーションおよび継続的デプロイ (CI/CD) を設定します。
+このチュートリアルでは Jenkins を使用して、[Azure App Service Web App on Linux](/azure/app-service/containers/app-service-linux-intro) に対して、[Spring Boot](http://projects.spring.io/spring-boot/) フレームワークで開発したサンプル Java Web アプリの継続的インテグレーションおよび継続的デプロイ (CI/CD) を設定します。
 
 このチュートリアルでは、以下のタスクを実行します。
 
@@ -83,7 +81,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="configure-azure-app-service"></a>Azure App Service の構成 
 
-1. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) を使用して、新しい [Linux 上の Web アプリ](/azure/app-service-web/app-service-linux-intro)を作成します。 このチュートリアルでは Web アプリケーションの名前を `myJavaApp` にしていますが、独自のアプリでは一意の名前を使用する必要があります。
+1. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) を使用して、新しい [Linux 上の Web アプリ](/azure/app-service/containers/app-service-linux-intro)を作成します。 このチュートリアルでは Web アプリケーションの名前を `myJavaApp` にしていますが、独自のアプリでは一意の名前を使用する必要があります。
    
     ```azurecli-interactive
     az group create --name myResourceGroupJenkins --location westus
@@ -187,4 +185,3 @@ ms.lasthandoff: 08/29/2017
 - [Azure VMs をビルド エージェントとして使用する](/azure/jenkins/jenkins-azure-vm-agents)
 - [Azure CLI を使用してジョブのリソースとパイプラインを管理する](/azure/jenkins/execute-cli-jenkins-pipeline)
  
-

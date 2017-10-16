@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 11850e5ce20efae88a7af9c1d2e4761ed2b70cd7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Windows Server 2016 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 [MySQL](https://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。 このチュートリアルでは、**Windows Server 2016** を実行している仮想マシン上の MySQL Server として **MySQL 5.7.18 の Community バージョン**をインストールして実行する方法について説明します。 他のバージョンの MySQL または Windows Server を使用しているユーザーは、同一の結果にならない場合があります。
@@ -50,7 +49,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 >
 
 1. リモート デスクトップを使用して仮想マシンに接続したら、スタート画面で **[Internet Explorer]** をクリックします。
-2. 右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。 **[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。 信頼済みサイトの一覧に http://*.mysql.com を追加します。 [**閉じる**] をクリックし、[**OK**] をクリックします。
+2. 右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。 **[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。 信頼済みサイトの一覧に http://*.mysql.com を追加します。 **閉じる**をクリックし、**OK**をクリックします。
 3. Internet Explorer のアドレス バーに「https://dev.mysql.com/downloads/mysql/」と入力します。
 4. MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。 MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 352.8 MB の mysql-installer-community-5.7.18.0.msi など)、このインストーラーを保存します。
 5. インストーラーでダウンロードが完了したら、[ **実行** ]をクリックしてセットアップを起動します。
@@ -77,7 +76,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 16. **[Apply Server Configuration]** ページで、**[Execute]** をクリックします。 構成手順の終了後、 **[Finish]**をクリックします。
 17. **[Product Configuration]** ページで、**[Next]** をクリックします。
 18. **[Installation Complete]** ページで、後で内容を検討する場合は **[Copy Log to Clipboard]** をクリックしてから **[Finish]** をクリックします。
-19. スタート画面で「**mysql**」と入力してから、[**MySQL 5.7 Command Line Client**] をクリックします。
+19. スタート画面で「**mysql**」と入力してから、**MySQL 5.7 Command Line Client**をクリックします。
 20. 手順 12 で指定したルート パスワードを入力すると、MySQL を構成するためのコマンドを実行できるプロンプトが表示されます。 コマンドと構文について詳しくは、[MySQL のリファレンス マニュアル](https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html)をご覧ください。
 
     ![](./media/mysql-2008r2/MySQL_CommandPrompt.png)
@@ -94,11 +93,11 @@ MySQL Server の Community バージョンをインストール、構成、と�
 
 MySQL Server サービスのエンドポイントを構成するには、次のようにします。
 
-1. Azure Portal で、[**仮想マシン (クラシック)**] をクリックし、MySQL 仮想マシンの名前をクリックしてから、[**エンドポイント**] をクリックします。
+1. Azure Portal で、**仮想マシン (クラシック)**をクリックし、MySQL 仮想マシンの名前をクリックしてから、**エンドポイント**をクリックします。
 2. コマンド バーで、 **[追加]**をクリックします。
 3. [**エンドポイントの追加**] ページで、一意の名前を [**名前**] に入力します。
 4. プロトコルとして [**TCP**] を選択します。
-5. [**パブリック ポート**] と [**プライベート ポート**] の両方に、**3306** などのポート番号を入力し、[**OK**] をクリックします。
+5. **パブリック ポート** と **プライベート ポート** の両方に、**3306** などのポート番号を入力し、**OK**をクリックします。
 
 ## <a name="add-a-windows-firewall-rule-to-allow-mysql-traffic"></a>Windows Firewall ルールを追加して MySQL トラフィックを許可する
 インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで、_管理者特権の Windows PowerShell コマンド プロンプト_から、次のコマンドを実行します。
@@ -108,7 +107,7 @@ MySQL Server サービスのエンドポイントを構成するには、次の�
 ## <a name="test-your-remote-connection"></a>リモート接続をテストする
 MySQL Server サービスを実行する Azure VM へのリモート接続をテストするには、VN を含むクラウド サービスの DNS 名を指定する必要があります。
 
-1. Azure Portal で、[**仮想マシン (クラシック)**] をクリックし、MySQL サーバー仮想マシンの名前をクリックしてから、[**ダッシュボード**] をクリックします。
+1. Azure Portal で、**仮想マシン (クラシック)**をクリックし、MySQL サーバー仮想マシンの名前をクリックしてから、**ダッシュボード**をクリックします。
 2. 仮想マシンのダッシュボードから、[**DNS 名**] の値をメモします。 たとえば次のようになります。
 
    ![](media/mysql-2008r2/MySQL_DNSName.png)
@@ -122,4 +121,3 @@ MySQL Server サービスを実行する Azure VM へのリモート接続をテ
 
 ## <a name="next-steps"></a>次のステップ
 MySQL の実行の詳細については、 [MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
-

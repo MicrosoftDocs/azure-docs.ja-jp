@@ -13,17 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 05/24/2017
+ms.date: 09/11/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: d85f711d6551a68d1248ae8ec61e2ecc1ddc8ecd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: d3917754069ad961ffd9233d852aab6fa172eaef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>B2B ユーザーの多要素認証
@@ -66,7 +63,7 @@ B2B コラボレーション ユーザー用の MFA のセットアップがい�
   たとえば次のようになります。
 
   ```
-  PS C:\Users\tjwasserGet-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
+  Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
 
 3. 特定のユーザーの MFA 方法を、B2B コラボレーション ユーザーにもう一度証明方法の設定を要求するように再設定します。 例:
@@ -121,5 +118,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)

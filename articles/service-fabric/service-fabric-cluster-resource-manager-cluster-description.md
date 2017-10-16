@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 79b215eed38959efd630e21633d235cbc857abd8
 ms.openlocfilehash: dde9d9b8be1faede7d2e9e45597070e6ce51ac02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="describing-a-service-fabric-cluster"></a>Service Fabric クラスターの記述
 Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。 クラスター リソース マネージャーは、実行時にこの情報を利用することで、クラスターで実行されているサービスの高可用性を確保します。 クラスター リソース マネージャーはこれらの重要なルールを適用すると同時に、クラスター内のリソース消費量の最適化も試みます。
 
@@ -382,7 +380,7 @@ Service Fabric はリソースを `Metrics` として表します。 メトリ�
 
 配置の制約とノード プロパティの場合と同様に、メトリックの名前が意味する内容は Service Fabric クラスター リソース マネージャーによって認識されないことに注意が必要です。 メトリックの名前は単なる文字列です。 あいまいな場合は作成したメトリック名の一部として単位を宣言することをお勧めします。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a>Capacity
 すべてのリソースの "*分散*" をオフにしたとしても、Service Fabric クラスター リソース マネージャーは容量超過のノードが出ないように調整します。 クラスターの容量がいっぱいの場合や、ワークロードがノードよりも大きい場合でなければ、容量超過の管理は可能です。 容量とは、ノードにどのくらいのリソースがあるかを理解するためにクラスター リソース マネージャーが使用するもう 1 つの "*制約*" です。 容量の残りもクラスター全体で追跡されます。 このサービス レベルの容量と消費量の両方が、メトリックで表現されます。 たとえば、メトリックが "ClientConnections" であり、特定のノードで "ClientConnections" の容量が 32,768 だとします。 他のノードには他の制限がある可能性があります。そのノードで実行されている一部のサービスは 32,256 のメトリック "ClientConnections" を消費している、と言うことができます。
 
 実行中に、クラスター リソース マネージャーはクラスターとノードの残容量を追跡します。 クラスター リソース マネージャーは容量を追跡するために、サービスが実行されているノードの容量から、各サービスの使用量を差し引きます。 Service Fabric クラスター リソース マネージャーは、ノードが容量超過にならないように、この情報を使用してレプリカを配置または移動する場所を検討します。
@@ -529,4 +527,3 @@ LoadMetricInformation     :
 [Image5]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
 [Image6]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
-

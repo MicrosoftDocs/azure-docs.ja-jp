@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
 クラスターおよびその中で実行しているアプリケーションのパフォーマンスを把握するには、メトリックを収集する必要があります。 Service Fabric クラスターでは、次のパフォーマンス カウンターを収集することをお勧めします。
@@ -32,10 +30,10 @@ ms.lasthandoff: 07/21/2017
 
 | カウンターのカテゴリ | カウンター名 |
 | --- | --- |
-| PhysicalDisk(per Disk) | Avg. Disk Read Queue Length |
-| PhysicalDisk(per Disk) | Avg. Disk Write Queue Length |
-| PhysicalDisk(per Disk) | Avg. Disk sec/Read |
-| PhysicalDisk(per Disk) | Avg. Disk sec/Write |
+| PhysicalDisk(per Disk) | Avg.Disk Read Queue Length |
+| PhysicalDisk(per Disk) | Avg.Disk Write Queue Length |
+| PhysicalDisk(per Disk) | Avg.Disk sec/Read |
+| PhysicalDisk(per Disk) | Avg.Disk sec/Write |
 | PhysicalDisk(per Disk) | Disk Reads/sec  |
 | PhysicalDisk(per Disk) | Disk Read Bytes/sec  |
 | PhysicalDisk(per Disk) | Disk Writes/sec |
@@ -81,4 +79,3 @@ Reliable Collections を使っている場合は、`Service Fabric Transactional
 
 * Service Fabric における[プラットフォーム レベルでのイベント生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習します
 * [Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)を使ってパフォーマンス メトリックを収集してください
-

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 2efd8e9981ac5d8f2ff28df9ffe1e6b5c01ba953
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4ea38d3b47ff4b50446f4ffdc3dc544fdcf938e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -256,8 +256,8 @@ Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unse
 
 現在、Azure Data Factory カスタム .NET アクティビティは Linux ベースの HDInsight クラスターでサポートされていません。 代わりに、以下のいずれかの方法を使用して、ADF パイプラインの一部としてカスタム アクティビティを実装する必要があります。
 
-* Azure Batch プールで .NET アクティビティを実行します。 「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/data-factory-use-custom-activities.md)
-* MapReduce アクティビティとしてアクティビティを実装します。 詳細については、「[Data Factory から MapReduce プログラムを起動する](../data-factory/data-factory-map-reduce.md)」をご覧ください。
+* Azure Batch プールで .NET アクティビティを実行します。 「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/transform-data-using-dotnet-custom-activity.md)
+* MapReduce アクティビティとしてアクティビティを実装します。 詳細については、「[Data Factory から MapReduce プログラムを起動する](../data-factory/transform-data-using-hadoop-map-reduce.md)」をご覧ください。
 
 ### <a name="line-endings"></a>行の終わり
 

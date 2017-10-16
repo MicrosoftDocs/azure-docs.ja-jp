@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
+ms.openlocfilehash: 86b8300553caa0741e8aca3c0e7621ec80cc5b21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: aa1b28301eec88ac1be160722ce3b734f4fea43f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -92,7 +91,7 @@ StorSimple を使用して、物理的なハイブリッド ストレージ デ�
 * クラウド アプライアンスは、クラウド内に無制限に作成でき、必要に応じてオン/オフを切り替えることができます。
 * 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。
 
-StorSimple Cloud Appliance は 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。 Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+StorSimple Cloud Appliance は 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。 8010 デバイスの最大容量は 30 TB です。 Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。 (ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。)Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。 Premium Storage の詳細については、「 [Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/common/storage-premium-storage.md)」を参照してください。
 
 StorSimple Cloud Appliance の詳細については、[Azure での StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事を参照してください。
 
@@ -312,5 +311,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple のセキュリティ](storsimple-8000-security.md)の詳細を確認します。
-
 

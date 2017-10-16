@@ -14,12 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b86f13f49c6390a90609bba9141564d2ac69246d
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: b302c6b3c6acbb8552796e7fb1bfd153d23dceb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
@@ -73,4 +72,3 @@ MATLAB Job Scheduler クラスター プロファイルを作成するには、�
 ## <a name="next-steps"></a>次のステップ
 * Azure に MATLAB Distributed Computing Server クラスターをデプロイおよび管理する方法の詳細については、テンプレートとスクリプトを含む [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) リポジトリを参照してください。
 * MATLAB および MATLAB Distributed Computing Server の詳細な説明については、 [MathWorks サイト](http://www.mathworks.com/) を参照してください。
-

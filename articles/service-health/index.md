@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 07/07/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
 ms.openlocfilehash: 17f7d334380032eec4be7d0ce3071a62b04fdc62
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-health-documentation"></a>Azure Service Health のドキュメント
 
@@ -99,5 +98,4 @@ Azure Service Health は、Azureサービスの問題が影響を及ぼす場合
 </ul>
 
 ---
-
 

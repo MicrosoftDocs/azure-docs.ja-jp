@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 68db9635e274d76127021ff95d38570b980048f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 24e7e0d586dab3f77e643197594c3c4462ff997e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチ テナント アプリケーションを構成する方法
 
 マルチ テナント アプリケーションの詳細について説明している、推奨トピックの一覧を次に示します。
@@ -31,5 +29,4 @@ ms.lasthandoff: 04/11/2017
 - [マルチテナント アプリケーションがエンド ツー エンドでどのように構成されコードされているか](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)、つまり登録方法、 "一般的な " エンドポイントの使用、 "ユーザー " と "管理者 " の同意の実装、より詳しい多層シナリオの実装方法などについて詳しく学習する
 
 ## <a name="next-steps"></a>次のステップ
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 このトピックでは、Webhook を使用する方法を説明します。
@@ -373,7 +372,7 @@ webhook がトリガーされると、上記の例により次の出力が生成
 
 このセクションでは、タスクに Webhook 通知を追加するコードを示します。 チェーン タスクを使用したジョブでより役立つ可能性のあるジョブ レベル通知を追加することもできます。  
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 [名前]、[場所]、[ソリューション名] を入力し、[OK] をクリックします。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 名前、場所、ソリューション名 を入力し、OKをクリックします。
 2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     
@@ -513,4 +512,3 @@ webhook がトリガーされると、上記の例により次の出力が生成
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

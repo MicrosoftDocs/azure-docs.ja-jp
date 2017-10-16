@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.lasthandoff: 04/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -84,7 +83,7 @@ PowerShell を使用してテンプレートをデプロイするには、次の
     OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/windows/cli-ps-findimage.md)」の記事の手順を実行します。
 
     >[!TIP]
-    >dnslabelprefix を使用できるかどうかわからない場合は、`Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` コマンドを入力して確認します。 使用できる場合は、コマンドが `True` を返します。
+    >dnslabelprefix を使用できるかどうかわからない場合は、`Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` コマンドを入力して確認します。使用できる場合は、コマンドが `True` を返します。
 
 2. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
@@ -101,4 +100,3 @@ Azure CLI 1.0 を使用してテンプレートをデプロイするには、次
 2. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-

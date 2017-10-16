@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 08/12/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>ジェネリック webhook でトリガーされる関数の作成
 
@@ -167,5 +166,4 @@ webhook は、サブスクリプションでリソース グループが作成�
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 webhook トリガーの詳細については、「[Azure Functions における HTTP と Webhook のバインド](functions-bindings-http-webhook.md)」を参照してください。 C# での関数開発の詳細については、「[Azure Functions C# スクリプト開発者向けリファレンス](functions-reference-csharp.md)」を参照してください。
-
 

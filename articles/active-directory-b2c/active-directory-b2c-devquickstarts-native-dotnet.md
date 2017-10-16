@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: 9a78daac2269c9d44558e92b80c869603e014fb6
-
-
+ms.openlocfilehash: 8e2b5c704230ee2ba1395dc76a1551aaa8e7af7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windows デスクトップ アプリを作成する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
@@ -289,7 +289,7 @@ private async void GetTodoList()
 ```
 
 ## <a name="sign-the-user-out"></a>ユーザーのサインアウト
-ユーザーが **サインアウト**を選択した場合は、MSAL を使用して、アプリでのユーザーのセッションを終了することができます。  MSAL を使用してこの処理を実現するには、トークン キャッシュからすべてのトークンをクリアします。
+ユーザーが **サインアウト**を選択した場合は、MSAL を使用して、アプリでのユーザーのセッションを終了することができます。MSAL を使用してこの処理を実現するには、トークン キャッシュからすべてのトークンをクリアします。
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)
@@ -330,9 +330,3 @@ ID プロバイダーを B2C ディレクトリに追加した後、3 つのポ�
 参照用に、完成したサンプルが [ここに .zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)。 GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
-
-
-
-<!--HONumber=Dec16_HO4-->
-
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.lasthandoff: 04/13/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>Operations Management Suite (OMS) の自習デモ - サービス マップ
 これは、Operations Management Suite (OMS) の[サービス マップ ソリューション](operations-management-suite-service-map.md)を実際に使用して、Web アプリケーションでシミュレートされた問題を特定および診断する自習デモです。  サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。  また、パフォーマンスの分析や問題の特定に活かせるように、他の OMS サービスによって収集されたデータを統合します。  根本原因を特定するために、[Log Analytics のログ検索](../log-analytics/log-analytics-log-searches.md)を使用して、収集したデータのドリル ダウンも行います。
 
@@ -82,7 +80,7 @@ Web サーバーが AcmeWFE001 および AcmeWFE002 という名前であるこ�
 
 
 ### <a name="7-view-change-tracking"></a>7.変更の履歴を表示する
-この高使用率の原因を特定できるか試してみましょう。  **[概要]** タブをクリックします。  OMS がコンピューターから収集した情報 (失敗した接続、重大なアラート、ソフトウェアの変更など) が表示されます。  気になる最新の情報が含まれているセクションは既に展開されていますが、他のセクションを展開してその情報を調べることもできます。
+この高使用率の原因を特定できるか試してみましょう。  **[概要]** タブをクリックします。OMS がコンピューターから収集した情報 (失敗した接続、重大なアラート、ソフトウェアの変更など) が表示されます。  気になる最新の情報が含まれているセクションは既に展開されていますが、他のセクションを展開してその情報を調べることもできます。
 
 
 まだ **[変更履歴]** が開かれていない場合は、展開してください。  ここには、[変更履歴ソリューション](../log-analytics/log-analytics-change-tracking.md)によって収集された情報が表示されます。  この期間内に、ソフトウェアの変更が行われたようです。  **[ソフトウェア]** をクリックして、詳細を取得します。  午前 4:00 になった直後にバックアップ プロセスがコンピューターに追加されているので、これがリソースの過剰消費の原因であると思われます。

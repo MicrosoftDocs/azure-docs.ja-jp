@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6f08f986e66e40211f60beef6ebd00bb041a8ada
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>メディア アプリで Mobile Engagement を実装する
 ## <a name="overview"></a>概要
@@ -57,7 +56,7 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 KPI ごとに必要なデータを分類し、プレイブックの適切な場所に記録します。
 
 ## <a name="engagement-program-and-integration"></a>エンゲージメント プログラムおよび統合
-KPI の定義が完了したので、エンゲージメント戦略のフェーズを開始し、4 つのエンゲージメント プログラムとそれらの目標を定義します。    ![][1]
+KPI の定義が完了したので、エンゲージメント戦略のフェーズを開始し、4 つのエンゲージメント プログラムとそれらの目標を定義します。![][1]
 
 さらに、各プログラムのプッシュ通知の詳細を決めます。 プッシュ通知は、次の 5 つの要素で定義されます。
 
@@ -99,4 +98,3 @@ KPI の定義が完了したので、エンゲージメント戦略のフェー�
 
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
-

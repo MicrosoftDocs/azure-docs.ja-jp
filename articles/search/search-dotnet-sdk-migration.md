@@ -14,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 3e2ad6b466ba4885ae14576b83d4c0f3010bab67
 ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
-ms.lasthandoff: 01/13/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
 バージョン 2.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
@@ -169,7 +168,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-次のステップとして、ビルド エラーを&1; つずつ修正します。 ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。 [バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1) 」を参照してください。
+次のステップとして、ビルド エラーを 1 つずつ修正します。 ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。 [バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1) 」を参照してください。
 
 カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.1 バージョンの SDK で行われたバグ修正について認識しておく必要があります。 詳細については、「 [バージョン 1.1 でのバグ修正](#BugFixesV1) 」を参照してください。
 
@@ -474,7 +473,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。 ラウンドトリップも予期したとおりに動作します。
 
-この方法で注意すべき潜在的な問題が&1; つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
+この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
@@ -483,5 +482,4 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 このため、ベスト プラクティスとして、モデル クラスではまだ null 許容型を使用することをお勧めします。
 
 このバグの詳細と修正については、 [GitHub でのこの問題の解説](https://github.com/Azure/azure-sdk-for-net/issues/1063)を参照してください。
-
 

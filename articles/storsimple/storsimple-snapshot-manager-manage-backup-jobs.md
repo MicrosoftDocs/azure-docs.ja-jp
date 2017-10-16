@@ -14,17 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 03e306b62250f2bb033cc14e856a59760b5406c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 **[スコープ]** ウィンドウ内の **[ジョブ]** ノードは、対話的に、または構成済みポリシーに従って開始した **[スケジュール済み]**、**[過去 24 時間以内]**、および **[実行中]** のバクアップ タスクを表示します。 
 
 このチュートリアルでは、スケジュール済みのバックアップ ジョブ、最近のバックアップ ジョブ、および現在実行中のバックアップ ジョブに関する情報を表示するための **[ジョブ]** ノードの使用方法について説明します  (ジョブとこれに対応する情報の一覧は、**[結果]** ウィンドウに表示されます)。さらに、表示されているジョブを右クリックすると、使用可能な操作を一覧で示すコンテキスト メニューを表示できます。
@@ -88,5 +86,4 @@ ms.lasthandoff: 11/17/2016
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 * [StorSimple Snapshot Manager を使用したバックアップ カタログの管理方法](storsimple-snapshot-manager-manage-backup-catalog.md)
-
 

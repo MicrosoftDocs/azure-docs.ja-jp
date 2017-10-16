@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 41f978750ddef9f7e878c65b0017e909720154aa
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -40,7 +40,7 @@ MSDN のトピック「 [Notification Hubs の REST API](http://msdn.microsoft.c
 
 ## <a name="sdk-usage"></a>SDK の使用例
 ### <a name="compile-and-build"></a>コンパイルとビルド
- [Maven]
+[Maven]
 
 次のコードを使用してビルドします。
 
@@ -271,7 +271,7 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
 
 Java コードを実行すると、ターゲット デバイスに表示される通知が生成されます。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントの作成方法を説明しました。 次は、以下を実行できます。
 
 * [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。 
@@ -283,17 +283,11 @@ Java コードを実行すると、ターゲット デバイスに表示され�
   * [認証されたユーザーへのクロスプラットフォーム通知の送信]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Notification Hubs の使用]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
 [ニュース速報の送信]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
 [ローカライズ ニュース速報の送信]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
 [認証されたユーザーへの通知の送信]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
 [認証されたユーザーへのクロスプラットフォーム通知の送信]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

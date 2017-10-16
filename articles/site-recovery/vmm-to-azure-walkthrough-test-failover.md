@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
+ms.openlocfilehash: 4688fc4bc74a9e0e04487cfbe965006070fd9a7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 1f45c6b04fa2c1520b9ae7dd63d873a6f4dffbd5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-with-vmm-to-azure"></a>手順 11: Azure への Hyper-V のレプリケーション (VMM あり) のテスト フェールオーバーを実行する
 
 [Hyper-V VM のレプリケーションを有効に](vmm-to-azure-walkthrough-enable-replication.md)した後で、この記事に従って、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用し、System Center Virtual Machine Manager (VMM) クラウドで管理されているオンプレミスの Hyper-V 仮想マシンから Azure へのテスト フェールオーバーを実行します。
@@ -34,13 +32,13 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="managed-disk-considerations"></a>管理ディスクに関する考慮事項
 
-[管理ディスク](../storage/storage-managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
+[管理ディスク](../virtual-machines/windows/managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
 
 - 管理ディスクは、Azure へのフェールオーバーが発生した場合にのみ作成され、VM に接続されます。 保護を有効にすると、オンプレミスの VM からのデータがストレージ アカウントにレプリケートされます。
 - 管理ディスクは、Resource Manager デプロイメント モデルでデプロイされた VM に対してのみ作成することができます。
 - Azure からオンプレミス Hyper-V 環境へのフェールバックは、現時点では、管理ディスクを使用するマシンではサポートされていません。 移行だけ (フェールバックのない Azure へのフェールオーバー) を行っている場合にのみ、**[管理ディスクを使用]** を **[はい]** に設定する必要があります。
 - この設定が有効な場合、**[管理ディスクを使用]** が有効になっているリソース グループの可用性セットのみを選択できます。 管理ディスクを持つ VM は、**[管理ディスクを使用]** が **[はい]** に設定されている可用性セットに含まれている必要があります。 VM に対してこの設定が有効でない場合は、有効な管理ディスクを持たないリソース グループの可用性セットのみを選択できます。 [詳細情報](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)
-- - レプリケーションに使用するストレージ アカウントが Storage サービスの暗号化で暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、VM の保護を無効にした後、暗号化が有効でないストレージ アカウントを使用して再度有効にします。 [詳細情報](../storage/storage-managed-disks-overview.md#managed-disks-and-encryption)
+- - レプリケーションに使用するストレージ アカウントが Storage サービスの暗号化で暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、VM の保護を無効にした後、暗号化が有効でないストレージ アカウントを使用して再度有効にします。 [詳細情報](../virtual-machines/windows/managed-disks-overview.md#managed-disks-and-encryption)
 
  
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
@@ -100,5 +98,4 @@ ms.lasthandoff: 08/11/2017
 
 - さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
 - [フェールバックの詳細を確認して](site-recovery-failback-from-azure-to-hyper-v.md)、Azure VM をオンプレミスのプライマリ VMM クラウドにフェールバックし、再度レプリケートします。
-
 

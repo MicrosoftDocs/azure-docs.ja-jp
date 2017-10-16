@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
-ms.lasthandoff: 02/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
 ## <a name="introduction"></a>はじめに
@@ -33,7 +32,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 
 * **Traffic Manager** には、グローバルな DNS グローバル負荷分散機能が備わっています。 これは受信 DNS 要求を調べ、ユーザーが選択したルーティング ポリシーに従って、正常なエンドポイントを使用して応答できます。 ルーティング方法のオプションは次のとおりです。
   * 待機時間の点で最も近いエンドポイントに要求元を送信するパフォーマンスによるルーティング。
-  * すべてのトラフィックを&1; つのエンドポイントに送信し、その他のエンドポイントはすべてバックアップとする優先順位によるルーティング。
+  * すべてのトラフィックを 1 つのエンドポイントに送信し、その他のエンドポイントはすべてバックアップとする優先順位によるルーティング。
   * 各エンドポイントに割り当てた重み付けに基づいてトラフィックを分散する、重み付けラウンド ロビンによるルーティング。
 
   クライアントはそのエンドポイントに直接接続します。 Azure Traffic Manager は、エンドポイントに異常が発生したことを検出すると、クライアントを別の正常なインスタンスに誘導します。 サービスの詳細については、[Azure Traffic Manager のドキュメント](traffic-manager-overview.md)をご覧ください。
@@ -42,13 +41,13 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 
 ## <a name="scenario"></a>シナリオ
 
-このシナリオの例では、イメージと動的に表示される Web ページの&2; 種類のコンテンツを提供する簡単な Web サイトを使用します。 Web サイトには地理的な冗長性が必要であり、最も近い場所にいる (待機時間が最短の) ユーザーにサービスを提供する必要があります。 アプリケーション開発者は、/images/* のパターンに一致する URL を、Web ファームの残りではなく、VM の専用プールから提供することに決めました。
+このシナリオの例では、イメージと動的に表示される Web ページの 2 種類のコンテンツを提供する簡単な Web サイトを使用します。 Web サイトには地理的な冗長性が必要であり、最も近い場所にいる (待機時間が最短の) ユーザーにサービスを提供する必要があります。 アプリケーション開発者は、/images/* のパターンに一致する URL を、Web ファームの残りではなく、VM の専用プールから提供することに決めました。
 
 さらに、動的コンテンツを提供する既定の VM プールは、高可用性クラスターでホストされているバックエンドのデータベースと通信する必要があります。 デプロイ全体は Azure Resource Manager を通じて設定されます。
 
 Traffic Manager、Application Gateway、ロード バランサーを使用すると、この Web サイトで次のような設計の目標を達成できます。
 
-* **複数の地理的な冗長性**:&1; つのリージョンがダウンしたときに、Traffic Manager によって、最も近いリージョンにトラフィックがシームレスにルーティングされます。アプリケーション所有者による操作は必要ありません。
+* **複数の地理的な冗長性**: 1 つのリージョンがダウンしたときに、Traffic Manager によって、最も近いリージョンにトラフィックがシームレスにルーティングされます。アプリケーション所有者による操作は必要ありません。
 * **待機時間の短縮**: 顧客は Traffic Manager によって最寄りのリージョンに自動的に誘導されるため、Web ページのコンテンツを要求したときの待機時間が短縮されます。
 * **独立したスケーラビリティ**: Web アプリケーションのワークロードはコンテンツの種類によって分けられるため、アプリケーション所有者は、要求ワークロードを互いに影響を与えることなく拡張できます。 Application Gateway では、指定した規則とアプリケーションの正常性に基づいて、適切なプールにトラフィックをルーティングできます。
 * **内部負荷分散**: ロード バランサーが高可用性クラスターの前に配置されているため、データベースのアクティブで正常なエンドポイントのみがアプリケーションに公開されます。 さらに、データベース管理者は、フロントエンド アプリケーションから独立してアクティブとパッシブのレプリカをクラスター全体に分散させることによって、ワークロードを最適化できます。 ロード バランサーは接続を高可用性クラスターに提供し、正常なデータベースのみが接続要求を受け取るようにします。
@@ -58,7 +57,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 ![負荷分散アーキテクチャの図](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> この例は、Azure が提供する多数の負荷分散サービスの&1; つの例に過ぎません。 Traffic Manager、Application Gateway、ロード バランサーは、負荷分散のニーズに合わせて組み合わせて使用できます。 たとえば、SSL オフロードやレイヤー 7 の処理が必要ない場合は、Application Gateway の代わりにロード バランサーを使用できます。
+> この例は、Azure が提供する多数の負荷分散サービスの 1 つの例に過ぎません。 Traffic Manager、Application Gateway、ロード バランサーは、負荷分散のニーズに合わせて組み合わせて使用できます。 たとえば、SSL オフロードやレイヤー 7 の処理が必要ない場合は、Application Gateway の代わりにロード バランサーを使用できます。
 
 ## <a name="setting-up-the-load-balancing-stack"></a>負荷分散スタックの設定
 
@@ -101,7 +100,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 1. リソース グループから、前のセクションで作成した Application Gateway のインスタンスに移動します。
 2. **[設定]** で **[バックエンド プール]** を選択し、**[追加]** を選択して Web 層のバックエンド プールに関連付ける VM を追加します。
-3. **[バックエンド プールの追加]** ブレードに、バックエンド プールの名前と、プールに存在するすべてのマシンの IP アドレスを入力します。 このシナリオでは、仮想マシンの&2; つのバックエンド サーバー プールを接続します。
+3. **[バックエンド プールの追加]** ブレードに、バックエンド プールの名前と、プールに存在するすべてのマシンの IP アドレスを入力します。 このシナリオでは、仮想マシンの 2 つのバックエンド サーバー プールを接続します。
 
   ![Application Gateway [バックエンド プールの追加] ブレード](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
@@ -211,4 +210,3 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 * [Traffic Manager の概要](traffic-manager-overview.md)
 * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
 * [Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)
-

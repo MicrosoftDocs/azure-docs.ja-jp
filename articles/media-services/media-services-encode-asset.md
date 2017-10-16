@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4d35bdd88998d30435e9e5e916a18b3ce3bc7978
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: 538a6ab60168735c2626a93cdeedd8d4999a6efc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要と比較
 ## <a name="encoding-overview"></a>エンコードの概要
@@ -97,4 +96,3 @@ Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=61
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: e739106472ccf930b2942eb810dd844f2b1ade7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル: Azure Active Directory と SumoLogic の統合
 
@@ -204,7 +203,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-sumologic-test-user"></a>SumoLogic テスト ユーザーの作成
 
@@ -296,5 +295,4 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 [201]: ./media/active-directory-saas-sumologic-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sumologic-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sumologic-tutorial/tutorial_general_203.png
-
 

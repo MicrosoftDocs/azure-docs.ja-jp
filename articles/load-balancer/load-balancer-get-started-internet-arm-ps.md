@@ -3,7 +3,7 @@ title: "Azure のインターネットに接続するロード バランサー�
 description: "Resource Manager で PowerShell を使用してインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 8257f548-7019-417f-b15f-d004a1eec826
@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 5abd8365ed883831d4c85ebd14de31dbe45d815d
-ms.lasthandoff: 01/24/2017
-
+ms.openlocfilehash: 0347e90fa97a083865e8b783c96034d30a859031
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started"></a>Resource Manager で PowerShell を使用したインターネットに接続するロード バランサーの作成
 
 > [!div class="op_single_selector"]
@@ -28,6 +27,8 @@ ms.lasthandoff: 01/24/2017
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [テンプレート](../load-balancer/load-balancer-get-started-internet-arm-template.md)
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -90,7 +91,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
     New-AzureRmvirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. フロントエンド IP プールで使用される **PublicIP** という名前の Azure パブリック IP アドレス リソースを作成します。DNS 名は **loadbalancernrp.westus.cloudapp.azure.com** です。 次のコマンドでは、静的な割り当てタイプが使用されます。
+2. フロントエンド IP プールで使用される **PublicIP** という名前の Azure パブリック IP アドレス リソースを作成します。DNS 名は **loadbalancernrp.westus.cloudapp.azure.com** です。次のコマンドでは、静的な割り当てタイプが使用されます。
 
     ```powershell
     $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -DomainNameLabel loadbalancernrp
@@ -316,4 +317,3 @@ Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-

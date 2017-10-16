@@ -17,12 +17,10 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: cbc7e5a404f3be171597baf693f614ff5cc6e768
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 9f47c8deaaaf017f9d35e57a9b01311d773cc461
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [container-service-faq.md](../../../includes/container-service-faq.md)]
-

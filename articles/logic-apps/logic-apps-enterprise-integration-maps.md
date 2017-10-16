@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7729890157900d0211b3a7ec05096ca315018875
-ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-maps-for-xml-data-transform"></a>XML データ変換のためのマップを追加する
 
@@ -100,5 +98,4 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
 * [変換の詳細](logic-apps-enterprise-integration-transform.md "エンタープライズ統合変換についての詳細")  
-
 

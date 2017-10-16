@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 7c66a95d5a056f59e0f28dba4e0880e72e74dc3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 908bf4c34295168024afd11d24c7a3d2044ff518
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory と Multi-Factor Authentication: ID とアクセスの制御による個人のデータの保護
 
@@ -28,11 +27,11 @@ ms.lasthandoff: 08/30/2017
 
 ## <a name="scenario"></a>シナリオ
 
-米国に本社を置く大規模なクルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提案するようにその事業を拡張しています。 これらの取り組みをサポートするために、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模なクルーズ会社を買収しました。 
+米国に本社を置く大手クルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この会社は、これらの取り組みを支援するために、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模なクルーズ会社を買収しました。 
 
-その会社では、クラウドに会社のデータを保存するために Microsoft Azure を使います。 これには、グローバルな顧客ベースの名前や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 これには、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する従来の人事情報も含まれます。 このクルーズ会社では、現在と過去の顧客とのリレーションシップを追跡するための個人情報を含む、特典やロイヤリティ プログラム メンバーの大規模なデータベースも管理しています。
+その会社では、クラウドに会社のデータを保存するために Microsoft Azure を使います。 これには、グローバルな顧客ベースの名前や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社では、現在と過去の顧客とのリレーションシップを追跡するための個人情報を含む、特典やロイヤリティ プログラム メンバーの大規模なデータベースも管理しています。
 
-企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店は、一部の会社リソースにアクセスできます。
+この企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店の社員は、一部の会社リソースにアクセスできます。
 
 ## <a name="problem-statement"></a>問題の説明
 
@@ -188,4 +187,3 @@ Azure MFA 設定を構成して、不正アクセスのアラートの設定、�
 - [ロールベースのアクセス制御のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
 
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
-

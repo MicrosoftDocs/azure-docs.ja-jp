@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/26/2017
 ms.author: asgang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 6ebec2e06566b1e2d6834fdd81c0d8b2801b80b9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>オンプレミス VMware/物理サーバーのレプリケーションに関する問題のトラブルシューティング
 VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。
@@ -45,7 +43,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 * **プロセス サーバーが Azure にデータをアクティブにプッシュしているかどうかを確認する** 
 
-プロセス サーバー マシンから、タスク マネージャーを開きます (Ctrl-Shift-Esc キーを押す)。 [パフォーマンス] タブに移動し、[リソース モニターを開く] リンクをクリックします。 リソース マネージャーから、[ネットワーク] タブに移動します。 [ネットワーク活動のプロセス] で cbengine.exe がアクティブに大量 (MB 単位) のデータを送信しているかどうかを確認します。
+プロセス サーバー マシンから、タスク マネージャーを開きます (Ctrl-Shift-Esc キーを押す)。 [パフォーマンス] タブに移動し、[リソース モニターを開く] リンクをクリックします。 リソース マネージャーから、[ネットワーク] タブに移動します。[ネットワーク活動のプロセス] で cbengine.exe がアクティブに大量 (MB 単位) のデータを送信しているかどうかを確認します。
 
 ![Enable replication](./media/site-recovery-protection-common-errors/cbengine.png)
 

@@ -34,13 +34,13 @@
 #### [タスクを使用してクラウド サービス ロールで .NET をインストールする](cloud-services-dotnet-install-dotnet.md)
 
 ### リモート デスクトップの構成
-#### [ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Azure ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
-#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## デプロイ
 ### ポータルでのクラウド サービスの作成とデプロイ
-#### [ポータル](cloud-services-how-to-create-deploy-portal.md)
+#### [Azure ポータル](cloud-services-how-to-create-deploy-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-create-deploy.md)
 ### [PowerShell での空のクラウド サービス コンテナーの作成](cloud-services-powershell-create-cloud-container.md)
 ### カスタム ドメイン名の構成
@@ -51,14 +51,14 @@
 
 ## サービスの管理
 ### 一般的な管理タスク
-#### [ポータル](cloud-services-how-to-manage-portal.md)
+#### [Azure ポータル](cloud-services-how-to-manage-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-manage.md)
 ### クラウド サービスの構成
-#### [ポータル](cloud-services-how-to-configure-portal.md)
+#### [Azure ポータル](cloud-services-how-to-configure-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-configure.md)
 ### [Azure Automation を使用したクラウド サービスの管理](automation-manage-cloud-services.md)
 ### 自動スケールの構成
-#### [ポータル](cloud-services-how-to-scale-portal.md)
+#### [Azure ポータル](cloud-services-how-to-scale-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-scale.md)
 ### [Python を使用した Azure リソースの管理](cloud-services-python-how-to-use-service-management.md)
 
@@ -80,7 +80,7 @@
 ### [パフォーマンスのテスト](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Visual Studio プロファイラーを使用したテスト](cloud-services-performance-testing-visual-studio-profiler.md)
 ### 診断を有効化する
-#### [PowerShell](cloud-services-diagnostics-powershell.md)
+#### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Azure 診断でのパフォーマンス カウンターの使用](cloud-services-dotnet-diagnostics-performance-counters.md)
@@ -108,8 +108,14 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
-## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
-## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [.csdef XML スキーマ](schema-csdef-file.md)
+### [LoadBalancerProbe スキーマ](schema-csdef-loadbalancerprobe.md)
+### [WebRole スキーマ](schema-csdef-webrole.md)
+### [WorkerRole スキーマ](schema-csdef-workerrole.md)
+### [NetworkTrafficRules スキーマ](schema-csdef-networktrafficrules.md)
+## [.cscfg XML スキーマ](schema-cscfg-file.md)
+### [Role スキーマ](schema-cscfg-role.md)
+### [NetworkConfiguration スキーマ](schema-cscfg-networkconfiguration.md)
 ## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
 
 # リソース

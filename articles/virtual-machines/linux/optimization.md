@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: cdc3aad210418463368cc8b93459f2075bc413c2
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: eb79d574fd4dddfb986660cc338bc8748f2082c2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -33,7 +32,7 @@ ms.lasthandoff: 04/03/2017
 Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、**/dev/sdb** は一時ディスクを表します。  メインの OS ディスク (**/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>サイズとパフォーマンスの目標に向けたディスクの追加
-VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。  Premium Storage ディスクの詳細については、[Premium Storage: Azure VM の高パフォーマンス ストレージ](../../storage/storage-premium-storage.md)に関する記事をご覧ください。
+VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。  Premium Storage ディスクの詳細については、[Premium Storage: Azure VM の高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md)に関する記事をご覧ください。
 
 キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに**バリア**を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
 
@@ -42,7 +41,7 @@ VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D 
 * **XFS**: バリアを無効にするには、マウント オプション `nobarrier` を使用します (バリアを有効にするには `barrier` を使用します)。
 
 ## <a name="unmanaged-storage-account-considerations"></a>非管理対象ストレージ アカウントに関する考慮事項
-Azure CLI 2.0 で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  Managed Disks の詳細については、「[Azure Managed Disks の概要](../../storage/storage-managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、管理ディスクを使用することです。
+Azure CLI 2.0 で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  Managed Disks の詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、管理ディスクを使用することです。
 
 非管理対象ディスクを使用する VM を作成する場合は、近接性を確保し、ネットワーク待ち時間を最小限に抑えるために、VM と同じリージョンに存在するストレージ アカウントからディスクを接続する必要があります。  各 Standard Storage アカウントには、最大 20,000 IOPS および 500 TB のサイズ容量が適用されます。  この制限により、OS ディスクと作成するすべてのデータ ディスクの両方を含む、約 40 個の使用頻度の高いディスクとなります。 Premium Storage アカウントの場合、最大 IOPS に関する制限はありませんが、32 TB のサイズ制限があります。 
 
@@ -132,9 +131,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 関連リソースへの便利なリンクは次のとおりです。 
 
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/storage-premium-storage.md)
+* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md)
 * [Azure Linux エージェント ユーザー ガイド](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Linux VM 上での MySQL のパフォーマンスを最適化する](classic/optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 

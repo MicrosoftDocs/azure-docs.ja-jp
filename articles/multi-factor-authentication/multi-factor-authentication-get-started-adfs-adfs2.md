@@ -15,12 +15,11 @@ ms.date: 06/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 この記事は、現在 Azure Active Directory を使用しており、オンプレミスやクラウドに置かれたリソースをセキュリティで保護したいと考えている組織を対象としたものです。 Azure Multi-Factor Authentication Server を使用し、AD FS との連携を構成すれば、価値の大きなエンド ポイントに対して 2 段階認証をトリガーできるため、リソースを保護することができます。
@@ -117,4 +116,3 @@ Azure Multi-Factor Authentication は、AD FS をセキュリティ保護する�
 4. ホワイト リストに登録する IP アドレス、IP アドレスの範囲、またはサブネットを入力します。 サブネットを入力する場合は、適切なネットマスクを選択し、**[OK]** ボタンをクリックします。 信頼される IP が追加されました。
 
 <center>![セットアップ](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
-

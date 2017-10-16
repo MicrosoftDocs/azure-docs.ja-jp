@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: b8c189865c27566e3265f14eb54cb5ea4a005dc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 290ca66048281de5e031b0404919bed84ab19ffa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
 アプリケーションを構成しているときに問題が発生する場合は、 アプリケーションのチュートリアルに記載されているすべての手順を実行したことを確認します。 アプリケーションの構成内に、アプリケーションの構成方法についてのインライン ドキュメントがあります。 また、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照することもできます。
@@ -41,7 +39,7 @@ ms.lasthandoff: 06/20/2017
 
 アプリケーション用に構成済みのパターンを確認するには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。 既に  Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
+1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。既に  Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
 
 2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
 
@@ -111,4 +109,3 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
-

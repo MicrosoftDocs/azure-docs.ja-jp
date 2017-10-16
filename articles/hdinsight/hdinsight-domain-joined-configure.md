@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 
@@ -206,7 +204,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
    * **サブスクリプション**: (Azure サブスクリプションを選択します。)
    * **リソース グループ**: contosohdirg
    * **場所**: (Azure AD VNet (つまり contosoaadvnet) と同じ場所を選択します。)
-5. **[作成]**をクリックします。
+5. **Create** をクリックしてください。
 
 **Resource Manager VNet の DNS を構成するには**
 
@@ -271,7 +269,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
          * **ドメイン名**: contoso.onmicrosoft.com
          * **ドメイン ユーザー名**: ドメイン ユーザー名を入力します。 このドメインは、次の特権を持つ必要があります。コンピューターをドメインに参加させ、クラスター作成時に指定した組織単位に配置する特権。クラスター作成時に指定した組織単位内でサービス プリンシパルを作成する特権。および、逆引き DNS エントリを作成する特権です。 このドメイン ユーザーは、このドメイン参加済み HDInsight クラスターの管理者になります。
          * **ドメイン パスワード**: ドメイン ユーザーのパスワードを入力します。
-         * **組織単位**: HDInsight クラスターで使用する OU の識別名を入力します。 例: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。 この OU が存在しない場合は、HDInsight クラスターがこの OU を作成しようとします。 OU が既に存在するか、ドメイン アカウントが新しい OU を作成するアクセス許可を持っていることを確認してください。 AADDC 管理者の一部であるドメイン アカウントを使用する場合は、OU を作成するために必要なアクセス許可を持っています。
+         * **組織単位**: HDInsight クラスターで使用する OU の識別名を入力します。 例: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。この OU が存在しない場合は、HDInsight クラスターがこの OU を作成しようとします。 OU が既に存在するか、ドメイン アカウントが新しい OU を作成するアクセス許可を持っていることを確認してください。 AADDC 管理者の一部であるドメイン アカウントを使用する場合は、OU を作成するために必要なアクセス許可を持っています。
          * **LDAPS URL**: ldaps://contoso.onmicrosoft.com:636
          * **アクセス ユーザー グループ**: クラスターに同期させるユーザーが属しているセキュリティ グループを指定します。 たとえば、HiveUsers です。
            
@@ -284,7 +282,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
          **[選択]** をクリックして変更を保存します。        
          **[選択]** をクリックして変更を保存します。
    * **リソース グループ**: HDInsight VNet (contosohdirg) 用に使用されるリソース グループを選択します。
-4. **[作成]**をクリックします。  
+4. **Create** をクリックしてください。  
 
 ドメイン参加済み HDInsight クラスターを作成するためのもう 1 つのオプションは、Azure Resource Manager テンプレートを使用する方法です。 次の手順は、その方法を示しています。
 
@@ -321,5 +319,4 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 ## <a name="next-steps"></a>次のステップ
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
 * SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
-
 

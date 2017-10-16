@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 520d1d42d35b25db1a35d4317e9eb616cf5de565
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -137,7 +136,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ![Batch account URL in portal][account_url]
 
-* **アクセス キー** (Batch サービス モード): アプリケーションから Batch アカウントへのアクセスを認証するには、アカウント アクセス キーが必要になります  (この設定は、Azure Active Directory 認証を使用するユーザー サブスクリプション モードでは利用できません)。
+* **アクセス キー** (Batch サービス モード): アプリケーションから Batch アカウントへのアクセスを認証するには、アカウント アクセス キーが必要になります  (この設定がユーザーのサブスクリプションのモードで使用可能な Azure Active Directory 認証を使用する)
 
     Batch アカウントのアクセス キーを表示または再生成するには、[Batch アカウント] ブレードの左側メニューにある **[検索]** ボックスに「`keys`」と入力し、**[キー]** を選択します。
 
@@ -202,4 +201,3 @@ Azure Portal を利用する方法に加えて、次に示す方法でも Batch 
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
 [account_portal_byos]: ./media/batch-account-create-portal/batch_acct_portal_byos.png
-

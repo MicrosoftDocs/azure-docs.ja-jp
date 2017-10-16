@@ -14,12 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
+ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 2b727a56f43a727807d4452eefa4229d4d90406e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミングの概要
 ## <a name="overview"></a>概要
@@ -155,4 +154,3 @@ Media Services においてライブ ストリーミング コンテンツの処
 [クォータと制限](media-services-quotas-and-limitations.md)。  
 
 [Media Services の概念](media-services-concepts.md)
-

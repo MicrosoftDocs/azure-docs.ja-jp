@@ -12,16 +12,14 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/13/2017
+ms.topic: troubleshooting
+ms.date: 08/21/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 05e23ad6bc07293f53e081b905c3a9ce1c91e6f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
-
+ms.openlocfilehash: 873d728971c9ebc5713d23a625ab0c5aeb802dc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="i-cant-sign-in-to-manage-my-azure-subscription"></a>Azure サブスクリプションにサインインして管理することができない
 この記事では、ログインに関する問題の最も一般的な解決方法を紹介します。
@@ -31,44 +29,25 @@ ms.lasthandoff: 04/07/2017
 
 * ページを更新します。
 * 別のインターネット ブラウザーを使用します。
-* Microsoft Internet Explorer を使用している場合は、InPrivate ブラウズ モードを使用して Azure Portal にアクセスします。 
-  
-  A. **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
-  
+* お使いのブラウザーのプライベート ブラウズ モードを使用します。 Internet Explorer の場合:**[ツール]** ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
   B. [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
 
-## <a name="error-message-no-subscriptions-found"></a>"サブスクリプションが見つかりません" エラー メッセージが表示される
-アカウントに必要なアクセス許可がない場合、"**サブスクリプションが見つかりません**" というエラー メッセージが表示されることがあります。 適切な管理者としてログインしていることを確認してください。 アカウント管理者は[アカウント センター](https://account.windowsazure.com/Subscriptions)のみにアクセスできます。 サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure Portal](https://portal.azure.com) または Azure クラシック ポータルのみです。
-
-**シナリオ 1: [Azure Portal](https://portal.azure.com) でこのエラー メッセージが表示された場合**
-
-この問題を解決するには、次の手順に従います。
-
-* 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
-
-![Azure ポータルの右上にあるディレクトリを選択する](./media/billing-cannot-login-subscription/directory-switch.png)
-
-* 適切な Azure ディレクトリは選択されているもののエラーが引き続き発生する場合は、[アカウントを所有者として追加](billing-add-change-azure-subscription-administrator.md)します。
-
-**シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でこのエラー メッセージが表示された場合**
-
-使用しているアカウントがアカウント管理者であるかどうかを確認します。 どのアカウントがアカウント管理者であるかを確認するには、次の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、 **[サブスクリプション]**を選択します。
-3. 確認するサブスクリプションを選択し、 **[設定]**を選択します。
-4. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
-
 ## <a name="you-are-automatically-signed-in-as-a-different-user"></a>サインイン時に自動で別のユーザーになる
+
 この問題は、インターネット ブラウザーで複数のユーザー アカウントを使用している場合に発生する可能性があります。
 
 この問題を解決するには、次の方法のいずれかを試してください。
 
-* キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、**[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして [削除] をクリックします。
+* キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、**[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして 削除をクリックします。
 * Internet Explorer の設定をリセットして、構成済みの個人設定を元に戻す。 **[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[詳細設定]** の順にクリックし、**[個人設定を削除する]** チェック ボックスをオンにして **[リセット]** を選択します。
-* InPrivate ブラウズ モードで Azure Portal にアクセスする。 **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+* お使いのブラウザーのプライベート ブラウズ モードを使用します。 Internet Explorer の場合:**[ツール]** ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+  B. [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
+
+## <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>サインインできますが、「サブスクリプション見つかりませんでした」と表示されます。
+
+この問題を解決するには、Azure ポータルまたは Azure アカウント センターの「[サブスクリプションが見つかりません](billing-no-subscriptions-found.md)」エラーを参照してください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。 
 
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。 
 

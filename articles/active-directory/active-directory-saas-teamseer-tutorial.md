@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 2a5e8f6d1443681c43db95da5cef0b7f2ef92291
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル: Azure Active Directory と TeamSeer の統合
 
@@ -115,7 +113,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
      **[サインオン URL]** ボックスに、`https://www.teamseer.com/<companyid>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[TeamSeer クライアント サポート チーム](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)に問い合わせてください。 
+    > この値は実際のものではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[TeamSeer クライアント サポート チーム](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -194,7 +192,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-teamseer-test-user"></a>TeamSeer のテスト ユーザーの作成
 
@@ -279,5 +277,4 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 [201]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_203.png
-
 

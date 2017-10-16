@@ -16,14 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
 ms.openlocfilehash: ed728011f2cb7b6108e19a916010fd5447c07093
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
 [dbms-guide]:dbms-guide.md
@@ -497,7 +495,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。 これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -505,7 +503,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 
@@ -553,7 +551,7 @@ Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 
 
 Github にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイすることができます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure Portal で、[SCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
+1. Azure Portal で、[ASCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
 1. 次のパラメーターを入力します
    1. リソース プレフィックス (ASCS/SCS マルチ SID テンプレートのみ)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
@@ -1230,7 +1228,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。 これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -1238,7 +1236,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 

@@ -12,7 +12,7 @@
 
 ソリューション ダッシュボードから、Raspberry Pi でメソッドを呼び出すことができます。 Raspberry Pi は、リモート監視ソリューションに接続したときに、サポートしているメソッドに関する情報を送信します。
 
-- ソリューション ダッシュボードで、**[デバイス]** をクリックし、**[デバイス]** ページにアクセスします。 **[デバイス一覧]** でお使いの Raspberry Pi を選択します。 次に、**[方法]** を選択します。
+- ソリューション ダッシュボードで、**[デバイス]** をクリックし、**[デバイス]** ページにアクセスします。 **[デバイス一覧]** で Raspberry Pi を選択します。 次に、**[方法]** を選択します。
 
     ![ダッシュボードでデバイスを一覧表示する][img-list-devices]
 
@@ -25,7 +25,7 @@
 - **ChangeLightStatus** メソッドを使用して、LED のオンとオフを切り替えることができます。この際、**LightStatusValue** はオンの場合は **1** に設定され、オフの場合は **0** に設定されています。
 
 > [!WARNING]
-> Azure アカウントでリモート監視ソリューションを実行したままにしておくと、実行時間分が課金されます。 リモート監視ソリューション実行中の使用料金を削減する方法の詳細については、「[Configuring Azure IoT Suite preconfigured solutions for demo purposes (デモの目的で Azure IoT Suite 事前構成済みソリューションを構成する)][lnk-demo-config]」を参照してください。 ソリューションの使用を終了するときに、Azure アカウントから事前構成済みソリューションを削除してください。
+> Azure アカウントでリモート監視ソリューションを実行したままにしておくと、実行時間分が課金されます。 リモート監視ソリューション実行中の使用料金を削減する方法の詳細については、「[Configuring Azure IoT Suite preconfigured solutions for demo purposes (デモの目的で Azure IoT Suite 構成済みソリューションを構成する)][lnk-demo-config]」をご覧ください。 ソリューションの使用を終了するときに、Azure アカウントから事前構成済みソリューションを削除してください。
 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry-simulator/telemetry.png

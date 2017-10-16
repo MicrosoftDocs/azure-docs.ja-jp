@@ -16,16 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
+ms.openlocfilehash: f82a95ec9543b2d53ef28bf7f15315e23cf4893a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: a31f0524a6fa1de45498f340a27b863a3c627e04
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワークを作成する
 
-このチュートリアルでは、パブリック用とプライベート用に別個のサブネットを含んだ基本的な Azure 仮想ネットワークの作成方法について説明します。 サブネットには、仮想マシン、App Service 環境、仮想マシンのスケール セット、Azure HDInsight、クラウド サービスなどの Azure リソースを作成することができます。 仮想ネットワーク内のリソースは、相互に通信することも、仮想ネットワークに接続されている他のネットワーク内のリソースと通信することもできます。
+このチュートリアルでは、パブリック用とプライベート用に別個のサブネットを含んだ基本的な Azure 仮想ネットワークの作成方法について説明します。 仮想ネットワーク内のリソースは、相互に通信することも、仮想ネットワークに接続されている他のネットワーク内のリソースと通信することもできます。 仮想ネットワーク内の同じまたは異なるサブネットには、仮想マシン、App Service 環境、仮想マシンのスケール セット、Azure HDInsight、クラウド サービスなどの Azure リソースを作成することができます。 異なるサブネットにリソースを作成した場合、必要に応じて、[ネットワーク セキュリティ グループ](virtual-networks-create-nsg-arm-pportal.md)を使用してサブネット内外のネットワーク トラフィックを個別にフィルタリングしたり、ファイアウォールなどのネットワーク仮想アプライアンスを通じて[サブネット間でトラフィックをルーティング](virtual-network-create-udr-arm-ps.md)したりできます。 
 
 次のセクションでは、[Azure Portal](#portal)、Azure コマンドライン インターフェイス ([Azure CLI](#azure-cli))、 [Azure PowerShell](#powershell)、および[Azure Resource Manager テンプレート](#resource-manager-template)を使って仮想ネットワークを作成するために実行する手順を説明します。 仮想ネットワークの作成に使用したツールに関係なく、結果は同じです。 このチュートリアルの該当セクションに移動するには、ツール リンクをクリックしてください。 すべての[仮想ネットワーク](virtual-network-manage-network.md)と[サブネット](virtual-network-manage-subnet.md)の設定について説明します。
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 08/01/2017
 
     |Setting|値|
     |---|---|
-    |名前|MyVnet|
+    |名前|myVnet|
     |アドレス空間|10.0.0.0/16|
     |サブネット名|パブリック|
     |サブネットのアドレス範囲|10.0.0.0/24|
@@ -52,7 +51,8 @@ ms.lasthandoff: 08/01/2017
 6. **[myVnet - サブネット]** ブレードで **[+サブネット]** をクリックします。
 7. **[サブネットの追加]** ブレードで、**[名前]** に「**Private**」と入力します。 **[アドレス範囲]**に「**10.0.1.0/24**」と入力します。  **[OK]**をクリックします。
 8. **[myVnet - サブネット]** ブレードで、サブネットを確認します。 先ほど作成した **Public** サブネットと **Private** サブネットが表示されます。
-9. **省略可:** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」の手順を実行してください。
+9. **省略可:** 「[次のステップ](#next-steps)」に示されている追加のチュートリアルを実行すると、ネットワーク セキュリティ グループを使用して各サブネット内外のネットワーク トラフィックをフィルタリングしたり、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングしたり、仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続したりすることができます。
+10. **省略可:** 「[リソースの削除](#delete-portal)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -90,7 +90,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
     ```
 
-5. **(省略可)** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
+5. **省略可:** 「[次のステップ](#next-steps)」に示されている追加のチュートリアルを実行すると、ネットワーク セキュリティ グループを使用して各サブネット内外のネットワーク トラフィックをフィルタリングしたり、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングしたり、仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続したりすることができます。
+6. **省略可:** 「[リソースの削除](#delete-cli)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -128,13 +129,17 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     $Vnet.subnets | Format-Table Name, AddressPrefix
     ```
 
-5. **(省略可)** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
+5. **省略可:** 「[次のステップ](#next-steps)」に示されている追加のチュートリアルを実行すると、ネットワーク セキュリティ グループを使用して各サブネット内外のネットワーク トラフィックをフィルタリングしたり、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングしたり、仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続したりすることができます。
+6. **省略可:** 「[リソースの削除](#delete-powershell)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 
 Azure Resource Manager テンプレートを使用して、仮想ネットワークをデプロイできます。 テンプレートの詳細については、[Resource Manager の概要](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment)に関する記事をご覧ください。 テンプレートにアクセスしてそのパラメーターについての情報を入手するには、「[Create a virtual network with two subnets](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/)」(2 つのサブネットを含んだ仮想ネットワークの作成) のテンプレートをご覧ください。 テンプレートのデプロイには、[ポータル](#template-portal)、[Azure CLI](#template-cli)、[PowerShell](#template-powershell) のいずれかを使用できます。
 
-**省略可:** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete)」のセクションにある手順を実行してください。
+テンプレートのデプロイ後の省略可能な手順:
+
+1. 「[次のステップ](#next-steps)」に示されている追加のチュートリアルを実行すると、ネットワーク セキュリティ グループを使用して各サブネット内外のネットワーク トラフィックをフィルタリングしたり、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングしたり、仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続したりすることができます。
+2. 「[リソースの削除](#delete)」のサブセクションの手順を実行して、このチュートリアルで作成したリソースを削除します。
 
 ### <a name="template-portal"></a>Azure Portal
 
@@ -226,9 +231,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-- すべての仮想ネットワークとサブネットの設定に関する詳細については、[仮想ネットワークの管理](virtual-network-manage-network.md#view-vnet)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md#create-subnet)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
+- すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](virtual-network-manage-network.md#view-vnet)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md#create-subnet)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
 - 受信方向と送信方向のサブネット トラフィックをフィルタリングするには、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を作成してサブネットに適用します。
-- [Windows 仮想マシン](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または[Linux 仮想マシン](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
-- 同じ Azure の場所の 2 つの仮想ネットワークを接続するには、仮想ネットワーク間の[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)を作成します。
-- [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。
-
+- ネットワーク仮想アプライアンスを通じてサブネット間でトラフィックをルーティングするには、[ユーザー定義のルート](virtual-network-create-udr-arm-ps.md)を作成し、各サブネットにルートを適用します。
+- [Windows 仮想マシン](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を既存の仮想ネットワークに作成します。
+- 仮想ネットワーク間に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)を作成して、2 つの仮想ネットワークを接続します。
+- [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。

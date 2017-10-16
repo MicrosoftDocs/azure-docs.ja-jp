@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 382913f0501c692cc1ee460d2264118414ad20c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 このドキュメントでは、Media Encoder Standard で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
@@ -112,5 +111,4 @@ Media Encoder Standard の入力コンテナーは次のオーディオ形式に
 [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
-
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 81010d91ac7fe8fa7149c52ed56af304cf4e83d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-documentdb-api"></a>DocumentDB API を使用した Azure Cosmos DB でのパーティション分割
 
@@ -146,7 +145,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-パーティション キーと ID でアイテムを読み込んで、更新してから、最後の手順としてパーティション キーと ID でドキュメントを削除してみましょう。 読み取りには (REST API 内の `x-ms-documentdb-partitionkey` 要求ヘッダーに対応する) PartitionKey 値が含まれることにご注意ください。
+パーティション キーと ID でアイテムを読み込んで、更新してから、最後の手順としてパーティション キーと ID でドキュメントを削除してみましょう。読み取りには (REST API 内の `x-ms-documentdb-partitionkey` 要求ヘッダーに対応する) PartitionKey 値が含まれることにご注意ください。
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -229,5 +228,4 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 * Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 * [SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使ってコーディングを開始します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します
-
 

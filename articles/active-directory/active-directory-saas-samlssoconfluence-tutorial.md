@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 
@@ -133,7 +131,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_400.png)  
     
 7. 別の Web ブラウザー ウィンドウで、**SAML SSO for Confluence by resolution GmbH 管理者ポータル**に管理者としてログインします。
 
@@ -159,7 +157,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon9.png)
 
-13.    **[管理]**をクリックします。
+13. **[管理]**をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon10.png)
     
@@ -187,7 +185,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
     d. **[Load]\(読み込み\)** ボタンをクリックします。
 
-    e. IdP メタデータが読み取られ、スクリーン ショットで強調表示されているフィールドが設定されます。    
+    e. IdP メタデータが読み取られ、スクリーン ショットで強調表示されているフィールドが設定されます。 
 18. **[Save settings]\(設定の保存\)** ボタンをクリックして、設定を保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
@@ -224,7 +222,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>SAML SSO for Confluence by resolution GmbH のテスト ユーザーの作成
 
@@ -239,7 +237,7 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 
     ![従業員の追加](./media/active-directory-saas-samlssoconfluence-tutorial/user1.png) 
 
-3. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
+3. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。**[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
     ![従業員の追加](./media/active-directory-saas-samlssoconfluence-tutorial/user2.png) 
 
@@ -312,5 +310,4 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 [201]: ./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-samlssoconfluence-tutorial/tutorial_general_203.png
-
 

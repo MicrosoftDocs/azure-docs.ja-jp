@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: 2a886d1eaf1253b55d8c95786139a2bbdc6f145e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 950cb449b53f400f0f0f860caf5415bbb5212269
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>ワークフロー内の企業間契約のパートナーを追加または更新する
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="what-roles-do-partners-have-in-your-integration-account"></a>統合アカウントのパートナーの役割
 
-パートナー間で交換するメッセージの詳細を定義するには、それらのパートナー間の契約を作成します。 ただし、契約を作成する前に、少なくとも&2; つのパートナーを統合アカウントに追加しておく必要があります。 自身の組織は、契約の**ホスト パートナー**にする必要があります。 もう一方の組織、すなわち**ゲスト パートナー**は、自身の組織とメッセージを交換する組織です。 ゲスト パートナーには、別の会社のほか、自身の組織内の部署も指定できます。
+パートナー間で交換するメッセージの詳細を定義するには、それらのパートナー間の契約を作成します。 ただし、契約を作成する前に、少なくとも 2 つのパートナーを統合アカウントに追加しておく必要があります。 自身の組織は、契約の**ホスト パートナー**にする必要があります。 もう一方の組織、すなわち**ゲスト パートナー**は、自身の組織とメッセージを交換する組織です。 ゲスト パートナーには、別の会社のほか、自身の組織内の部署も指定できます。
 
 これらのパートナーを追加したら、契約を作成できます。
 
@@ -92,5 +90,4 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="next-steps"></a>次のステップ
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
-
 

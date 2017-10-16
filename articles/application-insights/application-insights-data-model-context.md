@@ -12,13 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: d6a0cad8bda6ca68aa691867e84f540c5ac9f6f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト: Application Insights データ モデル
 
@@ -83,7 +81,7 @@ ms.lasthandoff: 05/18/2017
 
 ##<a name="anonymous-user-id"></a>匿名ユーザー ID
 
-匿名ユーザー ID。 アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
+匿名ユーザー ID。アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
 
 [サンプリング](app-insights-sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
 
@@ -94,7 +92,7 @@ ms.lasthandoff: 05/18/2017
 
 ##<a name="authenticated-user-id"></a>認証されたユーザー ID
 
-認証されたユーザー ID。 匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 PII 情報であるため、ほとんど SDK では既定で収集されません。
+認証されたユーザー ID。匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 PII 情報であるため、ほとんど SDK では既定で収集されません。
 
 最大長: 1024
 
@@ -139,4 +137,3 @@ SDK バージョン。 詳細については、https://github.com/Microsoft/Appl
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - 標準的なコンテキスト プロパティ コレクションの[構成](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
-

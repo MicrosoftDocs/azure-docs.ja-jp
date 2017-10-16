@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 49d2429c01fe3fde2e51e4344904f55e43eea1cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 6b220b0cb6719bac606f599d657d08ab847c7590
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外テレメトリ: Application Insights データ モデル
 
@@ -50,4 +49,3 @@ ms.lasthandoff: 04/27/2017
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - [Application Insights で Web アプリの例外を診断する](app-insights-asp-net-exceptions.md)方法を確認します。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

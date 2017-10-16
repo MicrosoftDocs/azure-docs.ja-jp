@@ -12,18 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/29/2017
+ms.date: 10/2/2017
 ms.author: sumukhs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 9610c37111bf8fd36c1eaea4f48e46953661aacf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: d3424aa7a8e0f6011bbef4aa61274c1f598f5c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-<a id="configuring-reliable-actors--kvsactorstateprovider" class="xliff"></a>
-# Reliable Actors の構成 - KVSActorStateProvider
+# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。
 
 Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
@@ -33,26 +30,21 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 > 
 > 
 
-<a id="replicator-security-configuration" class="xliff"></a>
-## レプリケーターのセキュリティ構成
+## <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
 レプリケーション時に使用される通信チャネルをセキュリティで保護するには、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを確認できないため、高可用性データもセキュリティで保護されることを意味します。
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効にはなりません。
 
-<a id="section-name" class="xliff"></a>
-### セクション名
+### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-<a id="replicator-configuration" class="xliff"></a>
-## レプリケーター構成
+## <a name="replicator-configuration"></a>レプリケーター構成
 レプリケーター構成では、アクター状態プロバイダーの状態の信頼性を高める役割を担うレプリケーターを構成します。
 既定の構成は Visual Studio テンプレートによって生成され、これで十分なはずです。 このセクションでは、レプリケーターのチューニングに使用できる追加の構成について説明します。
 
-<a id="section-name" class="xliff"></a>
-### セクション名
+### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-<a id="configuration-names" class="xliff"></a>
-### 構成名
+### <a name="configuration-names"></a>構成名
 | 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
@@ -62,24 +54,20 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 | MaxPrimaryReplicationQueueSize |操作数 |1024 |プライマリ キューの操作の最大数です。 操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 | MaxSecondaryReplicationQueueSize |操作数 |2048 |セカンダリ キューの操作の最大数です。 操作は、永続性によってその状態の高可用性が実現されてから解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 
-<a id="store-configuration" class="xliff"></a>
-## ストア構成
+## <a name="store-configuration"></a>ストア構成
 レプリケートされている状態を維持するために使用されるローカル ストアを構成するには、ストア構成を使用します。
 既定の構成は Visual Studio テンプレートによって生成され、これで十分なはずです。 このセクションでは、ローカル ストアのチューニングに使用できる追加の構成について説明します。
 
-<a id="section-name" class="xliff"></a>
-### セクション名
+### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
-<a id="configuration-names" class="xliff"></a>
-### 構成名
+### <a name="configuration-names"></a>構成名
 | 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |ミリ秒 |200 |持続性のあるローカル ストア コミットに、バッチ処理の最大間隔を設定します。 |
 | MaxVerPages |ページ数 |16384 |ローカル ストア データベースにおけるバージョン ページの最大数です。 未処理のトランザクションの最大数を決定します。 |
 
-<a id="sample-configuration-file" class="xliff"></a>
-## サンプル構成ファイル
+## <a name="sample-configuration-file"></a>サンプル構成ファイル
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -101,9 +89,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
    </Section>
 </Settings>
 ```
-<a id="remarks" class="xliff"></a>
-## 解説
+## <a name="remarks"></a>解説
 BatchAcknowledgementInterval パラメーターは、レプリケーションの待機時間を制御します。 値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。
 BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。 これは、トランザクションのコミットの待機時間に直結します。
-
 

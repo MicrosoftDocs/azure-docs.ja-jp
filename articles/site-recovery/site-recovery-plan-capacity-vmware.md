@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: rayne
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 8b580ac239bfb6d7b633fb03d4cfb91b168b0610
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Azure Site Recovery を使用した VMware レプリケーションの容量とスケーリングの計画
 
@@ -117,7 +115,7 @@ VMware をレプリケーションするために [Azure Site Recovery Deploymen
 
 ソース マシンが 200 台を超えるデプロイ、または合計日次変更率が 2 TB を超えるデプロイでスケールアウトする必要がある場合、トラフィック ボリュームに対応するためにプロセス サーバーを追加する必要があります。 この手順に従って、プロセス サーバーをセットアップします。 サーバーをセットアップしたら、サーバーを使用するソース マシンを移行します。
 
-1. **Site Recovery のサーバー** で、[構成サーバー] をクリックし、**[プロセス サーバー]** をクリックします。
+1. **Site Recovery のサーバー** で、構成サーバーをクリックし、**プロセス サーバー** をクリックします。
 
     ![プロセス サーバーを追加する Site Recovery サーバー オプションのスクリーンショット](./media/site-recovery-vmware-to-azure/migrate-ps1.png)
 2. **[サーバーの種類]** で、**[Process server (on-premises)] \(プロセス サーバー (オンプレミス))** をクリックします。
@@ -145,4 +143,3 @@ VMware をレプリケーションするために [Azure Site Recovery Deploymen
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) のダウンロードと実行
-

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory B2B コラボレーションのサポートの利用 | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションのサポート エクスペリエンスとは"
 services: active-directory
@@ -16,16 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: ce4731966baefa76b72e5a1a065c06379fac065d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
 
 ドキュメントをよく読んで、適切な手順を実行しても、上手くいかない場合があります。 そのようなときはサポート チケットを開いてください(サポート プランが必要です)。
@@ -47,4 +42,3 @@ ms.lasthandoff: 05/27/2017
   ![support ticket problem description](media/active-directory-b2b-support/problem-description.png)
 
 3. サポート担当者がトラブルシューティングを行うためにご連絡を差し上げる連絡先を設定してください。
-

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
 ms.openlocfilehash: 99018277392cab44a6b579ad45b4611739a803d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル: Azure Active Directory と Neota Logic Studio の統合
 
 このチュートリアルでは、Neota Logic Studio と Azure Active Directory (Azure AD) を統合する方法について説明します。
@@ -164,7 +162,7 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-neota-logic-studio-test-user"></a>Neota Logic Studio のテスト ユーザーの作成
 
@@ -226,5 +224,4 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 [201]: ./media/active-directory-saas-neotalogicstudio-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-neotalogicstudio-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-neotalogicstudio-tutorial/tutorial_general_203.png
-
 

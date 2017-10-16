@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/11/2016
 ms.author: mezha
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 42b182c314795b1ebf69639ec7ac5583208dc7c1
-ms.lasthandoff: 03/29/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -98,7 +95,7 @@ Web アプリを操作するための CDN におけるトークン認証の設�
 
         - ec-country-deny: 指定した 1 つ以上の国からの要求を拒否します。 その他の国からの要求はすべて許可されます。 国コードを使用してパラメーターを設定し、各国コードをコンマで区切ります。 たとえば、米国とフランスからのアクセスを拒否する場合は、「US, FR」と列に入力します。
     
-        - ec-ref-allow: 指定された参照元からの要求のみを許可します。 参照元により、要求されているリソースにリンクされた Web ページの URL を特定します。 参照元パラメーターの値には、プロトコルを含めないでください。 入力できるのは、ホスト名やそのホスト名の特定のパスです。 また、1 つのパラメーター内の複数の参照元をコンマで区切って追加することもできます。 参照元の値を指定したにもかかわらず、参照元の情報が、一部のブラウザー構成のために要求で送信されない場合、既定では、こうした要求は拒否されます。 このような参照元の情報がない要求を許可するには、パラメーターで "Missing" つまり空の値を割り当てます。 "*.consoto.com" を使用して、consoto.com のすべてのサブドメインを許可することもできます。  たとえば、www.consoto.com からの要求、consoto2.com のすべてのサブドメインからの要求、および参照元情報がない要求のアクセスを許可するには、以下の値を入力します。
+        - ec-ref-allow: 指定された参照元からの要求のみを許可します。 参照元により、要求されているリソースにリンクされた Web ページの URL を特定します。 参照元パラメーターの値には、プロトコルを含めないでください。 入力できるのは、ホスト名やそのホスト名の特定のパスです。 また、1 つのパラメーター内の複数の参照元をコンマで区切って追加することもできます。 参照元の値を指定したにもかかわらず、参照元の情報が、一部のブラウザー構成のために要求で送信されない場合、既定では、こうした要求は拒否されます。 このような参照元の情報がない要求を許可するには、パラメーターで "Missing" つまり空の値を割り当てます。 "*.consoto.com" を使用して、consoto.com のすべてのサブドメインを許可することもできます。たとえば、www.consoto.com からの要求、consoto2.com のすべてのサブドメインからの要求、および参照元情報がない要求のアクセスを許可するには、以下の値を入力します。
         
         ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
     
@@ -147,4 +144,3 @@ Web アプリを操作するための CDN におけるトークン認証の設�
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN の機能とプロバイダーの価格
 
 [CDN の概要](cdn-overview.md)に関するトピックをご覧ください。
-

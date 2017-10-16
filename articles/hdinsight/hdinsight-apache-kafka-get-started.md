@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/14/2017
+ms.date: 09/20/2017
 ms.author: larryfr
+ms.openlocfilehash: 1e51f546d6c256e1d8f1a1be50c6a2102fe26529
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 03e6996f0f44e04978080b3bd267e924f342b7fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="start-with-apache-kafka-preview-on-hdinsight"></a>HDInsight での Apache Kafka (プレビュー) の開始
 
@@ -47,6 +46,9 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
     * **[Secure Shell (SSH) username (Secure Shell (SSH) ユーザー名)]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **[リソース グループ]**: クラスターが作成されるリソース グループ。
     * **[場所]**: クラスターが作成される Azure リージョン。
+
+        > [!IMPORTANT]
+        > データの高可用性を実現するために、__3 つの障害ドメイン__を含む場所 (リージョン) を選択することをお勧めします。 詳細については、「[データの高可用性](#data-high-availability)」のセクションを参照してください。
    
  ![サブスクリプションを選択します。](./media/hdinsight-apache-kafka-get-started/hdinsight-basic-configuration.png)
 
@@ -73,12 +75,12 @@ HDInsight で Kafka クラスターを作成するには、次の手順に従い
 7. __[クラスター サイズ]__ で __[次へ]__ を選んで続行します。
 
     > [!WARNING]
-    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。
+    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 詳細については、「[データの高可用性](#data-high-availability)」のセクションを参照してください。
 
     ![Kafka のクラスター サイズの設定](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
 
-    > [!NOTE]
-    > **ワーカー ノード エントリごとのディスクの数**は、HDInsight での Kafka のスケーラビリティを制御します。 詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](hdinsight-apache-kafka-scalability.md)」をご覧ください。
+    > [!IMPORTANT]
+    > **ワーカー ノード エントリごとのディスクの数**は、HDInsight での Kafka のスケーラビリティを制御します。 HDInsight 上の Kafka は、クラスターの仮想マシンのローカル ディスクを使います。 Kafka は I/O が多いため、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 管理ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
 8. __[詳細設定]__ で __[次へ]__ を選んで続行します。
 
@@ -340,6 +342,27 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 7. __Ctrl+C__ キーを使用してコンシューマーを終了してから、`fg` コマンドを使用してバックグラウンドのストリーミング タスクをフォアグラウンドに移します。 同様に、__Ctrl+C__ キーを使用してこのタスクも終了します。
 
+## <a name="data-high-availability"></a>データの高可用性
+
+各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
+
+リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
+
+> [!IMPORTANT]
+> 3 つの障害ドメインを含む Azure リージョンを使用することと、レプリケーション係数として 3 を使用することをお勧めします。
+
+障害ドメインが 2 つだけのリージョンを使用する必要がある場合は、レプリケーション係数として 4 を使用して、レプリカを 2 つの障害ドメインに均等に分散します。
+
+### <a name="kafka-and-fault-domains"></a>Kafka と障害ドメイン
+
+Kafka は、障害ドメインを認識しません。 トピック用にパーティションのレプリカを作成すると、レプリカが適切に分散されず、高可用性が実現しない場合があります。 高可用性を確保するには、[Kafka パーティション再調整ツール](https://github.com/hdinsight/hdinsight-kafka-tools)を使用してください。 このツールは、SSH セッションから Kafka クラスターのヘッド ノードに対して実行する必要があります。
+
+Kafka データの最高レベルの可用性を確保するには、次のタイミングでトピックのパーティションのレプリカを再調整する必要があります。
+
+* 新しいトピックまたはパーティションが作成されたとき
+
+* クラスターをスケールアップするとき
+
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -352,11 +375,9 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 このドキュメントでは、HDInsight で Apache Kafka を使用する際の基本事項を学習しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-* [HDInsight で Kafka を使用してデータの高可用性を確保する](hdinsight-apache-kafka-high-availability.md)
-* [HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](hdinsight-apache-kafka-scalability.md)
-* kafka.apache.org にある [Apache Kafka のドキュメント](http://kafka.apache.org/documentation.html)
-* [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](hdinsight-apache-kafka-mirroring.md)
+* [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
+* [Kafka クラスター間でデータをレプリケートする](hdinsight-apache-kafka-mirroring.md)
+* [HDInsight 上で Kafka を用いて Apache Spark ストリーミング (DStream) を使用する](hdinsight-apache-spark-with-kafka.md)
+* [HDInsight 上で Kafka を用いて Apache Spark 構造化ストリーミングを使用する](hdinsight-apache-kafka-spark-structured-streaming.md)
 * [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
-* [HDInsight での Kafka に Apache Spark を使用する](hdinsight-apache-spark-with-kafka.md)
-* [Azure 仮想ネットワーク経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)
-
+* [Azure Virtual Network 経由で Kafka に接続する](hdinsight-apache-kafka-connect-vpn-gateway.md)

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
+ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f5d33b6a36b84589a24108a84636c42043f21c69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-security"></a>Azure Security の概要
 ## <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
@@ -61,7 +59,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 | :-- | :-- | :-- | :-- |
 | [セキュリティ開発サイクル](https://www.microsoft.com/en-us/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | [必須のセキュリティ トレーニング、バック グラウンド チェック](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](http://azuredatacentermap.azurewebsites.net/)|
-| [侵入テスト](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagemen)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [侵入テスト](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最新のデータ センター、](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](https://docs.microsoft.com/en-us/azure/security/security-network-overview) | [法執行機関への対応](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [セキュリティ インシデント対応](http://aka.ms/SecurityResponsepaper)、[責任の分担](http://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
@@ -111,7 +109,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 このセクションでは、アプリケーション セキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web アプリケーションの脆弱性のスキャン
-[App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
+[App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://security-forms.azure.com/penetration-testing/terms) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
@@ -123,10 +121,10 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
 ### <a name="layered-security-architecture"></a>複数層セキュリティ アーキテクチャ
-[App Service Environments](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
+[App Service Environments](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web サーバー診断とアプリケーション診断
-App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
+App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
 
 1 つ目の新機能は、アプリケーション プール、ワーカー プロセス、サイト、アプリケーション ドメイン、および実行中の要求に関するリアルタイムの状態情報です。 新しい 2 つ目の強みは、完全な要求-応答プロセスによって要求を追跡する詳細なトレース イベントです。
 
@@ -142,7 +140,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   Web サーバーのログ記録 - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。 このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 #### <a name="application-diagnostics"></a>アプリケーション診断
-[アプリケーション診断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
+[アプリケーション診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
 
 アプリケーション診断では、次の方法でグループ化されたイベントを表示できます。
 
@@ -398,4 +396,3 @@ Azure リソースのセキュリティの可視性と管理能力を高める�
 - [Azure Security Center でのセキュリティ ヘルスの監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
 
 ポリシーに対するコンプライアンスを監視するAzure Security Center の監視機能
-

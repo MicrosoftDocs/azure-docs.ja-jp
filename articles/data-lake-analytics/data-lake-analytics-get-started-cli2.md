@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Azure CLI 2.0 で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -221,4 +220,3 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 * Data Lake Analytics CLI 2.0 のリファレンス ドキュメントについては、「[Data Lake Analytics](https://docs.microsoft.com/cli/azure/dla)」を参照してください。
 * Data Lake Store CLI 2.0 のリファレンス ドキュメントについては、「[Data Lake Store](https://docs.microsoft.com/cli/azure/dls)」を参照してください。
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
-

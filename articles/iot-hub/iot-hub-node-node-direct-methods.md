@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c76870c49f5c8e51f521fd4be920d976e4cdbcef
-ms.openlocfilehash: 7100856b02935fba7bbf1427d86859ddb7a2b5f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 9a73c25724a239e56c3ea62a8452bb7c3a2b51be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>Node.js を使用した IoT デバイスでのダイレクト メソッドの使用
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
@@ -37,7 +36,7 @@ ms.lasthandoff: 03/02/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -212,4 +211,3 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
 [IoT Hub の使用]: iot-hub-node-node-getstarted.md
-

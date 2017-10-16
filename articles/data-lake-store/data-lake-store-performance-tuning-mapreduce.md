@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 9528148792f083cb0e48d356e61cf61762ee954f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
 
@@ -42,7 +40,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 * **Mapreduce.reduce.memory.mb** – 各 Reducer に割り当てるメモリの量
 * **Mapreduce.job.reduces** – ジョブごとの Reduce タスクの数
 
-**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリが表示されます。  
+**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリが表示されます。  
 
 **Mapreduce.job.maps/Mapreduce.job.reduces** 作成される Mapper や Reducer の最大数を決定します。  分割の数によって MapReduce ジョブに作成される Mapper の数が決まります。  そのため、要求した Mapper の数よりも分割が少ないと、要求したよりも少ない数の Mapper を取得する場合があります。       
 
@@ -52,7 +50,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 
 **手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – Map タスクと Reduce タスクのメモリ サイズは、特定のジョブに依存します。  同時実行性を向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、同時実行性が向上されます。  
 
-**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
+**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
     Total YARN memory = nodes * YARN memory per node
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
@@ -119,4 +117,3 @@ Azure Data Lake Store で MapReduce を実行する方法を示すために、�
 **Teravalidate**
 
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
-

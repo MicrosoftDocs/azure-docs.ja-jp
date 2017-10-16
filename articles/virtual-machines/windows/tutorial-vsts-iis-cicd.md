@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: a587f58fad2ec74c7633823c4d34f900e7c01f7e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Visual Studio Team Services と IIS を使用して継続的インテグレーション パイプラインを作成する
 ビルド、テスト、デプロイというアプリケーション開発の各フェーズを自動化するには、継続的インテグレーション/継続的配置 (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Visual Studio Team Services と、IIS を実行する Azure の Windows 仮想マシン (VM) を使用して CI/CD パイプラインを作成します。 学習内容は次のとおりです。
 

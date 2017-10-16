@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights Profiler を Cloud Services リソースで有効にする | Microsoft Docs"
+title: "Azure Compute リソースの Azure Application Insights Profiler を有効化する | Microsoft Docs"
 description: "Azure Cloud Services リソースによってホストされる ASP.NET アプリケーションに Profiler を設定する方法を説明します。"
 services: application-insights
 documentationcenter: 
@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
+ms.openlocfilehash: 65ba755f35df7bd09dd652ac6fccf96a878c6ca9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: c2cae6129386260f2bf35f75d44fa001f7541d40
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-application-insights-profiler-on-an-azure-cloud-services-resource"></a>Azure Application Insights Profiler を Cloud Services リソースで有効にする
 
 このチュートリアルでは、Azure Cloud Services リソースによってホストされる ASP.NET アプリケーションで Azure Application Insights Profiler を有効にする方法を示します。 例には、Azure Virtual Machines、仮想マシン スケール セット、および Azure Services Fabric のサポートが含まれています。 すべての例は、Azure Resource Manager デプロイメント モデルをサポートするテンプレートを活用しています。 デプロイメント モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
@@ -113,13 +111,15 @@ Azure VM にアプリケーションを公開するにはいくつかの方法�
 
 
 ## <a name="enable-the-profiler"></a>プロファイラーを有効にする
-1. Application Insights の **[パフォーマンス]** ブレードに移動し、**[構成]** を選択します。
-   
-   ![[構成] アイコン](./media/enable-profiler-compute/enableprofiler1.png)
- 
+
+1. Profiler を構成するために、Application Insights の **[パフォーマンス]** ブレードに移動し、右上の **[Profiler]** をクリックします。
+
+   ![Profiler の構成ボタン](./media/enable-profiler-compute/PerformanceTriageViewPofilerButton.png)
+
 2. **[Profiler の有効化]** を選択します。
-   
-   ![[Profiler の有効化] アイコン](./media/enable-profiler-compute/enableprofiler2.png)
+
+   ![[Profiler の有効化] ボタン](./media/enable-profiler-compute/enableprofiler2.png)
+
 
 ## <a name="add-a-performance-test-to-your-application"></a>アプリケーションにパフォーマンス テストを追加する
 次の手順に従うと、Application Insights Profiler に表示されるサンプル データを収集できます。
@@ -134,9 +134,15 @@ Azure VM にアプリケーションを公開するにはいくつかの方法�
 
 1. Profiler がデータを収集して分析するまで 10 ～ 15 分待ちます。 
 
-2. Application Insights リソースの **[パフォーマンス]** ブレードに移動し、アプリケーションに負荷がかかったときのパフォーマンスを表示します。
+2. Application Insights リソースの **[パフォーマンス]** ブレードに移動し、アプリケーションに負荷がかかったときのパフォーマンスを表示します。 操作グリッドを [カウント] 列の値で並べ替えて、十分な使用量があり低速な、興味を引く操作に注目します。 期間分布の上にある [Profiler] レーンを見て、プロファイラー トレースがある期間範囲を確認します。 アプリケーションを監視する時間が長くなればなるほど Profiler によって収集されるトレースが多くなるため、プロファイラー トレースでサポートされる豊富なコード レベルの例でより多くの分布がカバーされることに注意してください。 
 
-   ![パフォーマンスの表示](./media/enable-profiler-compute/aiperformance.png)
+   ![パフォーマンス トリアージ ビューのプロファイラー トレース](./media/enable-profiler-compute/PerformanceTriageViewProfilerTraces.png)
+
+    95 パーセンタイル付近の 3 番目のスパイクなど、興味を引く期間範囲にズームインすることができます。 これにより、[Take Action]\(アクションの実行\) ボタンに表示されるサンプルとプロファイラー トレースの数が制限されます。 
+
+    ![期間範囲へのズームイン](./media/enable-profiler-compute/DurationRangeZoomedTo95th.png)
+
+    **[Profiler traces]\(Profiler トレース\)** ボタンをクリックして、適切なトレースがある Profiler を開きます。
 
 3. **[例]** の下のアイコンを選択して **[トレース ビュー]** ブレードを開きます。
 
@@ -281,4 +287,3 @@ Commenting out these sections for now
 - Profiler の問題をトラブルシューティングするためのヘルプを [Profilerのトラブルシューティング](app-insights-profiler.md#troubleshooting)に関する項で探します。
 
 - [Application Insights Profiler](app-insights-profiler.md) で profiler の詳細を確認します。
-

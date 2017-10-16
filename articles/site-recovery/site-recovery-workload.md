@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
+ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 88f20287e2a6935b9694a25a21b607d658b8eb68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 この記事では、Azure Site Recovery サービスを使用してレプリケートできるワークロードとアプリケーションについて説明します。
@@ -31,7 +30,7 @@ ms.lasthandoff: 08/08/2017
 
 Site Recovery は、BCDR 戦略に貢献する Azure サービスです。 Site Recovery を使用することで、アプリケーションに対応したレプリケーションをクラウドまたはセカンダリ サイトにデプロイできます。 アプリが Windows ベースと Linux ベースのどちらであっても、また、物理サーバー、VMware、Hyper-V のいずれで実行されていても、Site Recovery を使用して、レプリケートの調整、ディザスター リカバリー テスト、フェールオーバーとフェールバックを実行できます。
 
-Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合されています。 Microsoft はまた、Oracle、SAP、IBM、Red Hat などの主要なベンダーと密接に連携しています。 レプリケーション ソリューションをアプリケーションごとにカスタマイズすることができます。
+Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合されています。 Microsoft はまた、Oracle、SAP、Red Hat などの主要なベンダーと密接に連携しています。 レプリケーション ソリューションをアプリケーションごとにカスタマイズすることができます。
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>アプリケーションのレプリケーションに Site Recovery を使用する理由
 Site Recovery は、アプリケーション レベルの保護と復旧に次のように役立ちます。
@@ -160,4 +159,3 @@ Citrix XenApp と XenDesktop のデプロイの保護については、[こち�
 
 ## <a name="next-steps"></a>次のステップ
 [前提条件を確認する](site-recovery-prereq.md)
-

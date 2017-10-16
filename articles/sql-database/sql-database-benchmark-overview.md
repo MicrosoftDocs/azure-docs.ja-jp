@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/21/2016
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
-ms.openlocfilehash: 7b9b222be1a131d2a80d37404cbdd309b61785f3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/13/2017
-
-
+ms.openlocfilehash: 57178352e0a402f3559c94ce25f125dcbefd1374
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL Database ベンチマークの概要
 ## <a name="overview"></a>概要
@@ -134,4 +132,3 @@ Azure SQL Database ベンチマークは、利用可能なサービス階層と�
 [サービス プランとパフォーマンス レベル](sql-database-service-tiers.md)
 
 [Azure SQL Database performance guidance for single databases (データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス)](sql-database-performance-guidance.md)
-

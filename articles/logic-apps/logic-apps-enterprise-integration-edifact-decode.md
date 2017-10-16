@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 39d9661adc90e6113e2152d844473f9f4caa755a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
 Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先固有のプロパティの検証、トランザクション セットへのインターチェンジの分割またはインターチェンジ全体の保持、処理されたトランザクションの受信確認の生成を行うことができます。 このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。
@@ -104,5 +101,4 @@ EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/c
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
-
 

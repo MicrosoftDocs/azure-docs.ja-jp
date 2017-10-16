@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>StorSimple Manager サービスを使用した StorSimple のパスワードの変更
 ## <a name="overview"></a>概要
@@ -56,10 +56,4 @@ StorSimple Snapshot Manager のパスワードが更新されました。
 * [StorSimple のセキュリティの詳細](storsimple-security.md)
 * [デバイスの構成を変更する方法の詳細](storsimple-modify-device-config.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -3,7 +3,7 @@ title: "SSL オフロードの構成 - Azure Application Gateway - Azure CLI 2.0
 description: "この記事では、Azure CLI 2.0 を使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,13 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: a2c4062db821e39e1af4fa1d54da0121d3993db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 032a514ddab625e4f7c5ef23a1da03a0162f43e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用した SSL オフロード用のアプリケーション ゲートウェイの構成
 
@@ -193,4 +192,3 @@ az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

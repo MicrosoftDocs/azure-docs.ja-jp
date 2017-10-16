@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Azure Active Directory と @Task| Microsoft Docs の統合"
+title: "チュートリアル: Azure の Active Directory と統合@Task|Microsoft ドキュメント"
 description: "Azure Active Directory と @Task の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
-ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
-
-
+ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>チュートリアル: Azure Active Directory と @Task の統合
 このチュートリアルの目的は、@Task と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
@@ -31,7 +31,7 @@ ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-@Task, と Azure AD の統合を構成するには、次のものが必要です。
+Azure AD との統合を構成する@Task、次の項目を作成する必要があります。
 
 * Azure AD サブスクリプション
 * @Task でのシングル サインオンが有効なサブスクリプション
@@ -84,7 +84,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する @Task ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと @Task の関連ユーザーの間で、リンク関係が確立されている必要があります。   
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を @Task の **[Username (ユーザー名)]** の値として割り当てます。
 
-@Task, で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+構成および Azure AD シングル サインオンをテストする@Task、次のビルド ブロックを完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
@@ -95,7 +95,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、@Task アプリケーションでシングル サインオンを構成することです。
 
-**@Task, で Azure AD のシングル サインオンを構成するには、次の手順を実行します。**
+**Azure AD シングル サインオンを構成する@Task、次の手順を実行します。**
 
 1. Azure クラシック ポータルの **@Task** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -109,7 +109,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
    
      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが @Task アプリケーションへのサインオンに使用する URL (例: *https://<Tenant name>.attask-ondemand.com*) を入力します。
    
-     b. **[次へ]**をクリックします。
+     b. **[次へ]** をクリックします。
 4. **[@Task でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターのローカルに保存して、**[次へ]** をクリックします。
    
     ![Azure AD Connect とは][9] 
@@ -191,7 +191,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 ### <a name="creating-an-task-test-user"></a>@Task テスト ユーザーの作成
 このセクションの目的は、@Task で Britta Simon というユーザーを作成することです。
 
-**@Task, で Britta Simon というユーザーを作成するには、次の手順を実行します。**
+**Britta Simon と呼ばれるユーザーを作成する@Task、次の手順を実行します。**
 
 1. @Task 企業サイトに管理者としてサインオンします。
 2. 上部のメニューで **[People]**をクリックします。
@@ -213,7 +213,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
 ![ユーザーの割り当て][200] 
 
-**@Task, に Britta Simon を割り当てるには、次の手順を実行します。**
+**Britta Simon を割り当てる@Task、次の手順を実行します。**
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
@@ -269,11 +269,5 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
 
 
-
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

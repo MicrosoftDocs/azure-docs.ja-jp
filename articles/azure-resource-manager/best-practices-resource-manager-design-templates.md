@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: dcc31f7a8c85a8f7fbd554371a66fb1e348bca17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>複雑なソリューションをデプロイするときの Azure Resource Manager テンプレートの設計パターン
 Azure Resource Manager テンプレートを基にした柔軟な方法を使用すると、複雑なトポロジを一貫性のあるやり方で迅速にデプロイできます。 これらのデプロイは、主要な提供物が進化したり、特殊なシナリオや顧客のためのバリエーションに対応したりする場合に、簡単に調整できます。
@@ -347,5 +346,4 @@ T シャツ サイズ テンプレートは、指定されたサイズ (*large*)
 ## <a name="next-steps"></a>次のステップ
 * テンプレート内やテンプレート間での状態の共有方法については、「 [Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
 

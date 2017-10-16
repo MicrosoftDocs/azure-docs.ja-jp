@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache の FAQ
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
@@ -388,7 +387,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定]["minIoThreads" configuration setting]を使用します。 Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、この設定は global.asax.cs の Application_Start メソッドからプログラムで構成できるはずです (下記を参照)。
+* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定]["minIoThreads" configuration setting]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、この設定は global.asax.cs の Application_Start メソッドからプログラムで構成できるはずです (下記を参照)。
 
   > [!NOTE] 
   > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
@@ -476,4 +475,3 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386103.aspx)を参照してください。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
-

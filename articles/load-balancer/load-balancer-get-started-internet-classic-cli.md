@@ -3,7 +3,7 @@ title: "インターネットに接続するロード バランサーの作成 -
 description: "Azure CLI を使用し、インターネットに接続するクラシック デプロイメント モデルのロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: da3a908f17ff5c6d3923549a884ecc0a13cb8e9e
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 0813cb0ccf976b7e47420b33ec65714fd8e60ac1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Azure CLI を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
 > [!div class="op_single_selector"]
@@ -36,7 +35,7 @@ ms.lasthandoff: 03/21/2017
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>CLI を使用したインターネットに接続するロード バランサーの作成手順
+## <a name="create-an-internet-facing-load-balancer-using-cli"></a>CLI を使用してインターネットに接続するロード バランサーを作成する
 
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 03/21/2017
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>手順 2.
 
 ロード バランサー セットに 2 番目の仮想マシン "web2" を追加します。
 
@@ -72,7 +71,7 @@ azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-3"></a>手順 3.
+### <a name="step-3"></a>手順 3.
 
 `azure vm show` を使用し、ロード バランサーの構成を確認します。
 
@@ -152,4 +151,3 @@ azure vm endpoint delete web1 tcp-80-80
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-

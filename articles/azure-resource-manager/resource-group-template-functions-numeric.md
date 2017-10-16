@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: 8b90885583c411e5b1e513188a636fe54ec74b7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: ae0261134b8d4a934048f58d6c679a48a904950b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
 
@@ -30,8 +29,8 @@ ms.lasthandoff: 07/21/2017
 * [div](#div)
 * [float](#float)
 * [int](#int)
-* [min](#min)
 * [max](#max)
+* [min](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
@@ -56,7 +55,7 @@ ms.lasthandoff: 07/21/2017
 
 ### <a name="example"></a>例
 
-次の例では、2 つのパラメーターを加算します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json)では、2 つのパラメーターを加算します。
 
 ```json
 {
@@ -94,6 +93,18 @@ ms.lasthandoff: 07/21/2017
 | 名前 | 型 | 値 |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+```
 
 <a id="copyindex" />
 
@@ -159,7 +170,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、一方のパラメーターをもう一方のパラメーターで除算します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json)では、一方のパラメーターをもう一方のパラメーターで除算します。
 
 ```json
 {
@@ -198,6 +209,18 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+```
+
 <a id="float" />
 
 ## <a name="float"></a>float
@@ -207,7 +230,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -224,12 +247,12 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
     "properties": {
         ...
         "parameters": {
-        "custom1": {
-            "value": "[float('3.0')]"
-        },
-        "custom2": {
-            "value": "[float(3)]"
-        },
+            "custom1": {
+                "value": "[float('3.0')]"
+            },
+            "custom2": {
+                "value": "[float(3)]"
+            },
 ```
 
 <a id="int" />
@@ -251,7 +274,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、ユーザー指定のパラメーター値を整数に変換します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json)では、ユーザー指定のパラメーター値を整数に変換します。
 
 ```json
 {
@@ -280,58 +303,17 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-<a id="min" />
-
-## <a name="min"></a>Min
-`min (arg1)`
-
-整数の配列または整数のコンマ区切りリストから最小値を返します。
-
-### <a name="parameters"></a>parameters
-
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
-
-### <a name="return-value"></a>戻り値
-
-コレクションの最小値を表す整数。
-
-### <a name="example"></a>例
-
-次の例では、min を配列および整数のリストと共に使用する方法を示します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
-    }
-}
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-既定値を使用した場合の前の例の出力は次のようになります。
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-| 名前 | 型 | 値 |
-| ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+```
 
 <a id="max" />
 
@@ -342,9 +324,9 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
+| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -352,7 +334,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、max を配列および整数のリストと共に使用する方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json)では、max を配列および整数のリストと共に使用する方法を示します。
 
 ```json
 {
@@ -385,6 +367,82 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+<a id="min" />
+
+## <a name="min"></a>Min
+`min (arg1)`
+
+整数の配列または整数のコンマ区切りリストから最小値を返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+|:--- |:--- |:--- |:--- |
+| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
+
+### <a name="return-value"></a>戻り値
+
+コレクションの最小値を表す整数。
+
+### <a name="example"></a>例
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json)では、min を配列および整数のリストと共に使用する方法を示します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "arrayToTest": {
+            "type": "array",
+            "defaultValue": [0,3,2,5,4]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "arrayOutput": {
+            "type": "int",
+            "value": "[min(parameters('arrayToTest'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+    }
+}
+```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
 <a id="mod" />
 
 ## <a name="mod"></a>mod
@@ -404,7 +462,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json)では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
 
 ```json
 {
@@ -443,6 +501,18 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
+
 <a id="mul" />
 
 ## <a name="mul"></a>mul
@@ -463,7 +533,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、一方のパラメーターをもう一方のパラメーターで乗算します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json)では、一方のパラメーターをもう一方のパラメーターで乗算します。
 
 ```json
 {
@@ -502,6 +572,18 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
+
 <a id="sub" />
 
 ## <a name="sub"></a>sub
@@ -521,7 +603,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="example"></a>例
 
-次の例では、一方のパラメーターからもう一方のパラメーターを減算します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json)では、一方のパラメーターをもう一方のパラメーターで減算します。
 
 ```json
 {
@@ -560,10 +642,21 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
 

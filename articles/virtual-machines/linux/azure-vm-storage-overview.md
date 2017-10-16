@@ -14,27 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
+ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 598d6a62fc7c4a769043c4d6d6547e5b8f8a5d5a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure と Linux の VM ストレージ
 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  Azure Storage は、開発者が新しいシナリオをサポートするための大規模なアプリケーションの構築に使用できるだけでなく、Azure Virtual Machines のストレージ基盤となります。
 
 ## <a name="managed-disks"></a>Managed Disks
 
-[Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Azure VM を利用できるようになりました。これにより、[Azure ストレージ アカウント](../../storage/storage-introduction.md)を自分で作成または管理しなくても VM を作成できます。 Premium Storage と Standard Storage のどちらが必要かと、ディスクの大きさを指定すると、Azure によって VM ディスクが作成されます。 Managed Disks を使用する VM には、次のような多くの重要な機能があります。
+[Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Azure VM を利用できるようになりました。これにより、[Azure ストレージ アカウント](../../storage/common/storage-introduction.md)を自分で作成または管理しなくても VM を作成できます。 Premium Storage と Standard Storage のどちらが必要かと、ディスクの大きさを指定すると、Azure によって VM ディスクが作成されます。 Managed Disks を使用する VM には、次のような多くの重要な機能があります。
 
 - 自動的なスケーラビリティのサポート。 Azure では、サブスクリプションあたり最大 10,000 個のディスクをサポートするように、ディスクが作成され、基になるストレージが管理されます。
 - 可用性セットでの信頼性が向上します。 Azure により、VM ディスクが可用性セット内で相互に自動的に分離されます。
 - アクセス制御が向上します。 Managed Disks は、[Azure のロールベースのアクセス制御 (RBAC)](../../active-directory/role-based-access-control-what-is.md) によって制御されるさまざまな操作を公開します。
 
-Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../../storage/storage-managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。
+Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。
 
-[az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
+[az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
 
 - [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに仮想ハード ディスク (VHD) をコピーします。
 - Managed Disks を使う VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。
@@ -92,7 +91,7 @@ Premium Storage の機能
 * Premium Storage ディスク: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。
 * Premium ページ BLOB: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使われます。
 * Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。
-* [Premium Storage](../../storage/storage-premium-storage.md)
+* [Premium Storage](../../storage/common/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Premium Storage でサポートされる VM
 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズおよび Fs シリーズの Azure Virtual Machines (VM) をサポートしています。 Premium Storage でサポートされる VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。 Premium Storage に互換性のない VM シリーズでは Premium Storage ディスクを使用できません。
@@ -115,7 +114,7 @@ Azure File Storage は、標準の SMB プロトコルを使用したクラウ�
 
 File Storage は、BLOB、Table、および Queue Storage と同じテクノロジ上に構築されているため、可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。 File Storage のパフォーマンスのターゲットと制限事項の詳細については、「Azure Storage のスケーラビリティおよびパフォーマンスのターゲット」をご覧ください。
 
-* [Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md)
+* [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)
 
 ## <a name="hot-storage"></a>ホット ストレージ
 Azure ホット ストレージ層は、頻繁にアクセスされるデータの格納に適しています。  ホット ストレージは、BLOB ストア用の既定のストレージ タイプです。
@@ -155,7 +154,7 @@ geo 冗長ストレージ (GRS) では、プライマリ リージョンから�
 
 Azure ストレージの冗長性の詳細については、以下をご覧ください。
 
-* [Azure Storage のレプリケーション](../../storage/storage-redundancy.md)
+* [Azure Storage のレプリケーション](../../storage/common/storage-redundancy.md)
 
 ## <a name="scalability"></a>拡張性
 Azure Storage は拡張性に富んでいます。科学、財務分析、およびメディアのアプリケーションで求められるビッグ データ シナリオに対応して、数百テラバイトのデータを保存、処理できます。 また、スモール ビジネスの Web サイト用に、少量のデータを保存することもできます。 お客様のニーズがどのような規模であろうとも、料金は保存しているデータ量に応じた金額のみです。 Azure Storage には現在、膨大な数のお客様のプロジェクトが保存され、1 秒間に平均数百万の要求が処理されています。
@@ -189,7 +188,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
 
 ### <a name="data-plane-security"></a>データ プレーンのセキュリティ
-このセクションでは、Shared Access Signature と Stored Access Policy を使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
+このセクションでは、Shared Access Signature と保存されたアクセス ポリシーを使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
 
 ## <a name="encryption-in-transit"></a>転送中の暗号化
 このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。 Azure のファイル共有用の SMB 3.0 に使用される HTTPS と暗号化の推奨される使用方法について説明します。 また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
@@ -197,7 +196,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 ## <a name="encryption-at-rest"></a>保存時の暗号化
 Storage Service Encryption (SSE) と、ストレージ アカウントで Storage Service Encryption を有効にして、Azure Storage への書き込み時にブロック BLOB、ページ BLOB、および追加 BOB が自動的に暗号化されるようにする方法について説明します。 また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption、SSE、およびクライアント側認証の基本的な違いと、例についても説明します。 さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
 
-* [Azure Storage セキュリティ ガイド](../../storage/storage-security-guide.md)
+* [Azure Storage セキュリティ ガイド](../../storage/common/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>一時ディスク
 各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
@@ -212,4 +211,3 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 ## <a name="storage-limits"></a>ストレージの制限
 * [ストレージ Service の制限](../../azure-subscription-service-limits.md#storage-limits)
-

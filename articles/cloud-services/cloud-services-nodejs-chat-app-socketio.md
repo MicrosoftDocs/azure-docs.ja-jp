@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: efa459f6b382ff22c94802e1250836d5f622b4ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: a85d4348a13b79b5b7542362de9956aa3398375a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、<http://socket.io/> を参照してください。
@@ -173,6 +172,5 @@ Azure エミュレーターでアプリケーションをテストする前に�
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
-
 
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 4/14/2017
 ms.author: yagupta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 20444d368c568ee716ff242e33323b91ffd198eb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store でのデータの暗号化
 
 Azure Data Lake Store では、暗号化によってデータを保護し、企業のセキュリティ ポリシーを実装できるほか、規制上のコンプライアンス要件を満たすことができます。 この記事では、設計の概要を示すと共に、実装の技術的な側面について取り上げます。
@@ -52,8 +50,8 @@ Data Lake Store では、マスター暗号化キー (MEK) を管理するモー
 
 マスター暗号化キーを管理するモードには次の 2 つがあります。
 
-*    サービス管理キー
-*    顧客管理キー
+*   サービス管理キー
+*   顧客管理キー
 
 どちらのモードでも、マスター暗号化キーは Azure Key Vault に格納されてセキュリティ保護されます。 Key Vault は、安全性の高い完全管理型の Azure サービスであり、暗号化キーの保護に使用できます。 詳細については、「[Key Vault](https://azure.microsoft.com/services/key-vault)」を参照してください。
 
@@ -74,8 +72,8 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 
 マスター暗号化キーのモードを選択するうえで重要な点を次に示します。
 
-*    顧客管理キーとサービス管理キーのどちらを使用するかは、Data Lake Store アカウントをプロビジョニングするときに選択できます。
-*    Data Lake Store アカウントのプロビジョニング後にモードを変更することはできません。
+*   顧客管理キーとサービス管理キーのどちらを使用するかは、Data Lake Store アカウントをプロビジョニングするときに選択できます。
+*   Data Lake Store アカウントのプロビジョニング後にモードを変更することはできません。
 
 ### <a name="encryption-and-decryption-of-data"></a>データの暗号化と解読
 
@@ -92,20 +90,20 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 ![データ暗号化のキー](./media/data-lake-store-encryption/fig2.png)
 
 #### <a name="pseudo-algorithm-when-a-file-is-to-be-decrypted"></a>ファイルが復号化される際の疑似アルゴリズム:
-1.    Data Lake Store アカウントの DEK がキャッシュされていて使用できる状態であることを確認します。
-    - 準備が整っていない場合、永続的なストレージから暗号化された DEK を読み取り、それを Key Vault に送信して解読します。 解読した DEK をメモリにキャッシュします。これで使用できる状態になります。 It is now ready to use.
-2.    ファイル内のすべてのデータ ブロックに関して次の処理を実行します。
+1.  Data Lake Store アカウントの DEK がキャッシュされていて使用できる状態であることを確認します。
+    - 準備が整っていない場合、永続的なストレージから暗号化された DEK を読み取り、それを Key Vault に送信して解読します。 解読した DEK をメモリにキャッシュします。 これで使用できる状態になります。
+2.  ファイル内のすべてのデータ ブロックに関して次の処理を実行します。
     - 永続的なストレージから暗号化されたデータ ブロックを読み取ります。
     - DEK と暗号化されたデータ ブロックから BEK を生成します。
     - BEK を使用してデータを解読します。
 
 
 #### <a name="pseudo-algorithm-when-a-block-of-data-is-to-be-encrypted"></a>データ ブロックが暗号化される際の疑似アルゴリズム:
-1.    Data Lake Store アカウントの DEK がキャッシュされていて使用できる状態であることを確認します。
-    - 準備が整っていない場合、永続的なストレージから暗号化された DEK を読み取り、それを Key Vault に送信して解読します。 解読した DEK をメモリにキャッシュします。これで使用できる状態になります。 It is now ready to use.
-2.    DEK からデータ ブロックの一意の BEK を生成します。
-3.    AES 256 暗号化を使用して BEK でデータ ブロックを暗号化します。
-4.    暗号化されたデータ ブロックを永続的なストレージに格納します。
+1.  Data Lake Store アカウントの DEK がキャッシュされていて使用できる状態であることを確認します。
+    - 準備が整っていない場合、永続的なストレージから暗号化された DEK を読み取り、それを Key Vault に送信して解読します。 解読した DEK をメモリにキャッシュします。 これで使用できる状態になります。
+2.  DEK からデータ ブロックの一意の BEK を生成します。
+3.  AES 256 暗号化を使用して BEK でデータ ブロックを暗号化します。
+4.  暗号化されたデータ ブロックを永続的なストレージに格納します。
 
 > [!NOTE] 
 > パフォーマンス上の理由から、平文の DEK は短い期間メモリにキャッシュされ、その後すぐに消去されます。 このデータ暗号化キーは常に、MEK によって暗号化された状態で永続メディアに格納されます。
@@ -118,7 +116,7 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 
 Data Lake Store アカウントを設定するときに、独自キーの使用を選択済みであることが必要です。 このオプションをアカウントの作成後に変更することはできません。 以下の手順は、顧客管理キーが使用されている (つまり Key Vault から独自のキーが選択されている) ことを想定しています。
 
-暗号化で既定のオプションを使用する場合、データは常に Data Lake Store によって管理されたキーを使用して暗号化されます。このオプションでは Data Lake Store によってキーが管理されるため、ユーザーがキーを交換することはできません。 In this option, you don't have the ability to rotate keys, as they are managed by Data Lake Store.
+暗号化で既定のオプションを使用する場合、データは常に Data Lake Store によって管理されたキーを使用して暗号化されます。 このオプションでは Data Lake Store によってキーが管理されるため、ユーザーがキーを交換することはできません。
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-store"></a>Data Lake Store の MEK を交換する方法
 
@@ -127,17 +125,16 @@ Data Lake Store アカウントを設定するときに、独自キーの使用�
 
     ![Key Vault のスクリーンショット](./media/data-lake-store-encryption/keyvault.png)
 
-3.    Data Lake Store アカウントに関連付けられているキーを選択し、このキーの新しいバージョンを作成します。 現在 Data Lake Store でサポートされるのは、新しいバージョンのキーへの交換だけです。 異なるキーへの交換はサポートされません。
+3.  Data Lake Store アカウントに関連付けられているキーを選択し、このキーの新しいバージョンを作成します。 現在 Data Lake Store でサポートされるのは、新しいバージョンのキーへの交換だけです。 異なるキーへの交換はサポートされません。
 
    ![[キー] ウィンドウのスクリーンショット ([新しいバージョン] に注目)](./media/data-lake-store-encryption/keynewversion.png)
 
-4.    Data Lake Store ストレージ アカウントに移動して **[暗号化]** を選択します。
+4.  Data Lake Store ストレージ アカウントに移動して **[暗号化]** を選択します。
 
     ![Data Lake Store ストレージ アカウント ウィンドウのスクリーンショット ([暗号化] に注目)](./media/data-lake-store-encryption/select-encryption.png)
 
-5.    新しいバージョンのキーが利用可能であることを伝えるメッセージが表示されます。 **[回転キー]** をクリックすると、キーが新しいバージョンに更新されます。
+5.  新しいバージョンのキーが利用可能であることを伝えるメッセージが表示されます。 **[回転キー]** をクリックすると、キーが新しいバージョンに更新されます。
 
     ![Data Lake Store ウィンドウのスクリーンショット (メッセージとキーの交換に注目)](./media/data-lake-store-encryption/rotatekey.png)
 
 この処理は 2 分未満で完了します。キーの交換が原因でダウンタイムは発生しないものと思われます。 処理が完了したら、新しいバージョンのキーが使用中の状態になります。
-

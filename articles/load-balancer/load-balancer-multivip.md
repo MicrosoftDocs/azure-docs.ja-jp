@@ -3,7 +3,7 @@ title: "クラウド サービスの複数の VIP"
 description: "MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: f40e0501eed8d5f296e7c79d8a35705a695ae6fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: b6b7b0b2d7a7f33facaf72bbd2d7937364770673
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。 このパブリック IP アドレスは、クラウド サービス内の仮想マシン (VM) インスタンスではなく、Azure Load Balancer にリンクされているため、VIP (仮想 IP) と呼ばれます。 クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
 
@@ -180,4 +180,3 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
-

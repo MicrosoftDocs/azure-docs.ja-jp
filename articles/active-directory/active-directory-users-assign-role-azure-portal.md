@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でユーザーを管理者ロールに割り当てる | Microsoft Docs"
 description: "Azure Active Directory でユーザーの管理情報を変更する方法について説明します。"
 services: active-directory
@@ -16,13 +15,11 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: ebbadff39c736ec7364999f7644694e8a177073f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
-
+ms.openlocfilehash: bfadf133154488f9827cfbeaa98ddb0eb84b52f6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でユーザーを管理者ロールに割り当てる
 この記事では、Azure Active Directory (Azure AD) でユーザーに管理者ロールを割り当てる方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
@@ -47,4 +44,3 @@ ms.lasthandoff: 05/08/2017
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
 * [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 * [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
-

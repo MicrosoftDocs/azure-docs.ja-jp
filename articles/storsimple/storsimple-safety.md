@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
-ms.openlocfilehash: 4dca50c6a0e6809876357edee8c6475796984c70
-
-
+ms.openlocfilehash: a178e8880bcbcada9d66eaacf5ccbdb7c55957cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
 ![警告のアイコン](./media/storsimple-safety/IC740879.png)
@@ -151,10 +151,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 ## <a name="next-steps"></a>次のステップ
 * 8100 デバイスの場合は、「 [StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」をご覧ください。
 * 8600 デバイスの場合は、「 [StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

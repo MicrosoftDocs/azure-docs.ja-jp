@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 00a6749d00c6e66a957b0a89c6658511a1bafe4d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 Azure Active Directory と統合するアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすか判断する必要があります。 Azure Active Directory の元のエンドポイントは引き続き完全にサポートされ、いくつかの点においては v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
@@ -75,13 +73,13 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 
 `https://new.login.contoso.com`
 
-この場合、login.contoso.com の DNS サブドメインを参照しています。 リダイレクト URI として login-east.contoso.com と login-west.contoso.com を持つアプリが必要な場合は、これらのリダイレクト URI を以下の順番で追加する必要があります。
+この場合、login.contoso.com の DNS サブドメインを参照しています。リダイレクト URI として login-east.contoso.com と login-west.contoso.com を持つアプリが必要な場合は、これらのリダイレクト URI を以下の順番で追加する必要があります。
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-後の 2 つのリダイレクト URI を追加できるのは、それらが 1 つ目の contoso.com というリダイレクト URI のサブドメインであるためです。 この制限は、今後のリリースで解消される予定です。
+後の 2 つのリダイレクト URI を追加できるのは、それらが 1 つ目の contoso.com というリダイレクト URI のサブドメインであるためです。この制限は、今後のリリースで解消される予定です。
 
 アプリケーション登録ポータルでアプリを登録する方法については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」を参照してください。
 
@@ -89,7 +87,7 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 現在、v2.0 エンドポイントは、アプリケーション登録ポータルに登録されているすべてのアプリのサインインをサポートしています。これらのアプリは、[サポートされる認証フロー](active-directory-v2-flows.md)のリストに含まれています。 ただし、これらのアプリで取得できるのは、ごく限られたリソースの OAuth 2.0 アクセス トークンだけです。 v2.0 エンドポイントは、次に対してのみアクセス トークンを発行します。
 
 * トークンを要求したアプリ。 論理的に複数の異なるコンポーネントまたは階層で構成されている場合にアプリが取得できるのはそれ自身のアクセス トークンとなります。 その実際のシナリオについては、 [こちら](active-directory-appmodel-v2-overview.md#getting-started) のチュートリアルを参照してください。
-* Outlook メール、カレンダー、連絡先の REST API (いずれも https://outlook.office.com に存在)。 これらの API にアクセスするアプリの作成方法については、[Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) に関するチュートリアルを参照してください。
+* Outlook メール、カレンダー、連絡先の REST API (いずれも https://outlook.office.com に存在)。これらの API にアクセスするアプリの作成方法については、[Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) に関するチュートリアルを参照してください。
 * Microsoft Graph API。 [Microsoft Graph](https://graph.microsoft.io) と利用可能なデータについて詳細を確認できます。
 
 現時点では、上記以外のサービスはサポートされていません。 独自のカスタム ビルド Web API やサービスのサポート以外にも、その他の Microsoft Online Services が将来追加される予定です。

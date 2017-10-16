@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a69951ed60edab8ae20374ab3869b468979c4907
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 7772381e9796ddc2e0db215bab4f230473eaa462
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker マシンを使用して、Azure で Docker ホストを作成する方法
-この記事では、[Docker マシン](https://docs.docker.com/machine/)を使用して、Azure で Docker ホストを作成する方法を詳しく説明します。 `docker-machine` コマンドを実行すると、Azure で Linux 仮想マシン (VM) が作成され、次に Docker がインストールされます。 これにより、同じローカル ツールとワークフローを使用して、Azure で Docker ホストを管理できます。
+この記事では、[Docker マシン](https://docs.docker.com/machine/)を使用して、Azure で Docker ホストを作成する方法を詳しく説明します。 `docker-machine` コマンドを実行すると、Azure で Linux 仮想マシン (VM) が作成され、次に Docker がインストールされます。 これにより、同じローカル ツールとワークフローを使用して、Azure で Docker ホストを管理できます。 Windows 10 で Docker コンピューターを使用するには、Linux バッシュを使用する必要があります。
 
 ## <a name="create-vms-with-docker-machine"></a>Docker マシンで VM を作成する
 まず、次のように、[az account show](/cli/azure/account#show) を使用して Azure サブスクリプション ID を取得します。
@@ -34,13 +32,14 @@ sub=$(az account show --query "id" -o tsv)
 
 `docker-machine create` で *azure* をドライバーとして指定することによって、Azure に Docker ホスト VM を作成します。 詳細については、[Docker の Azure ドライバー ドキュメント](https://docs.docker.com/machine/drivers/azure/)を参照してください。
 
-次の例では、*myVM* という名前の VM と *azureuser* という名前のユーザー アカウントを作成し、ホスト VM でポート *80* を開きます。 画面の指示に従って Azure アカウントにログインし、リソースを作成および管理するアクセス許可を Docker マシンに付与します。
+次の例では、"Standard D2 v2" プランに基づいて *myVM* という名前の VM と *azureuser* という名前のユーザー アカウントを作成し、ホスト VM でポート *80* を開きます。 画面の指示に従って Azure アカウントにログインし、リソースを作成および管理するアクセス許可を Docker マシンに付与します。
 
 ```bash
 docker-machine create -d azure \
     --azure-subscription-id $sub \
     --azure-ssh-user azureuser \
     --azure-open-port 80 \
+    --azure-size "Standard_D2_v2 \
     myvm
 ```
 
@@ -138,4 +137,3 @@ docker-machine ip myvmdocker
 
 ## <a name="next-steps"></a>次のステップ
 [Docker VM 拡張機能](dockerextension.md)を使用してホストを作成することもできます。 Docker Compose の使用例については、[Azure での Docker と Compose の使用](docker-compose-quickstart.md)に関するページをご覧ください。
-

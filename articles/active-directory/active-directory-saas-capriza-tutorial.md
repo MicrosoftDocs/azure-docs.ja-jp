@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 668c094d5330be1c5f71d51d2e76170dc69d1bce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>チュートリアル: Azure Active Directory と Capriza Platform の統合
 
@@ -163,7 +161,7 @@ Capriza Platform で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-capriza-platform-test-user"></a>Capriza Platform のテスト ユーザーの作成
 
@@ -227,5 +225,4 @@ Capriza Platform で Azure AD のシングル サインオンを構成してテ�
 [201]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-capriza-tutorial/tutorial_general_203.png
-
 

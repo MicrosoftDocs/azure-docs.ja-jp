@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 93ada731fe70cf7d294537241f8104c0b89940ed
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: a5753df2ff6874d9574e268953792cac9765cc54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
@@ -50,8 +50,6 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
   * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド][lnk-methods]の要求をリッスンします。
 
     これらのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]、HTTP 1.1、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets][lnk-websockets] 経由で使用することもできます。
-
-    デバイス ツインとメソッドのエンドポイントは、[MQTT v3.1.1][lnk-mqtt] プロトコルを使用する場合のみ利用可能です。
 
 * **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP][lnk-amqp] プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTP プロトコルを介して公開されます。
   

@@ -1,26 +1,26 @@
 ---
 title: "Azure でのレプリカ Active Directory ドメイン コントローラーのインストール | Microsoft Docs"
 description: "このチュートリアルでは、Azure の仮想マシンにオンプレミス Active Directory フォレストからドメイン コントローラーをインストールする方法について説明します。"
-services: virtual-network
+services: active-directory
 documentationcenter: 
 author: curtand
 manager: femila
 editor: 
 ms.assetid: 8c9ebf1b-289a-4dd6-9567-a946450005c0
-ms.service: virtual-network
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 10/10/2017
 ms.author: curtand
+ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
+ms.openlocfilehash: fb0bacac346445e6bde9df22f3355419e3162a3c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 5a663bc8290d056b89a929c17722e3c233cdbad7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 このトピックでは、Azure の仮想ネットワークの Azure 仮想マシン (VM) 上に、オンプレミス Active Directory ドメインの追加のドメイン コントローラー (レプリカ DC とも呼ばれます) をインストールする方法を説明します。
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/25/2017
 必要に応じて次の関連するトピックも参照してください。
 
 * オプションで、Azure の仮想ネットワーク上に新しい Active Directory フォレストをインストールすることもできます。 これらの手順については、「[Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」をご覧ください。
-* Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「 [Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
+* Azure の仮想ネットワークに Active Directory Domain Services (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## <a name="scenario-diagram"></a>シナリオ図
 このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。 アプリケーション サーバーとレプリカ DC を実行する VM は、Azure の仮想ネットワーク内にインストールされています。 次の図に示すように、仮想ネットワークは[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 接続で、オンプレミス ネットワークに接続できます。また、接続を高速化するために、[ExpressRoute](../expressroute/expressroute-locations-providers.md) を使用することもできます。
@@ -81,7 +81,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
 静的 IP アドレスを設定する方法の詳細については、「 [VM 用の静的内部 IP アドレスを構成する](../virtual-network/virtual-networks-reserved-private-ip.md)」をご覧ください。
 
 ## <a name="install-ad-ds-on-azure-vms"></a>Azure VM に AD DS をインストールする
-VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続で、オンプレミス ネットワーク上のリソースに接続できることを確認します。 次に、Azure VM に AD DS をインストールします。 オンプレミス ネットワーク上に追加の DC をインストールするために使用するのと同じプロセス (UI、Windows PowerShell、応答ファイル) を使用できます。 AD DS をインストールするときには、AD データベース、ログ、SYSVOL の場所の新しいボリュームを必ず指定します。 AD DS のインストール方法がわからない場合は、「[Active Directory ドメイン サービスをインストールする (レベル 100)](https://technet.microsoft.com/library/hh472162.aspx)」、または、「[Windows Server 2012 のレプリカ ドメイン コントローラーを既存のドメインにインストールする (レベル 200)](https://technet.microsoft.com/library/jj574134.aspx)」をご覧ください。
+VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続で、オンプレミス ネットワーク上のリソースに接続できることを確認します。 次に、Azure VM に AD DS をインストールします。 オンプレミス ネットワーク上に追加の DC をインストールするために使用するのと同じプロセス (UI、Windows PowerShell、応答ファイル) を使用できます。 AD DS をインストールするときには、AD データベース、ログ、SYSVOL の場所の新しいボリュームを必ず指定します。 AD DS のインストール方法がわからない場合は、「[Active Directory Domain Services をインストールする (レベル 100)](https://technet.microsoft.com/library/hh472162.aspx)」、または、「[Windows Server 2012 のレプリカ ドメイン コントローラーを既存のドメインにインストールする (レベル 200)](https://technet.microsoft.com/library/jj574134.aspx)」をご覧ください。
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>仮想ネットワークの DNS サーバーを再構成する
 1. [Azure Portal](https://portal.azure.com) で、**[リソースを検索]** ボックスに「"*仮想ネットワーク*"」と入力し、検索結果で **[仮想ネットワーク (クラシック)]** をクリックします。 仮想ネットワークの名前をクリックし、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/virtual-network-manage-network.md#dns-servers)して、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
@@ -114,4 +114,3 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 <!--Image references-->
 [1]: ./media/active-directory-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
-

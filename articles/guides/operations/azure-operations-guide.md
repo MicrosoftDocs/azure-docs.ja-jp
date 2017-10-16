@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -90,8 +90,6 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 -   Azure Batch (大規模な並列/バッチ コンピューティング ジョブ用)
 
--   Azure RemoteApp
-
 -   Azure Service Fabric
 
 -   Azure Container Service
@@ -149,10 +147,10 @@ Azure は、世界中のさまざまな地域で一般的に利用できるグ�
 
 Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure Portal
 
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
 
 ### <a name="resources"></a>リソース
 
@@ -325,7 +323,7 @@ Azure に組み込まれているロールの例:
 
 -   **SQL セキュリティ管理者**: このロールが与えられたユーザーは、SQL のサーバーとデータベースのセキュリティ関連ポリシーを管理できます。
 
--   **ストレージ アカウント共同作成者** : このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
+-   **ストレージ アカウント共同作成者**: このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
 
 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../active-directory/role-based-access-control-configure.md)」を参照してください。
 
@@ -374,7 +372,7 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 ## <a name="azure-storage"></a>Azure Storage (Azure Storage)
 
-Azure Storage は耐久性がありスケーラブルな冗長ストレージを提供するサービスであり、Microsoft が管理しています。 リソース デプロイ方法を利用し、リソース グループにリソースとして Azure ストレージ アカウントを追加できます。 Azure には、BLOB ストレージ、File Storage、Table Storage、Queue Storage という 4 種類のストレージがあります。 ストレージ アカウントをデプロイするとき、2 種類のアカウントを利用できます。汎用ストレージと BLOB ストレージです。 汎用ストレージ アカウントの場合、4 種類すべてのストレージにアクセスできます。 BLOB ストレージ アカウントは汎用アカウントと似ていますが、ホット アクセス層とコールド アクセス層を含む、特別な BLOB が含まれています。 BLOB ストレージの詳細については、「[Azure Blob Storage](../../storage/storage-blob-storage-tiers.md)」を参照してください。
+Azure Storage は耐久性がありスケーラブルな冗長ストレージを提供するサービスであり、Microsoft が管理しています。 リソース デプロイ方法を利用し、リソース グループにリソースとして Azure ストレージ アカウントを追加できます。 Azure には、BLOB ストレージ、File Storage、Table Storage、Queue Storage という 4 種類のストレージがあります。 ストレージ アカウントをデプロイするとき、2 種類のアカウントを利用できます。汎用ストレージと BLOB ストレージです。 汎用ストレージ アカウントの場合、4 種類すべてのストレージにアクセスできます。 BLOB ストレージ アカウントは汎用アカウントと似ていますが、ホット アクセス層とコールド アクセス層を含む、特別な BLOB が含まれています。 BLOB ストレージの詳細については、「[Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 
 Azure ストレージ アカウントはさまざまな冗長レベルで構成できます。
 
@@ -400,7 +398,7 @@ Azure Storage でサポートされている 3 種類の BLOB:
 
 -   **追加 BLOB** はブロック BLOB のようなブロックで構成されますが、追加操作のために最適化されています。 多くの場合、1 つまたは複数のソースから同じ BLOB に情報を記録するために使用されます。 たとえば、複数の VM で実行されているアプリケーションに関して、すべてのトレース ログを同じ追加 BLOB に書き込みます。 1 つの追加 BLOB は最大 195 GB になります。
 
-詳細については、「[.NET を使用して Azure Blob Storage を使用する](../../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+詳細については、「[.NET を使用して Azure Blob Storage を使用する](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 
 **File Storage**
 
@@ -408,7 +406,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 File Storage 共有は標準の SMB ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを利用し、既存のアプリケーションを移行することができます。 IT プロフェッショナルは、Azure アプリケーションの管理の一部として、PowerShell コマンドレットを使用して、File Storage 共有を作成、マウント、管理できます。
 
-詳しくは、「[Windows で Azure File Storage を使用する](../../storage/storage-file-how-to-use-files-windows.md)」または「[Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md)」をご覧ください。
+詳しくは、「[Windows で Azure File Storage を使用する](../../storage/files/storage-how-to-use-files-windows.md)」または「[Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。
 
 **Table Storage**
 
@@ -416,13 +414,13 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 任意の数のエンティティをテーブルに保存できます。 ストレージ アカウントには、ストレージ アカウントの容量の上限を超えない限り、任意の数のテーブルを含めることができます。
 
-詳細については、「[Azure Table Storage を使用する](../../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。
+詳細については、「[Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。
 
 **Queue Storage**
 
 Azure Queue Storage は、アプリケーション コンポーネント間のクラウド メッセージングを提供します。 拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage は、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、アプリケーション コンポーネント間の通信に非同期メッセージングを提供します。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
-詳細については、「[Azure Queue Storage を使用する](../../storage/storage-dotnet-how-to-use-queues.md)」をご覧ください。
+詳細については、「[Azure Queue Storage を使用する](../../storage/queues/storage-dotnet-how-to-use-queues.md)」をご覧ください。
 
 ### <a name="deploying-a-storage-account"></a>ストレージ アカウントのデプロイ
 
@@ -430,19 +428,19 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 **ポータル**
 
-Azure Portal でストレージ アカウントをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しいストレージ アカウントを新しいリソース グループや既存のリソース グループにデプロイできます。 ストレージ アカウントを作成したら、ポータルを利用し、BLOB コンテナーまたはファイル共有を作成できます。 Table Storage エンティティや Queue Storage エンティティをプログラミングで作成できます。 詳しくは、「[ストレージ アカウントの作成](../../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+Azure Portal でストレージ アカウントをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しいストレージ アカウントを新しいリソース グループや既存のリソース グループにデプロイできます。 ストレージ アカウントを作成したら、ポータルを利用し、BLOB コンテナーまたはファイル共有を作成できます。 Table Storage エンティティや Queue Storage エンティティをプログラミングで作成できます。 詳しくは、「[ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 
 Azure Portal からストレージ アカウントをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 ストレージ アカウントを含め、テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
 
 **PowerShell**
 
-PowerShell を利用し、Azure ストレージ アカウントをデプロイする方法では、ストレージ アカウントのデプロイを完全に自動化できます。 詳細については、「[Azure Storage で Azure PowerShell を使用する](../../storage/storage-powershell-guide-full.md)」を参照してください。
+PowerShell を利用し、Azure ストレージ アカウントをデプロイする方法では、ストレージ アカウントのデプロイを完全に自動化できます。 詳細については、「[Azure Storage で Azure PowerShell を使用する](../../storage/common/storage-powershell-guide-full.md)」を参照してください。
 
 Azure リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 **コマンド ライン インターフェイス (CLI)**
 
-PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **storage account create** コマンドを利用し、ストレージ アカウントを作成できます。 詳細については、「[Azure Storage での Azure CLI の使用](../../storage/storage-azure-cli.md)」を参照してください。
+PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **storage account create** コマンドを利用し、ストレージ アカウントを作成できます。 詳細については、「[Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md)」を参照してください。
 
 同様に、Azure CLI を利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../../resource-group-template-deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
 
@@ -452,11 +450,11 @@ Azure Storage にはさまざまな方法でアクセスできます。たとえ
 
 **仮想マシンのディスク**
 
-仮想マシンをデプロイするとき、仮想マシンのオペレーティング システム ディスクや追加のデータ ディスクを保存するためのストレージ アカウントを作成する必要もあります。 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成できます。 BLOB の最大サイズは 1,024 GB であるため、1 つの VM ディスクの最大サイズは 1,023 GB です。 より大きなデータ ディスクを構成するには、複数のデータ ディスクを仮想マシンに提示し、1 つの論理ディスクとしてまとめてプールできます。 詳細については、"ストレージ インフラストラクチャのガイドライン" の [Windows](../../virtual-machines/windows/infrastructure-storage-solutions-guidelines.md) と [Linux](../../virtual-machines/linux/infrastructure-storage-solutions-guidelines.md) の項目をご覧ください。
+仮想マシンをデプロイするとき、仮想マシンのオペレーティング システム ディスクや追加のデータ ディスクを保存するためのストレージ アカウントを作成する必要もあります。 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成できます。 BLOB の最大サイズは 1,024 GB であるため、1 つの VM ディスクの最大サイズは 1,023 GB です。 より大きなデータ ディスクを構成するには、複数のデータ ディスクを仮想マシンに提示し、1 つの論理ディスクとしてまとめてプールできます。 詳細については、[Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) および [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 向けの Azure ディスクの管理に関するページをご覧ください。
 
 **Storage ツール**
 
-Azure ストレージ アカウントには、Visual Studio Cloud Explorer など、さまざまなストレージ エクスプローラーからアクセスできます。 ツールを利用し、ストレージ アカウントやデータを閲覧できます。 利用できるストレージ エクスプローラーに関する情報と一覧については、「[Azure Storage クライアント ツール](../../storage/storage-explorers.md)」をご覧ください。
+Azure ストレージ アカウントには、Visual Studio Cloud Explorer など、さまざまなストレージ エクスプローラーからアクセスできます。 ツールを利用し、ストレージ アカウントやデータを閲覧できます。 利用できるストレージ エクスプローラーに関する情報と一覧については、「[Azure Storage クライアント ツール](../../storage/common/storage-explorers.md)」をご覧ください。
 
 **Storage API**
 
@@ -468,7 +466,7 @@ Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語から�
 
 **共有アクセス署名**
 
-ストレージ リソースへの制御アクセスをユーザーに与える場合、Shared Access Signature を作成できます。 Shared Access Signature は、URL に追加できるトークンであり、ストレージ リソースへのアクセスの委任を可能にするトークンです。 トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。 詳細については、「[Shared Access Signatures (SAS) の使用](../../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+ストレージ リソースへの制御アクセスをユーザーに与える場合、Shared Access Signature を作成できます。 Shared Access Signature は、URL に追加できるトークンであり、ストレージ リソースへのアクセスの委任を可能にするトークンです。 トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。 詳細については、「[Shared Access Signatures (SAS) の使用](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 

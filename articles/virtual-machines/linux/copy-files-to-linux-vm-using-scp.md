@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 736f7c11ec3de04f1ad52ee29d0a4c952c9b0545
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
 
 この記事では、Secure Copy (SCP) を使用して、ワークステーションと Azure Linux VM 間でファイルをやり取りする方法を説明します。 Azure インフラストラクチャの管理においては、ワークステーションと Linux VM の間でファイルを安全かつ迅速にやり取りできることが重要です。 
@@ -57,7 +55,7 @@ SCP は、トランスポート層に SSH を使用します。 SSH は転送先
 
 最初の例では、Azure 構成ファイルを、自動化のデプロイに使用される Linux VM にコピーします。 このファイルには秘密情報が含まれる Azure API の資格情報が入っているため、セキュリティが重要です。 SSH が提供する暗号化されたトンネルがファイルのコンテンツを保護します。
 
-次のコマンドは *myserver.eastus.cloudapp.azure.com* を使用してローカルの *.azure/config* ファイルを Azure VM にコピーします。 Azure VM の管理者ユーザー名は *azureuser* です。 ファイルのターゲットは */home/azureuser/* ディレクトリです。 このコマンドの値を独自の値に置き換えます。
+次のコマンドは *myserver.eastus.cloudapp.azure.com* を使用してローカルの *.azure/config* ファイルを Azure VM にコピーします。Azure VM の管理者ユーザー名は *azureuser* です。 ファイルのターゲットは */home/azureuser/* ディレクトリです。 このコマンドの値を独自の値に置き換えます。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

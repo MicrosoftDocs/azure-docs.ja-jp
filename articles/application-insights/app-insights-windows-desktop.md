@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 9d7e2a390adf10cbf5d88dd0084ce09136987309
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Windows デスクトップ アプリでの使用状況とパフォーマンスの監視
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 11/17/2016
    
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
 5. [API を使用して](app-insights-api-custom-events-metrics.md) テレメトリを送信します。
-6. アプリケーションを実行し、Azure ポータルで作成したリソースのテレメトリを表示します。
+6. アプリケーションを実行し、Azure Portal で作成したリソースのテレメトリを表示します。
 
 ## <a name="telemetry"></a>コード例
 ```C#
@@ -90,5 +89,4 @@ ms.lasthandoff: 11/17/2016
 * [診断検索](app-insights-diagnostic-search.md)
 * [メトリックを探索する](app-insights-metrics-explorer.md)
 * [Analytics クエリを作成する](app-insights-analytics.md)
-
 

@@ -14,14 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューション作成のベスト プラクティス (プレビュー)
 > [!NOTE]
@@ -57,5 +54,4 @@ ms.lasthandoff: 04/27/2017
 * 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。
 * 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](operations-management-suite-solutions-resources-automation.md)。
-
 

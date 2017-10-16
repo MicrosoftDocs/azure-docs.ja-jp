@@ -25,9 +25,9 @@
 ### [ファイアウォールの内側にアクセスする](key-vault-access-behind-firewall.md)
 ### [可用性と冗長性](key-vault-disaster-recovery-guidance.md)
 ### [テナント ID を変更する](key-vault-subscription-move-fix.md)
-### [CLI 2.0 を使用した作成と管理](key-vault-manage-with-cli2.md)
+### [Azure CLI で作成して管理する](key-vault-manage-with-cli2.md)
 ### [CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)
-### [PowerShell で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-powershell.md)
+### [Azure PowerShell で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-powershell.md)
 ### [グループを使用してアクセスを許可する](key-vault-group-permissions-for-apps.md)
 ### [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)
 
@@ -36,8 +36,8 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
-## [PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure CLI 2](/cli/azure/keyvault)
+## [Azure PowerShell](/powershell/module/azurerm.keyvault)
+## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
 ## Node.js

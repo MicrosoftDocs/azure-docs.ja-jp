@@ -15,12 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017,it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: 71ba44c00036b3ed45518f58fa534a1767ab8c34
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: ab6f9110dccd3cfc15092f535650e8d8cb1af13c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 
@@ -66,8 +65,8 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
 フォームベースまたは HTTP 認証 URL と設定を構成したら、Azure Multi-Factor Authentication の IIS プラグインを読み込んで IIS で有効にする必要がある場所を選択します。 次の手順に従います。
 
-1. IIS 6 で実行する場合は、**[ISAPI]** タブをクリックします。 Web アプリケーションが実行される Web サイト (例: 既定の Web サイト) を選択して、そのサイトに対して Azure Multi-Factor Authentication の ISAPI フィルター プラグインを有効にします。
-2. IIS 7 以降で実行する場合は、**[ネイティブ モジュール]** タブをクリックします。 希望のレベルで IIS プラグインを有効にするサーバー、Web サイト、またはアプリケーションを選択します。
+1. IIS 6 で実行する場合は、**[ISAPI]** タブをクリックします。Web アプリケーションが実行される Web サイト (例: 既定の Web サイト) を選択して、そのサイトに対して Azure Multi-Factor Authentication の ISAPI フィルター プラグインを有効にします。
+2. IIS 7 以降で実行する場合は、**[ネイティブ モジュール]** タブをクリックします。希望のレベルで IIS プラグインを有効にするサーバー、Web サイト、またはアプリケーションを選択します。
 3. 画面上部にある **[IIS 認証を有効にする]** ボックスをクリックします。 これで、Azure Multi-Factor Authentication で、選択された IIS アプリケーションが保護されるようになりました。 ユーザーが Server にインポートされていることを確認してください。
 
 ## <a name="trusted-ips"></a>信頼できる IP
@@ -77,4 +76,3 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 2. **[追加]**をクリックします。
 3. [信頼できる IP の追加] ダイアログ ボックスが表示されたら、**[単一 IP]**、**[IP 範囲]**、または **[サブネット]** をクリックします。
 4. ホワイト リストに登録する IP アドレス、IP アドレスの範囲、またはサブネットを入力します。 サブネットを入力する場合は、適切なネットマスクを選択し、**[OK]** をクリックします。 これでホワイト リストが追加されました。
-

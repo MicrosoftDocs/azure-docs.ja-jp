@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-translationtype: Human Translation
-ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
 ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array で共有を管理する
 
@@ -142,10 +143,4 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple 共有を複製する](storsimple-virtual-array-clone.md)方法を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

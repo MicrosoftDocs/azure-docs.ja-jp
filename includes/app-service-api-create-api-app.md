@@ -1,5 +1,5 @@
 
-[az webapp create](/cli/azure/appservice/web#create) コマンドを使って、`myAppServicePlan`App Service プランに [API アプリ](../articles/app-service-api/app-service-api-apps-why-best-platform.md)を作成します。 
+[az webapp create](/cli/azure/appservice/web#create) コマンドを使って、`myAppServicePlan` App Service プランにアプリを作成します。 
 
 Web アプリによって API 用のホスト領域が提供され、デプロイされたアプリを表示するための URL が提供されます。
 

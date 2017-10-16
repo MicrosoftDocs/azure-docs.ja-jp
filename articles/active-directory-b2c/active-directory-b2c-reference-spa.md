@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: OAuth 2.0 暗黙的フローを使用したシングルページ アプリへのサインイン
 
@@ -38,7 +36,7 @@ ms.lasthandoff: 06/24/2017
 
 Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリに追加できます。 この記事では、暗黙的フローと Azure AD を使用して、シングルページ アプリケーションにこれらの各エクスペリエンスを実装する方法を説明します。 作業の開始に役立てるために、[Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) や [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) のサンプルを参照してください。
 
-この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。 また、マイクロソフト独自のサンプル アプリケーションとポリシーを使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
+この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。また、マイクロソフト独自のサンプル アプリケーションとポリシーを使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
 [独自の Azure AD B2C ディレクトリ、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-tenant)について学習してください。
 
 
@@ -170,7 +168,7 @@ ID トークンの署名の検証後に、いくつかの要求で検証が必�
 * ID トークンが自分のアプリのために発行されたことを確認するために、`aud` 要求を検証します。 その値がアプリのアプリケーション ID と一致している必要があります。
 * ID トークンの有効期限が切れていないことを確認するために、`iat` 要求と `exp` 要求を検証します。
 
-他にも実行する必要があるいくつかの検証については、[OpenID Connect Core の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で詳しく説明されています。 シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
+他にも実行する必要があるいくつかの検証については、[OpenID Connect Core の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で詳しく説明されています。シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
 * ユーザーまたは組織がアプリにサインアップ済みであることを確認する。
 * ユーザーが適切な承認や特権を持っていることを確認する。
@@ -258,7 +256,7 @@ Iframe 要求でこのエラーを受信した場合、ユーザーは対話形�
 ID トークンとアクセス トークンは、どちらも短時間で期限切れになります。 これらのトークンを定期的に更新するようにアプリを準備する必要があります。  どちらの種類のトークンを更新する場合も、Azure AD のステップを制御する `prompt=none` パラメーターを使用して、前の例で使用したのと同じ非表示の iframe 要求を実行します。  新しい `id_token` を取得するには、必ず `response_type=id_token`、`scope=openid`、および `nonce` パラメーターを使用します。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
-ユーザーをアプリからサインアウトさせる場合は、サインアウトする Azure AD にユーザーをリダイレクトします。 そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
+ユーザーをアプリからサインアウトさせる場合は、サインアウトする Azure AD にユーザーをリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
 
 ユーザーを単純に、「[ID トークンの検証](#validate-the-id-token)」で説明したのと同じ OpenID Connect メタデータ ドキュメントに列挙されている `end_session_endpoint` にリダイレクトすることができます。 For example:
 
@@ -271,7 +269,7 @@ p=b2c_1_sign_in
 | パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
-| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。 これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
+| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
 
 > [!NOTE]
 > ユーザーを `end_session_endpoint` にリダイレクトすると、ユーザーの Azure AD B2C でのシングル サインオン状態の一部が消去されます。 ただしそれによって、そのユーザーが自分のソーシャル ID プロバイダー セッションからサインアウトされることはありません。 ユーザーがその後のサインインで同じ ID プロバイダー を選択した場合は、そのユーザーは資格情報を入力しなくても再認証されます。 ユーザーが Azure AD B2C アプリケーションからサインアウトする場合、たとえば、Facebook アカウントから完全なサインアウトするのを望んでいるとは限りません。 ただしローカル アカウントについては、そのユーザーのセッションは適切に終了されます。
@@ -289,5 +287,4 @@ p=b2c_1_sign_in
 
 * [Node.js を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
 * [.NET を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-
 

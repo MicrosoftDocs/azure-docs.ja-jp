@@ -1,7 +1,7 @@
 ### <a name="prerequisites"></a>前提条件
 * [Salesforce](https://salesforce.com) アカウント  
 
-ロジック アプリで Salesforce アカウントを使用するには、Salesforce アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。  
+ロジック アプリで Salesforce アカウントを使用するには、Salesforce アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  
 
 Salesforce アカウントに接続するロジック アプリを承認する手順を次に示します。  
 

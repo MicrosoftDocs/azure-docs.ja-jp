@@ -14,15 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/10/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 874c1a5c4b399ff2254072b7282f05d83a005cc3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitoring-windows-server-containers-with-oms"></a>OMS を使用した Windows Server コンテナーの監視
 
 ## <a name="oms-containers-solution"></a>OMS コンテナー ソリューション

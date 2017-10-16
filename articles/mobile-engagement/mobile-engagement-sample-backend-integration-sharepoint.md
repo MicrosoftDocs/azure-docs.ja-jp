@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
-ms.lasthandoff: 03/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement - API の統合
 自動化されたマーケティング システムでは、マーケティング キャンペーンの作成とアクティブ化も自動で行われます。 この目的のために、Azure Mobile Engagement では API を使用して自動マーケティング キャンペーンを作成することもできます。 
@@ -31,7 +30,7 @@ ms.lasthandoff: 03/01/2017
 このチュートリアルで扱うシナリオでは、まず SharePoint のビジネス ユーザーが SharePoint リストにマーケティング データを入力します。そして、自動化されたプロセスが利用可能な REST API を使用してこのリストから項目を取得し、Mobile Engagement システムと通信して、SharePoint のデータからマーケティング キャンペーンを作成します。 
 
 > [!IMPORTANT]
-> おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する&2; つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。 
+> おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する 2 つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。 
 > 
 > 
 
@@ -201,7 +200,6 @@ ms.lasthandoff: 03/01/2017
 [3]: ./media/mobile-engagement-sample-backend-integration-sharepoint/new-announcement.png
 [4]: ./media/mobile-engagement-sample-backend-integration-sharepoint/activate-announcement.png
 [5]: ./media/mobile-engagement-sample-backend-integration-sharepoint/diagram.png
-
 
 
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: bdeae5d1440cf8930a9cbc1ddea38ea7754ff7f6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 0e1217afb0a37353793c64ae927b741d9fee4954
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
  
@@ -27,7 +26,7 @@ Azure Media Services API は RESTful API です。 この API を使って、メ
 Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../active-directory/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。  
 
 > [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 しかし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 このドキュメントでは、REST API または .NET API を使用して Media Services API にアクセスする方法の概要を説明します。
 
@@ -154,5 +153,4 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 * Azure Portal を使って [Azure AD 認証にアクセスし、Azure Media Services API を利用する](media-services-portal-get-started-with-aad.md)。
 * [.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)。
-
 

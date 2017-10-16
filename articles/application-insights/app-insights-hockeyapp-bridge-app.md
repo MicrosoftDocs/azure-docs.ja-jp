@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 7ea28b4989ad889ff0427e221cc26ac5ebc41f93
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 450ca10613d137393090578619f3766734d1d493
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリの監視に推奨されているプラットフォームです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
@@ -66,5 +65,4 @@ Analytics はデータのアドホック クエリのための強力なツール
 
 ## <a name="next-steps"></a>次のステップ
 * [Analytics をデータに適用する](app-insights-analytics-tour.md)
-
 

@@ -3,7 +3,7 @@ title: "Azure AD ユーザー アカウントを作成する | Microsoft Docs"
 description: "この記事では、Azure Automation の Runbook が Azure およびクラシック Azure で認証を受ける際に使用する Azure AD ユーザー アカウントを作成する方法について説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "Azure Active Directory ユーザー, Azure サービス管理, Azure AD ユーザー アカウント"
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
+ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 4eaa3e36ededddeb5268ec4f49b9daee2f824cee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Azure クラシック デプロイメントと Resource Manager による Runbook の認証
 この記事では、Azure クラシック デプロイメント モデルまたは Azure Resource Manager のリソースに対して実行する Azure Automation Runbook 用に Azure AD ユーザー アカウントを構成するための手順を説明します。  Azure Resource Manager ベースの Runbook では、このアカウントを引き続き認証 ID として使用できますが、Azure 実行アカウントを使用することが推奨されます。       
@@ -91,5 +90,4 @@ Runbook のすべての [チェックポイント](http://technet.microsoft.com/
 
 ## <a name="next-steps"></a>次のステップ
 * Runbook のさまざまな種類について、また、独自の Runbook を作成する手順について確認します。記事「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください
-
 

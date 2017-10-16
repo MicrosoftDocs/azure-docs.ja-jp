@@ -14,14 +14,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
+ms.openlocfilehash: 25311958314cca049d109ecbe3f46aaaa36b694d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: a615ee39b6c3731cc7df366e9fabeed5219a71b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
 
 ## <a name="introduction"></a>はじめに
@@ -76,14 +74,14 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     #include <unistd.h>
     #include <stdlib.h>
    
-    #define check(messenger)                                                     
-      {                                                                          
-        if(pn_messenger_errno(messenger))                                        
-        {                                                                        
-          printf("check\n");                                                     
-          die(__FILE__, __LINE__, pn_error_text(pn_messenger_error(messenger))); 
-        }                                                                        
-      }  
+    #define check(messenger)                                                     \
+      {                                                                          \
+        if(pn_messenger_errno(messenger))                                        \
+        {                                                                        \
+          printf("check\n");                                                     \
+          die(__FILE__, __LINE__, pn_error_text(pn_messenger_error(messenger))); \
+        }                                                                        \
+      }
    
     pn_timestamp_t time_now(void)
     {
@@ -100,7 +98,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     }
    
     int sendMessage(pn_messenger_t * messenger) {
-        char * address = (char *) "amqps://SendRule:{Send Rule key}@{namespace name}.servicebus.windows.net/{event hub name}";
+        char * address = (char *) "amqps://{SAS Key Name}:{SAS key}@{namespace name}.servicebus.windows.net/{event hub name}";
         char * msgtext = (char *) "Hello from C!";
    
         pn_message_t * message;
@@ -163,4 +161,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png
 [24]: ./media/event-hubs-c-ephcs-getstarted/receive-eph-c.png
-

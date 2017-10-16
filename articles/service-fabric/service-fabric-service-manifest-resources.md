@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
+ms.openlocfilehash: 615b758d6aa48f94ec8c9159d4f52e32f413c8d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 08141edfbc8be9bf7bf303419e1e482d5f884860
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>Overview
@@ -139,6 +138,9 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
 </ApplicationManifest>
 ```
 
+Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts** フォルダーになります。
+
+
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
 
 ApplicationManifest に、ConfigOverrides セクションの兄弟になるようにResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。
@@ -198,4 +200,3 @@ ServiceManifest に次のように指定したとします。
 また、アプリケーション パラメーターの Port1 と Protocol1 の値は null または空です。 ポートは ServiceFabric によって決定されます。 プロトコルは tcp になります。
 
 無効な値を指定したとします。 たとえば、int ではなく string 値の "Foo" をポートに指定しました。New-ServiceFabricApplication コマンドはエラーで失敗します。セクション 'ResourceOverrides' のオーバーライド パラメーターの名前 'ServiceEndpoint1' と属性 'Port1' が無効であるためです。 指定された値は 'Foo' ですが、'int' が必要です。
-

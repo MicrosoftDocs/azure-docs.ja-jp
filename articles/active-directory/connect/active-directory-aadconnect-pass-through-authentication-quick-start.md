@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 07063ea53e96c6467e40e8a7ca70e5c03ce53284
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b0327b37b56987d52557f3f4e305f27eb2e5296d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/24/2017
 Azure Active Directory (Azure AD) パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この認証では、オンプレミスの Active Directory に対してパスワードを直接検証することで、ユーザーをサインインします。
 
 >[!IMPORTANT]
->Azure AD パススルー認証は現在プレビュー段階です。 プレビューでこの機能をご使用の場合は、[ここ](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)に記載されている手順に従って、プレビュー バージョンの認証エージェントを必ずアップグレードする必要があります。
+>プレビューでこの機能をご使用の場合は、[ここ](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)に記載されている手順に従って、プレビュー バージョンの認証エージェントを必ずアップグレードする必要があります。
 
 パススルー認証をデプロイするには、次の手順を実行する必要があります。
 
@@ -130,7 +130,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 >認証エージェントは[ここ](https://aka.ms/getauthagent)からダウンロードすることもできます。 認証エージェントをインストールする "_前_" に[サービス使用条件](https://aka.ms/authagenteula)を確認して同意してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [**現時点での制限事項**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - この機能は、現在プレビューの段階にあります。 サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 機能に関する一般的な問題を解決する方法を確認します。

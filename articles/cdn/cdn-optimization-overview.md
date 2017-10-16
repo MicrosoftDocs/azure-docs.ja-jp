@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>シナリオ別の Azure コンテンツ配信の最適化
 
@@ -96,7 +95,7 @@ Azure Content Delivery Network from Verizon は、一般的な Web 配信の最�
 メディア ストリーミング配信の最適化の詳細については、「[メディア ストリーミングの最適化](cdn-media-streaming-optimization.md)」をご覧ください。
 
 > [!NOTE]
-> エンドポイントが主にビデオ オンデマンドのコンテンツを処理する場合は、この種類の最適化を使用します。 この最適化と一般的なメディア ストリーミングの最適化の主な違いは、接続の再試行タイムアウトです。 ライブ ストリーミング シナリオの場合、非常に短い時間でタイムアウトします。
+> エンドポイントが主にビデオ オンデマンドのコンテンツを処理する場合は、この種類の最適化を使用します。 この最適化と一般的なメディア ストリーミングの最適化の主な違いは、接続の再試行タイムアウトです。ライブ ストリーミング シナリオの場合、非常に短い時間でタイムアウトします。
 
 ### <a name="large-file-download"></a>大容量ファイルのダウンロード
 
@@ -115,7 +114,6 @@ Azure Content Delivery Network from Verizon は、一般的な Web 配信の最�
 動的サイト アクセラレーションには、動的なコンテンツの遅延とパフォーマンスを改善するさまざまな技術が取り入れられています。 それらの技術には、ルートとネットワークの最適化、TCP の最適化などがあります。 
 
 この最適化で、キャッシュ不可能な多数の応答を含む Web アプリを高速化することができます。 たとえば、検索結果、チェック アウト トランザクション、リアルタイム データなどを高速化できます。 静的なデータでは、主要な CDN のキャッシュ機能を継続して使用することができます。 
-
 
 
 

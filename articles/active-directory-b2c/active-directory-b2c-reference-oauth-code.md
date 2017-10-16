@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: dfc4f2e84704307ccbea6141c0dbc8d089733b22
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0 承認コード フロー
 OAuth 2.0 認証コード付与を利用して、デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えることができます。 Azure Active Directory B2C (Azure AD B2C) で導入された OAuth 2.0 を利用することで、サインアップ、サインイン、その他の ID 管理タスクをモバイル アプリとデスクトップ アプリに追加できます。 この記事は言語に依存しません。 この記事では、オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
@@ -77,7 +76,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |応答の種類。承認コード フローでは `code` を指定する必要があります。 |
@@ -100,7 +99,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | code |アプリが要求した承認コード。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
 | state |詳細については前のセクションの表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる `state` 値が同一であることをアプリ側で確認する必要があります。 |
@@ -114,7 +113,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -132,7 +131,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
@@ -153,7 +152,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -171,7 +170,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -196,7 +195,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | --- | --- | --- |
 | p |必須 |元の更新トークンの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
 | client_id |推奨 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
@@ -217,7 +216,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -235,7 +234,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -246,5 +245,4 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 1. [Azure AD B2C ディレクトリを作成します](active-directory-b2c-get-started.md)。 要求で独自のディレクトリの名前を使用します。
 2. [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID とリダイレクト URI を取得します。 アプリにネイティブ クライアントを含めます。
 3. [ポリシーを作成し](active-directory-b2c-reference-policies.md) 、ポリシー名を取得します。
-
 

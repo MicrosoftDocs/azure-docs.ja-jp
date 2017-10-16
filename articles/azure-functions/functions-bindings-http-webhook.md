@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/26/2017
 ms.author: mahender
+ms.openlocfilehash: 3c3247592cbe2bc382d220264b0c646ee566b8a7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: cac0f437cee86aa933763e5133ac1a0e892ffb52
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -202,7 +201,7 @@ module.exports = function (context, req) {
 
 関数の *host.json* ファイルを更新する方法の詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
 
-*host.json* ファイルで構成できるその他のプロパティについては、[host.json のリファレンス](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)を参照してください。
+*host.json* ファイルで構成できるその他のプロパティについては、[host.json のリファレンス](functions-host-json.md)を参照してください。
 
 
 <a name="keys"></a>
@@ -447,5 +446,4 @@ module.exports = function (context, data) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: adb174526bc377f484be5fb0a71b28e8daaaa6fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Generic LDAP コネクタに関するテクニカル リファレンス
 この記事では Generic LDAP コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -270,4 +269,3 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
-

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 3b978f5448c2cfbba4d02e3efd730dea7c7813c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 65f02c4675eb752dcc82e9a1d1c7f6c2c193fc32
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、実行可能な最小のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。 
 
@@ -37,7 +35,7 @@ GitHub を使用して、実行可能な最小のスケール セット テン�
 このチュートリアルでは、diff (`git diff master minimum-viable-scale-set`) を取り上げて、実行可能な最小のスケール セット テンプレートを作成していきます。
 
 ## <a name="define-schema-and-contentversion"></a>$schema と contentVersion を定義する
-まず、テンプレートの `$schema` と `contentVersion` を定義します。 `$schema` 要素は、テンプレートの言語のバージョンを定義し、Visual Studio 構文の強調表示や同様の検証機能で使用されます。 `contentVersion` 要素は Azure では使用されません が、テンプレートのバージョンを追跡するときに役立ちます。
+まず、テンプレートの `$schema` と `contentVersion` を定義します。 `$schema` 要素は、テンプレートの言語のバージョンを定義し、Visual Studio 構文の強調表示や同様の検証機能で使用されます。 `contentVersion`要素は、Azure では使用されません。 代わりのテンプレート バージョンを追跡するときに役立ちます。
 
 ```json
 {
@@ -175,7 +173,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ```
 
 ### <a name="specify-vm-network-configuration"></a>VM のネットワーク構成を指定する
-最後に、スケール セット内の VM のネットワーク構成を指定する必要があります。 この例では、先ほど作成したサブネットの IDを指定するだけで、 スケール セットはそのサブネットにネットワーク インターフェイスを配置することを認識します。
+最後に、スケール セット内の VM のネットワーク構成を指定する必要があります。 この場合、のみいただくために以前に作成するサブネットの ID を指定します。 これは、このサブネットにネットワーク インターフェイスを記述する設定の小数点以下桁数を示しています。
 
 サブネットを含む仮想ネットワークの ID は、`resourceId` テンプレート関数を使用して取得できます。 この関数は、リソースの種類と名前を引数として受け取り、そのリソースの完全修飾識別子を返します。 この ID の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>` になります。
 
@@ -213,4 +211,3 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

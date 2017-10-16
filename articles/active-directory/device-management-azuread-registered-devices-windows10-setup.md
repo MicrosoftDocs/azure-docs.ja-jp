@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 登録済みデバイスの構成方法 | Microsoft Docs"
-description: "Azure Active Directory 登録済みデバイスの構成方法について説明します。"
+title: "Azure Active Directory 登録済みデバイスの設定 | Microsoft Docs"
+description: "Azure Active Directory 登録済みデバイスを設定する方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,14 +15,13 @@ ms.topic: article
 ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 427bf9a0487c771e57ac53a9bb0b7d7e2f6bdca2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: d73062a258f05a630692670363cabf0080aba1ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-to-configure-azure-active-directory-registered-windows-10-devices"></a>Azure Active Directory 登録済み Windows 10 デバイスの構成方法
+# <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Azure Active Directory 登録済み Windows 10 デバイスの設定
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
@@ -108,7 +107,6 @@ Windows 10 デバイスを登録するには、デバイスを登録できるよ
 - 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
 - Azure AD ポータルでのデバイス管理の詳細については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください。
-
 
 
 

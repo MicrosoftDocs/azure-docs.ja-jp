@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でユーザーのプロファイル情報を追加または変更する | Microsoft Docs"
 description: "Azure Active Directory でユーザー プロファイル (プロファイル画像など) を追加する方法について説明します。"
 services: active-directory
@@ -16,13 +15,11 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: ccc6dfaf1653d5888541d78f5e9e20b183709574
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
-
+ms.openlocfilehash: 81d93563a3cbe47ebe12c7ac5de26c5bbc2bb8ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Azure Active Directory でユーザーのプロファイル情報を追加または変更する
 この記事では、Azure Active Directory (Azure AD) でユーザー プロファイル情報 (プロファイル画像、電話および電子メール認証情報など) を追加する方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
@@ -47,4 +44,3 @@ ms.lasthandoff: 05/08/2017
 * [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
 * [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
 * [Azure Active Directory でディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
-

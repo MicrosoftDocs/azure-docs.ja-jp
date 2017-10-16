@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
+ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
@@ -80,7 +79,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 ### <a name="mobile-services-server-sdks"></a>Mobile *Services* サーバー SDK
 | サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**バージョン ヘッダーなし ** |
+| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |* * バージョン ヘッダーなし * * |
 | Node.js |(近日対応予定) |**バージョン ヘッダーなし** |
 
 <!-- TODO: add Node npm version -->
@@ -130,4 +129,3 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
-

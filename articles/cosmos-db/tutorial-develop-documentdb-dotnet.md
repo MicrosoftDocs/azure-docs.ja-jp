@@ -16,14 +16,12 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
+ms.openlocfilehash: 871731adc849c575d97ed6735b87457811668ed5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2eed74ae9bd173b0944ec190dfe5d9a4bdc54c37
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmosdb-develop-with-the-documentdb-api-in-net"></a>Azure Cosmos DB: .NET での DocumentDB API を使用した開発
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
@@ -46,10 +44,12 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 以下のものがそろっていることを確認してください。
 
 * アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
-    * または、開発目的で Azure DocumentDB サービスをエミュレートするローカル環境を使用する場合は、このチュートリアルの [Azure Cosmos DB エミュレーター](local-emulator.md)を使用することもできます。
-* [Visual Studio](http://www.visualstudio.com/)。
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントの作成
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+
+## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。
 
@@ -315,4 +315,3 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-

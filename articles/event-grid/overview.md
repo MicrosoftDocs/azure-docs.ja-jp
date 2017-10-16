@@ -6,16 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/11/2017
 ms.author: babanisa
+ms.openlocfilehash: 358c1f4bca2ced207caf599db2fb1453ca8bc41e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 59a834f32793e349d5639baf3c80dbcba274dfa8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
 Azure Event Grid では、イベント ベースのアーキテクチャを備えたアプリケーションを簡単に作成することができます。 サブスクライブ対象の Azure リソースを選択し、イベントの送信先となるイベント ハンドラーまたは webhook エンドポイントを指定します。 Event Grid には、Storage Blob やリソース グループなどの Azure サービスから送信されるイベントに対するサポートが組み込まれています。 また、Event Grid では、カスタム トピックとカスタム webhook を使用して、アプリケーションおよびサード パーティのイベントに対するカスタム サポートも提供しています。 
@@ -28,7 +26,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 ![Event Grid 機能モデル](./media/overview/event-grid-functional-model.png)
 
-現在、Blob Storage は、発行元として公開されていません。
+現在、Blob Storage は、発行元として公開されていません。 ストレージ BLOB のイベントに対応するために、プレビュー リリースの登録をする必要があります。 詳しくは、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする (プレビュー)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)」をご覧ください。
 
 ## <a name="concepts"></a>概念
 
@@ -78,6 +76,7 @@ Azure では、発行元およびハンドラーの両方を含む、多数の�
 * Logic Apps
 * Azure Automation
 * WebHook
+* Microsoft Flow
 
 今年は、他の Azure サービスが追加される予定です。
 
@@ -119,7 +118,11 @@ Event Grid のコストは 100万回の処理ごとに 0.60 ドル (プレビュ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム イベントを作成してサブスクライブする](custom-event-quickstart.md) すぐに着手し、Azure Event Grid のクイックスタートを使用して任意のエンドポイントに独自のカスタム イベントの送信を開始します。
-* [イベント ハンドラーとして Logic Apps を使用する](monitor-virtual-machine-changes-event-grid-logic-app.md) Event Grid によってプッシュされるイベントに反応する、Logic Apps を使用したアプリの作成に関するチュートリアルです。
+* [カスタム イベントを作成してサブスクライブする](custom-event-quickstart.md)  
+  Azure Event Grid のクイックスタートを使用して、任意のエンドポイントへの独自のカスタム イベントの送信をすぐに始めることができます。
+* [Logic Apps をイベント ハンドラーとして使用する](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+  Event Grid によってプッシュされるイベントに対応するアプリを Logic Apps を使用して作成するためのチュートリアルです。
+* [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)  
+  Azure Functions を使用して Event Hubs から SQL Data Warehouse にデータをストリーミングするチュートリアルです。
 * [Event Grid REST API リファレンス](/rest/api/eventgrid)  
   Azure Event Grid についての詳細な技術情報と、イベント サブスクリプション、ルーティング、フィルター処理を管理するためのリファレンスを提供します。

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
@@ -75,4 +73,3 @@ foreach($subscription in Get-AzureSubscription) {
 
 ## <a name="next-steps"></a>次のステップ
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
-

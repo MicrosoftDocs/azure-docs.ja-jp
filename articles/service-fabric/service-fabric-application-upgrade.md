@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b4637922e7b280b0e9954c9e51788202e784b4f9
-ms.openlocfilehash: 743223f78f279fedf33f73ff52b56f4a7358cd51
+ms.translationtype: HT
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 23ee3572752030332c5bfdd84edc97df5fb8e58f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
@@ -50,7 +50,7 @@ Service Fabric アプリケーション内の既定のサービスは、アプ�
 
 1. クラスターに存在しない新しい[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)の既定のサービスは、作成されます。
 > [!TIP]
-> 次の規則を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md#fabric-settings-that-you-can-customize) を true に設定する必要があります。 この機能は v5.5 からサポートされています。
+> 次の規則を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) を true に設定する必要があります。 この機能は v5.5 からサポートされています。
 
 2. 以前の[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)と新しいバージョンの両方に存在している既定のサービスは、更新されます。 新しいバージョンのサービス記述により、クラスター内の既存の記述が上書きされます。 既定のサービスの更新が失敗すると、アプリケーションのアップグレードは自動的にロールバックします。
 3. 以前の[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)には存在し、新しいバージョンには存在しない既定のサービスは、削除されます。 **この既定サービスの削除は元に戻せないことに注意してください。**
@@ -73,7 +73,7 @@ Service Fabric アプリケーション内の既定のサービスは、アプ�
 
 [高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
-「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
 

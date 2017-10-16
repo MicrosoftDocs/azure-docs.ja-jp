@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 7f50ce0d4842bde809664c392ebee5425a70e6f0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/08/2017
-
+ms.openlocfilehash: a1475e4fcd11eb008badba49665f4af6029a1697
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Sync Service Manager の [操作] タブの使用
 
@@ -49,4 +48,3 @@ ms.lasthandoff: 03/08/2017
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

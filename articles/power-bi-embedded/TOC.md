@@ -1,44 +1,42 @@
 # 概要
-## [Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
-## [Power BI Embedded の新機能](power-bi-embedded-whats-new.md)
+## [Power BI Embedded とは](what-is-power-bi-embedded.md)
 
 # 作業開始
-## [Power BI Embedded を使ってみる](power-bi-embedded-get-started.md)
-## [サンプルの使用](power-bi-embedded-get-started-sample.md)
-## [FAQ](power-bi-embedded-faq.md)
+## [Power BI Embedded を使ってみる](get-started.md)
+## [サンプルの使用](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # 方法
-## 計画と設計
-### [一般的なシナリオ](power-bi-embedded-scenarios.md)
+## 容量の管理
+### [容量の作成](create-capacity.md)
+### [容量のスケーリング](scale-capacity.md)
+### [容量の一時停止と開始](pause-start.md)
+## [Azure AD アプリの登録](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/)
+## [Power BI コンテンツの埋め込み](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)
 
-## 管理
-### [データ ソースへの接続](power-bi-embedded-connect-datasource.md)
-### [Power BI レポートの埋め込み](power-bi-embedded-embed-report.md)
-### [レポートを操作する](power-bi-embedded-interact-with-reports.md)
-### [データセットからの新しいレポートの作成](power-bi-embedded-create-report-from-dataset.md)
-### [レポートの保存](power-bi-embedded-save-reports.md)
-### [表示と編集の切り替え](power-bi-embedded-toggle-mode.md)
+## 移行
+### [Power BI ワークスペース コレクションから移行する方法](migrate-from-power-bi-workspace-collections.md)
+### [移行ツール](migrate-tool.md)
+### [移行コード スニペット](migrate-code-snippets.md)
 
-## セキュリティ保護
-### [認証と承認](power-bi-embedded-app-token-flow.md)
-### [Power BI Embedded の行レベルのセキュリティ](power-bi-embedded-rls.md)
+# サンプル
+## [コード サンプル](https://github.com/Microsoft/PowerBI-Developer-Samples)
+## [サンプルのチュートリアル](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
-## [PowerShell](/powershell/module/azurerm.powerbiembedded)
-## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
-## [.NET SDK ダウンロード](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
-## [管理 REST API](/rest/api/powerbiembedded/)
-## [REST API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-
+## API
+### [Azure リソース管理 REST API](/rest/api/powerbiembedded/)
+### [REST API](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+## SDK
+### [.NET SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
+### [JavaScript SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-## [JavaScript の Git リポジトリ](https://github.com/Microsoft/PowerBI-JavaScript)
-## [Power BI C# のGit リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
-## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Apiary](http://docs.powerbi.apiary.io/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
+## GitHub リポジトリ
+### [.NET](https://github.com/Microsoft/PowerBI-CSharp)
+### [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+

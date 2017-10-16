@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 9debfb5c55332836ff721aae08c7d45c811444f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-documentation"></a>Azure Search のドキュメント
 
@@ -166,6 +165,5 @@ ms.lasthandoff: 05/03/2017
         </div>
     </li>
 </ul>
-
 
 

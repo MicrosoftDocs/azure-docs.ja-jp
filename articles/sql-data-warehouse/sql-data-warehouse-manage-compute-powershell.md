@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: b2b87ed07a26fa30e49a19e34ca8b06b283da9b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/28/2017
-
-
+ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (PowerShell)
 > [!div class="op_single_selector"]
@@ -124,7 +122,7 @@ Get-AzureRmSqlDatabase [-ResourceGroupName] <String> [-ServerName] <String> [[-D
 
 次のような結果が表示されます。 
 
-```powershell    
+```powershell   
 ResourceGroupName             : nytrg
 ServerName                    : nytsvr
 DatabaseName                  : nytdb
@@ -170,4 +168,3 @@ EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
-

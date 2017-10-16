@@ -21,10 +21,10 @@ Python 固有のすべてのデプロイメント手順をスキップする場�
     \.deployment
     \deploy.cmd
 
-ファイルの作成には、[Azure コマンド ライン インターフェイス][Azure コマンド ライン インターフェイス]を使用できます。  プロジェクト フォルダーからこのコマンドを使用します。
+使用することができます、 [Azure コマンド ライン インターフェイス][ Azure command-line interface]ファイルを作成します。  プロジェクト フォルダーからこのコマンドを使用します。
 
     azure site deploymentscript --python
 
 これらのファイルが存在しない場合、Azure によって一時的なデプロイメント スクリプトが作成され、それが実行されます。  スクリプトは上記のコマンドで作成したのと同じです。
 
-[Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/downloads/
+[Azure command-line interface]: http://azure.microsoft.com/downloads/

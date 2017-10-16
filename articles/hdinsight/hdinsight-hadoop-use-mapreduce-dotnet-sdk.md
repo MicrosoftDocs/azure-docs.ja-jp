@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: 015435270c31bafea0ebf5303b459338755c1410
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -178,5 +177,4 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * HDInsight クラスターの管理については、[HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
 * HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。
-
 

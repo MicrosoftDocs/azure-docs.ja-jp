@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
-ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.lasthandoff: 01/05/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -203,4 +202,3 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
-

@@ -14,15 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 1e4188313a87d07f396e5f8edc8969dd5da2c436
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-the-azure-functions-runtime-preview"></a>Azure Functions ランタイム プレビューをインストールする
 
 Azure Functions ランタイム プレビューをインストールする場合は、次の手順に従う必要があります。
@@ -78,19 +75,19 @@ Azure Functions ランタイムのインストールを完了するには、構�
     
     ![Azure Functions ランタイム プレビュー データベース構成][7]
 
-1. **[資格情報]** タブをクリックします。  この画面で、すべての Azure Functions をホストするために、FileShare と使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有所有者**と**ファイル共有ユーザー**の**ユーザー名とパスワードの組み合わせを指定**し、**[適用]** をクリックします。
+1. **[資格情報]** タブをクリックします。この画面で、すべての Azure Functions をホストするために、FileShare と使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有所有者**と**ファイル共有ユーザー**の**ユーザー名とパスワードの組み合わせを指定**し、**[適用]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー資格情報][8]
 
-1. **[ファイルの共有]** タブをクリックします。  この画面で、**ファイル共有の場所**の詳細を指定する必要があります。  そのためには、自分用に作成するか、既存のファイル共有を使用して、**[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
+1. **[ファイルの共有]** タブをクリックします。この画面で、**ファイル共有の場所**の詳細を指定する必要があります。  そのためには、自分用に作成するか、既存のファイル共有を使用して、**[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
     
     ![Azure Functions ランタイム プレビュー ファイル共有][9]
 
-1. **[IIS]** タブをクリックします。  このタブには、Azure Functions ランタイムのインストールで作成される IIS の Web サイトの詳細が表示されます。  **[適用] をクリック**して完了します。
+1. **[IIS]** タブをクリックします。このタブには、Azure Functions ランタイムのインストールで作成される IIS の Web サイトの詳細が表示されます。  **[適用] をクリック**して完了します。
 
     ![Azure Functions ランタイム プレビュー IIS][10]
 
-1. **[サービス]** タブをクリックします。  このタブには、Azure Functions ランタイム インストールのサービスの状態が表示されます。  初期構成後、**Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、**[サービスの開始]** をクリックします。
+1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム インストールのサービスの状態が表示されます。  初期構成後、**Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、**[サービスの開始]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー構成の完了][11]
 

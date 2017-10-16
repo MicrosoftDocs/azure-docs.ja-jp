@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル: Azure Active Directory と FilesAnywhere の統合
 
@@ -203,7 +202,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 
 
@@ -271,4 +270,3 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_general_203.png
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
 Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 Azure Stream Analytics クエリを作成してデータを分析し、後で使用できるように結果を保存したり、ダッシュボードや [Power BI](https://powerbi.com/) を使用してリアルタイムで洞察を提供したりできます。
@@ -71,7 +69,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
     ![新しいイベント ハブを作成するためのブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. ページの下部にある **[Create]**」を参照してください。
+7. **Create** をクリックしてください。
 
 
 ### <a name="grant-access-to-the-event-hub"></a>イベント ハブへのアクセスを許可する
@@ -89,7 +87,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
     ![イベント ハブの新しいアクセス ポリシーを作成するためのブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  ページの下部にある **[Create]**」を参照してください。
+4.  **Create** をクリックしてください。
 
 5.  ポリシーがデプロイされたら、共有アクセス ポリシーの一覧でそのポリシーをクリックします。
 
@@ -210,7 +208,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
     ![新しい Stream Analytics ジョブの作成](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. ページの下部にある **[Create]**」を参照してください。
+3. **Create** をクリックしてください。
 
     ジョブが作成され、ポータルにジョブの詳細が表示されます。
 
@@ -231,7 +229,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
     ![Stream Analytics ジョブの新しい入力の作成](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. ページの下部にある **[Create]**」を参照してください。
+3. **Create** をクリックしてください。
 
 
 ## <a name="specify-the-job-query"></a>ジョブ クエリの指定
@@ -316,7 +314,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
     
     ![Stream Analytics ジョブの [新しい出力] ブレード](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. ページの下部にある **[Create]**」を参照してください。 
+4. **Create** をクリックしてください。 
 
     ストレージ アカウントが作成され、キーが自動的に生成されます。 
 
@@ -385,4 +383,3 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

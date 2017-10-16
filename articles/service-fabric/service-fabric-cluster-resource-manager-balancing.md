@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
+ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: dfe0de1bc4cdfcbc0d175f1a3268601bde4da21a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
@@ -176,6 +175,10 @@ ClusterManifest.xml
 
 分散しきい値とアクティビティしきい値は、両方とも特定のメトリックに関連付けられています。同じメトリックが分散しきい値とアクティビティしきい値の両方を超えた場合にのみ分散処理がトリガーされます。
 
+> [!NOTE]
+> 指定しない場合、メトリックの分散しきい値は 1、アクティビティしきい値は 0 です。 つまり、クラスター リソース マネージャーは、指定された負荷について、そのメトリックが完全に分散された状態を保とうとします。 カスタム メトリックを使用している場合、メトリックの分散しきい値とアクティビティしきい値を明示的に定義することをお勧めします。 
+>
+
 ## <a name="balancing-services-together"></a>同時にサービスの均衡をとる
 クラスターの均衡がとれているかどうかは、クラスター全体の判断です。 しかし、個々のサービス レプリカやインスタンスを移動することでこれを修正します。 ご理解いただけましたでしょうか。 1 つのノードで発生するメモリのスタックは、複数のレプリカやインスタンスが関与している場合があります。 不均衡を修正するには、不均衡なメトリックを使用するステートフル レプリカやステートレス インスタンスを移動する必要がある場合があります。
 
@@ -211,4 +214,3 @@ ClusterManifest.xml
 [Image3]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
 [Image4]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
 [Image5]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
-

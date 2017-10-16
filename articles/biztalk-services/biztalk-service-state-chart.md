@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 331c03cd0819aa4935f9b486ff38f54d23d6a7fd
-ms.openlocfilehash: e3d5f89b1c8525f791e73667d6f7cd6a999ab971
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk サービスの状態を使用して実行できる操作と実行できない操作
 
@@ -61,5 +59,4 @@ BizTalk サービスの現在の状態によっては、BizTalk サービスで�
 * [BizTalk Services でのスロットル](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 * [BizTalk サービスに対して Service Bus および Access Control の発行者名と発行者キーの値を取得](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
-
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74fd40d7cd2ce5aecf364ba8ead4e6dfcbf6ed54
-
-
+ms.openlocfilehash: 2e9d1b644f1e80c7d916a261a6c47fcc11a1ffe0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Redis Cache の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -76,7 +76,7 @@ ms.openlocfilehash: 74fd40d7cd2ce5aecf364ba8ead4e6dfcbf6ed54
 クライアントでの高い CPU 使用率は、システムが実行要求された作業に対応できないことを示します。 これは、Redis が短時間で応答を送信した場合でも、クライアントが Redis からの応答を適切なタイミングで処理できない可能性があることを意味します。
 
 #### <a name="measurement"></a>測定
-Azure ポータル、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。 CPU が高くなると、「[トラフィックのバースト](#burst-of-traffic)」セクションに示されている `TimeoutException` エラー メッセージに高い値の `in: XXX` が表示される場合もあります。
+Azure Portal、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。 CPU が高くなると、「[トラフィックのバースト](#burst-of-traffic)」セクションに示されている `TimeoutException` エラー メッセージに高い値の `in: XXX` が表示される場合もあります。
 
 > [!NOTE]
 > StackExchange.Redis 1.1.603 以降では、`TimeoutException` エラー メッセージに `local-cpu` メトリックが含まれます。 最新バージョンの [StackExchange.Redis NuGet パッケージ](https://www.nuget.org/packages/StackExchange.Redis/)を使用するようにしてください。 タイムアウトの信頼性を高めるため、コードに示されるバグは常に修正されています。したがって、最新バージョンを使用することが重要です。
@@ -157,7 +157,7 @@ Redis は 2 つのメトリックを表示します。これらは、この問�
 高い CPU 使用率は、Redis が短時間で応答を送信したとしても、クライアントが Redis からの応答を適切なタイミングで処理できない可能性があることを意味している場合があります。
 
 #### <a name="measurement"></a>測定
-Azure ポータル、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。
+Azure Portal、または関連するパフォーマンス カウンターを介してシステム全体の CPU 使用率を監視します。 システム全体の CPU が高くなると同時に 1 つのプロセスの CPU 使用率が低くなる可能性があるため、 *プロセス* CPU を監視しないように注意してください。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。
 
 #### <a name="resolution"></a>解決策
 [スケーリング](cache-how-to-scale.md) するか、CPU が急激に増えた原因を調べます。 
@@ -258,10 +258,4 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 * [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
 * [Azure Redis Cache の監視方法](cache-how-to-monitor.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル: Azure Active Directory と Land Gorilla Client の統合
 
@@ -176,7 +175,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 ### <a name="creating-a-land-gorilla-test-user"></a>Land Gorilla テスト ユーザーの作成
 
@@ -240,4 +239,3 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 [201]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-landgorilla-tutorial/tutorial_general_203.png
-

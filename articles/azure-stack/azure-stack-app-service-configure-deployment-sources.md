@@ -1,6 +1,6 @@
 ---
-title: Configure Deployment Sources for App Services on Azure Stack | Microsoft Docs
-description: How a Service Administrator can configure deployment sources (Git, GitHub, BitBucket, DropBox and OneDrive) for App Service on Azure Stack
+title: "Azure Stack 上の App Services のデプロイ ソースを構成する | Microsoft Docs"
+description: "サービス管理者が Azure Stack 上の App Service のデプロイ ソース (Git、GitHub、BitBucket、DropBox、および OneDrive) を構成する方法"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -14,138 +14,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: anwestg
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: be4b032e8f7370f696c47a7b8e82c0a819529f4d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="configure-deployment-sources"></a>Configure deployment sources
+# <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 
-App Service on Azure Stack supports on-demand deployment from multiple Source Control Providers.  This feature enables application developers to be able to deploy direct from their source control repositories.  In order for tenants to be able to configure App Service to connect to their repositories, Administrators must first configure the integration between App Service on Azure Stack and the Source Control Provider.  The Source Control Providers supported, in addition to local Git, are:
+Azure Stack 上の App Service は、複数のソース管理プロバイダーからのオンデマンド デプロイをサポートします。  この機能を使用して、アプリケーション開発者は、ソース管理リポジトリから直接デプロイすることができます。  テナントが App Service をリポジトリに接続するように構成するには、その前に管理者が Azure Stack 上の App Service とソース管理プロバイダーの統合を構成しておく必要があります。  ローカル Git の他に、次のソース管理プロバイダーがサポートされます。
 
 * GitHub
 * BitBucket
 * OneDrive
 * DropBox
 
-## <a name="view-deployment-sources-in-app-service-administration"></a>View Deployment Sources in App Service Administration
+## <a name="view-deployment-sources-in-app-service-administration"></a>App Service Administration でデプロイ ソースを表示する
 
-1. Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator.
-2. Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-    ![App Service Resource Provider Admin][1]
-3. Click **Source control configuration**.  Here you see the list of all Deployment Sources configured.
-    ![App Service Resource Provider Admin Source Control Configuration][2]
+1. サービス管理者として、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にログインします。
+2. **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。![App Service リソース プロバイダー管理][1]
+3. **[Source control configuration (ソース管理構成)]** をクリックします。  構成されているすべてのデプロイ ソースの一覧が表示されます。
+    ![App Service リソース プロバイダー管理のソース管理構成][2]
 
-## <a name="configure-github"></a>Configure GitHub
-
-> [!NOTE]
-> You require a GitHub account to complete this task.  You may wish to use an account for your organization rather than a personal account.
-
-1. Log in to GitHub, browse to https://www.github.com/settings/developers and click **Register a new application**
-    ![GitHub - Register a new application][3]
-2. Enter an **Application name** for example - App Service on Azure Stack
-3. Enter the **Homepage URL**.  **The Homepage URL must be the Azure Stack Portal address** for example - https://portal.local.azurestack.external
-4. Enter an **Application Description**
-5. Enter the **Authorization callback URL**.  In a default Azure Stack deployment, the Url is in the form https://portal.local.azurestack.external/tokenauthorize, if you are running under a different domain substitute your domain for azurestack.local  ![GitHub - Register a new application with values populated][4]
-6. Click **Register application**.  You will now be presented with a page listing the **Client ID** and **Client Secret** for the application.
-    ![GitHub - Completed application registration][5]
-7.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 
-8.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. 
-9. Click **Source control configuration**.
-10. Copy and paste the **Client Id** and **Client Secret** into the corresponding input boxes for GitHub.
-11. Click **Save**.
-12. If you do not wish to configure any other Deployment Sources, proceed to [Schedule Repair of Management Roles](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles).
-
-
-## <a name="configure-bitbucket"></a>Configure BitBucket
+## <a name="configure-github"></a>GitHub を構成する
 
 > [!NOTE]
-> You require a BitBucket account to complete this task.  You may wish to use an account for your organization rather than a personal account.
+> このタスクを完了するには、GitHub アカウントが必要です。  個人のアカウントではなく、組織のアカウントを使用できます。
 
-1. Log in to BitBucket and browse to **Integrations** under your account  ![BitBucket Dashboard - Integrations][7]
-2. Click **OAuth** under Access Management and **Add consumer**
-    ![BitBucket Add OAuth Consumer][8]
-3. Enter a **Name** for the consumer, for example App Service on Azure Stack
-4. Enter a **Description** for the application
-5. Enter the **Callback URL**.  In a default Azure Stack deployment, the Callback Url is in the form https://portal.local.azurestack.external/TokenAuthorize, if you are running under a different domain substitute your domain for azurestack.local.  The Url must follow the capitalization as listed here for BitBucket integration to succeed.
-6. Enter the **URL** - this Url should be the Azure Stack Portal URL, for example https://portal.local.azurestack.external
-7. Select the **Permissions** required  **Repositories**: **Read**
-    **Webhooks**: **Read and write**
-8. Click **Save**.  You will now see this new application, along with the **Key** and **Secret** under **OAuth consumers**.
-    ![BitBucket Application Listing][9]
-9.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 
-10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. 
-11. Click **Source control configuration**.
-12. Copy and paste the **Key** into the **Client Id** input box and **Secret** into the **Client Secret** input box for BitBucket.
-13. Click **Save**.
-14. If you do not wish to configure any other Deployment Sources, proceed to [Schedule Repair of Management Roles](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles).
+1. GitHub にログインして https://www.github.com/settings/developers に移動し、**[Register a new application]\((新しいアプリケーションの登録)\)** をクリックします。![GitHub - 新しいアプリケーションの登録][3]
+2. **[Application name (アプリケーション名)]** を入力します (例: App Service on Azure Stack)。
+3. **[Homepage URL (ホームページの URL)]**を入力します。  **ホームページの URL は、Azure Stack ポータルのアドレスにする必要があります** 例: https://portal.local.azurestack.external 。
+4. **[Application Description (アプリケーションの説明)]** を入力します。
+5. **[Authorization callback URL (認証コールバック エンドポイント URL)]** を入力します。  Azure Stack の既定のデプロイでは、URL は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。![GitHub - 新しいアプリケーションの入力値での登録][4]
+6. **[Register application (アプリケーションを登録する)]**をクリックします。  アプリケーションの **[Client ID (クライアント ID)]** と **[Client Secret (クライアント シークレット)]** を示すページが表示されます。
+    ![GitHub - 完了したアプリケーション登録][5]
+7.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。 
+8.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。 
+9. **[Source control configuration (ソース管理構成)]** をクリックします。
+10. **[Client ID (クライアント ID)]** と**[Client Secret (クライアント シークレット)]** をコピーして、GitHub 用の対応する入力ボックスに貼り付けます。
+11. **[保存]**をクリックします。
+12. その他のデプロイ ソースを構成しない場合は、「[管理ロールの修復をスケジュールする](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles)」に進みます。
 
-## <a name="configure-onedrive"></a>Configure OneDrive
+
+## <a name="configure-bitbucket"></a>BitBucket を構成する
 
 > [!NOTE]
-> OneDrive for Business Accounts are not currently supported.  You need to have a Microsoft Account linked to a OneDrive account to complete this task.  You may wish to use an account for your organization rather than a personal account.
+> このタスクを完了するには、BitBucket アカウントが必要です。  個人のアカウントではなく、組織のアカウントを使用できます。
 
-1. Browse to https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm and Log in using your Microsoft Account.
-2. Click **Add an app** under **My applications**
-![OneDrive Applications][10]
-3. Enter a **Name** for the New Application Registration, enter **App Service on Azure Stack**, and click **Create Application**
-4. The next screen lists the properties of your new application. Record the **Application Id**
-![OneDrive Application Properties][11]
-5. Under **Application Secrets** click **Generate New Password** and record the **New password generated** - this is your application secret.
+1. BitBucket にログインし、アカウントの **[Integrations]\(統合\)** に移動します。![BitBucket ダッシュボード - 統合][7]
+2. [Access Management]\(アクセス管理\) で **[OAuth]** をクリックし、**[Add consumer]\(コンシューマーの追加\)** をクリックします。![BitBucket OAuth コンシューマーの追加][8]
+3. コンシューマーの **[Name (名前)]** を入力します (例: App Service on Azure Stack)。
+4. アプリケーションの **[Description (説明)]** を入力します。
+5. **[Callback URL (コールバック URL)]** を入力します。  Azure Stack の既定のデプロイでは、コールバック URL は https://portal.local.azurestack.external/TokenAuthorize です。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。  BitBucket の統合を成功させるには、URL の大文字と小文字をここに記載されているとおりにする必要があります。
+6. **[URL]** を入力します。この URL は、Azure Stack ポータルの URL にする必要があります 例: https://portal.local.azurestack.external 。
+7. 必要な**アクセス許可** (**Repositories**: **Read** **Webhooks**: **Read and write**) を選択します。
+8. [ **Save**] をクリックします。  新しいアプリケーションが **[OAuth consumers (OAuth コンシューマー)]**の下に **[Key (キー)]** と **[Secret (シークレット)]** と共に表示されます。
+    ![BitBucket アプリケーション リスト][9]
+9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。 
+10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。 
+11. **[Source control configuration (ソース管理構成)]** をクリックします。
+12. **[Key (キー)]**をコピーして BitBucket 用の **[クライアント ID]** 入力ボックスに、**[Secret (シークレット)]** をコピーして BitBucket 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+13. **[保存]**をクリックします。
+14. その他のデプロイ ソースを構成しない場合は、「[管理ロールの修復をスケジュールする](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles)」に進みます。
+
+## <a name="configure-onedrive"></a>OneDrive を構成する
+
 > [!NOTE]
-> Make sure to make a note of the new password as it is not retrievable once you click OK at this stage.
-6. Under **Platforms** click **Add Platform** and select **Web**
-7. Enter the **Redirect URI**.  In a default Azure Stack deployment, the Redirect URI is in the form https://portal.local.azurestack.external/tokenauthorize, if you are running under a different domain substitute your domain for azurestack.local ![OneDrive Application - Add Web Platform][12]
-8. Set the **Microsoft Graph Permissions** - **Delegated Permissions**
+> 現時点では、OneDrive for Business アカウントはサポートされていません。  このタスクを完了するには、OneDrive アカウントにリンクされている Microsoft アカウントが必要です。  個人のアカウントではなく、組織のアカウントを使用できます。
+
+1. https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm に移動し、Microsoft アカウントを使用してログインします。
+2. **[マイ アプリケーション]** で **[アプリを追加]** をクリックします。
+![OneDrive アプリケーション][10]
+3. 新しく登録するアプリケーションの **[名前]** を入力します。「**App Service on Azure Stack**」と入力し、**[アプリケーションの作成]** をクリックします。
+4. 次の画面に、新しいアプリケーションのプロパティが表示されます。 **[アプリケーション ID]** を記録します。
+![OneDrive アプリケーションのプロパティ][11]
+5. **[アプリケーション シークレット]** で **[新しいパスワードを生成]** をクリックし、**[新しいパスワードが生成されました]** の内容を記録します。これがアプリケーション シークレットになります。
+> [!NOTE]
+> 新しいパスワードを必ず書き留めておいてください。この段階で [OK] をクリックした後、再度表示することはできません。
+6. **[プラットフォーム]** で **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
+7. **[リダイレクト URI]** を入力します。  Azure Stack の既定のデプロイでは、リダイレクト URI は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。![OneDrive アプリケーション - Web プラットフォームの追加][12]
+8. **[Microsoft Graph のアクセス許可]** - **[委任されたアクセス許可]** を設定します。
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
-      ![OneDrive Application - Graph Permissions][13]
-10. Click **Save**.
-11.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 
-12.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. 
-13. Click **Source control configuration**.
-14. Copy and paste the **Application Id** into the **Client Id** input box and **Password** into the **Client Secret** input box for OneDrive.
-15. Click **Save**.
-16. If you do not wish to configure any other Deployment Sources, proceed to [Schedule Repair of Management Roles](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles).
+      ![OneDrive アプリケーション - Graph のアクセス許可][13]
+10. [ **Save**] をクリックします。
+11.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。 
+12.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。 
+13. **[Source control configuration (ソース管理構成)]** をクリックします。
+14. **[アプリケーション ID]** をコピーして OneDrive 用の **[クライアント ID]** 入力ボックスに、**[パスワード]** をコピーして OneDrive 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+15. **[保存]**をクリックします。
+16. その他のデプロイ ソースを構成しない場合は、「[管理ロールの修復をスケジュールする](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles)」に進みます。
 
-## <a name="configure-dropbox"></a>Configure DropBox
+## <a name="configure-dropbox"></a>DropBox を構成する
 
 > [!NOTE]
-> You need to have a DropBox account to complete this task.  You may wish to use an account for your organization rather than a personal account.
+> このタスクを完了するには、DropBox アカウントが必要です。  個人のアカウントではなく、組織のアカウントを使用できます。
 
-1. Browse to https://www.dropbox.com/developers/apps and Log in using your DropBox Account
-2. Click **Create app** 
+1. https://www.dropbox.com/developers/apps に移動し、DropBox アカウントを使用してログインします。
+2. **[Create app (アプリの作成)]** をクリックします。 
 ![Dropbox applications][14]
-3. Select **DropBox API**
-4. Set the access level to **App Folder**
-5. Enter a **Name** for your application.
-![Dropbox application registration][15]
-6. Click **Create App**.  You will now be presented with a page listing the settings for the App including **App key** and **App secret**.
-7. Check the **App folder name** is set to **App Service on Azure Stack**
-8. Set the **OAuth 2 Redirect URI** and click **Add**.  In a default Azure Stack deployment, the Redirect URI is in the form https://portal.local.azurestack.external/tokenauthorize, if you are running under a different domain substitute your domain for azurestack.local ![Dropbox application configuration][16]
-9.  In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator. 
-10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. 
-11. Click **Source control configuration**.
-12. Copy and paste the **Application Key** into the **Client Id** input box and **App secret** into the **Client Secret** input box for DropBox.
-13. Click **Save**.
-14. If you do not wish to configure any other Deployment Sources, proceed to [Schedule Repair of Management Roles](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles).
+3. **Dropbox API** を選択します。
+4. アクセス レベルを **[App Folder (アプリ フォルダー)]** に設定します。
+5. アプリケーションの **[名前]** を入力します。
+![Dropbox アプリケーションの登録][15]
+6. **[Create app (アプリの作成)]** をクリックします。  **[App key (アプリ キー)]** と **[App secret (アプリ シークレット)]** を含むアプリの設定を示すページが表示されます。
+7. **[App folder name (アプリ フォルダー名)]** が **[App Service on Azure Stack]** に設定されていることを確認します。
+8. **[OAuth 2 Redirect URI (OAuth 2 リダイレクト URI)]** を設定し、**[Add (追加)]** をクリックします。  Azure Stack の既定のデプロイでは、リダイレクト URI は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。![Dropbox アプリケーションの構成][16]
+9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。 
+10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。 
+11. **[Source control configuration (ソース管理構成)]** をクリックします。
+12. **[Application Key (アプリケーション キー)]** をコピーして DropBox 用の **[クライアント ID]** 入力ボックスに、**[App secret (アプリ シークレット)]** をコピーして DropBox 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+13. **[保存]**をクリックします。
+14. その他のデプロイ ソースを構成しない場合は、「[管理ロールの修復をスケジュールする](azure-stack-app-service-configure-deployment-sources.md#schedule-repair-of-management-roles)」に進みます。
 
-## <a name="schedule-repair-of-management-roles"></a>Schedule repair of management roles
-In order for the settings updated in the configuration of the various deployment sources to be applied, the Management Roles need to be repaired.  This process ensures that the configuration values are applied correctly and the configured Deployment Sources are made available to tenants.
+## <a name="schedule-repair-of-management-roles"></a>管理ロールの修復をスケジュールする
+さまざまなデプロイ ソースの構成で更新された設定を適用するには、管理ロールを修復する必要があります。  この処理によって構成値が正しく適用され、構成済みのデプロイ ソースをテナントが使用できるようになります。
 
-1. In a new browser tab or window Log in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator.
-2. Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-3. Click **Source control configuration**
-4. Copy and paste the **Client Id** and **Client Secret** into the corresponding input boxes for GitHub.
-5. Click **Save**
-6. Click **Roles**
-7. Click **Management Server**
-8. Click **Repair All** and select **Yes**.  This operation schedules a repair on all Management Servers to complete the integration.  The repair operations are managed to minimize downtime.
-    ![App Service Resource Provider Admin - Roles - Management Server Repair All][6]
+1. 新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
+2. **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
+3. **[Source control configuration (ソース管理構成)]**をクリックします。
+4. **[Client ID (クライアント ID)]** と**[Client Secret (クライアント シークレット)]** をコピーして、GitHub 用の対応する入力ボックスに貼り付けます。
+5. **[保存]**
+6. **[ロール]** をクリックします。
+7. **[管理サーバー]** をクリックします。
+8. **[Repair All (すべて修復)]** をクリックし、**[はい]** を選択します。  この操作は、統合を完了するすべての管理サーバー上での修復をスケジュールします。  修復操作は、ダウンタイムを最小限に抑えるように管理されます。
+    ![App Service リソース プロバイダー管理 - ロール - 管理サーバー すべて][6]
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

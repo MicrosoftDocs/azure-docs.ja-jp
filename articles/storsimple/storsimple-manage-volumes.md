@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 31ed9dad8ba56a3746873b7b35e678e97743fbfe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-volumes"></a>StorSimple Manager サービスを使用してボリュームを管理する
 [!INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
@@ -94,7 +92,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 > 
 
 ### <a name="to-modify-a-volume"></a>ボリュームを変更するには
-1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。 このページには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
+1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。このページには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
 2. ボリューム コンテナーを選択し、クリックしてそのコンテナー内のすべてのボリュームを一覧表示します。
 3. **[ボリューム]** ページで、ボリュームを選択し、**[変更]** をクリックします。
 4. ボリュームの変更ウィザードの **[基本設定]**では、次の操作を実行できます。
@@ -135,7 +133,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 2. 最初に、ホスト上でボリュームをオフラインにします。 これにより、ボリューム上のデータが破損するリスクを排除できます。 具体的な手順については、ホストのオペレーティング システムの説明を参照してください。
 3. ホストがオフラインになったら、次の手順を実行して、デバイス上のボリュームをオフラインにします。
    
-   1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。 **[ボリューム コンテナー]** タブには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
+   1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。**[ボリューム コンテナー]** タブには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
    2. ボリューム コンテナーを選択し、クリックしてそのコンテナー内のすべてのボリュームを一覧表示します。
    3. ボリュームを選択し、 **[オフラインにする]**をクリックします。
    4. 確認を求められたら、 **[はい]**をクリックします。 ボリュームがオフラインになります。
@@ -179,5 +177,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
 

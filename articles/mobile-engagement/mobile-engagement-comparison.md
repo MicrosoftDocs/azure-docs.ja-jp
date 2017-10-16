@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Azure Mobile Engagement を他の同様の Azure サービスと比較する
 Microsoft Azure によって提供されるサービスの一覧は拡大を続けています。このような状況で、Azure Mobile Engagement が、見たり聞いたりしたことのある他のサービスとどのように異なるのか疑問に思うことがあるのではないでしょうか。 この記事では、そのような混乱を解消すると共に、Azure Mobile Engagement を目的に応じて正しく選択できるようにご案内します。 
@@ -64,5 +62,4 @@ Azure Mobile Engagement は、特に**デジタル マーケティング担当�
 要約すると、Mobile Engagement の目的は、分析データを収集するだけではありません。"Microsoft の別の分析製品でまだサポートされていない" 内容に及んでいます。 それは対象設定済みのプッシュ通知に関するものです。この対象設定のために、行動分析データを収集しますが、スパムと見なされないようにアプリ ユーザーのニーズに合ったプッシュ通知を送信することに重点を置きます。 
 
 詳細については、Mobile Engagement を簡単に説明する [概要ビデオ](mobile-engagement-overview.md) をご覧ください。 
-
 

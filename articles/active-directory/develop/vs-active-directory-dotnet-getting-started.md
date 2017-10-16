@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 1b96ab084acae14b35634666ae465d406c25f75a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)
 > [!div class="op_single_selector"]
@@ -82,5 +81,4 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/) 
-
 

@@ -16,18 +16,17 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
+ms.openlocfilehash: 3a2fe08706ea5bea10da0c8f42188397a2f9f2f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: ac4dde8c175b1632de8c309f01f8dac7fde6426b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>PowerShell を使用した複数の Azure SQL データベース間の同期
  
 この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期を構成します。
 
-このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
  
 `Login-AzureRmAccount` を実行して、Azure との接続を作成します。 
 
@@ -139,7 +138,7 @@ New-AzureRmSqlSyncMember   -ResourceGroupName $ResourceGroupName `
                             -Name $SyncMemberName `
                             -MemberDatabaseCredential $Credential `
                             -MemberDatabaseName $MemberDatabaseName `
-                            -MemberServerName ($MemberServerName + ".database.windows.net" `
+                            -MemberServerName ($MemberServerName + ".database.windows.net") `
                             -MemberDatabaseType $MemberDatabaseType `
                             -SyncDirection $SyncDirection
 
@@ -361,4 +360,3 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の SQL Database 用の PowerShell サンプル スクリプトは、[Azure SQL Database 用の PowerShell スクリプト](../sql-database-powershell-samples.md)のページにあります。
-

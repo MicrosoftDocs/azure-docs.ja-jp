@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: ce60eb0586b4756aabab0bad830e7fc3ca506097
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
-
+ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="important-updates-to-the-v20-authentication-protocols"></a>v2.0 の認証プロトコルに対する重要な更新
 開発者を対象としています。 これからの 2 週間、プレビュー期間中に作成したすべてのアプリを大きく変える可能性があるいくつかの変更を v2.0 認証プロトコルに対して行います。  
@@ -238,5 +236,4 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 コーディングをお楽しみください!
 
 Microsoft ID 部門
-
 

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 08998340afb2f242b9a268331607b0d1ddb9b0c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 > [!div class="op_single_selector"]
@@ -68,5 +66,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [EventFlow を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-eventflow.md)
-
 

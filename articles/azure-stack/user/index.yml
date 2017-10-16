@@ -1,0 +1,71 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Stack のユーザー ドキュメント
+metadata:
+  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  title: Azure Stack のドキュメント - チュートリアル、API リファレンス
+  description: Azure Stack プレビューを使用してデータセンターから Azure サービスを提供する方法について説明します。 概念実証環境の機能を学習して試します。
+  services: azure-stack
+  author: carolz
+  manager: carolz
+  ms.service: azure-stack
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/23/2017
+  ms.author: carolz
+abstract:
+  description: Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は Azure Stack でアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを作成することもできます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、リソースを作成し、アプリをデプロイする方法を確認してください。
+sections:
+  - title: クイック スタート
+    items:
+      - type: paragraph
+        text: Windows 仮想マシンを Azure Stack にデプロイする方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: ポータル
+            href: azure-stack-quick-windows-portal.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: PowerShell
+            href: azure-stack-quick-create-vm-windows-powershell.md
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: CLI
+            href: azure-stack-quick-create-vm-windows-cli.md
+      - type: paragraph
+        text: Linux 仮想マシンを Azure Stack にデプロイする方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: ポータル
+            href: azure-stack-quick-linux-portal.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: PowerShell
+            href: azure-stack-quick-create-vm-linux-powershell.md
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: CLI
+            href: azure-stack-quick-create-vm-linux-cli.md
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure と Azure Stack の両方にアプリケーションをデプロイします。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Azure Stack と Azure にアプリをデプロイする</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>

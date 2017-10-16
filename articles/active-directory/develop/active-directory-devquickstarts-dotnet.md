@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 70918f2bea789edb2a4000847360e5c7e563951b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/03/2017
-
-
+ms.openlocfilehash: 7a252e0e5243c7b7489373845531cb913ca1f6aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>Windows デスクトップ WPF アプリの Azure AD への統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -66,7 +64,7 @@ ms.lasthandoff: 02/03/2017
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
-* DirectorySearcher プロジェクトで、 `app.config`を開きます。  Azure Portal で入力した値が反映されるように、 `<appSettings>` セクションの要素の値を置き換えます。  これらの値は、コードで ADAL を使用する際に常に参照されます。
+* DirectorySearcher プロジェクトで、 `app.config`を開きます。  Azure Portal で入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。  これらの値は、コードで ADAL を使用する際に常に参照されます。
   * `ida:Tenant` は、Azure AD テナントのドメイン (たとえば、contoso.onmicrosoft.com) です。
   * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
   * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
@@ -171,5 +169,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [Protect a Web API using Bearer tokens from Azure AD](active-directory-devquickstarts-webapi-dotnet.md) (Azure AD からのベアラー トークンを使用することによる Web API の保護)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
 

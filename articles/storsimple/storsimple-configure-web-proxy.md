@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
 ## <a name="overview"></a>Overview
 このチュートリアルでは、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの Web プロキシ設定を構成および表示する方法について説明します。 Web プロキシ設定は、クラウドと通信するときに StorSimple デバイスで使用されます。 Web プロキシ サーバーは、別のセキュリティ レイヤーの追加、コンテンツのフィルター処理、キャッシュによる帯域幅要件の緩和、分析の補助に使用されます。
 
-Web プロキシは StorSimple デバイスのオプションの構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の&2; つの手順を実行します。
+Web プロキシは StorSimple デバイスのオプションの構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。
 
 1. まず、セットアップ ウィザードまたは StorSimple 用 Windows PowerShell のコマンドレットを使用して、Web プロキシ設定を構成します。
 2. 次に、StorSimple 用 Windows PowerShell のコマンドレットを使用して、構成した Web プロキシ設定を有効にします。
@@ -59,7 +59,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     既定では、TCP ポート番号 8080 が指定されています。
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために&3; 段階のメッセージング システム (さらに整合性が要求される場合は&4; 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
+4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
    
    > [!IMPORTANT]
    > **StorSimple Manager サービスのデバイス監視グラフは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっている場合に正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
@@ -123,8 +123,8 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 | シリアル番号 | HRESULT エラー コード | 考えられる根本原因 | 推奨される操作 |
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。 |アクティブ コントローラーでコマンドを実行します。 パッシブ コントローラーからコマンドを実行するには、接続をパッシブ コントローラーからアクティブ コントローラーに修正する必要があります。 この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。 |
-| 手順&2;. |0x800710dd - 操作識別子が無効です |StorSimple 仮想デバイスではプロキシ設定がサポートされていません。 |StorSimple 仮想デバイスではプロキシ設定がサポートされていません。 これらの設定は、StorSimple の物理デバイスでのみ構成できます。 |
-| 手順&3;. |0x80070057 - 無効なパラメーター |プロキシ設定に指定されたパラメーターの&1; つが有効ではありません。 |URI が正しい形式で指定されていません。 形式は `http://<IP address or FQDN of the web proxy server>:<TCP port number>` を使用してください。 |
+| 手順 2. |0x800710dd - 操作識別子が無効です |StorSimple 仮想デバイスではプロキシ設定がサポートされていません。 |StorSimple 仮想デバイスではプロキシ設定がサポートされていません。 これらの設定は、StorSimple の物理デバイスでのみ構成できます。 |
+| 手順 3. |0x80070057 - 無効なパラメーター |プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。 |URI が正しい形式で指定されていません。 形式は `http://<IP address or FQDN of the web proxy server>:<TCP port number>` を使用してください。 |
 | 4. |0x800706ba - RPC サーバーを利用できません |根本原因は、次のいずれかです。</br></br>クラスターが稼働していません。</br></br>データパス サービスが実行されていません。</br></br>コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。 |Microsoft サポートに問い合わせて、クラスターが稼働していて、データパス サービスが実行されていることを確認します。</br></br>アクティブ コントローラーからコマンドを実行します。 パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。 この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。 |
 | 5. |0x800706be - RPC 呼び出しに失敗しました |クラスターはダウンしています。 |Microsoft サポートに問い合わせて、クラスターが稼働しているかどうかを確認してください。 |
 | 6. |0x8007138f - クラスター リソースが見つかりません |プラットフォーム サービス クラスター リソースが見つかりません。 これはインストールが適切でなかった場合に発生することがあります。 |デバイスを工場出荷時の既定値にリセットすることが必要になる場合があります。 プラットフォーム リソースの作成が必要になる場合があります。 Microsoft サポートに対処法をお問い合わせください。 |
@@ -139,10 +139,4 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 ## <a name="next-steps"></a>次のステップ
 * デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、 [StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

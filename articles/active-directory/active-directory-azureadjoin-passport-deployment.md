@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
-
+ms.openlocfilehash: 58943e1e29755c983e55c675dd4fe7b75ac47b34
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>組織での Microsoft Windows Hello for Business の有効化
 [Windows 10 ドメイン参加済みデバイスを Azure Active Directory に接続](active-directory-azureadjoin-devices-group-policy.md)したら、以下の手順を実行して組織で Microsoft Windows Hello for Business を有効にします。
@@ -78,7 +76,7 @@ System Center Configuration Manager を使って証明書もデプロイする�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、プロファイルの名前を入力します。たとえば、「**My WHfB Profile**」と入力します。
    
-    b. **[次へ]**をクリックします。
+    b. **[次へ]** をクリックします。
 4. **[サポートされているプラットフォーム]** ダイアログで、このビジネス向け Windows Hello プロファイルでプロビジョニングするプラットフォームを選択し、**[次へ]** をクリックします。
    
     ![Windows Hello for Business の構成](./media/active-directory-azureadjoin-passport-deployment/04.png)
@@ -92,7 +90,7 @@ System Center Configuration Manager を使って証明書もデプロイする�
    
     c. **[認証方法]** として、**[証明書ベース]** を選択します。
    
-    d. **[次へ]**をクリックします。
+    d. **[次へ]** をクリックします。
 6. **[概要]** ダイアログで、**[次へ]** をクリックします。
 7. **[完了]** ダイアログで、**[閉じる]** をクリックします。
 8. 上部のツールバーの **[デプロイ]**をクリックします。
@@ -114,5 +112,4 @@ System Center Configuration Manager を使って証明書もデプロイする�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
 

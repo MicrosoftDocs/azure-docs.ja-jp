@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: 2294f3de094389f8aa500c75472e753339b18358
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Java を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -275,4 +274,3 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
 [Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
 [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-

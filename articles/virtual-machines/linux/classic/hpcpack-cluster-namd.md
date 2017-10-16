@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
+ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 46d71ebd493004bc1ac1b7634722d2abe8b67343
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
 この記事では、Azure Virtual Machines に Linux ハイ パフォーマンス コンピューティング (HPC) ワークロードを実行する 1 つの方法について説明します。 ここでは、大規模な生体分子系の構造を計算し視覚化するために、Azure に [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターと Linux コンピューティング ノードを設定し、[NAMD](http://www.ks.uiuc.edu/Research/namd/) シミュレーションを実行します。  
@@ -29,8 +28,6 @@ ms.lasthandoff: 07/21/2017
 
 * **NAMD** (ナノスケール分子力学プログラム) とは、最大で数百万個の原子を含む大規模な生体分子系を高いパフォーマンスでシミュレーションするために設計された並列分子動力学パッケージです。 この生体分子系の例として、ウイルス、セル構造体、巨大タンパク質などがあります。 NAMD は、通常のシミュレーションでは数百個のコアに対応し、大規模なシミュレーションでは 500,000 個を超えるコアに対応します。
 * **Microsoft HPC Pack** は、オンプレミス コンピューターまたは Azure Vertual Machines のクラスター上で大規模な HPC および並列アプリケーションを実行する機能を備えています。 本来 Windows HPC ワークロード用のソリューションとして開発された HPC Pack では、現在、HPC Pack クラスターにデプロイされた Linux コンピューティング ノード VM で Linux HPC アプリケーションを実行する機能をサポートしています。 概要については、「 [Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md) 」を参照してください。
-
-Azure で Linux HPC ワークロードを実行する他のオプションについては、「[Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティングに関するテクニカル リソース](../../../batch/batch-hpc-solutions.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。 どちらのオプションについても、前提条件および手順について詳しくは、「 [Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md) 」を参照してください。 PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の最後にあるサンプル ファイルのサンプル構成ファイルを参照してください。 このファイルは、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターを構成します。 必要に応じて、環境に合わせてこのファイルを変更してください。
@@ -87,7 +84,7 @@ Azure で Linux HPC ワークロードを実行する他のオプションにつ
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>Linux ノード用にファイル共有をセットアップする
-SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。 ヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。 共有は、現在 Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。 Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../../../storage/storage-how-to-use-files-linux.md)」をご覧ください。 HPC Pack でのその他のファイル共有オプションについては、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md)」をご覧ください。
+SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。 ヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。 共有は、現在 Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。 Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 HPC Pack でのその他のファイル共有オプションについては、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md)」をご覧ください。
 
 1. ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。 この例では、\\\\CentOS66HN\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
 2. 共有フォルダーに namd2 という名前のサブフォルダーを作成します。 namd2 に namdsample という名前の別のサブフォルダーを作成します。
@@ -113,7 +110,7 @@ SMB ファイル共有をセットアップし、すべての Linux ノード上
 ## <a name="create-a-bash-script-to-run-a-namd-job"></a>NAMD ジョブを実行する Bash スクリプトを作成する
 NAMD ジョブでは、NAMD プロセスの開始時に使用するノード数を決定するために、 *charmrun* 用の **nodelist** ファイルが必要になります。 nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する、Bash スクリプトを作成します。 NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
 
-任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されている /namd2 フォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。 簡単な概念実証を行う場合、この記事の最後にある hpccharmrun.sh スクリプトのサンプルをコピーして「[NAMD ジョブの送信](#submit-a-namd-job)」に進みます。
+任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されている /namd2 フォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。簡単な概念実証を行う場合、この記事の最後にある hpccharmrun.sh スクリプトのサンプルをコピーして「[NAMD ジョブの送信](#submit-a-namd-job)」に進みます。
 
 > [!TIP]
 > Linux 改行 (LF のみ、CR LF は対象外) を使用したテキスト ファイルとして、スクリプトを保存します。 これにより、スクリプトは Linux ノード上で適切に動作します。
@@ -399,4 +396,3 @@ exit ${RTNSTS}
 [creds]:media/hpcpack-cluster-namd/creds.png
 [task_details]:media/hpcpack-cluster-namd/task_details.png
 [vmd_view]:media/hpcpack-cluster-namd/vmd_view.png
-

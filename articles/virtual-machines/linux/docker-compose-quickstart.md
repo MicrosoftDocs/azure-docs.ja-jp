@@ -4,7 +4,7 @@ description: "Linux 仮想マシンで Azure CLI を用いて、Docker と Compo
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
@@ -13,14 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2017
+ms.date: 09/26/2017
 ms.author: iainfou
+ms.openlocfilehash: e187b51769754a757991f7b5bdb335e62512b488
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 541722cb02dd991228726e62a2304b49cdd806f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Docker と Compose を使用して Azure 内で複数コンテナー アプリケーションを定義して実行する
 [Compose](http://github.com/docker/compose) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。 次に、定義された環境をデプロイするためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。 たとえば、この記事では、Ubuntu VM のバックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示します。 Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
@@ -35,13 +34,13 @@ Docker VM 拡張機能を使用すると、VM が自動的に Docker ホスト�
 ### <a name="create-docker-host-with-azure-cli-20"></a>Azure CLI 2.0 で Docker ホストを作成する
 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
 
-最初に、[az group create](/cli/azure/group#create) で Docker 環境のリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
+最初に、[az group create](/cli/azure/group#create) で Docker 環境のリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
-az group create --name myResourceGroup --location westus
+az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 *newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の値を指定します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 *newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -68,10 +67,21 @@ az vm show \
 
 
 ## <a name="verify-that-compose-is-installed"></a>Compose がインストールされていることを確認する
-デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。 `az vm show -g myResourceGroup -n myDockerVM -d --query [fqdns] -o tsv` を使うと、DNS 名など、VM の詳細を見ることができます。
+DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#show) を使用します。
+
+```azurecli
+az vm show \
+    --resource-group myResourceGroup \
+    --name myDockerVM \
+    --show-details \
+    --query [fqdns] \
+    --output tsv
+```
+
+新しい Docker ホストに SSH 接続します。 独自の DNS 名を次のように指定します。
 
 ```bash
-ssh azureuser@mypublicdns.westus.cloudapp.azure.com
+ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
 VM に Compose がインストールされていることを確認するには、次のコマンドを実行します。
@@ -89,19 +99,13 @@ docker-compose --version
 ## <a name="create-a-docker-composeyml-configuration-file"></a>docker-compose.yml 構成ファイルの作成
 次に、 `docker-compose.yml` というテキスト構成ファイルを作成して、VM 上で実行される Docker コンテナーを定義します。 このファイルでは、各コンテナーで実行するイメージ (イメージは Dockerfile からのビルドも使用できます)、必要な環境変数と依存関係、ポート、コンテナー間のリンクを指定します。 yml ファイルの構文の詳細については、 [Compose ファイルのリファレンス](https://docs.docker.com/compose/compose-file/)をご覧ください。
 
-次のように *docker-compose.yml* ファイルを作成します。
+*docker-compose.yml* ファイルを作成します。 任意のテキスト エディターを使って何らかのデータをファイルに追加します。 次の例では、`sensible-editor` で目的のエディターを選択するためのメッセージを含むファイルを作成します。
 
 ```bash
-touch docker-compose.yml
+sensible-editor docker-compose.yml
 ```
 
-任意のテキスト エディターを使って何らかのデータをファイルに追加します。 次の例では、*vi* エディターを使います。
-
-```bash
-vi docker-compose.yml
-```
-
-次の例をテキスト ファイルに貼り付けます。 この構成では、 [DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB SQL Database がインストールされます。 次のように独自の *MYSQL_ROOT_PASSWORD* を入力します。
+次の例を Docker Compose ファイルに貼り付けます。 この構成では、 [DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB SQL Database がインストールされます。 次のように独自の *MYSQL_ROOT_PASSWORD* を入力します。
 
 ```sh
 wordpress:
@@ -145,7 +149,7 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-ポート80 で VM 上の WordPress に直接接続できます。 Web ブラウザーを開き、VM の DNS 名を入力します (例: `http://mypublicdns.westus.cloudapp.azure.com`)。 WordPress スタート画面が表示されます。この画面の手順に従ってインストールを完了し、アプリケーションを使用できます。
+ポート80 で VM 上の WordPress に直接接続できます。 Web ブラウザーを開き、VM の DNS 名を入力します (例: `http://mypublicdns.eastus.cloudapp.azure.com`)。 WordPress スタート画面が表示されます。この画面の手順に従ってインストールを完了し、アプリケーションを使用できます。
 
 ![WordPress のスタート画面][wordpress_start]
 
@@ -158,4 +162,3 @@ azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/
 <!--Image references-->
 
 [wordpress_start]: media/docker-compose-quickstart/WordPress.png
-

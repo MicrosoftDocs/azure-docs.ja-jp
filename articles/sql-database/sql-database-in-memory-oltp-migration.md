@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: db2d6dbdec80e8c443014c72c80172ad3effb82c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
-
-
+ms.openlocfilehash: 50eed9aed417778bd497f55e20c8e732fdae9cf9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>インメモリ OLTP を使用した SQL Database のアプリケーション パフォーマンスの向上
 [インメモリ OLTP](sql-database-in-memory.md) は、[Premium](sql-database-service-tiers.md) Azure SQL Database で、価格レベルを上げることなくトランザクション処理、データの取り込み、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
@@ -175,5 +173,4 @@ CREATE PROCEDURE schemaname.procedurename
 * [インメモリ OLTP (インメモリ最適化)](http://msdn.microsoft.com/library/dn133186.aspx)
 * [ネイティブ コンパイル ストアド プロシージャの概要](http://msdn.microsoft.com/library/dn133184.aspx)
 * [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
-
 

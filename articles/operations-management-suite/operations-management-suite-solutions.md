@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
-ms.lasthandoff: 03/22/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの操作 (プレビュー)
 > [!NOTE]
@@ -114,5 +113,4 @@ Azure サブスクリプションにリンクされているワークスペー�
 ## <a name="next-steps"></a>次のステップ
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。
 * 独自の[管理ソリューション](operations-management-suite-solutions-creating.md)を作成する。
-
 

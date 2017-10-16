@@ -3,7 +3,7 @@ title: "Azure Blob Storage の概要 | Microsoft Docs"
 description: "Azure Blob Storage の概要"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: robinsh
+ms.date: 09/28/2017
+ms.author: tamram
+ms.openlocfilehash: 7fe3db3d31dc7212c47a0f8dd48c86c98fb498c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 051f1b37eab254d4ab4f806166ac8d0b8cab944d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-blob-storage"></a>Blob Storage の概要
 
@@ -33,9 +32,9 @@ BLOB ストレージの一般的な用途には、次のようなものがあり
 * バックアップと復元、障害復旧、アーカイブのためのデータを格納する
 * 内部設置型サービスまたは Azure ホステッド サービスで分析する データを格納する
 
-## <a name="blob-service-concepts"></a>BLOB サービスの概念
+## <a name="blob-service-concepts"></a>Blob service の概念
 
-BLOB サービスには、次のコンポーネントが含まれます。
+Blob service には、次のコンポーネントが含まれます。
 
 ![BLOB アーキテクチャ](./media/storage-blobs-introduction/blob1.png)
 
@@ -47,7 +46,7 @@ BLOB サービスには、次のコンポーネントが含まれます。
   
     *ブロック BLOB* は、ドキュメントやメディア ファイルなどのテキストまたはバイナリ ファイルを格納するのに最適です。 *追加 BLOB* はブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオで役立ちます。 1 つのブロック BLOB は、100 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 4.75 TB を少し上回ります (100 MB x 50,000)。 1 つの追加 BLOB は、4 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 195 GB を少し上回ります (4 MB x 50,000)。
   
-    *ページ BLOB* は最大 1 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
+    *ページ BLOB* は最大 8 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
   
     コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
 

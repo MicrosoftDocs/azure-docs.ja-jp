@@ -16,7 +16,7 @@ NC インスタンスは NVIDIA の Tesla K80 カードを備えています。 
 
 1 GPU = M60 カードの 2 分の 1 相当。
 
-## <a name="nc-instances"></a>NC インスタンス
+## <a name="nc-instances"></a>NV インスタンス
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | GPU | 最大データ ディスク数 |
 | --- | --- | --- | --- | --- | --- |

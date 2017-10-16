@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 08a05a70d976104d4e0a37b0a0dd15042b0212d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法
 
 ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可する任意のアプリケーションに対する、**アプリケーションへのセルフ サービス アクセス権**を有効にする必要があります。
@@ -86,4 +84,3 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="next-steps"></a>次のステップ
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md)
-

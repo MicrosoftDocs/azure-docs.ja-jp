@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a643b01057386722aa73df6fa3937c923c378ef
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>Windows ユニバーサルでエンゲージメント API を使用する方法
 このドキュメントは、「[Windows ユニバーサル アプリ Engagement SDK 統合](mobile-engagement-windows-store-integrate-engagement.md)」の付属ドキュメントであり、Engagement API を使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
@@ -321,5 +320,4 @@ IDE コンソールにテスト ログを生成するように SDK を構成で�
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
-
 

@@ -3,7 +3,7 @@ title: "スタンドアロン Azure Automation アカウントを作成する | 
 description: "Azure Automation のセキュリティ プリンシパル認証の作成、テスト、使用例をわかりやすく説明しています。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
+ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 6eadfb0c3f91c1f2c7783d70604b45d5dc9912a3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 このトピックでは、Azure Automation の評価および学習を目的として、Azure Portal から Automation アカウントを作成する方法について説明します。Runbook ジョブの高度な監視を実現する管理ソリューションの追加や OMS Log Analytics との統合は含まれていません。  そうした管理ソリューションの追加や Log Analytics との統合は、後からいつでも行うことができます。  Automation アカウントを使うと、Runbook の認証を行い、Azure Resource Manager または Azure クラシック デプロイメントのリソースを管理できます。
 
@@ -47,7 +45,8 @@ Automation アカウントを作成したり更新したりするには、この
 2. **[新規]**をクリックします。<br><br> ![Azure Portal での [新規] オプションの選択](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 3. **Automation** を検索し、検索結果から **[Automation & Control]** を選択します。<br><br> ![Marketplace からの Automation の検索と選択](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
 3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br><br>![[Automation アカウントの追加]](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
-   
+
+
    > [!NOTE]
    > お使いのアカウントが、サブスクリプション管理ロールのメンバーではなく、サブスクリプションの共同管理者でもない場合、**[Automation アカウントの追加]** ブレードに次の警告が表示されます。<br><br>![Add Automation Account Warning](media/automation-create-standalone-account/create-account-without-perms.png)
    > 
@@ -72,6 +71,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
+| AzureAutomationTutorialPython2 Runbook |実行アカウントを使って認証を行い、指定したサブスクリプション内のリソース グループを一覧表示するサンプル Python Runbook。 |
 | AzureRunAsCertificate |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、証明書資産。  これにより、Azure を使用して認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。  この証明書には、1 年の有効期間があります。 |
 | AzureRunAsConnection |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、接続資産。 |
 
@@ -89,3 +89,4 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 * グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
+* Python2 Runbook の使用を開始するには、[初めての Python2 Runbook](automation-first-runbook-textual-python2.md) に関するページを参照してください。

@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 357a25a665894c86ddb0f93beeb4dd59d8837489
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 53bfbd602c2c395d510529eacd5b8075b20437ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
 Azure SQL Database は学習してアプリケーションに適応し、カスタマイズされた推奨事項を提供します。それによって、SQL Database のパフォーマンスを最大化できます。 SQL Database の使用状況履歴を分析することで、パフォーマンスが継続的に評価されます。 推奨事項はデータベース固有のワークロード パターンに基づき、そのパフォーマンス改善を支援します。
 
-> [!NOTE]
-> 推奨事項の推奨される利用方法は、データベースで ‘自動チューニング’ を有効にすることです。 詳細については、「[自動チューニング](sql-database-automatic-tuning.md)」を参照してください。
+> [!TIP]
+> [自動チューニング](sql-database-automatic-tuning.md)は、推奨されるパフォーマンス調整方法です。 [Intelligent Insights](sql-database-intelligent-insights.md) は、推奨されるパフォーマンス監視方法です。 
 >
 
 ## <a name="create-index-recommendations"></a>インデックスの作成に関する推奨事項
@@ -78,12 +76,9 @@ Azure SQL Database サービスが、Azure SQL Database で発生したスキー
 ## <a name="next-steps"></a>次のステップ
 推奨事項を監視し、引き続きパフォーマンスの調整対象とします。 データベースのワークロードは動的であり、継続的に変化します。 SQL Database Advisor では、お使いのデータベースのパフォーマンスを向上させる可能性がある推奨事項の監視と提供を継続します。 
 
+* データベース インデックスとクエリ実行プランの自動チューニングについては、[Azure SQL Database の自動チューニングに関するページ](sql-database-automatic-tuning.md)を参照してください。
+* パフォーマンスの問題の自動診断および根本原因分析を使用したデータベース パフォーマンスの自動監視については、[Azure SQL Intelligent Insights に関するページ](sql-database-intelligent-insights.md)を参照してください。
 * Azure ポータルでパフォーマンス推奨事項を使用する方法については、[Azure ポータルのパフォーマンス推奨事項](sql-database-advisor-portal.md)に関するページを参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。
-
-## <a name="additional-resources"></a>その他のリソース
-* [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
-* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)
 
 

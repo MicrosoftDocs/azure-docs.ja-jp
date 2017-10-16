@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal で Azure BizTalk Services を作成する | Microsoft Docs"
-description: "Azure Portal で BizTalk Services をプロビジョニングし、作成する方法について説明します。MABS、WABS"
+description: "Azure ポータルで BizTalk Services をプロビジョニングし、作成する方法について説明します。MABS、WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,30 +14,29 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-biztalk-services-using-the-azure-portal"></a>Azure Portal を使用して BizTalk Services を作成する
+# <a name="create-biztalk-services-using-the-azure-portal"></a>Azure ポータルを使用して BizTalk Services を作成する
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
 
 > [!TIP]
-> Azure Portal にサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](http://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
+> Azure ポータルにサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](http://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
 
 
 ## <a name="CreateService"></a>BizTalk サービスを作成する
 選択したエディションによっては、BizTalk サービスの設定の一部が使用できないことがあります。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 下部のナビゲーション ウィンドウで、**[新規]** をクリックします。  
    ![[新規] をクリック][NEWButton]
 3. **[アプリケーション サービス]**  >  **[BizTalk サービス]**  >  **[カスタム作成]** の順に選択します。  
-   ![[BizTalk サービス]、[カスタム作成] の順にクリックします。][NewBizTalkService]
+   ![BizTalk サービス、カスタム作成 の順にクリックします。][NewBizTalkService]
 4. BizTalk サービスの設定を入力します。
    
     <table border="1">
@@ -110,7 +109,7 @@ BizTalk サービスで使用される SQL データベース名を入力しま�
 チェック マークをオンにして、ウィザードを完了します。 進行状況アイコンが表示されます。  
 ![完了時に表示される進行状況アイコン][ProgressComplete]
 
-完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。 既定の設定で十分です。 既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。 追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](biztalk-dashboard-monitor-scale-tabs.md) に表示されます。
+完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。 既定の設定で十分です。 既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービスを選択します。 追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](biztalk-dashboard-monitor-scale-tabs.md) に表示されます。
 
 BizTalk サービスの状態によっては、一部の操作を完了できません。 これに該当する操作の一覧については、 [BizTalk サービスの状態のチャート](biztalk-service-state-chart.md)を参照してください。
 
@@ -122,8 +121,8 @@ BizTalk サービスの状態によっては、一部の操作を完了できま
 #### <a name="InstallCert"></a>証明書をローカル コンピューターにインストールする
 BizTalk サービスをプロビジョニングするときに、自己署名証明書が作成されて BizTalk サービス サブスクリプションに関連付けられます。 コンピューターから BizTalk サービス アプリケーションをデプロイする、または BizTalk サービス エンドポイントにメッセージを送信するには、この証明書をダウンロードしてそのコンピューターにインストールする必要があります。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) にサインインします。
-2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービス サブスクリプションを選択します。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+2. 左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービス サブスクリプションを選択します。
 3. **[ダッシュボード]** タブを選択します。
 4. **[SSL 証明書のダウンロード]** を選択します。  
    ![SSL 証明書の変更][QuickGlance]
@@ -136,8 +135,8 @@ BizTalk サービスの作成時に自動的に作成される自己署名証明
 2. BizTalk サービス名が含まれているプライベート SSL 証明書 (*CertificateName*.pfx) を一覧から選択し、パスワードを入力して、チェック マークをクリックします。
 
 #### <a name="ACS"></a>Access Control 名前空間を取得する
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) にサインインします。
-2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+2. 左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービスを選択します。
 3. タスク バーで **[接続情報]** をクリックします。  
    ![[接続情報] の選択][ACSConnectInfo]
 4. Access Control の値をコピーします。
@@ -168,9 +167,9 @@ Access Control サービス ID は、アプリケーションまたはクライ�
 </tr>
 <tr>
 <td>Azure サブスクリプション</td>
-<td>どのユーザーが Azure Portal にサインインできるかは、サブスクリプションによって決まります。 アカウント保有者がサブスクリプションを <a HREF="https://account.windowsazure.com/Subscriptions">Azure サブスクリプションのページ</a>で作成します。
+<td>どのユーザーが Azure ポータルにサインインできるかは、サブスクリプションによって決まります。 アカウント保有者がサブスクリプションを <a HREF="https://account.windowsazure.com/Subscriptions">Azure サブスクリプションのページ</a>で作成します。
 <br/><br/>
-1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。 たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com) にこのサブスクリプションへのアクセスを許可するとします。 このシナリオでは、BizTalk 管理者は、Azure Portal にサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。 BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
+1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。 たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com) にこのサブスクリプションへのアクセスを許可するとします。 このシナリオでは、BizTalk 管理者は、Azure ポータルにサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。 BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
 <br/><br/>詳細については、
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Azure Portal でのサブスクリプションとストレージ アカウントの管理</a>に関するページをご覧ください。
 </td>
@@ -271,4 +270,3 @@ BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッ�
 [QuickGlance]: ./media/biztalk-provision-services/WABS_QuickGlance.png
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
-

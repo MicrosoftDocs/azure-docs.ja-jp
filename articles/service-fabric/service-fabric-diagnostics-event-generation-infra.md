@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="platform-level-event-and-log-generation"></a>プラットフォーム レベルのイベントとログの生成
 
 ## <a name="monitoring-the-cluster"></a>クラスターの監視
@@ -113,4 +111,3 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 ## <a name="next-steps"></a>次のステップ
 
 ログとイベントを任意の分析プラットフォームに送信するには、これらを集計しておく必要があります。 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) に関する記事と [WAD](service-fabric-diagnostics-event-aggregation-wad.md) に関する記事を読んで、推奨されるオプションについて理解を深めてください。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
+ms.openlocfilehash: 689977491e6df37e48536f59234bf4ddba6a1575
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: f760bfd93b19c43d12889b5dd38015c5eba0a8ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使用されます (非往来の Azure ポータルではなく、Azure クラシック ポータルを使用している場合は、[管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
@@ -90,9 +89,6 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ### <a name="internet-information-services-iis"></a>インターネット インフォメーション サービス (IIS)
 インターネット上には、IIS を使用した実行方法について説明する多くのページがあります。 [ここ](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) では、わかりやすく説明しているページを紹介します。 
 
-### <a name="java"></a>Java
-Java を使用して [証明書を作成](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate)できます。
-
 ### <a name="linux"></a>Linux
 [この](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)記事では、SSH で証明書を作成する方法について説明します。
 
@@ -100,5 +96,4 @@ Java を使用して [証明書を作成](../app-service-web/java-create-azure-w
 [サービス証明書を Azure クラシック ポータルにアップロード](cloud-services-configure-ssl-certificate.md)します (または [Azure Portal](cloud-services-configure-ssl-certificate-portal.md) にアップロードします)。
 
 [管理 API 証明書](../azure-api-management-certs.md) を Azure クラシック ポータルにアップロードします。 Azure Portal では、認証用の管理証明書は使用しません。
-
 

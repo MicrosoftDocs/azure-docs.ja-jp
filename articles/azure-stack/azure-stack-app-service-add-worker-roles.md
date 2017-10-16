@@ -1,6 +1,6 @@
 ---
-title: Scale out worker roles in App Services - Azure Stack  | Microsoft Docs
-description: Detailed guidance for scaling Azure Stack App Services
+title: "App Services の worker ロールをスケールアウトする - Azure Stack | Microsoft Docs"
+description: "Azure Stack App Services の詳細なガイダンス"
 services: azure-stack
 documentationcenter: 
 author: kathm
@@ -14,115 +14,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: kathm
-translationtype: Human Translation
-ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
-ms.openlocfilehash: 2abcb15789c52b64534b4ff69392ccd49f20142f
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f844658c6ad2529fd385476be63095bdae7c88e5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="app-service-on-azure-stack-adding-more-worker-roles"></a>App Service on Azure Stack: Adding more worker roles 
+# <a name="app-service-on-azure-stack-adding-more-worker-roles"></a>Azure Stack 上の App Service: worker ロールを追加する 
 
-This document provides instructions about how to scale App Service on Azure Stack worker roles. It contains steps for creating additional worker roles to support applications of any size.
+ここでは、Azure Stack worker ロールでの App Service を拡大縮小する手順について説明します。 任意のサイズのアプリケーションをサポートする追加の worker ロールを作成する手順について説明します。
 
 > [!NOTE]
-> If your Azure Stack POC Environment does not have more than 96-GB RAM you may have difficulties adding additional capacity.
+> Azure Stack POC 環境の RAM が 96 GB 以下の場合、容量の追加が困難な可能性があります。
 
-App Service on Azure Stack, by default, supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
+既定では、Azure Stack 上の App Service は無料で共有の worker 階層をサポートしています。 他の worker 階層を追加するには、worker ロールを追加する必要があります。
 
-If you are not sure what was deployed with the default App Service on Azure Stack installation, you can review additional information in the [App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+既定の Azure Stack 上の App Service インストールでデプロイされる内容がわからない場合は、「[App Service on Azure Stack overview](azure-stack-app-service-overview.md)」(Azure Stack 上の App Service の概要) を参照してください。
 
-There are two ways to add additional capacity to App Service on Azure Stack:
-1.  [Add additional workers directly from with within the App Service Resource Provider Admin](#Add-additional-workers-directly-from-within-the-App-Service-Resource-Provider-Admin).
-2.  [Create additional VMs manually and add them to the App Service Resource Provider](#Create-additional-VMs-manually-and-add-them-to-the-App-Service-Resource-Provider).
+Azure Stack 上の App Service に容量を追加するには、2 つの方法があります。
+1.  [[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\) 内から worker を直接追加します](#Add-additional-workers-directly-from-within-the-App-Service-Resource-Provider-Admin)。
+2.  [手動で追加の VM を作成し、App Service リソース プロバイダーに追加します](#Create-additional-VMs-manually-and-add-them-to-the-App-Service-Resource-Provider)。
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Add additional workers directly within the App Service Resource Provider Admin.
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\) 内から worker を直接追加します。
 
-1.  Log in to the Azure Stack portal as the service administrator;
-2.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. ![Azure Stack Resource Providers][1]
-3.  Click **Roles**.  Here you see the breakdown of all App Service roles deployed.
-4.  Click the option **New Role Instance** ![Add new role instance][2]
-5.  In the **New Role Instance** blade:
-    1. Choose how many additional **role instances** you would like to add.  In the preview, there is a maximum of 10.
-    2. Select the **role type**.  In this preview, this option is limited to Web Worker.
-    3. Select the **worker tier** you would like to deploy this worker into, default choices are Small, Medium, Large, or Shared.  If, you have created your own worker tiers, your worker tiers will also be available for selection.
-    4. Click **OK** to deploy the additional workers
-6.  App Service on Azure Stack will now add the additional VMs, configure them, install all the required software and mark them as ready when this process is complete.  This process can take approximately 80 minutes.
-7.  You can monitor the progress of the readiness of the new workers by viewing the workers in the **roles** blade.
+1.  Azure Stack ポータルにサービス管理者としてログインします。
+2.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。![Azure Stack リソース プロバイダー][1]
+3.  **[ロール]** をクリックします。  デプロイされているすべての App Service ロールの内訳が表示されます。
+4.  **[新しいロール インスタンス]** オプションをクリックします ![新しいロール インスタンスの追加][2]
+5.  **[新しいロール インスタンス]** ブレードで次の手順を実行します。
+    1. 追加する**ロール インスタンス**数を選択します。  プレビューの最大数は 10 個です。
+    2. **[ロールの種類]** を選択します。  このプレビューでは、このオプションは、Web ワーカーに制限されています。
+    3. この worker をデプロイする **worker 階層**を選択します。既定の選択肢は、[小]、[中]、[大]、[共有] です。  独自の worker 階層を作成した場合、その worker 階層も選択肢として使用できます。
+    4. **[OK]** をクリックして追加の worker をデプロイします。
+6.  Azure Stack 上の App Service によって、VM が追加および構成され、必要なすべてのソフトウェアがインストールされ、プロセスの完了時には準備完了とマークされます。  このプロセスには約 80 分かかる可能性があります。
+7.  **ロール** ブレードで worker を表示することで、新しい worker の準備状況を監視できます。
 
 >[!NOTE]
->  In this preview, the integrated New Role Instance flow is limited to Worker Roles and deploy VMs of size A1 only.  We will be expanding this capability in a future release.
+>  このプレビューでは、統合された新しいロール インスタンス フローは worker ロールに制限され、サイズ A1 の VM のみがデプロイされます。  今後のリリースで、この機能は拡張する予定です。
 
-## <a name="manually-adding-additional-capacity-to-app-service-on-azure-stack"></a>Manually adding additional capacity to App Service on Azure Stack.
+## <a name="manually-adding-additional-capacity-to-app-service-on-azure-stack"></a>Azure Stack 上の App Service に容量を手動で追加する
 
-The following steps are required to add additional roles:
+ロールを追加するには、次の手順を実行する必要があります。
 
-1. [Create a new virtual machine](#step-1-create-a-new-vm-to-support-the-new-instance-size)
-2. [Configure the virtual machine](#step-2-configure-the-virtual-machine)
-3. [Configure the web worker role in the Azure Stack portal](#step-3-configure-the-web-worker-role-in-the-azure-stack-portal)
-4. [Configure app service plans](#step-4-configure-app-service-plans)
+1. [新しい仮想マシンを作成する](#step-1-create-a-new-vm-to-support-the-new-instance-size)
+2. [仮想マシンを構成する](#step-2-configure-the-virtual-machine)
+3. [Azure Stack ポータルで Web ワーカー ロールを構成する](#step-3-configure-the-web-worker-role-in-the-azure-stack-portal)
+4. [App Service プランを構成する](#step-4-configure-app-service-plans)
 
-## <a name="step-1-create-a-new-vm-to-support-the-new-instance-size"></a>Step 1: Create a new VM to support the new instance size
-Create a virtual machine as described in [this article](azure-stack-provision-vm.md), ensuring that the following selections are made:
+## <a name="step-1-create-a-new-vm-to-support-the-new-instance-size"></a>手順 1: 新しいインスタンス サイズをサポートする新しい VM を作成する
+[こちらの記事](azure-stack-provision-vm.md)の説明に従って仮想マシンを作成し、次のように選択されていることを確認します。
 
-* User name and password: Provide the same user name and password you provided when you installed App Service on Azure Stack.
-* Subscription: Use the default provider subscription.
-* Resource group: Choose **AppService-LOCAL**.
+* ユーザー名とパスワード: Azure Stack 上の App Service をインストールしたときに指定したものと同じユーザー名とパスワードを指定します。
+* サブスクリプション: 既定のプロバイダー サブスクリプションを使用します。
+* リソース グループ: **AppService-LOCAL** を選択します。
 
 > [!NOTE]
-> Store the virtual machines for worker roles in the same resource group as App Service on Azure Stack is deployed to. (This is recommended for this release.)
+> Azure Stack 上の App Service をデプロイした先と同じリソース グループに worker ロールの仮想マシンを格納します (今回のリリースで推奨される構成です)。
 > 
 > 
 
-## <a name="step-2-configure-the-virtual-machine"></a>Step 2: Configure the Virtual Machine
-Once the deployment has completed, the following configuration is required to support the web worker role:
+## <a name="step-2-configure-the-virtual-machine"></a>手順 2: 仮想マシンを構成する
+デプロイが完了した後は、Web ワーカー ロールをサポートするために次の構成が必要です。
 
-1. Browse to the **AppService-LOCAL** resource group in the portal and select the new machine you created in Step 1.
-2. Click connect in the VM blade to download the remote desktop profile.  Open the profile to open a remote desktop session to your VM.
-3. Log in to the VM using the username and password you specified in Step 1.
-4. Open PowerShell by clicking the **Start** button and typing PowerShell. Right-click **PowerShell.exe**, and select **Run as administrator** to open PowerShell in administrator mode.
-5. Copy and paste each of the following commands (one at a time) into the PowerShell window, and press enter:
+1. ポータルで **AppService-LOCAL** リソース グループを参照し、手順 1 で作成した新しいマシンを選択します。
+2. VM ブレードの接続をクリックして、リモート デスクトップのプロファイルをダウンロードします。  VM に対してリモート デスクトップ セッションを開くプロファイルを開きます。
+3. 手順 1 で指定したユーザー名とパスワードを使用して VM にログインします。
+4. **[スタート]** ボタンをクリックし、「PowerShell」を入力して PowerShell を開きます。 **PowerShell.exe** を右クリックし、**[管理者として実行]** を選択して管理者モードで PowerShell を開きます。
+5. 次の各コマンドを 1 つずつ PowerShell ウィンドウに貼り付け、Enter キーを押します。
    
    ```netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes```
    ```netsh advfirewall firewall set rule group="Windows Management Instrumentation (WMI)" new enable=yes```
    ```reg add HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system /v LocalAccountTokenFilterPolicy /t REG\_DWORD /d 1 /f```
    
-6. Close your remote desktop session.
-7. Restart the VM from the portal.
+6. リモート デスクトップ セッションを閉じます。
+7. ポータルから VM を再起動します。
 
 > [!NOTE]
-> These are minimum requirements for App Service on Azure Stack. They are the default settings of the Windows 2012 R2 image included with Azure Stack. The instructions have been provided for future reference, and for those using a different image.
+> これらは、Azure Stack 上の App Service の最小要件です。 また、Azure Stack に含まれる Windows 2012 R2 イメージの既定設定です。 これらの手順は、今後の参照のために、また別のイメージを使用する場合のために記載しています。
 > 
 > 
 
-## <a name="step-3-configure-the-worker-role-in-the-azure-stack-portal"></a>Step 3: Configure the worker role in the Azure Stack portal
-1. Open the portal as the service administrator on **ClientVM**.
-2. Navigate to **Resource Providers** &gt; **App Service Resource Provider Admin**.![App Service Resource Provider Admin][3]
-3. In the settings blade, click **Roles**.![App Service Resource Provider Roles][4]
-4. Click **Add Role Instance**.
-5. In the textbox for **Server Name** enter the **IP Address** of the server you created earlier (in Section 1).
-6. Select the **Role Type** you would like to add - Controller, Management Server, Front End, Web Worker, Publisher, or File Server.  In this instance, select Web Worker.
-7. Click the **Tier** you would like to deploy the new instance to (small, medium, large, or shared).  If you have created your own worker tiers these will also be available for selection.
-8. Click **OK.**
-9. Go back to the **Roles** view
-10. Click the row corresponding to the Role Type and Worker Tier combination you assigned your VM to.
-11. Look for the Server Name you just added. Review the status column, and wait to move to the next step until the status is "Ready." This can take approximately 80 minutes. ![App Service Resource Provider Role Ready][5]
+## <a name="step-3-configure-the-worker-role-in-the-azure-stack-portal"></a>手順 3: Azure Stack ポータルで worker ロールを構成する
+1. **ClientVM** 上でサービス管理者としてポータルを開きます。
+2. **[リソース プロバイダー]** &gt; **[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\)** に移動します。![[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\)][3]
+3. 設定ブレードで **[ロール]** をクリックします。![App Service リソース プロバイダーのロール][4]
+4. **[ロール インスタンスの追加]** をクリックします。
+5. **[サーバー名]** のテキストボックスに、セクション 1 で作成したサーバーの **IP アドレス**を入力します。
+6. 追加する **[ロールの種類]** (コントローラー、管理サーバー、フロント エンド、Web ワーカー、パブリッシャー、ファイル サーバー) を選択します。  このインスタンスでは、Web ワーカーを選択します。
+7. 新しいインスタンスをデプロイする **[階層]** をクリックします (小、中、大、または共有)。  独自の worker 階層を作成した場合、その worker 階層も選択肢として使用できます。
+8. **[OK]** をクリックします。
+9. **[ロール]** ビューに戻ります
+10. VM を割り当てたロールの種類と worker 階層の組み合わせに対応する行をクリックします。
+11. 追加したサーバー名を探します。 状態列を確認し、状態が [準備完了] になってから次の手順に進みます。 このプロセスには約 80 分かかる可能性があります。 ![App Service リソース プロバイダー ロールの準備完了][5]
 
-## <a name="step-4-configure-app-service-plans"></a>Step 4: Configure app service plans
+## <a name="step-4-configure-app-service-plans"></a>手順 4: App Service プランを構成する
 
-1. Sign in to the portal on the ClientVM.
-2. Navigate to **New** &gt; **Web and Mobile**.
-3. Select the type of application you would like to deploy.
-4. Provide the information for the application, and then select **AppService Plan / Location**.
-    1. Click **Create New**.
-    2. Create your plan, selecting the corresponding pricing tier for the plan.
+1. ClientVM でポータルにサインインします。
+2. **[新規作成]** &gt; **[Web and Mobile]\(Web とモバイル\)** に移動します。
+3. デプロイするアプリケーションの種類を選択します。
+4. アプリケーションの情報を入力し、**[AppService Plan / Location]\(AppService プラン/場所\)** を選択します。
+    1. **[Create New]**をクリックします。
+    2. プランを作成し、プランに対応する価格レベルを選択します。
 
 > [!NOTE]
-> You can create multiple plans while on this blade. Before you deploy, however, ensure you have selected the appropriate plan.
+> このブレードでは複数のプランを作成できます。 ただし、デプロイする前に、適切なプランを選択していることを確認してください。
 > 
 > 
 
-The following shows an example of the multiple pricing tiers available by default.  You notice that if there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.![App Service on Azure Stack Default Pricing Tiers][6]
+既定で使用できる複数の価格レベルの例を次に示します。  特定の worker 階層に使用できる worker がない場合、対応する価格レベルを選択するオプションは使用できません。![Azure Stack 上の App Service の既定の価格レベル][6]
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-add-worker-roles/azure-stack-resource-providers.png

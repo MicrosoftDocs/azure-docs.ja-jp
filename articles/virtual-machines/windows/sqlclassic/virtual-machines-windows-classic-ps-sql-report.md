@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.lasthandoff: 03/31/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -67,7 +66,7 @@ ms.lasthandoff: 03/31/2017
    * **[サイズ]** : SQL Server のワークロードに推奨される VM サイズは A3 です。 VM をレポート サーバーとしてのみ使用する場合、レポート サーバーで大規模なワークロードが発生しないのであれば、VM サイズは A2 で十分です。 VM の価格については、「 [Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」をご覧ください。
    * **[新しいユーザー名]**: 指定した名前が VM の管理者として作成されます。
    * **[新しいパスワード]** と **[確認]**: このパスワードは、新しい管理者アカウントに使用されるので、強力なパスワードを使用することをお勧めします。
-   * **[次へ]**をクリックします。 ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * **[次へ]** をクリックします。 ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. 次のページでは、以下のフィールドを編集します。
    
    * **[クラウド サービス]**: **[新しいクラウド サービスの作成]** を選択します。
@@ -512,7 +511,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
    
    1. **[データベースの変更]**をクリックします。
    2. **[新しいレポート サーバー データベースを作成する]** をクリックし、**[次へ]** をクリックします。
-   3. **[サーバー名]** では、既定の VM 名をそのまま使用します。**[認証の種類]** も、既定の **[現在のユーザー** - **統合セキュリティ]** のままにしておきます。 **[次へ]**をクリックします。
+   3. **[サーバー名]** では、既定の VM 名をそのまま使用します。**[認証の種類]** も、既定の **[現在のユーザー** - **統合セキュリティ]** のままにしておきます。 **[次へ]** をクリックします。
    4. **[データベース名]** を既定の **[ReportServer]** のままにし、**[次へ]** をクリックします。
    5. **[認証の種類]** を既定の **[サービス資格情報]** のままにし、**[次へ]** をクリックします。
    6. 左側のウィンドウで、 **[次へ]** on the **[次へ]** をクリックします。
@@ -608,5 +607,4 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ### <a name="links-to-other-resources-for-sql-server-in-azure-vms"></a>Azure VM の SQL Server に関するその他のリソースへのリンク
 [Azure Virtual Machines における SQL Server の概要](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
-
 

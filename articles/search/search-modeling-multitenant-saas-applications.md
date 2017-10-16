@@ -13,13 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
@@ -136,5 +134,4 @@ Azure Search でマルチテナント シナリオをモデル化する前述の
 Azure Search は、多くのアプリケーションにとって魅力的な選択肢です。このサービスの信頼性の高い機能の詳細については、[こちら](http://aka.ms/whatisazsearch)をご覧ください。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Search を最適に調整してください。
 
 Azure Search とマルチテナント シナリオに関するご質問があれば、azuresearch_contact@microsoft.com までお問い合わせください。
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 7cfec8e9ac12d43095483696a15c0580776d3114
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル: Azure Active Directory と Work.com の統合
 
@@ -223,7 +222,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
-    ![[User]\(ユーザー\) ダイアログ ページ](./media/active-directory-saas-work-com-tutorial/create_aaduser_04.png) 
+    ![[ユーザー] ダイアログ ページ](./media/active-directory-saas-work-com-tutorial/create_aaduser_04.png) 
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -231,10 +230,10 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-workcom-test-user"></a>Work.com テスト ユーザーの作成
-Azure Active Directory ユーザーがサインインできるように、Azure Active Directory ユーザーを Work.com に対してプロビジョニングする必要があります。 Work.com の場合、プロビジョニングは手動で行います。
+Azure Active Directory ユーザーがサインインできるように、Azure Active Directory ユーザーを Work.com に対してプロビジョニングする必要があります。Work.com の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. Work.com 企業サイトに管理者としてサインオンします。
@@ -331,5 +330,4 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 [201]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_203.png
-
 

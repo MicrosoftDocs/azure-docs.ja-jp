@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: 623c438edfce5f98c2d32d8bb25a97d86aa77909
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR ソフトウェアの統合
 
@@ -161,7 +160,7 @@ Cezanne HR ソフトウェアを使用して Azure AD の SSO を構成してテ
     ![[保存] ボタン](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> アプリのセットアップ中、上記手順の簡易版を [Azure Portal](https://portal.azure.com)でご覧いただけます。 このアプリを追加した後、**[Active Directory]** > **[エンタープライズ アプリケーション]** セクションで、**[シングル サインオン]** タブを選びます。 次に、**[構成]** セクションから組み込みドキュメントにアクセスします。 
+> アプリのセットアップ中、上記手順の簡易版を [Azure Portal](https://portal.azure.com)でご覧いただけます。 このアプリを追加した後、**[Active Directory]** > **[エンタープライズ アプリケーション]** セクションで、**[シングル サインオン]** タブを選びます。次に、**[構成]** セクションから組み込みドキュメントにアクセスします。 
 
 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 > 
@@ -299,5 +298,4 @@ Azure AD ユーザーが Cezanne HR ソフトウェアにサインインでき�
 [201]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_203.png
-
 

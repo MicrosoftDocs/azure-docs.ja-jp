@@ -3,7 +3,7 @@ title: "Node.js から Queue Storage を使用する方法 | Microsoft Docs"
 description: "Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 サンプルは Node.js で記述されています。"
 services: storage
 documentationcenter: nodejs
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a8a92db0-4333-43dd-a116-28b3147ea401
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: 649c656b08c03ca9c902b0d80e77d9b3b662635b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 15c1d3cb6eac8fc14837277c4a4275dea91701cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/22/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service-web/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](https://www.microsoft.com/web/webmatrix/)」をご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](https://www.microsoft.com/web/webmatrix/)」をご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -340,11 +339,8 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
-[Azure App Service での Node.js Web アプリの作成](../../app-service-web/app-service-web-get-started-nodejs.md)   
-[Azure Table service を使用する Node.js Web アプリ](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)
-  
+[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)
 
 
-[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)   
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/ [Node.js Web アプリの構築と Web Matrix を使用した Azure へのデプロイ]: https://www.microsoft.com/web/webmatrix/   
 
+[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/ [Node.js Web アプリの構築と Web Matrix を使用した Azure へのデプロイ]: https://www.microsoft.com/web/webmatrix/

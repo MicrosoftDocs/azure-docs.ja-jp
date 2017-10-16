@@ -11,12 +11,11 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 371b10be09fd6719c8c946bed47d2f5fd0625793
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: b36e04e00d4942539b121a83e320f1e92aac6ac2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
     <h1>Azure での Cloud Foundry</h1>

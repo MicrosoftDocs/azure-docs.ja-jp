@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 6fdbf12830a402eeb004587202eee604037430c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="implement-a-geo-distributed-database"></a>地理的に分散したデータベースの実装
 
 このチュートリアルでは、Azure SQL Database とアプリケーションをリモート リージョンのフェールオーバーのために構成し、その後フェールオーバー計画をテストします。 学習内容は次のとおりです。 
@@ -390,4 +388,3 @@ Java および Maven 環境をインストールして構成する方法に関�
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
-

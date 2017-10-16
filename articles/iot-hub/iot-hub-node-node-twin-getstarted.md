@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 633c9fd4f8a1d017d93148f8c2e860ccba14238c
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: d7c257553d25694005bced745f793951cc9f8951
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
@@ -129,10 +129,6 @@ ms.lasthandoff: 08/28/2017
 ## <a name="create-the-device-app"></a>サービス アプリを作成する
 このセクションでは、**myDeviceId** としてハブに接続し、デバイス ツインの報告されるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Node.js コンソール アプリを作成します。
 
-> [!NOTE]
-> 現在のところ、デバイス ツインには MQTT プロトコルを使用して IoT Hub に接続するデバイスからのみアクセスできます。 既存のデバイス アプリを変換して MQTT を使用する方法については、[MQTT サポート][lnk-devguide-mqtt]の記事を参照してください。
-> 
-> 
 
 1. **reportconnectivity** という名前の新しい空のフォルダーを作成します。 **reportconnectivity** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3c20ee0d5abb40d7650eeaa722e87142275448d
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>アプリケーションのグローバル設定を管理する方法
 アプリケーションで利用可能な **[設定]** メニューのオプションは、アプリケーションのプラットフォームやアプリケーションで付与されているユーザーの権限によって異なります。 設定には、詳細、プロジェクト、ネイティブのプッシュ、プッシュの速度、タグ (アプリ情報)、コマーシャル プレッシャーの項目があります。 [設定] セクションの [タグ (アプリ情報)] メニュー オプションはアプリケーション (SDK 使用) またはバックエンド (デバイス API 使用) で管理できます。 
@@ -50,8 +49,8 @@ ms.lasthandoff: 12/08/2016
 
 少なくとも 1 つ以上のネイティブ プッシュ サービスの資格情報や証明書を指定すると、リーチ キャンペーンの作成時に [Any time (いつでも)] を選択できるようになり、また PUSH API で "notifier" パラメーターを使用できるようになります。
 
-### <a name="apple-push-notification-service-apns"></a>Apple プッシュ通知サービス (APNS)
-Apple プッシュ通知サービスを使用してネイティブのプッシュを有効にするには、証明書の登録が必要です。 証明書の種類を、開発 (DEV) または実稼働 (PROD) のいずれかに指定する必要があります。 その後、証明書とパスワードをアップロードします。
+### <a name="apple-push-notification-service-apns"></a>Apple Push Notification Service (APNS)
+Apple Push Notification Service を使用してネイティブのプッシュを有効にするには、証明書の登録が必要です。 証明書の種類を、開発 (DEV) または実稼働 (PROD) のいずれかに指定する必要があります。 その後、証明書とパスワードをアップロードします。
 
 詳細については、[SDK ドキュメント - iOS - Apple プッシュ通知に対するアプリケーション準備][Link 5]に関するページをご覧ください
 
@@ -189,5 +188,4 @@ ADM を使用してネイティブのプッシュを有効にするには、ク�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
 

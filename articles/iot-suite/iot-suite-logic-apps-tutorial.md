@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 7dbfef6d2bcac81d89ed0e3cf36d4c75a264cba7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>チュートリアル: ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する
 [Microsoft Azure IoT Suite][lnk-internetofthings] リモート監視構成済みソリューションは、IoT ソリューションを例示するエンド ツー エンド機能をすぐに使い始められる優れた方法です。 このチュートリアルでは、Logic App を Microsoft Azure IoT Suite リモート監視構成済みソリューションに追加する方法を説明します。 これらの手順は、IoT ソリューションをビジネス プロセスに接続してさらに活用できる方法を示すものです。
@@ -44,7 +42,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="set-up-the-logic-app"></a>ロジック アプリをセットアップする
 1. Azure ポータルで、リソース グループ ブレードの上部にある **[追加]** をクリックします。
 2. **ロジック アプリ**を検索し、選択してから **[作成]** をクリックします。
-3. **名前**を入力し、リモート監視ソリューションのプロビジョニング時に使用したものと同じ**サブスクリプション**と**リソース グループ**を使用します。 **[作成]**をクリックします。
+3. **名前**を入力し、リモート監視ソリューションのプロビジョニング時に使用したものと同じ**サブスクリプション**と**リソース グループ**を使用します。 **Create** をクリックしてください。
    
     ![](media/iot-suite-logic-apps-tutorial/createlogicapp.png)
 4. デプロイが完了すると、ロジック アプリがリソース グループにリソースとしてリストされていることがわかります。
@@ -173,4 +171,3 @@ ms.lasthandoff: 03/10/2017
 [lnk-devsetup]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/dev-setup.md
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
-

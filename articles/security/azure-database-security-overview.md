@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: 036ce3dce28e7951bb39754c4351661fae85f06c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
 データベースを管理するうえでセキュリティは最大の懸念事項であり、Azure SQL Database では常に優先事項として扱われてきました。 Azure SQL Database は、ファイアウォール規則と接続の暗号化によって接続のセキュリティをサポートしています。 認証はユーザー名とパスワード、および Azure Active Directory で管理される ID を使用した Azure Active Directory 認証によってサポートされています。 承認には、ロールベースのアクセス制御が使用されています。
@@ -219,4 +217,3 @@ Azure Marketplace では、お客様とパートナーにより良いサービ�
 - 詳細情報: 「[Azure Security Center と Azure SQL Database サービス](https://docs.microsoft.com/azure/security-center/security-center-sql-database)」
 - 脅威の検出の詳細については、「[SQL Database の脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)」を参照してください。
 - 詳細については、[SQL データベースのパフォーマンスの改善](https://docs.microsoft.com/azure/sql-database/sql-database-performance-tutorial)に関するページを参照してください。 
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4fffba6d95f4c9c30ab3a1ecd9dfeb7acd9119d
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用し、独自の DNS サーバーでホスト名を登録する
 [名前を解決](virtual-networks-name-resolution-for-vms-and-role-instances.md) します。 ただし、Azure によって提供される名前解決を超えるニーズがある場合は、独自の DNS サーバーを設置できます。 これにより、独自の特定のニーズに合わせて、DNS ソリューションをカスタマイズすることができます。 たとえば、Active Directory ドメイン コントローラーを介したオンプレミスのリソースへのアクセスが必要になる場合があります。
@@ -68,5 +67,4 @@ Windows DNS サーバーを利用しているとき、Kerberos 認証を利用�
 必要に応じて、DNS 検索サフィックスを VM に追加できます。 DNS サフィックスは、 */etc/resolv.conf* ファイルに指定します。 ほとんどの Linux ディストリビューションはこのファイルの内容を自動的に管理するため、通常は編集できません。 ただし、HCP クライアントの *supersede* コマンドを利用し、サフィックスを上書きできます。 その際、 */etc/dhcp/dhclient.conf*で次を追加します。
 
         supersede domain-name <required-dns-suffix>;
-
 

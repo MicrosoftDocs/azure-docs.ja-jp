@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Microsoft Azure StorSimple Manager Virtual Array の管理 | Microsoft Docs"
 description: "Azure Portal で StorSimple デバイス マネージャー サービスを使用して、オンプレミスの StorSimple Virtual Array を管理する方法について説明します。"
 services: storsimple
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
 ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/01/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
 ![セットアップ プロセス フロー](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -42,8 +41,8 @@ ms.lasthandoff: 12/01/2016
 StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple Virtual Array に接続します。 こうしたデバイスを管理するには、中央の Microsoft Azure Portal をブラウザーで実行して使用します。 StorSimple デバイス マネージャー サービスに接続するには、次の操作を行います。
 
 #### <a name="to-connect-to-the-service"></a>サービスに接続するには
-1. [https://portal.azure.com](https://portal.azure.com) に移動します。
-2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure ポータルにログオンします。
+1. [https://ms.portal.azure.com](https://ms.portal.azure.com) に移動します。
+2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure Portal にログオンします。
 3. [参照]、[StorSimple デバイス マネージャー] の [フィルター] の順に移動し、特定のサブスクリプションのデバイス マネージャーをすべて表示します。
 
 ## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>StorSimple デバイス マネージャー サービスを使用して管理タスクを実行する
@@ -78,5 +77,4 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 ## <a name="next-steps"></a>次のステップ
 Web UI とその使用方法については、「 [StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
-
 

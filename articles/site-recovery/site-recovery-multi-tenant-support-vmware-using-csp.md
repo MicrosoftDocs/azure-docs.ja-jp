@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: manayar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 97edbe67c25036dc1156f0f0ca5431a617d7a004
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>CSP を使用して VMware 仮想マシンを Azure にレプリケートするための Azure Site Recovery でのマルチテナントのサポート
 
@@ -222,4 +220,3 @@ VM の前提条件は、[Azure Site Recovery のドキュメント](site-recover
     ![ユーザーの追加](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-user-subscription.png)
 
     ほとんどの管理操作には、"*共同作成者*" ロールで十分です。 このアクセス レベルのユーザーは、サブスクリプションに対して、アクセス レベルの変更 ("*所有者*" レベルのアクセス権が必要) を除くすべての操作を実行できます。 必要に応じて、アクセス レベルを微調整することもできます。
-

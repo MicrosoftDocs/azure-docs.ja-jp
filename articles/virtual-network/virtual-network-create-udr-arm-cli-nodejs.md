@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 5f21bc7a4fcd9507ea9d6b2b752a2328a7b834f0
-ms.lasthandoff: 03/22/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してユーザー定義ルート (UDR) を作成する
 
@@ -230,5 +229,4 @@ Azure CLI を使用してカスタム ルーティングと仮想アプライア
     パラメーター:
    
    * **-f (または --enable-ip-forwarding)**。 *true* または *false*.
-
 

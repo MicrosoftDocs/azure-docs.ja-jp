@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
-ms.openlocfilehash: ba0d31a8f718cc5577fe779061db2144d4295cbb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: 1d133430e0dcdcd0c24b44a2a7c452fbf16ecf29
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
 要件を定義し、モバイル デバイスのすべての選択肢を検討したので、次の段階ではユーザーと組織に最適なサポート インフラストラクチャをデプロイします。
@@ -49,5 +48,4 @@ ms.lasthandoff: 05/05/2017
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

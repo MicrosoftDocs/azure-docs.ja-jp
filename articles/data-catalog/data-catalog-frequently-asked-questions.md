@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: ea6b6651a32b9f259186991d9609301fd4dfa131
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: 11e4bc7e71b4a94c3a0eda4275745b1beb44974d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -129,4 +128,3 @@ Data Catalog で、データ資産を選択し、[**所有権の取得**] ボタ
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>ここに質問の答えがありません。 どうすればいいですか?
 [Azure Data Catalog フォーム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。 そこで寄せられている質問に、ここでの方法が見つかります。
-

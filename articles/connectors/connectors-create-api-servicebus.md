@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/02/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 1e2ce06f5993280dbdb67121849591e67f7979e9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-azure-service-bus-connector"></a>Azure Service Bus コネクタの使用
 Azure Service Bus に接続して、メッセージを送受信します。 キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。
@@ -53,5 +51,4 @@ Azure Service Bus に接続して、メッセージを送受信します。 キ�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
-
 

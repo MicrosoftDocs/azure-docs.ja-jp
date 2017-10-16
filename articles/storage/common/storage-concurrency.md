@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage での同時実行制御の管理
 ## <a name="overview"></a>概要
@@ -37,7 +36,7 @@ Azure ストレージ サービスでは、上記 3 つの戦略をすべてサ�
 また、開発者は、適切な同時実行制御の戦略を選択する以外にも、特に複数のトランザクションで同一のオブジェクトを変更する場合に、ストレージ プラットフォームで変更がどのように分離されるかについて把握しておく必要があります。 Azure Storage サービスではスナップショット分離の手法を使用して、同一パーティション内での読み取り処理と書き込み処理が同時に発生できるようにしています。 他の分離レベルとは異なり、スナップショット分離では、更新の処理中でもすべての読み込み処理に対してデータのスナップショットを提供することにより整合性を確保します。これは基本的に、更新トランザクションの処理中に最後にコミットされた値を返すことで実現しています。  
 
 ## <a name="managing-concurrency-in-blob-storage"></a>BLOB ストレージ内での同時実行の管理
-Blob serivce での BLOB およびコンテナーへのアクセスを管理する場合、オプティミスティック同時実行制御とペシミスティック同時実行制御のいずれかのモデルを使用できます。 明示的に戦略を指定しない場合は、最終書き込み者優先が既定となります。  
+BLOB サービスでの BLOB およびコンテナーへのアクセスを管理する場合、オプティミスティック同時実行制御とペシミスティック同時実行制御のいずれかのモデルを使用できます。 明示的に戦略を指定しない場合は、最終書き込み者優先が既定となります。  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>BLOB およびコンテナーでのオプティミスティック同時実行制御
 Storage サービスでは、格納されているすべてのオブジェクトに識別子が割り当てられます。 オブジェクトで更新処理が実行されるたびに、この識別子が更新されます。 この識別子は、HTTP プロトコルで定義されている ETag (エントリ タグ) ヘッダーを使用して、HTTP GET 応答の一部としてクライアントに返されます。 該当するオブジェクトをユーザーが更新しようとすると、条件ヘッダーが付属している元の ETag が送信され、特定の条件を満たしているときにのみ更新が行われます。この条件には、"If-Match" ヘッダーが使用されます。これによって、更新要求で指定された ETag の値が Storage サービスに格納されている値と同一であることが、Storage サービスによって確認されます。  
@@ -127,11 +126,11 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 (*) Lease BLOB では、BLOB の ETag は変更されません。  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>BLOB でのペシミスティック同時実行制御
-BLOB をロックして排他的に使用する場合は、[リース](http://msdn.microsoft.com/library/azure/ee691972.aspx)を取得します。 リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。 リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。 期限が切れた有限のリースは、Blob serivce で自動的に解放されます。  
+BLOB をロックして排他的に使用する場合は、[リース](http://msdn.microsoft.com/library/azure/ee691972.aspx)を取得します。 リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。 リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。 期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。 リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
 
-次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、Blob serivce は "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage での同時実行制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage での同時実行制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -196,14 +195,14 @@ catch (StorageException ex)
 
 詳細については、次を参照してください。  
 
-* [Blob serivce 操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
 * [Lease Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Table service での同時実行制御の管理
-エンティティを扱っている場合、Table service ではオプティミスティック同時実行制御の確認が既定の動作として使用されます。一方、Blob serivce の場合は、オプティミスティック同時実行制御の確認を実行するように明示的に選択する必要があります。 これ以外の相違点としては、Table service ではエンティティの同時実行制御しか管理できませんが、Blob serivce ではコンテナーと BLOB の両方の同時実行制御を管理できる点があります。  
+## <a name="managing-concurrency-in-the-table-service"></a>Table サービスでの同時実行制御の管理
+エンティティを扱っている場合、Table サービスではオプティミスティック同時実行制御の確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック同時実行制御の確認を実行するように明示的に選択する必要があります。 これ以外の相違点としては、Table サービスではエンティティの同時実行制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方の同時実行制御を管理できる点があります。  
 
-オプティミスティック同時実行制御を使用して、Table ストレージ サービスからエンティティを取得した後に他のプロセスがそれを更新していないか確認するには、Table service がエンティティを返す時に受け取った ETag の値を使用できます。 このプロセスの概要は次のとおりです。  
+オプティミスティック同時実行制御を使用して、Table ストレージ サービスからエンティティを取得した後に他のプロセスがそれを更新していないか確認するには、Table サービスがエンティティを返す時に受け取った ETag の値を使用できます。 このプロセスの概要は次のとおりです。  
 
 1. Table ストレージ サービスからエンティティを取得します。この応答に含まれている ETag の値によって、ストレージ サービスでこのエンティティに関連付けられている現在の識別子を識別できます。
 2. エンティティを更新するときに、手順 1. でサービスに送信した要求の必須の **If-Match** ヘッダーで返された ETag の値を含めます。
@@ -211,9 +210,9 @@ catch (StorageException ex)
 4. エンティティの現在の ETag の値が、要求の必須 **If-Match** ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。 これは、クライアントがこのエンティティを取得した後に、別のプロセスがこれを更新したことを示しています。
 5. エンティティの現在の ETag の値が、要求に含まれる必須の **If-Match** ヘッダーの ETag の値と等しい場合、または **If-Match** ヘッダーにワイルドカード文字 (*) が含まれている場合、サービスは要求された処理を実行し、更新されたことを示すためにエンティティの ETag の値を更新します。  
 
-Blob service とは異なり、Table service ではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。 ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、同時実行制御の確認を省略することができます。  
+BLOB サービスとは異なり、Table サービスではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。 ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、同時実行制御の確認を省略することができます。  
 
-次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table service に返され、サービスが同時実行制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  完全なサンプルは、[Azure Storage での同時実行制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスが同時実行制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  完全なサンプルは、[Azure Storage での同時実行制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 try
@@ -250,7 +249,7 @@ customer.ETag = "*";
 | エンティティの挿入または置換 |はい |なし |
 | エンティティの挿入または統合 |はい |いいえ |
 
-**Insert or Replace Entity** と **Insert or Merge Entity** の各操作では、ETag の値は Table service に送信されないため、同時実行制御の確認は*行われません*。  
+**Insert or Replace Entity** と **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。  
 
 一般に、テーブルを利用するスケーラブルなアプリケーションを開発するときは、オプティミスティック同時実行制御を採用する必要があります。 ペシミスティック同時実行制御のロックが必要な場合、テーブルにアクセスする際には、テーブルに対する操作が行われる前に各テーブルに指定した BLOB を関連付け、BLOB のリースの取得を試行するという手法を利用できます。 この手法では、テーブルに対する操作が行われる前にすべてのデータのアクセス パスでリースが確実に取得されるようにアプリケーションを設計する必要があります。 また、リース期間は最低 15 秒であるため、スケーラビリティについては慎重に考慮する必要があります。  
 
@@ -290,5 +289,4 @@ Azure Storage の詳細については、以下を参照してください。
 * [Azure ストレージの概要](storage-introduction.md)
 * Storage Getting Started for [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md), and [Files](../storage-dotnet-how-to-use-files.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET からテーブル ストレージを使用する方法、.NET からキュー ストレージを使用する方法、.NET から ファイル ストレージを使用する方法)
 * Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
-
 

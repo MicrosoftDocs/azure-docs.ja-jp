@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 115a1937a4c88ba2b986a40c84b1b759ed5e03b5
-ms.lasthandoff: 03/21/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-nsgs-classic-in-the-azure-cli"></a>Azure CLI で NSG (クラシック) を作成する方法
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -235,5 +234,4 @@ ms.lasthandoff: 03/21/2017
         info:    Looking up network configuration
         info:    Creating a network security group "NSG-BackEndX"
         info:    network nsg subnet add command OK
-
 

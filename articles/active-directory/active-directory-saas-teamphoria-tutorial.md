@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 2a35efb04d7fe22abc6894c149caf090666ce016
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル: Azure Active Directory と Teamphoria の統合
 
@@ -158,7 +157,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     d. **エントリ ポイント**: Azure ポータルから先ほどコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
-    e. オプションを **[ON (オン)]** に切り替え、**[保存]** をクリックします。    
+    e. オプションを **[ON (オン)]** に切り替え、**[保存]** をクリックします。   
 
 <!--### Next steps
 
@@ -202,7 +201,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-teamphoria-test-user"></a>Teamphoria テスト ユーザーの作成
 
@@ -218,11 +217,11 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
 3. **[MANUAL INVITE (手動招待)]** オプションをクリックします。
 
-    ![[ユーザーの招待]](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)    
+    ![[ユーザーの招待]](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)  
 
 4. このページで、次の操作を実行します。 
     
-    ![[ユーザーの招待]](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)    
+    ![[ユーザーの招待]](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
 
     a. **[EMAIL ADDRESS (電子メール アドレス)]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 
@@ -288,5 +287,4 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 [201]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_203.png
-
 

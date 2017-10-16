@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>初めての Service Fabric スタンドアロン クラスターの作成
 Service Fabric スタンドアロン クラスターは、Windows Server 2012 R2 または Windows Server 2016 が実行されていれば、どの仮想マシンまたはコンピューターにでも作成できます。場所は、オンプレミスでもクラウドでもかまいません。 このクイック スタートを読むと、開発用のスタンドアロン クラスターを数分で作成することができます。  最後まで読み進めていけば、1 台のコンピューター上で動作する 3 ノード クラスターが完成します。開発したアプリをそこにデプロイすることができます。
 
@@ -95,4 +93,3 @@ Service Fabric ランタイムをコンピューターから削除するには�
 * [PowerShell を使ってアプリをデプロイ](service-fabric-deploy-remove-applications.md)します。
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
-

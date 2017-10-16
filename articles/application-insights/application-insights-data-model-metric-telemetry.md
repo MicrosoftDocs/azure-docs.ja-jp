@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 069457d7ef7855749f64e299e0db579e6bb2b590
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.openlocfilehash: 42e55db4f932de85ee1a71c408b889e0ff9fe3e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
@@ -74,4 +73,3 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 - [カスタムのイベントとメトリックのための Application Insights API](app-insights-api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

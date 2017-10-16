@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 09/16/2017
 ms.author: markvi
 ms.reviewer: calebb
+ms.openlocfilehash: 74b97ac263dcc45f7a8dd7461cbdb23d9fd5e6fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -98,30 +97,91 @@ Azure Active Directory によって両方のポリシーが適用されます。
 - **アクセスのブロック** - この構成では組織全体がブロックされるため、明らかによい方法ではありません。
 
 
-## <a name="common-scenarios"></a>一般的なシナリオ
 
-### <a name="requiring-multi-factor-authentication-for-apps"></a>アプリに対する多要素認証の要求
+## <a name="policy-migration"></a>ポリシーの移行
 
-多くの環境には、他のアプリよりも高いレベルの保護を必要とするアプリがあります。
-たとえば、機密データにアクセスするアプリがそうです。
-これらのアプリに対して別の保護層を追加する場合は、ユーザーがこれらのアプリにアクセスするときに多要素認証を要求する条件付きアクセス ポリシーを構成できます。
+Azure クラシック ポータルで構成したポリシーがある場合は、以下の理由により、Azure ポータルに移行する必要があります。
 
 
-### <a name="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted"></a>信頼されていないネットワークからのアクセスに対する多要素認証の要求
+- Azure クラシック ポータルのポリシーと Azure ポータルのポリシーが適用されるユーザーは、両方のポリシーの要件を満たす必要がある 
 
-このシナリオは、多要素認証要件を追加するという点で前のシナリオに似ています。
-ただし、主な違いは、この要件の条件です。  
-前のシナリオの焦点は機密データにアクセスするアプリにありますが、このこのシナリオの焦点は信頼している場所にあります。  
-つまり、信頼していないネットワークからユーザーがアプリにアクセスする場合に、多要素認証を要求します。
+- 既存のポリシーを移行しない場合、アクセスを許可するポリシーを実装できない
 
 
-### <a name="only-trusted-devices-can-access-office-365-services"></a>信頼済みデバイスのみが Office 365 サービスにアクセス可能
+### <a name="migration-from-the-azure-classic-portal"></a>Azure クラシック ポータルからの移行
 
-環境内で Intune を使用している場合は、Azure コンソールで条件付きアクセス ポリシー インターフェイスの使用をすぐに開始できます。
+このシナリオでは: 
 
-多数の Intune ユーザーは、条件付きアクセスを使用して、信頼済みデバイスのみが Office 365 サービスにアクセスできるようにしています。 これは、モバイル デバイスが Intune に登録されていること、コンプライアンス ポリシーの要件を満たしていること、および Windows PC がオンプレミス ドメインに参加していることを意味します。 重要な機能強化は、Office 365 サービスごとに同じポリシーを設定する必要がないことです。  新しいポリシーを作成するときは、条件付きアクセスによって保護する O365 アプリが含まれるようにクラウド アプリを構成します。
+- [Azure クラシック ポータル](https://manage.windowsazure.com)で、以下を構成済みです。
+
+    - SharePoint Online
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/14.png)
+
+    - デバイス ベースの条件付きアクセス ポリシー
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを構成します。 
+ 
+
+#### <a name="configuration"></a>構成 
+
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- モバイル アプリケーション管理の条件付きアクセス ポリシーを追加する
+
+
+### <a name="migrating-from-intune"></a>Intune からの移行 
+
+このシナリオでは:
+
+- [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) で、Exchange Online または SharePoint Online 用のモバイル アプリケーション管理の条件付きアクセス ポリシーを構成済みです。
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーの使用に移行します。
+
+
+#### <a name="configuration"></a>構成 
+ 
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
+
+- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
+ 
+
+### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Azure クラシック ポータルと Intune からの移行
+
+このシナリオでは:
+
+- 以下を構成済みです。
+
+    - **Azure クラシック ポータル:** デバイス ベースの条件付きアクセス ポリシー 
+
+    - **Intune:** モバイル アプリケーション管理の条件付きアクセス ポリシー 
+    
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを使用するように両方のポリシーを移行します。
+
+
+#### <a name="configuration"></a>構成
+
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
+
+- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 
 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
-

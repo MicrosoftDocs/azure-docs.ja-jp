@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
+ms.openlocfilehash: 03c88397e36c0fc7f19410e49f6b6f1a607659f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: d6ef6c988533f27338a61a587b3ce5174d8fa806
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -691,4 +690,3 @@ __Azure PowerShell から__:
 ## <a name="next-steps"></a>次のステップ
 
 [HBase で SQuirreL SQL を使用する方法を確認しましょう。](hdinsight-hbase-phoenix-squirrel-linux.md)
-

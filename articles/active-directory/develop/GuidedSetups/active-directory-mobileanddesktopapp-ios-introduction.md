@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.openlocfilehash: 948693c8501ecc46a1508e5ea085846d0910783e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: e1a28c70edddca878c18d860b3029324955fff15
-ms.contentlocale: ja-jp
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-the-microsoft-graph-api-from-an-ios-app"></a>iOS アプリから Microsoft Graph API を呼び出す
 
 このガイドでは、ネイティブの iOS アプリケーション (Swift) がアクセス トークンを取得し、Microsoft Graph API またはアクセス トークンを必要とする他の API を、Azure Active Directory v2 エンドポイントから呼び出す方法について説明します。
@@ -50,8 +49,7 @@ MSAL がアクセス トークンのキャッシュと更新を管理するた�
 
 このガイドでは、次の NuGet パッケージを使用します。
 
-|ライブラリ|説明|
+|ライブラリ|Description|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Microsoft Authentication Library の iOS 用プレビュー|
-
 

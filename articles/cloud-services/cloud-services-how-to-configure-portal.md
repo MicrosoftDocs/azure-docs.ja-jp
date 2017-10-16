@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: bb66627b170c9010414b24266fdae608e67f5c61
 ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.lasthandoff: 01/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
 > [!div class="op_single_selector"]
@@ -32,7 +31,7 @@ ms.lasthandoff: 01/20/2017
 
 また、クラウド サービス ロールまたはリモート デスクトップのインスタンスを管理することもできます。
 
-Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。 この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう&1; 台で更新を行うことができます。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。 この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 ## <a name="change-a-cloud-service"></a>クラウド サービスの変更
 [Azure ポータル](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。 ここから、多くの部分を管理します。
@@ -110,4 +109,3 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
-

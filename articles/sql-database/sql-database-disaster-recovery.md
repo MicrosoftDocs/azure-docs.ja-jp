@@ -15,13 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 535dcd8b03a0fd92eaa5800a924ca17fc958d630
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 Azure SQL Database は、障害から回復するために次の機能を備えています。
@@ -63,9 +61,9 @@ Azure チームはできるだけ早くサービスが利用できるように�
 
 geo レプリケートされたセカンダリ データベースへのフェールオーバーについては、次のいずれかを参照してください。
 
-* [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)
+* [Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)
 * [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)
+* [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](/sql/t-sql/statements/alter-database-azure-sql-database)
 
 ## <a name="recover-using-geo-restore"></a>geo リストアを使用した復旧
 アプリケーションのダウンタイムがビジネス責任にならない場合は、アプリケーション データベースを回復する方法として [geo リストア](sql-database-recovery-using-backups.md)を使用できます。 geo リストアは、最新の geo 冗長バックアップからデータベースのコピーを作成します。
@@ -101,5 +99,4 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 * ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
-
 

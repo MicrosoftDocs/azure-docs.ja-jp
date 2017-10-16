@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 919d2262cf9f14159a13370037301005b5b69da2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル: Azure Active Directory と Domo の統合
 
@@ -203,7 +201,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-domo-test-user"></a>Domo テスト ユーザーの作成
 
@@ -268,5 +266,4 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 [201]: ./media/active-directory-saas-domo-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-domo-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-domo-tutorial/tutorial_general_203.png
-
 

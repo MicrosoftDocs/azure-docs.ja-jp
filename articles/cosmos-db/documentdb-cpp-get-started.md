@@ -14,13 +14,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 4de1f394e0930054f73786ebb59b901d1c91a5dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 324b5844362c2712d54fd766eb95e1d9102f757a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-documentdb-api"></a>Azure Cosmos DB: DocumentDB API 用の C++ コンソール アプリケーションのチュートリアル
 > [!div class="op_single_selector"]
@@ -59,11 +57,14 @@ C++ チュートリアルを完了した後で、このページの下部にあ�
 ## <a name="prerequisites-for-the-c-tutorial"></a>C++ チュートリアルの前提条件
 以下のものがそろっていることを確認してください。
 
-* アクティブな Azure アカウント。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* C++ 言語のコンポーネントがインストールされた [Visual Studio](https://www.visualstudio.com/downloads/)。
+* アクティブな Azure アカウント。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* C++ 言語のコンポーネントがインストールされた [Visual Studio 2017](https://www.visualstudio.com/downloads/)。 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
-それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「[C++ アプリケーションをセットアップする](#SetupNode)」に進んでかまいません。
+それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「[C++ アプリケーションをセットアップする](#SetupC++)」に進んでかまいません。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -291,6 +292,5 @@ Visual Studio で F5 キーを押すか、ターミナル ウィンドウでア�
 * プログラミング モデルの詳細については、[Azure Cosmos DB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の開発に関するセクションを参照してください。
 
 [create-account]: create-documentdb-dotnet.md#create-account
-
 
 

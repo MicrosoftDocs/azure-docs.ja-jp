@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-translationtype: Human Translation
-ms.sourcegitcommit: f68563587d375dde22fd1ca45591fd49042533d0
 ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.lasthandoff: 02/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation のシナリオ - Automation ソース管理と Visual Studio Team Services の統合
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="getting-the-scenario"></a>シナリオの取得
 
-このシナリオは、Azure Portal の [Runbook ギャラリー](automation-runbook-gallery.md)から直接インポート、または [PowerShell ギャラリー](https://www.powershellgallery.com)からダウンロードできる&2; つの PowerShell Runbook で構成されています。
+このシナリオは、Azure Portal の [Runbook ギャラリー](automation-runbook-gallery.md)から直接インポート、または [PowerShell ギャラリー](https://www.powershellgallery.com)からダウンロードできる 2 つの PowerShell Runbook で構成されています。
 
 ### <a name="runbooks"></a>Runbook
 
@@ -77,7 +77,7 @@ VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持す�
 
 GIT (Sync-VSTSGit.ps1) を使用した VSTS を使用している場合、次のパラメーターを取得します。
 
-パラメーター | 説明|
+パラメーター | Description|
 --------|------------|
 WebhookData | VSTS サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
 AutomationAccountName | VSTS と同期する Automation アカウントの名前です。|
@@ -100,4 +100,3 @@ VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持す�
 この Runbook が VSTS によってトリガーされず、手動で実行する場合は、webhookdata パラメーターを空のままにすることができ、これにより指定した VSTS フォルダーから完全同期が実行されます。
 
 シナリオを削除する場合、VSTS からサービス フックを削除し、Runbook を削除して VSToken 変数を削除します。
-

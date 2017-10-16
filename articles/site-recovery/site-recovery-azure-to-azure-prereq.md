@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 2796a77984fb811b2ea563a45652bb6312b3dd26
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: fb5b8c9ac96ac44d0112919664a177f33ef392da
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="prerequisites-for-replicating-azure-virtual-machines-to-another-region-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 仮想マシンを別のリージョンにレプリケートするための前提条件
 
 > [!div class="op_single_selector"]
@@ -46,7 +44,7 @@ Azure Site Recovery は、次を調整することで、ビジネス継続性と
 **Azure アカウント** | [Microsoft Azure](http://azure.microsoft.com/) アカウント。<br/><br/> アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 **Site Recovery サービス** | Site Recovery の価格について詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。 ディザスター リカバリーの場所として使用するターゲット Azure リージョンに Recovery Services コンテナーを作成することをお勧めします。 たとえば、ソース VM が米国東部で実行されている場合、米国中部にレプリケートするには、米国中部にコンテナーを作成することをお勧めします。|
 **Azure 容量** | ディザスター リカバリーの場所として使用するターゲット Azure リージョンについては、仮想マシン、ストレージ アカウント、およびネットワーク コンポーネントに対して十分な容量が確保されているサブスクリプションが必要です。 容量の追加については、サポートにお問い合わせください。
-**ストレージのガイダンス** | ソース Azure 仮想マシンでパフォーマンスの問題が発生しないように、必ず[ストレージのガイダンス](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)に従ってください。 既定の設定に従うと、ソースの構成に基づいて、必要なストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズし、独自の設定を選択する場合は、必ず「[仮想マシンのディスクのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」に従ってください。
+**ストレージのガイダンス** | ソース Azure 仮想マシンでパフォーマンスの問題が発生しないように、必ず[ストレージのガイダンス](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)に従ってください。 既定の設定に従うと、ソースの構成に基づいて、必要なストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズし、独自の設定を選択する場合は、必ず「[仮想マシンのディスクのスケーラビリティ ターゲット](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)」に従ってください。
 **ネットワーク ガイダンス** | 特定の URL または IP 範囲の Azure VM からの送信接続は、ホワイトリストに登録する必要があります。 詳細については、「[Azure 仮想マシンのレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)」を参照してください。
 **Azure VM** | Windows または Linux VM に最新のルート証明書すべてが存在することを確認します。 最新のルート証明書が存在しない場合、セキュリティの制約のため、VM を Site Recovery に登録できません。
 
@@ -56,4 +54,3 @@ Azure Site Recovery は、次を調整することで、ビジネス継続性と
 ## <a name="next-steps"></a>次のステップ
 - [Azure 仮想マシンのレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)の詳細を確認する。
 - [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)してワークロードの保護を開始する。
-

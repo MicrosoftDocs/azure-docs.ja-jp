@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/25/2017
 ms.author: sashan
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: 4963598837b71e812ad3750aad9d20c8460111d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -158,4 +157,3 @@ Geo 冗長ストレージ レプリケーションによる自動バックアッ
 
 ## <a name="next-steps"></a>次のステップ
 スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
-

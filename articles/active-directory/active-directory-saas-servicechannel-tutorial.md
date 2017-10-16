@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 7e1dad18ff0ae9a9102b789b2cb32e7b96ed3d38
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル: Azure Active Directory と ServiceChannel の統合
 
@@ -122,7 +120,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 4. ServiceChannel アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットはその例です。 **NameIdentifier(ユーザー識別子)** が唯一の必須要求であり、既定値は **user.userprincipalname** ですが、ServiceChannel はこれが **user.mail** にマッピングされることを予測しています。 ジャスト イン タイムのユーザー プロビジョニングを有効にする予定がある場合は、下に示すように、次の要求を追加する必要があります。 **[役割]** 要求を、ユーザーの役割を含む **user.assignedroles** にマッピングする必要があります。  
 
     要求に関する詳細なガイダンスについては、ServiceChannel ガイドの[ここ](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example)を参照してください。
-      
+    
     ![[シングル サインオンの構成]](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 
@@ -187,7 +185,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。 
+    d. **Create** をクリックしてください。 
 
 ### <a name="creating-a-servicechannel-test-user"></a>ServiceChannel テスト ユーザーの作成
 

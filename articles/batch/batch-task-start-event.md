@@ -12,14 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: c47ab36c99dddd46a14c15018a2a46bf7f873ffa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="task-start-event"></a>タスク開始イベント
 
  スケジューラがコンピューティング ノードでタスクの開始予定を設定すると、このイベントが生成されます。 タスクが再試行またはキューに再び追加されると、このイベントは同じタスクに再度生成されますが、これにより再試行回数とシステム タスクのバージョンは更新されますのでご注意ください。
@@ -51,13 +49,13 @@ ms.lasthandoff: 04/22/2017
 
 |要素名|型|メモ|
 |------------------|----------|-----------|
-|jobId|文字列|タスクを含むジョブの ID です。|
+|jobId|String|タスクを含むジョブの ID です。|
 |id|String|タスクの ID です。|
-|taskType|文字列|タスクのタイプです。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。|
+|taskType|String|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。|
 |systemTaskVersion|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、コンピューティング ノードを異常な状態から回復しようとする動作が含まれます。|
 |[nodeInfo](#nodeInfo)|複合型|タスクが実行されたコンピューティング ノードに関する情報が含まれます。|
 |[multiInstanceSettings](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードを必要とする、複数インスタンス タスクであることを指定します。  詳細は [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) をご覧ください。|
-|[制約](#constraints)|複合型|このタスクに適用される実行の制約。|
+|[constraints](#constraints)|複合型|このタスクに適用される実行の制約。|
 |[executionInfo](#executionInfo)|複合型|タスクの実行に関する情報が含まれます。|
 
 ###  <a name="nodeInfo"></a> nodeInfo
@@ -73,7 +71,7 @@ ms.lasthandoff: 04/22/2017
 |------------------|----------|-----------|
 |numberOfInstances|int|タスクに必要なコンピューティング ノードの数。|
 
-###  <a name="constraints"></a>制約
+###  <a name="constraints"></a> constraints
 
 |要素名|型|メモ|
 |------------------|----------|-----------|
@@ -84,4 +82,3 @@ ms.lasthandoff: 04/22/2017
 |要素名|型|メモ|
 |------------------|----------|-----------|
 |retryCount|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外のコードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|
-

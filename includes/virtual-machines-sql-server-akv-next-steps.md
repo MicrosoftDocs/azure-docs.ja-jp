@@ -1,6 +1,4 @@
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を有効にできます。 最初に、Key Vault 内で非対称鍵を作成し、VM の SQL Server 内で対称鍵を作成する必要があります。 これでデータベースとバックアップの暗号化を有効にする T-SQL ステートメントを実行できます。
 
@@ -12,9 +10,7 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
 
 次の Transact-SQL スクリプトにはこれらの各領域の例があります。
 
-<a id="prerequisites-for-examples" class="xliff"></a>
-
-### 例の前提条件
+### <a name="prerequisites-for-examples"></a>例の前提条件
 
 例はいずれも 2 つ前提条件に基づきます。Key Vault からの "**CONTOSO_KEY**" という名前の非対称鍵と AKV 統合機能により作成された "**Azure_EKM_TDE_cred**" という名前の資格情報です。 以下の Transact-SQL コマンドは、これらの前提条件を準備して、例を実行できるようにするためのものです。
 
@@ -55,9 +51,7 @@ WITH PROVIDER_KEY_NAME = 'keytestvault',  --key name
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-<a id="transparent-data-encryption-tde" class="xliff"></a>
-
-### 透過的なデータ暗号化 (TDE)
+### <a name="transparent-data-encryption-tde"></a>透過的なデータ暗号化 (TDE)
 
 1. TDE のためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
 
@@ -94,9 +88,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-<a id="encrypted-backups" class="xliff"></a>
-
-### 暗号化バックアップ
+### <a name="encrypted-backups"></a>暗号化バックアップ
 
 1. バックアップを暗号化するためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
 
@@ -126,9 +118,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-<a id="column-level-encryption-cle" class="xliff"></a>
-
-### 列レベルの暗号化 (CLE)
+### <a name="column-level-encryption-cle"></a>列レベルの暗号化 (CLE)
 
 このスクリプトにより、Key Vault の非対称鍵で保護される対称鍵が作成され、その対称鍵を利用し、データベースのデータが暗号化されます。
 
@@ -153,9 +143,7 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-<a id="additional-resources" class="xliff"></a>
-
-## その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 
 これらの暗号化機能の使用方法の詳細については、「 [SQL Server 暗号化機能で EKM を使用する](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)」を参照してください。
 

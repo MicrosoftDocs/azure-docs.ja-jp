@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9128fa76cc0b0f4d879faaaf98d55b5b9180f46e
-
-
+ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security"></a>セキュリティ
 ## <a name="overview"></a>概要
@@ -45,10 +45,4 @@ Listen アクセス権を持つキーを使用するとクライアント アプ
 | Manage |Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
 
 Notification Hubs は、Microsoft Azure Access Control トークンによって許可された要求、および Notification Hubs に直接構成された共有キーを使用して生成された署名トークンによって許可された要求を受け付けます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

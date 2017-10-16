@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.date: 05/22/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
@@ -324,7 +322,7 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 > 
 > 
 
-以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。 Azure ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
+以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。 Azure Portal を使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
 
 **インデックス作成ポリシーの JSON でコレクションの空間インデックスを Point と Polygon に有効にする**
 
@@ -400,5 +398,4 @@ Azure Cosmos DB の地理空間機能の基本的な使い方を身に付けた�
 * [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する
 * [Azure Cosmos DB のクエリ](documentdb-sql-query.md)の詳細を確認する
 * [Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)の詳細を確認する
-
 

@@ -17,12 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/03/2017
 ms.author: larryfr
+ms.openlocfilehash: 90422088897fd5aa10ebd6e76910c74ad5718b07
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 6b3ee17141f773bec07cf40e0b6d63363e9b5164
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -32,7 +31,7 @@ Hive では、大規模な非構造化データに構造を投影することが
 
 HDInsight には、特定のワークロード用に調整されたいくつかのクラスター タイプがあります。 Hive クエリには、次のクラスター タイプが最も一般的に使用されます。
 
-* __インタラクティブ Hive__: [Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight でのインタラクティブ Hive の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントを参照してください。
+* __Interactive Query__: [Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight での Interactive Query の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントをご覧ください。
 
 * __Hadoop__: バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。
 
@@ -194,7 +193,7 @@ Tez を使用して実行したジョブのデバッグを支援するために�
 
 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (Live Long and Process と呼ばれることもあります) は、クエリのメモリ内キャッシュを使用可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは[特定のケースで Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
 
-HDInsight は、インタラクティブ Hive クラスター タイプの LLAP を提供します。 詳細については、[インタラクティブ Hive の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントを参照してください。
+HDInsight は、Interactive Query クラスター タイプの LLAP を提供します。 詳細については、[Interactive Query の使用](hdinsight-hadoop-use-interactive-hive.md)に関するドキュメントをご覧ください。
 
 ## <a name="hive-jobs-and-sql-server-integration-services"></a>Hive ジョブと SQL Server Integration Services
 
@@ -246,4 +245,3 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-

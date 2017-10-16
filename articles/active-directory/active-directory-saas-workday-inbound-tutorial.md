@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: f9cc94ca1fc44d10af19debab49435b265bf6e7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
-
+ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>チュートリアル: Workday を構成し、オンプレミスの Active Directory および Azure Active Directory による自動ユーザー プロビジョニングを行う
 このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方にユーザーをインポートするために必要な手順と、Workday にいくつかの属性を書き戻すオプションについて説明します。 
@@ -63,9 +61,6 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 * Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Service 2012 以上を実行するドメインに参加しているサーバーが必要です
 * Active Directory と Azure AD を同期する [Azure AD Connect](connect/active-directory-aadconnect.md)
 
-> [!NOTE]
-> Azure AD テナントがヨーロッパにある場合は、下記の「[既知の問題](#known-issues)」セクションを参照してください。
-
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -85,7 +80,7 @@ Azure ADには、Workday から Active Directory、Azure AD、SaaS アプリな�
 
 Azure Active Directory では、Workday および他の数多くの SaaS アプリケーション用の統合済みプロビジョニング コネクタをサポートしています。 
 
-単一のプロビジョニング コネクタは、単一のソース システムの API とインターフェイスし、単一のターゲット システムにデータをプロビジョニングするのに役立ちます。 Azure AD がサポートするほとんどのプロビジョニング コネクタは、単一のソースとターゲット システム (Azure AD to ServiceNow など) 向けで、Azure AD アプリケーション ギャラリーから該当のアプリケーション (ServiceNow など) を追加するだけでセットアップできます。 
+単一のプロビジョニング コネクタは、単一のソース システムの API とインターフェイスし、単一のターゲット システムにデータをプロビジョニングするのに役立ちます。 Azure AD がサポートするほとんどのプロビジョニング コネクタは、単一のソースとターゲット システム (Azure AD to ServiceNow など) 向けで、Azure AD アプリケーション ギャラリーから該当のアプリケーション (ServiceNow など) を追加することでセットアップできます。 
 
 Azure AD のプロビジョニング コネクタ インスタンスとアプリ インスタンスの間には 1 対 1 の関係があります。
 
@@ -187,7 +182,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 3. システム機能領域のセキュリティ ポリシーの一覧で、**[セキュリティ管理]** を展開し、ドメイン セキュリティ ポリシーの **[External Account Provisioning]** を選択します。  
    
     ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750988.png "ドメイン セキュリティ ポリシー")  
-4. **[Edit Permissions (権限の編集)]** をクリックし、**[Edit Permissions (権限の編集)]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。 
+4. **[アクセス許可の編集]** をクリックし、**[アクセス許可の編集]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。 
    
     ![アクセス許可の編集](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "アクセス許可の編集")  
 5. 上記の手順 1. を繰り返して、機能領域を選択する画面に戻ります。今回はスタッフを検索して、**[スタッフ] 機能領域**を選択し、**[OK]** をクリックします。
@@ -306,7 +301,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
       * **この属性を使用してオブジェクトを照合する** –このマッピングを使用して、Workday と Active Directory 間でユーザーを一意に識別するかどうかを示します。 これは、通常、Workday の Worker ID フィールドで設定され、一般的に Active Directory の従業員 ID 属性のいずれかにマッピングされます。
 
-      * **照合の優先順位** – 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が 見つかると、一致する属性の評価はそれ以上行われません。
+      * **照合の優先順位** – 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
       * **このマッピングを適用する**
        
@@ -322,7 +317,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 -   parentDistinguishedName AD 属性にマッピングする式を使用すると、1 つ以上の Workday ソース属性に基づいて、特定の OU にユーザーをプロビジョニングできます。 この例では、Workday の市区町村データに応じて異なる OU にユーザーを配置します。
 
--   userPrincipalName AD 属性にマッピングする式は、firstName.LastName@contoso.com の UPN を作成します。 それはまた、無効な特殊文字を置き換えます。
+-   userPrincipalName AD 属性にマッピングする式は、firstName.LastName@contoso.com の UPN を作成します。それはまた、無効な特殊文字を置き換えます。
 
 -   [式の記述に関するドキュメントがここにあります](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 
@@ -340,7 +335,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 | **Fax**      | facsimileTelephoneNumber     |     |    作成時 + 更新時 |
 | **FirstName**   | givenName       |     |    作成時 + 更新時 |
 | **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 作成時 + 更新時 |
-| **Mobile**  |    mobile       |     |       作成時のみ書き込まれる |
+| **Mobile**  |    mobile       |     |       作成時 + 更新時 |
 | **EmailAddress**    | mail    |     |     作成時 + 更新時 |
 | **ManagerReference**   | manager  |     |  作成時 + 更新時 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  作成時 + 更新時 |
@@ -350,7 +345,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 | **LastName**   |   sn   |     |  作成時 + 更新時 |
 | **CountryRegionReference** |  st     |     | 作成時 + 更新時 |
 | **AddressLineData**    |  streetAddress  |     |   作成時 + 更新時 |
-| **PrimaryWorkTelephone**  |  telephoneNumber   |     | 作成時のみ書き込まれる |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | 作成時 + 更新時 |
 | **BusinessTitle**   |  title     |     |  作成時 + 更新時 |
 | **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 作成時 + 更新時                                                   
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
@@ -382,6 +377,10 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 * 入力: Azure AD テナントのグローバル管理者ユーザー名とパスワード
 
+>[!IMPORTANT]
+>現在既知の問題があり、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その資格情報が動作しません。 この問題を回避するには、onmicrosoft.com ドメインでグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します
+
+
 **コマンド #4**
 
 > Get-AdSyncAgentProvisioningTasks
@@ -410,8 +409,39 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 > net start aadsyncagent
 
+>[!TIP]
+>同期エージェント サービスは、Powershell の "net"コマンドのほか、**Services.msc** を使用して開始および停止することもできます。 Powershell コマンドを実行しているときにエラーが発生する場合は、**Microsoft Azure AD Connect プロビジョニング エージェント**が **Services.msc** で実行されていることを確認します。
+
+![サービス](./media/active-directory-saas-workday-inbound-tutorial/Services.png)  
+
+**EU 顧客向けの追加構成**
+
+Azure Active Directory テナントが EU データ センターのいずれかにある場合は、次の追加手順に従ってください。
+
+1. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを停止します。
+2. エージェント インストール フォルダー (例: C:\Program files \microsoft Azure AD Connect プロビジョニング エージェント) に移動します。
+3. テキスト エディターで **SyncAgnt.exe.config** を開きます。
+4. https://manage.hub.syncfabric.windowsazure.com/Management を **https://eu.manage.hub.syncfabric.windowsazure.com/Management** に置き換えます
+5. https://provision.hub.syncfabric.windowsazure.com/Provisioning を **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning** に置き換えます
+6. **SyncAgnt.exe.config** ファイルを保存します。
+7. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを開始します。
+
+**エージェントのトラブルシューティング**
+
+エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)には、エージェントによって実行されるすべての操作のイベントが含まれています。 これらのイベントを表示するには:
+    
+1. **Eventvwr.msc** を開きます。
+2. **[Windows ログ] > [アプリケーション]** の順に選択します。
+3. ソース **AADSyncAgent** のログに記録されたすべてのイベントを表示します。 
+4. エラーと警告をを確認します。
+
+Powershell コマンドで指定された Active Directory または Azure Active Directory の資格情報にアクセス許可の問題がある場合は、次のようなエラーが表示されます。 
+    
+![イベント ログ](./media/active-directory-saas-workday-inbound-tutorial/Windows_Event_Logs.png) 
+
+
 ### <a name="part-4-start-the-service"></a>パート 4: サービスの開始
-パート 1 ～ 3 の部分が完了したら、Azure 管理ポータルに戻ってプロビジョニング サービスを開始できます。
+パート 1 ～ 3 が完了したら、Azure Portal に戻ってプロビジョニング サービスを開始できます。
 
 1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
@@ -419,11 +449,12 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 
-4. Workday から読み込まれたユーザーや、その後 Active Directory に追加または更新されたユーザーなどの個々の同期イベントは、**[監査ログ]** タブで表示できます。 **[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
+4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、Workday から読み込まれたユーザーや、その後 Active Directory に追加または更新されたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。 **[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
 
-5.  エージェント コンピューターの Windows アプリケーション ログには、エージェントを介して実行されるすべての操作が表示されます。
+5.  エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)で、新しいエラーや警告が発生していないかどうかを確認します。 こうしたイベントを表示するには、サーバーで **Eventvwr.msc** を起動し、**[Windows ログ] > [アプリケーション]** の順に選択します。 プロビジョニングに関連するすべてのメッセージが、ソース **AADSyncAgent** のログに記録されます。 
+    
 
-6. プロビジョニングが完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
+6. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
 ![Azure ポータル](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
 
@@ -468,7 +499,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のよう になります。contoso4 は適切なテナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のよう になります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
 
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
 
@@ -522,7 +553,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **この属性を使用してオブジェクトを照合する** – このマッピングを使用して、Workday と Azure AD 間でユーザーを一意に識別するかどうかを示します。 これは、通常、Workday の Worker ID フィールドで設定され、一般的に Azure AD の従業員 ID 属性 (新規) または拡張属性にマッピングされます。
 
-   * **照合の優先順位** – 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が 見つかると、一致する属性の評価はそれ以上行われません。
+   * **照合の優先順位** – 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
    * **このマッピングを適用する**
 
@@ -541,9 +572,9 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 
-4. **[監査ログ]** タブで、個々の同期イベントを表示できます。 **[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
+4. **[監査ログ]** タブで、個々の同期イベントを表示できます。**[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
 
-5. プロビジョニングが完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
+5. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
 
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>メール アドレスを Workday に書き戻す構成
@@ -602,13 +633,15 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 
-4. **[監査ログ]** タブで、個々の同期イベントを表示できます。 **[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
+4. **[監査ログ]** タブで、個々の同期イベントを表示できます。**[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
 
-5. プロビジョニングが完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
+5. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
 ## <a name="known-issues"></a>既知の問題
 
-* **ヨーロッパ ロケールの監査ログ** - Azure AD テナントがヨーロッパのデータ センターにある場合、このテクニカル プレビューのリリース時点で、Workday コネクタ アプリケーションが [Azure Portal](https://portal.azure.com) に表示されないという[監査ログ](active-directory-saas-provisioning-reporting.md)に関する既知の問題があります。 この問題は修正が予定されています。 更新プログラムについて、近い将来にもう一度このスペースを確認してください。 
+* PowerShell コマンド **Add-ADSyncAgentAzureActiveDirectoryConfiguration** の実行中、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その管理者の資格情報が動作しません。これは既知の問題です。 この問題を回避するには、onmicrosoft.com ドメインで Azure AD のグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します。
+
+* EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
 ## <a name="additional-resources"></a>その他のリソース
 * [チュートリアル: Workday と Azure Active Directory の間のシングル サインオンの構成](active-directory-saas-workday-tutorial.md)
@@ -618,4 +651,3 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: a2760072acb7c62204759f3ec0d3cb9899460f2d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-bus-authentication-with-shared-access-signatures"></a>Shared Access Signature による Service Bus の認証
 
 *Shared Access Signatures* (SAS) は Service Bus メッセージングの主要なセキュリティ メカニズムです。 この記事では、SAS とそのしくみ、およびプラットフォームに依存しない方法で SAS を使用する方法について説明します。

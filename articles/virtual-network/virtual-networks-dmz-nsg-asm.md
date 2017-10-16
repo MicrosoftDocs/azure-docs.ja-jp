@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
-ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.lasthandoff: 01/05/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>例 1 – 従来の PowerShell を使用して、NSG を使用する単純な DMZ を作成する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -41,7 +40,7 @@ ms.lasthandoff: 01/05/2017
 * 2 つのサブネット ("FrontEnd" と "BackEnd") を含む仮想ネットワーク "CorpNetwork"
 * 両方のサブネットに適用されるネットワーク セキュリティ グループ
 * アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
-* アプリケーション バックエンド サーバーを表す&2; つの Windows サーバー ("AppVM01"、"AppVM02")
+* アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
 * DNS サーバーを表す Windows サーバー ("DNS01")
 
 この例で示した環境の大部分は、「参照」セクションで紹介している PowerShell スクリプトで構築します。 VM と Virtual Network の構築については、スクリプト例には含まれていますが、このドキュメントでは詳細な説明を省略します。 
@@ -57,12 +56,12 @@ ms.lasthandoff: 01/05/2017
 >
 >
 
-スクリプトが正常に実行されたら、オプションの手順を追加してもかまいません。「参照」セクションに対象となる&2; つのスクリプトを示します。単純なWeb アプリケーションを使用して Web サーバーとアプリケーション サーバーをセットアップして、この DMZ 構成でテストができるようにするスクリプトです。
+スクリプトが正常に実行されたら、オプションの手順を追加してもかまいません。「参照」セクションに対象となる 2 つのスクリプトを示します。単純なWeb アプリケーションを使用して Web サーバーとアプリケーション サーバーをセットアップして、この DMZ 構成でテストができるようにするスクリプトです。
 
 次のセクションでは、ネットワーク セキュリティ グループについて、また、この例でネットワーク セキュリティ グループがどのように機能しているのかを、PowerShell スクリプトの主要な行を追いながら詳しく説明します。
 
 ## <a name="network-security-groups-nsg"></a>ネットワーク セキュリティ グループ (NSG)
-この例では、NSG グループを作成し、そこに&6; つのルールを設定します。 
+この例では、NSG グループを作成し、そこに 6 つのルールを設定します。 
 
 > [!TIP]
 > 一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。 どのルールが先に評価されるかは、割り当てる優先度によって決まります。 具体的なルールが一度適用されたトラフィックに対しては、他のルールは評価されません。 NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
@@ -204,7 +203,7 @@ ms.lasthandoff: 01/05/2017
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*許可*) DNS サーバーに対する Web サーバーの DNS 参照
 1. Web サーバーである IIS01 が、www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
-2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の&10;.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
+2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の 10.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
 3. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
 4. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
    * NSG ルール 1 (DNS) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
@@ -269,7 +268,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 
 1. Azure サブスクリプションに接続する
 2. ストレージ アカウントの作成
-3. ネットワーク構成ファイルの定義に従って VNet を&1; つ、サブネットを&2; つ作成する
+3. ネットワーク構成ファイルの定義に従って VNet を 1 つ、サブネットを 2 つ作成する
 4. 4 つの Windows サーバー VM を構築する
 5. NSG を構成する
    * NSG を作成
@@ -590,5 +589,4 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
-
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: nickfloyd@newrelic.com
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f4f13c909a6ff640d403f5264004176c087925dd
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="new-relic-application-performance-management-on-azure"></a>Azure の New Relic によるアプリケーション パフォーマンス管理
 Azure でホストされるアプリケーションに、New Relic による世界クラスのパフォーマンス監視を追加することができます。 Azure アプリの監視、トラブルシューティング、チューニングを包括的に行えるようになるほか、Azure を使用することで New Relic 製品の割引価格の対象にもなります。
@@ -29,7 +29,7 @@ Azure でホストされるアプリケーションに、New Relic による世�
 New Relic は、Web トランザクションの読み込み時間とスループットを、サーバーとユーザーのブラウザーの両方から追跡します。 データベースでの処理にかかった時間の表示、時間がかかったクエリと Web 要求の分析、アップタイムの監視と通知、アプリケーションの例外の追跡など、多数の処理を実行します。 
 
 ## <a name="special-pricing"></a>特別価格
-New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。 New Relic Pro は、Azure Cloud Services のインスタンス サイズに基づいて提供されます。 価格情報については、Azure Marketplace の [New Relic のページ](https://azure.microsoft.com/marketplace/partners/newrelic/newrelic/)を参照してください。また、エンタープライズレベルの価格については、New Relic ((sales@newrelic.com)) にお問い合わせください。
+New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。 New Relic Pro は、Azure Cloud Services のインスタンス サイズに基づいて提供されます。 価格情報については、次を参照してください。、 [New Relic ページ](https://azure.microsoft.com/marketplace/partners/newrelic/newrelic/)Azure Marketplace または New Relic にお問い合わせください (sales@newrelic.com) のエンタープライズ レベルの価格を設定します。
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用版サブスクリプションをご利用になれます。
 
@@ -51,10 +51,4 @@ Azure での New Relic の使用の詳細については、以下の情報を含
 * [Microsoft Azure クラウド プラットフォーム用の New Relic](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-cloud-services)
 * [Microsoft Azure App Service 用の New Relic](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-portal)
 * [New Relic/Azure のトラブルシューティング](https://docs.newrelic.com/docs/agents/net-agent/azure-troubleshooting)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

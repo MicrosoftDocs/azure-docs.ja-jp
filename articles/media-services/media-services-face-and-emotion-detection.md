@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 09/18/2017
 ms.author: milanga;juliako;
+ms.openlocfilehash: a55a0c2ef8c1c065b39fce9dc6ef2f806b60dfdc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dfff2900aedd3fa2cb0b38d18e71f001c44ababa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
 ## <a name="overview"></a>概要
@@ -154,7 +153,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="aggregate-defaults"></a>集計の既定値
 以下は、集計時間枠と間隔の設定に対して推奨される値です。 AggregateEmotionWindowMs は AggregateEmotionIntervalMs より長くする必要があります。
 
-|| 既定値 (秒) | 最小 (秒) | 最大 (秒) |
+|| 既定値 (秒) | 最大 (秒) | 最小 (秒) |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0.5 |2 |0.25|
 | AggregateEmotionIntervalMs |0.5 |1 |0.25|
@@ -504,5 +503,4 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://amslabs.azurewebsites.net/demos/Analytics.html)
-
 

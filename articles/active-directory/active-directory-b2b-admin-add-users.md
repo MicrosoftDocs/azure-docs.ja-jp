@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法 | Microsoft Docs"
 description: "管理者は、Azure Active Directory B2B コラボレーションを使用してパートナー組織から Azure AD にゲスト ユーザーを追加できます。"
 services: active-directory
@@ -16,15 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
-ms.lasthandoff: 03/17/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法
 
 全体管理者と制限付き管理者は、[Azure Portal](https://portal.azure.com) を使用して、B2B コラボレーション ユーザーをディレクトリ、任意のグループ、または任意のアプリケーションに招待できます。
@@ -70,4 +66,3 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-

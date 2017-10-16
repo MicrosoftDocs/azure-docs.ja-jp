@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bedcbc3218022b36cc9f961c7621db3c5a639828
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM (Windows PowerShell スクリプト)
 仮想マシンに Web アプリケーションをデプロイします。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
@@ -80,9 +79,9 @@ True の場合は、信頼されたルート証明機関によって署名され
 | ワイルドカード文字を許可する |false |
 
 ### <a name="vmpassword"></a>VMPassword
-仮想マシンアカウントの資格情報。 例: -VMPassword @{Name = "admin"; Password = "password"}
+仮想マシンアカウントの資格情報。 例: VMPassword @{Name ="admin"です。パスワード ="password"}
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |
@@ -91,9 +90,9 @@ True の場合は、信頼されたルート証明機関によって署名され
 | ワイルドカード文字を許可する |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-Azure での SQL Database の資格情報。 例: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
+Azure での SQL Database の資格情報。 例: DatabaseServerPassword @{Name ="admin"です。パスワード ="password"}
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |
@@ -185,5 +184,4 @@ JSON 構成ファイルではデプロイ対象の詳細が指定されます。
 ```
 
 プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。 仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
-
 

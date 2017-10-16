@@ -16,15 +16,25 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 647509ea36e487aca5db661adb3268e845988f78
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Azure のサインアップに関する問題のトラブルシューティング
 Azure にサインアップできない場合は、この記事の情報を使用して、一般的な問題のトラブルシューティングを行ってください。 サインアップ時にクレジット カードに関する問題が発生した場合は、「[Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否される](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。 ご自身の Azure アカウントでサインインできない場合は、「[Azure サブスクリプションにサインインして管理することができない](billing-cannot-login-subscription.md)」を参照してください。
+
+## <a name="error-we-cannot-proceed-with-signup-due-to-an-issue-with-your-account-please-contact-billing-support"></a>エラー "アカウントに問題が発生したため、サインアップを続行できません。 課金サポートにお問い合わせください。" 
+
+この問題を解決するには、次の手順に従ってください。
+
+1. アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com/Profile)にログインします。 
+2. **[詳細の編集]** をクリックします。
+3. すべてのアドレス フィールドが完成し、有効になっていることを確認します。 
+4. Azure サブスクリプションにサインアップするときに、クレジット カードの登録時に入力した請求先住所が銀行のレコードと一致していることを確認します。
+
+それでもエラーが発生する場合は、別のブラウザーを使用してサインアップを試してください。
 
 ## <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>[カードによる本人確認] セクションで進行状況バーが停止する
 
@@ -80,4 +90,3 @@ Azure イン オープン プランのサブスクリプションを作成する
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

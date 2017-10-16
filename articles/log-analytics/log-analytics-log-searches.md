@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
 
@@ -176,7 +175,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 時間でフィルター処理するときは、2 つの期間 (OMS ポータルで指定した期間 (S1) とクエリに指定した期間 (S2)) の *共通部分* が結果として取得されることに注意してください。
 
-![共通部分](./media/log-analytics-log-searches/oms-search-intersection.png)
+![intersection](./media/log-analytics-log-searches/oms-search-intersection.png)
 
 つまり、期間に共通部分がない場合 (たとえば OMS ポータルで **[今週]** を選択し、クエリに **[先週]** を定義した場合)、共通部分がないため、何の結果も取得されません。
 
@@ -557,7 +556,7 @@ countdistinct は、各グループに含まれる一意の値の数をカウン
 ## <a name="use-the-measure-interval-command"></a>Measure interval コマンドの使用
 Log Analytics では、パフォーマンス データをほぼリアルタイムで収集し、あらゆるパフォーマンス カウンターからデータを集めて視覚化することができます。 「 **Type:Perf** 」というクエリを入力するだけで、Log Analytics 環境内のカウンター数やサーバー数に基づいて多数のメトリック グラフが返されます。 必要に応じてメトリックの集計を組み合わせれば、環境内の全体的なメトリックをざっと見渡したり、必要に応じて、さらに粒度の細かいデータにまで踏み込んで調べたりすることもできます。
 
-たとえば、すべてのコンピューターを対象に平均 CPU 時間を調べることになったとしましょう。 コンピューターごとの平均 CPU 時間に着目しても、結果の凹凸がならされてしまい、有意義な結果が得られない可能性があります。 さらに踏み込んで調べるためには、もっと小さな時間枠を 1 つのまとまりとして結果を集計し、さまざまな切り口の時系列に注目します。 たとえば、すべてのコンピューターを対象に、1 時間ごとの平均 CPU 使用率を調べるには次のクエリを実行します。
+たとえば、すべてのコンピューターを対象に平均 CPU 時間を調べることになったとしましょう。 コンピューターごとの平均 CPU 時間に着目しても、結果の凹凸がならされてしまい、有意義な結果が得られない可能性があります。さらに踏み込んで調べるためには、もっと小さな時間枠を 1 つのまとまりとして結果を集計し、さまざまな切り口の時系列に注目します。 たとえば、すべてのコンピューターを対象に、1 時間ごとの平均 CPU 使用率を調べるには次のクエリを実行します。
 
 ```
 Type:Perf CounterName="% Processor Time" InstanceName="_Total" | measure avg(CounterValue) by Computer Interval 1HOUR
@@ -598,4 +597,3 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
 * Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-search-reference.md) でご覧いただけます。
-

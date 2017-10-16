@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
 管理された Hadoop サービスとして、HDInsight では、HDInsight クラスターで使用される、基盤となる VM の OS の修正プログラムを適用処理します。 2016 年 8 月 1 日の時点で、Linux ベースの HDInsight クラスター (バージョン 3.4 以降) に対するゲスト OS 更新プログラムの適用ポリシーが変更されました。 新しいポリシーの目的は、修正プログラム適用のための再起動の回数を大幅に削減することです。 新しいポリシーでは、Linux クラスターの仮想マシン (VM) への修正プログラム適用が継続されます。修正プログラム適用は、指定されたクラスターのノード間で交互に、毎週月曜日または木曜日の午前 12 時 (UTC) に開始されます。 ただし、どの VM も、ゲスト OS の修正プログラム適用のための再起動は 30 日ごとに最大で 1 回のみです。 また、新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内には行われません。 修正プログラムは、VM が再起動されたら有効になります。
 
@@ -47,8 +44,7 @@ HDInsight クラスターの仮想マシンは、重要なセキュリティ更�
 ## <a name="how-to-use-the-script"></a>スクリプトの使用方法 
 
 このスクリプトを使用するには、次の情報が必要です。
-1. スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh。
-    HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
+1. スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh。HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
   
 2. スクリプトが適用されるクラスター ノードの種類: headnode、workernode、zookeeper。 このスクリプトは、クラスター内のすべてのノードの種類に適用する必要があります。 スクリプトをノードの種類に適用しない場合、そのノードの種類の仮想マシンが引き続き以前の更新プログラム適用スケジュールを使用します。
 
@@ -73,4 +69,3 @@ HDInsight クラスターの仮想マシンは、重要なセキュリティ更�
 
 * [クラスターの作成時にスクリプト アクションを使用する](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
 * [実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
-

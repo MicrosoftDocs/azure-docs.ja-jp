@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: cfreeman
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: d17ed3dff08f00a1d6a2108608e42b29f95fbd84
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 
 ![Application Insights ユーザー フロー ツール](./media/app-insights-usage-flows/flows.png)

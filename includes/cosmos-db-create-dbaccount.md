@@ -16,7 +16,7 @@
     設定|推奨値|説明
     ---|---|---
     ID|*一意の値*|この Azure Cosmos DB アカウントを識別する一意の名前。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、ID は一意であっても識別可能なものを使用してください。 ID に含めることができるのは英小文字、数字、ハイフン (-) のみ、3 文字以上で 50 文字以内にする必要があります。
-    API|SQL (DocumentDB)|この記事の後半で、[DocumentDB API](../articles/documentdb/documentdb-introduction.md) に対してプログラミングします。|
+    API|SQL (DocumentDB)|この記事の後半で、[DocumentDB API](../articles/cosmos-db/documentdb-introduction.md) に対してプログラミングします。|
     サブスクリプション|*該当するサブスクリプション*|この Azure Cosmos DB アカウントに使用する Azure サブスクリプション。 
     リソース グループ|*ID と同じ値*|自分のアカウントの新しいリソースグループの名前。 簡略化のため、ID と同じ名前を使用することができます。 
     場所|*ユーザーに最も近いリージョン*|Azure Cosmos DB アカウントをホストする地理的な場所です。 データに最も高速にアクセスできる、ユーザーに最も近い場所を選択します。
@@ -27,5 +27,5 @@
 
 6.  デプロイに成功したことを [通知] ウィンドウで確認できたら、[通知] ウィンドウを閉じて、ダッシュボードの **[すべてのリソース]** タイルから新しいアカウントを開きます。 
 
-    ![[All Resources\(すべてのリソース\)] タイルの DocumentDB アカウント](./media/cosmos-db-create-dbaccount/all-resources.png)
+    ![[すべてのリソース] タイルの Azure Cosmos DB アカウント](./media/cosmos-db-create-dbaccount/all-resources.png)
  
