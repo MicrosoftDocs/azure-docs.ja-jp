@@ -19,7 +19,7 @@
 | 統合 Load Balancer | |○ |○ |○ |○ |
 | [常時接続](../articles/app-service/web-sites-configure.md) | | |○ |○ |○ |
 | [スケジュールされたバックアップ](../articles/app-service/web-sites-backup.md) | | | |1 日に 1 回 |5 分ごとに 1 回<sup>8</sup> |
-| [自動スケール](../articles/app-service/web-sites-scale.md) | | |○ |○ |○ |
+| [自動スケール](../articles/app-service/web-sites-scale.md) | | | |○ |○ |
 | [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |○ |○ |○ |○ |○ |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) のサポート | |○ |○ |○ |○ |
 | [エンドポイントの監視](../articles/app-service/web-sites-monitor.md) | | |○ |○ |○ |
