@@ -18,7 +18,7 @@
 | カスタム ドメインの [SSL サポート](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |無制限 |無制限、5 件の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限、5 件の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |
 | 統合 Load Balancer | |○ |○ |○ |○ |
 | [常時接続](../articles/app-service/web-sites-configure.md) | | |○ |○ |○ |
-| [スケジュールされたバックアップ](../articles/app-service/web-sites-backup.md) | | | |1 日に 1 回 |5 分ごとに 1 回<sup>8</sup> |
+| [スケジュールされたバックアップ](../articles/app-service/web-sites-backup.md) | | | |1 日に 12 回 |5 分ごとに 1 回<sup>8</sup> |
 | [自動スケール](../articles/app-service/web-sites-scale.md) | | |○ |○ |○ |
 | [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |○ |○ |○ |○ |○ |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) のサポート | |○ |○ |○ |○ |
