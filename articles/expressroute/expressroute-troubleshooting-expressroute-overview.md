@@ -192,7 +192,7 @@ Azure Portal で、ExpressRoute 回線の状態を確認するには、左側の
 Azure プライベート ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 正常に構成されたプライベート ピアリングの応答のサンプルは次のとおりです。
 
@@ -216,12 +216,12 @@ Azure プライベート ピアリング構成の詳細を取得するには、�
 Azure パブリック ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 Microsoft ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 ピアリングが構成されていない場合は、エラー メッセージが表示されます。 記述されているピアリング (この例では Azure パブリック ピアリング) が回線内で構成されていない場合の応答のサンプルは次のとおりです。
 
