@@ -123,7 +123,7 @@ Azure ソリューションのデプロイと管理に関する概念につい�
          "value": ""
        },
        "storageUri": {
-         "type": "string",
+         "type": "object",
          "value": ""
        }
    }
