@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure Network Watcher PowerShell を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure Portal を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](network-watcher-troubleshoot-manage-portal.md)
