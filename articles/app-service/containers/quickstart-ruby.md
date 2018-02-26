@@ -54,34 +54,6 @@ rails server
 
 Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
 
-![Hello-world](./media/quickstart-ruby/hello-world.png)
-
-## <a name="modify-app-to-display-welcome-message"></a>ウェルカム メッセージを表示するようにアプリを変更する
-
-ウェルカム メッセージを表示するようにアプリケーションを変更します。 最初にルートを設定する必要があります。そのためには、*~/workspace/ruby-docs-hello-world/config/routes.rb* ファイルを編集して `hello` という名前のルートを含めます。
-
-  ```ruby
-  Rails.application.routes.draw do
-      #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-      root 'application#hello'
-  end
-  ```
-
-ブラウザーに HTML としてメッセージを返すように、アプリケーションのコントローラーを変更します。 
-
-編集するために *~/workspace/hello-world/app/controllers/application_controller.rb* を開きます。 次のコード サンプルになるように `ApplicationController` クラスを変更します。
-
-  ```ruby
-  class ApplicationController > ActionController :: base
-    protect_from_forgery with: :exception
-    def hello
-      render html: "Hello, world from Azure Web App on Linux!"
-    end
-  end
-  ```
-
-これでアプリの構成は完了です。 Web ブラウザーで `http://localhost:3000` に移動して、ルート ランディング ページを確認します。
-
 ![構成された Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
