@@ -24,7 +24,6 @@ ms.lasthandoff: 01/23/2018
 # <a name="system-views"></a>システム ビュー
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse カタログ ビュー
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
-* [sys.pdw_database_mappings](http://msdn.microsoft.com/library/mt203891.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
 * [sys.pdw_loader_backup_run_details](https://msdn.microsoft.com/library/mt203877.aspx)
