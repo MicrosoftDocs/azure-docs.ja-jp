@@ -35,10 +35,10 @@ Azure Container Service (AKS) クラスターは、Azure CLI を使用してア�
 
 ## <a name="get-cluster-versions"></a>クラスター バージョンを取得する
 
-クラスターをアップグレードする前に、`az aks get-upgrades` コマンドを使用して、アップグレードで利用できる Kubernetes のリリースを確認します。
+クラスターをアップグレードする前に、`az aks get-versions` コマンドを使用して、アップグレードで利用できる Kubernetes のリリースを確認します。
 
 ```azurecli
-az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
+az aks get-versions --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
 ここでは、ノードの現在のバージョンが `1.7.9` であることがわかります。また、[Upgrades] 列からは利用可能なアップグレードのバージョンがわかります。
