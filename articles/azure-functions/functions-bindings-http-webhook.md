@@ -139,7 +139,6 @@ public static string Run(CustomObject req, TraceWriter log)
 public class CustomObject {
      public String name {get; set;}
 }
-}
 ```
 
 ### <a name="trigger---f-example"></a>トリガー - F# の例
