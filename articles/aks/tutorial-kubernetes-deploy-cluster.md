@@ -65,7 +65,7 @@ az aks install-cli
 Kubernetes クラスターに接続するように kubectl を構成するには、次のコマンドを実行します。
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get nodes][kubectl-get] コマンドを実行します。
