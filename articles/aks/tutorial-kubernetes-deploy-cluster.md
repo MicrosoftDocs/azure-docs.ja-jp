@@ -45,7 +45,7 @@ az provider register -n Microsoft.ContainerService
 次の例では、`myAKSCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --agent-count 1 --generate-ssh-keys
 ```
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
