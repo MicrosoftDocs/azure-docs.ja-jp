@@ -90,13 +90,13 @@ AKS クラスターと ACR レジストリとの間で認証が構成されて�
 まず、AKS に対して構成されているサービス プリンシパルの ID を取得します。 リソース グループの名前と AKS クラスターの名前は、お使いの環境に合わせて更新してください。
 
 ```azurecli
-CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+$CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 ACR レジストリのリソース ID を取得します。レジストリ名は実際の ACR レジストリの名前に、またリソース グループは、その ACR レジストリが存在するリソース グループに置き換えてください。
 
 ```azurecli
-ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
+$ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 適切なアクセス権を付与するロールの割り当てを作成します。
