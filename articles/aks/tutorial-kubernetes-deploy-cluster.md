@@ -45,7 +45,7 @@ az provider register -n Microsoft.ContainerService
 次の例では、`myAKSCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --agent-count 1 --generate-ssh-keys
 ```
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
@@ -65,7 +65,7 @@ az aks install-cli
 Kubernetes クラスターに接続するように kubectl を構成するには、次のコマンドを実行します。
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get nodes][kubectl-get] コマンドを実行します。
@@ -90,13 +90,13 @@ AKS クラスターと ACR レジストリとの間で認証が構成されて�
 まず、AKS に対して構成されているサービス プリンシパルの ID を取得します。 リソース グループの名前と AKS クラスターの名前は、お使いの環境に合わせて更新してください。
 
 ```azurecli
-CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+$CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 ACR レジストリのリソース ID を取得します。レジストリ名は実際の ACR レジストリの名前に、またリソース グループは、その ACR レジストリが存在するリソース グループに置き換えてください。
 
 ```azurecli
-ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
+$ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 適切なアクセス権を付与するロールの割り当てを作成します。
