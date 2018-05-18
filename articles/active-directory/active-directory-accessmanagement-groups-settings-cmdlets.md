@@ -72,7 +72,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 4. その後、使用ガイドラインの値を更新します。
   
   ```
-  $setting["UsageGuidelinesUrl"] = "<https://guideline.com>"
+  $setting["UsageGuidelinesUrl"] = "<https://guideline.example.com>"
   ```  
 5. 最後に、設定を適用します。
   
@@ -141,7 +141,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
   GuestUsageGuidelinesUrl
   GroupCreationAllowedGroupId
   AllowToAddGuests              True
-  UsageGuidelinesUrl            <https://guideline.com>
+  UsageGuidelinesUrl            <https://guideline.example.com>
   ClassificationList
   EnableGroupCreation           True
   ```
