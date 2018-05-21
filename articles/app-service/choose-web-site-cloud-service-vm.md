@@ -25,7 +25,7 @@ ms.lasthandoff: 03/16/2018
 ## <a name="overview"></a>概要
 Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][Azure App Service]、[Virtual Machines][Virtual Machines]、[Service Fabric][Service Fabric]、[Cloud Services][Cloud Services])。 それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
 
-Azure App Service は、ほとんどの Web アプリに適しています。 デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。 既にあるサイトは、[オンライン移行ツール](https://www.migratetoazure.net/)を使用して簡単に Azure App Service に移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。 [Web ジョブ][WebJobs]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
+Azure App Service は、ほとんどの Web アプリに適しています。 デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。 既にあるサイトは、[オンライン移行ツール](https://www.movemetothecloud.net/)を使用して簡単に Azure App Service に移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。 [Web ジョブ][WebJobs]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
 
 Service Fabric は、新しいアプリを作成する場合やマイクロサービス アーキテクチャを使用するように既存のアプリを書き換える場合にお勧めします。 共有プールのマシン上で動作するアプリは、小規模から開始し、必要に応じて数百または数千ものコンピューターを含む非常に大きなスケールまで拡張することができます。 ステートフル サービスによってアプリの状態を一貫して確実に格納することが容易になり、Service Fabric はサービスのパーティション分割、スケーリング、可用性を自動的に管理します。  また、Service Fabric は、Open Web Interface for .NET (OWIN) と ASP.NET Core を使用した Web API もサポートします。  App Service に比べて、Service Fabric は基になるインフラストラクチャへのより細かい制御 (直接アクセス) も提供します。 サーバーにリモート接続したり、サーバーのスタートアップ タスクを構成したりできます。 Cloud Services は、制御の程度と使いやすさにおいて Service Fabric と似ていますが、現在ではレガシ サービスになりつつあり、新しい開発には Service Fabric をお勧めします。
 
