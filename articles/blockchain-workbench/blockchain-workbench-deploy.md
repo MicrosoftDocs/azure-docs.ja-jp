@@ -53,7 +53,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、アプリケーション マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../active-directory/develop/active-directory-application-manifest.md)」をご覧ください。
 
 1. 登録したアプリケーションの詳細ウィンドウで **[マニフェスト]** を選びます。
-2. GUID を生成します。 PowerShell コマンド `[guid]::NewGuid()` またはオンライン ツールを使って、GUID を生成できます。 
+2. GUID を生成します。 PowerShell コマンド `[guid]::NewGuid()` または`New-GUID コマンドレット`、オンライン ツールを使って、GUID を生成できます。 
 3. マニフェストの **appRoles** セクションを更新します。 [マニフェストの編集] ウィンドウで、**[編集]** を選び、`"appRoles": []` を提供された JSON に置き換えます。 忘れずに、**id** フィールドの値を、生成した GUID に置き換えてください。 
 
     ``` json
