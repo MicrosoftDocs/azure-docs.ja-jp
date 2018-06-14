@@ -25,10 +25,12 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Twitter
 1. [Twitter Apps](https://apps.twitter.com/) に移動し、資格情報を使用してサインインします。
 2. **[Create New App]** をクリックします。 
 3. フォームの **[Name]****[Description]****[Website]** に値を入力します。
-4. **[Callback URL]** に「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換える必要があります。
+4. **[Callback URL]** に「`https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に、**{policyId}** は実際のポリシーID（例：b2c_1_policy）に置き換える必要があります。Callback URL は全て小文字でなければならないことに注意してください。
 5. **開発者契約**に同意するボックスをオンにし、**[Create your Twitter application]** をクリックします。
-6. アプリが作成されたら、**[Keys and Access Tokens]\(キーとアクセス トークン\)** をクリックします。
-7. **[Consumer Key]** と **[Consumer Secret]** の値をコピーします。 テナントで ID プロバイダーとして Twitter を構成するには、この両方の値が必要です。
+6. アプリが作成されたら、リストからアプリを選択し、 **Settings** タブを開きます。
+7. **Enable Callback Locking** のチェックを外して **Update settings** をクリックします。
+8. **[Keys and Access Tokens]\(キーとアクセス トークン\)** をクリックします。
+9. **[Consumer Key]** と **[Consumer Secret]** の値をコピーします。 テナントで ID プロバイダーとして Twitter を構成するには、この両方の値が必要です。
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Twitter を構成する
 1. Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。 
