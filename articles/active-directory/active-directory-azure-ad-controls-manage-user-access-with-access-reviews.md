@@ -34,8 +34,6 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 レビューの作成、レビューへの回答、アクセスの確認を含め、この機能を使用する各ユーザーにライセンスが必要です。 
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
-
 
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
