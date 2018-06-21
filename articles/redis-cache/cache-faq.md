@@ -391,7 +391,11 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
   > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
   >
 
-* ASP.NET の外部では、 [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
+* ASP.NET の外部、および Azure WebSites の global.asax では、 [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
+
+  > [!NOTE] 
+  > この API で指定する値は、 "*全体*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minWorkerThreads と minIOThreads を 1CPU 当たり 50 に設定する場合は、 `ThreadPool.SetMinThreads(200, 200)`を使用します。
+  >
 
 <a name="server-gc"></a>
 
