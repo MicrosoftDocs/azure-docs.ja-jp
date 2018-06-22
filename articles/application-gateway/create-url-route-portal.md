@@ -159,7 +159,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-url-route-portal/application-gateway-iistest.png)
 
-3. URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+3. URL を http://&lt;ip-address&gt;:8080/images/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
 
     ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/create-url-route-portal/application-gateway-iistest-images.png)
 
