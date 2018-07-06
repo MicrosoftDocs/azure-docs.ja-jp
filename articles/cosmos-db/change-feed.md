@@ -385,87 +385,86 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
             await result.StopAsync();    
             ```
 
-That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+これで完了です。 これらのいくつかの手順の後に、**DocumentFeedObserver.ProcessChangesAsync** メソッドが実行されます。
 
-Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
+上のコードは、異なる種類のオブジェクトと相互作用を示して分かりやすく説明するためものです。適切な変数を定義し、正しい値で初期化しなければなりません。この記事で使われた完全なコードは [GitHub のリポジトリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2) から取得することができます。
 
 > [!NOTE]
-> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+> マスター キーをコードに書くべきではありませんし、上のコードのようにコンフィグ ファイルに書くべきでもありません。「[how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/)」を参照してください。
 
+## <a name="faq"></a>FAQ
 
-## FAQ
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>変更フィードの読み取りには別の方法もありますか? それぞれの方法はいつ使用しますか?
 
-### What are the different ways you can read Change Feed? and when to use each method?
+変更フィードの読み取りには 3 つのオプションがあります:
 
-There are three options for you to read change feed:
-
-* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+* **[ Azure Cosmos DB SQL API .NET SDK の使用](#sql-sdk)**
    
-   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
+   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。
 
-* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
+* **[Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用](#change-feed-processor)**
 
-   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
+   変更フィード プロセッサ ライブラリを利用することで、変更フィードの複雑さの多くをアウトソースできます。 このライブラリは複雑さの多くを隠しますが、それでも変更フィードの完全なコントロールを得ることができます。 このライブラリは[オブザーバー パターン](https://en.wikipedia.org/wiki/Observer_pattern)に従い、処理関数は SDK によって呼び出されます。
 
-   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
+   高スループットの変更フィードがあれば、変更フィードを読み取るための複数のクライアントをインスタンス化できます。 "変更フィード プロセッサ ライブラリ" を使用しているので、負荷は自動的に異なるクライアント間に分割されます。 ユーザーは何もする必要がありません。 複雑さはすべて SDK によって処理されます。 ただし、カスタム パーティション戦略用の IParitionLoadBalancingStrategy を実装すれば、独自のロード バランサーを使用できます。 パーティション上でカスタム処理を変更する場合は IPartitionProcessor を実装します。 ただし、SDK を使用する場合はパーティション範囲を処理できますが、特定のパーティション キーを処理する場合は SQL API 用の SDK を使用する必要があります。
 
-* **[Using Azure Functions](#azure-functions)** 
+* **[Azure 関数の使用](#azure-functions)**
    
-   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
+   最後の Azure 関数は、最もシンプルなオプションです。 このオプションを使用することをお勧めします。 Azure Functions アプリケーションで Azure Cosmos DB トリガーを作成するときに、接続先の Azure Cosmos DB コレクションを選択します。これで、コレクションに変更が加えられるたびに関数がトリガーされます。 Azure 関数と変更フィードの使用方法を示す[スクリーン キャスト](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s)をご覧ください。
 
-   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
+   トリガーを作成するには、Azure Functions ポータル、Azure Cosmos DB ポータル、またはプログラムを使用します。 Visual Studio と VS Code は、Azure 関数を記述する上で大きな助けとなります。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](serverless-computing-database.md)」を参照してください。
 
-### What is the sort order of documents in change feed?
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>変更フィード内のドキュメントはどのような並び順ですか?
 
-Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
+変更フィード ドキュメントは変更時刻順です。 この並べ替え順序は、パーティション単位でのみ保証されます。
 
-### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>複数リージョン アカウントの場合、書き込みリージョンがフェールオーバーすると変更フィードはどうなりますか? 変更フィードもフェールオーバーしますか? フェールオーバー後も変更フィードは隣接として表示されますか、それともリセットされますか?
 
-Yes, change feed will work across the manual failover operation and it will be contiguous.
+はい、変更フィードは手動フェールオーバー操作にまたがって機能し、隣接します。
 
-### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>ドキュメントの TTL (Time to Live) プロパティを -1 に設定した場合、変更フィードは変更データをどれくらい維持しますか?
 
-Change feed will persist forever. If data is not deleted, it will remain in change feed.
+変更フィードは永久に持続します。 データが削除されなければ、変更フィード内に保持されます。
 
-### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>既定では、変更フィードはすべての読み取りリージョンで利用できますが、特定リージョンから読み取るための Azure 関数はどのように構成できますか?
 
-Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
+特定リージョンから読み取るための Azure 関数を構成することは、現時点ではできません。 Azure Functions リポジトリに GitHub の問題があり、Azure Cosmos DB バインディングおよびトリガーの優先領域を設定できません。
 
-Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
+Azure 関数は既定の接続ポリシーを使用します。 Azure Functions の接続モードは構成可能です。既定では、書き込みリージョンから読み取るため、同じリージョンに Azure 関数を併置させることをお勧めします。
 
-### What is the default size of batches in Azure Functions?
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Azure 関数のバッチの既定サイズは何ですか?
 
-100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
+Azure 関数の呼び出しごとに 100 ドキュメントです。 ただし、この値は function.json ファイルで構成できます。 こちらが[全構成オプションの一覧](../azure-functions/functions-run-local.md)です。 開発をローカルで行っている場合は、[local.settings.json](../azure-functions/functions-run-local.md) ファイルのアプリケーション設定を更新してください。
 
-### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>コレクションを監視し、その変更フィードを読み取っていますが、挿入されたすべてのドキュメントを取得できずに一部のドキュメントが欠落しています。 どうなっているのでしょうか?
 
-Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
+同一リース コレクションの同一コレクションを別の関数が読み取っていないことを確認してください。 個人的に経験したことがあります。欠落しているドキュメントが、同一リースを使用する自分の別の Azure 関数によって処理されていることに後になって気が付きました。
 
-Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
+したがって、同一変更フィードを読み取る複数の Azure 関数を作成するときは、それぞれに異なるリース コレクションを使用させるか、"leasePrefix" 構成を使って同一コレクションを共有させる必要があります。 ただし、変更フィード プロセッサ ライブラリを使用する場合は、関数の複数インスタンスを開始すれば、ドキュメントは SDK によって自動的にインスタンス間に分割されます。
 
-### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>私のドキュメント更新間隔は 1 秒ですが、変更フィードをリッスンしている Azure 関数ですべての変更を取得できていません。
 
-Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
+Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 “feedPollTime” を構成できます。詳しくは、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
 
-### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Mongo API コレクションにドキュメントを挿入しましたが、変更フィードでドキュメントを取得すると、別の ID 値が表示されます。 何がおかしいのでしょうか?
 
-Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
+ご利用のコレクションは Mongo API コレクションです。 変更フィードは SQL クライアントを使用して読み取られ、項目は JSON 形式でシリアル化されます。 JSON 形式なので、MongoDB クライアントでは BSON 形式のドキュメントと JSON 形式の変更フィード間で不一致が発生します。 表示されるのは、JSON 形式で表現された BSON ドキュメントとなります。 Mongo アカウントでバイナリ属性を使用していれば、JSON に変換されます。
 
-### Is there a way to control change feed for updates only and not inserts?
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>変更フィードを更新のみ、挿入なしに制御する方法はありますか?
 
-Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
+現時点ではできませんが、この機能の開発は予定されています。 現在は、ドキュメントに更新のソフト マーカーを追加できます。
 
-### Is there a way to get deletes in change feed?
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>変更フィード内の削除を取得する方法はありますか?
 
-Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
+現在、変更フィードは削除をログに記録していません。 変更フィードは継続的に改善されており、この機能の開発は予定されています。 現在は、ドキュメントに削除のソフト マーカーを追加できます。 ドキュメントに “deleted” という属性を追加して “true” に設定し、それが自動的に削除されるようにドキュメントの TTL を設定します。
 
-### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>古いドキュメント (たとえば、5 年前に追加されたドキュメント) の変更フィードを読み取ることは可能ですか?
 
-Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
+はい、ドキュメントが削除されていなければ、コレクションの配信元の範囲で変更フィードを読み取ることができます。
 
-### Can I read change feed using JavaScript?
+### <a name="can-i-read-change-feed-using-javascript"></a>JavaScript を使って変更フィードを読み取ることは可能ですか?
 
-Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
+はい、変更フィード向けの Node.js SDK の初期サポートが最近追加されました。 これは、次の例に示されるように使用できます。コードを実行する前に、documentdb モジュールを最新バージョンに更新してください。
 
 ```js
 
