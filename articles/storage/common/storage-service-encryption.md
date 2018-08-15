@@ -22,12 +22,14 @@ Storage Service Encryption は新しいストレージ アカウントと既存�
 
 この機能により次のデータが自動的に暗号化されます。
 
-- Azure Blob Storage、Azure Functions、Azure Queue Storage、Azure Table Storage。  
+- Azure ストレージ サービス:
+    - Azure Managed Disks
+    - Azure Blob storage
+    - Azure Files
+    - Azure Queue storage
+    - Azure Table storage 
 - パフォーマンス レベル (Standard と Premium の両方)。
 - デプロイメント モデル (Azure Resource Manager とクラシックの両方)。
-
-> [!Note]  
-> Storage Service Encryption は、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) で使用できません。 [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) など、OS レベルの暗号化を使用することをお勧めします。Azure Disk Encryption は、Windows 上では業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)、Linux 上では [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して KeyVault と統合された暗号化を提供します。
 
 Storage Service Encryption は、Azure Storage サービスのパフォーマンスには影響しません。
 
@@ -59,9 +61,6 @@ Storage Service Encryption は、既定で既存のすべての Resource Manager
 
 **暗号化キーへのアクセスを取り消すことはできますか?**  
 はい。Azure Key Vault で[独自の暗号化キーを使用している](storage-service-encryption-customer-managed-keys.md)場合は、取り消すことができます。
-
-**Storage Service Encryption は、Azure Managed Disks で使用できますか?**  
-いいえ。Storage Service Encryption は、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) で使用できません。 [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) など、OS レベルの暗号化を使用することをお勧めします。Azure Disk Encryption は、Windows 上では業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)、Linux 上では [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して KeyVault と統合された暗号化を提供します。
 
 **Storage Service Encryption と Azure Disk Encryption の違いを教えてください。**  
 Azure Disk Encryption は、BitLocker、DM-Crypt、Azure KeyVault などの OS ベースのソリューション間に統合を提供します。 Storage Service Encryption は、Azure Storage プラットフォーム レイヤーの仮想マシンの以下にネイティブで暗号化を提供します。
