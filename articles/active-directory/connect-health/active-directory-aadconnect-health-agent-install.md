@@ -189,7 +189,7 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 >
 >
 
-## <a name="manual-azure-ad-connect-health-for-sync-registration"></a>主導による Azure AD Connect Health for Sync の登録
+## <a name="manual-azure-ad-connect-health-for-sync-registration"></a>手動による Azure AD Connect Health for Sync の登録
 Azure AD Connect が正常にインストールされた後で、Azure AD Connect Health for Sync エージェントの登録に失敗した場合は、次の PowerShell コマンドを使用してエージェントを手動で登録できます。
 
 > [!IMPORTANT]
