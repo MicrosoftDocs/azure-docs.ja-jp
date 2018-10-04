@@ -267,22 +267,61 @@ Authorization: Bearer <access-token>
 
 ## <a name="virtual-machines-limitations"></a>Virtual Machines の制限事項
 
-マネージド ディスクは移動をサポートしていません。 この制限は、いくつかの関連リソースも移動できないことを意味します。 以下を移動することはできません。
+2018年9月24日から、管理ディスクの移動がサポートされました。
 
-* マネージド ディスク
-* マネージド ディスクを使用する仮想マシン
-* マネージド ディスクから作成されたイメージ
-* マネージド ディスクから作成されたスナップショット
-* マネージド ディスクを使用する仮想マシンの可用性セット
+1. この機能を有効化するために登録します。
 
-マネージド ディスクは移動できませんが、コピーを作成した後、その既存のマネージド ディスクから新しい仮想マシンを作成できます。 詳細については、次を参照してください。
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
 
-* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) または [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) で、マネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
-* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) or [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)で既存のマネージド OS ディスクを使用して仮想マシンを作成する
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
 
-プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
+1. 登録処理の初めは `Registering` のステータスを返します。現在のステータスは、以下で確認できます。
 
-証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. ステータスが `Registered` になるまで数分間待ちます。
+
+1. 機能が登録されたら、`Microsoft.Compute` リソースプロバイダを登録します。すでに登録されていても、再度行ってください。
+
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
+
+管理ディスクの移動がサポートされると、以下の移動もサポートされます。
+
+* 管理ディスクを使う仮想マシン
+* 管理ディスクイメージ
+* 管理ディスクスナップショット
+* 管理ディスクを使う仮想マシンを含む可用性セット
+
+サポートされない制約は以下です。
+
+* Key Vault に保存されている証明書がある仮想マシンは、同じサブスクリプションの別リソースグループへは移動できますが、別のサブスクリプションへは移動できません。
+* Azure Backup に設定された仮想マシンの移動はサポートされません。以下の回避を用いて移動できます。
+  * 対象の仮想マシンを探します。
+  * 次のパターンの名前に合致するリソースグループを探します：`AzureBackupRG_<location of your VM>_1` 例えば、AzureBackupRG_westus2_1
+  * Azure ポータルの場合、"隠しタイプを表示" をクリックします。
+  * PowerShell の場合、`Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` コマンドレットを用います。
+  * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1` を用います。
+  * `Microsoft.Compute/restorePointCollections` リソースタイプで、`AzureBackup_<name of your VM that you're trying to move>_###########` のパターンに一致するリソースを探します。
+  * 見つけたリソースを削除します。
+  * 削除が終わると、仮想マシンを移動できます。
+* Standard SKU ロードバランサ、または Standard SKU 公開 IP の仮想マシンスケールセットは移動できません。
+* マーケットプレイスから購入した契約を含む仮想マシンはリソースグループ間またはサブスクリプション間のどちらも移動できません。プロビジョニングを現在のサブスクリプションから解除し、新しいサブスクリプションで再デプロイしてください。
 
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 
