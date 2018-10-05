@@ -201,6 +201,7 @@ Authorization: Bearer <access-token>
 * Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
+* Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * マネージド ID - ユーザー割り当て
 * Media Services
 * Mobile Engagement
@@ -223,7 +224,7 @@ Authorization: Bearer <access-token>
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines - マネージド ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
+* Virtual Machines - マネージド ディスクを使用する VM に関しては、「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Machine Scale Sets - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
@@ -254,7 +255,6 @@ Authorization: Bearer <access-token>
 * Lab Services - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Managed Applications
-* Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Microsoft Genomics
 * NetApp
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
@@ -314,7 +314,7 @@ Authorization: Bearer <access-token>
 * Azure Backup に設定された仮想マシンの移動はサポートされません。以下の回避を用いて移動できます。
   * 対象の仮想マシンを探します。
   * 次のパターンの名前に合致するリソースグループを探します：`AzureBackupRG_<location of your VM>_1` 例えば、AzureBackupRG_westus2_1
-  * Azure ポータルの場合、"隠しタイプを表示" をクリックします。
+  * Azure ポータルの場合、"非表示の型の表示" をクリックします。
   * PowerShell の場合、`Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` コマンドレットを用います。
   * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1` を用います。
   * `Microsoft.Compute/restorePointCollections` リソースタイプで、`AzureBackup_<name of your VM that you're trying to move>_###########` のパターンに一致するリソースを探します。
