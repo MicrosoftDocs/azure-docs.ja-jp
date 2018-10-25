@@ -96,7 +96,7 @@ ms.locfileid: "48807226"
 
 #### <a name="iot-edge-module-metadata-and-the-container-registry"></a>IoT Edge モジュール メタデータとコンテナー レジストリ
 
-IoT Edge モジュールのメタデータには、Azure コンテナー レジストリ (ACR) に格納されているイメージ参照情報が含まれています。 Azure Marketplace によってイメージがパブリック マーケットプレース レジストリにコピーされ、認定後に顧客向けに利用可能になります。 IoT Edge モジュール イメージを使用するためのすべてのユーザー要求は、Marketplace コンテナー レジストリで処理されます。
+IoT Edge モジュールのメタデータには、Azure Container Registry (ACR) に格納されているイメージ参照情報が含まれています。 Azure Marketplace によってイメージがパブリック マーケットプレース レジストリにコピーされ、認定後に顧客向けに利用可能になります。 IoT Edge モジュール イメージを使用するためのすべてのユーザー要求は、Marketplace コンテナー レジストリで処理されます。
 
 ![コンテナー イメージ](./media/cloud-partner-portal-create-iot-edge-module-offer/container-images.png)
 
