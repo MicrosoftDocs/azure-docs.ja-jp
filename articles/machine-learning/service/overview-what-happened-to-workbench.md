@@ -55,11 +55,11 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 実行履歴は、しばらくの間はアクセスできる状態が維持されます。 更新されたバージョンの Azure Machine Learning サービスに移行する準備ができたら、コピーを保存しておきたい場合はこれらの実行履歴をエクスポートすることができます。
 
-実行履歴は、現在のリリースでは_実験_と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
+実行履歴は、現在のリリースでは __実験__ と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
 
 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
-[ ![オンライン ポータル](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
+![オンライン ポータル](./media/overview-what-happened-to-workbench/image001.png)
 
 
 ## <a name="can-i-still-prep-data"></a>データは引き続き準備できますか。
