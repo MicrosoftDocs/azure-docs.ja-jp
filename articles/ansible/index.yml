@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f5ace1a59293d7cd3f20d15344741fa90b2892c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 11b8f6c14e4851a0da304b3baa66cad9445d42f9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276518"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958800"
 documentType: LandingData
 title: Azure 上の Ansible のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/27/2018
 abstract:
-  description: クラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化するには、<a href="http://www.ansible.com">Ansible</a> を使用します。
+  description: クラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化するには、<a href="https://www.ansible.com">Ansible</a> を使用します。
 sections:
 - title: 5 分間のクイック スタート
   items:

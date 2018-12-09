@@ -194,7 +194,7 @@ Java で実行した Apache Storm トポロジの場合、[Exec Maven プラグ�
 
 別の役立つプラグインとして [Apache Maven Compiler プラグイン](http://maven.apache.org/plugins/maven-compiler-plugin/)があり、コンパイル オプションを変更するために使用します。 Maven がアプリケーションのソースとターゲットに使用する Java バージョンが変更されます。
 
-* HDInsight __3.4 以前__の場合は、ソースとターゲットの Java バージョンを __1.7__ に設定します。
+* HDInsight __3.4 以前__ の場合は、ソースとターゲットの Java バージョンを __1.7__ に設定します。
 
 * HDInsight __3.5__ の場合は、ソースとターゲットの Java バージョンを __1.8__ に設定します。
 

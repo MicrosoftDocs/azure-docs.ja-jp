@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241319"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581002"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します
 
 システムでの障害発生後にストリーム処理アプリケーションがメッセージの再処理を行う方法はさまざまです。
 
@@ -25,7 +25,7 @@ ms.locfileid: "51241319"
 
 この記事では、Spark Streaming が厳密に 1 回だけ処理するように構成する方法について説明します。
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Spark Streaming での厳密に 1 回のセマンティクス
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Apache Spark Streaming での厳密に 1 回のセマンティクス
 
 まず、問題が発生した後にすべてのシステム障害ポイントが再起動する方法、およびデータの損失を回避する方法を検討します。 Spark Streaming アプリケーションには次のものがあります。
 
@@ -41,11 +41,11 @@ ms.locfileid: "51241319"
 
 Spark Streaming アプリケーションがイベントを読み取るソースは、"*再生可能*" である必要があります。 つまり、メッセージを取得した後、メッセージを永続化または処理する前に、システムで障害が発生した場合、ソースは同じメッセージを再び提供する必要があります。
 
-Azure では、Azure Event Hubs と Kafka on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、HDFS、Microsoft Azure Storage、Azure Data Lake Store のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
+Azure では、Azure Event Hubs と [Apache Kafka](https://kafka.apache.org/) on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)、Microsoft Azure Storage、Azure Data Lake Store のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
 
 ### <a name="reliable-receivers"></a>信頼性の高いレシーバー
 
-Spark Streaming では、Event Hubs や Kafka のようなソースは "*信頼性の高いレシーバー*" を備え、各レシーバーはソースの読み取りの進行状況を追跡します。 信頼性の高いレシーバーは、状態をフォールト トレラントなストレージに保持します (ZooKeeper、または HDFS に書き込まれる Spark Streaming チェックポイント)。 このようなレシーバーで障害が発生して再起動した場合、中断した場所を取得できます。
+Spark Streaming では、Event Hubs や Kafka のようなソースは "*信頼性の高いレシーバー*" を備え、各レシーバーはソースの読み取りの進行状況を追跡します。 信頼性の高いレシーバーは、状態をフォールト トレラントなストレージに保持します ([Apache ZooKeeper](https://zookeeper.apache.org/)、または HDFS に書き込まれる Spark Streaming チェックポイント)。 このようなレシーバーで障害が発生して再起動した場合、中断した場所を取得できます。
 
 ### <a name="use-the-write-ahead-log"></a>先書きログの使用
 
@@ -89,5 +89,5 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Spark Streaming の概要](apache-spark-streaming-overview.md)
-* [YARN で可用性の高い Spark Streaming ジョブを作成する](apache-spark-streaming-high-availability.md)
+* [Apache Spark Streaming の概要](apache-spark-streaming-overview.md)
+* [Apache Hadoop YARN で高可用性 Apache Spark Streaming ジョブを作成する](apache-spark-streaming-high-availability.md)

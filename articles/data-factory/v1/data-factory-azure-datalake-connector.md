@@ -309,7 +309,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store との間でのデータのコピーに関する JSON の例
-次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに_直接_コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
+次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例: Azure Blob Storage から Azure Data Lake Store にデータをコピーする
 このセクションのコード例では以下を示します。

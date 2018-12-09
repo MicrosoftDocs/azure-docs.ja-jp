@@ -4,28 +4,27 @@ description: Azure IoT Edge の継続的インテグレーションと継続的�
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 11/12/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16dac996f871241b8c9b5e4c1b797d07d79aeb79
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633735"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632564"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
-[Azure Pipelines 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) または [Jenkins 用の Azure IoT Edge プラグイン](https://plugins.jenkins.io/azure-iot-edge)を使用して、Azure IoT Edge アプリケーションで DevOps を簡単に導入できます。 この記事では、Azure Pipelines と Microsoft Team Foundation Server (TFS) の継続的インテグレーションと継続的配置の機能を使用して、アプリケーションを迅速かつ効率的に Azure IoT Edge にビルド、テスト、配置する方法について説明します。 
+Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サーバー上の [Jenkins 用の Azure IoT Edge プラグイン](https://plugins.jenkins.io/azure-iot-edge)を使用して、Azure IoT Edge アプリケーションで DevOps を簡単に導入できます。 この記事では、Azure Pipelines と Azure DevOps Server の継続的インテグレーションと継続的配置の機能を使用して、アプリケーションを迅速かつ効率的に Azure IoT Edge にビルド、テスト、配置する方法について説明します。 
 
 この記事では、次のことについて説明します。
 * サンプルの IoT Edge ソリューションを作成してチェックインします。
-* お使いの Azure DevOps 用の Azure IoT Edge 拡張機能をインストールします。
 * 継続的インテグレーション (CI) を構成して、ソリューションをビルドします。
 * 継続的配置 (CD) を構成して、ソリューションを配置し、応答を表示します。
 
-この記事の手順を完了するには、30 分かかります。
+この記事の手順を完了するには、20 分かかります。
 
 ![CI および CD](./media/how-to-ci-cd/cd.png)
 
@@ -34,7 +33,7 @@ ms.locfileid: "51633735"
 
 このセクションでは、ビルド プロセスの一部として実行できる単体テストを含む IoT Edge ソリューションのサンプルを作成します。 このセクションのガイダンスに従う前に、「[Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)」の手順を完了してください。
 
-1. VS Code コマンド パレットで、コマンド **Azure IoT Edge: New IoT Edge solution** を入力して実行します。 次に、ご自身のワークスペース フォルダーを選択し、ソリューション名 (既定の名前は **EdgeSolution**) を指定して、C# モジュール (**FilterModule**) をこのソリューションの最初のユーザー モジュールとして作成します。 また、この最初のモジュールの Docker イメージ リポジトリを指定する必要もあります。 既定のイメージ リポジトリは、ローカル Docker レジストリに基づきます (`localhost:5000/filtermodule`)。 継続的インテグレーションを強化するには、Azure Container Registry (`<your container registry address>/filtermodule`) または Docker Hub に変更する必要があります。
+1. VS Code コマンド パレットで、コマンド **Azure IoT Edge: New IoT Edge solution** を入力して実行します。 次に、ご自身のワークスペース フォルダーを選択し、ソリューション名 (既定の名前は **EdgeSolution**) を指定して、C# モジュール (**FilterModule**) をこのソリューションの最初のユーザー モジュールとして作成します。 また、この最初のモジュールの Docker イメージ リポジトリを指定する必要もあります。 既定のイメージ リポジトリは、ローカル Docker レジストリに基づきます (`localhost:5000/filtermodule`)。 継続的インテグレーションを強化するには、これを Azure Container Registry (`<your container registry address>/filtermodule`) または Docker Hub に変更します。
 
     ![ACR の設定](./media/how-to-ci-cd/acr.png)
 
@@ -42,7 +41,7 @@ ms.locfileid: "51633735"
 
 3. これで、IoT Edge ソリューションのサンプルが準備できました。 既定の C# モジュールは、パイプ メッセージ モジュールとして機能します。 `deployment.template.json` では、このソリューションに 2 つのモジュールが含まれていることがわかります。 メッセージは `tempSensor` モジュールから生成され、`FilterModule` を介して直接パイプ処理された後、使用している IoT ハブに送信されます。
 
-4. これらのプロジェクトを保存し、Azure Repos または TFS リポジトリにチェックインします。
+4. これらのプロジェクトを保存し、Azure Repos または Azure DevOps Server リポジトリにチェックインします。
     
 > [!NOTE]
 > Azure Repos の使用に関する詳細については、「[Share your code with Visual Studio and Azure Repos (自分のコードを Visual Studio と Azure Repos に共有する)](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)」を参照してください。
@@ -55,15 +54,11 @@ ms.locfileid: "51633735"
 
     ![チェックイン コード](./media/how-to-ci-cd/init-project.png)
 
-1. Azure DevOps Marketplace の [Azure Pipelines 用 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) にアクセスしてください。 **[無料で入手]** をクリックして、ウィザードに従ってこの拡張機能をご自身の Azure DevOps 組織にインストールするか、TFS にダウンロードします。
-
-    ![拡張機能のインストール](./media/how-to-ci-cd/install-extension.png)
-
-1. Azure Pipelines で、**[ビルド** とリリース] ハブを開き、**[ビルド]** タブで、**[+ 新しいパイプライン]** を選択します。 または、すでにビルド パイプラインがある場合は、**[+ 新規]** ボタンを選択します。
+1. Azure Pipelines 内で、**[ビルド]** タブを開き、**[+ 新しいパイプライン]** を選択します。 または、すでにビルド パイプラインがある場合は、**[+ 新規]** ボタンを選択します。 **[新しいビルド パイプライン]** を選択します。
 
     ![新しいパイプライン](./media/how-to-ci-cd/add-new-build.png)
 
-1. プロンプトが表示されたら、ソースの種類として **Git** を選択します。 次に、コードがあるプロジェクト、リポジトリ、ブランチを選択します。 **[続行]** を選択します。
+1. プロンプトが表示されたら、ソースの種類として **Azure DevOps Git** を選択します。 次に、コードがあるプロジェクト、リポジトリ、ブランチを選択します。 **[続行]** を選択します。
 
     ![git の選択](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -79,15 +74,19 @@ ms.locfileid: "51633735"
     
     ![ビルド エージェントの構成](./media/how-to-ci-cd/configure-env.png)
 
-1. エージェント ジョブで [+] をクリックして、ビルド パイプラインに 2 つのタスクを追加します。 最初は、**[Azure IoT Edge]** からのタスクです。 2 番目は、**[ビルド成果物の発行]** からのタスクです。
+1. エージェント ジョブで [+] をクリックして、ビルド パイプラインに 3 つのタスクを追加します。 最初の 2 つは、**[Azure IoT Edge]** からのタスクです。 3 番目は、**[ビルド成果物の発行]** からのタスクです
     
     ![タスクの追加](./media/how-to-ci-cd/add-tasks.png)
 
-1. 最初の **[Azure IoT Edge]** タスクで **[表示名]** を「**Module Build and Push (モジュールのビルドとプッシュ)**」に更新し、**[アクション]** ドロップダウン リストで **[Build and Push]\(ビルドとプッシュ\)** を選択します。 **[Module.json File]\(Module.json ファイル\)** テキストボックスで、以下のパスを追加します。 その後、**[コンテナー レジストリの種類]** を選択して、コード内に同じレジストリを構成して選択します (module.json)。 このタスクでは、ソリューション内のすべてのモジュールをビルドおよびプッシュし、指定したコンテナー レジストリにパブリッシュします。 複数のモジュールを異なるレジストリにプッシュする場合は、**モジュールのビルドとプッシュ**のタスクを複数保持できます。 IoT Edge ソリューションがコード リポジトリのルートの下にない場合、ビルド定義で **[Path of Edge solution root]\(Edge ソリューション ルートのパス\)** を指定できます。
+1. 最初の **[Azure IoT Edge]** タスクで **[表示名]** を "**Azure IoT Edge - Build module images**" に更新し、**[アクション]** ドロップダウン リストで "**Build module images**" を選択します。 **[.template.json file]\(.template.json ファイル\)** コントロールで、IoT Edge ソリューションについて説明している **deployment.template.json** ファイルを選択します。 次に、**[既定のプラットフォーム]** を選択し、IoT Edge デバイスと同じプラットフォームを選択します。 このタスクでは、指定したターゲット プラットフォームを使用してソリューション内のすべてのモジュールをビルドします。 **deployment.json** ファイルも生成され、出力変数内にファイル パスが見つかります。 この変数の別名を `edge` に設定します。
     
     ![ビルドとプッシュ](./media/how-to-ci-cd/build-and-push.png)
 
-1. **[ビルド成果物の発行]** タスクでは、ビルド タスクによって生成された配置ファイルを指定します。 **[発行するためのパス]** を "config/deployment.json" に設定します。 最後のタスクで **[Path of Edge solution root]\(Edge ソリューション ルートのパス\)** を設定した場合は、ここでルート パスを組み合わせる必要があります。 たとえば、Edge ソリューションのルート パスが "./edgesolution" の場合、**[発行するためのパス]** は "./edgesolution/config/deployment.json" でなければなりません。 `deployment.json` ファイルはビルド時に生成されるので、テキスト ボックス内の赤いエラー行を無視してもかまいません。 
+1. 2 番目の **[Azure IoT Edge]** タスクで **[表示名]** を "**Azure IoT Edge - Push module images**" に更新し、**[アクション]** ドロップダウン リストで "**Push module images**" を選択します。 [コンテナー レジストリの種類] を選択して、コード内に同じレジストリを構成して選択します (module.json)。 **[.template.json file]\(.template.json ファイル\)** コントロールで、IoT Edge ソリューションについて説明している **deployment.template.json** ファイルを選択します。 次に、**[既定のプラットフォーム]** を選択し、ビルドされたモジュール イメージと同じプラットフォームを選択します。 このタスクでは、すべてのモジュール イメージが選択したコンテナー レジストリにプッシュされます。 **deployment.json** ファイル内にコンテナー レジストリ資格情報も追加され、出力変数内にファイル パスが見つかります。 この変数の別名を `edge` に設定します。 モジュール イメージをホストするコンテナー レジストリが複数ある場合は、このタスクを複製し、別のコンテナー レジストリを選択し、詳細設定の **[Bypass module(s)]\(モジュールをバイパス\)** を使用して、この特定のレジストリ用ではないイメージをバイパスする必要があります。
+
+    ![プッシュ](./media/how-to-ci-cd/push.png)
+
+1. **[ビルド成果物の発行]** タスクでは、ビルド タスクによって生成された配置ファイルを指定します。 **[Path to publish]\(発行するパス\)** を `$(edge.DEPLOYMENT_FILE_PATH)` に設定します。
 
     ![成果物の発行](./media/how-to-ci-cd/publish-build-artifacts.png)
 
@@ -133,21 +132,21 @@ ms.locfileid: "51633735"
 
     ![QA 用タスクの追加](./media/how-to-ci-cd/add-task-qa.png)
 
-5. [Azure IoT Edge] タスクで、**[アクション]** ドロップダウン リストに移動し、**[Deploy to IoT Edge device]\(IoT Edge デバイスに配置\)** を選択します。 **[Azure サブスクリプション]** を選択し、使用している **IoT ハブ名**を入力します。 IoT Edge **配置 ID** と配置**優先順位**を指定できます。 1 つまたは複数のデバイスへの配置を選択することもできます。 **複数のデバイス**に配置する場合は、デバイスの**ターゲット条件**を指定する必要があります。 ターゲット条件とは、IoT ハブの一連の Edge デバイスと突き合わせるフィルターです。 デバイス タグを条件として使用する場合は、対応するデバイス タグを IoT Hub デバイス ツインに合わせて更新する必要があります。 'qa' というタグが付いた IoT Edge デバイスがいくつかあると想定します。その場合、タスク構成は次のスクリーンショットのようになります。 
+5. [Azure IoT Edge] タスクで、**[アクション]** ドロップダウン リストに移動し、**[Deploy to IoT Edge device]\(IoT Edge デバイスに配置\)** を選択します。 **[Azure サブスクリプション]** を選択し、使用している **IoT ハブ名**を入力します。 1 つまたは複数のデバイスへの配置を選択できます。 **複数のデバイス**に配置する場合は、デバイスの**ターゲット条件**を指定する必要があります。 ターゲット条件とは、IoT ハブの一連の Edge デバイスと突き合わせるフィルターです。 デバイス タグを条件として使用する場合は、対応するデバイス タグを IoT Hub デバイス ツインに合わせて更新する必要があります。 詳細設定で、**[IoT Edge deployment ID]\(IoT Edge 配置 ID\)** を "deploy-qa" に更新します。 'qa' というタグが付いた IoT Edge デバイスがいくつかあると想定します。その場合、タスク構成は次のスクリーンショットのようになります。 
 
     ![QA への配置](./media/how-to-ci-cd/deploy-to-qa.png)
 
     新しいリリース パイプラインを保存します。 **[保存]** ボタンをクリックします。 次に、**[パイプライン]** をクリックしてパイプラインに戻ります。
 
-6. 2 番目のステージは、運用環境用です。 新しいステージ "PROD" を追加するには、ステージ "QA" を単に複製するだけです。その後、複製したステージを **PROD** という名前に変更します。
+6. 2 番目のステージは、運用環境用です。 新しいステージ "PROD" を追加するには、ステージ "QA" を複製します。その後、複製したステージを **PROD** という名前に変更します。
 
     ![ステージの複製](./media/how-to-ci-cd/clone-stage.png)
 
-7. 運用環境のタスクを構成します。 タスク構成に 'prod' というタグが付いた IoT Edge デバイスがいくつかあると想定します。ターゲット条件を "prod" に更新し、配置 ID を "deploy-prod" に設定します。 **[保存]** ボタンをクリックします。 次に、**[パイプライン]** をクリックしてパイプラインに戻ります。
+7. 運用環境のタスクを構成します。 タスク構成に 'prod' というタグが付いた IoT Edge デバイスがいくつかあると想定します。ターゲット条件を "prod" に更新し、詳細設定で配置 ID を "deploy-prod" に設定します。 **[保存]** ボタンをクリックします。 次に、**[パイプライン]** をクリックしてパイプラインに戻ります。
     
     ![運用環境への配置](./media/how-to-ci-cd/deploy-to-prod.png)
 
-7. 現時点では、ビルド成果物は **QA** ステージ、次いで **PROD** ステージで継続的にトリガーされます。 ただしほとんどの場合、QA デバイスでいくつかのテスト ケースを統合し、ビットを手動で承認する必要があります。 ビットは後で PROD 環境に配置されます。 PROD ステージでの承認を以下のように設定します。
+7. 現時点では、ビルド成果物は **QA** ステージ、次いで **PROD** ステージで継続的にトリガーされます。 ただしほとんどの場合、QA デバイスでいくつかのテスト ケースを統合し、ビットを手動で承認する必要があります。 ビットは後で PROD 環境に配置されます。 PROD ステージでの承認を以下のスクリーンショットのように設定します。
 
     1. **[配置前条件]** 設定パネルを開きます。
 
@@ -158,7 +157,7 @@ ms.locfileid: "51633735"
         ![条件の設定](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
 
-8. この段階でリリース パイプラインが次のように設定されています。
+8. この段階でリリース パイプラインが次のスクリーンショットのように設定されています。
 
     ![リリース パイプライン](./media/how-to-ci-cd/release-pipeline.png)
 
@@ -171,11 +170,11 @@ ms.locfileid: "51633735"
 
     ![手動トリガー](./media/how-to-ci-cd/manual-trigger.png)
 
-2. ビルド パイプラインが正常に完了すると、リリースが **QA** ステージにトリガーされます。 ビルド パイプライン ログに移動すると、次のように表示されます。
+2. ビルド パイプラインが正常に完了すると、リリースが **QA** ステージにトリガーされます。 ビルド パイプライン ログに移動すると、次のスクリーンショットのように表示されます。
 
     ![ビルド ログ](./media/how-to-ci-cd/build-logs.png)
 
-3. **QA** ステージに正常に配置されると、承認者に通知がトリガーされます。 リリース パイプラインに移動すると、次のように表示されます。 
+3. **QA** ステージに正常に配置されると、承認者に通知がトリガーされます。 リリース パイプラインに移動すると、次のスクリーンショットのように表示されます。 
 
     ![承認保留中](./media/how-to-ci-cd/pending-approval.png)
 

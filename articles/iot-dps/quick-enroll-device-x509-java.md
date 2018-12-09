@@ -73,7 +73,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    2. デバイス グループのルート証明書を追加します。 サンプル ルート証明書が必要な場合は、次のように _X.509 証明書ジェネレーター_を使用します。
+    2. デバイス グループのルート証明書を追加します。 サンプル ルート証明書が必要な場合は、次のように _X.509 証明書ジェネレーター_ を使用します。
         1. コマンド ウィンドウで、フォルダー **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** に移動します。
         2. 次のコマンドを実行してツールをビルドします。
 
@@ -150,7 +150,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
     mvn install -DskipTests
     ```
 
-   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 前のセクションで _X.509 証明書ジェネレーター_を実行した場合、このパッケージは既にマシンにダウンロードされています。 
+   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 前のセクションで _X.509 証明書ジェネレーター_ を実行した場合、このパッケージは既にマシンにダウンロードされています。 
 
 3. コマンド ウィンドウで次のコマンドを使用してサンプルを実行します。
 
@@ -169,14 +169,14 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 
 1 つの X.509 デバイスを登録するには、「[Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK](quick-enroll-device-tpm-java.md#javasample)」(Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する) で使用した*個々の登録*のサンプル コードを次のように変更します。
 
-1. X.509 クライアント証明書の*共通名*をクリップボードにコピーします。 [前のサンプル コード セクション](#javasample)で説明したように _X.509 証明書ジェネレーター_を使用する場合は、証明書の_共通名_を入力するか、既定の **microsoftriotcore** を使用します。 この**共通名**を *REGISTRATION_ID* 変数の値として使用します。 
+1. X.509 クライアント証明書の*共通名*をクリップボードにコピーします。 [前のサンプル コード セクション](#javasample)で説明したように _X.509 証明書ジェネレーター_ を使用する場合は、証明書の _共通名_ を入力するか、既定の **microsoftriotcore** を使用します。 この**共通名**を *REGISTRATION_ID* 変数の値として使用します。 
 
     ```Java
     // Use common name of your X.509 client certificate
     private static final String REGISTRATION_ID = "[RegistrationId]";
     ```
 
-2. 変数 *TPM_ENDORSEMENT_KEY* の名前を *PUBLIC_KEY_CERTIFICATE_STRING* に変更します。 *PUBLIC_KEY_CERTIFICATE_STRING* 変数の値として、クライアント証明書または _X.509 証明書ジェネレーター_の出力の **Client Cert** をコピーします。 
+2. 変数 *TPM_ENDORSEMENT_KEY* の名前を *PUBLIC_KEY_CERTIFICATE_STRING* に変更します。 *PUBLIC_KEY_CERTIFICATE_STRING* 変数の値として、クライアント証明書または _X.509 証明書ジェネレーター_ の出力の **Client Cert** をコピーします。 
 
     ```Java
     // Rename the variable *TPM_ENDORSEMENT_KEY* as *PUBLIC_KEY_CERTIFICATE_STRING*
@@ -206,7 +206,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
-1. マシンの _X509 証明書ジェネレーター_のウィンドウを閉じます。
+1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
 1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
 
 ## <a name="next-steps"></a>次の手順

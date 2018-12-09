@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901908"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498287"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK プレビュー
 
@@ -141,7 +141,7 @@ func main() {
 
 #### <a name="example"></a>例
 
-この例は、2 つのヘッド ノードと 1 つの worker ノードを含む Spark クラスターを作成する方法を示しています。
+この例は、2 つのヘッド ノードと 1 つの worker ノードを含む [Apache Spark](https://spark.apache.org/) クラスターを作成する方法を示しています。
 
 > [!NOTE]
 > 次に示すように、最初にリソース グループとストレージ アカウントを作成する必要があります。 これらが既に作成済みの場合、この手順はスキップできます。

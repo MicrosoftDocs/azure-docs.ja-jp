@@ -56,7 +56,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>_One authorization_<br/>_header_</td>
     <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>

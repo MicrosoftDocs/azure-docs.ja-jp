@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: af3b87fbe79624143b6c2b7e0a3c50852e532524
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042123"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495410"
 ---
-# <a name="use-the-hbase-net-sdk"></a>HBase .NET SDK の使用
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .Net SDK の使用
 
-[HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[1 つは Hive クエリ、もう 1 つは HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
+[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[1 つは Apache Hive クエリ、もう 1 つは HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
 
 C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase REST クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.HBase.Client/)は、HBase REST API 上にクライアント ライブラリを提供します。
 
@@ -37,7 +37,7 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-CLUSTERNAME を HDInsight HBase クラスターの名前に、USERNAME と PASSWORD をクラスター作成時に指定した Hadoop 資格情報に、それぞれ置き換えます。 既定の Hadoop ユーザー名は **admin** です。
+CLUSTERNAME を HDInsight HBase クラスターの名前に、USERNAME と PASSWORD をクラスター作成時に指定した Apache Hadoop 資格情報に、それぞれ置き換えます。 既定の Hadoop ユーザー名は **admin** です。
 
 ## <a name="create-a-new-table"></a>新しいテーブルを作成する
 
@@ -113,7 +113,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase では BigTable が実装されるため、データ形式は次のようになります。
+HBase では [Cloud BigTable](https://cloud.google.com/bigtable/) が実装されるため、データ形式は次のようになります。
 
 ![クラスター ユーザー ロールを付与されたユーザー](./media/apache-hbase-rest-sdk/table.png)
 
@@ -189,4 +189,4 @@ finally
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight で Apache HBase の例を使用する](apache-hbase-tutorial-get-started-linux.md)
-* [HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する
+* [Apache HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する

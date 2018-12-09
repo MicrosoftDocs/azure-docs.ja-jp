@@ -4,7 +4,7 @@ description: Azure サブスクリプションの支払いに使用するクレ�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395493"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581444"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -102,6 +102,6 @@ ms.locfileid: "47395493"
 
 税 ID を追加または更新するには、[Azure アカウント センターの **[プロファイル]**](https://account.azure.com/Profile) にアクセスし、**[納税記録]** を選択してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

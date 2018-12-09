@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4647e663f4a2734451835f90d2687bb6aaf91712
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277802"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425256"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>チュートリアル 7: Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -86,7 +86,7 @@ Simple エンティティは、単語または語句に含まれている単一�
 
 発話例でエンティティがマークされたら、フレーズ リストを追加して、Simple エンティティのシグナルを強化することが重要です。 フレーズ リストは正確な一致として使用**されず**、期待するすべての可能な値である必要はありません。 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Intents]\(意図\)** ページで、意図 **ApplyForJob** を選択します。 
 
@@ -127,7 +127,7 @@ Simple エンティティは、単語または語句に含まれている単一�
 
 ## <a name="label-entity-in-example-utterances"></a>発話例での Label エンティティ
 
-エンティティのラベル付けまたは_マーク付け_は、発話例の中でエンティティが見つかった位置を LUIS に示します。
+エンティティのラベル付けまたは _マーク付け_ は、発話例の中でエンティティが見つかった位置を LUIS に示します。
 
 1. 左側のメニューから **[Intents]\(意図\)** を選びます。
 

@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、"*Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)*" をそのまま使用します。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。 **[割り当て担当者]** には、ログイン ユーザーに基づいて自動的にデータが入力されます。 このフィールドは任意です。カスタム値を入力できます。
 
-1. **[マネージド ID を作成します]** のチェックは外しておいてください。 これは、割り当てられるポリシーまたはイニシアティブに [deployIfNotExists](./concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときに選択する_必要があります_。 このクイック スタートに使用するポリシーにはそれが含まれないため、空のままにします。 詳しくは、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](./how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
+1. **[マネージド ID を作成します]** のチェックは外しておいてください。 これは、割り当てられるポリシーまたはイニシアティブに [deployIfNotExists](./concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときに選択する _必要があります_。 このクイック スタートに使用するポリシーにはそれが含まれないため、空のままにします。 詳しくは、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](./how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
 
 1. **[割り当て]** をクリックします。
 

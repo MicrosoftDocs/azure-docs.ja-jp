@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144952"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495965"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
 ## <a name="overview"></a>概要
 
-この拡張機能は、Windows の N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、NVIDIA のエンドユーザー使用許諾契約書の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
+この拡張機能は、Windows の N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=874330)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
 NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux.md) にインストールするための拡張機能も利用可能です。
-
-NVIDIA のエンドユーザー使用許諾契約書の条項については、 https://go.microsoft.com/fwlink/?linkid=874330 を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -71,15 +69,23 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 }
 ```
 
-### <a name="property-values"></a>プロパティ値
+### <a name="properties"></a>Properties
 
-| 名前 | 値/例 | データ型 |
+| Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
+### <a name="settings"></a>設定
+
+すべての設定は省略可能です。 既定の動作では、サポートされている最新のドライバーが必要に応じてインストールされます。
+
+| Name | 説明 | 既定値 | 有効な値 | データ型 |
+| ---- | ---- | ---- | ---- | ---- |
+| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA ドライバーのバージョン | latest | GRID: "411.81"、"391.81"、"391.58"、"391.03"<br> CUDA: "398.75"、"397.44"、"390.85" | string |
+| installGridND | ND シリーズ VM への GRID ドライバーのインストール | false | true、false | ブール値 |
 
 ## <a name="deployment"></a>Deployment
 
@@ -129,6 +135,8 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
+次の例では、上記の ARM と PowerShell の例を反映し、既定以外のドライバーのインストールの例としてカスタム設定も追加します。 具体的には、ND シリーズ VM がプロビジョニングされる場合でも、特定の GRID ドライバーがインストールされます。
+
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -137,6 +145,8 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
+    "driverVersion": "391.03",
+    "installGridND": true
   }'
 ```
 

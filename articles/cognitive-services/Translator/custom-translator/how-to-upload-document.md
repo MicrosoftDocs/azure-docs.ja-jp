@@ -9,16 +9,18 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bb84a3ddfba54c47cdf91aa72889a960722cdbd3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626910"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633250"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 
 [Custom Translator](https://portal.customtranslator.azure.ai) では、並列ドキュメントをアップロードして翻訳モデルをトレーニングすることができます。 [並列ドキュメント](what-are-parallel-documents.md)は、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
+
+ドキュメントをアップロードする前に、[ドキュメント形式と名前付け規則に関するガイダンス](document-formats-naming-convention.md)を検討して、使用するファイル形式が Custom Translator 内でサポートされていることを確認します。
 
 ## <a name="how-to-upload-document"></a>ドキュメントのアップロード方法
 

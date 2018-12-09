@@ -191,12 +191,12 @@ Windows 向けの HDInsight クラスターは現状のまま動作しますが�
 HDInsight バージョン 3.4 以降では、Microsoft は Linux OS でのみ HDInsight をリリースしています。 その結果、HDInsight 内のコンポーネントの一部は、Linux でのみ使用できます。 これらには、Apache Ranger、Kafka、Interactive Query、Spark、HDInsight の各種アプリケーション、およびプライマリ ファイル システムとしての Azure Data Lake Store が含まれています。 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
-サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの_サポート有効期限_が切れている場合、HDInsight クラスターはサポート対象外となります。 サポートされているバージョンの詳細については、[サポートされている HDInsight クラスター バージョン](hdinsight-migrate-from-windows-to-linux.md)の一覧をご覧ください。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
+サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_ の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの _サポート有効期限_ が切れている場合、HDInsight クラスターはサポート対象外となります。 サポートされているバージョンの詳細については、[サポートされている HDInsight クラスター バージョン](hdinsight-migrate-from-windows-to-linux.md)の一覧をご覧ください。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
 
 * 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 * 数式 2: HDInsight クラスター バージョン X+1 が Azure Portal で使用可能になった日付に 90 日を加える。
 
-_提供終了日_とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。 
+_提供終了日_ とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。 
 
 > [!NOTE]
 > Windows 向けの HDInsight クラスター (バージョン 2.1、3.0、3.1、3.2、および 3.3 を含む) は Azure ゲスト OS ファミリ 4 で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用します。 Azure ゲスト OS ファミリ バージョン 4 は、.NET Framework のバージョン 4.0、4.5、4.5.1、および 4.5.2 をサポートします。
@@ -206,7 +206,7 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
 このセクションでは、HDInsight で使用される Hortonworks Data Platform ディストリビューションと Apache コンポーネントのリリース ノートへのリンクを提供します。
 * HDInsight クラスター Version 4.0 は、[Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) を基盤とする Hadoop ディストリビューションを使用します
 * HDInsight クラスター Version 3.6 は、[Hortonworks Data Platform 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) を基盤とする Hadoop ディストリビューションを使用します。
-* HDInsight クラスター Version 3.5 は、[Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) を基盤とする Hadoop ディストリビューションを使用します。 HDInsight クラスター バージョン 3.5 は、Azure Portal で作成される_既定の_ Hadoop クラスターです。
+* HDInsight クラスター Version 3.5 は、[Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) を基盤とする Hadoop ディストリビューションを使用します。 HDInsight クラスター バージョン 3.5 は、Azure Portal で作成される _既定の_ Hadoop クラスターです。
 * HDInsight クラスター Version 3.4 は、 [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を基盤とする Hadoop ディストリビューションを使用します。
 * HDInsight クラスター Version 3.3 は、 [Hortonworks Data Platform 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)を基盤とする Hadoop ディストリビューションを使用します。
 

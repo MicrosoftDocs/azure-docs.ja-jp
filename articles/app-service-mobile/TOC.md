@@ -173,7 +173,7 @@
 ## [料金](https://azure.microsoft.com/pricing/details/app-service/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## サンプル
 ### [フィールド エンジニア](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)

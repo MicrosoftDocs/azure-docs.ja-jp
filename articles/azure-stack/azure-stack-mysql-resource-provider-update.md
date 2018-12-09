@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 46671a559f4db9aaa798e2c0d8cc668794687a58
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 36d37adff6d45b7d154511c11888aad090c54638
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686332"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853678"
 ---
 # <a name="update-the-mysql-resource-provider"></a>MySQL リソース プロバイダーを更新する 
 
@@ -27,8 +27,8 @@ ms.locfileid: "51686332"
 
 Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 
 
->[!IMPORTANT]
->更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
+> [!IMPORTANT]
+> 更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>MySQL リソース プロバイダー アダプター の更新 (統合システムのみ)
 
@@ -104,7 +104,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 | **VMLocalCredential** |SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ | 
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ | 
 | **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
-| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは_必須_) | 
+| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは _必須_) | 
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ | 
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 | 
 | **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 | 

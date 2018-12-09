@@ -71,7 +71,7 @@ Transact-SQL の文法、使用方法、例の詳細については、Microsoft 
 
 ### <a name="about-the-applies-to-tags"></a>「適用先」タグについて
 
-Transact-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連する記事が含まれています。 記事タイトルの下に、4 つの SQL Server プラットフォームと適用性を示すアイコン バーがあります。 たとえば、可用性グループは SQL Server 2012 で導入されました。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) の記事では、そのステートメントが **SQL Server (2012 以降)** に適用されることが示されています。  ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
+Transact-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連する記事が含まれています。 記事タイトルの下に、4 つの SQL Server プラットフォームと適用性を示すアイコン バーがあります。 たとえば、可用性グループは SQL Server 2012 で導入されました。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx)  の記事では、そのステートメントが **SQL Server (2012 以降)** に適用されることが示されています。 ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
 
 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 たとえば CREATE TRIGGER の記事は、SQL Database で使用できます。 ただし、サーバー レベルのトリガーの **ALL SERVER** オプションでは、サーバー レベルのトリガーは SQL Database では使用できないと指示されます。 代わりにデータベース レベルのトリガーを使用します。
 

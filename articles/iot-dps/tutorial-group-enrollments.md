@@ -149,7 +149,7 @@ ms.locfileid: "50419692"
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_と _Provisioning Service のグローバル エンドポイント_をメモします。
+1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_ と _Provisioning Service のグローバル エンドポイント_ をメモします。
 
     ![サービス情報](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "50419692"
 
 1. 登録グループの情報を次のように入力します。
 
-    - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、メモした _ID スコープ_と _Provisioning Service のグローバル エンドポイント_を含めます。 **_{deviceName}-public.pem_** ファイルを開いて、この値を "_クライアント証明書_" として追加します。**_{deviceName}-all.pem_** ファイルを開いて、_-----BEGIN PRIVATE KEY-----_ から _-----END PRIVATE KEY-----_ までのテキストをコピーします。  これを "_クライアント証明書の秘密キー_" として使います。
+    - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、メモした _ID スコープ_ と _Provisioning Service のグローバル エンドポイント_ を含めます。 **_{deviceName}-public.pem_** ファイルを開いて、この値を "_クライアント証明書_" として追加します。**_{deviceName}-all.pem_** ファイルを開いて、_-----BEGIN PRIVATE KEY-----_ から _-----END PRIVATE KEY-----_ までのテキストをコピーします。  これを "_クライアント証明書の秘密キー_" として使います。
 
         ```java
         private static final String idScope = "[Your ID scope here]";

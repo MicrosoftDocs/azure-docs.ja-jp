@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 1c25db0a217d6aff984029a28932242b06096735
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409001"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423235"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -29,9 +29,9 @@ Azure Cosmos DB アカウントの監視方法を説明する前に、ログと�
 
 ![さまざまな種類の Azure ログ](./media/logging/azurelogging.png)
 
-この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳細については、[Azure でのデータ監視のソース](../monitoring/monitoring-data-sources.md#)に関する記事を参照してください。
+この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳細については、[Azure でのデータ監視のソース](../azure-monitor/platform/data-sources.md)に関する記事を参照してください。
 
-**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳細については、[Azure Monitor でのデータのソース](../monitoring/monitoring-data-sources.md)に関する記事を参照してください。
+**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳細については、[Azure Monitor でのデータのソース](../azure-monitor/platform/data-sources.md)に関する記事を参照してください。
 
 アクティビティ ログは、Azure Cosmos DB のサブスクリプション レベルでの操作を記録します。 ListKeys や DatabaseAccounts の書き込みなどの操作が記録されます。 診断ログは、より詳細なログ記録を提供し、DataPlaneRequests (Create, Read, Query など) と MongoRequests を記録できます。
 
@@ -48,7 +48,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
 
 ### <a name="azure-metrics"></a>Azure メトリック
 
-大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
+大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_ とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 

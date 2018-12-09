@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 79b3b84695bd547d6a4b12665aff822b21dfb781
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d389b3b7e50c83246542fd6b446827055a5a002a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354225"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583468"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>予約容量で Azure Cosmos DB リソースを前払いする
 
@@ -59,7 +59,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
    |Scope (スコープ)   |   予約に関連づけられた課金の特典を使用できるサブスクリプションの数を制御するオプションです。 また、特定のサブスクリプションに予約を適用する方法も制御します。   <br/><br/>  **[単一サブスクリプション]** を選択すると、予約割引は選択したサブスクリプションの Azure Cosmos DB インスタンスに適用されます。 <br/><br/>  **[共有]** を選択すると、予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Azure Cosmos DB インスタンスに適用されます。 課金のコンテキストは、Azure に対するサインアップ方法に基づきます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。  <br/><br/> 予約容量を購入した後で、予約のスコープを変更できます。  |
    |予約容量の種類   |  要求ユニットとしてプロビジョニングされたスループットです。|
    |予約容量ユニット  |      予約するスループットの量です。 リージョンごとのすべての Cosmos DB リソース (データベースやコンテナーなど) に必要なスループットを決定することで、この値を計算できます。 次に、Cosmos DB データベースに関連付けるリージョンの数を掛け合わせます。  <br/><br/> たとえば、5 つのリージョンがあり、すべてのリージョンが 100万 RU/秒である場合は、予約容量の購入に 500万 RU/秒を選択します。    |
-   |期間  |   1 年間または 3 年間。   |
+   |用語  |   1 年間または 3 年間。   |
 
 5. **[コスト]** セクションで割引率と予約の価格を確認します。 この予約価格は、すべてのリージョンでスループットがプロビジョニングされている Azure Cosmos DB リソースに適用されます。  
 
@@ -85,7 +85,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
    * [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
    * [Azure reservations in the Partner Center CSP program](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 

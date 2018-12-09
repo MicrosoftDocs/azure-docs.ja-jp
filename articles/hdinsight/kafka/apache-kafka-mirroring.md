@@ -188,7 +188,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. `producer.properties` ファイルは、__移行先__クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
+4. `producer.properties` ファイルは、__移行先__ クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
 
     ```bash
     nano producer.properties

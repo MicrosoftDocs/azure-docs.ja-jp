@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 53cec59841fbda49e4e410f069882ea76996f9fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428293"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
@@ -106,22 +106,21 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
-1. **[MobileIron のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+1. **[MobileIron のドメインと URL]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[MobileIron のドメインと URL] のシングル サインオン情報](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a. **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
+    1. **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します。
+    1. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[詳細な URL 設定の表示]** をオンにして次の手順を実行します。
 
     ![[MobileIron のドメインと URL] のシングル サインオン](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<host>.mobileiron.com/user/login.html` のパターンを使用して URL を入力します。
+     **[サインオン URL]** ボックスに、 `https://<host>.mobileiron.com/user/login.html` というパターンで URL を入力します。
     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
+    > [!NOTE]  これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -174,13 +173,13 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザー] ダイアログ ボックス](./media/mobileiron-tutorial/create_aaduser_04.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+    1. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    1. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    1. **Create** をクリックしてください。
   
 ### <a name="create-a-mobileiron-test-user"></a>MobileIron テスト ユーザーを作成する
 
@@ -199,13 +198,13 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
     ![[シングル サインオン ユーザー追加の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
+    1. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
 
-    b. **[名]** ボックスに、ユーザーの名を入力します (例: Britta)。
+    1. **[名]** ボックスに、ユーザーの名を入力します (例: Britta)。
 
-    c. **[姓]** ボックスに、ユーザーの姓を入力します (例: Simon)。
+    1. **[姓]** ボックスに、ユーザーの姓を入力します (例: Simon)。
     
-    d. **[Done]** をクリックします。  
+    1. **[Done]** をクリックします。  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -242,7 +241,7 @@ MobileIron の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [MobileIron] タイルをクリックすると、MobileIron アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

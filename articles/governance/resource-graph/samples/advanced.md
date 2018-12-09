@@ -71,7 +71,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a> regexに一致する仮想マシン
 
-このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_と呼ばれる) に一致する仮想マシンを検索します。
+このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ と呼ばれる) に一致する仮想マシンを検索します。
 **matches regex @** では、一致させる regex を定義することができます。ここでは `^Contoso(.*)[0-9]+$` を指定しています。 その regex の定義は以下のように説明されています。
 
 - `^` - 一致は、文字列の先頭から始まる必要があります。

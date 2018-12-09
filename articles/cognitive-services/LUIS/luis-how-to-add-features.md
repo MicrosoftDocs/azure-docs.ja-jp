@@ -8,18 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830992"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580962"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>フレーズ リストを使用して単語リストのシグナルをブーストする
 
 LUIS アプリにフィーチャーを追加して、その精度を向上させることができます。 フィーチャーは、特定の単語やフレーズがアプリ領域のボキャブラリの一部であるというヒントを提供することで、LUIS を助けます。 
+
+[フレーズ リスト](luis-concept-feature.md)には、同じように処理する必要がある、同じクラスに属している値 (単語またはフレーズ) のグループが含まれています (都市名、製品名など)。 LUIS がそのうちの 1 つについて学習した内容が、他のすべてに自動的に適用されます。 このリストは、一致した単語の閉じられたリスト エンティティ (テキストの完全一致) ではありません。
+
+フレーズ リストは、それらの単語に関する LUIS に対する 2 番目のシグナルとして、アプリ ドメインのボキャブラリを増強します。
 
 ## <a name="add-phrase-list"></a>フレーズ リストの追加
 
@@ -47,9 +51,6 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 
 > [!Note]
 > 語句一覧の削除や非アクティブ化は､**Phrase リスト**ページのコンテキスト ツールバーから行うことができます。
-
-## <a name="pattern-regular-expression-feature"></a>パターン (正規表現) フィーチャー 
-**このフィーチャーは非推奨です**。 新しいパターン フィーチャーを LUIS に追加することはできません。 既存のパターン フィーチャーは 2018 年 5 月までサポートされます。 PR に一致する標準 LUIS 正規表現を [Recognizers-Text Github リポジトリ](https://github.com/Microsoft/Recognizers-Text)にお寄せください。 
 
 ## <a name="next-steps"></a>次の手順
 

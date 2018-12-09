@@ -36,6 +36,9 @@ items:
   - name: 高可用性と信頼性
     href: ../hdinsight-high-availability-linux.md
     maintainContext: true
+  - name: Data Lake Storage Gen2
+    href: ../hdinsight-hadoop-data-lake-storage-gen2.md
+    maintainContext: true
 - name: 方法
   items:
   - name: Hadoop サンドボックスの使用
@@ -556,9 +559,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: d6c38012be8d36fb7068f9c396f105683dcfd3ee
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 99ee7d4fd5830c9416ff9a9ffaf37afa1504096e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221497"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962615"

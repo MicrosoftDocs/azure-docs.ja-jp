@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297539"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582379"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
-Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、テキスト メッセージ、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
+Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、テキスト メッセージ、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
 
 この拡張機能は、Azure MFA Server をデプロイしないで VPN 接続を保護する必要のある組織を対象に作成されました。 NPS 拡張機能は、RADIUS とクラウド ベース Azure MFA の間のアダプターとして機能し、フェデレーション ユーザーまたは同期済みユーザーに、認証の 2 番目の要素を提供します。
 
-Azure MFA の NPS 拡張機能を使用する場合、認証フローには次のコンポーネントが含まれます。 
+Azure MFA の NPS 拡張機能を使用する場合、認証フローには次のコンポーネントが含まれます。 
 
-1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。 
-2. **NPS サーバー**: Active Directory に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
-3. **NPS 拡張機能**: セカンダリ認証のために Azure MFA への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。  
+1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。 
+2. **NPS サーバー**: Active Directory に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
+3. **NPS 拡張機能**: セカンダリ認証のために Azure MFA への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。  
 4. **Azure MFA**: Azure Active Directory と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
 
-次の図に、この認証要求フローの概要を示します。 
+次の図に、この認証要求フローの概要を示します。 
 
 ![認証要求フローの図](./media/howto-mfa-nps-extension/auth-flow.png)
 
@@ -118,7 +118,7 @@ NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 �
 
 NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
 
-Azure で[サポートされていない認証方法を無効にする](howto-mfa-mfasettings.md#selectable-verification-methods)ことができます。
+Azure で[サポートされていない認証方法を無効にする](howto-mfa-mfasettings.md#verification-methods)ことができます。
 
 ### <a name="register-users-for-mfa"></a>ユーザーを MFA に登録する
 
@@ -212,15 +212,31 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 PowerShell コマンド プロンプトを開き、次のコマンドを実行します。
 
-```
+``` PowerShell
 import-module MSOnline
 Connect-MsolService
-Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
 このコマンドは、テナントと NPS 拡張機能のインスタンスを関連付けているすべての証明書を PowerShell セッションに出力します。 クライアント証明書を "Base-64 encoded X.509(.cer)" ファイルとして秘密キーなしでエクスポートし、PowerShell が出力したリストと比較します。
 
+次のコマンドによって、名前が "npscertificate"、形式が .cer のファイルが "C:" ドライブに作成されます。
+
+``` PowerShell
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
+```
+
+このコマンドを実行したら、C ドライブに移動して、このファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンし、サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
+
 1 つ以上の証明書が返されている場合は、判読できる形式のタイムスタンプ Valid-From と Valid-Until を使用して、明らかに無関係な証明書を除外することができます。
+
+-------------------------------------------------------------
+
+### <a name="why-cant-i-sign-in"></a>サインインできないのはなぜか
+
+パスワードの有効期限が切れていないことを確認します。 NPS 拡張機能では、サインイン ワークフローの中でパスワードを変更することはできません。 ご自分の組織の IT スタッフに連絡してサポートを依頼してください。
 
 -------------------------------------------------------------
 

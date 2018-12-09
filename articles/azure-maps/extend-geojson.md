@@ -44,7 +44,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
    >円の中心は `GeoJSON Point` 型を使用して表します。
 
 2. Radius
-   >円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、_メートル_単位で、`double` 型である必要があります。
+   >円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、_メートル_ 単位で、`double` 型である必要があります。
 
 3. SubType
    >円ジオメトリには、`subType` プロパティも含める必要があります。 このプロパティは、`GeoJSON Feature` のプロパティに含まれ、その値は _Circle_ である必要があります。

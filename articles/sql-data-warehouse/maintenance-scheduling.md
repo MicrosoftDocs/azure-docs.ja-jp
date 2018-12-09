@@ -1,33 +1,33 @@
 ---
 title: Azure メンテナンス スケジュール (プレビュー) |Microsoft Docs
-description: メンテナンス スケジューリングにより、お客様は、Azure SQL Data Warehouse サービスが新しい機能をロールアウト、アップグレード、パッチするために必要な、スケジュールされたメンテナンス イベントを計画することができます。
+description: メンテナンス スケジューリングを使用すると、Azure SQL Data Warehouse サービスで新機能のロールアウト、アップグレード、パッチを行うために必要な予定メンテナンス イベントを計画することができます。
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 09/20/2018
+ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c2ed79673af3563ae62f516057a174770cda99e9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d626fd9b083b9ca2c55c286a1dd806620a639434
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427864"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498028"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 
-Azure SQL Data Warehouse のメンテナンス スケジュール機能のプレビューが開始されました。 この機能は、Service Health 計画メンテナンス通知、リソース ヘルス チェック モニター、Azure SQL Data Warehouse メンテナンス スケジューリング サービスを統合します。
+現在、メンテナンス スケジュールは Azure SQL Data Warehouse のすべてのリージョンで使用できるようになりました。 この機能は、Service Health 計画メンテナンス通知、リソース ヘルス チェック モニター、Azure SQL Data Warehouse メンテナンス スケジューリング サービスを統合します。
 
 メンテナンス スケジューリングを使用することで、新しい機能、アップグレード、パッチを受信するのに都合がいい時間枠をスケジュールできます。 お客様は、7 日間におけるプライマリおよびセカンダリのメンテナンス期間を選択します。 たとえば、土曜日の 22:00 から日曜日の 01:00 をプライマリ ウィンドウとし、水曜日の 19:00 から 22:00 をセカンダリ ウィンドウとします。 プライマリ メンテナンス期間でメンテナンスを実行できなかった場合、SQL Data Warehouse は、セカンダリ メンテナンス期間で再度メンテナンスを試みます。
 
 新しく作成されたすべてのAzure SQL Data Warehouse インスタンスには、デプロイ時にシステム定義のメンテナンス スケジュールが適用されます。 デプロイが完了するとすぐに、スケジュールを編集できます。
 
-メンテナンス期間はそれぞれ 3 時間から 8 時間です。 その期間内は、任意のタイミングでメンテナンスが実行される可能性があります。 このサービスがお使いのデータ ウェアハウスに新しいコードをデプロイする際に、接続が一時的に失われることが予想されます。 
+メンテナンス ウィンドウはそれぞれ 3 ～ 8 時間です。 その期間内は、任意のタイミングでメンテナンスが実行される可能性があります。 このサービスがお使いのデータ ウェアハウスに新しいコードをデプロイする際に、接続が一時的に失われることが予想されます。 
 
-機能プレビュー中は、プライマリとセカンダリのメンテナンス期間を別々の曜日範囲となるよう明示的に指定してください。 すべてのメンテナンス操作は、予定メンテナンス期間内に完了する必要があります。 事前に通知することなく、指定されたメンテナンス期間の外でメンテナンスは行われません。 スケジュールされたメンテナンス中にデータ ウェアハウスが一時停止されると、再開操作中に更新されます。  
+この機能を使用するには、別の期間にプライマリ ウィンドウとセカンダリ ウィンドウを指定する必要があります。 すべてのメンテナンス操作は、予定メンテナンス期間内に完了する必要があります。 指定されているメンテナンス ウィンドウの範囲外では、事前に通知することなく、メンテナンスは行われません。 スケジュールされたメンテナンス中にデータ ウェアハウスが一時停止されると、再開操作中に更新されます。  
 
 
 ## <a name="alerts-and-monitoring"></a>アラートと監視
@@ -51,6 +51,7 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 - メンテナンス スケジュールを変更する方法について[詳しく知る](changing-maintenance-schedule.md)。
 - Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage)。
 - ログ アラート ルール用の Webhook アクションについて[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+- アクション グループの作成と管理について[詳しく知る](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)。
 - Azure Service Health について[詳しく知る](https://docs.microsoft.com/azure/service-health/service-health-overview)。
 
 

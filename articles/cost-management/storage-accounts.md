@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 398472df7caf0f702f43bc9d025d1e6ad7dcdd7e
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990656"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275081"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 
@@ -53,7 +53,7 @@ Cloudyn で使用するための Azure ストレージの構成は簡単です�
 
 ## <a name="configure-an-aws-storage-bucket"></a>AWS ストレージ バケットの構成
 
-Cloudyn では、既存の AWS 資格情報 (ユーザーまたはロール) を使用してレポートをバケットに保存します。 アクセスをテストするために、Cloudyn は、小さいテキスト ファイルを _check-bucket-permission.txt_というファイル名でバケットに保存することを試みます。
+Cloudyn では、既存の AWS 資格情報 (ユーザーまたはロール) を使用してレポートをバケットに保存します。 アクセスをテストするために、Cloudyn は、小さいテキスト ファイルを _check-bucket-permission.txt_ というファイル名でバケットに保存することを試みます。
 
 Cloudyn のロールまたはユーザーには、バケットに対する PutObject アクセス許可を付与します。 その後、既存のバケットを使用するか新しいバケットを作成して、レポートを保存します。 最後に、ストレージ クラスの管理、ライフサイクル規則の設定、不要なファイルの削除を実行する方法を決定します。
 

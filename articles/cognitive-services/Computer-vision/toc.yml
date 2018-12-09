@@ -106,6 +106,8 @@ items:
   items:
   - name: イメージへのタグ付け
     href: concept-tagging-images.md
+  - name: オブジェクトの検出
+    href: concept-object-detection.md
   - name: イメージの分類
     href: concept-categorizing-images.md
   - name: イメージの説明
@@ -144,7 +146,7 @@ items:
     items:
     - name: コンテナーのインストールと実行
       href: computer-vision-how-to-install-containers.md
-    - name: コンテナーの構成
+    - name: コンテナーを構成する
       href: computer-vision-resource-container-config.md
   - name: Computer Vision Connected Service の使用
     href: vs-computer-vision-connected-service.md
@@ -162,7 +164,7 @@ items:
     href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
   - name: SDK
     items:
-    - name: " Windows"
+    - name: Windows
       href: https://github.com/Microsoft/Cognitive-vision-windows
     - name: Node.js
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
@@ -192,9 +194,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 1dfca8cfb4a43f65c9999a02afdf670cb99032ad
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d6a64f9de500493b7d0539fff362abb98471a0b7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276093"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971047"

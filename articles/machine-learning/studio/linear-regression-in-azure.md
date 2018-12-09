@@ -1,11 +1,12 @@
 ---
-title: Machine Learning での線形回帰の使用 | Microsoft Docs
+title: Machine Learning Studio での線形回帰の使用 - Azure | Microsoft Docs
 description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較
 metakeywords: ''
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
@@ -16,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836227"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311060"
 ---
-# <a name="using-linear-regression-in-azure-machine-learning"></a>Azure Machine Learning での線形回帰の使用
+# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 
 > 
 > 
@@ -110,7 +111,7 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 ### <a name="integration-with-excel"></a>Excel との統合
 ソリューションは、トレーニング済みのモデルから Web サービスを作成することで、Machine Learning の回帰モデルを運用することでした。 数分以内に、Web サービスを作成し、これを Excel から直接呼び出して予測収益値を返すことができます。 
 
-*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *Excel ブックのダウンロード* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
+*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Download Excel Workbook (Excel ブックのダウンロード)]* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
 
 ![][1]
 

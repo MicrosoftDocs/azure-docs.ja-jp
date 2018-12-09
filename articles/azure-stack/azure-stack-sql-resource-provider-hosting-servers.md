@@ -55,7 +55,7 @@ Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **
 SQL VM のデプロイにはその他の選択肢もあります。[Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates) のテンプレートなどです。
 
 > [!NOTE]
-> 複数ノードの Azure Stack にインストールされるホスティング サーバーは、既定のプロバイダー サブスクリプションではなくユーザー サブスクリプションから作成する必要があります。 ユーザー ポータル、または適切にログインされた PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーが課金対象の VM であり、適切な SQL ライセンスが必要です。 サービス管理者は、そのサブスクリプションの所有者になることが_できます_。
+> 複数ノードの Azure Stack にインストールされるホスティング サーバーは、既定のプロバイダー サブスクリプションではなくユーザー サブスクリプションから作成する必要があります。 ユーザー ポータル、または適切にログインされた PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーが課金対象の VM であり、適切な SQL ライセンスが必要です。 サービス管理者は、そのサブスクリプションの所有者になることが _できます_。
 
 ### <a name="required-privileges"></a>必要な特権
 
@@ -71,7 +71,7 @@ SQL sysadmin より低い特権を持つ管理ユーザーを作成できます�
 次の情報は、追加のセキュリティに関するガイダンスを提供します。
 
 * すべての Azure Stack ストレージは BitLocker を使用して暗号化されているので、Azure Stack 上のどの SQL インスタンスも暗号化された Blob ストレージを利用します。
-* SQL リソース プロバイダーは、TLS 1.2 を完全にサポートします。 SQL RP を通じて管理される SQL Server はすべて、TLS 1.2 _のみ_に対して構成されており、RP は既定でこれに設定されることを確認します。 サポートされるすべてのバージョンの SQL Server で TLS 1.2 をサポートしています。[Microsoft SQL Server の TLS 1.2 サポート](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)を参照してください。
+* SQL リソース プロバイダーは、TLS 1.2 を完全にサポートします。 SQL RP を通じて管理される SQL Server はすべて、TLS 1.2 _のみ_ に対して構成されており、RP は既定でこれに設定されることを確認します。 サポートされるすべてのバージョンの SQL Server で TLS 1.2 をサポートしています。[Microsoft SQL Server の TLS 1.2 サポート](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)を参照してください。
 * SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 [暗号化された接続を強制するようにサーバーを構成するには](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections)を参照してください。
 * クライアント アプリケーションが、暗号化された接続で通信することも確認します。
 * RP は、SQL Server インスタンスで使用される証明書を信頼するように構成されています。
@@ -99,7 +99,7 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
     必要に応じて、インスタンス名を指定します。また、インスタンスが既定のポート 1433 に割り当てられていない場合は、ポート番号を指定します。
 
    > [!NOTE]
-   > ユーザーと管理者の Azure Resource Manager が SQL インスタンスにアクセスできる限り、SQL インスタンスをリソースプロバイダーの管理下に置くことができます。 SQL インスタンスは、リソース プロバイダーに排他的に割り当てる__必要があります__。
+   > ユーザーと管理者の Azure Resource Manager が SQL インスタンスにアクセスできる限り、SQL インスタンスをリソースプロバイダーの管理下に置くことができます。 SQL インスタンスは、リソース プロバイダーに排他的に割り当てる __必要があります__。
 
 4. サーバーを追加するときは、追加するサーバーを既存の SKU に割り当てるか、または新しい SKU を作成する必要があります。 **[Add a Hosting Server]\(ホスティング サーバーの追加\)** の下で、**[SKU]** を選択します。
 
@@ -116,7 +116,7 @@ SQL Always On インスタンスの構成にはさらに手順が必要で、3 �
 * [Always On 可用性グループ (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
-> SQL アダプター リソース プロバイダーは、Always On 可用性グループに対して SQL 2016 SP1 Enterprise 以降のインスタンス_のみ_をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
+> SQL アダプター リソース プロバイダーは、Always On 可用性グループに対して SQL 2016 SP1 Enterprise 以降のインスタンス _のみ_ をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
 
 ### <a name="automatic-seeding"></a>自動シード処理
 

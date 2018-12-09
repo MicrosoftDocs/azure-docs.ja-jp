@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020711"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426878"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -67,9 +67,23 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 このプラグインは、次のバージョンの Jira と Confluence をサポートしています。
 
-* Jira Core と Jira Software: 6.0 から 7.8
-* Jira Service Desk: 3.0 から 3.2
+* Jira Core と Jira Software: 6.0 から 7.12
+* Jira Service Desk: 3.0.0 から 3.5.0
+* JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) に関する記事を参照してください。
 * Confluence: 5.0 ～ 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ## <a name="installation"></a>インストール
 
@@ -79,7 +93,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 2. Jira/Confluence の管理コンソールに移動し、**[アドオン]** を選択します。
 
-3. Atlassian Marketplace で **Microsoft SAML SSO Plugin** を検索します。
+3. Microsoft ダウンロード センターから、[Microsoft SAML SSO Plugin for Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO Plugin for Confluence](https://www.microsoft.com/download/details.aspx?id=56503) をダウンロードします。
 
    適切なバージョンのプラグインが検索結果に表示されます。
 
@@ -171,9 +185,23 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 このプラグインは次のバージョンをサポートしています。
 
-* Jira Core と Jira Software: 6.0 から 7.8
-* Jira Service Desk: 3.0 から 3.2
+* Jira Core と Jira Software: 6.0 から 7.12
+* Jira Service Desk: 3.0.0 から 3.5.0
+* JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) に関する記事を参照してください。
 * Confluence: 5.0 ～ 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>このプラグインは無料ですか、有料ですか。
 

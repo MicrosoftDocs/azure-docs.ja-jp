@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973577"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632978"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
-この記事では、Azure Monitor の格納データを視覚化するために使用可能な方法の概要を提供します。 これには、[Azure のメトリック ストア内のメトリック](../monitoring/monitoring-data-collection.md#metrics)と [Log Analytics のログ データ](../monitoring/monitoring-data-collection.md#logs)が含まれます。 
+この記事では、Azure Monitor の格納データを視覚化するために使用可能な方法の概要を提供します。 これには、[Azure のメトリック ストア内のメトリック](../azure-monitor/platform/data-collection.md#metrics)と [Log Analytics のログ データ](../azure-monitor/platform/data-collection.md#logs)が含まれます。 
 
 チャートやグラフなどの視覚化は、監視データを分析して問題をドリルダウンし、パターンを特定するのに役立ちます。 使用するツールによっては、組織の内外の他のユーザーと視覚化を共有するオプションもあります。
 
@@ -42,7 +42,7 @@ ms.locfileid: "46973577"
 
 
 ### <a name="limitations"></a>制限事項
-- データ テーブルをサポートしない、Log Analytics 視覚化に対する制限された制御。 データ系列の合計数は 10 に制限されていて、それ以上のデータ系列は_その他_のバケットの下にグループ化されます。
+- データ テーブルをサポートしない、Log Analytics 視覚化に対する制限された制御。 データ系列の合計数は 10 に制限されていて、それ以上のデータ系列は _その他_ のバケットの下にグループ化されます。
 - Log Analytics グラフに対するカスタム パラメーターのサポートはありません。
 - Log Analytics グラフは、過去 30 日間に制限されます。
 - Log Analytics グラフは、共有ダッシュボードにのみピン留めできます。
@@ -50,7 +50,7 @@ ms.locfileid: "46973577"
 - 制限されたコンテキストのドリルダウン。
 
 ## <a name="azure-monitor-views"></a>Azure Monitor ビュー
-[Azure Monitor のビュー](../log-analytics/log-analytics-view-designer.md)では、Log Analytics の格納データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](../monitoring/monitoring-solutions.md)が収集したデータを表示するために使用します。
+[Azure Monitor のビュー](../azure-monitor/platform/view-designer.md)では、Log Analytics の格納データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](../azure-monitor/insights/solutions.md)が収集したデータを表示するために使用します。
 
 ![表示](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "46973577"
 - Log Analytics データの高度な視覚化。
 - ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
 - ワークスペースと監視ソリューションを持つ Log Analytics 管理モデルへの統合。
-- カスタム パラメーターの[フィルター処理](../log-analytics/log-analytics-view-designer-filters.md)。
+- カスタム パラメーターの[フィルター処理](../azure-monitor/platform/view-designer-filters.md)。
 - 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
 
 ### <a name="limitations"></a>制限事項
@@ -138,9 +138,9 @@ Azure メトリックと Log Analytics のデータには、任意の REST ク�
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Monitor によって収集されたデータ](../monitoring/monitoring-data-collection.md)について学習します。
+- [Azure Monitor によって収集されたデータ](../azure-monitor/platform/data-collection.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
-- [Azure Monitor のビュー](../log-analytics/log-analytics-view-designer.md)について学習します。
+- [Azure Monitor のビュー](../azure-monitor/platform/view-designer.md)について学習します。
 - [Application Insights の Workbooks](../application-insights/app-insights-usage-workbooks.md) について学習します。
 - [ログ データの Power BI へのインポート](../log-analytics/log-analytics-powerbi.md)について学習します。
 - [Grafana Azure Monitor データ ソース プラグイン](../monitoring-and-diagnostics/monitor-send-to-grafana.md)について学習します。

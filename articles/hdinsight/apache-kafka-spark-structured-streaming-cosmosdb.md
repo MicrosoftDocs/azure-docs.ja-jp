@@ -102,7 +102,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>Cosmos DB データベースとコレクションを作成する
 
-このドキュメントで使用するプロジェクトでは、データを Cosmos DB に格納します。 コードを実行する前に、お使いの Cosmos DB インスタンス内に、まず_データベース_と_コレクション_を作成する必要があります。 ドキュメントのエンドポイントと、Cosmos DB に対する要求の認証に使用される_キー_も取得する必要があります。 
+このドキュメントで使用するプロジェクトでは、データを Cosmos DB に格納します。 コードを実行する前に、お使いの Cosmos DB インスタンス内に、まず _データベース_ と _コレクション_ を作成する必要があります。 ドキュメントのエンドポイントと、Cosmos DB に対する要求の認証に使用される _キー_ も取得する必要があります。 
 
 これを実行する方法の 1 つとして、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用します。 次のスクリプトでは、`kafkadata` という名前のデータベースと `kafkacollection` という名前のコレクションを作成します。 その後、プライマリ キーが返されます。
 

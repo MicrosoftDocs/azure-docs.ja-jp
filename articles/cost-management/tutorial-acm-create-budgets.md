@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686162"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583693"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル: Azure の予算を作成して管理する
 
@@ -33,13 +33,15 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure EA のすべてのお客様が予算を利用できます。 予算を作成および管理するには Azure EA サブスクリプションへの読み取りアクセスが必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
+Azure EA のすべてのお客様が予算を利用できます。 予算を表示するには Azure EA サブスクリプションに対する読み取りアクセスが必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
 
 ユーザーおよびグループによる予算については、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
 
 - 所有者 – サブスクリプションに対する予算を作成、変更、削除できます。
-- 共同作成者 – 予算を作成、変更、削除できます。 他のユーザーによって作成された予算の予算金額を変更できます。
-- 閲覧者 – アクセス許可を持っている予算を表示できます。
+- 共同作成者と Cost Management 共同作成者 - 自分の予算を作成、変更、削除できます。 他のユーザーによって作成された予算の予算金額を変更できます。
+- 閲覧者と Cost Management 閲覧者 - 自分がアクセス許可を持っている予算を表示できます。
+
+Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](assign-access-acm-data.md)」をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

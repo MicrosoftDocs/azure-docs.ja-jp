@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 09ecd46837a12f5f1a8278b1644dc099701bcd00
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227369"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584725"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>請求およびコスト管理の自動化シナリオ
 
@@ -46,17 +46,17 @@ ms.locfileid: "47227369"
 
 |         API/シナリオ        | 請求書の調整    | クロス請求    | コストの最適化    | コスト管理    | 当月の今日までの支出    | アラート    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
-| Budgets                     |                           |                  |           ○          |                  |                    |     ○     |
-| Marketplaces                |             ○             |         ○        |           ○          |         ○        |          ○         |     ○     |
-| Price Sheet                 |             ○             |         ○        |           ○          |         ○        |          ○         |           |
-| Reservation recommendations |                           |                  |           ○          |                  |                    |           |
-| Reservation details         |                           |                  |           ○          |         ○        |                    |           |
-| Reservation summaries       |                           |                  |           ○          |         ○        |                    |           |
-| Usage details               |             ○             |         ○        |           ○          |         ○        |          ○         |     ○     |
-| Billing periods             |             ○             |         ○        |           ○          |         ○        |                    |           |
-| Invoices                    |             ○             |         ○        |           ○          |         ○        |                    |           |
-| RateCard                    |             ○             |                  |           ○          |         ○        |          ○         |           |
-| Unrated usage               |             ○             |                  |           ○          |                  |          ○         |           |
+| Budgets                     |                           |                  |           X          |                  |                    |     X     |
+| Marketplaces                |             X             |         X        |           X          |         X        |          X         |     X     |
+| Price Sheet                 |             X             |         X        |           X          |         X        |          X         |           |
+| Reservation recommendations |                           |                  |           X          |                  |                    |           |
+| Reservation details         |                           |                  |           X          |         X        |                    |           |
+| Reservation summaries       |                           |                  |           X          |         X        |                    |           |
+| Usage details               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Billing periods             |             X             |         X        |           X          |         X        |                    |           |
+| Invoices                    |             X             |         X        |           X          |         X        |                    |           |
+| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
+| Unrated usage               |             X             |                  |           X          |                  |          X         |           |
 
 > [!NOTE]
 > 以下のシナリオと API のマッピングには、Enterprise Consumption API シリーズは含まれていません。 可能であれば、一般的な Consumption API シリーズを利用して、今後の新しい開発シナリオに対応してください。
@@ -122,4 +122,4 @@ ms.locfileid: "47227369"
 
 - Azure Billing API シリーズを使用してプログラムで Azure の使用状況に関する分析情報を取得する方法については、「[Azure Consumption API の概要](billing-consumption-api-overview.md)」と [Azure Billing API シリーズの概要](billing-usage-rate-card-overview.md)に関するページを参照してください。
 - 詳細な毎日の使用状況ファイルおよび Azure portal のコスト管理レポートと、請求書を比較する方法については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」を参照してください。
-- まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+- ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

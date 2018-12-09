@@ -55,7 +55,7 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、__マッパー__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__マッパー__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ namespace mapper
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、__レジューサ__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__レジューサ__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -155,13 +155,13 @@ namespace reducer
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
 
-    * __Azure Storage アカウント__を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
@@ -181,7 +181,7 @@ namespace reducer
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
         ```
     
-    * 既定のストレージとして__Azure Storage__ を使用している場合:
+    * 既定のストレージとして __Azure Storage__ を使用している場合:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout

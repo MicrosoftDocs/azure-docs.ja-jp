@@ -33,7 +33,7 @@ REST API を使って、パラメーターをブループリント自体に作�
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>secureString パラメーターと secureObject パラメーターを使用する
 
-Resource Manager テンプレート _アーティファクト_は **secureString** 型と **secureObject** 型のパラメーターをサポートしていますが、Azure Blueprint は Azure Key Vault と接続するためにそれぞれを必要とします。
+Resource Manager テンプレート _アーティファクト_ は **secureString** 型と **secureObject** 型のパラメーターをサポートしていますが、Azure Blueprint は Azure Key Vault と接続するためにそれぞれを必要とします。
 このセキュリティ手法では、ブループリントとシークレットを一緒に格納する安全性の低い手法を防止して、安全なパターンの使用を促します。 Azure Blueprints ではこのセキュリティ手法をサポートし、Resource Manager テンプレートの "_アーティファクト_" にあるいずれかの安全なパラメーターのインクルージョンを検出します。 検出された安全なパラメーターごとに次の Key Vault プロパティの割り当て時に、プロンプトが表示されます。
 
 - Key Vault リソース ID

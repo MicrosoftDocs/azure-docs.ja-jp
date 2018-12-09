@@ -231,20 +231,20 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-api-management
+    href: https://stackoverflow.com/questions/tagged/azure-api-management
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
   - name: ロードマップ
-    href: http://aka.ms/apimroadmap
+    href: https://aka.ms/apimroadmap
   - name: API Management 用の Power BI ソリューション テンプレート
-    href: http://aka.ms/apimpbi
+    href: https://aka.ms/apimpbi
   - name: ブログ
-    href: http://aka.ms/apimblog
+    href: https://aka.ms/apimblog
   - name: 機能のリクエスト
-    href: http://aka.ms/apimwish
-ms.openlocfilehash: 93a5457286e5e69e504e6858d6b9f0e8491b3c30
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+    href: https://aka.ms/apimwish
+ms.openlocfilehash: f3559e2da929ba132ee8f96c2d7e6cfdd68aa75a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620049"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972169"

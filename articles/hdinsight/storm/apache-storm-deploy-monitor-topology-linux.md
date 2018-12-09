@@ -54,7 +54,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
     > [!NOTE]
     > Data Lake Tools for Visual Studio は、以前は HDInsight Tools for Visual Studio と呼ばれていました。
     >
-    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__に含まれています。
+    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__ に含まれています。
 
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
 
@@ -105,7 +105,7 @@ Visual Studio を使用してトポロジが送信されたら、**Storm トポ�
 
 ### <a name="deactivate-and-reactivate"></a>アクティブ化の解除と再アクティブ化
 
-トポロジが強制終了または再アクティブ化されるまで、トポロジのアクティブ化の解除は一時停止されます。 これらの操作を実行するには、__トポロジの概要__の上部にある __[非アクティブ化]__ と __[再アクティブ化]__ のボタンを使用します。
+トポロジが強制終了または再アクティブ化されるまで、トポロジのアクティブ化の解除は一時停止されます。 これらの操作を実行するには、__トポロジの概要__ の上部にある __[非アクティブ化]__ と __[再アクティブ化]__ のボタンを使用します。
 
 ### <a name="rebalance"></a>再調整
 

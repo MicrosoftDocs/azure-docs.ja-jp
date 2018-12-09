@@ -508,8 +508,6 @@ items:
         href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       - name: FAQ
         href: migration-classic-resource-manager-faq.md
-  - name: トラブルシューティング
-    href: ../troubleshooting/index.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -546,9 +544,11 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 1645cbc3d9098464a6f2491b5cc9b4929ce4c2c5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+- name: トラブルシューティング
+  href: ../troubleshooting/index.md
+ms.openlocfilehash: e6420c4777e86cecacb1177270c8e5ea9445744d
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976997"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890638"

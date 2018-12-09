@@ -8,24 +8,29 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731395"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442031"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>名前付きエンティティの認識コグニティブ スキル
 
 **名前付きエンティティ認識** スキルは、テキストから名前付きエンティティを抽出します。 使用可能なエンティティ タイプには、`person`、`location`、`organization` が含まれます。
 
 > [!NOTE]
-> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
+> <ul>
+> <li>コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 </li>
+> <li> 名前付きエンティティ認識スキルは "非推奨" と見なされており、2019 年 2 月 15 日以降は正式にサポートされなくなります。 <a href="cognitive-search-skill-deprecated.md">非推奨のコグニティブ検索スキル</a>に関するページに記載されている推奨事項に従い、サポートされているスキルに移行してください。</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
+
+## <a name="data-limits"></a>データ制限
+レコードの最大サイズは、`String.Length` によって測定されるため、50,000 文字にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -34,7 +39,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 | パラメーター名     | 説明 |
 |--------------------|-------------|
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
-|defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+|defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`de, en, es, fr, it`|
 | minimumPrecision  | 0 から 1 の数値。 精度がこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。|
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -58,7 +63,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 ```json
   {
     "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
-    "categories": [ "Person"],
+    "categories": [ "Person", "Location", "Organization"],
     "defaultLanguageCode": "en",
     "inputs": [
       {
@@ -83,7 +88,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
         "recordId": "1",
         "data":
            {
-             "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -101,32 +106,38 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
       "data" : 
       {
         "persons": [ "Joe Romero", "Ana Smith"],
-        "locations": ["Seattle"],
-        "organizations":["Microsoft Corporation"],
+        "locations": ["Chile", "Australia"],
+        "organizations":["Microsoft"],
         "entities":  
         [
           {
             "category":"person",
             "value": "Joe Romero",
-            "offset": 45,
+            "offset": 33,
             "confidence": 0.87
           },
           {
             "category":"person",
             "value": "Ana Smith",
-            "offset": 59,
+            "offset": 124,
             "confidence": 0.87
           },
           {
             "category":"location",
-            "value": "Seattle",
-            "offset": 5,
+            "value": "Chile",
+            "offset": 88,
+            "confidence": 0.99
+          },
+          {
+            "category":"location",
+            "value": "Australia",
+            "offset": 112,
             "confidence": 0.99
           },
           {
             "category":"organization",
-            "value": "Microsoft Corporation",
-            "offset": 120,
+            "value": "Microsoft",
+            "offset": 54,
             "confidence": 0.99
           }
         ]
@@ -138,9 +149,10 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 
 ## <a name="error-cases"></a>エラーになる場合
-サポートされていない言語コードを指定する場合、またはコンテンツが指定された言語と一致しない場合は、エラーが返され、エンティティは抽出されません。
+ドキュメントの言語コードがサポートされていない場合、エラーが返され、エンティティは抽出されません。
 
 ## <a name="see-also"></a>関連項目
 
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
++ [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)

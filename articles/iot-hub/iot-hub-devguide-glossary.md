@@ -35,16 +35,16 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
-複数の言語で使用可能な_デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
+複数の言語で使用可能な _デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
-複数の言語で使用可能な_サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
+複数の言語で使用可能な _サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-toolkit"></a>Azure IoT ツールキット
 [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) はクロス プラットフォームであり、VS Code での Azure IoT Hub とデバイスの管理に役立つオープンソースの Visual Studio Code 拡張機能です。 Azure IoT Toolkit を使用すると、IoT 開発者は簡単に VS Code で IoT プロジェクトを開発できます。
 
 ## <a name="azure-portal"></a>Azure ポータル
-Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_を使用してそのコンテンツを整理します。
+Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_ を使用してそのコンテンツを整理します。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
@@ -240,7 +240,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 便宜上、IoT Hub チュートリアルの多くは、シミュレートされたデバイスを使用して、ローカル コンピューター上でサンプルを実行できるようにしています。 一方、[物理デバイス](#physical-device)は、Raspberry Pi など、IoT Hub に接続する実際のデバイスです。
 
 ## <a name="solution"></a>解決策
-_ソリューション_は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_は、デバイス、[デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、[バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
+_ソリューション_ は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_ は、デバイス、[デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、[バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
 
 ## <a name="subscription"></a>サブスクリプション
 Azure サブスクリプションでは、課金が発生します。 作成する各 Azure リソース、または使用する各 Azure サービスは、1 つのサブスクリプションと関連付けられています。 多くのクォータは、サブスクリプションのレベルで適用されます。

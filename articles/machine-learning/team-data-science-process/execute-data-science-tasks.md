@@ -1,25 +1,21 @@
 ---
 title: データ サイエンス タスクの実行 - Azure Machine Learning | Microsoft Docs
 description: データ サイエンティストがバージョン コントロールされた追跡可能で協調的な方法でデータ サイエンス プロジェクトを実行する方法。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112646"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495695"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -34,7 +30,7 @@ ms.locfileid: "39112646"
 
 データ サイエンティストは、Python で利用可能なライブラリとパッケージ (matplotlib など) の使用や、R (ggplot や lattice など) の使用など、さまざまな方法で探索およびレポート作成を実行できます。 データ サイエンティストは、特定のシナリオでのデータ探索のニーズに合うように、これらのコードをカスタマイズできます。 構造化データを処理する場合のニーズは、テキストやイメージなどの非構造化データの場合とは異なります。 
 
-Azure Machine Learning Workbench などの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../desktop-workbench/tutorial-bikeshare-dataprep.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
+Azure Machine Learning サービスなどの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../service/how-to-transform-data.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
 
 このフェーズの最後には、データ探索レポートが完成します。 レポートでは、モデリングに使用されるデータを総括したビューと、モデリングの手順を進めるうえでそのデータが適しているかどうかの査定を提供します。 以降のセクションで説明する半自動探索、モデリング、レポート作成のための Team Data Science Process (TDSP) ユーティリティでは、標準的なデータ探索やモデリング レポートも提供します。 
 
@@ -90,7 +86,7 @@ YAML ファイルを使用して以下を指定します。
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning でのモデルのデプロイ](../desktop-workbench/model-management-overview.md)
+- [Azure Machine Learning サービスでのモデルのデプロイ](../service/how-to-deploy-and-where.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

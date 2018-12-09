@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4a1f9552b9a578cd34f3482e793947e06bb24407
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 24bc0b19d03148e98083fe6d21dd3980fcdf3714
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249807"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276615"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -187,7 +187,7 @@ Java コードを次に示します。
             databaseName = "ToDoList",
             collectionName = "Items",
             leaseCollectionName = "leases",
-            reateLeaseCollectionIfNotExists = true,
+            createLeaseCollectionIfNotExists = true,
             connectionStringSetting = "AzureCosmosDBConnection") String[] items,
             final ExecutionContext context ) {
                 context.getLogger().info(items.length + "item(s) is/are changed.");
@@ -1277,7 +1277,7 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 
 [出力の例をスキップする](#output---attributes)
 
-### <a name="ouput---c-examples"></a>出力 - C# の例
+### <a name="output---c-examples"></a>出力 - C# の例
 
 このセクションには、次の例が含まれています。
 
@@ -1712,7 +1712,7 @@ public String cosmosDbQueryById(
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 バージョン 2.x でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
 
 ```json
 {

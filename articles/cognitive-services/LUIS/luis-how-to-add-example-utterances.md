@@ -111,7 +111,7 @@ Does John Smith work in Seattle?
 
     ![階層構造エンティティのラベルを作成するダイアログ ボックスのスクリーンショット](./media/luis-how-to-add-example-utterances/hr-hier-1.png)
 
-1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、**エンティティの種類**として_階層_を選択し、子として `Origin` と `Destination` を追加して、**[完了]** を選択します。
+1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、**エンティティの種類**として _階層_ を選択し、子として `Origin` と `Destination` を追加して、**[完了]** を選択します。
 
     ![意図の詳細ページのスクリーンショット、到着地エンティティが強調表示されています](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
 

@@ -3,18 +3,18 @@ title: Azure 仮想マシンの大規模なバックアップ
 description: 同時に複数の仮想マシンを Azure にバックアップする
 services: backup
 keywords: 仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1d9daf5bdccb24db80eaf41597daa15a08ce1bd4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878305"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -58,7 +58,7 @@ Recovery Services コンテナーを作成する場合、既定では、コン�
 
 ## <a name="set-backup-policy-to-protect-vms"></a>VM を保護するバックアップ ポリシーを設定する
 
-Recovery Services コンテナーを作成した後、次の手順は、データの種類に合わせてコンテナーを構成することと、バックアップ ポリシーを設定することです。 バックアップ ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。 このチュートリアルでは、ビジネスがホテル、スタジアム、レストランと売店を備えたスポーツ複合施設であり、仮想マシン上のデータを保護することを前提とします。 次の手順では、財務データのバックアップ ポリシーを作成します。
+Recovery Services コンテナーを作成した後、次の手順は、データの種類に合わせてコンテナーを構成することと、バックアップ ポリシーを設定することです。 バックアップ ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。 このチュートリアルでは、ホテル、スタジアム、レストランと売店を備えたスポーツ複合施設のビジネスで、仮想マシン上のデータを保護することを前提とします。 次の手順では、財務データのバックアップ ポリシーを作成します。
 
 1. Recovery Services コンテナーの一覧から **[myRecoveryServicesVault]** を選択し、そのダッシュボードを開きます。
 

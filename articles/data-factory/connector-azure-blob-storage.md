@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 3109cad0e00b6ec5af47210f2c8d094659bd4553
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 999f7265cc62236fa085a0c2fb90a68707891dd4
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345778"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620394"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,11 +33,11 @@ Blob Storage には、サポートされているソース データ ストア�
 
 - 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。 
 - アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、または Azure リソースのマネージド ID のいずれかの認証を使用した BLOB のコピー。
-- ブロック BLOB、アペンド BLOB、またはページ BLOB からの BLOB のコピーと、ブロック BLOB だけへのデータのコピー。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
+- ブロック BLOB、アペンド BLOB、またはページ BLOB からの BLOB のコピーと、ブロック BLOB だけへのデータのコピー。
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
 
 >[!NOTE]
->Azure Storage のファイアウォール設定で _信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します_オプションを有効にした場合、Azure Integration Runtime を使用した Azure Blob Storage への接続は、ADF が信頼された Microsoft サービスとして扱われないため、アクセス不可エラーで失敗します。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
+>Azure Storage のファイアウォール設定で _信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します_ オプションを有効にした場合、Azure Integration Runtime を使用した Azure Blob Storage への接続は、ADF が信頼された Microsoft サービスとして扱われないため、アクセス不可エラーで失敗します。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
 
 ## <a name="get-started"></a>作業開始
 
@@ -207,7 +207,7 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
 
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
 
-2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールについて詳しくは、「[RBAC を使用して Azure Storage データへのアクセス権を管理する](../storage/common/storage-auth-aad-rbac.md)」をご覧ください。
+2. Azure BLOB ストレージでマネージド ID に適切なアクセス許可を付与します。 ロールについて詳しくは、「[RBAC を使用して Azure Storage データへのアクセス権を管理する](../storage/common/storage-auth-aad-rbac.md)」をご覧ください。
 
     - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
     - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。

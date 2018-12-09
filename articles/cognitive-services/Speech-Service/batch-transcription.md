@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035953"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495590"
 ---
-# <a name="use-batch-transcription"></a>バッチ文字起こしを使用する
+# <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
-Batch 文字起こしはストレージ内に大量のオーディオがある場合に最適です。 この REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
+Batch 文字起こしはストレージ内に大量のオーディオがある場合に最適です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 
 ## <a name="the-batch-transcription-api"></a>Batch 文字起こし API
 
@@ -36,16 +36,16 @@ Batch 文字起こし API では、音声からテキストへの非同期文字
 
 Batch 文字起こし API では、次の形式がサポートされています。
 
-Name| チャネル  |
-----|----------|
-mp3 |   Mono   |   
-mp3 |  ステレオ  | 
-wav |   Mono   |
-wav |  ステレオ  |
-Opus|   Mono   |
-Opus|  ステレオ  |
+| 形式 | コーデック | Bitrate | サンプル レート |
+|--------|-------|---------|-------------|
+| WAV | PCM 0 | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
+| MP3 | PCM 0 | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
+| OGG | OPUS | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
 
-ステレオ オーディオ ストリームの場合、Batch 文字起こしは文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 不適切な単語フィルターと句読点モデルの設定のためのプロパティを含むチャネルの出力が、次の JSON サンプルに示されています。
+> [!NOTE]
+> Batch 文字起こし API を使用するには、S0 キー (有料レベル) が必要です。 無料の (f0) キーでは使用できません。
+
+ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 次の JSON サンプルは、チャネルの出力を示したものです。これには、不適切な単語フィルターと句読点モデルを設定するためのプロパティが含まれています。
 
 ```json
 {
@@ -62,6 +62,16 @@ Opus|  ステレオ  |
 
 > [!NOTE]
 > Batch 文字起こし API は REST サービスを使用して、文字起こし、その状態、および関連する結果を要求します。 任意の言語からこの API を使用できます。 次のセクションでは、API の使用方法について説明します。
+
+### <a name="query-parameters"></a>クエリ パラメーター
+
+REST 要求のクエリ文字列には、次のパラメーターを含めることができます。
+
+| パラメーター | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`none` (不適切な表現のフィルターを無効にする)、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する) または `tags` ("不適切な表現" のタグを追加する) です。 既定の設定は `masked`です。 | 省略可能 |
+| `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`none` (句読点を無効にする)、`dictated` (明示的な句読点)、`automatic` (デコーダーで句読点を処理する)、`dictatedandautomatic` (指定された句読点、または自動) です。 | 省略可能 |
+
 
 ## <a name="authorization-token"></a>承認トークン
 

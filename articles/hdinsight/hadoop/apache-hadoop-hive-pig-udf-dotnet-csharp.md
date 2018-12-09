@@ -23,7 +23,7 @@ HDInsight 上の Apache Hive と Apache Pig で C# のユーザー定義関数 (
 > [!IMPORTANT]
 > このドキュメントの手順は、Linux および Windows ベースの HDInsight クラスターに対してのみ有効です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
 
-Hive と Pig では、両方とも、外部のアプリケーションにデータを渡して処理できます。 このプロセスは_ストリーミング_と呼ばれます。 .NET アプリケーションを使用する場合、データは STDIN 上のアプリケーションに渡され、そのアプリケーションから結果が STDOUT に返されます。 STDIN および STDOUT から読み取りと書き込みを実行する場合は、`Console.ReadLine()` と `Console.WriteLine()` をコンソール アプリケーションから使用できます。
+Hive と Pig では、両方とも、外部のアプリケーションにデータを渡して処理できます。 このプロセスは _ストリーミング_ と呼ばれます。 .NET アプリケーションを使用する場合、データは STDIN 上のアプリケーションに渡され、そのアプリケーションから結果が STDOUT に返されます。 STDIN および STDOUT から読み取りと書き込みを実行する場合は、`Console.ReadLine()` と `Console.WriteLine()` をコンソール アプリケーションから使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -166,13 +166,13 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * __Azure ストレージ アカウント__を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
@@ -216,7 +216,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 1. HDInsight クラスターに接続するには、次のいずれかの方法を使用します。
 
-    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+    * __Linux ベース__ の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
     
     * __Windows ベース__ の HDInsight クラスターを使用している場合は、[リモート デスクトップを使用してクラスターに接続します。](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 

@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035647"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495862"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight 上の Apache YARN アプリケーション ログにアクセスする
-このドキュメントでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した Apache YARN アプリケーションのログにアクセスする方法について説明します
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight 上の Apache Hadoop YARN アプリケーション ログにアクセスする
+このドキュメントでは、Azure HDInsight の Windows ベースの Apache Hadoop クラスターで完了した [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) アプリケーションのログにアクセスする方法について説明します
 
 > [!IMPORTANT]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「[Linux ベースの HDInsight で Apache YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)」をご覧ください
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスについて詳しくは、「[Access Apache Hadoop YARN application logs on Linux-based Apache Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)」(Linux ベースの Apache HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする) をご覧ください
 >
 
 
 ### <a name="prerequisites"></a>前提条件
-* Windows ベースの HDInsight クラスター。  「 [HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+* Windows ベースの HDInsight クラスター。  「[Create Windows-based Apache Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)」(HDInsight での Windows ベースの Apache Hadoop クラスターの作成) を参照してください。
 
 ## <a name="yarn-timeline-server"></a>YARN タイムライン サーバー
-<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN タイムライン サーバー</a> は完了したアプリケーションに関する汎用的な情報のほか、2 つの異なるインターフェイスを通じてフレームワーク固有のアプリケーション情報を提供します。 具体的には次の処理が行われます。
+<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN タイムライン サーバー</a>は完了したアプリケーションに関する汎用的な情報のほか、2 つの異なるインターフェイスを通じてフレームワーク固有のアプリケーション情報を提供します。 具体的には次の処理が行われます。
 
 * HDInsight クラスター上での汎用アプリケーション情報の格納と取得はバージョン 3.1.1.374 以降で有効になります。
 * タイムライン サーバーのフレームワーク固有のアプリケーション情報コンポーネントは、現在 HDInsight クラスターで使用できません。
@@ -53,7 +53,7 @@ YARN では、アプリケーションのスケジュール設定/監視から�
 * コンテナーは、作業の基本単位のコンテキストを提供します。 
 * コンテナーのコンテキストで行われる作業は、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 
 
-詳細については、[YARN の概念][YARN-concepts]に関するページをご覧ください。
+詳細については、[Apache Hadoop YARN の概念][YARN-concepts]に関するページをご覧ください。
 
 アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーションのログへのアクセスはより確実になります。この機能は、ワーカー ノード上のすべてのコンテナーでログを集計し、アプリケーションが終了した後でワーカー ノードごとに 1 つの集計されたログ ファイルとして既定のファイル システムに保存します。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは 1 つのファイルに集計されます。つまり、アプリケーションで使用するワーカー ノードごとに 1 つのログ ファイルが生成されます。 ログの集計は、HDInsight クラスターでは既定で有効になっており (バージョン 3.0 以上)、集計されたログは、クラスターの既定のコンテナーの次の場所にあります。
 

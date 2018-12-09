@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914296"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165426"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -84,15 +84,20 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>toScript</td>
     <td>*省略可能なパラメーター*。<br/>翻訳済みテキストのスクリプトを指定します。</td>
   </tr>
+  <tr>
+    <td>allowFallback</td>
+    <td>"*省略可能なパラメーター*"。<br/>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできるかどうかを指定します。 指定できる値は `true` (既定値) または `false` です。<br/><br/>`allowFallback=false` は、要求によって指定された `category` 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 `allowFallback=true` は、カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。
+</td>
+  </tr>
 </table> 
 
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
-    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>_One authorization_<br/>_header_</td>
     <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
@@ -164,6 +169,21 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 JSON 応答の例については、「[例](#examples)」セクションを参照してください。
 
+## <a name="response-headers"></a>応答ヘッダー
+
+<table width="100%">
+  <th width="20%">ヘッダー</th>
+  <th>説明</th>
+    <tr>
+    <td>X-RequestId</td>
+    <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
+  </tr>
+  <tr>
+    <td>X-MT-System</td>
+    <td>翻訳するように要求された 'to' 言語への翻訳を実行するために使用されたシステムの種類を示します。 値は、文字列のコンマ区切りの一覧です。 各文字列は種類を示します。<br/><ul><li>Custom - 要求にはカスタム システムが含まれ、翻訳中に少なくとも 1 つのカスタム システムが使用されています。</li><li>Team - それ以外のすべての要求。</li></td>
+  </tr>
+</table> 
+
 ## <a name="response-status-codes"></a>応答状態コード
 
 要求によって返される可能性のある HTTP 状態コードを次に示します。 
@@ -186,6 +206,10 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   <tr>
     <td>403</td>
     <td>要求が承認されていません。 詳細なエラー メッセージを確認してください。 これは、多くの場合、試用版サブスクリプションで提供されるすべての無料翻訳が使い果たされたことを示します。</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>リソースが見つからないため、要求を処理できませんでした。 詳細なエラー メッセージを確認してください。 カスタムの `category` を使用している場合は、大抵は要求を処理するためにカスタム翻訳システムをまだ利用できないことを示しています。 要求は、待機期間 (例: 1 分) 後に再試行する必要があります。</td>
   </tr>
   <tr>
     <td>429</td>
@@ -348,7 +372,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Action</th>
+  <th>アクション</th>
   <tr>
     <td>`NoAction`</td>
     <td>これは既定の動作です。 不適切な表現はソースからターゲットに渡されます。<br/><br/>

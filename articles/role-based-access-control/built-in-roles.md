@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 72a8a09d04dc009598dafc35b65304662b7b8915
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955917"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499656"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -39,7 +39,7 @@ ms.locfileid: "49955917"
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
-| [API Management Service Contributor](#api-management-service-contributor) | API Management サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
+| [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます |
 | [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です |
 | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです |
 | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
@@ -53,7 +53,7 @@ ms.locfileid: "49955917"
 | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
 | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
 | [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません |
-| [Billing Reader](#billing-reader) | 課金データを読み取ることができます |
+| [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します |
 | [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
 | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 |
@@ -70,12 +70,14 @@ ms.locfileid: "49955917"
 | [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
 | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
 | [Data Box 閲覧者](#data-box-reader) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 |
-| [Data Factory Contributor](#data-factory-contributor) | データ ファクトリを管理できます。ただし、それらへのアクセスは含まれません。 |
+| [Data Factory Contributor](#data-factory-contributor) | データ ファクトリまたデータ ファクトリ内の子リソースを作成し管理します。 |
 | [Data Lake Analytics Developer](#data-lake-analytics-developer) | 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 |
 | [Data Purger](#data-purger) | 分析データを削除することができます。 |
-| [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs の仮想マシンに対して接続、起動、再起動、シャットダウンを行えます。 |
+| [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
+| [EventGrid EventSubscription 共同作成者 (プレビュー)](#eventgrid-eventsubscription-contributor-preview) | EventGrid のイベント サブスクリプション操作を管理できます。 |
+| [EventGrid EventSubscription 閲覧者 (プレビュー)](#eventgrid-eventsubscription-reader-preview) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
 | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
@@ -101,7 +103,7 @@ ms.locfileid: "49955917"
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
-| [Security Manager](#security-manager) | セキュリティ コンポーネント、セキュリティ ポリシー、Virtual Machines を管理できます |
+| [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 |
 | [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません |
 | [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます |
 | [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません |
@@ -146,8 +148,8 @@ ms.locfileid: "49955917"
 > | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 > | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
-> | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトの作成または更新 |
-> | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトの削除 |
+> | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
+> | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |
 
 ## <a name="reader"></a>Reader
 > [!div class="mx-tableFixed"]
@@ -165,8 +167,7 @@ ms.locfileid: "49955917"
 > | **説明** | ACR イメージ署名者 |
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **アクション** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
+> | Microsoft.ContainerRegistry/registries/sign/write | コンテナー レジストリのコンテンツの信頼メタデータをプッシュ/プルします。 |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -175,7 +176,7 @@ ms.locfileid: "49955917"
 > | **説明** | ACR 検査データ閲覧者 |
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **アクション** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -184,14 +185,14 @@ ms.locfileid: "49955917"
 > | **説明** | ACR 検査データ作成者 |
 > | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **アクション** |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
+> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | 検疫済みイメージの検疫状態を書き込むか変更します |
 
 ## <a name="api-management-service-contributor"></a>API Management Service Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | API Management サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
+> | **説明** | サービスと API を管理できます |
 > | **Id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **アクション** |  |
 > | Microsoft.ApiManagement/service/* | API Management サービスの作成と管理 |
@@ -536,7 +537,7 @@ ms.locfileid: "49955917"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | 課金データを読み取ることができます |
+> | **説明** | 課金データへの読み取りアクセスを許可します |
 > | **Id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -813,7 +814,7 @@ ms.locfileid: "49955917"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | データ ファクトリを管理できます。ただし、それらへのアクセスは含まれません。 |
+> | **説明** | データ ファクトリまたデータ ファクトリ内の子リソースを作成し管理します。 |
 > | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -872,7 +873,7 @@ ms.locfileid: "49955917"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure DevTest Labs の仮想マシンに対して接続、起動、再起動、シャットダウンを行えます。 |
+> | **説明** | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 > | **Id** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -883,13 +884,14 @@ ms.locfileid: "49955917"
 > | Microsoft.Compute/virtualMachines/restart/action | 仮想マシンを再起動します。 |
 > | Microsoft.Compute/virtualMachines/start/action | 仮想マシンを起動します。 |
 > | Microsoft.DevTestLab/*/read | ラボのプロパティの読み取り |
-> | Microsoft.DevTestLab/labs/createEnvironment/action | ラボで仮想マシンを作成します。 |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | ラボ内のランダムに要求可能な仮想マシンを要求します。 |
+> | Microsoft.DevTestLab/labs/createEnvironment/action | ラボで仮想マシンを作成します。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 数式を削除します。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 数式を読み取ります。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 数式を追加または変更します。 |
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | ラボ ポリシーを評価します。 |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | 既存の仮想マシンの所有権を取得します。 |
+> | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | 存在する場合は、該当する開始/停止のスケジュールを一覧表示します。 |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサーの受信 NAT 規則を接続します。 |
 > | Microsoft.Network/networkInterfaces/*/read | ネットワーク インターフェイスのプロパティ (例: そのネットワーク インターフェイスが含まれているすべてのロード バランサー) の読み取り |
@@ -936,6 +938,37 @@ ms.locfileid: "49955917"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 共同作成者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | EventGrid のイベント サブスクリプション操作を管理できます。 |
+> | **Id** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.EventGrid/eventSubscriptions/* |  |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | リージョンのイベント サブスクリプションを一覧表示します |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | EventGrid のイベント サブスクリプションを読み取ることができます。 |
+> | **Id** | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.EventGrid/eventSubscriptions/read | eventSubscription を読み取ります。 |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | リージョンのイベント サブスクリプションを一覧表示します |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight ドメイン サービス共同作成者
 > [!div class="mx-tableFixed"]
@@ -1089,6 +1122,7 @@ ms.locfileid: "49955917"
 > | **説明** | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 |
 > | **Id** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **アクション** |  |
+> | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Solutions/applications/read | アプリケーションの一覧を取得します。 |
 
 ## <a name="managed-applications-reader"></a>Managed Applications 閲覧者
@@ -1185,7 +1219,6 @@ ms.locfileid: "49955917"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
-> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>監視メトリック パブリッシャー
 > [!div class="mx-tableFixed"]
@@ -1332,15 +1365,17 @@ ms.locfileid: "49955917"
 > | Microsoft.Security/locations/tasks/activate/action | セキュリティ推奨事項をアクティブにします。 |
 > | Microsoft.Security/locations/tasks/dismiss/action | セキュリティ推奨事項を無視します。 |
 > | Microsoft.Security/policies/write | セキュリティ ポリシーを更新します。 |
-> | Microsoft.Security/securityContacts/write | セキュリティ連絡先を更新します。 |
+> | Microsoft.Security/pricings/write | スコープの価格設定を更新します。 |
+> | Microsoft.Security/pricings/delete | スコープの価格設定を削除します。 |
 > | Microsoft.Security/securityContacts/delete | セキュリティ連絡先を削除します。 |
+> | Microsoft.Security/securityContacts/write | セキュリティ連絡先を更新します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-## <a name="security-manager"></a>Security Manager
+## <a name="security-manager-legacy"></a>セキュリティ マネージャー (レガシ)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | セキュリティ コンポーネント、セキュリティ ポリシー、Virtual Machines を管理できます |
+> | **説明** | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -1559,11 +1594,13 @@ ms.locfileid: "49955917"
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
+> | Microsoft.Sql/servers/extendedAuditingSettings/read | 指定されたサーバーで構成されている拡張サーバー BLOB 監査ポリシーの詳細を取得します。 |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定の作成と管理 |
 > | Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードの読み取り |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーの作成と管理 |
+> | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 指定されたデータベースで構成されている拡張 BLOB 監査ポリシーの詳細を取得します。 |
 > | Microsoft.Sql/servers/databases/read | データベースの一覧を返すか、指定されたデータベースのプロパティを取得します。 |
 > | Microsoft.Sql/servers/databases/schemas/read | データベースのスキーマの一覧を取得します。 |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/read | テーブルの列の一覧を取得します。 |

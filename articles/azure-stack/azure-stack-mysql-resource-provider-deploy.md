@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f0c627c1b0ab5f551ed71c3c30eb1dccc6c930a3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 2017e08361c9ff060fde96b78549133d48372e34
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686349"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853899"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 
@@ -43,10 +43,11 @@ Azure Stack MySQL リソース プロバイダーをデプロイする前に、�
 
 * リソース プロバイダーには、対応する最低限の Azure Stack ビルドがあります。
 
-    | 最小の Azure Stack バージョン | MySQL RP バージョン|
-    | --- | --- |
-    | バージョン 1808 (1.1808.0.97)|[MySQL RP バージョン 1.1.30.0](https://aka.ms/azurestackmysqlrp11300) |
-    |     |     |
+  |最小の Azure Stack バージョン|MySQL RP バージョン|
+  |-----|-----|
+  |バージョン 1808 (1.1808.0.97)|[MySQL RP バージョン 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
+  |バージョン 1804 (1.0.180513.1)|[MySQL RP バージョン 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
+  |     |     |
 
 * データセンターの統合の前提条件を満たしていることを確認します。
 
@@ -90,7 +91,7 @@ MySQL リソース プロバイダーをデプロイするには、管理者特�
 | **VMLocalCredential** | MySQL リソースプロバイダー VM のローカル管理者アカウントの資格情報。 | _必須_ |
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
 | **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
-| **DependencyFilesLocalPath** | 統合システムの場合のみ、証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 切断された環境では、[mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) をこのディレクトリにダウンロードします。 必要に応じて、ここで 1 つの Windows Update MSU パッケージをコピーできます。 | _省略可能_ (統合システムまたは切断された環境には_必須_) |
+| **DependencyFilesLocalPath** | 統合システムの場合のみ、証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 切断された環境では、[mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) をこのディレクトリにダウンロードします。 必要に応じて、ここで 1 つの Windows Update MSU パッケージをコピーできます。 | _省略可能_ (統合システムまたは切断された環境には _必須_) |
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
 | **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 |

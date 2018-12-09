@@ -141,7 +141,7 @@ VM に接続しようとすると、次のシナリオが発生します。
    procmon /Terminate 
    ```
 
-5.  **c:\temp\ProcMonTrace.PML** というファイルを収集します。
+5. \ **c:\temp\ProcMonTrace.PML** というファイルを収集します。
 
     1. [データ ディスクを VM に接続します](../windows/attach-managed-disk-portal.md
 )。

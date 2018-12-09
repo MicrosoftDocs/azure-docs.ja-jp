@@ -132,7 +132,7 @@ PowerApps と Microsoft Flow に API 定義をインポートするには、次�
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>認証の種類を指定します
 
-PowerApps および Microsoft Flow では、カスタム コネクタへの認証を提供する ID プロバイダーのコレクションをサポートしています。 API に認証が必要な場合は、以下の例のように、OpenAPI ドキュメントで_セキュリティ定義_としてキャプチャされるようにします。
+PowerApps および Microsoft Flow では、カスタム コネクタへの認証を提供する ID プロバイダーのコレクションをサポートしています。 API に認証が必要な場合は、以下の例のように、OpenAPI ドキュメントで _セキュリティ定義_ としてキャプチャされるようにします。
 
 ```json
 "securityDefinitions": {

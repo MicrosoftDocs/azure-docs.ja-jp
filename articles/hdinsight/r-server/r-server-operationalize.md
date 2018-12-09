@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005956"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496919"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -79,9 +79,9 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
     d. 表示されたメニュー オプションから「**E**」を入力して、メイン メニューに戻ります。次に、「**8**」を入力して、管理ユーティリティを終了します。
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>Spark で Web サービスを実行しているときの長い待ち時間
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark で Web サービスを実行しているときの長い待ち時間
 
-mrsdeploy の機能を使って作成された Web サービスを Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
+mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ SSH セッションがアクティブになると、ローカル コンピュー
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>手順 1: worker ノードの使用を停止する
 
-ML サービス クラスターは YARN では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
+ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 
 次の手順に従って、worker ノードの使用を停止します。
 

@@ -42,7 +42,7 @@ Microsoft Graph の拡張機能には、次のバインドが用意されてい�
 
 ## <a name="setting-up-the-extensions"></a>拡張機能の設定
 
-Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
+Microsoft Graph のバインドは、_バインド拡張機能_ から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
@@ -976,7 +976,7 @@ module.exports = function (context, req) {
 
 ## <a name="webhooks"></a>Webhook
 
-Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
+Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_ の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。

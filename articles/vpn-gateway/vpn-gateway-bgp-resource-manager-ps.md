@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684343"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632587"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続上で BGP を有効にする手順について説明します。
@@ -167,7 +167,7 @@ $BGPPeerIP5 = "10.52.255.254"
 ローカル ネットワーク ゲートウェイのパラメーターに関する注意点がいくつかあります。
 
 * ローカル ネットワーク ゲートウェイは、VPN ゲートウェイと同じ場所またはリソース グループに配置することも、別の場所またはリソース グループに配置することもできます。 この例では、別の場所の別のリソース グループに配置します。
-* ローカル ネットワーク ゲートウェイ用に宣言する必要がある最小限のプレフィックスは、VPN デバイスの BGP ピア IP アドレスのホスト アドレスです。 この場合は、"10.52.255.254/32" の /32 プレフィックスです。
+* ローカル ネットワーク ゲートウェイ用に宣言する必要があるプレフィックスは、VPN デバイス上の BGP ピア IP アドレスのホスト アドレスです。 この場合は、"10.52.255.254/32" の /32 プレフィックスです。
 * 既に説明したように、オンプレミス ネットワークと Azure VNet では、異なる BGP ASN を使用する必要があります。 これらが同じ場合、オンプレミス VPN デバイスが既に ASN を使用して他の BGP 近隣ノードとピアリングしているのであれば、VNet ASN を変更する必要があります。
 
 続行する前に、サブスクリプション 1 に接続されていることを確認してください。

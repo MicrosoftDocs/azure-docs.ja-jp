@@ -6,21 +6,21 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/19/2018
+ms.date: 11/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fbb57753117f3c60010fe910616b8d0af5178360
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9fc605ab45241280d9331ad7d515ba007a015daa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434825"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583655"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
-各 Automation アカウントでは、最も一般的な Azure PowerShell モジュールが既定で提供されます。 Azure チームは Azure モジュールを定期的に更新しているため、Automation アカウントには、新しいバージョンがポータルから使用可能になったらそのアカウントで各モジュールを更新するための方法が用意されています。
+各 Automation アカウントでは、最も一般的な Azure PowerShell モジュールが既定で提供されます。 Azure チームは Azure モジュールを定期的に更新しています。 Automation アカウントには、新しいバージョンがポータルから使用可能になったらそのアカウントで各モジュールを更新するための方法が用意されています。
 
-モジュールは製品グループによって定期的に更新されるため、含まれているコマンドレットと共に変更が発生する可能性があります。変更の種類 (パラメーター名を変更する、コマンドレット全体を非推奨にするなど) によっては、Runbook に悪影響が及ぶことがあります。 Runbook やそれにより自動化されるプロセスに影響を与えないようにするため、先に進む前にテストと検証を行うことをお勧めします。 その目的のための専用の Automation アカウントがない場合は、アカウントの作成を検討してください。アカウントを作成すると、PowerShell モジュールの更新などの反復的な変更に加えて、Runbook の開発中の多数のさまざまなシナリオや変更についてテストを行うことができます。 結果が検証され、必要な変更をすべて適用したら、変更を必要としていたすべての Runbook の移行の調整に進み、運用環境で説明に従って次の更新を実行します。
+モジュールは製品グループによって定期的に更新されるため、含まれているコマンドレットについて変更が発生することがあります。 そのため、変更の種類 (パラメーター名の変更、コマンドレット全体の非推奨化など) によっては、Runbook に悪影響が及ぶ可能性があります。 Runbook やそれにより自動化されるプロセスに影響を与えないようにするため、先に進む前にテストと検証を行ってください。 その目的のための専用の Automation アカウントがない場合は、アカウントの作成を検討してください。アカウントを作成すると、Runbook の開発中の多数のさまざまなシナリオについてテストを行うことができます。 このテストで、PowerShell モジュールの更新など、反復的な変更を行ってください。 結果を検証し、必要な変更を適用した後、変更を運用環境に移行してください。
 
 > [!NOTE]
 > 新しい Automation アカウントには、最新のモジュールが含まれていない可能性があります。
@@ -55,20 +55,19 @@ ms.locfileid: "47434825"
 > [!NOTE]
 > Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。  
 
-Runbook でこれらの Azure PowerShell モジュールのコマンドレットを使用する場合は、最新のモジュールになっていることを確認するために、この更新プロセスを 1 か月に 1 回程度実行する必要があります。 Azure Automation は、モジュールを更新するとき、AzureRunAsConnection 接続を使って認証を行います。サービス プリンシパルが有効期限切れの場合、またはサブスクリプション レベルに存在しない場合、モジュールの更新は失敗します。
+Runbook でこれらの Azure PowerShell モジュールのコマンドレットを使用する場合は、最新のモジュールになっていることを確認するために、この更新プロセスを 1 か月に 1 回程度実行する必要があります。 Azure Automation では、モジュールの更新時に `AzureRunAsConnection` 接続を使用して認証が行われます。 サービス プリンシパルが有効期限切れになっている場合や、サブスクリプション レベルで存在しなくなっている場合、モジュールの更新は失敗します。
 
 ## <a name="alternative-ways-to-update-your-modules"></a>モジュールを更新する別の方法
 
-前述のように、**[Update Azure Modules] (Azure モジュールの更新)** ボタンはソブリン クラウドでは使用できず、グローバル Azure クラウドでのみ使用できます。 これは、PowerShell ギャラリーにある Azure PowerShell モジュールの最新バージョンは、これらのクラウドに現在デプロイされている Resource Manager サービスでは機能しないという事実が原因です。
+前述のように、**[Update Azure Modules] (Azure モジュールの更新)** ボタンはソブリン クラウドでは使用できず、グローバル Azure クラウドでのみ使用できます。 これは、PowerShell ギャラリーにある Azure PowerShell モジュールの最新バージョンは、これらのクラウドに現在デプロイされている Resource Manager リソースでは機能しないという事実が原因です。
 
-ただし、[Update AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook を Automation アカウントにインポートし、それを実行することで、モジュールの更新を行えます。
+[Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook をインポートして実行すると、Automation アカウント内の Azure モジュールの更新を試行できます。 ギャラリーからインポートしようとしているバージョンが、ターゲットの Azure 環境に現在デプロイされている Azure サービスに対して互換性を持たない場合、このプロセスは失敗する可能性があります。 その場合は、Runbook のパラメーターで、互換性のあるバージョンのモジュールが指定されていることを確認する必要があります。
 
-`AzureRmEnvironment` パラメーターを使用して、適切な環境を Runbook に渡します。  指定できる値は、**AzureCloud**、**AzureChinaCloud**、**AzureGermanCloud**、および **AzureUSGovernmentCloud** です。 このパラメーターに値を渡さない場合、Runbook は既定で、Azure パブリック クラウドの **AzureCloud** を使用します。
+`AzureRmEnvironment` パラメーターを使用して、適切な環境を Runbook に渡します。  指定できる値は、**AzureCloud**、**AzureChinaCloud**、**AzureGermanCloud**、および **AzureUSGovernment** です。 これらの値は `Get-AzureRmEnvironment | select Name` を使用して取得できます。 このパラメーターに値を渡さない場合、Runbook は既定で、Azure パブリック クラウドの **AzureCloud** を使用します
 
-PowerShell ギャラリーで提供されている最新のものではなく、Azure PowerShell モジュールの特定のバージョンを使用する場合は、これらのバージョンを、**Update-AzureModule** Runbook のオプションの `ModuleVersionOverrides` パラメーターに渡します。 例については、[Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook を参照してください。 `ModuleVersionOverrides` パラメーターで指定されていない Azure PowerShell モジュールは、PowerShell ギャラリーにあるモジュールの最新バージョンで更新されます。 `ModuleVersionOverrides` パラメーターに何も渡さなかった場合、PowerShell ギャラリーにあるモジュールの最新バージョンで、すべてのモジュールが更新されます。これが **[Update Azure Modules] (Azure モジュールの更新)** ボタンの動作です。
+PowerShell ギャラリーで提供されている最新のものではなく、Azure PowerShell モジュールの特定のバージョンを使用する場合は、これらのバージョンを、**Update-AzureModule** Runbook のオプションの `ModuleVersionOverrides` パラメーターに渡します。 例については、[Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook を参照してください。 `ModuleVersionOverrides` パラメーターで指定されていない Azure PowerShell モジュールは、PowerShell ギャラリーにあるモジュールの最新バージョンで更新されます。 `ModuleVersionOverrides` パラメーターに何も渡さなかった場合は、すべてのモジュールが、PowerShell ギャラリーにある最新のモジュール バージョンで更新されます。 この動作は、 **[Azure モジュールの更新]** ボタンをクリックするのと同じことです。
 
 ## <a name="next-steps"></a>次の手順
 
 * 統合モジュールの詳細、およびカスタム モジュールを作成して Automation をさらに別のシステム、サービス、またはソリューションと統合する方法については、[統合モジュール](automation-integration-modules.md)に関するページを参照してください。
 
-* ソース管理の統合を検討してください。そのためには、[GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) または [Azure DevOps](automation-scenario-source-control-integration-with-vsts.md) を使用して、Automation Runbook と構成ポートフォリオのリリースを一元的に管理および制御します。  

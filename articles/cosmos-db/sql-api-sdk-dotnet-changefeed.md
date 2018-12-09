@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685448"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632485"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -43,8 +43,18 @@ ms.locfileid: "51685448"
 
 ### <a name="v2-builds"></a>v2 のビルド
 
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* 要求の継続トークンからの変更フィードの開始をサポートするための新しいプロパティ ChangeFeedProcessorOptions.StartContinuation が追加されました。 これは、リース コレクションが空であるか、リースに ContinuationToken セットがない場合にのみ使用されます。 ContinuationToken セットがあるリース コレクション内のリースの場合は、ContinuationToken が使用され、ChangeFeedProcessorOptions.StartContinuation は無視されます。
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* カスタム ストアを使用した、パーティションごとの継続トークンの保持のサポートが追加されました。
+  * たとえば、カスタム リース ストアには、独自の方法でパーティション分割された Azure Cosmos DB リース コレクションを使用できます。
+  * カスタム リース ストアでは、新しい機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) と ILeaseStoreManager パブリック インターフェイスを使用できます。
+  * ILeaseManager インターフェイスは複数のロール インターフェイスにリファクタリングされました。
+* 小さな破壊的変更: 機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) は削除されました。代わりに ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) を使用してください。
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* リース コレクションがパーティション分割されるときの分割処理中に発生する場合がある問題を修正しました。 この問題は、リース コレクションから削除されていない過去のパーティションのリースに至る可能性があります。 問題は今回のリリースで修正されました。
+* このリリースでは、監視対象コレクション内の分割の処理中とパーティション リース コレクションの使用中に発生する問題が解決されます。 分割パーティションのリースの処理時に、そのパーティションに対応するリースを削除できません。 この問題は今回のリリースで修正されました。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * マルチ マスター アカウントと新しいセッション トークン形式の固定見積もり計算。

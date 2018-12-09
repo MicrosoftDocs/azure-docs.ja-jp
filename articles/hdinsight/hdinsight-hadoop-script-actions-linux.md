@@ -274,7 +274,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている__追加のストレージ アカウント__。
+* クラスターに関連付けられている __追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 

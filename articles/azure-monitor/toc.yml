@@ -30,18 +30,18 @@ items:
     - name: 収集 - Linux コンピューター
       href: ../log-analytics/log-analytics-quick-collect-linux-computer.md?toc=/azure/azure-monitor/toc.json
     - name: 収集 - Windows コンピューター
-      href: ../log-analytics/log-analytics-quick-collect-windows-computer.md?toc=/azure/azure-monitor/toc.json
+      href: learn/quick-collect-windows-computer.md
   expanded: true
 - name: チュートリアル
   items:
   - name: Log Analytics でデータを解析する
-    href: ../log-analytics/log-analytics-tutorial-viewdata.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-viewdata.md
   - name: Log Analytics でデータを視覚化する
-    href: ../log-analytics/log-analytics-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-logs-dashboards.md
   - name: プラットフォーム メトリックとログ データのアーカイブ
     href: ../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md?toc=/azure/azure-monitor/toc.json
   - name: ログ データに基づくアラート
-    href: ../log-analytics/log-analytics-tutorial-response.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-response.md
   - name: パフォーマンスとスケジュールに基づく自動スケール
     href: ../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md?toc=/azure/azure-monitor/toc.json
   - name: アプリケーションのランタイムの例外を見つける
@@ -62,6 +62,8 @@ items:
   items:
   - name: Azure の管理
     href: azure-management.md?toc=/azure/azure-monitor/toc.json
+  - name: 継続的な監視
+    href: continuous-monitoring.md
   - name: データの監視
     items:
     - name: メトリックとログ
@@ -75,15 +77,15 @@ items:
     - name: 診断ログ
       href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
     - name: ログ データ インジェスト時間
-      href: ../log-analytics/log-analytics-data-ingestion-time.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-ingestion-time.md
     - name: メトリック ストアへのカスタム メトリックの送信
       href: ../monitoring-and-diagnostics/metrics-custom-overview.md?toc=/azure/azure-monitor/toc.json
     - name: データのセキュリティ
       items:
       - name: ログ データ
-        href: ../log-analytics/log-analytics-data-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/data-security.md
       - name: 個人のログ データの処理
-        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+        href: platform/personal-data-mgmt.md
       - name: アプリケーション データの収集、保持、保存
         href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
   - name: 洞察
@@ -109,13 +111,13 @@ items:
     - name: Log Analytics
       href: log-query/log-query-overview.md
     - name: ログ クエリ ポータル
-      href: ../log-analytics/log-analytics-log-search-portals.md?toc=/azure/azure-monitor/toc.json
+      href: log-query/portals.md
     - name: OMS ポータルの移行
       items:
       - name: 概要
-        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-transition.md
       - name: 一般的な質問
-        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-faq.md
   - name: インシデントへの対応
     items:
     - name: アラート
@@ -139,7 +141,7 @@ items:
   - name: FAQ
     items:
     - name: Log Analytics
-      href: ../log-analytics/log-analytics-faq.md?toc=/azure/azure-monitor/toc.json
+      href: platform/log-faq.md
     - name: Application Insights
       href: ../application-insights/app-insights-troubleshoot-faq.md?toc=/azure/azure-monitor/toc.json
 - name: ハウツー ガイド
@@ -151,7 +153,7 @@ items:
       - name: ロールのアクセス許可とセキュリティ
         href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
       - name: ワークスペース
-        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+        href: platform/manage-access.md
       - name: '[アプリケーション]'
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP アドレス
@@ -164,8 +166,6 @@ items:
         href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
       - name: 開発、テスト、運用の分離
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
-      - name: 複数のコンポーネントを含むアプリの監視
-        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
       - name: Application Insights での作業
         href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
     - name: ワークスペースを管理する
@@ -173,15 +173,15 @@ items:
       - name: ワークスペースの作成
         items:
         - name: Azure Portal の使用
-          href: ../log-analytics/log-analytics-quick-create-workspace.md?toc=/azure/azure-monitor/toc.json
+          href: learn/quick-create-workspace.md
         - name: Azure CLI の使用
-          href: ../log-analytics/log-analytics-quick-create-workspace-cli.md?toc=/azure/azure-monitor/toc.json
+          href: learn/quick-create-workspace-cli.md
         - name: Azure PowerShell の使用
-          href: ../log-analytics/log-analytics-quick-create-workspace-posh.md?toc=/azure/azure-monitor/toc.json
+          href: learn/quick-create-workspace-posh.md
       - name: ワークスペースを削除する
-        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+        href: platform/delete-workspace.md
       - name: サービス プロバイダー向けの設計
-        href: ../log-analytics/log-analytics-service-providers.md?toc=/azure/azure-monitor/toc.json
+        href: platform/service-providers.md
   - name: データを収集する
     items:
     - name: エージェントのインストールと構成
@@ -199,7 +199,7 @@ items:
         - name: Linux 用の VM 拡張機能
           href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
         - name: Operations Manager
-          href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
+          href: platform/om-agents.md
         - name: OMS ゲートウェイ
           href: platform/gateway.md
         - name: エージェント管理
@@ -257,7 +257,7 @@ items:
       - name: カスタム ログ
         href: platform/data-sources-custom-logs.md
       - name: カスタム フィールド
-        href: ../log-analytics/log-analytics-custom-fields.md?toc=/azure/azure-monitor/toc.json
+        href: platform/custom-fields.md
     - name: アプリケーションの構成
       items:
       - name: Azure アプリ
@@ -423,7 +423,7 @@ items:
     - name: カスタム データの収集
       items:
       - name: Log Analytics データ コレクター API
-        href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
+        href: platform/data-collector-api.md
       - name: Log Analytics データ コレクター API パイプラインの例
         href: platform/create-pipeline-datacollector-api.md
       - name: アプリケーション データ
@@ -514,7 +514,7 @@ items:
         - name: Workbooks
           href: ../application-insights/app-insights-usage-workbooks.md?toc=/azure/azure-monitor/toc.json
       - name: Web アプリ分析ソリューション
-        href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=/azure/azure-monitor/toc.json
+        href: insights/azure-web-apps-analytics.md
     - name: コンテナーの監視
       items:
       - name: コンテナーに対する Azure Monitor
@@ -532,7 +532,7 @@ items:
         - name: トラブルシューティング
           href: insights/container-insights-troubleshoot.md
       - name: Docker および Windows コンテナーの監視
-        href: ../log-analytics/log-analytics-containers.md?toc=/azure/azure-monitor/toc.json
+        href: insights/containers.md
       - name: Docker アプリケーションの監視
         href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
     - name: リソース グループの監視
@@ -540,7 +540,7 @@ items:
     - name: データベースの監視
       items:
       - name: Azure SQL
-        href: ../log-analytics/log-analytics-azure-sql.md?toc=/azure/azure-monitor/toc.json
+        href: insights/azure-sql.md
       - name: SQL Server
         href: insights/sql-assessment.md
     - name: ネットワークの監視
@@ -560,7 +560,7 @@ items:
         - name: 価格
           href: insights/network-performance-monitor-pricing-faq.md
         - name: FAQ
-          href: ../log-analytics/log-analytics-network-performance-monitor-faq.md?toc=/azure/azure-monitor/toc.json
+          href: insights/network-performance-monitor-faq.md
     - name: 仮想マシンの監視
       items:
       - name: VM に対する Azure Monitor
@@ -645,7 +645,7 @@ items:
     - name: Power BI
       items:
       - name: ログ データをエクスポートする
-        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powerbi.md
       - name: アプリケーション データをエクスポートする
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: データを Grafana に送信する
@@ -661,67 +661,68 @@ items:
     - name: ログ データのクエリ
       items:
       - name: クエリ言語のドキュメント
-        href: ../log-analytics/query-language/query-language.md
+        href: log-query/query-language.md
       - name: 言語の相違点
-        href: ../log-analytics/query-language/data-explorer-difference.md?toc=/azure/azure-monitor/toc.json
+        href: log-query/data-explorer-difference.md
       - name: 作業開始
         items:
         - name: Analytics ポータルの使用
-          href: ../log-analytics/query-language/get-started-analytics-portal.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/get-started-portal.md
         - name: クエリの概要
-          href: ../log-analytics/query-language/get-started-queries.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/get-started-queries.md
         - name: 検索クエリ
-          href: ../log-analytics/query-language/search-queries.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/search-queries.md
         - name: 便利な演算子
-          href: ../log-analytics/query-language/useful-operators.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/useful-operators.md
       - name: レッスン
         items:
         - name: 文字列操作
-          href: ../log-analytics/query-language/string-operations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/string-operations.md
         - name: 日付と時刻の操作
-          href: ../log-analytics/query-language/datetime-operations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/datetime-operations.md
         - name: 集計関数
-          href: ../log-analytics/query-language/aggregations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/aggregations.md
         - name: 高度な集計
-          href: ../log-analytics/query-language/advanced-aggregations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/advanced-aggregations.md
         - name: 結合
-          href: ../log-analytics/query-language/joins.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/joins.md
         - name: JSON とデータ構造
-          href: ../log-analytics/query-language/json-data-structures.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/json-data-structures.md
         - name: 詳細クエリ書き込み
-          href: ../log-analytics/query-language/advanced-query-writing.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/advanced-query-writing.md
         - name: グラフとダイアグラム
-          href: ../log-analytics/query-language/charts.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/charts.md
         - name: Functions
-          href: ../log-analytics/query-language/functions.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/functions.md
       - name: チートシート
         items:
         - name: SQL
-          href: ../log-analytics/query-language/sql-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/sql-cheatsheet.md
         - name: Splunk
-          href: ../log-analytics/query-language/splunk-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/splunk-cheatsheet.md
       - name: クエリ言語
         items:
         - name: 例
-          href: ../log-analytics/query-language/examples.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/examples.md
         - name: リソース間の検索
-          href: ../log-analytics/log-analytics-cross-workspace-search.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/cross-workspace-query.md
         - name: アプリの式
-          href: ../log-analytics/query-language/app-expression.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/app-expression.md
         - name: ワークスペースの式
-          href: ../log-analytics/query-language/workspace-expression.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/workspace-expression.md
       - name: ログ データ
         items:
         - name: アプリケーション データ
           href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
         - name: 標準のプロパティ
-          href: ../log-analytics/log-analytics-standard-properties.md?toc=/azure/azure-monitor/toc.json
+        - name: テキスト データの解析
+          href: log-query/parse-text.md
       - name: 検索結果からのアクションの実行
-        href: ../log-analytics/log-analytics-log-search-takeaction.md?toc=/azure/azure-monitor/toc.json
+        href: log-query/take-action.md
       - name: コンピューター グループ
         href: platform/computer-groups.md
       - name: Flow コネクタ
-        href: ../log-analytics/log-analytics-flow-tutorial.md?toc=/azure/azure-monitor/toc.json
+        href: platform/flow-tutorial.md
       - name: Log Search API
         href: https://dev.loganalytics.io/
   - name: インシデントへの対応
@@ -821,11 +822,11 @@ items:
     - name: IT Service Management
       items:
       - name: IT Service Management Connector
-        href: ../log-analytics/log-analytics-itsmc-overview.md?toc=/azure/azure-monitor/toc.json
+        href: platform/itsmc-overview.md
       - name: IT Service Management 接続
         href: platform/itsmc-connections.md
       - name: Service Manager Web アプリを作成する
-        href: ../log-analytics/log-analytics-itsmc-service-manager-script.md?toc=/azure/azure-monitor/toc.json
+        href: platform/itsmc-service-manager-script.md
   - name: 使用量とコストの管理
     items:
     - name: 使用量と推定コスト
@@ -835,7 +836,7 @@ items:
     - name: アプリケーションの Enterprise プランの詳細
       href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
     - name: ログのデータ ボリュームとリテンション期間
-      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+      href: platform/manage-cost-storage.md
     - name: ログ データの使用状況の監視
       href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
   - name: 自動化
@@ -859,7 +860,7 @@ items:
     - name: Azure CLI のサンプル
       href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
     - name: Resource Manager テンプレート
-      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure/monitoring-and-diagnostics/toc.json
+      href: platform/template-workspace-configuration.md
     - name: API
       items:
       - name: REST API を使用したチュートリアル
@@ -1007,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 46f8dfa668deed1be2b955fd42b894dfa5513a20
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dc89f1634040b7002e58206aaf6d1ade6965b2a8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846183"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017904"

@@ -8,12 +8,12 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565073"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446254"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で仮想 TPM を持つ Edge デバイスの作成とプロビジョニングを行う
 
@@ -65,7 +65,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
    2. **ネットワークの構成**: **[接続]** の値を、前のセクションで作成した仮想スイッチに設定します。 
    3. **インストール オプション**: **[ブート イメージ ファイルからオペレーティング システムをインストールする]** を選択し、ローカルに保存したディスク イメージ ファイルを参照します。
 
-新しい VM の作成には数分かかる可能性があります。 
+新しい VM の作成には数分かかることがあります。 
 
 ### <a name="enable-virtual-tpm"></a>仮想 TPM を有効にする
 
@@ -136,7 +136,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 IoT Edge ランタイムがデバイスを自動的にプロビジョニングするには、TPM アクセスにアクセスする必要があります。 
 
-次の手順を使用して、TPM へのアクセス権を付与します。 または、systemd 設定を上書きして *iotedge* サービスをルートとして実行できるようにすることで、同じことを実現できます。 
+IoT Edge ランタイムに TPM へのアクセス権を付与するには、systemd 設定をオーバーライドして、*iotedge* サービスに root 権限を付与します。 サービス権限を昇格したくない場合は、次の手順を使用して、TPM へのアクセス権を手動で付与することもできます。 
 
 1. デバイスで、TPM ハードウェア モジュールへのファイル パスを探してローカル変数として保存します。 
 
@@ -180,8 +180,10 @@ IoT Edge ランタイムがデバイスを自動的にプロビジョニング�
    成功の出力は次のようになります。
 
    ```output
-   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
+
+   適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。 
 
 8. IoT Edge ランタイム上書きファイルを開きます。 
 
@@ -234,7 +236,7 @@ IoT Edge ランタイムが実行されていることを確認します。
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
-ランタイムが正常に起動した場合は、IoT Hub に移動して、新しいデバイスが自動的にプロビジョニングされ、IoT Edge モジュールを実行する準備ができていることを確認できます。 
+ランタイムが正常に起動した場合は、IoT Hub に移動して、新しいデバイスが自動的にプロビジョニングされたことを確認できます。 これで、デバイスで IoT Edge モジュールを実行する準備ができました。 
 
 IoT Edge デーモンの状態を確認します。
 

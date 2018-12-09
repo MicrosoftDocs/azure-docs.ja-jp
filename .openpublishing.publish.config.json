@@ -41,8 +41,7 @@
   "enable_push_aggregation": true,
   "enable_pull_request_aggregation": true,
   "contribution_branch_mappings": {
-    "live-sxs": "live",
-    "markdig-migration-v3-sxs": "markdig-migration-v3"
+    "live-sxs": "live"
   },
   "dependent_repositories": [
     {
@@ -238,6 +237,12 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "aml-sdk-samples",
+      "url": "https://github.com/Azure/MachineLearningNotebooks",
+      "branch": "sdk-codetest",
+      "branch_mapping": {}
+    },
+    {
       "path_to_root": "samples-qnamaker-nodejs",
       "url": "https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs",
       "branch": "master",
@@ -280,12 +285,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "aml-sdk-samples",
-      "url": "https://github.com/Azure/MachineLearningNotebooks",
-      "branch": "sdk-codetest",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "cognitive-services-vision-csharp-sdk-quickstarts",
       "url": "https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts",
       "branch": "master",
@@ -300,6 +299,12 @@
     {
       "path_to_root": "cognitive-services-face-android-detect",
       "url": "https://github.com/Azure-Samples/cognitive-services-face-android-detect",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cosmosdb-dotnet-web-app",
+      "url": "https://github.com/Azure-Samples/cosmos-dotnet-todo-app",
       "branch": "master",
       "branch_mapping": {}
     }
@@ -332,4 +337,3 @@
     }
   }
 }
-        

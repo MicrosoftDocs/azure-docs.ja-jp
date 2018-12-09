@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f6015f9dc436d7c5e9e526aacae0f67d2f2fa1f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77d3bdd755e7c8d68115e12c6bee318fda652b09
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978853"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972203"
 documentType: LandingData
 title: Azure Storage のドキュメント
 metadata:
@@ -67,9 +67,9 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
     - title: Data Lake Storage Gen2
       values:
-      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-azure-cli
       - href: 
       - href: 
       - href: 
@@ -83,7 +83,7 @@ sections:
     - title: BLOB
       html: <p>クラウドに画像データをアップロードして処理する</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a></li></ul><p>高可用性を実現するようにアプリケーションを設計する</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">アプリケーション データの可用性を高める</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Azure Storage で非構造化データを検索する</a></p>
     - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">Azure Databricks を使ったデータの抽出、変換、読み込み</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">Spark を使用した DataBricks で Azure Data Lake Storage Gen2 のデータにアクセスする</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う</a></p>
+      html: <p><a href="/azure/storage/blobs/handle-data-using-databricks">Azure Databricks を使ったデータの抽出、変換、読み込み</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Spark を使用した DataBricks で Azure Data Lake Storage Gen2 のデータにアクセスする</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う</a></p>
 - title: サンプル
   items:
   - type: paragraph
@@ -107,7 +107,7 @@ sections:
       image:
         src: /learn/achievements/intro-to-data-in-azure.svg
         href: //learn/modules/intro-to-data-in-azure/
-    - title: " Azure でのデータ ストレージのアプローチを選択する"
+    - title: " Azure でのデータ ストレージのアプローチを選択する"
       href: /learn/modules/choose-storage-approach-in-azure/
       image:
         src: /learn/achievements/choose-storage-approach-in-azure.svg

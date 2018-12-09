@@ -2,25 +2,21 @@
 title: Azure AD アプリケーション プロキシ コネクタを理解する | Microsoft Docs
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036039"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445960"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -32,7 +28,24 @@ ms.locfileid: "51036039"
 
 ## <a name="requirements-and-deployment"></a>要件とデプロイ
 
-アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 または 2016 コンピューターにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信できる必要があります。 アプリケーション プロキシでは、基になるオペレーティング システムで TLS 1.2 が実行されていることも必要です。 TLS 1.2 に変更するには、[TLS 1.2 を有効にする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect)の手順に従います。 コンテンツは Azure AD Connect 向けのものですが、この手順はすべての .NET クライアントについて同じです。
+アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 または 2016 コンピューターにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信できる必要があります。 
+
+### <a name="windows-server"></a>Windows サーバー
+Windows Server 2012 R2 以降が実行されていて、アプリケーション プロキシ コネクタをインストールできるサーバーが必要です。 このサーバーは、Azure 内のアプリケーション プロキシ サービスと、公開するオンプレミス アプリケーションに接続する必要があります。
+
+アプリケーション プロキシ コネクタをインストールするには、Windows サーバーで TLS 1.2 が有効になっている必要があります。 1.5.612.0 以下のバージョンを使用した既存のコネクタは、今後さらなる通知があるまで、以前のバージョンの TLS で引き続き使用できます。 TLS 1.2 を有効にするには、次の手順に従います。
+
+1. 次のレジストリ キーを設定します。
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. サーバーを再起動します
+
 
 コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](application-proxy-enable.md)に関するページをご覧ください。
 
@@ -47,7 +60,7 @@ ms.locfileid: "51036039"
 
  ![Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-使用されていないコネクタを手動で削除する必要はありません。 コネクタが動作してサービスに接続すると、アクティブな状態が保たれます。 使用していないコネクタは _非アクティブ_ としてタグ付けされ、非アクティブな状態が 10 日間続くと削除されます。 コネクタをアンインストールする場合は、コネクタ サービスと更新サービスの両方をサーバーからアンインストールします。 コンピューターを再起動して、サービスを完全に削除します。
+使用されていないコネクタを手動で削除する必要はありません。 コネクタが動作してサービスに接続すると、アクティブな状態が保たれます。 使用していないコネクタは_非アクティブ_としてタグ付けされ、非アクティブな状態が 10 日間続くと削除されます。 コネクタをアンインストールする場合は、コネクタ サービスと更新サービスの両方をサーバーからアンインストールします。 コンピューターを再起動して、サービスを完全に削除します。
 
 ## <a name="automatic-updates"></a>自動更新
 
@@ -69,7 +82,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 コネクタ グループの詳細については、「[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)」をご覧ください。
 
-## <a name="capacity-planning"></a>容量計画 
+## <a name="capacity-planning"></a>キャパシティ プランニング 
 
 コネクタでは、コネクタ グループ内で自動的に負荷が分散されますが、予想されるトラフィック ボリュームを確実に処理できるよう十分な容量をコネクタ間で計画することも重要です。 一般的に、ユーザー数が多いほど、大きなマシンが必要になります。 以下の表は、さまざまなマシンが処理できるボリュームの概要を示しています。 使用パターンはさまざまで、負荷の予測には使用できないため、この数値は、ユーザーあたりのトランザクション数ではなく、1 秒あたりのトランザクション数 (TPS) に基づいていることに注意してください。  また、応答のサイズとバックエンド アプリケーションの応答時間によっても、違いが出てきます。応答のサイズが大きく、応答時間が遅くなると、最大 TPS は少なくなります。
 

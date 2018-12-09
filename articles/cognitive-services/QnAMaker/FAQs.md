@@ -43,7 +43,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>KB を変更するために、同じ AAD テナントに含まれない共同作成者と KB を共有できますか? 
 
-共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと_任意の_リソースを共有できる場合、QnA Maker を共有することもできます。
+共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
 
 ### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>5 つの QnAMaker KB で 1 つの App Service プランがある場合。 それぞれ 1 つだけの QnAMaker KB にアクセスできるように、5 人のユーザーに読み取り/書き込み権限を割り当てることができますか?
 

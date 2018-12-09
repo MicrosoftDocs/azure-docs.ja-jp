@@ -143,7 +143,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>同じ都市圏に複数の ExpressRoute 回線を配置することはできますか。 同じ仮想ネットワークにリンクすることはできますか。
 
-はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
+はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回線が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 
@@ -240,7 +240,7 @@ REST API や PowerShell コマンドレットを使用して、ExpressRoute 回�
 ExpressRoute Premium は、次の機能のコレクションです。
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
-* ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
+* ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
 * Office 365 や Dynamics 365 への接続。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
     **例:**
@@ -340,7 +340,7 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 * 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。
 
-* 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
+* 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
 
 ## <a name="expressRouteDirect"></a>ExpressRoute Direct (プレビュー)
 

@@ -25,7 +25,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 1. [Azure portal](https://portal.azure.com) で Kafka クラスターを選びます。
 
-2. __クラスターの概要__で __[クラスター ダッシュボード]__ を選びます。 
+2. __クラスターの概要__ で __[クラスター ダッシュボード]__ を選びます。 
 
     ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 

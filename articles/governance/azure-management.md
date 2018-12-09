@@ -1,5 +1,5 @@
 ---
-title: Azure の管理
+title: Azure 管理の概要
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
 author: DCtheGeek
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 268526277dc935ccffc30120f2bb170ad3ff3ef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978227"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582310"
 ---
 # <a name="management-in-azure"></a>Azure での管理
 
@@ -43,7 +43,7 @@ Azure におけるガバナンスは、主に 2 つのサービスで実装さ�
 
 ## <a name="secure"></a>セキュリティ保護
 
-アプリケーション、リソース、データのセキュリティを管理するには、脅威を評価し、セキュリティ データの収集と分析を行うと同時に、アプリケーションおよびリソースの設計と構成の安全性を確保する必要があります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 また、Azure のセキュリティに関する包括的な情報と、Azure リソースを安全に構成するためのガイダンスについて、「[Azure Security の概要](../security/azure-security.md)」を参照することをお勧めします。
+アプリケーション、リソース、データのセキュリティを管理するには、脅威を評価し、セキュリティ データの収集と分析を行うと同時に、アプリケーションおよびリソースの設計と構成の安全性を確保する必要があります。 セキュリティの監視と脅威の分析は、Azure Security Center によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 また、Azure のセキュリティに関する包括的な情報と、Azure リソースを安全に構成するためのガイダンスについて、「[Azure Security の概要](../security/azure-security.md)」を参照することをお勧めします。
 
 ## <a name="protect"></a>保護
 
