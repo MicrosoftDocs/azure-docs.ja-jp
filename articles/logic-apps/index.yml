@@ -51,5 +51,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.logicapp/?view=azurermps-5.1.1">Azure PowerShell</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/logic/">REST API リファレンスに関するページ</a></p>
