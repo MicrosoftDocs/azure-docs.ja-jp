@@ -40,7 +40,7 @@ ms.locfileid: "45737194"
 | Developer SDK |.NET、Java、Python、Node.js |.Net、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |並列分析ワークロードに最適化されたパフォーマンス。 |
 | サイズ制限 |アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 |具体的な制限については、[こちら](../storage/common/storage-scalability-targets.md)。 より大きなアカウント制限については [Azure サポート](https://azure.microsoft.com/support/faq/)への問い合わせで入手可能 |
-| geo 冗長 |ローカル冗長 (1 つの Azure リージョンにデータの複数のコピー) |ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (GRS)、読み取りアクセス geo 冗長 (RA-GRS)。 詳細については、 [こちら](../storage/common/storage-redundancy.md) をご覧ください。 |
+| 地理冗長 |ローカル冗長 (1 つの Azure リージョンにデータの複数のコピー) |ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、地理冗長 (GRS)、読み取りアクセス 地理冗長 (RA-GRS)。 詳細については、 [こちら](../storage/common/storage-redundancy.md) をご覧ください。 |
 | サービスの状態 |一般公開 |一般公開 |
 | リージョン別の提供状況 |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |すべての Azure リージョンで使用可能 |
 | 料金 |詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/) |詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/) |
