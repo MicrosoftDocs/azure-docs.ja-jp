@@ -137,7 +137,7 @@ New-AzureRmVm -ResourceGroupName "myResourceGroup" `
 
 ## <a name="lock-resources"></a>リソースのロック
 
-[リソースのロック](../../azure-resource-manager/resource-group-lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete* または *ReadOnly* に設定できます。
+[リソースのロック](../../azure-resource-manager/resource-group-lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete(削除)* または *ReadOnly(読み取り専用)* に設定できます。
 
 仮想マシンとネットワーク セキュリティ グループをロックするには、[New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock) コマンドを使います。
 
