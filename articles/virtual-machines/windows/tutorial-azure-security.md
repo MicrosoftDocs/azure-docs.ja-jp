@@ -41,7 +41,7 @@ Azure ポータルから Security Center ダッシュボードにアクセスす
 
 ![Security Center ダッシュボード](./media/tutorial-azure-security/asc-dash.png)
 
-Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。 修復は自動化されており、Security Center を離れる必要はありません。  
+Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。修復は自動化されており、Security Center上で実行することが出来ます。
 
 ![Recommendations](./media/tutorial-azure-security/recommendations.png)
 
