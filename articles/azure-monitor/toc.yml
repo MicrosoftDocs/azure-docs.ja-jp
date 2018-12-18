@@ -9,7 +9,7 @@ items:
     href: azure-monitor-rebrand.md
 - name: クイック スタート
   items:
-  - name: '[アプリケーション]'
+  - name: アプリケーション
     items:
     - name: .NET アプリケーション
       href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
