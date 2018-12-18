@@ -86,14 +86,12 @@ function acquireTokenRedirectAndCallMSGraph() {
     });
 }
 
-function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType)
-{
- if(tokenType === "access_token")
- {
-     callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
- } else {
-     console.log("token type is:"+tokenType);
- }
+function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType) {
+    if(tokenType === "access_token") {
+        callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+    } else {
+        console.log("token type is:"+tokenType);
+    }
 }
 
 
@@ -129,7 +127,7 @@ else {
 
 ユーザーが初めて **[サインイン]** ボタンをクリックすると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドで、*Microsoft Azure Active Directory v2.0 エンドポイント*のポップアップ ウィンドウが開かれて、ユーザーの資格情報が要求され、検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされ、トークンが受信されて `msal.js` によって処理され、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
 
-このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、[こちら](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")にある GitHub のサンプル アプリケーションを確認してください。このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
+このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、[こちら](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")にある GitHub のサンプル アプリケーションを確認してください。このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
