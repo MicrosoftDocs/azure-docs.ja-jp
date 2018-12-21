@@ -47,7 +47,7 @@ sections:
     - image:
         src: media/index/logo_nodejs.svg
     rows:
-    - title: '[ストレージ アカウントの作成]'
+    - title: ストレージ アカウントの作成
       values:
       - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
       - href: /azure/storage/common/storage-quickstart-create-account?tabs=powershell
