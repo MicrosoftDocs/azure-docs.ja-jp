@@ -96,7 +96,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 | カスタム フィールド                | ワークスペースの **[詳細設定]** メニュー。 |
 | カスタム ログ                  | ワークスペースの **[詳細設定]** メニュー。 |
 | syslog                       | ワークスペースの **[詳細設定]** メニュー。 |
-| Application Insights         | Log Analytics と Application Insights が同じデータ エンジンを共有するようになったことから、このソリューションは廃止となっています。  |
+| Application Insights | Log Analytics と Application Insights が同じデータ エンジンを共有するようになったことから、このソリューションは非推奨となっています。 |
 | Windows ファイルの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
 | Windows レジストリの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
 | Linux ファイルの追跡          | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
@@ -111,7 +111,7 @@ OMS ポータルでは、ソリューション ギャラリーから管理ソリ
 Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../../azure-monitor/platform/alerts-metric.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../../azure-monitor/platform/alerts-extend-tool.md)に関するページを参照してください。
 
 ## <a name="how-do-i-access-my-dashboards"></a>ダッシュボードへのアクセス方法を教えてください
-Log Analytics の [[マイ ダッシュボード]](dashboards.md) 機能は廃止になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
+Log Analytics の [[マイ ダッシュボード]](dashboards.md) 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../learn/tutorial-logs-dashboards.md)に対する視覚表現を固定することも可能です。
 
 ## <a name="how-do-i-check-my-usage"></a>使用量をチェックするにはどうすればよいですか?
 Log Analytics の使用量とコストは、ワークスペースから **[使用量と推定コスト]** を選択して簡単に表示、管理できます。
