@@ -165,9 +165,9 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
 
         dsvm_compute.wait_for_completion(show_output=True)
     
-   It takes around 5 minutes to create the DSVM instance.
+   DSVM インスタンスを作成するのに約 5 分かかります。
 
-1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
+1. DSVMコンピューティングターゲットを作成します。 ここではDocker とconda を使用して、DSVM 上のトレーニング環境を作成および構成します。:
 
     ```python
     from azureml.core.runconfig import RunConfiguration
