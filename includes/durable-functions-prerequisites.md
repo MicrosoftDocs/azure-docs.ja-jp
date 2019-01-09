@@ -15,5 +15,5 @@ ms.locfileid: "52638477"
 
 次のクイックスタート チュートリアルを完了していること:
 
-* [C# で最初の永続関数を作成する](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-* [JavaScript で最初の永続関数を作成する](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [C# で最初の Durable Functions を作成する](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
+* [JavaScript で最初の Durable Functions を作成する](../articles/azure-functions/durable/quickstart-js-vscode.md)
