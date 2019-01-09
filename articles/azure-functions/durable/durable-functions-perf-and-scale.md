@@ -235,4 +235,4 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [C# で最初の永続関数を作成する](durable-functions-create-first-csharp.md)
+> [C# で最初の Durable Functions を作成する](durable-functions-create-first-csharp.md)
