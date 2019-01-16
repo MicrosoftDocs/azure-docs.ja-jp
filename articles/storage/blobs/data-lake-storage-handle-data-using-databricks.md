@@ -63,11 +63,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
-    |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します。        |
+    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * クラスターの名前を入力します。
     * この記事では、**4.2** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -122,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             "fs.azure.account.oauth2.client.id": "<service-client-id>",
             "fs.azure.account.oauth2.client.secret": "<service-credentials>",
             "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-     
+
         dbutils.fs.mount(
             source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
             mount_point = "/mnt/<mount-name>",
@@ -135,7 +135,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="upload-data-to-the-storage-account"></a>ストレージ アカウントにデータをアップロードする
 
-次の手順では、後ほど Azure Databricks で変換するために、サンプル データ ファイルをストレージ アカウントにアップロードします。 
+次の手順では、後ほど Azure Databricks で変換するために、サンプル データ ファイルをストレージ アカウントにアップロードします。
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2 対応のアカウントがまだない場合は、[アカウントの作成に関するクイック スタート](./data-lake-storage-quickstart-create-account.md)に従ってください。
@@ -149,9 +149,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
     set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<DOWNLOAD_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/data --recursive 
+    azcopy cp "<DOWNLOAD_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/data --recursive
     ```
-    
+
 ## <a name="extract-data-from-azure-storage"></a>Azure Storage からデータを抽出する
 
 Databricks Notebook に戻り、次のコードを新しいセルに入力します。
@@ -231,7 +231,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
     +---------+----------+------+--------------------+-----+
     ```
 
-2.  さらにこのデータを変換し、**level** 列の名前を **subscription_type** に変更することができます。
+2. さらにこのデータを変換し、**level** 列の名前を **subscription_type** に変更することができます。
 
     ```scala
     val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
@@ -278,7 +278,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
     ```scala
     val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
     val fileSystemName = "<FILE_SYSTEM_NAME>"
-    val accessKey =  "<ACCESS_KEY>"
+    val accessKey = "<ACCESS_KEY>"
     ```
 
 2. Azure Databricks と Azure SQL Data Warehouse との間でデータを移動するときに使用する一時フォルダーを指定します。
@@ -299,10 +299,10 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
     ```scala
     //SQL Data Warehouse related settings
     val dwDatabase = "<DATABASE NAME>"
-    val dwServer = "<DATABASE SERVER NAME>" 
+    val dwServer = "<DATABASE SERVER NAME>"
     val dwUser = "<USER NAME>"
     val dwPass = "<PASSWORD>"
-    val dwJdbcPort =  "1433"
+    val dwJdbcPort = "1433"
     val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
     val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
     val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
@@ -317,7 +317,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
     
     renamedColumnsDF.write
         .format("com.databricks.spark.sqldw")
-        .option("url", sqlDwUrlSmall) 
+        .option("url", sqlDwUrlSmall)
         .option("dbtable", "SampleTable")
         .option( "forward_spark_azure_storage_credentials","True")
         .option("tempdir", tempDir)
@@ -339,7 +339,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
 
 ![Databricks クラスターを停止する](./media/data-lake-storage-handle-data-using-databricks/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 
