@@ -178,7 +178,6 @@ az storage account management-policy show --resource-group [resourceGroupName] -
     }
   ]
 }
-
 ```
 
 ### <a name="rule-filters"></a>ルール フィルター
@@ -228,19 +227,18 @@ az storage account management-policy show --resource-group [resourceGroupName] -
     {
       "name": "agingRule",
       "type": "Lifecycle",
-      "definition":
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "container1/foo", "container2/bar" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-              "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
-            }
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "container1/foo", "container2/bar" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
           }
         }
+      }
     }
   ]
 }
@@ -257,18 +255,17 @@ az storage account management-policy show --resource-group [resourceGroupName] -
     {
       "name": "archiveRule",
       "type": "Lifecycle",
-      "definition":
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archivecontainer" ]
-          },
-          "actions": {
-            "baseBlob": {
-                "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
-            }
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "archivecontainer" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
           }
         }
+      }
     }
   ]
 }
@@ -286,17 +283,16 @@ az storage account management-policy show --resource-group [resourceGroupName] -
     {
       "name": "expirationRule",
       "type": "Lifecycle",
-      "definition":
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "delete": { "daysAfterModificationGreaterThan": 365 }
-            }
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "delete": { "daysAfterModificationGreaterThan": 365 }
           }
         }
+      }
     }
   ]
 }
@@ -313,18 +309,17 @@ az storage account management-policy show --resource-group [resourceGroupName] -
     {
       "name": "snapshotRule",
       "type": "Lifecycle",
-      "definition":
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activedata" ]
-          },
-          "actions": {
-            "snapshot": {
-              "delete": { "daysAfterCreationGreaterThan": 90 }
-            }
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "activedata" ]
+        },
+        "actions": {
+          "snapshot": {
+            "delete": { "daysAfterCreationGreaterThan": 90 }
           }
         }
+      }
     }
   ]
 }
