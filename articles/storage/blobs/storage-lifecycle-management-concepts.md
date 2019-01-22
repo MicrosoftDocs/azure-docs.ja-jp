@@ -189,7 +189,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 | フィルター名 | フィルターの種類 | メモ | 必須 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 定義済みの列挙型の値の配列。 | プレビュー リリースでは、`blockBlob` のみがサポートされています。 | [はい] |
+| blobTypes   | 定義済みの列挙型の値の配列。 | プレビュー リリースでは、`blockBlob` のみがサポートされています。 | はい |
 | prefixMatch | プレフィックスを照合する文字列の配列。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/container1/foo/..." の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は "`container1/foo`" です。 | prefixMatch を定義していない場合、ルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
 
 ### <a name="rule-actions"></a>ルールのアクション
