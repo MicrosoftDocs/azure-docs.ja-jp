@@ -4,7 +4,7 @@
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-オープン ソースの共同作成とは、ドキュメントを更新する行為のみを指すものではありません。問題を見つけたときに Microsoft に連絡することも含まれます。 詳細については、Microsoft の[共同作成ガイダンス](.github/CONTRIBUTING.md)を参照してください。
+オープン ソースの共同作成とは、ドキュメントを更新する行為のみを指すものではありません。問題を見つけたときに Microsoft に連絡することも含まれます。 詳細については、Microsoft の[共同作成ガイダンス](https://github.com/MicrosoftDocs/azure-docs/blob/master/.github/CONTRIBUTING.md)を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
