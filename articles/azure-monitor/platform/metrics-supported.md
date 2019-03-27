@@ -1287,8 +1287,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MessageCount|メッセージ数|Count|合計|メッセージの総量。|ディメンションなし|
 |InboundTraffic|受信トラフィック|Bytes|合計|サービスの受信トラフィック|ディメンションなし|
 |OutboundTraffic|送信トラフィック|Bytes|合計|サービスの送信トラフィック|ディメンションなし|
-|UserErrors|User Errors (ユーザー エラー)|Percent|最大値|ユーザー エラーの割合|ディメンションなし|
-|SystemErrors|System Errors (システム エラー)|Percent|最大値|システム エラーの割合|ディメンションなし|
+|UserErrors|User Errors (ユーザー エラー)|Percent|平均値|ユーザー エラーの割合|ディメンションなし|
+|SystemErrors|System Errors (システム エラー)|Percent|平均値|システム エラーの割合|ディメンションなし|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
