@@ -15,9 +15,6 @@ ms.locfileid: "55493050"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
-> [!IMPORTANT]
-> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
-
 読み取りレプリカ機能を使用すると、Azure Database for MySQL サーバー (マスター) から、同じ Azure リージョン内にある最大 5 つの読み取り専用サーバー (レプリカ) にデータをレプリケートできます。 読み取り専用レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
 Azure Database for MySQL サービスで作成されるレプリカは、標準またはスタンドアロンの MySQL サーバーと同様に管理できる新しいサーバーです。 読み取りレプリカごとに、仮想コア内のプロビジョニング済みコンピューティングとプロビジョニング済みストレージ (GB/月) に対して課金されます。 
