@@ -15,4 +15,4 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/11/2018
 ms.locfileid: "38731913"
 ---
-  [リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#terminology)とは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 たとえば、後から簡単な手順で一度にリソース グループ全体を削除することもできます。
+  [リソース グループ](/azure-resource-manager/resource-group-overview.md#terminology)とは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 たとえば、後から簡単な手順で一度にリソース グループ全体を削除することもできます。
