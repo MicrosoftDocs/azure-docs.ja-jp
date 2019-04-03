@@ -236,8 +236,9 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             }
 
             // Display the success or failure message.
-            UIAlertView avAlert = new UIAlertView("Sign-in result", message, null, "OK", null);
-            avAlert.Show();
+            var okAlertController = UIAlertController.Create("Sign-in result", message, UIAlertControllerStyle.Alert);
+            okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(okAlertController, true, null);
 
             return success;
         }
