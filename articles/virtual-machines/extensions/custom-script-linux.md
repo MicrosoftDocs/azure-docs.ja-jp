@@ -196,7 +196,7 @@ CustomScript では、次のアルゴリズムを使用して、スクリプト�
 
  1. スクリプトの値の長さが 256 KB を超えないことをアサートします。
  1. スクリプトの値を base64 にデコードする
- 1. base64 にデコードされた値の GunZip 圧縮を_試行_します。
+ 1. base64 にデコードされた値の GunZip 圧縮を _試行_ します。
  1. デコード (および必要に応じて圧縮解除) された値をディスクに書き込む (/var/lib/waagent/custom-script/#/script.sh)
  1. _/bin/sh-c/var/lib/waagent/custom-script/#/script.sh を使用して、スクリプトを実行します。
 
