@@ -342,7 +342,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                        | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                      | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName               | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                   | ビット           | いいえ           | アプリケーションが有効になっているかどうかを示します |
+| ApplicationEnabled                   | bit           | いいえ           | アプリケーションが有効になっているかどうかを示します |
 | WorkflowId                           | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                         | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                  | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示するワークフローの名前 |
@@ -351,7 +351,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | WorkflowFunctionName                 | nvarchar(50)  | はい         | 関数の名前 |
 | WorkflowFunctionDisplayName          | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される関数の名前 |
 | WorkflowFunctionDescription          | nvarchar(255) | はい         | ワークフロー関数の説明 |
-| WorkflowFunctionIsConstructor        | ビット           | いいえ           | これは、ワークフロー関数がワークフローのコンストラクターであるかどうかを示します |
+| WorkflowFunctionIsConstructor        | bit           | いいえ           | これは、ワークフロー関数がワークフローのコンストラクターであるかどうかを示します |
 | WorkflowFunctionParameterId          | int           | いいえ           | 関数のパラメーターの一意識別子 |
 | WorkflowFunctionParameterName        | nvarchar(50)  | いいえ           | 関数のパラメーターの名前 |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される関数パラメーターの名前 |
@@ -371,7 +371,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName              | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName       | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled           | bit           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                   | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                 | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName          | nvarchar(255) | いいえ           | ユーザー インターフェイスのワークフローに表示される名前 |
@@ -383,7 +383,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | WorkflowPropertyWorkflowId   | int           | いいえ           | このプロパティが関連付けられているワークフローの ID |
 | WorkflowPropertyDataTypeId   | int           | いいえ           | プロパティに定義されたデータ型の ID |
 | WorkflowPropertyDataTypeName | nvarchar(50)  | いいえ           | プロパティに定義されたデータ型の名前 |
-| WorkflowPropertyIsState      | ビット           | いいえ           | このフィールドは、このワークフロー プロパティにワークフローの状態が含まれているかどうかを示します |
+| WorkflowPropertyIsState      | bit           | いいえ           | このフィールドは、このワークフロー プロパティにワークフローの状態が含まれているかどうかを示します |
 
 ## <a name="vwworkflowstate"></a>vwWorkflowState
 
@@ -398,7 +398,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName              | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName       | nvarchar(255) | いいえ           | アプリケーションの説明 |
-| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled           | bit           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                   | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                 | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName          | nvarchar(255) | いいえ           | ワークフローのユーザー インターフェイスに表示される名前 |
