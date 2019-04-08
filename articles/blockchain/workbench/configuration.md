@@ -81,7 +81,7 @@ ms.locfileid: "57452693"
 | int      | 整数データ型。 |
 | money    | 通貨データ型。 |
 | state    | ワークフローの状態。 |
-| 文字列  | 文字列データ型。 最大 4,000 文字。 [構成例](#example-configuration-of-type-string)をご覧ください。 |
+| string  | 文字列データ型。 最大 4,000 文字。 [構成例](#example-configuration-of-type-string)をご覧ください。 |
 | user     | 型ユーザーのアドレス。 |
 | time     | 時間データ型。 |
 |`[ Application Role Name ]`| アプリケーション ロールに指定する任意の名前。 ユーザーをそのロールの種類に制限します。 |
@@ -330,7 +330,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | AllowedInstanceRoles | 遷移の開始が許可されているスマート コントラクトに参加している、または指定されているユーザー ロールのリスト。 インスタンス ロールは、ワークフロー内の **Properties** に定義されています。 AllowedInstanceRoles は、スマート コントラクトのインスタンスに参加しているユーザーを表します。 AllowedInstanceRoles を使用すると、コントラクト インスタンス内のユーザー ロールに対するアクションの実行を制限できます。  たとえば、AllowedRoles でロールを指定した場合、ロールの種類 (所有者) のすべてのユーザーでなく、コントラクトを作成したユーザー (InstanceOwner) のみに終了の実行を許可することができます。 | いいえ  |
 | DisplayName | 遷移のわかりやすい表示名。 | はい |
 | Description | 遷移の説明。 | いいえ  |
-| 関数 | 遷移を開始する関数の名前。 | はい |
+| Function | 遷移を開始する関数の名前。 | はい |
 | NextStates | 遷移が成功した後の次の状態候補のコレクション。 | はい |
 
 ### <a name="transitions-example"></a>遷移の例
