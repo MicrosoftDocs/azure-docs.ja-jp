@@ -113,7 +113,7 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 | CollectD メトリックのフィールド | Azure Monitor のフィールド |
 |:--|:--|
 | host | Computer |
-| プラグイン | なし |
+| plugin | なし |
 | plugin_instance | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
 | type | ObjectName |
 | type_instance | CounterName<br>**type_instance** が *null* である場合、CounterName=**blank** |
