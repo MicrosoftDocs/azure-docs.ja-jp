@@ -127,7 +127,7 @@ Active Directory または WSUS から作成されたコンピューター グ�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |*ComputerGroup* |
+| Type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
 | Computer |メンバー コンピューターの名前。 |
 | グループ |グループの名前。 |
