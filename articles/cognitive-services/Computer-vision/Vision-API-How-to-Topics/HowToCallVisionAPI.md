@@ -167,12 +167,12 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 フィールド | Type | コンテンツ
 ------|------|------|
-Tags  | オブジェクト | tags 配列の最上位オブジェクト
-tags[].Name | 文字列    | タグ分類子からのキーワード
+Tags  | object | tags 配列の最上位オブジェクト
+tags[].Name | string    | タグ分類子からのキーワード
 tags[].Score    | number    | 信頼度スコア (0 と 1 の間)。
-description  | オブジェクト   | description の最上位オブジェクト。
-description.tags[] |    文字列  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
-description.captions[].text | 文字列    | 画像を説明する語句。
+description  | object   | description の最上位オブジェクト。
+description.tags[] |    string  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
+description.captions[].text | string    | 画像を説明する語句。
 description.captions[].confidence   | number    | 語句の信頼度。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>ドメイン固有モデルの JSON 出力を取得して解釈する
@@ -229,10 +229,10 @@ categories フィールドは、元の分類内の[86 カテゴリ](../Category-
 
 フィールド   | Type  | コンテンツ
 ------|------|------|
-categories | オブジェクト | 最上位レベルのオブジェクト
-categories[].name    | 文字列   | 86カテゴリ分類の名前
+categories | object | 最上位レベルのオブジェクト
+categories[].name    | string   | 86カテゴリ分類の名前
 categories[].score  | number    | 信頼度スコア (0 と 1 の間)。
-categories[].detail  | オブジェクト?      | 省略可能な詳細オブジェクト
+categories[].detail  | object?      | 省略可能な詳細オブジェクト
 
 複数のカテゴリと一致する場合 (たとえば、model=celebrities のときに 86 カテゴリ分類子がpeople_ と people_young を返す場合)、詳細は、最も汎用性が高いレベルの一致 (この例では people_) に添付されます。
 
