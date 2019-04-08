@@ -49,8 +49,8 @@ ms.locfileid: "55860713"
 | Double | 倍精度浮動小数点数値 | equals、starts_with、is_between | 1.602e-19 |
 | Date | 日付 (1400-01-01 から 9999-12-31) | equals、is_between | '2016-03-14' |
 | Guid | グローバル一意識別子 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| BLOB | 内部的に圧縮された非インデックス データ | *なし* | "Empower every person and every organization on the planet to achieve more" |
-| 複合 | 複数のサブ属性の複合| *該当なし* | { "Name":"harry shum", "Affiliation":"microsoft" } |
+| Blob | 内部的に圧縮された非インデックス データ | *なし* | "Empower every person and every organization on the planet to achieve more" |
+| Composite | 複数のサブ属性の複合| *該当なし* | { "Name":"harry shum", "Affiliation":"microsoft" } |
 
 String 属性は、ユーザー クエリの一部として表示することができる文字列値を表すために使用されます。  完全一致の *equals* 演算と、"micros" と "microsoft" の一致など、クエリ入力候補シナリオの *starts_with* 演算をサポートします。  誤植を処理するための大文字と小文字を区別しないファジー一致は、今後のリリースでサポートされる予定です。
 
