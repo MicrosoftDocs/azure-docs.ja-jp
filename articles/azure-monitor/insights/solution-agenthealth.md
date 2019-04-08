@@ -76,7 +76,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 
 | プロパティ | 説明 |
 | --- | --- |
-| type | *Heartbeat*|
+| Type | *Heartbeat*|
 | Category | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
 | Computer | コンピューター名。|
 | OSType | Windows または Linux オペレーティング システム。|
