@@ -39,7 +39,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationName                  | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDescription           | nvarchar(255) | はい         | アプリケーションの説明 |
 | ApplicationDisplayName           | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled               | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled               | bit           | いいえ           | アプリケーションが現在有効になっているかどうかを示します<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | UploadedDtTm                     | datetime2(7)  | いいえ           | コントラクトがアップロードされた日時 |
 | UploadedByUserId                 | int           | いいえ           | アプリケーションをアップロードしたユーザーの ID です |
 | UploadedByUserExternalId         | nvarchar(255) | いいえ           | アプリケーションをアップロードしたユーザーの外部識別子です。 既定では、これはコンソーシアムの Azure Active Directory からのユーザーの ID です。                                                                                                |
@@ -129,7 +129,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                            | int            | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                          | nvarchar (50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName                   | nvarchar (255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                       | ビット            | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。  |
+| ApplicationEnabled                       | bit            | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。  |
 | WorkflowId                               | int            | いいえ           | コントラクトに関連付けられているワークフローの一意識別子 |
 | WorkflowName                             | nvarchar(50)   | いいえ           | コントラクトに関連付けられているワークフローの名前 |
 | WorkflowDisplayName                      | nvarchar(255)  | いいえ           | ユーザー インターフェイスに表示するためにコントラクトに関連付けられているワークフローの名前 |
@@ -164,7 +164,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                            | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                          | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName                   | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                       | ビット           | いいえ           | このフィールドは、アプリケーションが現在有効になっているかどうかを示します。 注 – データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                                                  |
+| ApplicationEnabled                       | bit           | いいえ           | このフィールドは、アプリケーションが現在有効になっているかどうかを示します。 注 – データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                                                  |
 | WorkflowId                               | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                             | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                      | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示するワークフローの名前 |
@@ -203,7 +203,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | TransactionFrom                          | nvarchar(255) | はい         | トランザクションを開始したパーティ |
 | TransactionTo                            | nvarchar(255) | はい         | トランザクション対象のパーティ |
 | TransactionHash                          | nvarchar(255) | はい         | トランザクションのハッシュ |
-| TransactionIsWorkbenchTransaction        | ビット           | はい         | トランザクションが Azure Blockchain Workbench トランザクションかどうかを示すビット |
+| TransactionIsWorkbenchTransaction        | bit           | はい         | トランザクションが Azure Blockchain Workbench トランザクションかどうかを示すビット |
 | TransactionProvisioningStatus            | int           | はい         | トランザクションのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってトランザクションが作成されている<br />1 – トランザクションが台帳に送信されている<br />2 – トランザクションが台帳に正常にデプロイされている                 |
 | TransactionValue                         | decimal(32,2) | はい         | トランザクションの値 |
 
@@ -223,7 +223,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                      | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                    | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName             | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                      |
+| ApplicationEnabled                 | bit           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                      |
 | WorkflowId                         | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                       | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示するワークフローの名前 |
@@ -263,7 +263,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                      | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                    | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName             | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled                 | bit           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                         | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                       | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
@@ -315,7 +315,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                     | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                   | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName            | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                | ビット           | いいえ           | アプリケーションが有効になっているかどうかを示します |
+| ApplicationEnabled                | bit           | いいえ           | アプリケーションが有効になっているかどうかを示します |
 | WorkflowId                        | int           | はい         | ワークフローの一意識別子 |
 | WorkflowName                      | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName               | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
