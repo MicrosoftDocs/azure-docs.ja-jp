@@ -39,7 +39,7 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 問題がある場合は、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>データの格納時に一時ディスク (/dev/sdb) を使用できますか。
+## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>データの格納時に一時ディスク (/dev/sdb1) を使用できますか。
 データの格納に一時ディスク (/dev/sdb1) を使用しないでください。 一時ディスクは一時的なストレージでしかなく、 データ損失の発生時にデータを復旧できない恐れがあります。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>既存の Azure VM をコピーまたは複製できますか。
