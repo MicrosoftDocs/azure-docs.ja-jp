@@ -1,5 +1,5 @@
 ---
-title: Azure Multi-Factor Authentication の構成
+title: Azure Multi-Factor Authentication を構成する - Azure Active Directory
 description: この記事では、Azure Portal で Azure Multi-Factor Authentication 設定を構成する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856262"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885997"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -34,7 +34,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 | ------- | ----------- |
 | アカウントのロックアウト | 連続して拒否された認証試行が多すぎる場合に、Multi-Factor Authentication サービス内でアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | MFA サーバー (オンプレミス) の特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
-| [不正アクセスのアラート](#fraud-alert) | ユーザーが MFA サーバーからの不正な確認要求をレポートできるかどうかに関する設定を構成します。 |
+| [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
 | 通知 | MFA サーバーからのイベントの通知を有効にします。 |
 | [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
@@ -57,7 +57,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーが認証要求を受信できないようにする場合は、_ユーザーのブロック/ブロック解除_ 機能を使用します。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 この機能は、MFA サーバー (オンプレミス) に固有です。
+ユーザーが認証要求を受信できないようにする場合は、_ユーザーのブロック/ブロック解除_ 機能を使用します。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
@@ -77,7 +77,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 
 ## <a name="fraud-alert"></a>不正アクセスのアラート
 
-ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、_不正アクセスのアラート_ 機能を構成します。 ユーザーは、モバイル アプリまたは電話で不正アクセスの試みを通報できます。 この機能は、MFA サーバー (オンプレミス) に固有です。
+ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、_不正アクセスのアラート_ 機能を構成します。 ユーザーは、モバイル アプリまたは電話で不正アクセスの試みを通報できます。
 
 ### <a name="turn-on-fraud-alerts"></a>不正アクセスのアラートを有効にする
 

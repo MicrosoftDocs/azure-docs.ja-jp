@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 のセキュリティの概要 | Microsoft D
 description: Azure Data Lake Storage Gen1 が、セキュリティが強化されたビッグ データ ストアであることを学習します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ebd5b2ac-c5cc-46d4-9cfd-1a1ee70024c2
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959614"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883303"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Storage Gen1 は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Storage Gen1 のセキュリティ機能について説明します。

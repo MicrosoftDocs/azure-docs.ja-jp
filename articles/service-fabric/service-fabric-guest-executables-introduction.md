@@ -3,8 +3,8 @@ title: Azure Service Fabric への既存の実行可能ファイルのデプロ�
 description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: mfussell
-ms.openlocfilehash: cdaf3dae12c2c9da1f6bcbebbff560b98e62bade
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: aljo
+ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212842"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670644"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルを Service Fabric にデプロイする
 Node.js、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 このようなサービスを Service Fabric ではゲスト実行可能ファイルと呼びます。

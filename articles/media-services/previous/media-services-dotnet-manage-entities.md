@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4a1ccd2c4a51fb4cab2337220d36b5c093a8aff5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165779"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802679"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "58165779"
 > 
 > 
 
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 [v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)も参照してください。
+
 このトピックでは、.NET で Azure Media Services エンティティを管理する方法を説明します。
 
->[!NOTE]
-> 2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。
+2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 

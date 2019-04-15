@@ -84,6 +84,22 @@ items:
       href: service-fabric-tutorial-standalone-install-an-application.md
     - name: 4- クラスターのクリーンアップとインフラストラクチャの削除
       href: service-fabric-tutorial-standalone-clean-up.md
+- name: ベスト プラクティス
+  items:
+  - name: Service Fabric のベスト プラクティスの概要
+    href: service-fabric-best-practices-overview.md
+  - name: セキュリティ
+    href: service-fabric-best-practices-security.md
+  - name: ネットワーク
+    href: service-fabric-best-practices-networking.md
+  - name: コンピューティングの計画とスケーリング
+    href: service-fabric-best-practices-capacity-scaling.md
+  - name: コードとしてのインフラストラクチャ
+    href: service-fabric-best-practices-infrastructure-as-code.md
+  - name: 監視と診断
+    href: service-fabric-best-practices-monitoring.md
+  - name: 運用環境の準備状況チェックリスト
+    href: service-fabric-production-readiness-checklist.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -112,20 +128,6 @@ items:
       href: service-fabric-cluster-security.md
     - name: Azure の一般的なセキュリティ属性
       href: service-fabric-security-attributes.md
-  - name: ベスト プラクティス
-    items:
-    - name: Service Fabric のベスト プラクティスの概要
-      href: service-fabric-best-practices-overview.md
-    - name: ネットワーク
-      href: service-fabric-best-practices-networking.md
-    - name: コンピューティングの計画とスケーリング
-      href: service-fabric-best-practices-capacity-scaling.md
-    - name: コードとしてのインフラストラクチャ
-      href: service-fabric-best-practices-infrastructure-as-code.md
-    - name: 監視と診断
-      href: service-fabric-best-practices-monitoring.md
-    - name: 運用環境の準備状況チェックリスト
-      href: service-fabric-production-readiness-checklist.md
   - name: 用語集
     href: service-fabric-technical-overview.md
   - name: アプリケーションの構築
@@ -851,9 +853,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 02b5712aedc96fce447f11b755b837b52855379b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9490e4a9b91dc752e373d696e27069bc4d402342
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278464"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495585"

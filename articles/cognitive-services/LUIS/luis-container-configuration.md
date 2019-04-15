@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: ee08f5e15180a618d1a9c48b7d59b9e1f8bc90ae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329117"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883115"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
 **Language Understanding** (LUIS) コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、入力[マウント設定](#mount-settings)と課金設定です。 
-
-コンテナーの設定は[階層](#hierarchical-settings)になっていて、[環境変数](#environment-variable-settings)または Docker の[コマンドライン引数](#command-line-argument-settings)を使用して設定できます。
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -36,7 +34,7 @@ ms.locfileid: "56329117"
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ |[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
-|いいえ |[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
+|いいえ |[ログの記録](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
 |はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
@@ -63,10 +61,10 @@ ms.locfileid: "56329117"
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Language Understanding** の [概要]。`Endpoint` として表示されます。
+* Azure portal:**Language Understanding** の [概要]。ラベル:  `Endpoint`
 * LUIS ポータル: **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページ。エンドポイント URI の一部として表示されます。
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -98,15 +96,10 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 次の表で、サポートされる設定について説明します。
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ | `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
-
-## <a name="hierarchical-settings"></a>階層的な設定
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
-
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -160,7 +153,7 @@ ApiKey={ENDPOINT_KEY}
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
-### <a name="logging-example-with-command-line-arguments"></a>コマンドライン引数を使用したログの例
+### <a name="logging-example"></a>ログの例 
 
 次のコマンドでは、ログ レベル (`Logging:Console:LogLevel`) を設定することにより、ログ レベルを [`Information`](https://msdn.microsoft.com) に構成しています。 
 
@@ -172,22 +165,7 @@ mcr.microsoft.com/azure-cognitive-services/luis:latest \
 Eula=accept \
 Billing={BILLING_ENDPOINT} \
 ApiKey={ENDPOINT_KEY} \
-Logging:Console:LogLevel=Information
-```
-
-### <a name="logging-example-with-environment-variable"></a>環境変数を使用したログの例
-
-次のコマンドでは、`Logging:Console:LogLevel` という名前の環境変数を使用して、ログ レベルを [`Information`](https://msdn.microsoft.com) に構成しています。 
-
-```bash
-SET Logging:Console:LogLevel=Information
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={APPLICATION_ID} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0dfe6553778092c33f9e1bd55ac7a7ae65137a6e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737027"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881003"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -194,7 +194,7 @@ ms.locfileid: "56737027"
 - **Lowercase**: `IncludesCharacters` メソッドを使用して、パスワードに小文字が含まれていることを検証します。
 - **Uppercase**: `IncludesCharacters` メソッドを使用して、パスワードに大文字が含まれていることを検証します。
 - **Number**: `IncludesCharacters` メソッドを使用して、パスワードに数字が含まれていることを検証します。
-- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します:  `@#$%^&*\-_+=[]{}|\:',?/~"();!`
 - **PIN**: `MatchesRegex` メソッドを使用して、パスワードに数字のみが含まれていることを検証します。
 - **AllowedAADCharacters**: `MatchesRegex` メソッドを使用して、パスワードのみの無効な文字が指定されたことを検証します。
 - **DisallowedWhitespace**: `MatchesRegex` メソッドを使用して、パスワードが空白文字で開始または終了していないことを検証します。
@@ -356,7 +356,8 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
+  <Predicate Id="DateRange" Method="IsDateRange">
+    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

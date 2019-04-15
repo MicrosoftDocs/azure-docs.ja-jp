@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240169"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648821"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断の検出とトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 1. **[診断設定]** を選択します。
 1. **[診断を有効にする]** を選択します。
 1. **[接続]** ログの収集を有効にします。
-1. 分析しやすくするために、**[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#Resolve-connectivity-errors)」の例を参照してください。
+1. 分析しやすくするために、**[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#resolve-connectivity-errors)」の例を参照してください。
 
    ![推奨設定][2]
 
@@ -40,15 +40,14 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>_接続されているデバイス_ 数のメトリックに関するアラートを設定する
 
-デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス**のメトリックに関するアラートを構成します。
+デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス (プレビュー)** のメトリックに関するアラートを構成します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. IoT ハブに移動します。
-1. **[アラート (クラシック)]** を選択します。
-1. **[メトリック アラートの追加 (クラシック)]** を選択します。
-1. フォームに入力して **[OK]** を選択します。
-
-   ![推奨されるメトリック アラート][3]
+1. **[Alerts]**(アラート) を選択します。
+1. **[新しいアラート ルール]** を選択します。
+1. **条件の追加** を選択して、Connected devices (preview)\(接続されているデバイス (プレビュー)\) を選択します。
+1. プロンプトに従って、目的のしきい値とアラート オプションの設定を完了します。
 
 詳細については、「[Microsoft Azure のクラシック アラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。
 

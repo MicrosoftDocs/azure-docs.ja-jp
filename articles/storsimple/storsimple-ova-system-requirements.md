@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999509"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876838"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -76,7 +76,7 @@ ms.locfileid: "57999509"
 
 次のソフトウェア要件は、StorSimple Virtual Array (ファイル サーバーとして構成されている) にアクセスする SMB クライアントに適用されます。
 
-| **SMB バージョン** |
+| **SMB のバージョン** |
 | --- |
 | SMB 2.x |
 | SMB 3.0 |
@@ -92,7 +92,7 @@ Azure ブロック BLOB ストレージのみがサポートされています�
 ## <a name="networking-requirements"></a>ネットワーク要件
 iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
+| **ポート番号 <sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |アウト |WAN |いいえ  |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
@@ -130,7 +130,7 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update サーバー<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |サポート パッケージ |
-| `https://*.data.microsoft.com ` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
+| `https://*.data.microsoft.com` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
 
 ## <a name="next-steps"></a>次の手順
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)

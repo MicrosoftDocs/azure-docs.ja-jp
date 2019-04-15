@@ -59,7 +59,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
-| URL | Azure Search サービスの URL。 | はい |
+| url | Azure Search サービスの URL。 | はい |
 | key | Azure Search サービスの管理者キー。 | はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -106,7 +106,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | Double | Y |
 | Boolean | Y |
 | DataTimeOffset | Y |
-| 文字列配列 | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON の使用例:オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする

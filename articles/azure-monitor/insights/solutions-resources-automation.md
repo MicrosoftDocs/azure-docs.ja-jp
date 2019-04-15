@@ -242,8 +242,8 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| スケジュール名 |スケジュールの名前を指定する単一の **name** エンティティです。 |
-| Runbook 名  |Runbook の名前を指定する単一の **name** エンティティです。  |
+| schedule name |スケジュールの名前を指定する単一の **name** エンティティです。 |
+| runbook name  |Runbook の名前を指定する単一の **name** エンティティです。  |
 
 
 

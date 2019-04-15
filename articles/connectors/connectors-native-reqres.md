@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552182"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892828"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>要求コンポーネントと応答コンポーネントの概要
 ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
@@ -34,7 +34,8 @@ ms.locfileid: "57552182"
 ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-http-request-trigger"></a>HTTP 要求トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 
+トリガーの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 ロジック アプリ デザイナーで HTTP 要求をセットアップする方法の例を次に示します。
 

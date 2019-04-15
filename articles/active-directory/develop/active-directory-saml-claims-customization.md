@@ -13,151 +13,124 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2018
+ms.date: 04/03/2019
 ms.author: celested
-ms.reviewer: luleon, jeedes
+ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce02bd35d9cd4afd881ec276fabb0720b61c09
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444040"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878572"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
-現在 Azure Active Directory (Azure AD) では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
+現在、Azure Active Directory (Azure AD) では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションで、シングル サインオン (SSO) がサポートされています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
 
 *要求*とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](https://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
 
-既定では、Azure AD は、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (ユーザー プリンシパル名とも呼ばれます) を値に持つ NameIdentifier 要求を含む SAML トークンを発行します。 この値によって、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
+既定では、Azure AD により、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (別名: ユーザー プリンシパル名) を値に持つ `NameIdentifier` 要求を含む SAML トークンが発行され、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
-アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 その後、アプリケーションの **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** チェック ボックスをオンにします。
+アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 次に、**[ユーザー属性とクレーム]** セクションを開きます。
 
-![[ユーザー属性] セクション][1]
+![[ユーザー属性とクレーム] セクション](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 SAML トークンで発行された要求を編集する必要がある理由は、2 つ考えられます。
+
+* アプリケーションで、`NameIdentifier` 要求または NameID 要求が、Azure AD に格納されているユーザー名 (またはユーザー プリンシパル名) 以外のものである必要がある。
 * アプリケーションが、別の要求 URI または要求値のセットを必要とするように記述されている。
-* NameIdentifier 要求が、Azure AD に格納されているユーザー名 (ユーザー プリンシパル名) 以外の何かであることを必要とする方法で、アプリケーションがデプロイされている。
 
-既定の要求値のすべてを編集できます。 SAML トークン属性のテーブルで要求の行を選びます。 **[属性の編集]** セクションが開き、要求の名前、値、および要求に関連付けられている名前空間を編集できます。
+## <a name="editing-nameid"></a>NameID の編集
 
-![ユーザー属性の編集][2]
+NameID (名前識別子の値) を編集するには:
 
-コンテキスト メニューを使って、要求 (NameIdentifier 以外) を削除することもできます。メニューを開くには、**[...]** アイコンをクリックします。 **[属性の追加]** ボタンを使って、新しい要求を追加することもできます。
+1. **[名前識別子の値]** ページを開きます。
+1. 属性または属性に適用する変換を選択します。 必要に応じて、NameID 要求の形式を指定できます。
 
-![ユーザー属性の編集][3]
+   ![NameID (名前識別子の値) を編集する](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
-## <a name="editing-the-nameidentifier-claim"></a>NameIdentifier 要求の編集
+### <a name="nameid-format"></a>NameID の形式
 
-異なるユーザー名を使ってデプロイされたアプリケーションの問題を解決するには、**[ユーザー属性]** セクションの **[ユーザー識別子]** ドロップダウンを選択します。 この操作によって、複数のオプションがある次のダイアログが表示されます。
+SAML 要求に、特定の形式を持つ NameIDPolicy 要素が含まれている場合、Azure AD では要求の形式が使用されます。
 
-![ユーザー属性の編集][4]
+SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD では指定した形式の NameID が発行されます。 形式を指定しないと、Azure AD では、選択されている要求ソースに関連付けられている既定のソース形式が使用されます。
+
+**[名前識別子の形式の選択]** ドロップダウンで、次のオプションのいずれかを選択できます。
+
+| NameID の形式 | 説明 |
+|---------------|-------------|
+| **既定値** | Azure AD では、既定のソース形式が使用されます。 |
+| **永続的** | Azure AD では、NameID の形式として "永続的" が使用されます。 |
+| **EmailAddress** | Azure AD では、NameID の形式として "EmailAddress" が使用されます。 |
+| **未指定** | Azure AD では、NameID の形式として "未指定" が使用されます。 |
+| **一時的** | Azure AD では、NameID の形式として "一時的" が使用されます。 |
+
+NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
 
 ### <a name="attributes"></a>属性
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
-| 電子メール | ユーザーのメール アドレス |
+| 電子メール | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
 | onpremisessamaccount | オンプレミスの Azure AD から同期された SAM アカウント名 |
-| objectID | Azure AD でのユーザーの objectID |
-| EmployeeID | ユーザーの EmployeeID |
+| objectid | Azure AD でのユーザーの objectid |
+| employeeid | ユーザーの employeeid |
 | ディレクトリ拡張機能 | [Azure AD Connect 同期を使用してオンプレミスの Active Directory から同期された](../hybrid/how-to-connect-sync-feature-directory-extensions.md)ディレクトリ拡張機能 |
 | 拡張属性 1 ～ 15 | Azure AD のスキーマを拡張するために使用されるオンプレミスの 拡張機能属性 |
 
-### <a name="transformations"></a>変換
+詳しくは、「[表 3: ソースごとに有効な ID 値](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)」をご覧ください。
 
-特別な要求変換関数を使用することもできます。
+### <a name="special-claims---transformations"></a>特別な要求 - 変換
+
+要求変換関数を使用することもできます。
 
 | 関数 | 説明 |
 |----------|-------------|
-| **ExtractMailPrefix()** | メール アドレス、SAM アカウント名、またはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
-| **join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
+| **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
+| **Join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
 | **ToLower()** | 選択した属性の文字を小文字に変換します。 |
 | **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
 
-## <a name="adding-claims"></a>要求の追加
+## <a name="adding-application-specific-claims"></a>アプリケーション固有の要求の追加
 
-要求を追加する場合は、属性の名前を指定できます (SAML 仕様とは異なり、URI パターンに厳密に従う必要はありません)。 ユーザー属性には、ディレクトリに格納されている値を設定します。または組織内のすべてのユーザーに使用する静的なエントリとして定数値を使用します。
+アプリケーション固有の要求を追加するには:
 
-![ユーザー属性の追加][7]
+1. **[ユーザー属性とクレーム]** で、**[新しいクレームの追加]** を選択して **[ユーザー クレームの管理]** ページを開きます。
+1. クレームの **[名前]** を入力します。 値は、SAML 仕様の URI パターンに厳密に従う必要はありません。URI パターンが必要な場合は、**[名前空間]** フィールドに追加することができます。
+1. クレームの値が取得される **[ソース]** を選択します。 ソース属性のドロップダウンからユーザー属性を選択するか、または要求として生成する前にユーザー属性に変換を適用することができます。
 
-たとえば、ユーザーが所属している組織の部署 (営業部など) を要求として送信する必要があるとします。 アプリケーションで予期されているように要求名を入力し、値として **[user.department]** を選びます。
+### <a name="application-specific-claims---transformations"></a>アプリケーション固有の要求 - 変換
 
-> [!NOTE]
-> 特定のユーザーに対し、選択された属性に格納されている値がない場合、その要求はトークンで発行されません。
+要求変換関数を使用することもできます。
 
-> [!TIP]
-> **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、[Azure AD Connect ツール](../hybrid/whatis-hybrid-identity.md)を使ってオンプレミスの Active Directory のユーザー データを同期する場合にのみサポートされます。
+| 関数 | 説明 |
+|----------|-------------|
+| **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
+| **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 |
+| **ToLower()** | 選択した属性の文字を小文字に変換します。 |
+| **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
+| **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
+| **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの employeeid が "000" で終わっている場合は employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country が "US" で始まっている場合はユーザーの employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **Extract() - 一致の後** | 指定した値との一致より後の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon" で、一致する値が "Finance_" の場合、要求の出力は "BSimon" です。 |
+| **Extract() - 一致の前** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "BSimon_US" で、一致する値が "_US" の場合、要求の出力は "BSimon" です。 |
+| **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance_"、2 番目の一致する値が "_US" である場合、要求の出力は "BSimon" です。 |
+| **ExtractAlpha() - プレフィックス** | 文字列のプレフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "BSimon_123" の場合は、"BSimon" を返します。 |
+| **ExtractAlpha() - サフィックス** | 文字列のサフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "123_BSimon" の場合は、"BSimon" を返します。 |
+| **ExtractNumeric() - プレフィックス** | 文字列のプレフィックスの数字部分を返します。<br/>たとえば、入力の値が "123_BSimon" の場合は、"123" を返します。 |
+| **ExtractNumeric() - サフィックス** | 文字列のサフィックスの数字部分を返します。<br/>たとえば、入力の値が "BSimon_123" の場合は、"123" を返します。 |
+| **IfEmpty()** | 入力が null または空の場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの employeeid が空の場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1<br/>Parameter 3 (一致しない場合の出力): user.employeeid |
+| **IfNotEmpty()** | 入力が null または空ではない場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの employeeid が空ではない場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1 |
 
-## <a name="restricted-claims"></a>制限付き要求
-
-SAML には制限付きの要求がいくつかあります。 これらの要求を追加すると、Azure AD は要求を送信しません。 SAML の制限付き要求は次のとおりです。
-
-    | 要求の種類 (URI) |
-    | ------------------- |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expired |
-    | http://schemas.microsoft.com/identity/claims/accesstoken |
-    | http://schemas.microsoft.com/identity/claims/openid2_id |
-    | http://schemas.microsoft.com/identity/claims/identityprovider |
-    | http://schemas.microsoft.com/identity/claims/objectidentifier |
-    | http://schemas.microsoft.com/identity/claims/puid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier[MR1] |
-    | http://schemas.microsoft.com/identity/claims/tenantid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod |
-    | http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groups |
-    | http://schemas.microsoft.com/claims/groups.link |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/role |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/wids |
-    | http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant |
-    | http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown |
-    | http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged |
-    | http://schemas.microsoft.com/2014/03/psso |
-    | http://schemas.microsoft.com/claims/authnmethodsreferences |
-    | http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier |
-    | http://schemas.microsoft.com/identity/claims/scope |
+他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD のアプリケーション管理](../manage-apps/what-is-application-management.md)
 * [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](howto-v1-debug-saml-sso-issues.md)
-
-<!--Image references-->
-[1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png
-[2]: ./media/active-directory-saml-claims-customization/edit-claim-name-value.png
-[3]: ./media/active-directory-saml-claims-customization/delete-claim.png
-[4]: ./media/active-directory-saml-claims-customization/user-identifier.png
-[5]: ./media/active-directory-saml-claims-customization/extractemailprefix-function.png
-[6]: ./media/active-directory-saml-claims-customization/join-function.png
-[7]: ./media/active-directory-saml-claims-customization/add-attribute.png

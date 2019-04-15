@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32df3e7ac6dc22e247bd4aecea4f39bf6d3a8017
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889789"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316866"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 
@@ -87,12 +87,12 @@ ms.locfileid: "57889789"
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
 <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 ../../../../S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 ../../../../S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
 <tr>
@@ -137,7 +137,7 @@ ms.locfileid: "57889789"
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>クラウド サービス内で使用する VM サイズを指定します。 このパラメーターの既定値は A0 です。 ../../A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。 worker ロールのサイズについて詳しくは、<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">エラスティック データベース ジョブのコンポーネントと価格</a>に関するページをご覧ください。</td>
 </tr>
 
 </table>

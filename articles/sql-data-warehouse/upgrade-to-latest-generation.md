@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314842"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851084"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
 
@@ -34,8 +34,8 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
 ## <a name="before-you-begin"></a>開始する前に
 
 1. ご自分の[リージョン](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)で GEN1 から GEN2 への移行がサポートされているかどうかをチェックしてください。 自動移行の日付に注意してください。 自動化されたプロセスとの競合を避けるため、自動化されたプロセスの開始日より前に手動移行を計画します。
-2. まだサポートされていないリージョンの場合は、リージョンが追加されるまで引き続きチェックするか、またはサポートされているリージョンに[復元を使用してアップグレード](#Upgrade-from-an-Azure-geographical-region-using-restore-through-the-Azure-portal)してください。
-3. サポートされているリージョンの場合は、[Azure portal でアップグレード](#Upgrade-in-a-supported-region-using-the-Azure-portal)します
+2. まだサポートされていないリージョンの場合は、リージョンが追加されるまで引き続きチェックするか、またはサポートされているリージョンに[復元を使用してアップグレード](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal)してください。
+3. サポートされているリージョンの場合は、[Azure portal でアップグレード](#upgrade-in-a-supported-region-using-the-azure-portal)します
 4. 次のマッピングを使用して、コンピューティング最適化 Gen1 階層の現在のパフォーマンス レベルに基づいて、データ ウェアハウスの**推奨パフォーマンス レベルを選択**します。
 
    | コンピューティング最適化 Gen1 階層 | コンピューティング最適化 Gen2 階層 |
@@ -65,7 +65,7 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
 > [!NOTE]
 > Azure portal による Gen1 から Gen2 への移行は永続的です。 Gen1 に戻るプロセスはありません。  
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -215,7 +215,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-データベースを復旧するには、 [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) コマンドレットを使用します。
+データベースを復旧するには、[Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) コマンドレットを使用します。
 
 > [!NOTE]
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
@@ -228,15 +228,15 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 6. geo リストアされたデータベースの状態を確認します。
 
 ```Powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
+Connect-AzAccount
+Get-AzSubscription
+Select-AzSubscription -SubscriptionName "<Subscription_name>"
 
 # Get the database you want to recover
-$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
+$GeoBackup = Get-AzSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>" -RequestedServiceObjectiveName "DW300c"
+$GeoRestoredDatabase = Restore-AzSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>" -RequestedServiceObjectiveName "DW300c"
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status

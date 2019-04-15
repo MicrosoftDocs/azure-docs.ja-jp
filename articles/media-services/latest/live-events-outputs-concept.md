@@ -11,26 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1d28701dd35b9d80fd52a1f102c53f2d59d63b09
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189361"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762356"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
-Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 Media Services v3 でライブ ストリーミング イベントを構成するには、この記事で説明されている概念を理解する必要があります。
-
-* [ライブ イベント](#live-events)
-* ライブ イベントの種類
-* ライブ イベントの種類の比較
-* [ライブ イベントの作成のオプション](#live-event-creation-options)
-* [ライブ イベントの取り込み URL](#live-event-ingest-urls)
-* [ライブ イベント プレビュー URL](#live-event-preview-url)
-* [ライブ出力](#live-outputs)。
+Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 Media Services v3 でライブ ストリーミング イベントを構成するには、この記事で説明されている概念を理解する必要があります。 <br/>ページの右側に、セクションの一覧が表示されます。
 
 ## <a name="live-events"></a>ライブ イベント
 
@@ -132,6 +124,10 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 > [!IMPORTANT]
 > 続行する前に、ビデオがプレビュー URL に送信されていることを確認してください。
+
+## <a name="live-event-long-running-operations"></a>ライブイベントの長時間にわたって実行される操作
+
+詳細については、「[Long-running operations (長時間にわたって実行される操作)](entities-overview.md#long-running-operations)」を参照してください。
 
 ## <a name="live-outputs"></a>ライブ出力
 

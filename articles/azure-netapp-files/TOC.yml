@@ -1,6 +1,6 @@
 items:
 - name: Azure NetApp Files のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
   - name: Azure NetApp Files の概要
@@ -11,6 +11,7 @@ items:
   items:
   - name: Azure NetApp Files の設定とボリュームの作成
     href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+  expanded: true
 - name: 概念
   items:
   - name: Azure NetApp Files のサービス レベル
@@ -51,9 +52,9 @@ items:
     href: https://docs.microsoft.com/rest/api/netapp/
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 164a65bb8875d6c46d71ee7875e94e0b09a57c56
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1380aa56161e7c1f0f3d72aae36c834a087e1040
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401505"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545929"

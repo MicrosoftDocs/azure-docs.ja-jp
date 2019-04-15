@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309252"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905683"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -25,6 +25,9 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 > [!IMPORTANT]
 > リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>リソース、グループ、サブスクリプション
 
@@ -82,14 +85,14 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 | --- | --- |
 | [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
-| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
+| [Application Insights コンポーネントの共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
 | [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
 | [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)についての記事をご覧ください。   |
 | ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
-| [Log Analytics Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。  |
-| [Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
+| [Log Analytics 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。  |
+| [Log Analytics 閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
 | masterreader | ユーザーがあらゆるものを表示できるようにします。ただし、変更することはできません。 |
 | [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。 |
 | [監視メトリック パブリッシャー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします。 |
@@ -112,7 +115,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [Azure の役割基準のアクセス制御](../../role-based-access-control/role-assignments-portal.md)
+* [Azure でのロール ベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>ロール メンバーシップを特定する PowerShell クエリ
 
@@ -121,7 +124,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 ### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>管理者ロール + 共同作成者ロールについてサブスクリプション全体にクエリを実行する
 
 ```powershell
-(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
@@ -130,14 +133,14 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 $resourceGroup = “RGNAME”
 $resourceName = “AppInsightsName”
 $resourceType = “microsoft.insights/components”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
 
 ```powershell
 $resourceGroup = “RGNAME”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->

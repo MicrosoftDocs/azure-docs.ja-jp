@@ -64,7 +64,7 @@ items:
       - name: 移行
         items:
         - name: SharePoint Online へ
-          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
         - name: Azure File Sync へ
           href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
         - name: HDFS ストアから
@@ -122,9 +122,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 01e2eb95e5661444dd2353b228dc642968e13643
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359326"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490981"

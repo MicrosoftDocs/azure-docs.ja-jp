@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962827"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651125"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -37,9 +37,9 @@ ms.locfileid: "55962827"
 
         ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. **[Select virtual machine specifications]** \(仮想マシンの仕様の選択\) ページで、次の手順を実行します。
-    1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 
+    1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 現時点では、**[小]**、**[中]**、**[大]**、および **[GPU]** のサイズが許可されます。
     2. VM を作成する**リージョン**を選択します。 
-    3. ラボで VM の作成に使用する **VM イメージ**を選択します。 
+    3. ラボで VM の作成に使用する **VM イメージ**を選択します。 Linux イメージを選択した場合は、リモート デスクトップ接続を有効にするためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
     4. **[次へ]** を選択します。
 
         ![VM 仕様の指定](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ ms.locfileid: "55962827"
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. このチュートリアルでは、以下の手順は省略可能です。 
     1. **[開始]** を選択してテンプレート VM を開始します。
-    2. **[接続]** を選択してテンプレート VM に接続します。 
+    2. **[接続]** を選択してテンプレート VM に接続します。 Linux のテンプレート VM の場合は、SSH と RDP のどちらを使用して接続するかを選択します (RDP が有効な場合)。
     3. テンプレート VM にソフトウェアをインストールして構成します。 
     4. VM を**停止**します。  
     5. テンプレートの**説明**を入力します。

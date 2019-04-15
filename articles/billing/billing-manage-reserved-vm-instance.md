@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904016"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904443"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -26,9 +26,12 @@ Azure の予約を購入した後、必要に応じて、別のサブスクリ�
 
 Azure Reserved Virtual Machine Instances を購入した場合は、予約の最適化設定を変更できます。 予約割引は、同じシリーズの VM に適用するか、特定の VM サイズのデータセンター容量を予約することもできます。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="change-the-scope-for-a-reservation"></a>予約のスコープを変更する
 
- 予約割引は、実際の予約に該当し、かつ予約のスコープ内で実行される仮想マシン、SQL データベース、Azure Cosmos DB、またはその他のリソースに適用されます。 予約のスコープは、単一のサブスクリプションになることもあれば、課金コンテキスト内のすべてのサブスクリプションになることもあります。 単一のサブスクリプションにスコープを設定した場合、選択したサブスクリプション内の実行中のリソースに対して予約が照合されます。 スコープを "共有" に設定した場合、課金コンテキスト内の全サブスクリプションで実行されるリソースに対して予約が照合されます。 課金コンテキストは、予約の購入に使用されたサブスクリプションによって決まります。
+ 予約割引は、実際の予約に該当し、かつ予約のスコープ内で実行される仮想マシン、SQL データベース、Azure Cosmos DB、またはその他のリソースに適用されます。 課金コンテキストは、予約の購入に使用されたサブスクリプションによって決まります。
 
 予約のスコープを更新するには、次の手順に従います。
 
@@ -70,25 +73,25 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
     ```powershell
     # Get the reservation orders you have access to
-    Get-AzureRmReservationOrder
+    Get-AzReservationOrder
     ```
 
 2. 予約の詳細を取得します。
 
     ```powershell
-    Get-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a
+    Get-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a
     ```
 
 3. 予約を 2 つに分割してインスタンスを配分します。
 
     ```powershell
     # Split the reservation. The sum of the reservations, the quantity, must equal the total number of instances in the reservation that you're splitting.
-    Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
+    Split-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 4. 次のコマンドを実行してスコープを更新することができます。
 
     ```powershell
-    Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
+    Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
 ## <a name="cancellations-and-exchanges"></a>キャンセルと交換
@@ -97,7 +100,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 - [Azure Reserved VM Instances による仮想マシンの前払い](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
 - [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>予約 VM インスタンスの最適化設定を変更する
 
@@ -115,22 +118,30 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 4. **[設定]** > **[構成]** を選択します。
 5. **[最適化の対象]** 設定を変更します。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
+
+サービス プランの購入:
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../cosmos-db/cosmos-db-reserved-capacity.md)
+
+ソフトウェア プランの購入:
+- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+割引と使用状況の理解:
 - [VM 予約割引の適用方法](billing-understand-vm-reservation-charges.md)
-- [SUSE Linux Enterprise ソフトウェア プランの割引の適用方法](../billing/billing-understand-suse-reservation-charges.md)
+- [Red Hat Enterprise Linux ソフトウェア プランの割引の適用方法](../billing/billing-understand-rhel-reservation-charges.md)
+- [SUSE Linux Enterprise ソフトウェア プランの割引の適用方法を理解する](../billing/billing-understand-suse-reservation-charges.md)
 - [その他の予約割引の適用方法](billing-understand-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

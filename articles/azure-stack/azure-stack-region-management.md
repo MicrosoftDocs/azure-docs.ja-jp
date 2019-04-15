@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9fba2dc37646476ff2d802509da7b30ace85894
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871045"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805535"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack でのリージョン管理
 
@@ -29,7 +29,7 @@ ms.locfileid: "56871045"
 
 Azure Stack では、"*リージョン*" という概念が使用されています。リージョンとは、Azure Stack インフラストラクチャを構成するハードウェア リソースから成る論理エンティティです。 リージョン管理では、Azure Stack インフラストラクチャを正常に運用するために必要なすべてのリソースを見つけることができます。
 
-1 つの統合システム デプロイ (*Azure Stack クラウド*  と呼ばれます) が 1 つのリージョンを構成します。 各 Azure Stack Development Kit には、**local** という名前の 1 つのリージョンがあります。 2 番目の Azure Stack 統合システムをデプロイするか、または別のハードウェア上に開発キットの別のインスタンスを設定すると、この Azure Stack クラウドは別のリージョンになります。
+1 つの統合システム デプロイ (*Azure Stack クラウド*  と呼ばれます) が 1 つのリージョンを構成します。 各 Azure Stack Development Kit (ASDK) には、**local** という名前の 1 つのリージョンがあります。 2 番目の Azure Stack 統合システムをデプロイするか、または別のハードウェア上に開発キットの別のインスタンスを設定すると、この Azure Stack クラウドは別のリージョンになります。
 
 ## <a name="information-available-through-the-region-management-tile"></a>[リージョンの管理] タイルから使用可能な情報
 

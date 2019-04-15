@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100569"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905513"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
 Azure Cloud Shell に関する問題のトラブルシューティングを行うための既知の解決策は以下のとおりです。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>一般的なトラブルシューティング
 
@@ -39,7 +41,7 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>ストレージ ダイアログ - エラー: 403 RequestDisallowedByPolicy
 
-- **[詳細]**:Cloud Shell からストレージ アカウントを作成するときに、管理者によって配置された Azure ポリシーが原因で作成が失敗します。エラー メッセージには以下が含まれます。`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **[詳細]**:Cloud Shell からストレージ アカウントを作成するときに、管理者によって配置された Azure ポリシーが原因で作成が失敗します。エラー メッセージには以下が含まれます。 `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解決方法**:Azure 管理者に連絡して、ストレージの作成を拒否している Azure ポリシーを削除または更新してもらいます。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>ストレージ ダイアログ - エラー: 400 DisallowedOperation
@@ -74,7 +76,7 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 > Azure VM には、一般に公開されている IP アドレスが必要です。
 
 - **[詳細]**:WinRM に対する Windows ファイアウォールの既定の設定のため、次のようなエラー メッセージが表示されることがあります。`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解決方法**:`Enable-AzureRmVMPSRemoting` を実行して、ターゲット コンピューター上での PowerShell リモート処理のすべての側面を有効にします。
+- **解決方法**:`Enable-AzVMPSRemoting` を実行して、ターゲット コンピューター上での PowerShell リモート処理のすべての側面を有効にします。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` によって Azure ドライブで結果が更新されない
 

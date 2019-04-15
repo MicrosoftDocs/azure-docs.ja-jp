@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 6f8cf8a597bc50bb52818968c6f6ea0e7a6941a4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 04/03/2019
+ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225326"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862082"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新プログラム
 
@@ -51,18 +51,18 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - **1809**: [KB 4481548 – Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: 最新の修正プログラムはありません。
-- **1901**: [KB 4481548 – Azure Stack 修正プログラム 1.1901.2.103](https://support.microsoft.com/help/4494720)
-- **1902**:[KB 4481548 – Azure Stack 修正プログラム 1.1902.2.73](https://support.microsoft.com/help/4494719)
+- **1901**: [KB 4495662 – Azure Stack 修正プログラム 1.1901.3.105](https://support.microsoft.com/help/4495662)
+- **1902**:[KB 4494719 – Azure Stack 修正プログラム 1.1902.2.73](https://support.microsoft.com/help/4494719)
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> - 1902 に更新する前に 1901 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes) (ある場合) をインストールしてください。
+> [1.1901.0.95 または 1.1901.0.99](azure-stack-update-1901.md#build-reference) からは、最初に 1901 修正プログラムをインストールすることなく、1902 を直接インストールできます。 ただし、古い **1901.2.103** 修正プログラムをインストールしてある場合は、1902 をインストールする前に、新しい [1901.3.105 修正プログラム](https://support.microsoft.com/help/4495662)をインストールする必要があります。
 
 - この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。
 
-    ```PowerShell
-    Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
+    ```powershell
+    Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
 - Azure Stack を System Center Operations Manager (SCOM) で管理している場合は、1902 を適用する前に、[Microsoft Azure Stack 用の管理パック](https://www.microsoft.com/download/details.aspx?id=55184)をバージョン 1.0.3.11 に更新してください。
@@ -77,6 +77,9 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - 1902 ビルドでは、Azure Stack の管理者ポータル上にプラン、オファー、クォータ、アドオン プランの作成のための新しいユーザー インターフェイスを導入しています。 スクリーンショットを含めた詳細については、[プラン、オファー、クォータの作成](azure-stack-create-plan.md)に関するページを参照してください。
 
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- ノード追加による容量拡張にあたりスケール ユニットの状態を [Expanding storage]\(ストレージの拡張中\) から [実行中] に切り替える際の信頼性を向上させました。
+
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
 1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
@@ -85,22 +88,20 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
 - パッケージの整合性とセキュリティを向上させ、オフラインでの取り込みの管理を容易に行えるようにするため、Microsoft では、更新プログラム パッケージの形式を .exe ファイルと .bin ファイルから .zip ファイルに変更しました。 新しい形式では、パッケージの展開プロセスの信頼性が向上しています (旧形式では、更新プログラムの準備が止まってしまうことがありました)。 OEM から提供される更新プログラム パッケージにも、同じパッケージ形式が適用されます。
-
-- **Test-AzureStack** を実行する際に、`include` ステートメントの後に 10 個ものパラメーターを追加で渡す必要があったのが、`Test-AzureStack -Group UpdateReadiness` を使用するだけで済むようになり、Azure Stack 運用担当者にとってのエクスペリエンスが改善しました。 例: 
+- Test-AzureStack を実行するとき、Include ステートメントの後に 10 個ものパラメーターを追加で渡す必要があったのが、"Test-AzureStack -Group UpdateReadiness" を使用するだけで済むようになり、Azure Stack 運用担当者にとってのエクスペリエンスが改善しました。
 
   ```powershell
-  Test-AzureStack -Group UpdateReadiness  
-  ```
-
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
 - コアとなるインフラストラクチャ サービスの更新プロセスにおける全般的な信頼性と可用性を向上させるために、更新アクション プランの一部としてのネイティブ更新リソースプロバイダーにより、必要に応じてグローバル修復が自動で検出および呼び出されるようになりました。 グローバル修復の "修復" ワークフローに含まれる項目は次のとおりです。
-
-  - 最適な状態にないインフラストラクチャ仮想マシンがあるかどうかを確認し、必要に応じて修復を試みる。
-  - コントロール プランの一部としての SQL サービスに問題が発生していないかどうかを確認し、必要に応じて修復を試みる。
-  - ネットワーク コントローラー (NC) の一部を構成するソフトウェア ロード バランサー (SLB) サービスの状態を確認し、必要に応じて修復を試みる。
-  - ネットワーク コントローラー (NC) サービスの状態を確認し、必要に応じて修復を試みる。
-  - 緊急回復コンソール サービス (ERCS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する。
-  - XRP サービス ファブリック ノードの状態を確認し、必要に応じて修復する。
-  - Azure Consistent Storage (ACS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する。
+    - 最適な状態にないインフラストラクチャ仮想マシンがあるかどうかを確認し、必要に応じて修復を試みる 
+    - コントロール プランの一部としての SQL サービスに問題が発生していないかどうかを確認し、必要に応じて修復を試みる
+    - ネットワーク コントローラー (NC) の一部を構成するソフトウェア ロード バランサー (SLB) サービスの状態を確認し、必要に応じて修復を試みる
+    - ネットワーク コントローラー (NC) サービスの状態を確認し、必要に応じて修復を試みる
+    - 緊急回復コンソール サービス (ERCS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する
+    - XRP サービス ファブリック ノードの状態を確認し、必要に応じて修復する
+    - Azure Consistent Storage (ACS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
 - ノード追加による容量拡張にあたりスケール ユニットの状態を [Expanding storage]\(ストレージの拡張中\) から [実行中] に切り替える際の信頼性を向上させました。    
@@ -115,13 +116,13 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 - Azure Stack 診断ツールのログ収集の信頼性とパフォーマンスを向上させました。 ネットワーク サービスおよび ID サービスのログ項目を追加しました。 
 
 <!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
-- シークレット ローテーションの準備テストのための **Test-AzureStack** の信頼性を向上させました。
+- シークレット ローテーションの準備テストのための Test-AzureStack の信頼性を向上させました。
 
 <!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
-- お客様の Active Directory 環境との通信時の AD Graph の信頼性を向上させました。
+- お客様の Active Directory 環境との通信時の AD Graph の信頼性を向上させました
 
 <!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
-- **Get-AzureStackStampInformation** のハードウェア インベントリ コレクションを改善しました。
+- Get-AzureStackStampInformation のハードウェア インベントリ コレクションを改善しました。
 
 - ERCS インフラストラクチャ上で実行する操作の信頼性を向上させるため、各 ERCS インスタンスのメモリを 8 GB から 12 GB に増やしました。 Azure Stack 統合システムでは、合計 12 GB の増加となります。
 
@@ -220,32 +221,19 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。
 
-- ハードウェア ライフサイクル ホスト (HLH) をお持ちでない場合:ビルド 1902 以前は、グループ ポリシー **Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options** を **[LM と NTLM を送信する - ネゴシエーションの場合、NTLMv2 セッション セキュリティを使う]** に設定する必要がありました。 ビルド 1902 からは、**[定義されていません]** のままにするか、**[NTLMv2 応答のみ送信する]** (既定値) に設定する必要があります。 そうしないと、PowerShell リモート セッションを確立できず、"**アクセスが拒否されました**" というエラーが表示されます。
-
-   ```shell
-   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
-   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
-   about_Remote_Troubleshooting Help topic.
-   At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
-   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
-      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
-   ```
-
 ### <a name="networking"></a>ネットワーク  
 
 <!-- 3239127 - IS, ASDK -->
 - Azure Stack ポータルで、VM インスタンスにアタッチされたネットワーク アダプターにバインドされている IP 構成の静的 IP アドレスを変更すると、次の内容の警告メッセージが表示されます。 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。
 
     このメッセージは無視してかまいません。たとえ VM インスタンスが再起動しなくても IP アドレスは変更されます。
 
 <!-- 3632798 - IS, ASDK -->
 - ポータルで受信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** をソースとして選択すると、Azure Stack では利用できないオプションがいくつか **[Source Tag]\(ソース タグ\)** リストに表示されます。 Azure Stack で有効なのは次のオプションだけです。
 
-  - **Internet**
+  - **インターネット**
   - **VirtualNetwork**
   - **AzureLoadBalancer**
   

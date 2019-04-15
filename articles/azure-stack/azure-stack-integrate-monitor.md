@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 64a31e0c8a36b7ea8b60f65caefba9ba15b91777
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258736"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904000"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -81,13 +81,13 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 | パラメーター | 説明 | 例 |
 |---------|---------|---------|
-| *arm_endpoint* | Azure Resource Manager (管理者) エンドポイント |https:\//adminmanagement.local.azurestack.external |
-| *api_endpoint* | Azure Resource Manager (管理者) エンドポイント  | https:\//adminmanagement.local.azurestack.external |
+| *arm_endpoint* | Azure Resource Manager (管理者) エンドポイント | https://adminmanagement.local.azurestack.external |
+| *api_endpoint* | Azure Resource Manager (管理者) エンドポイント  | https://adminmanagement.local.azurestack.external |
 | *Tenant_id* | 管理者のサブスクリプション ID | 管理者ポータルまたは PowerShell で取得します |
 | *User_name* | オペレーターのサブスクリプション ユーザー名 | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | オペレーターのサブスクリプション パスワード | mypassword |
 | *Client_id* | クライアント | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
-| *リージョン* |  Azure Stack のリージョン名 | local |
+| *region* |  Azure Stack のリージョン名 | local |
 |  |  |
 
 * 指定の PowerShell GUID はユニバーサルです。 各デプロイ用に使用できます。
@@ -96,35 +96,36 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 Operations Manager、Nagios、または Nagios ベースのソリューションを使用していない場合は、PowerShell でさまざまな監視ソリューションを使用して Azure Stack と統合できます。
 
-1. PowerShell を使用するには、Azure Stack オペレーター環境用に [PowerShell がインストールされ構成されている](azure-stack-powershell-configure-quickstart.md)必要があります。 Resource Manager (管理者) エンドポイント (https:\//adminmanagement.[region].[External_FQDN]) にアクセスできるローカル コンピューターに PowerShell をインストールします。
+1. PowerShell を使用するには、Azure Stack オペレーター環境用に [PowerShell がインストールされ構成されている](azure-stack-powershell-configure-quickstart.md)必要があります。 Resource Manager (管理者) エンドポイント (https://adminmanagement.[region].[External_FQDN]) にアクセスできるローカル コンピューターに PowerShell をインストールします。
 
 2. 次のコマンドを実行して、Azure Stack オペレーターとして Azure Stack 環境に接続します。
 
-   ```PowerShell  
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https:\//adminmanagement.[Region].[External_FQDN]
+   ```powershell
+   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 
 3. 次の例のようなコマンドを使用して、アラートを操作します。
-   ```PowerShell
+   ```powershell
     #Retrieve all alerts
-    Get-AzsAlert
+    $Alerts = Get-AzsAlert
+    $Alerts
 
     #Filter for active alerts
-    $Active=Get-AzsAlert | Where {$_.State -eq "active"}
+    $Active = $Alerts | Where-Object { $_.State -eq "active" }
     $Active
 
     #Close alert
     Close-AzsAlert -AlertID "ID"
 
     #Retrieve resource provider health
-    Get-AzsRPHealth
+    $RPHealth = Get-AzsRPHealth
+    $RPHealth
 
     #Retrieve infrastructure role instance health
-    $FRPID=Get-AzsRPHealth|Where-Object {$_.DisplayName -eq "Capacity"}
+    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
     Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-
     ```
 
 ## <a name="learn-more"></a>詳細情報

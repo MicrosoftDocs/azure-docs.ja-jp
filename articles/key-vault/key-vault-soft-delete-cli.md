@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097612"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336076"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -94,7 +94,7 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- *Id* は、復旧または消去するときにリソースを識別するために使用できます。 
+- *ID* は、復旧または消去するときにリソースを識別するために使用できます。 
 - *Resource ID* は、そのコンテナーの元のリソース ID です。 このキー コンテナーは削除された状態にあるため、このリソース ID のリソースは存在しません。 
 - *Scheduled Purge Date* は、何のアクションも実行しない場合に、そのコンテナーが永続的に削除されるタイミングを示します。 *Scheduled Purge Date* の計算に使用される既定のリテンション期間は 90 日です。
 
@@ -222,6 +222,24 @@ az keyvault purge --location westus --name ContosoVault
 
 >[!IMPORTANT]
 >*Scheduled Purge Date* フィールドでトリガーされた消去済みのコンテナー オブジェクトは永続的に削除されます。 これは復旧できません。
+
+## <a name="enabling-purge-protection"></a>消去保護を有効にする
+
+消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。
+
+論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 
+
+コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+既存のコンテナー (論理的な削除が既に有効になっている) に消去保護を追加するには、[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) コマンドを使用します。
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>その他のリソース
 

@@ -42,7 +42,7 @@ Computer Vision サービスを使用すると、開発者は、イメージを�
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Azure のサブスクリプションをお持ちでない場合
 
-Computer Vision サービスの**[試用][computervision_resource]** エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとエンドポイント名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
+Computer Vision サービスの **[試用][computervision_resource]** エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとエンドポイント名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
 
 キーの作成後は、次の情報を記録しておいてください。
 

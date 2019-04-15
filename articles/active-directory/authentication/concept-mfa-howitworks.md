@@ -1,5 +1,5 @@
 ---
-title: Azure Multi-Factor Authentication - しくみ
+title: Azure Multi-Factor Authentication - そのしくみ - Azure Active Directory
 description: Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c05c9a7db7f8e8c6e84232009780988d77aa14
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7328fb958774b5e17511d046e914cc5612e8a96d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088334"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310933"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
 

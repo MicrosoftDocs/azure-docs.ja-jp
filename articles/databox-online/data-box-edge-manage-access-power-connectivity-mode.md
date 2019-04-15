@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57905343"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417804"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Azure Data Box Edge (プレビュー) のアクセス、電源、接続モードを管理する
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Data Box Edge のアクセス、電源、接続モードを管理する
 
 この記事では、Azure Data Box Edge のアクセス、電源、および接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
 
@@ -26,16 +26,14 @@ ms.locfileid: "57905343"
 > * 接続モードを管理する
 > * 電源を管理する
 
-> [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
 ## <a name="manage-device-access"></a>デバイスのアクセスを管理する
 
-Data Box Edge デバイスへのアクセスは、デバイス管理者のパスワードを使用して制御されます。 管理者のパスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイス管理者のパスワードをリセットすることもできます。
+Data Box Edge デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
 
-### <a name="change-device-administrator-password"></a>デバイス管理者のパスワードを変更する
+### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
-デバイス管理者のパスワードを変更するには、ローカル UI で次の手順のようにします。
+デバイスのパスワードを変更するには、ローカル UI で次の手順のようにします。
 
 1. ローカル Web UI で、**[メンテナンス] > [Password change]\(パスワード変更\)** に移動します。
 2. 現在のパスワードを入力し、新しいパスワードを入力ます。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 新しいパスワードを確認入力します。
@@ -44,7 +42,7 @@ Data Box Edge デバイスへのアクセスは、デバイス管理者のパス
 
 3. **[パスワードの変更]** を選択します。
  
-### <a name="reset-device-administrator-password"></a>デバイス管理者のパスワードをリセットする
+### <a name="reset-device-password"></a>デバイスのパスワードをリセットする
 
 リセット ワークフローでは、ユーザーは古いパスワードを思い出す必要がなく、パスワードを忘れた場合に便利です。 このワークフローは、Azure portal で実行します。
 
@@ -63,7 +61,7 @@ Data Box Edge デバイスへのアクセスは、デバイス管理者のパス
 
 - **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。
 
-- **部分切断** – このモードでは、デバイスはどのようなデータも共有にアップロードできませんが、Azure portal からデバイスを管理することはできます。
+- **部分切断** – このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
 
     このモードは通常、従量制課金のサテライト ネットワークで使用され、目的はネットワーク帯域幅の消費量を最小限に抑えることです。 デバイス監視操作のため、最小限のネットワーク消費が発生する可能性があります。
 

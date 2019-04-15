@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Azure リージョン間での Azure IaaS VM のディザスター リカバリーに関する Azure Site Recovery サポート マトリックス | Microsoft Docs
+title: Azure Site Recovery を使用した Azure リージョン間での Azure VM のディザスター リカバリーに関するサポート マトリックス | Microsoft Docs
 description: ディザスター リカバリー (DR) のニーズに応じて、リージョン間で Azure 仮想マシン (VM) を Azure Site Recovery でレプリケートするときのサポートされるオペレーティング システムと構成についてまとめます。
 services: site-recovery
 author: rayne-wiselman
@@ -8,32 +8,32 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287198"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905003"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
 この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ある Azure リージョンから別の Azure リージョンへの Azure VM のレプリケート、フェールオーバー、および復旧を行うディザスター リカバリーをデプロイするときにサポートされる構成とコンポーネントをまとめたものです。
 
 
 ## <a name="deployment-method-support"></a>デプロイ方法のサポート
 
-**デプロイ方法** |  **サポートされるかどうか**
+**Deployment** |  **サポート**
 --- | ---
-**Azure Portal** | サポートされています
-**PowerShell** | [PowerShell を使用した Azure から Azure へのレプリケーション](azure-to-azure-powershell.md)
-**REST API** | サポートされています
+**Azure ポータル** | サポートされています。
+**PowerShell** | サポートされています。 [詳細情報](azure-to-azure-powershell.md)
+**REST API** | サポートされています。
 **CLI** | 現在、サポートされていません
 
 
 ## <a name="resource-support"></a>リソースのサポート
 
-**リソースのアクション** | **詳細**
---- | --- 
+**Resource action** | **詳細**
+--- | --- | ---
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> VM のレプリケート後に VM や関連コンポーネント (ストレージやネットワークなど) を移動する場合は、その VM のレプリケーションを無効にしてから、再度有効にする必要があります。
 **ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
@@ -45,9 +45,9 @@ ms.locfileid: "58287198"
 同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして、復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。
 
 
-**地理クラスター** | **Azure リージョン**
+**地理クラスター** | **Azure Azure リージョン**
 -- | --
-アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
+アメリカ合衆国 | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
 ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部
 アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
 オーストラリア   | オーストラリア東部、オーストラリア南東部、オーストラリア中部、オーストラリア中部 2
@@ -57,19 +57,19 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 
 >[!NOTE]
 >
-> - **ブラジル南部**リージョンでは、次のいずれかにレプリケートしてフェールオーバーできます。米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、および米国中北部リージョン。 Site Recovery で、ソース リージョン (VM をそこから保護可能) として使用できるリージョンがブラジル南部だけになっていることに注意してください。 米国中南部のような Azure リージョンのいずれも、それを**ターゲット DR リージョンとして使用することはできません**。 なぜなら地理的な距離が原因で遅延が発生しているからであり、ブラジル南部以外のアメリカ合衆国のリージョンを選択することをお勧めします。
->
-> - **コンテナーの作成**を希望している**リージョンを表示できない**場合は、サブスクリプションが、そのリージョン内にリソースを作成するアクセス権を持っていることを確認します。 例: フランス南部にコンテナーを作成できない場合、お客様のサブスクリプションにはフランス南部リージョンに対するアクセス権がありません。 案件の種類は "サブスクリプション管理"、問題の種類は "その他の一般的な質問"、件名は "XXX Azure リージョンに対するホワイトリスト サブスクリプション" として、サポート チケットを提出してください。
->
-> - **レプリケーションを有効化する際**に地理クラスター内の**リージョンを表示できない**場合は、サブスクリプションが、そのリージョン内に仮想マシンを作成するためのアクセス権を持っていることを確認してください。 例: フランス中部からフランス南部にわたる仮想マシンを保護しようとしていて、リージョンのドロップダウンにフランス南部が表示されない場合、お使いのサブスクリプションが、そのリージョン内に VM をデプロイするためのアクセス権を持っていません。 案件の種類は "サブスクリプション管理"、問題の種類は "その他の一般的な質問"、件名は "XXX Azure リージョンに対するホワイトリスト サブスクリプション" として、サポート チケットを提出してください。
-> - 上で言及した地理クラスター間にわたって複数のリージョンを選択することはできません。
+> - **ブラジル南部**では、次のリージョンにレプリケートしてフェールオーバーできます: 米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、および米国中北部。
+> - ブラジル南部は、Site Recovery を使用して VM をレプリケートするソース リージョンとしてのみ使用できます。 ターゲット リージョンとしては動作できません。 これは、地理的な距離による待機時間の問題のためです。
+> - 適切なアクセス権があるリージョン内では動作できます。
+> - コンテナーの作成を希望しているリージョンが表示されない場合は、お使いのサブスクリプションが、そのリージョン内にリソースを作成するアクセス権を持っていることを確認します。
+> - レプリケーションを有効にしても地理的クラスター内にリージョンが表示されない場合は、お使いのサブスクリプションにそのリージョンに VM を作成するアクセス許可があることを確認します。
+
 
 
 ## <a name="cache-storage"></a>キャッシュ ストレージ
 
 この表は、レプリケーション中に Site Recovery によって使用されるキャッシュ ストレージ アカウントのサポートをまとめたものです。
 
-**設定** | **サポート** | **詳細**
+**Setting** | **サポート** | **詳細**
 --- | --- | ---
 汎用目的 V2 ストレージ アカウント (ホット層とクール層) | サポートされていません。 | V2 のトランザクション コストは V1 ストレージ アカウントより大幅に多いため、キャッシュ ストレージに制限があります。
 仮想ネットワークの Azure Storage ファイアウォール  | サポートされています | ファイアウォールが有効なキャッシュ ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合は必ず、['信頼できる Microsoft サービスを許可'](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) してください。
@@ -79,7 +79,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 
 Site Recovery は、このセクションに示したオペレーティング システムを実行する Azure VM のレプリケーションをサポートしています。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 
 **オペレーティング システム** | **詳細**
 --- | ---
@@ -107,37 +107,35 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Ubuntu カーネル バージョン
 
-**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+14.04 LTS | 9.23 | 3.13.0-24-generic から 3.13.0-165-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-142-generic、<br/>4.15.0-1023-azure から 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-generic から 3.13.0-164-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1036-azure |
 14.04 LTS | 9.21 | 3.13.0-24-generic から 3.13.0-163-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1035-azure |
 14.04 LTS | 9.20 | 3.13.0-24-generic から 3.13.0-161-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-138-generic、<br/>4.15.0-1023-azure から 4.15.0-1030-azure |
-14.04 LTS | 9.19 | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-131-generic |
 |||
+16.04 LTS | 9.23 | 4.4.0-21-generic から 4.4.0-142-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-45-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1037-azure|
 16.04 LTS | 9.22 | 4.4.0-21-generic から 4.4.0-140-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-43-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1036-azure|
 16.04 LTS | 9.21 | 4.4.0-21-generic から 4.4.0-140-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-42-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1035-azure|
 16.04 LTS | 9.20 | 4.4.0-21-generic から 4.4.0-138-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-38-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1030-azure|
-16.04 LTS | 9.19 | 4.4.0-21-generic ～ 4.4.0-131-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic ～ 4.15.0-30-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure ～ 4.15.0-1019-azure|
-
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Debian カーネル バージョン
 
-**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.19、9.20、9.21、9.22 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.19、9.20、9.21、9.22、9.23 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.20、9.21 | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.20、9.21、9.22、9.23 | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.7-amd64 |
-Debian 8 | 9.18 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.6-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 12 カーネル バージョン
 
-**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.23 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.22 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.21 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.20 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.69-default |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.19 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default から 4.4.140-94.42-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>レプリケートされるマシン - Linux ファイル システム/ゲスト ストレージ
@@ -149,7 +147,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.19 | SP1 3.12.49-11-defaul
 
 ## <a name="replicated-machines---compute-settings"></a>レプリケートされるマシン - コンピューティングの設定
 
-**設定** | **サポート** | **詳細**
+**Setting** | **サポート** | **詳細**
 --- | --- | ---
 Size | 少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)を確認してください。
 可用性セット | サポートされています | 既定のオプションを使用して Azure VM のレプリケーションを有効にした場合は、ソース リージョンの設定に基づいて可用性セットが自動的に作成されます。 次の設定を変更できます。
@@ -160,10 +158,11 @@ Azure ギャラリー イメージ - Microsoft が公開 | サポートされて
 Azure ギャラリー イメージ - サード パーティが公開 | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 カスタム イメージ - サード パーティが公開 | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 Site Recovery を使用して移行された VM | サポートされています | Site Recovery を使用して Azure に移行された VMware VM または物理マシンの場合は、マシンで実行されている古いバージョンのモビリティ サービスをアンインストールし、マシンを再起動してから、それを他の Azure リージョンにレプリケートする必要があります。
+RBAC ポリシー | サポートされていません | VM でのロールベースのアクセス制御 (RBAC) ポリシーは、ターゲット リージョンのフェールオーバー VM にレプリケートされません。
 
 ## <a name="replicated-machines---disk-actions"></a>レプリケートされるマシン - ディスクのアクション
 
-**アクション** | **詳細**
+**Action** | **詳細**
 -- | ---
 レプリケートされた VM のディスク サイズの変更 | サポートされています
 レプリケートされた VM にディスクを追加する | サポートされていません。<br/><br/> VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にする必要があります。
@@ -195,7 +194,7 @@ Standard SSD | サポートされています |
 Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
 Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
 ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
-ディスクの除外 | [PowerShell を介してサポートされています](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   一時ディスクは既定で除外されます。
+ディスクの除外 | サポート。 [PowerShell](azure-to-azure-exclude-disks.md) を使用して構成する必要があります。 |  一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 スケールアウト ファイル サーバー  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 LRS | サポートされています |
@@ -203,17 +202,22 @@ GRS | サポートされています |
 RA-GRS | サポートされています |
 ZRS | サポートされていません |
 クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
-仮想ネットワークの Azure Storage ファイアウォール  | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限している場合は、['信頼できる Microsoft サービスを許可'](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) していることを確認します。
+仮想ネットワークの Azure Storage ファイアウォール  | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限する場合は、[信頼できる Microsoft サービスを許可](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)を有効にします。
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ  | 汎用目的 V1 のストレージ アカウントに比べて、トランザクション コストが非常に大きくなります
 
 >[!IMPORTANT]
-> パフォーマンスの問題を回避するために、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) 仮想マシンの VM ディスクのスケーラビリティおよびパフォーマンスのターゲットを確認してください。 既定の設定に従うと、Site Recovery により、ソース構成に基づいて必要なディスクとストレージ アカウントが作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従ってください。
+> パフォーマンスの問題を回避するには、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM に対する VM ディスクのスケーラビリティとパフォーマンスのターゲットに従っていることを確認します。 既定の設定を使用する場合は、ソースの構成に基づいて、必要なディスクとストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従います。
 
-## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>データ変化率のレプリケートに対する Azure Site Recovery の制限
-以下の表は、Azure Site Recovery の制限を示したものです。 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。 また、ディスクごとのデータ チャーンと仮想マシンごとのデータ チャーンという考慮すべき 2 つの制限があることにも注意する必要があります。
-たとえば、次の表の Premium P20 ディスクを見ると、Site Recovery はディスクごとに 5 MB/s のチャーンを処理できます。VM ごとの合計チャーンの制限は 25 MB/s であるため、VM あたりのディスクの最大数は 5 になります。
+## <a name="limits-and-data-change-rates"></a>制限とデータ変化率
 
-**レプリケーション先のストレージ** | **レプリケーション元の平均ディスク I/O サイズ** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
+以下の表は、Site Recovery の制限をまとめたものです。
+
+- これらの制限は、Microsoft のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。
+- 実際の結果は、ご使用のアプリで発生するさまざまな I/O によって異なることが考えられます。
+- ディスクごとのデータ チャーンと仮想マシンごとのデータ チャーンという考慮すべき 2 つの制限があります。
+- たとえば、次の表で説明されている Premium P20 ディスクを使用する場合、Site Recovery はディスクごとに 5 MB/秒のチャーンを処理できます。VM ごとの合計チャーンの制限は 25 MB/秒であるため、VM あたりのディスクの最大数は 5 になります。
+
+**ストレージ ターゲット** | **レプリケーション元の平均ディスク I/O** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/秒 | (ディスクあたり) 168 GB
 Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあたり) 168 GB
@@ -222,7 +226,7 @@ Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスク
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
 Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
 ## <a name="replicated-machines---networking"></a>レプリケートされるマシン - ネットワーク
-**構成** | **サポート** | **詳細**
+**Setting** | **サポート** | **詳細**
 --- | --- | ---
 NIC | 特定の Azure VM サイズでサポートされる最大数 | フェールオーバー中に VM が作成されるときには NIC が作成されます。<br/><br/> フェールオーバー VM 上の NIC 数は、レプリケーションが有効にされたときのソース VM 上の NIC 数によって決まります。 レプリケーションを有効にした後に NIC を追加または削除しても、フェールオーバー後、レプリケートされた VM 上にある NIC の数は影響を受けません。
 インターネット Load Balancer | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、構成済みロード バランサーを関連付けます。
@@ -235,15 +239,15 @@ NIC 上の NSG | サポートされています | 復旧計画の Azure Automati
 Traffic Manager     | サポートされています | トラフィックがソース リージョンのエンドポイントに定期的にルーティングされ、フェールオーバーの場合はターゲット リージョンのエンドポイントにルーティングされるように、Traffic Manager を事前に構成することができます。
 Azure DNS | サポートされています |
 [カスタム DNS]  | サポートされています |
-非認証プロキシ | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。    
+非認証プロキシ | サポートされています | [詳細](site-recovery-azure-to-azure-networking-guidance.md)   
 認証済みプロキシ | サポートされていません | VM が送信接続に認証済みプロキシを使用している場合は、Azure Site Recovery でレプリケートできません。    
-オンプレミスでのサイト間 VPN (ExpressRoute あり/なし)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
-VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
+オンプレミスへの VPN サイト間接続<br/><br/>(ExpressRoute の有無)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [詳細情報](site-recovery-azure-to-azure-networking-guidance.md)    
+VNet 間接続 | サポートされています | [詳細情報](site-recovery-azure-to-azure-networking-guidance.md)  
 仮想ネットワーク サービス エンドポイント | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限している場合は、信頼された Microsoft サービスがストレージ アカウントへのアクセスを許可されることを確認します。
-高速ネットワーク | サポートされています | 高速ネットワークは、ソース VM で有効にする必要があります。 [詳細情報](azure-vm-disaster-recovery-with-accelerated-networking.md)。
+Accelerated Networking | サポートされています | 高速ネットワークは、ソース VM で有効になっている必要があります。 [詳細情報](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure VM のレプリケートに関するネットワーク面のガイダンス](site-recovery-azure-to-azure-networking-guidance.md)を確認します。
+- Azure VM のレプリケートに関する[ネットワークのガイダンス](site-recovery-azure-to-azure-networking-guidance.md)を確認します。
 - [Azure VM をレプリケートして](site-recovery-azure-to-azure.md)ディザスター リカバリーを展開します。

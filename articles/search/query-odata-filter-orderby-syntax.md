@@ -1,7 +1,7 @@
 ---
 title: filters 句と order-by 句のための OData 式の構文 - Azure Search
 description: Azure Search クエリのための filters 式と order-by 式の OData 構文。
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087399"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648505"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Azure Search の filters 句と order-by 句のための OData 式の構文
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - `search.in` 関数によって、与えられた文字列フィールドが与えられた値リストのそれと等しいかどうかがテストされます。 これを any または all で使用し、与えられた値リストと文字列コレクション フィールドの単一値を比較することもできます。 フィールドとリストの各値の比較は、`eq` 演算子の場合と同様に、大文字と小文字を区別して決定されます。 そのため、`search.in(myfield, 'a, b, c')` のような式は、`search.in` の方がパフォーマンスが良いという点を除き、`myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` に等しくなります。 
 
-  `search.in` 関数の最初のパラメーターは文字列フィールド参照です (あるいは、`search.in` が `any` または `all` 式で使用されている場合、文字列コレクション フィールドの範囲変数)。 2 つ目のパラメーターは、スペースまたはコンマで区切られた、値リストが含まれる文字列です。 値にスペースやコンマが含まれるため、それ以外の区切り文字を使用する必要がある場合、任意で 3 つ目のパラメーターを `search.in` に指定できます。 
-
-  この 3 つ目のパラメーターは、2 つ目のパラメーターの値リストを構文解析するとき、文字列の各文字、またはこの文字列のサブセットが区切り文字として処理される文字列です。
+   `search.in` 関数の最初のパラメーターは文字列フィールド参照です (あるいは、`search.in` が `any` または `all` 式で使用されている場合、文字列コレクション フィールドの範囲変数)。 
+  
+   2 つ目のパラメーターは、スペースまたはコンマで区切られた、値リストが含まれる文字列です。 
+  
+   3 つ目のパラメーターは、2 つ目のパラメーターの値リストを構文解析するとき、文字列の各文字、またはこの文字列のサブセットが区切り文字として処理される文字列です。 値にスペースやコンマが含まれるため、それ以外の区切り文字を使用する必要がある場合、任意で 3 つ目のパラメーターを `search.in` に指定できます。 
 
   > [!NOTE]   
   > 大量の定数値に対して 1 つのフィールドを比較する必要がある場合もあります。 たとえば、セキュリティによるトリミングと共にフィルターを実装する場合、要求しているユーザーに読み取りアクセスを与える ID リストに対してドキュメントの ID フィールドを比較する必要があります。 このようなシナリオでは、等値式の複雑な論理和演算より、`search.in` 関数を使用することを強くお勧めします。 たとえば、`Id eq 123 or Id eq 456 or ....` の代わりに `search.in(Id, '123, 456, ...')` を使用します。 
@@ -128,10 +130,10 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ## <a name="filter-examples"></a>フィルターの例  
 
- 基本料金が $100 以下で 4 つ星以上のホテルをすべて探します。  
+ 基本料金が $200 未満で 4 つ星以上のホテルをすべて探します。  
 
 ```
-$filter=baseRate lt 100.0 and rating ge 4
+$filter=baseRate lt 200.0 and rating ge 4
 ```
 
  "Roach Motel" 以外で 2010 年以降に改装されているホテルをすべて探します。  
@@ -140,10 +142,10 @@ $filter=baseRate lt 100.0 and rating ge 4
 $filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
 ```
 
- 2012 年以降に改装されているホテルで基本料金が $200 以下のホテルをすべて探します。datetime には太平洋標準時の時間帯情報を含めます。  
+ 2010 年以降に改装されているホテルで基本料金が $200 未満のホテルをすべて探します。datetime には太平洋標準時のタイム ゾーン情報を含めます。  
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
 ```
 
  駐車場を備え、禁煙のホテルをすべて探します。  
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-'Roach motel' または 'Budget hotel' という名前が与えられたホテルをすべて探します。  
+'Roach motel' または 'Budget hotel' という名前が付いているホテルをすべて探します。 語句には、既定の区切り記号であるスペースを含めます。 3 番目の文字列パラメーターとして、単一引用符の中に別の区切り記号を指定できます。  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +225,12 @@ $filter=search.in(name, 'Roach motel|Budget hotel', '|')
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+タグ内の 'heated towel racks' (タオル ウォーマー ラック) や 'hairdryer included' (ヘアドライヤーあり) など、コレクション内の語句との一致を探します。 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 "motel" と 'cabin' というタグがないホテルをすべて探します。  

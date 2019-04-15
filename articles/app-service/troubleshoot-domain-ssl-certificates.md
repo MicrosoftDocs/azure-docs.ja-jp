@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730102"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905819"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
 この記事では、Azure App Service の Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックしてください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>証明書に関する問題
 
@@ -276,15 +279,15 @@ Microsoft Azure portal 内の App Service からドメインを購入できま�
 
 Azure Portal からドメインを購入した場合、App Service アプリケーションは、そのカスタム ドメインを使用するように自動的に構成されます。 追加の手順を実行する必要はありません。 詳細については、Channel9 の [Azure App Service のセルフ ヘルプ: カスタム ドメイン名の追加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)に関するページを参照してください。
 
-**Azure Portal で購入されたドメインを使用して、代わりに Azure VM を指すことはできますか**
+**Azure portal で購入したドメインを使用して、代わりに Azure VM を指すことはできますか**
 
-はい。そのドメインで VM、ストレージなどを指すことができます。詳細については、[Windows VM 用の Azure Portal でのカスタム FQDN の作成](../virtual-machines/windows/portal-create-fqdn.md)に関するページを参照してください。
+はい。そのドメインで VM を指すことができます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](../dns/dns-custom-domain.md)」をご覧ください。
 
 **このドメインは GoDaddy または Azure DNS によってホストされますか**
 
 App Service ドメインはドメイン登録のために GoDaddy を使用し、Azure DNS を使用してドメインをホストします。 
 
-**自動更新を有効にしているにもかかわらず、依然として電子メール経由でドメインの更新通知を受信しました。どうすればよいですか。**
+**自動更新を有効にしているにもかかわらず、依然としてメール経由でドメインの更新通知を受信しました。 どうすればよいですか。**
 
 自動更新を有効にしている場合は、何も対処する必要はありません。 その通知電子メールは、ドメインが期限切れに近づいていることを通知し、自動更新が有効になっていない場合は手動で更新するために提供されます。
 
@@ -292,7 +295,7 @@ App Service ドメインはドメイン登録のために GoDaddy を使用し�
 
 ドメイン購入の初期コストは、ドメイン登録にのみ適用されます。 登録コストに加えて、使用状況に基づいた Azure DNS に対する料金が発生します。 詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
 
-**以前に Azure Portal からドメインを購入しており、GoDaddy ホスティングから Azure DNS ホスティング移行したいと考えています。どうすればよいですか**
+**以前に Azure portal からドメインを購入しており、GoDaddy ホスティングから Azure DNS ホスティングに移行したいと考えています。 どうすればよいですか**
 
 Azure DNS ホスティングへの移行は必須ではありません。 Azure DNS に移行したい場合は、Azure Portal でのドメイン管理エクスペリエンスによって、Azure DNS に移行するために必要な手順に関する情報が提供されます。 そのドメインが App Service 経由で購入された場合、GoDaddy ホスティングから Azure DNS への移行は比較的シームレスな手順になります。
 
@@ -300,7 +303,7 @@ Azure DNS ホスティングへの移行は必須ではありません。 Azure 
 
 2017 年 7 月 24 日から、ポータルで購入された App Service ドメインは Azure DNS でホストされます。 別のホスティング プロバイダーを使用したい場合は、そのプロバイダーの Web サイトにアクセスしてドメイン ホスティング ソリューションを入手する必要があります。
 
-**ドメインのプライバシー保護に対して支払う必要がありますか**
+**ドメインのプライバシー保護に対して料金を支払う必要がありますか**
 
 Azure Portal 経由でドメインを購入した場合は、追加コストなしでプライバシーを追加することを選択できます。 これは、Azure App Service 経由でドメインを購入する利点の 1 つです。
 
@@ -314,13 +317,13 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 **ドメインをあるサブスクリプションから別のサブスクリプションに転送できますか**
 
-[Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) PowerShell コマンドレットを使用して、ドメインを別のサブスクリプション/リソース グループに移動できます。
+[Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell コマンドレットを使用して、ドメインを別のサブスクリプションやリソース グループに移動できます。
 
 **現在 Azure App Service アプリがない場合、カスタム ドメインを管理するにはどうすればよいですか**
 
 App Service Web Apps がない場合でも、ドメインを管理できます。 ドメインは、仮想マシン、ストレージなどの Azure サービスのために使用できます。ドメインを App Service Web Apps のために使用する場合は、そのドメインを Web アプリにバインドするために、Free App Service プランにない Web アプリを含める必要があります。
 
-**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
+**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service Environment v1 から V2 に移動できますか**
 
 はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
 )に関するページを参照してください。

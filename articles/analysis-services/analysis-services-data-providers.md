@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc8fae8f1278babd8c4c7402d86700ad78e3cb9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bfd488828d9c96461cb371b35bb0a0cb24fff373
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897420"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891941"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -66,7 +66,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
  ADOMD.NET は、Analysis Services データの照会に使用されるマネージド データ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 
   
- データベースに接続する際、3 つのライブラリの接続文字列プロパティは、どれも似ています。 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) を使用して ADOMD.NET 用に定義するほぼすべての接続文字列が、AMO と Analysis Services OLE DB Provider (MSOLAP) でも機能します。 詳細については、「[接続文字列プロパティ &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services)」を参照してください。  
+ データベースに接続する際、3 つのライブラリの接続文字列プロパティは、どれも似ています。 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) を使用して ADOMD.NET 用に定義するほぼすべての接続文字列が、AMO と Analysis Services OLE DB Provider (MSOLAP) でも機能します。 詳細については、「[接続文字列プロパティ &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services)」を参照してください。  
 
   
 ##  <a name="bkmk_LibUpdate"></a>クライアント ライブラリのバージョンを確認する方法   

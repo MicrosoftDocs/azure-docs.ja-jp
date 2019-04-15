@@ -3,20 +3,20 @@ title: Azure Data Lake Storage Gen1 のディザスター リカバリーのガ�
 description: Azure Data Lake Storage Gen1 のディザスター リカバリーのガイダンス
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 44c1dc3e3f6c2c9af52a6e9c9320d4a8ba63b4d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127110"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878113"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 によって、ローカル冗長ストレージ (L
 ## <a name="disaster-recovery-guidance"></a>ディザスター リカバリーの ガイダンス
 すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成するには、この記事の情報をお読みください。 独自の計画を作成する際に役立つリソースがあります。
 
-* [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>ベスト プラクティス

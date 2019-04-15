@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669778"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
+
+Azure Dev Spaces の使用時に問題が発生した場合は、[Azure Dev Spaces GitHub リポジトリに問題](https://github.com/Azure/dev-spaces/issues)を作成します。
 
 ## <a name="enabling-detailed-logging"></a>詳細なログ記録の有効化
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>AKS 仮想ノードの "*Waiting for container image build... (コンテナーイメージがビルドされるのを待っています...)*" 手順で Dev Spaces がタイムアウトする
 
 ### <a name="reason"></a>理由
-これは、[AKS 仮想ノード](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上で実行するように構成されているサービスを、Dev Spaces を使用して実行しようとした場合に発生します。 Dev Spaces では、現在、仮想ノード上でのサービスのビルドもデバッグもサポートされていません。
+このタイムアウトは、Dev Spaces を使用して、[AKS 仮想ノード](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上で実行するように構成されているサービスを実行しようとした場合に発生します。 Dev Spaces では、現在、仮想ノード上でのサービスのビルドもデバッグもサポートされていません。
 
 `azds up` を `--verbose` スイッチを指定して実行するか、Visual Studio で詳細ログを有効にした場合、次の詳細が表示されます。
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-これは、サービスのポッドが、仮想ノードである *virtual-node-aci-linux* に割り当てられたことを示しています。
+上のコマンドは、サービスのポッドが、仮想ノードである *virtual-node-aci-linux* に割り当てられたことを示しています。
 
 ### <a name="try"></a>次の操作を試してください。
 サービス用の Helm チャートで、仮想ノード上でのサービスの実行を許可する *nodeSelector* 値と *tolerations* 値を削除して、チャートを更新します。 通常、これらの値は、チャートの `values.yaml` ファイルに定義されます。
@@ -312,3 +316,12 @@ configurations:
     build:
       dockerfile: Dockerfile.develop
 ```
+
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Node.js アプリケーションにデバッグを接続するとエラー "Internal watch failed: watch ENOSPC" が発生する
+
+### <a name="reason"></a>理由
+
+デバッガーで接続しようとしている Node.js アプリケーションでポッドを実行しているノードが *fs.inotify.max_user_watches* 値を超えました。 場合によっては、[*fs.inotify.max_user_watches* の既定値が小さすぎて、デバッガーのポッドへの直接の接続を処理できない可能性があります](https://github.com/Azure/AKS/issues/772)。
+
+### <a name="try"></a>試す
+この問題の一時的な対処法として、クラスター内の各ノード上で *fs.inotify.max_user_watches* の値を増やし、そのノードを再起動して変更を有効にしてください。

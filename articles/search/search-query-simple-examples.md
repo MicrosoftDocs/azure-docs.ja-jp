@@ -1,5 +1,5 @@
 ---
-title: 単純なクエリの例 - Azure Search
+title: "\"単純な\" 検索構文を利用したクエリの例 - Azure Search"
 description: フルテキスト検索、フィルター検索、地理検索、ファセット検索、および Azure Search インデックスのクエリに使用されるその他のクエリ文字列の単純なクエリの例。
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136480"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439130"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための単純構文クエリの例
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure Search における "単純な" 検索構文を利用したクエリの例
 
 [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)では、既定のクエリ パーサーを呼び出して、Azure Search インデックスに対してフルテキスト検索クエリを実行します。 単純クエリ アナライザーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの Azure Search で一般的なシナリオに対応します。 この記事では、単純な構文を使用するときに利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
 
@@ -55,7 +55,9 @@ URL は、次の要素から構成されます。
 
 ## <a name="send-your-first-query"></a>初めてクエリを送信する
 
-確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 下の最初の例のこの URL をコピーして貼り付けることができます。
+確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
+
+次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ URL は、次の要素から構成されます。
 この最初の例はパーサー固有ではありませんが、最初の基本的なクエリの概念である包含を紹介するために利用します。 この例では、クエリの実行とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
 
 簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 構文は、クエリの実行を business_title フィールドのみに制限する **searchFields** と、応答に含まれるフィールドを指定する **select** です。
+
+### <a name="partial-query-string"></a>部分クエリ文字列
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+次のクエリは、コンマ区切りのリストに複数のフィールドを持つ同じクエリです。
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>完全な URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

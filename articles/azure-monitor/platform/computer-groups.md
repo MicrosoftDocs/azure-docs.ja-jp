@@ -130,7 +130,7 @@ Active Directory または WSUS から作成されたコンピューター グ�
 | Type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
 | Computer |メンバー コンピューターの名前。 |
-| グループ |グループの名前。 |
+| Group |グループの名前。 |
 | GroupFullName |ソースとソース名を含んだグループの完全パス。 |
 | GroupSource |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | GroupSourceName |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |

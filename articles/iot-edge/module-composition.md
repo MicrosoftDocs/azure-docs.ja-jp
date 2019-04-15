@@ -4,17 +4,17 @@ description: デプロイ マニフェストを使ってデプロイするモジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099972"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758084"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
@@ -58,14 +58,14 @@ IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配�
                 // includes the routing information between modules, and to IoT Hub
             }
         },
-        "{module1}": {  // optional
+        "module1": {  // optional
             "properties.desired": {
-                // desired properties of {module1}
+                // desired properties of module1
             }
         },
-        "{module2}": {  // optional
+        "module2": {  // optional
             "properties.desired": {
-                // desired properties of {module2}
+                // desired properties of module2
             }
         },
         ...
@@ -75,9 +75,9 @@ IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配�
 
 ## <a name="configure-modules"></a>モジュールの構成
 
-デプロイに含まれるモジュールを IoT Edge ランタイムでどのようにインストールするかを定義します。 IoT Edge エージェントは、IoT Edge デバイスのインストール、更新、状態レポートを管理するランタイム コンポーネントです。 そのため、$edgeAgent モジュール ツインには、すべてのモジュールの構成情報と管理情報が必要です。 この情報には、Edge エージェント自体の構成パラメーターが含まれます。 
+デプロイに含まれるモジュールを IoT Edge ランタイムでどのようにインストールするかを定義します。 IoT Edge エージェントは、IoT Edge デバイスのインストール、更新、状態レポートを管理するランタイム コンポーネントです。 そのため、$edgeAgent モジュール ツインには、すべてのモジュールの構成情報と管理情報が必要です。 この情報には、IoT Edge エージェント自体の構成パラメーターが含まれます。 
 
-含めることができるプロパティおよび必須プロパティの完全な一覧については、[Edge エージェントおよび Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
+含めることができるプロパティおよび必須プロパティの完全な一覧については、[IoT Edge エージェントおよび IoT Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
 
 $EdgeAgent プロパティは次の構造に従います。
 
@@ -101,10 +101,10 @@ $EdgeAgent プロパティは次の構造に従います。
             }
         },
         "modules": {
-            "{module1}": { // optional
+            "module1": { // optional
                 // configuration and management details
             },
-            "{module2}": { // optional
+            "module2": { // optional
                 // configuration and management details
             }
         }
@@ -122,8 +122,8 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 "$edgeHub": {
     "properties.desired": {
         "routes": {
-            "{route1}": "FROM <source> WHERE <condition> INTO <sink>",
-            "{route2}": "FROM <source> WHERE <condition> INTO <sink>"
+            "route1": "FROM <source> WHERE <condition> INTO <sink>",
+            "route2": "FROM <source> WHERE <condition> INTO <sink>"
         },
     }
 }
@@ -144,9 +144,9 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 | `/twinChangeNotifications` | 任意のモジュールまたはリーフ デバイスから送信されるツイン変更 (reported プロパティ) |
 | `/messages/*` | なんらかの出力を通じて、または出力なしでモジュールまたはリーフ デバイスによって送信される任意の device-to-cloud メッセージ |
 | `/messages/modules/*` | 何らかの出力と共に、または出力なしでモジュールによって送信された、デバイスからクラウドへの任意のメッセージ |
-| `/messages/modules/{moduleId}/*` | なんらかの出力を通じて、または出力なしで特定のモジュールによって送信される任意の device-to-cloud メッセージ |
-| `/messages/modules/{moduleId}/outputs/*` | なんらかの出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |
-| `/messages/modules/{moduleId}/outputs/{output}` | 特定の出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |
+| `/messages/modules/<moduleId>/*` | なんらかの出力を通じて、または出力なしで特定のモジュールによって送信される任意の device-to-cloud メッセージ |
+| `/messages/modules/<moduleId>/outputs/*` | なんらかの出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |
+| `/messages/modules/<moduleId>/outputs/<output>` | 特定の出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |
 
 ### <a name="condition"></a>条件
 条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-routing-query-syntax.md)を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。 IoT Edge のルートは、ツインのタグやプロパティに基づくメッセージのフィルタリングをサポートしません。 
@@ -175,11 +175,11 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 | シンク | 説明 |
 | ---- | ----------- |
 | `$upstream` | IoT Hub にメッセージを送信する |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | 特定のモジュールの特定の入力にメッセージを送信する |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 特定のモジュールの特定の入力にメッセージを送信する |
 
-IoT Edge は、At-Least-Once 保証を提供します。 Edge ハブは、ルートでそのシンクにメッセージを配信できなかった場合のために、ローカルにメッセージを保存します。 たとえば、Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合です。
+IoT Edge は、At-Least-Once 保証を提供します。 IoT Edge ハブは、ルートでそのシンクにメッセージを配信できなかった場合のために、ローカルにメッセージを保存します。 たとえば、IoT Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合です。
 
-Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
+IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
 
 ## <a name="define-or-update-desired-properties"></a>必要なプロパティの定義または更新 
 
@@ -207,7 +207,7 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
             "registryCredentials": {
               "ContosoRegistry": {
                 "username": "myacr",
-                "password": "{password}",
+                "password": "<password>",
                 "address": "myacr.azurecr.io"
               }
             }
@@ -273,6 +273,6 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 ## <a name="next-steps"></a>次の手順
 
-* $edgeAgent および $edgeHub に含めることができるプロパティおよび含める必要があるプロパティの完全な一覧については、[Edge エージェントおよび Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
+* $edgeAgent および $edgeHub に含めることができるプロパティおよび含める必要があるプロパティの完全な一覧については、[IoT Edge エージェントおよび IoT Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
 
 * これで IoT Edge モジュールがどのように使用されるかがわかったので、「[IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)」に進みます。

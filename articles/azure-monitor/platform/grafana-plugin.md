@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002277"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850676"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -47,13 +47,13 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 7. Grafana サーバーのパブリック IP アドレスを取得します。リソースの一覧に戻り、**[パブリック IP アドレス]** を選択します。
 
-## <a name="log-in-to-grafana"></a>Grafana にログインする
+## <a name="sign-in-to-grafana"></a>Grafana にサインインする
 
 1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP アドレス\>:3000* または *\<ドメイン名>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
 
     ![Grafana ログイン画面](./media/grafana-plugin/grafana-login-screen.png)
 
-2. ユーザー名 *admin* と、作成済みの Grafana サーバー管理者のパスワードを使用してログインします。 ローカル セットアップを使用している場合、既定のパスワードは *admin* であり、初回のログイン時に変更することを要求されます。
+2. ユーザー名 *admin* と、作成済みの Grafana サーバー管理者のパスワードを使用してサインインします。 ローカル セットアップを使用している場合、既定のパスワードは *admin* であり、初回のログイン時に変更することを要求されます。
 
 ## <a name="configure-data-source-plugin"></a>データ ソース プラグインを構成する
 
@@ -167,5 +167,5 @@ Azure 上に Grafana 環境をセットアップした場合、VM を使用し�
 2. リソース グループのページで、**[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Monitor メトリックの概要](../../azure-monitor/platform/data-collection.md)
+* [Azure Monitor メトリックの概要](data-platform.md)
 

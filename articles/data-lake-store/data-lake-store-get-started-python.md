@@ -3,21 +3,21 @@ title: 'Python: Azure Data Lake Storage Gen1 に対するアカウント管理�
 description: Python SDK を使用して Azure Data Lake Storage Gen1 に対するアカウント管理操作を行う方法について説明します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: cc384e9f392aa88342c5b8bd97963bed6d7ee814
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: b6ef5a5c12bb766fb7106d5c7a8189c4b92980d2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533326"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880204"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]

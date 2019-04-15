@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 136b9141ccccfedf8d37fa0832b0673495d82417
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284784"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846559"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
 Azure Portal の **[接続]** ボタンを使用して、Windows デスクトップからリモート デスクトップ (RDP) セッションを開始します。 まず、仮想マシンに接続して、サインオンします。
@@ -56,7 +56,9 @@ Mac から Windows VM に接続するには、[Microsoft リモート デスク�
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>PowerShell を使用して仮想マシンに接続する
 
-PowerShell を使用していて、AzureRM モジュールがインストールされている場合は、`Get-AzRemoteDesktopFile` コマンドレットを使用して接続することもできます。次に例を示します。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+PowerShell を使用していて、Aure PowerShell モジュールがインストールされている場合は、`Get-AzRemoteDesktopFile` コマンドレットを使用して接続することもできます。次に例を示します。
 
 この例のコマンドを実行すると、RDP 接続が直ちに起動され、上記のようなプロンプトが表示されます。
 

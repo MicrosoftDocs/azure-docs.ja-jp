@@ -3,20 +3,20 @@ title: 'エンドユーザー認証: Python から Azure Active Directory を使
 description: Python と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2e8859667e3a69f51ae23bab0487bf15d9eeeab6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537186"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881281"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 による Python を使用したエンドユーザー認証
 > [!div class="op_single_selector"]

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90fa56bb0e2044d24533c35a051d3f4b644e05b5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900915"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349639"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -41,6 +41,7 @@ Speech SDK は、**音声認識**と**翻訳**のために以下のリージョ�
  米国中央部 | "centralus" | https://centralus.cris.ai
  米国中北部 | "northcentralus" | https://northcentralus.cris.ai
  米国中南部 | "southcentralus" | https://southcentralus.cris.ai
+ インド中部 | "centralindia" | https://centralindia.cris.ai
  東アジア | `eastasia` | https://eastasia.cris.ai
  東南アジア | `southeastasia` | https://southeastasia.cris.ai
  東日本 | `japaneast` | https://japaneast.cris.ai

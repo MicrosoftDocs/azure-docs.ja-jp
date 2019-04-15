@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081034"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368692"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -49,9 +49,6 @@ Key Vault の操作は、次のようにロールベースのアクセス制御 
 ## <a name="enabling-soft-delete"></a>論理的な削除を有効にする
 
 "論理的な削除" を有効にすると、削除されたキー コンテナーや、キー コンテナーに格納されているオブジェクトを復旧できるようになります。
-
-> [!IMPORTANT]
-> キー コンテナーに対して '論理的な削除' を有効にした場合、それを取り消すことはできません。 論理的な削除のプロパティを "true" に設定すると、それを変更したり削除することはできなくなります。  
 
 ### <a name="existing-key-vault"></a>既存のキー コンテナー
 
@@ -101,10 +98,10 @@ Remove-AzKeyVault -VaultName 'ContosoVault'
 サブスクリプションに関連付けられている削除された状態のキー コンテナーは、次のコマンドを使用して表示できます。
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
-- *Id* は、復旧または消去するときにリソースを識別するために使用できます。 
+- *ID* は、復旧または消去するときにリソースを識別するために使用できます。 
 - *Resource ID* は、そのコンテナーの元のリソース ID です。 このキー コンテナーは削除された状態にあるため、このリソース ID のリソースは存在しません。 
 - *Scheduled Purge Date* は、何のアクションも実行しない場合に、そのコンテナーが永続的に削除されるタイミングを示します。 *Scheduled Purge Date* の計算に使用される既定のリテンション期間は 90 日です。
 
@@ -233,8 +230,27 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 >[!IMPORTANT]
 >*Scheduled Purge Date* フィールドでトリガーされた消去済みのコンテナー オブジェクトは永続的に削除されます。 これは復旧できません。
 
+## <a name="enabling-purge-protection"></a>消去保護を有効にする
+
+消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。
+
+論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 
+
+コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) コマンドレットを使用します。
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+既存のコンテナー (論理的な削除が既に有効になっている) に消去保護を追加するには、[Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0)、[Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)、[Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) コマンドレットを使用します。
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>その他のリソース
 
 - Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](key-vault-ovw-soft-delete.md)」をご覧ください。
 - Azure Key Vault の使用方法の概要については、「[Azure Key Vault とは](key-vault-overview.md)」をご覧ください。
-

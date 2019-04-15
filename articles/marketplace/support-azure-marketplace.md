@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 196ad39b8b2430ed060ede032f72092b9cfd3fdb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f776bdba88902c0b4eaa9f27ef8ed3a4700765cc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727436"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620821"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  
@@ -28,7 +28,7 @@ Marketplace のサポート オプションの一覧です。
 
 ## <a name="onboarding"></a>オンボード
 
-オンボードおよび作業の開始に関するすべての問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)のチケットを開きます。
+オンボーディングおよび開始方法に関する問題については、Microsoft の[マーケットプレース発行元サポート](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)でチケットを開いてください。Microsoft パートナー ネットワークについて質問がある場合は、Microsoft [パートナー サポート](https://partner.microsoft.com/support)でチケットを開いてください。
 
 ## <a name="cloud-partner-portal"></a>クラウド パートナー ポータル  
 

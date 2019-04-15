@@ -1,20 +1,20 @@
 ---
 title: Azure Site Recovery の監視 | Microsoft Docs
 description: ポータルを使って、Azure Site Recovery でのレプリケーションの問題と動作の監視およびトラブルシューティングを行います
-author: bsiva
-manager: abhemra
+author: raynew
+manager: carmonm
 ms.service: site-recovery
-ms.topic: troubleshooting
-ms.date: 11/27/2018
-ms.author: bsiva
-ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.date: 03/18/2019
+ms.author: rayne-wiselman
+ms.openlocfilehash: 605421196c2ec7f62826e2f6c823d50262af8144
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098476"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316645"
 ---
-# <a name="monitor-and-troubleshoot-site-recovery"></a>Site Recovery の監視とトラブルシューティング
+# <a name="monitor-site-recovery"></a>Site Recovery の監視
 
 この記事では、Azure Site Recovery の組み込み監視機能を使って監視とトラブルシューティングを行う方法を説明します。 
 

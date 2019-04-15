@@ -1,20 +1,19 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c6fbde8ff803a053f8c34765ce95d3981a57c52
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551259"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256857"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -180,9 +179,10 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 
 - **Type** [必須]
   - 照合する関連リソースの型を指定します。
-  - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
+  - **details.type** が **if** 条件リソース下にあるリソースの型である場合、この **type** のリソースが、ポリシーによって評価対象リソースのスコープ内から照会されます。 それ以外の場合は、評価対象リソースと同じリソース グループ内から照会されます。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。 ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -253,6 +253,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。

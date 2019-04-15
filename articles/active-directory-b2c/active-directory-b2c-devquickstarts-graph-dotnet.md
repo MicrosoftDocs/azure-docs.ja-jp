@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075903"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895056"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
 >[!NOTE]
-> Azure AD B2C ディレクトリのユーザーを管理するには、[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) を使用する必要があります。 これは、Microsoft Graph API とは異なります。 [こちら](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)をご覧ください。
+> Azure AD B2C ディレクトリのユーザーを管理するには、[Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) を使用する必要があります。 これは、Microsoft Graph API とは異なります。 [こちら](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)をご覧ください。
 
 Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
 
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-この要求に含まれるプロパティのほとんどは、コンシューマー ユーザーの作成に必要です。 詳細については、 [ここ](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)をクリックしてください。 説明用のコメント ( `//` 部分) が追加されているので注意してください。 実際の要求には追加しないでください。
+この要求に含まれるプロパティのほとんどは、コンシューマー ユーザーの作成に必要です。 詳細については、 [ここ](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)をクリックしてください。 説明用のコメント ( `//` 部分) が追加されているので注意してください。 実際の要求には追加しないでください。
 
 要求を確認するには、次のコマンドのいずれかを実行します。
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` コマンドは、入力パラメーターとして .json ファイルを受け取ります。 これには JSON 表記のユーザー オブジェクトが含まれます。 サンプル コードには 2 つのサンプル .json ファイル、`usertemplate-email.json` と `usertemplate-username.json` があります。 ニーズに合わせてこれらのファイルを変更できます。 上記の必須フィールドに加えて、利用できるいくつかの任意フィールドがこれらのファイルに含まれています。 任意フィールドの詳細については、 [Azure AD Graph API エンティティ リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)のページをご覧ください。
+`Create-User` コマンドは、入力パラメーターとして .json ファイルを受け取ります。 これには JSON 表記のユーザー オブジェクトが含まれます。 サンプル コードには 2 つのサンプル .json ファイル、`usertemplate-email.json` と `usertemplate-username.json` があります。 ニーズに合わせてこれらのファイルを変更できます。 上記の必須フィールドに加えて、利用できるいくつかの任意フィールドがこれらのファイルに含まれています。 任意フィールドの詳細については、 [Azure AD Graph API エンティティ リファレンス](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)のページをご覧ください。
 
 POST 要求が `B2CGraphClient.SendGraphPostRequest(...)`内でどのように構成されているかを確認できます。
 
@@ -257,7 +257,7 @@ POST 要求が `B2CGraphClient.SendGraphPostRequest(...)`内でどのように�
 * 要求の本文に JSON ユーザー オブジェクトを追加します。
 
 > [!NOTE]
-> 既存のユーザー ストアから移行するアカウントのパスワード強度が [Azure AD B2C によって適用された強力なパスワード強度](https://msdn.microsoft.com/library/azure/jj943764.aspx)より低い場合は、`passwordPolicies` プロパティの `DisableStrongPassword` 値を使用して強力なパスワード要件を無効にすることができます。 たとえば、前述したユーザーの作成要求を、 `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`のように変更できます。
+> 既存のユーザー ストアから移行するアカウントのパスワード強度が [Azure AD B2C によって適用された強力なパスワード強度](/previous-versions/azure/jj943764(v=azure.100))より低い場合は、`passwordPolicies` プロパティの `DisableStrongPassword` 値を使用して強力なパスワード要件を無効にすることができます。 たとえば、前述したユーザーの作成要求を、 `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`のように変更できます。
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 `B2CGraphClient.SendGraphDeleteRequest(...)` メソッドを調べて、この要求がどのように送信されるかの詳細を確認してください。
 
-ユーザー管理に加え、Azure AD Graph API では他にもさまざまなアクションを実行できます。 [Azure AD Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) には、各アクションの詳細が要求の例と共に記載されています。
+ユーザー管理に加え、Azure AD Graph API では他にもさまざまなアクションを実行できます。 [Azure AD Graph API リファレンス](/previous-versions/azure/ad/graph/api/api-catalog) には、各アクションの詳細が要求の例と共に記載されています。
 
 ## <a name="use-custom-attributes"></a>カスタム属性を使用する
 ほとんどのコンシューマー アプリケーションは、何らかの種類のカスタム ユーザー プロファイル情報を格納する必要があります。 その方法の 1 つとして、B2C テナントにカスタム属性を定義できます。 定義後、ユーザー オブジェクトの他のプロパティと同様にその属性を処理できます。 属性を更新したり、属性を削除したり、属性に基づいてクエリを実行したり、サインイン トークンの中で要求として属性を送信したりできます。

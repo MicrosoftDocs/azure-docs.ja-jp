@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2318d3026578aef1e0e5c08d4a816b8f95a366f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898875"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448706"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
@@ -127,6 +127,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | エンコード | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | 形式 | JSON のシリアル化のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |
+| プロパティ列 [省略可能] | ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列。 この機能の詳細は "出力用のカスタム メタデータ プロパティ" セクションにあります |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。 この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
@@ -230,6 +231,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | 形式 |JSON 型のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
+| プロパティ列 [省略可能] | ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列。 この機能の詳細は "出力用のカスタム メタデータ プロパティ" セクションにあります |
 
 パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
 
@@ -248,6 +250,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 | イベントのシリアル化の形式 |出力データのシリアル化形式。 JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
+| プロパティ列 [省略可能] | [省略可能] ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列。 この機能の詳細は "出力用のカスタム メタデータ プロパティ" セクションにあります |
 
 パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
 
@@ -293,6 +296,25 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 
 また、時間枠内に開始するイベントがない場合も、出力は生成されません。 その結果、computeResult 関数は呼び出されません。 この動作は、組み込みのウィンドウ集計関数と一致します。
 
+## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ 
+
+この機能では、送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 キーは列名で、値はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。  
+
+サポートされている出力: 
+* Service Bus キュー 
+* Service Bus トピック 
+* イベント ハブ 
+
+例:次の例では、DeviceId と DeviceStatus という 2 つのフィールドをメタデータに追加します。 
+* クエリ: `select *, DeviceId, DeviceStatus from iotHubInput`。
+* 出力の構成: `DeviceId,DeviceStatus`。
+
+![プロパティ列](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
+
+[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティ。
+
+   ![イベント カスタム プロパティ](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
 ## <a name="partitioning"></a>パーティション分割
 
 次の表は、出力の種類ごとにパーティションのサポートと出力ライターの数をまとめた一覧です。
@@ -302,7 +324,7 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 | Azure Data Lake Store | はい | Path プレフィックス パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure SQL Database | はい | クエリの PARTITION BY 句に基づいています。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 SQL Azure Database にデータを読み込む場合の書き込みスループット パフォーマンスの向上の詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。 |
 | Azure BLOB ストレージ | はい | パス パターンでイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
-| Azure Event Hub | はい | はい | パーティションの配置によって異なります。<br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 <br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
+| Azure Event Hub | はい | はい | パーティションの配置によって異なります。<br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 <br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
 | Power BI | いいえ  | なし | 適用不可。 |
 | Azure Table Storage | はい | 任意の出力列。  | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure Service Bus Topic | はい | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力トピック内のパーティションの数と同じです。  |

@@ -4,7 +4,7 @@ description: Azure Search のフルテキスト検索クエリに使用する単
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441562"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437494"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Azure Search での単純なクエリ構文
 Azure Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
 
 > [!NOTE]  
->  Azure Search では、より複雑なクエリには [Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、「[Azure Search のフルテキスト検索のしくみ](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)」を参照してください。
+>  Azure Search では、より複雑なクエリには [Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。
 
 ## <a name="how-to-invoke-simple-parsing"></a>単純な解析を呼び出す方法
 
@@ -44,38 +44,38 @@ Azure Search は、2 つの Lucene ベースのクエリ言語を実装します
 
 通常、これらの動作は、コンテンツを検索するアプリケーションのユーザー対話パターンでよく見られます。そこでは、組み込みナビゲーション構造が多い e コマースのサイトとは対照的に、ユーザーがクエリに演算子を含める可能性が高くなります。 詳細については、「[NOT 演算子](#not-operator)」を参照してください。 
 
-## <a name="operators-in-simple-search"></a>単純な検索での演算子
+## <a name="boolean-operators-and-or-not"></a>ブール演算子 (AND、OR、NOT) 
 
 クエリ文字列に演算子を埋め込んで、一致するドキュメントの検出に使用する豊富な条件セットを作成することができます。 
 
-## <a name="and-operator-"></a>AND 演算子 `+`
+### <a name="and-operator-"></a>AND 演算子 `+`
 
 AND 演算子はプラス記号です。 たとえば、`wifi+luxury` を指定すると、`wifi` と `luxury` の両方を含むドキュメントが検索されます。
 
-## <a name="or-operator-"></a>OR 演算子 `|`
+### <a name="or-operator-"></a>OR 演算子 `|`
 
 OR 演算子は、縦棒、つまりパイプ文字です。 たとえば、`wifi | luxury` を指定すると、 `wifi` または `luxury` (あるいはその両方) を含むドキュメントが検索されます。
 
 <a name="not-operator"></a>
 
-## <a name="not-operator--"></a>NOT 演算子 `-`
+### <a name="not-operator--"></a>NOT 演算子 `-`
 
 NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、および/または `luxury` を含まないドキュメントが検索されます ("および/または" は `searchMode` によって制御されます)。
 
 > [!NOTE]  
 >  `searchMode` オプションは、`+` 演算子または `|` 演算子が指定されていない場合、NOT 演算子を持つ用語で、クエリ内の他の用語との論理積または論理和をとるかどうかを制御します。 `searchMode` は、`any`(既定値) または `all` のどちらにも設定できることを思い出してください。 `any` を使用すると、より多くの結果を含めることによりクエリの再現率が増加し、既定で `-` は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含むドキュメント、または `luxury` という用語を含まないドキュメントのどちらにも一致します。 `all` を使用すると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ "luxury" という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、`-` 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化する場合、*そして*ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
 
-## <a name="suffix-operator-"></a>サフィックス演算子 `*`
+## <a name="suffix-operator"></a>サフィックス演算子
 
-サフィックス演算子はアスタリスクです。 たとえば、`lux*` は、`lux` で始まる用語を持つドキュメントを検索します。大文字と小文字は区別されません。  
+サフィックス演算子はアスタリスク `*` です。 たとえば、`lux*` は、`lux` で始まる用語を持つドキュメントを検索します。大文字と小文字は区別されません。  
 
-## <a name="phrase-search-operator--"></a>語句検索演算子 `" "`
+## <a name="phrase-search-operator"></a>語句検索演算子
 
-語句演算子は、引用符で語句を囲みます。 たとえば、`Roach Motel` (引用符なし) は、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントを検索します。その際、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) は、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (テキスト分析は適用されます)。
+語句演算子では、語句を引用符 `" "` で囲みます。 たとえば、`Roach Motel` (引用符なし) は、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントを検索します。その際、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) は、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (テキスト分析は適用されます)。
 
-## <a name="precedence-operator--"></a>優先順位演算子 `( )`
+## <a name="precedence-operator"></a>優先順位演算子
 
-優先順位演算子は、かっこで文字列を囲みます。 たとえば、`motel+(wifi | luxury)` を指定すると、"motel" という用語と `wifi` または `luxury` (あるいはその両方) を含むドキュメントが検索されます。  
+優先順位演算子では、括弧 `( )` で文字列を囲みます。 たとえば、`motel+(wifi | luxury)` を指定すると、"motel" という用語と `wifi` または `luxury` (あるいはその両方) を含むドキュメントが検索されます。  
 
 ## <a name="escaping-search-operators"></a>検索演算子のエスケープ  
 

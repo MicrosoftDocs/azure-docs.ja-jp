@@ -182,7 +182,7 @@ items:
     - name: Python 2 パッケージの管理
       href: python-packages.md
     - name: 資格情報
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: Connections
       href: automation-connections.md
     - name: 証明書
@@ -287,9 +287,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 509751acb1293e84ab966e1c25121dcc543dac49
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: adcd48e69f2a51df9964fb6c2fb0800d7509340d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895768"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546319"

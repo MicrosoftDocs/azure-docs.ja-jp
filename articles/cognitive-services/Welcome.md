@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 7f0bfa407705f4c9535e6dddc9a27a4f7130931d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113832"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336288"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -93,6 +93,14 @@ Cognitive Services の API は、Microsoft マネージド データ センタ�
 ## <a name="container-support"></a>コンテナー サポート
 
  Cognitive Services には、Azure クラウドまたはオンプレミスへのデプロイ用にコンテナーが用意されています。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md)に関するページを参照してください。
+
+## <a name="certifications-and-compliance"></a>認定資格とコンプライアンス
+
+Cognitive Services には、CSA STAR Certification、FedRAMP Moderate、HIPAA BAA などの認定資格が与えられています。 
+
+自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)できます。 
+
+プライバシーやデータ管理は[セキュリティ センター](https://servicetrust.microsoft.com/)で確認できます。 
 
 ## <a name="support"></a>サポート
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439028"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879661"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
@@ -26,7 +26,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 ![アプリケーション配信スイート ][1]
  
 これらのサービスは、次の 2 つのカテゴリに分類されます。
-1. **グローバル負荷分散サービス** (Traffic Manager や Front Door など)。リージョン バックエンド全体、クラウド全体、さらにはハイブリッド オンプレミス サービス全体のエンド ユーザーからのトラフィックを分散します。 グローバル負荷分散では最も近いサービス バックエンドにトラフィックをルーティングし、サービスの信頼性やパフォーマンスの変化に対応し、ユーザーに対して常時、最高のパフォーマンスが維持されます。 
+1. **グローバル負荷分散サービス** (Traffic Manager や Front Door など)。リージョン バックエンド全体、クラウド全体、さらにはハイブリッド オンプレミス サービス全体に、エンド ユーザーからのトラフィックを分散します。 グローバル負荷分散では最も近いサービス バックエンドにトラフィックをルーティングし、サービスの信頼性やパフォーマンスの変化に対応し、ユーザーに対して常時、最高のパフォーマンスが維持されます。 
 2. **リージョン負荷分散サービス** (Standard Load Balancer や Application Gateway など)。ご利用の仮想マシン (VM) またはリージョン内のゾーン サービス エンドポイント全体の仮想ネットワーク (VNET) 内のトラフィックを分散できます。
 
 アプリケーションのグローバルおよびリージョン サービスを組み合わせることで、エンドツーエンドの信頼できるパフォーマンスに優れた安全な方法で、ユーザーとの間のトラフィックを IaaS、PaaS、またはオンプレミス サービスにルーティングすることができます。 次のセクションでは、これらの各サービスについて説明します。

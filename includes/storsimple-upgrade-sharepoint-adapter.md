@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888774"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887000"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010 を SharePoint 2013 にアップグレードして SharePoint 用 StorSimple アダプターをインストールする
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "55888774"
 > このアップグレードは、以下の理由で、計画的なメンテナンス期間中に実行されるようスケジュールする必要があります。
 > 
 > * あらかじめ外部化されているコンテンツは、アダプターを再インストールするまで使用できません。
-> * SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールしてから新しいバージョンをインストールするまでにサイトにアップロードされたコンテンツは、コンテンツ データベースに格納されます。 そのコンテンツは、新しいアダプターをインストールした後、StorSimple デバイスに移動する必要があります。 コンテンツの移行は、SharePoint に用意されている Microsoft` RBS Migrate()` PowerShell コマンドレットを使用して行うことができます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。 
+> * SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールしてから新しいバージョンをインストールするまでにサイトにアップロードされたコンテンツは、コンテンツ データベースに格納されます。 そのコンテンツは、新しいアダプターをインストールした後、StorSimple デバイスに移動する必要があります。 コンテンツの移行は、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用して行うことができます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。 
 > 
 > 
 

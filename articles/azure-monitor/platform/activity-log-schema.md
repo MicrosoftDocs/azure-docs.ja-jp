@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868546"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622214"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
@@ -358,6 +358,7 @@ ms.locfileid: "56868546"
 | correlationId | 文字列形式の GUID。 |
 | description |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
+| category | 常に "Alert" |
 | level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、および "Informational" |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 他の種類のアラートの場合は、アラート自体を含むリソース グループの名前です。 |
 | resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 他の種類のアラートの場合は、アラート自体のリソース プロバイダーの名前です。 |
@@ -556,6 +557,7 @@ ms.locfileid: "56868546"
 | description |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
+| category | 常に "Security" |
 | id |セキュリティ イベントの一意リソース識別子。 |
 | level |イベントのレベル。 次のいずれかの値です。"Critical"、"Error"、"Warning"、または "Informational" |
 | resourceGroupName |リソースのリソース グループの名前。 |

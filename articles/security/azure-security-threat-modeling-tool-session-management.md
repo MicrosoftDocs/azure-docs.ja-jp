@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 18dfc6badf640afb418e661e6c464442fbb41945
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e8f3cf3889b3f79e930630ff0e768a0c4875eec6
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875171"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361729"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | 記事 |
@@ -389,18 +389,17 @@ void Page_Init (object sender, EventArgs e) {
 ```
 
 ## <a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
-```
 
-| Title                   | Details      |
+| タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **Component**               | Web Application | 
-| **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms |
-| **Attributes**              | N/A  |
-| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | Web フォーム |
+| **属性**              | 該当なし  |
+| **参照**              | [認証の forms 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **手順** | フォーム認証チケット cookie のタイムアウトを 15 分に設定します。|
 
-### Example
+### <a name="example"></a>例
 ```XML
 <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
 </forms>

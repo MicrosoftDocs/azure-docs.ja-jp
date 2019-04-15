@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: a7131a66e9d722265282ac98b67b52db8de086e2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551902"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904493"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
@@ -30,7 +30,7 @@ ms.locfileid: "57551902"
 
 このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
+* [クラウドの Azure IoT Hub への IoT DevKit AZ3166 の接続](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に関するページの手順に従って、DevKit の Wi-Fi を構成し、開発環境を準備します。
 * 「[Update DevKit firmware](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)」(DevKit のファームウェアを更新する) チュートリアルで、最新のファームウェア (1.3.0 以降) にアップグレードします。
 * 「[Azure portal で IoT Hub Device Provisioning Service を設定する](/azure/iot-dps/quick-setup-auto-provision)」の手順に従って、IoT Hub を作成し、Device Provisioning Service インスタンスとリンクします。
 
@@ -67,7 +67,7 @@ UDS を DevKit に保存するには、次の手順を実行します。
   ![UDS をコピーする](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
 1. UDS が STSAFE に正しく構成されたことを示す通知から確認します。
-  ![UDS の成功を構成する](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
+  ![UDS の構成の成功](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
 
 > [!NOTE]
 > または、Putty などのユーティリティを使用してシリアル ポートから UDS を構成することもできます。 これを行うには「[Use configuration mode](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/)」 (構成オードを使用する) に従ってください。
@@ -80,7 +80,7 @@ UDS を DevKit に保存するには、次の手順を実行します。
   ![Device Provisioning Service のグローバル エンドポイントと ID スコープ](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 1. **DeKitDPS.ino** を開きます。 `[Global Device Endpoint]` と `[ID Scope]` を探して、書き留めた値に置き換えます。
-  ![デバイス プロビジョニング サービスのエンドポイント](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
+  ![Device Provisioning Service のエンドポイント](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
 1. コードの `registrationId` 変数を入力します。 最大 128 文字で、英数字、小文字、ハイフンの組み合わせが許可されています。 また、値を書き留めます。
   ![登録 ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
@@ -129,7 +129,7 @@ DevKit の**リセット** ボタンを押します。 DevKit 画面に **"DPS C
 問題が発生した場合は、IoT Hub の [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を参照するか、以下のチャネルからサポートにお問い合わせください。
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [スタック オーバーフロー](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 

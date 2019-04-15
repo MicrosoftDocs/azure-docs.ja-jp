@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093682"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916820"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの作成
 この記事では、既存の CDN プロファイルに [Azure Content Delivery Network (CDN)](cdn-overview.md) エンドポイントを作成するためのすべての設定について説明します。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツ配信を開始することができます。 プロファイルとエンドポイント作成のクイック スタートについては、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
@@ -67,7 +67,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    > [!NOTE]
    > **[配信元のポート]** の値によって決定されるのは、エンドポイントが配信元サーバーから情報を取得するときに使用されるポートのみです。 エンドポイントそのものは、**[配信元ポート]** の値に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。  
    > 
-   > **Azure CDN from Akamai** プロファイルのエンドポイントでは、配信元ポートの TCP ポート範囲全体が許可されません。 使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。  
+   > **Azure CDN from Akamai** プロファイルのエンドポイントでは、配信元ポートの TCP ポート範囲全体が許可されません。 使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](/previous-versions/azure/mt757337(v=azure.100))」を参照してください。  
    > 
    > Azure CDN カスタム ドメインの HTTPS サポートは、**Azure CDN from Akamai** 製品ではサポートされていません。 詳細については、[Azure CDN カスタム ドメインの HTTPS を構成する方法](cdn-custom-ssl.md)に関するページを参照してください。
     
@@ -85,7 +85,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
        - [**一般的な Web 配信**](cdn-optimization-overview.md#general-web-delivery)
        - [**一般的なメディア ストリーミング**](cdn-optimization-overview.md#general-media-streaming)
        - [**ビデオ オン デマンド メディア ストリーミング**](cdn-optimization-overview.md#video-on-demand-media-streaming)
-       - [**大きなファイルのダウンロード**](cdn-optimization-overview.md#large-file-download)
+       - [**大容量ファイルのダウンロード**](cdn-optimization-overview.md#large-file-download)
        - [**動的サイト アクセラレーション**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. **[追加]** を選択して、新しいエンドポイントを作成します。

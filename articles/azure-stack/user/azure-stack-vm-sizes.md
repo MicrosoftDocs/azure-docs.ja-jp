@@ -1,6 +1,6 @@
 ---
 title: Azure Stack でサポートされている仮想マシンのサイズ | Microsoft Docs
-description: Azure Stack でサポートされている VM のサイズを示します。
+description: Azure Stack でサポートされている仮想マシンのサイズに関するリファレンスです。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,26 +10,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0188de6d3a29034ec00999b2e07cab6ddb911631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79d18f938dc51bb7eec62120e8bc6743cb2840c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176261"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886473"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack でサポートされている仮想マシンのサイズ
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-この記事では、Azure Stack で使用可能な仮想マシン (VM) のサイズの一覧を示します。
+この記事では、Azure Stack で使用可能な仮想マシンのサイズの一覧を示します。
 
-Azure Stack のディスク IOPS (Input/Output Operations Per Second) は、ディスクの種類ではなく VM サイズの関数です。 つまり、Standard_Fs シリーズの VM では、ディスクの種類として SSD と HDD のどちらを選択した場合でも、1 つの追加データ ディスクの IOPS 制限は 2,300 IOPS です。 課される IOPS 制限は、周囲へのノイズを防ぐための上限 (可能な最大値) です。 特定の VM サイズで得られる IOPS を保証するものではありません。
+Azure Stack のディスク IOPS (Input/Output Operations Per Second) は、ディスクの種類ではなく仮想マシン (VM) サイズの関数です。 つまり、Standard_Fs シリーズの VM では、ディスクの種類として SSD と HDD のどちらを選択した場合でも、1 つの追加データ ディスクの IOPS 制限は 2,300 IOPS です。 課される IOPS 制限は、周囲へのノイズを防ぐための上限 (可能な最大値) です。 特定の VM サイズで得られる IOPS を保証するものではありません。
 
-## <a name="general-purpose"></a>汎用
+## <a name="virtual-machine-general-purpose"></a>汎用仮想マシン
 
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 これらはテストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに使用されます。 各データ ディスクは、Basic A シリーズを除き、Premium VM サイズは 2300 IOPS です。 Basic A の場合、データ ディスクのサイズは 500 IOPS です。
 

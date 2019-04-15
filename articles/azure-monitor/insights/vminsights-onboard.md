@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340333"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885827"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) をデプロイする
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 この記事では、Azure Monitor for VMs の設定方法について説明します。 お使いの Azure 仮想マシン (VM) と仮想マシン スケール セットおよび環境内の仮想マシンのオペレーティング システムの正常性を監視するサービスです。 この監視には、それらでホストされている可能性があるアプリケーションの依存関係の検出とマッピングが含まれます。 
 
 Azure Monitor for VMs を有効にするには、次のいずれかの方法を使用します。
@@ -36,10 +39,12 @@ Azure Monitor for VMs を有効にするには、次のいずれかの方法を�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Log Analytics ワークスペースが現在サポートされているのは、以下のリージョンです。
+Azure Monitor for VMs は、次のリージョンで Log Analytics ワークスペースをサポートします。
 
 - 米国中西部
 - 米国東部
+- カナダ中部<sup>1</sup>
+- 英国南部<sup>1</sup>
 - 西ヨーロッパ
 - 東南アジア<sup>1</sup>
 
@@ -70,19 +75,17 @@ Azure portal で単一の Azure VM に対する監視を有効にする場合は
 
 |OS バージョン |パフォーマンス |マップ |Health |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X |  |
+|Windows Server 2019 | X | X | |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |
 |Windows Server 2012 | X | X | |
 |Windows Server 2008 R2 | X | X| |
-|Red Hat Enterprise Linux (RHEL) 7、6| X | X| X |
-|Ubuntu 18.04、16.04、14.04 | X | X | X |
-|CentOS Linux 7、6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Oracle Linux 7 | X<sup>1</sup> | | X |
-|Oracle Linux 6 | X | X | X |
-|Debian 9.4、8 | X<sup>1</sup> | | X |
+|Red Hat Enterprise Linux (RHEL) 6、7| X | X| X |
+|Ubuntu 14.04、16.04、18.04 | X | X | X |
+|CentOS Linux 6、7 | X | X | X |
+|SUSE Linux Enterprise Server (SLES) 11、12 | X | X | X |
+|Debian 8、9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接アクセスしたときには使用できません。
 
@@ -91,16 +94,12 @@ Azure portal で単一の Azure VM に対する監視を有効にする場合は
 > - 既定と SMP Linux のカーネル リリースのみがサポートされています。
 > - Physical Address Extension (PAE) や Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が *2.6.16.21-0.8-xen* であるシステムはサポートされていません。
 > - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
-> - CentOSPlus カーネルはサポートされていません。
+> - CentOSPlus カーネルはサポートされています。
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
@@ -109,17 +108,14 @@ Azure portal で単一の Azure VM に対する監視を有効にする場合は
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4. | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -130,21 +126,11 @@ Azure portal で単一の Azure VM に対する監視を有効にする場合は
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux 6
-| OS バージョン | カーネル バージョン
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4. | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-#### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux 5
+#### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | OS バージョン | カーネル バージョン
 |:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+|11 SP4 | 3.0.* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -170,9 +156,9 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 Dependency Agent は、次の場所からダウンロードできます。
 
-| ファイル | OS | Version | SHA-256 |
+| ファイル | OS | バージョン | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) |  Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
@@ -313,7 +299,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     * テンプレートが含まれているフォルダーで、次の PowerShell コマンドを使用します。
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
         設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
@@ -389,11 +375,11 @@ With this initial release, you can create the policy assignment only in the Azur
     
 1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
-    >[!NOTE]
-    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
-    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
-    >  
-    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
+   > [!NOTE]
+   > If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > 
+   >  The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
 1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
@@ -426,7 +412,7 @@ Based on the results of the policies included with the initiative, VMs are repor
 ### Enable with PowerShell
 To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
+This script requires Azure PowerShell module Az version 1.0.0 or later. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). If you're running PowerShell locally, you also need to run `Connect-AzAccount` to create a connection with Azure.
 
 To get a list of the script's argument details and example usage, run `Get-Help`.
 
@@ -731,7 +717,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 1. これで、次の PowerShell コマンドを使用して、このテンプレートをデプロイする準備ができました。
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
     設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
@@ -739,7 +725,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     ```powershell
     provisioningState       : Succeeded
     ```
-監視を有効にしてから、ハイブリッド コンピューターの正常性の状態とメトリックが表示されるまで、約 10 分かかる場合があります。
+   監視を有効にしてから、ハイブリッド コンピューターの正常性の状態とメトリックが表示されるまで、約 10 分かかる場合があります。
 
 ## <a name="performance-counters-enabled"></a>パフォーマンス カウンターの有効化
 Azure Monitor for VMs では、ソリューションによって使用されるパフォーマンス カウンターを収集するため、Log Analytics ワークスペースを構成します。 次の表に、60 秒ごとに収集される、ソリューションによって構成されるオブジェクトとカウンターを示します。

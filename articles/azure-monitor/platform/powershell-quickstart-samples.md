@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 1ca2faca6c3d34ec4c987df85fff65e0a8fdc7f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e9376b0d137534f301332feaf4e99bfa937fbfa9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486056"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905479"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -27,7 +27,7 @@ ms.locfileid: "58486056"
 コンピューターで実行するために PowerShell をセットアップします (まだセットアップしていない場合)。 詳細については、[PowerShell をインストールして構成する方法](/powershell/azure/overview)に関するページを参照してください。
 
 ## <a name="examples-in-this-article"></a>この記事の例
-この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/azurerm.insights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
+この記事の各例は、Azure Monitor コマンドレットの使用方法を示しています。 「[Azure Monitor (Insights) Cmdlets (Azure Monitor (Insights) コマンドレット)](https://docs.microsoft.com/powershell/module/az.applicationinsights)」で、Azure Monitor PowerShell コマンドレットのすべてのリストを確認することもできます。
 
 ## <a name="sign-in-and-use-subscriptions"></a>サインインとサブスクリプションの使用
 まず、Azure サブスクリプションにログインします。
@@ -88,10 +88,10 @@ Get-AzLog -Caller 'myname@company.com'
 Get-AzLog -MaxEvents 1000
 ```
 
-`Get-AzLog` は、他にも多くのパラメーターをサポートしています。 詳細については、 `Get-AzLog` のリファレンスをご覧ください。
+`Get-AzLog`  は、他にも多くのパラメーターをサポートしています。 詳細については、 `Get-AzLog` のリファレンスをご覧ください。
 
 > [!NOTE]
-> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
+> `Get-AzLog`  は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
 > 
 > 
 
@@ -131,7 +131,7 @@ Get-AzAlertRule -ResourceGroup montest
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` は、他のパラメーターもサポートしています。 詳細については、「 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) 」をご覧ください。
+`Get-AzAlertRule`  は、他のパラメーターもサポートしています。 詳細については、「 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) 」をご覧ください。
 
 ## <a name="create-metric-alerts"></a>メトリック アラートの作成
 `Add-AlertRule` コマンドレットを使用して、アラート ルールを作成、更新、または無効化できます。
@@ -142,7 +142,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 | パラメーター | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| 名前 |simpletestdiskwrite |
 | このアラート ルールの場所 |米国東部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

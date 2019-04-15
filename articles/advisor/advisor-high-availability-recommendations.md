@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 6ffe051c019184d5ce1a32af50dbf3e7faa06675
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490313"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881190"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Advisor によるアプリケーションの高可用性の向上
 

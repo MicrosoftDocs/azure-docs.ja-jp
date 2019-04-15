@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/24/2018
-ms.openlocfilehash: fa681198088cd4ae13668193939474d0d501b6f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/29/2019
+ms.openlocfilehash: 79d15a46affb2a6b7159ba080d4235073c59919c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098515"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648985"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 
-Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の両方で Microsoft の条件付きアクセスがサポートされています。 
+Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、Microsoft の条件付きアクセスがサポートされています。 
 
 > [!NOTE]
 > このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。

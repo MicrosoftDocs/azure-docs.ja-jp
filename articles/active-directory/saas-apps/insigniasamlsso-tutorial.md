@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc492142200c7fd028360d01c2602904531550dc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840343"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -117,9 +117,9 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
     |--|
     | `https://<customername>.insigniails.com/ils` |
     | `https://<customername>.insigniails.com/` |
-    | `https://<customername>.insigniailsusa.com/ ` |
+    | `https://<customername>.insigniailsusa.com/` |
 
-    b. **[識別子]** ボックスに、`https://<customername>.insigniailsusa.com/<uniqueid>` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Insignia SAML SSO クライアント サポート チーム](https://www.insigniasoftware.com/insignia/Techsupport.aspx)にお問い合わせください。 

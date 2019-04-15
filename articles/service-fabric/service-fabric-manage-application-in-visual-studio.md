@@ -40,7 +40,7 @@ Visual Studio で、**[F5]** キーを押すと、アプリケーションがデ
 Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
-1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
+1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、 **[プロパティ]** を選択します (または **[F4]** キーを押します)。
 2. **[プロパティ]** ウィンドウで **[アプリケーション デバッグ モード]** プロパティを設定します。
 
 ![Set Application Debug Mode Property][debugmodeproperty]

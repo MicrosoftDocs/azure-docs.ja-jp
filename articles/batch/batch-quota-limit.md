@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295268"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540977"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -77,14 +77,12 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
 1. Batch アカウントのメニューで **[クォータ]** を選びます。
 1. Batch アカウントに現在適用されているクォータを確認します。
-   
+
     ![Batch アカウントのクォータ][account_quotas]
-
-
 
 ## <a name="increase-a-quota"></a>クォータを増やす
 
-次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。
+次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。 クォータの増加を要求するには、クォータを増やしたい VM シリーズを含める必要があります。 クォータの増加が適用されると、すべてのシリーズの VM に適用されます。
 
 ### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
 

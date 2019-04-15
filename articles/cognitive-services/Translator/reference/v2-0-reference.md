@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: V2.0 Translator Text API のリファレンス ドキュメント。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075255"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918010"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -241,7 +241,7 @@ Translator サービスでサポートされ、要求された言語にローカ
 ## <a name="get-getlanguagesfortranslate"></a>GET /GetLanguagesForTranslate
 
 ### <a name="implementation-notes"></a>実装に関するメモ
-翻訳サービスでサポートされている言語を表す言語コードの一覧を取得します。  `Translate` および `TranslateArray` は、これらの言語のうち、任意の 2 つの言語間を翻訳できます。
+翻訳サービスでサポートされている言語を表す言語コードの一覧を取得します。  `Translate`  および `TranslateArray` は、これらの言語のうち、任意の 2 つの言語間を翻訳できます。
 
 要求 URI は `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate` です。
 
@@ -327,7 +327,7 @@ binary
 |text|(空)   |必須。 wave ストリームの読み上げに指定されている言語の文または文章を含む文字列。 読み上げるテキストのサイズは、2,000 文字以内にする必要があります。|query|文字列|
 |language|(空)   |必須。 テキストを読み上げるサポートされる言語コードを表す文字列。 コードは、`GetLanguagesForSpeak` メソッドから返されるコードの一覧に存在している必要があります。|query|文字列|
 |format|(空)|省略可能。 content-type ID を指定する文字列。 現在、`audio/wav` と `audio/mp3` が使用できます。 既定値は `audio/wav` です。|query|文字列|
-|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality` と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー <code>\|</code> を使用して複数のオプションを含めます。 例: `MaxQuality|Male`。</li></li></ul> |query|文字列|
+|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality`  と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female`  と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー <code>\|</code> を使用して複数のオプションを含めます。 例: `MaxQuality|Male`。</li></li></ul> |query|文字列|
 |Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|header|文字列|
 
@@ -698,7 +698,7 @@ MatchedOriginalText:この結果の一致した元のテキストです。 一�
 </GetTranslationsArrayRequest>
 ```
 
-`GetTranslationsArrayRequest` には次の要素が含まれます。
+`GetTranslationsArrayRequest`  には次の要素が含まれます。
 
 * `AppId`:必須。 Authorization ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。
 * `From`:必須。 翻訳テキストの言語コードを表す文字列。
@@ -753,9 +753,9 @@ MatchedOriginalText:この結果の一致した元のテキストです。 一�
 * `From`:メソッドで `From` 言語を指定しなかった場合、これが自動言語検出の結果になります。 それ以外の場合は、指定された翻訳元の言語になります。
 * `State`:要求と応答を関連付けるのに役立つユーザー状態。 `TranslateOptions` パラメーターで指定されているのと同じ値が含まれています。
 
-`TranslationMatch` オブジェクトは、以下で構成されます。
+`TranslationMatch`  オブジェクトは、以下で構成されます。
 * `Error`:特定の入力文字列でエラーが発生している場合、そのエラー コードが格納されます。 それ以外の場合は、このフィールドは空です。
-* `MatchDegree`:システムにより、不正確な一致を含むストアに対して入力文が照合されます。  `MatchDegree` は、入力テキストがストアで見つかった元のテキストにどのくらい一致しているかを示します。 返される値の範囲は 0 から 100 です。0 は類似性なしで、100 は大文字と小文字が完全に一致します。
+* `MatchDegree`:システムにより、不正確な一致を含むストアに対して入力文が照合されます。  `MatchDegree`  は、入力テキストがストアで見つかった元のテキストにどのくらい一致しているかを示します。 返される値の範囲は 0 から 100 です。0 は類似性なしで、100 は大文字と小文字が完全に一致します。
 * `MatchedOriginalText`:この結果の一致した元のテキストです。 一致した元のテキストが、入力されたテキストと異なる場合にのみ返されます。 あいまい一致のソース テキストを返すために使用されます。 Microsoft Translator の結果に対しては返されません。
 * `Rating`:品質を決定する人の権限を示します。 機械翻訳の結果は、評価 5 になります。 匿名で提供された翻訳が通常、評価 1 から 4 であるのに対し、信頼性のある提供元からの翻訳は通常、評価 6 から 10 になります。
 * `Count`:この評価のこの翻訳が選択された回数。 自動的に翻訳された応答の値は 0 になります。

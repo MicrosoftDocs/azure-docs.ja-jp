@@ -3,16 +3,16 @@ title: チュートリアル - Jenkins を使用して GitHub から Azure Kuber
 description: GitHub からの継続的インテグレーション (CI) と Azure Kubernetes Service (AKS) への継続的デプロイ (CD) に Jenkins を設定します
 services: container-service
 ms.service: container-service
-author: iainfoulds
-ms.author: iainfou
+author: zr-msft
+ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 470ba6df76741dd5c9e9eed055cd7848d341082f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188455"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756072"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル:Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure Kubernetes Service (AKS) にデプロイする
 
@@ -227,15 +227,15 @@ Jenkins ポータルの左側に戻り、**[Credentials]\(資格情報\)** > **[
 Jenkins ポータルのホーム ページから左側の **[新しい項目]** を選択します。
 
 1. ジョブ名として *azure-vote* を入力します。 **Freestyle プロジェクト**を選択し､**[OK]** をクリックします
-1. **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/\<your-github-account\>/azure-voting-app-redis*) を入力します
-1. **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/\<your-github-account\>/azure-voting-app-redis.git*)
+1. **[General]\(一般\)** セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https:\//github.com/\<your-github-account\>/azure-voting-app-redis*) を入力します
+1. **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https:\//github.com/\<your-github-account\>/azure-voting-app-redis.git*)
 
 1. **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します
 1. **[Build Environment]\(ビルド環境\)** で、**[Use secret texts or files]\(シークレット テキストまたはファイルを使用する\)** を選びます
 1. **[Bindings]\(バインド\)** で、**[Add]\(追加\)** > **[Username and password (separated)]\(ユーザー名とパスワード (別)\)** を選びます
-    - **[Username Variable]\(ユーザー名変数\)** に「`ACR_ID`」と入力し、**[Password Variable]\(パスワード変数\)** に「`ACR_PASSWORD`」と入力します
+   - **[Username Variable]\(ユーザー名変数\)** に「`ACR_ID`」と入力し、**[Password Variable]\(パスワード変数\)** に「`ACR_PASSWORD`」と入力します
 
-    ![Jenkins のバインド](media/aks-jenkins/bindings.png)
+     ![Jenkins のバインド](media/aks-jenkins/bindings.png)
 
 1. **実行シェル**タイプの**ビルド ステップ**を追加し、次のテキストを使います。 このスクリプトは、新しいコンテナー イメージをビルドし、ACR レジストリにプッシュします。
 

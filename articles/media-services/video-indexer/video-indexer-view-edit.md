@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991575"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892791"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer の分析情報の表示と編集
 
@@ -33,12 +33,6 @@ ms.locfileid: "55991575"
     要約された分析情報には、データ (顔、キーワード、センチメント) の集約されたビューが表示されます。 たとえば、人物の顔と、それぞれの顔が出現する時間範囲、その顔が表示される時間の割合 (%) を確認できます。
 
     プレーヤーと分析情報は同期されます。 たとえば、キーワードやトランスクリプトの行をクリックすると、ビデオのその場面がプレーヤーで表示されます。 アプリケーション内で、プレーヤー/分析情報の表示と同期を実現できます。 詳細については、[アプリケーションへの Azure Indexer ウィジェットの埋め込み](video-indexer-embed-widgets.md)に関する記事を参照してください。 
-
-3. Video Indexer の分析情報を編集します。
-
-    ビデオの下にある [編集] を押します。 ビデオの完全な内訳を示したページが表示されます。 内訳はブロックに分割されています。 ブロックは、データ内の移動を簡単にするために使用されています。 たとえば、話者が変わったり、長い休止があるときにブロックが分割されます。 必要な行のみを含む独自のプレイリストを作成できます。 ソース ビデオの特定の部分のみを表示するには、トピック/キーワード、センチメント、人物、話者でフィルター処理することができます。 ビデオのトランスクリプトや OCR のみを表示することもできます。  
-
-    ![洞察](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/28/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: ca9f25700622a8d8435a1b05bfc46d210038aeaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0c92ff11ba992170b7da89dbbfa9bf14f92a9d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895833"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541300"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -59,7 +59,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![SharePoint Server 2016 評価版](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 評価版](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Windows Server 2016 Datacenter の Microsoft SharePoint Server 2016 評価版。 | Microsoft |
 | ![Windows Server 2012 R2 の SQL Server 2014 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 の SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2)
 ) | SQL Server 2014 Service Pack 2。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
-| ![Windows Server 2016 の SQL Server 2016 SP2 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP2 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2016SP2StandardWindowsServer2016) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
+| ![Windows Server 2016 の SQL Server 2016 SP2 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP2 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Developer](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2016 SP2 の無償 Developer バージョン。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:Windows Server 2016 の SQL Server 2016 SP2 Express](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | SQL Server 2016 SP2 の無償 Express バージョン。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![Windows Server 2016 の SQL Server 2016 SP2 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP2 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
@@ -69,11 +69,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![無料のライセンス:Windows Server 2016 の SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:Windows Server 2016 の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | SQL Server 2017 の無償 Express バージョン。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![Windows Server 2016 の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![Windows Server 2016 の SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/cognosys.sql-server-2007-web-win2016-debug-utilities) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
-| ![Ubuntu Server 16.04 LTS の SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
-| ![無料のライセンス:Ubuntu Server 16.04 LTS の SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:Ubuntu Server 16.04 LTS の SQL Server 2017 Developer](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2017 の無償 Developer バージョン。 | Microsoft + Canonical |
-| ![無料のライセンス:Ubuntu Server 16.04 LTS の SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:Ubuntu Server 16.04 LTS の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) | SQL Server 2017 の無償 Express バージョン。 | Microsoft + Canonical |
-| ![Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
-| ![Ubuntu Server 16.04 LTS の SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017WebonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
+| ![Ubuntu Server 16.04 LTS の SQL Server 2017](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ubuntu1604) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
 | ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonSLES12SP2?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
 | ![無料のライセンス:SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2?tab=Overview) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2017 の無償 Developer バージョン。 | Microsoft + SUSE |
 | ![無料のライセンス:SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料のライセンス:SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | SQL Server 2017 の無償 Express バージョン。 | Microsoft + SUSE |

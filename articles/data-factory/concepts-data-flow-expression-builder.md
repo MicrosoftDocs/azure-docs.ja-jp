@@ -3,16 +3,15 @@ title: Azure Data Factory の Mapping Data Flow の式ビルダー
 description: Azure Data Factory の Mapping Data Flow の式ビルダー
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543731"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359779"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow の式ビルダー
 
@@ -51,7 +50,7 @@ Azure Data Factory の Mapping Data Flow には、データ変換の式を入力
 
 ## <a name="regular-expressions"></a>正規表現
 
-Azure Data Factory の Data Flow の式言語では ([詳細なリファレンス ドキュメントはこちら](https://aka.ms/dataflowexpressions))、正規表現構文を含む関数を使用できます。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\)) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック ` ` 内に入れるか、円記号を二重で使用します。
+Azure Data Factory の Data Flow の式言語では ([詳細なリファレンス ドキュメントはこちら](https://aka.ms/dataflowexpressions))、正規表現構文を含む関数を使用できます。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\\) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック (\`) 内に入れるか、円記号を二重で使用します。
 
 ティックの使用例
 

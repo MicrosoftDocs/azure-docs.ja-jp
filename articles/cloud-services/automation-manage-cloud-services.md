@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328870"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918469"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Automation を使用した Azure Cloud Services の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure クラウド サービスの管理を簡略化する方法について紹介します。
@@ -32,7 +32,7 @@ Azure Automation は、組織の拡大に伴って変化するニーズに対応
 Azure Automation でクラウド管理タスクを自動実行すれば、運用上のオーバーヘッドが削減され、IT/DevOps スタッフの負担が軽減されるため、ビジネス価値の向上にフォーカスすることができます。
 
 ## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Azure Automation を Azure クラウド サービスの管理に役立てる方法
-[Azure PowerShell ツール](https://msdn.microsoft.com/library/azure/jj156055.aspx)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure クラウド サービスを管理できます。 Azure Automation には、このようなクラウド サービス PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべてのクラウド サービス管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell ツール](/powershell/)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure クラウド サービスを管理できます。 Azure Automation には、このようなクラウド サービス PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべてのクラウド サービス管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 Azure Automation を使用して、次のような Azure Cloud Services を管理します。
 
@@ -42,6 +42,6 @@ Azure Automation を使用して、次のような Azure Cloud Services を管�
 ## <a name="next-steps"></a>次の手順
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure クラウド サービスを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
-* [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
+* [Azure Automation の概要](../automation/automation-intro.md)
 * [初めての Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995126"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883719"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -184,7 +184,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
  
 3. **[ストリーム入力の追加]** をクリックして **[イベント ハブ]** を選択します。 [新しい入力] ページに次の情報を入力します。
 
-   |**設定**  |**推奨値**  |**説明**  |
+   |**Setting**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス  |  CallStream   |  ジョブの入力を識別する名前を入力します。   |
    |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したイベント ハブがある Azure サブスクリプションを選択します。   |
@@ -292,7 +292,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
     プロジェクションに含まれる `System.Timestamp` は、各ウィンドウの終わりのタイムスタンプを返します。 
 
-    タンブリング ウィンドウを使うことを指定するには、`GROUP BY ` 句で [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国別の通話数が表示されます。
+    タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国別の通話数が表示されます。
 
 2. もう一度 **[Test]** をクリックします。 結果では、**WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
 
@@ -354,7 +354,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 4. **[出力]** ウィンドウで **[追加]** をクリックし、**[Blob ストレージ]** を選びます。 [新規出力] ページに次の情報を入力します。
 
-   |**設定**  |**推奨値**  |**説明**  |
+   |**Setting**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |出力エイリアス  |  CallStream-FraudulentCalls   |  ジョブの出力を識別する名前を入力します。   |
    |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
@@ -417,5 +417,5 @@ Stream Analytics の一般的な情報について詳しくは、以下の記事
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

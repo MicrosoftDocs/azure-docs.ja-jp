@@ -1,5 +1,5 @@
 ---
-title: Azure AD のパスワード保護をデプロイする
+title: Azure AD パスワード保護をデプロイする - Azure Active Directory
 description: Azure AD パスワード保護をデプロイして、オンプレミスでの間違ったパスワードの使用を禁止します
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54d2d600771316b0a88ea0a2486c0dedd0f84594
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286535"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904629"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -36,7 +36,8 @@ ms.locfileid: "58286535"
 
 ## <a name="deployment-requirements"></a>デプロイ要件
 
-* Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。
+* Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL のはありません。
+* DC エージェント サービスがインストールされるすべてのマシンには、.NET 4.5 をインストールする必要があります。
 * Azure AD パスワード保護用のプロキシ サービスがインストールされるすべてのマシンでは、Windows Server 2012 R2 以降を実行している必要があります。
 * Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンには、.NET 4.7 をインストールしておく必要があります。
   .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
@@ -85,13 +86,13 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 1. 管理者として PowerShell ウィンドウを開きます。
    * パスワード保護プロキシ ソフトウェアには、新しい PowerShell モジュール *AzureADPasswordProtection* が含まれています。 この後の手順では、この PowerShell モジュールからさまざまなコマンドレットを実行します。 この新しいモジュールを次のようにインポートします。
 
-      ```PowerShell
+      ```powershell
       Import-Module AzureADPasswordProtection
       ```
 
    * 次の PowerShell コマンドを使用して、サービスが実行されていることを確認します。
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`
+      `Get-Service AzureADPasswordProtectionProxy | fl`。
 
      結果の **Status** が "Running" と表示される必要があります。
 
@@ -106,15 +107,16 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
      * 対話型認証モード:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > このモードは、Server Core オペレーティング システムでは機能しません。 代わりに以下の認証モードのいずれかを使用できます。 また、Internet Explorer の強化されたセキュリティ構成が有効になっている場合、このモードは失敗する可能性があります。 回避策としては、その構成を無効にし、プロキシを登録してから、もう一度構成を有効にします。
 
      * デバイスコード認証モード:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -123,7 +125,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
      * サイレント (パスワードベース) 認証モード:
 
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
         ```
@@ -133,7 +135,6 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
        現時点では、今後提供される機能用に予約された *-ForestCredential* パラメーターを指定する必要はありません。
 
-   
    パスワード保護用のプロキシ サービスの登録は、サービスの有効期間内に 1 回だけ行う必要があります。 その後、他の必要なメンテナンスは、プロキシ サービスによって自動的に実行されます。
 
    > [!TIP]
@@ -146,15 +147,16 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
      * 対話型認証モード:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > このモードは、Server Core オペレーティング システムでは機能しません。 代わりに以下の 2 つの認証モードのいずれかを使用します。 また、Internet Explorer の強化されたセキュリティ構成が有効になっている場合、このモードは失敗する可能性があります。 回避策としては、その構成を無効にし、プロキシを登録してから、もう一度構成を有効にします。  
 
      * デバイスコード認証モード:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -162,7 +164,8 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
         この後、別のデバイスに表示された手順に従って認証を完了します。
 
      * サイレント (パスワードベース) 認証モード:
-        ```PowerShell
+
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
         ```
@@ -174,7 +177,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    > [!NOTE]
    > 環境に複数のプロキシ サーバーがインストールされている場合、フォレストの登録にどのプロキシ サーバーを使用しても問題はありません。
-
+   >
    > [!TIP]
    > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
 
@@ -221,7 +224,8 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 1. 省略可能:特定のポートでリッスンするようにパスワード保護用プロキシ サービスを構成します。
    * ドメイン コントローラー上のパスワード保護用 DC エージェント ソフトウェアは、TCP 経由の RPC を使用してプロキシ サービスと通信します。 既定では、プロキシ サービスは、使用可能な任意の動的 RPC エンドポイントでリッスンします。 ただし、ご使用環境のネットワーク トポロジまたはファイアウォールの要件のために必要な場合には、特定の TCP ポート上でリッスンするようにサービスを構成できます。
       * <a id="static" /></a>静的ポートで実行するようにサービスを構成するには、`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
-         ```PowerShell
+
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
@@ -229,7 +233,8 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
          > これらの変更を有効にするには、サービスを停止して、再起動する必要があります。
 
       * 動的ポートで実行するようにサービスを構成するには、同じ手順を使用しますが、*StaticPort* の設定を 0 に戻します。
-         ```PowerShell
+
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
@@ -241,7 +246,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    * サービスの現在の構成を照会するには、`Get-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
 
-      ```PowerShell
+      ```powershell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
 
       ServiceName : AzureADPasswordProtectionProxy

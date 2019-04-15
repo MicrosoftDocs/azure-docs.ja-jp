@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110870"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894168"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -21,18 +21,18 @@ ms.locfileid: "58110870"
 
 ## <a name="prerequisites"></a>前提条件
 
-**最低限必要なもの**
+**最小要件: **
 
 * .NET Framework 4.5
 * Windows 7/Windows Server 2008 R2 (以降) の 64 ビット版
 
-**推奨されるもの:**
+**推奨:**
 
 * 8 コア CPU
 * 8 GB メモリ
 * Windows 2012 R2 (以降) の 64 ビット バージョン
 
-**重要な考慮事項**
+**重要な考慮事項: **
 
 * セットアップ中に、ゲートウェイを Azure に登録するときは、サブスクリプションの既定のリージョンが選択されます。 別のリージョンを選択できます。 複数のリージョンにサーバーがある場合は、各リージョン用のゲートウェイをインストールする必要があります。 
 * ドメイン コントローラーにゲートウェイをインストールすることはできません。
@@ -40,7 +40,7 @@ ms.locfileid: "58110870"
 * 常に稼働していてスリープ状態にならないコンピューターにゲートウェイをインストールします。
 * ネットワークにワイヤレス接続されているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
 * ゲートウェイをインストールするときは、コンピューターにサインインしているユーザーアカウントに [サービスとしてログオン] 特権が必要です。 インストールが完了すると、オンプレミスのデータ ゲートウェイ サービスは NT SERVICE\PBIEgwService アカウントを使用して、サービスとしてログオンします。 セットアップ中に、またはセットアップ完了後に [サービス] で別のアカウントを指定できます。 グループ ポリシー設定で、インストール時にサインインしているアカウントと、選択したサービス アカウントの両方に [サービスとしてログオン] 特権が許可されていることを確認してください。
-* ゲートウェイを登録するサブスクリプションと同じ[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
+* ゲートウェイを登録するサブスクリプションと同じ[テナント](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
 * データ ソースが Azure Virtual Network (VNet) 上にある場合は、[AlwaysUseGateway](analysis-services-vnet-gateway.md) サーバー プロパティを構成する必要があります。
 * ここで説明されている (統合) ゲートウェイは、Azure Germany リージョンではサポートされていません。 代わりに、ポータルでサーバーの **[クイック スタート]** からインストールされた、**Azure Analysis Services 専用のオンプレミス ゲートウェイ**を使用します。 
 
@@ -122,5 +122,5 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 ## <a name="next-steps"></a>次の手順
 
 * [Analysis Services を管理する](analysis-services-manage.md)   
-* [Azure Analysis Services からデータを取得する](analysis-services-connect.md)   
-* [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)
+* [Azure Analysis Services からデータを取得](analysis-services-connect.md)   
+* [Azure 仮想ネットワーク上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)

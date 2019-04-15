@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: c38d19b8528399ae09d92e48ed7dfc17c18938b7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338072"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804141"
 ---
-# <a name="management-in-azure"></a>Azure での管理
+# <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 
 Azure のガバナンスには、その一部として監視が含まれています。 この記事では、Azure にリソースをデプロイして保守する際のさまざまな管理の領域について説明します。
 
@@ -22,7 +22,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 次の図は、アプリケーションまたはリソースを維持するために必要な管理のさまざまな領域を示しています。 これらのさまざまな領域は、ライフ サイクルとして考えることができます。 リソースの寿命全体での継続的な継承において、各領域が必要になります。 このリソースのライフサイクルは初期のデプロイから始まり、継続的な運用を経て、最後には廃止されます。
 
-![管理の作業分野](../monitoring/media/management-overview/management-capabilities.png)
+![Azure における管理の規範](../monitoring/media/management-overview/management-capabilities.png)
 
 1 つの Azure サービスが、特定の管理領域の要件を完全に満たすことはありません。 代わりに、各領域は、複数のサービスの連携によって実現されます。 Application Insights などの一部のサービスは、ターゲットを絞った Web アプリケーション向けの監視機能を提供します。 Azure Monitor ログなどのその他のサービスは、その他のサービスの管理データを保存します。 この機能を使用すると、各種のサービスによって収集したさまざまな種類のデータを分析できます。
 

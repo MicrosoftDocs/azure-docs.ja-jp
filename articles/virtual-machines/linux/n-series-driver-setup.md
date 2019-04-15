@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015018"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879048"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -187,9 +187,9 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 
    sudo apt-get dist-upgrade -y
 
-   sudo apt-get install build-essential ubuntu-desktop -y
-   ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -244,7 +244,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo yum install dkms
    ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau

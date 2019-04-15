@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285787"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418858"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加すると、*alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
@@ -84,6 +84,8 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 4. **[Contoso]** ページで **[確認]** を選択し、カスタム ドメインが正しく登録されていて、Azure AD で有効であることを確認します。
 
     ![DNS エントリ情報と [確認] ボタンが表示された [Contoso] ページ](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+カスタム ドメイン名の検証後、検証の TXT または MX ファイルを削除できます。
 
 ## <a name="common-verification-issues"></a>検証のよくある問題
 - Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。

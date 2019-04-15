@@ -1,57 +1,57 @@
 ---
-title: Notification Hubs bindings for Azure Functions
-description: Understand how to use Azure Notification Hub binding in Azure Functions.
+title: Azure Functions における Notification Hubs のバインド
+description: Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: jeconnoc
-keywords: azure functions, functions, event processing, dynamic compute, serverless architecture
+keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 8ab1ae5d1f6db563caef5b6c27ccd4fcbbd2e255
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9f80f1a8d02352daa663ee5ea4fa9287e0e8580e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777636"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893794"
 ---
-# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs output binding for Azure Functions
+# <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
-This article explains how to send push notifications by using [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) bindings in Azure Functions. Azure Functions supports output bindings for Notification Hubs.
+この記事では、Azure Functions で [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) のバインドを使用してプッシュ通知を送信する方法について説明します。 Azure Functions は、Notification Hubs の出力バインドをサポートします。
 
-Azure Notification Hubs must be configured for the Platform Notifications Service (PNS) you want to use. To learn how to get push notifications in your client app from Notification Hubs, see [Getting started with Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) and select your target client platform from the drop-down list near the top of the page.
+Microsoft Azure Notification Hubs は、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。 Notification Hubs からのプッシュ通知をクライアント アプリで取得するには、[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)に関する記事を参照し、ページの上部にあるドロップダウン リストでターゲット クライアント プラットフォームを選択します。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-The Notification Hubs bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub repository.
+Notification Hubs バインディングは [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-This binding is not available in Functions 2.x.
+このバインディングは、Functions 2.x では使用できません。
 
-## <a name="example---template"></a>Example - template
+## <a name="example---template"></a>例 - テンプレート
 
-The notifications you send can be native notifications or [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Native notifications target a specific client platform as configured in the `platform` property of the output binding. A template notification can be used to target multiple platforms.   
+送信できる通知は、ネイティブ通知または[テンプレート通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)です。 ネイティブ通知は、出力バインドの `platform` プロパティで構成された特定のクライアント プラットフォームを対象としています。 テンプレート通知は、複数のプラットフォームを対象として使用できます。   
 
-See the language-specific example:
+言語固有の例をご覧ください。
 
-* [C# script - out parameter](#c-script-template-example---out-parameter)
-* [C# script - asynchronous](#c-script-template-example---asynchronous)
-* [C# script - JSON](#c-script-template-example---json)
-* [C# script - library types](#c-script-template-example---library-types)
+* [C# スクリプト - out パラメーター](#c-script-template-example---out-parameter)
+* [C# スクリプト - 非同期](#c-script-template-example---asynchronous)
+* [C# スクリプト - JSON](#c-script-template-example---json)
+* [C# スクリプト - ライブラリのタイプ](#c-script-template-example---library-types)
 * [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
-### <a name="c-script-template-example---out-parameter"></a>C# script template example - out parameter
+### <a name="c-script-template-example---out-parameter"></a>C# スクリプト テンプレートの例 - out パラメーター
 
-This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template.
+次の例では、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```cs
 using System;
@@ -72,9 +72,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---asynchronous"></a>C# script template example - asynchronous
+### <a name="c-script-template-example---asynchronous"></a>C# スクリプト テンプレートの例 - 非同期
 
-If you are using asynchronous code, out parameters are not allowed. In this case use `IAsyncCollector` to return your template notification. The following code is an asynchronous example of the code above. 
+非同期コードを使用している場合は、out パラメーターを使用できません。 その場合は、`IAsyncCollector` を使用してテンプレート通知を返します。 次のコードでは、上記のコードの非同期の例を示します。 
 
 ```cs
 using System;
@@ -97,9 +97,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---json"></a>C# script template example - JSON
+### <a name="c-script-template-example---json"></a>C# スクリプト テンプレートの例 - JSON
 
-This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template using a valid JSON string.
+次の例では、有効な JSON 文字列を使用して、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```cs
 using System;
@@ -111,9 +111,9 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 }
 ```
 
-### <a name="c-script-template-example---library-types"></a>C# script template example - library types
+### <a name="c-script-template-example---library-types"></a>C# スクリプト テンプレートの例 - ライブラリのタイプ
 
-This example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
+次の例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)に定義されたタイプの使用方法を示します。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -136,18 +136,18 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-### <a name="f-template-example"></a>F# template example
+### <a name="f-template-example"></a>F# テンプレートの例
 
-This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
     notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
 ```
 
-### <a name="javascript-template-example"></a>JavaScript template example
+### <a name="javascript-template-example"></a>JavaScript テンプレートの例
 
-This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -166,9 +166,9 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="example---apns-native"></a>Example - APNS native
+## <a name="example---apns-native"></a>例 - APNS ネイティブ
 
-This C# script example shows how to send a native APNS notification. 
+この C# スクリプトの例では、ネイティブ APNS 通知を送信する方法を示します。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -197,9 +197,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---gcm-native"></a>Example - GCM native
+## <a name="example---gcm-native"></a>例 - GCM ネイティブ
 
-This C# script example shows how to send a native GCM notification. 
+この C# スクリプトの例では、ネイティブ GCM 通知を送信する方法を示します。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -228,9 +228,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---wns-native"></a>Example - WNS native
+## <a name="example---wns-native"></a>例 - WNS ネイティブ
 
-This C# script example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) to send a native WNS toast notification. 
+この C# スクリプトの例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)に定義されたタイプを使用してネイティブの WNS トースト通知を送信する方法を示します。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -271,31 +271,31 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="attributes"></a>Attributes
+## <a name="attributes"></a>属性
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) attribute.
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 属性を使用します。
 
-The attribute's constructor parameters and properties are described in the [configuration](#configuration) section.
+この属性のコンストラクター パラメーターとプロパティについては、「[構成](#configuration)」セクションをご覧ください。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>構成
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `NotificationHub` attribute:
+次の表は、*function.json* ファイルと `NotificationHub` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json property | Attribute property |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** |n/a| Must be set to "notificationHub". |
-|**direction** |n/a| Must be set to "out". | 
-|**name** |n/a| Variable name used in function code for the notification hub message. |
-|**tagExpression** |**TagExpression** | Tag expressions allow you to specify that notifications be delivered to a set of devices that have registered to receive notifications that match the tag expression.  For more information, see [Routing and tag expressions](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
-|**hubName** | **HubName** | Name of the notification hub resource in the Azure portal. |
-|**connection** | **ConnectionStringSetting** | The name of an app setting that contains a Notification Hubs connection string.  The connection string must be set to the *DefaultFullSharedAccessSignature* value for your notification hub. See [Connection string setup](#connection-string-setup) later in this article.|
-|**platform** | **Platform** | The platform property indicates the client platform your notification targets. By default, if the platform property is omitted from the output binding, template notifications can be used to target any platform configured on the Azure Notification Hub. For more information on using templates in general to send cross platform notifications with an Azure Notification Hub, see [Templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). When set, **platform** must be one of the following values: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. For more information on configuring the notification hub for APNS and receiving the notification in a client app, see [Sending push notifications to iOS with Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). For more information on configuring the notification hub for ADM and receiving the notification in a Kindle app, see [Getting Started with Notification Hubs for Kindle apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, which is the new version of GCM, is also supported. For more information, see [Sending push notifications to Android with Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Windows Push Notification Services](https://msdn.microsoft.com/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) targeting Windows platforms. Windows Phone 8.1 and later is also supported by WNS. For more information, see [Getting started with Notification Hubs for Windows Universal Platform Apps](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](https://msdn.microsoft.com/library/windows/apps/ff402558.aspx). This platform supports Windows Phone 8 and earlier Windows Phone platforms. For more information, see [Sending push notifications with Azure Notification Hubs on Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**type** |該当なし| "notificationHub" に設定する必要があります。 |
+|**direction** |該当なし| "out" に設定する必要があります。 | 
+|**name** |該当なし| 通知ハブ メッセージの関数コードで使用される変数名。 |
+|**tagExpression** |**TagExpression** | タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。 |
+|**hubName** | **HubName** | Azure Portal 内の通知ハブ リソースの名前。 |
+|**connection** | **ConnectionStringSetting** | Notification Hubs 接続文字列を含むアプリ設定の名前。  この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定される必要があります。 この記事で後述する「[接続文字列の設定](#connection-string-setup)」をご覧ください。|
+|**プラットフォーム** | **プラットフォーム** | platform プロパティは、通知の対象となるクライアント プラットフォームを示します。 既定では、プラットフォームのプロパティが出力バインドから省略されている場合、テンプレート通知は、Azure 通知ハブで構成されている任意のプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。 設定されている場合、**platform** には、次のいずれかの値を指定する必要があります。 <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)」を参照してください。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Notification Hubs の使用 (Kindle アプリ)](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)」を参照してください。</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 GCM の新しいバージョンである Firebase Cloud Messaging もサポートされます。 詳細については、「[Azure Notification Hubs から Android へのプッシュ通知の送信](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。</li><li><code>wns</code>&mdash;Windows プラットフォーム向けの [Windows Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS では Windows Phone 8.1 以降もサポートされます。 詳細については、「[Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」を参照してください。</li><li><code>mpns</code>&mdash;[Microsoft プッシュ通知サービス](/previous-versions/windows/apps/ff402558(v=vs.105))。 このプラットフォームでは、Windows Phone 8 およびそれ以前の Windows Phone プラットフォームがサポートされます。 詳細については、「[Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-### <a name="functionjson-file-example"></a>function.json file example
+### <a name="functionjson-file-example"></a>function.json ファイルの例
 
-Here's an example of a Notification Hubs binding in a *function.json* file.
+次に示すのは、*function.json* ファイルでの Notification Hubs バインディングの例です。
 
 ```json
 {
@@ -314,28 +314,28 @@ Here's an example of a Notification Hubs binding in a *function.json* file.
 }
 ```
 
-### <a name="connection-string-setup"></a>Connection string setup
+### <a name="connection-string-setup"></a>接続文字列の設定
 
-To use a notification hub output binding, you must configure the connection string for the hub. You can select an existing notification hub or create a new one right from the *Integrate* tab in the Azure portal. You can also configure the connection string manually. 
+通知ハブの出力バインドを使用するには、ハブの接続文字列を設定する必要があります。 既存の通知ハブを選択するか、Azure ポータルの *[統合]* タブから新しいハブを作成できます。 接続文字列を手動で構成することもできます。 
 
-To configure the connection string to an existing notification hub:
+既存の通知ハブに対する接続文字列を構成するには:
 
-1. Navigate to your notification hub in the [Azure portal](https://portal.azure.com), choose **Access policies**, and select the copy button next to the **DefaultFullSharedAccessSignature** policy. This copies the connection string for the *DefaultFullSharedAccessSignature* policy to your notification hub. This connection string lets your function send notification messages to the hub.
-    ![Copy the notification hub connection string](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Navigate to your function app in the Azure portal, choose **Application settings**, add a key such as **MyHubConnectionString**, paste the copied *DefaultFullSharedAccessSignature*  for your notification hub as the value, and then click **Save**.
+1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、**[アクセスポリシー]** を選択して、**[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列を使用して、関数からハブに通知メッセージを送信できます。
+    ![通知ハブの接続文字列をコピーする](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Azure Portal の関数アプリに移動し、**[アプリケーション設定]** を選択し、**MyHubConnectionString** などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、**[保存]** をクリックします。
 
-The name of this application setting is what goes in the output binding connection setting in *function.json* or the .NET attribute. See the [Configuration section](#configuration) earlier in this article.
+このアプリケーション設定の名前が、*function.json* または .NET 属性の出力バインディング接続設定で使用されます。 この記事で前述した「[構成](#configuration)」セクションをご覧ください。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 
-| Binding | Reference |
+| バインド | リファレンス |
 |---|---|
-| Notification Hub | [Operations Guide](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Notification Hub | [運用ガイド](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 

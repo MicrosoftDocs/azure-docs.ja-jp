@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569027"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369175"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapping Data Flow のソース変換
 
@@ -67,7 +67,7 @@ SQL DB ソースに対するデータのパーティション分割は省略可�
 
 ソース テーブルからパーティション分割する列を選択します。 接続の最大数も設定する必要があります。
 
-### <a name="query-condition"></a>[Query Condition] (クエリ条件)
+### <a name="query-condition"></a>[Query condition]\(クエリ条件\)
 
 オプションで、クエリに基づいて接続をパーティション分割することを選択できます。 このオプションでは、単純に WHERE 述語の内容  (year > 1980 など) を入力します。
 
@@ -83,7 +83,7 @@ SQL DB ソースに対するデータのパーティション分割は省略可�
 
 ソースとして Azure SQL DB または Azure SQL DW を使用している場合は、追加のオプションがあります。
 
-* クエリ:ソースに対する SQL クエリを入力します。 クエリを設定すると、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは Order By 句がサポートされないことに注意してください。
+* クエリ:ソースに対する SQL クエリを入力します。 クエリを設定すると、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは Order By 句がサポートされないことに注意してください。 ただし、完全な SELECT FROM ステートメントをここに設定することはできます。
 
 * バッチ サイズ: 大量データをバッチ サイズの読み取りにまとめるバッチ サイズを入力します。
 

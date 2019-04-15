@@ -1,6 +1,6 @@
 ---
-title: Get Started with Azure Mobile Apps for Xamarin.Android apps
-description: Follow this tutorial to get started using Azure Mobile Apps for Xamarin Android development
+title: Xamarin Android アプリに Azure Mobile Apps を使用する
+description: 次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -14,67 +14,67 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 67bf0499b6dcf4257380f601c802723b2993a092
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771482"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893352"
 ---
-# <a name="create-a-xamarinandroid-app"></a>Create a Xamarin.Android App
+# <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Overview
-This tutorial shows you how to add a cloud-based backend service to a Xamarin.Android app. For more information, see [What are Mobile Apps](app-service-mobile-value-prop.md).
+## <a name="overview"></a>概要
+このチュートリアルでは、Xamarin Android アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。 詳細については、「 [モバイル アプリとは](app-service-mobile-value-prop.md)」を参照してください。
 
-A screenshot from the completed app is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-Completing this tutorial is a prerequisite for all other Mobile Apps tutorials for Xamarin.Android apps.
+Xamarin Android アプリケーションの他のすべての Mobile Apps のチュートリアルを行う前に、このチュートリアルを完了してください。
 
-## <a name="prerequisites"></a>Prerequisites
-To complete this tutorial, you need the following prerequisites:
+## <a name="prerequisites"></a>前提条件
+このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* An active Azure account. If you don't have an account, sign up for an Azure trial and get up to 10 free Mobile Apps. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio with Xamarin. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) for instructions.
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手してください。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](/visualstudio/cross-platform/setup-and-install) 」をご覧ください。
 
-## <a name="create-an-azure-mobile-app-backend"></a>Create an Azure Mobile App backend
-Follow these steps to create a Mobile App backend.
+## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
+モバイル アプリ バックエンドを作成するには、次の手順に従います。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, download a server project for a simple "todo list" backend and publish it to Azure.
+これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。 次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
-## <a name="configure-the-server-project"></a>Configure the server project
+## <a name="configure-the-server-project"></a>サーバー プロジェクトの構成
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinandroid-app"></a>Download and run the Xamarin.Android app
-1. Under **Download and run your Xamarin.Android project**, click the **Download** button.
+## <a name="download-and-run-the-xamarinandroid-app"></a>Xamarin.Android アプリのダウンロードと実行
+1. **[Download and run your Xamarin.Android project (Xamarin.Android プロジェクトをダウンロードして実行する)]** の **[ダウンロード]** ボタンをクリックします。
 
-      Save the compressed project file to your local computer, and make a note of where you save it.
-2. Press the **F5** key to build the project and start the app.
-3. In the app, type meaningful text, such as *Complete the tutorial* and then click the **Add** button.
+      圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+2. **F5** キーを押してプロジェクトをビルドし、アプリケーションを開始します。
+3. アプリで、意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[追加]** ボタンをクリックします。
 
     ![][10]
 
-    Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data appears in the list.
+    要求のデータは TodoItem テーブルに挿入されます。 テーブルに格納された項目がモバイル アプリ バックエンドによって返され、データが一覧に表示されます。
 
    > [!NOTE]
-   > You can review the code that accesses your mobile app backend to query and insert data, which is found in the ToDoActivity.cs C# file.
+   > モバイル アプリ バックエンドにアクセスしてデータのクエリと挿入を行うコードを確認できます (ToDoActivity.cs C# ファイルにあります)。
    >
    >
 
-## <a name="troubleshooting"></a>Troubleshooting
-If you have problems building the solution, run the NuGet package manager and update the `Xamarin.Android` support packages. Quickstart projects might not always include the latest versions.
+## <a name="troubleshooting"></a>トラブルシューティング
+ソリューションのビルドで問題が発生した場合は、NuGet パッケージ マネージャーを実行し、`Xamarin.Android` サポート パッケージを更新します。 クイック スタート プロジェクトには、必ずしも最新バージョンが含まれていません。
 
-Please note that all the support packages referenced in your project must have the same version. The [Azure Mobile Apps NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) has `Xamarin.Android.Support.CustomTabs` dependency for Android platform, so if your project uses newer support packages you need to install this package with required version directly to avoid conflicts.
+プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
-## <a name="next-steps"></a>Next steps
-* [Add Offline Sync to your app](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [Add authentication to your app](app-service-mobile-xamarin-android-get-started-users.md)
-* [Add push notifications to your Xamarin.Android app](app-service-mobile-xamarin-android-get-started-push.md)
-* [How to use the managed client for Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
+## <a name="next-steps"></a>次の手順
+* [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)
+* [アプリへの認証の追加](app-service-mobile-xamarin-android-get-started-users.md)
+* [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-android-get-started-push.md)
+* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png

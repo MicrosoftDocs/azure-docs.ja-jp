@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 8c9fba14bd3f7d3b55a245f8e647f0eae1f8ef83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118427"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884161"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
@@ -39,6 +39,9 @@ Azure Application Insights Profiler の設定ウィンドウを開くには、Ap
 Azure App Service Environment の構成によっては、エージェントの状態を確認するための呼び出しがブロックされます。 エージェントが実行されている場合でも、ウィンドウにはエージェントが実行されていないというメッセージが表示される場合があります。 そうかどうかを確認するには、アプリケーションの webjob を調べます。 すべてのアプリ設定値が正しく、アプリケーションに Application Insights サイト拡張機能がインストールされている場合は、Profiler が実行されています。 アプリケーションが十分なトラフィックを受信している場合は、最近のプロファイリング セッションが一覧に表示されます。
 
 ## <a id="profileondemand"></a> Profiler を手動でトリガーする
+
+### <a name="minimum-requirements"></a>最小要件 
+プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control)。
 
 シングル クリックで Profiler を手動でトリガーできます。 Web パフォーマンス テストを実行しているものとします。 Web アプリに負荷がかかった状態のパフォーマンスを把握するには、トレースが必要です。 ロード テストがいつ実行されるかがわかるので、トレースがキャプチャされるタイミングを制御できることは重要です。 しかし、ランダムなサンプリング間隔では失敗する可能性があります。
 

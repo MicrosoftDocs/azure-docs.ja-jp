@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982269"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670837"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -95,13 +95,21 @@ SQL Database には、2 つの購入モデルが用意されています。
 
 - **Azure Storage**:大量の利用統計情報を低価格でアーカイブします
 - **Azure Event Hub**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します
-- **Azure Log Analytics**:レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
+- **Azure Monitor ログ**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="availability-capabilities"></a>可用性に関する機能
 
-Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](https://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべてのデータベースは Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループのようなテクノロジを導入することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページをご覧ください。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
+従来の SQL Server 環境では、一般に、(少なくとも) 2 つのコンピューターをローカル環境にセットアップし、(AlwaysOn 可用性グループやフェールオーバー クラスター インスタンスなどの機能を使用して) データの正確な (同期的に維持される) コピーを使用して、1 つのコンピューター/コンポーネントの障害から保護します。  これにより、高可用性が提供されますが、データ センターが破壊されるような自然災害からは保護されません。
+ 
+ディザスター リカバリーでは、壊滅的なイベントは地理的に十分に局所的であり、データのコピーが保持されている別のコンピューター/コンピューターのセットから遠く離れているものと想定されています。  SQL Server では、非同期モードで実行されている Always On 可用性グループを使用して、この機能を実現できます。  光の速さの問題は、通常、ユーザーはトランザクションをコミットする前に遠く離れたところでレプリケーションが発生するのを待ちたくはないので、計画外のフェールオーバーを行うときはデータ損失の可能性があることを意味します。
+
+Premium および Business Critical のサービス レベルのデータベースでは、既に、可用性グループの同期に[よく似たことが行われて](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)います。 低いサービス レベルのデータベースでは、[異なりますが同等のメカニズム](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)を使用するストレージによって、冗長性が提供されます。 1 台のコンピューターの障害から保護するロジックがあります。  アクティブ geo レプリケーション機能では、リージョン全体が破壊される災害から保護することができます。
+
+Azure Availability Zones は、高可用性の問題で機能します。  1 つのリージョン内の 1 つのデータ センター ビルでの障害に対して保護します。  そのため、ビルの電源やネットワークの損失を防ぎます。 SQL Azure では、これは異なる可用性ゾーン (実質的には異なるビル) に異なるレプリカを配置することによって動作し、それ以外については前と同じように動作します。 
+
+実際、Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](https://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべてのデータベースは Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループのようなテクノロジを導入することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページをご覧ください。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
 
 - **[自動バックアップ](sql-database-automated-backups.md)**:
 
@@ -141,11 +149,14 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 
 ### <a name="adaptive-query-processing"></a>アダプティブ クエリ処理
 
-SQL Database には、[クエリの適応処理機能](/sql/relational-databases/performance/adaptive-query-processing)ファミリも追加されています。この中には、複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
+SQL Database には、[クエリの適応処理機能](/sql/relational-databases/performance/intelligent-query-processing)ファミリも追加されています。この中には、複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
 
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
 
 SQL Database は、アプリケーションがさまざまなセキュリティとコンプライアンスの要件を満たすために役立つ、幅広い[組み込みのセキュリティ機能とコンプライアンス機能](sql-database-security-overview.md)を備えています。
+
+> [!IMPORTANT]
+> Azure SQL Database (すべてのデプロイ オプション) は、さまざまなコンプライアンス標準に対して認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)の一覧を入手できます。
 
 ### <a name="advance-threat-protection"></a>高度な脅威保護
 
@@ -234,7 +245,7 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server エンジニアリング チームとの交流
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server):データベースの管理に関するご質問はこちらへ
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server):開発に関する質問はこちらへ
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server):開発に関する質問はこちらへ
 - [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?category=sqlserver):技術的なご質問はこちらへ
 - [フィードバック](https://aka.ms/sqlfeedback):バグの報告や機能要求
 - [Reddit](https://www.reddit.com/r/SQLServer/):SQL Server についての意見交換

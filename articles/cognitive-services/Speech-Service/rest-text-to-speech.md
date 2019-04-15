@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d67d8462c177d19dfa3cebbd0b4b000fbe3f41b8
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894953"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660971"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
-Speech Services では、REST API を使用してテキストを音声に変換できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。 Text to Speech REST API ではニューラルと標準のテキスト読み上げ音声が提供され、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
+Speech Services では、一連の REST API を使用して、[テキストを合成音声に変換](#convert-text-to-speech)したり、[リージョンでサポートされている音声の一覧を取得](#get-a-list-of-voices)したりできます。 利用可能な各エンドポイントは、リージョンに関連付けられています。 使用を検討しているエンドポイント/リージョンのサブスクリプション キーが必要です。
+
+Text to Speech REST API ではニューラルと標準のテキスト読み上げ音声が提供され、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
 
 * 音声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 * リージョン別の提供状況については、[リージョン](regions.md#text-to-speech)に関するページを参照してください。
@@ -34,9 +36,128 @@ Speech Services では、REST API を使用してテキストを音声に変換�
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="request-headers"></a>要求ヘッダー
+## <a name="get-a-list-of-voices"></a>音声の一覧を取得する
 
-この表は、音声テキスト変換要求の必須のヘッダーと省略可能なヘッダーの一覧です。
+`voices/list` エンドポイントでは、特定のリージョン/エンドポイントの音声の完全な一覧を取得できます。
+
+### <a name="regions-and-endpoints"></a>リージョンとエンドポイント
+
+| リージョン | エンドポイント |
+|--------|----------|
+| オーストラリア東部 | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| ブラジル南部 | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| カナダ中部 | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国中央部 | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 東アジア | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国東部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国東部 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| フランス中部 | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| インド中部 | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 東日本 | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 韓国中部 | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国中北部 | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 北ヨーロッパ | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国中南部 | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 東南アジア | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 英国南部 | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 西ヨーロッパ | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国西部 | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 米国西部 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+
+### <a name="request-headers"></a>要求ヘッダー
+
+この表は、テキスト読み上げ要求の必須のヘッダーと省略可能なヘッダーの一覧です。
+
+| ヘッダー | 説明 | 必須/省略可能 |
+|--------|-------------|---------------------|
+| `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | 必須 |
+
+### <a name="request-body"></a>要求本文
+
+このエンドポイントへの `GET` 要求の本文は不要です。
+
+### <a name="sample-request"></a>要求のサンプル
+
+この要求には Authorization ヘッダーのみが必要です。
+
+```http
+GET /cognitiveservices/voices/list HTTP/1.1
+
+Host: westus.tts.speech.microsoft.com
+Authorization: Bearer [Base64 access_token]
+```
+
+### <a name="sample-response"></a>応答のサンプル
+
+この応答は、応答の構造を説明するために切り詰められています。
+
+> [!NOTE]
+> 利用可能な音声はリージョン/エンドポイントによって異なります。
+
+```json
+[
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+        "ShortName": "ar-EG-Hoda",
+        "Gender": "Female",
+        "Locale": "ar-EG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
+        "ShortName": "ar-SA-Naayf",
+        "Gender": "Male",
+        "Locale": "ar-SA"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
+        "ShortName": "bg-BG-Ivan",
+        "Gender": "Male",
+        "Locale": "bg-BG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
+        "ShortName": "ca-ES-HerenaRUS",
+        "Gender": "Female",
+        "Locale": "ca-ES"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
+        "ShortName": "cs-CZ-Jakub",
+        "Gender": "Male",
+        "Locale": "cs-CZ"
+    },
+
+    ...
+
+]
+```
+
+### <a name="http-status-codes"></a>HTTP 状態コード
+
+各応答の HTTP 状態コードは、成功または一般的なエラーを示します。
+
+| HTTP 状態コード | 説明 | 考えられる理由 |
+|------------------|-------------|-----------------|
+| 200 | OK | 要求は成功しました。 |
+| 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
+| 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
+| 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
+| 502 | 無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
+
+
+## <a name="convert-text-to-speech"></a>テキストを音声に変換する
+
+`v1` エンドポイントでは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) を使用してテキストを音声に変換することができます。
+
+### <a name="regions-and-endpoints"></a>リージョンとエンドポイント
+
+この REST API を使用したテキスト読み上げは、以下のリージョンでサポートされます。 必ず、ご利用のサブスクリプションのリージョンと一致するエンドポイントを選択してください。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+### <a name="request-headers"></a>要求ヘッダー
+
+この表は、テキスト読み上げ要求の必須のヘッダーと省略可能なヘッダーの一覧です。
 
 | ヘッダー | 説明 | 必須/省略可能 |
 |--------|-------------|---------------------|
@@ -45,7 +166,7 @@ Speech Services では、REST API を使用してテキストを音声に変換�
 | `X-Microsoft-OutputFormat` | オーディオ出力形式を指定します。 指定できる値の全一覧については、[オーディオ出力](#audio-outputs)に関するセクションを参照してください。 | 必須 |
 | `User-Agent` | アプリケーションの名前。 指定する値は 255 文字未満にする必要があります。 | 必須 |
 
-## <a name="audio-outputs"></a>オーディオ出力
+### <a name="audio-outputs"></a>オーディオ出力
 
 以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Services では、24 kHz、16 kHz、および 8 kHz のオーディオ出力がサポートされます。
 
@@ -62,14 +183,14 @@ Speech Services では、REST API を使用してテキストを音声に変換�
 > [!NOTE]
 > 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 khz の音声は `audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。
 
-## <a name="request-body"></a>要求本文
+### <a name="request-body"></a>要求本文
 
 各 `POST` 要求の本文は[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として送信されます。 SSML では、テキスト読み上げサービスによって返される合成音声の声と言語を選択できます。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 
 > [!NOTE]
 > カスタムの音声を使用する場合は、プレーン テキスト (ASCII または UTF-8) として要求の本文を送信できます。
 
-## <a name="sample-request"></a>要求のサンプル
+### <a name="sample-request"></a>要求のサンプル
 
 この HTTP 要求は、SSML を使用して音声と言語を指定します。 1,000 文字を超える本文は許可されません。
 
@@ -94,7 +215,7 @@ Authorization: Bearer [Base64 access_token]
 * [Python](quickstart-python-text-to-speech.md)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
-## <a name="http-status-codes"></a>HTTP 状態コード
+### <a name="http-status-codes"></a>HTTP 状態コード
 
 各応答の HTTP 状態コードは、成功または一般的なエラーを示します。
 

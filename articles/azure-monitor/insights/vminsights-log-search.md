@@ -50,10 +50,10 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 コストと複雑さを管理するため、接続レコードは個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化され、その後それぞれのテーブルに反映されます。  つまり、*VMConnection* テーブル内のレコードは、論理グルーピングを表しており、観察されている個々の物理接続を表していません。 所定の 1 分間隔で次の属性に同じ値を共有する物理ネットワーク接続は、*VMConnection* 内で 1 つの論理レコードに集約されます。 
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
-|方向 |接続の方向であり、値は*受信*または*送信*です |
-|マシン |コンピューターの FQDN |
+|Direction |接続の方向であり、値は*受信*または*送信*です |
+|Machine |コンピューターの FQDN |
 |Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
 |SourceIp |送信元の IP アドレス |
 |DestinationIp |送信先の IP アドレス |
@@ -62,7 +62,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |LinksEstablished |報告時間枠の間に確立された物理ネットワーク接続の数 |
 |LinksTerminated |報告時間枠の間に切断された物理ネットワーク接続の数 |
@@ -73,7 +73,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 接続数メトリックに加えて、所定の論理接続またはネット ワークポートで送受信されるデータ量に関する情報も、レコードの次のプロパティに加えられています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |BytesSent |報告時間枠の間に送信された合計バイト数 |
 |BytesReceived |報告時間枠の間に受信された合計バイト数 |
@@ -99,7 +99,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 #### <a name="geolocation"></a>地理的位置情報
 *VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
 |RemoteLatitude |地理的位置情報の緯度。 例: *47.68* |
@@ -108,32 +108,32 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 #### <a name="malicious-ip"></a>悪意のある IP
 *VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |MaliciousIp |RemoteIp アドレス |
 |IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
-|説明 |観察対象の脅威の説明。 |
+|Description |観察対象の脅威の説明。 |
 |TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
-|信頼度 |値は "*0 から 100*" です。 |
-|severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|Confidence |値は "*0 から 100*" です。 |
+|Severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
 |FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
 |LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
 |IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
 |ReportReferenceLink |特定の観測可能な脅威に関連するレポートにリンクします。 |
 |AdditionalInformation |該当する場合は、観察対象の脅威についての追加情報を提供します。 |
 
-### <a name="ports"></a>ポート 
+### <a name="ports"></a>Port 
 受信トラフィックを積極的に受け入れるマシン、または潜在的にトラフィックを受け入れることができても報告期間中はアイドルであるマシン上のポートは、VMBoundPort テーブルに書き込まれます。  
 
 既定では、データはこのテーブルに書き込まれません。 このテーブルにデータを書き込むには、ワークスペース ID とワークスペースのリージョンと共に vminsights@microsoft.com にメールを送信してください。   
 
 VMBoundPort のすべてのレコードは、以下のフィールドで識別されます。 
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |Process | ポートが関連付けられているプロセス (または複数プロセスのグループ) の ID。|
 |Ip | ポートの IP アドレス (IP はワイルドカード *0.0.0.0* で指定できます) |
-|ポート |ポート番号 |
+|Port |ポート番号 |
 |Protocol | プロトコル。  たとえば、*tcp* または *udp* です (現在サポートされているのは *tcp* のみです)。|
  
 ポートの ID は上記の 5 つのフィールドから派生し、PortId プロパティに格納されます。 このプロパティを使用すると、時間の経過と共に特定のポートのレコードをすばやく見つけることができます。 
@@ -155,11 +155,11 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型があるレコードには、Dependency エージェントを有するサーバー用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
-| type | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| resourceId | ワークスペース内のマシンに対する一意識別子 |
+| ResourceId | ワークスペース内のマシンに対する一意識別子 |
 | ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
 | ComputerName_s | コンピューターの FQDN |
 | Ipv4Addresses_s | サーバーの IPv4 アドレスの一覧 |
@@ -180,11 +180,11 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型があるレコードには、Dependency エージェントを有するサーバー上での TCP 接続プロセス用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
-| type | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| resourceId | ワークスペース内のプロセスに対する一意識別子 |
+| ResourceId | ワークスペース内のプロセスに対する一意識別子 |
 | ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
 | MachineResourceName_s | マシンのリソース名 |
 | ExecutableName_s | プロセスの実行可能ファイルの名前 |

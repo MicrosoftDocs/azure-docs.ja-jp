@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8fc952af011231a9cc12f96e3db9ebb088c237a2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413330"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878215"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -22,7 +22,7 @@ ms.locfileid: "54413330"
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* SSL/TLS ベースの VPN プロトコルである OpenVPN。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである OpenVPN。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
 
 * Secure Socket トンネリング プロトコル (SSTP)。これは、SSL ベースの独自の VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
 
@@ -47,7 +47,7 @@ Azure が P2S VPN 接続を受け入れる前に、ユーザーはまず認証�
 
 AD ドメイン認証では、ユーザーは組織のドメイン資格情報を使用して Azure に接続できます。 これには AD サーバーと統合する RADIUS サーバーが必要です。 また、組織は既存の RADIUS デプロイを利用することもできます。   
   
-RADIUS サーバーは、オンプレミスまたは Azure VNET にデプロイできます。 認証が行われる間、Azure VPN ゲートウェイがパススルーとして機能し、接続するデバイスと RADIUS サーバーの間で認証メッセージを転送します。 そのため、ゲートウェイが RADIUS サーバーにアクセスできることが重要です。 RADIUS サーバーがオンプレミスに存在する場合、アクセスのために、Azure からオンプレミス サイトへの VPN S2S 接続が必要になります。  
+RADIUS サーバーは、オンプレミスまたは Azure VNET にデプロイできます。 認証が行われる間、Azure VPN ゲートウェイがパススルーとして機能し、接続するデバイスと RADIUS サーバーの間で認証メッセージを転送します。 そのため、ゲートウェイが RADIUS サーバーにアクセスできることが重要です。 RADIUS サーバーがオンプレミスに存在する場合、アクセスのために、Azure からオンプレミス サイトへの VPN サイト間接続が必要になります。  
   
 また、RADIUS サーバーは、AD 証明書サービスとも統合できます。 これにより、Azure 証明書認証の代替手段として、P2S 証明書認証に RADIUS サーバーとエンタープライズ証明書デプロイを使用できます。 この利点は、ルート証明書と失効した証明書を Azure にアップロードする必要がないことです。
 
@@ -94,7 +94,7 @@ P2S 構成で必要な手順には、特有のものが非常に多くありま�
 
 * [P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-* [OpenVPN の構成](vpn-gateway-howto-openvpn.md)
+* [OpenVPN を構成する](vpn-gateway-howto-openvpn.md)
 
 ## <a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
 

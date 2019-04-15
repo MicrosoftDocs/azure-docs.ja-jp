@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774339"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905955"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack ストレージのデータ転送ツールの使用
 
@@ -45,7 +45,7 @@ Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、お
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
-* [Blobfuse](#blobfuse)
+* [blobfuse](#blobfuse)
 
     ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 
 
@@ -59,23 +59,23 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 
 AzCopy ユーティリティには、2 つのバージョンがあります。Windows 上の AzCopy と Linux 上の AzCopy です。
 
- - **Windows での AzCopy**
+ - **AzCopy on Windows**
     - Azure Stack 用のサポートされているバージョンの AzCopy をダウンロードします。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Windows での AzCopy](../../storage/common/storage-use-azcopy.md) に関するページを参照してください。
         - 1811 更新プログラム以降のバージョンの場合は、[AzCopy 7.3.0 をダウンロード](https://aka.ms/azcopyforazurestack20171109)します。
         - それより前のバージョン (1802 から 1809 までの更新プログラム) では、[AzCopy 7.1.0 をダウンロード](https://aka.ms/azcopyforazurestack20170417)します。
 
- - **Linux での AzCopy**
+ - **AzCopy on Linux**
 
     - Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Linux での AzCopy](../../storage/common/storage-use-azcopy-linux.md) に関するページを参照してください。
     - 以前のバージョン (1802 から 1809 までの更新プログラム) については、「[AzCopy 7.1 以前のバージョンのインストール手順](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions)」を参照してください。
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>データ転送するための AzCopy コマンドの例
 
-以下の例では、Azure Stack BLOB との間でデータをコピーする代表的なシナリオを紹介しています。 詳細については、[Windows 上の AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) と [Linux 上の AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) に関するページを参照してください。
+以下の例では、Azure Stack BLOB との間でデータをコピーする代表的なシナリオを紹介しています。 詳細については、[Windows 上の AzCopy](../../storage/common/storage-use-azcopy.md) と [Linux 上の AzCopy](../../storage/common/storage-use-azcopy-linux.md) に関するページを参照してください。
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>すべての BLOB をローカル ディスクにダウンロードする
 
-**Windows**
+** Windows**
 
 ```shell
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
@@ -93,7 +93,7 @@ azcopy \
 
 ### <a name="upload-single-file-to-virtual-directory"></a>1 つのファイルを仮想ディレクトリにアップロードする
 
-**Windows**
+** Windows**
 
 ```shell
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
@@ -112,7 +112,7 @@ azcopy \
 
 Azure ストレージと Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** または **--sync-copy** オプションを使用して転送を指定する必要があります。
 
-**Windows**
+** Windows**
 
 ```shell
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
@@ -156,7 +156,7 @@ Azure Stack を使用するには、Azure Stack と互換性のある Azure Powe
    > [!NOTE]
    > このスクリプトは、**AzureStack_Tools** のルート ディレクトリで実行する必要があります。
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
@@ -263,7 +263,7 @@ CLI のインストールと構成が完了したら、次の手順を試し、A
 1. 好みのテキスト エディターを開き、前述のスクリプトをコピーしてエディターに貼り付けます。
 2. 構成の設定を反映するようにスクリプトの変数を更新します。
 3. 必要な変数を更新したら、スクリプトを保存してエディターを終了します。 スクリプト名を **my_storage_sample.sh** に指定したと仮定して、次のステップに移ります。
-4. 必要に応じてスクリプトを実行可能ファイルとしてマークします。`chmod +x my_storage_sample.sh`
+4. 必要に応じてスクリプトを実行可能ファイルとしてマークします。 `chmod +x my_storage_sample.sh`
 5. スクリプトを実行します。 たとえば Bash の場合は次のようになります。 `./my_storage_sample.sh`
 
 ```azurecli
@@ -336,7 +336,7 @@ blobEndpoint myaccount.blob.local.azurestack.external
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack サブスクリプションに Microsoft Azure ストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)
+* [Azure Stack サブスクリプションにストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)
 * [ストレージ エクスプローラーの概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
-* [Microsoft Azure ストレージの概要](../../storage/common/storage-introduction.md)
+* [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)

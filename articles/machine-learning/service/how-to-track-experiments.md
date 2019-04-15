@@ -1,7 +1,7 @@
 ---
-title: 実験とトレーニング メトリックを追跡する
+title: トレーニングの実行中にメトリックを記録する
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service では、実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。
+description: 実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008822"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652316"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Azure Machine Learning で実験とトレーニング メトリックを追跡する
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning 内でトレーニングの実行中にメトリックを記録する
 
 Azure Machine Learning service では、実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 この記事では、トレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。
 
@@ -26,13 +26,13 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 実験のトレーニング中に、次のメトリックを実行に追加できます。 実行で追跡できる内容の詳細な一覧については、[Run クラスのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)をご覧ください。
 
-|type| Python 関数 | メモ|
+|Type| Python 関数 | メモ|
 |----|:----|:----|
 |スカラー値 |関数:<br>`run.log(name, value, description='')`<br><br>例:<br>run.log("accuracy", 0.95) |指定した名前で実行に数値または文字列値を記録します。 実行にメトリックを記録すると、メトリックは実験の実行レコードに格納されます。  同じメトリックを実行内で複数回記録でき、結果はそのメトリックのベクターと見なされます。|
 |リスト|関数:<br>`run.log_list(name, value, description='')`<br><br>例:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 指定した名前で実行に値リストを記録します。|
 |行|関数:<br>`run.log_row(name, description=None, **kwargs)`<br>例:<br>run.log_row("Y over X", x=1, y=0.4) | *log_row* を使用すると、kwargs で記述されているように、複数の列を含むメトリックが作成されます。 各名前付きパラメーターにより、指定した値の列が生成されます。  *log_row* を 1 回呼び出すと任意のタプルを記録でき、ループ内で複数回呼び出すと完全なテーブルを生成できます。|
 |テーブル|関数:<br>`run.log_table(name, value, description='')`<br><br>例:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 指定した名前で実行にディクショナリ オブジェクトを記録します。 |
-|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>run.log_image("ROC", plt) | 実行レコードにイメージを記録します。 log_image を使用してイメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
+|イメージ|関数:<br>`run.log_image(name, path=None, plot=None)`<br><br>例:<br>`run.log_image("ROC", plt)` | 実行レコードにイメージを記録します。 log_image を使用してイメージ ファイルに記録するか、または matplotlib を使用して実行にプロットします。  これらのイメージは実行レコードで表示して比較できます。|
 |実行にタグを付ける|関数:<br>`run.tag(key, value=None)`<br><br>例:<br>run.tag("selected", "yes") | 文字列キーと省略可能な文字列値で実行にタグを付けます。|
 |ファイルまたはディレクトリをアップロードする|関数:<br>`run.upload_file(name, path_or_stream)`<br> <br> 例:<br>run.upload_file("best_model.pkl", "./model.pkl") | 実行レコードにファイルをアップロードします。 実行は指定された出力ディレクトリ内のファイルを自動的にキャプチャします。ディレクトリの既定値は、ほとんどの実行種類で "./outputs" です。  追加のファイルをアップロードする必要がある場合、または出力ディレクトリが指定されていない場合にのみ、upload_file を使用します。 出力ディレクトリにアップロードされるように、名前に `outputs` を追加することをお勧めします。 `run.get_file_names()` を呼び出すことにより、この実行レコードに関連付けられているすべてのファイルの一覧を取得できます。|
 
@@ -48,7 +48,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 ## <a name="set-up-the-workspace"></a>ワークスペースを設定する
 ログを追加して実験を送信する前に、ワークスペースを設定する必要があります。
 
-1. ワークスペースを読み込みます。 ワークスペースの構成の設定について詳しくは、[クイック スタート](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started)に従ってください。
+1. ワークスペースを読み込みます。 ワークスペース構成の設定について詳しくは、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順に従ってください。
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -218,7 +218,9 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
    ```
 
 ## <a name="cancel-a-run"></a>実行をキャンセルする
+
 実行の送信後、実験名と実行 ID を知っていれば、オブジェクト参照を失った場合でも、キャンセルできます。 
+
 
 ```python
 from azureml.core import Experiment
@@ -239,7 +241,7 @@ print(type(r), r.get_status())
 if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
-現在、ScriptRun および PipelineRun 型のみがキャンセル操作をサポートしていることに注意してください。
+現在、ScriptRun および PipelineRun 型のみでキャンセル操作がサポートされています。
 
 さらに、次のコマンドを使用して、CLI での実行を取り消すことができます。
 ```shell
@@ -261,7 +263,7 @@ az ml run cancel -r <run_id> -p <project_path>
 
    ![Jupyter Notebook ウィジェットのスクリーンショット](./media/how-to-track-experiments/widgets.PNG)
 
-2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` は適切な実験名に置き換えてください。
+2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` を適切な実験名に置き換えます。
 
    ``` 
    from azureml.widgets import RunDetails
@@ -349,7 +351,7 @@ az ml run cancel -r <run_id> -p <project_path>
 Azure Machine Learning の自動機械学習機能を使って作成されたすべての分類モデルについて、次のグラフを見ることができます。 
 + [混同行列](#confusion-matrix)
 + [精度/再現率グラフ](#precision-recall-chart)
-+ [受信者操作特性 (ROC)](#ROC)
++ [受信者操作特性 (ROC)](#roc)
 + [リフト曲線](#lift-curve)
 + [ゲイン曲線](#gains-curve)
 + [調整プロット](#calibration-plot)

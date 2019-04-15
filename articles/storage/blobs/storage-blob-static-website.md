@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867742"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472771"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 Azure Storage GPv2 アカウントでは、*$web* という名前のストレージ コンテナーから直接、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でのホスティングを活用すれば、[Azure Functions](/azure/azure-functions/functions-overview) やその他の PaaS サービスなど、サーバーレス アーキテクチャを使用できます。
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 選択された既定のファイル名はルートで使用されるほか、ファイル名が指定されていない場合にサブディレクトリで使用されます。 エラー ドキュメントのパスを指定していないと、サーバーが 404 を返す際に既定の 404 ページがユーザーに返されます。
+
+> [!NOTE]
+> ファイルの既定のパブリック アクセス レベルは非公開です。 ファイルは匿名アクセス要求によって処理されるため、この設定は無視されます。 すべてのファイルへのパブリック アクセスがあり、RBAC のアクセス許可は無視されます。
 
 ## <a name="cdn-and-ssl-support"></a>CDN および SSL のサポート
 
@@ -109,7 +112,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 コンテンツをストレージ コンテナーにデプロイするために使用できる方法には、以下があります。
 
 - [AzCopy](../common/storage-use-azcopy.md)
-- [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 - [Visual Studio Code 拡張機能](https://code.visualstudio.com/tutorials/static-website/getting-started)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106408"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905071"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -36,7 +36,7 @@ ms.locfileid: "58106408"
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブ `(Azure:)` になります
+2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブになります `(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -68,7 +68,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd` を実行して目的のサブスクリプションに移動します
+ 2. `cd`  を実行して目的のサブスクリプションに移動します
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -267,7 +267,7 @@ SSH を使ってサーバーまたは VM に対する認証を行うには、Clo
 
 ### <a name="using-ssh"></a>SSH の使用
 
-[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、AzureRM コマンドレットを使って新しい VM 構成を作成します。
+[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、Azure PowerShell コマンドレットを使って新しい VM 構成を作成します。
 `New-AzVM` を呼び出してデプロイを始める前に、SSH 公開キーを VM の構成に追加します。
 新しく作成される VM には `~\.ssh\authorized_keys` にある公開キーが含まれ、それにより VM への資格情報不要の SSH セッションが有効になります。
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 `Azure` ドライブで、「`Get-AzCommand`」と入力してコンテキスト固有の Azure コマンドを取得します。
 
-または、`Get-Command *azurerm* -Module AzureRM.*` を使うと、使用できる Azure コマンドをいつでも検索できます。
+または、`Get-Command *az* -Module Az.*` を使うと、使用できる Azure コマンドをいつでも検索できます。
 
 ## <a name="install-custom-modules"></a>カスタム モジュールをインストールする
 

@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs
-description: Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
+description: Azure Monitor の Log Analytics ワークスペースは、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを格納します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 1cfb4850c35806d702f76f4006ad46ad43d6bcf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076413"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903405"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを管理する
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
+Azure Monitor の Log Analytics ワークスペースでは、コマンド ラインから、またはスクリプトの一部として、[Log Analytics の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.operationalinsights/) を使用してさまざまな機能を実行できます。  PowerShell で実行できる作業の例を次に挙げます。
 
 * ワークスペースの作成
 * ソリューションの追加と削除
@@ -33,10 +31,12 @@ Log Analytics のさまざまな機能は、コマンド ラインまたはス�
 * Azure 仮想マシンへの Log Analytics エージェントの追加
 * Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
-この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) を参照してください。
+この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/az.operationalinsights/) を参照してください。
 
 > [!NOTE]
 > Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、コマンドレットにはその旧称が使用されています。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 これらの例は、Az.OperationalInsights モジュールのバージョン 1.0.0 以降で動作します。
@@ -58,7 +58,7 @@ Log Analytics のさまざまな機能は、コマンド ラインまたはス�
 11. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
 12. カスタム ログの収集
 
-```PowerShell
+```powershell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -195,7 +195,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `yyyy-MM-ddTHH:mm:ss` <br> T はリテラル文字の T です | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure 診断を送信するための Log Analytics の構成
-エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データが Log Analytics に直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
+エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データがワークスペースに直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
 
 | リソースの種類 | ログ | メトリック |
 | --- | --- | --- |
@@ -222,7 +222,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 
 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
 
-```PowerShell
+```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
@@ -233,24 +233,24 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 前述のコマンドレットを使用して、異なるサブスクリプションに含まれるリソースからログを収集することもできます。 ログを作成するリソースとログが送信されるワークスペースの両方の ID が指定されているため、このコマンドレットは複数のサブスクリプションにまたがって動作します。
 
 
-## <a name="configuring-log-analytics-to-collect-azure-diagnostics-from-storage"></a>ストレージから Azure 診断を収集するための Log Analytics の構成
-従来のクラウド サービスまたは Service Fabric クラスターの実行中のインスタンスからログ データを収集するには、まず Azure ストレージにデータを書き込む必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics を構成します。 サポートされているリソースは次のとおりです。
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>ストレージから Azure 診断を収集するための Log Analytics ワークスペースの構成
+従来のクラウド サービスまたは Service Fabric クラスターの実行中のインスタンスからログ データを収集するには、まず Azure ストレージにデータを書き込む必要があります。 その後、ストレージ アカウントからログを収集するように Log Analytics ワークスペースを構成します。 サポートされているリソースは次のとおりです。
 
 * クラシック クラウド サービス (Web ロールと worker ロール)
 * Service Fabric クラスター
 
 以下の例では、次のことを行っています。
 
-1. 既存のストレージ アカウントと Log Analytics でインデックスするデータの収集元とをリストする
+1. 既存のストレージ アカウントと、ワークスペースでインデックスを付けるデータの収集元の場所をリストする
 2. ストレージ アカウントからデータを読み取るための構成を作成する
 3. 新しく作成した構成に変更を加え、インデックスの作成対象となるデータの収集元を追加する
 4. 新しく作成した構成を削除する
 
-```PowerShell
+```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
 $storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -272,5 +272,5 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の PowerShell コマンドレットを参照](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
+* [Log Analytics の PowerShell コマンドレットを参照](https://docs.microsoft.com/powershell/module/az.operationalinsights/) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 

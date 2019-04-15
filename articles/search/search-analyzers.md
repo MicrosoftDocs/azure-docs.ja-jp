@@ -4,17 +4,17 @@ description: インデックスの検索可能なテキスト フィールドに
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343274"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651823"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -97,16 +97,18 @@ Azure Search では、追加の **indexAnalyzer** および **searchAnalyzer** �
 
 [Search Analyzer Demo](https://alice.unearth.ai/) はサードパーティ製のデモ アプリです。標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 インデックスは固定です。よくあるストーリーのテキストが含まれています。 検索用語を入力するごとに、隣接するウィンドウに各アナライザーの結果が表示され、同じ文字列を各アナライザーがどのように処理するかを把握できます。 
 
-## <a name="examples"></a>例
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>REST の例
 
 いくつかの主なシナリオについて、アナライザーの定義例を示します。
 
-+ [カスタム アナライザーの例](#Example1)
-+ [アナライザーをフィールドに割り当てる例](#Example2)
-+ [インデックス作成用と検索用のアナライザーを混在させる](#Example3)
-+ [言語アナライザーの例](#Example4)
++ [カスタム アナライザーの例](#Custom-analyzer-example)
++ [アナライザーをフィールドに割り当てる例](#Per-field-analyzer-assignment-example)
++ [インデックス作成用と検索用のアナライザーを混在させる](#Mixing-analyzers-for-indexing-and-search-operations)
++ [言語アナライザーの例](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>カスタム アナライザーの例
 
@@ -180,7 +182,7 @@ Azure Search では、追加の **indexAnalyzer** および **searchAnalyzer** �
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>フィールドごとのアナライザー割り当ての例
 
@@ -213,7 +215,7 @@ Azure Search では、追加の **indexAnalyzer** および **searchAnalyzer** �
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>インデックス作成と検索の各操作用のアナライザーを混在させる
 
@@ -241,7 +243,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>言語アナライザーの例
 
@@ -273,6 +275,69 @@ API には、インデックス作成と検索に別のアナライザーを指�
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C# の例
+
+.NET SDK のサンプル コードを使用している場合は、アナライザーを使用または構成するためにこれらのサンプルを追加できます。
+
++ [組み込みのアナライザーを割り当てる](#Assign-a-language-analyzer)
++ [アナライザーを構成する](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>言語アナライザーを割り当てる
+
+構成なしでそのまま使用されるすべてのアナライザーは、フィールド定義で指定します。 アナライザーのコンストラクトを作成する必要はありません。 
+
+この例では、Microsoft の英語およびフランス語のアナライザーを説明フィールドに割り当てます。 これは、[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) サンプルの hotels.cs ファイルの Hotel クラスを使用して作成した、hotels インデックスのより大きな定義から抜粋されたスニペットです。
+
+Azure Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>カスタム アナライザーを定義する
+
+カスタマイズまたは構成が必要な場合は、アナライザーのコンストラクトをインデックスに追加する必要があります。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
+
+[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>次の手順
 

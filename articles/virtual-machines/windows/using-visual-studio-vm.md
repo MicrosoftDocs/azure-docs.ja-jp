@@ -13,15 +13,15 @@ ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 03/15/2019
+ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 3d269db8ada2b939f53f3efadc696941fd830d5d
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439364"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884875"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1) で入手できます。
@@ -29,12 +29,12 @@ ms.locfileid: "58439364"
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
-最新のメジャー バージョン (Visual Studio 2017 および Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  次期メジャー バージョンである Visual Studio 2019 のプレビューのサポートが最近追加されました。  リリースされたメジャー バージョンごとに、最初にリリースされたバージョン (RTW) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
+最新のメジャー バージョン (Visual Studio 2019、Visual Studio 2017、Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  リリースされたメジャー バージョンごとに、最初に Web にリリースされたバージョン (RTW: Released To Web) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
 
 | リリース バージョン                                              | エディション                     |     製品バージョン      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|     Visual Studio 2019:プレビュー (RC3)                        |           Enterprise         |    バージョン 16.0.0 RC3    |
-| Visual Studio 2017:最新 (バージョン 15.9)                    |    Enterprise、Community     |      バージョン 15.9.9      |
+|     Visual Studio 2019:RTW                                  |    Enterprise、Community     |      バージョン 16.0.0      |
+| Visual Studio 2017:最新 (バージョン 15.9)                    |    Enterprise、Community     |      バージョン 15.9.10     |
 |         Visual Studio 2017:RTW                              |    Enterprise、Community     |      バージョン 15.0.22     |
 |   Visual Studio 2015:最新 (Update 3)                      |    Enterprise、Community     |  Version 14.0.25431.01   |
 |         Visual Studio 2015:RTW                              |             なし             | (サービスの有効期限切れ)  |
@@ -112,5 +112,5 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 ## <a name="next-steps"></a>次の手順
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。
 
-* [Azure Portal を使用した VM の作成](quick-create-portal.md)
+* [Azure portal を使用した VM の作成](quick-create-portal.md)
 * [Windows 仮想マシンの概要](overview.md)

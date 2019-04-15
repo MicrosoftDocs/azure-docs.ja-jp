@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/27/2018
+ms.date: 03/21/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dda3725be7549d90223b33608939c392bdf66852
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b33b9629863702d576eac39fb4097a2bff2e57
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217973"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337580"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのリソース使用状況とクエリ アクティビティを監視する
 Azure portal 内にある Azure SQL Data Warehouse のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、Operations Management Suite (OMS) や Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Data Warehouse で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
@@ -46,7 +46,7 @@ T-SQL を使用して SQL Data Warehouse を監視するときのプログラム
 SQL Data Warehouse で提供される DMV の一覧を表示するのには、[こちらのドキュメント](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)をご覧ください。 
 
 ## <a name="metrics-and-diagnostics-logging"></a>メトリックと診断のロギング
-メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) コンポーネント) にエクスポートでき、[ログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)を使用してプログラムでアクセスできます。
+メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) コンポーネント) にエクスポートでき、[ログ クエリ](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)を使用してプログラムでアクセスできます。 SQL Data Warehouse のログ待ち時間は約 10-15 分です。 待ち時間に影響を与える要因については、次のドキュメントをご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

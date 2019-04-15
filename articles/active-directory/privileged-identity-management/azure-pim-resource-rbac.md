@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する | Microsoft Docs
+title: PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールのアクティビティおよび監査履歴を表示します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afbbad9b956d41252ff9121c99a91669c71aaab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6fb97c416d0e34635b8aa4c19fc6b94889f566c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211735"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578137"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
@@ -113,4 +113,4 @@ ms.locfileid: "56211735"
 
 - [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
 - [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
-- [PIM で Azure AD ディレクトリ ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)
+- [PIM で Azure AD ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)

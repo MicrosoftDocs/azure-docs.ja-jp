@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551978"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893398"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
@@ -28,7 +28,7 @@ ms.locfileid: "57551978"
 
 HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](connectors-native-http.md)と同様に機能しますが、ロジック アプリ デザイナーでは、[Swagger メタデータ](https://swagger.io)から API の構造と出力を公開することでエクスペリエンスが向上します。 また、HTTP + Swagger コネクタをトリガーとして使用することもできます。 ポーリング トリガーを実装する場合は、「[Logic Apps から他の API、サービス、およびシステムを呼び出すカスタム API の作成](../logic-apps/logic-apps-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
 
-では、[ロジック アプリのトリガーとアクション](connectors-overview.md)について詳しく説明します。
+では、[ロジック アプリのトリガーとアクション](../connectors/apis-list.md)について詳しく説明します。
 
 ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
 
@@ -72,14 +72,14 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 この HTTP + Swagger コネクタでサポートされているトリガーとアクションの詳細を次に示します。
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが 1 つあります。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 HTTP + Swagger コネクタにはトリガーが 1 つあります。 トリガーの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 | トリガー | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。 アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 | Action | 説明 |
 | --- | --- |
@@ -113,7 +113,7 @@ HTTP 応答
 ### <a name="http-responses"></a>HTTP 応答
 さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。 次の表に、対応する応答と説明を示します。
 
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | 200 |OK |
 | 202 |承認済み |
@@ -123,8 +123,7 @@ HTTP 応答
 | 404 |見つかりません |
 | 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
 
-- - -
 ## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [ロジック アプリを作成します](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [他のコネクタを見つけます](apis-list.md)

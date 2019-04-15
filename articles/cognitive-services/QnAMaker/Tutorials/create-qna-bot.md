@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 04/02/2019
 ms.author: tulasim
-ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095213"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879612"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
 
@@ -25,7 +25,7 @@ ms.locfileid: "58095213"
 > [!Note] 
 > このトピックは、ボット SDK のバージョン 3 を対象にしています。 バージョン 4 については、[こちら](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)をご覧ください。 
 
-**このチュートリアルで学習する内容は次のとおりです。**
+**このチュートリアルでは、以下の内容を学習します。**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -104,6 +104,12 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 ![QnA Maker ボット](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
 
 QnA ボットがナレッジ ベースから回答します。
+
+## <a name="related-to-qna-maker-bots"></a>QnA Maker ボット関連
+
+* [ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)として、QnA Maker ポータルで使用されている QnA Maker ヘルプ ボットを利用できます。
+    ![QnA Maker ヘルプ ボットのアイコンは赤色のロボット](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Healthcare ボット](https://docs.microsoft.com/HealthBot/qna_model_howto)は、その[言語モデル](https://docs.microsoft.com/HealthBot/qna_model_howto)の 1 つとして QnA Maker を使用します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

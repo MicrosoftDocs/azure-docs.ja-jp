@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996152"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878742"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
 
@@ -32,7 +32,7 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 - URL から Blob Storage にファイルをコピーする。
 - Blob Storage 間でコピーする。
 
-**必要なもの:**
+**必要なもの: **
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure ストレージ アカウント](storage-quickstart-create-account.md)
@@ -49,12 +49,12 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、Windows で「`code .`」と入力します。
 4. Visual Studio Code Marketplace から [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) をインストールします。 Visual Studio Code を再起動します。
 5. この時点で 2 つのプロンプトが表示されます。 1 つは "ビルドとデバッグに必要なアセット" を追加するよう求めるプロンプトで、 [はい] をクリックします。 もう 1 つは、未解決の依存関係を復元するように求めるプロンプトで、 [復元] をクリックします。
-6. `.vscode` の `launch.json` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は ` "console": "externalTerminal"` のようになります。
+6. `.vscode` の `launch.json` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は次のようになります:  `"console": "externalTerminal"`
 7. Visual Studio Code を使用すると、.NET Core アプリケーションをデバッグできます。 `F5` キーを押してアプリケーションを実行し、セットアップが動作していることを確認します。 "Hello World!" が コンソールに表示されます。
 
 ## <a name="add-data-movement-library-to-your-project"></a>プロジェクトへの Data Movement Library の追加
 
-1. 最新バージョンの Data Movement Library を `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です
+1. 最新バージョンの Data Movement Library を `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点でのバージョンは次のとおりです:  `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. プロジェクトを復元するように求めるメッセージが表示されます。 [復元] ボタンをクリックします。 プロジェクト ディレクトリのルートで `dotnet restore` コマンドを入力して、コマンド ラインからプロジェクトを復元することもできます。
 
 `<project-name>.csproj` を変更します。

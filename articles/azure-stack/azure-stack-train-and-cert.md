@@ -8,13 +8,13 @@ ms.service: azure-stack
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: mabrigg
-ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: d4f7ec8f4b6960650b98d8f2d2f051c0873c9754
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 3/20/2019
+ms.openlocfilehash: d15a981e0f43c686a5b6f60387dab6aa6f4b8096
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242503"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540331"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack のトレーニングと認定
 
@@ -24,9 +24,18 @@ Azure Stack について学習し、Azure Stack に関するスキルをデモ�
 
 ## <a name="training"></a>トレーニング
 
-- [コース 20537A: Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX: Azure Stack オンライン トレーニング](https://aka.ms/AzureStackMOOC)
-- [ジョブの役割とラーニング パス](https://azure.microsoft.com/training/learning-paths/)
+- オンデマンドの Microsoft 公式コース
+   - [ODX20537: Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作 (180 日)](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
+   - [OD20537: Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作 (90 日)](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
+
+- Microsoft IT トレーニング コース
+   - [コース 20537A: Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作](https://aka.ms/azsmoc)
+
+- Open edx
+   - [edX: Microsoft Azure Stack の構成および操作に関するオンライン コース](https://aka.ms/AzureStackMOOC)
+   
+- Microsoft ラーニング パス
+   - [ジョブの役割とラーニング パス](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>認定
 

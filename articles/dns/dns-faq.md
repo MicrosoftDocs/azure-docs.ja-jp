@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098095"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905717"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -80,7 +80,7 @@ DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィー�
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS ではゾーン転送 (IXFR AXFR/) はサポートされますか。
 
-いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
+いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
 
 ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)してください。
 
@@ -103,9 +103,11 @@ TXT レコードについては、[RFC 1035](https://www.ietf.org/rfc/rfc1035.tx
 ## <a name="alias-records"></a>エイリアス レコード
 
 ### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>エイリアス レコードが役に立つのはどのようなシナリオですか。
+
 「[Azure DNS エイリアス レコードの概要](dns-alias.md)」の「シナリオ」セクションをご覧ください。
 
 ### <a name="what-record-types-are-supported-for-alias-record-sets"></a>エイリアス レコード セットにはどのようなレコードの種類がサポートされていますか。
+
 Azure DNS ゾーンでは、エイリアス レコード セットとして、次の種類のレコードがサポートされています。
  
 - A 
@@ -114,34 +116,40 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>エイリアス レコード セットのターゲットとしては、どのようなリソースがサポートされていますか。
 
-- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
-- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
-- **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする。** A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
+- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする。** DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
+- **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
+- **同じゾーン内の別の DNS レコード セットをポイントする。** エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Azure portal からエイリアス レコードを作成および更新できますか。
+
 はい。 Azure portal、Azure REST API、PowerShell、CLI、および SDK で、エイリアス レコードを作成して管理できます。
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>エイリアス レコードは、基になるパブリック IP が削除されたときに DNS レコード セットを確実に削除するのに役立ちますか。
+
 はい。 この機能は、エイリアス レコードの主要な機能の 1 つです。 それは、アプリケーションのユーザーに対する障害の可能性を回避するのに役立ちます。
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>エイリアス レコードは、基になるパブリック IP アドレスが変更されたときに、DNS レコード セットを正しい IP アドレスに確実に更新するのに役立ちますか。
+
 はい。 この機能は、エイリアス レコードの主要な機能の 1 つです。 それは、アプリケーションの障害の可能性やセキュリティ リスクを回避するのに役立ちます。
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Traffic Manager をポイントする A または AAAA レコードに対してエイリアス レコード セットを使用するときに、何か制限はありますか。
+
 はい。 A または AAAA レコード セットからエイリアスとして Traffic Manager プロファイルをポイントする場合は、Traffic Manager プロファイルで外部エンドポイントのみを使用する必要があります。 Traffic Manager で外部エンドポイントを作成するときに、エンドポイントの実際の IP アドレスを指定します。
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>エイリアス レコードを使用すると追加料金が発生しますか。
+
 エイリアス レコードは、有効な DNS レコード セットを修飾するものです。 エイリアス レコードに対する追加料金はありません。
 
 ## <a name="use-azure-dns"></a>Azure DNS の使用
 
-### <a name="can-i-cohost-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Azure DNS と別の DNS プロバイダーを使用して 1 つのドメインを共同ホスティングできますか。
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Azure DNS と別の DNS プロバイダーを使用して 1 つのドメインを共同ホスティングできますか。
 
-はい。 Azure DNS では、他の DNS サービスとのドメインの共同ホスティングがサポートされています。
+はい。 Azure DNS では、他の DNS サービスとのドメインの共同ホスティングがサポートされます。
 
 共同ホスティングを設定するには、両方のプロバイダーのネーム サーバーをポイントするようにドメインの NS レコードを変更します。 ドメインに対する DNS クエリを受信するプロバイダーは、ネーム サーバー (NS) レコードによって制御されます。 Azure DNS、他のプロバイダー、および親ゾーン内のこれらの NS レコードを変更できます。 通常、親ゾーンは、ドメイン名レジストラーによって構成されます。 DNS 委任の詳細については、[DNS へのドメインの委任](dns-domain-delegation.md)に関する記事を参照してください。
 
-また、ドメイン用の DNS レコードが両方の DNS プロバイダー間で同期していることを確認してください。 現在、Azure DNS では DNS ゾーン転送はサポートされていません。 DNS レコードは、[Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、[CLI ツール](dns-operations-recordsets-cli.md)のいずれかを使用して同期する必要があります。
+また、ドメイン用の DNS レコードが両方の DNS プロバイダー間で同期していることを確認してください。 現在、Azure DNS では DNS ゾーン転送はサポートされていません。 DNS レコードは、[Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、[CLI ツール](dns-operations-recordsets-cli.md)のいずれかを使用して同期する必要があります。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>自分のドメインを 4 個の Azure DNS ネーム サーバーすべてに委任する必要がありますか。
 
@@ -271,10 +279,9 @@ API、PowerShell、CLI、および SDK で作成されたプライベート ゾ�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure DNS の詳細を確認する](dns-overview.md)
-<br>
-- [プライベート ドメインで Azure DNS を使用する方法を確認する](private-dns-overview.md)
-<br>
-- [DNS ゾーンとレコードの詳細を確認する](dns-zones-records.md)
-<br>
-- [Azure DNS の使用を開始する](dns-getstarted-portal.md)
 
+- [プライベート ドメインで Azure DNS を使用する方法を確認する](private-dns-overview.md)
+
+- [DNS ゾーンとレコードの詳細を確認する](dns-zones-records.md)
+
+- [Azure DNS の使用を開始する](dns-getstarted-portal.md)

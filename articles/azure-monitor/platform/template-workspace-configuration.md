@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: c59e0e7cd846f77082b7131aaec15e4945a18191
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110156"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540773"
 ---
-# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Azure Monitor の Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
 
 * 価格レベルの設定を含むワークスペースの作成 
 * ソリューションの追加
@@ -42,7 +42,7 @@ ms.locfileid: "58110156"
 ## <a name="api-versions"></a>API のバージョン
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| リソース | リソースの種類 | API バージョン |
+| Resource | リソースの種類 | API バージョン |
 |:---|:---|:---|
 | ワークスペース   | workspaces    | 2017-03-15-preview |
 | Search      | savedSearches | 2015-03-20 |

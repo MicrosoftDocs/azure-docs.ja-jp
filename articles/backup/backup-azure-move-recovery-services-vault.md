@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199246"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905768"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Azure サブスクリプションとリソース グループをまたいで Recovery Services コンテナーを移動する (限定パブリック プレビュー)
 
@@ -21,6 +21,8 @@ ms.locfileid: "58199246"
 
 > [!NOTE]
 > Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには、最初に[ソース サブスクリプションを登録する](#register-the-source-subscription-to-move-your-recovery-services-vault)必要があります。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-moving-a-vault"></a>コンテナーを移動するための前提条件
 
@@ -50,24 +52,24 @@ Recovery Services コンテナーの**移動**元となるサブスクリプシ�
 1. Azure アカウントへのサインイン
 
    ```
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 2. 登録するサブスクリプションを選択します
 
    ```
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
    ```
 3. このサブスクリプションを登録します
 
    ```
-   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. コマンドを実行します
 
    ```
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Azure portal または PowerShell を使用して移動操作を開始する前に、サブスクリプションがホワイト リストに登録されるまで 30 分間待機します。
@@ -137,18 +139,18 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
 ## <a name="use-powershell-to-move-a-vault"></a>PowerShell を使用したコンテナーの移動
 
-Recovery Services コンテナーを別のリソース グループに移動するには、`Move-AzureRMResource` コマンドレットを使用します。 `Move-AzureRMResource` ではリソース名とリソースの種類が必要です。 どちらも `Get-AzureRmRecoveryServicesVault` コマンドレットから取得できます。
+Recovery Services コンテナーを別のリソース グループに移動するには、`Move-AzResource` コマンドレットを使用します。 `Move-AzResource` ではリソース名とリソースの種類が必要です。 どちらも `Get-AzRecoveryServicesVault` コマンドレットから取得できます。
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 リソースを他のサブスクリプションに移動するには、`-DestinationSubscriptionId` パラメーターを含めます。
 
 ```
-Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 上記のコマンドレットを実行した後、指定したリソースを移動することの確認を求められます。 「**Y**」と入力して確認します。 検証が成功した後、リソースが移動します。

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0db28fb8016176bdd66e5406a6f1c0a18cc5c3e8
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529251"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847588"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -24,7 +24,6 @@ ms.locfileid: "57529251"
 このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
 
 キットをお持ちでない場合は、 [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)をお試しください。 または、[こちら](https://azure.microsoft.com/develop/iot/starter-kits)で新しいキットを購入してください。
-
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -87,7 +86,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
    > [!WARNING]
    > `raspbian-2017-07-5` zip イメージをダウンロードするには、上のリンクを使用してください。 最新バージョンの Raspbian イメージには Wiring-Pi ノードに関する既知の問題がいくつかあるため、次の手順でエラーが発生するおそれがあります。
- 
+
    b. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 
 2. microSD カードに Raspbian をインストールします。
@@ -160,26 +159,26 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>サンプル アプリケーションの複製と前提条件となるパッケージのインストール
 
 1. 以下の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
-   
+
    **Windows ユーザー**
   
    a. Windows 版の [PuTTY](https://www.putty.org/) をダウンロードしてインストールします。 
 
    b. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
-   
+
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+
    **Mac ユーザーおよび Ubuntu ユーザー**
-   
+
    Ubuntu または macOS に組み込まれている SSH クライアントを使用します。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
 
    > [!NOTE] 
    > 既定のユーザー名は `pi`、パスワードは`raspberry` です。
 
 2. Pi に Node.js と NPM をインストールします。
-   
+
    まず、ご使用の Node.js のバージョンを確認します。 
-   
+
    ```bash
    node -v
    ```
@@ -203,6 +202,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
+
    > [!NOTE] 
    >ネットワーク接続によっては、このインストール プロセスが終了するまで数分かかる場合があります。
 
@@ -238,8 +238,14 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>ハブに送信されたメッセージを読み取る
+
+デバイスから IoT ハブが受信するメッセージを監視する方法の 1 つに、Azure IoT Tools for Visual Studio Code を使用することがあります。 詳細については、「[Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)」を参照してください。
+
+デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
+
 ## <a name="next-steps"></a>次の手順
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 Raspberry Pi が IoT ハブに送信したメッセージを確認するか、または Raspberry Pi にメッセージを送信するには、[Visual Studio Code 用の Azure IoT Tools を使用したデバイスと IoT Hub の間でのメッセージの送受信](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)に関するページを参照してください。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

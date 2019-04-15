@@ -17,24 +17,25 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 929d6b55b9261ae29ba43f05b378866adfdcd2ed
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185453"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882803"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>方法:Azure AD アプリに省略可能な要求を提供する (パブリック プレビュー)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-preview"></a>方法:Azure AD アプリに省略可能な要求を提供する (プレビュー)
 
 この機能は、アプリケーション開発者が、自作のアプリケーションに送信されるトークンに必要な要求を指定するために使用します。 次の処理に省略可能な要求を使用できます。
+
 - アプリケーションのトークンに含める追加の要求を選択する。
 - Azure AD からトークンで返される特定の要求の動作を変更する。
-- アプリケーションのカスタムの要求を追加してアクセスする。 
+- アプリケーションのカスタムの要求を追加してアクセスする。
 
 > [!NOTE]
 > この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 この機能は、パブリック プレビュー期間中、すべての Azure AD サブスクリプションで使用できます。 ただし、この機能が一般公開された後は、機能の一部で Azure AD Premium サブスクリプションが必要になる場合があります。
 
-標準的な要求の一覧とそのトークンの使用方法については、[Azure AD から発行されるトークンの基本](v1-id-and-access-tokens.md)に関するページを参照してください。 
+標準的な要求の一覧とそのトークンの使用方法については、[Azure AD から発行されるトークンの基本](v1-id-and-access-tokens.md)に関するページを参照してください。
 
 [v2.0 Azure AD エンドポイント](active-directory-appmodel-v2-overview.md)の目標の 1 つは、クライアントの最適なパフォーマンスを確保するために、トークン サイズをより小さくすることです。 その結果、以前のバージョンではアクセス トークンと ID トークンに含まれていた一部の要求は、v2.0 トークンでは削除されたため、アプリケーションごとに具体的に要求する必要があります。
 
@@ -50,14 +51,14 @@ ms.locfileid: "56185453"
 
 ## <a name="standard-optional-claims-set"></a>標準の省略可能な要求セット
 
-既定でアプリケーションが使用できる省略可能な要求セットを以下に示します。 アプリケーションにカスタムの省略可能な要求を追加する方法については、後述の[ディレクトリ拡張](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)に関するセクションを参照してください。 要求を**アクセス トークン**に追加する場合、アプリケーション (Web API) *による*アクセス トークンではなく、アプリケーション*に対して*要求されたアクセス トークンに適用されます。 その結果、クライアントがどのように API にアクセスしても、API に対する認証のために使用するアクセス トークンに、適切なデータが確実に存在します。
+既定でアプリケーションが使用できる省略可能な要求セットを以下に示します。 アプリケーションにカスタムの省略可能な要求を追加する方法については、後述の[ディレクトリ拡張](#configuring-custom-claims-via-directory-extensions)に関するセクションを参照してください。 要求を**アクセス トークン**に追加する場合、アプリケーション (Web API) "*による*" アクセス トークンではなく、アプリケーション "*に対して*" 要求されたアクセス トークンに適用されます。 その結果、クライアントがどのように API にアクセスしても、API に対する認証のために使用するアクセス トークンに、適切なデータが確実に存在します。
 
 > [!NOTE]
 > このような要求の大部分は v1.0 および v2.0 トークンの JWT に含めることができますが、「トークンの種類」列に記載されている場合を除き、SAML トークンに含めることはできません。 また、省略可能な要求は現在 AAD ユーザーに対してのみサポートされていますが、MSA のサポートが追加される予定です。 MSA が v2.0 エンドポイントで省略可能な要求をサポートした場合は、「ユーザーの種類」列に AAD ユーザーまたは MSA ユーザーが要求を使用できるかどうかを記載する予定です。 
 
 **表 2:標準の省略可能な要求セット**
 
-| Name                        | 説明   | トークンの種類 | ユーザーの種類 | メモ  |
+| 名前                        | 説明   | トークンの種類 | ユーザーの種類 | メモ  |
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
@@ -71,7 +72,7 @@ ms.locfileid: "56185453"
 | `fwd`                      | IP アドレス。| JWT    |   | 要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合) |
 | `ctry`                     | ユーザーの国 | JWT |           | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。要求の値は、FR、JP、SZ などの標準の 2 文字の国番号です。 |
 | `tenant_ctry`              | リソース テナントの国 | JWT | | |
-| `xms_pdl`          | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)を参照してください。 <br> たとえば、アジア太平洋の場合は `APC` です。 |
+| `xms_pdl`          | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)を参照してください。<br/>たとえば、アジア太平洋の場合は `APC` です。 |
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
 | `xms_tpl`                  | テナントの優先する言語| JWT | | テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
@@ -85,7 +86,7 @@ ms.locfileid: "56185453"
 
 **表 3:V2.0 のみの省略可能な要求**
 
-| JWT の要求     | Name                            | 説明                                | メモ |
+| JWT の要求     | 名前                            | 説明                                | メモ |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP アドレス                      | ログインしたクライアントの IP アドレス。   |       |
 | `onprem_sid`  | オンプレミスのセキュリティ ID |                                             |       |
@@ -106,8 +107,8 @@ ms.locfileid: "56185453"
 | プロパティ名  | 追加のプロパティ名 | 説明 |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | SAML 応答と JWT 応答の両方や、v1.0 および v2.0 トークンに使用できます。 |
-|                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。 |             
-|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです (たとえば、`foo_hometenant.com_EXT_@resourcetenant.com`) |
+|                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、次のように入力します。 `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです。たとえば次のようになります `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
@@ -167,7 +168,7 @@ ms.locfileid: "56185453"
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| Name        | type                       | 説明                                           |
+| 名前        | Type                       | 説明                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。 |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -180,7 +181,7 @@ ms.locfileid: "56185453"
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| Name                 | type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| 名前                 | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |
@@ -188,7 +189,7 @@ ms.locfileid: "56185453"
 | `additionalProperties` | コレクション (Edm.String) | 要求の追加のプロパティ。 このコレクションにプロパティが存在する場合、name プロパティに指定された省略可能な要求の動作が変更されます。                                                                                                                                               |
 ## <a name="configuring-custom-claims-via-directory-extensions"></a>ディレクトリ拡張機能を使用したカスタム要求の構成
 
-標準の省略可能な要求セットに加え、ディレクトリ スキーマ拡張を含むようにトークンを構成することもできます (詳細については[ディレクトリ スキーマ拡張機能に関する記事](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)を参照してください)。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 
+標準の省略可能な要求セットに加え、ディレクトリ スキーマ拡張を含むようにトークンを構成することもできます。 詳しくは、[ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)に関する記事をご覧ください。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 
 
 > [!Note]
 > ディレクトリ スキーマ拡張機能は AAD のみの機能なので、アプリケーション マニフェストでカスタム拡張機能を必須にして、MSA ユーザーがアプリにログインした場合、このような拡張機能は返されません。 
@@ -199,7 +200,7 @@ ms.locfileid: "56185453"
 
 JWT 内では、このような要求は `extn.<attributename>` という形式の名前で発行されます。
 
-SAML トークン内では、このような要求は `http://schemas.microsoft.com/identity/claims/extn.<attributename>` という URI 形式で発行されます。
+SAML トークン内では、このような要求は次の URI 形式で発行されます:  `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
 ## <a name="optional-claims-example"></a>省略可能な要求の例
 

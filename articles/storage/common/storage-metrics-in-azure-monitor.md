@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899028"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884365"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -284,9 +284,9 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 
 リソース ID は、Azure のリソースの一意識別子です。 Azure Monitor REST API を使用して、メトリック定義または値を読み取る場合は、操作するリソースのリソース ID を使用する必要があります。 リソース ID テンプレートの形式は次のとおりです。
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 Storage は、Azure Monitor を使用して、ストレージ アカウント レベルおよびサービス レベルの両方でメトリックを提供します。 たとえば、Blob Storage についてのみメトリックを取得できます。 レベルごとに独自のリソース ID があり、リソース ID を使用すると、その ID のレベルについてのみメトリックが取得されます。
 
@@ -294,34 +294,38 @@ Storage は、Azure Monitor を使用して、ストレージ アカウント �
 
 次の形式は、ストレージ アカウントのリソース ID を指定します。
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>ストレージ サービスのリソース ID
 
 次の形式は、各ストレージ サービスのリソース ID を指定します。
 
-* Blob service のリソース ID `
+* Blob service のリソース ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* Table service のリソース ID `
+```
+* Table service のリソース ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* Queue サービスのリソース ID `
+```
+* Queue サービスのリソース ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* File サービスのリソース ID `
+```
+* File サービスのリソース ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Azure Monitor REST API のリソース ID
 
 次の例は、Azure Monitor REST API を呼び出すときに使用されるパターンを示しています。
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>容量メトリック
 容量メトリックの値は 1 時間ごとに Azure Monitor に送信され、 毎日更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
@@ -406,7 +410,7 @@ Azure Monitor 管理メトリックと並行して従来のメトリックを利
 
 いいえ。Azure Monitor の新しいメトリックは、Azure Resource Manager ストレージ アカウントのみサポートしています。 ストレージ アカウントに対してメトリックを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)に関するページを参照してください。
 
-**Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**
+**Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか?**
 
 いいえ、Azure Compute はディスク上のメトリックをサポートします。 詳しくは、[この記事](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)をご覧ください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568893"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443986"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
 
@@ -36,15 +36,17 @@ Microsoft Azure で Linux VM を実行する場合に、次の問題が発生す
 
 Linux のデバイス パスは、再起動前後の一貫性が保証されていません。 デバイス名はメジャー番号 (文字) とマイナー番号で構成されています。 Linux ストレージ デバイス ドライバーは新しいデバイスを検出すると、メジャー番号とマイナー番号を利用可能な範囲からデバイスに割り当てます。 デバイスが削除されると、再利用できるようにデバイス番号が解放されます。
 
-この問題は、Linux のデバイス スキャンが非同期で行われるように SCSI サブシステムでスケジュールされているために発生します。 その結果、デバイスのパス名は再起動の前後で変わることがあります。 
+この問題は、Linux のデバイス スキャンが非同期で行われるように SCSI サブシステムでスケジュールされているために発生します。 その結果、デバイスのパス名は再起動の前後で変わることがあります。
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。 
+この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。
 
-ほとんどのディストリビューションでは、`fstab` **nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。 
+ほとんどのディストリビューションでは、`fstab` **nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。
 
 Azure Linux エージェントが VM にインストールされている場合、エージェントは /dev/disk/azure パスにシンボリック リンクのセットを構築するために Udev ルールを使用します。 アプリケーションとスクリプトは、VM にアタッチされているディスクと、ディスクの種類およびディスク LUN を識別するために Udev ルールを使用します。
+
+VM が起動せず、VM に SSH 接続できないように fstab を既に編集している場合、[VM シリアル コンソール](./serial-console-linux.md)を使用して[シングル ユーザー モード](./serial-console-grub-single-user-mode.md)に入り、fstab を編集できます。
 
 ### <a name="identify-disk-luns"></a>ディスク LUN の識別
 
@@ -83,29 +85,29 @@ Azure Linux エージェントが VM にインストールされている場合�
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
-      {
-        "caching": "None",
-          "createOption": "empty",
-        "diskSizeGb": 1023,
-          "image": null,
-        "lun": 0,
-        "managedDisk": null,
-        "name": "testVM-20170619-114353",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-        }
-      },
-      {
-        "caching": "None",
-        "createOption": "empty",
-        "diskSizeGb": 512,
-        "image": null,
-        "lun": 1,
-        "managedDisk": null,
-        "name": "testVM-20170619-121516",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-        }
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
       }
     ]
 
@@ -138,7 +140,7 @@ Azure Linux エージェント Udev ルールは、/dev/disk/azure パスにシ�
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>最新の Azure Storage ルールを取得する
 
 最新の Azure Storage ルールを取得するには、次のコマンドを実行します。

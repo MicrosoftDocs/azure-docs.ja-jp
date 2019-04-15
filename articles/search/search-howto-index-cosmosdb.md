@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864458"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883396"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search インデクサーを使用して Cosmos DB のインデックスを作成する方法
 
@@ -61,7 +61,7 @@ Azure Search サービス ページのコマンド バーから、またはス�
 
 + **[名前]** は データ ソースの名前です。 作成されたら、その他のワークロード用に選択できます。
 
-+ **[Cosmos DB アカウント]** は、`AccountEdpointPoint` と `AccountKey` を含む、Cosmos DB からのプライマリまたはセカンダリの接続文字列である必要があります。 アカウントは、データを SQL API または Mongo DB API のどちらとしてキャストするかを決定します
++ **[Cosmos DB アカウント]** は、`AccountEndpoint` と `AccountKey` を含む、Cosmos DB からのプライマリまたはセカンダリの接続文字列である必要があります。 アカウントは、データを SQL API または Mongo DB API のどちらとしてキャストするかを決定します
 
 + **[データベース]** は、アカウントからの既存のデータベースです。 
 
@@ -173,7 +173,7 @@ MongoDB を評価する場合は、REST API を使用してデータ ソース�
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `documentdb`である必要があります。 |
-|**credentials** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/>SQL コレクションでは、接続文字列の形式は `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` です<br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
+|**資格情報** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/>SQL コレクションの接続文字列の形式は次のとおりです:  `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
 | **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB コレクションの場合、クエリはサポートされません。 |
 | **dataChangeDetectionPolicy** | 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。|
 |**dataDeletionDetectionPolicy** | 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。|

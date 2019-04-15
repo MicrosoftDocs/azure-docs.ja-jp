@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database のデータの検出と分類 | Microsoft Docs
-description: Azure SQL Database のデータの検出と分類
+title: Azure SQL Database および SQL Data Warehouse のデータの検出と分類 | Microsoft Docs
+description: Azure SQL Database およびデータの検出と分類
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202981"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495988"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database のデータの検出と分類
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
 
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
 最も機微なデータの検出と分類 (ビジネス/金融、医療、個人を特定できる情報 (PII) など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
@@ -31,7 +31,7 @@ ms.locfileid: "58202981"
 データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 > [!NOTE]
-> このドキュメントは、Azure SQL Database にのみ関係があります。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
+> このドキュメントは、Azure SQL Database と Azure SQL Data Warehouse に関するものです。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
 
 ## <a id="subheading-1"></a>データの検出と分類とは
 

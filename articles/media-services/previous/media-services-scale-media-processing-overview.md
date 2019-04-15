@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3a88c29739faca33794ce10de895c0439f007532
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 51d168474fd593dd537a25c0434e240a426c2cbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294231"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918350"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要 
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 
@@ -48,7 +48,7 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 ## <a name="billing"></a>課金
 
-請求はメディア占有ユニットを実際に使用した時間 (分) に基づいて行われます。 詳しくは、[Media Services の価格詳細](https://azure.microsoft.com/pricing/details/media-services/)ページの FAQ のセクションをご覧ください。   
+アカウントにメディア占有ユニットがプロビジョニングされた時間 (分) に基づいて課金されます。 課金は、アカウントで実行中のジョブがあるかどうかとは無関係に発生します。 詳しくは、[Media Services の価格詳細](https://azure.microsoft.com/pricing/details/media-services/)ページの FAQ のセクションをご覧ください。   
 
 ## <a name="quotas-and-limitations"></a>クォータと制限
 クォータと制限の詳細、サポート チケットを開く方法については、「 [Quotas and limitations (クォータと制限)](media-services-quotas-and-limitations.md)」をご覧ください

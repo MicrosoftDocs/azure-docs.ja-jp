@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993189"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891686"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -26,7 +26,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 *  **Process (プロセス)** - ユーザーは、データベースに接続し、データベースでのプロセス操作を実行し、model データベースのデータを分析できます。
 *  **Read (読み取り)** - ユーザーは、クライアント アプリケーションを使用して model データベースに接続し、このデータを分析できます。
 
-表形式のモデル プロジェクトを作成する場合、SSDT のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SSMS、[Analysis Services PowerShell コマンドレット](https://msdn.microsoft.com/library/hh758425.aspx)、または [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
+表形式のモデル プロジェクトを作成する場合、SSDT のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SSMS、[Analysis Services PowerShell コマンドレット](/sql/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
 > [!NOTE]
 > セキュリティ グループでは、`MailEnabled` プロパティが `True` に設定されている必要があります。
@@ -48,8 +48,8 @@ model データベース レベルでは、すべてのユーザーがロール�
     |**なし**|メンバーは、モデル スキーマを変更できず、データのクエリもできません。|  
     |**読み取り**|メンバーは、(行フィルターに基づいて) データをクエリできますが、モデル スキーマを変更することはできません。|  
     |**Read and Process (読み取りとプロセス)**|メンバーは、(行レベル フィルターに基づいて) データをクエリし、プロセス操作および Process All (すべてプロセス) 操作を実行できますが、モデル スキーマを変更することはできません。|  
-    |**プロセス**|メンバーは、プロセス操作および Process All (すべてプロセス) 操作を実行できます。 モデル スキーマを変更できず、データのクエリもできません。|  
-    |**Administrator (管理者)**|メンバーは、モデル スキーマの変更とすべてのデータのクエリを実行できます。|   
+    |**Process**|メンバーは、プロセス操作および Process All (すべてプロセス) 操作を実行できます。 モデル スキーマを変更できず、データのクエリもできません。|  
+    |**管理者**|メンバーは、モデル スキーマの変更とすべてのデータのクエリを実行できます。|   
   
 5.  作成しているロールに「Read (読み取り)」または「Read and Process (読み取りとプロセス)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** タブをクリックし、テーブルを選択してから、**[DAX Filter(DAX フィルター)]** フィールドをクリックし、DAX 数式を入力します。
   
@@ -120,13 +120,13 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell を使用してロールとユーザーを追加する方法
 
-[SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
+[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
   
 |コマンドレット|説明|
 |------------|-----------------| 
-|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|データベース ロールにメンバーを追加します。| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|データベース ロールからメンバーを削除します。|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|TMSL スクリプトを実行します。|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|データベース ロールにメンバーを追加します。| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|データベース ロールからメンバーを削除します。|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|TMSL スクリプトを実行します。|
 
 ## <a name="row-filters"></a>行フィルター  
 

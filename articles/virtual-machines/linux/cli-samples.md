@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf941832a7a8ed9376fe0684edf4c467226cd497
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fdbf402d14d3f1b3565866045a697212b6b76492
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550210"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904034"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 
@@ -29,7 +29,7 @@ ms.locfileid: "57550210"
 
 | | |
 |---|---|
-|**仮想マシンの作成**||
+|**仮想マシンを作成する**||
 | [仮想マシンの作成](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 最小の構成で Linux 仮想マシンを作成します。 |
 | [完全に構成された仮想マシンの作成](./../scripts/virtual-machines-linux-cli-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | リソース グループ、仮想マシン、およびすべての関連リソースを作成します。|
 | [可用性が高い仮想マシンの作成](./../scripts/virtual-machines-linux-cli-sample-nlb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 可用性が高く、負荷分散がされた構成で仮想マシンを複数作成します。 |

@@ -5,20 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403024"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904901"
 ---
 # <a name="set-environment-variables"></a>環境変数の設定
 
 Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 コンテナーで環境変数を設定するには、コンテナー インスタンスを作成するときに指定します。 環境変数の設定は、[Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example)、および [Azure Portal](#azure-portal-example) を使用してコンテナーを開始するときに行えます。
 
-たとえば、[microsoft/aci-wordcount][aci-wordcount] コンテナー イメージを実行する場合は、次の環境変数を指定することによって動作を変更できます。
+たとえば、Microsoft [aci-wordcount][aci-wordcount] コンテナー イメージを実行する場合は、次の環境変数を指定することによって動作を変更できます。
 
 *NumWords*:STDOUT に送信された単語の数。
 
@@ -26,15 +26,17 @@ Container Instances で環境変数を設定すると、コンテナーによっ
 
 シークレットを環境変数として渡す必要がある場合、Azure Container Instances が Windows と Linux の両方のコンテナーの[セキュリティで保護された値](#secure-values)をサポートします。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="azure-cli-example"></a>Azure CLI の例
 
-[microsoft/aci-wordcount][aci-wordcount] コンテナーの既定の出力を表示するには、まず、この [az container create][az-container-create] コマンドを (環境変数を指定しないで) 実行します。
+[aci-wordcount][aci-wordcount] コンテナーの既定の出力を表示するには、まず、この [az container create][az-container-create] コマンドを (環境変数を指定しないで) 実行します。
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -44,7 +46,7 @@ az container create \
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
@@ -83,13 +85,13 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 PowerShell での環境変数の設定は CLI と似ていますが、`-EnvironmentVariable` コマンド ライン引数を使用します。
 
-まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [microsoft/aci-wordcount][aci-wordcount] コンテナーを起動します。
+まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [aci-wordcount][aci-wordcount] コンテナーを起動します。
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
-    -Image microsoft/aci-wordcount:latest
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
 ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 `envVars` の設定後に、環境変数の *NumWords* と *MinLength* を指定しています。
@@ -99,7 +101,7 @@ $envVars = @{'NumWords'='5';'MinLength'='8'}
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
-    -Image microsoft/aci-wordcount:latest `
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest `
     -RestartPolicy OnFailure `
     -EnvironmentVariable $envVars
 ```
@@ -141,9 +143,9 @@ Azure:\
 
 Azure Portal でコンテナーを開始するときに環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
-ポータルでデプロイするときには、変数の数が現在は 3 つに制限されていて、次の形式で入力する必要があります: `"variableName":"value"`
+ポータルでデプロイするときには、変数の数が現在は 3 つに制限されていて、次の形式で入力する必要があります:  `"variableName":"value"`
 
-例を表示するには、*NumWords* 変数と *MinLength* 変数を指定して [microsoft/aci-wordcount][aci-wordcount] コンテナーを開始します。
+例を表示するには、*NumWords* 変数と *MinLength* 変数を指定して [aci-wordcount][aci-wordcount] コンテナーを開始します。
 
 1. **[構成]** で、**[再起動ポリシー]** を *[On failure] (エラー時)* に設定します。
 2. 最初の変数には `"NumWords":"5"` を入力し、**[Add additional environment variables] (他の環境変数を追加する)** で **[はい]** 選択して、2 番目の変数には `"MinLength":"8"` を入力します。 **[OK]** を選択して確認してから、コンテナーをデプロイします。
@@ -246,7 +248,7 @@ my-secret-value
 [portal-env-vars-02]: ./media/container-instances-environment-variables/portal-env-vars-02.png
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
@@ -255,6 +257,6 @@ my-secret-value
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/az.containerinstance/get-azcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[azure-powershell-install]: /powershell/azure/install-Az-ps
 [new-Azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
 [portal]: https://portal.azure.com

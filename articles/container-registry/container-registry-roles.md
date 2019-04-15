@@ -3,16 +3,17 @@ title: Azure Container Registry - ロールとアクセス許可
 description: Azure のロールベースのアクセス制御 (RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 services: container-registry
 author: dlepow
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593626"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894270"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
@@ -23,8 +24,9 @@ Azure Container Registry サービスでは、Azure コンテナー レジスト
 | Owner | X | X | X | X | X | X |  |  
 | Contributor | X | X | X |  X | X | X |  |  
 | Reader | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | X |  |  |  
+| AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
+| AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>ユーザーとサービスを区別する
@@ -61,7 +63,7 @@ Azure コンテナー レジストリを作成および削除する権限です�
 
 ## <a name="delete-image-data"></a>イメージ データを削除する
 
-[コンテナー イメージまたはリポジトリを削除する](container-registry-delete.md)権限です。
+レジストリから、[コンテナー イメージを削除する](container-registry-delete.md)機能、または Helm チャートなどの他の[サポートされている成果物](container-registry-image-formats.md)を削除する機能。
 
 ## <a name="change-policies"></a>ポリシーの変更
 

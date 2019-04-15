@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905122"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540875"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 
@@ -682,7 +682,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>手順 2:リソースに対して許可するエラーを増やす <Optional>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>手順 2:リソースに対して許可するエラーを増やす \<省略可能>
 
 Always On 可用性グループに属する特定のリソースでは、クラスター サービスがリソース グループの再起動を試みる前に一定期間中に発生できるエラー数に制限があります。 手動によるフェールオーバーおよびマシンのシャットダウンによるフェールオーバーのトリガーを行わない場合はこの制限に近づくことがあるので、この手順を実行する間は制限を大きくすることをお勧めします。
 
@@ -692,7 +692,7 @@ Always On 可用性グループに属する特定のリソースでは、クラ�
 
 最大エラー数 6 に変更します。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3:クラスター グループに IP アドレス リソースを追加する <Optional>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3:クラスター グループに IP アドレス リソースを追加する \<省略可能>
 
 クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 そのような場合には、他のクラスター リソースに対する更新ができなくなります。
 

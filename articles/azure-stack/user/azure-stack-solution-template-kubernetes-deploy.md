@@ -1,6 +1,6 @@
 ---
-title: Kubernetes の Azure Stack へのデプロイ | Microsoft Docs
-description: Kubernetes を Azure Stack にデプロイする方法について説明します。
+title: Azure Stack コンテナーを使用するための Kubernetes をデプロイする | Microsoft Docs
+description: Azure Stack でコンテナーを使用するための Kubernetes をデプロイする方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,16 +15,16 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986245"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877195"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Azure Stack でコンテナーを使用するための Kubernetes をデプロイする
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack の切断されたシナリオは、プレビューでは現在サポートされていません。
@@ -43,7 +43,7 @@ Kubernetes は、次の目的で使用できます。
 
 クラスターをサポートするノードに必要なコンピューティングの使用量にのみ課金されます。 詳細については、「[Azure Stack での使用量と請求](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)」を参照してください。
 
-## <a name="deploy-kubernetes"></a>Kubernetes のデプロイ
+## <a name="deploy-kubernetes-to-use-containers"></a>コンテナーを使用するための Kubernetes をデプロイする
 
 Azure Stack で Kubernetes クラスターをデプロイする手順は、ご使用の ID 管理サービスによって異なります。 Azure Stack のインストールで使用される ID 管理ソリューションを確認します。 ご使用の ID 管理サービスを確認するには、Azure Stack 管理者に問い合わせてください。
 
@@ -69,4 +69,4 @@ AD FS を使用した場合のクラスターのインストール手順につ�
 
 [Active Directory フェデレーション サービス (AD FS) を使用して Azure Stack に Kubernetes をデプロイする](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

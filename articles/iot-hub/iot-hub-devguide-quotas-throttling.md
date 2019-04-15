@@ -3,17 +3,17 @@ title: Azure IoT Hub クォータと調整について | Microsoft Docs
 description: 開発者ガイド - IoT Hub に適用されるクォータと予想される調整動作の説明。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791377"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049605"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -42,6 +42,7 @@ ms.locfileid: "57791377"
 | cloud-to-device の受信<sup>1</sup> <br/> (デバイスが HTTPS を使用する場合のみ)| 16.67/sec/unit (1000/分/単位) | 16.67/sec/unit (1000/分/単位) | 833.33/sec/unit (50000/分/単位) |
 | ファイルのアップロード | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 83.33 ファイル アップロード通知/秒/単位 (5000/分/単位) |
 | ダイレクト メソッド<sup>1</sup> | 160 KB/秒/ユニット<sup>2</sup> | 480 KB/秒/ユニット<sup>2</sup> | 24 MB/秒/ユニット<sup>2</sup> | 
+| クエリ | 20/分/ユニット | 20/分/ユニット | 1000/分/ユニット |
 | ツイン (デバイスとモジュール) の読み取り<sup>1</sup> | 100/秒 | 100/秒または 10/秒/ユニット以上 | 500/秒/ユニット |
 | ツインの更新 (デバイスとモジュール)<sup>1</sup> | 50/秒 | 50/秒または 5/秒/ユニット以上 | 250/秒/ユニット |
 | ジョブの操作<sup>1、3</sup>  <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |

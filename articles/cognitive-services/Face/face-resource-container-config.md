@@ -1,7 +1,7 @@
 ---
-title: Configure containers
+title: コンテナーの構成
 titlesuffix: Face - Azure Cognitive Services
-description: Configuration settings for containers.
+description: コンテナーの構成設定。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,151 +9,145 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 4215b008af21a3473a1d2dcef5f73a1b19133215
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821561"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882125"
 ---
-# <a name="configure-face-docker-containers"></a>Configure Face Docker containers
+# <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
-The **Face** container runtime environment is configured using the `docker run` command arguments. This container has several required settings, along with a few optional settings. Several [examples](#example-docker-run-commands) of the command are available. The container-specific settings are the billing settings. 
+**Face** コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
-Container settings are [hierarchical](#hierarchical-settings) and can be set with [environment variables](#environment-variable-settings) or docker [command-line arguments](#command-line-argument-settings).
-
-## <a name="configuration-settings"></a>Configuration settings
+## <a name="configuration-settings"></a>構成設定
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> The [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting), and [`Eula`](#eula-setting) settings are used together, and you must provide valid values for all three of them; otherwise your container won't start. For more information about using these configuration settings to instantiate a container, see [Billing](face-how-to-install-containers.md#billing).
+> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
 
-## <a name="apikey-configuration-setting"></a>ApiKey configuration setting
+## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-The `ApiKey` setting specifies the Azure resource key used to track billing information for the container. You must specify a value for the ApiKey and the value must be a valid key for the _Face_ resource specified for the [`Billing`](#billing-configuration-setting) configuration setting.
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Face_ リソースの有効なキーであることが必要です。
 
-This setting can be found in the following place:
+この設定は次の場所で確認できます。
 
-* Azure portal: **Face's** Resource Management, under **Keys**
+* Azure portal:**Face の** [リソース管理] の **[キー]** の下
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights setting
+## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Billing configuration setting
+## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-The `Billing` setting specifies the endpoint URI of the _Face_ resource on Azure used to meter billing information for the container. You must specify a value for this configuration setting, and the value must be a valid endpoint URI for a _Face_ resource on Azure. The container reports usage about every 10 to 15 minutes.
+`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Face_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Face_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
-This setting can be found in the following place:
+この設定は次の場所で確認できます。
 
-* Azure portal: **Face's** Overview, labeled `Endpoint`
+* Azure portal:**Face** の [概要]、ラベル:  `Endpoint`
 
-|Required| Name | Data type | Description |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|Yes| `Billing` | String | Billing endpoint URI<br><br>Example:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
 <!-- specific to face only -->
 
-## <a name="cloudai-configuration-settings"></a>CloudAI configuration settings
+## <a name="cloudai-configuration-settings"></a>CloudAI カスタム構成設定
 
-The configuration settings in the `CloudAI` section provide container-specific options unique to your container. The following settings and objects are supported for the Face container in the `CloudAI` section
+`CloudAI` セクションの構成設定では、ご利用のコンテナーに固有のオプションが提供されます。 `CloudAI` セクションの Face コンテナーでは、次の設定とオブジェクトがサポートされます
 
-| Name | Data type | Description |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
-| `Storage` | Object | The storage scenario used by the Face container. For more information about storage scenarios and associated settings for the `Storage` object, see [Storage scenario settings](#storage-scenario-settings) |
+| `Storage` | Object | Face コンテナーで使用されるストレージ シナリオ。 `Storage` オブジェクトのストレージ シナリオと関連する設定の詳細については、「[ストレージ シナリオの設定](#storage-scenario-settings)」を参照してください |
 
-### <a name="storage-scenario-settings"></a>Storage scenario settings
+### <a name="storage-scenario-settings"></a>ストレージ シナリオの設定
 
-The Face container stores blob, cache, metadata, and queue data, depending on what's being stored. For example, training indexes and results for a large person group are stored as blob data. The Face container provides two different storage scenarios when interacting with and storing these types of data:
+Face コンテナーには、格納される内容に応じて、BLOB、キャッシュ、メタデータ、およびキュー データが格納されます。 たとえば、大きな人物グループのトレーニング インデックスと結果は、BLOB データとして格納されます。 Face コンテナーでは、これらの種類のデータを操作および格納する場合に、次の 2 つの異なるストレージ シナリオが提供されます。
 
-* Memory  
-  All four types of data are stored in memory. They're not distributed, nor are they persistent. If the Face container is stopped or removed, all of the data in storage for that container is destroyed.  
-  This is the default storage scenario for the Face container.
+* メモリ  
+  メモリには 4 つのすべての種類のデータが格納されます。 これらは分散されることはなく、永続的なものでもありません。 Face コンテナーが停止または削除された場合、そのコンテナーのストレージ内のデータはすべて破棄されます。  
+  これは、Face コンテナーの既定のストレージ シナリオです。
 * Azure  
-  The Face container uses Azure Storage and Azure Cosmos DB to distribute these four types of data across persistent storage. Blob and queue data is handled by Azure Storage. Metadata and cache data is handled by Azure Cosmos DB. If the Face container is stopped or removed, all of the data in storage for that container remains stored in Azure Storage and Azure Cosmos DB.  
-  The resources used by the Azure storage scenario have the following additional requirements
-  * The Azure Storage resource must use the StorageV2 account kind
-  * The Azure Cosmos DB resource must use the Azure Cosmos DB's API for MongoDB
+  Face コンテナーでは Azure Storage と Azure Cosmos DB を使用して、これら 4 つの種類のデータを永続的ストレージに分散します。 BLOB およびキュー データは、Azure Storage で処理されます。 メタデータとキャッシュ データは、Azure Cosmos DB によって処理されます。 Face コンテナーが停止または削除された場合、そのコンテナーのストレージ内のデータはすべて Azure Storage と Azure Cosmos DB に格納されたままとなります。  
+  Azure ストレージ シナリオで使用されるリソースには、次の追加の要件があります
+  * Azure Storage リソースでは、StorageV2 という種類のアカウントを使用する必要があります
+  * Azure Cosmos DB リソースでは、Azure Cosmos DB の MongoDB 用 API を使用する必要があります
 
-The storage scenarios and associated configuration settings are managed by the `Storage` object, under the `CloudAI` configuration section. The following configuration settings are available in the `Storage` object:
+ストレージ シナリオと関連する構成設定は、`CloudAI` 構成セクションの下の、`Storage` オブジェクトで管理されます。 `Storage` オブジェクトでは、次の構成設定を使用できます。
 
-| Name | Data type | Description |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
-| `StorageScenario` | String | The storage scenario supported by the container. The following values are available<br/>`Memory` - Default value. Container uses non-persistent, non-distributed and in-memory storage, for single-node, temporary usage. If the container is stopped or removed, the storage for that container is destroyed.<br/>`Azure` - Container uses Azure resources for storage. If the container is stopped or removed, the storage for that container is persisted.|
-| `ConnectionStringOfAzureStorage` | String | The connection string for the Azure Storage resource used by the container.<br/>This setting applies only if `Azure` is specified for the `StorageScenario` configuration setting. |
-| `ConnectionStringOfCosmosMongo` | String | The MongoDB connection string for the Azure Cosmos DB resource used by the container.<br/>This setting applies only if `Azure` is specified for the `StorageScenario` configuration setting. |
+| `StorageScenario` | String | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
+| `ConnectionStringOfAzureStorage` | String | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
+| `ConnectionStringOfCosmosMongo` | String | コンテナーで使用される、Azure Cosmos DB リソースの MongoDB 接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
 
-For example, the following command specifies the Azure storage scenario and provides sample connection strings for the Azure Storage and Cosmos DB resources used to store data for the Face container.
+たとえば、次のコマンドでは、Azure ストレージ シナリオを指定し、Face コンテナーのデータを格納するために使用される Azure Storage および Cosmos DB リソースのサンプル接続文字列を提供します。
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-The storage scenario is handled separately from input mounts and output mounts. You can specify a combination of those features for a single container. For example, the following command defines a Docker bind mount to the `D:\Output` folder on the host machine as the output mount, then instantiates a container from the Face container image, saving log files in JSON format to the output mount. The command also specifies the Azure storage scenario and provides sample connection strings for the Azure Storage and Cosmos DB resources used to store data for the Face container.
+ストレージ シナリオは、入力マウントと出力マウントとは別に処理されます。 1 つのコンテナーに対して、これらの機能の組み合わせを指定できます。 たとえば、次のコマンドでは Docker バインド マウントを、出力マウントとしてホスト コンピューター上の `D:\Output` フォルダーに定義し、さらに Face コンテナー イメージからコンテナーをインスタンス化し、ログ ファイルを JSON 形式で出力マウントに保存しています。 また、このコマンドでは、Azure ストレージ シナリオを指定し、Face コンテナーのデータを格納するために使用される Azure Storage および Cosmos DB リソースのサンプル接続文字列を提供します。
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-## <a name="eula-setting"></a>Eula setting
+## <a name="eula-setting"></a>Eula 設定
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluentd settings
+## <a name="fluentd-settings"></a>Fluentd の設定
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http proxy credentials settings
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Logging settings
+## <a name="logging-settings"></a>Logging の設定
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Mount settings
+## <a name="mount-settings"></a>マウントの設定
 
-Use bind mounts to read and write data to and from the container. You can specify an input mount or output mount by specifying the `--mount` option in the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command.
+コンテナーとの間でデータを読み書きするには、バインド マウントを使用します。 入力マウントまたは出力マウントは、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドで `--mount` オプションを指定することによって指定できます。
 
-The Face containers don't use input or output mounts to store training or service data. 
+Face コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 
 
-The exact syntax of the host mount location varies depending on the host operating system. Additionally, the [host computer](face-how-to-install-containers.md#the-host-computer)'s mount location may not be accessible due to a conflict between permissions used by the Docker service account and the host mount location permissions. 
+ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](face-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|Optional| Name | Data type | Description |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|Not allowed| `Input` | String | Face containers do not use this.|
-|Optional| `Output` | String | The target of the output mount. The default value is `/output`. This is the location of the logs. This includes container logs. <br><br>Example:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="hierarchical-settings"></a>Hierarchical settings
+## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
+以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](face-how-to-install-containers.md#stop-the-container)するまで動作し続けます。
 
-## <a name="example-docker-run-commands"></a>Example docker run commands 
+* **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
+* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
-The following examples use the configuration settings to illustrate how to write and use `docker run` commands.  Once running, the container continues to run until you [stop](face-how-to-install-containers.md#stop-the-container) it.
+{_<引数名>_} はお客様独自の値に置き換えてください。
 
-* **Line-continuation character**: The Docker commands in the following sections use the back slash, `\`, as a line continuation character. Replace or remove this based on your host operating system's requirements. 
-* **Argument order**: Do not change the order of the arguments unless you are very familiar with Docker containers.
-
-Replace {_argument_name_} with your own values:
-
-| Placeholder | Value | Format or example |
+| プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{BILLING_KEY} | The endpoint key of the Face resource. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | The billing endpoint value including region.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | Face リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
-> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container; otherwise, the container won't start.  For more information, see [Billing](face-how-to-install-containers.md#billing).
-> The ApiKey value is the **Key** from the Azure Face Resource keys page. 
+> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
+> ApiKey の値は、[Azure Face Resource keys]\(Azure Face リソース キー\) ページからの**キー**です。 
 
-## <a name="face-container-docker-examples"></a>Face container Docker examples
+## <a name="face-container-docker-examples"></a>Face コンテナーの Docker の例
 
-The following Docker examples are for the face container. 
+次の Docker の例は、Face コンテナーに関するものです。 
 
-### <a name="basic-example"></a>Basic example 
+### <a name="basic-example"></a>基本的な例 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -163,25 +157,15 @@ The following Docker examples are for the face container.
   ApiKey={BILLING_KEY} 
   ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Logging example with command-line arguments
+### <a name="logging-example"></a>ログの例 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
-  Logging:Console:LogLevel=Information
+  Logging:Console:LogLevel:Default=Information
   ```
 
-### <a name="logging-example-with-environment-variable"></a>Logging example with environment variable
+## <a name="next-steps"></a>次の手順
 
-  ```
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
-  Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY}
-  ```
-
-## <a name="next-steps"></a>Next steps
-
-* Review [How to install and run containers](face-how-to-install-containers.md)
+* [コンテナーのインストール方法と実行方法](face-how-to-install-containers.md)を確認する。

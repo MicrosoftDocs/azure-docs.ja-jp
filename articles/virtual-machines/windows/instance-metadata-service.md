@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8cdf8022f87c8fa3e81e2544a6678751726b2b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889830"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847971"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > すべてのインスタンス メタデータ クエリでは、大文字小文字が区別されます。
 
 ### <a name="data-output"></a>データ出力
+
 既定では、Instance Metadata Service は JSON 形式でデータを返します (`Content-Type: application/json`)。 ただし、要求すれば、別の API から別の形式でデータが返されます。
 次の表は、API がサポートできるその他のデータ形式を示しています。
 
@@ -111,6 +112,9 @@ API | 既定のデータ形式 | その他の形式
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
+> [!NOTE]
+> リーフ ノードでは `format=json` は機能しません。 これらのクエリでは、既定の形式が json の場合は、`format=text` を明示的に指定する必要があります。
+
 ### <a name="security"></a>セキュリティ
 
 Instance Metadata Service エンドポイントには、実行中の仮想マシン インスタンスからのみ、ルーティング不可能な IP アドレスでアクセスできます。 さらに、`X-Forwarded-For` ヘッダーがあるすべての要求は、サービスによって拒否されます。
@@ -123,8 +127,8 @@ Instance Metadata Service エンドポイントには、実行中の仮想マシ
 HTTP 状態コード | 理由
 ----------------|-------
 200 OK |
-400 Bad Request | `Metadata: true` ヘッダーがありません
-404 見つかりません | 要求された要素は存在しません 
+400 Bad Request | リーフ ノードのクエリ時に `Metadata: true` ヘッダーがないか、その形式になっていません。
+404 見つかりません | 要求された要素は存在しません
 405 Method Not Allowed | `GET` 要求と `POST` 要求のみがサポートされています
 429 Too Many Requests | 現在 API は、1 秒あたり最大 5 つのクエリをサポートしています
 500 Service Error     | しばらくしてからやり直してください
@@ -216,7 +220,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "rs4-pro",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "17134.345.59",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -294,7 +298,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "Enterprise",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "13.0.400110",
     "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
     "vmScaleSetName": "",
@@ -352,7 +356,7 @@ resourceGroupName | お使いの仮想マシンの[リソース グループ](..
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2018-04-02
 provider | VM のプロバイダー | 2018 年 10 月 1 日
-publicKeys | VM とパスに割り当てられた公開キー (<https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey>) のコレクション | 2018-04-02
+publicKeys | VM とパスに割り当てられた[公開キーのコレクション](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
@@ -503,13 +507,29 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure には、[Azure Government](https://azure.microsoft.com/overview/clouds/government/) など多数のソブリン クラウドがあります。 ランタイムの決定を行うために、Azure 環境が必要な場合があります。 次の例では、この動作を実現する方法を示します。
 
 **要求**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **応答**
-```
+```bash
 AZUREPUBLICCLOUD
+```
+
+### <a name="getting-the-tags-for-the-vm"></a>VM のタグの取得
+
+論理的に分類するために Azure VM にタグが適用されている場合があります。 次の要求を使用して、VM に割り当てられたタグを取得できます。
+
+**要求**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**応答**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
 ```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>VM が Azure で実行されていることの検証

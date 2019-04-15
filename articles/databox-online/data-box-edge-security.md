@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119787"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891805"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>Data Box Edge のセキュリティとデータ保護 (プレビュー)
+# <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge のセキュリティとデータ保護
 
 新しいテクノロジを採用する際に、セキュリティは大きな懸案事項となります。そのテクノロジで機密データや財産的価値のあるデータを扱うとなれば、なおさらです。 Microsoft Azure Data Box Edge ソリューションは、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底するうえで役立ちます。
 
@@ -28,9 +28,6 @@ Azure Data Box Edge ソリューションは、互いに連携し合う 4 つの
 - **デバイスに接続されるクライアント/ホスト** - お客様のインフラストラクチャにおいて保護の対象となるデータを格納しているクライアント。Data Box Edge デバイスに接続されます。
 - **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 通常、この場所は、お客様が作成した Data Box Edge リソースにリンクされたストレージ アカウントになります。
 
-> [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>Data Box Edge/Data Box Gateway のサービス保護
 
@@ -38,16 +35,18 @@ Data Box Edge/Data Box Gateway サービスは、Microsoft Azure にホストさ
 
 - Data Box Edge/Data Box Gateway サービスにアクセスするには、お客様の組織がマイクロソフトエンタープライズ契約 (EA) とクラウド ソリューション プロバイダー (CSP) のサブスクリプションを保有している必要があります。 詳細については、「[Azure サブスクリプションにサインアップする](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)」にアクセスしてください。
 - お客様の管理サービスは Azure にホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+- SDK の管理操作で使用する Data Box Edge または Data Box Gateway リソースの暗号化キーは、**[デバイスのプロパティ]** で入手できます。 暗号化キーを表示できるのは、Resource Graph API のアクセス許可がある場合のみです。
 
 ## <a name="data-box-edge-device-protection"></a>Data Box Edge デバイスの保護
 
 Data Box Edge デバイスは、データをローカルで処理して、そのデータを Azure に送信することで、データを変換できるオンプレミス デバイスです。 お客様のデバイスは...
 
 - Data Box Edge/Data Box Gateway のサービスにアクセスするためのアクティブ化キーが必要です。
-- デバイスの管理者パスワードで常に保護されます。
+- デバイスのパスワードで常に保護されます。
 - ロックダウンされます。 デバイスの BMC と BIOS は、パスワードで保護され、BIOS に対するユーザー アクセスは制限されます。
 - セキュア ブートが有効です。
-- Windows Defender Device Guard を実行します。 Device Guard によって、コード整合性ポリシーで定義する信頼されたアプリケーションのみを実行することができます。 
+- Windows Defender Device Guard を実行します。 Device Guard によって、コード整合性ポリシーで定義する信頼されたアプリケーションのみを実行することができます。
+- 前面カバーの内側に、デバイスをロックするための鍵があります。 デバイスを構成したら、カバーを開けることをお勧めします。 デバイスの前面にあるデータ ディスクに許可なくアクセスできないよう、鍵を探してカバーをロックしてください。
 
 ### <a name="protect-the-device-via-activation-key"></a>アクティブ化キーでデバイスを保護する
 
@@ -68,14 +67,14 @@ Azure サブスクリプションで作成した Data Box Edge/Data Box Gateway 
 次のようにすることができます。
 
 - ブラウザーを介してデバイスのローカル Web UI に接続し、パスワードを指定して、デバイスにサインインします。
-- HTTP 経由でデバイスの PowerShell インターフェイスにリモートで接続します。 既定ではリモート管理がオンになっています。 デバイス管理者のパスワードを入力して、デバイスにサインインできます。 詳細については、[Data Box Edge デバイスにリモートで接続する方法](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)に関する記事をご覧ください。
+- HTTP 経由でデバイスの PowerShell インターフェイスにリモートで接続します。 既定ではリモート管理がオンになっています。 デバイスのパスワードを入力して、デバイスにサインインできます。 詳細については、[Data Box Edge デバイスにリモートで接続する方法](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)に関する記事をご覧ください。
 
 次のベスト プラクティスに留意してください。
 
 - Data Box Edge サービスで既存のパスワードを取得することはできません。このサービスでは、Azure portal を介して既存のパスワードをリセットすることのみを行えます。 パスワードを忘れた場合にリセットしなくても済むように、パスワードはすべて安全な場所に保管しておくことをお勧めします。 パスワードをリセットする場合は、リセットする前にすべてのユーザーに通知してください。
 - ローカル Web UI を使用して[パスワードを変更します](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 パスワードを変更する場合は、サインインできなくなることを防ぐために、すべてのリモート アクセス ユーザーにその旨を通知してください。
 - HTTP 経由でお使いのデバイスの Windows PowerShell インターフェイスにリモートでアクセスすることができます。 セキュリティのベスト プラクティスとして、信頼できるネットワークのみで HTTP を使用する必要があります。
-- デバイス管理者のパスワードに強度があること、また適切に保護されていることを確認します。 [パスワードのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management)に従ってください。
+- デバイスのパスワードが強力であること、また適切に保護されていることを確認します。 [パスワードのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management)に従ってください。
 
 ## <a name="protect-the-data"></a>データの保護
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4d29602581531e9e42edbf4e00eca810757a8a99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116900"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895734"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -100,7 +100,7 @@ ms.locfileid: "56116900"
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリのパフォーマンスを向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
-* [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
+* [LUIS アプリのパフォーマンスを向上させるフィーチャーを使用する](luis-how-to-add-features.md) 
 * [このチュートリアルでのバッチ テストについて](luis-tutorial-batch-testing.md)
 * [バッチ テストの概念について](luis-concept-batch-test.md)

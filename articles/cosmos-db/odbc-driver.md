@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816630"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851058"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -97,7 +97,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. スキーマの定義を完了したら、**[ファイル]** | **[保存]** をクリックし、スキーマを保存するディレクトリに移動して、**[保存]** をクリックします。
 
-    今後このスキーマを DSN と共に使用する場合は、[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)] ウィンドウを (ODBC データ ソース管理者経由で) 開き、[詳細オプション] をクリックして、[スキーマ ファイル] ボックスの保存されたスキーマに移動します。 スキーマ ファイルを既存の DSN に保存すると、DNS 接続のスコープが、スキーマによって定義されたデータと構造に変更されます。
+1. このスキーマを DSN と共に使用する場合は、**[Azure Cosmos DB ODBC Driver DSN Setup\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)]** ウィンドウを (ODBC データ ソース管理者経由で) 開き、**[詳細オプション]** をクリックして、**[スキーマ ファイル]** ボックスの保存されたスキーマに移動します。 スキーマ ファイルを既存の DSN に保存すると、DNS 接続のスコープが、スキーマによって定義されたデータと構造に変更されます。
 
 ## <a id="table-mapping"></a>手順 4:テーブル区切り記号のマッピング方法を使ってスキーマ定義を作成する
 

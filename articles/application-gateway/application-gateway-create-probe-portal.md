@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 8e98b50e936ba97881e2937a50eb474d57a24a05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107765"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862167"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
+> * [Azure ポータル](application-gateway-create-probe-portal.md)
+> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure クラシック PowerShell](application-gateway-create-probe-classic-ps.md)
 
 この記事では、Azure Portal を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
@@ -49,12 +49,12 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
 1. **[正常性プローブの追加]** ブレードでプローブに必要な情報を入力し、完了したら **[OK]** をクリックします。
 
-   |**設定** | **値** | **詳細**|
+   |**Setting** | **値** | **詳細**|
    |---|---|---|
-   |**Name**|customProbe|この値は、ポータルでアクセス可能なプローブのフレンドリ名です。|
-   |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。|
+   |**名前**|customProbe|この値は、ポータルでアクセス可能なプローブのフレンドリ名です。|
+   |**Protocol**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。|
    |**Host**|つまり  contoso.com|この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。|
-   |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 http://contoso.com の既定のパスの場合は、'/' だけを使用します |
+   |**Path**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http:\//contoso.com では "/" のみを使用します。 |
    |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
    |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。|
    |**異常のしきい値**|3|異常であると見なされるまでの試行の失敗回数です。 しきい値を 0 に設定すると、正常性チェックが失敗した場合に、バックエンドが異常であると即座に判断されます。|

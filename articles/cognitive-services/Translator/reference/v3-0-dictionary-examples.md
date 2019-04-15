@@ -3,19 +3,19 @@ title: Translator Text API の Dictionary Examples メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Dictionary Examples メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: a72aca47b33c911d4812274cfa624eaacbdec0d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26f147fde58a7f9c836bdacd6d66321f0fc5529a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884785"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916423"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: 辞書の例
 
@@ -123,7 +123,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 この例では、英語の用語 `fly` とそのスペイン語翻訳 `volar` で構成されるペアの例を検索する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

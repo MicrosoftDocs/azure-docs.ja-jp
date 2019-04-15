@@ -1,5 +1,5 @@
 ---
-title: Azure AD の認証方法
+title: 認証方法 - Azure Active Directory
 description: Azure AD で MFA および SSPR として使用できる認証方法
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999498"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894595"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
-Azure AD のセルフサービスによるパスワードのリセット (SSPR) と多要素認証 (MFA) では、関連する機能を使用する際、ユーザーが本人であることを確認するために、認証方法やセキュリティ情報と呼ばれる追加の情報の入力を求められる場合があります。
+管理者が Azure Multi-Factor Authentication とセルフサービスのパスワード リセット (SSPR) の認証方法を選択する場合は、ユーザーに複数の認証方法を登録するよう要求することをお勧めします。 ユーザーがある認証方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。
 
-管理者は、ユーザーが使用できる SSPR および MFA の認証方法をポリシー内で定義できます。 認証方法によっては、すべての機能で使用できないものもあります。
+管理者は、ユーザーが使用できる SSPR および MFA の認証方法をポリシー内で定義できます。 認証方法によっては、すべての機能で使用できないものもあります。 ポリシーの構成の詳細については、「[セルフサービスによるパスワードのリセットを適切にロールアウトする方法](howto-sspr-deployment.md)」および[クラウド ベースの Azure Multi-Factor Authentication の計画](howto-mfa-getstarted.md)に関する記事を参照してください。
 
 Microsoft では、認証方法を利用できない場合に備えて、ユーザーが選択できる認証方法の数を、最低限必要な数より多く設定することを強くお勧めしています。
 
@@ -155,13 +155,13 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 
 OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていることに注意してください。すべてのトークンと互換性があるとは限りません。
 
-![Azure portal の [MFA Server OATH tokens]\(MFA サーバー - OATH トークン\) ブレードでの OATH トークンのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 いったんトークンを取得したら、次に示す例のように、UPN、シリアル番号、秘密鍵、間隔、製造元、モデルを含む、コンマ区切り値 (CSV) ファイル形式でアップロードする必要があります。
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
@@ -233,10 +233,10 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ## <a name="next-steps"></a>次の手順
 
-[セルフサービスによるパスワードのリセットを組織で使用できるようにする](quickstart-sspr.md)
+[組織でのセルフサービスのパスワード リセットを有効にする](quickstart-sspr.md)
 
-[Azure Multi-Factor Authentication を組織で使用できるようにする](howto-mfa-getstarted.md)
+[組織での Azure Multi-Factor Authentication を有効にする](howto-mfa-getstarted.md)
 
-[テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
+[テナントでの統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
 [エンドユーザーの認証方法の構成に関するドキュメント](https://aka.ms/securityinfoguide)

@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309420"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848933"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
 この記事は、自己テスト API を使用するクライアント サービスを作成する場合のガイドとして使用してください。 自己テスト API を使用して仮想マシン (VM) を事前検証することで、Azure Marketplace の最新の公開要件を確実に満たすことができます。 このクライアント サービスを使用すると、マイクロソフト認定資格を受けるためにオファーを送信する前に VM をテストできます。
-
 
 ## <a name="development-and-testing-overview"></a>開発とテストの概要
 
@@ -41,20 +40,18 @@ ms.locfileid: "58309420"
 
 クライアントを作成したら、VM に対してそれをテストすることができます。
 
-
 ### <a name="self-test-client-authorization"></a>自己テスト クライアントの承認
 
 次の図は、クライアントの資格情報 (共有シークレットまたは証明書) を使用したサービス間の呼び出しの場合に承認がどのように機能するかを示しています。
 
 ![クライアントの承認プロセス](./media/stclient-dev-process.png)
 
-
 ## <a name="the-self-test-client-api"></a>自己テスト クライアント API
 
 自己テスト API には、POST メソッドのみをサポートする 1 つのエンドポイントが含まれています。  その構造を次に示します。
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 次の表で、API のフィールドについて説明します。
@@ -83,11 +79,9 @@ Request body:    The Request body parameters should use the following JSON forma
 |  PortNo            |  VM に接続するための空きポート番号。 このポート番号は通常、Linux の場合は `22`、Windows の場合は `5986` です。          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>API の利用
 
 PowerShell または cURL を使用して自己テスト API を利用できます。
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Linux OS 上で PowerShell を使用して API を利用する
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 次のスクリーン キャプチャは、PowerShell で API を呼び出す場合の例を示しています。
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ cURL を使用して API を呼び出すには、次の手順に従います。
 2. 次のコード スニペットに示すように、メソッドは Post、コンテンツの種類は JSON です。
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 次のスクリーンは、curl を使用して API を呼び出す例を示しています。
 
 ![curl コマンドを使用して API を呼び出す](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ https://isvapp.azurewebsites.net/selftest-vm
    次の手順では、テナント名 (またはディレクトリ名) やテナント ID (またはディレクトリ ID) が必要になる場合があります。
 
    **テナント情報を取得するには:**
-  
+
    **Azure Active Directory の [概要]** で "プロパティ" を検索し、**[プロパティ]** を選択します。 例として次のスクリーン キャプチャを使用します。
 
    - **名前** - テナント名またはディレクトリ名
@@ -284,7 +278,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 14. **[選択]** をクリックします。
 15. **[完了]** を選択します。
 16. **[設定]** で **[プロパティ]** を選択します。
-17. **[プロパティ]** で **[マルチテナント]** まで下にスクロールします。 **[はい]** を選択します。  
+17. **[プロパティ]** で **[マルチテナント]** まで下にスクロールします。 **[はい]** を選択します。
 
     ![アプリのマルチテナントを構成する](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ OAuth REST API を使用してトークンを作成および取得するには�
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 要求本文で次のパラメーターを渡します。
 
 ```
@@ -362,9 +357,9 @@ Response:
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>C&#35; を使用してトークンを作成および取得するには
 
-承認されたアプリケーションのいずれかのトークンを Auth0 に要求するには、次の形式のペイロードを使用して [https://soamtenant.auth0.com/oauth/token](https://soamtenant.auth0.com/oauth/token) エンドポイントに対して POST 操作を実行します。
+承認されたアプリケーションのいずれかのトークンを Auth0 に要求するには、次の形式のペイロードを使用して https:\//soamtenant.auth0.com/oauth/token エンドポイントに対して POST 操作を実行します。
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -385,9 +380,9 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>PowerShell を使用してトークンを作成および取得するには
 
-承認されたアプリケーションのいずれかのトークンを Auth0 に要求するには、次の形式のペイロードを使用して [https://soamtenant.auth0.com/oauth/token](https://soamtenant.auth0.com/oauth/token) エンドポイントに対して POST 操作を実行します。
+承認されたアプリケーションのいずれかのトークンを Auth0 に要求するには、次の形式のペイロードを使用して https:\//soamtenant.auth0.com/oauth/token エンドポイントに対して POST 操作を実行します。
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>クライアント アプリ トークンを API に渡す
 
 承認ヘッダーに次のコードを使用して、トークンを自己テスト API に渡します。
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>自己テスト クライアントをテストする
@@ -445,7 +438,7 @@ $result.Content
 
 **Windows VM のテスト結果:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ $result.Content
 
 **Linux VM のテスト結果:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

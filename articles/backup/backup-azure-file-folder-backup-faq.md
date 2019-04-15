@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acf71ae6f37ab6ea32d9cdd0ac06f297b00fba2e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827416"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918571"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -116,10 +116,10 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 サーバーの名前を変更すると、現在構成されているすべてのバックアップが停止します。 バックアップ コンテナーにサーバーの新しい名前を登録します。 コンテナーに新しい名前を登録すると、最初のバックアップ操作は "*完全*" バックアップになります。 以前のサーバー名でコンテナーにバックアップしたデータを回復する必要がある場合は、**データの回復**ウィザードで [**[別のサーバー]**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) オプションを使用します。
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用するバックアップ ポリシーに指定できるファイル パスの最大長はどれくらいですか。 <br/>
-Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 保護するファイルのファイル パスが、Windows API で許容されている長さを超える場合は、親フォルダーまたはディスク ドライブをバックアップしてください。  
+Azure Backup エージェントでは NTFS が使用されています。 [ファイル パスの長さの指定は、Windows API による制限を受けます](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths)。 保護するファイルのファイル パスが、Windows API で許容されている長さを超える場合は、親フォルダーまたはディスク ドライブをバックアップしてください。  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。 <br>
- Azure Backup エージェントでは NTFS が使用されています。 そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) を使用できます。 
+ Azure Backup エージェントでは NTFS が使用されています。 そのため、ファイルの指定では [NTFS でサポートされている文字](/windows/desktop/FileIO/naming-a-file#naming_conventions) を使用できます。 
  
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>バックアップ ポリシーを設定してあるのに、"このサーバーに対して Azure Backups は構成されていません" という警告が表示されるのはなぜですか。 <br/>
 ローカル サーバーに保存されているバックアップ スケジュールの設定がバックアップ コンテナーに格納されている設定と異なる場合、このような警告が表示されることがあります。 サーバーまたは設定が既知の正常な状態に復旧されると、バックアップ スケジュールの同期が失われることがあります。 この警告が表示された場合は、 [バックアップ ポリシーを再構成](backup-azure-manage-windows-server.md) した後、 **[今すぐバックアップ]** を実行して、ローカル サーバーと Azure を再同期してください。

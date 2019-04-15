@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842451"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620157"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -44,6 +44,8 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 登録後、組織の Microsoft Partner Network ID を記録します。 マーケットプレース登録フォームを送信するときに、手順 3 の中で次の作業を行う必要があります。
 *   [Microsoft Partner Network](https://partner.microsoft.com/commercial) の利点について確認する。
 *   所属している組織に既存のメンバーシップがある場合は、登録時に組織に参加する。 [パートナー センター](https://partnercenter.microsoft.com/partner/home)を使用する場合は、パートナー センターのアカウントで ID を確認できます。 [パートナー メンバーシップ センター (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) を使用する場合は、パートナー メンバーシップ センターのアカウントで ID を確認できます。 
+
+MPN 登録に関する問題について、Microsoft [パートナー サポート](https://partner.microsoft.com/support)のチケットを開きます。
 
 ---
 

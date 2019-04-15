@@ -76,7 +76,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、保存された検索条件の各プロパティについて説明しています。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--- |:--- |
 | category | 保存された検索条件のカテゴリです。  同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
 | displayName | ポータルでの保存された検索条件の表示名です。 |
@@ -123,11 +123,11 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| enabled       | [はい] | 作成時点でアラートが有効かどうかを指定します。 |
-| interval      | [はい] | クエリを実行する間隔です (分単位)。 |
-| queryTimeSpan | [はい] | 結果を評価する期間です (分単位)。 |
+| enabled       | はい | 作成時点でアラートが有効かどうかを指定します。 |
+| interval      | はい | クエリを実行する間隔です (分単位)。 |
+| queryTimeSpan | はい | 結果を評価する期間です (分単位)。 |
 
 スケジュール リソースは保存された検索条件に依存するので、スケジュールの前に作成する必要があります。
 
@@ -181,18 +181,18 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | Type | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
 | Name | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
-| Description | いいえ  | アラートに関する省略可能な説明です。 |
+| 説明 | いいえ  | アラートに関する省略可能な説明です。 |
 | Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 
 #### <a name="threshold"></a>Threshold
 このセクションは必須です。 アラートのしきい値のプロパティを定義します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
 | Value | はい | 結果を比較する値です。 |
@@ -203,7 +203,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > メトリック測定アラートは現在パブリック プレビュー中です。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
 | Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
@@ -213,7 +213,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 #### <a name="throttling"></a>Throttling
 このセクションは省略可能です。 同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
@@ -222,9 +222,9 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../../azure-monitor/platform/action-groups.md)を作成するか、[アクション グループ リソース テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用できます。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| AzNsNotification | [はい] | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
+| AzNsNotification | はい | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
 | CustomEmailSubject | いいえ  | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
 | CustomWebhookPayload | いいえ  | 関連付けられたアクション グループで定義されているすべての webhook エンドポイントに送信するカスタマイズされたペイロードです。 形式は、webhook で想定されていることに依存し、有効なシリアル化された JSON である必要があります。 |
 
@@ -238,19 +238,19 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 ##### <a name="emailnotification"></a>EmailNotification
  このセクションは省略可能です。アラートによって 1 人以上の受信者にメールを送信する場合に指定します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Recipients | [はい] | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Subject | [はい] | メールの件名です。 |
+| Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Subject | はい | メールの件名です。 |
 | Attachment | いいえ  | 添付ファイルは現在はサポートされていません。 この要素を指定する場合は、**None** にする必要があります。 |
 
 ##### <a name="remediation"></a>Remediation
 このセクションは省略可能です。アラートに応答して Runbook を開始する場合に指定します。 |
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| RunbookName | [はい] | 開始する Runbook の名前です。 |
-| WebhookUri | [はい] | Runbook に対する webhook の URI です。 |
+| RunbookName | はい | 開始する Runbook の名前です。 |
+| WebhookUri | はい | Runbook に対する webhook の URI です。 |
 | Expiry | いいえ  | 修復が期限切れになる日付と時刻です。 |
 
 ##### <a name="webhook-actions"></a>Webhook アクション
@@ -277,11 +277,11 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 次の表では、Webhook アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Type | [はい] | アクションの種類。 これは、webhook アクションの **Webhook** です。 |
-| name | [はい] | アクションの表示名です。 コンソールには表示されません。 |
-| webhookUri | [はい] | webhook の URI です。 |
+| Type | はい | アクションの種類。 これは、webhook アクションの **Webhook** です。 |
+| name | はい | アクションの表示名です。 コンソールには表示されません。 |
+| webhookUri | はい | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
 
 ## <a name="sample"></a>サンプル

@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する方法を説明します。
+title: PIM で Azure AD ロールに対するセキュリティ アラートを構成する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールに対するセキュリティ アラートを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172384"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577231"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対するセキュリティ アラートを構成する
 
-環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure AD Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
+環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
 
 ![PIM のセキュリティ アラート - スクリーンショット](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 
-このセクションでは、ディレクトリ ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
+このセクションでは、Azure AD ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
 
 * **高**: ポリシー違反のため直ちに対処が必要です。
 * **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
@@ -130,4 +130,4 @@ ms.locfileid: "56172384"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
+- [PIM で Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)

@@ -1,5 +1,5 @@
 ---
-title: Web サービスとしてモデルをデプロイする
+title: モデルをデプロイする方法と場所
 titleSuffix: Azure Machine Learning service
 description: お客様の Azure Machine Learning service モデルをデプロイする方法と場所について説明します (Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、フィールド プログラマブル ゲート アレイ)。
 services: machine-learning
@@ -9,28 +9,32 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 908c22c6b071b7c7c708b73995c800a23cabad45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860426"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878300"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
-Azure Machine Learning SDK には、トレーニング済みモデルをデプロイする方法が複数用意されています。 このドキュメントでは、Web サービスとして Azure クラウドに、または IoT Edge デバイスに、モデルをデプロイする方法を説明します。
+このドキュメントでは、Web サービスとして Azure クラウドに、または IoT Edge デバイスに、モデルをデプロイする方法を説明します。 
 
-次のコンピューティング ターゲットにモデルをデプロイできます。
+## <a name="compute-targets-for-deployment"></a>デプロイのコンピューティング先
+
+トレーニング済みのモデルは、Azure Machine Learning SDK を使用して次の場所にデプロイします。
 
 | コンピューティング ターゲット | デプロイの種類 | 説明 |
 | ----- | ----- | ----- |
 | [Azure Kubernetes Service (AKS)](#aks) | リアルタイムの推論 | 高スケールの運用デプロイに適しています。 自動スケール、および高速な応答時間を実現します。 |
-| [Azure ML コンピューティング](#azuremlcompute) | バッチ推論 | サーバーレス コンピューティングでバッチ予測を実行します。 優先順位が中程度または低い VM をサポートします。 |
+| [Azure Machine Learning コンピューティング (amlcompute)](#azuremlcompute) | バッチ推論 | サーバーレス コンピューティングでバッチ予測を実行します。 優先順位が中程度または低い VM をサポートします。 |
 | [Azure Container Instances (ACI)](#aci) | テスト | 開発またはテストに適しています。 **運用ワークロードには適していません。** |
 | [Azure IoT Edge](#iotedge) | (プレビュー) IoT モジュール | IoT デバイスにモデルをデプロイします。 推論はデバイス上で行われます。 |
 | [フィールド プログラマブル ゲート アレイ (FPGA)](#fpga) | (プレビュー) Web サービス | リアルタイムの推論に適した超低遅延。 |
+
+## <a name="deployment-workflow"></a>デプロイのワークフロー
 
 モデルのデプロイのプロセスは、すべてのコンピューティング先で同様です。
 
@@ -46,11 +50,9 @@ Azure Machine Learning SDK には、トレーニング済みモデルをデプ�
 
 デプロイ ワークフローに関連する概念の詳細については、「[Azure Machine Learning service でモデルを管理、デプロイ、および監視する](concept-model-management-and-deployment.md)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites-for-deployment"></a>デプロイの前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
-
-- Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 これら前提条件を取得する方法については､[Azure Machine Learning のクイック スタートの概要](quickstart-get-started.md)で説明しています｡
+[!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
 - トレーニング済みのモデル。 トレーニング済みのモデルがない場合は、[モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルの手順を使用して、Azure Machine Learning service で 1 つトレーニングして登録します。
 
@@ -152,7 +154,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>バイナリ データの使用
 
-モデルが __バイナリ データ__ を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
+モデルが__バイナリ データ__を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -330,7 +332,7 @@ print(aks_target.provisioning_errors)
 
 #### <a name="use-an-existing-cluster"></a>既存のクラスターを使用する
 
-お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.11.## であり、12 以上の仮想 CPU を備えている場合は、それを使用してお客様のイメージをデプロイできます。 次のコードは、既存の AKS 1.11.## クラスターをお客様のワークスペースにアタッチする方法を示しています。
+お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## であり、12 以上の仮想 CPU を備えている場合は、それを使用してお客様のイメージをデプロイできます。 次のコードは、既存の AKS 1.12.## クラスターをお客様のワークスペースにアタッチする方法を示しています。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -587,7 +589,7 @@ IoT Edge モジュールをお客様のデバイスにデプロイするには�
 
 デバイスのその他の登録方法は次のとおりです。
 
-* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [Azure ポータル](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
 * [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
 * [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
 
@@ -609,8 +611,8 @@ IoT Edge モジュールをお客様のデバイスにデプロイするには�
 
 ## <a name="next-steps"></a>次の手順
 
-* [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
-* [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
+* [デプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
+* [SSL によって Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)
 * [バッチ予測を実行する方法](how-to-run-batch-predictions.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)

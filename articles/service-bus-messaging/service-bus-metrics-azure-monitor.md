@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: e16b523a366cabd04a5f12441874aa60460d508f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213978"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849663"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Azure Monitor ログや Event Hubs などの分析ソリューションを使用してアクセスできます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-collection.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Azure Monitor ログや Event Hubs などの分析ソリューションを使用してアクセスできます。 詳しくは、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
 
 メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)で構成します。
 

@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403716"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628984"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>ホスト プールのユーザー プロファイル共有を設定する
 
 Windows Virtual Desktop プレビュー サービスでは、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 ユーザー プロファイル ディスク (UPD) ソリューションの使用は推奨されず、Windows Virtual Desktop の将来のバージョンでは非推奨になります。
 
-ここでは、ホスト プールに対して FSLogix プロファイル コンテナー共有を設定する方法を説明します。
+ここでは、ホスト プールに対して FSLogix プロファイル コンテナー共有を設定する方法を説明します。 FSLogix に関する一般的なドキュメントについては、[FSLogix サイト](https://docs.fslogix.com/)を参照してください。
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>ファイル共有として機能する新しい仮想マシンを作成する
 
@@ -48,20 +48,20 @@ Windows Virtual Desktop プレビュー サービスでは、推奨されるユ�
 6. セッション ホスト仮想マシンを追加したセキュリティ グループを検索し、そのグループに**フル コントロール**があることを確認します。
 7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、**[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
 
-アクセス許可に関するベスト プラクティスについては、次の [FSLogix ドキュメント](https://support.fslogix.com/index.php/forum-main/faqs/84-best-practices#120)をご覧ください。
+アクセス許可について詳しくは、[FSLogix のドキュメント](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers)をご覧ください。
 
 ## <a name="configure-the-fslogix-profile-container"></a>FSLogix プロファイル コンテナーを構成する
 
 FSLogix ソフトウェアで仮想マシンを構成するには、ホスト プールに登録される各マシンで、以下を実行します。
 
 1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)します。
-2. インターネット ブラウザーを起動し、次の[リンク](https://go.microsoft.com/fwlink/?linkid=2084562)に移動して FSLogix エージェントをダウンロードします。 Windows Virtual Desktop パブリック プレビューの一部として、FSLogix ソフトウェアをアクティブにするライセンス キーを取得します。 キーは、FSLogix エージェントの .zip ファイルに含まれる LicenseKey.txt ファイルです。
+2. インターネット ブラウザーを起動し、[このリンク](https://go.microsoft.com/fwlink/?linkid=2084562)に移動して FSLogix エージェントをダウンロードします。 Windows Virtual Desktop パブリック プレビューの一部として、FSLogix ソフトウェアをアクティブにするライセンス キーを取得します。 キーは、FSLogix エージェントの .zip ファイルに含まれる LicenseKey.txt ファイルです。
 3. FSLogix エージェントをインストールします。
 4. **Program Files** > **FSLogix** > **Apps** に移動して、インストールされているエージェントを確認します。
 5. スタート メニューから、**RegEdit** を管理者として実行します。 **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix\\Profiles** に移動します
 6. 次の値を作成します。
 
-| Name                | Type               | データ/値                        |
+| 名前                | Type               | データ/値                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled             | DWORD              | 1                                 |
 | VHDLocations        | 複数行文字列値 | "ファイル共有のネットワーク パス" |

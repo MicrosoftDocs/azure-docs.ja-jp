@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/24/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 520d417abe27887fad03257c52521c25602009eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096012"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878725"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -60,7 +60,7 @@ ms.locfileid: "58096012"
         2.  同じゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS では同期ホット スタンバイの同期メソッドが提供されており、運用システムに推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)」と関連ドキュメントから始まるさまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
             1.  たとえば[こちら](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows フェールオーバー クラスター サービスを使用することは、サポートされて**いません**。 代わりに次のようなソリューションがあります。
                 1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                2.  [Oracle データの保護](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  異なる Azure リージョン間のディザスター リカバリーの場合は、さまざまな DBMS ベンダーによって提供される可能性を確認します。 そのほとんどでは、非同期レプリケーションまたはログ配布がサポートされています
         4.  SAP アプリケーション層では、ビジネス回帰テスト システムを実行するかどうかを定義します。理想的には、同じ Azure リージョンまたはお使いの DR リージョン内の、運用デプロイのレプリカです。 後者の場合、そのビジネス回帰システムを運用環境の DR ターゲットとすることができます
@@ -88,19 +88,21 @@ ms.locfileid: "58096012"
 パイロットは、事前に、またはプロジェクトの計画および準備と並行して、実行できます。 また、計画および準備フェーズにおいて作成されたアプローチと設計をテストするために、このフェーズを使用することもできます。 パイロット フェーズは、実際の概念実証まで拡大できます。 パイロット デプロイの間に、完全な HA/DR ソリューションおよびセキュリティ設計を設定して検証することが推奨されます。 お客様によっては、スケーラビリティ テストもこのフェーズで実施できます。 他のお客様は、SAP サンドボックス システムのデプロイをパイロット フェーズとして使用します。 そのため、パイロットを実行するために Azure に移行するシステムが識別されているものと想定します。
 
 1. Azure へのデータ転送を最適化します。 お客様のケースに大きく依存しますが、Express 回線に十分な帯域幅がある場合、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) によるオンプレミスへの転送が最も高速でした。 他のお客様では、インターネットを使用すると高速であるのがわかりました
-2. データベース データのエクスポートとインポートが含まれる SAP 異種プラットフォームの移行の場合は、エクスポートおよびインポート フェーズをテストして最適化します。 移行先プラットフォームとして SQL Server が含まれる大規模な移行に対する推奨事項については、[こちら](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)をご覧ください。 たとえば「[Database Migration Option (DMO) of SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152)」 (SUM 2.0 SP03 のデータベース移行オプション (DMO)) で説明されているように、移行と SAP リリースのアップグレードを組み合わせて、ソースとターゲットの DBMS プラットフォームで特定の組み合わせを実現するときに、組み合わされたリリース アップグレードまたは [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスが必要ない場合は、Migration Monitor/SWPM のアプローチを採用できます。 
+2. データベース データのエクスポートとインポートが含まれる SAP 異種プラットフォームの移行の場合は、エクスポートおよびインポート フェーズをテストして最適化します。 移行先プラットフォームとして SQL Server が含まれる大規模な移行に対する推奨事項については、[こちら](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)をご覧ください。 たとえば「[Database Migration Option (DMO) of SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152)」 (SUM 2.0 SP03 のデータベース移行オプション (DMO)) で説明されているように、移行と SAP リリースのアップグレードを組み合わせて、ソースとターゲットの DBMS プラットフォームで特定の組み合わせを実現するときに、組み合わされたリリース アップグレードまたは [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) プロセスが必要ない場合は、Migration Monitor/SWPM のアプローチを採用できます。 
    1.  ソースへのエクスポート、Azure へのエクスポート ファイルのアップロード、インポートのパフォーマンス。  エクスポートとインポートの間のオーバーラップを最大化します
    2.  インフラストラクチャのサイズ設定に反映するには、ターゲットと移行先プラットフォームの間でデータベースのボリュームを評価します    
    3.  タイミングを検証して最適化します 
 3. 技術的な検証 
    1. VM の種類
       1.  SAP サポート ノート、SAP HANA ハードウェア ディレクトリ、および再び SAP PAM のリソースを検証し、Azure でサポートされる VM、それらの VM の種類に対してサポートされる OS のリリース、サポートされる SAP および DBMS のリリースに、変更がないことを確認します
-      2.  もう一度、Azure にデプロイするアプリケーションおよびインフラストラクチャのサイズを検証します。 既存のアプリケーションの移行では、多くの場合、使用しているインフラストラクチャと [SAP ベンチマーク Web ページ](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)から必要な SAPS を取得し、それを SAP サポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されている SAPS 番号と比較することができます。 また、[こちらの記事](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/)にも留意してください
+      2.  もう一度、Azure にデプロイするアプリケーションおよびインフラストラクチャのサイズを検証します。 既存のアプリケーションの移行では、多くの場合、使用しているインフラストラクチャと [SAP ベンチマーク Web ページ](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)から必要な SAPS を取得し、それを SAP サポート ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されている SAPS 番号と比較することができます。 また、[こちらの記事](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)にも留意してください
       3.  計画フェーズで選択したさまざまな種類の VM の最大ストレージ スループットとネットワーク スループットに関して、Azure VM のサイズ設定を評価およびテストします。 データは以下で見つかります。
           1.  「[Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 サイズ設定では**キャッシュされていないディスクの最大スループット**を検討することが重要です
           2.  「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」。サイズ設定では**キャッシュされていないディスクの最大スループット**を検討することが重要です
    2. Storage
-      1.  データベースの VM には Azure Premium Storage を使用します
+      1.  SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)を使用します
+      2.  一般に、[Azure Standard HDD ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)は使用しないことをお勧めします
+      2.  少しでもパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) を使用します
       2.  [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用します
       3.  M シリーズの DBMS ログ ドライブには、Azure 書き込みアクセラレータを使用します。 [書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)に関する記事に記載されている書き込みアクセラレータの制限と使用方法に注意してください
       4.  DBMS のさまざまな種類については、[一般的な SAP 関連の DBMS ドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)と、一般ドキュメントで参照されている DBMS ごとの個別ドキュメントを確認してください
@@ -124,6 +126,7 @@ ms.locfileid: "58096012"
               4.  Oracle Linux 7.5。 RHCKL カーネルを使用するには、リリースが 3.10.0-862.13.1.el7 である必要があります。 Oracle UEK カーネル リリース 5 を使用する必要があります
           4.   SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション層 VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度から良好な範囲でなければなりません。 [こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットの間のトラフィックには例外が適用されます
           5.   Direct Server Return を使用するように ILB のデプロイが設定されていることを確認します。 DBMS 層での高可用性構成用に Azure ILB が使用されている場合、この設定により待機時間が短縮されます
+          6.   Azure Load Balancer を Linux ゲスト オペレーティング システムと共に使用している場合、Linux ネットワーク パラメーター **net.ipv4.tcp_timestamps** が **0** に設定されていることを確認します。 以前のバージョンの SAP Note [#2382421](https://launchpad.support.sap.com/#/notes/2382421) に記載されていた推奨情報とは矛盾します。 Azure Load Balancer と連動させるためには、このパラメーターを 0 に設定する必要があり、その点を反映するために、この SAP Note もいずれ更新されます。
    4. 高可用性とディザスター リカバリーのデプロイ 
       1. 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション層をデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)にデプロイされることを確認します。 
          1.   SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション層と同じ可用性セットにデプロイできます
@@ -156,7 +159,7 @@ ms.locfileid: "58096012"
 6. パフォーマンス テスト
    1.  SAP トレースと測定に基づく SAP では、該当する場合、上位 10 のオンライン レポートと現在の実装を比較します 
    2.  SAP トレースと測定に基づく SAP では、該当する場合、上位 10 のバッチ ジョブと現在の実装を比較します 
-   3.  SAP トレースと測定に基づく SAP では、インターフェイス経由での SAP システムへのデータ転送を比較します。 オンプレミスから Azure などのように、異なる場所の間で転送が行われていることがわかっているインターフェイスに注目します 
+   3.  SAP トレースと測定に基づく SAP では、インターフェイス経由での SAP システムへのデータ転送を比較します。 オンプレミスから Azure などのように、異なる場所の間で現在転送が行われていることがわかっているインターフェイスに注目します 
 
 
 ## <a name="non-production-phase"></a>非運用フェーズ 

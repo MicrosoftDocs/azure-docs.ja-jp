@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480545"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754257"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor での使用量と推定コストの監視
 
 > [!NOTE]
 > この記事では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。  関連する情報については、次の記事を参照してください。
-> - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](../../azure-monitor/platform/manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
+> - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
 > - 「[Log Analytics でのデータ使用状況の分析](../../azure-monitor/platform/data-usage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
 > - 「[Application Insights での価格とデータ ボリュームの管理](../../azure-monitor/app/pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
 
@@ -184,7 +184,7 @@ Invoke-AzResourceAction `
 同じテナントにホストされた複数のサブスクリプションを移行する場合は、次のスクリプトを使用して独自のバリアントを作成できます。
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
@@ -204,7 +204,7 @@ Invoke-AzResourceAction `
 }
 ```
 
-スクリプトは、3 つの配列を生成するスクリプトを作成することで改善できます。 最初の配列は、```isGrandFatherableSubscription``` が True に設定されており、現在 optedInDate に値がないすべてのサブスクリプション ID で構成されます。 2 番目の配列は、現在新しい価格モデルになっているすべてのサブスクリプションです。 3 番目の配列は、テナント内にある新しい価格モデルを使用できないサブスクリプション ID のみが入力されます。
+スクリプトは、3 つの配列を生成するスクリプトを作成することで改善できます。 最初の配列は、```isGrandFatherableSubscription``` が True に設定されており、現在 optedInDate に値がないすべてのサブスクリプション ID で構成されます。 2 番目の配列は、現在新しい価格モデルになっているすべてのサブスクリプションです。 3 番目の配列には、テナント内にある新しい価格モデルを使用できないサブスクリプション ID のみが入力されます。
 
 ```powershell
 [System.Collections.ArrayList]$Eligible= @{}

@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445485"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756804"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
+チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、DevOps エンジニア) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
 
 ## <a name="built-in-monitoring-roles"></a>組み込みの監視の役割
 Azure Monitor に組み込まれた役割は、サブスクリプションのリソースへのアクセスを制限しながら、インフラストラクチャの監視担当者が引き続き、必要なデータを取得して構成できるように設計されています。 Azure Monitor には、すぐに使用できる役割として、監視閲覧者と監視共同作成者の 2 つが用意されています。
 
-### <a name="monitoring-reader"></a>Monitoring Reader
+### <a name="monitoring-reader"></a>監視閲覧者
 監視閲覧者の役割が割り当てられている場合は、サブスクリプション内の監視データすべてを表示できますが、リソースを変更したり、監視リソースに関連する設定を編集したりすることはできません。 この役割は、次の作業を行う必要がある、サポート エンジニア、運用エンジニアなどの組織内のユーザーに適しています。
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
@@ -38,17 +38,17 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * Application Insights データにアクセスし、AI Analytics のデータを表示する。
 * ワークスペースの使用状況データなど、Log Analytics ワークスペースのデータを検索する。
 * Log Analytics 管理グループを表示する。
-* Log Analytics 検索スキーマを取得する。
-* Log Analytics インテリジェンス パックを一覧表示する。
-* Log Analytics に保存された検索を取得および実行する。
-* Log Analytics ストレージ構成を取得する。
+* Log Analytics ワークスペースの検索スキーマを取得する。
+* Log Analytics ワークスペースの監視パックの一覧を表示する。
+* Log Analytics ワークスペースに保存済みの検索を取得および実行する。
+* Log Analytics ワークスペースのストレージ構成を取得する。
 
 > [!NOTE]
 > この役割では、イベント ハブにストリーミングされたログ データ、またはストレージ アカウントに保存されたログ データへの読み取りアクセス権は付与されません。 [以下を参照](#security-considerations-for-monitoring-data) してください。
 > 
 > 
 
-### <a name="monitoring-contributor"></a>Monitoring Contributor
+### <a name="monitoring-contributor"></a>監視共同作成者
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
@@ -57,9 +57,9 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * [Azure アラート](../../azure-monitor/platform/alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics ワークスペースの共有キーを一覧表示する。
-* Log Analytics インテリジェンス パックを有効または無効にする。
-* Log Analytics に保存された検索を作成および削除する。
-* Log Analytics ストレージ構成を作成および削除する。
+* Log Analytics ワークスペースの監視パックを有効または無効にする。
+* Log Analytics ワークスペースに保存する検索を作成し、それらの削除および実行を行う。
+* Log Analytics ワークスペースのストレージ構成を作成および削除する。
 
 \*診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
 
@@ -71,7 +71,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| Operation | 説明 |
+| 操作 | 説明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |

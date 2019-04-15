@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.date: 03/29/2019
+ms.openlocfilehash: 7fc69c3d0b6820db2227b241d63e4304152d99bf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213927"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664677"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -100,12 +100,16 @@ SQL Database Auditing はデータベース アクティビティを追跡し、
 
 SQL Database では、[トランスポート層セキュリティ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
 
+SQL Server では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
+
+ベスト プラクティスとして、アプリケーションの接続文字列に、暗号化接続を指定し、サーバー証明書を信頼_**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
+
+たとえば ADO.NET ドライバーを使用する場合、これは **Encrypt=True** と **TrustServerCertificate=False** によって実現します。Azure portal から接続文字列を取得する場合は、正しい設定になっています。
+
 > [!IMPORTANT]
-> Azure SQL Database では、すべての接続に対して常に暗号化 (SSL/TLS) が適用され、すべてのデータがデータベースとクライアントの間の "移動中" に暗号化されることが保証されます。 これは、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく行われます。
+> Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (2.0 未満) に依存している場合があります。 この場合も、SQL Server は引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合に、そのようなドライバーとアプリケーションの SQL Database への接続を許可することのセキュリティ上のリスクを評価することをお勧めします。 
 >
-> アプリケーションの接続文字列では、暗号化された接続を指定し、サーバー証明書を信頼 "_しない_" ようにします (ADO.NET ドライバーの場合、これは **Encrypt=True** および **TrustServerCertificate=False** です)。 これは、アプリケーションにサーバーの検証を強制し、暗号化を適用することにより、中間者攻撃からアプリケーションを保護するのに役立ちます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
->
-> TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください。
+> TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (保存時の暗号化)
 

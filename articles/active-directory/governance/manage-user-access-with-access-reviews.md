@@ -1,5 +1,5 @@
 ---
-title: Azure AD のアクセス レビューを使用してユーザー アクセスを管理する | Microsoft Docs
+title: アクセス レビューを使用したユーザー アクセスの管理 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のアクセス レビューを使用して、グループのメンバーシップやアプリケーションへの割り当てとしてのユーザー アクセスを管理する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 656a1d387a345d9ffcc549c19a131de758e18c35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8dee430b0ae1bf0c8cd7151272045467ce51c57
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57879992"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575064"
 ---
-# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューを使用してユーザー アクセスを管理する
+# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
 Azure Active Directory (Azure AD) を使用すると、ユーザーに適切なアクセス権を確実かつ容易に設定できます。 ユーザー自身または意思決定者に対し、アクセス レビューに参加してユーザーのアクセス権を再確認 (証明) するよう求めることができます。 レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価できます。 アクセス レビューが完了したら、変更を加え、不要になったアクセス権をユーザーから削除できます。
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: de2ef4908260a62acf28a270dda6ad738a1760b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112298"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402335"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway (プレビュー) を接続、設定、アクティブ化する 
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
 ## <a name="introduction"></a>はじめに
 
@@ -27,116 +27,120 @@ ms.locfileid: "58112298"
 
 > [!div class="checklist"]
 > * 仮想デバイスに接続する
-> * 仮想デバイスを設定する
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-
+> * 仮想デバイスを設定してアクティブ化する
 
 ## <a name="prerequisites"></a>前提条件
 
 Data Box Gateway を構成および設定する前に、以下のことを確認します。
 
-* [Hyper-V での Data Box Gateway のプロビジョニング](data-box-gateway-deploy-provision-hyperv.md)または[VMware での Data Box Gateway のプロビジョニング](data-box-gateway-deploy-provision-vmware.md)に関するページの説明に従って仮想デバイスをプロビジョニングし、その仮想デバイスに接続された URL を取得していること。
+* 「[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)」または「[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)」の説明に従って仮想デバイスをプロビジョニングし、その仮想デバイスに接続する URL を取得していること。
 * Data Box Gateway デバイスを管理するために作成した Data Box Gateway サービスからのアクティブ化キーを持っていること。 詳細については、[Azure Data Box Gateway のデプロイ準備](data-box-gateway-deploy-prep.md)に関する記事をご覧ください。
 
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>ローカル Web UI 設定に接続する 
 
-1. ブラウザー ウィンドウを開き、ローカル Web UI に接続します。 型: 
+1. ブラウザー ウィンドウを開き、次のリンクからデバイスのローカル Web UI にアクセスします。
    
    [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
    
-   前のチュートリアルに記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]** をクリックして、この Web ページに進みます。 (これらの手順は、使用するブラウザーによって異なる場合があります。)
-   
-    ![接続中のエラー](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+   前のチュートリアルに記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーまたは警告が表示されます。
 
-2. ご利用の仮想デバイスの Web UI にサインインします。 既定のパスワードは *Password1* です。 
+2. **[この Web ページの閲覧を続ける]** を選択します。 これらの手順は、使用しているブラウザーによって異なることがあります。
+   
+    ![Web サイトのセキュリティ証明書のエラー メッセージ](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+
+3. ご利用の仮想デバイスの Web UI にサインインします。 既定のパスワードは *Password1* です。 
    
     ![ローカル Web UI へのサインイン](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-3. デバイス管理者のパスワードを変更するように求められます。 8 文字から 16 文字の新しいパスワードを入力します。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を含める必要があります。
+4. プロンプトで、デバイスのパスワードを変更します。 新しいパスワードは 8 から 16 文字にする必要があります。 大文字、小文字、数字、および特殊文字のうち 3 種類の文字を含める必要があります。
 
-    ![デバイス管理者パスワードの変更](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![デバイスのパスワードを変更する](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
 これで、ご利用のデバイスの**ダッシュボード**が表示されます。
 
 ## <a name="set-up-and-activate-the-virtual-device"></a>仮想デバイスを設定してアクティブ化する
  
-1. 仮想デバイスを構成して Data Box Gateway サービスに登録するのに必要なさまざまな設定には、ダッシュボードからアクセスできます。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**[デバイス名]** と **[クラウド設定]** のみです。
+ダッシュボードには、仮想デバイスを構成して Data Box Gateway サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**[クラウド設定]** のみです。
    
-    ![ローカル Web UI [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![ローカル Web UI [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-2. **[デバイス名]** ページで、使用するデバイスのフレンドリ名を構成します。 この名前は 1 文字から 15 文字の長さで指定でき、文字、数字、ハイフンを含めることができます。
+1. 左側のウィンドウで **[デバイス名]** を選択し、デバイスのフレンドリ名を入力します。 フレンドリ名は 1 から 15 文字の長さにし、文字、数字、およびハイフンを含める必要があります。
 
     ![ローカル Web UI [デバイス名] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
-3. (必要に応じて) **[ネットワーク設定]** を構成します。 基になる仮想マシンで構成した数に応じて、1 つまたは複数のネットワーク インターフェイスが表示されます。 ネットワーク インターフェイスが 1 つ有効になっている仮想デバイスの **[ネットワーク設定]** ページは、次のように表示されます。
+2. (省略可能) 左側のウィンドウで **[ネットワーク設定]** を選択し、設定を構成します。 仮想デバイスで、基になる仮想マシンで構成した数に応じて、少なくとも 1 つまたは複数のネットワーク インターフェイスが表示されます。 ネットワーク インターフェイスが 1 つ有効になっている仮想デバイスの **[ネットワーク設定]** ページは、次のように表示されます。
     
     ![ローカル Web UI [ネットワーク設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
-    ネットワーク設定を構成する場合は、次の点に留意してください。
+    ネットワーク設定を構成するときは、次のことに注意してください。
 
-   - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 そのため、IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
-   - DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
-   - 使用するネットワーク インターフェイスは、IPv4 として構成できます。
+    - ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
+    - DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
+    - 使用するネットワーク インターフェイスは、IPv4 として構成できます。
 
      >[!NOTE] 
      > デバイスに接続する別の IP アドレスがない限り、ネットワーク インターフェイスのローカル IP アドレスを静的から DHCP に切り替えないことをお勧めします。 あるネットワーク インターフェイスを使用していて、DHCP に切り替えた場合、DHCP アドレスを判別する方法がありません。 DHCP アドレスに変更する場合は、デバイスがサービスに登録されるまで待機してから変更してください。 その後、サービスについて Azure portal の **[デバイスのプロパティ]** にすべてのアダプターの IP が表示されます。
 
-4. (省略可能) Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。
+3. (省略可能) Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、このページでのみ構成できます。
    
    ![ローカル Web UI [Web プロキシ設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
-   **[Web プロキシ]** ページで、以下のことを実行します。
+   **[Web プロキシ]** ページで、次の操作を行います。
    
-   1. "*http://&lt;host-IP アドレスまたは FQDN&gt;:ポート番号*" の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
-   2. **[認証]** に **[基本]** または **[なし]** を指定します。
-   3. 認証を使用する場合は、**ユーザー名**と**パスワード**も指定する必要があります。
-   4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
+   1. **[Web プロキシ URL]**  ボックスに、`http://&lt;host-IP address or FQDN&gt;:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
+   2. **[認証]** で、**[なし]** または **[NTLM]** を選択します。
+   3. 認証を使用している場合は、**ユーザー名**と**パスワード**を入力します。
+   4. 構成された Web プロキシ設定を検証して適用するには、**[適用]** を選択します。
 
-5. (省略可能) デバイスの時刻設定を構成します (タイム ゾーン、プライマリおよびセカンダリ NTP サーバーなど)。 デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
+4. (省略可能) 左側のウィンドウで **[時刻の設定]** を選択し、タイム ゾーンとデバイスのプライマリおよびセカンダリ NTP サーバーを構成します。 
+
+    デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
     
     ![ローカル Web UI [時刻の設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
     **[時刻の設定]** ページで、次の操作を行います。
     
-    1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **タイム ゾーン** を選択します。 デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
-    2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。 データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
-    3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
-    4. **[Apply]** をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
+    1. **[タイム ゾーン]** ドロップダウン リストで、デバイスがデプロイされる地理的な場所に対応するタイム ゾーンを選択します。
+        デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
 
-6. Azure portal の **[クラウド設定]** ページで、Data Box Gateway サービスに対してご自分のデバイスをアクティブ化します。
+    2. デバイスの **[プライマリ NTP サーバー]** を指定するか、既定値の `time.windows.com` をそのまま使用します。   
+        データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
+
+    3. オプションで、**[セカンダリ NTP サーバー]** ボックスにデバイスのセカンダリ サーバーを入力します。
+
+    4. 構成された時刻の設定を検証および適用するには、**[適用]** を選択します。
+
+6. 左側のウィンドウで **[クラウド設定]** を選択し、Azure portal の Data Box Gateway サービスでデバイスをアクティブ化します。
     
-    1. Data Box Gateway 用の [[アクティブ化キーの取得]](data-box-gateway-deploy-prep.md#get-the-activation-key) 内で取得した**アクティブ化キー**を入力します。
+    1. **[アクティブ化キー]** ボックスに、Data Box Gateway の [[アクティブ化キーの取得]](data-box-gateway-deploy-prep.md#get-the-activation-key) で取得した**アクティブ化キー**を入力します。
 
-    2. **[アクティブ化]** をクリックします。 
+    2. **[アクティブ化]** を選択します。
        
          ![ローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. まずデバイスがアクティブ化されます。 次に、重要な更新プログラムがスキャンされ、存在する場合は、自動的に更新プログラムが適用されます。 その効果に関する通知が表示されます。 
+    3. デバイスがアクティブ化され、緊急更新プログラム (使用可能な場合) が自動的に適用されます。 その効果に関する通知が表示されます。 Azure portal で更新の進行状況を監視します。
 
-        ダイアログには回復キーも表示されるので、コピーして安全な場所に保存する必要があります。 このキーは、デバイスが起動しない場合にデータを復元するために使用します。
+        ![ローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        
+        **このダイアログには、コピーして安全な場所に保存する必要がある回復キーも含まれています。このキーは、デバイスが起動できない場合にデータを復旧するために使用されます。**
 
-        ![ローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
 
-    4. 更新プログラムが正常に適用されたら、数分間待機する必要があります。 ページが更新され、デバイスが正常にアクティブ化されたことを示します。
+    4. 更新プログラムが正常に完了した後、数分待つ必要があります。 更新後が完了したら、デバイスにサインインします。 **[クラウド設定]** ページが更新され、デバイスが正常にアクティブ化されたことが示されます。
 
         ![更新されたローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
+デバイスの設定が完了しました。 これで、デバイスで共有を追加できます。
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Data Box Gateway に関する次のようなトピックについて説明しました。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 仮想デバイスに接続する
-> * 仮想デバイスを設定する
+> * 仮想デバイスを設定してアクティブ化する
 
-
-次のチュートリアルに進み、ご利用の Data Box Gateway を使用してデータを転送する方法を学習してください。
+Data Box Gateway でデータを転送する方法を学習するには、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [Data Box Gateway を使用してデータを転送する](./data-box-gateway-deploy-add-shares.md)します。

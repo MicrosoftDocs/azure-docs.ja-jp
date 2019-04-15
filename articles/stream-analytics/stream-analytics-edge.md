@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 4/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994982"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892230"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -44,12 +44,14 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 
 ### <a name="installation-instructions"></a>インストール手順
 手順の概要を次の表に示します。 詳細については、以降のセクションを参照してください。
+
 |      |手順   | メモ   |
 | ---   | ---   |  ---      |
 | 1   | **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
 | 2   | **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
 | 3   | **デバイス上に IoT Edge 環境を設定する**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。          |
-| 4   | **ASA を IoT Edge デバイスに展開する**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
+| 4   | **ASA を IoT Edge デバイスにデプロイする**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
+
 最初の ASA ジョブを IoT Edge に展開するには、[順を追って解説したこちらのチュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)に従ってください。 次のビデオは、IoT Edge デバイスで Stream Analytics ジョブを実行するプロセスを理解するのに役立ちます。  
 
 
@@ -104,7 +106,7 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 - Azure portal で IoT Hub を開き、**[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
 - **[モジュールの設定]**、**[+ 追加]**、**[Azure Stream Analytics モジュール]** の順に選択します。
 - サブスクリプションと、作成した ASA Edge ジョブを選択します。 [保存] をクリックします。
-![ASA モジュールを展開に追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
+![ASA モジュールをデプロイに追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
@@ -123,12 +125,12 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 
 ```json
 {
-"routes": {                                              
-    "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
-    "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream", 
-    "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")" 
+    "routes": {
+        "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
+        "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream",
+        "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")"
+    }
 }
-}   
 
 ```
 この例は、次の図で説明するシナリオのルートを示しています。 これには "**ASA**" というエッジ ジョブが含まれており、入力の名前は "**temperature**" で、出力の名前は "**alert**" です。
@@ -142,7 +144,7 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 
 ## <a name="technical-information"></a>技術情報
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>クラウド ジョブと比較した IoT Edge ジョブの現在の制限事項
-目的は、IoT Edge ジョブとクラウド ジョブの間の類似性を確認することです。 SQL クエリ言語のほとんどの機能が既にサポートされています。
+目的は、IoT Edge ジョブとクラウド ジョブの間の類似性を確認することです。 SQL クエリ言語のほとんどの機能がサポートされており、クラウドと IoT Edge の両方で同じロジックを実行できます。
 ただし、次の機能はエッジ ジョブではまだサポートされていません。
 * JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
 * ユーザー定義集計 (UDA)。
@@ -150,14 +152,6 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 * 1 つの手順での 14 を超える集計の使用。
 * 入力/出力の AVRO 形式。 現時点では、CSV と JSON のみがサポートされています。
 * 次の SQL 演算子:
-    * 地理空間演算子:
-        * CreatePoint
-        * CreatePolygon
-        * CreateLineString
-        * ST_DISTANCE
-        * ST_WITHIN
-        * ST_OVERLAPS
-        * ST_INTERSECTS
     * PARTITION BY
     * GetMetadataPropertyValue
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089354"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894903"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。
@@ -29,11 +29,11 @@ ms.locfileid: "58089354"
 
 * **ソーシャル アカウント** の ID は、`userIdentities` コレクションに格納されます。 エントリでは、facebook.com や `issuerUserId` など、発行者の一意のユーザー識別子である `issuer` (ID プロバイダー名) を指定します。 `userIdentities` 属性には、ソーシャル アカウントの種類を指定する 1 つ以上の UserIdentity レコードと、ソーシャル ID プロバイダーからの一意のユーザー識別子が含まれます。
 
-* **ローカル アカウントをソーシャル ID と結合します**。 前述のように、ローカル アカウントのサインイン名とソーシャル アカウント ID は異なる属性に格納されます。 `signInNames` はローカル アカウントに使われ、`userIdentities` はソーシャル アカウントに使われます。 1 つのユーザー レコードで、1 つの Azure AD B2C アカウントは、ローカル アカウントのみまたはソーシャル アカウントのみとするか、ローカル アカウントとソーシャル ID を結合したものにすることができます。 この動作により、管理するアカウントは 1 つになりますが、ユーザーはローカル アカウントの資格情報またはソーシャル ID でサインインできます。
+* **ローカル アカウントをソーシャル ID と結合します**。 前述のように、ローカル アカウントのサインイン名とソーシャル アカウント ID は異なる属性に格納されます。 `signInNames`  はローカル アカウントに使われ、`userIdentities` はソーシャル アカウントに使われます。 1 つのユーザー レコードで、1 つの Azure AD B2C アカウントは、ローカル アカウントのみまたはソーシャル アカウントのみとするか、ローカル アカウントとソーシャル ID を結合したものにすることができます。 この動作により、管理するアカウントは 1 つになりますが、ユーザーはローカル アカウントの資格情報またはソーシャル ID でサインインできます。
 
-* `UserIdentity` 種類 - Azure AD B2C テナント内のソーシャル アカウント ユーザーの ID に関する情報が含まれています。
-  * `issuer` facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
-  * `issuerUserId` ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
+* `UserIdentity`  種類 - Azure AD B2C テナント内のソーシャル アカウント ユーザーの ID に関する情報が含まれています。
+  * `issuer`  facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
+  * `issuerUserId`  ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
 
     ```JSON
     "userIdentities": [{
@@ -63,7 +63,7 @@ ms.locfileid: "58089354"
 * **userIdentities** - ソーシャル アカウントの種類を指定する 1 つ以上の UserIdentity レコードと、ソーシャル ID プロバイダーからの一意のユーザー識別子です。
 * [オプション] **otherMails** - ソーシャル アカウントのみの場合は、ユーザーの電子メール アドレスです 
 
-詳細については、次を参照してください。[Graph API リファレンス](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+詳細については、次を参照してください。[Graph API リファレンス](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>ソーシャル アカウント (のみ) の移行
 ローカル アカウントの資格情報なしでソーシャル アカウントのみを作成するには、 Graph API に HTTPS POST 要求を送信します。 要求本文には、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。 

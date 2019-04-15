@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225435"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803106"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -55,7 +55,7 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
  ru-RU | ロシア語 (ロシア) | はい | はい | いいえ 
  sv-SE | スウェーデン語 (スウェーデン) | いいえ  | いいえ  | いいえ 
  zh-CN | 中国語 (標準、簡体字) | はい | はい | いいえ 
- zh-HK | 中国語 (標準、繁体字) | いいえ  | はい | いいえ 
+ zh-HK | 広東語 (繁体字) | いいえ  | はい | いいえ 
  zh-TW | 中国語 (台湾標準中国語) | いいえ  | はい | いいえ 
  th-TH | タイ語 (タイ) | いいえ  | いいえ  | いいえ 
 

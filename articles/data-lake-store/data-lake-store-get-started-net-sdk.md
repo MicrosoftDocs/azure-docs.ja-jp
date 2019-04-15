@@ -1,23 +1,23 @@
 ---
-title: '.NET SDK: Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs'
+title: .NET SDK:Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs
 description: Azure Data Lake Storage Gen1 .NET SDK を使用して、Data Lake Storage Gen1 に対するアカウント管理操作を実行します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123914"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879711"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "46123914"
    | --- | --- |
    | Category |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
+   | 名前 |CreateADLApplication |
 4. **[OK]** をクリックしてプロジェクトを作成します。
 5. NuGet パッケージをプロジェクトに追加します。
 
@@ -142,7 +142,7 @@ ms.locfileid: "46123914"
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>関連項目
-* [.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)。
+* [.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>次の手順

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433452"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521756"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -172,7 +172,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
    | \*.blob.core.windows.net | 443 | イメージ差分のダウンロード | 
    | \*.azure-devices.net | 5671、8883、443 | IoT Hub でのアクセス |
-   | \*.docker.io  | 443 | Docker でのアクセス (任意指定) |
+   | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
 
 ### <a name="configure-communication-through-a-proxy"></a>プロキシを介した通信を構成する
 
@@ -186,16 +186,57 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 ### <a name="set-up-logs-and-diagnostics"></a>ログと診断を設定する
 
-Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-WinEvent` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (Docker の既定)。  
+Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-WinEvent` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (既定)。  
 
 IoT Edge のデプロイをテストする場合、通常はデバイスにアクセスしてログを取得し、トラブルシューティングを行うことができます。 デプロイ シナリオでは、そのオプションがない場合があります。 運用環境でデバイスに関する情報をどのように収集するかを検討してください。 1 つのオプションとして、他のモジュールから情報を収集し、クラウドに送信するログ モジュールを使用する方法があります。 ログ モジュールの一例として [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics) があります。独自のものを設計することもできます。 
 
-リソースに制約があるデバイスでログが大きくなりすぎることが心配な場合、メモリ使用量を減らすためのオプションがいくつかあります。 
+### <a name="place-limits-on-log-size"></a>ログ サイズを制限する
 
-* つまり、Docker デーモン自体ですべての docker ログファイルのサイズを制限することができます。 Linux の場合は、`/etc/docker/daemon.json` でデーモンを構成します。 Windows の場合は、`C:\ProgramData\docker\confige\daemon.json` です。 
-* 各コンテナーのログファイル サイズを調整する場合は、各モジュールの CreateOptions で行うことができます。 
-* Docker の既定のログ ドライバーとしてジャーナルを設定し、ログを自動的に管理するように Docker を構成します。 
-* Docker の logrotate ツールをインストールすることで、デバイスから古いログを定期的に削除します。 次のファイルの指定を使用します。 
+既定では、Moby コンテナー エンジンでは、コンテナー ログ サイズの制限が設定されません。 これにより、時間の経過と共に、デバイスがログでいっぱいになり、ディスク容量が不足する可能性があります。 これを防ぐには、以下のオプションを検討してください。
+
+**オプション:すべてのコンテナー モジュールに適用されるグローバル制限を設定する**
+
+コンテナー エンジンのログ オプションで、すべてのコンテナー ログ ファイルのサイズを制限できます。 次の例では、ログ ドライバーを `json-file` (推奨) に設定し、サイズとファイル数を制限します。
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+この情報を `daemon.json` という名前のファイルに追加 (またはアペンド) して、デバイス プラットフォームの適切な場所に配置します。
+
+| プラットフォーム | Location |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+|  Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+変更を有効にするには、コンテナー エンジンを再起動する必要があります。
+
+**オプション:各コンテナー モジュールのログ設定を調整する**
+
+これは、各モジュールの **createOptions** で行うことができます。 例: 
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**Linux システムにおけるその他のオプション**
+
+* 既定のロギング ドライバーとして `journald` を設定することで、`systemd` [ジャーナル](https://docs.docker.com/config/containers/logging/journald/)にログを送信するようにコンテナー エンジンを構成します。 
+
+* logrotate ツールをインストールすることで、デバイスから古いログを定期的に削除します。 次のファイルの指定を使用します。 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

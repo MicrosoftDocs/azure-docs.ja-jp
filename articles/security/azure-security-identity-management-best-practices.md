@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112106"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895688"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -116,7 +116,7 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 **オプション 1**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md)。   
 **利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインする際に毎回 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。
 
-**オプション 2**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access)。   
+**オプション 2**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-getstarted.md)。
 **利点**:このオプションでは、[条件付きアクセス](../active-directory/active-directory-conditional-access-azure-portal.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。

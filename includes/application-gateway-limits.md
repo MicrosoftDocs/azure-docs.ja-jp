@@ -2,16 +2,16 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554239"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494669"
 ---
-| リソース | 既定の制限 | Note |
+| Resource | 既定の制限 | Note |
 | --- | --- | --- |
 | Azure Application Gateway |サブスクリプションあたり 1,000 | |
 | フロントエンド IP 構成 |2 |パブリック 1、プライベート 1 |
@@ -31,7 +31,7 @@ ms.locfileid: "57554239"
 | 各リスナーあたりの URL のマップの数 |1 | |
 | URL マップあたりのパスベース ルールの最大数|100||
 | リダイレクトの構成 |100<sup>1</sup>| |
-| コンカレント WebSocket 接続 |5,000| |
+| コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<br> 大規模のゲートウェイ 50k| |
 | URL の最大長|8,000||
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |

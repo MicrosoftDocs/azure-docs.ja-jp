@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113783"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847214"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 
@@ -96,6 +96,11 @@ Web シミュレーターには3 つの領域があります。
 
 IoT Hub に送信されるセンサー データとメッセージを示す次の出力が表示されます。![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>ハブに送信されたメッセージを読み取る
+
+シミュレートされたデバイスから IoT ハブが受信するメッセージを監視する方法の 1 つに、Azure IoT Tools for Visual Studio Code を使用することがあります。 詳細については、「[Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)」を参照してください。
+
+デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
 
 ## <a name="next-steps"></a>次の手順
 

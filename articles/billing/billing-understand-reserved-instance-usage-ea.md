@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: 66fd42e5aa110b4c9ef686b1d66429ff7dbaf550
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857693"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648301"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>エンタープライズ加入契約に適用される Azure の予約の使用状況について
 
@@ -53,7 +53,7 @@ ms.locfileid: "57857693"
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL Database および Cosmos DB の予約容量の予約の使用状況
 
-以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。 
+以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。
 
 SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
 
@@ -64,7 +64,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 |Product| SQL Database Gen 4 (2 Core)|
 |リージョン | eastus |
 
-### <a name="usage-in-csv-file"></a>CSV ファイルでの使用状況 
+### <a name="usage-in-csv-file"></a>CSV ファイルでの使用状況
 
 **追加情報**にフィルターを適用し、ご自分の**予約 ID** を入力してから、必要な**測定カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
 
@@ -81,19 +81,20 @@ Azure の予約の使用状況は、Enterprise portal の使用状況の概要�
 1. VM のハードウェア コンポーネントは、予約によって充当されるため、料金は発生しません。 SQL Database の予約の場合、Azure SQL Database の予約容量として **Service Name** 行が表示されます。
 2. この例では、Azure ハイブリッド特典がないため、VM で使用される Windows ソフトウェアには課金されます。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
+
 ## <a name="next-steps"></a>次の手順
 
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md) 
+- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [予約に含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 

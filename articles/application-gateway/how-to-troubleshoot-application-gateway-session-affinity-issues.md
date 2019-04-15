@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 157cbd9b05f7f2af58df732a1ca0329926a200da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123217"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904527"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
 Azure Application Gateway のセッション アフィニティに関する問題を診断および解決する方法について説明します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
 
@@ -50,7 +53,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 次の方法のいずれかを使用して、「**backendHttpSettingsCollection**」の下で「**CookieBasedAffinity**」の値が *[有効]* に設定されているかどうかも調べられます。
 
-- PowerShell で [Get-AzureRmApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermapplicationgatewaybackendhttpsettings?view=azurermps-4.1.0) を実行する
+- PowerShell で [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) を実行する
 - Azure Resource Manager テンプレートを使用して、JSON ファイルを調べる
 
 ```
@@ -186,7 +189,7 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
 
     次に例を示します。
 
-- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 「RAW」タブを選択し、「**Set-Cookie:ARRAffinity=** *ARRAffinityValue*」をクライアントが受信しているかどうか判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
+- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 [RAW] タブを選択し、クライアントが "**Set-Cookie: ARRAffinity=** *ARRAffinityValue*" を受信しているかどうか判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
 
    > [!NOTE]
    > この ARRAffinity 値は cookie-id であり、Application Gateway がクライアントに対して特定のバックエンド サーバーに送信されるように設定する値です。

@@ -276,7 +276,7 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
 2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに「**https://dl.microsoft.com/eclipse**」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
 
 4. **[追加]** を選択します。
 

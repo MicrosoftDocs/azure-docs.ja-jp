@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8046721244b31539dc79eba3f2ba11d34c2df256
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170365"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904187"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -50,7 +50,7 @@ ms.locfileid: "56170365"
 | [組織固有の禁止パスワードのカスタム リストを作成する](../authentication/howto-password-ban-bad-configure.md) | ユーザーが、お客様の組織や分野において一般的な単語や語句を含むパスワードを作成しないようにします。 | Azure AD Basic |
 | [Azure AD のパスワード保護とのオンプレミス統合を有効にする](../authentication/concept-password-ban-bad-on-premises.md) | 禁止パスワード リストをオンプレミスのディレクトリまで拡張して、オンプレミスで設定されるパスワードが、グローバルでテナント固有の禁止パスワード リストにも確実に準拠するようにします。 | Azure AD Premium P1 |
 | [Microsoft のパスワードのガイダンスを有効にする](https://www.microsoft.com/research/publication/password-guidance/) | 設定したスケジュールでのパスワード変更をユーザーに要求することをやめ、複雑さに関する要件を無効にします。ユーザーは自分のパスワードを、より覚えやすく安全な何かのままにしておきやすくなります。 | Azure AD Free |
-| [クラウド ベースのユーザー アカウントの定期的なパスワード リセットを無効にする](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期的なパスワード リセットでは、ユーザーに、既存のパスワードを増やすことが推奨されています。 Microsoft のパスワードのガイダンス ドキュメントに記載されたガイドラインを使用し、オンプレミスのポリシーをクラウドのみのユーザーにミラー化します。 | Azure AD Free |
+| [クラウドベースのユーザー アカウントの定期的なパスワード リセットを無効にする](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期的なパスワード リセットでは、ユーザーに、既存のパスワードを増やすことが推奨されています。 Microsoft のパスワードのガイダンス ドキュメントに記載されたガイドラインを使用し、オンプレミスのポリシーをクラウドのみのユーザーにミラー化します。 | Azure AD Free |
 | [Azure Active Directory のスマート ロックアウトをカスタマイズする](../authentication/howto-password-smart-lockout.md) | オンプレミスの Active Directory ユーザーにレプリケートされないように、クラウド ベースのユーザーからのロックアウトを停止します | Azure AD Basic |
 | [AD FS のエクストラネット スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS のエクストラネット ロックアウトは、ブルート フォース パスワード推測攻撃からの保護を行います。同時に、有効な AD FS ユーザーには引き続き自分のアカウントを使用させます。 | |
 | [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md) | 条件付きアクセス ポリシーを使用して、機密性の高いアプリケーションにアクセスするときには 2 段階認証を実行するようユーザーに要求します。 | Azure AD Premium P1 |
@@ -68,7 +68,7 @@ ms.locfileid: "56170365"
 | [パスワード ハッシュ同期の実装](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | パスワード ハッシュを同期し、パスワード変更のレプリケート、不正なパスワードの検出と修正、漏洩した資格情報の報告を行えるようにします。 | Azure AD Premium P1 |
 | [パスワード ライトバックの実装](../authentication/howto-sspr-writeback.md) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 | Azure AD Premium P1 |
 | [Azure AD Connect Health の実装](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect サーバー、AD FS サーバー、およびドメイン コント ローラーについて、正常性に関する重要な統計情報の監視を有効にします。 | Azure AD Premium P1 |
-| [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
+| [Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
 | [ゲスト ユーザー アクセスの計画を作成する](../b2b/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 | [Azure AD B2B のライセンスに関するガイダンス](../b2b/licensing-guidance.md) |
 | [デバイス管理戦略を決定する](../devices/overview.md) | デバイスに関して組織が何を許可するかを決定します。 登録か参加か、Bring Your Own Device か会社支給かなどです。 | |
 | [組織に Windows Hello for Business を配置する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello を使用するパスワードのない認証のための準備を行います | |

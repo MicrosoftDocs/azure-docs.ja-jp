@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080067"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498419"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -82,7 +82,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 ### <a name="connect-to-the-internet-via-a-proxy"></a>プロキシ経由でのインターネットへの接続
 
 - プロキシ サーバーで認証が必要な場合は、Collector を設定するときにユーザー名とパスワードを指定できます。
-- プロキシ サーバーの IP アドレスまたは FQDN は、*http://IPaddress* または *http://FQDN* と指定する必要があります。
+- プロキシ サーバーの IP アドレスまたは FQDN は、*http:\//IPaddress* または *http:\//FQDN* と指定する必要があります。
 - サポートされるのは HTTP プロキシのみです。 HTTPS ベースのプロキシ サーバーは、Collector ではサポートされていません。
 - プロキシ サーバーがインターセプト プロキシである場合は、Collector 仮想マシンにプロキシ証明書をインポートする必要があります。
   1. Collector 仮想マシンで、**[スタート メニュー]** > **[コンピューター証明書の管理]** に移動します。
@@ -151,6 +151,9 @@ RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>収集されたメタデータ
 
+> [!NOTE]
+> Azure Migrate コレクター アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
+
 Collector アプライアンスでは、仮想マシンごとに次の構成メタデータが検出されます。 仮想マシンの構成データは、検出を開始してから 1 時間後に利用可能になります。
 
 - (vCenter Server 上の) 仮想マシンの表示名
@@ -211,7 +214,7 @@ Azure Migrate によって収集される VMware カウンターの完全なリ�
 ネットワーク アダプターの詳細 (NIC ごと) | IPv6 アドレス | vm.Guest.Net
 ネットワーク アダプターの詳細 (NIC ごと) | 読み取りスループットの 1 秒あたりのメガバイト数 | net.received.average
 ネットワーク アダプターの詳細 (NIC ごと) | 書き込みスループットの 1 秒あたりのメガバイト数 | net.transmitted.average
-インベントリ パスの詳細 | Name | container.GetType().Name
+インベントリ パスの詳細 | 名前 | container.GetType().Name
 インベントリ パスの詳細 | 子オブジェクトの型 | container.ChildType
 インベントリ パスの詳細 | 参照の詳細 | container.MoRef
 インベントリ パスの詳細 | 完全なインベントリ パス | container.Name with complete path

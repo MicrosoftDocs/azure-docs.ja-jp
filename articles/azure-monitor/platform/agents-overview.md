@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: d1e896aee4ba699704ce01e0cff8210d53700993
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899810"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371929"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 監視エージェントの概要 
 Microsoft Azure では、Azure、データセンター、または他のクラウド プロバイダーにホストされている、Microsoft Windows や Linux を実行する仮想マシンからの各種のデータをさまざまな方法で収集できます。 VM の監視に使用可能な 3 種類のエージェントがあります。
@@ -49,10 +49,10 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * 仮想マシン スケール セットと従来の Cloud Services をゲスト OS メトリックに基づいて自動スケーリングする。
 * [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を使用して VM ブートの問題を調査する。
 * [Application Insights](../../azure-monitor/overview.md) を使用して、ご利用のアプリケーションのパフォーマンスを把握し、影響している問題点を先を見越して特定する。
-* Cloud Services、従来の VM、および Azure ストレージ アカウントに格納されている Service Fabric ノードから収集したメトリックとログ データをインポートするように Log Analytics を構成する。
+* Cloud Services、従来の VM、および Azure ストレージ アカウントに格納されている Service Fabric ノードから収集したメトリックとログ データをインポートするように Azure Monitor を構成する。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
-メトリックやログのサブセットを収集すること以上の作業が必要な高度な監視を行う場合は、Windows 用および Linux 用の Log Analytics エージェントが必要です (Windows 用は、Microsoft Monitoring Agent (MMA) とも呼ばれます)。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、自分で構成するカスタム データ ソースの両方を収集するために、Log Analytics ワークスペースに接続します。
+メトリックやログのサブセットを収集すること以上の作業が必要な高度な監視を行う場合は、Windows 用および Linux 用の Log Analytics エージェントが必要です (Windows 用は、Microsoft Monitoring Agent (MMA) とも呼ばれます)。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、自分で構成するカスタム データ ソースの両方を収集するために、Azure Monitor で Log Analytics ワークスペースに接続します。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -70,7 +70,7 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * データが直接 Log Analytics にネイティブに保管される、[Application Insights](https://docs.microsoft.com/azure/application-insights/) や [Azure Security Center](https://docs.microsoft.com/azure/security-center/) などの Azure サービス。  
 
 ## <a name="dependency-agent"></a>依存関係エージェント
-依存関係エージェントは、当初は Microsoft の外部で開発された Service Map ソリューションの一部として開発されました。 [Service Map](../insights/service-map.md) と [Azure Monitor for VMs](../insights/vminsights-overview.md) は Windows および Linux 仮想マシン上の依存関係エージェントを必要とします。また、Log Analytics エージェントと統合されて、仮想マシン上で実行されているプロセスや外部プロセスの依存関係について検出されたデータを収集します。 このデータは Log Analytics に格納され、検出された相互接続コンポーネントが視覚化されます。
+依存関係エージェントは、当初は Microsoft の外部で開発された Service Map ソリューションの一部として開発されました。 [Service Map](../insights/service-map.md) と [Azure Monitor for VMs](../insights/vminsights-overview.md) は Windows および Linux 仮想マシン上の依存関係エージェントを必要とします。また、Log Analytics エージェントと統合されて、仮想マシン上で実行されているプロセスや外部プロセスの依存関係について検出されたデータを収集します。 このデータは Log Analytics ワークスペースに格納され、検出された相互接続コンポーネントが視覚化されます。
 
 VM を監視するには、これらのエージェント組み合わせが必要な場合があります。 エージェントは Azure 拡張機能と共存するようにインストールできますが、Linux では、Log Analytics エージェントを最初にインストールする "*必要があり*"、そうしないとインストールが失敗します。 
 

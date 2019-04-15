@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234358"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895598"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -59,7 +59,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [Redis コマンドの実行方法](#how-can-i-run-redis-commands)
 * [他のいくつかの Azure サービスと異なり Azure Cache for Redis の MSDN クラス ライブラリ リファレンスが提供されない理由](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 * [Azure Cache for Redis を PHP セッションのキャッシュとして使用できるか](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
-* [Redis データベースについて](#what-are-redis-databases)
+* [Redis データベースとは](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 * [Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
@@ -269,7 +269,7 @@ Microsoft Azure Cache for Redis は、広く普及しているオープン ソ�
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> キーが URL エンコードされていない場合、次のようなメッセージの例外が表示されます。`Failed to parse session.save_path`
+> キーが URL エンコードされていない場合、次のようなメッセージの例外が表示されます。 `Failed to parse session.save_path`
 >
 >
 
@@ -392,7 +392,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
   > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
   >
 
-* ASP.NET の外部、および Azure WebSites global.asax では、[ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx)API を使用します。
+* ASP.NET の外部、および Azure WebSites global.asax では、[ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)API を使用します。
 
   > [!NOTE]
   > この API によって指定される値はグローバル設定であり、AppDomain 全体に影響を与えます。 4 コア マシンがあり、実行中の minWorkerThreads および minIOThreads を CPU あたり 50 に設定する場合は、ThreadPool.SetMinThreads (200, 200) を使用します。
@@ -402,9 +402,9 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
 StackExchange.Redis を使用するときにサーバー GC を有効にすると、クライアントが最適化され、パフォーマンスとスループットを向上させることができます。 サーバー GC とそれを有効にする方法の詳細については、次の記事を参照してください。
 
-* [サーバー GC を有効にするには](https://msdn.microsoft.com/library/ms229357.aspx)
-* [ガベージ コレクションの基礎](https://msdn.microsoft.com/library/ee787088.aspx)
-* [ガベージ コレクションとパフォーマンス](https://msdn.microsoft.com/library/ee851764.aspx)
+* [サーバー GC を有効にするには](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [ガベージ コレクションの基礎](/dotnet/standard/garbage-collection/fundamentals)
+* [ガベージ コレクションとパフォーマンス](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>接続のパフォーマンスに関する考慮事項
@@ -469,11 +469,11 @@ Azure Cache for Redis の使用を開始することの詳細については、�
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386094.aspx)を参照してください。
+アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](/previous-versions/azure/azure-services/dn386094(v=azure.100))を参照してください。
 
 ### <a name="in-role-cache"></a>In-Role Cache
 [In-Role Cache は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386103.aspx)を参照してください。
+アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](/previous-versions/azure/azure-services/dn386103(v=azure.100))を参照してください。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

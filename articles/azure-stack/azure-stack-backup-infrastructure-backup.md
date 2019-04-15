@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: da1ae76925ffeba7a1df57b4121f8cfe20b2887f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285923"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882108"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
@@ -32,7 +32,7 @@ ms.locfileid: "58285923"
 バックアップ サービスを有効にする前に、[要件が満たされている](#verify-requirements-for-the-infrastructure-backup-service)ことを確認してください。
 
 > [!Note]  
-> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 IaaS VM ベースのアプリケーションを保護する方法の詳細については、[Azure Stack にデプロイされた VM の保護](user/azure-stack-manage-vm-protect.md)に関する説明を参照してください。 Azure Stack 上でアプリケーションを保護する方法を包括的に理解するには、[事業継続とディザスター リカバリーのための Azure Stack の考慮事項に関するホワイトペーパー](http://aka.ms/azurestackbcdrconsiderationswp)を参照してください。
+> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 IaaS VM ベースのアプリケーションを保護する方法の詳細については、[Azure Stack にデプロイされた VM の保護](user/azure-stack-manage-vm-protect.md)に関する説明を参照してください。 Azure Stack 上でアプリケーションを保護する方法を包括的に理解するには、[事業継続とディザスター リカバリーのための Azure Stack の考慮事項に関するホワイトペーパー](https://aka.ms/azurestackbcdrconsiderationswp)を参照してください。
 
 ## <a name="the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービス
 
@@ -48,7 +48,7 @@ ms.locfileid: "58285923"
 
 ## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスの要件を確認する
 
-- **保存場所**  
+- **保存先**  
   7 個のバックアップを保存できる、Azure Stack からアクセス可能なファイル共有が必要です。 各バックアップは約 10 GB です。 共有には 140 GB のバックアップを保存できる必要があります。 Azure Stack インフラストラクチャ バックアップ サービスの保存場所の選択の詳細については、「[Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements)」(バックアップ コントローラーの要件) を参照してください。
 - **資格情報**  
   ドメイン ユーザー アカウントと資格情報が必要です。たとえば、Azure Stack 管理者の資格情報を使用できます。

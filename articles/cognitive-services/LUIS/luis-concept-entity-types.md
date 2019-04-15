@@ -1,7 +1,7 @@
 ---
 title: エンティティの種類
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Language Understanding Intelligent Service (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
+description: エンティティは、発話からデータを抽出します。 エンティティの種類では、データの予測可能な抽出が提供されます。 エンティティには、機械学習と非機械学習の 2 種類があります。 発話で使用しているエンティティの種類を把握していることが重要です。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844590"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895547"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
-エンティティとは、発話に含まれる単語またはフレーズのことで、アプリケーションのドメイン内のキー データです。
+エンティティは、発話からデータを抽出します。 エンティティの種類では、データの予測可能な抽出が提供されます。 エンティティには、機械学習と非機械学習の 2 種類があります。 発話で使用しているエンティティの種類を把握していることが重要です。 
 
 ## <a name="entity-compared-to-intent"></a>エンティティと意図の比較
 
@@ -90,13 +90,13 @@ LUIS では、さまざまな種類のエンティティが提供されます。
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**複合**](#composite-entity)|エンティティ型に関係なく、エンティティのグループ。|
 |✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**階層構造**](#hierarchical-entity)|シンプルなエンティティのグループ。|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**リスト**](#list-entity)|項目の一覧と、完全なテキスト一致を使用して抽出されたそれらのシノニム。|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**List**](#list-entity)|項目の一覧と、完全なテキスト一致を使用して抽出されたそれらのシノニム。|
 |混合||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|エンティティの末尾の特定が困難なエンティティ。|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**事前構築済み**](#prebuilt-entity)|さまざまな種類のデータを抽出するために既にトレーニングされています。|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**正規表現**](#regular-expression-entity)|正規表現を使用してテキストを照合します。|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**シンプル**](#simple-entity)|単語または語句に 1 つの概念が含まれています。|
 
-すべての意図の発話の例では、機械学習エンティティのみをマークする必要があります。 機械学習エンティティは、[エンドポイント クエリ](luis-concept-test.md#endpoint-testing)を使用してテストし、[エンドポイントの発話の確認](luis-how-to-review-endoint-utt.md)を行うと、最適に動作します。 
+すべての意図の発話の例では、機械学習エンティティのみをマークする必要があります。 機械学習エンティティは、[エンドポイント クエリ](luis-concept-test.md#endpoint-testing)を使用してテストし、[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)を行うと、最適に動作します。 
 
 Pattern.any エンティティは、意図のユーザー例内ではなく、[パターン](luis-how-to-model-intent-pattern.md) テンプレート例内でマークする必要があります。 
 
@@ -190,7 +190,7 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 
 * データが、言語カルチャに対する事前構築済みのエンティティでサポートされている一般的なユース ケースと一致する。 
 
-事前構築済みのエンティティは、いつでも追加および削除できます。 発話の例に事前構築済みのエンティティが検出され、カスタム エンティティのマーキングが不可能な場合は、アプリから事前構築済みのエンティティを削除し、エンティティをマークしてから、事前構築済みのエンティティを再び追加します。 
+事前構築済みのエンティティは、いつでも追加および削除できます。
 
 ![事前構築済みのエンティティ Number](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,38 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 [エンティティの JSON 応答例](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 これらの事前構築済みエンティティの一部は、オープンソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトで定義されます。 ご自分の特定のカルチャまたはエンティティが現在サポートされていない場合は、プロジェクトにご協力ください。 
+
+### <a name="troubleshooting-prebuilt-entities"></a>事前構築済みエンティティのトラブルシューティング
+
+LUIS ポータルでは、事前構築済みエンティティがご自分のカスタム エンティティ以外でタグ付けされている場合、これを解決するにはいくつかの選択肢があります。
+
+発話で同じテキストのカスタム エンティティを抽出する必要がある場合であっても、アプリに追加された事前構築済みエンティティが "_常に_" 返されます。 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>発話の例でタグが付けられたエンティティを変更する
+
+事前構築済みエンティティがカスタム エンティティと同じテキストまたはトークンである場合は、発話の例でテキストを選択し、タグが付けられた発話を変更します。 
+
+事前構築済みエンティティが、カスタム エンティティより多くのテキストまたはトークンでタグを付けられている場合は、この問題を解決するのに 2 つの選択肢があります。
+
+* [発話の例を削除する](#remove-example-utterance-to-fix-tagging)方法
+* [事前構築済みエンティティを削除する](#remove-prebuilt-entity-to-fix-tagging)方法
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>発話の例を削除してタグ付けを修正する 
+
+最初の選択肢は、発話の例を削除することです。 
+
+1. 発話の例を削除します。
+1. アプリを再トレーニングします。 
+1. より、完全な発話の例として、エンティティである語句だけを追加して戻すと、事前構築済みのエンティティとしてマークされます。 語句はまだ、事前構築済みエンティティとしてマークされています。 
+1. **[意図]** ページの発話の例でエンティティを選択し、カスタム エンティティに変更して、再トレーニングします。 これにより、LUIS では、そのテキストを使用する発話の例に含まれる事前構築済みエンティティとして、この正確なテキストはマークされなくなります。 
+1. 元の発話の例全体を意図に追加して戻します。 事前構築済みエンティティではなく、カスタム エンティティが引き続きマークされます。 カスタム エンティティがマークされない場合は、発話でのそのテキストの例をさらに追加する必要があります。
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>事前構築済みエンティティを削除してタグ付けを修正する
+
+1. アプリから事前構築済みエンティティを削除します。 
+1. **[意図]** ページで、発話の例に含まれるカスタム エンティティをマークします。
+1. アプリをトレーニングします。
+1. 事前構築済みエンティティをアプリに追加して戻し、アプリをトレーニングします。 この修正では、事前構築済みエンティティが複合エンティティの一部ではないものと想定しています。
 
 ## <a name="regular-expression-entity"></a>正規表現エンティティ 
 
@@ -234,7 +266,7 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 
 複合エンティティと階層構造エンティティは、どちらも親子関係を持ち、機械学習されます。 機械学習により、LUIS では、異なるコンテキスト (単語の配置) に基づいてエンティティを理解できます。 複合エンティティでは、子としてさまざまな種類のエンティティを使用できるため、より柔軟です。 階層構造エンティティの子は、シンプルなエンティティのみです。 
 
-|type|目的|例|
+|Type|目的|例|
 |--|--|--|
 |階層構造|シンプルなエンティティの親子|Location.Origin=New York<br>Location.Destination=London|
 |複合|親子エンティティ: 事前構築済み、リスト、シンプル、階層構造| number=3<br>list=first class<br>prebuilt.datetimeV2=March 5|

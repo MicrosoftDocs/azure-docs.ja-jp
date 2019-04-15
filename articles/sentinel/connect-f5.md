@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: df36c1e8abb96862727c84877e5c24435191cd6a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b78ed31fec3716e06f74d9c026ca2af2c48e0312
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863204"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883464"
 ---
 # <a name="connect-your-f5-appliance"></a>F5 アプライアンスを接続する
 
@@ -63,16 +63,16 @@ F5 アプライアンスを Azure Sentinel に接続するには、エージェ�
             
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
             
-            1. syslog デーモン `sudo service rsyslog restart` を再起動します
+            1. 次の syslog デーモンを再起動します:  `sudo service rsyslog restart`
              
           - syslog-ng を選択した場合:
 
               1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
               2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
 
-              3. syslog デーモン `sudo service syslog-ng restart` を再起動します
-      2. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェントにエラーがないことを確認します: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+              3. 次の syslog デーモンを再起動します:  `sudo service syslog-ng restart`
+      2. 次のコマンドを使用して、Syslog エージェントを再起動します:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します:  `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミス Linux サーバーにエージェントをデプロイする
 
@@ -89,13 +89,13 @@ Azure を使用していない場合は、専用の Linux サーバーで実行�
            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
            2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-           3. syslog デーモン `sudo service rsyslog restart` を再起動します
+           3. 次の syslog デーモンを再起動します:  `sudo service rsyslog restart`
          - syslog-ng を選択した場合:
             1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-            3. syslog デーモン `sudo service syslog-ng restart` を再起動します
-      1. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェントにエラーがないことを確認します: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+            3. 次の syslog デーモンを再起動します:  `sudo service syslog-ng restart`
+      1. 次のコマンドを使用して、Syslog エージェントを再起動します:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します:  `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-f5-logs-to-the-syslog-agent"></a>手順 2:F5 ログを Syslog エージェントに転送する
 
@@ -115,9 +115,10 @@ F5 の[アプリケーション セキュリティ イベント ログの構成]
 
 1. Syslog エージェントで、ログが適切なポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログが、適切なポートおよびファシリティで、ソース アプライアンスから受信されていることを確認します。
 2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログがエージェント上でも受信されていることを確認します。
-3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べてログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog ` 型の下に未加工の形式で表示されます。
-1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log` を調べます
-4. Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します: `message_length_limit 4096`
+3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べてログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` 型の下に未加工の形式で表示されます。
+1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、次のファイルを調べます:  `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
+4. Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します:  `message_length_limit 4096`
+6. Log Analytics で F5 イベントに関連するスキーマを使用するために、**CommonSecurityLog** を検索します。
 
 
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119294"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793466"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Application Gateway で HTTP ヘッダーを書き換える (パブリック プレビュー)
 
@@ -96,10 +96,12 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | クライアントでサポートされている暗号の一覧を返します          |
 | ciphers_used               | 確立された SSL 接続で使用される暗号の文字列を返します |
+| client_ip                  | アプリケーション ゲートウェイが要求を受信したクライアントの IP アドレス。 アプリケーション ゲートウェイと元のクライアントの前にリバース プロキシがある場合、*client_ip* にはリバース プロキシの IP アドレスが返されます。 この変数は、お客様が Application Gateway によって設定された X-Forwarded-For ヘッダーを書き換える予定があるシナリオで特に有用です。この方法により、ヘッダーにはポート情報は含まれず、IP アドレスのみが含まれるようになります。 |
 | client_port                | クライアント ポート                                                  |
 | client_tcp_rtt             | クライアントの TCP 接続に関する情報。TCP_INFO ソケット オプションをサポートするシステムで使用できます |
 | client_user                | HTTP 認証の使用時に、認証のために提供されるユーザー名 |
 | host                       | 優先順位は次の通りです: 要求行のホスト名、"Host" 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名 |
+| cookie_*name*              | *name* クッキー |
 | http_method                | URL 要求を行うために使用されたメソッド。 たとえば、GET、POST などです。 |
 | http_status                | セッションの状態。例: 200、400、403 など                       |
 | http_version               | 要求のプロトコル。通常は "HTTP/1.0"、"HTTP/1.1"、または "HTTP/2.0" です |
@@ -119,11 +121,7 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
 
 - HTTP ヘッダーの書き換えは、新しい SKU の [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみサポートされます この機能は古い SKU ではサポートされません。
 
-- Connect、Upgrade、Host の各ヘッダーの書き換えはまだサポートされていません。
-
-- 2 つの重要なサーバー変数である client_ip (要求元のクライアントの IP アドレス) と cookie_*name* (*name* cookie) はまだサポートされていません。 client_ip サーバー変数は、お客様が、Application Gateway によって設定された x-forwarded-for ヘッダーを書き換える予定があるシナリオで特に有用です。この方法により、ヘッダーには、ポート情報は含まれず、クライアントの IP アドレスのみが含まれるようになります。
-
-  これらのサーバー変数はどちらも、間もなくサポートされる予定です。
+- Connection、Upgrade、および Host の各ヘッダーの書き換えはまだサポートされていません。
 
 - 条件に応じて http ヘッダーを書き換える機能が間もなく提供されます。
 

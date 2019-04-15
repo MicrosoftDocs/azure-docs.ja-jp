@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 2fc881aac096ccbafa351fcac2d726cc51d8f178
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 018ad851b223caa4017d544ca12e2a6397654205
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286892"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793926"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -37,7 +37,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
     この動作を回避するには、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の説明に従って、独自のイメージを作成する必要があります。 その後、別の更新インフラストラクチャに接続する必要があります ([直接 Red Hat のコンテンツ配信サーバー](https://access.redhat.com/solutions/253273)または [Red Hat Satellite サーバーに](https://access.redhat.com/products/red-hat-satellite))。
 
-* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_ 料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、独自の (BYOL タイプの) イメージを作成してデプロイすることを検討してください。 このプロセスについては、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、独自の (BYOL タイプの) イメージを作成してデプロイすることを検討してください。 このプロセスについては、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
 * Azure での RHEL SAP PAYG イメージ (RHEL for SAP、RHEL for SAP HANA、および RHEL for SAP Business Applications) は、SAP 認定に必要な特定の RHEL マイナー バージョンのままになっている専用の RHUI チャネルに接続されます。
 
@@ -89,6 +89,8 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 
 # Azure US Government
 13.72.186.193
+13.72.14.155
+52.244.249.194
 
 # Azure Germany
 51.5.243.77
@@ -108,6 +110,11 @@ sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 
 別の方法として、`sudo yum update` を実行した場合も、他のリポジトリに関して "有効期限が切れた SSL 証明書" のエラーは表示されますが、(RHEL バージョンに応じて) クライアント証明書パッケージが更新されることがあります。 この更新が成功した場合、他の RHUI リポジトリへの正常な接続が復元されるため、`sudo yum update` を正常に実行できるようになります。
 
+`yum update` の実行中に 404 エラーが発生した場合は、次を実行して yum キャッシュを更新してみてください。
+```bash
+sudo yum clean all;
+sudo yum makecache
+```
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Azure RHUI への接続に関する問題のトラブルシューティング
 Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合は、次の手順に従います。

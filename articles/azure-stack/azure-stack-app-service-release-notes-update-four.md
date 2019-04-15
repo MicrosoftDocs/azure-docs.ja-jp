@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: c8900e639e6baba29067c50d4ac754d4dbda2dd6
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991083"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449237"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service on Azure Stack update 4 のリリース ノート
 
@@ -64,6 +64,8 @@ Azure App Service on Azure Stack Update 4 には、次の機能強化と修正�
 - App Service 2018-02-01 API バージョンのサポートが追加されました。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+
+- **Azure Functions ランタイム**が **v1.0.11959** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 

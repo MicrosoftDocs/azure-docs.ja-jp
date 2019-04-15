@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 と Azure Storage Blob の比較 | Microsoft
 description: Azure Data Lake Storage Gen1 と Azure Storage Blob の比較
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 3f37b996caa60a54c18388cb1f65873bf0aa4ed9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: twooley
+ms.openlocfilehash: 478c261bb909cbc931a7dbbaa9cb6c61152970e4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877696"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885536"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 と Azure Blob Storage の比較
 
@@ -32,7 +32,7 @@ ms.locfileid: "55877696"
 | 主要な概念 |Data Lake Storage Gen1 アカウントにはフォルダーが含まれ、フォルダーにはファイルとして保存されたデータが含まれます。 |ストレージ アカウントにはコンテナーが含まれ、コンテナーには BLOB の形でデータが含まれます。 |
 | Structure |階層型ファイル システム |フラットな名前空間を使用するオブジェクト ストア |
 | API |HTTPS 経由の REST API |HTTP/HTTPS 経由の REST API |
-| サーバー側 API |[WebHDFS 互換の REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure BLOB ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| サーバー側 API |[WebHDFS 互換の REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop ファイル システム クライアント |はい |はい |
 | データ操作 - 認証 |[Azure Active Directory ID](../active-directory/develop/authentication-scenarios.md) |共有シークレット ([アカウント アクセス キー](../storage/common/storage-account-manage.md#access-keys)と [Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) キー) に基づきます。 |
 | データ操作 - 認証プロトコル |OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 |ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |

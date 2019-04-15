@@ -5,18 +5,18 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550772"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517319"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、フィルター処理、ルーティング、ピアリングなどを通じて、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングを構築できます。 Azure 仮想ネットワークにコンテナー グループをデプロイすれば、それらのコンテナーで、仮想ネットワーク内の他のリソースと安全に通信することができます。
+[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングが提供されます。 Azure 仮想ネットワークにコンテナー グループをデプロイすれば、それらのコンテナーで、仮想ネットワーク内の他のリソースと安全に通信することができます。
 
 Azure 仮想ネットワークにデプロイされたコンテナー グループでは、次のようなシナリオに対応できます。
 
@@ -34,7 +34,6 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 仮想ネットワークにコンテナー グループをデプロイする場合には、いくつかの制限が適用されます。
 
 * コンテナー グループをサブネットにデプロイする場合、サブネットに他の種類のリソースを含めることはできません。 コンテナー グループをデプロイする前に、既存のサブネットから既存のリソースをすべて削除するか、新しいサブネットを作成してください。
-* 現在のところ、仮想ネットワークにデプロイされたコンテナー グループでは、パブリック IP アドレスや DNS 名ラベルはサポートされません。
 * 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
 * 仮想ネットワークにコンテナー グループをデプロイすると、追加のネットワーキング リソースが必要になるため、通常は、標準のコンテナー インスタンスをデプロイする場合よりも若干低速になります。
 
@@ -46,10 +45,14 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 コンテナーのリソース制限は、これらのリージョンでのネットワークに接続されていないコンテナー インスタンスに対する制限とは異なる場合があります。 現在、この機能でサポートされているのは、Linux コンテナーのみです。 Windows でのサポートは計画されています。
 
-### <a name="unsupported-network-resources-and-features"></a>サポートされていないネットワーク リソースと機能
+### <a name="unsupported-networking-scenarios"></a>サポートされていないネットワーク シナリオ 
 
-* Azure Load Balancer
-* 仮想ネットワーク ピアリング
+* **Azure Load Balancer** - ネットワーク接続されたコンテナー グループ内のコンテナー インスタンスの前に Azure Load Balancer を配置することはサポートされていません
+* **仮想ネットワーク ピアリング** - Azure Container Instances に委任されたサブネットを含む仮想ネットワークを別の仮想ネットワークにピアリングすることはできません
+* **ルート テーブル** - Azure Container Instances に委任されたサブネットにユーザー定義のルートを設定することはできません
+* **ネットワーク セキュリティ グループ** - Azure Container Instances に委任されたサブネットに適用された NSG における送信セキュリティ規則は、現在適用されていません 
+* **パブリック IP または DNS ラベル** - 仮想ネットワークにデプロイされたコンテナー グループでは現在、パブリック IP アドレスまたは完全修飾ドメイン名を使用してコンテナーをインターネットに直接公開することはサポートされていません
+* **内部名前解決** - 内部 Azure DNS を介した仮想ネットワーク内の Azure リソースの名前解決はサポートされていません
 
 **ネットワーク リソースを削除**するには、仮想ネットワークにコンテナー グループをデプロイした後で、[追加の手順](#delete-network-resources)を実行する必要があります。
 
@@ -114,13 +117,13 @@ Resource Manager テンプレート、YAML ファイル、またはプログラ�
 
 最初に、コンテナー グループをデプロイし、新しい仮想ネットワークとサブネットのパラメーターを指定します。 これらのパラメーターを指定すると、Azure によって仮想ネットワークとサブネットが作成され、サブネットが Azure Container instances に委任されて、ネットワーク プロファイルも作成されます。 これらのリソースが作成されると、コンテナー グループがサブネットにデプロイされます。
 
-新しい仮想ネットワークとサブネットの設定を指定して、次の [az container create][az-container-create] コマンドを実行します。 リソース グループが、仮想ネットワーク内のコンテナー グループを[サポート](#preview-limitations)するリージョンで作成されている場合は、そのリソース グループの名前を指定する必要があります。 このコマンドにより、[microsoft/aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
+新しい仮想ネットワークとサブネットの設定を指定して、次の [az container create][az-container-create] コマンドを実行します。 リソース グループが、仮想ネットワーク内のコンテナー グループを[サポート](#preview-limitations)するリージョンで作成されている場合は、そのリソース グループの名前を指定する必要があります。 このコマンドにより、パブリックの Microsoft [aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
 
 ```azurecli
 az container create \
     --name appcontainer \
     --resource-group myResourceGroup \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --vnet aci-vnet \
     --vnet-address-prefix 10.0.0.0/16 \
     --subnet aci-subnet \
@@ -210,7 +213,7 @@ properties:
   containers:
   - name: appcontaineryaml
     properties:
-      image: microsoft/aci-helloworld
+      image: mcr.microsoft.com/azuredocs/aci-helloworld
       ports:
       - port: 80
         protocol: TCP
@@ -241,9 +244,9 @@ az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
 
 ```console
 $ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
-Name              ResourceGroup    Status    Image                     IP:ports     Network    CPU/Memory       OsType    Location
-----------------  ---------------  --------  ------------------------  -----------  ---------  ---------------  --------  ----------
-appcontaineryaml  myResourceGroup  Running   microsoft/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
+Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  ------------------------------------------  -----------  ---------  ---------------  --------  ----------
+appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -310,7 +313,7 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [aci-vnet-01]: ./media/container-instances-vnet/aci-vnet-01.png
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
+[aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->

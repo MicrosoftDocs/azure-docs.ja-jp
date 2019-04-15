@@ -1,90 +1,86 @@
 ---
-title: コンテンツ モデレーション ワークフローを定義して使用する - Content Moderator
+title: レビュー ツールを使用してコンテンツ ワークフローを定義して使用する - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Azure Content Moderator ワークフロー デザイナーおよび API を使用し、コンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
+description: Azure Content Moderator ワークフロー デザイナーを使用し、コンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8fe380e3015e5b6929aebcb898eef44d6f6bceda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213278"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757414"
 ---
-# <a name="define-test-and-use-workflows"></a>ワークフローの定義、テスト、使用
+# <a name="define-and-use-moderation-workflows"></a>モデレーション ワークフローを定義して使用する
 
-Azure Content Moderator ワークフロー デザイナーおよび API を使用し、コンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
+このガイドでは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトで[ワークフロー](../review-api.md#workflows)を設定して使用する方法について説明します。 ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローで、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、Content Moderator コネクタ (既定で含まれています) を使用してコンテンツをフィルター処理し、一般的なモデレーション シナリオの人間によるレビューを設定する方法について説明します。
 
-ワークフローは、コネクタを使用して Content Moderator API と「接続」します。 他の API のコネクタがある場合には、その API を使用できます。 この例では、既定で含まれている Content Moderator コネクタを使用します。
+## <a name="create-a-new-workflow"></a>新しいワークフローの作成
 
-## <a name="browse-to-the-workflows-section"></a>[ワークフロー] セクションを参照する
+[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動し、サインインします。 **[設定]** タブで **[ワークフロー]** を選択します。
 
-**[設定]** タブで **[ワークフロー]** を選択します。
+![ワークフローの設定](images/2-workflows-0.png)
 
-  ![ワークフローの設定](images/2-workflows-0.png)
+次の画面で **[Add Workflow]\(ワークフローの追加\)** を選択します。
 
-## <a name="start-a-new-workflow"></a>新しいワークフローを開始する
+![ワークフローの追加](images/2-workflows-1.png)
 
-**[ワークフローの追加]** を選択します。
-
-  ![ワークフローの追加](images/2-workflows-1.png)
-
-## <a name="assign-a-name-and-description"></a>名前と説明を割り当てる
+### <a name="assign-a-name-and-description"></a>名前と説明を割り当てる
 
 ワークフローに名前を付け、説明を入力し、ワークフローで処理するのがテキストか画像かを選択します。
 
-  ![ワークフローの名前と説明](images/ocr-workflow-step-1.PNG)
+![ワークフローの名前と説明](images/image-workflow-create.PNG)
 
-## <a name="define-the-evaluation-criteria-condition"></a>評価基準 ("条件") を定義する
+### <a name="define-evaluation-criteria"></a>評価基準の定義
 
-次のスクリーンショットには、ワークフローについて定義する必要があるフィールドと If-Then-Else 選択肢が表示されます。 コネクタを選択してください。 この例では、**Content Moderator** を使用します。 選択するコネクタに応じて、出力のために使用できるオプションが変わります。
+次の画面で、**[If]** セクションに移動します。 上部のドロップダウン メニューで **[条件]** を選択します。 これにより、ワークフローがアクションを実行する条件を構成できます。 複数の条件を使用する場合は、代わりに **[Combination]\(組み合わせ\)** を選択します。 
 
-  ![ワークフロー条件の定義](images/ocr-workflow-step-2-condition.PNG)
+次にコネクタを選択します。 この例では、**Content Moderator** を使用します。 選択するコネクタに応じて、表示されるデータ出力のオプションが変わります。 他のコネクタの設定方法については、レビュー ツールの設定ガイドの「[Connectors](./configure.md#connectors)」セクションを参照してください。
 
-コネクタと必要な出力を選択したら、演算子と条件の値を選択します。
+![ワークフロー コネクタの選択](images/image-workflow-connect-to.PNG)
 
-## <a name="define-the-action-to-take"></a>実行するアクションを定義する
+使用する目的の出力を選択し、それを確認する条件を設定します。
 
-実行するアクションと満たすべき条件を選択します。 次の例では、画像のレビューが作成され、タグ `a` が割り当てられ、表示された条件に対してタグが強調表示されます。 複数の条件を組み合わせて、必要な結果を得ることもできます。 必要に応じて、代替パス (Else) を追加します。
+![ワークフロー条件の定義](images/image-workflow-condition.PNG)
 
-  ![ワークフロー アクションの定義](images/ocr-workflow-step-3-action.PNG)
+### <a name="define-the-action"></a>アクションの定義
 
-## <a name="save-your-workflow"></a>ワークフローを保存する
+**[Then]** セクションに移動します。ここでアクションを選択します。 次の例では、画像レビューを作成してタグを割り当てます。 必要に応じて、代替 (Else) パスを追加してそのアクションを設定することもできます。
 
-最後に、ワークフローを保存して、ワークフロー名をメモします。 Review API を使用してモデレーション ジョブを開始するときに名前が必要になります。
+![ワークフロー アクションの定義](images/image-workflow-action.PNG)
+
+### <a name="save-the-workflow"></a>ワークフローの保存
+
+ワークフロー名をメモします。ワークフロー API を使用してモデレーション ジョブを開始するには名前が必要です (後述を参照してください)。 最後に、ページ上部にある **[保存]** ボタンを使用してワークフローを保存します。
 
 ## <a name="test-the-workflow"></a>ワークフローをテストする
 
-カスタム ワークフローを定義したところで、サンプル コンテンツを使用してワークフローをテストします。
+カスタム ワークフローを定義したところで、サンプル コンテンツを使用してワークフローをテストします。 **[ワークフロー]** に移動し、対応する **[Execute Workflow]\(ワークフローの実行\)** ボタンを選択します。
 
-対応する **[ワークフローの実行]** ボタンを選択します。
+![ワークフローのテスト](images/image-workflow-execute.PNG)
 
-  ![ワークフローのテスト](images/ocr-workflow-step-6-list.PNG)
+この[サンプル画像](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png)をローカル ドライブに保存します。 次に **[Choose File(s)]\(ファイルの選択\)** を選択して、画像をアップロードします。
 
-### <a name="upload-a-file"></a>ファイルをアップロードする
+![水着の女性](images/sample-racy.PNG)
 
-[サンプル画像](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png)をローカル ドライブに保存します。 ワークフローをテストするには、**[ファイルの選択]** を選択して、画像をアップロードします。
+### <a name="track-progress"></a>進捗状況の追跡
 
-  ![画像ファイルのアップロード](images/ocr-workflow-step-7-upload.PNG)
+次のポップアップ ウィンドウでワークフローの進行状況を確認できます。
 
-### <a name="track-the-workflow"></a>ワークフローを追跡する
+![ワークフロー実行の追跡](images/image-workflow-job.PNG)
 
-ワークフローの実行を追跡します。
+### <a name="verify-workflow-action"></a>ワークフロー アクションの確認
 
-  ![ワークフロー実行の追跡](images/ocr-workflow-step-4-test.PNG)
+**[レビュー]** の **[画像]** タブに移動し、新しく作成された画像レビューがあることを確認します。
 
-### <a name="review-any-images-flagged-for-human-moderation"></a>ヒューマン モデレーションのフラグが設定されたイメージをレビューする
+![画像のレビュー](images/image-workflow-review.PNG)
 
-画像のレビューを表示するには、**[確認]** の **[イメージ]** タブに移動します。
+## <a name="next-steps"></a>次の手順
 
-  ![画像のレビュー](images/ocr-sample-image-workflow1.PNG)
-
-## <a name="next-steps"></a>次の手順 
-
-コードからワークフローを起動するには、[`Job` API コンソールのクイック スタート](../try-review-api-job.md)および[.NET SDK クイック スタート](../moderation-jobs-quickstart-dotnet.md)でカスタム ワークフローを使用します。
+このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からモデレーション ワークフローを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-workflow.md)を参照して、プログラムでワークフローを作成する方法について学習してください。

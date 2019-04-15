@@ -1,7 +1,7 @@
 ---
-title: Application Insights を使用してモデルを監視する
+title: Azure Application Insights を設定して ML モデルを監視する
 titleSuffix: Azure Machine Learning service
-description: Application Insights を使用して、Azure Machine Learning サービス経由でデプロイされた Web サービスを監視する
+description: Azure Machine Learning service を使ってデプロイされた Web サービスを Azure Application Insights を使用して監視します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 1/07/2019
-ms.custom: seodec18
-ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847951"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885503"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
@@ -36,7 +36,7 @@ ms.locfileid: "57847951"
 * Azure Kubernetes Service (AKS) または Azure コンテナー インスタンス (ACI) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
 
-## <a name="enable-and-disable-from-the-sdk"></a>SDK からの有効化と無効化
+## <a name="use-sdk-to-configure"></a>SDK を使って構成する 
 
 ### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する
 1. ワークスペースで、サービスを特定します。 `ws` の値は、ワークスペースの名前です。
@@ -77,7 +77,7 @@ Application Insights を無効にするには、次のコードを使用しま�
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="enable-and-disable-in-the-portal"></a>ポータルでの有効化と無効化
+## <a name="use-portal-to-configure"></a>ポータルを使って構成する
 
 Azure portal で Application Insights を有効または無効にすることができます。
 
@@ -85,15 +85,15 @@ Azure portal で Application Insights を有効または無効にすることが
 
 1. **[デプロイ]** タブに移動し、Application Insights を有効にするサービスを選択します。
 
-   [![[デプロイ] タブ上のサービスの一覧](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![L[デプロイ] タブに表示されたサービスの一覧(media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. **[編集]** を選択します。
 
-   [![[編集] ボタン](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![E[編集] ボタン(media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオンにします。
 
-   [![診断を有効にするために選択されたチェック ボックス](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![S診断を有効にするために選択されたチェック ボックス](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. 画面下部の **[更新]** を選択して変更を適用します。 
 
@@ -101,11 +101,11 @@ Azure portal で Application Insights を有効または無効にすることが
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
 1. **[デプロイ]** を選択し、サービスを選択し、**[編集]** を選択します。
 
-   [![[編集] ボタンを使用する](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![U[編集] ボタンを使用する(media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオフにします。 
 
-   [![診断を有効にするためのチェック ボックスをオフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![C診断を有効にするためのチェック ボックスをオフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. 画面下部の **[更新]** を選択して変更を適用します。 
  
@@ -119,12 +119,12 @@ Azure portal で Application Insights を有効または無効にすることが
 
 1. **[概要]** タブを選択すると、サービスの基本的なメトリック セットが表示されます。
 
-   [![概要](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![O概要](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 3. カスタム トレースを確認するには、**[分析]** を選択します。
 4. [スキーマ] セクションで **[トレース]** を選択します。 次に、**[実行]** を選択してクエリを実行します。 データは表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。 
 
-   [![カスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Cカスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../../azure-monitor/app/app-insights-overview.md)」を参照してください。
     
@@ -138,6 +138,4 @@ Application Insights の使用方法の詳細については、「[Application I
 ## <a name="next-steps"></a>次の手順
 運用環境でモデルに関するデータを収集することもできます。 記事「[実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)」を参照してください。 
 
-
-## <a name="other-references"></a>その他のリファレンス
-* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)
+[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json) に関するページも参照してください。

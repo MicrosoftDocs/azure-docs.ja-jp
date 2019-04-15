@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992491"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881088"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -235,7 +235,6 @@ ms.locfileid: "57992491"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -363,7 +362,7 @@ Azure M シリーズ VM で Azure 書き込みアクセラレータを使用す�
 ### <a name="formatting-the-disks"></a>ディスクのフォーマット
 SQL Server の場合、SQL Server のデータ ファイルとログ ファイルを含むディスクの NTFS ブロック サイズは 64 KB にする必要があります。 D:\ ドライブをフォーマットする必要はありません。 このドライブはフォーマット済みのものです。
 
-データベースの復元または作成によってデータ ファイルの初期化が実行され、ファイルの内容が消去されないことをことを確認するために、SQL Server サービスが実行されているユーザー コンテキストが特定の権限を持っていることを確認する必要があります。 通常、Windows 管理者グループのユーザーは、これらのアクセス権限を持っています。 Windows 管理者以外のユーザーのユーザー コンテキストで SQL Server サービスが実行されている場合は、**[ボリュームの保守タスクを実行]** ユーザー権限をそのユーザーに割り当てる必要があります。  Microsoft サポート技術情報の記事 (<https://support.microsoft.com/kb/2574695>) で詳細をご覧ください。
+データベースの復元または作成によってデータ ファイルの初期化が実行され、ファイルの内容が消去されないことをことを確認するために、SQL Server サービスが実行されているユーザー コンテキストが特定の権限を持っていることを確認する必要があります。 通常、Windows 管理者グループのユーザーは、これらのアクセス権限を持っています。 Windows 管理者以外のユーザーのユーザー コンテキストで SQL Server サービスが実行されている場合は、**[ボリュームの保守タスクを実行]** ユーザー権限をそのユーザーに割り当てる必要があります。  次の Microsoft サポート技術情報の記事で詳細を参照してください:  <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>データベースの圧縮の影響
 I/O 帯域幅が制限要因になる構成では、IOPS を削減するすべての手段が Azure のような IaaS シナリオで実行できるワークロードを拡張するのに役立つ場合があります。 そのため、まだ実行していない場合、SAP と Microsoft では、既存のデータベースを Azure にアップロードする前に SQL Server のページ圧縮を適用することお勧めします。
@@ -487,16 +486,16 @@ SAP でサポートされているデータベース ミラーリング (SAP Not
 
 クラウドのみのデプロイの時点で、最も簡単な方法は 1 つのドメイン内にそれらの DBMS VM (および理想的には専用の SAP VM) を持つことができるように Azure で別のドメインをセットアップすることです。
 
-ドメインをセットアップできない場合は、<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql> に記載されているように、データベース ミラーリング エンドポイントの証明書を使用することもできます。
+ドメインをセットアップできない場合は、次の記事に記載されているように、データベース ミラーリング エンドポイントの証明書を使用することもできます:  <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Azure でのデータベース ミラーリングのセットアップのチュートリアルについては、<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> を参照してください。 
+Azure でのデータベース ミラーリングのセットアップのチュートリアルについては、次の記事を参照してください:  <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>SQL Server AlwaysOn
 AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [1772688] を参照)、この機能は Azure の SAP との組み合わせでサポートされています。 オンプレミスでは可能ですが、現時点で Azure では AD/DNS オブジェクトを作成できないため、SQL Server 可用性グループ リスナー (Azure 可用性セットと混同しないこと) のデプロイに関する特別な考慮事項があります。 そのため、Azure 固有の動作に対応するために、いくつかの別のインストール手順が必要です。
 
 可用性グループ リスナーを使用する場合の考慮事項は次のとおりです。
 
-* 可用性グループ リスナーは、Windows Server 2012 以上を VM のゲスト OS として使用する場合にのみ使用できます。 Windows Server 2012 の場合、このパッチ (<https://support.microsoft.com/kb/2854082>) が適用されていることを確認する必要があります。 
+* 可用性グループ リスナーは、Windows Server 2012 以上を VM のゲスト OS として使用する場合にのみ使用できます。 Windows Server 2012 の場合、次のパッチが適用されていることを確認する必要があります:  <https://support.microsoft.com/kb/2854082> 
 * Windows Server 2008 R2 の場合、このパッチは存在せず、AlwaysOn は、接続文字列にフェールオーバー パートナーを指定するというデータベース ミラーリングと同じ方法で使用する必要があります (SAP default.pfl パラメーター dbs/mss/server によって実行されます。SAP Note [965908] を参照)。
 * 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。 両方の VM が意図せずシャットダウンされた場合に Azure で新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義については[こちら][virtual-networks-reserved-private-ip]の記事を参照)。
 * Azure の現在の機能では、クラスター名にクラスターが作成されたノードと同じ IP アドレスを割り当てるため、WSFC クラスター構成を構築してそのクラスターに特定の IP アドレスを割り当てる必要がある場合、特別な手順が必要です。 つまり、クラスターに別の IP アドレスを割り当てるためには手動の手順を実行する必要があります。

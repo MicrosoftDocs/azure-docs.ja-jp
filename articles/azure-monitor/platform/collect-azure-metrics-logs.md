@@ -1,6 +1,6 @@
 ---
-title: Log Analytics での Azure サービスのログとメトリックの収集 | Microsoft Docs
-description: Log Analytics にログとメトリックが書き込まれるように Azure のリソースの診断を構成します。
+title: Log Analytics ワークスペースへの Azure サービスのログとメトリックの収集 | Microsoft Docs
+description: Azure Monitor の Log Analytics ワークスペースにログとメトリックが書き込まれるように Azure のリソースの診断を構成します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: ae4e4487b3d9df4b2cf756174f0a56e721af91c4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406909"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540179"
 ---
-# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースへの Azure サービスのログとメトリックの収集
 
 Azure サービスのログとメトリックを収集する方法は 4 種類あります。
 
-1. Azure 診断から Log Analytics に直接 (次の表の "*診断*")
-2. Azure 診断から Azure storage 経由で Log Analytics に (次の表の "*ストレージ*")
+1. Azure 診断から Azure Monitor の Log Analytics ワークスペースに直接 (次の表では "*診断*")
+2. Azure 診断から Azure storage 経由で Azure Monitor の Log Analytics ワークスペースに (次の表では "*ストレージ*")
 3. Azure サービスのコネクタ (次の表の "*コネクタ*")
-4. スクリプトでデータを収集して Log Analytics に投稿 (次の表の空白セルと、表に記載されていないサービス用)
+4. スクリプトでデータを収集して Azure Monitor の Log Analytics ワークスペースに投稿 (次の表の空白セルと、表に記載されていないサービス用)
 
 
 | Service                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
@@ -64,12 +64,12 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure 診断から Log Analytics に直接
-多くの Azure リソースで診断ログとメトリックを Log Analytics に直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データが Log Analytics に即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
+多くの Azure リソースで診断ログとメトリックを Azure Monitor の Log Analytics ワークスペースに直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データがワークスペースに即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
 
-[Azure Monitor](../../azure-monitor/overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
+[Azure Monitor](../../azure-monitor/overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics ワークスペースに直接送信できます。
 
 > [!NOTE]
-> 診断設定を使用した Log Analytics への多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+> 診断設定を使用した Log Analytics ワークスペースへの多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
 >
 > *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
 >
@@ -81,8 +81,6 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 ### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](/powershell/azure/overview) が必要です。
 
 次の PowerShell の例は、[Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
 
@@ -127,34 +125,34 @@ Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enab
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure 診断からストレージ経由で Log Analytics に
 
-一部のリソース内からログを収集するには、Azure Storage にログを送信して、そこからログを読み取るように Log Analytics を構成することができます。
+一部のリソース内からログを収集するには、Azure Storage にログを送信して、そこからログを読み取るように Log Analytics ワークスペースを構成することができます。
 
-Log Analytics では、この方法を使用して、次のリソースとログについて Azure Storage から診断を収集できます。
+Azure Monitor では、この方法を使用して、次のリソースとログについて Azure Storage から診断を収集できます。
 
-| リソース | ログ |
+| Resource | ログ |
 | --- | --- |
 | Service Fabric |ETWEvent <br> 操作イベント <br> Reliable Actor イベント <br> Reliable Service イベント |
 | Virtual Machines |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |
 | Web ロール <br> worker ロール |Linux Syslog <br> Windows イベント <br> IIS ログ <br> Windows ETWEvent |
 
 > [!NOTE]
-> ストレージ アカウントに診断を送信する際、および Log Analytics がストレージ アカウントからデータを読み取る際のデータの格納と転送には、通常の Azure 料金が課金されます。
+> ストレージ アカウントに診断を送信する際、および Log Analytics ワークスペースがストレージ アカウントからデータを読み取る際のデータの格納と転送には、通常の Azure 料金が課金されます。
 >
 >
 
-Log Analytics でこれらのログを収集する方法の詳細については、[IIS の Blob Storage とイベントの Table Storage の使用](azure-storage-iis-table.md)に関するページをご覧ください。
+Azure Monitor でこれらのログを収集する方法の詳細については、[IIS の Blob Storage とイベントの Table Storage の使用](azure-storage-iis-table.md)に関するページをご覧ください。
 
 ## <a name="connectors-for-azure-services"></a>Azure サービスのコネクタ
 
-Application Insights にはコネクタがあり、これを使用して、Application Insights で収集されたデータを Log Analytics に送信することができます。
+Application Insights にはコネクタがあり、これを使用して、Application Insights で収集されたデータを Log Analytics ワークスペースに送信することができます。
 
 [Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)に関する詳細を確認してください。
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>スクリプトでデータを収集して Log Analytics に投稿
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>スクリプトでデータを収集して Log Analytics ワークスペースに投稿
 
-Log Analytics にログとメトリックを直接送信する手段が提供されていない Azure のサービスについては、Azure Automation スクリプトを使用してログとメトリックを収集することができます。 次に、このスクリプトで[データ コレクター API](../../azure-monitor/platform/data-collector-api.md) を使用して Log Analytics にデータを送信できます。
+Log Analytics ワークスペースにログとメトリックを直接送信する手段が提供されていない Azure のサービスについては、Azure Automation スクリプトを使用してログとメトリックを収集することができます。 次に、このスクリプトで[データ コレクター API](../../azure-monitor/platform/data-collector-api.md) を使用してワークスペースにデータを送信できます
 
-Azure テンプレート ギャラリーには、サービスからデータを収集し、Log Analytics に送信するために [Azure Automation を使用する例](https://azure.microsoft.com/resources/templates/?term=OMS)が用意されています。
+Azure テンプレート ギャラリーには、サービスからデータを収集し、Azure Monitor に送信するために [Azure Automation を使用する例](https://azure.microsoft.com/resources/templates/?term=OMS)が用意されています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,7 +4,7 @@ description: Eclipse 用の Service Fabric プラグインの概要を紹介し�
 services: service-fabric
 documentationcenter: java
 author: rapatchi
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 87f608163e20d98179eb6c666158386a99858eeb
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: c33ecce5610dbef0dce13aa95f04ae4f0620603b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188385"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666938"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -54,7 +54,7 @@ Service Fabric プラグインが既にインストールされている場合�
 3. Service Fabric プラグインを更新したら、Gradle プロジェクトも更新します。  **build.gradle** を右クリックし、**[Refresh]\(最新の情報に更新\)** を選択します。
 
 > [!NOTE]
-> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https://dl.microsoft.com/eclipse/azure/servicefabric)) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
 
 > [!NOTE]
 >Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。

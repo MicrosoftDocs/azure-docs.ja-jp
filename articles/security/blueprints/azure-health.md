@@ -9,18 +9,18 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103074"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885946"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
 ## <a name="overview"></a>概要
 
-**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作、識別、およびソリューションのデプロイを安全に行う方法を示す Azure PaaS および IaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
+**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作、識別、およびソリューションのデプロイを安全に行う方法を示す Azure PaaS および IaaS ソリューションのターンキー デプロイを提供します。 このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
 
 エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 
 
@@ -46,7 +46,7 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 - よくある質問については、[FAQ](https://aka.ms/healthblueprintfaq) ガイダンスをご覧ください。
 
--   **アーキテクチャ図**:  この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
+-   **アーキテクチャの図。** この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
 
 -   [IaaS 拡張機能](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) - このソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation を実装する方法を示します。 
 
@@ -93,7 +93,7 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 -   スコープ:ResourceGroup
 
- ### <a name="data-scientist"></a>データ サイエンティスト
+### <a name="data-scientist"></a>データ サイエンティスト
 
 
 データ サイエンティストは、Azure Machine Learning Studio サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
@@ -202,7 +202,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 ### <a name="azure-active-directory-and-role-based-access-control-rbac"></a>Azure Active Directory とロールベースのアクセス制御 (RBAC)
 
 
-**認証:**
+**認証: **
 
 -   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/)\' は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 ソリューションのすべてのユーザー (SQL Database にアクセスするユーザーを含む) は、Azure Active Directory で作成されています。
 
@@ -218,7 +218,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 -   デプロイ時に -enableADDomainPasswordPolicy スイッチが有効になっている場合、60 日後にパスワードの有効期限が切れます。
 
-**ロール:**
+**ロール: **
 
 -   ソリューションでは、[組み込みロール](/azure/role-based-access-control/built-in-roles)を使用してリソースへのアクセスを管理します。
 
@@ -268,11 +268,11 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 **2.新しい患者の入院**
 
 デモ スクリプト  .\\HealthcareDemo.ps1 を、**BulkPatientadmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。![](images/securetransact.png)
-**1.Azure Functions** がトリガーされ、関数が Azure Active Directory の[ベアラー トークン](/rest/api/)を要求します。
+**1. Azure Functions** がトリガーされ、関数が Azure Active Directory の[ベアラー トークン](/rest/api/)を要求します。
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。
 
-**3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
+**3.Azure ロール**が要求を検証し、Key Vault へのアクセス要求を承認します。
 
 **4.Key Vault** がシークレットを返します。この例では、SQL DB 接続文字列です。
 
@@ -359,10 +359,10 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 - [Application Insights](/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスの異常が検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ### <a name="azure-alerts"></a>Azure アラート
-- アラートは Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
+- [アラート](/azure/azure-monitor/platform/alerts-metric)は Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) は管理サービスのコレクションです。
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
+[Azure Monitor ログ](/azure/operations-management-suite/operations-management-suite-overview)は、管理サービスのコレクションです。
 
 -   Security Center でワークスペースが有効になっています。
 

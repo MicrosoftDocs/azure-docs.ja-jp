@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.author: tamram
-ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444057"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370399"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal でストレージ アカウント設定を管理する
 
@@ -20,9 +20,9 @@ ms.locfileid: "57444057"
 
 ## <a name="access-control"></a>アクセス制御
 
-Azure Storage では、ロールベースのアクセス制御 (RBAC) を介して、BLOB ストレージとキュー ストレージを Azure Active Directory で認証できます (プレビュー)。 Azure AD による認証に関する詳細については、[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する (プレビュー)](storage-auth-aad.md) 方法に関するページを参照してください。
+Azure Storage では、ロールベースのアクセス制御 (RBAC) を介して、BLOB ストレージとキュー ストレージを Azure Active Directory で認証できます。 Azure AD による認証に関する詳細については、[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。
 
-Azure portal の**アクセス制御**設定を利用すれば、簡単な方法で RBAC ロールをユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることができます。 RBAC ロールを割り当てる方法については、[RBAC で BLOB およびキュー データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
+Azure portal の**アクセス制御**設定を利用すれば、簡単な方法で RBAC ロールをユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることができます。 RBAC ロールを割り当てる方法の詳細については、「[Manage access rights to blob and queue data with RBAC](storage-auth-aad-rbac.md)」 (RBAC で BLOB とキュー データにアクセスする権利を管理する) を参照してください。
 
 > [!NOTE]
 > Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 

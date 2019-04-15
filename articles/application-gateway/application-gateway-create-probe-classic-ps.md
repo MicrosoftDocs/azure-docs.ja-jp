@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004975"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861881"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
+> * [Azure ポータル](application-gateway-create-probe-portal.md)
+> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure クラシック PowerShell](application-gateway-create-probe-classic-ps.md)
 
 この記事では、PowerShell を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
@@ -150,10 +150,10 @@ Get-AzureApplicationGateway AppGwTest
 
 |パラメーター|説明|
 |---|---|
-|**Name** |カスタム プローブの参照名。 |
-| **プロトコル** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
-| **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、 http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http://contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
-| **間隔** | プローブのチェック間隔を秒単位で指定します。|
+|**名前** |カスタム プローブの参照名。 |
+| **Protocol** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
+| **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http:\//contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http:\//contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
+| **interval** | プローブのチェック間隔を秒単位で指定します。|
 | **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
 | **UnhealthyThreshold** | バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。|
 

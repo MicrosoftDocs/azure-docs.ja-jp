@@ -1,5 +1,5 @@
 ---
-title: Azure AD のセルフ サービスによるパスワード リセット ポリシー
+title: Azure AD セルフサービスによるパスワード リセット ポリシー - Azure Active Directory
 description: Azure AD のセルフ サービスによるパスワード リセット ポリシーのオプションの構成
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901138"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360505"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -93,7 +93,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Azure AD でパスワード有効期限ポリシーを設定する
 
-Microsoft クラウド サービスのグローバル管理者は、Windows PowerShell 用 Microsoft Azure AD モジュールを使用して、ユーザーのパスワード有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。 
+Microsoft クラウド サービスのグローバル管理者またはユーザー管理者は、Windows PowerShell 用 Microsoft Azure AD モジュールを使用して、ユーザーのパスワード有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。 
 
 このガイダンスは、Intune や Office 365 などの他のプロバイダーに適用され、これらは ID およびディレクトリ サービスについては Azure AD にも依存します。 パスワード有効期限が、ポリシーの変更できる唯一の部分です。
 
@@ -107,7 +107,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 
-1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
+1. ユーザー管理者または会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーについてパスワードの有効期限が切れないよう設定されているかどうかを確認するには、確認するユーザーの UPN (例: *aprilr\@contoso.onmicrosoft.com*) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 ### <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する
 
-1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
+1. ユーザー管理者または会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーのパスワードを期限付きに設定するには、そのユーザーの UPN またはユーザー ID を使用して、次のコマンドレットを実行します。`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 ### <a name="set-a-password-to-never-expire"></a>パスワードを無期限に設定する
 
-1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
+1. ユーザー管理者または会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーのパスワードを無期限に設定するには、そのユーザーの UPN またはユーザー ID を使用して、次のコマンドレットを実行します。`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

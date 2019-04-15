@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/12/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841125"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621738"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -29,7 +29,7 @@ ms.locfileid: "57841125"
 [従来の Media Services v2 API](../previous/media-services-overview.md) 上に動画サービスを今日開発した場合、v3 API に移行する前に次のガイドラインと 考慮事項を確認してください。 v3 API には Media Services の開発者エクスペリエンスと機能を向上させる多くのメリットおよび新機能があります。 ただし、この記事の「[既知の問題](#known-issues)」セクションで示すように、API バージョン間の変更によるいくつかの制限事項もあります。 このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。 
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 のメリット
 
@@ -79,12 +79,14 @@ ms.locfileid: "57841125"
 v3 API には v2 API に関して次の機能ギャップがあります。 ギャップを埋めることは進行中の作業です。
 
 * [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) と従来の [Media Analytics プロセッサ](../previous/media-services-analytics-overview.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は v3 を使用してアクセスできません。<br/>Media Indexer 1 または2 のプレビューからの移行を希望するお客様は、v3 API でプリセットされている AudioAnalyzer をすぐに使用できます。  この新しいプリセットには、古い Media Indexer 1 または 2 より多くの機能が含まれています。 
-* 次に示すような v2 API の Media Encoder Standard の多くの高度な機能は v3 で現在利用できません。
+* 次に示すような、API の [v2 における Media Encoder Standard の高度な機能](../previous/media-services-advanced-encoding-with-mes.md) の多くは現在、v3 では利用できません。
     * (オンデマンド シナリオおよびライブ シナリオ用の) クリッピング
     * 資産の結合
     * オーバーレイ
     * トリミング
     * サムネイル スプライト
+    * 音声が入力されない場合に、無音オーディオ トラックを挿入する
+    * 入力に映像が含まれていない場合に、ビデオ トラックを挿入する
 * 現在、コード変換を使用するライブ イベントでは、ストリーム中のスレート挿入および API 呼び出しによる Ad マーカー挿入はサポートされていません。 
 
 > [!NOTE]

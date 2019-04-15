@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993449"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500204"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service on Azure Stack update 5 のリリース ノート
 
@@ -59,11 +59,14 @@ Azure App Service on Azure Stack Update 5 には、次の機能強化と修正�
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
 
+- **Azure Functions ランタイム**が **v1.0.12205** に更新されました。
+
 - **切断された** Azure Stack をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール**の更新。 
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
 - **次のアプリケーション フレームワークとツールの更新**:
+  - ASP.NET Core 2.1.6 および 2.2.0 を追加
   - NodeJS 10.14.1 を追加
   - NPM 6.4.1 を追加
   - Kudu を 79.20129.3767 に更新

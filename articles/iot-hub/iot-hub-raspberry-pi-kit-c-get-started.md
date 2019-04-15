@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2b23725a4bccf753bbe7231202133771e5aaa614
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103215"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847191"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
@@ -205,8 +205,14 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](./media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>ハブに送信されたメッセージを読み取る
+
+デバイスから IoT ハブが受信するメッセージを監視する方法の 1 つに、Azure IoT Tools for Visual Studio Code を使用することがあります。 詳細については、「[Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)」を参照してください。
+
+デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
+
 ## <a name="next-steps"></a>次の手順
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 Raspberry Pi が IoT ハブに送信したメッセージを確認するか、または Raspberry Pi にメッセージを送信するには、[Visual Studio Code 用の Azure IoT Tools を使用したデバイスと IoT Hub の間でのメッセージの送受信](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)に関するページを参照してください。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 38f86bd19c85440fbad0e7fd56a3dd9ba836c7b8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201672"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903304"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>HDInsight 内の Linux ベースの Apache HBase クラスターで Apache Phoenix を使用する
 Azure HDInsight での [Apache Phoenix](https://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix について詳しくは、「[Apache Phoenix in 15 minutes or less (Apache Phoenix についての簡単な説明)](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)」をご覧ください。 Phoenix の文法については、「[Apache Phoenix grammar (Apache Phoenix の文法)](https://phoenix.apache.org/language/index.html)」をご覧ください。
@@ -34,7 +34,7 @@ SQLLine を使用するには、以下のものが必要です。
 
 HBase クラスターに接続するときは、いずれかの [Apache ZooKeeper](https://zookeeper.apache.org/) VM に接続する必要があります。 各 HDInsight クラスターには 3 つの ZooKeeper VM があります。
 
-**ZooKeeper のホスト名を確認するには**
+**ZooKeeper のホスト名を取得するには**
 
 1. **https://\<クラスター名\>.azurehdinsight.net** を参照して、[Apache Ambari](https://ambari.apache.org/) を開きます。
 2. HTTP (クラスター) ユーザー名とパスワードを入力してサインインします。
@@ -47,7 +47,7 @@ HBase クラスターに接続するときは、いずれかの [Apache ZooKeepe
 
 2. SSH で次のコマンドを実行して、SQLLine を実行します。
 
-        cd /usr/hdp/current/phoenix/bin
+        cd /usr/hdp/current/phoenix-client/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. HBase テーブルを作成していくつかのデータを挿入するには、次のコマンドを実行します。
 

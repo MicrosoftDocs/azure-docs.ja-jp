@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb00f6ccd22be75a235d9cd6fc174741207a76e0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012623"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359162"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight 上で Apache Pig ジョブを実行する
 
@@ -26,6 +26,8 @@ ms.locfileid: "58012623"
 > このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される Pig Latin については「[HDInsight 上の Apache Pig で Apache Pig を使用する](hdinsight-use-pig.md)」をご覧ください。
 
 ## <a id="prereq"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Azure HDInsight クラスター**
 
@@ -40,11 +42,11 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Connect-AzureRmAccount**:Azure サブスクリプションに対して Azure PowerShell を認証します。
-* **New-AzureRmHDInsightPigJobDefinition**:指定された Pig Latin ステートメントを使用して、*ジョブ定義*を作成します。
-* **Start-AzureRmHDInsightJob**:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
-* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
-* **Get-AzureRmHDInsightJobOutput**:ジョブの出力を取得する場合に使用します。
+* **Connect-AzAccount**:Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **New-AzHDInsightPigJobDefinition**:指定された Pig Latin ステートメントを使用して、*ジョブ定義*を作成します。
+* **Start-AzHDInsightJob**:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
+* **Wait-AzHDInsightJob**:ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
+* **Get-AzHDInsightJobOutput**:ジョブの出力を取得するために使用します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -76,7 +78,7 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 4ab26891a98418fae75c3be18f17f1d8e02d8b36
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216715"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539634"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
@@ -40,7 +40,7 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 
 - [パフォーマンスが大幅に低下する](#sync-perf)
 
-- ["列 <column> に値 NULL を挿入できません。この列では NULL 値が許可されていません" というエラー メッセージが表示されました。このメッセージの意味と修正方法を教えてください。](#sync-nulls)
+- ["列 \<列> に値 NULL を挿入できません。この列では NULL 値が許可されていません" というエラー メッセージが表示されました。このメッセージの意味と修正方法を教えてください。](#sync-nulls)
 
 - [データ同期では循環参照はどのように処理されますか?つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?](#sync-circ)
 
@@ -105,7 +105,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
 
 - **解決策**。 最善の解決策は予防です。 同期グループに循環参照がないことを確認します。 1 つの同期グループによって同期される行を、別の同期グループによって同期することはできません。
 
-### <a name="sync-nulls"></a>"列 <column> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
+### <a name="sync-nulls"></a>"列 \<列> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
 このエラー メッセージは、次の 2 つの問題のいずれかを示しています。
 -  テーブルに主キーが設定されていません。 この問題を解決するには、同期しているすべてのテーブルに主キーを追加します。
 -  CREATE INDEX ステートメントに WHERE 句があります。 データ同期では、この状態は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 

@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5f33249496c9a4fc8a094e64f15c8d95da69194b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294877"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803309"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ  
+
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services (AMS) を使用して、サービスのテレメトリ/メトリック データにアクセスできます。 現在のバージョンの AMS では、ライブ **チャネル** エンティティ、**ストリーミング ポイント** エンティ、およびライブ **アーカイブ** エンティティのテレメトリ データを取得できます。 
 
@@ -75,8 +79,8 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 パーティション キー|{アカウント ID}_{エンティティ ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>アカウント ID は、ワークフローを簡単にするためにパーティション キーに含まれ、複数の Media Services アカウントが同じストレージ アカウントに書き込まれます。
 行キー|{午前 0 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前 0 時までの秒数から始まります。 詳細については、[こちらの記事](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)を参照してください。 
 Timestamp|日付/時刻|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-type|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
-Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
+Type|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
+名前|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>監視時刻は、テレメトリを送信するエンティティ (たとえばチャネル) によって提供されます。 コンポーネント間で時間同期問題が存在する可能性があるため、この値は概算値です。
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
@@ -96,8 +100,8 @@ ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 パーティション キー|パーティション キー|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-type|type|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
+Type|Type|StreamingEndpoint
+名前|名前|StreamingEndpointRequestLog
 監視時刻|監視時刻|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|エンドポイントのホスト名|builddemoserver.origin.mediaservices.windows.net
@@ -115,8 +119,8 @@ E2ELatency|エンド ツー エンドの平均待機時間|250
 パーティション キー|パーティション キー|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-type|type|Channel
-Name|Name|ChannelHeartbeat
+Type|Type|Channel
+名前|名前|ChannelHeartbeat
 監視時刻|監視時刻|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|トラックの種類 (video/audio/text)|video/audio
@@ -140,8 +144,8 @@ Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <b
 パーティション キー|パーティション キー|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-type|type|Archive
-Name|Name|ArchiveHeartbeat
+Type|Type|Archive
+名前|名前|ArchiveHeartbeat
 監視時刻|監視時刻|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|プログラムの URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910286"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578375"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -27,10 +27,18 @@ ms.locfileid: "54910286"
 * ファイルの内容とメタデータを取得します。
 * アーカイブをフォルダーに抽出します。
 
-[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)と比較すると、[アクションでメッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、SFTP コネクタはサイズが 50 MB までのファイルを読み取りまたは書き込みできます。 現在、トリガーに対してチャンクを使用することはできません。 サイズが 1 GB までのファイルの場合は、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用します。 1 GB より大きいファイルの場合は、SFTP-SSH コネクタに加えて[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 
-
 SFTP サーバー上のイベントを監視し、出力を他のアクションで使用できるようにするトリガーを使用できます。 SFTP サーバーで各種のタスクを実行するアクションを使用できます。 ロジック アプリ内の他のアクションでも、SFTP アクションからの出力を使用するようにできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルやその内容に関するメールのアラートを送信できます。
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+## <a name="limits"></a>制限
+
+* SFTP アクションで読み書きできるのは、[アクションでメッセージのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、"*50 MB 以下*" のファイルです (これを使用すると、この制限を回避できます)。 現在、SFTP トリガーではチャンクはサポートされていません。
+
+* "*1 GB まで*" のファイルの場合は、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用します。
+
+* "*1 GB より大きい*" ファイルの場合は、SFTP-SSH コネクタに加えて[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
+
+SFTP コネクタと SFTP-SSH コネクタのその他の違いについては、SFTP-SSH に関する記事の「[SFTP-SSH と SFTP を比較する](../connectors/connectors-sftp-ssh.md#comparison)」で確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

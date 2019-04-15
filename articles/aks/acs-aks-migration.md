@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385043"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649970"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Azure Container Service (ACS) から Azure Kubernetes Service (AKS) に移行する
 
@@ -48,10 +48,10 @@ Kubernetes コントロール プレーンは AKS によって管理されます
 
 例:
 
-| Name | Count | VM サイズ | オペレーティング システム |
+| 名前 | Count | VM サイズ | オペレーティング システム |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1 | Standard_D2_v2 | Windows |
+| agentpool1 | 1 | Standard_D2_v2 |  Windows |
 
 移行中に追加の仮想マシンがサブスクリプションに展開されるため、クォータと制限がこれらのリソースに十分であることを確認する必要があります。 詳しくは、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits)に関するページをご覧ください。 現在のクォータを確認するには、Azure portal で[サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して、[`Usage + quotas`] を選択します。
 
@@ -91,7 +91,7 @@ Kubernetes コントロール プレーンは AKS によって管理されます
 7. 検証
 8. AKS クラスターにトラフィックを送ります
 
-> **重要**: 書き込みを停止しない場合は、ディスクのスナップショット以降に書き込まれたデータがないので、新しい展開にデータをレプリケートする必要があります
+> **重要**:書き込みを停止しない場合は、ディスクのスナップショット以降に書き込まれたデータが失われるため、新しいデプロイにデータをレプリケートする必要があります
 
 Managed Disks を作成して Kubernetes クラスター間でボリュームを移行できるオープン ソースのツールが存在します。
 
@@ -144,7 +144,7 @@ YAML の定義を必要に応じて変更します。 例: `Deployments` の `ap
 
 ### <a name="3-optional-migrate-volumes"></a>手順 3.(省略可能) ボリュームを移行する
 
-ACS クラスターから AKS クラスターにボリュームを移行します。 詳しくは、「[永続ボリュームの移行](#Migrating-Persistent-Volumes)」セクションをご覧ください。
+ACS クラスターから AKS クラスターにボリュームを移行します。 詳しくは、「[永続ボリュームの移行](#migrating-persistent-volumes)」セクションをご覧ください。
 
 ### <a name="4-deploy-applications"></a>4.アプリケーションをデプロイする
 

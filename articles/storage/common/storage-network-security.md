@@ -5,21 +5,21 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750652"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906091"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
 Azure Storage では、多層型セキュリティ モデルが提供されています。 このモデルでは、サポートされているネットワークの特定のセットに、ストレージ アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。
 
-ネットワーク ルールが有効なときにストレージ アカウントにアクセスするアプリケーションでは、要求に対する適切な認可が必要です。 認可は、Azure Active Directory (AD) の資格情報 (BLOB とキューの場合) (プレビュー)、有効なアカウント アクセス キー、または SAS トークンでサポートされています。
+ネットワーク ルールが有効なときにストレージ アカウントにアクセスするアプリケーションでは、要求に対する適切な認可が必要です。 認可は、BLOB とキューに対する Azure Active Directory (Azure AD) の資格情報、有効なアカウント アクセス キー、または SAS トークンでサポートされています。
 
 > [!IMPORTANT]
 > ストレージ アカウントのファイアウォール ルールを有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
@@ -71,19 +71,19 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 1. ストレージ アカウントの既定のルールの状態を表示します。
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
 1. 既定でネットワーク アクセスを拒否する既定のルールを設定します。
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
 1. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
@@ -159,26 +159,26 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 1. 仮想ネットワーク ルールを一覧表示します。
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
 1. 既存の仮想ネットワークとサブネットで、Azure Storage 用のサービス エンドポイントを有効にします。
 
-    ```PowerShell
+    ```powershell
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
 1. 仮想ネットワークとサブネットに対するネットワーク ルールを追加します。
 
-    ```PowerShell
+    ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 1. 仮想ネットワークとサブネットのネットワーク ルールを削除します。
 
-    ```PowerShell
+    ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
@@ -241,7 +241,7 @@ IP ネットワーク ルールは、**パブリック インターネット**�
 
 IP ネットワーク ルールでオンプレミスのネットワークからストレージ アカウントへのアクセスを許可するには、ネットワークで使用するインターネット接続 IP アドレスを特定する必要があります。 サポートが必要な場合は、ネットワーク管理者にお問い合わせください。
 
-[ExpressRoute](/azure/expressroute/expressroute-introduction) を使用して、ネットワークを Azure ネットワークに接続できます。 その場合、各回線には 2 つのパブリック IP アドレスが構成されます。 それらは、Microsoft Edge で見つかり、[Azure パブリック ピアリング](/azure/expressroute/expressroute-circuit-peerings) を使用して Azure Storage などの Microsoft サービスに接続できます。 Azure Storage との通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成します。 ExpressRoute 回線のパブリック IP アドレスを確認するには、Azure portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
+パブリック ピアリングまたは Microsoft ピアリングのためにオンプレミスから [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用している場合、使用されている NAT の IP アドレスを識別する必要があります。 パブリック ピアリングの場合、既定で、Azure サービスのトラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに適用される 2 つの NAT IP アドレスが各 ExpressRoute 回線に使用されます。 Microsoft ピアリングの場合、使用される NAT の IP アドレスは、ユーザーが指定するか、サービス プロバイダーが指定します。 サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこれらのパブリック IP アドレスを許可する必要があります。 パブリック ピアリングの ExpressRoute 回線の IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。 詳細については、[ExpressRoute のパブリック ピアリングと Microsoft ピアリングの NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering) に関するセクションを参照してください。
 
 ### <a name="managing-ip-network-rules"></a>IP ネットワーク ルールの管理
 
@@ -267,31 +267,31 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 1. IP ネットワーク ルールを一覧表示します。
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
 1. 個々 の IP アドレスに対するネットワーク ルールを追加します。
 
-    ```PowerShell
+    ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. IP アドレス範囲に対するネットワーク ルールを追加します。
 
-    ```PowerShell
+    ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 1. 個々 の IP アドレスに対するネットワーク ルールを削除します。
 
-    ```PowerShell
+    ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. IP アドレス範囲に対するネットワーク ルールを削除します。
 
-    ```PowerShell
+    ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
@@ -361,7 +361,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
 
-場合によっては、ネットワーク境界の外側から診断ログとメトリックを読み取るためにアクセスする必要があります。 ネットワーク ルールに対する例外を許可して、ストレージ アカウントのログ ファイル、メトリック テーブル、またはその両方への読み取りアクセスを許可できます。 [ストレージ分析の使用に関する説明](/azure/storage/storage-analytics)
+場合によっては、ネットワーク境界の外側から診断ログとメトリックを読み取るためにアクセスする必要があります。 ネットワーク ルールに対する例外を許可して、ストレージ アカウントのログ ファイル、メトリック テーブル、またはその両方への読み取りアクセスを許可できます。 [ストレージ分析の使用の詳細を確認してください。](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>例外の管理
 
@@ -385,19 +385,19 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 1. ストレージ アカウントのネットワーク ルールの例外を表示します。
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
 1. ストレージ アカウントのネットワーク ルールの例外を設定します。
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
 1. ストレージ アカウントのネットワーク ルールの例外を削除します。
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
     ```
 

@@ -1,6 +1,6 @@
 ---
-title: Supported resources for metric alerts in Azure Monitor
-description: Reference on support metrics and logs for metric alerts in Azure Monitor
+title: Azure Monitor のメトリック アラートでサポートされるリソース
+description: Azure Monitor のメトリック アラートでサポートされるメトリックとログのリファレンス
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,66 +8,68 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 1506911902940ebd6fa05a0d3534ce599c6d941a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 69de0f34f735c30fbd99b3266dc0151128fb73eb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961331"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669318"
 ---
-# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Supported resources for metric alerts in Azure Monitor
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
-Azure Monitor now supports a [new metric alert type](../../azure-monitor/platform/alerts-overview.md) which has significant benefits over the older [classic metric alerts](../../azure-monitor/platform/alerts-classic.overview.md). Metrics are available for [large list of Azure services](../../azure-monitor/platform/metrics-supported.md). The newer alerts support a (growing) subset of the resource types. This article lists that subset.
+Azure Monitor が[新しいタイプのメトリック アラート](../../azure-monitor/platform/alerts-overview.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](../../azure-monitor/platform/alerts-classic.overview.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](../../azure-monitor/platform/metrics-supported.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。
 
-You can also use newer metric alerts on popular Log Analytics logs extracted as metrics. For more information, view [Metric Alerts for Logs](../../azure-monitor/platform/alerts-metric-logs.md).
+新しいメトリック アラートは、メトリックとして抽出された一般的な Log Analytics ログに対しても使用できます。 詳細については、[ログのメトリック アラート](../../azure-monitor/platform/alerts-metric-logs.md)に関するページを参照してください。
 
-## <a name="portal-powershell-cli-rest-support"></a>Portal, PowerShell, CLI, REST support
-Currently, you can create newer metric alerts only in the Azure portal, [REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/), or [Resource Manager Templates](../../azure-monitor/platform/alerts-metric-create-templates.md). Support for configuring newer alerts using PowerShell and Azure CLI versions 2.0 and higher is coming soon.
+## <a name="portal-powershell-cli-rest-support"></a>ポータル、PowerShell、CLI、REST のサポート
+現在、新しいメトリック アラートは Azure portal、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/)、または [Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md)でのみ作成できます。 PowerShell と Azure CLI バージョン 2.0 以降を使用した新しいアラートの構成は、近日中にサポートされる予定です。
 
-## <a name="metrics-and-dimensions-supported"></a>Metrics and Dimensions Supported
-Newer metric alerts support alerting for metrics that use dimensions. You can use dimensions to filter your metric to the right level. All supported metrics along with applicable dimensions can be explored and visualized from [Azure Monitor - Metrics Explorer](../../azure-monitor/platform/metrics-charts.md).
+## <a name="metrics-and-dimensions-supported"></a>サポートされるメトリックとディメンション
+新しいメトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされるすべてのメトリックと適用可能なディメンションは、[Azure Monitor - メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)から探索および視覚化できます。
 
-Here's the full list of Azure monitor metric sources supported by the newer alerts:
+新しいアラートでサポートされている Azure Monitor のメトリック ソースの完全な一覧を次に示します。
 
-|Resource type  |Dimensions Supported  | Metrics Available|
+|リソースの種類  |サポートされるディメンション  | 使用可能なメトリック|
 |---------|---------|----------------|
-|Microsoft.ApiManagement/service     | Yes        | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
-|Microsoft.Automation/automationAccounts     |     Yes   | [Automation Accounts](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
-|Microsoft.Batch/batchAccounts | N/A| [Batch Accounts](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
-|Microsoft.Cache/Redis     |    N/A     |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
-|Microsoft.CognitiveServices/accounts     |    N/A     | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.Compute/virtualMachines     |    N/A     | [Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets     |   N/A      |[Virtual machine scale sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
-|Microsoft.ContainerInstance/containerGroups | Yes| [Container groups](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
-|Microsoft.ContainerService/managedClusters | Yes | [Managed Clusters](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
-|Microsoft.DataFactory/datafactories| Yes| [Data Factories V1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
-|Microsoft.DataFactory/factories     |   Yes     |[Data Factories V2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
-|Microsoft.DBforMySQL/servers     |   N/A      |[DB for MySQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/servers     |    N/A     | [DB for PostgreSQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft.EventHub/namespaces     |  Yes      |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
-|Microsoft.KeyVault/vaults| No | [Vaults](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft.Logic/workflows     |     N/A    |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft.Network/applicationGateways     |    N/A     | [Application Gateways](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft.Network/dnsZones | N/A| [DNS Zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N/A |  [Express Route Circuits](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft.Network/loadBalancers (only for Standard SKUs)| Yes| [Load Balancers](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft.Network/publicipaddresses     |  N/A       |[Public IP Addresses](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Microsoft.Network/trafficManagerProfiles | Yes | [Traffic Manager Profiles](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft.OperationalInsights/workspaces| Yes|[Log Analytics workspaces](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft.PowerBIDedicated/capacities | N/A | [Capacities](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft.Search/searchServices     |   N/A      |[Search services](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
-|Microsoft.ServiceBus/namespaces     |  Yes       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Storage/storageAccounts     |    Yes     | [Storage Accounts](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft.Storage/storageAccounts/services     |     Yes    | [Blob Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [File Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Queue Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) and [Table Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft.StreamAnalytics/streamingjobs     |  N/A       | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
-| Microsoft.Web/serverfarms | Yes | [App Service Plans](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)  |
-| Microsoft.Web/sites | Yes | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) and [Functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
-| Microsoft.Web/sites/slots | Yes | [App Service slots](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
+|Microsoft.ApiManagement/service     | はい        | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
+|Microsoft.Automation/automationAccounts     |     はい   | [Automation アカウント](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | 該当なし| [Batch アカウント](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
+|Microsoft.Cache/Redis     |    該当なし     |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
+|Microsoft.CognitiveServices/accounts     |    該当なし     | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.Compute/virtualMachines     |    該当なし     | [Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets     |   該当なし      |[仮想マシン スケール セット](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.ContainerInstance/containerGroups | はい| [コンテナー グループ](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.ContainerService/managedClusters | はい | [マネージド クラスター](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
+|Microsoft.DataFactory/datafactories| はい| [データ ファクトリ V1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
+|Microsoft.DataFactory/factories     |   はい     |[データ ファクトリ V2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
+|Microsoft.DBforMySQL/servers     |   該当なし      |[DB for MySQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    該当なし     | [DB for PostgreSQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft.Devices/IotHubs    | 該当なし     |[IoT Hub メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)
+|Microsoft.Devices/provisioningServices    | はい     |[DPS メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)
+|Microsoft.EventHub/namespaces     |  はい      |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
+|Microsoft.KeyVault/vaults| いいえ  | [資格情報コンテナー](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft.Logic/workflows     |     該当なし    |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft.Network/applicationGateways     |    該当なし     | [アプリケーション ゲートウェイ](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | 該当なし| [DNS Zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft.Network/expressRouteCircuits | 該当なし |  [Express Route 回線](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/loadBalancers (Standard SKU に対してのみ)| はい| [Load Balancers](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft.Network/publicipaddresses     |  該当なし       |[パブリック IP アドレス](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Network/trafficManagerProfiles | はい | [Traffic Manager プロファイル](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft.OperationalInsights/workspaces| はい|[Log Analytics ワークスペース](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft.PowerBIDedicated/capacities | 該当なし | [Capacities](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft.Search/searchServices     |   該当なし      |[検索サービス](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
+|Microsoft.ServiceBus/namespaces     |  はい       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
+|Microsoft.Storage/storageAccounts     |    はい     | [ストレージ アカウント](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts/services     |     はい    | [Blob service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.StreamAnalytics/streamingjobs     |  該当なし       | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+| Microsoft.Web/serverfarms | はい | [App Service プラン](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)  |
+| Microsoft.Web/sites | はい | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) と [Functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | はい | [App Service スロット](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 
-## <a name="payload-schema"></a>Payload schema
+## <a name="payload-schema"></a>ペイロード スキーマ
 
-The POST operation contains the following JSON payload and schema for all near newer metric alerts when an appropriately configured [action group](../../azure-monitor/platform/action-groups.md) is used:
+適切に構成された[アクション グループ](../../azure-monitor/platform/action-groups.md)が使用されている場合、POST 操作には、すべての新しいメトリック アラートに対する以下の JSON ペイロードとスキーマが含まれます。
 
 ```json
 {
@@ -118,8 +120,8 @@ The POST operation contains the following JSON payload and schema for all near n
 }
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-* Learn more about the new [Alerts experience](../../azure-monitor/platform/alerts-overview.md).
-* Learn about [log alerts in Azure](../../azure-monitor/platform/alerts-unified-log.md).
-* Learn about [alerts in Azure](../../azure-monitor/platform/alerts-overview.md).
+* 新しい[アラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)の詳細について学習します。
+* [Azure でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。
+* [Azure のアラート](../../azure-monitor/platform/alerts-overview.md)について確認します。

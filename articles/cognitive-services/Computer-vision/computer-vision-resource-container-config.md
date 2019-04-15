@@ -8,21 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5adb2a3c2a443e6c77c315935e0729cf8728e8cd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308793"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877127"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>テキスト認識 Docker コンテナーを構成する
 
 **テキスト認識**コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
-
-コンテナーの設定は[階層](#hierarchical-settings)になっていて、[環境変数](#environment-variable-settings)または Docker の[コマンドライン引数](#command-line-argument-settings)を使用して設定できます。
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -49,9 +47,9 @@ ms.locfileid: "56308793"
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Computer Vision の** [概要]、`Endpoint` というラベルが付いている
+* Azure portal:**Computer Vision**  の [概要]、ラベル:  `Endpoint`
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -79,14 +77,10 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](computer-vision-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| Name | データ型 | 説明 |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
-
-## <a name="hierarchical-settings"></a>階層的な設定
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -120,7 +114,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
   ApiKey={BILLING_KEY} 
   ```
 
-### <a name="logging-example-with-command-line-arguments"></a>コマンドライン引数を使用したログの例
+### <a name="logging-example"></a>ログの例 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -128,18 +122,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} \
   ApiKey={BILLING_KEY} \
-  Logging:Console:LogLevel=Information
-  ```
-
-### <a name="logging-example-with-environment-variable"></a>環境変数を使用したログの例
-
-  ```
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY}
+  Logging:Console:LogLevel:Default=Information
   ```
 
 ## <a name="next-steps"></a>次の手順

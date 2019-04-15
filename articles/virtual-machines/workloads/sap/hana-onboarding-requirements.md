@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563832"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880697"
 ---
 # <a name="onboarding-requirements"></a>オンボードの要件
 
@@ -62,11 +62,11 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 > Type II ユニットの場合、現時点では SLES 12 SP2 OS バージョンのみがサポートされています。 
 
 
-**データベース**
+**Database**
 
 - SAP HANA (Platform Edition または Enterprise Edition) 用のライセンスとソフトウェア インストール コンポーネント。
 
-**アプリケーション**
+**[アプリケーション]**
 
 - SAP HANA に接続する SAP アプリケーションのライセンスとソフトウェア インストール コンポーネント、および関連する SAP サポート契約。
 - SAP HANA on Azure (L インスタンス) 環境で使用される SAP 以外のアプリケーションのライセンスとソフトウェア インストール コンポーネント、および関連するサポート契約。
@@ -83,5 +83,5 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 - SAP の顧客であり、SAP とサポート契約を結んでいることが望まれます。
 - 特に、Type II クラスの HANA L インスタンス SKU の実装では、SAP HANA のバージョンと、サイズの大きいスケールアップ ハードウェア上での最終的な構成について、SAP に相談してください。
 
-**次のステップ**
+**次の手順**
 - [Azure の SAP HANA (L インスタンス) アーキテクチャ](hana-architecture.md)を参照してください

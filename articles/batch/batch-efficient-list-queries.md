@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537903"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918537"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
 
@@ -89,7 +89,7 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 * たとえば、一覧の各項目の統計情報が返されるように指定する場合、expand 文字列は `stats`のようになります。
 
 > [!NOTE]
-> 3 種類のクエリ文字列 (filter、select、expand) のいずれかを組み立てる際に、プロパティ名および大文字と小文字が REST API 要素と一致することを確認する必要があります。 たとえば、.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) クラスを使用する場合は、.NET プロパティが [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state) であっても、**State** の代わりに **state** を指定する必要があります。 .NET と REST API 間のプロパティ マッピングについては、以下の表を参照してください。
+> 3 種類のクエリ文字列 (filter、select、expand) のいずれかを組み立てる際に、プロパティ名および大文字と小文字が REST API 要素と一致することを確認する必要があります。 たとえば、.NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) クラスを使用する場合は、.NET プロパティが [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state) であっても、**State** の代わりに **state** を指定する必要があります。 .NET と REST API 間のプロパティ マッピングについては、以下の表を参照してください。
 > 
 > 
 
@@ -98,8 +98,8 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 * すべてのプロパティ名では大文字と小文字が区別されますが、プロパティの値は大文字と小文字を区別しません。
 * 日付/時刻文字列は、次の 2 つの形式のいずれかを使用でき、前に `DateTime`を付ける必要があります。
   
-  * W3C-DTF 形式の例: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 形式の例: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * W3C-DTF 形式の例:  `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 形式の例:  `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * ブール文字列は、`true` と `false` のいずれかです。
 * 無効なプロパティまたは演算子を指定すると、 `400 (Bad Request)` エラーが発生します。
 
@@ -110,7 +110,7 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 * [ODATADetailLevel][odata].[SelectClause][odata_select]:各項目で返されるプロパティ値を指定します。
 * [ODATADetailLevel][odata].[ExpandClause][odata_expand]:項目ごとに個別の呼び出しではなく、1 つの API 呼び出しですべての項目のデータを取得します。
 
-次のコード スニペットでは Batch .NET API を使用して、特定のプール セットの統計値を Batch サービスに効率的に問い合わせます。 このシナリオでは、Batch ユーザーにはテスト プールと運用プールの両方が与えられています。 テスト プールの ID 接頭辞は "test" であり、運用プールの ID 接頭辞は "prod" です。 このスニペットで、 *myBatchClient* は [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) クラスの適切に初期化されたインスタンスです。
+次のコード スニペットでは Batch .NET API を使用して、特定のプール セットの統計値を Batch サービスに効率的に問い合わせます。 このシナリオでは、Batch ユーザーにはテスト プールと運用プールの両方が与えられています。 テスト プールの ID 接頭辞は "test" であり、運用プールの ID 接頭辞は "prod" です。 このスニペットで、 *myBatchClient* は [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) クラスの適切に初期化されたインスタンスです。
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Select 句と Expand 句で構成される [ODATADetailLevel][odata] のインスタンスも、返されるデータの量を制限するために、[PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx) などの適切な Get メソッドに渡すことができます。
+> Select 句と Expand 句で構成される [ODATADetailLevel][odata] のインスタンスも、返されるデータの量を制限するために、[PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__) などの適切な Get メソッドに渡すことができます。
 > 
 > 
 
@@ -179,7 +179,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-filter-string"></a>例: filter 文字列の構築
 [ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を構築する場合は、「filter 文字列のマッピング」に示したテーブルを参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。 そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。 たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
 
-| プロパティ | 許可される操作 | type |
+| プロパティ | 許可される操作 | Type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -190,7 +190,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-select-string"></a>例: select 文字列の構築
 [ODATADetailLevel.SelectClause][odata_select] を構築する場合は、「select 文字列のマッピング」に示したテーブルを参照し、一覧表示するエンティティのタイプに対応する REST API ページに移動します。 そのページの最初の複数行の表に、選択可能なプロパティとサポートされている演算子が表示されます。 たとえば、リストの各タスクの ID とコマンド ラインのみを取得する場合は、「[タスクに関する情報を取得する][rest_get_task]」の該当するテーブルでこれらの行を見つけます。
 
-| プロパティ | type | メモ |
+| プロパティ | Type | メモ |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -246,7 +246,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 「[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」があります。 ワークロードの種類によっては、並列タスクの実行環境となるコンピューティング ノードの規模を大きくしてノード数を減らすことによってパフォーマンス上のメリットが得られる場合があります。 同記事の「 [サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario) 」で、そのようなシナリオについて詳しく説明されています。
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics

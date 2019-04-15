@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 5f5a9ef689fefd5683f7b6f1ebc9b2193ce020e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2edd4e28a0dd67be3c06159bce2e968d681b7f70
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995776"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905258"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
@@ -24,11 +24,11 @@ ms.locfileid: "57995776"
 
 Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを作成する
 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
@@ -868,7 +868,7 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
       * `-`  は、パラメーターの既定値を保持しないことを意味します。
       * `|`  は、接続文字列またはキーに対する Azure Key Vault からのシークレットの特殊なケースです。
    * `<name>`  は、パラメーターの名前です。 空白の場合は、プロパティの名前になります。 値が `-` 文字で始まる場合、名前は短縮されます。 たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
-   * `<stype>`  は、パラメーターの型です。  `<stype>`  が空白の場合、既定の型は `string` です。 サポートされる値は `string`、`bool`、`number`、`object`、`securestring` です。
+   * `<stype>`  は、パラメーターの型です。  `<stype>` が空白の場合、既定の型は `string` です。 サポートされる値は `string`、`bool`、`number`、`object`、`securestring` です。
 * 定義ファイルに配列を指定した場合、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の Integration Runtime オブジェクトに指定された定義を使用することで、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
 * リソース インスタンス固有の定義を含めることはできません。 定義はその型のすべてのリソースに適用されます。
 * 既定では、Key Vault シークレットなどのセキュリティで保護されたすべての文字列と、接続文字列、キー、トークンなどのセキュリティで保護された文字列がパラメーター化されます。

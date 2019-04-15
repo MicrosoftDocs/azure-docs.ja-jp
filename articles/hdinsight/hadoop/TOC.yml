@@ -194,9 +194,6 @@ items:
     - name: Presto をインストールして使用する
       href: ../hdinsight-hadoop-install-presto.md
       maintainContext: true
-    - name: Mono のインストールまたは更新
-      href: ../hdinsight-hadoop-install-mono.md
-      maintainContext: true
     - name: Apache Hive ライブラリを追加する
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
@@ -494,9 +491,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 21390f78e30bf6d26b98b0d7ab9d3f005d5fbf77
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 05766864476553f531900e14a00de14cc65c06f7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758438"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548208"

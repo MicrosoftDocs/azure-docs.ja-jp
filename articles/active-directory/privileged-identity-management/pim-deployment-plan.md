@@ -1,5 +1,5 @@
 ---
-title: Azure AD Privileged Identity Management (PIM) をデプロイする | Microsoft Docs
+title: Privileged Identity Management (PIM) をデプロイする - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) のデプロイを計画する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227033"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578201"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
-このステップ バイ ステップ ガイドでは、組織での Azure AD Privileged Identity Management (PIM) のデプロイを計画する方法について説明します。
+このステップ バイ ステップ ガイドでは、組織での Azure Active Directory (Azure AD) Privileged Identity Management (PIM) のデプロイを計画する方法について説明します。
 
 > [!TIP]
 > このドキュメント全体で、次のようなマークが項目に付けられています。
@@ -79,7 +79,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>PIM で管理可能なロール
 
-**Azure AD ロール** – これらのロールは、(グローバル管理者、Exchange 管理者、セキュリティ管理者など) の Azure Active Directory 内のすべてのディレクトリ ロールです。 ロールおよびそれらの機能の詳細については、「[Azure Active Directory の管理者ロール アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。 管理者を割り当てるロールを判断する際に役立つ[タスク別の最小特権ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページも参照してください。
+**Azure AD ロール** – これらのロールは、(グローバル管理者、Exchange 管理者、セキュリティ管理者など) Azure Active Directory 内にあるすべてです。 ロールおよびそれらの機能の詳細については、「[Azure Active Directory の管理者ロール アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。 管理者を割り当てるロールを判断する際に役立つ[タスク別の最小特権ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページも参照してください。
 
 **Azure リソース ロール** – これらのロールは、Azure リソース、リソース グループ、サブスクリプション、または管理グループにリンクされています。 PIM では、所有者、ユーザー アクセス管理者、共同作成者などの組み込みロールと、[カスタム ロール](../../role-based-access-control/custom-roles.md)の両方に対する Just-In-Time アクセスが提供されます。 Azure リソース ロールの詳細については、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
@@ -99,7 +99,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>利害関係者:Azure AD ロール用の PIM
 
-| Name | Role | Action |
+| 名前 | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **ID アーキテクトまたは Azure グローバル管理者**<br/>この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。 | SO/R/I |
 | 名前とメール | **サービス所有者 / ライン マネージャー**<br/>サービスまたはサービス グループの IT 所有者の代表。 主に決定を下し、チームの PIM のロールアウトを支援します。 | SO/R/I |
@@ -109,7 +109,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>利害関係者:Azure リソース ロール用の PIM
 
-| Name | Role | Action |
+| 名前 | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>PIM をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
@@ -294,7 +294,7 @@ PIM ソリューションを実装する前に、組織で使用するすべて�
 
 #### <a name="configure-pim-for-azure-ad-roles"></a>Azure AD ロール用に PIM を構成する
 
-1. 計画内容に基づいて、[Azure AD ディレクトリ ロールの設定を構成](pim-how-to-change-default-settings.md)します。
+1. 計画内容に基づいて、[Azure AD ロールの設定を構成](pim-how-to-change-default-settings.md)します。
 
 1. **[Azure AD ロール]** に移動し、**[ロール]** をクリックして、先ほど構成したロールを選びます。
 

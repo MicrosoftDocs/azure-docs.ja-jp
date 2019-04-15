@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190654"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807742"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -43,7 +43,7 @@ ms.locfileid: "58190654"
 
 ### <a name="data-disks"></a>データ ディスク
 
-データ ディスクは仮想マシンに取り付けられるマネージド ディスクであり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 4,095 ギビバイト (GiB) です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
+データ ディスクは仮想マシンに取り付けられるマネージド ディスクであり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 32,767 ギビバイト (GiB) です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 ### <a name="os-disks"></a>OS ディスク
 
@@ -53,7 +53,7 @@ ms.locfileid: "58190654"
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ドライブのデータは保持されます。 
+すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ドライブのデータは保持されます。
 
 ## <a name="managed-disk-snapshots"></a>マネージド ディスクのスナップショット
 

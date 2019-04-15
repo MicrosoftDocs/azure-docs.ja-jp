@@ -1,5 +1,5 @@
 ---
-title: Azure AD パスワード保護での監視とログ記録
+title: Azure AD パスワード保護での監視とログ記録 - Azure Active Directory
 description: Azure AD パスワード保護の監視とログ記録について
 services: active-directory
 ms.service: active-directory
@@ -11,16 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293721"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479726"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD パスワード保護の監視とログ記録
 
 Azure AD パスワード保護のデプロイ後、監視とレポートは重要なタスクです。 この記事では、各サービスが情報をログに記録する場所や、Azure AD パスワード保護の使用について報告する方法など、さまざまな監視手法を理解できるように詳しく説明します。
+
+監視およびレポート作成は、イベント ログ メッセージまたは PowerShell コマンドレットの実行によって行われます。 DC エージェントとプロキシ サービスは両方とも、イベント ログ メッセージを記録します。 以下で説明するすべての PowerShell コマンドレットは、プロキシ サーバーでのみ使用できます (AzureADPasswordProtection PowerShell モジュールを参照)。 DC エージェント ソフトウェアでは、PowerShell モジュールはインストールされません。
 
 ## <a name="dc-agent-event-logging"></a>DC エージェント イベントのログ記録
 
@@ -79,7 +81,7 @@ DC エージェント管理ログは、ソフトウェアの動作に関する�
 
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットを使用して、パスワード検証アクティビティの概要ビューを生成できます。 このコマンドレットの出力例は次のとおりです。
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -252,7 +254,7 @@ DC エージェント サービス ソフトウェアによって、**Azure AD P
 
 このコマンドレットの出力例は次のとおりです。
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionDCAgent
 ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
 Domain                : bplchild.bplRootDomain.com
@@ -324,7 +326,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 このコマンドレットの出力例は次のとおりです。
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionProxy
 ServerFQDN            : bplProxy.bplchild2.bplRootDomain.com
 Domain                : bplchild2.bplRootDomain.com

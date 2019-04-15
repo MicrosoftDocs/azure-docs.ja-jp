@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107595"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418705"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -48,11 +48,10 @@ ms.locfileid: "58107595"
     3. 「[ウイルス対策プログラムからの Azure Site Recovery フォルダーの除外](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)」の一覧に記載されているフォルダーがウイルス対策プログラムから除外されていることを確認します。  
     4. 問題を解決したら、「[ソース マシンを構成サーバーに登録する](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)」に記載されたガイドラインに従って、登録を再試行してください。
 
-7. Linux では、<INSTALLATION_DIR\>/etc/drscout.conf 内のプラットフォームの値が破損していると登録に失敗します。 この問題を特定するには、/var/log/ua_install.log ファイルを開きます。 文字列「**Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure (VM_PLATFORM の値が null であるか、VmWare/Azure でないため、構成を中止しています)**」を検索します。 プラットフォームは **VmWare** または **Azure** に設定する必要があります。 drscout.conf ファイルが破損している場合は、[モビリティ エージェントをアンインストール](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service)してから再インストールすることをお勧めします。 アンインストールに失敗した場合は、次の手順を実行します。
-    1. Installation_Directory/uninstall.sh ファイルを開き、**StopServices** 関数の呼び出しをコメントアウトします。
-    2. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、**stop_services** 関数の呼び出しをコメントアウトします。
-    3. Installation_Directory/Fx/uninstall.sh ファイルを開き、Fx サービスの停止を試行するセクション全体をコメントアウトします。
-    4. モビリティ エージェントを[アンインストール](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service)します。 アンインストールが成功したら、システムを再起動して、モビリティ エージェントの再インストールを試みます。
+7. Linux では、<INSTALLATION_DIR\>/etc/drscout.conf 内のプラットフォームの値が破損していると登録に失敗します。 この問題を特定するには、/var/log/ua_install.log ファイルを開きます。 文字列「**Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure (VM_PLATFORM の値が null であるか、VmWare/Azure でないため、構成を中止しています)**」を検索します。 プラットフォームは **VmWare** または **Azure** に設定する必要があります。 drscout.conf ファイルが破損している場合は、[モビリティ エージェントをアンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)してから再インストールすることをお勧めします。 アンインストールに失敗した場合は、次の手順を実行します。 a. Installation_Directory/uninstall.sh ファイルを開き、**StopServices** 関数の呼び出しをコメントアウトします。
+    b. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、**stop_services** 関数の呼び出しをコメントアウトします。
+    c. Installation_Directory/Fx/uninstall.sh ファイルを開き、Fx サービスの停止を試行するセクション全体をコメントアウトします。
+    d. モビリティ エージェントを[アンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)します。 アンインストールが成功したら、システムを再起動して、モビリティ エージェントの再インストールを試みます。
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>インストールの失敗: アカウントを読み込めませんでした
 
@@ -80,7 +79,7 @@ vCenter の検出エラーを解決するには、バイパス リスト プロ�
 
 Site Recovery の認証に必要な証明書を作成できません。 ローカル管理者として設定を実行していることを確認してから、設定を再実行します。
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Server Standard 評価版から Server Standard への Windows ライセンスのアクティブ化が失敗する
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Server Standard 評価版から Server Standard への Windows ライセンスのアクティブ化が失敗する
 
 1. OVF を通じた構成サーバーのデプロイの一部として、評価ライセンスが使用されます。このライセンスは 180 日間有効です。 この有効期限が切れる前に、このライセンスをアクティブ化する必要があります。 そうしないと、構成サーバーが頻繁にシャットダウンされ、それによりレプリケーション アクティビティが妨げられることがあります。
 2. Windows ライセンスをアクティブ化できない場合、問題を解決するために [Windows サポート チーム](https://aka.ms/Windows_Support)にお問い合わせください。

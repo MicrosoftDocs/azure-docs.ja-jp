@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1706fc050fecd2e4be3a40725ec3e63a9036b3a9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214641"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486632"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
@@ -37,13 +37,18 @@ ms.locfileid: "57214641"
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>従来のログ アラート API から切り替えるプロセス
 
-[従来の Log Analytics Alert API](api-alerts.md) からアラート ルールを移動するプロセスに、アラートの定義、クエリ、構成の変更は含まれません。 ユーザーは、[従来の Log Analytics Alert API](api-alerts.md) または新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のどちらを使用してもかまいません。 アラート ルールの作成にどちらの API を使用しても、"*同じ API によってのみ管理できます*" (Azure portal の場合と同様)。 既定では、Azure Monitor では引き続き Azure portal からの新しいアラート ルールの作成に[従来の Log Analytics Alert API](api-alerts.md) が使用されます。
+[従来の Log Analytics Alert API](api-alerts.md) からアラート ルールを移動するプロセスに、アラートの定義、クエリ、構成の変更は含まれません。 アラート ルールおよび監視は影響を受けず、切り替え中または切り替え後にアラートが停止またはストールすることはありません。
+
+ユーザーは、[従来の Log Analytics Alert API](api-alerts.md) または新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のどちらを使用してもかまいません。 アラート ルールの作成にどちらの API を使用しても、"*同じ API によってのみ管理できます*" (Azure portal の場合と同様)。 既定では、Azure Monitor では引き続き Azure portal からの新しいアラート ルールの作成に[従来の Log Analytics Alert API](api-alerts.md) が使用されます。
 
 設定を scheduledQueryRules API に切り替えることによる影響は次のとおりです。
 
 - プログラム インターフェイスを使用してログ アラートを管理するために行われるすべての操作は、代わりに [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して行う必要があります。 詳細については、[Azure リソース テンプレートによるサンプルの使用](alerts-log.md#managing-log-alerts-using-azure-resource-template)および [Azure CLI と PowerShell によるサンプルの使用](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)に関するページをご覧ください
-- Azure portal で作成される新しいログ アラート ルールはすべて、[scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のみを使用して作成され、ユーザーは Azure portal で[新しい API の追加機能](#Benefits-of-switching-to-new-Azure-API)を使用することもできます
+- Azure portal で作成される新しいログ アラート ルールはすべて、[scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のみを使用して作成され、ユーザーは Azure portal で[新しい API の追加機能](#benefits-of-switching-to-new-azure-api)を使用することもできます
 - ログ アラート ルールの重大度が変わります ("*重大、警告、および情報*" から "*重大度値の 0、1、および 2*")。 重大度 4 でアラートを作成/更新するルールのオプションも同様です。
+
+> [!CAUTION]
+> ユーザーが設定を新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えるよう選択すると、ルールでは、古い[従来の Log Analytics Alert API](api-alerts.md).の使用を選択したり元に戻すことはできません。
 
 自主的に新しい [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えて[従来の Log Analytics Alert API](api-alerts.md) からの使用をブロックしたいお客様は、次の API で PUT 呼び出しを実行して特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えることによって行うことができます。
 
@@ -61,7 +66,7 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 
 この API には、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインからアクセスすることもできます。 下に示すように、サンプル PUT 呼び出しで ARMclient ツールを使用して、特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えます。
 
-```PowerShell
+```powershell
 $switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
@@ -83,7 +88,7 @@ GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 
 [ARMClient](https://github.com/projectkudu/ARMClient)ツールで、PowerShell コマンドラインを使用して上記を実行するには、下のサンプルを参照してください。
 
-```PowerShell
+```powershell
 armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 

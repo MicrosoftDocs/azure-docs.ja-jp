@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3c17ec2133e278b17475e4988e1e9766b1349ba4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734642"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620838"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語のスキーマ参照
 
@@ -41,7 +41,7 @@ ms.locfileid: "55734642"
 | 要素 | 必須 | 説明 |
 |---------|----------|-------------|
 | 定義 | はい | ワークフロー定義の開始要素 |
-| $schema | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |
+| $schema | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | contentVersion | いいえ  | ワークフロー定義のバージョン番号。既定値は "1.0.0.0" です。 ワークフローを展開するときに正しい定義であることを識別して確認できるように、使用する値を指定します。 |
 | parameters | いいえ  | ワークフローにデータを渡す 1 つ以上のパラメーターの定義 <p><p>パラメーターの最大個数:50 |
 | トリガー | いいえ  | ワークフローをインスタンス化する 1 つまたは複数のトリガーの定義。 複数のトリガーを定義できます。ワークフロー定義言語しか利用できず、Logic Apps デザイナーを使って視覚的に作成することはできません。 <p><p>トリガーの最大個数:10 |
@@ -70,10 +70,10 @@ ms.locfileid: "55734642"
 },
 ```
 
-| 要素 | 必須 | type | 説明 |
+| 要素 | 必須 | Type | 説明 |
 |---------|----------|------|-------------|
-| type | はい | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
-| defaultValue | いいえ  | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 |
+| type | はい | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください | パラメーターの型 |
+| defaultValue | はい | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 |
 | allowedValues | いいえ  | `type` と同じ | パラメーターが受け取ることのできる値の配列 |
 | metadata | いいえ  | JSON オブジェクト | 他のパラメーターの詳細。たとえば、ロジック アプリの名前や読み取り可能な説明、または Visual Studio や他のツールによって使用される設計時のデータ |
 ||||
@@ -100,7 +100,7 @@ ms.locfileid: "55734642"
 }
 ```
 
-| 要素 | 必須 | type | 説明 |
+| 要素 | 必須 | Type | 説明 |
 |---------|----------|------|-------------|
 | <*key-name*> | はい | String | 出力戻り値のキーの名前 |
 | type | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |

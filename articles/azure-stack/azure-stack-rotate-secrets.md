@@ -15,16 +15,16 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251352"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917562"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
-*この記事の説明は、Azure Stack 統合システム バージョン 1803 以降に対してのみ適用されます。1802 以前のバージョンの Azure Stack ではシークレットのローテーションを試みないでください。*
+*この記事の説明は、Azure Stack 統合システム バージョン 1803 以降に対してのみ適用されます。 1802 より前のバージョンの Azure Stack ではシークレットのローテーションを試みないでください*
 
 Azure Stack は、さまざまなシークレットを使って、Azure Stack インフラストラクチャのリソースとサービス間のセキュリティ保護された通信を維持します。
 
@@ -122,7 +122,7 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 > **.\Certificates\AAD** か ***.\Certificates\ADFS*** かは、Azure Stack に使用される ID プロバイダーによって決まります
 >
 > 最も重要なことは、フォルダー構造が **AAD** または **ADFS** フォルダーで終了し、すべてのサブディレクトリがこの構造内にあることです。そうでないと、**Start-SecretRotation** は次のようになります。
-> ```PowerShell
+> ```powershell
 > Cannot bind argument to parameter 'Path' because it is null.
 > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
 > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
@@ -147,7 +147,7 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 1. 前の手順で新しく作成した **\Certificates\\\<ID プロバイダー>** ディレクトリに、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)」の「必須の証明書」セクションに記載されている形式に従ったディレクトリ構造で、交換用の外部証明書の新しいセットを配置します。
 
     AAD ID プロバイダーのフォルダー構造の例:
-    ```PowerShell
+    ```powershell
         <ShareName>
         │   │
         │   ├───Certificates
@@ -209,7 +209,7 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
     > [!Note]
     > シークレット ローテーションが失敗した場合は、エラー メッセージの指示に従い、**-ReRun** パラメーターを指定して **Start-SecretRotation** を再実行します。
 
-    ```PowerShell
+    ```powershell
     Start-SecretRotation -ReRun
     ```
     シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。
@@ -220,7 +220,7 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 
 次の PowerShell の例では、シークレットのローテーションを行うために実行するコマンドレットとパラメーターを示します。
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -256,7 +256,7 @@ Remove-PSSession -Session $PEPSession
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **–Internal** and **-ReRun** parameters.  
 
-```PowerShell
+```powershell
 Start-SecretRotation -Internal -ReRun
 ```
 
@@ -270,25 +270,25 @@ Azure Stack システムのシークレットのローテーションを行い�
 
 #### <a name="for-external-secret-rotation"></a>外部シークレットのローテーションの場合
 
-```PowerShell
+```powershell
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential <PSCredential>] [-CertificatePassword <SecureString>]  
 ```
 
 #### <a name="for-internal-secret-rotation"></a>内部シークレットのローテーションの場合
 
-```PowerShell
+```powershell
 Start-SecretRotation [-Internal]  
 ```
 
 #### <a name="for-external-secret-rotation-rerun"></a>外部シークレットのローテーションの再実行の場合
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun]
 ```
 
 #### <a name="for-internal-secret-rotation-rerun"></a>内部シークレットのローテーションの再実行の場合
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun] [-Internal]
 ```
 
@@ -298,7 +298,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | type | 必須 | 位置 | 既定値 | 説明 |
+| パラメーター | Type | 必須 | 位置 | 既定値 | 説明 |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 外部シークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
 | CertificatePassword | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 外部のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |
@@ -312,7 +312,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 これは、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要があります。
 
-```PowerShell
+```powershell
 PS C:\> Start-SecretRotation -Internal
 ```
 
@@ -320,7 +320,7 @@ PS C:\> Start-SecretRotation -Internal
 
 #### <a name="rotate-only-external-infrastructure-secrets"></a>外部インフラストラクチャ シークレットのみのローテーション  
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -346,7 +346,7 @@ Remove-PSSession -Session $PEPSession
 >
 > **"*1811 以降*" では、内部証明書と外部証明書の両方をローテーションすることはできません。**
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -369,11 +369,11 @@ Remove-PSSession -Session $PEPSession
 
 ベースボード管理コントローラー (BMC) は、サーバーの物理的な状態を監視します。 BMC のユーザー アカウント名とパスワードの更新に関する仕様や手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 Azure Stack コンポーネントのパスワードを定期的に更新する必要があります。
 
-1. OEM の指示に従って、Azure Stack の物理サーバー上で BMC を更新します。 環境内の各 BMC のユーザー アカウント名とパスワードは同じである必要があります。
+1. OEM の指示に従って、Azure Stack の物理サーバー上で BMC を更新します。 環境内の各 BMC のユーザー名とパスワードは同じである必要があります。 BMC のユーザー名は、16 文字を超えることはできません。
 2. Azure Stack セッションで特権エンドポイントを開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
 3. PowerShell プロンプトが **[IP アドレスまたは ERCS VM 名]:PS>** または **[azs-ercs01]:PS>** に環境に応じて変更されたら、`Set-BmcCredential` を `Invoke-Command` によって実行します。 パラメーターとして特権エンドポイントのセッション変数を渡します。 例: 
 
-    ```PowerShell
+    ```powershell
     # Interactive Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
@@ -391,7 +391,7 @@ Remove-PSSession -Session $PEPSession
 
     パスワードをコード行として含む静的な PowerShell バージョンを使用することもできます。
 
-    ```PowerShell
+    ```powershell
     # Static Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"

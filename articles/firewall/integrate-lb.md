@@ -5,18 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 4/1/2019
 ms.author: victorh
-ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321774"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805246"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する
 
-Azure Firewall と Azure Standard Load Balancer (パブリックまたは内部) を仮想ネットワークに統合できます。 ただし、パブリック ロード バランサーのシナリオでは、機能が無効になる可能性がある非対称ルーティングの問題を認識しておく必要があります。
+Azure Firewall と Azure Standard Load Balancer (パブリックまたは内部) を仮想ネットワークに統合できます。 
+
+内部ロード バランサーと Azure Firewall の統合は、設計が大幅に簡素化されるという点で推奨されます。 パブリック ロード バランサーが既にデプロイされていて、今後もその環境を維持したい場合は、そのパブリック ロード バランサーを使用できます。 ただし、パブリック ロード バランサーのシナリオでは、機能が無効になる可能性がある非対称ルーティングの問題を認識しておく必要があります。
 
 Azure Load Balancer の詳細については、[Azure Load Balancer とは何か](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。
 
@@ -30,10 +32,12 @@ Azure Load Balancer の詳細については、[Azure Load Balancer とは何か
 
 ### <a name="fix-the-routing-issue"></a>ルーティングの問題を修正する
 
-Azure Firewall をサブネットにデプロイするときの 1 つの手順は、AzureFirewallSubnet 上のファイアウォールのプライベート IP アドレスを通過するようにパケットを方向づけるサブネット用の既定のルートを作成することです。 詳細については、「[Tutorial: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md#create-a-default-route)」を参照してください。
+Azure Firewall をサブネットにデプロイするときの 1 つの手順は、AzureFirewallSubnet 上のファイアウォールのプライベート IP アドレスを通過するようにパケットを方向づけるサブネット用の既定のルートを作成することです。 詳細については、[チュートリアル: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md#create-a-default-route)」を参照してください。
 
 ロード バランサーのシナリオにファイアウォールを導入するときに、インターネット トラフィックがファイアウォールのパブリック IP アドレス経由で到着するように設定できます。 そこから、ファイアウォールによってファイアウォール規則が適用され、パケットがロードバランサーのパブリック IP アドレスに NAT されます。 ここで問題が発生します。 パケットはファイアウォールのパブリック IP アドレスに到着しますが、プライベート IP アドレス経由でファイアウォールに戻ります (既定のルートが使用されます)。
 この問題を回避するには、ファイアウォールのパブリック IP アドレス用の追加のホスト ルートを作成します。 ファイアウォールのパブリック IP アドレスに到着するパケットは、インターネット経由でルーティングされます。 これにより、ファイアウォールのプライベート IP アドレスへの既定のルートの使用が回避されます。
+
+![非対称ルーティング](media/integrate-lb/Firewall-LB-asymmetric.png)
 
 たとえば、パブリック IP アドレスが 13.86.122.41 で、プライベート IP アドレスが 10.3.1.4 のファイアウォールのルートは次のようになります。
 

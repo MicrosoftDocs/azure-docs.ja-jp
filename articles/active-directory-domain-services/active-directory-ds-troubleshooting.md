@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: 963ee7e952e566952a80903a739b093dbd9f0c21
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 48831767f72dd1b978fad5b0a9a8f2c7a11ec89d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184191"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893114"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -32,17 +32,17 @@ ms.locfileid: "55184191"
 
 | **エラー メッセージ** | **解決策** |
 | --- |:--- |
-| "*名前 contoso100.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。*" |[仮想ネットワーク内のドメイン名の競合](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。)Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)*) |[Azure AD Domain Services Sync アプリケーションへの適切な権限が Domain Services サービスにない](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。)Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[テナント内で Domain Services アプリケーションが適切に構成されていない](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。)Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナントで Microsoft Graph アプリケーションが無効になっている](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *名前 contoso100.com はこのネットワーク上で既に使用されています。 使用されていない名前を指定してください。* |[仮想ネットワーク内のドメイン名の競合](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。) Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD Domain Services Sync アプリケーションへの適切な権限が Domain Services サービスにない](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。) Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[テナント内で Domain Services アプリケーションが適切に構成されていない](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。) Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナントで Microsoft Graph アプリケーションが無効になっている](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>ドメイン名の競合
 **エラー メッセージ:**
 
-"*名前 contoso100.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。*"
+*名前 contoso100.com はこのネットワーク上で既に使用されています。 使用されていない名前を指定してください。*
 
-**解決策:**
+**修復: **
 
 その仮想ネットワークで使用できるドメインと同じ名前のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services のマネージド ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。
 
@@ -51,9 +51,9 @@ ms.locfileid: "55184191"
 ### <a name="inadequate-permissions"></a>不適切なアクセス許可
 **エラー メッセージ:**
 
-*Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。)Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)*)
+*Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。) Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)*
 
-**解決策:**
+**修復: **
 
 Azure AD ディレクトリに "Azure AD Domain Services Sync" という名前のアプリケーションがあるかどうかを確認します。 このアプリケーションが存在する場合は、アプリケーションを削除してから、Azure AD Domain Services を再度有効にします。
 
@@ -67,9 +67,9 @@ Azure AD ディレクトリに "Azure AD Domain Services Sync" という名前�
 ### <a name="invalid-configuration"></a>構成が無効です
 **エラー メッセージ:**
 
-*Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。)Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)*
+*Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。) Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)*
 
-**解決策:**
+**修復: **
 
 "AzureActiveDirectoryDomainControllerServices" という名前のアプリケーション (アプリケーション識別子 d87dcbc6-a371-462e-88e3-28ad15ec4e64) が Azure AD ディレクトリにあるかどうかを確認します。 このアプリケーションが存在する場合は、削除して Azure AD Domain Services を再度有効にする必要があります。
 
@@ -118,7 +118,7 @@ if ($sp -ne $null)
 
 Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。) The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。) Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)
 
-**解決策:**
+**修復: **
 
 識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションが無効になっているかどうかを確認します。 これは Microsoft Azure AD アプリケーションで、Azure AD テナントへのアクセスを Graph API に提供します。 Azure AD Domain Services は、Azure AD テナントをマネージド ドメインと同期するためにこのアプリケーションを有効にする必要があります。
 
@@ -157,7 +157,7 @@ Azure AD では、ユーザー オブジェクトが誤って削除されない�
 
 ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、マネージド ドメイン内で無効な状態のままです。 マネージド ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
 
-マネージド ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
+マネージド ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](/previous-versions/azure/dn194132(v=azure.100))で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
 
 
 ## <a name="contact-us"></a>お問い合わせ

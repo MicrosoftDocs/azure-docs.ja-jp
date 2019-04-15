@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445995"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793970"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -269,7 +269,7 @@ BLOB を迅速にアップロードするには、まず、アップロードす
 * C++: blob_request_options::set_parallelism_factor メソッドを使用します。
 
 #### <a name="subheading22"></a>多数の BLOB をすばやくアップロードする
-多数の BLOB をすばやくアップロードするには、複数の BLOB を並列アップロードします。 この方法は、ストレージ サービスの複数のパーティションにわたってアップロードを展開するため、ブロックの並列アップロードで一度に 1 つの BLOB をアップロードする方法よりも高速です。 1 つの BLOB は 60 MB/秒のスループット (約 480 Mbps) のみをサポートします。 この記事の執筆時点で、US ベースの LRS アカウントは、個々の BLOB が対応しているスループットを大きく上回る最大 20 Gbps の受信をサポートしています。  [AzCopy](#subheading18) は既定で並列アップロードを実行するため、このシナリオ用にお勧めします。  
+多数の BLOB をすばやくアップロードするには、複数の BLOB を並列アップロードします。 この方法は、ストレージ サービスの複数のパーティションにわたってアップロードを展開するため、ブロックの並列アップロードで一度に 1 つの BLOB をアップロードする方法よりも高速です。 1 つの BLOB は 60 MB/秒のスループット (約 480 Mbps) のみをサポートします。 この記事の執筆時点で、米国ベースの LRS アカウントは、個々の BLOB が対応しているスループットを大きく上回る最大 20 Gbps のイングレスをサポートしています。  [AzCopy](#subheading18) は既定で並列アップロードを実行するため、このシナリオ用にお勧めします。  
 
 ### <a name="subheading23"></a>正しい種類の BLOB の選択
 Azure Storage がサポートしている BLOB には、*ページ* BLOB と*ブロック* BLOB の 2 種類があります。 特定の使用シナリオでは、BLOB の種類の選択がソリューションのパフォーマンスとスケーラビリティに影響を及ぼします。 ブロック blob は大量のデータを効率的にアップロードする場合に適しています。たとえば、クライアント アプリケーションが BLOB ストレージに写真やビデオをアップロードする必要がある場合です。 ページ blob はアプリケーションがランダム書き込みを実行する必要がある場合に適しています。たとえば、Azure VHD がページ blob として格納されている場合です。  
@@ -297,9 +297,7 @@ Azure Storage がサポートしている BLOB には、*ページ* BLOB と*ブ
 詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[Payload Format for Table Service Operations (Table サービス操作のペイロード形式)](https://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
 #### <a name="subheading26"></a>Nagle のオフ
-Nagle のアルゴリズムは、ネットワーク パフォーマンスを向上させる方法として、TCP/IP ネットワークで広く使用されています。 しかし、すべての状況に適しているわけではありません (高度な対話形式の環境などには不向き)。 Azure Storage では、Nagle のアルゴリズムがテーブル サービスやキュー サービスに対する要求のパフォーマンスにマイナスの影響を及ぼすため、可能な場合は無効にしてください。  
-
-詳しくは、ブログ記事「[Nagle's Algorithm is Not Friendly towards Small Requests (Nagle のアルゴリズムは小さな要求に不親切)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」をご覧ください。この記事では、Nagle アルゴリズムがテーブルやキューの要求に十分対応できない理由を説明し、クライアント アプリケーションでこのアルゴリズムを無効にする方法を示しています。  
+Nagle のアルゴリズムは、ネットワーク パフォーマンスを向上させる方法として、TCP/IP ネットワークで広く使用されています。 しかし、すべての状況に適しているわけではありません (高度な対話形式の環境などには不向き)。 Azure Storage では、Nagle のアルゴリズムがテーブル サービスやキュー サービスに対する要求のパフォーマンスにマイナスの影響を及ぼすため、可能な場合は無効にしてください。
 
 ### <a name="schema"></a>スキーマ
 データの表現とクエリの方法は、テーブル サービスのパフォーマンスに影響を及ぼす単一要因として最大のものです。 アプリケーションごとに違いはありますが、このセクションでは、以下に関連する一般的な実証済みプラクティスの概略を示します。  
@@ -401,7 +399,7 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 最新のコストの情報については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。  
 
 ### <a name="subheading44"></a>UpdateMessage
-**UpdateMessage** を使用すると、非常時タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。 この機能は効果的ですが、各 **UpdateMessage** 操作はスケーラビリティ ターゲットにカウントされることに留意してください。 しかし、それでもジョブの手順が完了するごとに、次のキューにジョブを渡すワークフローに比べると、はるかに効率的な方法です。 **UpdateMessage** 操作を使用すると、アプリケーションは、ジョブの各手順が完了するたびに次の手順に関するメッセージをキューから取得するのではなく、ジョブ状態をメッセージに保存して、処理を継続できるようになります。  
+**UpdateMessage** を使用すると、非常時タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。 この機能は効果的ですが、各 **UpdateMessage** 操作はスケーラビリティ ターゲットにカウントされることに留意してください。 しかし、それでもジョブの手順が完了するごとに、次のキューにジョブを渡すワークフローに比べると、はるかに効率的な方法です。 **UpdateMessage** 操作を使用すると、アプリケーションは、ジョブの各手順が完了するたびに次の手順のメッセージを再キューイングするのではなく、ジョブ状態をメッセージに保存して、処理を継続できるようになります。  
 
 詳細については、[キューに配置されたメッセージの内容を変更する方法](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)に関する記事を参照してください。  
 

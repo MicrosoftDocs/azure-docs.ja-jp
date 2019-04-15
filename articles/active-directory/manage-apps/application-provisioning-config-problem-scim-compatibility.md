@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124085"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880153"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -35,7 +35,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 へのコンプライアンスに関する問題と状態
 
-| **SCIM 2.0 へのコンプライアンスに関する問題** |  **修正済みである** | **修正日付**  |  
+| **SCIM 2.0 へのコンプライアンスに関する問題** |  **修正済み: ** | **修正日付**  |  
 |---|---|---|
 | Azure AD で、"/scim" がアプリケーションの SCIM エンドポイント URL のルート内にある必要がある  | はい  |  2018 年 12 月 18 日 | 
 | 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  はい  | 2018 年 12 月 18 日  | 
@@ -82,13 +82,13 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 10. 次のコマンドを実行して、最新のサービス修正プログラムを含む新しいプロビジョニング ジョブを作成します。
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
-    `{   templateId: "scim"   } `
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+ `{   templateId: "scim"   }`
    
 11. 最後の手順の結果内で、"scim" で始まる完全な "ID" 文字列をコピーします。 必要に応じて、[new-job-id] を、先ほどコピーした新しいジョブ ID に置き換え、要求本文として手順 7 の JSON 出力を入力して、次のコマンドを実行して、古い属性マッピングを再適用します。
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
-    `{   <your-schema-json-here>   }`
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
+ `{   <your-schema-json-here>   }`
 
 12. 最初の Web ブラウザー ウィンドウに戻り、アプリケーション用の **[プロビジョニング]** タブを選択します。
 13. 構成を確認し、プロビジョニング ジョブを開始します。 

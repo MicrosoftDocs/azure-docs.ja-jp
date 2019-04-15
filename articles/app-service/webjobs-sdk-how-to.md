@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 0da4e1a0b20874c4452dd77bf77df0860dec455f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848075"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895209"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -130,7 +130,7 @@ static void Main()
 
 バージョン 3.*x* では、接続制限は既定で無限接続に設定されます。 何らかの理由でこの制限を変更する必要がある場合は、[`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) クラス の [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) プロパティを使用できます。
 
-バージョン 2.*x* では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) API を使用して、ホストへのコンカレント接続の数を制御します。 バージョン 2.*x* では、WebJobs ホストを開始する前に、この値を既定値の 2 から増加してください。
+バージョン 2.*x* では、[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API を使用して、ホストへのコンカレント接続の数を制御します。 バージョン 2.*x* では、WebJobs ホストを開始する前に、この値を既定値の 2 から増加してください。
 
 `HttpClient` を使用することで関数から送信するすべての HTTP 要求は、`ServicePointManager` を通過します。 `DefaultConnectionLimit` で設定されている値に達した後は、`ServicePointManager` では送信する前に要求をキューに格納するようになります。 たとえば、`DefaultConnectionLimit` が 2 に設定されていて、コードが 1,000 個の HTTP 要求を行ったとします。 最初、OS への送信が許可されるのは 2 個の要求のみです。 その他の 998 個は、余裕ができるまでキューされたままになります。 つまり、要求を行ったように見えても、OS によって宛先サーバーに要求が送信されなかったため、`HttpClient` がタイムアウトする可能性があります。 従って、ローカルの `HttpClient` は、要求を完了するのに 10 秒間かかっているのに、サービスはどの要求も 200 ミリ秒で返しているというような、あまり意味をなさないように見える動作が目撃されることがあります。 
 
@@ -153,7 +153,7 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>トリガー
 
-関数は、パブリック メソッドである必要があり、1 つのトリガー属性または [`NoAutomaticTrigger`](#manual-trigger) 属性を必要とします。
+関数は、パブリック メソッドである必要があり、1 つのトリガー属性または [`NoAutomaticTrigger`](#manual-triggers) 属性を必要とします。
 
 ### <a name="automatic-triggers"></a>自動トリガー
 
@@ -995,7 +995,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` オブジェクトでは、[アダプティブ サンプリング](https://docs.microsoft.com/azure/application-insights/app-insights-sampling#adaptive-sampling-at-your-web-server)が構成されます。 つまり、特定の大規模なシナリオでは、Application Insights はテレメトリ データの選択されたサブセットをサーバーに送信します。
+`SamplingPercentageEstimatorSettings` オブジェクトでは、[アダプティブ サンプリング](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)が構成されます。 つまり、特定の大規模なシナリオでは、Application Insights はテレメトリ データの選択されたサブセットをサーバーに送信します。
 
 テレメトリ ファクトリを作成した後、Application Insights のログ プロバイダーにそれを渡します。
 

@@ -33,7 +33,7 @@ ms.locfileid: "58876430"
 機能としての自動回復は、すべてのユーザーに対して既定で有効になります。ただし、これを無効にすることを選択した場合は、次のことを実行してください。
 
   * SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
-  *  **ExtensionSettingsOverrides.json** で、*{"EnableAutoHealer": false}* を設定します。
+  *   **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
   * 変更を保存し、ファイルを閉じます。
   * SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。  
 

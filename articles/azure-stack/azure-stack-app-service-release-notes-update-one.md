@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d75467da01f0672bb735e01cbd6d7634cdf843e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165830"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445240"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service on Azure Stack Update 1 のリリース ノート
 
@@ -56,6 +56,8 @@ Azure App Service on Azure Stack Update 1 には、次の機能強化と修正�
 - **既存の仮想ネットワークへのデプロイ** - App Service on Azure Stack を既存の仮想ネットワーク内にデプロイできるようになりました。 既存の仮想ネットワークにデプロイすると、Azure App Service に必要な SQL Server とファイル サーバーにプライベート ポート経由で接続できます。 デプロイ時に既存の仮想ネットワークへのデプロイを選択できますが、デプロイ前に、[App Service が使用するサブネットを作成する必要があります](azure-stack-app-service-before-you-get-started.md#virtual-network)。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+
+- **Azure Functions ランタイム**が **v1.0.11388** に更新されました。
 
 - **次のアプリケーション フレームワークとツールの更新**:
     - **.NET Core 2.0** のサポートが追加されました。

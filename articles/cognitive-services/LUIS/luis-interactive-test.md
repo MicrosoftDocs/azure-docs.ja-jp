@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d8456595e244237a0fd92fae82a43a878ad41080
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857670"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893625"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
@@ -132,5 +132,5 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリの精度を向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
-* [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
+* [LUIS アプリのパフォーマンスを向上させるフィーチャーを使用する](luis-how-to-add-features.md) 

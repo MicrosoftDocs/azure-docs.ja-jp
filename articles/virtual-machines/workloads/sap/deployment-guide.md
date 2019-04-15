@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011909"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850878"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -178,7 +178,7 @@ ms.locfileid: "58011909"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
+[msdn-set-Azvmaemextension]:https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
 
 [planning-guide]:planning-guide.md (SAP のための Azure Virtual Machines の計画と実装)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (リソース)
@@ -234,7 +234,6 @@ ms.locfileid: "58011909"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Microsoft Azure のネットワーク)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (ストレージ: Microsoft Azure Storage とデータ ディスク)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -262,7 +261,7 @@ ms.locfileid: "58011909"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md (Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理)
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md (Azure Resource Manager と PowerShell を使用した仮想マシンの管理)
@@ -318,6 +317,8 @@ Azure Virtual Machines は、時間のかかる調達サイクルなしに、最
 この記事では、代替のデプロイ方法やトラブルシューティングも含め、Azure の仮想マシン (VM) に SAP アプリケーションをデプロイする手順について説明します。 この記事は、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の情報に基づいています。 また、この記事は、SAP ソフトウェアをインストールしてデプロイするときの主要リソースである SAP インストール ドキュメントと SAP Note を補完するものです。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 SAP ソフトウェアのデプロイ用の Azure 仮想マシンをセットアップするには、複数の手順とリソースが必要となります。 作業を開始する前に、Azure の仮想マシンにSAP ソフトウェアをインストールするための前提条件を満たしていることを確認してください。
 
@@ -429,7 +430,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
    * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **[サイズ]**:
 
-     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
+     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「[ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
    * **Storage**
@@ -569,7 +570,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
    * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **[サイズ]**:
 
-     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
+     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「[ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
    * **Storage**
@@ -786,7 +787,7 @@ PowerShell コマンドレットの更新プログラムがあるかどうかを
 
 コンピューターにインストールされている Azure PowerShell コマンドレットのバージョンを確認するには、次の PowerShell コマンドを実行します。
 ```powershell
-(Get-Module AzureRm.Compute).Version
+(Get-Module Az.Compute).Version
 ```
 結果は次のようになります。
 
@@ -937,22 +938,22 @@ PowerShell を使用して Azure Enhanced Monitoring Extension for SAP をイン
 
 1. 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認します。 詳細については、「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」をご覧ください。  
 1. 次の PowerShell コマンドレットを実行します。
-    使用可能な環境の一覧を表示するには、`commandlet Get-AzureRmEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
+    使用可能な環境の一覧を表示するには、`commandlet Get-AzEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
 
     ```powershell
-    $env = Get-AzureRmEnvironment -Name <name of the environment>
-    Connect-AzureRmAccount -Environment $env
-    Set-AzureRmContext -SubscriptionName <subscription name>
+    $env = Get-AzEnvironment -Name <name of the environment>
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
 
-    Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
 アカウント データを入力し、Azure 仮想マシンを特定すると、スクリプトによって必要な拡張機能がデプロイされ、必要な機能が有効化されます。 これには数分かかる場合があります。
-`Set-AzureRmVMAEMExtension` の詳細については、「[Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension]」をご覧ください。
+`Set-AzVMAEMExtension` の詳細については、「[Set-AzVMAEMExtension][msdn-set-Azvmaemextension]」を参照してください。
 
-![SAP 固有の Azure コマンドレット Set-AzureRmVMAEMExtension の正常な実行][deployment-guide-figure-900]
+![SAP 固有の Azure コマンドレット Set-AzVMAEMExtension の正常な実行][deployment-guide-figure-900]
 
-`Set-AzureRmVMAEMExtension` 構成スクリプトにより、SAP のホスト監視を構成するためのすべての手順が実行されます。
+`Set-AzVMAEMExtension` 構成スクリプトにより、SAP のホスト監視を構成するためのすべての手順が実行されます。
 
 スクリプトの出力には次の情報が含まれています。
 
@@ -1129,15 +1130,15 @@ SAP NetWeaver ABAP アプリケーション サーバーが既にインストー
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure 監視インフラストラクチャ構成の正常性チェック
 
-一部の監視データが「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzureRmVMAEMExtension` コマンドレットを実行して、Azure 監視インフラストラクチャと Monitoring Extension for SAP が正しく構成されているかどうかを確認します。
+一部の監視データが「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzVMAEMExtension` コマンドレットを実行して、Azure 監視インフラストラクチャと Monitoring Extension for SAP が正しく構成されているかどうかを確認します。
 
 1. 「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
-1. 次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzureRmEnvironment` コマンドレットを実行します。 グローバル Azure を使う場合は、**AzureCloud** 環境を選びます。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
+1. 次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzEnvironment` コマンドレットを実行します。 グローバル Azure を使う場合は、**AzureCloud** 環境を選びます。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
    ```powershell
-   $env = Get-AzureRmEnvironment -Name <name of the environment>
-   Connect-AzureRmAccount -Environment $env
-   Set-AzureRmContext -SubscriptionName <subscription name>
-   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
 1. アカウント データを入力し、Azure 仮想マシンを特定します。
@@ -1168,7 +1169,7 @@ Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Wind
 
 ###### <a name="solution"></a>解決策
 
-拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
+拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Azure Enhanced Monitoring のサービスが存在しない
 
@@ -1201,7 +1202,7 @@ AzureEnhancedMonitoring Windows サービスが存在し、有効になってい
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 このサービスは、複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure 診断から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログ記録から使用されます。
 
-SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
+SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux]  Azure パフォーマンス カウンターまったく表示されない
 
@@ -1215,13 +1216,13 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 
 ###### <a name="solution"></a>解決策
 
-拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
+拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
 
-##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzureRmVMAEMExtension および Test-AzureRmVMAEMExtension を実行すると、Standard Managed Disks はサポートされていないことを示す警告メッセージが表示されます。
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzVMAEMExtension および Test-AzVMAEMExtension を実行すると、Standard Managed Disks はサポートされていないことを示す警告メッセージが表示されます。
 
 ###### <a name="issue"></a>問題
 
-Set-AzureRmVMAEMExtension または Test-AzureRmVMAEMExtension を実行すると、次のようなメッセージが表示されます。
+Set-AzVMAEMExtension または Test-AzVMAEMExtension を実行すると、次のようなメッセージが表示されます。
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1242,4 +1243,4 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 
 既知の問題の最新のリストについては、SAP Note [1999351] を参照してください。この SAP Note には、Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 
-SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
+SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って、`Set-AzVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。

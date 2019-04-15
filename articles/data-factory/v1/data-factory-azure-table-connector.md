@@ -82,7 +82,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
+| azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ  |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例

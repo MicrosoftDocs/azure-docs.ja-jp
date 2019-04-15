@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170804"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540909"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -38,7 +38,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 > 
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
-危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
+失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
 
 | レポート アイテム | 説明 |
 | ------- | ----------- |

@@ -1,5 +1,5 @@
 ---
-title: テンプレートを使用してワークスペースを作成する
+title: Azure Resource Manager テンプレートを使用してワークスペースを作成する
 titleSuffix: Azure Machine Learning service
 description: Azure Resource Manager テンプレートを使用して新しい Azure Machine Learning service ワークスペースを作成する方法について説明します。
 services: machine-learning
@@ -8,17 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/11/2019
-ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850079"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883192"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>テンプレートを使用して Azure Machine Learning service ワークスペースを作成する
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning service のワークスペースを作成します。
 
-この記事では、Azure Resource Manager テンプレートを使用して Azure Machine Learning service ワークスペースを作成するさまざまな方法について説明します。 
+この記事では、Azure Resource Manager テンプレートを使用して Azure Machine Learning service ワークスペースを作成するさまざまな方法について説明します。 Resource Manager テンプレートを使用すると、1 つの調整された操作でリソースを簡単に作成できます。 テンプレートは、デプロイに必要なリソースを定義する JSON ドキュメントです。 デプロイ パラメーターを指定することもできます。 パラメーターは、テンプレートの使用時に入力値を指定するために使用します。
 
 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。
 
@@ -30,9 +31,7 @@ ms.locfileid: "57850079"
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-Resource Manager テンプレートを使用すると、1 つの調整された操作でリソースを簡単に作成できます。 テンプレートは、デプロイに必要なリソースを定義する JSON ドキュメントです。 デプロイ パラメーターを指定することもできます。 パラメーターは、テンプレートの使用時に入力値を指定するために使用します。
-
-次のテンプレートを使用すると、Azure Machine Learning service ワークスペースおよび関連する Azure リソースを作成できます。
+次の Resource Manager テンプレートを使用すると、Azure Machine Learning service ワークスペースおよび関連する Azure リソースを作成できます。
 
 ```json
 {
@@ -183,7 +182,7 @@ Resource Manager テンプレートを使用すると、1 つの調整された�
 
 テンプレートの詳細については、次の記事を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.MachineLearningServices resource types (Microsoft.MachineLearningServices リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 

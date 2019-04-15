@@ -6,28 +6,28 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: 62a2da72a2659b95e4da41de67da4c609b8f049e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835584"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269624"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
 この記事では、リージョン間で Azure 仮想マシンをレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題と、そのトラブルシューティング方法について説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](site-recovery-support-matrix-azure-to-azure.md)に関するページをご覧ください。
 
 ## <a name="list-of-errors"></a>エラー一覧
-- **[Azure リソースのクォータに関する問題 (エラー コード 150097)](#azure-resource-quota-issues-error-code-150097)** 
-- **[信頼されたルート証明書 (エラー コード 151066)](#trusted-root-certificates-error-code-151066)** 
-- **[Site Recovery の送信接続 (エラー コード 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)** 
+- **[Azure リソースのクォータに関する問題 (エラー コード 150097)](#azure-resource-quota-issues-error-code-150097)**
+- **[信頼されたルート証明書 (エラー コード 151066)](#trusted-root-certificates-error-code-151066)**
+- **[Site Recovery の送信接続 (エラー コード 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure リソースのクォータに関する問題 (エラー コード 150097)
 ディザスター リカバリー リージョンとして使用するターゲット リージョンで Azure VM を作成するには、サブスクリプションを有効にする必要があります。 また、特定のサイズの VM を作成するには、サブスクリプションで十分なクォータが有効になっている必要もあります。 Site Recovery では、既定で、ソース VM と同じサイズがターゲット VM に対して選択されます。 同じサイズを使用できない場合は、最も近いサイズが自動的に取得されます。 このエラー メッセージは、ソース VM 構成をサポートするサイズと一致するものがない場合に表示されます。
 
-**エラー コード** | **考えられる原因** | **推奨事項**
+**エラー コード** | **考えられる原因** | **推奨**
 --- | --- | ---
 150097<br></br>**メッセージ**:仮想マシン VmName のレプリケーションを有効にできませんでした。 | - ターゲット リージョンの場所で VM を作成するための、サブスクリプション ID が有効になっていない可能性があります。</br></br>- ターゲット リージョンの場所で特定の VM サイズを作成するための、サブスクリプション ID が有効になっていない可能性があります。または、十分なクォータが確保されていません。</br></br>- ターゲット リージョンの場所のサブスクリプション ID について、ソース VM の NIC 数 (2) と一致する適切なターゲットVM サイズが見つかりません。| [Azure 課金のサポート](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションのターゲットの場所で、必要な VM サイズの VM 作成を有効にしてください。 有効にした後、失敗した操作を再試行してください。
 
@@ -40,12 +40,12 @@ ms.locfileid: "57835584"
 
 すべての最新の信頼されたルート証明書が VMにない場合、"レプリケーションの有効化" ジョブが失敗することがあります。 証明書がないと、VM からの Site Recovery サービス呼び出しの認証と承認が失敗します。 失敗した "レプリケーションの有効化" Site Recovery ジョブのエラー メッセージが表示されます。
 
-**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
+**エラー コード** | **考えられる原因** | **Recommendations**
 --- | --- | ---
 151066<br></br>**メッセージ**:Site Recovery の構成に失敗しました。 | 承認と認証に使用される、必要な信頼されたルート証明書がマシンに存在しません。 | - Windows オペレーティング システムを実行している VM については、信頼されたルート証明書がマシンに存在することを確認します。 詳細については、「[信頼されたルートおよび許可されない証明書を構成する](https://technet.microsoft.com/library/dn265983.aspx)」を参照してください。<br></br>- Linux オペレーティング システムを実行している VM については、Linux オペレーティング システム バージョンのディストリビューターによって発行された、信頼されたルート証明書のガイダンスに従ってください。
 
 ### <a name="fix-the-problem"></a>問題の解決
-**Windows**
+** Windows**
 
 すべての最新 Windows 更新プログラムを VM にインストールし、すべての信頼されたルート証明書をマシンに用意します。 接続されていない環境の場合は、組織の標準の Windows 更新プロセスに従って、証明書を取得してください。 VM に必要な証明書がない場合は、セキュリティ上の理由から、Site Recovery サービスへの呼び出しが失敗します。
 
@@ -101,7 +101,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
       ``# ls -l | grep Baltimore``
 
-    - 出力
+    - Output
 
       ``lrwxrwxrwx 1 root root   29 Jan  8 09:48 3ad48a91.0 -> Baltimore_CyberTrust_Root.pem
       -rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem``
@@ -110,7 +110,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
       ``# ls -l | grep VeriSign_Class_3_Public_Primary_Certification_Authority_G5``
 
-    - 出力
+    - Output
 
       ``-rw-r--r-- 1 root root 1774 Jun  5  2014 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem
       lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
@@ -119,7 +119,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
       ``# ls -l | grep DigiCert_Global_Root``
 
-    - 出力
+    - Output
 
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
@@ -143,7 +143,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
       ``# ls -l 653b494a.0 b204d74a.0 3513523f.0``
 
-    - 出力
+    - Output
 
       ``-rw-r--r-- 1 root root 1774 Jan  8 09:52 3513523f.0
       -rw-r--r-- 1 root root 1303 Jan  8 09:52 653b494a.0
@@ -185,7 +185,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
   - Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)にアクセスする必要がありました。 必要な IP 範囲に仮想マシンからアクセスできることを確認します。
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
 - **考えられる原因** </br>
   - カスタム プロキシ設定が無効であり、ASR モビリティ サービス エージェントが IE からプロキシ設定を自動検出しませんでした。
 
@@ -193,8 +193,8 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 - **解決策**
   1. モビリティ サービス エージェントは、Windows では IE から、Linux では /etc/environment からプロキシ設定を検出します。
   2. プロキシを ASR モビリティ サービスにのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
-     - ***Linux*** の場合は ``/usr/local/InMage/config/``
-     - ***Windows*** の場合は ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+     - ``/usr/local/InMage/config/`` (***Linux***)
+     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` (***Windows***)
   3. ProxyInfo.conf 内のプロキシ設定は、次の INI 形式になっている必要があります。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
@@ -209,7 +209,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 VM に接続された新しいディスクを初期化する必要があります。
 
-**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
+**エラー コード** | **考えられる原因** | **Recommendations**
 --- | --- | ---
 150039<br></br>**メッセージ**:論理ユニット番号 (LUN) が (LUNValue) の Azure データ ディスク (DiskName) (DiskURI) が、VM 内部から報告されている同じ LUN 値のディスクにマップされませんでした。 | - 新しいデータ ディスクが VM に接続されているが、初期化されませんでした。</br></br>- VM 内部のデータ ディスクは、そのディスクが VM に接続されている LUN 値を正しく報告していません。| データ ディスクが初期化されていることを確認し、操作を再試行します。</br></br>Windows の場合:[新しいディスクを接続し、初期化する](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>Linux の場合:[Linux で新しいデータ ディスクを初期化する](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -238,13 +238,13 @@ Azure Site Recovery では現在、ソース リージョンのリソース グ�
 
 ### <a name="fix-the-problem"></a>問題の解決
 
->[!NOTE] 
+>[!NOTE]
 >
->以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。 
+>以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。
 
 [古い ASR 構成を削除するスクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
 
-## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない 
+## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない
  **原因 1:仮想マシンの何らかの拡張機能のインストールが失敗したかまたは応答しない状態にある** <br>
  [仮想マシン]、[設定]、[拡張機能] の順に進み、拡張機能のいずれかが失敗した状態になっていないか確認します。 失敗した拡張機能をアンインストールして、仮想マシンの保護を再試行します。<br>
  **原因 2:[VM のプロビジョニングの状態が有効ではありません](#vms-provisioning-state-is-not-valid-error-code-150019)**
@@ -282,7 +282,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/ボリューム シャドウ コピー サービス エラー (エラー コード 151025)
 
-**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
+**エラー コード** | **考えられる原因** | **Recommendations**
 --- | --- | ---
 151025<br></br>**メッセージ**:サイト回復拡張機能をインストールできませんでした | - COM+ システム アプリケーション サービスが無効になっています。</br></br>- ボリューム シャドウ コピー サービスが無効になっています。| COM+ システム アプリケーション サービスとボリューム シャドウ コピー サービスを、自動または手動スタートアップ モードに設定します。
 
@@ -294,9 +294,9 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>サポートされていないマネージド ディスクのサイズ (エラー コード 150172)
 
 
-**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
+**エラー コード** | **考えられる原因** | **Recommendations**
 --- | --- | ---
-150172<br></br>**メッセージ**:1024 MB のサポートされている最小サイズ未満のサイズ (DiskSize) を持つ (DiskName) が存在するため、仮想マシンの保護を有効にできませんでした。 | - このディスクは 1024 MB のサポートされているサイズ未満です| ディスク サイズがサポートされているサイズの範囲内にあることを確認し、操作を再試行してください。 
+150172<br></br>**メッセージ**:1024 MB のサポートされている最小サイズ未満のサイズ (DiskSize) を持つ (DiskName) が存在するため、仮想マシンの保護を有効にできませんでした。 | - このディスクは 1024 MB のサポートされているサイズ未満です| ディスク サイズがサポートされているサイズの範囲内にあることを確認し、操作を再試行してください。
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>GRUB 構成で UUID ではなくデバイス名が指定されているため、保護を有効にできなかった (エラー コード 151126)
 
@@ -317,33 +317,33 @@ GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/
 デバイス名を対応する UUID に置き換える必要があります。<br>
 
 
-1. "blkid <device name>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
+1. "blkid \<デバイス名>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
    ```
-   blkid /dev/sda1 
+   blkid /dev/sda1
    ```<br>
    ```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
-   ```blkid /dev/sda2```<br> 
-   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```blkid /dev/sda2```<br>
+   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
 
 
 
-1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+1. Now replace the device name with its UUID in the format like "root=UUID=\<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
    *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 1. Restart the protection again
 
 ## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
 **Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples: 
+The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
 
 Few examples: </br>
 
 1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
    *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
    *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
    *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
    Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
@@ -360,8 +360,8 @@ Site Recovery mobility service has many components, one of which is called filte
 ## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
 
 **Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:** 
-Delete the mentioned replica disk in the error message and restart the failed protection job again. 
+**How to fix:**
+Delete the mentioned replica disk in the error message and restart the failed protection job again.
 
 ## Next steps
 [Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

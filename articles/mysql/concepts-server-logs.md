@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119039"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417771"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバー ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。 
@@ -53,31 +53,31 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 
 | **プロパティ** | **説明** |
 |---|---|
-| TenantId | テナント ID |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
-| type | ログの種類。 常に `AzureDiagnostics` |
-| SubscriptionId | サーバーが属するサブスクリプションの GUID |
-| ResourceGroup | サーバーが属するリソース グループの名前 |
-| ResourceProvider | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| resourceId | リソース URI |
-| リソース | サーバーの名前 |
-| Category | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
-| Logical_server_name_s | サーバーの名前 |
-| start_time_t [UTC] | クエリの開始時刻 |
-| query_time_s | クエリの実行にかかった合計時間 |
-| lock_time_s | クエリがロックされていた合計時間 |
-| user_host_s | ユーザー名 |
-| rows_sent_s | 送信された行の数 |
-| rows_examined_s | 検査された行の数 |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | 挿入 ID |
-| sql_text_s | クエリ全体 |
-| server_id_s | サーバーの ID |
-| thread_id_s | スレッド ID |
-| \_ResourceId | リソース URI |
+| `TenantId` | テナント ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
+| `Type` | ログの種類。 常に `AzureDiagnostics` |
+| `SubscriptionId` | サーバーが属するサブスクリプションの GUID |
+| `ResourceGroup` | サーバーが属するリソース グループの名前 |
+| `ResourceProvider` | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | リソース URI |
+| `Resource` | サーバーの名前 |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | サーバーの名前 |
+| `start_time_t` [UTC] | クエリの開始時刻 |
+| `query_time_s` | クエリの実行にかかった合計時間 |
+| `lock_time_s` | クエリがロックされていた合計時間 |
+| `user_host_s` | ユーザー名 |
+| `rows_sent_s` | 送信された行の数 |
+| `rows_examined_s` | 検査された行の数 |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | 挿入 ID |
+| `sql_text_s` | クエリ全体 |
+| `server_id_s` | サーバーの ID |
+| `thread_id_s` | スレッド ID |
+| `\_ResourceId` | リソース URI |
 
 ## <a name="next-steps"></a>次の手順
 - [Azure CLI からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-in-cli.md)

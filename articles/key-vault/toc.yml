@@ -75,9 +75,10 @@ items:
     href: authentication-requests-and-responses.md
   - name: 一般的なパラメーターとヘッダー
     href: common-parameters-and-headers.md
-  - name: キー、シークレット、証明書について
-    href: about-keys-secrets-and-certificates.md
+  - name: 証明書
     items:
+    - name: キー、シークレット、証明書について
+      href: about-keys-secrets-and-certificates.md
     - name: 証明書の概要
       href: certificate-scenarios.md
     - name: 証明書の作成方法
@@ -176,9 +177,9 @@ items:
     href: https://blogs.technet.com/b/kv/
   - name: 製品フィードバック
     href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 7be12b2950e9ddd122fc2ac2da5f18ecd93e82a2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2d15287e04161f51159d71ce413cbcd2fe44d8f7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370756"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546350"

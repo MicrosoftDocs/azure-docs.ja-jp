@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 04/01/2019
 ms.author: banders
-ms.openlocfilehash: 1fb5ad056c1b8a331034cab12fa3420ba310bb95
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a17821cc69900c7f24375cbf06a61811bbd52d1
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852340"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762244"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払いの要求を送信する
 
@@ -36,17 +36,39 @@ Azure サポートに要求を送信して、Azure サブスクリプション�
 
     ![[ヘルプとサポート] ボタン](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 
-1. [問題の種類] で **[課金]** を選択し、請求書で支払うサブスクリプションを選択します。サポート プランを選択し、**[次へ]** を選択します。
+2. [問題の種類] で **[課金]** を選択し、請求書で支払うサブスクリプションを選択します。サポート プランを選択し、**[次へ]** を選択します。
 
-1. **[問題の種類]** ボックスで **[Pay by Invoice (請求書による支払い)]** オプションを選択します。
+3. **[問題の種類]** ボックスで **[Pay by Invoice (請求書による支払い)]** オプションを選択します。
 
-1. **[詳細]** ボックスに次の情報を入力し、**[次へ]** を選択します。
+ 4. **[詳細]** ボックスに次の情報を入力し、**[次へ]** を選択します。
 
-    * 会社名
-    * 請求先の住所
-    * [アカウント管理者の電子メール アドレス](../role-based-access-control/classic-administrators.md#view-the-account-administrator)
+         New or existing customer:
+         If existing, current payment method:
+         Order ID (requesting for invoice option): 
+         Account Admins Live ID (or Org ID) (should be company domain):
+         Commerce Account ID: 
+         Company Name (as registered under VAT or Government Website): 
+         Company Address (as registered under VAT or Government Website): 
+         Company Website:
+         Country: 
+         TAX ID/ VAT ID:
+         Company Established on (Year):
+         Any prior business with Microsoft: 
+         Contact Name:
+         Contact Phone:
+         Contact Email:
+         Justification on why you prefer Invoice option over credit card: 
+    
+        For cores increase, provide the following additional information:
+    
+         (Old quota) Existing Cores:
+         (New quota) Requested cores:
+         Specific region & series of Subscription: 
+ 
+    - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。  情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](billing-how-to-change-azure-account-profile.md)」を参照してください。
+    - 与信限度額を承認する前に、Azure portal で請求連絡先を追加する必要があります。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
 
-1. 連絡先情報と優先連絡方法を確認し、**[作成]** をクリックします。
+5. 連絡先情報と優先連絡方法を確認し、**[作成]** をクリックします。
 
 必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。 与信審査の処理には、お申し込みから 5 ～ 7 営業日かかる可能性があります。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177672"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878232"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>プレビュー - Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -47,9 +47,9 @@ Microsoft.ContainerInstance  Registered
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="preview-limitations"></a>プレビューの制限事項
+## <a name="regional-availability"></a>リージョン別の提供状況
 
-この機能がプレビュー中である間は、次のリージョンへのデプロイがサポートされています。
+仮想ノードのデプロイでは、次のリージョンがサポートされています。
 
 * オーストラリア東部 (australiaeast)
 * 米国東部 (eastus)
@@ -162,13 +162,7 @@ az aks create \
 
 数分してコマンドが完了すると、このクラスターに関する情報が JSON 形式で表示されます。
 
-## <a name="enable-virtual-nodes"></a>仮想ノードを有効にする
-
-追加の機能を提供するには、仮想ノード コネクタで Azure CLI 拡張機能を使用します。 仮想ノード コネクタを有効にする前に、まず [az extension add][az-extension-add] コマンドを使用して拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-```
+## <a name="enable-virtual-nodes-addon"></a>仮想ノード アドオンを有効にする
 
 次に、仮想ノードを有効にするために、[az aks enable-addons][az-aks-enable-addons] コマンドを使用します。 次の例では、前の手順で作成した *myVirtualNodeSubnet* というサブネットを使用しています。
 
@@ -179,6 +173,11 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
+> [!NOTE]
+> 仮想ノードが見つからないというエラーを受け取る場合は、その CLI 拡張機能をインストールすることが必要な場合があります 
+> ```azurecli-interactive
+> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
+> ```
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
@@ -331,6 +330,8 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 
 - [Kubernetes のポッドの水平オートスケーラーを使用する][aks-hpa]
 - [Kubernetes クラスター オートスケーラーを使用する][aks-cluster-autoscaler]
+- [仮想ノード用の自動スケーリング サンプルをチェックアウトする][virtual-node-autoscale]
+- [Virtual Kubelet のオープン ソース ライブラリの詳細を確認する][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -338,6 +339,8 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

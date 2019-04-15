@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893206"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621317"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C:ユーザー移行
 ご利用の ID プロバイダーを Azure Active Directory B2C (Azure AD B2C) に移行する場合は、ユーザー アカウントも移行する必要がある場合があります。 この記事では、既存のユーザー アカウントを ID プロバイダーから Azure AD B2C に移行する方法を説明します。 この記事の内容はこうしなければならないというものではなく、いくつかのシナリオを紹介しています。 どちらの方法が適しているかは、開発者が判断してください。
@@ -104,7 +104,7 @@ Graph API と通信するには、まず管理特権を持つサービス アカ
    
 1. **アプリケーション ID** を使用して、アプリケーションにユーザー アカウント管理者ロールを割り当てます。 このロールにはよく使用される識別子が付いているため、必要な作業はスクリプトに**アプリケーション ID** を入力することだけです。
    
-```PowerShell
+```powershell
 Connect-AzureAD
 
 $AppId = "<Your application ID>"
@@ -257,7 +257,7 @@ Azure AD テナントをクリーンアップして Azure AD ディレクトリ�
 ### <a name="41-update-your-application-setting"></a>4.1: アプリケーション設定を更新する
 1. RESTful API デモをテストするには、`AADB2C.UserMigration.sln` を Visual Studio で開きます。
 
-1. `AADB2C.UserMigration.API` プロジェクトで、*appsettings.json* ファイルを開きます。 [手順 2.2](#step-22-configure-the-application-settings) で構成されている設定で設定を置き換えます。
+1. `AADB2C.UserMigration.API` プロジェクトで、*Web.config* ファイルを開きます。 [手順 2.2](#step-22-configure-the-application-settings) で構成されている設定で設定を置き換えます。
 
     ```json
     {

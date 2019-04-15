@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233074"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882414"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを利用し、グループの状態に基づいてアクションを実行する
 
@@ -54,7 +54,7 @@ ms.locfileid: "50233074"
 
 1. まだサインインしていない場合は、<a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 空のロジック アプリを作成します。
 
-1. **[間隔]** を "1" に、**[頻度]** を [分] に設定して、**[スケジュール - 繰り返し]** トリガーを追加します。
+1. **[スケジュール - 繰り返し]** トリガーを追加します。**[間隔]** は "1"、**[頻度]** は [分] に、それぞれ設定します
 
    ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -67,8 +67,8 @@ ms.locfileid: "50233074"
 
       | Setting | 値 | 説明 |
       | ------- | ----- | ----------- |
-      | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
-      | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
+      | **接続名** | BingMapsConnection | 接続の名前を指定します。 | 
+      | **[API キー]** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
       ||||  
 
    1. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
@@ -83,15 +83,16 @@ ms.locfileid: "50233074"
       | **通過地点 2** | <*end*> | ルートの目的地を入力します。 | 
       | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) を入力します。 使用できる値については、「[Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)」 (ルートを計算する) をご覧ください。 | 
       | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通情報を加味した移動時間など) を選択します。 この例では、値 "timeWithTraffic" を使用します。 | 
-      | **距離単位** | <*your-preference*> | ルートを計算する距離の単位を入力します。 この例では、値 "Mile (マイル)" を使用します。 | 
-      | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
-      | **Transit Date-Time (交通機関の日時)** | なし | 乗り換えモードの場合のみ適用されます。 | 
-      | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 乗り換えモードの場合のみ適用されます。 | 
+      | **距離単位** | <*your-preference*> | ルートを計算する距離の単位を入力します。 この例では、次の値を使用します:"マイル" | 
+      | **移動手段** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
+      | **交通機関の日時** | なし | 乗り換えモードの場合のみ適用されます。 | 
+      | **交通機関の日時の種類** | なし | 乗り換えモードの場合のみ適用されます。 | 
       ||||  
 
-1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 この例に対して、次の手順に従います。
+1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 
+   この例に対して、次の手順に従います。
 
-   1. 条件の名前をわかりやすく **If traffic time is more than specified time (移動時間が指定した時間を超える場合)** に変更します。
+   1. 条件の名前を次の文言に変更します:**If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
 
    1. 左端の列で、**[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
 
@@ -99,13 +100,14 @@ ms.locfileid: "50233074"
 
    1. 真ん中のボックスで、**[次の値より大きい]** 演算子を選択します。
 
-   1. 右端の列にこの比較値を入力します。これは秒単位であり、10 分は **600** に等しくなります。
+   1. 右端の列にこの比較値を入力します。これは秒単位であり、10 分であれば次の値になります:**600**
 
       完成した条件は次の例のようになります。
 
       ![完成した条件](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. **[If true]\(true の場合\)** ブランチに、お使いの電子メール プロバイダーの "電子メールを送信する" アクションを追加します。 この画像にある手順に従い、このアクションを設定します。
+1. **[If true]\(true の場合\)** ブランチに、お使いの電子メール プロバイダーの "電子メールを送信する" アクションを追加します。 
+   この画像にある手順に従い、このアクションを設定します。
 
    ![[If true]\(true の場合\) ブランチに [Send an email]\(電子メールを送信する\) アクションを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -117,14 +119,14 @@ ms.locfileid: "50233074"
 
    1. **[本文]** フィールドに、次のテキストを入力し、末尾にスペースを追加します。 
 
-      ```Travel time: ```
+      ```Travel time:```
 
       **[本文]** フィールドにカーソルが表示されている間は、この時点で使用できる任意のパラメーターを選択できるように、動的コンテンツ リストが開いたままになります。
 
    1. 動的コンテンツ リストの **[式]** を選択します。
 
    1. **div()** 関数を探して選択します。 
-   関数の括弧内にカーソルを置きます。
+      関数の括弧内にカーソルを置きます。
 
    1. カーソルが関数の括弧内にある状態で **[動的コンテンツ]** を選択すると、動的コンテンツ リストが表示されます。 
    
@@ -144,11 +146,13 @@ ms.locfileid: "50233074"
 
    1. 完了したら、**[OK]** を選びます。
 
-  1. 式が解決された後は、テキスト ``` minutes``` と先頭にスペースを追加します。
+   <!-- markdownlint-disable MD038 -->
+   1. 式が解決された後は、先頭にスペースを入れたテキスト ``` minutes``` を追加します
   
-     これで **[本文]** フィールドは次の例のようになります。
+       これで **[本文]** フィールドは次の例のようになります。
 
-     ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+   <!-- markdownlint-enable MD038 -->
 
 1. ロジック アプリを保存し、
 
@@ -172,14 +176,14 @@ ms.locfileid: "50233074"
 
 1. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
       
-   * **[Get route]\(ルートを取得する\)**
+   * **ルートを取得する**
    * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**。**true** と **false** の両方のブランチが含まれます。
 
    これでロジック アプリは次の例のようになります。
 
    ![スコープが追加された状態](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前をわかりやすく「**If scope failed (スコープが失敗した場合)**」に変更します。
+1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前を次の文言に変更します:**スコープが失敗した場合**
 
    ![スコープの状態をチェックする条件を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   

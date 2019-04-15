@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b34cfbd1dfd7936f3f0769b57b37003e1bfe03
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2519d8b16795512c56ce76b574b0bba91fa10da3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587924"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892162"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の各種機能をデプロイする方法についてのエンド ツー エンドのガイダンスを紹介しています。 以下のデプロイ計画では、Azure AD のいくつかの代表的な機能について、そのビジネス上の価値や、正しく展開するうえで必要な計画の考慮事項、設計、運用手順をひととおり説明しています。 
@@ -28,7 +28,7 @@ ms.locfileid: "56587924"
 
 |シナリオ |説明 |
 |-|-|
-|[Multi-Factor Authentication](https://aka.ms/MFADPDownload)|Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure MFA では、データやアプリケーションへのアクセスを保護しながら、シンプルなサインイン プロセスへの要求に応えることができます。|
+|[Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)|Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure MFA では、データやアプリケーションへのアクセスを保護しながら、シンプルなサインイン プロセスへの要求に応えることができます。|
 |条件付きアクセスの[ダウンロード可能なプラン](https://aka.ms/CADPDownload)または[オンライン プラン](https://aka.ms/deploymentplans/ca)|条件付きアクセスを使用すると、クラウド アプリへのアクセスをだれに許可するかを各種の条件に基づいて自動的に判断するアクセスの制御を実装できます。|
 |[セルフサービスのパスワード リセット](https://aka.ms/SSPRDPDownload)|セルフサービスによるパスワードのリセットにより、ユーザーは、いつでも、どこでも、管理者の介入なしでパスワードをリセットできます。|
 |[Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)|Azure AD Privileged Identity Management (PIM) は、Azure AD、Azure リソース、およびその他の Microsoft Online Services 全体の特権管理者ロールを管理するのに役立ちます。 PIM では Just-In-Time アクセス、承認要求ワークフロー、完全に統合されたアクセス レビューなどのソリューションが提供されるので、リアルタイムに特権ロールの悪意のあるアクティビティを特定し、明らかにして防ぐことができます。|

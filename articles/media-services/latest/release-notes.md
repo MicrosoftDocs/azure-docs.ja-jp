@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877362"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351557"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -33,6 +33,10 @@ ms.locfileid: "57877362"
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
+
+## <a name="march-2019"></a>2019 年 3 月
+
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
 
 ## <a name="february-2019"></a>2019 年 2 月
 

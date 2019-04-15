@@ -1,5 +1,5 @@
 ---
-title: PIM で管理できないロール - Azure | Microsoft Docs
+title: PIM で管理できないロール - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で管理できないロールについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 666b534c3ab07be2b1e2335015fc4723782a1249
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181577"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579548"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>PIM で管理できないロール
 
-Azure AD Privileged Identity Management (PIM) を使用すると、すべての [Azure AD ディレクトリ ロール](../users-groups-roles/directory-assign-admin-roles.md)とすべての [Azure リソース ロール](../../role-based-access-control/built-in-roles.md)を管理できます。 これらのロールには、管理グループ、サブスクリプション、リソース グループ、およびリソースに関連付けられているカスタム ロールも含まれます。 ただし、管理できないロールがいくつかあります。 この記事では、PIM で管理できないロールについて説明します。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、すべての [Azure AD ロール](../users-groups-roles/directory-assign-admin-roles.md)とすべての [Azure リソース ロール](../../role-based-access-control/built-in-roles.md)を管理できます。 これらのロールには、管理グループ、サブスクリプション、リソース グループ、およびリソースに関連付けられているカスタム ロールも含まれます。 ただし、管理できないロールがいくつかあります。 この記事では、PIM で管理できないロールについて説明します。
 
 ## <a name="classic-subscription-administrator-roles"></a>従来のサブスクリプション管理者ロール
 
@@ -44,5 +44,5 @@ Exchange 管理者と SharePoint 管理者を除く Exchange Online または Sh
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)

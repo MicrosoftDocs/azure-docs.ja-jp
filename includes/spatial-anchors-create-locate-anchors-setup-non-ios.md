@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 94483ceaa5dc0343042bbca8b7c3998310dd5018
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57907712"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631702"
 ---
 ## <a name="set-up-the-session"></a>セッションの設定
 
-セッションで環境データを処理できるようにするには、Start() を呼び出します。
+セッションにおいて環境データを処理できるようにするには、`Start()` を呼び出します。
 
 セッションによって発生したイベントを処理するには、イベント ハンドラーをアタッチします。

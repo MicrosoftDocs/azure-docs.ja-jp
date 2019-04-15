@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109139"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862864"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -112,11 +112,11 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **メタデータ URL**:Azure AD からフェデレーション メタデータを取得するための URL です。
 
-* **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/ として自動的に派生させます。
+* **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/ として自動的に派生させます。
 
-* **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
 
-* **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
 
 * **IdP Entity ID (IdP エンティティ ID)**:IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
 
@@ -146,7 +146,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **WebSudo を無効にしたい (セキュリティで保護された管理者セッションを無効にする)**:
 
-  * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します: `ira.websudo.is.disabled = true`
+  * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します:  `ira.websudo.is.disabled = true`
 
   * Confluence の場合は、[Confluence のサポート サイト](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)の手順に従います。
 

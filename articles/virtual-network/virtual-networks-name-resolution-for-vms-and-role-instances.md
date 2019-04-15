@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193995"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418739"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -74,6 +74,7 @@ Azure で提供される名前解決を使用する場合の考慮事項を次�
 * ホスト名は DNS 互換である必要があります。 名前に使用できる文字は 0-9、a-z、および "-" のみであり、最初または最後の文字として "-" は使用できません。
 * DNS クエリ トラフィックは VM ごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。 要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。 詳細については、「[DNS クライアントの構成](#dns-client-configuration)」を参照してください。
 * 最初の 180 のクラウド サービス内の VM だけが、クラシック デプロイ モデルの各仮想ネットワークに対して登録されます。 この制限は、Azure Resource Manager の仮想ネットワークには適用されません。
+* Azure DNS IP アドレスは 168.63.129.16 です。 これは静的な IP アドレスであり、変更されません。
 
 ## <a name="dns-client-configuration"></a>DNS クライアントの構成
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340863"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757657"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -94,3 +94,119 @@ Speech ディクテーション モードの言語については、Speech の�
 |ポルトガル語 (ブラジル)|✔||||
 |スペイン語 (es-ES)|✔||||
 |スペイン語 (es-MX)|✔||||
+
+### <a name="custom-tokenizer-versions"></a>カスタム トークナイザーのバージョン
+
+次のカルチャには、カスタム トークナイザーのバージョンがあります。
+
+|カルチャ|バージョン|目的|
+|--|--|--|
+|ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
+|ドイツ語<br>`de-de`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1 つのトークンのままになります。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
+
+### <a name="migrating-between-tokenizer-versions"></a>トークナイザーのバージョン間の移行
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
+
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.0",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.0",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 23,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.1",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.1",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 16,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+-->
+
+トークン化は、アプリ レベルで発生します。 バージョン レベルのトークン化に対するサポートはありません。 
+
+バージョンの代わりに、[新しいアプリとしてファイルをインポート](luis-how-to-start-new-app.md#import-an-app-from-file)します。 このアクションは、新しいアプリはアプリ ID が異なるが、ファイルで指定されたトークナイザーのバージョンを使用することを示します。 

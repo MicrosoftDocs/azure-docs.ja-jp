@@ -16,17 +16,18 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
+ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b25ea5d792edf2f582c9929a0ae5f0c2426db
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00dd8de47422cf849d97e66698be3300b96ff83
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442075"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884552"
 ---
 # <a name="id-tokens"></a>ID トークン
 
-`id_tokens` は、[OpenID Connect](v1-protocols-openid-connect-code.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
+`id_tokens`  は、[OpenID Connect](v1-protocols-openid-connect-code.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
 
 ## <a name="using-the-idtoken"></a>id_token を使用する
 
@@ -34,7 +35,7 @@ ID トークンは、ユーザーが本人の主張どおりの人物である�
 
 ## <a name="claims-in-an-idtoken"></a>id_token の要求
 
-Microsoft Identity の`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
+`id_tokens`  (Microsoft Identity) は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
 
 ### <a name="v10"></a>v1.0
 
@@ -79,6 +80,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`name` | String | `name`要求は、トークンのサブジェクトを識別する、人が認識できる値を示します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 |`nonce`| String | nonce は、IDP に対する元の要求または承認要求に含まれるパラメーターと一致します。 一致しない場合は、アプリケーションによってトークンが拒否されます。 |
 |`oid` | 文字列、GUID | Microsoft ID システム (ここではユーザー アカウント) のオブジェクトに対する変更不可の識別子です。 この ID によって、複数のアプリケーションでユーザーが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 Microsoft Graph は、この ID を、指定されたユーザー アカウントの `id` プロパティとして返します。 `oid` では複数のアプリがユーザーを関連付けることができるため、この要求を受け取るには、`profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーは、同じ資格情報で各アカウントにログインしても、異なるアカウントと見なされます。 |
+|`roles`| 文字列の配列 | ログインしているユーザーに割り当てられた一連のロール。 |
 |`rh` | 不透明な文字列 |Azure がトークンの再検証に使用する内部の要求。 無視してください。 |
 |`sub` | 文字列、GUID | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 そのため、1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 |
 |`tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表す GUID です。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには、 `profile` スコープが必要です。 |

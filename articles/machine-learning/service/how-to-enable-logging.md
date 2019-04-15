@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 02/20/2019
-ms.openlocfilehash: 8e39734a6f5fa13240d24eb35c431f746e540484
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 0d75b983ad6d3b6256852335dc523b481bbe046f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342124"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885895"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Azure Machine Learning service でログ記録を有効にする
 
@@ -27,7 +27,7 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ロギ�
 > * デプロイ済みのモデル
 > * Python の `logging` 設定
 
-[ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を使用して SDK をインストールし、Azure Portal で SDK によるワークスペースの作成を[開始](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)します。
+[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md) SDK について詳しくは、[ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を使用してください。
 
 ## <a name="training-models-and-compute-target-logging"></a>モデルのトレーニングとコンピューティング先のログ記録
 
@@ -115,7 +115,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-Azure portal で Application Insights を使用する方法について詳しくは、[ハウツー](how-to-enable-app-insights.md#enable-and-disable-in-the-portal)記事をご覧ください。
+Azure portal で Application Insights を使用する方法について詳しくは、[ハウツー](how-to-enable-app-insights.md)記事をご覧ください。
 
 ## <a name="python-native-logging-settings"></a>Python のネイティブ ログ記録の設定
 

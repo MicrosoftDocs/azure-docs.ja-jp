@@ -3,20 +3,20 @@ title: .NET SDK:Azure Data Lake Storage Gen1 に対するファイルシステ�
 description: Azure Data Lake Storage Gen1 .NET SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などのファイルシステム操作を実行します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119498"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876957"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "58119498"
    | --- | --- |
    | Category |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
+   | 名前 |CreateADLApplication |
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 

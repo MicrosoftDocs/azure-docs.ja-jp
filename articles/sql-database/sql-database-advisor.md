@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 6dd404ec0ab9e88c9e5bc4af4b939b3aa1f2e675
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560874"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903321"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 
@@ -85,6 +85,10 @@ Azure SQL Database サービスが、ご使用の SQL データベースで発�
 | 213 |列名または指定された値の数がテーブルの定義と一致しません。 |
 | 2812 |ストアド プロシージャ '*' が見つかりませんでした。 |
 | 8144 |プロシージャまたは関数 * に指定された引数が多すぎます。 |
+
+## <a name="custom-applications"></a>カスタム アプリケーション
+
+開発者は、Azure SQL Database のパフォーマンスに関する推奨事項に基づいて、カスタム アプリケーションの開発を検討する場合があります。 データベースのポータルに一覧表示されているすべての推奨事項には、[Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API を介してアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 推奨事項を監視し、引き続きパフォーマンスの調整対象とします。 データベースのワークロードは動的であり、継続的に変化します。 SQL Database Advisor では、お使いのデータベースのパフォーマンスを向上させる可能性がある推奨事項の監視と提供を継続します。 

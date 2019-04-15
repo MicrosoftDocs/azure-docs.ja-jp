@@ -3,19 +3,19 @@ title: コラボレーション翻訳フレームワーク (CTF) レポート - 
 titlesuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123421"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917398"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
@@ -36,7 +36,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 
 
 ## <a name="methods"></a>メソッド
-| Name |    説明|
+| 名前 |    説明|
 |:---|:---|
 | GetUserTranslationCounts メソッド | ユーザーによって作成される翻訳の数を取得します。 |
 | GetUserTranslations メソッド | ユーザーによって作成される翻訳を取得します。 |
@@ -72,7 +72,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 >            int? take);
 > ```
 
-**パラメーター**
+**parameters**
 
 | パラメーター | 説明 |
 |:---|:---|
@@ -105,7 +105,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | Uri| AddTranslation() メソッド呼び出しで適用される URI|
 | User| ユーザー名|
 
-**Exceptions**
+**例外**
 
 | 例外 | Message | 条件 |
 |:---|:---|:---|
@@ -143,7 +143,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 >             int? take);
 > ```
 
-**パラメーター**
+**parameters**
 
 | パラメーター | 説明 |
 |:---|:---|
@@ -153,7 +153,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | to| **省略可能**: テキストを翻訳するターゲットの言語コードを表す文字列。|
 | minRating| **省略可能**: 翻訳されたテキストの最低限の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | maxRating| **省略可能**: 翻訳されたテキストの最高の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
-| user| **省略可能。送信の発信元に基づいた結果のフィルタリングに使用する文字列。|
+| user| **省略可能。 送信の発信元に基づいた結果のフィルタリングに使用する文字列**|
 | category| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。|
 | minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。|
 | maxDateUtc| **省略可能**: 翻訳の取得の終了日の日付。 日付は UTC 形式でなければなりません。|
@@ -178,7 +178,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 |Uri|   AddTranslation() メソッド呼び出しで適用される URI|
 |User   |ユーザー名|
 
-**Exceptions**
+**例外**
 
 | 例外 | Message | 条件 |
 |:---|:---|:---|

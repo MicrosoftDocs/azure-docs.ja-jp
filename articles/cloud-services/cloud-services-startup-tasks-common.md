@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181828"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916656"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -68,12 +68,12 @@ ms.locfileid: "58181828"
 
 *AppCmd.exe* を呼び出した後、**errorlevel** を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
 
-*AppCmd.exe* によって返される errorlevel は winerror.h ファイルに一覧表示されています。[MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx) で確認することもできます。
+*AppCmd.exe* によって返される errorlevel は winerror.h ファイルに一覧表示されています。[MSDN](/windows/desktop/Debug/system-error-codes--0-499-) で確認することもできます。
 
 ### <a name="example-of-managing-the-error-level"></a>エラー レベルの管理の例
 この例では *Web.config* に JSON 用の圧縮セクションと圧縮エントリを追加し、エラー処理とログ記録を示します。
 
-ここに示す [EndPoints] ファイルの関連セクションでは、[executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
+ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -125,13 +125,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>ファイアウォール規則を追加する
-Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [EndPoints] ファイルの [EndPoints] 要素によって制御されます。
+Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [EndPoints] 要素によって制御されます。
 
 2 つ目のファイアウォールは、仮想マシンとその仮想マシン内の処理との間の接続を制御します。 このファイアウォールは、`netsh advfirewall firewall` コマンド ライン ツールを使用して制御できます。
 
 Azure はお使いのロール内で開始されるプロセス用のファイアウォール規則を作成します。 たとえば、サービスやプログラムを開始すると、Azure はそのサービスがインターネットと通信するのに必要なファイアウォール規則を自動的に作成します。 ただし、お使いのロール外のプロセスによって開始されるサービス (COM + サービスや Windows によってスケジュール設定されるタスクなど) を作成する場合は、そのサービスへのアクセスを許可するファイアウォール規則を手動で作成する必要があります。 これらのファイアウォール規則はスタートアップ タスクを使用して作成できます。
 
-ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [EndPoints] ファイルに追加します。
+ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -161,7 +161,7 @@ IIS **web.config** ファイルを修正することで、特定の IP アドレ
 
 **ApplicationHost.config** ファイルの **ipSecurity** セクションのロックを解除するには、ロールの開始時に実行されるコマンド ファイルを作成します。 お使いの Web ロールのルート レベルに **startup** という名前のフォルダーを作成し、このフォルダーに **startup.cmd** という名前のバッチ ファイルを作成します。 このファイルを Visual Studio プロジェクトに追加し、プロパティを **[常にコピーする]** に設定して、ファイルが常にパッケージに含まれるようにします。
 
-次のスタートアップ タスクを [EndPoints] ファイルに追加します。
+次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -219,7 +219,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell のスタートアップ タスクを作成する
-Windows PowerShell のスクリプトは [EndPoints] から直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
+Windows PowerShell のスクリプトは [ServiceDefinition.csdef] から直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
 
 PowerShell では (既定では) 未署名のスクリプトは実行されません。 スクリプトに署名しない場合は、未署名のスクリプトを実行するように PowerShell を構成する必要があります。 未署名のスクリプトを実行するには、**ExecutionPolicy** を **Unrestricted** に設定する必要があります。 使用する **ExecutionPolicy** の設定は、Windows PowerShell のバージョンに基づきます。
 
@@ -250,7 +250,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>スタートアップ タスクからのファイルをローカル ストレージに作成する
 スタートアップ タスクによって作成されたファイルをローカル ストレージ リソースに格納し、後でお使いのアプリケーションからアクセスできます。
 
-ローカル ストレージ リソースを作成するには、[EndPoints] ファイルに [LocalResources] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
+ローカル ストレージ リソースを作成するには、[ServiceDefinition.csdef] ファイルに [LocalResources] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
 
 スタートアップ タスクにローカル ストレージ リソースを使用するには、ローカル ストレージ リソースの場所を参照する環境変数を作成する必要があります。 これにより、スタートアップ タスクとアプリケーションがローカル ストレージ リソースのファイルを読み書きできます。
 
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-ローカル ストレージ フォルダーには Azure SDK から [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを使用してアクセスできます。
+ローカル ストレージ フォルダーには Azure SDK から [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) メソッドを使用してアクセスできます。
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -304,7 +304,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>エミュレーターまたはクラウドで実行する
 クラウドとコンピューティング エミュレーターで動作するスタートアップ タスクを区別することができます。 たとえば、エミュレーターで実行されている場合にのみ、SQL データの新しいコピーを使用するように設定できます。 または、エミュレーターで実行する場合は不要な、クラウドのパフォーマンスを最適化する操作を実行することもできます。
 
-コンピューティング エミュレーターとクラウドで別の操作を実行するには、[EndPoints] ファイルに環境変数を作成します。 その後、スタートアップ タスク内の値に対する環境変数をテストします。
+コンピューティング エミュレーターとクラウドで別の操作を実行するには、[ServiceDefinition.csdef] ファイルに環境変数を作成します。 その後、スタートアップ タスク内の値に対する環境変数をテストします。
 
 環境変数を作成するには、[Variable]/[RoleInstanceValue] 要素を追加し、XPath 値 `/RoleEnvironment/Deployment/@emulated` を作成します。 **%ComputeEmulatorRunning%** 環境変数の値は、コンピューティング エミュレーターで実行される場合は `true`、クラウドで実行される場合は `false` になります。
 
@@ -506,15 +506,15 @@ EXIT %ERRORLEVEL%
 
 クラウド サービス パッケージを[作成してデプロイ](cloud-services-how-to-create-deploy-portal.md)します。
 
-[EndPoints]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[タスク]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[可変]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[エンドポイント]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27963674"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893726"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>遅延アクションと延期期限アクションの概要
 遅延アクションと "延期期限" アクションを使用すると、さまざまなワークフロー シナリオに対応できます。
@@ -33,7 +33,9 @@ ms.locfileid: "27963674"
 ロジック アプリで遅延アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-delay-actions"></a>遅延アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](connectors-overview.md)を参照してください。
+
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 
+アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 ロジック アプリで遅延ステップを使用する方法の例を次に示します。
 
@@ -56,7 +58,7 @@ ms.locfileid: "27963674"
 | 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | カウント* |count |遅延する時間の単位数 |
-| 単位* |unit |時間の単位: `Second`、`Minute`、`Hour`、`Day` のいずれか |
+| 単位* |unit |時間の単位: `Second`、`Minute`、`Hour`、 `Day` |
 
 <br>
 

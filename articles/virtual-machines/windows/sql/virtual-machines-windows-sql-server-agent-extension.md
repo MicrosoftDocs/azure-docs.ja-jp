@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fceca61c5a867fd4142660429bfb83fb7e0322f4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 71878d5d033f0005d2c8c36d9f59799e125a19dd
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767127"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762703"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
@@ -70,17 +70,31 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 > 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 エージェントのアンインストール後、この拡張機能によってサポートされる機能を SQL VM で使用することはできません。
 
 ## <a name="installation"></a>インストール
-SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。 これらの SQL Server VM の 1 つに拡張機能を手動で再インストール必要がある場合は、次の PowerShell コマンドを使用します。
+SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。 SQL IaaS 拡張機能は、SQL Server VM 上の単一インスタンスの管理を提供します。 既定のインスタンスがある場合、拡張機能は、既定のインスタンスで動作し、その他のインスタンスの管理はサポートしません。 既定のインスタンスはないが、名前付きインスタンスが 1 つだけある場合、名前付きインスタンスを管理します。 既定のインスタンスがなく、複数の名前付きインスタンスがある場合、拡張機能はインストールに失敗します。 
+
+
+
+これらの SQL Server VM の 1 つに拡張機能を手動で再インストール必要がある場合は、次の PowerShell コマンドを使用します。
 
 ```powershell
 Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
-> [!IMPORTANT]
+> [!WARNING]
 > 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server サービスが再起動されます。 ただし、SQL IaaS 拡張機能を更新しても、SQL Server サービスは再起動されません。 
 
 > [!NOTE]
-> SQL Server IaaS Agent 拡張機能は、[SQL Server VM ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみサポートされます。 SQL Server を OS のみの Windows Server 仮想マシンに手動でインストールする場合や、カスタマイズされた SQL Server VM VHD をデプロイする場合、この拡張機能はサポートされません。 そのような場合は、PowerShell を使用して拡張機能を手動でインストールおよび管理できる可能性がありますが、Azure Portal には SQL Server の構成設定が表示されません。 ただし、代わりに SQL Server VM ギャラリー イメージをインストールしてカスタマイズすることを強くお勧めします。
+> SQL Server IaaS Agent 拡張機能をカスタム SQL Server イメージにインストールすることはできますが、機能は現在[ライセンスの種類の変更](virtual-machines-windows-sql-ahb.md)に限られます。 SQL IaaS 拡張機能によって提供されるその他の機能は、[SQL Server VM ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみ機能します。
+
+### <a name="use-a-single-named-instance"></a>単一の名前付きインスタンスを使用する
+SQL IaaS 拡張機能は、既定のインスタンスが正常にアンインストールされた場合および IaaS 拡張機能が再インストールされた場合に、SQL Server イメージ上の名前付きインスタンスと連携します。
+
+SQL Server の名前付きインスタンスを使用するには、次の手順を実行します。
+   1. マーケットプレースから SQL Server VM をデプロイします。 
+   1. [Azure portal](https://portal.azure.com) 内から、IaaS 拡張機能をアンインストールします。
+   1. SQL Server VM 内で SQL Server を完全にアンインストールします。
+   1. SQL Server VM 内の名前付きインスタンスで SQL Server をインストールします。 
+   1. Azure portal 内から、IaaS 拡張機能をインストールします。  
 
 ## <a name="status"></a>Status
 拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのウィンドウで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SqlIaasExtension** 拡張機能が一覧表示されます。

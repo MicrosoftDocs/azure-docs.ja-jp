@@ -14,15 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8af860293fc332437d67ff4db63d7686be7efff0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1c5c5f4c8125f801edc89d47851871d8eb06a2f9
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765273"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762873"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL VM CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する
-この記事では、[Azure SQL VM CLI](https://docs.microsoft.com/mt-mt/cli/azure/ext/sqlvm-preview/sqlvm?view=azure-cli-2018-03-01-hybrid) を使用して、Windows フェールオーバー クラスター (WSFC) をデプロイしたり、クラスターに SQL Server VM を追加したり、Always On 可用性グループの内部ロード バランサーおよびリスナーを作成したりする方法について説明します。  Always On 可用性グループの実際のデプロイは、引き続き SQL Server Management Studio (SSMS) を使用して手動で実行されます。 
+この記事では、[Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-latest/) を使用して、Windows フェールオーバー クラスター (WSFC) をデプロイしたり、クラスターに SQL Server VM を追加したり、Always On 可用性グループの内部ロード バランサーおよびリスナーを作成したりする方法について説明します。  Always On 可用性グループの実際のデプロイは、引き続き SQL Server Management Studio (SSMS) を使用して手動で実行されます。 
 
 ## <a name="prerequisites"></a>前提条件
 Azure SQL VM CLI を使用した Always On 可用性グループの設定を自動化するには、既に次の前提条件が満たされている必要があります。 
@@ -42,7 +42,7 @@ Azure SQL VM CLI を使用して Always On 可用性グループを構成する�
 クラスターには、クラウド監視として機能するストレージ アカウントが必要です。 いずれかの既存のストレージ アカウントを使用するか、または新しいストレージ アカウントを作成できます。 既存のストレージ アカウントを使用する場合は、次のセクションに進んでください。 
 
 次のコード スニペットは、ストレージ アカウントを作成します。 
-```cli
+```azurecli
 # Create the storage account
 # example: az storage account create -n 'cloudwitness' -g SQLVM-RG -l 'West US' `
 #  --sku Standard_LRS --kind StorageV2 --access-tier Hot --https-only true
@@ -58,7 +58,7 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 Azure SQL VM CLI の [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) コマンド グループは、可用性グループをホストする Windows フェールオーバー クラスター (WSFC) サービスのメタデータを管理します。 クラスター メタデータには、AD ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
 
 次のコード スニペットは、クラスターのメタデータを定義します。
-```cli
+```azurecli
 # Define the cluster metadata
 # example: az sql vm group create -n Cluster -l 'West US' -g SQLVM-RG `
 #  --image-offer SQL2017-WS2016 --image-sku Enterprise --domain-fqdn domain.com `
@@ -79,7 +79,7 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
 
 次のコード スニペットはクラスターを作成し、そこに最初の SQL Server VM を追加します。 
 
-```cli
+```azurecli
 # Add SQL Server VMs to cluster
 # example: az sql vm add-to-group -n SQLVM1 -g SQLVM-RG --sqlvm-group Cluster `
 #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -105,7 +105,7 @@ Always On 可用性グループ (AG) リスナーには、内部 Azure ロード
 
 次のコード スニペットは、内部ロード バランサーを作成します。
 
-```cli
+```azurecli
 # Create the Internal Load Balancer
 # example: az network lb create --name sqlILB -g SQLVM-RG --sku Standard `
 # --vnet-name SQLVMvNet --subnet default
@@ -118,7 +118,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
   > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、**[リソース グループ]** に移動し、目的の SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、**[概要]** ウィンドウの **[SKU]** で値を見つけます。  
 
 ## <a name="step-6---create-availability-group-listener"></a>手順 6 - 可用性グループ リスナーを作成する
-可用性グループが手動で作成されたら、[az sql vm ag-listener](https://docs.microsoft.com/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
+可用性グループが手動で作成されたら、[az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
 
 
 - **サブネット リソース ID** は、vNet リソースのリソース ID に追加された `/subnets/<subnetname>` の値です。 サブネット リソース ID を識別するには、次の操作を行います。
@@ -133,7 +133,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 
 次のコード スニペットは、可用性グループ リスナーを作成します。
 
-```cli
+```azurecli
 # Create the AG listener
 # example: az sql vm group ag-listener create -n AGListener -g SQLVM-RG `
 #  --ag-name SQLAG --group-name Cluster --ip-address 10.0.0.27 `
@@ -145,70 +145,69 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
   --ag-name <availability group name> --group-name <cluster name> --ip-address <ag listener IP address> `
   --load-balancer <lbname> --probe-port <Load Balancer probe port, default 59999>  `
   --subnet <subnet resource id> `
-  --sqlvms <names of SQL VM’s hosting AG replicas ex: sqlvm1 sqlvm2>
+  --sqlvms <names of SQL VM's hosting AG replicas ex: sqlvm1 sqlvm2>
 ```
-## <a name="modify-number-of-replicas-in-availability-group"></a>可用性グループ内のレプリカの数を変更する
-Azure でホストされている SQL Server VM に可用性グループをデプロイすると、リソースがリソース プロバイダーおよび `virtual machine group` によって管理されようになるため、複雑さが増します。 このため、可用性グループにレプリカを追加または削除する場合は、SQL Server VM に関する情報でリスナー メタデータを更新する追加の手順が発生します。 したがって、可用性グループに SQL Server VM レプリカを追加する場合は、[az sqlvm aglistener add-sqlvm](/cli/azure/ext/sqlvm-preview/sqlvm/aglistener?view=azure-cli-2018-03-01-hybrid#ext-sqlvm-preview-az-sqlvm-aglistener-add-sqlvm) コマンドを使用して、リスナー メタデータに SQL Server VM を追加することも必要になります。 同様に、可用性グループからレプリカを削除する場合は、[az sqlvm ag listener remove-sqlvm](/cli/azure/ext/sqlvm-preview/sqlvm/aglistener?view=azure-cli-2018-03-01-hybrid#ext-sqlvm-preview-az-sqlvm-aglistener-remove-sqlvm) を使用して、リスナーからその SQL Server VM のメタデータを削除することも必要になります。 
 
-### <a name="adding-a-replica"></a>レプリカの追加
+## <a name="modify-number-of-replicas-in-availability-group"></a>可用性グループ内のレプリカの数を変更する
+Azure でホストされている SQL Server VM に可用性グループをデプロイすると、リソースがリソース プロバイダーおよび `virtual machine group` によって管理されようになるため、複雑さが増します。 このため、可用性グループにレプリカを追加または削除する場合は、SQL Server VM に関する情報でリスナー メタデータを更新する追加の手順が発生します。 したがって、可用性グループ内のレプリカの数を変更する場合は、[az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) コマンドを使用して、SQL Server VM のメタデータでリスナーを更新する必要もあります。 
+
+
+### <a name="add-a-replica"></a>レプリカを追加する
+
 可用性グループに新しいレプリカを追加するには、次の操作を行います。
 
-1. クラスターに SQL Server VM を追加します。 
+1. クラスターに SQL Server VM を追加します。
+   ```azurecli
+   # Add SQL Server VM to the Cluster
+   # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
+   # -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
 
-    ```cli
-    # Add SQL Server VM to the Cluster
-    # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
-    #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
-
-    az sql vm add-to-group -n <VM3 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
-    -b <bootstrap account password> -p <operator account password> -s <service account password>
-    ```
+   az sql vm add-to-group -n <VM3 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
+   -b <bootstrap account password> -p <operator account password> -s <service account password>
+   ```
 1. SQL Server Management Studio (SSMS) を使用して、SQL Server インスタンスを可用性グループ内のレプリカとして追加します。
 1. リスナーに SQL Server VM メタデータを追加します。
-    ```cli
-    # Add SQL VM metadata to cluster
-    # example: az sqlvm aglistener add-sqlvm  --group-name Cluster`
-    # --name AGListener` --resource-group SQLVM-RG `
-    #--sqlvm-rid /subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Compute/virtualMachines/SQLVM3
-    
-    az sqlvm aglistener add-sqlvm --group-name <Cluster name> `
-    --name <AG Listener name> --resource-group <RG group name> `
-    --sqlvm-rid <SQL VM resource ID>
-    ```
+   ```azurecli
+   # Update the listener metadata with the new VM
+   # example: az sql vm group ag-listener update -n AGListener `
+   # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2 sqlvm3
 
-### <a name="removing-a-replica"></a>レプリカの削除
+   az sql vm group ag-listener update -n <Listener> `
+   -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs, along with new SQL VM>
+   ```
+
+### <a name="remove-a-replica"></a>レプリカの削除
+
 可用性グループからレプリカを削除するには、次の操作を行います。
 
 1. SQL Server Management Studio (SSMS) を使用して、可用性グループからレプリカを削除します。 
 1. リスナーから SQL Server VM メタデータを削除します。
-    ```cli
-    #Remove SQL VM metadata from listener
-    # example: az sqlvm aglistener remove-sqlvm --group-name Cluster `
-    --name AGListener` --resource-group SQLVM-RG `
-    --sqlvm-rid /subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Compute/virtualMachines/SQLVM3
-    
-    az sqlvm aglistener remove-sqlvm --group-name <Cluster name> `
-    --name <AG Listener name> --resource-group <RG group name> `
-    --sqlvm-rid <SQL VM resource ID>
-    ``` 
-1. クラスター メタデータから SQL Server VM を削除します。
+   ```azurecli
+   # Update the listener metadata by removing the VM from the SQLVMs list
+   # example: az sql vm group ag-listener update -n AGListener `
+   # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2
 
-    ```cli
-    # Remove SQL VM from cluster metadata
-    #example: az sqlvm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
-    
-    az sqlvm remove from group --name <SQL VM name> --resource-group <RG name> 
-    ```
+   az sql vm group ag-listener update -n <Listener> `
+   -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs that remain>
+   ```
+1. クラスターから SQL Server VM を削除します。
+   ```azurecli
+   # Remove SQL VM from cluster
+   # example: az sql vm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
+
+   az sql vm remove-from-group --name <SQL VM name> --resource-group <RG name> 
+   ```
 
 ## <a name="remove-availability-group-listener"></a>可用性グループ リスナーを削除する
 Azure CLI で構成された可用性グループ リスナーを後で削除する必要が発生した場合は、SQL VM リソース プロバイダーを経由する必要があります。 リスナーは SQL VM リソース プロバイダーを介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 実際には、Azure CLI を使用して、SQL VM リソース プロバイダー経由で削除する必要があります。 そうすることで、SQL VM リソース プロバイダーから AG リスナー メタデータが削除され、可用性グループから物理的にリスナーが削除されます。 
 
 次のコード スニペットでは、SQL リソース プロバイダーと、可用性グループの両方から SQL 可用性グループ リスナーを削除します。 
 
-```cli
+```azurecli
 # Remove the AG listener
-# example: az sqlvm aglistener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
-az sqlvm aglistener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
+# example: az sql vm group ag-listener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
+
+az sql vm group ag-listener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロールを割り当てる | Microsoft Docs
+title: PIM で Azure リソース ロールを割り当てる - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールを割り当てる方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee09526c2bf1ebf9821e1f84dc99bfc8635b9ee2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a912e1786e005e9a4b6ba2cc22713a172234a489
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086192"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578664"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを割り当てる
 
-Azure AD PIM は、組み込みの Azure リソース ロールと、以下を含むカスタム ロール (ただしこれらに限定されません) を管理できます。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、組み込みの Azure リソース ロールと、以下を含むカスタム ロール (ただしこれらに限定されません) を管理できます。
 
 - Owner
 - User Access Administrator
@@ -129,4 +129,4 @@ Azure AD PIM は、組み込みの Azure リソース ロールと、以下を�
 
 - [PIM で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)
-- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)

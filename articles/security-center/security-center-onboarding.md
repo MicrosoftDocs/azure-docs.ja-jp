@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100072"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665493"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
 ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
@@ -33,7 +33,7 @@ Security Center Standard は次の機能を備えています。
 ## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出     
 Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
 
-Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。また、特定のリソース グループだけをアップグレードする固有のポリシーを定義することもできます。 リソース グループのポリシー設定が固有の場合、サブスクリプションを Standard レベルにアップグレードしたときに価格ポリシーはオーバーライドされません。 Standard レベルをサブスクリプションに適用すると、サブスクリプション内のサポートされているすべてのリソースに適用されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
+Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のサポートされるすべてのリソースによって継承されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
 
 > [!NOTE]
 > ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。  ソリューションのターゲット設定を使用している場合、Security Center はソリューションがないものとしてワークスペースを表示します。

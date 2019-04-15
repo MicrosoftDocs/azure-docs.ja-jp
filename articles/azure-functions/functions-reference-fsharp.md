@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734661"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894357"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>キャンセル トークン
-関数が正常なシャットダウンを処理する必要がある場合は、 [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 引数を設定できます。 これは、たとえば `async`と結合される場合があります。
+関数が正常なシャットダウンを処理する必要がある場合は、 [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) 引数を設定できます。 これは、たとえば `async`と結合される場合があります。
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -147,7 +147,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`
+* `Microsoft.Azure.WebJobs.Host`。
 
 ## <a name="referencing-external-assemblies"></a>外部アセンブリの参照
 同様に、フレームワーク アセンブリ参照を、`#r "AssemblyName"` ディレクティブと共に追加できます。
@@ -175,7 +175,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`
+* `System.Net.Http.Formatting`。
 
 さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
@@ -183,7 +183,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`.
+* `Microsoft.AspNEt.WebHooks.Common`。
 
 プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
@@ -284,19 +284,19 @@ let mylog(log: ILogger, text: string) =
 
 `#load` ディレクティブに指定するパスは、`.fsx` ファイルの場所からの相対パスです。
 
-* `#load "logger.fsx"` によって、関数フォルダーにあるファイルが読み込まれます。
-* `#load "package\logger.fsx"` によって、関数フォルダー内の `package` フォルダーにあるファイルが読み込まれます。
-* `#load "..\shared\mylogger.fsx"` によって、関数フォルダーと同じレベル (`wwwroot` の直下) にある `shared` フォルダーのファイルが読み込まれます。
+* `#load "logger.fsx"`  によって、関数フォルダーにあるファイルが読み込まれます。
+* `#load "package\logger.fsx"`  によって、関数フォルダー内の `package` フォルダーにあるファイルが読み込まれます。
+* `#load "..\shared\mylogger.fsx"`  によって、関数フォルダーと同じレベル (`wwwroot` の直下) にある `shared` フォルダーのファイルが読み込まれます。
 
 `#load` ディレクティブは、`.fsx` (F# スクリプト) ファイルだけで動作します。`.fs` ファイルでは動作しません。
 
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
-* [F# Guide (F# ガイド)](/dotnet/articles/fsharp/index)
+* [F# のガイド](/dotnet/articles/fsharp/index)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
-* [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
+* [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)
 * [Azure Functions のテスト](functions-test-a-function.md)
 * [Azure Functions のスケーリング方法](functions-scale.md)
 

@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 541feee2005428226b3f46927bc0e4bfb53cc98d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781716"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620599"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -24,17 +24,17 @@ ms.locfileid: "57781716"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、[Azure Search](https://docs.microsoft.com/azure/search/) を作成および構成できます。 [**Az.Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) モジュールは、完全なパリティを含む [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0) を [Azure Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) に拡張します。 Azure PowerShell と **Az.Search** を使用すると、次のタスクを実行できます。
+Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Search を作成および構成できます。 **Az.Search** モジュールは、完全なパリティを含む Azure PowerShell を [Azure Search 管理 REST API シリーズ](https://docs.microsoft.com/rest/api/searchmanagement)に拡張します。 Azure PowerShell と **Az.Search** を使用すると、次のタスクを実行できます。
 
 > [!div class="checklist"]
 > * [サブスクリプションのすべての検索サービスを一覧表示する](#list-search-services)
 > * [特定の検索サービスに関する情報を取得する](#get-search-service-information)
 > * [サービスを作成または削除する](#create-or-delete-a-service)
-> * [管理者 API キーを再生成する](#regenerate-admin-api-keys)
+> * [管理者 API キーを再生成する](#regenerate-admin-keys)
 > * [クエリ API キーを作成または削除する](#create-or-delete-query-keys)
 > * [レプリカとパーティションを増減してサービスをスケールする](#scale-replicas-and-partitions)
 
-PowerShell は、サービスの名前、リージョン、またはレベルの変更には使用できません。 サービスの作成時に専用のリソースが割り当てられます。 基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 コンテンツを転送するためのツールや API はありません。 すべてのコンテンツ管理は [REST](https://docs.microsoft.com/rest/api/searchservice/) または [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API を使用して行われ、インデックスを移動する場合は、新しいサービスで再作成したり再読み込みしたりする必要があります。 
+PowerShell は、サービスの名前、リージョン、またはレベルの変更には使用できません。 サービスの作成時に専用のリソースが割り当てられます。 基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 サービス間でコンテンツを転送するためのツールや API はありません。 すべてのコンテンツ管理は [REST](https://docs.microsoft.com/rest/api/searchservice/) または [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API を使用して行われ、インデックスを移動する場合は、新しいサービスで再作成したり再読み込みしたりする必要があります。 
 
 コンテンツ管理のための専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET を呼び出す PowerShell スクリプトを記述できます。 **Az.Search** モジュール自体はこれらの操作を提供していません。
 

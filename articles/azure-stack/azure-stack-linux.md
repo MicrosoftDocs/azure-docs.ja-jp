@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 277af6f139e815f46894f5b8df82a1d92ef573d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c957812271d2ddd6639672d862026b30cfd19661
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537135"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804515"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack への Linux イメージの追加
 
@@ -38,7 +38,7 @@ Azure Marketplace から Linux イメージをダウンロードするには、�
 
 可能な限り、Azure Stack 用に準備されてテストされている Marketplace Management から使用可能なイメージをダウンロードします。
 
-Azure Linux エージェント (一般に `WALinuxAgent` または `walinuxagent` と呼ばれます) が必要であり、エージェントのバージョンによっては Azure Stack で動作しないものがあります。 独自のイメージを作成する場合は、WALA の最新バージョンまたはバージョン 2.2.20 を使う必要があります。 バージョン 2.2.20 から 2.2.35.1 (含まない) は Azure Stack 上で動作しないことに注意してください。 現在、[cloud-init](https://cloud-init.io/) は Azure Stack でサポートされていないことに注意してください。
+Azure Linux エージェント (一般に `WALinuxAgent` または `walinuxagent` と呼ばれます) が必要であり、エージェントのバージョンによっては Azure Stack で動作しないものがあります。 独自のイメージを作成する場合は、WALA の最新バージョンまたはバージョン 2.2.20 を使う必要があります。 バージョン 2.2.20 から 2.2.35.1 (含まない) は Azure Stack 上で動作しないことに注意してください。 バージョン 2.2.20 から 2.2.35.1 のエージェントを使用する場合は、1901 または1902 の修正プログラムを適用するか、Azure Stack を 1903 リリース (またはそれ以降) に更新してください。 現在、[cloud-init](https://cloud-init.io/) は Azure Stack でサポートされていないことに注意してください。
 
 次の手順を使って、独自の Linux イメージを準備できます。
 

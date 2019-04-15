@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17da540bd6077b8e045f125fd3cf13dc0e043000
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172401"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882040"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack のスケール ユニット ノードを追加する
 
@@ -31,7 +31,7 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 
 次のフロー図は、スケール ユニット ノードを追加するための一般的なプロセスを示しています。
 
-![スケール ユニットの追加フロー](media/azure-stack-add-scale-node/add-node-flow.png) &#42; *OEM ハードウェア ベンダーが物理サーバー ラックの配置とファームウェアの更新を行うかどうかは、サポート契約により異なります。*
+![スケール ユニットの追加フロー](media/azure-stack-add-scale-node/add-node-flow.png) &#42; "*OEM ハードウェア ベンダーが物理サーバー ラックの配置とファームウェアの更新を行うかどうかは、サポート契約により異なります。*"
 
 新しいノードを追加する作業は、完了までに数時間から数日かかることがあります。
 
@@ -75,9 +75,9 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 次のいずれかのサンプル PowerShell スクリプトを使用する前に、<*node names*> と <*IP addresses*> を実際の Azure Stack 環境の値に置き換えてください。
 
   > [!Note]  
-  > ノードの名前を付けるときは、長さを 15 文字未満にする必要があります。 また、スペースを含む名前や次の文字を含む名前は使用できません: `\`、`/`、`:`、`*`、`?`、`"`、`<`、`>`、`|`、`\`、`~`、`!`、`@`、`#`、`$`、`%`、`^`、`&`、`(`、`)`、`{`、` }`、`_`。
+  > ノードの名前を付けるときは、長さを 15 文字未満にする必要があります。 また、スペースを含む名前や次の文字を含む名前は使用できません: `\`、`/`、`:`、`*`、`?`、`"`、`<`、`>`、`|`、`\`、`~`、`!`、`@`、`#`、`$`、`%`、`^`、`&`、`(`、`)`、`{`、`}`、`_`。
 
-**ノードを追加する:**
+**ノードを追加する: **
   ```powershell
   ## Add a single Node 
   $NewNode=New-AzsScaleUnitNodeObject -computername "<name_of_new_node>" -BMCIPv4Address "<BMCIP_address_of_new_node>" 
@@ -113,7 +113,7 @@ Azure Stack オペレーターは、物理コンピューターを追加する�
 |修復が必要 |スケール ユニット ノードの修復を必要とするエラーが少なくとも 1 つ検出されました。|
 
 
-**スケール ユニット ノードの場合:**
+**スケール ユニット ノードの場合: **
 
 |Status                |説明  |
 |----------------------|---------|

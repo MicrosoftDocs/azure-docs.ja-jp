@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae5a824fbd96a9a76eb18811a46bfc17afa15073
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243336"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879354"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>SQL リソース プロバイダー 1.1.33.0 のリリース ノート
 
@@ -50,7 +50,8 @@ SQL リソース プロバイダー バイナリをダウンロードした後�
 
 - **TLS 1.2 が有効になっていない場合に、以前の SQL リソース プロバイダー (1.1.30.0) のデプロイが失敗することがあります**。 リソース プロバイダーのデプロイ、リソース プロバイダーの更新、またはシークレットのローテーションを行うときに TLS 1.2 を有効にするために、SQL リソース プロバイダー 1.1.33.0 を更新しました。 
 
-- **SQL リソース プロバイダーのシークレットのローテーションに失敗します**。 シークレットをローテーションするときに次のエラー コードが出る問題を修正しました。 ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **SQL リソース プロバイダーのシークレットのローテーションに失敗します**。 シークレットをローテーションするときに次のエラー コードが出る問題を修正しました。
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>既知の問題 
 

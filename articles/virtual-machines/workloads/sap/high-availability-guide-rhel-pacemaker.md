@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010492"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319518"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -85,6 +85,8 @@ ms.locfileid: "58010492"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
+   Azure Marketplace PAYG RHEL イメージにプールをアタッチすると、RHEL の使用に対して二重に請求されることになります。PAYG イメージに対して 1 回、アタッチするプールの RHEL エンタイトルメントに対して 1 回請求されます。 これを防ぐ目的で、Azure では BYOS RHEL イメージが提供されるようになりました。 詳細については[こちら](https://aka.ms/rhel-byos)を参照してください。
+
 1. **[A]** SAP のリポジトリ用に RHEL を有効にします
 
    必要なパッケージをインストールするには、次のリポジトリを有効にします。
@@ -144,10 +146,10 @@ ms.locfileid: "58010492"
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
-   
+
    # Run the following command until the status of both nodes is online
    sudo pcs status
-   
+
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -179,11 +181,10 @@ ms.locfileid: "58010492"
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
 1. <https://portal.azure.com> に移動します
-1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
+1. [Azure Active Directory] ブレードを開き、[プロパティ] に移動し、ディレクトリ ID を書き留めます。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: `http://localhost`) を入力してから、[作成] をクリックします
+1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http:\//localhost) を入力して、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします

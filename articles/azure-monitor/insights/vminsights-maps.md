@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984851"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916735"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップを使用したアプリケーション コンポーネントの理解
 VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
@@ -43,7 +43,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ![[プロパティ] ウィンドウのログ検索の一覧](./media/vminsights-maps/properties-pane-logs-01.png)
 
-"*ログ*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
+**[ログ]** を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
 
 ![[プロパティ] ウィンドウのマシンのアラート](./media/vminsights-maps/properties-pane-alerts-01.png)
 

@@ -3,19 +3,19 @@ title: Translator Text API の Translate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Text API の Translate メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8533a5b2a974af3bd426e9b70ba298534b0365f7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091037"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917517"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -86,7 +86,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>"<em>省略可能なパラメーター</em>"。<br/>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできるかどうかを指定します。 指定できる値は <code>true</code> (既定値) または <code>false</code> です。<br/><br/><code>allowFallback=false</code> は、要求によって指定された <code>category</code> 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 <code>allowFallback=true</code> は、カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。
+    <td>"<em>省略可能なパラメーター</em>"。<br/>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできるかどうかを指定します。 指定できる値は <code>true</code> (既定値) または <code>false</code> です。<br/><br/><code>allowFallback=false</code>  は、要求によって指定された <code>category</code> 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 <code>allowFallback=true</code>  は、カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。
 </td>
   </tr>
 </table> 
@@ -165,7 +165,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
     文の境界は、要求パラメーター `includeSentenceLength` が `true` の場合にのみ含められます。
 
-  * `sourceText`:`text` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、ソース言語の既定のスクリプトで入力テキストが提供されます。 `sourceText` プロパティは、言語の通常のスクリプトではないスクリプトで入力が表されている場合にのみ存在します。 たとえば、入力がラテン文字で記述されたアラビア語であるならば、`sourceText.text` は同じアラビア語のテキストをアラビア文字に変換したものとなります。
+  * `sourceText`:`text` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、ソース言語の既定のスクリプトで入力テキストが提供されます。 `sourceText`  プロパティは、言語の通常のスクリプトではないスクリプトで入力が表されている場合にのみ存在します。 たとえば、入力がラテン文字で記述されたアラビア語であるならば、`sourceText.text` は同じアラビア語のテキストをアラビア文字に変換したものとなります。
 
 JSON 応答の例については、「[例](#examples)」セクションを参照してください。
 
@@ -233,7 +233,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
 
 この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -259,7 +259,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。 要求では入力言語が指定されていません。 代わりに、ソース言語の自動検出が使用されます。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -285,7 +285,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 音訳を追加して、前の例を拡張してみましょう。 次の要求では、ラテン文字で記述する、中国語の翻訳が求められています。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -316,7 +316,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 一度に複数の文字列を翻訳するには、要求本文に文字列の配列を指定するだけです。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -345,7 +345,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 この例では、1 つの要求で同じ入力を複数の言語に翻訳する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -403,7 +403,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 例: 
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -425,7 +425,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 次の場合と比較します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -456,7 +456,7 @@ HTML ページからのコンテンツや XML ドキュメントからのコン�
 
 要求の例を次に示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -480,7 +480,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 アライメント情報を受信するには、クエリ文字列上で `includeAlignment=true` を指定します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -518,7 +518,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ソース テキストと翻訳済みテキストの文の長さに関する情報を受信するには、クエリ文字列上で `includeSentenceLength=true` を指定します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

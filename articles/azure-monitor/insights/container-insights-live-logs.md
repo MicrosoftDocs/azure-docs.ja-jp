@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187996"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904748"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法 (プレビュー)
-この機能は現在プレビュー段階ですが、これにより kubectl コマンドを実行せずに、お使いの Azure Kubernetes Service (AKS) のコンテナー ログ (stdout と stderr) をリアルタイム ビューで確認できます。 このオプションを選択すると、**[コンテナー]** ビューのコンテナー パフォーマンス データ テーブルの下に新しいウィンドウが表示されます。  ここには、リアルタイムでの問題のトラブルシューティングをさらに支援するために、コンテナー エンジンによって生成されたライブ ログが表示されます。  
+この機能は現在プレビュー段階ですが、これにより kubectl コマンドを実行せずに、お使いの Azure Kubernetes Service (AKS) のコンテナー ログ (stdout と stderr) をリアルタイム ビューで確認できます。 このオプションを選択すると、**[コンテナー]** ビューのコンテナー パフォーマンス データ テーブルの下に新しいウィンドウが表示されます。  ここには、リアルタイムでの問題のトラブルシューティングをさらに支援するために、コンテナー エンジンによって生成されたライブ ログが表示されます。 この機能を動作させるには、クラスター リソースへの**共同作成者**アクセスが必要です。
 
 ライブ ログでは、次の 3 つの方法でログへのアクセスが制御されます。
 

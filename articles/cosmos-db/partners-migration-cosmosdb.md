@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 3126be88e272ab3891caa94ee15b622b0dfbdbdf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860501"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880612"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
@@ -19,14 +19,14 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 
 ## <a name="migration-tools"></a>移行ツール
 
-|**パートナー**  |**対応分野と強み**  |**サポート対象の国**  |**連絡先**  |
+|**パートナー**  |**対応分野と強み**  |**サポートされている国**  |**Contact**  |
 |---------|---------|---------|---------|
 |![ImanisData][1]   | MongoDB から Azure Cosmos DB への[データ移行](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)。 <br/> Imanis Data は、グローバル企業がオンプレミスまたはクラウドの MongoDB データベースを Azure Cosmos DB に迅速かつ簡単に移行できるようサポートします。 Imanis Data は、MongoDB データ ストア向けにエージェントレス、永久増分のクラウド移行アプローチを提供します。このアプローチでは移行が簡単で、ダウンタイムを大幅に削減できます。|  USA  |   [Web サイト](http://www.imanisdata.com/)      |
-|![Striim][2]    |  さまざまなデータ ソースから、[Azure Cosmos DB にリアルタイムでデータを移動](https://www.striim.com/striim-for-azure-cosmos-db/)します。 <br/> Striim は、企業のドキュメントやリレーショナル データベース、センサー、ログ ファイルなどのさまざまなオンプレミスのデータ ソースからデータをリアルタイムに収集して Azure Cosmos DB へ移動するプロセスを簡略化します。 |   USA   |  [Web サイト](https://www.striim.com/)       |
+|![Striim][2]    |  さまざまなデータ ソースから、[Azure Cosmos DB にリアルタイムでデータを移動](https://www.striim.com/striim-for-azure-cosmos-db/)します。 <br/> Striim は、企業のドキュメントやリレーショナル データベース、センサー、ログ ファイルなどのさまざまなオンプレミスのデータ ソースからデータをリアルタイムに収集して Azure Cosmos DB へ移動するプロセスをシンプルにします。 |   USA   |  [Web サイト](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>システム インテグレーター パートナー
 
-|**パートナー**  |**対応分野と強み**  |**サポート対象の国**  |**連絡先**  |
+|**パートナー**  |**対応分野と強み**  |**サポートされている国**  |**Contact**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL の移行、新しいアプリの開発 | USA | [Web サイト](https://www.10thmagnitude.com/)|
 |![Altoros Development LLC][3]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |   米国、ノルウェー、フィンランド、ベラルーシ、アルゼンチン |  [Web サイト](https://www.altoros.com/)     |

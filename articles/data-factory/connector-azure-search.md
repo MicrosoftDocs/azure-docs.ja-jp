@@ -43,9 +43,9 @@ Azure Search のリンクされたサービスでは、次のプロパティが�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
-| URL | Azure Search サービスの URL。 | はい |
-| key | Azure Search サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | [はい] |
+| url | Azure Search サービスの URL。 | [はい] |
+| key | Azure Search サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 > [!IMPORTANT]
@@ -81,8 +81,8 @@ Azure Search にデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | はい |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | [はい] |
+| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
 
 **例:**
 
@@ -112,7 +112,7 @@ Azure Search にデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureSearchIndexSink** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureSearchIndexSink** | [はい] |
 | writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用できる値は、以下のとおりです。**マージ** (既定) および**アップロード**。 | いいえ  |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ  |
 
@@ -175,7 +175,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | Double | Y |
 | Boolean | Y |
 | DataTimeOffset | Y |
-| 文字列配列 | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="next-steps"></a>次の手順

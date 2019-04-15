@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884540"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579565"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -50,7 +50,7 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ポータルでは、ユーザーが開始したアクションは青の通知アイコンを使用して表示されますが、計画的および計画外のイベントは赤色の警告アイコンを使用して表示されます。 詳細については、[Resource Health の概要](Resource-health-overview.md)に関するページを参照してください。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Resource Health をユーザー固有の監視ツールと統合できますか。
-Resource Health は、リソースに影響を与える Azure サービスの問題を診断し、軽減するために設計されたサービスです。 Resource Health API を使用してプログラムで正常性状態を取得することができますが、メトリックを使用してリソースを監視することをお勧めします。 問題が検出されると、Resource Health を利用して根本原因を特定し、その解決手順を知ることができます。 メトリックを使用してリソースを確認する方法については、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) に関するページを参照してください。
+Resource Health では、アクティビティ ログ ベースのアラートに対して[プレビュー サポート](resource-health-alert-arm-template-guide.md)が提供されます。 アクティビティ ログ アラートでは、[アクション グループ](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
 
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
@@ -67,13 +67,7 @@ Resource Health でサポートされている正常性チェックとリソー�
 リソースの状態を確認するには、正常性状態のすぐ下にある **[Report incorrect health status (不適切な正常性状態を報告)]** をクリックします。 レポートを送信する前に、現在の正常性状態が正しくないと思われる理由の詳細を、必要に応じて入力することができます。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health はすべての Azure リージョンで利用できますか。 
-Resource Health は、次のリージョンを除くすべての Azure geo で利用できます。
-- 米国政府バージニア州
-- US Gov アイオワ
-- US DoD East
-- US DoD Central
-- ドイツ中部
-- ドイツ北東部
+Resource Health はすべての Azure geo で利用できます。
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Resource Health は Azure の状態や Service Health ダッシュボードと何が違うのでしょうか。
 Resource Health の方が、Azure の状態や Service Health ダッシュボードと比べて具体的な細かい情報が得られます。

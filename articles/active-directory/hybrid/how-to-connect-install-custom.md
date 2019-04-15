@@ -9,19 +9,17 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295489"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499133"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -37,11 +35,11 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 ### <a name="install-required-components"></a>必須コンポーネントのインストール
 同期サービスをインストールするとき、オプションの構成セクションをオフのままにすると、Azure AD Connect によってすべてが自動的に設定されます。 これにより、SQL Server 2012 Express LocalDB インスタンスの設定、適切なグループの作成、アクセス許可の割り当てが行われます。 既定値を変更する場合は、次の表を利用すると、任意で使用できる構成オプションについて把握することができます。
 
-![必須コンポーネント](./media/how-to-connect-install-custom/requiredcomponents.png)
+![必須コンポーネント](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | オプションの構成 | 説明 |
 | --- | --- |
-| 既存の SQL Server を使用する |SQL Server 名とインスタンス名を指定することができます。 使用するデータベース サーバーが既にある場合は、このオプションを選択します。 SQL Server で参照が有効になっていない場合は、 **[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。 |
+| 既存の SQL Server を使用する |SQL Server 名とインスタンス名を指定することができます。 使用するデータベース サーバーが既にある場合は、このオプションを選択します。 SQL Server で参照が有効になっていない場合は、 **[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。  次に、Azure AD Connect データベースの名前を指定します。  SQL 権限によって、新しいデータベースが作成されるか、SQL 管理者が事前にデータベースを作成する必要があるかどうかが決まります。  SQL SA 権限がある場合は、[既存のデータベースを使用したインストール方法](how-to-connect-install-existing-database.md)に関するページをご覧ください。  権限 (DBO) が委任されている場合は、「[SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール](how-to-connect-install-sql-delegation.md)」をご覧ください。 |
 | 既存のサービス アカウントを使用する |既定では、同期サービスで使用する仮想サービス アカウントが Azure AD Connect によって使用されます。 リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、**管理されたサービス アカウント**か、ドメイン内のサービス アカウントとパスワードが必要です。 このような場合は、使用するアカウントを入力します。 サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。  「[Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md#adsync-service-account)」を参照してください。 </br></br>最新のビルドでは、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできます。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。|
 | カスタム同期グループを指定する |既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな 4 つのグループが作成されます。 これらのグループは、管理者グループ、オペレーター グループ、参照グループ、パスワード再設定グループです。 ここでは独自のグループを指定できます。 グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。 |
 

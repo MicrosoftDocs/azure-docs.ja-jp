@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430269"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916973"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "56430269"
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|
-| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 |
+| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 <br/>特定のドキュメントから最大 1,000 個の画像が抽出されます。 ドキュメントに 1,000 を超える画像がある場合は、最初の 1,000 が抽出され、警告が生成されます。 |
 |  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。|
 |  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。|
 
@@ -109,7 +109,7 @@ OCR スキルでは、画像内のテキストの検出に使用するアルゴ�
 
 一般的なシナリオとして挙げられるのは、すべてのファイル コンテンツ (テキストと画像由来テキストの両方) を含んだ、1 つの文字列を作成するケースです。これは次の手順で実行されます。  
 
-1. [Normalized_images を抽出します](#get-normalized-images)
+1. [normalized_images を抽出します](#get-normalized-images)
 1. `"/document/normalized_images"` を入力として使用し、OCR スキルを実行します
 1. それらの画像のテキスト表現を、ファイルから抽出された未加工のテキストとマージします。 [テキスト マージ](cognitive-search-skill-textmerger.md)スキルを使用することで、両方のテキスト チャンクを 1 つの大きな文字列に統合できます。
 

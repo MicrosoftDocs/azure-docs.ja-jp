@@ -1,6 +1,6 @@
 ---
-title: Azure Stack で VM イメージを追加および削除する | Microsoft Docs
-description: テナントが使用する組織のカスタム イメージ (Windows または Linux VM) を追加または削除します。
+title: VM イメージを Azure Stack に追加する | Microsoft Docs
+description: テナントが使用する組織のカスタム VM イメージ (Windows または Linux) を追加または削除します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ccf3beaacd15ad7d3e9177614bb62b0050bd8d5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e20abfde8a4524b00e60651bbe71135d357a237
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109165"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881462"
 ---
-# <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Azure Stack で仮想マシン イメージを使用できるようにする
+# <a name="add-a-vm-image-to-offer-in-azure-stack"></a>Azure Stack のオファーに VM イメージを追加する
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack でユーザーが仮想マシン イメージを使用できるように指定できます。 これらのイメージを Azure Resource Manager テンプレートで使用できます。 それらを Marketplace 項目として Azure Marketplace UI に追加することもできます。 グローバル Azure Marketplace のイメージか、独自のカスタム イメージを使用します。 ポータルまたは Windows PowerShell を使用してイメージを追加できます。
+Azure Stack では、仮想マシン (VM) イメージをマーケットプレースに追加してユーザーに提供することができます。 VM イメージは、Azure Stack 用の Azure Resource Manager テンプレートを使用して追加できます。 VM イメージを Marketplace 項目として Azure Marketplace UI に追加することもできます。 グローバル Azure Marketplace のイメージか、独自のカスタム VM イメージを使用します。 VM イメージは、管理ポータルまたは Windows PowerShell を使用して追加できます。
 
 ## <a name="add-a-vm-image-through-the-portal"></a>ポータルから VM イメージを追加する
 
@@ -83,7 +83,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 3. 管理者特権のプロンプトで PowerShell を開き、次を実行します。
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
@@ -94,22 +94,22 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
    **Add-AzsPlatformimage** コマンドレットでは、VM イメージを参照するために Azure Resource Manager テンプレートによって使用される値が指定されます。 値は次のとおりです。
    - **publisher**  
-     次に例を示します。`Canonical`  
+     例:  `Canonical`  
      イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **offer**  
-     次に例を示します。`UbuntuServer`  
+     例:  `UbuntuServer`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **sku**  
-     次に例を示します。`14.04.3-LTS`  
+     例:  `14.04.3-LTS`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージの SKU 名のセグメント。 たとえば、**Datacenter2016** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **version**  
-     次に例を示します。`1.0.0`  
+     例:  `1.0.0`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージのバージョン。 このバージョンの形式は *\#.\#.\#* です。 たとえば、**1.0.0** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **osType**  
-     次に例を示します。`Linux`  
+     例:  `Linux`  
      イメージの osType には **Windows** または **Linux** を指定する必要があります。  
    - **OSUri**  
-     次に例を示します。`https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+     例:  `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
      `osDisk` の Blob Storage URI を指定できます。  
 
      詳しくは、[Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) コマンドレットおよび [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) コマンドレットの PowerShell リファレンスをご覧ください。
@@ -118,7 +118,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
  
 1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 
-   ```PowerShell  
+   ```powershell
     # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
     Add-AzureRMEnvironment `
       -Name "AzureStackAdmin" `
@@ -139,7 +139,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 2. **Active Directory フェデレーション サービス (AD FS)** を使用している場合は、次のコマンドレットを使用します。
 
-   ```PowerShell
+   ```powershell
    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
    $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
@@ -158,7 +158,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 5. Windows または Linux オペレーティング システムのイメージを VHD 形式 (VHDX ではない) で準備して、そのイメージをご自身のストレージ アカウントにアップロードし、PowerShell で VM イメージを取得するときに使用する URI を取得します。  
 
-   ```PowerShell  
+   ```powershell
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
@@ -166,14 +166,14 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 6. (省略可能) データ ディスクの配列を VM イメージの一部としてアップロードできます。 New-DataDiskObject コマンドレットを使用して、データ ディスクを作成します。 管理者特権のプロンプトで PowerShell を開き、次を実行します。
 
-   ```PowerShell  
+   ```powershell
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
    ```
 
 7. 管理者特権のプロンプトで PowerShell を開き、次を実行します。
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
    ```
 
@@ -189,7 +189,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
 3. 管理者特権のプロンプトで PowerShell を開き、次を実行します。
 
-   ```PowerShell  
+   ```powershell  
    Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
@@ -198,16 +198,16 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
    ```
    **Remove-AzsPlatformImage** コマンドレットでは、VM イメージを参照するために Azure Resource Manager テンプレートによって使用される値が指定されます。 値は次のとおりです。
    - **publisher**  
-     次に例を示します。`Canonical`  
+     例:  `Canonical`  
      イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **offer**  
-     次に例を示します。`UbuntuServer`  
+     例:  `UbuntuServer`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **sku**  
-     次に例を示します。`14.04.3-LTS`  
+     例:  `14.04.3-LTS`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージの SKU 名のセグメント。 たとえば、**Datacenter2016** です。 このフィールドではスペースや他の特殊文字は使用できません。  
    - **version**  
-     次に例を示します。`1.0.0`  
+     例:  `1.0.0`  
      VM イメージをデプロイするときにユーザーが使用する VM イメージのバージョン。 このバージョンの形式は *\#.\#.\#* です。 たとえば、**1.0.0** です。 このフィールドではスペースや他の特殊文字は使用できません。  
     
      Remove-AzsPlatformImage コマンドレットの詳細については、Microsoft PowerShell の [Azure Stack オペレーター モジュールのドキュメント](https://docs.microsoft.com/powershell/module/)を参照してください。

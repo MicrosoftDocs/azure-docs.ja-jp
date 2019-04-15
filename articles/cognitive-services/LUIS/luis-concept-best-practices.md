@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984205"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895817"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -122,12 +122,12 @@ LUIS による予測を正確に行うには、各意図 (None 意図を除く) 
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>すべきこと: アクティブ ラーニングの提案機能を活用する
 
-発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
+発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
 
 詳細:
 * 概念: [エンドポイント発話のレビューによるアクティブ ラーニング実現の概念](luis-concept-review-endpoint-utterances.md)
 * チュートリアル:[チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する](luis-tutorial-review-endpoint-utterances.md)
-* 方法: [エンドポイント発話を LUIS ポータルで確認する方法](luis-how-to-review-endoint-utt.md)
+* 方法: [エンドポイント発話を LUIS ポータルで確認する方法](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>すべきこと: ご自身のアプリのパフォーマンスを監視する
 

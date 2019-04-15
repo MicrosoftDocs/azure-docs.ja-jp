@@ -7,19 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d915058e13f3c5287bdb037a1600e7f0a09da436
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862721"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895666"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
-
-> [!Note]
-> Video Indexer V1 API は 2018 年 8 月 1 日に非推奨になりました。 今後は Video Indexer v2 API を使用してください。 <br/>Video Indexer v2 API を使用して開発する場合は、[こちら](https://api-portal.videoindexer.ai/)の手順を参照してください。 
 
 Video Indexer は、Microsoft が提供するさまざまなオーディオおよびビデオの人工知能 (AI) テクノロジが 1 つに統合されたサービスです。このサービスを利用すると、開発がより簡単になります。 API は、開発者がクラウド プラットフォームの規模、世界的な展開、可用性、信頼性を気にすることなく、Media AI テクノロジの使用に集中できるように設計されています。 この API を使用すると、ファイルをアップロードし、詳細なビデオの分析情報を取得し、アプリケーションに埋め込む分析情報とプレーヤー ウィジェットの URL を取得するなどのタスクを実行できます。
 
@@ -73,19 +70,6 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 アクセス トークンの有効期間は 1 時間です。 Operations API を使用する前に、アクセス トークンが有効であることを確認してください。 期限切れの場合は、もう一度 Authorization API を呼び出して新しいアクセス トークンを取得します。
  
 これで API との統合を開始する準備が整いました。 [各 Video Indexer REST API の詳細な説明](https://api-portal.videoindexer.ai/)を参照してください。
-
-## <a name="location"></a>Location
-
-すべての操作 API には Location パラメーターが必要です。このパラメーターは、呼び出しがルーティングされ、アカウントが作成されたリージョンを示します。
-
-次の表で説明する値が適用されます。 **パラメーター値**は、API を使用するときに渡す値です。
-
-|**Name**|**パラメーター値**|**説明**|
-|---|---|---|
-|試用版|trail|試用アカウントに使用されます。|
-|米国西部|westus2|Azure 米国西部 2 リージョンに使用されます。|
-|北ヨーロッパ |northeurope|Azure 北ヨーロッパ リージョンに使用されます。|
-|東アジア|eastasia|Azure 東アジア リージョンに使用されます。|
 
 ## <a name="account-id"></a>Account ID 
 
@@ -222,8 +206,12 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
+## <a name="see-also"></a>関連項目
+
+- [Video Indexer の概要](video-indexer-overview.md)
+- [リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+
 ## <a name="next-steps"></a>次の手順
 
 [出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
 
-[Video Indexer の概要](video-indexer-overview.md)

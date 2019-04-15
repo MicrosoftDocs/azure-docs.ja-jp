@@ -1,5 +1,5 @@
 ---
-title: PIM を管理する他の管理者にアクセス権を付与する - Azure | Microsoft Docs
+title: PIM を管理する他の管理者にアクセス権を付与する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) を管理するためのアクセス権を他の管理に付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d8cb77cda97c3141987fa8b0ea39541ace6db3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74b938335dbace5a827bcfa43172704dc8b09da2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191737"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579616"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>PIM を管理する他の管理者にアクセス権を付与する
 
-組織の Azure AD Privileged Identity Management (PIM) を有効にするグローバル管理者は、自動的にロールの割り当てを取得し、PIM にアクセスします。 ただし、他のグローバル管理者も含めて、既定で書き込みアクセス権を得るユーザーは他にはいません。 その他のグローバル管理者、セキュリティ管理者、およびセキュリティ リーダーは、PIM に対する読み取り専用アクセス権を持ちます。 PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに **特権ロール管理者** ロールを割り当てます。
+組織の Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を有効にしたグローバル管理者は、自動的にロールの割り当てと PIM へのアクセス権を取得します。 ただし、他のグローバル管理者も含めて、既定で書き込みアクセス権を得るユーザーは他にはいません。 その他のグローバル管理者、セキュリティ管理者、およびセキュリティ リーダーは、PIM に対する読み取り専用アクセス権を持ちます。 PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに **特権ロール管理者** ロールを割り当てます。
 
 > [!NOTE]
 > PIM を管理するには、Azure MFA が必要です。 Microsoft アカウントは Azure MFA に登録できないため、Microsoft アカウントでサインインしたユーザーは PIM にアクセスできません。
@@ -36,11 +36,11 @@ ms.locfileid: "56191737"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[ロール]** をクリックします。
 
-    ![PIM Azure AD ディレクトリ ロール - ロール](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+    ![PIM Azure AD ロール - ロール](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
 1. **[特権ロール管理者]** ロールをクリックして、メンバー ページを開きます。
 
@@ -74,7 +74,7 @@ ms.locfileid: "56191737"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[ロール]** をクリックします。
 

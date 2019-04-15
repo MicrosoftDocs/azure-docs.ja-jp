@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: aaa7db14f3afe8eec000e14c7f5a9db032b87fe0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765936"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892434"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -33,8 +33,8 @@ ms.locfileid: "57765936"
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手します。このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-* Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx) 」をご覧ください。
-* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。 [Visual Studio と Xamarin を対象にしたセットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)に関するページと「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
+* Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](/visualstudio/cross-platform/setup-and-install) 」をご覧ください。
+* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。 [Visual Studio と Xamarin を対象にしたセットアップとインストール](/visualstudio/cross-platform/setup-and-install)に関するページと「[Mac ユーザー向けのセットアップ、インストール、および検証](/visualstudio/cross-platform/setup-install-and-verifications-for-mac-users)」 (MSDN) を参照してください。
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
 モバイル アプリ バックエンドを作成するには、次の手順に従います。
@@ -49,7 +49,7 @@ ms.locfileid: "57765936"
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-xamarinios-app"></a>Xamarin.iOS アプリのダウンロードと実行
-1. [Azure Portal] をブラウザー ウィンドウで開きます。
+1. [Azure ポータル] をブラウザー ウィンドウで開きます。
 2. モバイル アプリの [設定] ブレードで、**[開始]**  >  **[Xamarin.iOS]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
       モバイル バックエンドに接続されているクライアント アプリケーションがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
@@ -88,4 +88,4 @@ ms.locfileid: "57765936"
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/

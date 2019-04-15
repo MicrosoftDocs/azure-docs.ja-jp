@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850719"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878011"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure テーブルでの潜在顧客管理の手順
 
@@ -34,7 +34,7 @@ ms.locfileid: "57850719"
 
     ![Azure ストレージ アカウントを作成する手順](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  キーのストレージ アカウント接続文字列をコピーし、Cloud パートナー ポータルの **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net ` は接続文字列の例です。
+4.  キーのストレージ アカウント接続文字列をコピーし、Cloud パートナー ポータルの **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 以下は接続文字列の例です。 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
     
     ![Azure ストレージ キー](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "57850719"
 
      ![Azure テーブル名のカスタム値を選択する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **[Filter query] (フィルター クエリ)** – このフィールドをクリックすると、ポップアップ ウィンドウに [過去の時間を取得] アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに関数 `gt datetime'@{body('Get_past_time')}'` を貼り付けることができます。
+   - **[Filter query] (フィルター クエリ)** – このフィールドをクリックすると、ポップアップ ウィンドウに [過去の時間を取得] アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに次の関数を貼り付けることができます。 `gt datetime'@{body('Get_past_time')}'`
 
      ![フィルター クエリ関数を設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

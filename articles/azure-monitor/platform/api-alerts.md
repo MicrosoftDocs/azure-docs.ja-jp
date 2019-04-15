@@ -34,7 +34,7 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 間隔 |検索を実行する頻度。 分単位で指定します。 |
+| Interval |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
 | Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 

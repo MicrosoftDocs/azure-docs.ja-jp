@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310542"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669335"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -84,7 +84,7 @@ ms.locfileid: "58310542"
 - サービス エンドポイントは仮想ネットワーク内のサブネット上で構成されます。 エンドポイントは、そのサブネット内で実行されているどの種類のコンピューティング インスタンスでも動作します。
 - サブネット上のサポートされているすべての Azure サービス (Azure Storage や Azure SQL Database など) に対して複数のサービス エンドポイントを構成できます。
 - Azure SQL Database の場合、仮想ネットワークは、Azure サービス リソースと同じリージョンにある必要があります。 GRS および RA-GRS Azure Storage アカウントを使用している場合、プライマリ アカウントは仮想ネットワークと同じリージョンにある必要があります。 その他のすべてのサービスでは、任意のリージョンで、仮想ネットワークに対する Azure サービス リソースをセキュリティで保護できます。 
-- エンドポイントが構成されている仮想ネットワークのサブスクリプションは、Azure サービス リソースのサブスクリプションと同じでも違っていてもかまいません。 エンドポイントを設定して Azure サービスのセキュリティを保護するために必要なアクセス許可の詳細については、[プロビジョニング](#Provisioning)に関するページを参照してください。
+- エンドポイントが構成されている仮想ネットワークのサブスクリプションは、Azure サービス リソースのサブスクリプションと同じでも違っていてもかまいません。 エンドポイントを設定して Azure サービスのセキュリティを保護するために必要なアクセス許可の詳細については、[プロビジョニング](#provisioning)に関するページを参照してください。
 - サポートされているサービスについては、サービス エンドポイントを使って新規または既存のリソースへのアクセスを仮想ネットワークに限定することができます。
 
 ### <a name="considerations"></a>考慮事項
@@ -132,7 +132,7 @@ ms.locfileid: "58310542"
 
 仮想ネットワーク内のサービス エンドポイントの合計数に制限はありません。
 
-Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 詳細については、「[次のステップ](#next-steps)」の各種サービスに関するドキュメントを参照してください。
+特定の Azure サービス (Azure Storage アカウントなど) では、リソースのセキュリティ保護に使用されるサブネットの数に制限が適用される場合があります。 詳細については、「[次のステップ](#next-steps)」の各種サービスに関するドキュメントを参照してください。
 
 ## <a name="virtual-network-service-endpoint-policies"></a>仮想ネットワークのサービス エンドポイント ポリシー 
 

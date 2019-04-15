@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/09/2018
-ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/20/2019
+ms.openlocfilehash: c149c6466f7d86f5cb22c840d4353c3939768768
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202454"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518985"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -28,8 +28,9 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 このドキュメントの手順の多くでは次のユーティリティを使用するので、これらがシステムにインストールされている必要があります。
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します。
-* [jq](https://stedolan.github.io/jq/) - JSON ドキュメントの解析に使用します。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) - Azure サービスをリモート管理するために使用します。
+* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - Azure サービスをリモート管理するために使用します。
+* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="users"></a>ユーザー
 
@@ -39,23 +40,23 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
 ## <a name="domain-names"></a>ドメイン名
 
-インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**&lt;<clustername>.azurehdinsight.net** または (SSH のみ) **&lt;clustername-ssh>.azurehdinsight.net** です。
+インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、`CLUSTERNAME.azurehdinsight.net` または `CLUSTERNAME-ssh.azurehdinsight.net` (SSH のみ) です。
 
 内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。 クラスター名を見つける方法については、Ambari Web UI の**ホスト**に関するページを参照してください。 次を使用して、Ambari REST API からホストの一覧を返すこともできます。
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-**CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、管理者アカウントのパスワードを入力します。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
+`CLUSTERNAME` をクラスターの名前に置き換えます。 メッセージが表示されたら、管理者アカウントのパスワードを入力します。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 [jq](https://stedolan.github.io/jq/) により、各ホストの `host_name` 要素値が取り出されます。
 
 特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次のコマンドを利用します。
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-このコマンドで、サービスの説明が記載された JSON ドキュメントが返されます。jq により、ホストの `host_name` 値のみが引き出されます。
+このコマンドで、サービスの説明が記載された JSON ドキュメントが返されます。[jq](https://stedolan.github.io/jq/) により、ホストの `host_name` 値のみが引き出されます。
 
 ## <a name="remote-access-to-services"></a>サービスへのリモート アクセス
 
-* **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
+* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
 
     クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にサインインします。
 
@@ -66,21 +67,21 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください
 
-* **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
+* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **WebHCat (Templeton)** - https://&lt;clustername>.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** -  ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。 ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。 ヘッド ノードの詳細については、「[HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+* **SSH** - ポート 22 または 23 上の CLUSTERNAME-ssh.azurehdinsight.net。 ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。 ヘッド ノードの詳細については、「[HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
     > [!NOTE]  
     > クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。 接続されたら、ヘッドノードから SSH を使用して worker ノードにアクセスできます。
@@ -91,8 +92,8 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
-* **2.2.4.9-1**:このディレクトリは、HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられます。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
-* **current**:このディレクトリには、**2.2.4.9-1** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
+* **2.6.5.3006-29**:このディレクトリは、HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられます。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
+* **current**:このディレクトリには、**2.6.5.3006-29** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 
@@ -150,7 +151,9 @@ __Azure Data Lake Storage Gen1__ を使用する場合は、次のいずれか�
 
 Ambari を使用して、クラスターの既定のストレージ構成を取得することができます。 次のコマンドを使用して、curl を使用する HDFS の構成情報を取得し、 [jq](https://stedolan.github.io/jq/)を使用してフィルター処理します。
 
-```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
+```bash
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+```
 
 > [!NOTE]  
 > このコマンドは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 最新の構成を確認するには、構成バージョンの一覧を表示しなければならない場合があります。
@@ -163,19 +166,23 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 
 * Azure Data Lake Storage を使用している場合は `adl://home`。 Data Lake Storage の名前を取得するには、次の REST 呼び出しを使用します。
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+     ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
+    ```
 
     このコマンドからは、ホスト名として `<data-lake-store-account-name>.azuredatalakestore.net` が返されます。
 
     HDInsight のルートであるストア内のディレクトリを取得するには、次の REST 呼び出しを使用します。
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+    ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
+    ```
 
     このコマンドにより、`/clusters/<hdinsight-cluster-name>/` のようなパスが返されます。
 
 次のように Azure Portal を使用して、ストレージ情報を検索することもできます。
 
-1. [Azure Portal](https://portal.azure.com/) で HDInsight クラスターを選択します。
+1. [Azure ポータル](https://portal.azure.com/)で HDInsight クラスターを選択します。
 
 2. **[プロパティ]** セクションの **[ストレージ アカウント]** を選択します。 クラスターのストレージ情報が表示されます。
 
@@ -210,7 +217,7 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 
 ## <a name="scaling"></a>クラスターのスケーリング
 
-クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。
+クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。  「[Scale HDInsight clusters](./hdinsight-scaling-best-practices.md)」 (HDInsight クラスターをスケールする) も参照してください
 
 別のクラスターの種類は、次のようにスケーリングすることによって影響を受けます。
 
@@ -237,7 +244,7 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 
     * **Storm UI**:次の手順により、Storm UI を使用してトポロジを再調整します。
 
-        1. Web ブラウザーで **https://CLUSTERNAME.azurehdinsight.net/stormui** を開きます。ここで、CLUSTERNAME は実行中の Storm クラスターの名前です。 メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
+        1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/stormui` を開きます。ここで、`CLUSTERNAME` は実行中の Storm クラスターの名前です。 メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
         2. 再調整するトポロジを選択し、 **[Rebalance]** \(再調整) ボタンをクリックします。 再調整の操作が実行されるまでの待ち時間を入力します。
 
 * **Kafka**:スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 詳しくは、「[HDInsight 上の Apache Kafka によるデータの高可用性](./kafka/apache-kafka-high-availability.md)」をご覧ください。
@@ -275,7 +282,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 
 異なるバージョンのコンポーネントが必要になった場合は、必要なバージョンをアップロードして、ジョブで使用してください。
 
-> [!WARNING]
+> [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
 > カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
@@ -283,6 +290,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 ## <a name="next-steps"></a>次の手順
 
 * [Windows ベースの HDInsight から Linux ベースへの移行](hdinsight-migrate-from-windows-to-linux.md)
+* [Apache Ambari REST API を使用した HDInsight クラスターの管理](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hadoop/hdinsight-use-mapreduce.md)

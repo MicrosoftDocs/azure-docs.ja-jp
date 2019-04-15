@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/11/2019
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382559"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578528"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
@@ -73,6 +73,9 @@ Standard Load Balancer では、HTTPS アプリケーションを正確に監視
 詳しくは、「[Load Balancer の正常性プローブ](load-balancer-custom-probe-overview.md)」をご覧ください。
 
 ### <a name="az"></a>可用性ゾーン
+
+>[!IMPORTANT]
+>リージョン固有の情報を含む関連トピックについては、[Availability Zones](../availability-zones/az-overview.md) に関するページを参照してください。
 
 Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 

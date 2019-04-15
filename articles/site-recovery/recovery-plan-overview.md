@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 1824c0a4c129fa5612c990447a13aef6b230e71f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 520f30b5fabebf299b5407a502b76d7d30850bfd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310168"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904884"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee35fbfff676e8618a4e5ae02086193c503f482
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170824"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792520"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "56170824"
 * コネクタのインストールと登録を別の手順の一部として統合する。
 * コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
 
-[アプリケーション プロキシ コネクタ](application-proxy-connectors.md)を機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力しますが、このプロセスを PowerShell を使用して自動化できます。
+[アプリケーション プロキシ コネクタ](application-proxy-connectors.md)を機能させるには、アプリケーション管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力しますが、このプロセスを PowerShell を使用して自動化できます。
 
 無人インストールには 2 つの手順があります。 最初に、コネクタをインストールします。 次に、コネクタを Azure AD に登録します。 
 

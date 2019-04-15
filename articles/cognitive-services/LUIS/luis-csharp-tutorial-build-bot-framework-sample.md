@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f23cf78bfca48b3a78e234520d645abdb354038f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091683"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878470"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -111,19 +111,19 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
    [!code-csharp[Dependencies](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=4-5&dedent=8 "dependencies")]
 
-3. 文字列を管理するための定数を、`BasicLuisDialog ` クラスの先頭に追加します。
+3. 文字列を管理するための定数を、`BasicLuisDialog` クラスの先頭に追加します。
 
    [!code-csharp[Add Intent and Entity Constants](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=23-32&dedent=8 "Add Intent and Entity Constants")]
 
-4. `HomeAutomation.TurnOn` と `HomeAutomation.TurnOff` の新しい意図のコードを、`BasicLuisDialog ` クラス内に追加します。
+4. `HomeAutomation.TurnOn` と `HomeAutomation.TurnOff` の新しい意図のコードを、`BasicLuisDialog` クラス内に追加します。
 
    [!code-csharp[Add Intents](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=61-71&dedent=8 "Add Intents")]
 
-5. LUIS が見つけたエンティティを取得するためのコードを、`BasicLuisDialog ` クラス内に追加します。
+5. LUIS が見つけたエンティティを取得するためのコードを、`BasicLuisDialog` クラス内に追加します。
 
    [!code-csharp[Collect entities](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=34-53&dedent=8 "Collect entities")]
 
-6. スコアを丸めて、エンティティを収集し、チャットボットの応答メッセージを表示するために、`BasicLuisDialog ` クラスの **ShowLuisResult** メソッドを変更します。
+6. スコアを丸めて、エンティティを収集し、チャットボットの応答メッセージを表示するために、`BasicLuisDialog` クラスの **ShowLuisResult** メソッドを変更します。
 
    [!code-csharp[Display message in chatbot](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=73-83&dedent=8 "Display message in chatbot")]
 

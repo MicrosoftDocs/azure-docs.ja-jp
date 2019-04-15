@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864300"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757754"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
@@ -26,7 +26,7 @@ Content Moderator のコンピューター支援型のテキスト モデレー�
 
 - 不適切な表現: さまざまな言語での不適切な用語の組み込みの一覧との用語ベースのマッチング
 - 分類: 3 つのカテゴリへのコンピューター支援型の分類
-- 個人を特定できる情報 (PII)
+- 個人データ
 - 自動修正済みテキスト
 - 元のテキスト
 - 言語
@@ -75,7 +75,7 @@ JSON の次の抽出箇所は、出力例を示しています。
 - `Score` は 0 から 1 の間です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 この機能は、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
 - `ReviewRecommended` は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
 
-## <a name="personally-identifiable-information-pii"></a>個人を特定できる情報 (PII)
+## <a name="personal-data"></a>個人データ
 
 PII 機能は、この情報の潜在的な存在を検出します。
 

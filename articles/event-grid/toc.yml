@@ -134,6 +134,14 @@ items:
     href: /powershell/module/az.eventgrid
   - name: REST
     href: /rest/api/eventgrid
+  - name: .NET
+    href: /dotnet/api/overview/azure/eventgrid
+  - name: Java
+    href: /java/api/overview/azure/eventgrid
+  - name: Python
+    href: /python/api/overview/azure/event-grid
+  - name: Node.js
+    href: /javascript/api/overview/azure/eventgrid
   - name: サブスクリプション スキーマ
     href: subscription-creation-schema.md
   - name: イベント スキーマ
@@ -177,9 +185,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 18cd80496840e83ea3bcc0de874ab1970ab071cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5bbf0a559ead7823c4224ce0c610054d23bcf458
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180944"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528018"

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b56aeb4fb0c902d3c824c58d2ac589c5f1fb01b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086821"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894767"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -93,7 +93,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 ![Azure portal:[Azure AD Connect] ウィンドウ](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に (Azure AD を表す) `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 この機能が動作するには、このコンピューター アカウントが必要です。 オンプレミス環境内で Pass-the-Hash および Credential Theft Mitigation アーキテクチャを使用している場合は、`AZUREADSSOACC` コンピューター アカウントが最終的に検疫コンテナー内にないことを確認します。 適切な変更を行って、コンピューター コンテナー内にコンピューター アカウントを作成します。 Azure AD Connect ウィザードでシームレス SSO が正常に有効化された後、`AZUREADSSOACC` コンピューター アカウントが誤って削除されないように、このアカウントを他のコンピューター アカウントが管理されている組織単位 (OU) に移動します。
+> シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 このコンピューター アカウントを管理できるユーザーはドメイン管理者に限定してください。 このコンピューター アカウントの Kerberos 委任は必ず無効にします。 このコンピューター アカウントは、不注意で削除されるおそれがない組織単位 (OU) に格納してください。
+
+>[!NOTE]
+> オンプレミス環境内で Pass-the-Hash および Credential Theft Mitigation アーキテクチャを使用している場合は、適切な変更を行って `AZUREADSSOACC` コンピューター アカウントが最終的に検疫コンテナー内にないことを確認します。 
 
 ## <a name="step-3-roll-out-the-feature"></a>手順 3:機能をロールアウトする
 

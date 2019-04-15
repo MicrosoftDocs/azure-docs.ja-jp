@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b6071bef4e4bbd9aaca3f587e5dfa584831d082e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316876"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802492"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
- 
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
 Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../../active-directory/fundamentals/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。  
 
-> [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
-
 このドキュメントでは、REST API または .NET API を使用して Media Services API にアクセスする方法の概要を説明します。
+
+> [!NOTE]
+> Access Control 承認は 2018 年 6 月 1 日に非推奨となりました。
 
 ## <a name="access-control"></a>アクセス制御
 

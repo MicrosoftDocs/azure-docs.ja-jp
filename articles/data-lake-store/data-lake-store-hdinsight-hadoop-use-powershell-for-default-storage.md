@@ -3,26 +3,26 @@ title: PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のス
 description: Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成および使用します
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.author: twooley
+ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237063"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878268"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure Portal の使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Resource Manager の使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -255,7 +255,7 @@ Data Lake Storage Gen1 を使用するように HDInsight クラスターを構�
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure portal: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure portal:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

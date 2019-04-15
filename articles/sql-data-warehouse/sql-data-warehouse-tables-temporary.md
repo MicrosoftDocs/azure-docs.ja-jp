@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 04/01/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434761"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793103"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
 
 ## <a name="what-are-temporary-tables"></a>一時テーブルとは
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
 
 ## <a name="create-a-temporary-table"></a>一時テーブルを作成する
 一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  例: 
@@ -215,7 +215,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>一時テーブルの制限事項
-SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。  現時点では、セッションを範囲とした一時テーブルのみがサポートされています。  グローバル一時テーブルはサポートされていません。  また、一時テーブルでビューを作成することはできません。
+SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。  現時点では、セッションを範囲とした一時テーブルのみがサポートされています。  グローバル一時テーブルはサポートされていません。  また、一時テーブルでビューを作成することはできません。  一時テーブルは、ハッシュまたはラウンド ロビン ディストリビューションでのみ作成できます。  レプリケートされた一時テーブルのディストリビューションはサポートされていません。 
 
 ## <a name="next-steps"></a>次の手順
 テーブルの開発に関する詳細については、[テーブルの概要](sql-data-warehouse-tables-overview.md)を参照してください。

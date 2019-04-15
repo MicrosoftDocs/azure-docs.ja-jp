@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 9d98a060033674a53c8ac5390bc40d10b0fbe69b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882503"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540705"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -32,11 +32,7 @@ Azure での仮想マシン (VM) のデプロイに関する問題のトラブ�
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>クラスターが要求された VM サイズをサポートできない
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - VM サイズを小さくして要求を再試行します。
 - 要求した VM のサイズを変更できない場合は、次の手順を実行します。
     - 可用性セットのすべての VM を停止します。 **[リソース グループ]** > 対象とするリソース グループ > **[リソース]** > 対象とする可用性セット > **[仮想マシン]** > 対象とする仮想マシン > **[停止]** の順にクリックします。
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>クラスターに空きリソースがない
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - 後で要求を再試行してください。
 - 新しい VM を別の可用性セットに含めることができる場合
     - VM を (同じリージョンの) 別の可用性セットに作成します。

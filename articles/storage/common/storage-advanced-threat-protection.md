@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133231"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904119"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -22,8 +22,8 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。  これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
 > [!NOTE]
-> * Azure Storage の Advanced Threat Protection は、現時点では BLOB ストレージでのみ使用できます。 
-> * 新しい料金の詳細については、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) の料金ページをご覧ください。最初の 30 日間に無料で試用版をご利用いただけるオプションもあります。 
+> * Azure Storage の Advanced Threat Protection は、現時点では BLOB ストレージでのみ使用できます。
+> * 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ]( https://azure.microsoft.com/en-us/pricing/details/security-center/)を参照してください。
 > * ATP for Azure Storage 機能は、現在のところ Azure Government およびソブリン クラウド リージョンでは使用できません。
 
 Azure Storage の Advanced Threat Protection は、脅威の検出のため、BLOB ストレージ に対する読み取り要求、書き込み要求、削除要求の診断ログを取り込みます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、[Storage Analytics logging の構成](storage-monitor-storage-account.md#configure-logging)方法に関するページを参照してください。
@@ -51,6 +51,24 @@ Azure Security Center で Standard レベルにサブスクライブすると、
 
 Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効になっている Azure Storage アカウントをデプロイします。
 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
+
+### <a name="using-azure-policy"></a>Azure Policy の使用
+
+特定のサブスクリプションまたはリソース グループ内のストレージ アカウント全体で Advanced Threat Protection を有効にするには、Azure Policy を使用します。
+
+1. Azure の **[ポリシー - 定義]** ページを起動します。
+
+1. **[ストレージ アカウントで Advanced Threat Protection をデプロイします]** ポリシーを探します。
+
+     ![ポリシーを探す](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. Azure サブスクリプションまたはリソース グループを選択します。
+
+    ![サブスクリプションまたはグループを選択する](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. ポリシーを割り当てます。
+
+    ![[ポリシー定義] ページ](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>REST API の使用
 Rest API のコマンドを使用して、特定のストレージ アカウントの Advanced Threat Protection 設定を作成、更新、または取得します。

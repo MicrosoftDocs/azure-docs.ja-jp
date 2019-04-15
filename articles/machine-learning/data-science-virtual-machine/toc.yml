@@ -66,16 +66,16 @@ items:
   items:
   - name: R 開発者ガイド
     href: /azure/architecture/data-guide/technology-choices/r-developers-guide
-    maintaincontext: true
+    maintainContext: true
   - name: ブログ
     href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
   - name: MSDN フォーラム
     href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: 81ff8ad716b352488dd2954fdd92d403f3f22222
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: edb96d185e829cfe76eda4a42776e3b5cfea0153
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915868"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495602"

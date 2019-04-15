@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891435"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918724"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 
-ご使用の Reserved Virtual Machine Instances に Azure ハイブリッド使用特典がない場合、以下のセクションに記載されているソフトウェアのメーターに関して料金が発生します。
+ご使用の予約仮想マシン インスタンスに Azure ハイブリッド特典がない場合、以下のセクションに記載されているソフトウェアのメーターに関して料金が発生します。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>予約のコストに含まれない Windows ソフトウェアの測定
 
@@ -66,7 +66,7 @@ ms.locfileid: "57891435"
 
 ## <a name="rates-for-azure-meters"></a>Azure メーターの料金
 
-これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](https://msdn.microsoft.com/library/azure/mt219004)」を参照してください。
+これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](/previous-versions/azure/reference/mt219004(v=azure.100))」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure の予約の詳細については、次の記事を参照してください。
@@ -78,6 +78,6 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

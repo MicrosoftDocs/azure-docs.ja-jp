@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878382"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313194"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps と IBM 3270 コネクタを使用して IBM メインフレーム上の 3270 画面駆動型アプリを Azure と統合する
 
@@ -359,7 +359,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 1. まだ接続が存在しない場合は、接続に必要な情報を指定し、**[作成]** を選択します。
 
-   | プロパティ | 必須 | 値 | [説明] |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 接続の名前 |
    | **統合アカウント ID** | はい | <*integration-account-name*> | 統合アカウントの名前 |
@@ -410,7 +410,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、次のコネクタのリファレンス ページを参照してください: [https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name>](/connectors/)。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/si3270/)を参照してください。
 
 ## <a name="get-support"></a>サポートを受ける
 

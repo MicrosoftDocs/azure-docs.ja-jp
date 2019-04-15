@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745020"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540144"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "55745020"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -241,7 +241,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
-追加の **SAP \<SID2>** システムのインストールは、1 つの <SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
+追加の **SAP \<SID2>** システムのインストールは、1 つの \< SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>SAP マルチ SID シナリオのインフラストラクチャを準備する
 
@@ -261,7 +261,7 @@ _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>既存の SAP グローバル ホストを使って SOFS クラスターでインフラストラクチャを準備する
 
-1 番目の SAP <SID1> システムの既存の \<SAPGlobalHost> と Volume1 を再利用できます。
+1 番目の SAP \<SID1> システムの既存の \<SAPGlobalHost> と Volume1 を再利用できます。
 
 ![図 3:マルチ SID の SOFS は SAP グローバル ホスト名と同じ][sap-ha-guide-figure-8014]
 
@@ -271,7 +271,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 >第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
 >さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、**\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
-><SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です。
+>\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です
 >
 
 \<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\..  フォルダーを SOFS クラスターに準備する必要があります。
@@ -279,7 +279,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 \<SID2> インスタンスの SAP グローバル ホストを準備するには、次の PowerShell スクリプトを実行します。
 
 
-```PowerShell
+```powershell
 ##################
 # SAP multi-SID
 ##################
@@ -335,7 +335,7 @@ _**図 4:** マルチ SID の SOFS は SAP グローバル ホスト名 2 と同
 
 \<SAPGlobalHost2> で 2 つ目の SOFS ロールを作成するには、次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 # Create SOFS with SAP Global Host Name 2
 $SAPGlobalHostName = "sapglobal2"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
@@ -343,11 +343,11 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 2 つ目の **Volume2** を作成します。 次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![図 5:マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8016]
+![図 5:フェールオーバー クラスター マネージャーでの 2 つ目の Volume2][sap-ha-guide-figure-8016]
 
 _**図 5:** フェールオーバー クラスター マネージャーでの 2 つ目の Volume2_
 
@@ -355,7 +355,7 @@ _**図 5:** フェールオーバー クラスター マネージャーでの 2 
 
 次の PowerShell スクリプトを実行します。
 
-```PowerShell
+```powershell
 # Create a folder for <SID2> on a second Volume2 and set file security
 $SAPSID = "PR2"
 $DomainName = "SAPCLUSTER"
@@ -403,26 +403,31 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 _**図 6:**[ファイル共有の追加] ウィザードを起動する_
 
 <br>
+
 ![図 7:[SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
 
 _**図 7:**[SMB 共有 - 簡易] を選ぶ_
 
 <br>
+
 ![図 8:"sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
 
 _**図 8:**"sapglobalhost2" を選んで Volume2 のパスを指定する_
 
 <br>
+
 ![図 9:ファイルの共有名を "sapmnt" に設定する][sap-ha-guide-figure-8020]
 
 _**図 9:** ファイルの共有名を "sapmnt" に設定する_
 
 <br>
+
 ![図 10:すべての設定を無効にする][sap-ha-guide-figure-8021]
 
 _**図 10:** すべての設定を無効にする_
 
 <br>
+
 ファイルと sapmnt 共有に対する*フル コントロール* アクセス許可を以下に割り当てます。
 * **SAP_\<SID>_GlobalAdmin** ドメイン ユーザー グループ
 * ASCS/SCS クラスター ノード **ascs-1$** および **ascs-2$** のコンピューター オブジェクト
@@ -432,16 +437,19 @@ _**図 10:** すべての設定を無効にする_
 _**図 11:** ユーザー グループとコンピューター アカウントに "フル コントロール" を割り当てる_
 
 <br>
-![図 12:[作成] を選ぶ][sap-ha-guide-figure-8023]
+
+![図 12:[作成] を選択する][sap-ha-guide-figure-8023]
 
 _**図 12:**[作成] を選ぶ_
 
 <br>
+
 ![図 13:sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される][sap-ha-guide-figure-8024]
 
 _**図 13:** sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される_
 
 <br>
+
 ## <a name="install-sap-netweaver-multi-sid"></a>SAP NetWeaver マルチ SID をインストールする
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>SAP \<SID2> ASCS/SCS インスタンスと ERS インスタンスをインストールする

@@ -1,5 +1,5 @@
 ---
-title: PIM での Azure AD ロール セキュリティ ウィザード | Microsoft Docs
+title: PIM での Azure AD ロール セキュリティ ウィザード - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) を使用して永続的な特権 Azure AD ロールの割り当てを対象的に変換するために使用できるセキュリティ ウィザードについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66dcc834ab089f28e6bb47c2905e6a2a3907091
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 226c00dfdf651580a58a9409bc7cd22658415a56
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208760"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576362"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM での Azure AD ロール セキュリティ ウィザード
 
-組織内で Azure AD Privileged Identity Management (PIM) を初めて実行するユーザーには、ウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、PIM を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。
+組織内で Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を初めて実行するユーザーには、ウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、PIM を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。
 
 ## <a name="wizard-overview"></a>ウィザードの概要
 
@@ -65,9 +65,9 @@ ms.locfileid: "56208760"
 
     ![通知](./media/pim-security-wizard/notification-completion.png)
 
-その他の特権ロールの割り当てを対象的に変換する必要がある場合は、もう一度ウィザードを実行できます。 ウィザードではなく、PIM インターフェイスを使用する場合は、「[PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)」を参照してください。
+その他の特権ロールの割り当てを対象的に変換する必要がある場合は、もう一度ウィザードを実行できます。 ウィザードではなく、PIM インターフェイスを使用する場合は、「[Assign Azure AD roles in PIM (PIM で Azure AD ロールを割り当てる)](pim-how-to-add-role-to-user.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [PIM を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)

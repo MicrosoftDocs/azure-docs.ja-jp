@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763675"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894219"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -60,7 +60,7 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 
-2. **[Azure への接続]** ボタンをクリックします。
+2. **[アカウントの新規作成]** ボタンをクリックします。
 
     ![Azure への接続](./media/create-account/connect-to-azure.png)
 
@@ -91,8 +91,6 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
     ![新しいアカウント](./media/create-account/new-account.png)
 
 7. 新しいアカウントを表示します。
-
-    ![Video Indexer アカウント](./media/create-account/vi-account.png)
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Azure に手動で接続する (上級者向けオプション)
 

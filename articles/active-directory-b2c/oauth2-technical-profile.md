@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義する |Microsoft Docs
+title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義する | Microsoft Docs
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86682525ae5246f9335e64e7dd3a812eaaf3c273
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157722"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918928"
 ---
-# <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

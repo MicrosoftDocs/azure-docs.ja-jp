@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094662"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883923"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure Log Integration のチュートリアル:Event Hubs を使用して Azure Key Vault のイベントを処理する
 
@@ -45,7 +45,7 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
 
 - [Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
-- [Azure ログ統合](security-azure-log-integration-overview.md)
+- [Azure Log Integration](security-azure-log-integration-overview.md)
 
 
 ## <a name="initial-setup"></a>初期セットアップ
@@ -92,10 +92,10 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
     - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
     - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random``` (この名前は何でも構いませんが、英小文字と数字のみにする必要があります。)
-    - ``` $storageName = $name``` (この変数はストレージ アカウント名に使用されます。)
-    - ```$rgname = $name ``` (この変数はリソース グループ名に使用されます。)
-    - ``` $eventHubNameSpaceName = $name``` (イベント ハブの名前空間の名前。)
+    - ```$name = 'azlogtest' + $random``` (この名前は何でも構いませんが、英小文字と数字のみにする必要があります。)
+    - ```$storageName = $name``` (この変数はストレージ アカウント名に使用されます。)
+    - ```$rgname = $name``` (この変数はリソース グループ名に使用されます。)
+    - ```$eventHubNameSpaceName = $name``` (イベント ハブの名前空間の名前。)
 1. 使用するサブスクリプションを指定します。
     
     ```Select-AzSubscription -SubscriptionName $subscriptionName```
@@ -114,7 +114,7 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
     ```$eventHubNameSpace = New-AzEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
 1. Insights プロバイダーで使用されるルール ID を取得します。
     
-    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
+    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey'```
 1. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
     
     a. ```$locationObjects = Get-AzLocation```    
@@ -128,7 +128,7 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
     Azure ログ プロファイルについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)」をご覧ください。
 
 > [!NOTE]
-> ログ プロファイルを作成しようとすると、エラー メッセージが表示される場合があります。 その後、Get-AzLogProfile および Remove-AzLogProfile のドキュメントを確認できます。 Get-AzLogProfile を実行すると、ログ プロファイルに関する情報が表示されます。 ```Remove-AzLogProfile -name 'Log Profile Name' ``` コマンドを入力すると、既存のログ プロファイルを削除できます。
+> ログ プロファイルを作成しようとすると、エラー メッセージが表示される場合があります。 その後、Get-AzLogProfile および Remove-AzLogProfile のドキュメントを確認できます。 Get-AzLogProfile を実行すると、ログ プロファイルに関する情報が表示されます。 ```Remove-AzLogProfile -name 'Log Profile Name'``` コマンドを入力すると、既存のログ プロファイルを削除できます。
 >
 >![リソース マネージャーのプロファイル エラー](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -136,11 +136,11 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
 
 1. キー コンテナーを作成します。
 
-   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
+   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location```
 
 1. キー コンテナーのログの記録を構成します。
 
-   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
+   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true```
 
 ## <a name="generate-log-activity"></a>ログ アクティビティを生成する
 
@@ -157,7 +157,8 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. シークレットを設定して読み取り、追加のログ エントリを生成します。
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
+   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返されるシークレット](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -169,7 +170,7 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
 1. ```$storage = Get-AzStorageAccount -ResourceGroupName $rgname -Name $storagename```
 1. ```$eventHubKey = Get-AzEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
 1. ```$storagekeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-1. ``` $storagekey = $storagekeys[0].Value```
+1. ```$storagekey = $storagekeys[0].Value```
 
 各イベント ハブで AzLog コマンドを実行します。
 
@@ -180,6 +181,6 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure ログ統合 FAQ](security-azure-log-integration-faq.md)
-- [Azure ログ統合の使用](security-azure-log-integration-get-started.md)
-- [Azure リソース ログの SIEM システムへの統合](security-azure-log-integration-overview.md)
+- [Azure ログ統合 のFAQ](security-azure-log-integration-faq.md)
+- [Azure Log Integration の概要](security-azure-log-integration-get-started.md)
+- [Azure リソースのログを SIEM システムと統合する](security-azure-log-integration-overview.md)

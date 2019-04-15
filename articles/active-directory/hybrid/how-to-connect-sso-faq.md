@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085373"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804379"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -45,16 +45,16 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
-| アクセス パネル | https://myapps.microsoft.com/contoso.com |
-| Web 上の Outlook | https://outlook.office365.com/contoso.com |
-| Office 365 ポータル | <https://portal.office.com?domain_hint=contoso.com>、<https://www.office.com?domain_hint=contoso.com> |
+| アクセス パネル | https:\//myapps.microsoft.com/contoso.com |
+| Web 上の Outlook | https:\//outlook.office365.com/contoso.com |
+| Office 365 ポータル | https:\//portal.office.com?domain_hint=contoso.com、https:\//www.office.com?domain_hint=contoso.com |
 
-また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、 https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、 https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
+さらに、アプリケーションによるサインイン要求の送信先が、Azure AD の共通エンドポイント (https:\//login.microsoftonline.com/common/<...>) ではなく、テナントとして設定されている Azure AD のエンドポイント (https:\//login.microsoftonline.com/contoso.com/<..> または https:\//login.microsoftonline.com/<tenant_ID>/<..>) の場合、サイレント サインオン エクスペリエンスがユーザーに提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
-| SharePoint Online | https://contoso.sharepoint.com |
-| Azure ポータル | https://portal.azure.com/contoso.com |
+| SharePoint Online | https:\//contoso.sharepoint.com |
+| Azure ポータル | https:\//portal.azure.com/contoso.com |
 
 テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご利用のドメイン名で置き換えます。
 
@@ -89,7 +89,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
 3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
 4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
-5. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
+5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>手順 2. Kerberos の復号化キーが設定された各 AD フォレストでキーを更新します。
 
@@ -140,7 +140,7 @@ Azure AD Connect を使用してシームレス SSO を無効にした場合は�
 2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
 3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
 4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
-5. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
+5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>手順 3. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
 

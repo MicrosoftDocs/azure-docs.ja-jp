@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118593"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905309"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
 Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./security-role-based-access-control.md)) を使用してリソースに対するアクセス権を管理します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>ロールの割り当ての概要
 
@@ -36,7 +39,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | 必須 | type | 説明 |
+| Attribute | 名前 | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
@@ -83,8 +86,8 @@ Azure Active Directory 内でアプリケーション ID が提供されます�
 アプリケーション ID を入手したら、次の PowerShell コマンドを実行します。
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 **管理者**ロールを持つユーザーは、URL に認証済みの HTTP POST 要求を実行することによってユーザーにスペース管理者ロールを割り当てることができます。
@@ -160,7 +163,7 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **パラメーター値** | **必須** |  **種類** |  **説明** |
+| **パラメーター値** | **必須** |  **Type** |  **説明** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | String |   UserId objectIdType の objectId。 |
 | YOUR_PATH | True | String |   アクセスを確認する選択済みパス。 |

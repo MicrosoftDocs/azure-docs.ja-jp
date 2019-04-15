@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cab94744a2ab87dce0a145665e957e1fed0dd2f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167547"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881428"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Java と Eclipse を使用して初めての関数を作成する (プレビュー)
-
-> [!NOTE] 
-> Azure Functions 用の Java は現在プレビュー段階です。
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
 この記事では、Eclipse IDE と Apache Maven を使用して、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数プロジェクトを作成し、テストおよびデバッグして、Azure Functions にデプロイする方法を説明します。 
 
@@ -52,8 +49,8 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 1. **[Add Archetype]\(Archetype の追加\)** を選択し、[azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) のエントリを追加します。
     - [Archetype Group ID]\(Archetype グループ ID\): com.microsoft.azure
     - [Archetype Artifact ID]\(Archetype アーティファクト ID\): azure-functions-archetype
-    - [Version]\(バージョン\): [中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)から最新バージョンを使用します  
+    - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png) から最新バージョンを使用します  
 1. **[OK]** をクリックして、現在のプロジェクトの詳細を入力し、最後に **[Finish]\(完了\)** をクリックします。
 
 Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。

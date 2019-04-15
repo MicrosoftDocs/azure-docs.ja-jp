@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432143"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622078"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ ARP テーブルの例:
 * ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、 [ExpressRoute のルーティングの要件](expressroute-routing.md) に関するページに記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-arm.md)に関するページを参照してください。
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の PowerShell モジュール (バージョン 1.50 以降)。
+
+> [!NOTE]
+> レイヤー 3 がサービス プロバイダーから提供され、以下のポータル/出力において ARP テーブルが空の場合は、ポータルの更新ボタンを使用して回線の構成を更新します。 この操作で、回線に適切なルーティング構成が適用されます。 
+>
+>
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ExpressRoute 回線の ARP テーブルの取得
 このセクションでは、各ピアリングの ARP テーブルを PowerShell で参照する手順について説明します。 対象となるピアリングについては、あらかじめ貴社または貴社の接続プロバイダーによって構成済みであることを前提としています。 それぞれの回線には 2 つのパス (プライマリとセカンダリ) があります。 それぞれのパスについて別々に ARP テーブルを確認することができます。

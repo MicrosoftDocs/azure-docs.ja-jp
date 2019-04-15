@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 97464115b87ca5facdc055e0031bc5fc4e962a22
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 349f2c4eea743c3e44e492dfa76be4a70f2c37d6
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295659"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362027"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX と Azure Machine Learning:相互運用可能な AI モデルの作成とデプロイ
 
@@ -102,7 +102,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 ここでは、ONNX モデルのデプロイの一例を示します。
 
-1. Azure Machine Learning サービスを初期化します。 ワークスペースがまだない場合は、[こちらのクイック スタート](quickstart-get-started.md)でワークスペースの作成方法を確認してください。
+1. Azure Machine Learning サービスを初期化します。 ワークスペースがまだない場合は、[こちら](setup-create-workspace.md)でワークスペースの作成方法を確認してください。
 
    ```python
    from azureml.core import Workspace

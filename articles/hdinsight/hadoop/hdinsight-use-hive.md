@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/26/2019
+ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446320"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801931"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -37,17 +37,15 @@ HDInsight には、特定のワークロード用に調整されたいくつか�
 
 HDInsight で Hive を使用するさまざまな方法を次の表に示します。
 
-| **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
+| **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* |Windows |
-| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
-| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ | Windows |
+| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |任意 (ブラウザー ベース) |
+| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux、Unix、Mac OS X、または Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ | Windows |
 
-> [!IMPORTANT]
-> \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="hiveql-language-reference"></a>HiveQL 言語のリファレンス
 
@@ -119,7 +117,6 @@ HDInsight の Hive には、`hivesampletable` という名前の内部テーブ�
 次の HiveQL ステートメントは、`/example/data/sample.log` ファイルに列を投影します。
 
 ```hiveql
-set hive.execution.engine=tez;
 DROP TABLE log4jLogs;
 CREATE EXTERNAL TABLE log4jLogs (
     t1 string,
@@ -138,10 +135,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
-* `set hive.execution.engine=tez;`:Apache Tez を使用するように実行エンジンを設定します。 Tez を使用すると、クエリ パフォーマンスを向上できます。 Tez の詳細については、「 [パフォーマンスを改善するための Apache Tez の使用方法](#usetez) 」セクションをご覧ください。
-
-    > [!NOTE]  
-    > このステートメントは、Windows ベースの HDInsight クラスターの使用時にのみ必要です。 Linux ベースの HDInsight クラスターでは、Tez が既定の実行エンジンです。
 
 * `DROP TABLE`:テーブルが既に存在する場合は、それを削除します。
 
@@ -163,7 +156,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 外部テーブルではなく**内部**テーブルを作成するには、次の HiveQL を使用します。
 
 ```hiveql
-set hive.execution.engine=tez;
 CREATE TABLE IF NOT EXISTS errorLogs (
     t1 string,
     t2 string,
@@ -193,16 +185,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
-
-> [!NOTE]  
-> Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。 Tez を活用するために、Hive クエリに次の値を設定する必要があります。
->
-> `set hive.execution.engine=tez;`
->
-> Linux ベースの HDInsight クラスターでは、Tez が既定のエンジンです。
-
-[「Apache Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細が記載されています。
+[Apache Tez](https://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Tez は、既定で有効になっています。  [「Apache Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細が記載されています。
 
 ### <a name="low-latency-analytical-processing-llap"></a>Low Latency Analytical Processing (LLAP)
 

@@ -3,21 +3,21 @@ title: Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコ
 description: AdlCopy ツールを使用して Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544644"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879813"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 > [!div class="op_single_selector"]

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905063"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521824"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -153,7 +153,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 geo ロケーション属性の検索後、クライアント Web アドレスの**すべて**のオクテットは常に 0 に設定されます。
 
-## <a name="my-ikey-is-visible-in-my-web-page-source"></a>Web ページのソースに自分の iKey が表示されます。 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Web ページのソースに自分のインストルメンテーション キーが表示されます。 
 
 * 監視ソリューションにおいてはよくあることです。
 * iKey を使用してデータを盗むことはできません。
@@ -162,7 +162,7 @@ geo ロケーション属性の検索後、クライアント Web アドレス�
 
 以下のような方法で対処できます。
 
-* クライアント データとサーバー データに 2 つの独立した iKey (別々の Application Insights リソース) を使用します。 または
+* クライアント データとサーバー データに 2 つの独立したインストルメンテーション キー (別々の Application Insights リソース) を使用します。 または
 * サーバーで実行するためのプロキシを記述し、Web クライアントからそのプロキシを介してデータを送信します。
 
 ## <a name="post"></a>診断検索で POST データを表示する方法を教えてください。

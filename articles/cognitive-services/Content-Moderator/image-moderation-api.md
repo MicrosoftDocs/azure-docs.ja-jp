@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079719"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756046"
 ---
 # <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 
@@ -66,7 +66,7 @@ Content Moderator のコンピューター支援型画像モデレーション�
 
 ## <a name="detecting-faces"></a>顔の検出
 
-顔の検出は、画像内の顔などの個人を特定できる情報 (PII) の検出に役立ちます。 各画像内で、潜在的な顔および潜在的な顔の数を検出します。
+顔の検出は、画像内の顔などの個人データの検出に役立ちます。 各画像内で、潜在的な顔および潜在的な顔の数を検出します。
 
 応答には次の情報が含まれます。
 

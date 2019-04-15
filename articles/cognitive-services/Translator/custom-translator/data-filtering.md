@@ -2,19 +2,19 @@
 title: データのフィルター処理 - カスタム トランスレーター
 titleSuffix: Azure Cognitive Services
 description: カスタム システムのトレーニングに使用するドキュメントを送信すると、トレーニングの準備をするための一連の処理とフィルター処理がそのドキュメントに対して行われます。
-author: jann-skotdal
+author: v-pawal
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: 195c39562e36000597d04bb760741ec7f40203c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844675"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916112"
 ---
 # <a name="data-filtering"></a>データのフィルタリング
 
@@ -49,9 +49,9 @@ ms.locfileid: "57844675"
 
 ## <a name="unescaped-xml-tags"></a>エスケープされていない XML タグ
 フィルター処理によって、エスケープされていないタグをエスケープされたタグに変換します。
-* `&lt;` は `&amp;lt;` になります
-* `&gt;` は `&amp;gt;` になります
-* `&amp;` は `&amp;amp;` になります
+* `&lt;`  →  `&amp;lt;`
+* `&gt;`  →  `&amp;gt;`
+* `&amp;`  →  `&amp;amp;`
 
 ## <a name="invalid-characters"></a>無効な文字
 カスタム トランスレーターでは、Unicode 文字 U+FFFD を含む文が削除されます。 文字 U+FFFD は、エンコード変換が失敗したことを示します。

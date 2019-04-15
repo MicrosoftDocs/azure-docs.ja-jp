@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996779"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895015"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -35,7 +35,7 @@ ms.locfileid: "57996779"
 * Web サーバーのログ (詳細なエラー メッセージ、失敗した要求トレースを含む) を確認する方法。
 * Azure のストレージ アカウントに診断ログを送り、そこでログを確認する方法。
 
-Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
+Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](/visualstudio/debugger/intellitrace) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure App Service での ASP.NET アプリの作成](app-service-web-get-started-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および App Service アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
@@ -85,7 +85,7 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
 
 ![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
 
-**Web サイト側でページを表示できません**
+**Web サイトはページを表示できません**
 
 ![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
@@ -252,13 +252,13 @@ public ActionResult About()
 ```
 * デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](https://docs.microsoft.com/visualstudio/debugger/just-my-code)」をご覧ください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
-* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
+* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
 
 ## <a name="logsoverview"></a>診断ログの概要
 App Service アプリで実行される ASP.NET アプリケーションは、次の種類のログを作成できます。
 
 * **アプリケーション トレース ログ**<br/>
-  アプリケーションが [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
+  アプリケーションが [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) クラスのメソッドを呼び出すことによって作成されます。
 * **Web サーバー ログ**<br/>
   Web サーバーは、アプリに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
 * **詳細なエラー メッセージ ログ**<br/>
@@ -622,7 +622,7 @@ App Service アプリで作成されたログは Visual Studio を使って簡�
 ### <a name="app-service-troubleshooting"></a>App Service のトラブルシューティング
 Azure App Service のアプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
-* [How to monitor apps (アプリの監視方法)](web-sites-monitor.md)
+* [アプリの監視方法](web-sites-monitor.md)
 * [Investigating Memory Leaks in Azure App Service with Visual Studio 2013 (Visual Studio 2013 を使用した Azure App Service でのメモリ リークの調査)](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure App Service online tools you should know about (知っておくべき Azure App Service のオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
@@ -633,15 +633,15 @@ Azure App Service のアプリのトラブルシューティングの詳細に�
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio でのデバッグ
-Visual Studio のデバッグ モードの使い方については、「[Visual Studio でのデバッグ](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」と [Visual Studio 2010 でのデバッグのヒントに関するページ](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)を参照してください。
+Visual Studio のデバッグ モードの使い方については、「[Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」と [Visual Studio 2010 でのデバッグのヒントに関するページ](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)を参照してください。
 
 ### <a name="remote-debugging-in-azure"></a>Azure でのリモート デバッグ
 App Service アプリと WebJobs のリモート デバッグの詳細については、以下のリソースを参照してください。
 
 * [Introduction to Remote Debugging Azure App Service (Azure App Service のリモート デバッグの概要)](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
-* [Introduction to Remote Debugging Azure App Service part 2 - Inside Remote debugging (Azure App Service のリモート デバッグの概要 2 - リモート デバッグの内部処理)](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Introduction to Remote Debugging on Azure App Service part 3 - Multi-Instance environment and GIT (Azure App Service のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
-* [WebJobs Debugging (Web ジョブのデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+* [Azure App Service のリモート デバッグの概要 2 - リモート デバッグの内部処理](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Azure App Service のリモート デバッグの概要 3 - マルチインスタンス環境と Git](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [Web ジョブのデバッグ (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は、[Visual Studio での .NET のデバッグ](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)に関するページを参照してください。
 
@@ -650,14 +650,14 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 
 * [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。<br>
   Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
-* [ASP.NET トレース](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [ASP.NET トレース](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
-* [トレース リスナー](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  トレース リスナーについて書かれていますが、[WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
-* [チュートリアル:Integrating ASP.NET Tracing with System.Diagnostics Tracing (ASP.NET トレースと System.Diagnostics トレースの統合)](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [トレース リスナー](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+  トレース リスナーについて書かれていますが、[WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener) には触れていません。
+* [チュートリアル:ASP.NET トレースと System.Diagnostics トレースの統合](/previous-versions/b0ectfxd(v=vs.140))<br/>
   この記事も古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
 * [ASP.NET MVC Razor ビューでのトレース](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](https://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
+  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](/previous-versions/bb397417(v=vs.140))」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
 ``` c#
 try

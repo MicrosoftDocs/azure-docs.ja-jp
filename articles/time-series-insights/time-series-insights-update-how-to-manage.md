@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094856"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758178"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理
 
@@ -33,7 +33,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 [環境を計画する方法](./time-series-insights-update-plan.md)に関するページをご覧ください。
 
 >[!IMPORTANT]
-> v2 アカウントをご利用の場合、使用するストレージ アカウントでコールド/アーカイブのプロパティを有効にしないでください。
+> プレビューでは、Azure Storage の汎用 v1 (GPv1) アカウントを使用していることを確認してください。  GPv2 以降のサポートは近い将来に追加される予定です。  
 
 オプションで、Azure Time Series Insights プレビューの各環境を 1 つのイベント ソースに関連付けることができます。 詳細については、[イベント ハブ ソースの追加方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)に関するページと [IoT ハブ ソースの追加方法](./time-series-insights-how-to-add-an-event-source-iothub.md)に関するページを参照してください。 この手順では、タイムスタンプ ID プロパティと一意のコンシューマー グループを指定します。 この指定により、環境から適切なイベントへのアクセスが確実になります。
 

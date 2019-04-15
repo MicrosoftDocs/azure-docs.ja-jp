@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: ea4bc61dec59308b2c2311e8300e44aae78fc041
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313516"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883413"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 
@@ -168,8 +168,8 @@ ms.locfileid: "57313516"
 
     ``` 
    
-   * `-ResourceGroupName` は、新しいリソースを作成するグループです。
-   * `-TemplateFile` は、カスタム パラメーターの前に置く必要があります。
+   * `-ResourceGroupName`  は、新しいリソースを作成するグループです。
+   * `-TemplateFile`  は、カスタム パラメーターの前に置く必要があります。
    * `-appName` 作成するリソースの名前です。
 
 その他のパラメーターを追加することもできます。テンプレートのパラメーター セクションに説明があります。
@@ -422,14 +422,14 @@ ms.locfileid: "57313516"
 
 | find | 置き換え |
 | --- | --- |
-| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>` resourceId('microsoft.insights/components',` <br/> ` parameters('appName')))]"` |
+| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
 | `"/subscriptions/.../../webtests/myTestName-myAppName",` |`"[resourceId('Microsoft.Insights/webtests', parameters('webTestName'))]",` |
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
 | `"myappname"` (小文字) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>リソース間の依存関係の設定
 Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
@@ -447,7 +447,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法
-* [PowerShell を使用して Application Insights のアラートを設定する](powershell-alerts.md)
+* [アラートを設定する](powershell-alerts.md)
 * [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure 診断を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [GitHub から Azure にデプロイする](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)

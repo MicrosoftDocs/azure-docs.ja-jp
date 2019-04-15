@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b518235efa4cd236afd8f79cb70cf30696931fdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1aca8eb16e9474f8ec834178748c27682372f7b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086770"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905394"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Azure Active Directory のコード サンプル (v2.0 エンドポイント)
 
@@ -74,7 +74,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET Core 2.0 Web API の呼び出し
 ------------------ | -------- |  ----------| ---------- | -------------------------
-デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 対話型 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 対話型 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi)
 デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NET.png) | 統合 Windows 認証 |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | ユーザー名/パスワード |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 モバイル (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | 対話型 |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
@@ -101,11 +101,11 @@ Web アプリ | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.N
 
 ## <a name="web-apis"></a>Web API
 
-次のサンプルは、Azure AD v2.0 エンドポイントで Web API を保護する方法を示しています。 この API は、WPF アプリケーションによって実行されますが、任意のアプリケーションから呼び出すことができます。
+次のサンプルは、Azure AD v2.0 エンドポイントで Web API を保護する方法を示しています。 この API は、WPF アプリケーションによって実行されますが、任意のアプリケーションから呼び出すことができます。 Web API は Microsoft Graph も呼び出します。
 
 プラットフォーム | サンプル
  -------- | -------------------
-![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) の WebAPI (サービス)
+![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) の WebAPI (サービス)
 
 ## <a name="other-microsoft-graph-samples"></a>Microsoft Graph のその他のサンプル
 
@@ -115,6 +115,6 @@ Azure AD での認証を含む、Microsoft Graph API のさまざまな使用パ
 
 [Azure Active Directory 開発者ガイド](v1-overview.md)
 
-[Active Directory Graph API の概念とリファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+[Azure AD Graph API の概念とリファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD Graph API Helper Library](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

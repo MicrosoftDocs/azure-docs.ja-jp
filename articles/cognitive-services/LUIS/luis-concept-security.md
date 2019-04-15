@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5abc2026362e19b406b34a4321e766c3229cc0b4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089847"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894185"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
@@ -35,7 +35,7 @@ ms.locfileid: "58089847"
 |アプリの公開|アプリが公開されている場合、オーサリング キーまたはエンドポイント キーを持つすべてのユーザーがアプリにクエリを実行できます。|
 |モデルの変更|
 |発行|
-|[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)のためのエンドポイントの発話の確認|
+|[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)のためのエンドポイントの発話の確認|
 |トレーニング|
 
 ## <a name="access-to-endpoint"></a>エンドポイントへのアクセス

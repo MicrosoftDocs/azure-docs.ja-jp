@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 574227e010a37340ce7248d2e4657f6a3f231d0a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984530"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903116"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM のテンプレートをダウンロードする
 Azure でポータルまたは PowerShell を使用して VM を作成する際に、Resource Manager テンプレートが自動的に作成されます。 このテンプレートを使用すると、デプロイを簡単に複製できます。 テンプレートには、リソース グループ内のすべてのリソースに関する情報が含まれています。 仮想マシンの場合、これはそのリソース グループ内の VM をサポートするために作成されたすべてのもの (ネットワーク リソースなど) がテンプレートに含まれていることを意味します。
@@ -29,7 +29,7 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューで **[Virtual Machines]** を選択します。
 3. 一覧から仮想マシンを選択します。
-4. **[Automation スクリプト]** を選択します。
+4. **[テンプレートのエクスポート]** を選択します。
 5. 上部のメニューから **[ダウンロード]** を選択して .zip ファイルをローカル コンピューターに保存します。
 6. .zip ファイルを開き、ファイルをフォルダーに展開します。 .zip ファイルには以下が含まれています。
    

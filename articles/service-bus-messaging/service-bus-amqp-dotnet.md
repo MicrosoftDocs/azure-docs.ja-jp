@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 96d84b2328ffb83d5c1ea7218b17314a537fa45b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885708"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
@@ -93,14 +93,14 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>動作の違い
 
 Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロトコルを使用する場合では以下のようないくつかの細かい違いがあります。
 
 * [OperationTimeout][OperationTimeout] プロパティは無視されます。
-* `MessageReceiver.Receive(TimeSpan.Zero)` は `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` として実装されます。
+* `MessageReceiver.Receive(TimeSpan.Zero)`  は `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` として実装されます。
 * ロック トークンによるメッセージの完了は、最初にメッセージを受信したメッセージ レシーバーでのみ実行できます。
 
 ## <a name="control-amqp-protocol-settings"></a>AMQP プロトコル設定を制御する

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ea711d3d4ffff72279e745290c1c8d9d854298e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886441"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447488"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service on Azure Stack update 3 のリリース ノート
 
@@ -55,6 +55,8 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
 - Create-AADIdentityApp ヘルパー スクリプトで、さまざまな AAD リージョンを対象にできるよう新しい Environment パラメーターを追加しました。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+
+- **Azure Functions ランタイム**が **v1.0.11820** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 

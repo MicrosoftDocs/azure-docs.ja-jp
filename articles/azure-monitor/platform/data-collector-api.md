@@ -44,21 +44,21 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-uri"></a>要求 URI
 | Attribute | プロパティ |
 |:--- |:--- |
-| 方法 |POST |
+| Method |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| コンテンツの種類 |application/json |
+| Content type |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
 | パラメーター | 説明 |
 |:--- |:--- |
 | CustomerID |Log Analytics ワークスペースの一意識別子です。 |
-| リソース |API のリソース名は "/api/logs" です。 |
-| API バージョン |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
+| Resource |API のリソース名は "/api/logs" です。 |
+| API Version |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
-| 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
+| Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
 | time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |

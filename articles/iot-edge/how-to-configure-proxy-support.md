@@ -4,17 +4,17 @@ description: Azure IoT Edge ランタイムおよびインターネット対応�
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58a51fd90eb0b89048eca7c95272523ffd10c24a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4fa5402b87eea969a5a4093000dda06d3cb5675d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982321"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312990"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -25,25 +25,25 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 1. お使いのデバイスに IoT Edge ランタイムをインストールします。 
 2. プロキシ サーバーを使用するために、Docker デーモンと IoT Edge デーモンをデバイス上に構成します。
 3. お使いのデバイス上の config.yaml ファイルに、edgeAgent プロパティを構成します。
-4. 配置マニフェストに、IoT Edge ランタイムと他の IoT Edge モジュールの環境変数を設定します。 
+4. 配置マニフェストに、IoT Edge ランタイムと他の IoT Edge モジュールの環境変数を設定します。
 
 ## <a name="know-your-proxy-url"></a>プロキシの URL を確認する
 
-デバイスで Docker デーモンと IoT Edge の両方を構成するには、使用しているプロキシ URL を知る必要があります。 
+デバイスで Docker デーモンと IoT Edge の両方を構成するには、使用しているプロキシ URL を知る必要があります。
 
-プロキシ URL の形式は、**protocol**://**proxy_host**:**proxy_port** です。 
+プロキシ URL の形式は、**protocol**://**proxy_host**:**proxy_port** です。
 
 * **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルでも使用できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTPS を使用する必要があります。
 
-* **proxy_host** は、プロキシ サーバーのアドレスです。 プロキシ サーバーで認証が必要な場合は、proxy_host の一部として、**user**:**password**@**proxy_host** の形式で資格情報を提供できます 
+* **proxy_host** は、プロキシ サーバーのアドレスです。 プロキシ サーバーで認証が必要な場合は、プロキシ ホストの一部として、**user**:**password**\@**proxy_host** の形式で資格情報を指定できます。
 
-* **proxy_port** は、ネットワーク トラフィックにプロキシが応答するネットワーク ポートです。 
+* **proxy_port** は、ネットワーク トラフィックにプロキシが応答するネットワーク ポートです。
 
 ## <a name="install-the-runtime"></a>ランタイムをインストールする
 
-Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり 「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。 
+Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり 「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
 
-IoT Edge ランタイムを Windows デバイスにインストールしている場合は、いったんプロキシ サーバーを経由してインストーラーのスクリプト ファイルをダウンロードしたうえで、インストール中に再度、必要なコンポーネントをダウンロードする必要があります。 Windows 設定でプロキシ情報を構成するか、またはインストール スクリプトにプロキシ情報を直接含めることができます。 次の Powershell スクリプトは、`-proxy` 引数を使用した Windows インストールの例です。
+Windows デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを 2 回通過する必要があります。 最初の接続はインストーラー スクリプト ファイルをダウンロードするためのもので、2 回目の接続はインストール中に必要なコンポーネントをダウンロードするためのものです。 Windows 設定でプロキシ情報を構成するか、またはインストール スクリプトにプロキシ情報を直接含めることができます。 次の Powershell スクリプトは、`-proxy` 引数を使用した Windows インストールの例です。
 
 ```powershell
 . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -64,20 +64,22 @@ IoT Edge ランタイムがインストールされたら、次のセクショ�
 
 ## <a name="configure-the-daemons"></a>デーモンを構成する
 
-お使いの IoT Edge デバイスで実行中の Docker および IoT Edge デーモンは、プロキシ サーバーを使用するように構成される必要があります。 Docker デーモンは、コンテナー レジストリからコンテナー イメージをプルするための Web 要求を行います。 IoT Edge デーモンは、IoT Hub と通信するための Web 要求を行います。
+お使いの IoT Edge デバイスで実行中の Moby および IoT Edge デーモンは、プロキシ サーバーを使用するように構成される必要があります。 Moby デーモンは、コンテナー レジストリからコンテナー イメージをプルするための Web 要求を行います。 IoT Edge デーモンは、IoT Hub と通信するための Web 要求を行います。
 
-### <a name="docker-daemon"></a>Docker デーモン
+### <a name="moby-daemon"></a>Moby デーモン
 
-環境変数を使用して Docker デーモンを構成するには、Docker のドキュメントを参照してください。 ほとんどのコンテナー レジストリ (DockerHub および Azure Container Registry を含む) では HTTPS 要求をサポートしているので、設定する必要があるパラメーターは **HTTPS_PROXY** です。 トランスポート層セキュリティ (TLS) をサポートしていないレジストリからイメージをプルしている場合は、**HTTP_PROXY** パラメーターを設定する必要があります。 
+Moby は Docker 上に構築されるため、環境変数を使用して Moby デーモンを構成するには、Docker のドキュメントを参照してください。 ほとんどのコンテナー レジストリ (DockerHub および Azure Container Registry を含む) では HTTPS 要求をサポートしているので、設定する必要があるパラメーターは **HTTPS_PROXY** です。 トランスポート層セキュリティ (TLS) をサポートしていないレジストリからイメージをプルしている場合は、**HTTP_PROXY** パラメーターを設定する必要があります。 
 
-お使いの Docker バージョンに該当する記事を選択します。 
+お使いの IoT Edge デバイス オペレーティング システムに該当する記事を選択します。 
 
-* [Docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [Docker for Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+* [Linux で Docker デーモンを構成する](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+    * Linux デバイス上の Moby デーモンは Docker の名前を保持します。
+* [Windows で Docker デーモンを構成する](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+    * Windows デバイス上の Moby デーモンは iotedge-moby と呼ばれます。 名前が異なるのは、Docker Desktop と Moby の両方が 1 台の Windows デバイスで並列実行される可能性があるためです。 
 
 ### <a name="iot-edge-daemon"></a>IoT Edge デーモン
 
-IoT Edge デーモンは、Docker デーモンとほぼ同じ方法で構成されています。 IoT Edge が IoT Hub へ送信するすべての要求で、HTTPS が使用されます。 お使いのオペレーティング システムに基づいて、次の手順に従って、サービス用に環境変数を設定します。 
+IoT Edge デーモンは、Moby デーモンとほぼ同じ方法で構成されています。 IoT Edge が IoT Hub へ送信するすべての要求で、HTTPS が使用されます。 お使いのオペレーティング システムに基づいて、次の手順に従って、サービス用に環境変数を設定します。 
 
 #### <a name="linux"></a>Linux
 

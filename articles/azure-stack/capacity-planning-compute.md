@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.custom: mvc
-ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 04/03/2019
+ms.custom: ''
+ms.openlocfilehash: 437e55b1a2907418fe47f418245431fa1c882b80
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446326"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915687"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Azure Stack コンピューティング能力の計画
 [Azure Stack でサポートされる VM サイズ](./user/azure-stack-vm-sizes.md)は、Azure でサポートされているもののサブセットです。 Azure では、リソース (サーバーのローカルおよびサービス レベル) の過剰消費を防ぐため、多くのベクターに沿ってリソースの制限を適用します。 テナントの消費量にいくつかの制限を適用しないと、あるテナントでリソースが過剰消費された場合に、別のテナントのエクスペリエンスに影響します。 VM からのネットワーク送信の場合、Azure Stack では Azure の制限と一致する帯域幅の上限が設けられます。 ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack にストレージ IOPS 制限が実装されています。  
@@ -45,7 +45,7 @@ Azure Stack 統合システムの修正プログラムと更新プログラム�
 
   VM 配置で利用可能なメモリ = サーバーのメモリ合計 – 回復性のための予約 – 実行中の VM によって使用されているメモリ – Azure Stack インフラストラクチャのオーバーヘッド <sup>1</sup>
 
-  回復性のための予約 = H + R * (N-1) + V * (N-2)
+  回復性のための予約 = H + R * ((N-1) * H) + V * (N-2)
 
 > 各値の説明:
 > - H = 単一サーバーのメモリ サイズ
@@ -53,7 +53,7 @@ Azure Stack 統合システムの修正プログラムと更新プログラム�
 > - R = OS オーバーヘッドのためのオペレーティング システムの予約<sup>2</sup>
 > - V = スケール ユニット内の最大 VM
 
-  <sup>1</sup> Azure Stack インフラストラクチャのオーバーヘッド = 208 GB
+  <sup>1</sup> Azure Stack インフラストラクチャのオーバーヘッド = 230 GB
 
   <sup>2</sup> オーバーヘッドのためのオペレーティング システムの予約 = ノード メモリの 15%。 オペレーティング システムの予約値は概算であり、サーバーおよび一般的なオペレーティング システムのオーバーヘッドの物理メモリ容量によって異なります。
 

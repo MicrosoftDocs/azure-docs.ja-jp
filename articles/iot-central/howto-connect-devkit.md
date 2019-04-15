@@ -3,17 +3,17 @@ title: DevKit デバイスを Azure IoT Central アプリケーションに接�
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/05/2019
+ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3055bf4be024065bcd8db9cf523de93a5ab6b22b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113199"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905938"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -21,45 +21,47 @@ ms.locfileid: "58113199"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の手順を完了するには、次のものが必要です。
+この記事の手順を完了するには、次のリソースが必要です。
 
 1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 1. DevKit デバイス。 DevKit デバイスを購入するには、「[MXChip IoT DevKit](http://mxchip.com/az3166)」を参照してください。
 
 ## <a name="sample-devkits-application"></a>サンプル Devkit アプリケーション
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次のデバイス特性を定義する **MXChip** デバイス テンプレートが含まれています。
 
-- デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
-- **デバイス状態**の測定例を含む状態。
-- **ボタン B 押下**イベントでのイベント測定。 
-- **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
-- デバイス プロパティ**ダイ番号**および場所プロパティであり**メーカー** クラウド プロパティ内にある**デバイスの場所**を含むプロパティ。 
+- **湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) のテレメトリ測定値。
+- **デバイス状態**の状態測定。
+- **ボタン B 押下**でのイベント測定。
+- **電圧**、**電流**、**ファン速度**、**IR** のトグルの設定。
+- デバイス プロパティである **[Die Number] (サイコロの数字)** と、場所プロパティである **[デバイスの場所]**。
+- クラウド プロパティである **[メーカー]**。
+- コマンド **Echo** および **Countdown**。 実際のデバイス上で **Echo** コマンドが受信されると、送信された値がデバイスの画面に表示されます。 実際のデバイスで **Countdown** コマンドが受信されると、LED がパターンを順番に繰り返し、デバイスによってカウントダウン値が IoT Central に送信されます。
 
-構成について詳しくは、「[MXChip デバイス テンプレートの詳細](#mxchip-device-template-details)」をご覧ください。
-
+構成について詳しくは、「[MXChip デバイス テンプレートの詳細](#mxchip-device-template-details)」をご覧ください
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。
+### <a name="get-your-device-connection-details"></a>デバイス接続の詳細の取得
+
+Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続詳細を書きとめます。**スコープ ID、デバイス ID、主キー**:
 
 1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** を選択して実際のデバイスを追加します。
 
-   * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
-   * デバイス名を入力するか、推奨名を使います
+    * 小文字の **[デバイス ID]** を入力するか、推奨される**デバイス ID** を使用します。
+    * **[デバイス名]** を入力するか、推奨名を使います
 
-     ![デバイスの追加](media/howto-connect-devkit/add-device.png)
+    ![デバイスの追加](media/howto-connect-devkit/add-device.png)
 
-1. デバイス ページの **[接続]** を選択して、追加したデバイスの **スコープ ID、デバイス ID、主キー**などの接続の詳細を取得します。
+1. デバイス接続の詳細である **スコープ ID**、**デバイス ID**、**主キー**を取得するには、デバイス ページで **[接続]** を選択します。
 
     ![接続の詳細](media/howto-connect-devkit/device-connect.png)
 
-1. これらの詳細を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。
+1. 接続の詳細をメモします。 次の手順で DevKit デバイスを準備するときに、インターネットから一時的に切断されます。
 
 ### <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
-> [!NOTE]
-> 以前にデバイスを使用したことがあり、WiFi の資格情報が保存されていて、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。
+以前にデバイスを使用しており、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにそのデバイスを再構成するには、**A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**[リセット]** ボタンを押して再試行します。
 
 #### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには
 
@@ -87,19 +89,18 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
 
     ![デバイス構成ページ](media/howto-connect-devkit/configpage.png)
 
-    Web ページで、次の操作を行います。 
-    - WiFi ネットワークの名前を追加する 
+    Web ページで、以下を入力します。
+    - WiFi ネットワークの名前
     - WiFi ネットワークのパスワード
-    - PIN コードがデバイス LCD に表示される 
-    - デバイスの接続の詳細である**スコープ ID、デバイス ID、主キー** (手順に従っている場合、この情報は書き留めてあるはずです)      
-    - すべての使用可能なテレメトリ測定を選択する 
+    - デバイスの画面に表示されている PIN コード
+    - デバイスの接続の詳細である**スコープ ID**、**デバイス ID**、**主キー** (手順に従っている場合、この情報は書き留めてあるはずです)
+    - すべての使用可能なテレメトリ測定を選択する
 
 1. **[デバイスの構成]** を選択すると、次のページが表示されます。
 
     ![構成されたデバイス](media/howto-connect-devkit/deviceconfigured.png)
 
 1. デバイス上の **Reset** ボタンを押します。
-
 
 ## <a name="view-the-telemetry"></a>テレメトリを表示する
 
@@ -110,9 +111,9 @@ DevKit デバイスが再起動すると、デバイスの画面に次のもの�
 * 受信された必要なプロパティの数、および送信された報告されるプロパティの数。
 
 > [!NOTE]
-> 接続中にデバイスがループしているように見える場合は、IoT Central でデバイスが *[ブロック済み]* かどうかを確認し、アプリに接続できるようにデバイスを *[ブロック解除]* します。
+> 接続しようとしたときにデバイスがループしているように見える場合は、IoT Central でデバイスが **[ブロック済み]** かどうかを確認し、アプリに接続できるようにデバイスを **[ブロック解除]** します。
 
-デバイスを揺さぶると、送信された報告されるプロパティの数が増えます。 デバイスは、**[Die Number] (サイコロの数字)** デバイス プロパティとして乱数を送信します。
+デバイスをシェイクして、報告されるプロパティを送信します。 デバイスは、**[Die Number] (サイコロの数字)** デバイス プロパティとして乱数を送信します。
 
 Azure IoT Central でテレメトリ測定や報告されるプロパティの値を表示したり、設定を構成したりできます。
 
@@ -132,10 +133,13 @@ Azure IoT Central でテレメトリ測定や報告されるプロパティの�
 
     ![デバイス設定を表示する](media/howto-connect-devkit/devicesettingsnew.png)
 
+1. **[コマンド]** ページで、**Echo** および **Countdown** コマンドを呼び出すことができます。
+
+    ![コマンドの呼び出し](media/howto-connect-devkit/devicecommands.png)
+
 1. **[ダッシュボード]** ページで、場所のマップを確認できます
 
     ![デバイス ダッシュボードの表示](media/howto-connect-devkit/devicedashboardnew.png)
-
 
 ## <a name="download-the-source-code"></a>ソース コードをダウンロードする
 
@@ -147,30 +151,38 @@ Azure IoT Central でテレメトリ測定や報告されるプロパティの�
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-前のコマンドは、ソース コードを `iot-central-firmware` という名前のフォルダーにダウンロードします。 
+前のコマンドは、ソース コードを `iot-central-firmware` という名前のフォルダーにダウンロードします。
 
 > [!NOTE]
 > **git** が開発環境にインストールされていない場合は、それを [https://git-scm.com/download](https://git-scm.com/download) からダウンロードできます。
 
 ## <a name="review-the-code"></a>コードの確認
 
-開発環境を準備したときにインストールされた Visual Studio Code を使用して、`iot-central-firmware` フォルダー内の `AZ3166` フォルダーを開きます。 
+Visual Studio Code を使用して、`iot-central-firmware` フォルダー内の `MXCHIP/mxchip_advanced` フォルダーを開きます。
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-テレメトリが Azure IoT Central アプリケーションにどのように送信されたかを確認するには、ソース フォルダー内の **main_telemetry.cpp** ファイルを開きます。
+テレメトリが Azure IoT Central アプリケーションにどのように送信されたかを確認するには、`src` フォルダー内の **telemetry.cpp** ファイルを開きます。
 
-関数 `buildTelemetryPayload` は、デバイス上のセンサからのデータを使用して JSON テレメトリ ペイロードを作成します。
+- 関数 `TelemetryController::buildTelemetryPayload` は、デバイス上のセンサからのデータを使用して JSON テレメトリ ペイロードを作成します。
 
-関数 `sendTelemetryPayload` は、その JSON ペイロードを Azure IoT Central アプリケーションが使用する IoT Hub に送信するために **iotHubClient.cpp** 内の `sendTelemetry` を呼び出します。
+- 関数 `TelemetryController::sendTelemetryPayload` は、その JSON ペイロードを Azure IoT Central アプリケーションで使用される IoT ハブに送信するために **AzureIOTClient.cpp** 内の `sendTelemetry` を呼び出します。
 
-プロパティ値が Azure IoT Central アプリケーションにどのように報告されたかを確認するには、ソース フォルダー内の **main_telemetry.cpp** ファイルを開きます。
+プロパティ値が Azure IoT Central アプリケーションにどのように報告されたかを確認するには、`src` フォルダー内の **telemetry.cpp** ファイルを開きます。
 
-関数 `telemetryLoop` は、加速度計がダブル タップを検出したときに **doubleTap** 報告されるプロパティを送信します。 これは、**iotHubClient.cpp** ソース ファイル内の `sendReportedProperty` 関数を使用します。
+- 関数 `TelemetryController::loop` では、報告される **location** プロパティが約 30 秒ごとに送信されます。 これには、**AzureIOTClient.cpp** ソース ファイル内の `sendReportedProperty` 関数が使用されます。
 
-**iotHubClient.cpp** ソース ファイル内のコードは、[C 用の Microsoft Azure IoT SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-c)からの関数を使用して IoT Hub と対話します。
+- 関数 `TelemetryController::loop` では、デバイス加速度計がダブル タップを検出したときに報告される **dieNumber** プロパティが送信されます。 これには、**AzureIOTClient.cpp** ソース ファイル内の `sendReportedProperty` 関数が使用されます。
 
-サンプル コードを変更、構築、およびデバイスにアップロードする方法については、`AZ3166` フォルダー内の **readme.md** ファイルを参照してください。
+IoT Central アプリケーションから呼び出されたコマンドにデバイスがどのように応答するかを確認するには、`src` フォルダー内の **registeredMethodHandlers.cpp** ファイルを開きます。
+
+- **dmEcho** 関数は、**echo** コマンドのハンドラーです。 これは、デバイスの画面上のペイロード内の **displayedValue** フィールドに表示されます。
+
+- **dmCountdown** 関数は、**countdown** コマンドのハンドラーです。 これによりデバイスの LED の色が変更され、報告されるプロパティを使用してカウントダウン値が IoT Central アプリケーションに送信されます。 報告されるプロパティの名前はコマンドと同じです。 関数では、**AzureIOTClient.cpp** ソース ファイル内の `sendReportedProperty` 関数が使用されます。
+
+**AzureIOTClient.cpp** ソース ファイル内のコードは、[C 用の Microsoft Azure IoT SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-c)からの関数を使用して IoT Hub と対話します。
+
+サンプル コードを変更、構築、およびデバイスにアップロードする方法については、`MXCHIP/mxchip_advanced` フォルダー内の **readme.md** ファイルを参照してください。
 
 ## <a name="mxchip-device-template-details"></a>MXChip デバイス テンプレートの詳細
 
@@ -178,7 +190,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 ### <a name="measurements"></a>測定
 
-#### <a name="telemetry"></a>テレメトリ 
+#### <a name="telemetry"></a>テレメトリ
 
 | フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -195,14 +207,13 @@ git clone https://github.com/Azure/iot-central-firmware
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
-
 #### <a name="states"></a>States 
-| Name          | 表示名   | 正常 | 注意 | 危険 | 
+| 名前          | 表示名   | 正常 | 注意 | 危険 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
 
 #### <a name="events"></a>events 
-| Name             | 表示名      | 
+| 名前             | 表示名      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | ボタン B の押下  | 
 
@@ -224,16 +235,19 @@ git clone https://github.com/Azure/iot-central-firmware
 
 ### <a name="properties"></a>Properties
 
-| type            | 表示名 | フィールド名 | データ型 |
+| Type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | デバイス プロパティ | デバイスの場所   | location  | location    |
 | Text            | メーカー     | manufacturedIn   | 該当なし       |
 
+### <a name="commands"></a>command
 
+| 表示名 | フィールド名 | 戻り値の型 | 入力フィールドの表示名 | 入力フィールド名 | 入力フィールドの種類 |
+| ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
+| エコー         | echo       | text        | 表示する値         | displayedValue   | text             |
+| カウントダウン    | countdown  | number      | カウント開始               | countFrom        | number           |
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、DevKit デバイスを Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は以下のとおりです。
-
-* [Raspberry Pi を準備して接続する](howto-connect-raspberry-pi-python.md)
+ここでは、DevKit デバイスを Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、[Raspberry Pi の準備と接続](howto-connect-raspberry-pi-python.md)です。

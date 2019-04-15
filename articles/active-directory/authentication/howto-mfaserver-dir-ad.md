@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server と Active Directory の統合
+title: Azure MFA Server と Active Directory の統合 - Azure Active Directory
 description: ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,21 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449616"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371827"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
 Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合するには、Azure MFA Server の [ディレクトリの統合] セクションを使用します。 そのディレクトリ スキーマに合わせて属性を構成したり、自動ユーザー同期を設定したりすることができます。
 
 ## <a name="settings"></a>設定
+
 既定では、Azure Multi-Factor Authentication (MFA) Server は、Active Directory からユーザーをインポートするか同期するように構成されます。  [ディレクトリの統合] タブでは、この既定の動作をオーバーライドしたり、別の LDAP ディレクトリ、ADAM ディレクトリ、または特定の Active Directory ドメイン コントローラーにバインドしたりできます。  LDAP を委任するため、RADIUS ターゲットとしての LDAP バインドのため、IIS 認証のための事前認証、またはユーザー ポータルのためのプライマリ認証としての LDAP 認証の使用も提供します。  次の表で、個々の設定について説明します。
 
-![設定](./media/howto-mfaserver-dir-ad/dirint.png)
+![MFA Server で LDAP 構成を編集する](./media/howto-mfaserver-dir-ad/dirint.png)
 
 | 機能 | 説明 |
 | --- | --- |
@@ -50,9 +51,10 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 | テスト ボタン |LDAP サーバーへのバインドをテストするには **[テスト]** をクリックします。  <br><br>バインドをテストするために **[Use LDAP (LDAP を使用する)]** オプションを選択する必要はありません。 これにより、LDAP 構成を使用する前にバインドをテストできます。 |
 
 ## <a name="filters"></a>フィルター
+
 フィルターを使用して、ディレクトリ検索の実行時にレコードを制限する条件を設定できます。  フィルターを設定することで、同期するオブジェクトの範囲を指定できます。  
 
-![フィルター](./media/howto-mfaserver-dir-ad/dirint2.png)
+![MFA Server でディレクトリ フィルタリングを構成する](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication には、次の 3 つのフィルター オプションがあります。
 
@@ -61,11 +63,12 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 * **ユーザー フィルター** - ディレクトリ検索の実行時にユーザー レコードを制限するために使用するフィルター条件を指定します。  Active Directory と ADAM の場合、通常は (&(objectClass=user)(objectCategory=person)) が使用されます。  その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、(objectClass=inetOrgPerson) またはそれに類似する条件を使用する必要があります。 <br>注:空白の場合は (&(objectCategory=person)(objectClass=user)) が既定で使用されます。
 
 ## <a name="attributes"></a>属性
+
 特定のディレクトリの属性を必要に応じてカスタマイズできます。  カスタム属性を追加し、必要な属性のみを対象とするように同期を微調整できます。 各属性フィールドの値には、ディレクトリ スキーマで定義されている属性の名前を使用します。 それぞれの機能については、以下の表で詳しく説明します。
 
 属性は手動で入力でき、属性の一覧内の属性と一致させる必要はありません。
 
-![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
+![MFA Server でディレクトリ統合属性をカスタマイズする](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | 機能 | 説明 |
 | --- | --- |
@@ -96,9 +99,10 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 
 属性を編集するには、[属性] タブの **[編集]** をクリックします。属性を編集するためのウィンドウが表示されます。 表示する属性を選択できるウィンドウを開くには、各属性の横の **[...]** を選択します。
 
-![属性の編集](./media/howto-mfaserver-dir-ad/dirint4.png)
+![MFA Server でディレクトリ属性マッピングを編集する](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>同期
+
 Azure MFA ユーザー データベースは、Active Directory や他のライトウェイト ディレクトリ アクセス プロトコル (LDAP) ディレクトリとの間でユーザーの同期状態を維持することができます。 このプロセスは Active Directory からユーザーを手動でインポートすることと似ていますが、Active Directory に対してユーザーとセキュリティ グループの変更を定期的にポーリングします。  また、コンテナー、セキュリティ グループ、または Active Directory から削除されたユーザーは無効になるか、削除されます。
 
 Multi-Factor Auth ADSync サービスは、Active Directory の定期的なポーリングを実行する Windows サービスです。  このサービスを Azure AD Sync または Azure AD Connect と混同しないでください。  Multi-Factor Auth ADSync は類似するコード ベースに基づいて構築されていますが、それは Azure Multi-Factor Authentication Server に固有のサービスです。  このサービスは停止状態でインストールされ、実行するように構成されたときに Multi-Factor Auth Server サービスによって開始されます。  複数のサーバーを対象とする Multi-Factor Auth Server 構成がある場合でも、Multi-Factor Auth ADSync は単一のサーバーでのみ実行できます。
@@ -107,7 +111,7 @@ Multi-Factor Auth ADSync サービスは、変更を効率的にポーリング�
 
 LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使用するように構成されている場合、ユーザーとセキュリティ グループの変更に関するポーリングは、Active Directory の場合と同じように動作します。  LDAP ディレクトリが DirSync コントロールをサポートしていない場合、完全同期は各サイクル中に実行されます。
 
-![同期](./media/howto-mfaserver-dir-ad/dirint5.png)
+![ディレクトリ オブジェクトの MFA Server への同期](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 [同期] タブの各設定については、以下の表でさらに詳しく説明します。
 
@@ -133,7 +137,8 @@ LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使
 > [!TIP]
 > 同期項目を削除した後、完全同期を実行する必要があります。  同期項目を並べ替えた後、完全同期を実行する必要があります。  完全同期を実行するには、**[今すぐ同期]** をクリックします。
 
-## <a name="multi-factor-auth-servers"></a>Multi-Factor Auth Server
-追加の Multi-factor Auth Server を、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。 同期構成は、すべてのエージェント間で共有されます。 ただし、Multi-Factor Auth Server サービスは、これらのエージェントのいずれかのみで実行できます。 このタブで、同期するために有効にする必要がある Multi-Factor Auth Server を選択できます。
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication サーバー
 
-![Multi-Factor-Auth Server](./media/howto-mfaserver-dir-ad/dirint6.png)
+追加の Multi-Factor Authentication サーバーを、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。 同期構成は、すべてのエージェント間で共有されます。 ただし、Multi-Factor Authentication サーバー サービスは、これらのエージェントのいずれかのみで実行できます。 このタブで、同期するために有効にする必要がある Multi-Factor Authentication サーバーを選択できます。
+
+![関連する Multi-Factor Authentication サーバー](./media/howto-mfaserver-dir-ad/dirint6.png)

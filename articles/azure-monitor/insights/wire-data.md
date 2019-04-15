@@ -423,9 +423,9 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | ReceivedBytes | 受信したバイト数 |
 | ProtocolName | 使用されるネットワーク プロトコルの名前 |
 | IPVersion | IP バージョン |
-| 方向 | 受信または送信 |
+| Direction | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| severity | 疑いのあるマルウェアの重大度 |
+| Severity | 疑いのあるマルウェアの重大度 |
 | RemoteIPCountry | リモート IP アドレスの国 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |

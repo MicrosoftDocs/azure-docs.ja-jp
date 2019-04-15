@@ -9,20 +9,20 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c3c936a3d547389de3681b4f82f329c4978742d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886623"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918452"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
 
-| **メソッド** | **特性** |
+| **方法** | **特性** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>Azure のサインインで認証されたアクセスです。 |
+| [Azure ポータル](#start-a-runbook-with-the-azure-portal) |<li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>Azure のサインインで認証されたアクセスです。 |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
 | [Azure Automation API](/rest/api/automation/) |<li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。 *API を使用して Python Runbook を呼び出している場合は、JSON ペイロードをシリアル化する必要があります。*<br> <li>ジョブの状態を追跡できます。 |
 | [Webhook](automation-webhooks.md) |<li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値をオーバーライドできません。 Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |
@@ -39,7 +39,7 @@ ms.locfileid: "56886623"
 1. Azure Portal で、**[Automation]** を選択し、Automation アカウントの名前をクリックします。
 2. [ハブ] メニューで、**[Runbook]** を選択します。
 3. **[Runbook]** ページで Runbook を選択し、**[開始]** をクリックします。
-4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
+4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
 5. **[ジョブ]** ページで、Runbook ジョブの状態を表示することができます。
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell で Runbook を開始する
@@ -69,7 +69,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Runbook にパラメーターが必要な場合は、[ハッシュテーブル](https://technet.microsoft.com/library/hh847780.aspx)として提供する必要があります。 ハッシュテーブルのキーはパラメーター名と一致する必要があり、値はパラメーターの値です。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
+Runbook にパラメーターが必要な場合は、[ハッシュテーブル](https://technet.microsoft.com/library/hh847780.aspx)として提供する必要があります。 ハッシュテーブルのキーはパラメーター名と一致する必要があり、値はパラメーターの値です。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
@@ -84,7 +84,7 @@ Azure Automation Web サービスは、次のセクションで説明されて�
 
 ### <a name="named-values"></a>名前付きの値
 
-パラメーターのデータ型が [object] の場合、 *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* という JSON 形式を使用して名前付きの値の一覧を送信できます。 これらの値は単純型にする必要があります。 Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) としてパラメーターを受け取ります。
+パラメーターのデータ型が [object] の場合、 *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* という JSON 形式を使用して名前付きの値の一覧を送信できます。 これらの値は単純型にする必要があります。 Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) としてパラメーターを受け取ります。
 
 user というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 

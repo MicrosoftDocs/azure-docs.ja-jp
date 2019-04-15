@@ -142,7 +142,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 ## <a name="role-icons"></a>ロール アイコン
 特定のプロセスは、マシンで特定のロール (Web サーバー、アプリケーション サーバー、データベースなど) を担います。 サービス マップでは、プロセスとマシン ボックスにロール アイコンで注釈を付け、プロセスまたはサーバーが担っているロールがひとめでわかるようにします。
 
-| ロール アイコン | 説明 |
+| ロール アイコン | Description |
 |:--|:--|
 | ![Web サーバー](media/service-map/role-web-server.png) | Web サーバー |
 | ![アプリ サーバー](media/service-map/role-application-server.png) | アプリケーション サーバー |
@@ -297,7 +297,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 コストと複雑さを管理するため、接続レコードは個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化され、その後それぞれのテーブルに反映されます。  つまり、*VMConnection* テーブル内のレコードは、論理グルーピングを表しており、観察されている個々の物理接続を表していません。 所定の 1 分間隔で次の属性に同じ値を共有する物理ネットワーク接続は、*VMConnection* 内で 1 つの論理レコードに集約されます。 
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |Direction |接続の方向であり、値は*受信*または*送信*です |
 |Machine |コンピューターの FQDN |
@@ -309,7 +309,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |LinksEstablished |報告時間枠の間に確立された物理ネットワーク接続の数 |
 |LinksTerminated |報告時間枠の間に切断された物理ネットワーク接続の数 |
@@ -320,7 +320,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 接続数メトリックに加えて、所定の論理接続またはネット ワークポートで送受信されるデータ量に関する情報も、レコードの次のプロパティに加えられています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |BytesSent |報告時間枠の間に送信された合計バイト数 |
 |BytesReceived |報告時間枠の間に受信された合計バイト数 |
@@ -346,7 +346,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 #### <a name="geolocation"></a>地理的位置情報
 *VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
 |RemoteLatitude |地理的位置情報の緯度。  例: *47.68* |
@@ -355,7 +355,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 #### <a name="malicious-ip"></a>悪意のある IP
 *VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 |MaliciousIp |RemoteIp アドレス |
 |IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
@@ -372,7 +372,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -397,7 +397,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--|:--|
 | `Type | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |

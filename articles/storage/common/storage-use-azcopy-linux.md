@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467375"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882227"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
@@ -102,7 +102,7 @@ azcopy \
     --source-key <key> 
 ```
 
-フォルダー `/mnt/myfiles` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt ` がダウンロードされます。 
+フォルダー `/mnt/myfiles` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt` がダウンロードされます。 
 
 ### <a name="download-single-blob-from-secondary-region"></a>セカンダリ リージョンから 1 つの BLOB をダウンロードする
 
@@ -344,7 +344,7 @@ azcopy \
 ```
 
 ### <a name="customizing-the-mime-content-type-mapping"></a>MIME コンテンツの種類のマッピングのカスタマイズ
-AzCopy は、ファイル拡張子とコンテンツの種類のマッピングが含まれる構成ファイルを使用します。 このマッピングをカスタマイズし、必要に応じて新しいペアを追加できます。 マッピングは ```/usr/lib/azcopy/AzCopyConfig.json``` に配置されます。
+AzCopy は、ファイル拡張子とコンテンツの種類のマッピングが含まれる構成ファイルを使用します。 このマッピングをカスタマイズし、必要に応じて新しいペアを追加できます。 マッピングは次の場所に配置されます:   ```/usr/lib/azcopy/AzCopyConfig.json```
 
 ## <a name="blob-copy"></a>BLOB:コピー
 ### <a name="copy-single-blob-within-storage-account"></a>ストレージ アカウント内の 1 つの BLOB をコピーする
@@ -418,7 +418,7 @@ azcopy \
     --sync-copy
 ```
 
-`--sync-copy` では、非同期コピーと比較すると、追加の送信コストが発生する可能性があります。 この送信コストが発生しないように、このオプションは、ソース ストレージ アカウントと同じリージョンにある Azure VM で使用することをお勧めします。
+`--sync-copy`  では、非同期コピーと比較すると、追加の送信コストが発生する可能性があります。 この送信コストが発生しないように、このオプションは、ソース ストレージ アカウントと同じリージョンにある Azure VM で使用することをお勧めします。
 
 ## <a name="file-download"></a>ファイル: ダウンロード
 ### <a name="download-single-file"></a>1 つのファイルをダウンロードする
@@ -703,22 +703,22 @@ azcopy \
 Azure Storage および AzCopy の詳細については、以下のリソースを参照してください。
 
 ### <a name="azure-storage-documentation"></a>Azure Storage のドキュメント:
-* [Azure ストレージの概要](../storage-introduction.md)
+* [Azure Storage の概要](../storage-introduction.md)
 * [ストレージ アカウントの作成](../storage-create-storage-account.md)
 * [ストレージ エクスプローラーを使用した BLOB の管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Azure Storage での Azure CLI の使用](../storage-azure-cli.md)
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Node.js から BLOB ストレージを使用する方法](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Python から BLOB ストレージを使用する方法](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Python から Blob Storage を使用する方法](../blobs/storage-python-how-to-use-blob-storage.md)
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage に関するブログの投稿:
 * [Announcing AzCopy on Linux Preview (AzCopy on Linux プレビューの発表)](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy:Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy:Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy:Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy:Support for read-access geo-redundant storage (AzCopy: geo 冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy:Transfer data with restartable mode and SAS token (AzCopy: 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy:Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy:Uploading/downloading files for Azure Blobs (AzCopy: Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy: Support for read-access geo-redundant storage (AzCopy: geo 冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy: Transfer data with restartable mode and SAS token (AzCopy: 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Uploading/downloading files for Azure Blobs (AzCopy: Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

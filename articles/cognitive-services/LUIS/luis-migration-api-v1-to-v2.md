@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087926"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894083"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
@@ -134,7 +134,7 @@ LUIS メタデータを返す API のいくつかが新しい名前に変更さ�
 
 
 ## <a name="sample-renamed-to-suggest"></a>"sample" から "suggest" への名前変更
-LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endoint-utt.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは**[エンドポイントの発話の確認](luis-how-to-review-endoint-utt.md)** と呼ばれます。
+LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは**[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
 
 | version | ルート |
 |--|--|

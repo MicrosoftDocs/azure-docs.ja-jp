@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: f05233755f5e32182ee6c8dafdc24a40b2e8d682
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883884"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758253"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -23,29 +23,20 @@ ms.locfileid: "55883884"
 
 - 人間のモデレーター用のビデオ レビューを作成する
 - レビューにフレームを追加する
-- レビュー用のフレームを取得する 
+- レビュー用のフレームを取得する
 - レビューの状態と詳細を取得する
 - レビューを公開する
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、[ビデオがモデレート済み (クイックスタートを参照)](video-moderation-api.md) かつ応答データがあることを前提としています。 これは、人間のモデレーター用のフレームベースのレビューを作成するために必要です。
-
-また、この記事では Visual Studio と C# に精通していることも前提としています。
-
-## <a name="sign-up-for-content-moderator"></a>Content Moderator へのサインアップ
-
-REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator をサブスクライブし、キーを取得します。
-
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>前の手順で完了していない場合は、レビュー ツール アカウントにサインアップする
-
-Azure portal から Content Moderator を取得した場合は、[レビュー ツールのアカウントにもサインアップ](https://contentmoderator.cognitive.microsoft.com/)し、レビュー チームを作成します。 レビュー API を呼び出してジョブを開始し、レビュー ツールにレビューを表示するには、チーム ID とレビュー ツールが必要です。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
+- この記事は、[ビデオがモデレート済み (クイックスタートを参照)](video-moderation-api.md) かつ応答データがあることを前提としています。 これは、人間のモデレーター用のフレームベースのレビューを作成するために必要です。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>お使いの API キーで、レビュー作成のためにレビュー API の呼び出しが可能であることを確認してください
 
-Azure portal から起動した場合は、前の手順の完了後に Content Moderator のキーが 2 つある状態になることがあります。 
+Azure portal から起動した場合は、前の手順の完了後に Content Moderator のキーが 2 つある状態になることがあります。
 
-SDK サンプルで、Azure から提供される API キーを使用する予定の場合は、[レビュー API での Azure キーの使用](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)に関するセクションで説明されている手順に従って、アプリケーションがレビュー API を呼び出し、レビューを作成できるようにします。
+SDK サンプルで、Azure から提供される API キーを使用する予定の場合は、[レビュー API での Azure キーの使用](review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis)に関するセクションで説明されている手順に従って、アプリケーションがレビュー API を呼び出し、レビューを作成できるようにします。
 
 レビュー ツールによって生成される無料試用版のキーを使用する場合、そのキーは既にレビュー ツール アカウントによって知られています。そのため、追加の手順は必要ありません。
 
@@ -89,15 +80,16 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 次のようにプログラムの using ステートメントを修正します。
 
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading;
-    using Microsoft.Azure.CognitiveServices.ContentModerator;
-    using Microsoft.CognitiveServices.ContentModerator;
-    using Microsoft.CognitiveServices.ContentModerator.Models;
-    using Newtonsoft.Json;
-
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using Microsoft.Azure.CognitiveServices.ContentModerator;
+using Microsoft.CognitiveServices.ContentModerator;
+using Microsoft.CognitiveServices.ContentModerator.Models;
+using Newtonsoft.Json;
+```
 
 ### <a name="add-private-properties"></a>プライベート プロパティを追加する
 
@@ -105,65 +97,67 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 示された場所について、これらのプロパティの例の値を置き換えます。
 
-
-    namespace VideoReviews
+```csharp
+namespace VideoReviews
+{
+    class Program
     {
-        class Program
-        {
-            // NOTE: Replace this example location with the location for your Content Moderator account.
-            /// <summary>
-            /// The region/location for your Content Moderator account, 
-            /// for example, westus.
-            /// </summary>
-            private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        // NOTE: Replace this example location with the location for your Content Moderator account.
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
 
-            // NOTE: Replace this example key with a valid subscription key.
-            /// <summary>
-            /// Your Content Moderator subscription key.
-            /// </summary>
-            private static readonly string CMSubscriptionKey = "YOUR CONTENT MODERATOR KEY";
+        // NOTE: Replace this example key with a valid subscription key.
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR CONTENT MODERATOR KEY";
 
-            // NOTE: Replace this example team name with your Content Moderator team name.
-            /// <summary>
-            /// The name of the team to assign the job to.
-            /// </summary>
-            /// <remarks>This must be the team name you used to create your 
-            /// Content Moderator account. You can retrieve your team name from
-            /// the Content Moderator web site. Your team name is the Id associated 
-            /// with your subscription.</remarks>
-            private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
+        // NOTE: Replace this example team name with your Content Moderator team name.
+        /// <summary>
+        /// The name of the team to assign the job to.
+        /// </summary>
+        /// <remarks>This must be the team name you used to create your 
+        /// Content Moderator account. You can retrieve your team name from
+        /// the Content Moderator web site. Your team name is the Id associated 
+        /// with your subscription.</remarks>
+        private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
-            /// <summary>
-            /// The base URL fragment for Content Moderator calls.
-            /// </summary>
-            private static readonly string AzureBaseURL =
-                $"{AzureRegion}.api.cognitive.microsoft.com";
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"{AzureRegion}.api.cognitive.microsoft.com";
 
-            /// <summary>
-            /// The minimum amount of time, in milliseconds, to wait between calls
-            /// to the Content Moderator APIs.
-            /// </summary>
-            private const int throttleRate = 2000;
-
+        /// <summary>
+        /// The minimum amount of time, in milliseconds, to wait between calls
+        /// to the Content Moderator APIs.
+        /// </summary>
+        private const int throttleRate = 2000;
+```
 
 ### <a name="create-content-moderator-client-object"></a>Content Moderator クライアントのオブジェクトを作成する
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
-    public static ContentModeratorClient NewClient()
+```csharp
+/// <summary>
+/// Returns a new Content Moderator client for your subscription.
+/// </summary>
+/// <returns>The new client.</returns>
+/// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+/// When you have finished using the client,
+/// you should dispose of it either directly or indirectly. </remarks>
+public static ContentModeratorClient NewClient()
+{
+    return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
-        {
-            Endpoint = AzureBaseURL
-        };
-    }
+        Endpoint = AzureBaseURL
+    };
+}
+```
 
 ## <a name="create-a-video-review"></a>ビデオ レビューを作成する
 
@@ -184,39 +178,41 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    /// <summary>
-    /// Create a video review. For more information, see the API reference:
-    /// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 
-    /// </summary>
-    /// <param name="client">The Content Moderator client.</param>
-    /// <param name="id">The ID to assign to the video review.</param>
-    /// <param name="content">The URL of the video to review.</param>
-    /// <returns>The ID of the video review.</returns>
-    private static string CreateReview(ContentModeratorClient client, string id, string content)
-    {
-        Console.WriteLine("Creating a video review.");
+```csharp
+/// <summary>
+/// Create a video review. For more information, see the API reference:
+/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 
+/// </summary>
+/// <param name="client">The Content Moderator client.</param>
+/// <param name="id">The ID to assign to the video review.</param>
+/// <param name="content">The URL of the video to review.</param>
+/// <returns>The ID of the video review.</returns>
+private static string CreateReview(ContentModeratorClient client, string id, string content)
+{
+    Console.WriteLine("Creating a video review.");
 
-        List<CreateVideoReviewsBodyItem> body = new List<CreateVideoReviewsBodyItem>() {
-            new CreateVideoReviewsBodyItem
-            {
-                Content = content,
-                ContentId = id,
-                /* Note: to create a published review, set the Status to "Pending".
-                However, you cannot add video frames or a transcript to a published review. */
-                Status = "Unpublished",
-            }
-        };
+    List<CreateVideoReviewsBodyItem> body = new List<CreateVideoReviewsBodyItem>() {
+        new CreateVideoReviewsBodyItem
+        {
+            Content = content,
+            ContentId = id,
+            /* Note: to create a published review, set the Status to "Pending".
+            However, you cannot add video frames or a transcript to a published review. */
+            Status = "Unpublished",
+        }
+    };
 
-        var result = client.Reviews.CreateVideoReviews("application/json", TeamName, body);
+    var result = client.Reviews.CreateVideoReviews("application/json", TeamName, body);
 
-        Thread.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 
-        // We created only one review.
-        return result[0];
-    }
+    // We created only one review.
+    return result[0];
+}
+```
 
 > [!NOTE]
-> お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 
+> お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。
 >
 > 無料レベルのキーの RPS は 1 に制限されています。
 
@@ -246,60 +242,63 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    <summary>
-    /// Create a video frame to add to a video review after the video review is created.
-    /// </summary>
-    /// <param name="url">The URL of the video frame image.</param>
-    /// <returns>The video frame.</returns>
-    private static VideoFrameBodyItem CreateFrameToAddToReview(string url, string timestamp_seconds)
+```csharp
+<summary>
+/// Create a video frame to add to a video review after the video review is created.
+/// </summary>
+/// <param name="url">The URL of the video frame image.</param>
+/// <returns>The video frame.</returns>
+private static VideoFrameBodyItem CreateFrameToAddToReview(string url, string timestamp_seconds)
+{
+    // We generate random "adult" and "racy" scores for the video frame.
+    Random rand = new Random();
+
+    var frame = new VideoFrameBodyItem
     {
-        // We generate random "adult" and "racy" scores for the video frame.
-        Random rand = new Random();
+        // The timestamp is measured in milliseconds. Convert from seconds.
+        Timestamp = (int.Parse(timestamp_seconds) * 1000).ToString(),
+        FrameImage = url,
 
-        var frame = new VideoFrameBodyItem
+        Metadata = new List<VideoFrameBodyItemMetadataItem>
         {
-            // The timestamp is measured in milliseconds. Convert from seconds.
-            Timestamp = (int.Parse(timestamp_seconds) * 1000).ToString(),
-            FrameImage = url,
+            new VideoFrameBodyItemMetadataItem("reviewRecommended", "true"),
+            new VideoFrameBodyItemMetadataItem("adultScore", rand.NextDouble().ToString()),
+            new VideoFrameBodyItemMetadataItem("a", "false"),
+            new VideoFrameBodyItemMetadataItem("racyScore", rand.NextDouble().ToString()),
+            new VideoFrameBodyItemMetadataItem("r", "false")
+        },
 
-            Metadata = new List<VideoFrameBodyItemMetadataItem>
-            {
-                new VideoFrameBodyItemMetadataItem("reviewRecommended", "true"),
-                new VideoFrameBodyItemMetadataItem("adultScore", rand.NextDouble().ToString()),
-                new VideoFrameBodyItemMetadataItem("a", "false"),
-                new VideoFrameBodyItemMetadataItem("racyScore", rand.NextDouble().ToString()),
-                new VideoFrameBodyItemMetadataItem("r", "false")
-            },
+        ReviewerResultTags = new List<VideoFrameBodyItemReviewerResultTagsItem>()
+        {
+            new VideoFrameBodyItemReviewerResultTagsItem("tag1", "value1")
+        }
+    };
 
-            ReviewerResultTags = new List<VideoFrameBodyItemReviewerResultTagsItem>()
-            {
-                new VideoFrameBodyItemReviewerResultTagsItem("tag1", "value1")
-            }
-        };
+    return frame;
+}
+```
 
-        return frame;
-    }
+```csharp
+/// <summary>
+/// Add a video frame to the indicated video review. For more information, see the API reference:
+/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd
+/// </summary>
+/// <param name="client">The Content Moderator client.</param>
+/// <param name="review_id">The video review ID.</param>
+/// <param name="url">The URL of the video frame image.</param>
+static void AddFrame(ContentModeratorClient client, string review_id, string url, string timestamp_seconds)
+{
+    Console.WriteLine("Adding a frame to the review with ID {0}.", review_id);
 
-    /// <summary>
-    /// Add a video frame to the indicated video review. For more information, see the API reference:
-    /// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd
-    /// </summary>
-    /// <param name="client">The Content Moderator client.</param>
-    /// <param name="review_id">The video review ID.</param>
-    /// <param name="url">The URL of the video frame image.</param>
-    static void AddFrame(ContentModeratorClient client, string review_id, string url, string timestamp_seconds)
+    var frames = new List<VideoFrameBodyItem>()
     {
-        Console.WriteLine("Adding a frame to the review with ID {0}.", review_id);
+        CreateFrameToAddToReview(url, timestamp_seconds)
+    };
+        
+    client.Reviews.AddVideoFrameUrl("application/json", TeamName, review_id, frames);
 
-        var frames = new List<VideoFrameBodyItem>()
-        {
-            CreateFrameToAddToReview(url, timestamp_seconds)
-        };
-            
-        client.Reviews.AddVideoFrameUrl("application/json", TeamName, review_id, frames);
-
-        Thread.Sleep(throttleRate);
-    
+    Thread.Sleep(throttleRate);
+```
 
 ## <a name="get-video-frames-for-video-review"></a>ビデオ レビュー用ビデオ フレームを取得する
 
@@ -311,21 +310,23 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    /// <summary>
-    /// Get the video frames assigned to the indicated video review.  For more information, see the API reference:
-    /// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7ba43e7151f0b10d45200
-    /// </summary>
-    /// <param name="client">The Content Moderator client.</param>
-    /// <param name="review_id">The video review ID.</param>
-    static void GetFrames(ContentModeratorClient client, string review_id)
-    {
-        Console.WriteLine("Getting frames for the review with ID {0}.", review_id);
+```csharp
+/// <summary>
+/// Get the video frames assigned to the indicated video review.  For more information, see the API reference:
+/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7ba43e7151f0b10d45200
+/// </summary>
+/// <param name="client">The Content Moderator client.</param>
+/// <param name="review_id">The video review ID.</param>
+static void GetFrames(ContentModeratorClient client, string review_id)
+{
+    Console.WriteLine("Getting frames for the review with ID {0}.", review_id);
 
-        Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0);
-        Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+    Frames result = client.Reviews.GetVideoFrames(TeamName, review_id, 0);
+    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
-        Thread.Sleep(throttleRate);
-    }
+    Thread.Sleep(throttleRate);
+}
+```
 
 ## <a name="get-video-review-information"></a>ビデオ レビューの情報を取得する
 
@@ -335,21 +336,23 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    /// <summary>
-    /// Get the information for the indicated video review. For more information, see the reference API:
-    /// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2
-    /// </summary>
-    /// <param name="client">The Content Moderator client.</param>
-    /// <param name="review_id">The video review ID.</param>
-    private static void GetReview(ContentModeratorClient client, string review_id)
-    {
-        Console.WriteLine("Getting the status for the review with ID {0}.", review_id);
+```csharp
+/// <summary>
+/// Get the information for the indicated video review. For more information, see the reference API:
+/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2
+/// </summary>
+/// <param name="client">The Content Moderator client.</param>
+/// <param name="review_id">The video review ID.</param>
+private static void GetReview(ContentModeratorClient client, string review_id)
+{
+    Console.WriteLine("Getting the status for the review with ID {0}.", review_id);
 
-        var result = client.Reviews.GetReview(ModeratorHelper.Clients.TeamName, review_id);
-        Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+    var result = client.Reviews.GetReview(ModeratorHelper.Clients.TeamName, review_id);
+    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
-        Thread.Sleep(throttleRate);
-    }
+    Thread.Sleep(throttleRate);
+}
+```
 
 ## <a name="publish-video-review"></a>ビデオ レビューを公開する
 
@@ -359,185 +362,191 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
-    /// <summary>
-    /// Publish the indicated video review. For more information, see the reference API:
-    /// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7bb29e7151f0b10d45201
-    /// </summary>
-    /// <param name="client">The Content Moderator client.</param>
-    /// <param name="review_id">The video review ID.</param>
-    private static void PublishReview(ContentModeratorClient client, string review_id)
-    {
-        Console.WriteLine("Publishing the review with ID {0}.", review_id);
-        client.Reviews.PublishVideoReview(TeamName, review_id);
-        Thread.Sleep(throttleRate);
-    }
+```csharp
+/// <summary>
+/// Publish the indicated video review. For more information, see the reference API:
+/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7bb29e7151f0b10d45201
+/// </summary>
+/// <param name="client">The Content Moderator client.</param>
+/// <param name="review_id">The video review ID.</param>
+private static void PublishReview(ContentModeratorClient client, string review_id)
+{
+    Console.WriteLine("Publishing the review with ID {0}.", review_id);
+    client.Reviews.PublishVideoReview(TeamName, review_id);
+    Thread.Sleep(throttleRate);
+}
+```
 
 ## <a name="putting-it-all-together"></a>まとめ
 
 名前空間 VideoReviews、クラス Program に **Main** メソッド定義を追加します。 最後に、Program クラスと VideoReviews 名前空間を閉じます。
 
-    static void Main(string[] args)
+```csharp
+static void Main(string[] args)
+{
+    using (ContentModeratorClient client = NewClient())
     {
-        using (ContentModeratorClient client = NewClient())
-        {
-            // Create a review with the content pointing to a streaming endpoint (manifest)
-            var streamingcontent = "https://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest";
-            string review_id = CreateReview(client, "review1", streamingcontent);
+        // Create a review with the content pointing to a streaming endpoint (manifest)
+        var streamingcontent = "https://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest";
+        string review_id = CreateReview(client, "review1", streamingcontent);
 
-            var frame1_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG";
-            var frame2_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG";
-            var frame3_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG";
+        var frame1_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG";
+        var frame2_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG";
+        var frame3_url = "https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG";
 
-            // Add the frames from 17, 64, and 144 seconds.
-            AddFrame(client, review_id, frame1_url, "17");
-            AddFrame(client, review_id, frame2_url, "64");
-            AddFrame(client, review_id, frame3_url, "144");
+        // Add the frames from 17, 64, and 144 seconds.
+        AddFrame(client, review_id, frame1_url, "17");
+        AddFrame(client, review_id, frame2_url, "64");
+        AddFrame(client, review_id, frame3_url, "144");
 
-            // Get frames information and show
-            GetFrames(client, review_id);
-            GetReview(client, review_id);
+        // Get frames information and show
+        GetFrames(client, review_id);
+        GetReview(client, review_id);
 
-            // Publish the review
-            PublishReview(client, review_id);
+        // Publish the review
+        PublishReview(client, review_id);
 
-            Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
-            Console.WriteLine("Press any key to close the application.");
-            Console.ReadKey();
-        }
+        Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
+        Console.WriteLine("Press any key to close the application.");
+        Console.ReadKey();
     }
+}
+```
 
 ## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
 アプリケーションを実行すると、次の行に出力が表示されます。
 
-    Creating a video review.
-    Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
-    Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
-    Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
-    Getting frames for the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+```json
+Creating a video review.
+Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+Adding a frame to the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+Getting frames for the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+{
+    "ReviewId": "201801v3212bda70ced4928b2cd7459c290c7dc",
+    "VideoFrames": [
     {
-        "ReviewId": "201801v3212bda70ced4928b2cd7459c290c7dc",
-        "VideoFrames": [
-        {
-            "Timestamp": "17000",
-            "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_17000.PNG",
-            "Metadata": [
-            {
-                "Key": "reviewRecommended",
-                "Value": "true"
-            },
-            {
-                "Key": "adultScore",
-                "Value": "0.808312381528463"
-            },
-            {
-                "Key": "a",
-                "Value": "false"
-            },
-            {
-                "Key": "racyScore",
-                "Value": "0.846378884206702"
-            },
-            {
-                "Key": "r",
-                "Value": "false"
-            }
-            ],
-            "ReviewerResultTags": [
-            {
-                "Key": "tag1",
-                "Value": "value1"
-            }
-        ]
-        },
-        {
-            "Timestamp": "64000",
-            "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_64000.PNG",
-            "Metadata": [
-            {
-                "Key": "reviewRecommended",
-                "Value": "true"
-            },
-            {
-                "Key": "adultScore",
-                "Value": "0.576078300166912"
-            },
-            {
-                "Key": "a",
-                "Value": "false"
-            },
-            {
-                "Key": "racyScore",
-                "Value": "0.244768953064815"
-            },
-            {
-                "Key": "r",
-                "Value": "false"
-            }
-            ],
-            "ReviewerResultTags": [
-            {
-                "Key": "tag1",
-                "Value": "value1"
-            }
-        ]
-        },
-        {
-            "Timestamp": "144000",
-            "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_144000.PNG",
-            "Metadata": [
-            {
-                "Key": "reviewRecommended",
-                "Value": "true"
-            },
-            {
-                "Key": "adultScore",
-                "Value": "0.664480847150311"
-            },
-            {
-                "Key": "a",
-                "Value": "false"
-            },
-            {
-                "Key": "racyScore",
-                "Value": "0.933817870418456"
-            },
-            {
-                "Key": "r",
-                "Value": "false"
-            }
-            ],
-            "ReviewerResultTags": [
-            {
-                "Key": "tag1",
-                "Value": "value1"
-            }
-            ]
-        }
-        ]
-    }
-    
-    Getting the status for the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
-    {
-        "ReviewId": "201801v3212bda70ced4928b2cd7459c290c7dc",
-        "SubTeam": "public",
-        "Status": "UnPublished",
-        "ReviewerResultTags": [],
-        "CreatedBy": "testreview6",
+        "Timestamp": "17000",
+        "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_17000.PNG",
         "Metadata": [
         {
-            "Key": "FrameCount",
-            "Value": "3"
+            "Key": "reviewRecommended",
+            "Value": "true"
+        },
+        {
+            "Key": "adultScore",
+            "Value": "0.808312381528463"
+        },
+        {
+            "Key": "a",
+            "Value": "false"
+        },
+        {
+            "Key": "racyScore",
+            "Value": "0.846378884206702"
+        },
+        {
+            "Key": "r",
+            "Value": "false"
         }
         ],
-        "Type": "Video",
-        "Content": "https://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
-        "ContentId": "review1",
-        "CallbackEndpoint": null
+        "ReviewerResultTags": [
+        {
+            "Key": "tag1",
+            "Value": "value1"
+        }
+    ]
+    },
+    {
+        "Timestamp": "64000",
+        "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_64000.PNG",
+        "Metadata": [
+        {
+            "Key": "reviewRecommended",
+            "Value": "true"
+        },
+        {
+            "Key": "adultScore",
+            "Value": "0.576078300166912"
+        },
+        {
+            "Key": "a",
+            "Value": "false"
+        },
+        {
+            "Key": "racyScore",
+            "Value": "0.244768953064815"
+        },
+        {
+            "Key": "r",
+            "Value": "false"
+        }
+        ],
+        "ReviewerResultTags": [
+        {
+            "Key": "tag1",
+            "Value": "value1"
+        }
+    ]
+    },
+    {
+        "Timestamp": "144000",
+        "FrameImage": "https://reviewcontentprod.blob.core.windows.net/testreview6/FRM_201801v3212bda70ced4928b2cd7459c290c7dc_144000.PNG",
+        "Metadata": [
+        {
+            "Key": "reviewRecommended",
+            "Value": "true"
+        },
+        {
+            "Key": "adultScore",
+            "Value": "0.664480847150311"
+        },
+        {
+            "Key": "a",
+            "Value": "false"
+        },
+        {
+            "Key": "racyScore",
+            "Value": "0.933817870418456"
+        },
+        {
+            "Key": "r",
+            "Value": "false"
+        }
+        ],
+        "ReviewerResultTags": [
+        {
+            "Key": "tag1",
+            "Value": "value1"
+        }
+        ]
     }
+    ]
+}
 
-    Publishing the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
-    Open your Content Moderator Dashboard and select Review > Video to see the review.
-    Press any key to close the application.
+Getting the status for the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+{
+    "ReviewId": "201801v3212bda70ced4928b2cd7459c290c7dc",
+    "SubTeam": "public",
+    "Status": "UnPublished",
+    "ReviewerResultTags": [],
+    "CreatedBy": "testreview6",
+    "Metadata": [
+    {
+        "Key": "FrameCount",
+        "Value": "3"
+    }
+    ],
+    "Type": "Video",
+    "Content": "https://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
+    "ContentId": "review1",
+    "CallbackEndpoint": null
+}
+
+Publishing the review with ID 201801v3212bda70ced4928b2cd7459c290c7dc.
+Open your Content Moderator Dashboard and select Review > Video to see the review.
+Press any key to close the application.
+```
 
 ## <a name="check-out-your-video-review"></a>ビデオ レビューを確認する
 

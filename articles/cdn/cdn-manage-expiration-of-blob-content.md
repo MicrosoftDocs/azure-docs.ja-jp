@@ -1,6 +1,6 @@
 ---
-title: Manage expiration of Azure Blob storage in Azure Content Delivery Network | Microsoft Docs
-description: Learn about the options for controlling time-to-live for blobs in Azure CDN caching.
+title: Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する | Microsoft Docs
+description: Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,85 +14,85 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531931"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916803"
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Manage expiration of Azure Blob storage in Azure CDN
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
-> * [Azure web content](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob storage](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Web コンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
+> * [Azure BLOB ストレージ](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-The [Blob storage service](../storage/common/storage-introduction.md#blob-storage) in Azure Storage is one of several Azure-based origins integrated with Azure Content Delivery Network (CDN). Any publicly accessible blob content can be cached in Azure CDN until its time-to-live (TTL) elapses. The TTL is determined by the `Cache-Control` header in the HTTP response from the origin server. This article describes several ways that you can set the `Cache-Control` header on a blob in Azure Storage.
+Azure Storage の [Blob Storage サービス](../storage/common/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure Content Delivery Network (CDN) と統合されたサービスの 1 つです。 パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Azure Storage の BLOB で `Cache-Control` ヘッダーを設定する方法のいくつかを示します。
 
-You can also control cache settings from the Azure portal by setting CDN caching rules. If you create a caching rule and set its caching behavior to **Override** or **Bypass cache**, the origin-provided caching settings discussed in this article are ignored. For information about general caching concepts, see [How caching works](cdn-how-caching-works.md).
+CDN キャッシュ規則を設定して、Azure portal からキャッシュの設定を制御することもです。 キャッシュ規則を作成し、そのキャッシュ動作を **[オーバーライド]** または **[キャッシュのバイパス]** に設定すると、この記事で説明されている最初に示されたキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
 
 > [!TIP]
-> You can choose to set no TTL on a blob. In this case, Azure CDN automatically applies a default TTL of seven days, unless you have set up caching rules in the Azure portal. This default TTL applies only to general web delivery optimizations. For large file optimizations, the default TTL is one day, and for media streaming optimizations, the default TTL is one year.
+> BLOB に TTL を設定しないこともできます。 この場合は、Azure Portal でキャッシュ規則を設定していない限り、Azure CDN によって既定の 7 日間の TTL が自動的に適用されます。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
 > 
-> For more information about how Azure CDN works to speed up access to blobs and other files, see [Overview of the Azure Content Delivery Network](cdn-overview.md).
+> その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 
-> For more information about Azure Blob storage, see [Introduction to Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
  
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Setting Cache-Control headers by using CDN caching rules
-The preferred method for setting a blob's `Cache-Control` header is to use caching rules in the Azure portal. For more information about CDN caching rules, see [Control Azure CDN caching behavior with caching rules](cdn-caching-rules.md).
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN キャッシュ規則を使用した Cache-Control ヘッダーの設定
+BLOB の `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> Caching rules are available only for **Azure CDN Standard from Verizon** and **Azure CDN Standard from Akamai** profiles. For **Azure CDN Premium from Verizon** profiles, you must use the [Azure CDN rules engine](cdn-rules-engine.md) in the **Manage** portal for similar functionality.
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
 
-**To navigate to the CDN caching rules page**:
+**[CDN キャッシュ規則] ページに移動するには**:
 
-1. In the Azure portal, select a CDN profile, then select the endpoint for the blob.
+1. Azure Portal で、CDN プロファイルを選択してから、BLOB のエンドポイントを選択します。
 
-2. In the left pane under Settings, select **Caching rules**.
+2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
 
-   ![CDN caching rules button](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
+   ![[CDN キャッシュ規則] ボタン](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   The **Caching rules** page appears.
+   **[キャッシュ規則]** ページが表示されます。
 
-   ![CDN caching page](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
+   ![[CDN キャッシュ] ページ](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**To set a Blob storage service's Cache-Control headers by using global caching rules:**
+**グローバル キャッシュ規則を使用して BLOB ストレージ サービスの Cache-Control ヘッダーを設定するには:**
 
-1. Under **Global caching rules**, set **Query string caching behavior** to **Ignore query strings** and set **Caching behavior** to **Override**.
+1. **[グローバル キャッシュ規則]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、**[キャッシュ動作]** を **[オーバーライド]** に設定します。
       
-2. For **Cache expiration duration**, enter 3600 in the **Seconds** box or 1 in the **Hours** box. 
+2. **[キャッシュの有効期間]** として、**[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
 
-   ![CDN global caching rules example](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
+   ![CDN グローバル キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   This global caching rule sets a cache duration of one hour and affects all requests to the endpoint. It overrides any `Cache-Control` or `Expires` HTTP headers that are sent by the origin server specified by the endpoint.   
+   このグローバル キャッシュ規則は 1 時間のキャッシュ有効期間を設定し、エンドポイントへのすべての要求に影響を与えます。 これは、エンドポイントで指定された配信元サーバーによって送信されるすべての `Cache-Control` または `Expires` HTTP ヘッダーをオーバーライドします。   
 
-3. Select **Save**.
+3. **[保存]** を選択します。
  
-**To set a blob file's Cache-Control headers by using custom caching rules:**
+**カスタム キャッシュ規則を使用して BLOB ファイルの Cache-Control ヘッダーを設定するには:**
 
-1. Under **Custom caching rules**, create two match conditions:
+1. **[Custom caching rules] (カスタム キャッシュ規則)** で、次の 2 つの一致条件を作成します。
 
-     A. For the first match condition, set **Match condition** to **Path** and enter `/blobcontainer1/*` for **Match value**. Set **Caching behavior** to **Override** and enter 4 in the **Hours** box.
+     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「4」と入力します。
 
-    B. For the second match condition, set **Match condition** to **Path** and enter `/blobcontainer1/blob1.txt` for **Match value**. Set **Caching behavior** to **Override** and enter 2 in the **Hours** box.
+    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「2」と入力します。
 
-    ![CDN custom caching rules example](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
+    ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    The first custom caching rule sets a cache duration of four hours for any blob files in the `/blobcontainer1` folder on the origin server specified by your endpoint. The second rule overrides the first rule for the `blob1.txt` blob file only and sets a cache duration of two hours for it.
+    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/blobcontainer1` フォルダー内のすべての BLOB ファイルに対して 4 時間のキャッシュ有効期間を設定します。 2 番目の規則は `blob1.txt` BLOB ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 時間のキャッシュ有効期間を設定します。
 
-2. Select **Save**.
+2. **[保存]** を選択します。
 
 
-## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Setting Cache-Control headers by using Azure PowerShell
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell を使った Cache-Control ヘッダーの設定
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) is one of the quickest and most powerful ways to administer your Azure services. Use the `Get-AzStorageBlob` cmdlet to get a reference to the blob, then set the `.ICloudBlob.Properties.CacheControl` property. 
+[Azure PowerShell](/powershell/azure/overview) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。 `Get-AzStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
-For example:
+例: 
 
 ```powershell
 # Create a storage context
@@ -109,14 +109,14 @@ $blob.ICloudBlob.SetProperties()
 ```
 
 > [!TIP]
-> You can also use PowerShell to [manage your CDN profiles and endpoints](cdn-manage-powershell.md).
+> PowerShell は、[CDN プロファイルとエンドポイントの管理](cdn-manage-powershell.md)に使用することもできます。
 > 
 >
 
-## <a name="setting-cache-control-headers-by-using-net"></a>Setting Cache-Control headers by using .NET
-To specify a blob's `Cache-Control` header by using .NET code, use the [Azure Storage Client Library for .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) to set the [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) property.
+## <a name="setting-cache-control-headers-by-using-net"></a>.NET を使った Cache-Control ヘッダーの設定
+.NET コードを使用して BLOB の `Cache-Control` ヘッダーを指定するには、[.NET 用の Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) プロパティを設定します。
 
-For example:
+例: 
 
 ```csharp
 class Program
@@ -146,40 +146,40 @@ class Program
 ```
 
 > [!TIP]
-> There are more .NET code samples available in [Azure Blob Storage Samples for .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> 「[Azure Blob Storage Samples for .NET ](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)」(.NET 用 Azure Blob Storage のサンプル) には、他にも多くの使用可能な .NET コード サンプルがあります。
 > 
 
-## <a name="setting-cache-control-headers-by-using-other-methods"></a>Setting Cache-Control headers by using other methods
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>他の方法を使った Cache-Control ヘッダーの設定
 
-### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-With [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), you can view and edit your blob storage resources, including properties such as the *CacheControl* property. 
+### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
 
-To update the *CacheControl* property of a blob with Azure Storage Explorer:
-   1. Select a blob, then select **Properties** from the context menu. 
-   2. Scroll down to the *CacheControl* property.
-   3. Enter a value, then select **Save**.
+Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。
+   1. BLOB を選択し、コンテキスト メニューから **[プロパティ]** を選択します。 
+   2. 下にスクロールして *CacheControl* プロパティを表示させます。
+   3. 値を入力してから、**[保存]** を選択します。
 
 
-![Azure Storage Explorer properties](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
+![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
-### <a name="azure-command-line-interface"></a>Azure Command-Line Interface
-With the [Azure Command-Line Interface](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI), you can manage Azure blob resources from the command line. To set the cache-control header when you upload a blob with the Azure CLI, set the *cacheControl* property by using the `-p` switch. The following example shows how to set the TTL to one hour (3600 seconds):
+### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
+[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
-### <a name="azure-storage-services-rest-api"></a>Azure storage services REST API
-You can use the [Azure storage services REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) to explicitly set the *x-ms-blob-cache-control* property by using the following operations on a request:
+### <a name="azure-storage-services-rest-api"></a>Azure ストレージ サービス REST API
+[Azure ストレージ サービス REST API](/rest/api/storageservices/) を使うと、要求で次の操作を使って *x-ms-blob-cache-control* プロパティを明示的に設定できます。
   
-   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
-   - [Put Block List](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [Put Block List](/rest/api/storageservices/Put-Block-List)
+   - [Set Blob Properties](/rest/api/storageservices/Set-Blob-Properties)
 
-## <a name="testing-the-cache-control-header"></a>Testing the Cache-Control header
-You can easily verify the TTL settings of your blobs. With your browser's [developer tools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test that your blob includes the `Cache-Control` response header. You can also use a tool such as [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), or [Fiddler](https://www.telerik.com/fiddler) to examine the response headers.
+## <a name="testing-the-cache-control-header"></a>Cache-Control ヘッダーのテスト
+BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、BLOB に `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 [Wget](https://www.gnu.org/software/wget/)、[Postman](https://www.getpostman.com/)、[Fiddler](https://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
 
-## <a name="next-steps"></a>Next Steps
-* [Learn how to manage expiration of Cloud Service content in Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
-* [Learn about caching concepts](cdn-how-caching-works.md)
+## <a name="next-steps"></a>次の手順
+* [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を学習する](cdn-manage-expiration-of-cloud-service-content.md)
+* [キャッシュの概念について学習する](cdn-how-caching-works.md)
 

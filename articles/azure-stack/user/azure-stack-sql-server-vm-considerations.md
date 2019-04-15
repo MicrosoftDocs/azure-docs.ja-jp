@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 仮想マシンにおける SQL Server のパフォーマンスに関するベスト プラクティス
-description: Microsoft Azure Stack 仮想マシンで SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。
+title: SQL Server のベスト プラクティスを使用して Azure Stack 仮想マシンでのパフォーマンスを高める | Microsoft Docs
+description: この記事では、Azure Stack VM における SQL Server のパフォーマンス向上と最適化に役立つ、SQL サーバーのベスト プラクティスを紹介します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123404"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879066"
 ---
-# <a name="optimize-sql-server-performance"></a>SQL Server のパフォーマンスを最適化する
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>Azure Stack におけるパフォーマンスを最適化するための SQL サーバーのベスト プラクティス
 
-この記事では、Microsoft Azure Stack 仮想マシンで SQL Server のパフォーマンスを最適化するためのガイダンスを紹介します。 Azure Stack 仮想マシンで SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを使用します。 Azure Stack クラウド内のリレーショナル データベースのパフォーマンスは、多くの要因によって異なります。 その要因には、仮想マシンのファミリ サイズと、データ ディスクの構成が含まれます。
+この記事では、Microsoft Azure Stack 仮想マシンにおける SQL Server の最適化とパフォーマンス向上を行うための、SQL サーバーのベスト プラクティスを紹介します。 Azure Stack 仮想マシンで SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを使用します。 Azure Stack クラウド内のリレーショナル データベースのパフォーマンスは、多くの要因によって異なります。 その要因には、仮想マシンのファミリ サイズと、データ ディスクの構成が含まれます。
 
 SQL Server イメージを作成するときは、[仮想マシンを Azure Stack ポータルにプロビジョニングすることを検討してください](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 Azure Stack 管理ポータルの Marketplace Management から SQL IaaS 拡張機能をダウンロードします。次に、任意の SQL 仮想マシンの仮想ハード ドライブ (VHD) をダウンロードします。 これには、SQL2014SP2、SQL2016SP1、SQL2017 が含まれます。
 
@@ -37,7 +37,8 @@ SQL Server イメージを作成するときは、[仮想マシンを Azure Stac
 > [!NOTE]  
 > Azure Virtual Machines における SQL Server のパフォーマンスのガイダンスについては、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)を参照してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="checklist-for-sql-server-best-practices"></a>SQL サーバーのベスト プラクティスに関するチェックリスト
+
 Azure Stack 仮想マシンで SQL Server の最適なパフォーマンスを実現するためのチェックリストを以下に示します。
 
 
@@ -112,7 +113,7 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 
        たとえば、次の PowerShell では、インターリーブ サイズが 64 KB、列数が 2 に設定されている新しい記憶域プールが作成されます｡
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
@@ -148,7 +149,7 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 
     Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」と「[Microsoft Azure に格納されたバックアップからの復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
 
--   **Azure Stack Storage にバックアップする。** Azure Storage へのバックアップと同様の方法で、Azure Stack Storage にバックアップできます。 SQL Server Management Studio (SSMS) 内でバックアップを作成する場合は、構成情報を手動で入力する必要があります。 ストレージ コンテナーや Shared Access Signature を作成する場合は、SSMS を使用することはできません。 SSMS は、Azure Stack サブスクリプションではなく、Azure サブスクリプションにのみ接続されます。 代わりに、ストレージ アカウント、コンテナー、および Shared Access Signature を Azure Stack ポータルで、あるいは PowerShell を使用して作成する必要があります。
+-   **Azure Stack ストレージにバックアップする。** Azure Storage へのバックアップと同様の方法で、Azure Stack Storage にバックアップできます。 SQL Server Management Studio (SSMS) 内でバックアップを作成する場合は、構成情報を手動で入力する必要があります。 ストレージ コンテナーや Shared Access Signature を作成する場合は、SSMS を使用することはできません。 SSMS は、Azure Stack サブスクリプションではなく、Azure サブスクリプションにのみ接続されます。 代わりに、ストレージ アカウント、コンテナー、および Shared Access Signature を Azure Stack ポータルで、あるいは PowerShell を使用して作成する必要があります。
 
     SQL Server のバックアップ ダイアログ ボックスに情報を配置する場合:
 

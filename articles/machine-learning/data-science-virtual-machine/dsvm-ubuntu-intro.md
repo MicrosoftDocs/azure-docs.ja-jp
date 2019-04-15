@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884678"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317014"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -144,9 +144,9 @@ SSH クライアントを使用するか、X2Go クライアントから XFCE �
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub と JupyterLab
 
-Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [JupyterHub](https://github.com/jupyterhub/jupyterhub) を実行します。 接続するには、ノート PC またはデスクトップで https://your-vm-ip:8000 を参照し、VM を作成するときに使ったユーザー名とパスワードを入力して、ログインします。 多くのサンプル ノートブックを参照して試してみることができます。
+Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [JupyterHub](https://github.com/jupyterhub/jupyterhub) を実行します。 接続するには、ノート PC またはデスクトップで https:\//your-vm-ip:8000 に移動し、VM を作成するときに使ったユーザー名とパスワードを入力してログインします。 多くのサンプル ノートブックを参照して試してみることができます。
 
-次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 JupyterLab にアクセスするには、JupyterHub にログインし、URL https://your-vm-ip:8000/user/your-username/lab を参照します。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
+次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 アクセスするには、JupyterHub にログインし、URL https:\//your-vm-ip:8000/user/your-username/lab にアクセスします。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
 
     c.Spawner.default_url = '/lab'
 

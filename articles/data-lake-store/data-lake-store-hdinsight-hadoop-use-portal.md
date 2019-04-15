@@ -3,25 +3,25 @@ title: Azure portal を使用して、Azure Data Lake Storage Gen1 を使用す�
 description: Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成および使用します
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: a8c45a83-a8e3-4227-8b02-1bc1e1de6767
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 25e4c308b55b66038be6825a239f185e5e813af5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085764"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883430"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
-> * [Azure Portal の使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Resource Manager の使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -93,7 +93,7 @@ Azure portal を使用して、既定のストレージまたは追加のスト�
 
 Azure Portal から、既存のサービス プリンシパルを使用するか、新しいものを作成することができます。
 
-**Azure Portal からサービス プリンシパルを作成するには**
+**Azure portal からサービス プリンシパルを作成するには**
 
 1. [ストレージ] ブレードから **[Data Lake Store アクセス]** をクリックします。
 2. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[新規作成]** をクリックします。
@@ -105,7 +105,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 4. **[アクセス]** をクリックして、フォルダーへのアクセスを構成します。  「[ファイルのアクセス許可を構成する](#configure-file-permissions)」を参照してください。
 
 
-**Azure Portal から既存のサービス プリンシパルを使用するには**
+**Azure portal から既存のサービス プリンシパルを使用するには**
 
 1. **[Data Lake Store アクセス]** をクリックします。
 1. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[既存のものを使用]** をクリックします。
@@ -185,9 +185,9 @@ Data Lake Storage Gen1 アカウント内のデータを操作するときは、
     CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
 
 上記のクエリで、
-* `adl://hdiadlsg1storage.azuredatalakestore.net/` は Data Lake Storage Gen1 アカウントのルートです。
-* `/clusters/myhdiadlcluster` はクラスターの作成時に指定したクラスター データのルートです。
-* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` はクエリで使用したサンプル ファイルの場所です。
+* `adl://hdiadlsg1storage.azuredatalakestore.net/`  は Data Lake Storage Gen1 アカウントのルートです。
+* `/clusters/myhdiadlcluster`  はクラスターの作成時に指定したクラスター データのルートです。
+* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/`  はクエリで使用したサンプル ファイルの場所です。
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>(追加ストレージとしての) Data Lake Storage Gen1 アカウントに格納されているデータに対して Hive クエリを実行する
 
@@ -195,8 +195,8 @@ Data Lake Storage Gen1 アカウント内のデータを操作するときは、
 
 Blob Storage から Data Lake Storage Gen1 アカウントにデータをコピーする方法については、次の記事をご覧ください。
 
-* [Distcp を使用して Azure Storage BLOB と Data Lake Storage Gen1 の間でデータをコピーする](data-lake-store-copy-data-wasb-distcp.md)
-* [AdlCopy を使用して Azure Storage BLOB のデータを Data Lake Storage Gen1 にコピーする](data-lake-store-copy-data-azure-storage-blob.md)
+* [Distcp を使用して Azure Storage Blob と Data Lake Storage Gen1 の間でデータをコピーする](data-lake-store-copy-data-wasb-distcp.md)
+* [AdlCopy を使用して Azure Storage Blob のデータを Data Lake Storage Gen1 にコピーする](data-lake-store-copy-data-azure-storage-blob.md)
 
 ### <a name="use-data-lake-storage-gen1-with-a-spark-cluster"></a>Spark クラスターで Data Lake Storage Gen1 を使用する
 Spark クラスターを使用すると、Data Lake Storage Gen1 アカウントに格納されているデータに対して Spark ジョブを実行できます。 詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen1 のデータの分析](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)に関するページをご覧ください。
@@ -207,7 +207,7 @@ Data Lake Storage Gen1 アカウントを使用して、Storm トポロジから
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [PowerShell: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [PowerShell:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

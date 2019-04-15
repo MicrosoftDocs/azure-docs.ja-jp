@@ -1,5 +1,5 @@
 ---
-title: Azure MFA NPS の拡張機能を構成する | Microsoft Docs
+title: Azure MFA NPS 拡張機能の構成 - Azure Active Directory
 description: NPS の拡張機能をインストールした後に、これらの手順を使用して IP のホワイトリスト登録や UPN の置換などを詳細に構成できます。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2690cb4243597c942b6679b5864016bf14fcbad1
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 5bfae3b3be7812ff50ed90a61d495877141bbc7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732438"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309710"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
@@ -30,7 +30,7 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 代替ログイン ID を構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を編集します。
 
-| Name | type | 既定値 | 説明 |
+| 名前 | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 文字列 | Empty | UPN の代わりに使用する Active Directory 属性の名前を指定します。 この属性は、AlternateLoginId 属性として使用されます。 このレジストリ値が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx) (メールや displayName など) に設定されている場合、その属性の値がユーザーの UPN の代わりに認証に使用されます。 このレジストリ値が空または構成されていない場合、AlternateLoginId が無効になり、ユーザーの UPN が認証に使用されます。 |
 | LDAP_FORCE_GLOBAL_CATALOG | ブール値 | False | このフラグを使用して、AlternateLoginId を検索する LDAP 検索でグローバル カタログの使用を強制します。 グローバル カタログとしてドメイン コントローラーを構成し、AlternateLoginId 属性をグローバル カタログに追加してから、このフラグを有効にします。 <br><br> LDAP_LOOKUP_FORESTS が構成されている (空でない) 場合、レジストリ設定の値に関係なく、**このフラグが true として適用されます**。 この場合、NPS の拡張機能では、各フォレストに対してグローバル カタログが AlternateLoginId 属性で構成される必要があります。 |
@@ -44,7 +44,7 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 IP のホワイトリストを構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を構成します。 
 
-| Name | type | 既定値 | 説明 |
+| 名前 | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 文字列 | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 IP 範囲とサブネットはサポートされません。 <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
 

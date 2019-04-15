@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 87d828e596c42b786d1c54a7158e1151f374c560
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444292"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793041"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -64,13 +64,13 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>コネクタのインストールに管理者を使用していることを確認する
 
-**目的:** コネクタをインストールするユーザーが適切な資格情報を持つ管理者であることを確認します。 現時点では、正常にインストールするには、ユーザーがアプリケーション管理者またはグローバル管理者のいずれかである必要があります。
+**目的:** コネクタをインストールするユーザーが適切な資格情報を持つ管理者であることを確認します。 現時点では、正常にインストールするには、そのユーザーは、少なくともアプリケーション管理者である必要があります。
 
 **資格情報が適切であることを確認するには:**
 
 <https://login.microsoftonline.com> に接続し、同じ資格情報を使用します。 ログインに成功したことを確認します。 **[Azure Active Directory]** -&gt; **[ユーザーとグループ]** -&gt; **[すべてのユーザー]** に移動して、ユーザー ロールを確認できます。 
 
-ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "アプリケーション管理者" または "グローバル管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合、ユーザーは必要なロールを持っていません。
+ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "アプリケーション管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合、ユーザーは必要なロールを持っていません。
 
 ## <a name="next-steps"></a>次の手順
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)

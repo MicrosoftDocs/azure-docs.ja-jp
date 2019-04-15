@@ -12,45 +12,41 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834601"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850176"
 ---
-# <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Active Directory MFA を使用して Azure SQL Database に接続する
+# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
 
-この記事では、Microsoft Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure Active Directory (Azure AD) の多要素認証 (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) をサポートする対話モードの認証を使用します。
+この記事では、Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) をサポートする対話モードの認証を使用します。
 
-SQL ツールでの MFA のサポートの詳細については、「[Azure Active Directory support in SQL Server Data Tools (SSDT) (SQL Server Data Tools (SSDT) での Azure Active Directory のサポート)](https://docs.microsoft.com/sql/ssdt/azure-active-directory)」をご覧ください。
+SQL ツールでの多要素認証のサポートの詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](https://docs.microsoft.com/sql/ssdt/azure-active-directory)」をご覧ください。
 
 ## <a name="multi-factor-authentication-for-azure-sql-database"></a>Azure SQL Database の多要素認証
 
-.NET Framework バージョン 4.7.2 以降から、列挙型 [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) に新しい値 `ActiveDirectoryInteractive` が追加されました。 C# クライアント プログラムでこの列挙値を使用すると、Azure SQL Database への接続に、MFA をサポートする Azure AD 対話モードを使用するようシステムに指示します。 プログラムを実行するユーザーには、次のダイアログ ボックスが表示されます。
+.NET Framework バージョン 4.7.2 以降、列挙型 [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) に新しい値 `ActiveDirectoryInteractive` が追加されました。 C# クライアント プログラムでこの列挙値を使用すると、Azure SQL Database への接続に、多要素認証をサポートする Azure Active Directory (Azure AD) 対話モードを使用するようシステムに指示します。 プログラムを実行するユーザーには、次のダイアログ ボックスが表示されます。
 
 * Azure AD ユーザー名を表示し、そのユーザーのパスワードの入力を求めるダイアログ ボックス。
 
    ユーザーのドメインが Azure AD とフェデレーションされている場合、パスワードが不要なため、このダイアログ ボックスは表示されません。
 
-   Azure AD ポリシーでユーザーに MFA が強制されている場合は、次の 2 つのダイアログ ボックスが表示されます。
+   Azure AD ポリシーでユーザーに多要素認証が強制されている場合は、次の 2 つのダイアログ ボックスが表示されます。
 
-* ユーザーが初めて MFA を実行するときに、テキスト メッセージの送信先の携帯電話番号を確認するダイアログ ボックスが表示されます。 各メッセージでは、ユーザーが次のダイアログ ボックスに入力する必要がある*確認コード*が提供されます。
+* ユーザーが初めて多要素認証を実行するときに、テキスト メッセージの送信先の携帯電話番号を確認するダイアログ ボックスが表示されます。 各メッセージでは、ユーザーが次のダイアログ ボックスに入力する必要がある*確認コード*が提供されます。
 
-* システムから携帯電話に送信された MFA 確認コードの入力を求めるダイアログ ボックス。
+* システムから携帯電話に送信された多要素認証確認コードの入力を求めるダイアログ ボックス。
 
-MFA を要求するように Azure AD を構成する方法については、「[Getting started with Azure Multi-Factor Authentication in the cloud (クラウドでの Azure Multi-Factor Authentication の概要)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud)」をご覧ください。
+多要素認証を要求するように Azure AD を構成する方法については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud)」をご覧ください。
 
-これらのダイアログのスクリーンショットについては、「[Configure multi-factor authentication for SQL Server Management Studio and Azure AD (SQL Server Management Studio と Azure AD 用に多要素認証を構成する)](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
+これらのダイアログのスクリーンショットについては、「[SQL Server Management Studio と Azure AD 用に多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
 
 > [!TIP]
-> .NET Framework API は **.NET API Browser** ツール ページで検索できます。
+> .NET Framework API は [.NET API ブラウザー ツール ページ](https://docs.microsoft.com/dotnet/api/)で検索できます。
 >
-> [https://docs.microsoft.com/dotnet/api/](https://docs.microsoft.com/dotnet/api/)
->
-> また、省略可能な **?term=&lt;検索値&gt;** パラメーターで直接検索することもできます。
->
-> [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
+> また、省略可能な [?term=&lt;検索値&gt;](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod) パラメーターで直接検索することもできます。
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Azure portal で C# アプリケーションを構成する
 
@@ -58,15 +54,13 @@ MFA を要求するように Azure AD を構成する方法については、「
 
 ### <a name="register-your-app-and-set-permissions"></a>アプリを登録してアクセス許可を設定する
 
-
 Azure AD 認証を使用するには、C# プログラムで Azure AD アプリケーションとして登録する必要があります。 アプリを登録するには、Azure AD 管理者または Azure AD *Application Developer* のロールが割り当てられたユーザーである必要があります。 ロールの割り当ての詳細については、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)」を参照してください。
 
- アプリの登録を完了すると、**アプリケーション ID** が生成され、表示されます。 接続するには、プログラムにこの ID を含める必要があります。
-
+アプリの登録を完了すると、**アプリケーション ID** が生成され、表示されます。 接続するには、プログラムにこの ID を含める必要があります。
 
 アプリケーションに必要なアクセス許可を登録して設定するには:
 
-1. Azure portal で **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順に選択します。
+1. Azure Portal で、**[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順に選びます。
 
     ![アプリの登録](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -74,32 +68,31 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
     ![表示されたアプリ ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. **[登録済みのアプリ]** > **[設定]** > **[必要なアクセス許可]** > **[追加]**
+2. **[登録済みのアプリ]** > **[設定]** > **[必要なアクセス許可]** > **[追加]** を選択します。
 
     ![登録済みのアプリのアクセス許可の設定](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** > **[Azure SQL Database]**
+3. **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** > **[Azure SQL Database]** を選択します。
 
     ![Azure SQL Database の API へのアクセスの追加](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. **[API アクセス]** > **[アクセス許可の選択]** > **[委任されたアクセス許可]**
+4. **[API アクセス]** > **[アクセス許可の選択]** > **[委任されたアクセス許可]** を選択します。
 
     ![Azure SQL Database の API へのアクセス許可の委任](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 ### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>SQL Database サーバーの Azure AD 管理者を設定する
 
+C# プログラムを実行するには、Azure SQL サーバー管理者が SQL Database サーバーの Azure AD 管理者を割り当てる必要があります。 
 
-C# プログラムを実行するには、Azure SQL サーバー管理者が Azure SQL サーバーの Azure AD 管理者を割り当てる必要があります。 
+**[SQL Server]** ページで、**[Active Directory 管理者]** > **[管理者の設定]** を選択します。
 
- * **[SQL Server]** > **[Active Directory 管理者]** > **[管理者の設定]**
-
-Azure SQL Database の Azure AD 管理者とユーザーの詳細については、[SQL Database での Azure Active Directory Authentication の構成と管理](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)に関する記事の「**Provision an Azure Active Directory administrator for your Azure SQL Database server (Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする)**」のスクリーンショットをご覧ください。
+Azure SQL Database の Azure AD 管理者とユーザーの詳細については、[SQL Database での Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)に関する記事のスクリーンショットをご覧ください。
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>管理者以外のユーザーを特定のデータベースに追加する (省略可能)
 
 SQL Database サーバーの Azure AD 管理者は、C# サンプル プログラムを実行できます。 Azure AD ユーザーは、データベースに登録されていればプログラムを実行できます。 データベースに既に登録され、データベースに対して `ALTER ANY USER` アクセス許可を持つ Azure AD SQL 管理者または Azure AD ユーザーは、ユーザーを追加できます。
 
-SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 たとえば、「 `CREATE USER [<username>] FROM EXTERNAL PROVIDER` 」のように入力します。
+SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 例: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`。
 
 詳細については、「[Use Azure Active Directory Authentication for authentication with SQL Database, Managed Instance, or SQL Data Warehouse (SQL Database、マネージド インスタンス、または SQL Data Warehouse での認証に Azure Active Directory Authentication を使用する)](sql-database-aad-authentication.md)」をご覧ください。
 
@@ -109,15 +102,15 @@ SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-
 
 - `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
-   MFA を実装するには、この値を Azure AD ユーザー名と共に使用します。 この記事ではこの値が重視されます。 ユーザー パスワードのダイアログを表示し、このユーザーに MFA を適用する場合は MFA 検証のダイアログを表示することで、対話型エクスペリエンスを実現します。 この値は、.NET Framework バージョン 4.7.2 以降で使用できます。
+   この値と Azure AD ユーザー名を使用して、多要素認証を実装します。 この記事ではこの値が重視されます。 ユーザー パスワード用のダイアログを表示し、このユーザーに多要素認証が適用される場合は多要素認証を確認するためのダイアログを表示することで、対話型エクスペリエンスを実現します。 この値は、.NET Framework バージョン 4.7.2 以降で使用できます。
 
 - `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  *フェデレーション* アカウントにこの値を使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この認証方法は MFA をサポートしていません。
+  *フェデレーション* アカウントにこの値を使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この認証方法では、多要素認証はサポートされません。
 
 - `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
-  Azure AD のユーザー名とパスワードが必要な認証には、この値を使用します。 Azure SQL Database によって認証が実行されます。 この方法は MFA をサポートしていません。
+  Azure AD のユーザー名とパスワードが必要な認証には、この値を使用します。 Azure SQL Database によって認証が実行されます。 この方法では、多要素認証はサポートされません。
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Azure portal から C# パラメーター値を設定する
 
@@ -129,25 +122,25 @@ C# プログラムを正常に実行するには、静的フィールドに適�
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **[Azure Active Directory]** > **[ユーザー]** > **[新しいゲスト ユーザー]** |
 | Initial_DatabaseName | "myDatabase" | **[SQL Server]** > **[SQL データベース]** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > **[アプリケーション ID]** |
-| RedirectUri | 新しい URI ("https://mywebserver.com/") | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > *"アプリの登録名"* > **[設定]** > **[RedirectURIs]**<br /><br />この記事では使用されていないため、RedirectUri に任意の有効な値を指定できます。 |
+| RedirectUri | 新しい URI ("https://mywebserver.com/") | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > *"アプリの登録名"* > **[設定]** > **[RedirectURI]**<br /><br />この記事では使用されていないため、RedirectUri には任意の有効な値を指定できます。 |
 | &nbsp; | &nbsp; | &nbsp; |
 
-## <a name="verify-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) で確認する
+## <a name="verify-with-sql-server-management-studio"></a>SQL Server Management Studio で確認する
 
-C# プログラムを実行する前に、SSMS で設定と構成が正しいことを確認することをお勧めします。 こうすることで、C# プログラムのエラーをソース コードに絞り込むことができます。
+C# プログラムを実行する前に、SQL Server Management Studio (SSMS) で設定と構成が正しいことを確認することをお勧めします。 こうすることで、C# プログラムのエラーをソース コードに絞り込むことができます。
 
 ### <a name="verify-sql-database-firewall-ip-addresses"></a>SQL Database のファイアウォールの IP アドレスを確認する
 
 C# プログラムを実行する予定の場合、同じ構成で、同じコンピューターから SSMS を実行します。 このテストの場合は、任意の**認証**モードを使用できます。 データベース サーバーのファイアウォールが、指定した IP アドレスを受け入れていないことを示している場合は、[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
 
-### <a name="verify-azure-active-directory-mfa"></a>Azure Active Directory の MFA を確認する
+### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Azure Active Directory の多要素認証を確認する
 
 **[認証]** を **[Active Directory - MFA サポートで汎用]** に設定して、SSMS をもう一度実行します。 このオプションを使用するには、SSMS バージョン 17.5 以降が必要です。
 
-詳細については、[SSMS と Azure AD 用の多要素認証の構成](sql-database-ssms-mfa-authentication-configure.md)に関する記事をご覧ください。
+詳細については、「[SQL Server Management Studio と Azure AD 用に多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
 
 > [!NOTE]
-> データベースのゲスト ユーザーの場合は、データベースの Azure AD ドメイン名 (**[オプション]** > **[AD ドメイン名またはテナント ID]**) も指定する必要があります。 Azure portal でドメイン名を見つけるには、**[Azure Active Directory]** > **[カスタム ドメイン名]** の順に選択します。 この C# サンプル プログラムでは、ドメイン名を指定する必要はありません。
+> データベースのゲスト ユーザーの場合は、データベースの Azure AD ドメイン名も指定する必要があります。**[オプション]** > **[AD ドメイン名またはテナント ID]** を選択します。 Azure portal でドメイン名を見つけるには、**[Azure Active Directory]** > **[カスタム ドメイン名]** の順に選択します。 この C# サンプル プログラムでは、ドメイン名を指定する必要はありません。
 
 ## <a name="c-code-example"></a>C# コード例
 
@@ -155,7 +148,7 @@ C# プログラムを実行する予定の場合、同じ構成で、同じコ�
 
 このパッケージをインストールするには、Visual Studio で **[プロジェクト]** > **[NuGet パッケージの管理]** の順に選択します。 「**Microsoft.IdentityModel.Clients.ActiveDirectory**」を検索してインストールします。
 
-### <a name="c-source-code"></a>C# ソース コード
+これは C# のソース コードの例です。
 
 ```csharp
 
@@ -247,11 +240,11 @@ namespace ADInteractive5
                 Console.ResetColor();
             }
         }
-    } // EOClass Program .
+    } // EOClass Program.
 
     /// <summary>
     /// SqlAuthenticationProvider - Is a public class that defines 3 different Azure AD
-    /// authentication methods.  The methods are supported in the new .NET 4.7.2 .
+    /// authentication methods.  The methods are supported in the new .NET 4.7.2.
     ///  . 
     /// 1. Interactive,  2. Integrated,  3. Password
     ///  . 
@@ -318,14 +311,14 @@ namespace ADInteractive5
                 || authenticationMethod == SC.SqlAuthenticationMethod.ActiveDirectoryInteractive
                 || authenticationMethod == SC.SqlAuthenticationMethod.ActiveDirectoryPassword;
         }
-    } // EOClass ActiveDirectoryAuthProvider .
+    } // EOClass ActiveDirectoryAuthProvider.
 } // EONamespace.  End of entire program source code.
 
 ```
 
 &nbsp;
 
-#### <a name="actual-test-output-from-c"></a>C# の実際のテスト出力
+これは C# のテスト出力の例です。
 
 ```
 [C:\Test\VSProj\ADInteractive5\ADInteractive5\bin\Debug\]

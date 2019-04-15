@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 848b2a0c912a00a2185d7e4b7b8d8446bc1f6aca
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782889"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497178"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -29,7 +29,10 @@ ms.locfileid: "57782889"
 
 [クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
 
-## <a name="compute-quota-types"></a>Compute クォータの種類 
+> [!IMPORTANT]
+> ユーザー ポータルで新しいクォータが使用可能になるまで、または変更されたクォータが適用されるまでに最大で 2 時間かかることがあります。
+
+## <a name="compute-quota-types"></a>Compute クォータの種類
 
 | **Type** | **既定値** | **説明** |
 | --- | --- | --- |
@@ -40,7 +43,10 @@ ms.locfileid: "57782889"
 | [Maximum capacity (in GB) of standard managed disk]\(Standard マネージド ディスクの最大容量 (GB)\) | 2048 | この場所に作成できる Standard マネージド ディスクの最大容量。 |
 | [Maximum capacity (in GB) of premium managed disk]\(Premium マネージド ディスクの最大容量 (GB)\) | 2048 | この場所に作成できる Premium マネージド ディスクの最大容量。 |
 
-## <a name="storage-quota-types"></a>Storage クォータの種類 
+> [!NOTE]  
+> アンマネージド ディスク (ページ BLOB) の最大容量は、マネージド ディスクのクォータとは区別されます。 この値は**ストレージ クォータ**で設定できます。
+
+## <a name="storage-quota-types"></a>Storage クォータの種類
 
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
@@ -48,14 +54,13 @@ ms.locfileid: "57782889"
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
 > [!NOTE]  
-> ストレージ クォータが適用されるまでに最大 2 時間かかることがあります。
-
+> マネージド ディスクの最大容量は、ストレージ クォータの合計とは区別されます。 この値は**コンピューティング クォータ**で設定できます。
 
 ## <a name="network-quota-types"></a>Network クォータの種類
 
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| [Maximum public IPs]\(パブリック IP の最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるパブリック IP の最大数です。 |
+| [Maximum public IPs]\(パブリック IP の最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるパブリック IP アドレスの最大数です。 |
 | [Maximum virtual networks]\(仮想ネットワークの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワークの最大数です。 |
 | [Maximum virtual network gateways]\(仮想ネットワーク ゲートウェイの最大数\) |1 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) の最大数です。 |
 | [Maximum network connections]\(ネットワーク接続の最大数\) |2 |1 つのサブスクリプションで、すべての仮想ネットワーク ゲートウェイにまたがってこの場所に作成できるネットワーク接続 (ポイント対ポイントまたはサイト対サイト) の最大数です。 |
@@ -69,10 +74,10 @@ ms.locfileid: "57782889"
 
 ### <a name="plans"></a>プラン
 
-1.  管理者ポータルの左側のナビゲーション ウィンドウで、**[プラン]** を選択します。
-2.  詳細を表示するプランの名前をクリックして選択します。
-3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
-4.  表示するクォータの **[名前]** 列をクリックして選択します。
+1. 管理者ポータルの左側のナビゲーション ウィンドウで、**[プラン]** を選択します。
+2. 詳細を表示するプランの名前をクリックして選択します。
+3. 表示されたブレードで、**[サービスとクォータ]** を選択します。
+4. 表示するクォータの **[名前]** 列をクリックして選択します。
 
     [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
@@ -88,14 +93,14 @@ ms.locfileid: "57782889"
 
 ### <a name="edit-a-plan"></a>プランを編集する
 
-1.  管理者ポータルの左側のナビゲーション ウィンドウで、**[プラン]** を選択します。
-2.  編集するプランの名前をクリックして選択します。
-3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
-4.  編集するクォータの **[名前]** 列をクリックして選択します。
+1. 管理者ポータルの左側のナビゲーション ウィンドウで、**[プラン]** を選択します。
+2. 編集するプランの名前をクリックして選択します。
+3. 表示されたブレードで、**[サービスとクォータ]** を選択します。
+4. 編集するクォータの **[名前]** 列をクリックして選択します。
     [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
-5.  表示されたブレードで、**[Edit in Compute]\(コンピューティングで編集\)**、**[Edit in Network]\(ネットワークで編集\)**、または **[Edit in Storage]\(\)** を選択します。
-    ![クォータ](media/azure-stack-quota-types/quotas3.png "クォータの表示")    
+5. 表示されたブレードで、**[Edit in Compute]\(コンピューティングで編集\)**、**[Edit in Network]\(ネットワークで編集\)**、または **[Edit in Storage]\(\)** を選択します。
+    ![クォータ](media/azure-stack-quota-types/quotas3.png "クォータの表示")
 
 または、次の手順に従ってクォータを編集できます。
 
@@ -106,9 +111,9 @@ ms.locfileid: "57782889"
 
 ### <a name="edit-original-configuration"></a>元の構成を編集する
   
-[アドオン プランを使用](create-add-on-plan.md)する代わりに、クォータの元の構成を編集することもできます。 クォータを編集すると、そのクォータを使うすべてのプランおよびそれらのプランを使う既存のサブスクリプションすべてに対してグローバルに、新しい構成が自動的に適用されます。 クォータの編集は、ユーザーが任意でサブスクライブする変更されたクォータをアドオン プランで提供するときとは異なります。 
+[アドオン プランを使用](create-add-on-plan.md)する代わりに、クォータの元の構成を編集することもできます。 クォータを編集すると、そのクォータを使うすべてのプランおよびそれらのプランを使う既存のサブスクリプションすべてに対してグローバルに、新しい構成が自動的に適用されます。 クォータの編集は、ユーザーが任意でサブスクライブする変更されたクォータをアドオン プランで提供するときとは異なります。
 
-変更されたクォータを使うすべてのプランおよびそれらのプランを使う既存の全サブスクリプションに対して、クォータの新しい値がグローバルに適用されます。 
+変更されたクォータを使うすべてのプランおよびそれらのプランを使う既存の全サブスクリプションに対して、クォータの新しい値がグローバルに適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 03/28/2019
 ms.author: celested
-ms.reviewer: paulgarn, hirsin, jeedes
+ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af00c311b406a0bae285a00f0d537ce9bae3aa7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102117"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884079"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -52,142 +52,142 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1:JSON Web トークン (JWT) 制限付き要求セット
 
-|要求の種類 (名前)|
+| 要求の種類 (名前) |
 | ----- |
-|_claim_names|
-|_claim_sources|
-|access_token|
-|account_type|
-|acr|
-|actor|
-|actortoken|
-|aio|
-|altsecid|
-|amr|
-|app_chain|
-|app_displayname|
-|app_res|
-|appctx|
-|appctxsender|
-|appid|
-|appidacr|
-|assertion|
-|at_hash|
-|aud|
-|auth_data|
-|auth_time|
-|authorization_code|
-|azp|
-|azpacr|
-|c_hash|
-|ca_enf|
-|cc|
-|cert_token_use|
-|client_id|
-|cloud_graph_host_name|
-|cloud_instance_name|
-|cnf|
-|code|
-|controls|
-|credential_keys|
-|csr|
-|csr_type|
-|deviceid|
-|dns_names|
-|domain_dns_name|
-|domain_netbios_name|
-|e_exp|
-|email|
-|endpoint|
-|enfpolids|
-|exp|
-|expires_on|
-|grant_type|
-|graph|
-|group_sids|
-|groups|
-|hasgroups|
-|hash_alg|
-|home_oid|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`|
-|iat|
-|identityprovider|
-|idp|
-|in_corp|
-|instance|
-|ipaddr|
-|isbrowserhostedapp|
-|iss|
-|jwk|
-|key_id|
-|key_type|
-|mam_compliance_url|
-|mam_enrollment_url|
-|mam_terms_of_use_url|
-|mdm_compliance_url|
-|mdm_enrollment_url|
-|mdm_terms_of_use_url|
-|nameid|
-|nbf|
-|netbios_name|
-|nonce|
-|oid|
-|on_prem_id|
-|onprem_sam_account_name|
-|onprem_sid|
-|openid2_id|
-|password|
-|platf|
-|polids|
-|pop_jwk|
-|preferred_username|
-|previous_refresh_token|
-|primary_sid|
-|puid|
-|pwd_exp|
-|pwd_url|
-|redirect_uri|
-|refresh_token|
-|refreshtoken|
-|request_nonce|
-|resource|
-|role|
-|roles|
-|scope|
-|scp|
-|sid|
-|signature|
-|signin_state|
-|src1|
-|src2|
-|sub|
-|tbid|
-|tenant_display_name|
-|tenant_region_scope|
-|thumbnail_photo|
-|tid|
-|tokenAutologonEnabled|
-|trustedfordelegation|
-|unique_name|
-|upn|
-|user_setting_sync_url|
-|username|
-|uti|
-|ver|
-|verified_primary_email|
-|verified_secondary_email|
-|wids|
-|win_ver|
+| _claim_names |
+| _claim_sources |
+| access_token |
+| account_type |
+| acr |
+| actor |
+| actortoken |
+| aio |
+| altsecid |
+| amr |
+| app_chain |
+| app_displayname |
+| app_res |
+| appctx |
+| appctxsender |
+| appid |
+| appidacr |
+| assertion |
+| at_hash |
+| aud |
+| auth_data |
+| auth_time |
+| authorization_code |
+| azp |
+| azpacr |
+| c_hash |
+| ca_enf |
+| cc |
+| cert_token_use |
+| client_id |
+| cloud_graph_host_name |
+| cloud_instance_name |
+| cnf |
+| code |
+| controls |
+| credential_keys |
+| csr |
+| csr_type |
+| deviceid |
+| dns_names |
+| domain_dns_name |
+| domain_netbios_name |
+| e_exp |
+| email |
+| endpoint |
+| enfpolids |
+| exp |
+| expires_on |
+| grant_type |
+| graph |
+| group_sids |
+| groups |
+| hasgroups |
+| hash_alg |
+| home_oid |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
+| iat |
+| identityprovider |
+| idp |
+| in_corp |
+| instance |
+| ipaddr |
+| isbrowserhostedapp |
+| iss |
+| jwk |
+| key_id |
+| key_type |
+| mam_compliance_url |
+| mam_enrollment_url |
+| mam_terms_of_use_url |
+| mdm_compliance_url |
+| mdm_enrollment_url |
+| mdm_terms_of_use_url |
+| nameid |
+| nbf |
+| netbios_name |
+| nonce |
+| oid |
+| on_prem_id |
+| onprem_sam_account_name |
+| onprem_sid |
+| openid2_id |
+| password |
+| platf |
+| polids |
+| pop_jwk |
+| preferred_username |
+| previous_refresh_token |
+| primary_sid |
+| puid |
+| pwd_exp |
+| pwd_url |
+| redirect_uri |
+| refresh_token |
+| refreshtoken |
+| request_nonce |
+| resource |
+| role |
+| roles |
+| scope |
+| scp |
+| sid |
+| signature |
+| signin_state |
+| src1 |
+| src2 |
+| sub |
+| tbid |
+| tenant_display_name |
+| tenant_region_scope |
+| thumbnail_photo |
+| tid |
+| tokenAutologonEnabled |
+| trustedfordelegation |
+| unique_name |
+| upn |
+| user_setting_sync_url |
+| username |
+| uti |
+| ver |
+| verified_primary_email |
+| verified_secondary_email |
+| wids |
+| win_ver |
 
 ### <a name="table-2-saml-restricted-claim-set"></a>表 2:SAML 制限付き要求セット
 
-|要求の種類 (URI)|
+| 要求の種類 (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -196,7 +196,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 |`http://schemas.microsoft.com/identity/claims/identityprovider`|
 |`http://schemas.microsoft.com/identity/claims/objectidentifier`|
 |`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] `|
+|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
 |`http://schemas.microsoft.com/identity/claims/tenantid`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
@@ -246,7 +246,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 **データ型**: ブール値 (True または False)
 
-**概要:** このプロパティは、基本要求セットが、このポリシーの影響を受けるトークンに含まれるかどうかを判断します。 
+**概要:** このプロパティは、基本要求セットが、このポリシーの影響を受けるトークンに含まれるかどうかを判断します。
 
 - True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。 
 - False に設定されている場合、基本要求セット内の要求は、同じポリシーの要求スキーマ プロパティに個別に追加されない限り、トークンに追加されません。
@@ -284,51 +284,51 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-|ソース|ID|説明|
+| ソース | ID | 説明 |
 |-----|-----|-----|
-|User|surname|姓|
-|User|givenname|名|
-|User|displayname|表示名|
-|User|objectid|ObjectID|
-|User|mail|電子メール アドレス|
-|User|userprincipalname|ユーザー プリンシパル名|
-|User|department|部署|
-|User|onpremisessamaccountname|オンプレミスの Sam のアカウント名|
-|User|netbiosname|NetBios 名|
-|User|dnsdomainname|DNS ドメイン名|
-|User|onpremisesecurityidentifier|オンプレミスのセキュリティ ID|
-|User|companyname|組織名|
-|User|streetaddress|番地|
-|User|postalcode|郵便番号|
-|User|preferredlanguange|優先言語|
-|User|onpremisesuserprincipalname|オンプレミスの UPN|
-|User|mailNickname|メールのニックネーム|
-|User|extensionattribute1|拡張属性 1|
-|User|extensionattribute2|拡張属性 2|
-|User|extensionattribute3|拡張属性 3|
-|User|extensionattribute4|拡張属性 4|
-|User|extensionattribute5|拡張属性 5|
-|User|extensionattribute6|拡張属性 6|
-|User|extensionattribute7|拡張属性 7|
-|User|extensionattribute8|拡張属性 8|
-|User|extensionattribute9|拡張属性 9|
-|User|extensionattribute10|拡張属性 10|
-|User|extensionattribute11|拡張属性 11|
-|User|extensionattribute12|拡張属性 12|
-|User|extensionattribute13|拡張属性 13|
-|User|extensionattribute14|拡張属性 14|
-|User|extensionattribute15|拡張属性 15|
-|User|othermail|その他のメール|
-|User|country|Country|
-|User|city|City|
-|User|state|状態|
-|User|jobtitle|役職|
-|User|employeeid|従業員 ID|
-|User|facsimiletelephonenumber|ファックスの電話番号|
-|アプリケーション、リソース、対象ユーザー|displayName|表示名|
-|アプリケーション、リソース、対象ユーザー|objected|ObjectID|
-|アプリケーション、リソース、対象ユーザー|tags|サービス プリンシパル タグ|
-|[会社]|tenantcountry|テナントの国|
+| User | surname | 姓 |
+| User | givenname | 名 |
+| User | displayname | 表示名 |
+| User | objectid | ObjectID |
+| User | mail | 電子メール アドレス |
+| User | userprincipalname | ユーザー プリンシパル名 |
+| User | department|部署|
+| User | onpremisessamaccountname | オンプレミスの SAM のアカウント名 |
+| User | netbiosname| NetBios 名 |
+| User | dnsdomainname | DNS ドメイン名 |
+| User | onpremisesecurityidentifier | オンプレミスのセキュリティ ID |
+| User | companyname| 組織名 |
+| User | streetaddress | 番地 |
+| User | postalcode | 郵便番号 |
+| User | preferredlanguange | 優先言語 |
+| User | onpremisesuserprincipalname | オンプレミスの UPN |
+| User | mailNickname | メールのニックネーム |
+| User | extensionattribute1 | 拡張属性 1 |
+| User | extensionattribute2 | 拡張属性 2 |
+| User | extensionattribute3 | 拡張属性 3 |
+| User | extensionattribute4 | 拡張属性 4 |
+| User | extensionattribute5 | 拡張属性 5 |
+| User | extensionattribute6 | 拡張属性 6 |
+| User | extensionattribute7 | 拡張属性 7 |
+| User | extensionattribute8 | 拡張属性 8 |
+| User | extensionattribute9 | 拡張属性 9 |
+| User | extensionattribute10 | 拡張属性 10 |
+| User | extensionattribute11 | 拡張属性 11 |
+| User | extensionattribute12 | 拡張属性 12 |
+| User | extensionattribute13 | 拡張属性 13 |
+| User | extensionattribute14 | 拡張属性 14 |
+| User | extensionattribute15 | 拡張属性 15 |
+| User | othermail | その他のメール |
+| User | country | Country |
+| User | city | City |
+| User | state | 状態 |
+| User | jobtitle | 役職 |
+| User | employeeid | 従業員 ID |
+| User | facsimiletelephonenumber | ファックスの電話番号 |
+| アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
+| アプリケーション、リソース、対象ユーザー | objected | ObjectID |
+| アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |
+| [会社] | tenantcountry | テナントの国 |
 
 **TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
 
@@ -386,32 +386,32 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 |ソース|ID|説明|
 |-----|-----|-----|
-|User|mail|電子メール アドレス|
-|User|userprincipalname|ユーザー プリンシパル名|
-|User|onpremisessamaccountname|オンプレミスの Sam のアカウント名|
-|User|employeeid|従業員 ID|
-|User|extensionattribute1|拡張属性 1|
-|User|extensionattribute2|拡張属性 2|
-|User|extensionattribute3|拡張属性 3|
-|User|extensionattribute4|拡張属性 4|
-|User|extensionattribute5|拡張属性 5|
-|User|extensionattribute6|拡張属性 6|
-|User|extensionattribute7|拡張属性 7|
-|User|extensionattribute8|拡張属性 8|
-|User|extensionattribute9|拡張属性 9|
-|User|extensionattribute10|拡張属性 10|
-|User|extensionattribute11|拡張属性 11|
-|User|extensionattribute12|拡張属性 12|
-|User|extensionattribute13|拡張属性 13|
-|User|extensionattribute14|拡張属性 14|
-|User|extensionattribute15|拡張属性 15|
+| User | mail|電子メール アドレス|
+| User | userprincipalname|ユーザー プリンシパル名|
+| User | onpremisessamaccountname|オンプレミスの Sam のアカウント名|
+| User | employeeid|従業員 ID|
+| User | extensionattribute1 | 拡張属性 1 |
+| User | extensionattribute2 | 拡張属性 2 |
+| User | extensionattribute3 | 拡張属性 3 |
+| User | extensionattribute4 | 拡張属性 4 |
+| User | extensionattribute5 | 拡張属性 5 |
+| User | extensionattribute6 | 拡張属性 6 |
+| User | extensionattribute7 | 拡張属性 7 |
+| User | extensionattribute8 | 拡張属性 8 |
+| User | extensionattribute9 | 拡張属性 9 |
+| User | extensionattribute10 | 拡張属性 10 |
+| User | extensionattribute11 | 拡張属性 11 |
+| User | extensionattribute12 | 拡張属性 12 |
+| User | extensionattribute13 | 拡張属性 13 |
+| User | extensionattribute14 | 拡張属性 14 |
+| User | extensionattribute15 | 拡張属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6:SAML NameID の許可されている変換方法
 
-|TransformationMethod|制限|
+| TransformationMethod | 制限 |
 | ----- | ----- |
-|ExtractMailPrefix|なし|
-|結合|結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。|
+| ExtractMailPrefix | なし |
+| 結合 | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
@@ -437,19 +437,19 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 1. 最新版の [Azure AD PowerShell モジュール パブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。
 1. Connect コマンドを実行して、Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
-    
-     ``` powershell
-    Connect-AzureAD -Confirm
-    
-    ```
+
+   ``` powershell
+   Connect-AzureAD -Confirm
+   ```
 1. 組織に作成されているすべてのポリシーを表示するには、次のコマンドを実行します。 ポリシーが想定どおりに作成されていることを確認するために、次のシナリオのほとんどの操作の後にこのコマンドを実行することをお勧めします。
-   
-    ``` powershell
-        Get-AzureADPolicy
-    
-    ```
-   #### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンから基本要求を省略するために、ポリシーを作成して割り当てる。
-   この例では、リンクされたサービス プリンシパルに対して発行されたトークンから、基本要求セットを削除するポリシーを作成します。
+
+   ``` powershell
+   Get-AzureADPolicy
+   ```
+
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンから基本要求を省略するために、ポリシーを作成して割り当てる
+
+この例では、リンクされたサービス プリンシパルに対して発行されたトークンから、基本要求セットを削除するポリシーを作成します。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
    1. ポリシーを作成するには、このコマンドを実行します。 
@@ -462,7 +462,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       ``` powershell
       Get-AzureADPolicy
       ```
-1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
+1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
    1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
@@ -475,7 +475,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
-   1. ポリシーを作成するには、このコマンドを実行します。  
+   1. ポリシーを作成するには、次のコマンドを実行します。  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
@@ -499,10 +499,10 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 この例では、リンクされたサービス プリンシパルに対して発行された JWT に、カスタム要求 "JoinedData" を出力するポリシーを作成します。 この要求には、ユーザー オブジェクトの extensionattribute1 属性に格納されたデータと ".sandbox" を結合して作成された値が追加されます。 この例では、トークンで基本要求セットを除外します。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
-   1. ポリシーを作成するには、このコマンドを実行します。 
+   1. ポリシーを作成するには、次のコマンドを実行します。
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。 
@@ -517,3 +517,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="see-also"></a>関連項目
+
+SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。

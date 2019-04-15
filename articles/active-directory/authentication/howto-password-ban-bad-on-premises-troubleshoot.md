@@ -1,5 +1,5 @@
 ---
-title: Azure AD パスワード保護のトラブルシューティング
+title: Azure AD パスワード保護のトラブルシューティング - Azure Active Directory
 description: Azure AD パスワード保護の一般的なトラブルシューティングについて説明します
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285702"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863180"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD パスワード保護のトラブルシューティング
 
@@ -44,7 +44,13 @@ Azure AD パスワード保護をデプロイした後、トラブルシュー�
 
 ## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>プロキシ サービスがドメイン内の DC エージェントからの呼び出しを受信できるが、Azure と通信できない
 
-プロキシ コンピューターが「[デプロイ要件](howto-password-ban-bad-on-premises-deploy.md)」に示されているエンドポイントに接続できることを確認してください。
+1. プロキシ コンピューターが「[デプロイ要件](howto-password-ban-bad-on-premises-deploy.md)」に示されているエンドポイントに接続できることを確認してください。
+
+1. フォレストとすべてのプロキシ サーバーが同じ Azure テナントに対して登録されていることを確認します。
+
+   これは、PowerShell コマンドレット `Get-AzureADPasswordProtectionProxy` と `Get-AzureADPasswordProtectionDCAgent` を実行し、返された各項目の `AzureTenant` プロパティを比較することで確認できます。 正しく動作させるためには、すべての DC エージェントとプロキシ サーバーにわたって、これらがフォレスト内で一致している必要があります。
+
+   Azure テナントの登録に矛盾した状態が存在する場合、`Register-AzureADPasswordProtectionProxy` と `Register-AzureADPasswordProtectionForest` のいずれかまたは両方の PowerShell コマンドレットを必要に応じて実行し、すべての登録について確実に同じ Azure テナントの資格情報を使用することで、これを修復できます。
 
 ## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>DC エージェントがパスワード ポリシー ファイルやその他の状態を暗号化または暗号化解除できない
 
@@ -105,7 +111,7 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
 2. すべてのドメイン コントローラーから DC エージェント ソフトウェアをアンインストールします。 この手順では、再起動する**必要があります**。
 3. 各ドメイン名前付けコンテキストのすべてのプロキシ サービス接続ポイントを手動で削除します。 これらのオブジェクトの場所は、次の Active Directory PowerShell コマンドを使用して検出できます。
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -117,7 +123,7 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
 
 4. 各ドメイン名前付けコンテキストに含まれるすべての DC エージェント接続ポイントを手動で削除します。 ソフトウェアの展開の規模によっては、フォレスト内のドメイン コントローラーごとにこのようなオブジェクトが 1 つ存在することがあります。 そのオブジェクトの場所は、次の Active Directory PowerShell コマンドを使用して検出できます。
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -129,7 +135,7 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
 
 5. フォレストレベルの構成状態を手動で削除します。 フォレストの構成状態は、Active Directory 構成の名前付けコンテキストのコンテナーに保持されます。 次のように検出および削除できます。
 
-   ```PowerShell
+   ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```

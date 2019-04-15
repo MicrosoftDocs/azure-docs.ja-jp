@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877872"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893454"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -37,6 +37,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - バイト配列オプションでは 30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
 - Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます
+- Video Indexer では、1 つのファイルの最大時間制限は 4 時間です
 
 > [!Tip]
 > .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
@@ -58,7 +59,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |Name|説明|
+        |名前|説明|
         |---|---|
         |id|ビデオ ID|
         |state|ビデオの状態|  
@@ -66,7 +67,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - ビデオで特定された人物:
   - Properties
     
-      |Name|説明|
+      |名前|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
@@ -174,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");

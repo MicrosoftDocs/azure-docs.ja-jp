@@ -32,7 +32,7 @@ sections:
         style: unordered
         items:
           - html: <a href="front-door-custom-domain.md">Front Door にカスタム ドメインを追加する</a>
-          - html: <a href="front-door-custom-domain-https.md">カスタム ドメインの HTTPS を有効にする</a>
+          - html: <a href="front-door-custom-domain-https.md">カスタム ドメインに対する HTTPS の有効化</a>
   - title: リファレンス
     items:
       - type: list

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/12/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109343"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578613"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -30,8 +30,10 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
   * 指定された Automation アカウントに *AzureRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
 * **Azure クラシック実行アカウント** - このアカウントは、クラシック デプロイ モデルのリソースを管理するために使用されます。
+  * サブスクリプションで管理証明書を作成します
   * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
+  * 作成または更新するには、サブスクリプションの共同管理者である必要があります
   
   > [!NOTE]
   > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されません。 Azure 実行アカウントは引き続き作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページを参照してください。
@@ -52,6 +54,10 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 <sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。
 
 サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+
+## <a name="permissions-classic"></a>実行アカウントを構成するためのアクセス許可
+
+従来の実行アカウントを構成または更新するには、サブスクリプション レベルで**共同管理者**ロールが必要です。 従来のアクセス許可の詳細については、「[Azure の従来のサブスクリプション管理者](../role-based-access-control/classic-administrators.md#add-a-co-administrator)」を参照してください。
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>ポータルで実行アカウントを作成する
 
@@ -197,10 +203,10 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
         return
     }
 
-    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous 8 lines that import the AzureRM modules to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
 
     # Import-Module Az.Automation
-    # Enable-AzureRmAlias 
+    # Enable-AzureRmAlias
 
 
     Connect-AzureRmAccount -Environment $EnvironmentName 
@@ -357,7 +363,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
     ![実行アカウントの証明書を書き換える](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。 
+1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
 
 ## <a name="limiting-run-as-account-permissions"></a>実行アカウントのアクセス許可の制限
 
@@ -394,4 +400,3 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 * サービス プリンシパルの詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)に関するページを参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
-

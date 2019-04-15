@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed2164fc122621a4ba2aeb4bb0797db02b10a4bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449140"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879258"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -101,9 +101,9 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
 
 ### <a name="check-which-applications-will-be-impacted"></a>どのアプリケーションが影響を受けるかを確認する
 
-1. 前の手順で取得した名前空間を使用して、`https://<namespace>.accesscontrol.windows.net` に移動します
+1. 前の手順で取得した名前空間を使用して、次の場所に移動します `https://<namespace>.accesscontrol.windows.net`
 
-    たとえば、名前空間の 1 つが contoso-test である場合は、`https://contoso-test.accesscontrol.windows.net` に移動します
+    たとえば、名前空間の 1 つが contoso-test である場合は、次の場所に移動します `https://contoso-test.accesscontrol.windows.net`
 
 1. **[信頼関係]** で、**[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
 1. その他に ACS 名前空間があれば、それらについて手順 1 ～ 2 を繰り返します。

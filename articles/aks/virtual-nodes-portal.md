@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 1a1764b9e2bea65f423a27c5437edc4b7672a86f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164444"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755253"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>プレビュー - Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -23,9 +23,9 @@ Azure Kubernetes Service (AKS) クラスターでワークロードをすばや�
 >
 > プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題をオープンします][aks-github]。
 
-## <a name="preview-limitations"></a>プレビューの制限事項
+## <a name="regional-availability"></a>リージョン別の提供状況
 
-この機能がプレビュー中である間は、次のリージョンへのデプロイがサポートされています。
+仮想ノードのデプロイでは、次のリージョンがサポートされています。
 
 * オーストラリア東部 (australiaeast)
 * 米国東部 (eastus)
@@ -184,6 +184,8 @@ $ curl -L 10.241.0.4
 
 - [Kubernetes のポッドの水平オートスケーラーを使用する][aks-hpa]
 - [Kubernetes クラスター オートスケーラーを使用する][aks-cluster-autoscaler]
+- [仮想ノード用の自動スケーリング サンプルをチェックアウトする][virtual-node-autoscale]
+- [Virtual Kubelet のオープン ソース ライブラリの詳細を確認する][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -193,6 +195,8 @@ $ curl -L 10.241.0.4
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md

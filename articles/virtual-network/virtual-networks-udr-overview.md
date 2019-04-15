@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: malopMSFT
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: jdial
-ms.openlocfilehash: 90ca35ec899d71578a7da4061ca7842d13769072
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: malop;kumud
+ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123574"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878504"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -181,7 +181,7 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 ### <a name="requirements"></a>必要条件
 
 1. 同じ Azure リージョンに 2 つの仮想ネットワークを実装し、リソースが仮想ネットワーク間で通信できるようにします。
-2. オンプレミス ネットワークが、インターネット経由の VPN トンネルを介して両方の仮想ネットワークと安全に通信できるようにします。 "*ExpressRoute 接続を使用することもできますが、この例では VPN 接続を使用します。*"
+2. オンプレミス ネットワークが、インターネット経由の VPN トンネルを介して両方の仮想ネットワークと安全に通信できるようにします。 *ExpressRoute 接続を使用することもできますが、この例では VPN 接続を使用します。*
 3. 一方の仮想ネットワークの 1 つのサブネットに次の要件が適用されます。
  
     - 検査とログ記録のために、Azure Storage とサブネット内を除き、サブネットからのすべての送信トラフィックにネットワーク仮想アプライアンスを経由することを強制します。
@@ -255,8 +255,8 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 
 ## <a name="next-steps"></a>次の手順
 
-- [複数のルートを含むユーザー定義ルート テーブルとネットワーク仮想アプライアンスを作成](tutorial-create-route-table-portal.md)します。
-- [Azure VPN Gateway 用の BGP を構成](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
-- [ExpressRoute で BGP を使用](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)します。
+- [複数のルートを含むユーザー定義ルート テーブルとネットワーク仮想アプライアンスを作成します。](tutorial-create-route-table-portal.md)
+- [Azure VPN Gateway 用の BGP を構成します。](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [ExpressRoute で BGP を使用します。](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [サブネットのすべてのルートを表示](diagnose-network-routing-problem.md)します。 ユーザー定義ルート テーブルに表示されるのは、ユーザー定義ルートだけであり、サブネットの既定のルートや BGP ルートは表示されません。 すべてのルートを表示すると、ネットワーク インターフェイスが存在するサブネットの既定のルート、BGP ルート、ユーザー定義ルートが表示されます。
 - 仮想マシンと宛先 IP アドレス間の[次ホップの種類を確認](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。 Azure Network Watcher の次ホップ機能を使用すると、トラフィックがサブネットを出ていき、想定している場所にルーティングされているかどうかを確認できます。

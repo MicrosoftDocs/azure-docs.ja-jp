@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871495"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339559"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -42,10 +42,10 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 | スタック     | 必要な値                                                                |
 |-----------|-------------------------------------------------------------------------------|
 | Java SE   | ご自分の `.jar` アプリケーションを起動するコマンド                                    |
-| Tomcat    | ご自分のアプリに必要なすべての構成を実行するスクリプトの場所 |
-| Node.js   | PM2 構成ファイルまたは独自のスクリプト ファイル                                |          
+| Tomcat    | アプリの構成を実行するスクリプトの場所          |
+| Node.js   | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
 | .NET Core | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
-| Ruby      | ご自分のアプリの初期化に使用する Ruby スクリプト                     
+| Ruby      | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
 
 ## <a name="management"></a>管理
 

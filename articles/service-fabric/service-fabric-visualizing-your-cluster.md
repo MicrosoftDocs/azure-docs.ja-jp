@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203711"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317393"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -46,7 +46,7 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>クラスターからの Service Fabric Explorer の実行
 
-Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エンドポイントでもホストされています。 Web ブラウザーで SFX を起動するには、任意のブラウザーからクラスターの HTTP 管理エンドポイント (例: https://clusterFQDN:19080 ) を参照します。
+Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エンドポイントでもホストされています。 Web ブラウザーで SFX を起動するには、任意のブラウザーからクラスターの HTTP 管理エンドポイント (例: https:\//clusterFQDN:19080) を参照します。
 
 開発者ワークステーションのセットアップでは、 https://localhost:19080/Explorer に移動することにより、ローカル クラスターで Service Fabric Explorer を起動できます。 詳しくは、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
 
@@ -56,7 +56,7 @@ Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エ�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Service Fabric クラスターに接続する
-Service Fabric クラスターに接続するには、クラスター管理エンドポイント (FQDN/IP) と HTTP 管理エンドポイント ポート (既定では 19080) が必要です。 たとえば、「 https://mysfcluster.westus.cloudapp.azure.com:19080 」のように指定します。 ワークステーションでローカル クラスターに接続するには、[ローカルホストに接続] チェック ボックスを使います。
+Service Fabric クラスターに接続するには、クラスター管理エンドポイント (FQDN/IP) と HTTP 管理エンドポイント ポート (既定では 19080) が必要です。 たとえば、https\://mysfcluster.westus.cloudapp.azure.com:19080 のように指定します。 ワークステーションでローカル クラスターに接続するには、[ローカルホストに接続] チェック ボックスを使います。
 
 ### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。

@@ -11,14 +11,18 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899351"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793137"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
+
+> [!NOTE]
+> この項目はメンテナンス中です。 Azure Cognitive Services の Machine Learning アルゴリズムのギャラリーを利用する [Anomaly Detector API サービス](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/)を使用して、ビジネス、運用、および IoT のメトリックから異常を検出することをお勧めします。
+
 ## <a name="overview"></a>概要
 [異常検出 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
 
@@ -117,7 +121,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
 | detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
@@ -153,7 +157,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
 | preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |

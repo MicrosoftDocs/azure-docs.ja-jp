@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cdee17185b7051220f66ede3b9da50a333409e6d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: abb29cd0d31288ba7bfab7024cf7657ab6b9a3d3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119273"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879218"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>SAS URL に関する一般的な問題と解決策
 
@@ -33,7 +33,7 @@ ms.locfileid: "58119273"
 | "sp=rl" が SAS URL にない | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | `Read` および `List` として設定されたアクセス許可で SAS URL を更新します | 
 | SAS URL の VHD 名に空白文字がある | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | SAS URL を更新して空白文字を削除します。 |
 | SAS URL の承認エラー | `Failure: Copying Images. Not able to download blob due to authorization error` | SAS URI の形式を確認して修正します。 必要に応じて再生成します。 |
-| SAS URL の "st" および "se" パラメーターで完全な日付と時刻が指定されていない | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | SAS URL の**開始日**および**終了日**パラメーター (`st` および` se` 部分文字列) は、`11-02-2017T00:00:00Z` のように、完全な日時形式になっている必要があります。 短縮バージョンは無効です。 (Azure CLI の一部のコマンドでは、簡略化された値が既定で生成されることがあります。) | 
+| SAS URL の "st" および "se" パラメーターで完全な日付と時刻が指定されていない | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | SAS URL の**開始日**および**終了日**パラメーター (`st` および`se` 部分文字列) は、`11-02-2017T00:00:00Z` のように、完全な日時形式になっている必要があります。 短縮バージョンは無効です。 (Azure CLI の一部のコマンドでは、簡略化された値が既定で生成されることがあります。) | 
 |  |  |  |
 
 詳細については、「[Shared Access Signatures (SAS) の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)」をご覧ください。

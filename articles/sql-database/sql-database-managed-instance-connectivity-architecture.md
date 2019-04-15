@@ -4,7 +4,7 @@ description: Azure SQL Database マネージド インスタンスの通信お�
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247241"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651314"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ 
 
@@ -67,7 +67,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ![仮想クラスターの接続アーキテクチャ](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、マネージド インスタンスに接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目のマネージド インスタンスがホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、[自動フェールオーバー グループを使用した複数のデータベースの透過的な調整されたフェールオーバーの有効化](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)に関する記事を参照してください。
+クライアントは、`<mi_name>.<dns_zone>.database.windows.net` 形式のホスト名を使用して、マネージド インスタンスに接続します。 このホスト名は、パブリック ドメイン ネーム システム (DNS) ゾーンに登録されていてパブリックに解決できますが、プライベート IP アドレスに解決されます。 クラスターを作成すると、`zone-id` が自動的に生成されます。 新しく作成されたクラスターで 2 番目のマネージド インスタンスがホストされる場合は、プライマリ クラスターとゾーン ID が共有されます。 詳細については、「[自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)」を参照してください。
 
 このプライベート IP アドレスは、マネージド インスタンスの内部ロード バランサーに属しています。 ロード バランサーは、マネージド インスタンスのゲートウェイにトラフィックを送信します。 同じクラスター内で複数のマネージド インスタンスを実行できるため、ゲートウェイでは、マネージド インスタンスのホスト名を使用して、トラフィックを適切な SQL Engine サービスにリダイレクトします。
 
@@ -97,18 +97,21 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| 名前       |ポート                        |プロトコル|ソース           |宛先|アクション|
+| 名前       |ポート                        |Protocol|ソース           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|management  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |許可 |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |許可 |
-|health_probe|任意                         |任意     |AzureLoadBalancer|任意        |許可 |
+|management  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |ALLOW |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |ALLOW |
+|health_probe|任意                         |任意     |AzureLoadBalancer|任意        |ALLOW |
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| 名前       |ポート          |プロトコル|ソース           |宛先|アクション|
+| 名前       |ポート          |Protocol|ソース           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
-|management  |80、443、12000|TCP     |任意              |インターネット   |許可 |
-|mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |許可 |
+|management  |80、443、12000|TCP     |任意              |AzureCloud  |ALLOW |
+|mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |ALLOW |
+
+> [!IMPORTANT]
+> ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 80、443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、ARM デプロイによるマネージド インスタンスのプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します
 
 \* MI SUBNET は、10.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
@@ -166,7 +169,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 - マネージド インスタンスをデプロイできる[新しい Azure 仮想ネットワーク](sql-database-managed-instance-create-vnet-subnet.md)または[既存の Azure 仮想ネットワーク](sql-database-managed-instance-configure-vnet-subnet.md)の設定方法を確認します。
 - マネージド インスタンスをデプロイする[サブネットのサイズを計算](sql-database-managed-instance-determine-size-vnet-subnet.md)します。
 - マネージド インスタンスの作成方法を確認します。
-  - [Azure portal](sql-database-managed-instance-get-started.md) から。
-  - [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) を使用して。
+  - [Azure ポータル](sql-database-managed-instance-get-started.md)から設定。
+  - [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) を使用して。
   - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)を使用して。
   - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://portal.azure.com/) を使用して。

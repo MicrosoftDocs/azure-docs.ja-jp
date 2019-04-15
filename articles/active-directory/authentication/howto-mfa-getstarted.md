@@ -1,62 +1,120 @@
 ---
-title: クラウドでの Azure MFA の概要
-description: 条件付きアクセスを使用した Microsoft Azure Multi-Factor Authentication の概要
+title: Azure Multi-Factor Authentication のデプロイを計画して実行する - Azure Active Directory
+description: Microsoft Azure Multi-Factor Authentication のデプロイの計画
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/01/2018
+ms.date: 04/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217746"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892213"
 ---
-# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication をデプロイする
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication を計画する
 
-Azure Multi-Factor Authentication (Azure MFA) の使用開始は簡単なプロセスです。
+ユーザーが組織のリソースに接続するシナリオはますます複雑になっています。 ユーザーは、スマート フォン、タブレット、PC、ラップトップを使用し、多くの場合は複数のプラットフォームで、会社のネットワーク内またはネットワーク外にある、組織所有デバイス、個人デバイス、パブリック デバイスから接続します。 このような常時接続でマルチ デバイスおよびマルチ プラットフォームの世界では、ユーザー アカウントのセキュリティがますます重要になります。 デバイス、ネットワーク、プラットフォームで共通して使用されるパスワードは、その複雑さに関係なく、ユーザー アカウントのセキュリティを確保するのにもはや十分ではありません。ユーザーが複数のアカウントでパスワードを再利用する傾向がある場合は特にそうです。 高度になったフィッシングやその他のソーシャル エンジニア リング攻撃により、ユーザー名とパスワードが悪質な Web で投稿されたり販売されたりする可能性があります。
 
-開始する前に、前提条件となる次のものがあることを確認してください。
+[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) は、データやアプリケーションへのアクセスを保護するのに役立ちます。 第 2 の形式の認証を使用して、セキュリティのレイヤーが追加されます。 組織では、[条件付きアクセス](../conditional-access/overview.md)を使用して、固有のニーズにソリューションを合わせることができます。
 
-* Azure AD テナントでのグローバル管理者アカウント。 この手順を完了するためのヘルプが必要な場合は、「[Get started with Azure AD](../get-started-azure-ad.md)」(Azure AD の概要) を参照してください。
-* ユーザーに割り当てられた適切なライセンス。 詳細情報が必要な場合は、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」の記事を参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="choose-how-to-enable"></a>有効にする方法を選択する
+Azure Multi-factor Authentication のデプロイを始める前に考慮すべき前提条件があります。
 
-**条件付きアクセス ポリシーで有効にする** - この方法は、この記事の中で説明します。 ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを使用して有効にする方法は、クラウド内の Azure MFA に対してのみ機能します。これは Azure AD の Premium 機能です。
+| シナリオ | 前提条件 |
+| --- | --- |
+| 先進認証を使用する**クラウド専用**の ID 環境 | **追加の前提条件タスクはありません** |
+| **ハイブリッド** ID のシナリオ | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) がデプロイされ、ユーザー ID はオンプレミスの Active Directory Domain Services および Azure Active Directory と同期またはフェデレーションされています。 |
+| クラウド アクセス用に公開されたオンプレミスのレガシ アプリケーション | Azure AD の[アプリケーション プロキシ](../manage-apps/application-proxy.md)がデプロイされています。 |
+| Azure MFA と RADIUS 認証の使用 | [ネットワーク ポリシー サーバー (NPS)](howto-mfa-nps-extension.md) がデプロイされています。 |
+| ユーザーが Microsoft Office 2010 以前または Apple Mail for iOS 11 以前を使用している | [Microsoft Office 2013 以降](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o)および Apple mail for iOS 12 以降にアップグレードします。 従来の認証プロトコルでは、条件付きアクセスはサポートされていません。 |
 
-**Azure AD Identity Protection で有効にする** - この方法では、Azure AD Identity Protection のリスク ポリシーを使用して、すべてのクラウド アプリケーションのサインイン リスクのみに基づいた 2 段階認証を要求します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[方法: ユーザー リスク ポリシーを構成する](../identity-protection/howto-user-risk-policy.md)」を参照してください。
+## <a name="plan-user-rollout"></a>ユーザーのロールアウトを計画する
 
-**ユーザーの状態を変更することで有効にする** - これは 2 段階認証を要求するための従来の方法です。 これは、Azure MFA Server とクラウド内の Azure MFA の両方で機能します。 この方法を使用すると、ユーザーはサインインする際に**毎回** 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。 この方法に関する詳細については、「[ユーザーに 2 段階認証を要求する方法](howto-mfa-userstates.md)」を参照してください。
+MFA のロールアウト計画には、パイロット デプロイと、それに続くサポート キャパシティ内でのデプロイ ウェーブが含まれる必要があります。 小規模なグループまたはパイロット ユーザーに条件付きアクセス ポリシーを適用することで、ロールアウトを開始します。 パイロット ユーザー、使用されたプロセス、および登録動作への影響を評価した後、ポリシーにグループを追加するか、既存のグループにユーザーを追加することができます。
 
-> [!Note]
-> ライセンスと価格の詳細については、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
-) と [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) の価格に関するページを参照してください。
+### <a name="user-communications"></a>ユーザーへの伝達
 
-## <a name="choose-authentication-methods"></a>認証方法を選択する
+今後の変更、Azure MFA の登録要件、必要なユーザー アクションについて、計画的にユーザーに通知することが重要です。 通信部門、変更管理部門、人事部門など、組織内の代表者と連携して、伝達方法を用意することをお勧めします。
 
-組織の要件に基づいて、ユーザーの認証方法を少なくとも 1 つ有効にします。 Microsoft Authenticator アプリをユーザーに対して有効にすると、最適なユーザー エクスペリエンスを提供できることがわかっています。 使用可能な方法とその設定方法を理解する必要がある場合は、「[認証方法とは](concept-authentication-methods.md)」の記事を参照してください。
+Microsoft では、伝達方法の原案として役立つ[通信テンプレート](https://aka.ms/mfatemplates)と[エンドユーザー文書](../user-help/security-info-setup-signin.md)が用意されています。 ユーザーに [https://myprofile.microsoft.com](https://myprofile.microsoft.com) にアクセスさせ、そのページの **[セキュリティ情報]** リンクを選択して直接登録させることができます。
 
-> [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-## <a name="get-users-to-enroll"></a>ユーザーによる登録を促す
+Azure Multi-factor Authentication は、条件付きアクセスでポリシーを適用することによってデプロイされます。 [条件付きアクセス ポリシー](../conditional-access/overview.md)では、次のような特定の条件が満たされたら多要素認証を実行するようユーザーに要求できます。
 
-条件付きアクセス ポリシーを有効にすると、ユーザーはポリシーで保護されているアプリの次回使用時に強制的に登録されます。 すべてのユーザーに対して MFA を要求するポリシーをすべてのクラウド アプリで有効にすると、このアクションのためにユーザーやヘルプ デスクで問題が発生する可能性があります。 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) の登録ポータルを使用する前に認証方法を登録するよう、ユーザーに依頼することをお勧めします。 多くの組織では、ポスター、卓上カード、メール メッセージを作成することで導入を促進しています。
+* すべてのユーザー、特定のユーザー、グループのメンバー、または割り当てられたロール
+* 特定のクラウド アプリケーションでのアクセス
+* デバイスのプラットフォーム
+* デバイスの状態
+* ネットワークの場所または地理的な場所にある IP アドレス
+* クライアント アプリケーション
+* サインイン リスク (ID 保護が必要)
+* 準拠デバイス
+* ハイブリッド Azure AD 参加済みデバイス
+* 承認されたクライアント アプリケーション
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>条件付きアクセスを使用して Multi-Factor Authentication を有効にする
+条件付きアクセス ポリシーでは登録が強制され、未登録ユーザーには最初のサインイン時に登録を完了することが要求されます。これは、セキュリティ上の重要な考慮事項です。
 
-グローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
+[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) は、Azure Multi-factor Authentication の状況に対し、登録ポリシーと、自動化されたリスクの検出と修復のポリシーの両方の点で寄与します。 ID 侵害の脅威があるときにパスワードの変更を強制するポリシー、または次の[イベント](../reports-monitoring/concept-risk-events.md)によってサインインにリスクがあると認められるときに MFA を要求するポリシーを作成できます。
+
+* 漏洩した資格情報
+* 匿名の IP アドレスからのサインイン
+* 特殊な場所へのあり得ない移動
+* 未知の場所からのサインイン
+* 感染しているデバイスからのサインイン
+* 不審なアクティビティのある IP アドレスからのサインイン
+
+Azure Active Directory Identity Protection によって検出されるリスク イベントには、リアルタイムで発生するものや、オフライン処理が必要なものがあります。 管理者は、リスクのある動作を示すユーザーをブロックして手動で修復する、パスワードの変更を要求する、または条件付きアクセス ポリシーの一部として多要素認証を要求することを選択できます。
+
+## <a name="define-network-locations"></a>ネットワークの場所を定義する
+
+組織では条件付きアクセスを使用し、[名前付きの場所](../conditional-access/location-condition.md#named-locations)を使用してネットワークを定義することをお勧めしました。 組織で Identity Protection を使用している場合は、名前付きの場所ではなく、リスクベースのポリシーを使用することを検討します。
+
+### <a name="configuring-a-named-location"></a>名前付きの場所を構成する
+
+1. Azure portal で **[Azure Active Directory]** を開きます
+2. **[条件付きアクセス]** をクリックします
+3. **[名前付きの場所]** をクリックします
+4. **[新しい場所]** をクリックします
+5. **[名前]** フィールドに、わかりやすい名前を入力します
+6. 場所の定義に IP 範囲または国/地域のどちらを使用するかを選択します
+   1. IP 範囲を使用する場合
+      1. 場所を信頼済みとしてマークするかどうかを決定します。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。 入力した IP 範囲が確立され、組織内で信用されていることがわかる場合のみ、この場所を信頼できる場所とマークしてください。
+      2. IP 範囲を指定します
+   2. 国/地域を使用する場合
+      1. ドロップダウン メニューを開き、この名前付きの場所に対して定義する国または地域を選択します。
+      2. 不明な領域を含めるかどうかを決定します。 不明な領域は、国/地域にマップできない IP アドレスです。
+7. **[作成]**
+
+## <a name="plan-authentication-methods"></a>認証方法を計画する
+
+管理者は、ユーザーに対して使用可能にする[認証方法](../authentication/concept-authentication-methods.md)を選択できます。 主要な方法を使用できないときにユーザーがバックアップの方法を使用できるよう、複数の認証方法を許可することが重要です。 管理者は次の方法を有効にできます。
+
+### <a name="notification-through-mobile-app"></a>モバイル アプリでの通知
+
+モバイル デバイスの Microsoft Authenticator アプリに、プッシュ通知が送信されます。 ユーザーは通知を表示し、**[承認]** を選択して認証を完了します。 モバイル アプリによるプッシュ通知では、ユーザーへの影響が最も少ないオプションが提供されます。 テレフォニーではなくデータ接続を使用するため、最も信頼性が高くて安全なオプションでもあります。
+
+### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
+
+Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ごとに新しい OATH 確認コードが生成されます。 ユーザーは確認コードをサインイン インターフェイスに入力します。 モバイル アプリのオプションは、スマート フォンがデータ信号でも携帯ネットワーク信号でも使用できます。
+
+### <a name="call-to-phone"></a>電話の呼び出し
+
+ユーザーに自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの **#** を押して認証を承認します。 電話の呼び出しは、モバイル アプリからの通知または確認コードに対する優れたバックアップ方法です。
+
+### <a name="text-message-to-phone"></a>電話へのテキスト メッセージ
+
+確認コードを含むテキスト メッセージがユーザーに送信され、ユーザーは確認コードをサインイン インターフェイスに入力するよう求められます。
 
 ### <a name="choose-verification-options"></a>認証オプションを選択する
-
-Azure Multi-Factor Authentication を有効にする前に、どのような認証オプションを許可するかを組織で決定する必要があります。 この演習では、ほとんど全員が使用できる汎用的なオプションである、電話への呼び出しと電話へのテキスト メッセージを有効にします。 認証方法とその使用方法の詳細については、「[What are authentication methods? (認証方法についての説明)](concept-authentication-methods.md)」を参照してください。
 
 1. **[Azure Active Directory]**、**[ユーザー]**、**[Multi-Factor Authentication]** に移動します。
 
@@ -67,18 +125,58 @@ Azure Multi-Factor Authentication を有効にする前に、どのような認�
 
    ![Multi-Factor Authentication の [サービスの設定] タブで認証方法を構成する](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-4. **[Save]** をクリックします。
-5. **[サービスの設定]** タブを閉じます。
+1. **[Save]** をクリックします。
+1. **[サービスの設定]** タブを閉じます。
+
+## <a name="plan-registration-policy"></a>登録ポリシーを計画する
+
+管理者は、ユーザーが方法を登録する方法を決定する必要があります。 組織では、Azure MFA とパスワード リセットのセルフサービス (SSPR) に対する[新しい組み合わせの登録エクスペリエンスを有効にする](howto-registration-mfa-sspr-combined.md)必要があります。 SSPR では、ユーザーは、多要素認証に使用するのと同じ方法を使用して、セキュリティで保護された方法でパスワードをリセットすることができます。 両方のサービスに 1 回で登録できるユーザーにとって優れたエクスペリエンスであるため、この組み合わせ登録 (現在パブリック プレビュー中) をお勧めします。 SSPR と Azure MFA に対して同じ方法を有効にすると、ユーザーは両方の機能を使用するよう登録できます。
+
+### <a name="registration-with-identity-protection"></a>Identity Protection を使用する登録
+
+組織が Azure Active Directory Identity Protection を使用して場合は、ユーザーが対話形式で次にサインインするときに登録を求めるよう、[MFA 登録ポリシーを構成](../identity-protection/howto-mfa-policy.md)します。
+
+### <a name="registration-without-identity-protection"></a>Identity Protection を使用しない登録
+
+組織が Identity Protection を有効にするライセンスを持っていない場合は、ユーザーは、次に MFA を必要とするサインインを行うときに、登録を求められます。 MFA で保護されたアプリケーションを使用していないユーザーは、MFA に登録されない可能性があります。 悪意のあるユーザーがユーザーのパスワードを推測し、ユーザーに代わって MFA に登録して、効果的にアカウントを制御できるようになるのを防ぐため、すべてのユーザーに登録させることが重要です。
+
+#### <a name="enforcing-registration"></a>登録を強制する
+
+次の手順を使用して、条件付きアクセス ポリシーでユーザーに Multi-Factor Authentication への登録を強制できます
+
+1. グループを作成し、現在登録されていないすべてのユーザーを追加します。
+2. 条件付きアクセスを使用して、このグループに対しすべてのリソースへのアクセスに多要素認証を強制します。
+3. 定期的に、グループのメンバーシップを再評価し、登録の済んだユーザーをグループから削除します。
+
+[MSOnline PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)に依存する PowerShell コマンドを使用して、登録済みと未登録の Azure MFA ユーザーを識別できます。
+
+#### <a name="identify-registered-users"></a>登録済みのユーザーを識別する
+
+```PowerShell
+Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
+```
+
+#### <a name="identify-non-registered-users"></a>未登録のユーザーを識別する
+
+```PowerShell
+Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
+```
+
+## <a name="plan-conditional-access-policies"></a>条件付きアクセス ポリシーを計画する
+
+どのようなときに MFA および他のコントロールが必要かを決定する条件付きアクセス ポリシーの戦略を計画するには、「[Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)」をご覧ください。
+
+誤って自分が Azure AD テナントからロックアウトされないようにすることが重要です。 [テナントに複数の緊急アクセス用アカウントを作成](../users-groups-roles/directory-emergency-access.md)し、条件付きアクセス ポリシーからそれらを除外することによって、不注意で管理アクセスが不可能になることによる影響を軽減できます。
 
 ### <a name="create-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
 1. グローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]**、**[条件付きアクセス]** の順に移動します。
+1. **[Azure Active Directory]**、**[条件付きアクセス]** の順に移動します
 1. **[新しいポリシー]** を選択します。
 1. ポリシーのわかりやすい名前を指定します。
 1. **[ユーザーとグループ]** で次の手順を実行します。
    * **[Include]\(追加\)** タブで、**[All users]\(すべてのユーザー\)** ラジオ ボタンを選択します
-   * 推奨:**[Exclude]\(除外\)** タブで、**[ユーザーとグループ]** のチェック ボックスをオンにし、ユーザーが特定の認証方法を利用できない場合の除外に使用するグループを選択します。
+   * **[除外]** タブで **[ユーザーとグループ]** のボックスをオンにして、緊急アクセス用アカウントを選択します。
    * **[Done]** をクリックします。
 1. **[クラウド アプリ]** で、**[すべてのクラウド アプリ]** ラジオ ボタンを選択します。
    * オプション:**[Exclude]\(除外\)** タブで、組織において MFA の必要がないクラウド アプリを選択します。
@@ -95,25 +193,118 @@ Azure Multi-Factor Authentication を有効にする前に、どのような認�
 
 ![パイロット グループ内の Azure portal のユーザーに対して MFA を有効にする条件付きアクセス ポリシーを作成する](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
-### <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication をテストする
+## <a name="plan-integration-with-on-premises-systems"></a>オンプレミスのシステムとの統合を計画する
 
-条件付きアクセス ポリシーが機能することを確認するには、MFA を必要としないリソースへのログインをテストし、次に MFA を必要とする Azure portal へのログインをテストします。
+Azure AD に対して直接認証を行わない一部の従来およびオンプレミスのアプリケーションでは、MFA を使用するために次のような追加手順が必要です。
 
-1. InPrivate または incognito モードで新しいブラウザー ウィンドウを開き、[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com) に移動します。
-   * この記事の前提条件のセクションの一部として作成されたテスト ユーザーでサインインし、MFA を完了するよう求められないことに注意してください。
-   * ブラウザー ウィンドウを閉じます。
-2. InPrivate または incognito モードで新しいブラウザー ウィンドウを開き、[https://portal.azure.com](https://portal.azure.com) に移動します。
-   * この記事の前提条件のセクションの一部として作成されたテスト ユーザーでサインインし、今度は Azure Multi-Factor Authentication に登録し、これを使用するよう要求されることに注意してください。
-   * ブラウザー ウィンドウを閉じます。
+* 従来のオンプレミス アプリケーションでは、アプリケーション プロキシを使用する必要があります。
+* オンプレミスの RADIUS アプリケーションでは、MFA アダプターと NPS サーバーを使用する必要があります。
+* オンプレミスの AD FS アプリケーションでは、MFA アダプターと AD FS 2016 を使用する必要があります。
+
+Azure AD でに対して直接認証を行い、先進認証 (WS-Fed、SAML、OAuth、OpenID Connect) を使用するアプリケーションでは、条件付きアクセス ポリシーを直接使用することができます。
+
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで Azure MFA を使用する
+
+オンプレミスに存在するアプリケーションは、[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を使用して Azure AD テナントに公開でき、Azure AD の事前認証を使用するように構成されている場合は、Azure Multi-Factor Authentication を利用できます。
+
+これらのアプリケーションは、他の Azure AD に統合されたアプリケーションと同様、Azure Multi-Factor Authentication を適用する条件付きアクセス ポリシーの対象になります。
+
+同様に、すべてのユーザー サインインに対して Azure Multi-Factor Authentication が強制されている場合は、Azure AD アプリケーション プロキシで公開されたオンプレミスのアプリケーションは保護されます。
+
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Azure Multi-Factor Authentication とネットワーク ポリシー サーバーを統合する
+
+Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、電話、テキスト メッセージ、またはモバイル アプリによる検証を、既存の認証フローに追加できます。 この統合には次の制限事項があります。
+
+* CHAPv2 プロトコルでは、認証アプリのプッシュ通知と音声通話のみがサポートされます。
+* 条件付きアクセス ポリシーは適用できません。
+
+NPS 拡張機能は、RADIUS とクラウドベースの Azure MFA の間のアダプターとして機能し、[VPN](howto-mfa-nps-extension-vpn.md)、[リモート デスクトップ ゲートウェイ接続](howto-mfa-nps-extension-rdg.md)、またはその他の RADIUS 対応アプリケーションを保護するための、第 2 の認証要素を提供します。 この環境の Azure MFA に登録したユーザーは、すべての認証の試行に対してチャレンジされ、条件付きアクセス ポリシーがないため常に MFA が要求されます。
+
+#### <a name="implementing-your-nps-server"></a>NPS サーバーを実装する
+
+既に NPS インスタンスがデプロイされて使用されている場合は、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)」をご覧ください。 NPS を初めて設定する場合は、「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」の手順をご覧ください。 トラブルシューティングのガイダンスについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」をご覧ください。
+
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA に登録されていないユーザーのために NPS を準備する
+
+MFA に登録されていないユーザーが認証を試みたときの処理を選択します。 レジストリ パス `HKLM\Software\Microsoft\AzureMFA` のレジストリ設定 `REQUIRE_USER_MATCH` を使用して、機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
+
+| キー | 値 | 既定値 |
+| --- | --- | --- |
+| `REQUIRE_USER_MATCH` | TRUE / FALSE | 未設定 (TRUE に相当) |
+
+この設定により、MFA に登録されていないユーザーの扱いが決まります。 この設定を変更したときの効果を、次の表に示します。
+
+| 設定 | ユーザーの MFA の状態 | 効果 |
+| --- | --- | --- |
+| キーが存在しない | 登録されていない | MFA チャレンジは失敗 |
+| 値が True に設定されている/設定されていない | 登録されていない | MFA チャレンジは失敗 |
+| キーが False に設定されている | 登録されていない | MFA なしの認証 |
+| キーが False または True に設定されている | 登録されている | MFA で認証する必要がある |
+
+### <a name="integrate-with-active-directory-federation-services"></a>Active Directory フェデレーション サービス (AD FS) と統合する
+
+組織が Azure AD とフェデレーションされている場合は、オンプレミスとクラウドの両方で、[Azure Multi-Factor Authentication を使用して AD FS リソースをセキュリティ保護する](multi-factor-authentication-get-started-adfs.md)ことができます。 Azure MFA を使用すると、パスワードを減らし、より安全な認証方法を提供できます。 Windows Server 2016 以降、プライマリ認証用に Azure MFA を構成できるようになりました。
+
+Windows Server 2012 R2 での AD FS とは異なり、AD FS 2016 の Azure MFA アダプターは Azure AD と直接統合されるので、オンプレミスの Azure MFA サーバーは必要ありません。 Azure MFA アダプターは Windows Server 2016 に組み込まれており、追加のインストールは必要ありません。
+
+AD FS 2016 で Azure MFA を使用し、ターゲット アプリケーションが条件付きアクセス ポリシーの対象になっているときは、追加の考慮事項があります。
+
+* アプリケーションが Azure AD の証明書利用者で、AD FS 2016 とフェデレーションされている場合、条件付きアクセスを使用できます。
+* アプリケーションが AD FS 2016 の証明書利用者で、AD FS 2016 で管理またはフェデレーションされている場合、条件付きアクセスは使用できません。
+* AD FS 2016 がプライマリ認証方法として Azure MFA を使用するように構成されている場合も、条件付きアクセスを使用できません。
+
+#### <a name="ad-fs-logging"></a>AD FS のログ記録
+
+Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な AD FS 2016 ログ記録には、認証要求とその成功または失敗に関する情報が含まれます。 これらのイベント内のイベント ログ データでは、Azure MFA が使用されたかどうかが示されます。 たとえば、AD FS の監査イベント ID 1200 には、次のような情報が含まれる場合があります。
+
+```
+<MfaPerformed>true</MfaPerformed>
+<MfaMethod>MFA</MfaMethod>
+```
+
+#### <a name="renew-and-manage-certificates"></a>証明書の更新と管理を行う
+
+各 AD FS サーバーでは、ローカル コンピューターの My ストアに、OU=Microsoft AD FS Azure MFA というタイトルの自己署名された Azure MFA 証明書があり、証明書の有効期限の日付が含まれます。 有効期限を確認するには、各 AD FS サーバーでこの証明書の有効期間を調べます。
+
+証明書の有効期限が近づいている場合は、[各 AD FS サーバーで新しい MFA 証明書を生成して検証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)します。
+
+次のガイダンスでは、AD FS サーバー上の Azure MFA 証明書を管理する方法について詳しく説明します。 Azure MFA で AD FS を構成するとき、`New-AdfsAzureMfaTenantCertificate` PowerShell コマンドレットで生成される証明書の有効期間は 2 年です。 MFA サービスが中断するのを防ぐため、期限が切れる前に証明書を更新してインストールします。
+
+## <a name="implement-your-plan"></a>計画を実装する
+
+ソリューションの計画が済んだので、以下の手順に従って実装できます。
+
+1. 必要な前提条件をすべて満たします
+   1. ハイブリッド シナリオの場合は [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) をデプロイします
+   1. クラウド アクセス用に公開されるすべてのオンプレミス アプリには [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を展開します
+   1. RADIUS 認証の場合は [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) をデプロイします
+   1. ユーザーが先進認証を有効にしたサポートされるバージョンの Microsoft Office にアップグレードしたことを確認します
+1. 選択した[認証方法](#choose-verification-options)を構成します
+1. [名前付きのネットワークの場所](../conditional-access/location-condition.md#named-locations)を定義します
+1. MFA のロールアウトを開始するグループを選択します。
+1. [条件付きアクセス ポリシー](#create-conditional-access-policy)を構成します
+1. MFA 登録ポリシーを構成します
+   1. [結合された MFA と SSPR](howto-registration-mfa-sspr-combined.md)
+   1. [Identity Protection](../identity-protection/howto-mfa-policy.md) の場合
+1. ユーザーに通知を送り、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でユーザーに登録させます
+1. [登録したユーザーを追跡します](#identify-non-registered-users)
+
+## <a name="manage-your-solution"></a>ソリューションを管理する
+
+Azure MFA に対するレポート
+
+Azure Multi-Factor Authentication では、Azure portal でレポートが提供されます。
+
+| レポート | Location | 説明 |
+| --- | --- | --- |
+| 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
+
+## <a name="troubleshoot-mfa-issues"></a>MFA の問題のトラブルシューティング
+
+Azure MFA での一般的な問題の解決策については、Microsoft サポート センターで [Azure Multi-Factor Authentication のトラブルシューティングに関する記事](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues)を検索してください。
 
 ## <a name="next-steps"></a>次の手順
 
-これで、クラウドでの Azure Multi-Factor Authentication Server の設定が完了しました。
-
-MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。
-
-信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートなどの追加の設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」の記事を参照してください。
-
-Azure Multi-Factor Authentication のユーザー設定の管理については、「[クラウドでの Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」の記事を参照してください。
-
-[Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)。
+* [認証方法とは](concept-authentication-methods.md)
+* [Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)
+* MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。

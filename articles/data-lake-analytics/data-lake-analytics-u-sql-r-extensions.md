@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401217"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885028"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
 
 R コードをデプロイする基本的な手順を以下の例で示します。
 * `REFERENCE ASSEMBLY` ステートメントを使用して、U-SQL スクリプト用の R 拡張機能を有効にします。
-* ` REDUCE` 操作を使用してキーの入力データをパーティション化します
+* `REDUCE` 操作を使用してキーの入力データをパーティション化します。
 * U-SQL 用の R 拡張機能には、レジューサ (`Extension.R.Reducer`) が組み込まれており、レジューサに割り当てられている各頂点で R コードを実行します。 
-* それぞれ `inputFromUSQL` と `outputToUSQL ` という名前の専用の名前付きデータ フレームを使用して、U-SQL と R の間でデータをやり取りします。入出力データ フレーム識別子の名前は固定されています (つまり、ユーザーがこれらの入出力データ フレーム識別子の定義済みの名前を変更することはできません)。
+* それぞれ `inputFromUSQL` と `outputToUSQL` という名前の専用の名前付きデータ フレームを使用して、U-SQL と R の間でデータをやり取りします。入出力データ フレーム識別子の名前は固定されています (つまり、ユーザーがこれらの入出力データ フレーム識別子の定義済みの名前を変更することはできません)。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>U-SQL スクリプトへの R コードの埋め込み
 
@@ -93,7 +93,7 @@ U-SQL スクリプトを使用して、その R スクリプトを DEPLOY RESOUR
 ### <a name="datatypes"></a>データ型
 * R データ フレームと U-SQL の間では、U-SQL の文字列と数値列は現状のまま変換されます (サポートされる型: `double`、`string`、`bool`、`integer`、`byte`)。
 * `Factor` データ型は U-SQL ではサポートされていません。
-* `byte[]` は、base64 でエンコードされた`string`としてシリアル化する必要があります。
+* `byte[]`  は、base64 でエンコードされた `string` としてシリアル化する必要があります。
 * U-SQL で R の入力データ フレームを作成するか、レジューサ パラメーター `stringsAsFactors: true` を設定することによって、U-SQL の文字列を R コードの因子に変換できます。
 
 ### <a name="schemas"></a>スキーマ

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285668"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370025"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>高可用性構成で App Service をデプロイする
 
@@ -54,8 +54,7 @@ ms.locfileid: "58285668"
 ### <a name="deploy-the-app-service-infrastructure"></a>App Service インフラストラクチャをデプロイする
 このセクションの手順に従い、**appservice-fileshare-sqlserver-ha** Azure Stack クイックスタート テンプレートを使用してカスタム デプロイを作成します。
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[カスタム]** の順に選択し、**[テンプレートのデプロイ]** を選択します。
 
@@ -94,8 +93,7 @@ ms.locfileid: "58285668"
 
 テンプレートの出力値を見つけるには、次の手順に従ってください。
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 管理ポータルで、**[リソース グループ]** を選択してから、カスタム デプロイ用に作成したリソース グループの名前を選択します (この例では **app-service-ha**)。 
 
@@ -168,9 +166,20 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![ファイル共有の出力情報](media/app-service-deploy-ha/07.png)
 
-9. App Service のインストールに使用されているマシンは、App Service のファイル共有をホストするために使用されているファイル サーバーと同じ VNet 上に配置されていないため、ユーザーは名前を解決することができません。 これは正しい動作です。<br><br>ファイル共有の UNC パスとアカウント情報に入力した情報が正しいことを確認し、アラート ダイアログで **[はい]** を押して App Service のインストールを続行してください。
+9. App Service のインストールに使用されているマシンは、App Service のファイル共有をホストするために使用されているファイル サーバーと同じ VNet 上に配置されていないため、ユーザーは名前を解決することができません。 **これは予想される動作です**。<br><br>ファイル共有の UNC パスとアカウント情報に入力した情報が正しいことを確認し、アラート ダイアログで **[はい]** を押して App Service のインストールを続行してください。
 
     ![予期されるエラー ダイアログ](media/app-service-deploy-ha/08.png)
+
+    ファイル サーバーに接続するために既存の仮想ネットワークと内部 IP アドレスへデプロイする場合は、送信セキュリティ規則を追加して、worker サブネットとファイル サーバー間の SMB トラフィックを有効にする必要があります。 管理ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。
+    - ソース:任意
+    - 送信元ポート範囲: *
+    - 変換先:IP アドレス
+    - 宛先 IP アドレス範囲:ファイル サーバーの IP の範囲
+    - 送信先ポート範囲:445
+    - プロトコル:TCP
+    - アクション:ALLOW
+    - 優先順位:700
+    - 名前:Outbound_Allow_SMB445
 
 10. Identity Application ID を入力し、ID 証明書のパスとパスワードを入力して、**[次へ]** をクリックします。
     - Identity Application 証明書 (**sso.appservice.local.azurestack.external.pfx** の形式)
@@ -189,7 +198,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![SQL Server の接続情報](media/app-service-deploy-ha/10.png)
 
-12. App Service のインストールに使用されているマシンは、App Service データベースをホストするために使用されている SQL Server と同じ VNet 上に配置されていないため、ユーザーは名前を解決することができません。  これは正しい動作です。<br><br>SQL Server の名前とアカウント情報に入力した情報が正しいことを確認し、**[はい]** を押して App Service のインストールを続行してください。 **[次へ]** をクリックします。
+12. App Service のインストールに使用されているマシンは、App Service データベースをホストするために使用されている SQL Server と同じ VNet 上に配置されていないため、ユーザーは名前を解決することができません。  **これは予想される動作です**。<br><br>SQL Server の名前とアカウント情報に入力した情報が正しいことを確認し、**[はい]** を押して App Service のインストールを続行してください。 **[次へ]** をクリックします。
 
     ![SQL Server の接続情報](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ App Service リソースプロバイダーをデプロイするには、次の�
 [App Service をスケールアウトします](azure-stack-app-service-add-worker-roles.md)。 ご使用の環境で予想されるアプリケーション需要を満たすために、App Service インフラストラクチャ ロール worker を追加する必要が生じる場合があります。 既定では、Azure Stack 上の App Service は無料の共有 worker 層をサポートしています。 他の worker 階層を追加するには、worker ロールを追加する必要があります。
 
 [デプロイ ソースを構成します](azure-stack-app-service-configure-deployment-sources.md)。 GitHub、BitBucket、OneDrive、DropBox などの複数のソース管理プロバイダーからのオンデマンド デプロイをサポートするには、追加の構成が必要です。
+
+[App Service をバックアップします](app-service-back-up.md)。 App Service を正常にデプロイして構成したら、データ損失を防ぎ、復旧操作中のサービスの不必要なダウンタイムを回避するために、ディザスター リカバリーに必要なすべてのコンポーネントが確実にバックアップされていることを確認する必要があります。

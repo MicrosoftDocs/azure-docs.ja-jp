@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca0d77ba2d1968d49e8ac556d42137cdc4c81e53
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993960"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879439"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -25,42 +25,42 @@ ms.locfileid: "57993960"
 
 Azure Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。  Azure プランとは、ご利用の Azure サブスクリプションの種類です。
 
-| Category  | **プラン名** | **プラン番号** |
-| --- | --- | --- |
-| **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
-| **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
-| **Enterprise Agreement (EA)** | Enterprise Dev/Test | MS-AZR-0148P |
-| **Enterprise Agreement (EA)** | [Microsoft Azure エンタープライズ](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
-| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
-| **従量課金制** | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
-| **従量課金制** | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
-| **従量課金制** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **従量課金制** | [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
-| **従量課金制** | [Azure イン オープン プラン](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
-| **従量課金制** | [Microsoft Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
-| **従量課金制** | Azure Pass | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p/) | MS-AZR-0029P |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) | MS-AZR-0059P |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) | MS-AZR-0060P |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) | MS-AZR-0063P |
-| **Visual Studio** | [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P |
+| Category  | **プラン名** | **クォータ ID** | **オファー番号** |
+| --- | --- | --- | --- |
+| **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
+| **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
+| **Enterprise Agreement (EA)** | [Microsoft Azure エンタープライズ](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
+| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
+| **従量課金制** | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
+| **従量課金制** | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
+| **従量課金制** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)           | MPN_2014-09-01 | MS-AZR-0025P |
+| **従量課金制** | [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
+| **従量課金制** | [Azure イン オープン プラン](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
+| **従量課金制** | [Microsoft Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p)                  | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **従量課金制** | Azure Pass                                                                             | AzurePass_2014-09-01 | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P |
+| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)      | MPN_2014-09-01 | MS-AZR-0029P |
+| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)          | MSDN_2014-09-01 | MS-AZR-0059P |
+| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)     | MSDNDevTest_2014-09-01 | MS-AZR-0060P |
+| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
+| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
 サポート対象外のプランを次の表に示します。
 
-| Category  | **プラン名** | **プラン番号** |
-| --- | --- | --- |
-| **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure | MS-AZR-0145P |
-| **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP | MS-AZR-USGOV-0145P |
-| **クラウド ソリューション プロバイダー (CSP)** | Azure Germany in CSP (Microsoft Cloud Germany 用) | MS-AZR-DE-0145P |
-| **従量課金制** | Microsoft Azure for Students Starter | MS-AZR-0144P |
-| **従量課金制** | [Microsoft Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
-| **サポート プラン** | Standard サポート | MS-AZR-0041P |
-| **サポート プラン** | Professional Direct サポート | MS-AZR-0042P |
-| **サポート プラン** | Developer サポート | MS-AZR-0043P |
-| **サポート プラン** | Germany サポート プラン | MS-AZR-DE-0043P |
-| **サポート プラン** | Azure Government Standard サポート | MS-AZR-USGOV-0041P |
-| **サポート プラン** | Azure Government Pro-Direct サポート | MS-AZR-USGOV-0042P |
-| **サポート プラン** | Azure Government Developer サポート | MS-AZR-USGOV-0043P |
+| Category  | **プラン名** | **クォータ ID** | **オファー番号** |
+| --- | --- | --- | --- |
+| **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
+| **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
+| **Cloud Solution Provider (CSP)** | Azure Germany in CSP (Microsoft Cloud Germany 用)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
+| **従量課金制**                 | Microsoft Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **従量課金制**                 | [Microsoft Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
+| **サポート プラン** | Standard サポート                    | Default_2014-09-01 | MS-AZR-0041P |
+| **サポート プラン** | Professional Direct サポート         | Default_2014-09-01 | MS-AZR-0042P |
+| **サポート プラン** | Developer サポート                   | Default_2014-09-01 | MS-AZR-0043P |
+| **サポート プラン** | Germany サポート プラン                | Default_2014-09-01 | MS-AZR-DE-0043P |
+| **サポート プラン** | Azure Government Standard サポート   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
+| **サポート プラン** | Azure Government Pro-Direct サポート | Default_2014-09-01 | MS-AZR-USGOV-0042P |
+| **サポート プラン** | Azure Government Developer サポート  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
 従量課金制、MSDN、および Visual Studio のオファー カテゴリのお客様の場合、2018 年 10 月 2 からデータを Cost Management で使用できます。 2018 年 10 月 2 日より前にサブスクリプションのデータにアクセスするには、[Azure アカウント センター](https://account.azure.com/subscriptions)を使用して使用量の詳細を CSV ファイルでダウンロードするか、[Usage Details API](/rest/api/consumption/usagedetails) を使用することができます。
 
@@ -71,11 +71,11 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 
 ## <a name="costs-included-in-cost-management"></a>Cost Management に含まれるコスト
 
-Cost Management に含まれるデータと含まれないデータを次の表に示します。
+Cost Management に含まれるデータと含まれないデータを次の表に示します。 すべてのコストは、請求書が生成されるまで推定されます。 示されているコストには、無料クレジットおよびプリペイド クレジットは含まれません。
 
 **コストと使用状況データ**
 
-| **含まれる** | **含まれない** |
+| **あり** | **なし** |
 | --- | --- |
 | Azure サービスの使用状況<sup>1</sup> | 予約の購入 – 詳細については、「[Azure の予約の自動化に関する API](../billing/billing-reservation-apis.md)」を参照してください。 |
 | Marketplace サービスの使用状況 | Marketplace での購入 – 詳細については、[サードパーティのサービス料金](../billing/billing-understand-your-azure-marketplace-charges.md)に関する記事を参照してください。 |
@@ -87,7 +87,7 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 
 **Metadata**
 
-| **含まれる** | **含まれない** |
+| **あり** | **なし** |
 | --- | --- |
 | リソース タグ<sup>2</sup> | リソース グループのタグ |
 

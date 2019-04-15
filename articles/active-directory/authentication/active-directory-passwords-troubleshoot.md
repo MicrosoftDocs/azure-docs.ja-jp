@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878450"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885079"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -35,7 +35,6 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | UserNotProperlyConfigured = 14 | 申し訳ありません。お使いのアカウントでは必要な情報が不足しているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにもう一度アクセスできるようになったら、必要な情報を登録していただく必要があります。 情報を登録するには、「[セルフサービスによるパスワードのリセットを登録する](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)」に記載されている手順に従ってください。 | SSPR_0014: パスワードをリセットするための追加のセキュリティ情報が必要です。 続行するには、管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 ご自分のアカウントにアクセスできるようになったら、 https://aka.ms/ssprsetup で追加のセキュリティ情報を登録することができます。 管理者は、[パスワードのリセットの認証データの設定と読み取り](howto-sspr-authenticationdata.md)に関する記事に記載された手順に従い、ご利用のアカウントに追加のセキュリティ情報を追加できます。 |
 | OnPremisesAdminActionRequired = 29 | 申し訳ありません。組織のパスワード リセット構成に問題があるため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、調査するように依頼してください。 潜在的な問題の詳細については、「[パスワード ライトバックのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)」をご覧ください。 | SSPR_0029: オンプレミス構成でのエラーのため、パスワードをリセットすることができません。 管理者に連絡して、調査するように依頼してください。 |
 | OnPremisesConnectivityError = 30 | 申し訳ありません。組織への接続に問題があるため、現時点ではパスワードをリセットできません。 今すぐ実行すべきアクションはありませんが、あとでもう一度試してみて、問題が解決する場合があります。 問題が解決しない場合は、管理者に連絡して、調査するように依頼してください。 接続の問題の詳細については、[パスワード ライトバックの接続のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)に関する記事をご覧ください。 | SSPR_0030: オンプレミス環境との接続状況が悪いため、パスワードをリセットできません。 管理者に連絡して、調査するように依頼してください。|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Azure Portal でのパスワードのリセット構成のトラブルシューティング
 
@@ -56,8 +55,8 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | Error | 解決策 |
 | --- | --- |
-| このディレクトリでは、パスワードのリセットが有効になっていません。 **管理者が、この機能を使用できるようにしていません。** | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、**[保存]** を選択します。 |
-| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 **管理者が、この機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
+| このディレクトリでは、パスワードのリセットが有効になっていません。 **管理者はこの機能を使用できるようにしていません。** | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、**[保存]** を選択します。 |
+| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 **管理者はこの機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
 | 要求の処理中に発生したエラーがあります。 | このエラーはさまざまな問題が原因で発生することがありますが、一般的にサービスの停止や構成の問題が原因で発生します。 このエラーが表示されてビジネスに影響がある場合は、Microsoft サポートにお問い合わせください。 |
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>パスワード リセット ポータルのトラブルシューティング
@@ -76,7 +75,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | ユーザーが自分の電話番号を検証するときにエラーが表示されます。 | このエラーは、入力した電話番号がファイルの電話番号と一致しない場合に発生します。 電話ベースの方法でパスワードのリセットを試みる場合は、ユーザーが国番号と市外局番を含む完全な電話番号を入力していることを確認します。 |
 | 要求の処理中に発生したエラーがあります。 | このエラーはさまざまな問題が原因で発生することがありますが、一般的にサービスの停止や構成の問題が原因で発生します。 このエラーが表示されてビジネスに影響がある場合は、Microsoft サポートにお問い合わせください。 |
 | オンプレミスのポリシーの違反 | パスワードは、オンプレミス Active Directory のパスワード ポリシーを満たしていません。 |
-| パスワードは、あいまいポリシーに準拠していません | 使用されたパスワードは [禁止されているパスワード] ボックスの一覧に　表示されて、使用できません。 |
+| パスワードは、あいまいポリシーに準拠していません | 使用されたパスワードは [禁止パスワード リスト](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated)に表示され、使用できない可能性があります。 |
 
 ## <a name="troubleshoot-password-writeback"></a>パスワード ライトバックのトラブルシューティング
 
@@ -168,8 +167,8 @@ Azure AD Connect のパスワード ライトバック コンポーネントで�
 
 Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL への送信 HTTPS アクセスが必要です。
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 アクセスをより細分化するために、[Microsoft Azure データセンターの IP 範囲 ](https://www.microsoft.com/download/details.aspx?id=41653) の更新された一覧を参照することができます。この一覧は、毎週水曜日に更新され、次の月曜日に有効になります。
 
@@ -184,7 +183,7 @@ Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL へ�
 1. **[Microsoft Azure AD Sync]** エントリを検索します。
 1. このサービス エントリを右クリックして **[再起動]** を選択し、処理が完了するまで待機します。
 
-   ![Azure AD Sync サービスを再起動する][Service restart]
+   ![GUI を使用して Azure AD Sync サービスを再起動する][Service restart]
 
 これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。 ADSync サービスを再起動しても問題が解決しない場合は、パスワード ライトバック機能を無効にしてから再び有効にすることをお勧めします。
 
@@ -215,7 +214,6 @@ Azure AD Connect を再インストールすることで、クラウド サー�
 
 > [!WARNING]
 > 既定の同期ルールをカスタマイズしている場合は、*アップグレードを開始する前にこれらをバックアップし、終了後に手動で再デプロイする*必要があります。
->
 
 1. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?LinkId=615771)から最新バージョンの Azure AD Connect をダウンロードします。
 1. Azure AD Connect が既にインストールされているため、インプレース アップグレードを実行して Azure AD Connect を最新バージョンに更新する必要があります。
@@ -231,33 +229,27 @@ Azure AD Connect には、パスワード ライトバックを実行するた�
 
 1. Azure AD Connect サーバーにサインインし、**[開始]** > **[同期サービス]** の順に選択して、**Synchronization Service Manager** を開始します。
 1. **[コネクタ]** タブで、オンプレミスの **[Active Directory Domain Services]** コネクタを選択してから、**[プロパティ]** を選択します。  
-   ![有効なアクセス許可 - 手順 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![プロパティの編集方法を示す Synchronization Service Manager](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. ポップアップ ウィンドウで **[Connect to Active Directory Forest]\(Active Directory フォレストに接続\)** を選択し、**[ユーザー名]** のプロパティをメモします。 このプロパティは、ディレクトリ同期を実行するために、Azure AD Connect によって使用される AD DS アカウントです。 Azure AD Connect でパスワード ライトバックを実行するために、AD DS アカウントにはパスワードのリセットのアクセス許可が必要です。  
-   
-   ![有効なアクセス許可 - 手順 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![同期サービスの Active Directory ユーザー アカウントの検索](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. オンプレミスのドメイン コントローラーにサインインし、**[Active Directory ユーザーとコンピューター]** アプリケーションを起動します。
 1. **[表示]** を選択し、**[高度な機能]** オプションが有効であることを確認します。  
-   
-   ![有効なアクセス許可 - 手順 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![[Active Directory ユーザーとコンピューター] に [高度な機能] が表示される](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. 確認する Active Directory ユーザー アカウントを探します。 アカウント名を右クリックし、**[プロパティ]** を選択します。  
-   
-   ![有効なアクセス許可 - 手順 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. ポップアップ ウィンドウで、**[セキュリティ]** タブに移動し、**[詳細設定]** を選択します。  
-   
-   ![有効なアクセス許可 - 手順 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. **[Advanced Security Settings for Administrator]\(管理者のセキュリティの詳細設定\)** ポップアップ ウィンドウで、**[有効なアクセス]** タブに移動します。
 1. **[ユーザーの選択]** を選択し、Azure AD Connect (手順 3 参照) が使用する AD DS アカウントを選択してから、**[有効なアクセス許可の表示]** を選択します。
 
-   ![有効なアクセス許可 - 手順 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![同期アカウントを示す [有効なアクセス] タブ](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. 下にスクロールし、**[パスワードのリセット]** を探します。 エントリにチェック マークがついている場合は、選択した Active Directory ユーザー アカウントのパスワードをリセットするアクセス許可が AD DS アカウントにあることを意味します。  
-   
-   ![有効なアクセス許可 - 手順 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![同期アカウントにパスワードのリセット権限があることの検証](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD フォーラム
 
@@ -272,17 +264,17 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 * **エラーの一般的な説明**: どのようなエラーですか。 どのような動作が見られましたか。 エラーを再現することはできますか。 できるだけ詳しくお知らせください。
 * **ページ**: エラーが表示されたときに、どのページを表示していましたか。 可能な場合はそのページの URL とスクリーンショットをお送りください。
 * **サポート コード**: エラーが表示されたときに生成されたサポート コードをお知らせください。
-  * このコードを見つけるには、エラーを再現してから、画面の下部にある**サポート コード**のリンクを選択し、生成された GUID をサポート エンジニアに送信します。
+   * このコードを見つけるには、エラーを再現してから、画面の下部にある**サポート コード**のリンクを選択し、生成された GUID をサポート エンジニアに送信します。
 
-    ![画面の下部にあるサポート コードを見つける][Support code]
+   ![画面の下部にあるサポート コードを見つける][Support code]
 
   * ページの下部にサポート コードが表示されない場合は、F12 キーを押して SID と CID を検索し、この 2 つの結果をサポート エンジニアに送信します。
 * **日付、時刻、タイム ゾーン**: エラーが発生した正確な日付、時刻、"*タイム ゾーン*" をお知らせください。
 * **ユーザー ID**: エラーが表示されたユーザーをお知らせください。 たとえば、*user\@contoso.com* です。
-    * このユーザーは、フェデレーション ユーザーですか。
-    * このユーザーは、パススルー認証ユーザーですか。
-    * このユーザーは、パスワード ハッシュ同期ユーザーですか。
-    * このユーザーは、クラウド限定ユーザーですか。
+   * このユーザーは、フェデレーション ユーザーですか。
+   * このユーザーは、パススルー認証ユーザーですか。
+   * このユーザーは、パスワード ハッシュ同期ユーザーですか。
+   * このユーザーは、クラウド限定ユーザーですか。
 * **ライセンス**: ユーザーには Azure AD Premium または Azure AD Basic ライセンスが割り当てられていますか。
 * **アプリケーション イベント ログ**: パスワード ライトバックの使用中に、ご利用のオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを圧縮してお送りください。
 
@@ -295,12 +287,12 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービスによるパスワードのリセットを登録する](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
+* [質問したい内容に関する説明がどこにもない](active-directory-passwords-faq.md)

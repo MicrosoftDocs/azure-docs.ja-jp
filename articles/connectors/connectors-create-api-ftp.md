@@ -1,21 +1,21 @@
 ---
-title: FTP サーバーへの接続 - Azure Logic Apps | Microsoft Docs
+title: FTP サーバーへの接続 - Azure Logic Apps
 description: Azure Logic Apps を使用して FTP サーバー上のファイルを作成、監視、管理する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913361"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576328"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
@@ -28,10 +28,11 @@ Azure Logic Apps と FTP コネクタを使用すると、FTP サーバー上の
 
 FTP サーバーからの応答を取得するトリガーを使用し、その出力を他のアクションから使用可能にすることができます。 ロジック アプリから実行アクションを使用して、FTP サーバー上のファイルを管理できます。 また、FTP アクションからの出力を他のアクションで使用するようにもできます。 たとえば、FTP サーバーから定期的にファイルを取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルとその内容に関する電子メールを送信できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-> [!NOTE]
-> FTP コネクタは、[アクションでメッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、50 MB 以下のファイルのみをサポートします。 現在、トリガーに対してチャンクを使用することはできません。
->
-> また、FTP コネクタは明示的 FTP over SSL (FTPS) のみをサポートし、暗黙的 FTPS とは互換性がありません。 
+## <a name="limits"></a>制限
+
+* FTP アクションでサポートできるファイルは、[メッセージのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、"*50 MB 以下*" に限られます (メッセージのチャンクを使用すると、この制限を回避できます)。 現在、FTP トリガーではチャンクはサポートされていません。
+
+* FTP コネクタは明示的 FTP over SSL (FTPS) のみをサポートし、暗黙的 FTPS とは互換性がありません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +52,7 @@ FTP サーバーからの応答を取得するトリガーを使用し、その�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. 空のロジック アプリの場合は、検索ボックスに、フィルターとして「ftp」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
+1. 空のロジック アプリの場合は、検索ボックスに、フィルターとして「ftp」と入力します。 トリガーの一覧で、目的のトリガーを選択します。
 
    または
 
@@ -151,7 +152,7 @@ FTP サーバーからの応答を取得するトリガーを使用し、その�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/ftpconnector/)を参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/ftpconnector/)を参照してください。
 
 ## <a name="get-support"></a>サポートを受ける
 

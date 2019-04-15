@@ -1,5 +1,5 @@
 ---
-title: Azure AD のセルフサービスによるパスワード リセットのカスタマイズ
+title: Azure AD セルフサービスによるパスワード リセットをカスタマイズする - Azure Active Directory
 description: Azure AD のセルフサービスによるパスワード リセットのカスタマイズ オプション
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e15de18e57e949b2e7b7146269204469e61797
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106952"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369226"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -26,12 +26,12 @@ Azure Active directory (Azure AD) のセルフサービスによるパスワー�
 
 SSPR が有効になっていない場合でも、ユーザーにはパスワード リセット ポータルに "管理者に問い合わせてください" リンクが表示されます。 ユーザーがこのリンクを選択した場合、次のいずれかが実行されます:
 
-   * メールが管理者に送信され、ユーザーのパスワードの変更についての支援が求められます。
-   * 支援のために指定した URL がユーザーに送信されます。
+* メールが管理者に送信され、ユーザーのパスワードの変更についての支援が求められます。
+* 支援のために指定した URL がユーザーに送信されます。
 
 この連絡先は、ユーザーがサポートのために既に使用しているメール アドレスや Web サイトなどに設定することをお勧めします。
 
-![連絡先][Contact]
+![管理者に送信されるリセット依頼メールのサンプル][Contact]
 
 この連絡先メールは、次の受信者に次の順序で送信されます。
 
@@ -68,8 +68,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * ユーザーが自分のユーザー名を入力した後
 * ユーザーがカスタマイズされた URL にアクセスした場合:
-    * パスワード リセット ページに `whr` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?whr=contoso.com`)
-    * パスワード リセット ページに `username` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?username=admin@contoso.com`)
+   * パスワード リセット ページに `whr` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?whr=contoso.com`)
+   * パスワード リセット ページに `username` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?username=admin@contoso.com`)
 
 会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](../fundamentals/customize-branding.md)に関する記事を参照してください。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199784"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル:Azure Active Directory と Secret Server (On-Premises) の統合
 
@@ -109,9 +109,9 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[Secret Server (On-Premises) のドメインと URL] のシングル サインオン情報](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a. **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。`https://secretserveronpremises.azure`
+    a. **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。 `https://secretserveronpremises.azure`
 
-    b. **[応答 URL]** ボックスに、`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx ` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > 上記のエンティティ ID は単なる一例です。Azure AD で Secret Server インスタンスを識別する一意の値を自由に選択することができます。 このエンティティ ID を [Secret Server (On-Premises) クライアント サポート チーム](https://thycotic.force.com/support/s/)に送り、サポート チーム側で構成してもらう必要があります。 詳細については、[こちらの記事](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)を参照してください。
@@ -120,7 +120,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[Secret Server (On-Premises) のドメインと URL] のシングル サインオン情報](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<SecretServerURL>/login.aspx` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SecretServerURL>/login.aspx`
      
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Secret Server (On-Premises) クライアント サポート チーム](https://thycotic.force.com/support/s/)に問い合わせてください。
@@ -173,7 +173,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Secret Server (On-Premises) テスト ユーザーを作成する
 

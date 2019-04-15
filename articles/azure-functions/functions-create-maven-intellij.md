@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eb8499ef6c0f872a0761f7be606e058387947b2b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319882"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877808"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij-preview"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する (プレビュー)
-
-> [!NOTE]
-> Azure Functions 用の Java は現在プレビュー段階です。
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
 この記事では、次の内容について説明します。
 - IntelliJ IDEA と Apache Maven を使用して[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成する方法
@@ -55,7 +52,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 1. **[Add Archetype]**(アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
     - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
-    - _Version_: [中央リポジトリの最新バージョンを使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - _バージョン_:[中央リポジトリの最新バージョンを使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![IntelliJ IDEAでアーキタイプから Maven プロジェクトを作成します](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. **[OK]** を選択し、**[次へ]** を選択します。
 1. 現在のプロジェクトの詳細を入力し、**[完了]** を選択します。

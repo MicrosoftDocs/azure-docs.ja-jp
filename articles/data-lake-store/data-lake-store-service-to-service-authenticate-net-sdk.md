@@ -3,20 +3,20 @@ title: 'サービス間認証: .NET SDK から Azure Active Directory を使用�
 description: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
+author: twooley
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5ec6325f3fae21e62fe4a3fb6452aa11158047a4
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: twooley
+ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340237"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881156"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "57340237"
    | --- | --- |
    | Category |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
+   | 名前 |CreateADLApplication |
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
 5. NuGet パッケージをプロジェクトに追加します。

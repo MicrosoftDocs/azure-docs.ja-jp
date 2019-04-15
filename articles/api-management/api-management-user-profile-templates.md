@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121398"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903762"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -30,7 +30,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [サブスクリプション](#Subscriptions)  
   
--   [アプリケーション](#Applications)  
+-   [[アプリケーション]](#Applications)  
   
 -   [アカウント情報の更新](#UpdateAccountInfo)  
   
@@ -104,19 +104,19 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|firstName|文字列|現在のユーザーの名。|  
-|lastName|文字列|現在のユーザーの姓。|  
-|companyName|文字列|現在のユーザーの会社名。|  
-|addresserEmail|文字列|現在のユーザーの電子メール アドレス。|  
-|developersUsageStatisticsLinkk|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
-|subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
-|changePasswordUrl|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|changeNameOrEmailUrl|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|isSystemUser|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`firstName`|文字列|現在のユーザーの名。|  
+|`lastName`|文字列|現在のユーザーの姓。|  
+|`companyName`|文字列|現在のユーザーの会社名。|  
+|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
+|`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
+|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -325,19 +325,19 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|firstName|文字列|現在のユーザーの名。|  
-|lastName|文字列|現在のユーザーの姓。|  
-|companyName|文字列|現在のユーザーの会社名。|  
-|addresserEmail|文字列|現在のユーザーの電子メール アドレス。|  
-|developersUsageStatisticsLinkk|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
-|subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
-|changePasswordUrl|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|changeNameOrEmailUrl|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|isSystemUser|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`firstName`|文字列|現在のユーザーの名。|  
+|`lastName`|文字列|現在のユーザーの姓。|  
+|`companyName`|文字列|現在のユーザーの会社名。|  
+|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
+|`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
+|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -488,19 +488,19 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|firstName|文字列|現在のユーザーの名。|  
-|lastName|文字列|現在のユーザーの姓。|  
-|companyName|文字列|現在のユーザーの会社名。|  
-|addresserEmail|文字列|現在のユーザーの電子メール アドレス。|  
-|developersUsageStatisticsLinkk|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
-|subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
-|changePasswordUrl|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|changeNameOrEmailUrl|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|isSystemUser|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`firstName`|文字列|現在のユーザーの名。|  
+|`lastName`|文字列|現在のユーザーの姓。|  
+|`companyName`|文字列|現在のユーザーの会社名。|  
+|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
+|`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
+|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   

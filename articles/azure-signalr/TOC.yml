@@ -48,6 +48,8 @@ items:
       href: signalr-concept-disaster-recovery.md
   - name: メッセージと接続
     href: signalr-concept-messages-and-connections.md
+  - name: パフォーマンスに関する考慮事項
+    href: signalr-concept-performance.md
   - name: Authentication
     href: signalr-concept-authenticate-oauth.md
 - name: ハウツー ガイド
@@ -100,9 +102,9 @@ items:
     href: https://twitter.com/SignalR
   - name: ASP.NET フォーラム
     href: https://forums.asp.net/1254.aspx
-ms.openlocfilehash: d5ad2f2a7e6426cb29489ab3bf0e30b5eb93f593
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 281dbb4a5342fe4ea322eacefe7fa01c91388d0b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621857"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59497034"

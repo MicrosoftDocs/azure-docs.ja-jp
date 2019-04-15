@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096573"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883684"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure と互換性のある VHD の作成
 

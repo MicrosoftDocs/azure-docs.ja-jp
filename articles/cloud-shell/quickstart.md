@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b8f96de7214a46c9e38182c141343a46c0e28139
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089150"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882091"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -49,9 +49,9 @@ ms.locfileid: "58089150"
    ```
 
 2. 優先するサブスクリプションを設定します。 <br>
-   ```azurecli-interactive
-   az account set --subscription my-subscription-name`
-   ```
+```azurecli-interactive
+az account set --subscription 'my-subscription-name'
+```
 
 > [!TIP]
 > 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
@@ -99,6 +99,6 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
    ```
 
 ## <a name="next-steps"></a>次の手順
-[Cloud Shell の Bash でのファイルの永続化について](persisting-shell-storage.md) <br>
+[Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

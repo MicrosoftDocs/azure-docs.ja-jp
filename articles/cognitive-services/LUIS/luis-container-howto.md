@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295574"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894680"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -24,7 +24,7 @@ Language Understanding (LUIS) コンテナーでは、お客様のトレーニ�
 
 次のビデオでは、このコンテナーの使用に関するデモが行われています。
 
-[![Cognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![CCognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -40,7 +40,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -81,7 +81,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 1. 必要な "_入力マウント_" と課金設定で[コンテナーを実行](##run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](luis-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
 1. [コンテナーの予測エンドポイントに対してクエリを実行します](#query-the-containers-prediction-endpoint)。 
 1. コンテナーの操作が完了したら、LUIS ポータルで出力マウントから[エンドポイント ログをインポート](#import-the-endpoint-logs-for-active-learning)し、コンテナーを[停止](#stop-the-container)します。
-1. LUIS ポータルの **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)を使用して、アプリを強化します。
+1. LUIS ポータルの **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)を使用して、アプリを強化します。
 
 コンテナーで実行中のアプリに変更を加えることはできません。 コンテナー内のアプリに変更を加えるには、[LUIS](https://www.luis.ai) ポータルを使用して LUIS サービスでアプリに変更を加えるか、または LUIS の[オーサリング API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用する必要があります。 そのうえで、アプリをトレーニングまたは発行し、新しいパッケージをダウンロードして、もう一度コンテナーを実行します。
 
@@ -262,13 +262,13 @@ ApiKey={ENDPOINT_KEY}
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
 
-|Query parameter (クエリ パラメーター)|type|目的|
+|Query parameter (クエリ パラメーター)|Type|目的|
 |--|--|--|
 |`q`|文字列|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
 |`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
 |`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
-|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)に使用できます。 既定値は true です。|
+|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
 
 ### <a name="query-published-app"></a>発行済みアプリに対してクエリを実行する
 
@@ -299,15 +299,20 @@ curl -X GET \
 LUIS コンテナーの出力マウントが指定された場合、アプリのクエリ ログ ファイルは出力ディレクトリ ({INSTANCE_ID} はコンテナーの ID) に保存されます。 アプリのクエリ ログには、LUIS コンテナーに送信された予測クエリごとに、クエリ、応答、タイムスタンプが記録されます。 
 
 次の場所は、コンテナーのログ ファイルに使用される入れ子になったディレクトリ構造を示しています。
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint logs]\(エンドポイント ログのインポート\)** を選択して、それらのログをアップロードします。 
 
 ![アクティブ ラーニングに使用するコンテナーのログ ファイルをインポートする](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
 ログがアップロードされたら、LUIS ポータルで[エンドポイント発話を確認](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances)します。
+
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -316,10 +321,6 @@ LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 出力[マウント](luis-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
-
-## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>課金
 

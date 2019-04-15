@@ -133,7 +133,7 @@ items:
   - name: Power Query M
     href: https://msdn.microsoft.com/library/mt211003.aspx
   - name: Tabular Model Scripting Language (TMSL)
-    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference
+    href: https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference
   - name: 表形式オブジェクト モデル (TOM)
     href: https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo
   - name: リソースとオブジェクトの制限
@@ -160,9 +160,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-analysis-services
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest
-ms.openlocfilehash: 33c45fd33e0ff84675474f63b070b41c6f0cb189
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4d3a592d4d0d9bd0a75dcd1cc76deb2a273bdf09
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341086"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525264"

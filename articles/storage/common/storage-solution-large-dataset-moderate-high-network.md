@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496895"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805584"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
  
@@ -62,7 +62,7 @@ ms.locfileid: "58496895"
 
 オフライン データ転送を使用する場合は、以下の表を使用して、主な機能の違いを理解します。
 
-|                                     |    Data Box Disk (プレビュー)    |    Data Box                                      |    Data Box Heavy (プレビュー)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    データ サイズ                        |    最大 35 TB                 |    デバイスあたり最大 80 TB                       |    デバイスあたり最大 800 TB               |    可変                            |
 |    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
@@ -83,7 +83,7 @@ ms.locfileid: "58496895"
 
 ### <a name="high-network-bandwidth"></a>ネットワーク帯域幅 - 高
 
-|                                     |    ツール AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure Storage REST API、SDK                   |    Data Box Gateway または Data Box Edge (プレビュー)           |    Azure Data Factory                                            |
+|                                     |    ツール AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure Storage REST API、SDK                   |    Data Box Gateway または Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    データ型                  |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files                           |   データ ストアと形式について、70 個を超えるデータ コネクタがサポートされます    |
 |    フォーム ファクター                |    コマンドライン ツール                        |    プログラマティック インターフェイス                    |    Microsoft では仮想 <br>または物理デバイスが提供されます     |    Azure ポータルのサービス                                            |

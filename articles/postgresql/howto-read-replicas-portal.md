@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113216"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846957"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Azure Portal から読み取りレプリカを作成および管理する
 
 この記事では、Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
 
-> [!IMPORTANT]
-> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
 
 ## <a name="prerequisites"></a>前提条件
 マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>マスター サーバーの準備
-汎用またはメモリ最適化レベルにあるマスター サーバーを準備するには、次の手順を使用する必要があります。
-
-マスター サーバーでは、`azure.replication_support` パラメーターを **[REPLICA]** に設定する必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。
+汎用またはメモリ最適化レベルにあるマスター サーバーを準備するには、次の手順を使用する必要があります。 マスター サーバーをレプリケーション用に準備するには、azure.replication_support パラメーターを設定します。 レプリケーション パラメーターを変更した場合、その変更を有効にするにはサーバーの再起動が必要です。 Azure portal では、1 つのボタン **[レプリケーションのサポートを有効にします]** に、これら 2 つのステップがカプセル化されています。
 
 1. Azure Portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
 
-2. 左側のメニューで、**[サーバー パラメーター]** を選択します。
+2. サーバー サイドバーで、**[設定]** の **[レプリケーション]** を選択します。
 
-3. `azure.replication_support` パラメーターを検索します。
+3. **[レプリケーションのサポートを有効にします]** を選択します。 
 
-   ![azure.replication_support パラメーターを検索する](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![レプリケーションのサポートを有効にする](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. `azure.replication_support` パラメーター値を **[REPLICA]** に設定します。 **[保存]** を選択して変更を保持します。
+4. レプリケーションのサポートを有効にすることを確認します。 この操作では、マスター サーバーが再起動されます。 
 
-   ![パラメーターを [REPLICA] に設定し、変更を保存する](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![レプリケーションのサポートを有効にすることを確認する](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. 操作が完了すると、Azure portal の通知を 2 つ受け取ります。 1 つの通知は、サーバー パラメーターの更新に関するものです。 もう 1 つの通知は、すぐ後のサーバーの再起動に関するものです。
 
-5. 変更を保存すると、通知が受信されます。
+   ![成功通知 - 有効](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![通知を保存する](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. Azure portal のページを最新の情報に更新して、レプリケーション ツール バーを更新します。 このサーバーの読み取りレプリカを作成できるようになります。
 
-6. サーバーを再起動して変更を適用します。 サーバーを再起動する方法については、[Azure Database for PostgreSQL サーバーの再起動](howto-restart-server-portal.md)に関するページを参照してください。
+   ![更新されたツール バー](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+レプリケーションのサポートを有効にするのは、マスター サーバーごとに 1 回限りの操作です。 **[レプリケーションのサポートを無効にします]** ボタンは、利便性のために用意されています。 このマスター サーバーでレプリカを二度と作成しないことが確実な場合を除き、レプリケーションのサポートを無効にすることはお勧めしません。 マスター サーバーに既存のレプリカがある間は、レプリケーションのサポートを無効できません。
 
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
@@ -52,9 +52,7 @@ ms.locfileid: "58113216"
 
 1. マスター サーバーとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。 
 
-2. サーバー メニューで、**[設定]** の **[レプリケーション]** を選択します。
-
-   まだ汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定し、サーバーを再起動していない場合は、通知が受信されます。 レプリカを作成する前に、その手順を完了します。
+2. サーバー サイドバーで、**[設定]** の **[レプリケーション]** を選択します。
 
 3. **[レプリカの追加]** を選択します。
 

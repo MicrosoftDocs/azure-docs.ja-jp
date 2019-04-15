@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486583"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620735"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -28,11 +28,11 @@ Query Performance Insight が機能するには、[クエリ ストア](concepts
 ## <a name="viewing-performance-insights"></a>パフォーマンス洞察の表示
 Azure portal の [Query Performance Insight](concepts-query-performance-insight.md) ビューは、クエリ ストアからの重要な情報を視覚化します。 
 
-Azure Database for PostgreSQL サーバーのポータル ページのメニュー バーの **サポート + トラブルシューティング**セクションにある **Query Performance Insight** を選択します。
+Azure Database for PostgreSQL サーバーのポータル ページのメニュー バーの **[インテリジェント パフォーマンス]** セクションにある **[Query Performance Insight]** を選択します。
 
 ![Query Performance Insight 実行時間が長いクエリ](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-**実行時間の長いクエリ**タブは、実行ごとの平均実行時間上位 5 クエリを示し、15 分間隔で集計しています。 **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
+**[実行時間の長いクエリ]** タブには、15 分間隔で集計された、実行ごとの平均実行時間上位 5 クエリが示されます。 **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
 
 特定の時間枠を絞り込むために、クリックして、グラフにドラッグします。 拡大および縮小アイコン使用して、それぞれ期間を短くしたり､長くしたりすることもできます｡
 
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL サーバーのポータル ページのメニュ�
 
 **Wait Statistics** タブを選択し、サーバー内の待機時間に関して、対応する視覚化を表示します。
 
-![Query Performance Insight の待機の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight の待機時間の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。

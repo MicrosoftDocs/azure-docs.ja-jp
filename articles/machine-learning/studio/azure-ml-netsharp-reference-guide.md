@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905156"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886099"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
@@ -63,9 +63,9 @@ Azure Machine Learning Studio で作成するニューラル ネットワーク 
 + 畳み込みや重み共有バンドルなどの特殊な結合性の構造を定義する。
 + 複数のアクティブ化関数を指定する。
 
-仕様言語の構文の詳細については、「[構造の仕様](#Structure-specifications)」をご覧ください。
+仕様言語の構文の詳細については、「[構造の仕様](#structure-specifications)」をご覧ください。
 
-一般的な機械学習タスク用にニューラル ネットワークを定義する単純または複雑な例については、「[例](#Examples-of-Net#-usage)」をご覧ください。
+一般的な機械学習タスク用にニューラル ネットワークを定義する単純または複雑な例については、「[例](#examples-of-net-usage)」をご覧ください。
 
 ## <a name="general-requirements"></a>一般的な要件
 
@@ -149,7 +149,7 @@ output Result auto from Hidden all;
 
 現在、以下の 5 種類の結合バンドルがサポートされています。
 
-+ **フル** バンドル。`all` キーワードで表されます
++ **フル** バンドル。次のキーワードで表されます:  `all`
 + **フィルター** バンドル。`where` キーワードと、それに続く述語式で表されます
 + **畳み込み**バンドル。`convolve` キーワードと、それに続く畳み込み属性で表されます
 + **プーリング** バンドル。キーワード **max pool** または **mean pool** で表されます。
@@ -450,14 +450,15 @@ output Digit [10] from Hid3 all;
 + `convolve` キーワードは、`Conv1` という名前のレイヤーと `Conv2` という名前のレイヤーが畳み込みレイヤーであることを示しています。 これらの各層の宣言には、畳み込み属性の一覧が続きます。
 + このネットワークには第 3 の非表示レイヤー `Hid3` があり、これは第 2 の非表示レイヤー `Conv2` に完全結合されます。
 + 出力レイヤー `Digit` は、第 3 の非表示レイヤー `Hid3` のみに結合されます。 `all` キーワードは、出力レイヤーが `Hid3` に完全結合されることを示しています。
-+ 畳み込みのアリティは 3 (`InputShape`、`KernelShape`、`Stride, and `Sharing` から成るタプルの長さ) です。
++ 畳み込みのアリティは 3 (`InputShape`、`KernelShape`、`Stride`、`Sharing` から成るタプルの長さ) です。
 + カーネルごとの重みの数は `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` です。 または、`26 * 50 = 1300` です。
 + それぞれの隠れ層のノードは、次のように計算できます。
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5`
+    `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ ノードの合計数は、レイヤーの宣言済みディメンショナリティ [50, 5, 5] を使用して、次のように計算できます: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ ノードの合計数は、レイヤーの宣言済みディメンショナリティ [50, 5, 5] を使用して、次のように計算できます:  `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + `Sharing[d]` は、`d == 0` の場合にのみ False であるため、カーネルの数は `MapCount * NodeCount\[0] = 10 * 5 = 50` です。
 
 ## <a name="acknowledgements"></a>謝辞

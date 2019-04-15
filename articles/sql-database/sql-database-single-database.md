@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 03/29/2019
+ms.openlocfilehash: 19fa1797e2765a642aac19f55f0906ba9aef61a8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431117"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660291"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -54,6 +54,9 @@ ms.locfileid: "57431117"
 ## <a name="security"></a>セキュリティ
 
 SQL Database は、アプリケーションがさまざまなセキュリティとコンプライアンスの要件を満たすために役立つ、幅広い[組み込みのセキュリティとコンプライアンス](sql-database-security-overview.md)の機能を備えています。
+
+> [!IMPORTANT]
+> Azure SQL Database (すべてのデプロイ オプション) は、さまざまなコンプライアンス標準に対して認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)の一覧を入手できます。
 
 ## <a name="next-steps"></a>次の手順
 

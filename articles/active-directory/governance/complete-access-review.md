@@ -1,6 +1,6 @@
 ---
-title: グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで完了する | Microsoft Docs
-description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure AD アクセス レビューで完了する方法について説明します。
+title: グループまたはアプリケーションのアクセス レビューを入力する - Azure Active Directory | Microsoft Docs
+description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューに入力する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729612"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579599"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで完了する
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューに入力する
 
 管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](create-access-review.md)することができます。 レビュー担当者には、アクセス権をレビューするよう促すメールが Azure AD から自動的に送信されます。 メールが届かなかったユーザーには、[グループまたはアプリケーションに対するアクセス権のレビュー](perform-access-review.md)に関するページの手順を送信できます。 (レビュー担当者として割り当てられているが招待状を受け取っていないゲストは、レビューの前にまず招待状を受け取る必要があるため、アクセス レビューから電子メールが送信されません) アクセス レビュー期間が過ぎるか、管理者がアクセス レビューを停止したら、この記事の手順に従って、その結果を確認したうえで適用します。
 

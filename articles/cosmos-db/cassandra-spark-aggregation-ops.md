@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037312"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877467"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API テーブルに対する集計操作 
 
@@ -258,7 +258,9 @@ spark
 select max(book_price) from books_vw;
 ```
 **出力:**
-```22.45 ```
+```
+22.45
+```
 
 ## <a name="sum-operation"></a>合計操作
 

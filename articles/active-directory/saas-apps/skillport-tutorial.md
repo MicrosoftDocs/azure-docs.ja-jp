@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0facd15d8bc0701448707f48b5a1e93fe3ac592c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 936ad2e49aaf449144296dd941a3fbc42719fe4f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200729"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル:Azure Active Directory と Skillport の統合
 
@@ -115,21 +115,21 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[サインオン URL]** ボックスに、次の URL を入力します。
       
-      EU のデータセンター: `https://adfs.skillport.eu`
+      EU のデータセンター:  `https://adfs.skillport.eu`
    
-      米国のデータセンター: `https://sso.skillport.com`
+      米国のデータセンター:  `https://sso.skillport.com`
 
     b. **[識別子]** ボックスに次の URL を入力します。
       
-      EU のデータセンター: `http://adfs.skillport.eu/adfs/services/trust`
+      EU のデータセンター:  `http://adfs.skillport.eu/adfs/services/trust`
    
-      米国のデータセンター: `https://sso.skillport.com`
+      米国のデータセンター:  `https://sso.skillport.com`
    
     c. **[応答 URL]** ボックスに次のURL を入力します。
     
-      EU のデータセンター: ` https://adfs.skillport.eu/adfs/ls/`
+      EU のデータセンター:  `https://adfs.skillport.eu/adfs/ls/`
     
-      米国のデータセンター: `https://sso.skillport.com/sp/ACS.saml2`
+      米国のデータセンター:  `https://sso.skillport.com/sp/ACS.saml2`
  
 1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
@@ -170,7 +170,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-skillport-test-user"></a>Skillport テスト ユーザーの作成
 

@@ -3,20 +3,20 @@ title: REST API:Azure Data Lake Storage Gen1 に対するファイルシステ�
 description: WebHDFS REST API を使用して、Azure Data Lake Storage Gen1 に対するファイルシステム操作を実行します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4c61d68a948cbc5638dab30713871d1aaf822f03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529252"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877633"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ Data Lake Storage Gen1 アカウントからのデータの読み取りは、2 �
 * まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`に対して GET 要求を送信します。 この呼び出しにより、次の GET 要求の送信先が返されます。
 * 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`に対して GET 要求を送信します。 この呼び出しにより、ファイルの内容が表示されます。
 
-ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションにより、基本的に 2 つの要求が 1 つの要求に結合され、新しい場所で cURL により要求がやり直されます。 最後に、次のスニペットに示すように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
+ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L`  オプションにより、基本的に 2 つの要求が 1 つの要求に結合され、新しい場所で cURL により要求がやり直されます。 最後に、次のスニペットに示すように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 

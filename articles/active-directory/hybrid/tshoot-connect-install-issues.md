@@ -15,16 +15,16 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e11a9c913b93f09058a0bde8982354870e547d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188207"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876924"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>トラブルシューティング:Azure AD Connect のインストールの問題
 
-## <a name="recommended-steps"></a>**推奨される手順**
+## **<a name="recommended-steps"></a>推奨される手順**
 適切な [Azure AD Connect のインストールの種類](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)を確認してください。 高速インストールの条件を満たしている場合は、高速インストールを使用することを強くお勧めします。 高速インストールでは、インストールを完了するのに必要な最小限のオプションが提供されます。したがって、問題が発生する可能性が低くなります。 
 
 しかし、高速インストールの条件を満たしておらず、カスタム インストールを行う必要がある場合は、一般的な問題を回避するために従うことができるベスト プラクティスがいくつかあります。 わかりやすくするため、ここでは選択的オプションのみを示します。
@@ -39,7 +39,7 @@ ms.locfileid: "56188207"
 
     ![AD フォレスト アカウント](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### <a name="common-issues"></a>**一般的な問題**
+### **<a name="common-issues"></a>一般的な問題**
 
 * [オンプレミス Active Directory の接続に関する問題](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)。
 
@@ -47,12 +47,12 @@ ms.locfileid: "56188207"
 
 * [オンプレミス Active Directory のアクセス許可に関する問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
 
-## <a name="recommended-documents"></a>**推奨されるドキュメント**
+## **<a name="recommended-documents"></a>推奨されるドキュメント**
 * [Azure AD Connect の前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [Azure AD Connect で使用するインストールの種類の選択](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
 * [簡単設定を使用した Azure AD Connect の開始](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Azure AD Connect のカスタム インストール](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)」の記事を参照してください。
+* [Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
 * [Azure AD Connect:ステージング サーバーとは](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [ADConnectivityTool PowerShell モジュールとは](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 

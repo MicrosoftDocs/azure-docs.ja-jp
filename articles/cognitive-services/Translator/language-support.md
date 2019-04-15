@@ -3,19 +3,19 @@ title: 言語サポート - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Microsoft Translator Text API でサポートされる自然言語の一覧。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241576"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918044"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -110,10 +110,10 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | アラビア語 | `ar` | アラビア語 `Arab` | <--> | ラテン語 `Latn` |
 |バングラ語  | `bn` | ベンガル語 `Beng` | <--> | ラテン語 `Latn` |
-| 中国語 (簡体字) | `zh-Hans` | 中国語簡体字 `Hans`| <--> | ラテン語 `Latn` |
-| 中国語 (簡体字) | `zh-Hans` | 中国語簡体字 `Hans`| <--> | 中国語繁体字 `Hant`|
-| 中国語 (繁体字) | `zh-Hant` | 中国語繁体字 `Hant`| <--> | ラテン語 `Latn` |
-| 中国語 (繁体字) | `zh-Hant` | 中国語繁体字 `Hant`| <--> | 中国語簡体字 `Hans` |
+| 中国語 (簡体字) | `zh-Hans` | 中国語 (簡体字) `Hans`| <--> | ラテン語 `Latn` |
+| 中国語 (簡体字) | `zh-Hans` | 中国語 (簡体字) `Hans`| <--> | 中国語 (繁体字) `Hant`|
+| 中国語 (繁体字) | `zh-Hant` | 中国語 (繁体字) `Hant`| <--> | ラテン語 `Latn` |
+| 中国語 (繁体字) | `zh-Hant` | 中国語 (繁体字) `Hant`| <--> | 中国語 (簡体字) `Hans` |
 | グジャラート語 | `gu`  | グジャラート語 `Gujr` | --> | ラテン語 `Latn` |
 | ヘブライ語 | `he` | ヘブライ語 `Hebr` | <--> | ラテン語 `Latn` |
 | ヒンディー語 | `hi` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
@@ -123,9 +123,9 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | マラーティー語 | `mr` | デーヴァナーガリー `Deva` | --> | ラテン語 `Latn` |
 | オリヤー語 | `or` | オリヤー語 `Orya` | <--> | ラテン語 `Latn` |
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
-| セルビア語 (キリル文字) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
-| セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
-| タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
+| セルビア語 (キリル文字) | `sr-Cyrl` | キリル文字 `Cyrl`  | --> | ラテン語 `Latn` |
+| セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル文字 `Cyrl`|
+| タミル語 | `ta` | タミル語 `Taml` | --> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
 | タイ語 | `th` | タイ語 `Thai` | <--> | ラテン語 `Latn` |
 
@@ -268,7 +268,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 
 ## <a name="customization"></a>カスタマイズ
 
-次の言語は、[カスタム翻訳ツール](http://aka.ms/CustomTranslator)を使用して、英語との間で双方向のカスタマイズが可能です。
+次の言語は、[カスタム翻訳ツール](https://aka.ms/CustomTranslator)を使用して、英語との間で双方向のカスタマイズが可能です。
 
 | 言語    | 言語コード |
 |:----------- |:-------------:|
@@ -290,6 +290,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | ヘブライ語      | `he`          |
 | ヒンディー語      | `hi`          |
 | ハンガリー語      | `hu`          |
+| アイスランド語 | `is` |
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |
 | 韓国語      | `ko`          |
@@ -309,6 +310,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
 | ベトナム語      | `vi`          |
+| ウェールズ語 | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web サイトのリストにアクセスする
 

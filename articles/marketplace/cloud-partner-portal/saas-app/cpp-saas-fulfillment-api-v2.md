@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7e1fa82e71738ac113bfe748a7117d0c3a10b14b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319027"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878028"
 ---
-# <a name="saas-fulfillment-api-version-2"></a>SaaS Fulfillment API バージョン 2
+# <a name="saas-fulfillment-api"></a>SaaS Fulfillment API
 
 この記事では、独立系ソフトウェア ベンダー (ISV) が Azure Marketplace と SaaS アプリケーションを統合できるようにする API について説明します。 この API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。  この API は、Azure Marketplace で取引可能な SaaS オファーを一覧表示するための要件になります。
 
@@ -86,7 +86,7 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 
 パブリッシャーのすべての SaaS サブスクリプションを一覧表示します。
 
-**Get:<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
+**Get: <br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -153,7 +153,7 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 
 指定された SaaS サブスクリプションを取得します。 この呼び出しを使用して、ライセンス情報およびプラン情報を取得します。
 
-**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
+**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -218,7 +218,7 @@ Response Body:
 
 この呼び出しを使用して、現在のユーザーのすると、現在のユーザーのプライベート/パブリック オファーがあるかどうかを調べます。
 
-**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
+**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -275,7 +275,7 @@ Response Body:
 
 解決エンドポイントにより、ユーザーはマーケットプレース トークンを永続的なリソース ID に解決できます。 リソース ID は、SAAS サブスクリプションの一意の識別子です。  ユーザーが ISV の Web サイトにリダイレクトされると、URL に、クエリ パラメーターのトークンが含まれます。 ISV は、このトークンを使用し、それを解決するための要求を行うことが期待されます。 応答には、リソースの一意の SAAS サブスクリプション ID、名前、オファーID、およびプランが含まれます。 このトークンは、1 時間だけ有効です。 
 
-**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+**Post: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -333,7 +333,7 @@ Response body:
 
 #### <a name="activate-a-subscription"></a>サブスクリプションをアクティブ化する
 
-**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
+**Post: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -457,7 +457,7 @@ ISV は、プランの変更、または数量の変更を開始します。 <br
 
 指定したサブスクリプションを登録解除し削除します。
 
-**Delete:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
+**削除:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -572,7 +572,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 現在のユーザーの未処理の操作を一覧表示します。 
 
-**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
+**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -636,7 +636,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 ユーザーが、トリガーされた非同期操作 (プランのサブスクライブ、サブスクライブ解除、変更) の状態を追跡できるようにします。
 
-**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
+**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -648,7 +648,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  ` application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  authorization     | JSON Web トークン (JWT) ベアラー トークン。  |

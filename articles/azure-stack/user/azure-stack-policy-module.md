@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 03/26/2019
 ms.author: sethm
-ms.lastreviewed: 11/29/2018
-ms.openlocfilehash: 2e1b7257e7ffc4460d86018a6318e33f95e01700
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/26/2019
+ms.openlocfilehash: 9fade97bbe783cf156f5b73523bc0834a34df926
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246266"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487449"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ポリシー モジュールを使用して Azure ポリシー管理する
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack ポリシー モジュールにより、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションを構成できます。 このモジュールでは、[New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) コマンドレットを使用して、サブスクリプションで使用できるリソースの種類とサービスを制限する Azure ポリシーを作成します。 次に、[New-azurermpolicyassignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) コマンドレットを使用して、適切なスコープ内でポリシーの割り当てを作成します。 ポリシーの構成が完了すると、Azure サブスクリプションを使用して Azure Stack を対象とするアプリを開発できます。
+Azure Stack ポリシー モジュールを使用すると、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションを構成できます。 このモジュールでは、[New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) PowerShell コマンドレットを使用して、サブスクリプションで使用できるリソースの種類とサービスを制限する Azure ポリシーを作成します。 次に、[New-azurermpolicyassignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) コマンドレットを使用して、適切なスコープ内でポリシーの割り当てを作成します。 ポリシーの構成が完了すると、Azure サブスクリプションを使用して Azure Stack を対象とするアプリを開発できます。
 
 ## <a name="install-the-module"></a>モジュールのインストール
 
@@ -35,31 +35,31 @@ Azure Stack ポリシー モジュールにより、Azure Stack と同じバー�
 3. [PowerShell を Azure Stack で使用するために構成します](azure-stack-powershell-configure-user.md)。
 4. AzureStack.Policy.psm1 モジュールをインポートします。
 
-    ```PowerShell
-    Import-Module .\Policy\AzureStack.Policy.psm1
-    ```
+
+   ```powershell
+   Import-Module .\Policy\AzureStack.Policy.psm1
+   ```
 
 ## <a name="apply-policy-to-azure-subscription"></a>Azure サブスクリプションにポリシーを適用する
 
-次のコマンドを使用して、Azure サブスクリプションに対して既定の Azure Stack ポリシーを適用できます。 このコマンドを実行する前に、`Azure Subscription Name`を自分の Azure サブスクリプションに置き換えます。
+次のコマンドを使用して、Azure サブスクリプションに対して既定の Azure Stack ポリシーを適用できます。 このコマンドを実行する前に、`Azure subscription name` を自分の Azure サブスクリプションの名前に置き換えてください。
 
-```PowerShell
+```powershell
 Add-AzureRmAccount
-$s = Select-AzureRmSubscription -SubscriptionName "Azure Subscription Name"
+$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID
-
 ```
 
 ## <a name="apply-policy-to-a-resource-group"></a>リソース グループにポリシーを適用する
 
-さらに詳細な方法でポリシーを適用する必要がある場合があります。 たとえば、同じサブスクリプションで他のリソースが実行されている場合があります。 ポリシー適用のスコープを特定のリソース グループに設定することで、Azure リソースを使用して Azure Stack のアプリをテストできます。 次のコマンドを実行する前に、`Azure Subscription Name`を自分の Azure サブスクリプションに置き換えます。
+さらに詳細なポリシーを適用する必要がある場合があります。 たとえば、同じサブスクリプションで他のリソースが実行されている場合があります。 ポリシー適用のスコープを特定のリソース グループに設定することで、Azure リソースを使用して Azure Stack のアプリをテストできます。 次のコマンドを実行する前に、`Azure subscription name` を自分の Azure サブスクリプションの名前に置き換えてください。
 
-```PowerShell
+```powershell
 Add-AzureRmAccount
 $rgName = 'myRG01'
-$s = Select-AzureRmSubscription -SubscriptionName "Azure Subscription Name"
+$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
@@ -67,7 +67,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ## <a name="policy-in-action"></a>実行中のポリシー
 
-Azure ポリシーをデプロイしたら、ポリシーで禁止されているリソースをデプロイしようとすると、エラーが表示されます。
+Azure ポリシーをデプロイした後、このポリシーで禁止されているリソースをデプロイしようとすると、エラーが表示されます。
 
 ![ポリシーの制約によるリソースのデプロイの失敗の結果](./media/azure-stack-policy-module/image1.png)
 

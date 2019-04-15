@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136514"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500170"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
@@ -76,7 +76,7 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 上記のスクリーンショットは、不動産サンプルのインデックス属性の一覧の一部です。 ポータルで、インデックススキーマ全体を確認できます。 インデックス属性について詳しくは、[インデックス作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。
 
 > [!Note]
-> クエリの一部の機能は、インデックスの各フィールドではなくインデックス全体に基づいて有効化されます。 このような機能には、[シノニム マップ](search-synonyms.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、[提案機能による作成 (オートコンプリートおよび自動提案)](index-add-suggesters.md)、[結果を順位付けするためのスコアリング ロジック](index-add-scoring-profiles.md)が含まれます。
+> クエリの一部の機能は、インデックスの各フィールドではなくインデックス全体に基づいて有効化されます。 このような機能には、[シノニム マップ](search-synonyms.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、[提案機能による作成 (オートコンプリートおよび提案クエリ)](index-add-suggesters.md)、[結果を順位付けするためのスコアリング ロジック](index-add-scoring-profiles.md)が含まれます。
 
 ## <a name="elements-of-a-query-request"></a>クエリ要求の要素
 

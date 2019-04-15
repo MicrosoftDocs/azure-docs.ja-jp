@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e4d4d15ebb8200f16be8953e955b2e793be03c3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 63adb354d51caa8f01df8bf05c85257c75b5fe41
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452192"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877828"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -45,7 +45,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 2. 特定のコンテナーでスループットを制御し、SLA によって裏付けられている保証されたスループットを取得したい場合。
 
-**上記の 2 つの戦略のハイブリッドを検討します**
+**上記の 2 つの戦略のハイブリッドを検討します。**
 
 1. 前に説明したように、Azure Cosmos DB では上記の 2 つの戦略を混在させることができるので、Azure Cosmos データベース内の一部のコンテナーについてはデータベースのプロビジョニング済みスループットを共有し、同時に、同じデータベース内の他のコンテナーでは専用のプロビジョニング済みスループット量を利用することができます。 
 

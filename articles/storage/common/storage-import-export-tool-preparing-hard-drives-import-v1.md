@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 03b504524b2f489f1ee042c6e825ccffe0a60bb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086719"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315064"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。
@@ -43,10 +43,10 @@ ms.locfileid: "58086719"
 
 |ソースのファイルまたはディレクトリ|インポート先の BLOB または仮想ディレクトリ|
 |------------------------------|-------------------------------------------|
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|
-|K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
-|\\\myshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|
+|K:\Temp\FavoriteVideo.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
+|\\\myshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|
 
 ## <a name="determine-how-many-drives-are-needed"></a>必要なドライブの数を決定する
  次に、以下のこと確認する必要があります。

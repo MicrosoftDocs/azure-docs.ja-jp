@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/27/2019
+ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226863"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649409"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新プログラム
 
@@ -56,18 +56,20 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack 修正プログラム
 
+既に 1901 があり、まだいずれの修正プログラムもインストールしていない場合は、最初に 1901 修正プログラムをインストールすることなく [1902 を直接インストールする](azure-stack-update-1902.md)ことができます。
+
 - **1809**: [KB 4481548 – Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: 最新の修正プログラムはありません。
-- **1901**: [KB 4481548 – Azure Stack 修正プログラム 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1901**: [KB 4495662 – Azure Stack 修正プログラム 1.1901.3.105](https://support.microsoft.com/help/4495662)
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> - 1901 に更新する前に 1811 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes) (ある場合) をインストールしてください。
+> 1901 に更新する前に 1811 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes) (ある場合) をインストールしてください。 既に 1901 があり、まだいずれの修正プログラムもインストールしていない場合は、最初に 1901 修正プログラムをインストールすることなく 1902 を直接インストールすることができます。
 
 - この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -93,7 +95,7 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
    * **AzureRm.Insights**  
          AzureRm ロールアップ モジュールに、メトリック、メトリック定義リソース タイプ用の **api-version 2018-01-01** をサポートする既に公開済みのバージョン 5.1.5 が組み込まれました。
 
-- **AzureStack 1.7.0** これは重大な変更のリリースです。 重大な変更について詳しくは、 https://aka.ms/azspshmigration170 を参照してください。
+- **AzureStack 1.7.1**: これは破壊的変更を伴うリリースです。 重大な変更について詳しくは、 https://aka.ms/azspshmigration171 を参照してください。
    * **Azs.Backup.Admin モジュール**  
          重大な変更:バックアップが証明書ベースの暗号化モードに変更されました。 対称キーのサポートは非推奨となりました。  
    * **Azs.Fabric.Admin モジュール**  
@@ -117,9 +119,6 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - <!-- 3235634 – IS, ASDK -->
   **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイする場合に、サフィックスを **Standard_A2_v2** (小文字の v) で指定しなければならないという問題が修正されました。 グローバル Azure と同様に、**Standard_A2_V2** (大文字の V) を使用できるようになりました。
-
-<!-- 2869209 – IS, ASDK --> 
-- [Add-AzsPlatformImage コマンドレット](/powershell/module/azs.compute.admin/add-azsplatformimage)を使用する場合に、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用しなければならないという問題が修正されました。 ディスクへのローカル パスも使用できるようになりました。
 
 <!--  2795678 – IS, ASDK --> 
 - ポータルを使用して Premium VM サイズ (DS、Ds_v2、FS、FSv2) の仮想マシン (VM) を作成した場合に警告が発生するという問題が修正されました。 VM は Standard ストレージ アカウントで作成されました。 これは、機能、IOP、または課金には影響しませんが、警告は修正されました。

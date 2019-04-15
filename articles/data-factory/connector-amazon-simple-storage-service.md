@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 5a3da4d890cd5bdffa5373d2e1319009609283f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6f531a814255b9171ff1767ede379bbd4f4a19b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541640"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578171"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "57541640"
 
 Amazon S3 から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
+具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。 S3 への要求を認証するために [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) が使用されます。
 
 >[!TIP]
 >この Amazon S3 コネクタを使用し、[Google Cloud Storage](connector-google-cloud-storage.md) など、**あらゆる S3 対応プロバイダー**からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。

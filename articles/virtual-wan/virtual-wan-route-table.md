@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: ac1384827ceede0f66fd08c6c08fa8e934b1ae42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc8dd6770efa1c057a56374ddc0094c2d88d2eb5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076158"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335736"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>トラフィックをネットワーク仮想アプライアンスに誘導するための Virtual WAN ハブ ルート テーブルを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "58076158"
 
 以下の条件を満たしていることを確認します。
 
-1. 任意のサードパーティ製のソフトウェアであネットワーク仮想アプライアンス (NVA) があること。この NVA は、通常は Azure Marketplace (Link) から仮想ネットワークにプロビジョニングされます。
+1. ネットワーク仮想アプライアンス (NVA) があります。 これは、仮想ネットワークの Azure Marketplace から通常プロビジョニングする、ご自分で選択するサードパーティ製のソフトウェアです。
 2. NVA ネットワーク インターフェイスに割り当てられたプライベート IP があること。 
 3. NVA は仮想ハブにデプロイすることはできません。 独立した VNet 内にデプロイする必要があります。 この記事では、NVA の VNet を "DMZ VNet" と呼びます。
 4. "DMZ VNet" には、1 つまたは複数の仮想ネットワークを接続できます。 この記事では、それらの VNet を "間接スポーク VNet" と呼びます。 それらの VNet を、VNet ピアリングを使用して DMZ VNet に接続できます。
@@ -117,14 +117,6 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 
 ```powershell
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
-```
-
-## <a name="cleanup"></a>リソースをクリーンアップする
-
-これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

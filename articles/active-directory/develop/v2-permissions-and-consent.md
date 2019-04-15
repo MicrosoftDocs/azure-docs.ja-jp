@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225065e35e40c06d324bee89fa65a765a2727233
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123761"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881649"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのアクセス許可と同意
 
@@ -38,8 +38,8 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 
 Microsoft ID プラットフォームでは、[OAuth 2.0](active-directory-v2-protocols.md) 承認プロトコルが実装されています。 OAuth 2.0 は、ユーザーに代わってサードパーティのアプリが Web でホストされるリソースにアクセスできる方法です。 Microsoft ID プラットフォームと統合される、Web でホストされるすべてのリソースは、リソース識別子つまり "*アプリケーション ID URI*" を持っています。 Microsoft の Web でホストされるリソースには、次のようなものがあります。
 
-* Microsoft Graph: `https://graph.microsoft.com`
-* Office 365 メール API: `https://outlook.office.com`
+* Microsoft Graph:  `https://graph.microsoft.com`
+* Office 365 メール API:  `https://outlook.office.com`
 * Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
@@ -55,9 +55,9 @@ Microsoft ID プラットフォームと統合されたサードパーティの�
 
 OAuth 2.0 では、これらの種類のアクセス許可は "*スコープ*" と呼ばれます。 単に "*アクセス許可*" と呼ばれることもあります。 アクセス許可は、Microsoft ID プラットフォームでは文字列値として表現されます。 Microsoft Graph の例では、各アクセス許可の文字列値は次のようになります。
 
-* `Calendars.Read` を使用したユーザーの予定表の読み取り
-* `Calendars.ReadWrite` を使用したユーザーの予定表への書き込み
-* `Mail.Send` を使用したユーザーとしてのメールの送信
+* ユーザーの予定表の読み取り:  `Calendars.Read`
+* ユーザーの予定表への書き込み:  `Calendars.ReadWrite`
+* ユーザーとしてのメールの送信:  `Mail.Send`
 
 アプリでは、通常、v2.0 承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、特定の高い特権アクセス許可は、管理者が同意することによってのみ付与され、一般に[管理者同意エンドポイント](v2-permissions-and-consent.md#admin-restricted-permissions)を使用して要求/付与できます。 詳細については、後の説明を参照してください。
 
@@ -82,7 +82,7 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 
 ### <a name="openid"></a>openid
 
-アプリは、[OpenID Connect](active-directory-v2-protocols.md) を使用してサインインを行う場合、`openid` スコープを要求する必要があります。 `openid` スコープは、職場アカウントの同意ページでは "サインイン" アクセス許可として表示され、個人用 Microsoft アカウントの同意ページでは "プロフィールの表示と、Microsoft アカウントを使うアプリとサービスへの接続" アクセス許可として表示されます。 このアクセス許可により、`sub` 要求の形式でユーザーの一意の識別子をアプリが受け取ることができます。 アプリが UserInfo エンドポイントにアクセスすることも可能にします。 `openid` スコープは、v2.0 トークン エンドポイントで ID トークンを取得するために使用できます。このトークンは、アプリ内の異なるコンポーネント間の HTTP 呼び出しをセキュリティで保護するために使用できます。
+アプリは、[OpenID Connect](active-directory-v2-protocols.md) を使用してサインインを行う場合、`openid` スコープを要求する必要があります。 `openid` スコープは、職場アカウントの同意ページでは "サインイン" アクセス許可として表示され、個人用 Microsoft アカウントの同意ページでは "プロフィールの表示と、Microsoft アカウントを使うアプリとサービスへの接続" アクセス許可として表示されます。 このアクセス許可により、`sub` 要求の形式でユーザーの一意の識別子をアプリが受け取ることができます。 アプリが UserInfo エンドポイントにアクセスすることも可能にします。 `openid` スコープは、v2.0 トークン エンドポイントで ID トークンを取得するために使用できます。このトークンは、アプリが認証目的で使用できます。
 
 ### <a name="email"></a>email
 
@@ -139,9 +139,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 Microsoft のエコシステムにおける高い権限には、*管理者によって制限されている*とマークされているものもあります。 これらの種類のアクセス許可の例として、次のアクセス許可があります。
 
-* `User.Read.All` を使用してすべてのユーザーの完全なプロファイルを読み取る
-* `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込み
-* `Groups.Read.All` を使用して組織のディレクトリ内の全グループを読み取る
+* すべてのユーザーの完全なプロファイルを読み取る:  `User.Read.All`
+* 組織のディレクトリにデータを書き込む:  `Directory.ReadWrite.All`
+* 組織のディレクトリ内の全グループを読み取る:  `Groups.Read.All`
 
 コンシューマー ユーザーがこの種類のデータへのアプリケーション アクセスを許可している場合でも、組織のユーザーは会社の同一の機密データ セットへのアクセスを許可することが制限されます。 アプリケーションが組織のユーザーにアクセス許可を要求する場合は、そのユーザーにはアプリのアクセス許可に同意する権限がないという内容のエラー メッセージが表示されます。
 
@@ -260,7 +260,7 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 `/.default` スコープを使用すると、v1.0 エンドポイントから v2.0 エンドポイントにアプリを移行するのに役立ちます。 これは、アプリケーション登録で構成されたアクセス許可の静的一覧を参照するすべてのアプリケーションの組み込みスコープです。 `https://graph.microsoft.com/.default` の `scope` 値は、v1.0 エンドポイント `resource=https://graph.microsoft.com` と機能的に同じです。つまり、これは、アプリケーションが Azure portal で登録した Microsoft Graph のスコープでトークンを要求します。
 
-/.default スコープは、どの OAuth 2.0 フローでも使用できますが、[On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow .md) と [クライアントの資格情報フロー](v2-oauth2-client-creds-grant-flow.md)では特に必要です。  
+/.default スコープは、どの OAuth 2.0 フローでも使用できますが、[On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow.md) と [クライアントの資格情報フロー](v2-oauth2-client-creds-grant-flow.md)では特に必要です。  
 
 > [!NOTE]
 > クライアントは、静的 (`/.default`) と動的の同意を 1 つの要求に結合することはできません。 そうした場合、スコープの種類の結合が原因で `scope=https://graph.microsoft.com/.default+mail.read` はエラーになります。
@@ -283,7 +283,7 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>例 3:ユーザーは同意済みで、クライアントが追加のスコープを要求する
 
-ユーザーは、クライアントの `mail.read` に既に同意しています。 クライアントは、登録で `contacts.read` スコープを登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` を使用してトークンを要求し、`prompt=consent` を介して同意を要求すると、アプリケーションによって登録された唯一かつすべてのアクセス許可の同意画面がユーザーに表示されます。 `contacts.read` は同意画面に表示されますが、`mail.read` は表示されません。 返されたトークンは Microsoft Graph 用であり、`mail.read` と `contacts.read` が含まれます。
+ユーザーは、クライアントの `mail.read` に既に同意しています。 クライアントは、登録で `contacts.read` スコープを登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` を使用してトークンを要求し、`prompt=consent` を介して同意を要求すると、アプリケーションによって登録された唯一かつすべてのアクセス許可の同意画面がユーザーに表示されます。 `contacts.read`  は同意画面に表示されますが、`mail.read` は表示されません。 返されたトークンは Microsoft Graph 用であり、`mail.read` と `contacts.read` が含まれます。
 
 ### <a name="using-the-default-scope-with-the-client"></a>クライアントで /.default スコープを使用する
 

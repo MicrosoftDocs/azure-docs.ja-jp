@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445757"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576932"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 の On-Behalf-Of フロー
 
@@ -72,8 +72,8 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
-| `client_id` | 必須 | [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)または[新しいアプリ登録 (プレビュー) ポータル](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)がアプリに割り当てたアプリケーション (クライアント) ID。 |
-| `client_secret` | 必須 | アプリを登録するために使用したポータルでアプリ用に生成したアプリケーション シークレット。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
+| `client_secret` | 必須 | Azure portal の [アプリの登録] ページで、アプリ用に生成したクライアント シークレット。 |
 | `assertion` | 必須 | 要求で使用されるトークンの値。 |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。 |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
@@ -104,7 +104,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
-| `client_id` | 必須 | [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)または[新しいアプリ登録 (プレビュー) ポータル](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)がアプリに割り当てたアプリケーション (クライアント) ID。 |
+| `client_id` | 必須 |  [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_assertion_type` | 必須 | 値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります。 |
 | `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 |
 | `assertion` | 必須 | 要求で使用されるトークンの値。 |
@@ -205,7 +205,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 #### <a name="pre-authorized-applications"></a>事前承認済みアプリケーション
 
-アプリケーションのプレビュー ポータルには、"事前承認済みアプリケーション" という新しい機能があります。 これにより、特定のアプリケーションが特定のスコープを受け取る許可を常に持つことをリソースで示すことができます。 これは、フロントエンド クライアントとバックエンド リソース間の接続をよりシームレスに行う場合に主に役立ちます。 1 つのリソースで、複数の事前承認済みアプリケーションを宣言できます。このようなアプリケーションは、OBO フローでこれらのアクセス許可を要求し、ユーザーによる同意なしで、それらのアクセス許可を受け取ることができます。
+アプリケーション ポータルの 1 つの機能に、"事前承認済みアプリケーション" があります。 これにより、特定のアプリケーションが特定のスコープを受け取る許可を常に持つことをリソースで示すことができます。 これは、フロントエンド クライアントとバックエンド リソース間の接続をよりシームレスに行う場合に主に役立ちます。 1 つのリソースで、複数の事前承認済みアプリケーションを宣言できます。このようなアプリケーションは、OBO フローでこれらのアクセス許可を要求し、ユーザーによる同意なしで、それらのアクセス許可を受け取ることができます。
 
 #### <a name="admin-consent"></a>管理者の同意
 

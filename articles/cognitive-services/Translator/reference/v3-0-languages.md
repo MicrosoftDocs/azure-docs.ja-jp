@@ -3,19 +3,19 @@ title: Translator Text API の Languages メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Languages メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122405"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915766"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -67,11 +67,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 クライアントは、`scope` クエリ パラメーターを使用して、目的の言語のグループを定義します。
 
-* `scope=translation` は、ある言語から別の言語にテキストを翻訳するためにサポートされる言語を提供します。
+* `scope=translation`  は、ある言語から別の言語にテキストを翻訳するためにサポートされる言語を提供します。
 
-* `scope=transliteration` は、ある言語のテキストを、ある書記体系から別の書記体系に変換する機能を提供します。
+* `scope=transliteration`  は、ある言語のテキストを、ある書記体系から別の書記体系に変換する機能を提供します。
 
-* `scope=dictionary` は、`Dictionary` 操作がデータを返す言語ペアを提供します。
+* `scope=dictionary`  は、`Dictionary` 操作がデータを返す言語ペアを提供します。
 
 クライアントは、コンマ区切りの名前のリストを指定することによって、複数のグループを同時に取得できます。 たとえば、`scope=translation,transliteration,dictionary` は、すべてのグループに対してサポートされている言語を返します。
 
@@ -93,7 +93,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 各プロパティの値は次のとおりです。
 
-* `translation` プロパティ
+* `translation` property
 
   `translation` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストの翻訳先の言語または元の言語を識別します。 キーに関連付けられる値は、言語を表すプロパティを持つ JSON オブジェクトです。
 
@@ -119,7 +119,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   }
   ```
 
-* `transliteration` プロパティ
+* `transliteration` property
 
   `transliteration` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストをある書記体系から別の書記体系に変換できる言語を示します。 キーに関連付けられる値は、言語とそのサポートされる書記体系を表すプロパティを持つ JSON オブジェクトです。
 
@@ -184,7 +184,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   }
   ```
 
-* `dictionary` プロパティ
+* `dictionary` property
 
   `dictionary` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、代替翻訳と逆翻訳が利用可能な言語を識別します。 値は、ソース言語と利用可能な翻訳があるターゲット言語を記述する JSON オブジェクトです。
 
@@ -281,7 +281,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 次の例では、テキスト翻訳でサポートされている言語を取得する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

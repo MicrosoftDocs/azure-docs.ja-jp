@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61a4be19000265910493963db9f29df143a7e21c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173925"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360352"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む (プレビュー)
 
@@ -26,6 +26,8 @@ BYOK 暗号化は 1 つのステップからなるプロセスであり、クラ
 Kafka クラスターに送信されるメッセージはすべて、Kafka で保守管理されるレプリカも含め、対称的 DEK (データ暗号化キー) で暗号化されます。 DEK は、キー コンテナーからの KEK (キー暗号化キー) を使用して保護されます。 暗号化と復号のプロセスはすべて、Azure HDInsight によって処理されます。 
 
 Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight Kafka クラスターはすぐに新しいキーの使用を開始します。 ランサムウェア対策と誤削除対策として、キー保護機能の [Do Not Purge]\(削除しない\) と [論理的な削除] を有効にします。 これらの保護機能のないキーはサポートされていません。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>BYOK を使用する
 
@@ -99,7 +101,7 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
 **キーを削除した場合、どのようにしてクラスターを復元しますか?**
 
-   [論理的な削除] 対応のキーのみがサポートされているため、キーがキー コンテナーに保管されている場合、キーへのアクセスはクラスターに再び与えられます。 Azure Key Vault キーを回復する方法については、「[Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)」を参照してください。
+   [論理的な削除] 対応のキーのみがサポートされているため、キーがキー コンテナーに保管されている場合、キーへのアクセスはクラスターに再び与えられます。 Azure Key Vault キーを回復する方法については、「[Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey)」を参照してください。
 
 **BYOK クラスターと非 BYOK クラスターで同時にプロデューサー/コンシューマー アプリケーションを動かすことはできますか?**
 

@@ -52,7 +52,7 @@ ms.locfileid: "58519767"
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-このベースライン ポリシーを使用すると、ユーザーを除外できるようになります。 テナントからロックアウトされないように、1 つの*[緊急アクセス管理アカウント](../users-groups-roles/directory-emergency-access.md)* を除外することができます。
+このベースライン ポリシーを使用すると、ユーザーを除外できるようになります。 テナントからロックアウトされないように、1 つの *[緊急アクセス管理アカウント](../users-groups-roles/directory-emergency-access.md)* を除外することができます。
 
 
 ## <a name="enable-a-baseline-policy"></a>ベースライン ポリシーを有効にする 

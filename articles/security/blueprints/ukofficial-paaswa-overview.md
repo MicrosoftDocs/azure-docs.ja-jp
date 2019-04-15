@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891105"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482989"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -119,7 +119,7 @@ Basic、Standard、および Premium プランは運用ワークロード向け�
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージド シングル SQL データベース、[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)内のマネージド SQL データベース、および SQL [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (パブリック プレビュー) が用意されています。 これによって、[動的にスケーラブルなパフォーマンス])https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)を実現しています。また、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) などのオプションが用意されています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージド シングル SQL データベース、[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)内のマネージド SQL データベース、および SQL [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (パブリック プレビュー) が用意されています。 それは、[動的にスケーラブルなパフォーマンス](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
 
 このブループリントの Azure SQL Database
 

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840921"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918605"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -35,11 +35,11 @@ ms.locfileid: "57840921"
 > サービス エンドポイントのユーザーは、次のシナリオでも影響を受ける可能性があります。
 >
 > - アプリケーションがめったに既存のサーバーに接続しないため、テレメトリがこれらのアプリケーションに関する情報を取得しなかった場合
-> - サービス エンドポイント接続の既定の動作が `Proxy` であるとしたときに、自動デプロイ ロジックが SQL データベース サーバーを作成する場合
+> - サービス エンドポイント接続の既定の動作が次であるとしたときに、自動デプロイ ロジックが SQL データベース サーバーを作成する場合 `Proxy`
 >
-> Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 12000 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内の Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
+> Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 11999 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内のすべての Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
 > [!NOTE]
-> このトピックは、単一データベースとエラスティック プールをホストする Azure SQL Database サーバーと、SQL Data Warehouse データベースに適用されます。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> このトピックは、単一データベースとエラスティック プールをホストする Azure SQL Database サーバー、SQL Data Warehouse データベース、Azure Database for MySQL、Azure Database for MariaDB、および Azure Database for PostgreSQL に適用されます。 簡単にするため、SQL Database、SQL Data Warehouse、Azure Database for MySQL、Azure Database for MariaDB、Azure Database for PostgreSQL を参照する場合に、SQL Database を使用します。
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 
@@ -57,7 +57,7 @@ ms.locfileid: "57840921"
 
 Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
 
-- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、ポート 1433 上の Azure SQL Database ゲートウェイの IP アドレスだけでなく、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、11000 から 12000 のポートのリージョン内のすべての Azure IP アドレスに対する送信ファイアウォール ルールを、クライアントで許可する必要があります。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
+- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、ポート 1433 上の Azure SQL Database ゲートウェイの IP アドレスだけでなく、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、11000 から 11999 のポートのリージョン内のすべての Azure IP アドレスに対する送信ファイアウォール ルールを、クライアントで許可する必要があります。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
 - **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシされます。 接続を有効にするには、Azure SQL Database ゲートウェイの IP アドレスのみ (通常はリージョンあたり 2 つの IP アドレス) を許可する送信ファイアウォール規則がクライアントに必要です。 このモードを選択すると、ワークロードの性質によっては待機時間が長くなり、スループットが低下する可能性があります。 最短の待機時間と最高のスループットを実現するために、`Proxy` 接続ポリシーではなく `Redirect` 接続ポリシーを強くお勧めします。
 - **既定:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 有効なポリシーは、接続が Azure (`Redirect`) 内か Azure (`Proxy`) の外部かによって変わります。
 
@@ -109,6 +109,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | 米国中南部 | 23.98.162.75 | 13.66.62.124 |
 | 東南アジア | 23.100.117.95 | 104.43.15.0 |
 | 英国南部 | 51.140.184.11 | |
+| 英国西部 | 51.141.8.11| |
 | 米国中西部 | 13.78.145.25 | |
 | 西ヨーロッパ | 191.237.232.75 | 40.68.37.158 |
 | 米国西部 1 | 23.99.34.75 | 104.42.238.205 |

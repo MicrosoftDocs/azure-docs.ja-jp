@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 3f23f62554ce7f4b90b4116fdd6085027e71650d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bd5e5a3b6fa72698f04969219b1db3cdb0bde3a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770171"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486701"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure ExpressRoute を使用して Azure Stack を Azure に接続する
 
@@ -108,7 +108,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 
    |フィールド  |値  |
    |---------|---------|
-   |Name     |Tenant1VNet1         |
+   |名前     |Tenant1VNet1         |
    |アドレス空間     |10.1.0.0/16|
    |サブネット名     |Tenant1 Sub1|
    |サブネットのアドレス範囲     |10.1.1.0/24|
@@ -159,7 +159,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
    > [!IMPORTANT]
    > この例では、Azure Stack ゲートウェイと ExpressRoute ルーターの間のサイト間 VPN 接続に静的ルートを使用していると想定しています。
 
-1. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** がすべて正しいことを確認します。 **[Create]** をクリックします。
+1. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** がすべて正しいことを確認します。 **[作成]** を選択します。
 
 #### <a name="create-the-connection"></a>接続の作成
 
@@ -230,9 +230,9 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
 #### <a name="configure-the-nat"></a>NAT を構成する
 
 1. Azure Stack のホスト コンピューターに管理者アカウントでサインインします。
-1. 次の PowerShell スクリプトをコピーし、編集します。 `"your administrator password"` を実際の管理者パスワードに置き換えたうえで、管理者特権の PowerShell ISE からスクリプトを実行してください。 このスクリプトから**外部 BGPNAT アドレス**が返されます。
+1. 次の PowerShell スクリプトをコピーし、編集します。 `your administrator password` を実際の管理者パスワードに置き換えたうえで、管理者特権の PowerShell ISE からスクリプトを実行してください。 このスクリプトから**外部 BGPNAT アドレス**が返されます。
 
-   ```PowerShell
+   ```powershell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "your administrator password" `
@@ -243,14 +243,14 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
     -Password $Password
    ```
 
-1. NAT を構成するには、次の PowerShell スクリプトをコピーし、編集します。 このスクリプトを編集して、`'External BGPNAT address'` と `'Internal IP address'` を次の例の値に置き換えます。
+1. NAT を構成するには、次の PowerShell スクリプトをコピーし、編集します。 このスクリプトを編集して、`External BGPNAT address` と `Internal IP address` を次の例の値に置き換えます。
 
    * "*外部 BGPNAT アドレス*" には 10.10.0.62 を使用します。
    * "*内部 IP アドレス*" には 192.168.102.1 を使用します。
 
    管理者特権の PowerShell ISE から次のスクリプトを実行します。
 
-   ```PowerShell
+   ```powershell
    $ExtBgpNat = 'External BGPNAT address'
    $IntBgpNat = 'Internal IP address'
 
@@ -289,7 +289,6 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
       -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 4500 `
       -InternalPort 4500}
-
    ```
 
 ## <a name="configure-azure"></a>Azure を構成する
@@ -367,7 +366,7 @@ Azure Stack からサイト間 VPN 接続を終了するには、IKEv2 VPN と B
 
 次の Cisco ASR 1000 Series Aggregation Services Router の構成例は、「*ExpressRoute ルーターの構成*」の図に示したネットワーク インフラストラクチャをサポートします。
 
-```
+```shell
 ip vrf Tenant 1
  description Routing Domain for PRIVATE peering to Azure for Tenant 1
  rd 1:1
@@ -600,7 +599,7 @@ route-map VNET-ONLY permit 10
 
 Windows Server 2016 の既定では、受信 ICMP パケットがファイアウォールを通過できないように設定されています。 ping テストに使用するすべての仮想マシンについて、受信 ICMP パケットを許可する必要があります。 ICMP のファイアウォール規則を作成するには、管理者特権の PowerShell ウィンドウで次のコマンドレットを実行します。
 
-```PowerShell
+```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `
@@ -628,7 +627,7 @@ New-NetFirewallRule `
 1. テナント アカウントを使用して、Azure Stack ユーザー ポータルにサインインし、**[すべてのリソース]** を選択します。
 1. VPN ゲートウェイのリソース グループに移動し、オブジェクトの種類として **[接続]** を選択します。
 1. 一覧から **[ConnectToAzure]** 接続を選択します。
-1. **[接続]**>**[概要]** で、**[受信データ]** と **[送信データ]** の統計情報を確認できます。0 以外の何らかの値が表示されていると思います。
+1. **[接続]** > **[概要]** で、**[受信データ]** と **[送信データ]** の統計情報を確認できます。0 以外の何らかの値が表示されていると思います。
 
    ![受信データと送信データ](media/azure-stack-connect-expressroute/DataInDataOut.png)
 

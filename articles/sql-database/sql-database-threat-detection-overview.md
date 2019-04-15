@@ -1,42 +1,42 @@
 ---
-title: 脅威の検出 - Azure SQL Database | Microsoft Docs
-description: 脅威の検出は、Azure SQL Database の潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
+title: Advanced Threat Protection - Azure SQL Database | Microsoft Docs
+description: Advanced Threat Protection では、Azure SQL Database での潜在的なセキュリティ脅威を示す異常なデータベース アクティビティが検出されます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: rmatchoro
+author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/31/2019
+ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001887"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793909"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Azure SQL Database の脅威の検出
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 
-[Azure SQL Database](sql-database-technical-overview.md) および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の脅威の検出では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。
+[Azure SQL Database](sql-database-technical-overview.md) および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の Advanced Threat Protectionでは、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
 
-脅威の検出は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 脅威の検出は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
+Advanced Threat Protection は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 Advanced Threat Protection は、SQL ADS ポータルを使用して一元的にアクセスおよび管理できます。
 
 > [!NOTE]
 > このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
-## <a name="what-is-threat-detection"></a>脅威の検出とは
+## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
 
-脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセスやクエリのパターンが見つかった場合に、ユーザーはアラートを受信します。 脅威の検出は、アラートを [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合します。これには、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が含まれます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+ Advanced Threat Protection で提供される新しいセキュリティ階層では、異常なアクティビティに対するセキュリティ アラートが提供されるので、お客様は潜在的な脅威が発生したときにそれを検出して対応できます。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセスやクエリのパターンが見つかった場合に、ユーザーはアラートを受信します。 Advanced Threat Protection では、アラートと [Azure Security Center](https://azure.microsoft.com/services/security-center/) が統合されます。これには、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が含まれます。 Advanced Threat Protection を使用すると、データベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
 
 完全な調査エクスペリエンスを実現するために、データベース イベントを Azure ストレージ アカウントの監査ログに書き込む、[SQL Database Auditing](sql-database-auditing.md) を有効にすることをお勧めします。  
 
-## <a name="threat-detection-alerts"></a>脅威検出アラート
+## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection のアラート
 
-Azure SQL Database の脅威の検出では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出し、次のアラートをトリガーします。
+Azure SQL Database の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出され、次のアラートがトリガーされます。
 
 - **Vulnerability to SQL Injection (SQL インジェクションにつながる脆弱性)**:このアラートは、アプリケーションがデータベースにエラーのある SQL ステートメントを生成したときにトリガーされます。 このアラートは、SQL インジェクション攻撃に対する脆弱性が存在する可能性を示すものです。 エラーのあるステートメントが生成される理由として、次の 2 つが考えられます。
 
@@ -65,20 +65,20 @@ Azure SQL Database の脅威の検出では、データベースへのアクセ�
 
    ![特定のアラート](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出のアラートを調査する
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Azure portal でデータベースの Advanced Threat Protection アラートを調査する
 
-脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 データベース内のライブ SQL 脅威検出タイルと Azure portal の SQL ADS ブレードでは、アクティブな脅威の状態が追跡されます。
+Advanced Threat Protection では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 データベース内のライブ SQL Advanced Threat Protection タイルと Azure portal の SQL ADS ブレードでは、アクティブな脅威の状態が追跡されます。
 
-**[脅威検出アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースまたはデータ ウェアハウスに対して検出されたアクティブな SQL 脅威の概要が表示されます。
+**[Advanced Threat Protection アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースまたはデータ ウェアハウスに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
-   ![脅威検出アラート](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Advanced Threat Protection アラート](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![脅威検出アラート 2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Advanced Threat Protection アラート 2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>次の手順
 
-- [単一のデータベースおよびプールされたデータベースの脅威検出](sql-database-threat-detection.md)の詳細について学習します。
-- [Managed Instance の脅威検出](sql-database-managed-instance-threat-detection.md)の詳細について学習します。
+- [単一のデータベースおよびプールされたデータベースでの Advanced Threat Protection](sql-database-threat-detection.md) の詳細について学習します。
+- [マネージド インスタンスでの Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) の詳細について学習します。
 - [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - [Azure SQL Database 監査](sql-database-auditing.md)の詳細について参照してください
 - [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。

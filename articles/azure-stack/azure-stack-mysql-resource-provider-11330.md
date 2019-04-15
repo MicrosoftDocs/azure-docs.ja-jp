@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e0101aebadcaef71f35c72b54f9126e69cff0f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252015"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882837"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL リソース プロバイダー 1.1.33.0 のリリース ノート
 
@@ -50,7 +50,8 @@ MySQL リソース プロバイダー バイナリをダウンロードした後
 
 - **TLS 1.2 が有効になっていない場合に、以前の MySQL リソース プロバイダー (1.1.30.0) のデプロイが失敗することがあります**。 リソース プロバイダーのデプロイ、リソース プロバイダーの更新、またはシークレットのローテーションを行うときに TLS 1.2 を有効にするために、MySQL リソース プロバイダー 1.1.33.0 を更新しました。 
 
-- **MySQL リソース プロバイダーのシークレットのローテーションに失敗します**。 シークレットをローテーションするときに次のエラー コードが出る問題を修正しました。 ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **MySQL リソース プロバイダーのシークレットのローテーションに失敗します**。 シークレットをローテーションするときに次のエラー コードが出る問題を修正しました。
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>既知の問題 
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116234"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439245"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
@@ -69,6 +69,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ナレッジ ベースを作成できたら、QnA Maker ポータルで削除します。
 
 ## <a name="next-steps"></a>次の手順
+
+コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)することができます。
 
 > [!div class="nextstepaction"]
 > [Add chit-chat personal](./chit-chat-knowledge-base.md)\(おしゃべり個人の追加\)

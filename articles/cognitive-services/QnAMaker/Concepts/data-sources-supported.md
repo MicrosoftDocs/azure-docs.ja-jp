@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433112"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578630"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -32,7 +32,11 @@ QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファ�
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 
-どのデータ ソースに対しても、パブリック URL のみが有効です。 認証が必要なデータ ソースは送信しないでください。 認証済みのサイトからファイルをダウンロードし、ファイルのアップロード オプションを使用して質問と回答を抽出することができます。
+ほとんどのデータ ソースの場所には、認証を必要としないパブリック URL またはファイルを指定する必要があります。 
+
+[Sharepoint データ ソースの場所](../How-to/add-sharepoint-datasources.md)には、認証済みのファイルを指定することができます。 Sharepoint リソースは、Web ページではなく、ファイルになっている必要があります。 
+
+認証済みのファイルまたは URL がある場合、別のオプションとして、認証済みのサイトからローカル コンピューターにファイルをダウンロードしてから、ローカル コンピューターからナレッジ ベースにファイルを追加できます。 
 
 ## <a name="faq-urls"></a>FAQ URL
 

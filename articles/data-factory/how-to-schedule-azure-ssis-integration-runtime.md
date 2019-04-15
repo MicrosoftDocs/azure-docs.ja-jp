@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092448"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621636"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
@@ -94,7 +94,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
   
     2. **[メソッド]** では、**[POST]** を選択します。 
     3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。 
-    4. **[認証]** で **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Managed identiy for Data Factory (Data Factory のマネージド ID)](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
+    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
     5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
     
        ![ADF Web アクティビティのスケジュールの SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -348,7 +348,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Azure-SSIS IR を開始/停止する Rrunbook のスケジュールを作成する
 
-前のセクションでは、Azure-SSIS IR を開始または停止する Azure Automation Runbook を作成しました。 このセクションでは、Runbook の 2 つのスケジュールを作成します。 1 つ目のスケジュールを構成するときは、**OPERATION** に **START** を指定します。 同様に、2 つ目のスケジュールを構成するときは、**OPERATION** パラメーターに **STOP** を指定します。 スケジュールを作成する手順について詳しくは、「[スケジュールを作成する](../automation/automation-schedules.md#creating-a-schedule)」をご覧ください。
+前のセクションでは、Azure-SSIS IR を開始または停止する Azure Automation Runbook を作成しました。 このセクションでは、Runbook の 2 つのスケジュールを作成します。 1 つ目のスケジュールを構成するときは、**OPERATION** に **START** を指定します。 同様に、2 つ目のスケジュールを構成するときは、**OPERATION** パラメーターに **STOP** を指定します。 スケジュールを作成する手順について詳しくは、「[スケジュールを作成する](../automation/shared-resources/schedules.md#creating-a-schedule)」をご覧ください。
 
 1. **[Runbook]** ウィンドウで **[スケジュール]** を選択し、ツールバーの **[+ スケジュールの追加]** を選択します。 
 

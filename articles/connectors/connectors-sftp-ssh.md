@@ -1,6 +1,6 @@
 ---
-title: Connect to SFTP server with SSH - Azure Logic Apps | Microsoft Docs
-description: Automate tasks that monitor, create, manage, send, and receive files for an SFTP server by using SSH and Azure Logic Apps
+title: SSH で SFTP サーバーに接続する - Azure Logic Apps | Microsoft Docs
+description: SSH と Azure Logic Apps を使用して、SFTP サーバーのファイルの監視、作成、管理、および受信を行うタスクを自動化します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,169 +10,175 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886666"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575098"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitor, create, and manage SFTP files by using SSH and Azure Logic Apps
+# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
-To automate tasks that monitor, create, send, and receive files on a [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) server by using the [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protocol, you can build and automate integration workflows by using Azure Logic Apps and the SFTP-SSH connector. SFTP is a network protocol that provides file access, file transfer, and file management over any reliable data stream. Here are some example tasks you can automate: 
+[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) プロトコルを使用して[セキュア ファイル転送プロトコル (SFTP)](https://www.ssh.com/ssh/sftp/) サーバー上のファイルを監視、作成、送信、および受信するタスクを自動化するために、Azure Logic Apps と SFTP-SSH コネクタを使用して、統合ワークフローの構築と自動化を行えます。 SFTP は、任意の信頼性の高いデータ ストリームを通して、ファイル アクセス、ファイル転送、およびファイル管理を提供するネットワーク プロトコルです。 次に、自動化できるタスクの例をいくつか示します。 
 
-* Monitor when files are added or changed.
-* Get, create, copy, rename, update, list, and delete files.
-* Create folders.
-* Get file content and metadata.
-* Extract archives to folders.
+* ファイルの追加または変更を監視します。
+* ファイルの取得、作成、コピー、名前変更、更新、一覧、および削除を行います。
+* フォルダーを作成します。
+* ファイルの内容とメタデータを取得します。
+* アーカイブをフォルダーに抽出します。
 
-Compared to the [SFTP connector](../connectors/connectors-create-api-sftp.md), the SFTP-SSH connector can read or write files up to *1 GB* in size by managing data in 50 MB pieces. For files larger than 1 GB, actions can use [message chunking](../logic-apps/logic-apps-handle-large-messages.md). For more differences, review [Compare SFTP-SSH versus SFTP](#comparison) later in this article.
+SFTP サーバー上のイベントを監視し、出力を他のアクションで使用できるようにするトリガーを使用できます。 SFTP サーバーで各種のタスクを実行するアクションを使用できます。 ロジック アプリ内の他のアクションでも、SFTP アクションからの出力を使用するようにできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルやその内容に関するメールのアラートを送信できます。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-You can use triggers that monitor events on your SFTP server and make output available to other actions. You can use actions that perform various tasks on your SFTP server. You can also have other actions in your logic app use the output from SFTP actions. For example, if you regularly retrieve files from your SFTP server, you can send email alerts about those files and their content by using the Office 365 Outlook connector or Outlook.com connector.
-If you're new to logic apps, review [What is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+## <a name="limits"></a>制限
+
+* SFTP-SSH アクションでは、1 GB ではなく "*50 MB 単位*" でデータを管理することで、"*1 GB 以下*" のファイルを読み書きできます。
+
+* ファイルが "*1 GB を超える*" 場合、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 現在、SFTP-SSH トリガーではチャンクはサポートされていません。
+
+その他の違いについては、次のセクションの「[SFTP-SSH と SFTP を比較する](#comparison)」で確認してください。
 
 <a name="comparison"></a>
 
-## <a name="compare-sftp-ssh-versus-sftp"></a>Compare SFTP-SSH versus SFTP
+## <a name="compare-sftp-ssh-versus-sftp"></a>SFTP-SSH と SFTP を比較する
 
-Here are other key differences between the SFTP-SSH connector and the SFTP connector where the SFTP-SSH connector has these capabilities:
+以下に、SFTP-SSH コネクタと SFTP-SSH コネクタのその他の主な違いを、SFTP コネクタは以下の機能を備えているという形で示します。
 
-* Uses the <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a> library, which is an open-source Secure Shell (SSH) library that supports .NET. 
+* .NET をサポートする Secure Shell (SSH) オープン ソース ライブラリである <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET** </a>ライブラリを使用します。
 
   > [!NOTE]
   >
-  > The SFTP-SSH connector supports *only* these private keys, formats, algorithms, and fingerprints:
-  > 
-  > * **Private key formats**: RSA (Rivest Shamir Adleman) and DSA (Digital Signature Algorithm) keys in both OpenSSH and ssh.com formats
-  > * **Encryption algorithms**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
-  > * **Fingerprint**: MD5
+  > SFTP-SSH コネクタは、以下に示す秘密キー、形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
+  >
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
+  > * **フィンガープリント**: MD5
 
-* Reads or writes files up to *1 GB* in size compared to the SFTP connector, but handles data in 50 MB pieces, not 1 GB pieces. For files larger than 1 GB, actions can also use [message chunking](../logic-apps/logic-apps-handle-large-messages.md). Currently, triggers don't support chunking.
+* SFTP コネクタと比べて、アクションでは、"*1 GB まで*" のファイルを読み書きできます。ただし、データは 1 GB 単位ではなく 50 MB 単位で処理されます。 ファイルが 1 GB を超える場合、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用することもできます。 現在、SFTP-SSH トリガーではチャンクはサポートされていません。
 
-* Provides the **Create folder** action, which creates a folder at the specified path on the SFTP server.
+* SFTP サーバーの指定されたパスにフォルダーを作成する**フォルダーの作成**アクションを提供します。
 
-* Provides the **Rename file** action, which renames a file on the SFTP server.
+* SFTP サーバーのファイルの名前を変更する**ファイル名の変更**アクションを提供します。
 
-* Caches the connection to SFTP server *for up to 1 hour*, which improves performance and reduces the number of attempts at connecting to the server. To set the duration for this caching behavior, edit the <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> property in the SSH configuration on your SFTP server. 
+* SFTP サーバーへの接続を*最大 1 時間*キャッシュします。これによりパフォーマンスが向上し、サーバーへの接続試行数が減少します。 このキャッシュ動作の期間を設定するには、SFTP サーバーの SSH 構成で、<a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> プロパティを編集します。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-* An Azure subscription. If you don't have an Azure subscription, <a href="https://azure.microsoft.com/free/" target="_blank">sign up for a free Azure account</a>. 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-* Your SFTP server address and account credentials, which let your logic app access your SFTP account. You also need access to an SSH private key and the SSH private key password. 
+* SFTP サーバーのアドレスとアカウントの資格情報。これにより、ロジック アプリが SFTP アカウントにアクセスできます。 SSH 秘密キーと SSH 秘密キーのパスワードにもアクセスできる必要があります。 
 
   > [!IMPORTANT]
   >
-  > The SFTP-SSH connector supports *only* these private key formats, algorithms, and fingerprints:
+  > SFTP-SSH コネクタは、以下に示す秘密キー形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
   > 
-  > * **Private key formats**: RSA (Rivest Shamir Adleman) and DSA (Digital Signature Algorithm) keys in both OpenSSH and ssh.com formats
-  > * **Encryption algorithms**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
-  > * **Fingerprint**: MD5
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
+  > * **フィンガープリント**: MD5
   >
-  > When you're creating your logic app, after you add the SFTP-SSH trigger or action you want, you'll need to provide connection information for your SFTP server. 
-  > If you're using an SSH private key, make sure you ***copy*** the key from your SSH private key file, and ***paste*** that key into the connection details, ***Don't manually enter or edit the key***, which might cause the connection to fail. 
-  > For more information, see the later steps in this article.
+  > ロジック アプリを作成している場合は、必要な SFTP-SSH トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 
+  > SSH 秘密キーを使おうとしている場合は、SSH 秘密キー ファイルからキーを***コピー***し、そのキーを接続の詳細に***貼り付ける***ようにしてください。***キーは手動で入力または編集しないでください***。そのようにすると、接続が失敗することがあります。 
+  > 詳細については、この記事で後述する手順を参照してください。
 
-* Basic knowledge about [how to create logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* The logic app where you want to access your SFTP account. To start with an SFTP-SSH trigger, [create a blank logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md). To use an SFTP-SSH action, start your logic app with another trigger, for example, the **Recurrence** trigger.
+* SFTP アカウントにアクセスするロジック アプリ。 SFTP-SSH トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SFTP-SSH アクションを使用するには、**繰り返し**トリガーなど、別のトリガーでロジック アプリを開始します。
 
-## <a name="connect-to-sftp-with-ssh"></a>Connect to SFTP with SSH
+## <a name="connect-to-sftp-with-ssh"></a>SSH で SFTP に接続する
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Sign in to the [Azure portal](https://portal.azure.com), and open your logic app in Logic App Designer, if not open already.
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. For blank logic apps, in the search box, enter "sftp ssh" as your filter. Under the triggers list, select the trigger you want. 
+1. 空のロジック アプリの場合は、検索ボックスに、フィルターとして「sftp ssh」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
 
-   -or-
+   または
 
-   For existing logic apps, under the last step where you want to add an action, choose **New step**. 
-   In the search box, enter "sftp ssh" as your filter. 
-   Under the actions list, select the action you want.
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   検索ボックスに、フィルターとして「sftp ssh」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。
 
-   To add an action between steps, move your pointer over the arrow between steps. 
-   Choose the plus sign (**+**) that appears, and then select **Add an action**.
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
 
-1. Provide the necessary details for your connection.
+1. 接続に必要な詳細を指定します。
 
    > [!IMPORTANT] 
    >
-   > When you enter your SSH private key in the **SSH private key** property, follow these additional steps, which help make sure you provide the complete and correct value for this property. 
-   > An invalid key causes the connection to fail.
+   > **SSH 秘密キー** プロパティに SSH 秘密キーを入力する場合は、次の追加の手順に従ってください。これは、このプロパティの完全で正しい値を確実に指定する助けになります。 
+   > 無効なキーを指定すると、接続が失敗します。
    
-   Although you can use any text editor, here are sample steps that show how to correctly copy and paste your key by using Notepad.exe as an example.
+   任意のテキスト エディターを使用できますが、次に例として、Notepad.exe を使用してキーを正しくコピーして貼り付ける方法を示す手順の例を示します。
     
-   1. Open your SSH private key file in a text editor. 
-   These steps use Notepad as the example.
+   1. テキスト エディターで SSH 秘密キーのファイルを開きます。 
+   これらの手順では、例としてメモ帳を使用します。
 
-   1. On Notepad's **Edit** menu, select **Select All**.
+   1. メモ帳の **[編集]** メニューで、**[すべて選択]** を選択します。
 
-   1. Select **Edit** > **Copy**.
+   1. **[編集]** > **[コピー]** を選択します。
 
-   1. In the SFTP-SSH trigger or action you added, paste the *complete* key you copied into the **SSH private key** property, which supports multiple lines. 
-   ***Make sure you paste*** the key. ***Don't manually enter or edit the key***.
+   1. 追加した SFTP-SSH トリガーまたはアクションで、コピーした*完全な*キーを **SSH 秘密キー** プロパティ (これは、複数行をサポートします) に貼り付けます。 
+   キーは***貼り付けるようにしてください***。 ***キーを手動で入力または編集しないでください***。
 
-1. When you're done entering the connection details, choose **Create**.
+1. 接続の詳細の入力を完了したら、**[作成]** を選択します。
 
-1. Now provide the necessary details for your selected trigger or action and continue building your logic app's workflow.
+1. ここから、選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
-## <a name="trigger-limits"></a>Trigger limits
+## <a name="trigger-limits"></a>トリガーの制限
 
-The SFTP-SSH triggers work by polling the SFTP file system and looking for any file that was changed since the last poll. Some tools let you preserve the timestamp when the files change. In these cases, you have to disable this feature so your trigger can work. Here are some common settings:
+SFTP-SSH は、SFTP ファイル システムをポーリングし、前回のポーリング以降に変更されたファイルを検索することで動作をトリガーします。 一部のツールでは、ファイルが変更されたときにタイムスタンプを保持できます。 これらの場合は、トリガーが動作できるように、この機能を無効にする必要があります。 一般的な設定をいくつか次に示します。
 
-| SFTP client | Action | 
+| SFTP クライアント | Action | 
 |-------------|--------| 
-| Winscp | Go to **Options** > **Preferences** > **Transfer** > **Edit** > **Preserve timestamp** > **Disable** |
-| FileZilla | Go to **Transfer** > **Preserve timestamps of transferred files** > **Disable** | 
+| Winscp | **[オプション]** > **[ユーザー設定]** > **[転送]** > **[編集]** > **[Preserve timestamp] (タイムスタンプを保持する)** > **[無効]** に移動する |
+| FileZilla | **[転送]** > **[Preserve timestamps of transferred files] (転送されたファイルのタイムスタンプを保持する)** > **[無効]** に移動する | 
 ||| 
 
-When a trigger finds a new file, the trigger checks that the new file is complete, and not partially written. For example, a file might have changes in progress when the trigger checks the file server. To avoid returning a partially written file, the trigger notes the timestamp for the file that has recent changes, but doesn't immediately return that file. The trigger returns the file only when polling the server again. Sometimes, this behavior might cause a delay that is up to twice the trigger's polling interval. 
+トリガーによって新しいファイルが検出されると、トリガーはその新しいファイルが完了していて、すべて書き込まれていることを確認します。 たとえば、トリガーがファイル サーバーを確認している際に、ファイルの進行状態が変化する場合があります。 部分的に書き込まれたファイルが返されることなないように、トリガーは最新の変更を含むファイルのタイムスタンプをメモしますが、すぐにそのファイルを返すことはありません。 トリガーは、もう一度サーバーをポーリングしてファイルを返します。 場合によっては、この動作によって、最大でトリガーのポーリング間隔が 2 倍となる遅延が生じる場合があります。 
 
-When requesting file content, triggers don't get files larger than 50 MB. To get files larger than 50 MB, follow this pattern: 
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
 
-* Use a trigger that returns file properties, such as **When a file is added or modified (properties only)**.
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
 
-* Follow the trigger with an action that reads the complete file, such as **Get file content using path**, and have the action use [message chunking](../logic-apps/logic-apps-handle-large-messages.md).
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
 
-## <a name="examples"></a>Examples
+## <a name="examples"></a>例
 
 <a name="file-added-modified"></a>
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH trigger: When a file is added or modified
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH トリガー: When a file is added or modified (ファイルの追加または変更時)
 
-This trigger starts a logic app workflow when a file is added or changed on an SFTP server. For example, you can add a condition that checks the file's content and gets the content based on whether the content meets a specified condition. You can then add an action that gets the file's content, and puts that content in a folder on the SFTP server. 
+このトリガーは、SFTP サーバーでファイルが追加または変更されたときにロジック アプリ ワークフローを開始します。 たとえば、ファイルの内容をチェックし、内容が指定された条件を満たすかどうかに基づいてその内容を取得する条件を追加できます。 その後、ファイルの内容を取得し、その内容を SFTP サーバーのフォルダーに格納するアクションを追加できます。 
 
-**Enterprise example**: You can use this trigger to monitor an SFTP folder for new files that represent customer orders. You can then use an SFTP action such as **Get file content** so you get the order's contents for further processing and store that order in an orders database.
+**企業での使用例**: このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理するために注文の内容を取得し、その注文を注文データベース内に格納できるように、**ファイルの内容を取得する**などの SFTP アクションを使用できます。
 
-When requesting file content, triggers don't get files larger than 50 MB. To get files larger than 50 MB, follow this pattern: 
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
 
-* Use a trigger that returns file properties, such as **When a file is added or modified (properties only)**.
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
 
-* Follow the trigger with an action that reads the complete file, such as **Get file content using path**, and have the action use [message chunking](../logic-apps/logic-apps-handle-large-messages.md).
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH action: Get content using path
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH アクション: パスを使用してコンテンツを取得する
 
-This action gets the content from a file on an SFTP server. So for example, you can add the trigger from the previous example and a condition that the file's content must meet. If the condition is true, the action that gets the content can run. 
+このアクションは、SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。 
 
-When requesting file content, triggers don't get files larger than 50 MB. To get files larger than 50 MB, follow this pattern: 
+ファイルの内容を要求するとき、トリガーでは 50 MB より大きいファイルは取得されません。 50 MB より大きいファイルを取得するには、次のパターンに従います。 
 
-* Use a trigger that returns file properties, such as **When a file is added or modified (properties only)**.
+* **ファイルが追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返すトリガーを使用します。
 
-* Follow the trigger with an action that reads the complete file, such as **Get file content using path**, and have the action use [message chunking](../logic-apps/logic-apps-handle-large-messages.md).
+* **パスを使用してファイルの内容を取得する**といった、完全なファイルを読み取るアクションを使用するトリガーに従い、アクションで[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用します。
 
-## <a name="connector-reference"></a>Connector reference
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-For technical details about triggers, actions, and limits, which are described by the connector's OpenAPI (formerly Swagger) description, review the connector's [reference page](/connectors/sftpconnector/).
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sftpconnector/)を参照してください。
 
-## <a name="get-support"></a>Get support
+## <a name="get-support"></a>サポートを受ける
 
-* For questions, visit the [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* To submit or vote on feature ideas, visit the [Logic Apps user feedback site](https://aka.ms/logicapps-wish).
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-* Learn about other [Logic Apps connectors](../connectors/apis-list.md)
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

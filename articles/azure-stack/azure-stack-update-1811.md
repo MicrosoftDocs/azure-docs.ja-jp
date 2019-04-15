@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 138913414a8e45084d498a0c7b2e864bc443197f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481248"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362059"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -350,7 +350,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 - Azure Stack ポータルで、VM インスタンスにアタッチされたネットワーク アダプターにバインドされている IP 構成の静的 IP アドレスを変更すると、次の内容の警告メッセージが表示されます。 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...` 
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。 
 
     このメッセージは無視してかまいません。たとえ VM インスタンスが再起動しなくても IP アドレスは変更されます。
 
@@ -358,7 +358,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 - ポータルで受信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** をソースとして選択すると、Azure Stack では利用できないオプションがいくつか **[Source Tag]\(ソース タグ\)** リストに表示されます。 Azure Stack で有効なのは次のオプションだけです。
 
-  - **Internet**
+  - **インターネット**
   - **VirtualNetwork**
   - **AzureLoadBalancer**
   
@@ -391,6 +391,9 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
+### <a name="syslog"></a>syslog
+
+- syslog 構成は更新サイクル全体で維持されず、その結果、syslog クライアントはその構成を失い、処理が停止されることが syslog によって通知されます。 この問題は、syslog クライアントの一般提供以降、Azure Stack のすべてのバージョンに適用されます (1809)。 この問題を回避するには、Azure Stack の更新プログラムを適用した後、syslog クライアントを再構成します。
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
 

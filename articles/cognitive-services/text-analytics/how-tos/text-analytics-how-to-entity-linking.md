@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d1f4c72ec0a67baa6f523c1ab632903b0580f3a7
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258073"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339382"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -47,13 +47,13 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | Location      | 該当なし\*         | "Redmond, Washington", "Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
 | Quantity      | Number        | "6", "six"     | 
-| Quantity      | Percentage    | "50%", "fifty percent"| 
-| Quantity      | Ordinal       | "2nd", "second"     | 
+| Quantity      | 割合    | "50%"､"fifty percent"| 
+| Quantity      | Ordinal       | "2nd"､"second"     | 
 | Quantity      | NumberRange   | "4 to 8"     | 
-| Quantity      | Age           | "90 day old", "30 years old"    | 
-| Quantity      | Currency      | "$10.99"     | 
-| Quantity      | Dimension     | "10 miles", "40 cm"     | 
-| Quantity      | Temperature   | "32 degrees"    |
+| Quantity      | Age           | "90 day old"､"30 years old"    | 
+| Quantity      | 通貨      | "$10.99"     | 
+| Quantity      | Dimension     | "10 miles"､"40 cm"     | 
+| Quantity      | 気温   | "32 degrees"    |
 | DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
 | DateTime      | Date          | "May 2nd, 2017", "05/02/2017"   | 
 | Date Time     | Time          | "8am", "8:00"  | 
@@ -107,7 +107,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
-要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
+要求が受信されると分析が実行されます。 このサービスは、毎秒 100 件/毎分 1000 件の要求を受け取ります。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 

@@ -1,5 +1,5 @@
 ---
-title: PIM を使用するためのライセンスの要件 - Azure | Microsoft Docs
+title: PIM を使用するためのライセンスの要件 - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) を使用するためのライセンスの要件について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177253"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576158"
 ---
 # <a name="license-requirements-to-use-pim"></a>PIM を使用するためのライセンスの要件
 
@@ -45,7 +45,7 @@ PIM を操作する管理者または PIM の恩恵を受けるユーザーに�
 - PIM を使用して管理された Azure AD ロールを持つ管理者
 - PIM を使用して管理された Azure リソース ロールを持つ管理者
 - 特権ロール管理者のロールに割り当てられた管理者
-- PIM を使用して管理されたディレクトリ ロールに対象として割り当てられたユーザー
+- PIM を使用して管理された Azure AD ロールに対象として割り当てられたユーザー
 - PIM で要求を承認または却下できるユーザー
 - Just-In-Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当てられたユーザー  
 - アクセス レビューに割り当てられたユーザー

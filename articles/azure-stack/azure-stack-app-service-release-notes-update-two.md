@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98d084794accb99e0fecac85f7de861ec35bc15e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848900"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446023"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service on Azure Stack update 2 のリリース ノート
 
@@ -52,6 +52,8 @@ App Service on Azure Stack Update 2 のビルド番号は **72.0.13698.10** で�
 Azure App Service on Azure Stack Update 2 には、次の機能強化と修正が含まれています。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+
+- **Azure Functions ランタイム**が **v1.0.11612** に更新されました。
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 

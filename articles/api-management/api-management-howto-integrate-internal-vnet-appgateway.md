@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 00cdc8de45d2f0177cd1f097fb874cbe67f7e442
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120127"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521926"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -51,7 +51,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 この記事では、内部コンシューマーと外部コンシューマーの両方で単一の API Management サービスを使用し、オンプレミスとクラウド双方の API シリーズの単一フロントエンドとして機能させる方法について説明します。 さらに、Application Gateway のルーティング機能を使用して、これらの API のうち外部消費用に公開するものを一部のみ (例の中で緑色で記載しています) に制限する方法について説明します。
 
-最初のセットアップ例では、すべての API の管理が仮想ネットワーク内から行われます。 内部コンシューマー (オレンジ色で記載しています) は、内部 API と外部 API のすべてにアクセスできます。 トラフィックがインターネット上に出ていくことはなく、ExpressRoute 回線を介して高いパフォーマンスが実現します。
+最初のセットアップ例では、すべての API の管理が仮想ネットワーク内から行われます。 内部コンシューマー (オレンジ色で記載しています) は、内部 API と外部 API のすべてにアクセスできます。 トラフィックがインターネットに送信されることはありません。 ハイ パフォーマンス接続は、Express Route 回線によって提供されます。
 
 ![url ルート](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
@@ -93,7 +93,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 Azure にログインする
 
 ```powershell
-Login-AzAccount
+Connect-AzAccount
 ```
 
 資格情報を使用して認証を行います。
@@ -165,7 +165,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 上記の手順で作成したサブネット $apimsubnetdata を使用して、API Management の仮想ネットワーク オブジェクトを作成します。
 
 ```powershell
-$apimVirtualNetwork = New-AzApiManagementVirtualNetwork -Location $location -SubnetResourceId $apimsubnetdata.Id
+$apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
 ### <a name="step-2"></a>手順 2.
@@ -185,7 +185,7 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 
 ### <a name="step-1"></a>手順 1
 
-ドメイン用の秘密キーを使用して証明書をアップロードします。 この例では、`api.contoso.net` と `portal.contoso.net` を使用します。  
+ドメインの秘密キーを含む証明書の詳細で以下の変数を初期化します。 この例では、`api.contoso.net` と `portal.contoso.net` を使用します。  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -196,18 +196,21 @@ $portalCertPfxPath = "C:\Users\Contoso\portal.pfx"   # full path to portal.conto
 $gatewayCertPfxPassword = "certificatePassword123"   # password for api.contoso.net pfx certificate
 $portalCertPfxPassword = "certificatePassword123"    # password for portal.contoso.net pfx certificate
 
-$certUploadResult = Import-AzApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $gatewayCertPfxPath -PfxPassword $gatewayCertPfxPassword -PassThru
-$certPortalUploadResult = Import-AzApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $portalCertPfxPath -PfxPassword $portalCertPfxPassword -PassThru
+$certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -Force
+$certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
 ### <a name="step-2"></a>手順 2.
 
-証明書がアップロードされたら、プロキシとポータルに対してホスト名構成オブジェクトを作成します。  
+プロキシとポータルに対して、ホスト名構成オブジェクトを作成し、設定します。  
 
 ```powershell
-$proxyHostnameConfig = New-AzApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname $gatewayHostname
-$portalHostnameConfig = New-AzApiManagementHostnameConfiguration -CertificateThumbprint $certPortalUploadResult.Thumbprint -Hostname $portalHostname
-$result = Set-AzApiManagementHostnames -Name $apimServiceName -ResourceGroupName $resGroupName –PortalHostnameConfiguration $portalHostnameConfig -ProxyHostnameConfiguration $proxyHostnameConfig
+$proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+
+$apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
+$apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
+Set-AzApiManagement -InputObject $apimService
 ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>フロントエンド構成のパブリック IP アドレスの作成
@@ -253,9 +256,7 @@ $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -Publi
 通過するトラフィックの暗号化解除と再暗号化に使用される、Application Gateway 用に証明書を構成します。
 
 ```powershell
-$certPwd = ConvertTo-SecureString $gatewayCertPfxPassword -AsPlainText -Force
 $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
-$certPortalPwd = ConvertTo-SecureString $portalCertPfxPassword -AsPlainText -Force
 $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -CertificateFile $portalCertPfxPath -Password $certPortalPwd
 ```
 

@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 96b571c9c074a679adeb38703ddc67b56f9478d3
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 18f76ea4acc99038939a2653bb66875154529126
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751952"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631708"
 ---
-ハンドラーで非同期操作を実行する必要がある場合は、次の例のように遅延オブジェクトを要求してこれを完了することによって、トークンの設定を延期することができます。
+ハンドラーで非同期操作を実行する必要がある場合は、次の例のように `deferral` オブジェクトを要求してこれを完了することによって、トークンの設定を延期することができます。

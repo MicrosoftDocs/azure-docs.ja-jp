@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992738"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801268"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -37,14 +37,14 @@ ms.locfileid: "56992738"
 
 1. メイン ページで、**[新しい管理グループ]** を選択します。
 
-   ![メイン グループ](./media/main.png)
+   ![管理グループを操作するためのページ](./media/main.png)
 
 1. [管理グループ ID] フィールドに入力します。
 
    - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。
    - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
 
-   ![Create](./media/create_context_menu.png)  
+   ![新しい管理グループを作成するための [オプション] ウィンドウ](./media/create_context_menu.png)  
 
 1. **[保存]** を選択します。
 

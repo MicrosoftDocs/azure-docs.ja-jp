@@ -1,5 +1,5 @@
 ---
-title: PIM の使用を開始する - Azure | Microsoft Docs
+title: PIM の使用を開始する - Azure Active Directory | Microsoft Docs
 description: Azure portal で Azure AD Privileged Identity Management (PIM) を有効にして使用を開始する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 00a93b23b5967e8b6b881f5d1fe6adcd89b0f77b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546859"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576743"
 ---
 # <a name="start-using-pim"></a>PIM の使用を開始する
 
@@ -38,7 +38,7 @@ PIM を使用するには、次のいずれかのライセンスが必要です�
 
 ## <a name="first-person-to-use-pim"></a>PIM を使用する最初のユーザー
 
-ディレクトリ内で PIM を使用する最初のユーザーには、そのディレクトリの[セキュリティ管理者](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)ロールと[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールが自動的に割り当てられます。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 さらに、初回の検出と割り当てを体験できる[セキュリティ ウィザード](pim-security-wizard.md)の実行を選択することもできます。
+ディレクトリ内で PIM を使用する最初のユーザーには、そのディレクトリの[セキュリティ管理者](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)ロールと[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールが自動的に割り当てられます。 ユーザーの Azure AD ロールの割り当てを管理できるのは特権ロール管理者だけです。 さらに、初回の検出と割り当てを体験できる[セキュリティ ウィザード](pim-security-wizard.md)の実行を選択することもできます。
 
 ## <a name="enable-pim"></a>PIM を有効にする
 
@@ -108,7 +108,7 @@ PIM を設定すると、ID 管理タスクを実行できるようになりま�
 | **個人の要求** | 適格なロール割り当てのアクティブ化の保留中要求が表示されます。 |
 | **申請の承認** | ディレクトリ内のユーザーによる適格なロールのアクティブ化要求のうち、自分が承認するものの一覧が表示されます。 |
 | **アクセスのレビュー** | 自分に完了が割り当てられているアクティブなアクセス レビューが一覧表示されます (自分自身のアクセスをレビューするものと、他のユーザーのアクセスをレビューするものの両方)。 |
-| **Azure AD ロール** | Azure AD ディレクトリ ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
+| **Azure AD ロール** | Azure AD ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
 | **Azure リソース** | Azure リソース ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>ダッシュボードに PIM タイルを追加する
@@ -133,5 +133,5 @@ PIM を開きやすくするには、Azure portal のダッシュボードに PI
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [PIM で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)

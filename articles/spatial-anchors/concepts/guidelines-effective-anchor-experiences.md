@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895806"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520804"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure Spatial Anchors を使用して効果的なアンカー エクスペリエンスを作成する
 
@@ -86,7 +86,7 @@ Spatial Anchors は適切なアンカーを作成するのに役立ちます。 
 
 部屋のシナリオでは、ユーザーはどこかにアンカーがあることを知った状態でスペースに入ります。 ユーザーは自分のデバイスでスペースをスキャンして、アンカーをすばやく見つけます。
 
-通常、このエクスペリエンスでは、「[さまざまな視点](#consider-various-viewing-perspectives)」で説明したように、適切に選択されたアンカーを作成する必要があります。 アンカーを作成するときに多くの視点から部屋をスキャンしておけば、ユーザーはアンカーを探すときにほとんどどこからでもスキャンできます。
+通常、このエクスペリエンスでは、「さまざまな視点」で説明したように、適切に選択されたアンカーを作成する必要があります。 アンカーを作成するときに多くの視点から部屋をスキャンしておけば、ユーザーはアンカーを探すときにほとんどどこからでもスキャンできます。
 
 ![ユーザーがアンカーを探して部屋をスキャンする方法の図](./media/scan-room.png)
 

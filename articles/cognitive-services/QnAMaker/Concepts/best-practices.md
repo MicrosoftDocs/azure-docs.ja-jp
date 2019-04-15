@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/28/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 72a3bead4ba8670187c35856f9cd4e4f4b975a30
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311697"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621976"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
@@ -108,7 +108,7 @@ QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/co
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、それらの提案をレビューして、承認または拒否する必要があります。 
+[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、**[提案によるフィルター処理](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

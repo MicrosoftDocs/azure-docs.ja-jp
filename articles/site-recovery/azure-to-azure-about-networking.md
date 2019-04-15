@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001083"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651545"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -48,10 +48,10 @@ ms.locfileid: "58001083"
 
 **URL** | **詳細**  
 --- | ---
-*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。
+*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM に対するすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) をホワイトリストに登録できます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
-*.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。
-*.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。
+*.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery IP' を使用できます。
+*.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery Monitoring IP' を使用できます。
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 

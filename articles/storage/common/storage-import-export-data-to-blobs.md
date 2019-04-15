@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000248"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878181"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -54,7 +54,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     `cd C:\WaImportExportV1`
 5.  ドライブの BitLocker キーを取得するには、次のコマンドを実行します。
     
-    ` manage-bde -protectors -get <DriveLetter>: `
+    `manage-bde -protectors -get <DriveLetter>:`
 6.  ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、数時間から数日かかることがあります。** 
 
     ```
@@ -70,7 +70,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/id:     |セッション ID。 コマンドの各インスタンスに一意のセッション番号を使用します。      |
     |/sk:     |Azure Storage アカウント キー。         |
     |/t:     |送付するディスクのドライブ文字。 例: ドライブ `D`。         |
-    |/bk:     |ドライブの BitLocker キー。 ` manage-bde -protectors -get D: ` の出力からの数値パスワードです      |
+    |/bk:     |ドライブの BitLocker キー。 次の出力からの数値パスワードです:  `manage-bde -protectors -get D:`      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
     |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |

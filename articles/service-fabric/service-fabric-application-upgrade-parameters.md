@@ -4,7 +4,7 @@ description: Service Fabric アプリケーションのアップグレードに�
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099194"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670619"
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 アプリケーション アップグレードのパラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御します。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。 アプリケーション パラメーターは、以下を使用したアップグレードに適用されます。
@@ -94,11 +94,12 @@ Service Fabric CLI を使用した Service Fabric アプリケーションのア
 
 | パラメーター | 説明 |
 | --- | --- |
-| application-id  |アップグレードするアプリケーションの ID です。 <br> これは、通常は、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は '~' 文字で区切られます。 たとえば、アプリケーション名が "fabric:/myapp/app1" の場合、6.0 以降ではアプリケーション ID は "myapp~app1" になり、前のバージョンでは "myapp/app1" になります。|
+| application-id  |アップグレードするアプリケーションの ID です。 <br> これは、通常は、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。|
 application-version |ターゲットをアップグレードするアプリケーションの種類のバージョンです。|
 parameters  |アプリケーションのアップグレード時に適用される、アプリケーション パラメーター オーバーライドの JSON でエンコードされた一覧。|
 
 ### <a name="optional-parameters"></a>省略可能なパラメーター
+
 | パラメーター | 説明 |
 | --- | --- |
 default-service-health-policy | サービスの種類の正常性を評価するために既定で使用される正常性ポリシーの [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) でエンコードされた仕様。 このマップは、既定では空です。 |
@@ -106,7 +107,7 @@ failure-action | 使用できる値は、**Rollback**、**Manual**、および *
 force-restart | サービス コードを更新せずに構成やデータ パッケージを更新する場合、サービスは、ForceRestart プロパティが **True** に設定されている場合にのみ再起動されます。 更新が完了すると、Service Fabric は新しい構成パッケージやデータ パッケージを使用可能なサービスを知らせます。 サービスは、変更を適用する役割を担います。 必要に応じて、サービス自体を再起動できます。 |
 health-check-retry-timeout | アプリケーションまたはクラスターが正常でない場合に、正常性評価を再試行する時間。この時間を超えると、*FailureAction* に指定したアクションが実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はPT0H10M0S です。 |
 health-check-stable-duration | アプリケーションまたはクラスターが正常な状態である必要がある時間。この時間を超えると、アップグレードが次のアップグレード ドメインに進みます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はPT0H2M0S です。 |
-health-check-wait-duration | ドメインのアップグレードを完了後、待機する時間。この時間を超えると、正常性ポリシーが適用されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値は0です。|
+health-check-wait-duration | ドメインのアップグレードを完了後、待機する時間。この時間を超えると、正常性ポリシーが適用されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値は0.|
 max-unhealthy-apps | 既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な *max-unhealthy-apps* を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、フェイルファストなアップグレードが行われるようにします。 0 ～ 100 の数値として表されます。 |
 モード | 使用できる値は、**Monitored**、**UpgradeMode**、**UnmonitoredAuto**、**UnmonitoredManual** です。 既定値は **UnmonitoredAuto** です。 これらの値の説明については、Visual Studio および PowerShell の "*必須パラメーター*" セクションをご覧ください。|
 replica-set-check-timeout |秒単位で測定されます。 <br>**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、*replica-set-check-timeout* プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。<br><br>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は *replica-set-check-timeout* プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。 |

@@ -541,7 +541,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
 | UserId | レコードがログに記録される結果になったアクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、my_name@my_domain_name。 (SHAREPOINT\system や NTAUTHORITY\SYSTEM などの) システム アカウントによって実行されるアクティビティのレコードも含まれることに注意してください。 | 
 | UserKey | UserId プロパティで識別されるユーザーの代替 ID。  たとえば、SharePoint、OneDrive for Business、および Exchange でユーザーによって実行されたイベントの Passport 一意識別子 (PUID) が、このプロパティの値になります。 このプロパティは、他のサービスで発生するイベントや、システム アカウントによって実行されるイベントの UserID プロパティと同じ値を指定する場合もあります。|
-| UserType | 操作を実行したユーザーの種類。<br><br>[Admin]<br>アプリケーション<br>DcAdmin<br>通常 <br>予約済み<br>ServicePrincipal<br>システム |
+| UserType | 操作を実行したユーザーの種類。<br><br>[Admin]<br>Application<br>DcAdmin<br>通常 <br>予約済み<br>ServicePrincipal<br>システム |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory ベース
@@ -672,7 +672,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | DestMailboxOwnerSid | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの SID を指定します。 |
 | DestMailboxOwnerUPN | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの所有者の UPN を指定します。 |
 | DestFolder | 移動などの操作の宛先フォルダー。 |
-| Folder | 項目のグループが位置しているフォルダー。 |
+| Folders | 項目のグループが位置しているフォルダー。 |
 | Folders |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
 
 

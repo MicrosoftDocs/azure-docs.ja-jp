@@ -3,19 +3,19 @@ title: 文字数カウント - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の文字数のカウント方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 2164070c8f0efe2898e3780cac30a80c9f1ca986
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874415"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917415"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Translator Text API の文字数のカウント方法
 
@@ -24,8 +24,8 @@ Translator Text API は、入力テキストのすべての Unicode コード �
 カウントされるもの:
 
 * 要求の本文内の Translator Text API に渡されるテキスト
-   * Translate、Transliterate、Dictionary Lookup の各メソッドを使用する場合の `Text`
-   * Dictionary Examples メソッドを使用する場合の `Text` と `Translation`
+   * `Text` : Translate、Transliterate、Dictionary Lookup の各メソッドを使用する場合
+   * `Text`  と `Translation`: Dictionary Examples メソッドを使用する場合
 * すべてのマークアップ:要求本文のテキスト フィールド内の HTML タグ、XML タグなど。 要求のビルドに使用される JSON 表記 ("Text:" など) はカウントされません。
 * 個々の文字
 * 句読点

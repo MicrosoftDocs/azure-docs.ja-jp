@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/26/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 0de021f4666da805eab8faba527f7c5322c39e9d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9d495087a0b3db5bba3b00fa9d0d40c91e5e9244
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763454"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497859"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
@@ -52,6 +52,9 @@ ms.locfileid: "57763454"
 ### <a name="quotas"></a>Quotas (クォータ)
 
 プラン内の各サービスに事前にプロビジョニングされた "*クォータ*" を使用または新しいクォータを作成して、クラウドの容量の管理に役立てることができます。 クォータは、ユーザー サブスクリプションでプロビジョニングまたは使用できるリソースの上限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシン (VM) の作成を許可できます。
+
+> [!IMPORTANT]
+> ユーザー ポータルで新しいクォータが使用可能になるまで、または変更されたクォータが適用されるまでに最大で 2 時間かかることがあります。
 
 クォータはリージョンごとに構成できます。 たとえば、リージョン A のコンピューティング サービスを提供するプランには、2 台の VM のクォータを設定できます。
 

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 814becd2092c3603f20cd65152e8183446954ce8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216358"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663147"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -58,14 +58,14 @@ ms.locfileid: "57216358"
 
 ### <a name="elements"></a>要素
 
-| Name         | 説明                                                                                                                                   | 必須 |
+| 名前         | 説明                                                                                                                                   | 必須 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | ルート要素。                                                                                                                                 | はい      |
 | value        | 許可される HTTP ヘッダーの値。 複数の要素を指定した場合、いずれかの値に一致すればチェックは成功とみなされます。 | いいえ        |
 
 ### <a name="attributes"></a>属性
 
-| Name                       | 説明                                                                                                                                                            | 必須 | 既定値 |
+| 名前                       | 説明                                                                                                                                                            | 必須 | 既定値 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。 | はい      | 該当なし     |
 | failed-check-httpcode      | ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。                                                                                        | はい      | 該当なし     |
@@ -115,7 +115,7 @@ ms.locfileid: "57216358"
 
 ### <a name="elements"></a>要素
 
-| Name      | 説明                                                                                                                                                                                                                                                                                              | 必須 |
+| 名前      | 説明                                                                                                                                                                                                                                                                                              | 必須 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | set-limit | ルート要素。                                                                                                                                                                                                                                                                                            | はい      |
 | api       | 製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。                    | いいえ        |
@@ -123,7 +123,7 @@ ms.locfileid: "57216358"
 
 ### <a name="attributes"></a>属性
 
-| Name           | 説明                                                                                           | 必須 | 既定値 |
+| 名前           | 説明                                                                                           | 必須 | 既定値 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
 | calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
@@ -177,13 +177,13 @@ ms.locfileid: "57216358"
 
 ### <a name="elements"></a>要素
 
-| Name      | 説明   | 必須 |
+| 名前      | 説明   | 必須 |
 | --------- | ------------- | -------- |
 | set-limit | ルート要素。 | はい      |
 
 ### <a name="attributes"></a>属性
 
-| Name                | 説明                                                                                           | 必須 | 既定値 |
+| 名前                | 説明                                                                                           | 必須 | 既定値 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
@@ -213,16 +213,18 @@ ms.locfileid: "57216358"
 
 ### <a name="example"></a>例
 
+次の例のポリシーでは、指定された単一の IP アドレスまたは IP アドレス範囲のどちらかから受け取った要求しか許可されません。
+
 ```xml
-<ip-filter action="allow | forbid">
-    <address>address</address>
-    <address-range from="address" to="address" />
+<ip-filter action="allow">
+    <address>13.66.201.169</address>
+    <address-range from="13.66.140.128" to="13.66.140.143" />
 </ip-filter>
 ```
 
 ### <a name="elements"></a>要素
 
-| Name                                      | 説明                                         | 必須                                                       |
+| 名前                                      | 説明                                         | 必須                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | ルート要素。                                       | はい                                                            |
 | address                                   | フィルターを適用する単一の IP アドレスを指定します。   | `address` 要素または `address-range` 要素は少なくとも 1 つ必要です。 |
@@ -230,7 +232,7 @@ ms.locfileid: "57216358"
 
 ### <a name="attributes"></a>属性
 
-| Name                                      | 説明                                                                                 | 必須                                           | 既定値 |
+| 名前                                      | 説明                                                                                 | 必須                                           | 既定値 |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | 該当なし     |
 | ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | 該当なし     |
@@ -277,7 +279,7 @@ ms.locfileid: "57216358"
 
 ### <a name="elements"></a>要素
 
-| Name      | 説明                                                                                                                                                                                                                                                                                  | 必須 |
+| 名前      | 説明                                                                                                                                                                                                                                                                                  | 必須 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | ルート要素。                                                                                                                                                                                                                                                                                | はい      |
 | api       | 製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。                    | いいえ        |
@@ -285,7 +287,7 @@ ms.locfileid: "57216358"
 
 ### <a name="attributes"></a>属性
 
-| Name           | 説明                                                                                               | 必須                                                         | 既定値 |
+| 名前           | 説明                                                                                               | 必須                                                         | 既定値 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | クォータを適用する API または操作の名前。                                             | はい                                                              | 該当なし     |
 | bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
@@ -341,13 +343,13 @@ ms.locfileid: "57216358"
 
 ### <a name="elements"></a>要素
 
-| Name  | 説明   | 必須 |
+| 名前  | 説明   | 必須 |
 | ----- | ------------- | -------- |
 | quota | ルート要素。 | はい      |
 
 ### <a name="attributes"></a>属性
 
-| Name                | 説明                                                                                               | 必須                                                         | 既定値 |
+| 名前                | 説明                                                                                               | 必須                                                         | 既定値 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
@@ -382,7 +384,8 @@ ms.locfileid: "57216358"
     require-expiration-time="true|false"
     require-scheme="scheme"
     require-signed-tokens="true|false"
-    clock-skew="allowed clock skew in seconds">
+    clock-skew="allowed clock skew in seconds"
+    output-token-variable-name="name of a variable to receive a JWT object representing successfully validated token">
   <issuer-signing-keys>
     <key>base64 encoded signing key</key>
     <!-- if there are multiple keys, then add additional key elements -->
@@ -464,43 +467,32 @@ ms.locfileid: "57216358"
 
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>トークン クレームに基づいて操作へのアクセスを承認する
 
-次の例では、[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。
+次の例では、[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレーム値に基づいて操作へのアクセスを承認する方法を示します。
 
 ```xml
-<!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->
-<set-variable name="signingKey" value="insert signing key here" />
+<validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
+    <issuer-signing-keys>
+        <key>{{jwt-signing-key}}</key> <!-- signing key is stored in a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>
+    </audiences>
+    <issuers>
+        <issuer>contoso.com</issuer>
+    </issuers>
+    <required-claims>
+        <claim name="group" match="any">
+            <value>finance</value>
+            <value>logistics</value>
+        </claim>
+    </required-claims>
+</validate-jwt>
 <choose>
-  <when condition="@(context.Request.Method.Equals("patch",StringComparison.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="edit">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <when condition="@(new [] {"post", "put"}.Contains(context.Request.Method,StringComparer.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="create">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <otherwise>
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-    </validate-jwt>
-  </otherwise>
+    <when condition="@(context.Request.Method == "POST" && !((Jwt)context.Variables["jwt"]).Claims["group"].Contains("finance"))">
+        <return-response>
+            <set-status code="403" reason="Forbidden" />
+        </return-response>
+    </when>
 </choose>
 ```
 
@@ -535,7 +527,7 @@ ms.locfileid: "57216358"
 
 ### <a name="attributes"></a>属性
 
-| Name                            | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                            | 必須                                                                         | 既定値                                                                           |
+| 名前                            | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                            | 必須                                                                         | 既定値                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | 期間。 トークンの発行者と API Management インスタンスのシステム クロックの間に予想される最大時間差を指定するために使用します。                                                                                                                                                                                                                                                                                                               | いいえ                                                                                | 0 秒                                                                         |
 | failed-validation-error-message | JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。                                                                                                                                                                                                                                                                                                 | いいえ                                                                                | 既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。 |
@@ -550,6 +542,7 @@ ms.locfileid: "57216358"
 | require-signed-tokens           | ブール値。 トークンに署名が必要かどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                                                                                | true                                                                              |
 | separator                       | 文字列 をオンにします。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                                | 該当なし                                                                               |
 | url                             | Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。 | はい                                                                              | 該当なし                                                                               |
+output-token-variable-name|文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前|いいえ |該当なし
 
 ### <a name="usage"></a>使用法
 

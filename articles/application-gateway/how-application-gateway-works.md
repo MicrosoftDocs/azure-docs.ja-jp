@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881097"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905785"
 ---
 # <a name="how-application-gateway-works"></a>アプリケーション ゲートウェイの動作
 
@@ -36,7 +36,7 @@ ms.locfileid: "57881097"
 
 内部アプリケーション ゲートウェイには、プライベート IP アドレスしかありません。 内部アプリケーション ゲートウェイの DNS 名は、そのプライベート IP アドレス内部的に解決できます。 そのため、内部ロード バランサーは、アプリケーション ゲートウェイの VNET にアクセスできるクライアントからの要求しかルーティングできません。
 
-インターネットに接続するアプリケーション ゲートウェイと内部アプリケーション ゲートウェイはどちらも、プライベート IP アドレスを使用して要求をバックエンド サーバーにルーティングすることに注意してください。バックエンド プール リソースにプライベート IP アドレス、VM NIC 構成、または内部的に解決できるアドレスが含まれている場合や、バックエンド プールがパブリック エンドポイントである場合、アプリケーション ゲートウェイはそのフロントエンド パブリック IP を使用してサーバーに到達します。 フロントエンド パブリック IP アドレスをプロビジョニングしていない場合は、送信外部接続に対してフロントエンド パブリック IP アドレスが割り当てられます。
+内部的に解決できる FQDN またはプライベート IP アドレスがバックエンド プールに含まれている場合、Application Gateway によるバックエンド サーバーへの要求は、そのインスタンスのプライベート IP アドレスを使用してルーティングされます。 外部エンドポイントまたは外部的に解決できる FQDN がバックエンド プールに含まれている場合、Application Gateway によるバックエンド サーバーへの要求は、そのフロントエンドのパブリック IP アドレスを使用してルーティングされます。 DNS 解決は、プライベート DNS ゾーンまたはカスタム DNS サーバー (構成されている場合) に基づいて行われます。または、Azure に指定されている既定の DNS が使用されます。 フロントエンド パブリック IP アドレスをプロビジョニングしていない場合は、送信外部接続に対してフロントエンド パブリック IP アドレスが割り当てられます。
 
 ### <a name="modifications-to-the-request"></a>要求への変更
 

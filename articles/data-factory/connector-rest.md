@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864900"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762482"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 
@@ -55,7 +55,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティを **HttpServer** に設定する必要があります。 | はい |
+| type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
 | enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ <br /> (既定値は **true** です)。 |
 | authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
@@ -76,7 +76,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 {
     "name": "RESTLinkedService",
     "properties": {
-        "type": "HttpServer",
+        "type": "RestService",
         "typeProperties": {
             "authenticationType": "Basic",
             "url" : "<REST endpoint>",

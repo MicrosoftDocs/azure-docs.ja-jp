@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8abbf3a9db02fda0c92485ef75a12d82f4e8c8e9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536486"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903949"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 
@@ -35,7 +35,7 @@ Microsoft では、特定の問題に対処する修正プログラム パッケ
 
 修正プログラム パッケージは、セキュリティで保護された同じ Azure エンドポイントでホストされます。 各修正プログラム KB 記事の埋め込みリンク (たとえば、[Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)) を使用して、それらを手動でダウンロードできます。 完全な月例更新プログラム パッケージと同様に、Azure Stack オペレーターは、「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」の手順を使用して、.xml、.bin、および .exe ファイルをダウンロードしてインポートできます。 スケール ユニットが接続されている Azure Stack オペレーターに対しては、修正プログラムが "**更新プログラムが利用可能です**" というメッセージと共に自動的に管理者ポータルに表示されます。
 
-スケール ユニットが接続されておらず、各修正プログラムのリリースについて通知を受け取る場合は、各リリースに記載されている [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) または [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) フィードを購読します。  
+スケール ユニットが接続されておらず、各修正プログラムのリリースについて通知を受け取る場合は、各リリースに記載されている [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) または [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) フィードを購読します。  
 
 ## <a name="update-package-types"></a>更新プログラム パッケージの種類
 
@@ -53,10 +53,10 @@ Microsoft は、毎月ソフトウェア更新プログラム パッケージを
 
 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。
 
+- [Azure Stack 1903 更新プログラム](azure-stack-update-1903.md)
 - [Azure Stack 1902 更新プログラム](azure-stack-update-1902.md)
 - [Azure Stack 1901 更新プログラム](azure-stack-update-1901.md)
 - [Azure Stack 1811 更新プログラム](azure-stack-update-1811.md)
-- [Azure Stack 1809 更新プログラム](azure-stack-update-1809.md)
 
 ## <a name="hotfixes"></a>修正プログラム
 

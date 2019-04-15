@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763369"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622010"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
@@ -49,25 +49,27 @@ ASDK 用の Azure Stack 証明書をエクスポートしてからインポー�
 
 1. Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューターで `mmc.exe` を開きます。 
 
-2. **[ファイル]** の **[スナップインの追加と削除]** を選択し、**[ユーザー アカウント]** を管理するための **[証明書]** を追加します。
+2. **[ファイル]** の **[スナップインの追加と削除]** を選択します。 [利用できるスナップイン] で、**[証明書]** を選択します。 
 
-3.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。 **AzureStackSelfSignedRootCert** を探します。
+3. **[コンピューター アカウント]** を選択し、**[次へ]** を選択します。 **[ローカル コンピューター]** を選択し、**[完了]** を選択します。
+
+4.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。 **AzureStackSelfSignedRootCert** を探します。
 
     ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。
+5. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。
 
     エクスポートした証明書は、次の手順で使用します。
 
-5. ストレージ エクスプローラーを起動し、**[Azure Storage へ接続]** ダイアログ ボックスが表示されたらそれをキャンセルします。
+6. ストレージ エクスプローラーを起動し、**[Azure Storage へ接続]** ダイアログ ボックスが表示されたらそれをキャンセルします。
 
-6. **[編集]** メニューで、**[SSL 証明書]** をポイントし、**[証明書のインポート]** を選択します。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。
+7. **[編集]** メニューで、**[SSL 証明書]** をポイントし、**[証明書のインポート]** を選択します。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。
 
     証明書のインポート後は、ストレージ エクスプローラーの再起動を求めるメッセージが表示されます。
 
     ![ストレージ エクスプローラーに証明書をインポートする](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. ストレージ エクスプローラーが再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていることを確認します。 **[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
+8. ストレージ エクスプローラーが再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack APIs]\(Azure Stack API を対象にする\)** が選択されているかどうかを確認します。 **[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
 
     ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ Azure Active Directory (Azure AD) アカウントに属している Azure Stack 
 
     ![Azure Stack アカウントを追加する](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. [Azure Storage へ接続] ダイアログ ボックスの **[Azure Environment]\(Azure 環境\)** で、使用している Azure Stack アカウントに応じて **[Azure]** または **[Azure 中国]** を選択し、**[サインイン]** を選択して、少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられている Azure Stack アカウントでサインインします。
+3. [Azure Storage へ接続] ダイアログ ボックスの **[Azure 環境]** で、使用している Azure Stack アカウントに応じて、**[Azure]**、**[Azure 中国]**、**[Azure ドイツ]**、**[Azure 米国政府機関]**、または **[新しい環境を追加します]** を選択します。 **[サインイン]** を選択し、少なくとも 1 つのアクティブな Azure Stack サブスクリプションに関連付けられた Azure Stack アカウントを使用してサインインします。
 
     ![Azure Storage へ接続](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

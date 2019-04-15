@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869413"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652078"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 
@@ -163,7 +163,7 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 
 コンテナー内のファブリック オブジェクトは、Azure リージョンを表します。 プライマリ ファブリック オブジェクトは、コンテナーの保護対象となっている仮想マシンが属する Azure リージョンを表すために作成します。 この記事の例では、保護対象の仮想マシンは米国東部リージョンにあります。
 
-- リージョンごとに作成できるファブリック オブジェクトは 1 つだけです。 
+- リージョンごとに作成できるファブリック オブジェクトは 1 つだけです。
 - Azure portal を使って VM の Site Recovery レプリケーションを以前から有効にしている場合は、Site Recovery によってファブリック オブジェクトが自動的に作成されます。 リージョンにファブリック オブジェクトが存在する場合は、新しいファブリック オブジェクトを作成することはできません。
 
 
@@ -588,7 +588,22 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
+## <a name="reprotect-and-failback-to-source-region"></a>再保護とソース リージョンへのフェールバック
+
 フェールオーバー後、元のリージョンに戻る準備ができたら、Update-AzureRmRecoveryServicesAsrProtectionDirection コマンドレットを使用して、レプリケーションの保護された項目のレプリケーションの反転を開始します。
+
+```azurepowershell
+#Create Cache storage account for replication logs in the primary region
+$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+```
+
+```azurepowershell
+#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+-ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+```
+
+再保護が完了したら、逆方向 (米国西部から米国東部) でのフェールオーバーとソース リージョンへのフェールバックを開始できます。
 
 ## <a name="next-steps"></a>次の手順
 PowerShell による復旧計画の作成や復旧計画のフェールオーバーのテストなど、他のタスクの実行方法については、[Azure Site Recovery PowerShell のリファレンス](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery)をご覧ください。

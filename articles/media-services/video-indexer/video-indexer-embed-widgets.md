@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075068"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891586"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
 この記事では、どのようにするとアプリケーションに Video Indexer ウィジェットを埋め込むことができるかを示します。 Video Indexer では、次の 2 種類のウィジェットのアプリケーションへの埋め込みがサポートされています:**コグニティブな分析情報**と**プレーヤー**。 
-
-> [!NOTE]
-> 2018 年 2 月 1 日以降、**コグニティブな分析情報**ウィジェットのバージョン 1 は非推奨になりました。 既定の埋め込み URL バージョンは `version=2` です。
 
 バージョン 2 以降、ウィジェットのベース URL に、アカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://wus2.videoindexer.ai/embed/insights/...` が生成されます。
 
@@ -31,16 +28,15 @@ ms.locfileid: "58075068"
 
 **コグニティブな分析情報**ウィジェットには、ビデオのインデックス作成プロセスから抽出されたビジュアルな分析情報がすべて含まれます。 分析情報ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|Name|定義|説明|
+|名前|定義|説明|
 |---|---|---|
-|widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:****version=2** が使用された場合、**widgets** での URL パラメーターはサポートされません。 |
-|version|**コグニティブな分析情報**ウィジェットのバージョン|最新のコグニティブな分析情報ウィジェットの更新プログラムを入手するには、埋め込み URL に `?version=2` クエリ パラメーターを追加します。 たとえば、`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` のように指定します。 <br/> 古いバージョンを取得するには、URL から `version=2` を削除します。
+|widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 
 **プレーヤー** ウィジェットでは、アダプティブ ビット レートを使用してビデオをストリームできます。 プレーヤー ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|Name|定義|説明|
+|名前|定義|説明|
 |---|---|---|
 |t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: t=60|
 |captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: captions=en-US|
@@ -96,7 +92,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 このセクションでは、2 つの Video Indexer ウィジェット間の対話を実現して、ユーザーがアプリケーションで分析情報コントロールをクリックしたときにプレーヤーが関連する場面にジャンプするようにする方法を示します。
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 1. **プレーヤー** ウィジェットの埋め込みコードをコピーします。
 2. **コグニティブな分析情報**ウィジェットの埋め込みコードをコピーします。

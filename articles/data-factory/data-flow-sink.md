@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852442"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438634"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapping Data Flow のシンク変換
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![シンクのオプション](media/data-flow/windows1.png "シンク 1")
+![シンクのオプション](media/data-flow/sink1.png "シンク 1")
 
 データ フローの変換が完了したら、変換されたデータを宛先データセットにシンクできます。 シンク変換では、宛先の出力データに使用するデータセット定義を選択できます。 データ フローに必要なだけの数のシンク変換を設定できます。
 
@@ -57,7 +57,7 @@ Azure Storage BLOB または Data Lake のシンクの種類の場合は、変�
 ## <a name="file-name-options"></a>ファイル名のオプション
 
    * 既定値はSpark は PART の既定値に基づいて、ファイルに名前を付けることができます。
-   * パターン:出力ファイルの名前を入力します。
+   * パターン:出力ファイルのパターンを入力します。 たとえば、"loans[n]" と入力すると、loans1.csv、loans2.csv の順に作成されます。
    * [Per partition] (パーティションごと): パーティションごとのファイル名を入力します。
    * [As data in column] (列内のデータとして): 出力ファイルを列の値に設定します。
 
@@ -66,11 +66,16 @@ Azure Storage BLOB または Data Lake のシンクの種類の場合は、変�
 
 ## <a name="database-options"></a>データベース オプション
 
-* 挿入、更新、削除、Upsert を許可します。 既定では、挿入を許可します。 行の更新、upsert、または挿入を行う場合は、最初に、それらの特定のアクションに対して行をタグ付けするための行の変更変換を追加する必要があります。
+* 挿入、更新、削除、Upsert を許可します。 既定では、挿入を許可します。 行の更新、アップサート、または削除を行う場合は、最初に、それらの特定のアクションに対して行をタグ付けするための行の変更変換を追加する必要があります。 [挿入の許可]\(Allow insert\) をオフにすると、ADF はソースから新しい行を挿入するのを停止します。
 * テーブルを切り捨てます (データ フローを完了する前に、対象のテーブルからすべての行を削除します)
 * テーブルを再作成します (データ フローを完了する前に、対象のテーブルの削除と作成を行います)
 * 大量データ読み込みのバッチ サイズ。 書き込みをチャンクにまとめる数値を入力します
 * ステージングの有効化:これは、シンク データセットとして Azure Data Warehouse を読み込むときに Polybase を使用するように ADF に指示します
+
+> [!NOTE]
+> データ フローで、新しいテーブル名を持つデータセットをシンク変換に設定することで、ターゲット データベースに新しいテーブル定義を作成するように ADF に指示します。 SQL データセットで、テーブル名の下の [編集] をクリックして新しいテーブル名を入力します。 次に、シンク変換で、[Allow Schema Drift]\(スキーマの誤差を許可\) をオンにします。 [スキーマのインポート] を [なし] に設定します。
+
+![ソース変換スキーマ](media/data-flow/dataset2.png "SQL スキーマ")
 
 ![SQL シンク オプション](media/data-flow/alter-row2.png "SQL オプション")
 

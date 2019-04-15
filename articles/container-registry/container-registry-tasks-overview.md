@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: f2fc187518070bf199a3959889afd1ede4ef5b77
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660717"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915926"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する
 
@@ -27,7 +27,7 @@ ms.locfileid: "55660717"
 * [クイック タスク](#quick-task):ローカル Docker エンジンをインストールすることなく、Azure でコンテナー イメージをオンデマンドでビルドし、プッシュします。 クラウドでの `docker build` や `docker push` を思い浮かべてください。 ローカルのソース コードまたは Git リポジトリからビルドします。
 * [ソース コードのコミット時のビルド](#automatic-build-on-source-code-commit):コードが Git リポジトリにコミットされたときにコンテナー イメージのビルドを自動的にトリガーします。
 * [基本イメージ更新時のビルド](#automate-os-and-framework-patching):基本イメージが更新されたときにコンテナー イメージのビルドをトリガーします。
-* [マルチステップ タスク](#multi-step-tasks-preview) (プレビュー):コマンドとしてイメージをビルドしてコンテナーを実行し、イメージをレジストリにプッシュするマルチ ステップ タスクを定義します。 ACR タスクのこのプレビュー機能は、オンデマンドでのタスクの実行、並列でのイメージのビルド、テスト、およびプッシュの操作をサポートしています。
+* [複数ステップのタスク](#multi-step-tasks): コマンドとしてイメージをビルドしてコンテナーを実行し、イメージをレジストリにプッシュするマルチ ステップ タスクを定義します。 ACR タスクのこの機能は、オンデマンドでのタスクの実行、並列でのイメージのビルド、テスト、およびプッシュの操作をサポートしています。
 
 ## <a name="quick-task"></a>クイック タスク
 
@@ -36,6 +36,8 @@ ms.locfileid: "55660717"
 ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.md)機能は、コードの 1 行目をコミットする前でさえ、コンテナー イメージのビルドを Azure にオフロードすることで、統合された開発環境を提供できます。 クイック タスクを使用すると、コードをコミットする前に、自動化されたビルド定義を検証し、潜在的な問題を知ることができます。
 
 よく知られている `docker build` 形式を使用して、Azure CLI の [az acr build][az-acr-build] コマンドは*コンテキスト* (ビルド対象の一連のファイル) を取得して ACR タスクに送信し、既定では、完了時にビルド済みのイメージをそのレジストリにプッシュします。
+
+概要については、Azure Container Registry での[コンテナー イメージのビルドと実行](container-registry-quickstart-task-cli.md)のクイック スタートを参照してください。  
 
 次の表は、ACR タスクでサポートされているコンテキストの場所の例を示しています。
 
@@ -76,9 +78,9 @@ OS とフレームワークの修正プログラムの適用については、[A
 > [!NOTE]
 > 基本イメージの更新は、基本イメージとアプリケーション イメージの両方が同じ Azure コンテナー レジストリにある場合、または基本イメージがパブリック Docker Hub リポジトリにある場合にのみビルドをトリガーします。
 
-## <a name="multi-step-tasks-preview"></a>複数ステップのタスク (プレビュー)
+## <a name="multi-step-tasks"></a>複数ステップのタスク
 
-ACR タスクのプレビュー機能であるマルチステップ タスクでは、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップ ベースでタスクの定義と実行を行えます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
+複数ステップのタスクでは、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップベースでタスクの定義と実行を行うことができます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
 
 たとえば、以下を自動化するマルチ ステップ タスクを作成できます。
 
@@ -93,15 +95,12 @@ ACR タスクのプレビュー機能であるマルチステップ タスクで
 
 マルチ ステップ タスクについては、[ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する](container-registry-tasks-multi-step.md)ことに関するページを参照してください。
 
-> [!IMPORTANT]
-> ACR タスクのマルチ ステップ タスク機能は、現在プレビュー段階です。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面が、一般公開 (GA) 前に変更されることもあります
-
 ## <a name="next-steps"></a>次の手順
 
 クラウドでコンテナー イメージをビルドすることで OS とフレームワークの修正プログラム適用を自動化する準備ができたら、ACR タスクに関する 3 部構成のチュートリアル シリーズをご覧ください。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry Tasks を使用してクラウド内のコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)
+> [Azure Container Registry タスクを使用してクラウド内のコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

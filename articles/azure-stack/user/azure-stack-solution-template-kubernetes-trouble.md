@@ -10,18 +10,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.author: mabvrigg
-ms.date: 03/20/2019
+ms.author: mabrigg
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293789"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878130"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Kubernetes の Azure Stack へのデプロイのトラブルシューティング
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Kubernetes の Azure Stack へのデプロイのトラブルシューティング
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
@@ -30,11 +30,11 @@ ms.locfileid: "58293789"
 
 以下の記事では、Kubernetes クラスターのトラブルシューティングについて説明します。 デプロイのアラートを確認し、デプロイに必要な要素によってデプロイの状態を確認することができます。 場合によっては、Azure Stack または Kubernetes をホストする Linux VM からデプロイ ログを収集する必要があります。 また、場合によっては、管理エンドポイントからログを取得するために Azure Stack 管理者と連携する必要があります。
 
-## <a name="overview-of-deployment"></a>デプロイの概要
+## <a name="overview-of-kubernetes-deployment"></a>Kubernetes のデプロイの概要
 
 クラスターのトラブルシューティングを開始する前に、Azure Stack Kubernetes クラスターのデプロイ プロセスを確認することをお勧めします。 デプロイは、Azure Resource Manager ソリューション テンプレートを使用して VM を作成し、クラスター用の ACS Engine をインストールします。
 
-### <a name="deployment-workflow"></a>デプロイのワークフロー
+### <a name="kubernetes-deployment-workflow"></a>Kubernetes のデプロイ ワークフロー
 
 次の図は、クラスターをデプロイする一般的なプロセスを示しています。
 
@@ -85,7 +85,7 @@ ms.locfileid: "58293789"
 
 Kubernetes クラスターをサポートしている VM に関するログを収集できます。 デプロイ ログを確認することもできます。 場合によっては、使用する必要がある Azure Stack のバージョンを確認し、デプロイに関するログを Azure Stack から取得するために、Azure Stack 管理者に相談する必要があります。
 
-1. Kubernetes クラスターで、[デプロイの状態](#review-deployment-status)を確認し、マスター ノードの[ログを取得](#get-logs-from-a-vm)します。
+1. Kubernetes クラスターで、[デプロイの状態](#review-deployment-status)を確認し、マスター ノードのログを取得します。
 2. Azure Stack の最新バージョンを使用していることを確認します。 使用しているバージョンがわからない場合は、Azure Stack の管理者にお問い合わせください。
 3.  VM 作成ファイルを確認します。 次の問題が発生している可能性があります。  
     - 公開キーが無効な場合があります。 作成したキーを確認してください。  
@@ -111,8 +111,8 @@ Kubernetes クラスターをデプロイする際には、デプロイの状態
     
     | プロパティ | 説明 |
     | ----     | ----        |
-    | リソース | リソースの名前。 |
-    | type | リソース プロバイダーとリソースの種類。 |
+    | Resource | リソースの名前。 |
+    | Type | リソース プロバイダーとリソースの種類。 |
     | Status | 項目の状態。 |
     | TimeStamp | 時刻のタイムスタンプ (UTC)。 |
     | 操作の詳細 | 操作に関係するリソース プロバイダー、リソースのエンド ポイント、リソースの名前などの操作の詳細。 |
@@ -172,4 +172,4 @@ Azure Stack の管理に使用するマシンには Bash プロンプトが必�
 
 [Kubernetes クラスターを Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

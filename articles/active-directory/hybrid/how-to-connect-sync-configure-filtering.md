@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774440"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487319"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -99,6 +99,12 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
 3. [変更の適用と検証](#apply-and-verify-changes)を行います。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>同期するドメインを選択する
+同期するドメインを選択する方法は 2 つあります。
+    - 同期サービスを使用する
+    - Azure AD Connect ウィザードを使用する。
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>同期サービスを使用して同期するドメインを選択する
 ドメイン フィルターを設定するには、次の手順を実行します。
 
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
@@ -112,6 +118,17 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
    ![更新が必要](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。 フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。
 7. 続けて実行プロファイルを調整します。
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Azure AD Connect ウィザードを使用して同期するドメインを選択する
+ドメイン フィルターを設定するには、次の手順を実行します。
+
+1.  Azure AD Connect ウィザードを開始します
+2.  **[構成]** をクリックします。
+3.  **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。
+4.  Azure ADの資格情報を入力します。
+5.  **[Connected Directories]\(接続されたディレクトリ\)** 画面で、**[次へ]** をクリックします。
+6.  **[ドメインと OU のフィルタリング] ページ**で、**[最新の情報に更新]** をクリックします。  新しいドメインが表示され、削除されたドメインは表示されなくなります。
+   ![パーティション](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>実行プロファイルを更新する
 ドメイン フィルターを更新した場合、実行プロファイルも更新する必要があります。

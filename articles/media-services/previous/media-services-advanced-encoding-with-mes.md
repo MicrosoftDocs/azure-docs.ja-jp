@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850362"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576294"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する 
 
@@ -27,11 +27,10 @@ ms.locfileid: "57850362"
 
 このトピックでは、Media Encoder Standard プリセットをカスタマイズする方法を説明します。 .NET を使ってエンコード タスクと、このタスクを実行するジョブを作成する方法については、「[Media Encoder Standard を使用した高度なエンコード](media-services-custom-mes-presets-with-dotnet.md)」を参照してください。 プリセットをカスタマイズしたら、カスタム プリセットをエンコード タスクに指定します。 
 
->[!NOTE]
->XML プリセットを使用する場合、下で示す XML サンプルのように要素の順序を保持するようにしてください (たとえば、KeyFrameInterval は SceneChangeDetection の前に来ます)。
->
+XML プリセットを使用する場合、下で示す XML サンプルのように要素の順序を保持するようにしてください (たとえば、KeyFrameInterval は SceneChangeDetection の前に来ます)。
 
-このトピックでは、次のエンコード タスクを実行するカスタム プリセットを実演します。
+> [!NOTE] 
+> Media Services v2 の多くの高度な機能は v3 で現在利用できません。 詳細については、[機能のギャップ](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)に関する記事を参照してください。
 
 ## <a name="support-for-relative-sizes"></a>相対サイズのサポート
 

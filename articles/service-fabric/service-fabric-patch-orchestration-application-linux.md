@@ -4,7 +4,7 @@ description: Linux Service Fabric クラスターでオペレーティング シ
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746719"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668196"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
@@ -41,10 +41,10 @@ ms.locfileid: "42746719"
 
 パッチ オーケストレーション アプリケーションは、次のサブコンポーネントで構成されます。
 
-- **コーディネーター サービス**: このステートフル サービスは次の役割を担います。
+- **コーディネーター サービス**:このサービスの役割は次のとおりです。
     - クラスター全体における OS 更新ジョブを調整する。
     - 完了した OS 更新操作の結果を保存する。
-- **ノード エージェント サービス**: このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
+- **ノード エージェント サービス**:このステートレス サービスは、すべての Service Fabric クラスター ノードで実行されます。 このサービスは次の役割を担います。
     - Linux でノード エージェント デーモンをブートストラップする。
     - デーモン サービスを監視する。
 - **ノード エージェント デーモン**: この Linux デーモン サービスは、上位の特権 (ルート) で実行されます。 一方、ノード エージェント サービスとコーディネーター サービスは、下位の特権で実行されます。 このサービスは、全クラスター ノードで次の更新ジョブを実行する役割を担います。
@@ -127,14 +127,14 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/PO
 
 パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
-|**パラメーター**        |**種類**                          | **詳細**|
+|**パラメーター**        |**Type**                          | **詳細**|
 |:-|-|-|
 |MaxResultsToCache    |long                              | キャッシュする更新結果の最大件数。 <br>既定値は 3000 で、次の条件を想定しています。 <br> - ノード数が 20 個である <br> - ノード上で実行される更新の回数が 1 か月あたり 5 回である <br> - 1 回の処理で 10 件程度の結果が生成される <br> - 過去 3 か月の結果を保存する |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに更新プログラムをインストールする際に使用するポリシーを示しています。<br>                         使用できる値は、以下のとおりです。 <br>                                                           <b>NodeWise</b>:  更新プログラムが 1 ノードずつインストールされます。 <br>                                                           <b>UpgradeDomainWise</b>:  更新プログラムが 1 アップグレード ドメインずつインストールされます  (最大で、アップグレード ドメインに属するすべてのノードに更新プログラムを適用できます)。
-| UpdateOperationTimeOutInMinutes | int <br>(既定: 180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
-| RescheduleCount      | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
-| RescheduleTimeInMinutes  | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
-| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
+| UpdateOperationTimeOutInMinutes | int <br>(既定値:180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
+| RescheduleCount      | int <br> (既定値:5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
+| RescheduleTimeInMinutes  | int <br>(既定値:30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
+| UpdateFrequency           | コンマ区切りの文字列 (既定値:"Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
 | UpdateClassification | コンマ区切りの文字列 (既定値: "securityupdates") | クラスター ノードにインストールする必要のある更新プログラムの種類。 指定できる値は、securityupdates, all です。 <br> -  securityupdates - セキュリティ更新プログラムのみをインストールします <br> -  all - apt から利用可能な更新プログラムをすべてインストールします。|
 | ApprovedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールする必要がある承認済み更新プログラムの一覧です。 コンマ区切りリストには、承認されているパッケージと、必要に応じて目的のターゲット バージョンが含まれています。<br> 例: "apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> 上記によって、次がインストールされます <br> - バージョン 1.2.10ubuntu1 の apt-utils (apt-cache で使用可能な場合)。 この特定のバージョンを使用できない場合は、何も行われません。 <br> - python3-jwt は利用可能な最新バージョンにアップグレードされます。 パッケージが存在しない場合は、何も行われません。 <br> - apt-transport-https は最新バージョン (1.2.194 未満) にアップグレードされます。 このバージョンが存在しない場合は、何も行われません。 <br> - libsystemd0 は最新バージョン (229-4ubuntu16 以上) にアップグレードされます。 このようなバージョンが存在しない場合は、何も行われません。|
 | RejectedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールしない更新プログラムの一覧です <br> 例: "bash, sudo" <br> 前述の例では、bash、sudo が更新プログラムの受信から除外されます。 |
@@ -147,7 +147,7 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/PO
 
 1. 前提条件となるすべての手順を実行してクラスターを準備します。
 2. 他の Service Fabric アプリケーションと同様に、パッチ オーケストレーション アプリケーションをデプロイします。 PowerShell または Azure Service Fabric CLI を使用してアプリケーションをデプロイすることができます。 「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)」または [Azure Service Fabric CLI を使用したアプリケーションのデプロイ](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)に関するページに記載されている手順に従います
-3. デプロイ時にアプリケーションを構成するには、`ApplicationParamater` を `New-ServiceFabricApplication` コマンドレットまたは指定されたスクリプトに渡します。 便宜を図るために、powershell (Deploy.ps1) および bash (Deploy.sh) スクリプトがアプリケーションと共に提供されます。 このスクリプトを使用するには、次の手順に従います。
+3. デプロイ時にアプリケーションを構成するには、`ApplicationParameter` を `New-ServiceFabricApplication` コマンドレットまたは指定されたスクリプトに渡します。 便宜を図るために、powershell (Deploy.ps1) および bash (Deploy.sh) スクリプトがアプリケーションと共に提供されます。 このスクリプトを使用するには、次の手順に従います。
 
     - Service Fabric クラスターに接続します。
     - デプロイ スクリプトを実行します。 必要に応じて、アプリケーション パラメーターをスクリプトに渡します。 例: .\Deploy.ps1 -ApplicationParameter @{ UpdateFrequency = "Daily, 11:00:00"} OR ./Deploy.sh "{\"UpdateFrequency\":\"Daily, 11:00:00\"}" 
@@ -305,7 +305,7 @@ A. パッチ オーケストレーション アプリケーションが必要と
 
 Q. **パッチ オーケストレーション アプリケーションでは、どの更新プログラムがセキュリティ更新プログラムであるかはどのように判断されますか。**
 
-A. パッチ オーケストレーション アプリケーションは、使用可能な更新プログラムのうちどれがセキュリティ更新プログラムであるかの判断にディストリビューション固有のロジックを使用します。 例: ubuntu では、アプリケーションはアーカイブ $RELEASE-security、$RELEASE-updates ($RELEASE = xenial または linux 標準ベース リリース バージョン) から更新プログラムを検索します。 
+A. パッチ オーケストレーション アプリケーションは、使用可能な更新プログラムのうちどれがセキュリティ更新プログラムであるかの判断にディストリビューション固有のロジックを使用します。 例: Ubuntu では、アプリケーションはアーカイブ $RELEASE-security、$RELEASE-updates ($RELEASE = xenial または linux 標準ベース リリース バージョン) から更新プログラムを検索します。 
 
  
 Q. **パッケージを特定のバージョンにロックするにはどのようにしますか?**

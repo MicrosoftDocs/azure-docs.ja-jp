@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490258"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351917"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "55490258"
 
 > [!NOTE]
 > 現時点では、Azure Files はログ記録をサポートしていません。
-> 
+>
 
 Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「 [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting.md)」を参照してください。
 
@@ -100,7 +100,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 ## <a name="monitoring-your-storage-service"></a>Storage サービスの監視
 Windows のパフォーマンス監視に詳しい人は、Storage メトリックのことを Windows パフォーマンス モニターのカウンターに相当する Azure Storage の機能だと考えることができます。 Storage メトリックでは、サービス可用性、サービスに対する要求の総数、サービスに対する要求の成功率などの、包括的なメトリック (Windows パフォーマンス モニターの用語で言えばカウンター) のセットを利用できます。 使用可能なメトリックの詳細なリストについては、「 [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。 Storage サービスでメトリックを収集および集計する間隔は、1 時間または 1 分を指定できます。 メトリックを有効にしてストレージ アカウントを監視する方法の詳細については、 [ストレージ メトリックの有効化とメトリック データの表示](https://go.microsoft.com/fwlink/?LinkId=510865)に関するページをご覧ください。
 
-[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)」をご覧ください。 
+[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)」をご覧ください。
 
 Storage サービスは、最大限メトリックを収集しますが、すべてのストレージ操作を記録するわけではありません。
 
@@ -123,17 +123,17 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 [Azure Portal](https://portal.azure.com) を使うことにより、世界中のすべての Azure リージョンの Storage サービス (およびその他の Azure サービス) の正常性を確認できます。 監視を行うことで、アプリケーションで使用しているリージョンの Storage サービスに制御不能な問題による影響が発生していないかどうか、素早く確認できます。
 
 [Azure Portal](https://portal.azure.com) には、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。
-注:この情報は、以前は [Azure サービス ダッシュボード](http://status.azure.com)上で履歴データと共に入手できました。
+注:この情報は、以前は [Azure サービス ダッシュボード](https://status.azure.com)上で履歴データと共に入手できました。
 
-[Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような方法の例としては、[Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) や Application Insights for Azure DevOps が提供しているサービスがあります。 Application Insights for Azure DevOps の詳細については、付録「[付録 5: Application Insights for Azure DevOps を使用した監視](#appendix-5)」を参照してください。
+[Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような方法の例としては、[Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) や Application Insights for Azure DevOps が提供しているサービスがあります。 Application Insights for Azure DevOps の詳細については、付録「[付録 5: Application Insights for Azure DevOps を使用した監視](#appendix-5)」を参照してください。
 
 ### <a name="monitoring-capacity"></a>容量監視
 ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。 格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「[Storage Analytics Metrics のテーブルのスキーマ](https://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。
 
 > [!NOTE]
 > ストレージ アカウントの容量制限に近づいていることを示す早期警告として、これらの値を監視する必要があります。 Azure Portal で、ストレージの合計使用量が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
-> 
-> 
+>
+>
 
 BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、ブログ記事「 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、および容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」を参照してください。
 
@@ -191,8 +191,8 @@ Storage サービスのパフォーマンスを監視するには、時間単位
 
 > [!NOTE]
 > たとえば、一時的なネットワークの状態によるエラーやアプリケーション エラーなど、断続的なエラーが表示される場合があります。
-> 
-> 
+>
+>
 
 次のリソースは、ストレージ関連の状態コードおよびエラー コードの理解に役立ちます。
 
@@ -214,16 +214,16 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 > [!NOTE]
 > (SAS の許可エラーなどの) 状況によっては、サーバー側の ストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。 ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
-> 
-> 
+>
+>
 
 ### <a name="using-network-logging-tools"></a>ネットワーク ログ ツールの使用
 クライアントとサーバーの間のトラフィックをキャプチャして、クライアントとサーバーの間で交換されたデータおよび基礎ネットワークの状態に関する詳細な情報を取得できます。 便利なネットワーク ログ ツールには次のようなものがあります。
 
-* [Fiddler](http://www.telerik.com/fiddler) は、無料の Web デバッグ プロキシです。HTTP および HTTPS の要求および応答メッセージのヘッダーおよびペイロード データを調べることができます。 詳細については、「[付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ](#appendix-1)」を参照してください。
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) および [Wireshark](http://www.wireshark.org/) は、無料のネットワーク プロトコル アナライザーです。さまざまな種類のネットワーク プロトコルの詳細なパケット情報を表示できます。 Wireshark の詳細については、「[付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ](#appendix-2)」を参照してください。
+* [Fiddler](https://www.telerik.com/fiddler) は、無料の Web デバッグ プロキシです。HTTP および HTTPS の要求および応答メッセージのヘッダーおよびペイロード データを調べることができます。 詳細については、「[付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ](#appendix-1)」を参照してください。
+* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) および [Wireshark](https://www.wireshark.org/) は、無料のネットワーク プロトコル アナライザーです。さまざまな種類のネットワーク プロトコルの詳細なパケット情報を表示できます。 Wireshark の詳細については、「[付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ](#appendix-2)」を参照してください。
 * Microsoft Message Analyzer は、Netmon の後継となる Microsoft のツールです。ネットワーク パケット データをキャプチャできるほか、他のツールでキャプチャされたログ データを表示および分析できます。 詳細については、「[付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ](#appendix-3)」を参照してください。
-* クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。 ただし、[**tcping** ツール](http://www.elifulkerson.com/projects/tcping.php)を使って接続を確認することはできます。
+* クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。 ただし、[**tcping** ツール](https://www.elifulkerson.com/projects/tcping.php)を使って接続を確認することはできます。
 
 多くの場合、問題の診断には ストレージ ログおよび ストレージ クライアント ライブラリのログ データで十分ですが、状況によっては、これらのネットワーク ログ ツールを使用して取得できる詳細な情報が必要になります。 たとえば、Fiddler を使用して HTTP および HTTPS メッセージを表示し、Storage サービスとの間で送受信されたヘッダーおよびペイロード データを確認して、クライアント アプリケーションがどのようにストレージ操作を再試行したのかを調べることができます。 Wireshark などのパケット レベルで動作するプロトコル アナライザーを使用して TCP データを表示し、失われたパケットや接続問題をトラブルシューティングすることができます。 Message Analyzer は HTTP 層と TCP 層の両方で動作可能です。
 
@@ -242,8 +242,8 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 > [!NOTE]
 > 複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。 クライアントが再試行を行う際には、すべての試行で同じクライアント要求 ID が共有されます。 クライアントから送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
-> 
-> 
+>
+>
 
 ### <a name="server-request-id"></a>サーバー要求 ID
 Storage サービスにより、サーバー要求 ID が自動生成されます。
@@ -254,8 +254,8 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 > [!NOTE]
 > Storage サービスは受け取るすべての要求に対して必ず固有のサーバー要求 ID を割り当て、クライアントが実行するすべての再試行操作およびバッチに含まれるすべての操作において、サーバー要求 ID が固有になるようにします。
-> 
-> 
+>
+>
 
 ストレージ クライアント ライブラリがクライアントで **StorageException** をスローする場合、**RequestInformation** プロパティには、**ServiceRequestID** プロパティが含まれる **RequestResult** オブジェクトが入ります。 また、**RequestResult** オブジェクトには **OperationContext** インスタンスからもアクセスできます。
 
@@ -351,8 +351,8 @@ Storage サービスが正常な要求に関して算出するのはメトリッ
 
 > [!NOTE]
 > Storage Logging ログ データの個々のストレージ操作に関して、**E2ELatency** と **ServerLatency** を表示することもできます。
-> 
-> 
+>
+>
 
 #### <a name="investigating-client-performance-issues"></a>クライアントのパフォーマンス上の問題に関する調査
 クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。 この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
@@ -402,8 +402,8 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 > [!NOTE]
 > 総合的なパフォーマンス チェックリストについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)」を参照してください。
-> 
-> 
+>
+>
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>キューのメッセージ配信で予期しない遅延が発生する
 アプリケーションがメッセージをキューに追加した時刻とキューからの読み取りが可能になる時刻の間に遅延が生じる場合、以下の手順で問題を診断する必要があります。
@@ -429,8 +429,8 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 > [!NOTE]
 > アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
-> 
-> 
+>
+>
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>PercentThrottlingError エラーの永続的増加
 **PercentThrottlingError** 値が継続的に高くなるのが、トランザクション量がずっと増加しているという状況の後に生じる場合、またはアプリケーションで最初のロード テストを実行するときに生じる場合には、アプリケーションがストレージ パーティションをどのように使用しているか、およびストレージ アカウントのスケーラビリティ ターゲットに近づいているかを評価する必要があります。 たとえば、(単一パーティションとしてカウントされる) キューで調整エラーが生じる場合、トランザクションを複数パーティションに分散するためにキューを追加することを考慮する必要があります。 テーブルで調整エラーが生じる場合、より広い範囲のパーティション キー値を使用して複数のパーティションにトランザクションを分散させるため、異なるパーティション スキームを使用することを考慮する必要があります。 この問題が生じる一般的な原因の 1 つは、日付をパーティション キーとして選択し、特定の日のすべてのデータを 1 つのパーティションに書き込むという、前後にあるアンチ パターンです。この場合、ロード中に、書き込みボトルネックとなるおそれがあります。 別のパーティション設計を考慮するか、Blob Storage を使用する方がよいソリューションとなるかどうかを考えてください。 また、トラフィックの急増が原因となって調整が生じているのか確認し、要求パターンを平滑化する方法を調べてください。
@@ -441,16 +441,16 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 > [!NOTE]
 > パフォーマンス テストを実行すると、アプリケーションにおける非効率的なクエリ設計が明らかになります。
-> 
-> 
+>
+>
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>メトリックが PercentTimeoutError の増加を示す
 メトリックが、いずれかの Storage サービスの **PercentTimeoutError** が増加していることを示しています。 同時に、クライアントは、ストレージ操作により「500 操作タイムアウト」HTTP ステータス メッセージを大量に受け取ります。
 
 > [!NOTE]
 > パーティションを新しいサーバーに移動するときに、Storage サービスの負荷分散要求としてタイムアウト エラーが一時的に表示される場合もあります。
-> 
-> 
+>
+>
 
 **PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックの集計です。
 
@@ -469,7 +469,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 | ソース | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14 に同期要求を開始しています。 |
+| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> に同期要求を開始しています。 |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |応答を待機しています。 |
 | Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |応答の待機中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |応答を受け取りました。 状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = . |
@@ -560,7 +560,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-| Name | 値 |
+| 名前 | 値 |
 | --- | --- |
 | 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
 | 操作の種類     | GetBlobProperties            |
@@ -586,10 +586,10 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 > [!NOTE]
 > クライアント側の JavaScript の問題をトラブルシューティングするときには、Internet Explorer の F12 開発者ツールを使用して、ブラウザーと Storage サービスの間で交換されたメッセージをトレースできます。
-> 
-> 
+>
+>
 
-これらのエラーは、Web ページがそのページのドメインとは異なるドメインの API を呼び出さないようにする [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy) セキュリティ制限を Web ブラウザーで実装しているために発生します。
+これらのエラーは、Web ページがそのページのドメインとは異なるドメインの API を呼び出さないようにする [Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy) セキュリティ制限を Web ブラウザーで実装しているために発生します。
 
 この JavaScript の問題を回避するには、クライアントがアクセスする Storage サービスにクロス オリジン リソース共有 (CORS) を構成します。 詳細については、 [Azure Storage サービスでのクロス オリジン リソース共有 (CORS) のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx)に関するページをご覧ください。
 
@@ -625,7 +625,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 次の表は、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用した **CreateIfNotExists** の 2 つのクライアント操作に関するサーバー側のログからの抜粋を示しています。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-| タイムスタンプ | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
+| Timestamp | Operation | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -708,12 +708,12 @@ Microsoft Message Analyzer の使用の詳細については、「[付録 3: Mic
 付録では、Azure Storage (およびその他のサービス) の問題を診断およびトラブルシューティングする際に役立つ可能性のあるいくつかのツールについて説明します。 これらのツールは Azure Storage には含まれていません。また、サードパーティの製品もあります。 そのため、これらの付録で説明するツールに、Microsoft Azure または Azure Storage のサポート契約は適用されません。したがって、評価プロセスの一環として、これらのツールのプロバイダーから入手可能なライセンスおよびサポート オプションを検討する必要があります。
 
 ### <a name="appendix-1"></a>付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ
-[Fiddler](http://www.telerik.com/fiddler) は、クライアント アプリケーションと、使用する Azure Storage サービスの間の HTTP および HTTPS トラフィックを分析するのに役立つツールです。
+[Fiddler](https://www.telerik.com/fiddler) は、クライアント アプリケーションと、使用する Azure Storage サービスの間の HTTP および HTTPS トラフィックを分析するのに役立つツールです。
 
 > [!NOTE]
 > Fiddler は HTTPS トラフィックをデコードできます。Fiddler のドキュメントをよく読み、このツールがデコードする方法およびセキュリティ上の影響を理解してください。
-> 
-> 
+>
+>
 
 この付録では、Fiddler をインストールしたローカル マシンと Azure Storage サービスの間のトラフィックをキャプチャするための Fiddler の構成方法について簡単に説明します。
 
@@ -727,15 +727,15 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 ![][5]
 
 ### <a name="appendix-2"></a>付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ
-[Wireshark](http://www.wireshark.org/) は、さまざまなネットワーク プロトコルの詳細なパケット情報を表示できるネットワーク プロトコル アナライザーです。
+[Wireshark](https://www.wireshark.org/) は、さまざまなネットワーク プロトコルの詳細なパケット情報を表示できるネットワーク プロトコル アナライザーです。
 
 以下の手順は、Wireshark をインストールしたローカル マシンから Azure ストレージ アカウントの Table サービスへのトラフィックに関する詳細なパケット情報をキャプチャする方法を示しています。
 
 1. ローカル マシンで Wireshark を起動します。
 2. **[Start]** セクションで、インターネットに接続されているローカル ネットワーク インターフェイスを選択します。
 3. **[Capture Options]** をクリックします。
-4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](http://wiki.wireshark.org/CaptureFilters)を確認してください。
-   
+4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](https://wiki.wireshark.org/CaptureFilters)を確認してください。
+
    ![][6]
 5. **[開始]** をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
 6. 終了したら、メイン メニューで **[Capture]**、**[Stop]** の順にクリックします。
@@ -745,14 +745,14 @@ WireShark は、**[packetlist]** ウィンドウに存在するエラーをす�
 
 ![][7]
 
-アプリケーション レイヤーで見られる形で TCP データを表示するように選択することもできます。このためには、TCP データを右クリックしてから **[Follow TCP Stream]** を選択します。 これは、キャプチャ フィルターを使用せずにダンプをキャプチャした場合に便利です。 詳細については、[Follow TCP Stream](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html) に関する記事を参照してください。
+アプリケーション レイヤーで見られる形で TCP データを表示するように選択することもできます。このためには、TCP データを右クリックしてから **[Follow TCP Stream]** を選択します。 これは、キャプチャ フィルターを使用せずにダンプをキャプチャした場合に便利です。 詳細については、[Follow TCP Stream](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html) に関する記事を参照してください。
 
 ![][8]
 
 > [!NOTE]
-> Wireshark の使用方法の詳細については、『[Wireshark Users Guide](http://www.wireshark.org/docs/wsug_html_chunked)』を参照してください。
-> 
-> 
+> Wireshark の使用方法の詳細については、『[Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked)』を参照してください。
+>
+>
 
 ### <a name="appendix-3"></a>付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ
 Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HTTP および HTTPS トラフィックをキャプチャできるうえに、Wireshark と同様の方法でネットワーク トラフィックをキャプチャすることもできます。
@@ -766,8 +766,8 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 > [!NOTE]
 > 空白文字でホスト名を区切ります。
-> 
-> 
+>
+>
 
 トレース データの収集を開始する準備ができたら、**[Start With]** ボタンをクリックします。
 
@@ -806,6 +806,17 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 * Web サービスのパフォーマンス上の問題または例外をすばやく診断できます。 CPU やその他のリソースが限界まで使用されていることを検出したり、例外からスタック トレースを取得したり、ログ トレース全体を簡単に検索したりできます。 アプリのパフォーマンスの低下が許容できる限界を超えている場合には、Microsoft から電子メールを送信できます。 .NET と Java の両方の Web サービスを監視できます。
 
 詳細については、「 [Application Insights とは何か?](../../azure-monitor/app/app-insights-overview.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+Azure Storage の分析については、次のリソースを参照してください。
+
+* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Storage Analytics](storage-analytics.md)
+* [Storage Analytics のメトリック](storage-analytics-metrics.md)
+* [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+* [Storage Analytics のログ](storage-analytics-logging.md)
+* [Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [はじめに]: #introduction

@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロールのアクセス レビューを開始する | Microsoft Docs
+title: PIM で Azure リソース ロールのアクセス レビューを開始する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに対するアクセス レビューを開始する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4ebf9ec08915a557f897a743cac1160d7e6823
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46903967b375d882dc3c7a62cd0b7f8b6059f8b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173438"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579497"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセス レビューを開始する
-ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者はロールを定期的に確認する必要があります。 このドキュメントでは、Azure リソース向けの Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
+ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者はロールを定期的に確認する必要があります。 このドキュメントでは、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
 
 PIM アプリケーションのメイン ページで、以下に移動します。
 
@@ -76,4 +76,4 @@ PIM アプリケーションのメイン ページで、以下に移動します
 
 - [PIM で Azure リソース ロールのアクセス レビューを完了する](pim-resource-roles-complete-access-review.md)
 - [PIM で自分の Azure リソース ロールのアクセス レビューを実行する](pim-resource-roles-perform-access-review.md)
-- [PIM で Azure AD ディレクトリ ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)
+- [PIM で Azure AD ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)

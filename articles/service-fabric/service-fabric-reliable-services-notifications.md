@@ -4,7 +4,7 @@ description: Service Fabric Reliable Services の通知の概念をまとめた�
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433516"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662671"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
-通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知をサポートするオブジェクトには、*Reliable State Manager* と *Reliable Dictionary* の 2 種類があります。
+通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知は 2 種類のオブジェクトでサポートされます: *Reliable State Manager* および *Reliable Dictionary*。
 
 通知を使用する一般的な理由は次のとおりです。
 
@@ -84,7 +84,7 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 ```
 
 **StateManagerChanged** イベント ハンドラーでは、**NotifyStateManagerChangedEventArgs** を使用してイベントの詳細を提供します。
-**NotifyStateManagerChangedEventArgs** には、**NotifyStateManagerRebuildEventArgs** と **NotifyStateManagerSingleEntityChangedEventArgs** の 2 つのサブクラスがあります。
+**NotifyStateManagerChangedEventArgs** には、2 つのサブクラスがあります: **NotifyStateManagerRebuildEventArgs** および **NotifyStateManagerSingleEntityChangedEventArgs**。
 **NotifyStateManagerChangedEventArgs** の Action プロパティを使用して、**NotifyStateManagerChangedEventArgs** を適切なサブクラスにキャストします。
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
@@ -109,9 +109,9 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>Reliable Dictionary の通知
 Reliable Dictionary は、次のイベントの通知を提供します。
 
-* Rebuild: **ReliableDictionary** が回復またはコピーされたローカルの状態またはバックアップから状態を回復したときに呼び出されます。
+* 再構築:**ReliableDictionary** が回復またはコピーされたローカルの状態またはバックアップから状態を回復したときに呼び出されます。
 * Clear: **ClearAsync** メソッドを使用して、**ReliableDictionary** の状態がクリアされたときに呼び出されます。
-* Add: **ReliableDictionary**に項目が追加されたときに呼び出されます。
+* 次の項目を追加します。**ReliableDictionary** に項目が追加されたときに呼び出されます。
 * Update: **IReliableDictionary** の項目が更新されたときに呼び出されます。
 * Remove: **IReliableDictionary** の項目が削除されたときに呼び出されます。
 

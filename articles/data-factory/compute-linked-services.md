@@ -98,11 +98,11 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 ### <a name="properties"></a>Properties
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | type プロパティは **HDInsightOnDemand**に設定されます。 | はい      |
-| clusterSize                  | クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。 | はい      |
-| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。 </p> | はい      |
-| clusterResourceGroup         | HDInsight クラスターは、このリソース グループに作成されます。 | はい      |
-| timetolive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。 最小許容値は 5 分 (00:05:00) です。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の完了直後にクラスターが削除されます。 ただし、高い値を設定した場合、クラスターは、何らかのトラブルシューティングの目的でログオンできるようにアイドル状態を維持できますが、その結果コストが高くなる可能性があります。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
+| type                         | type プロパティは **HDInsightOnDemand**に設定されます。 | [はい]      |
+| clusterSize                  | クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。 | [はい]      |
+| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。 </p> | [はい]      |
+| clusterResourceGroup         | HDInsight クラスターは、このリソース グループに作成されます。 | [はい]      |
+| timetolive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。 最小許容値は 5 分 (00:05:00) です。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の完了直後にクラスターが削除されます。 ただし、高い値を設定した場合、クラスターは、何らかのトラブルシューティングの目的でログオンできるようにアイドル状態を維持できますが、その結果コストが高くなる可能性があります。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | [はい]      |
 | clusterType                  | 作成する HDInsight クラスターの種類。 許可される値は "hadoop" および "spark" です。 指定しない場合は、既定値の hadoop が使用されます。 Enterprise セキュリティ パッケージ対応のクラスターをオンデマンドで作成することはできません。代わりに[既存のクラスターを使用するか、自分のコンピューティングを持ち込んでください](#azure-hdinsight-linked-service)。 | いいえ        |
 | version                      | HDInsight クラスターのバージョン。 指定しない場合、現在の HDInsight 定義の既定バージョンを使用します。 | いいえ        |
 | hostSubscriptionId           | HDInsight クラスターを作成するために使用する Azure サブスクリプション ID です。 指定されていない場合は、Azure のログイン コンテキストのサブスクリプション ID を使用します。 | いいえ        |
@@ -148,9 +148,9 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 
 | プロパティ                | 説明                              | 必須 |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | はい      |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
-| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
+| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | [はい]      |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。           | [はい]      |
+| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]      |
 
 ### <a name="advanced-properties"></a>高度なプロパティ
 
@@ -286,11 +286,11 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                                                  | 必須 |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| type              | type プロパティは **HDInsight**に設定されます。            | はい      |
-| clusterUri        | HDInsight クラスターの URI です。                            | はい      |
-| username          | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい      |
-| password          | ユーザー アカウントのパスワードを指定します。                       | はい      |
-| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p> | はい      |
+| type              | type プロパティは **HDInsight**に設定されます。            | [はい]      |
+| clusterUri        | HDInsight クラスターの URI です。                            | [はい]      |
+| username          | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | [はい]      |
+| password          | ユーザー アカウントのパスワードを指定します。                       | [はい]      |
+| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p> | [はい]      |
 | isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ        |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 <br />Enterprise セキュリティ パッケージ (ESP) 対応の HDInsight クラスターには、クラスターへの通信経路があるセルフホステッド統合ランタイムを使用するか、ESP HDInsight クラスターと同じ仮想ネットワーク内にデプロイする必要があります。 | いいえ        |
 
@@ -346,12 +346,12 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | type プロパティは **AzureBatch**に設定されます。 | はい      |
-| accountName       | Azure Batch アカウントの名前です。         | はい      |
-| accessKey         | Azure Batch アカウントのアクセス キーです。  | はい      |
-| batchUri          | https://*batchaccountname.region*.batch.azure.com の形式の Azure Batch アカウントへの URL です。 | はい      |
-| poolName          | 仮想マシンのプールの名前です。    | はい      |
-| linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | はい      |
+| type              | type プロパティは **AzureBatch**に設定されます。 | [はい]      |
+| accountName       | Azure Batch アカウントの名前です。         | [はい]      |
+| accessKey         | Azure Batch アカウントのアクセス キーです。  | [はい]      |
+| batchUri          | https://*batchaccountname.region*.batch.azure.com の形式の Azure Batch アカウントへの URL です。 | [はい]      |
+| poolName          | 仮想マシンのプールの名前です。    | [はい]      |
+| linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | [はい]      |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ        |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
@@ -382,9 +382,9 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 ### <a name="properties"></a>Properties
 | プロパティ               | 説明                              | 必須                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
-| mlEndpoint             | バッチ スコアリング URL です。                   | はい                                      |
-| apiKey                 | 公開されたワークスペース モデルの API です。     | はい                                      |
+| type                   | type プロパティは次の値に設定されます。**AzureML**。 | [はい]                                      |
+| mlEndpoint             | バッチ スコアリング URL です。                   | [はい]                                      |
+| apiKey                 | 公開されたワークスペース モデルの API です。     | [はい]                                      |
 | updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure ML Web サービス エンドポイントの更新リソース URL です | いいえ                                        |
 | servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | UpdateResourceEndpoint が指定されている場合は必須です |
 | servicePrincipalKey    | アプリケーションのキーを取得します。           | UpdateResourceEndpoint が指定されている場合は必須です |
@@ -425,14 +425,14 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 | プロパティ             | 説明                              | 必須                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | はい                                      |
-| accountName          | Azure Data Lake Analytics アカウント名。  | はい                                      |
+| type                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | [はい]                                      |
+| accountName          | Azure Data Lake Analytics アカウント名。  | [はい]                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI。           | いいえ                                        |
 | subscriptionId       | Azure サブスクリプション ID                    | いいえ                                        |
 | resourceGroupName    | Azure リソース グループ名                | いいえ                                        |
-| servicePrincipalId   | アプリケーションのクライアント ID を取得します。     | はい                                      |
-| servicePrincipalKey  | アプリケーションのキーを取得します。           | はい                                      |
-| tenant               | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい                                      |
+| servicePrincipalId   | アプリケーションのクライアント ID を取得します。     | [はい]                                      |
+| servicePrincipalKey  | アプリケーションのキーを取得します。           | [はい]                                      |
+| tenant               | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]                                      |
 | connectVia           | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                        |
 
 
@@ -485,10 +485,10 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 | プロパティ             | 説明                              | 必須                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | リンクされたサービスの名前               | はい   |
-| type                 | type プロパティは次の値に設定されます。**AzureDatabricks**。 | はい                                      |
-| domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
-| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | はい                                       |
+| name                 | リンクされたサービスの名前               | [はい]   |
+| type                 | type プロパティは次の値に設定されます。**AzureDatabricks**。 | [はい]                                      |
+| domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | [はい]                                 |
+| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | [はい]                                       |
 | existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ  
 | newClusterVersion    | クラスターの Spark バージョン。 Databricks にジョブ クラスターを作成します。 | いいえ   |
 | newClusterNumOfWorker| このクラスターに属する worker ノードの数。 1 つのクラスターには 1 つの Spark ドライバーと num_workers Executor、全体では num_workers + 1 Spark ノードになります。 文字列は Int32 で設定されます。たとえば、“1” は、numOfWorker が 1 であること、“1:10” は、最小が 1 で最大が 10 の auto-scale を意味します。  | いいえ                 |

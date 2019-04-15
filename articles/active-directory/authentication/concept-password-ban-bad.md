@@ -1,5 +1,5 @@
 ---
-title: Azure AD でのパスワードの動的禁止
+title: パスワードの動的禁止 - Azure Active Directory
 description: Azure AD でのパスワードの動的禁止を使用して環境の脆弱なパスワードを禁止する
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287028"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884348"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -32,7 +32,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 カスタムの禁止パスワード リストとオンプレミス Active Directory 統合を有効にする機能は、Azure portal を使用して管理されます。
 
-![Azure portal の [認証方法] でカスタムの禁止パスワード リストを変更する](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![[認証方法] でカスタムの禁止パスワード リストを変更する](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="on-premises-hybrid-scenarios"></a>オンプレミスのハイブリッド シナリオ
 
@@ -106,8 +106,11 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 |   | グローバル禁止パスワード リストを使用した Azure AD パスワードの保護 | カスタム禁止パスワード リストを使用した Azure AD パスワードの保護|
 | --- | --- | --- |
-| クラウド専用ユーザー | Azure AD Free | Azure AD Basic |
+| クラウド専用ユーザー | Azure AD Free | Azure AD Premium P1 または P2 |
 | オンプレミスの Windows Server Active Directory から同期されたユーザー | Azure AD Premium P1 または P2 | Azure AD Premium P1 または P2 |
+
+> [!NOTE]
+> Azure Active Directory に同期されていないオンプレミスの Windows Server Active Directory ユーザーも、同期されたユーザーに対する既存のライセンスに基づく Azure AD のパスワード保護の利点を利用します。
 
 追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 

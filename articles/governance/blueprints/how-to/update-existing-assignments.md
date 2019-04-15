@@ -1,7 +1,6 @@
 ---
 title: ポータルから既存の割り当てを更新する方法
 description: Azure Blueprints でポータルから既存の割り当てを更新するためのメカニズムについて学習します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c75bd8c3831bad0c8217f16315843cbe3824fe4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999849"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276864"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -32,17 +31,17 @@ ms.locfileid: "57999849"
 
 1. ブループリントの一覧で、ブループリントの割り当てをクリックします。 **[割り当ての更新]** ボタンをクリックするか、ブループリントの割り当てを右クリックし、**[割り当ての更新]** を選択します。
 
-   ![割り当てを更新する](../media/update-existing-assignments/update-assignment.png)
+   ![既存のブループリントの割り当てを更新する方法](../media/update-existing-assignments/update-assignment.png)
 
 1. 元の割り当てからすべての値が事前入力された状態で、**[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、**[割り当て]** をクリックします。
 
 1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに**ロック**を追加しました。
 
-   ![更新された割り当て - ロック](../media/update-existing-assignments/updated-assignment.png)
+   ![既存のブルー プリント割り当て - 変更されたロック モードの更新](../media/update-existing-assignments/updated-assignment.png)
 
 1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース**のテーブルが更新されます。
 
-   ![割り当て操作](../media/update-existing-assignments/assignment-operations.png)
+   ![ブルー プリント割り当ての割り当て操作](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>割り当ての更新の規則
 

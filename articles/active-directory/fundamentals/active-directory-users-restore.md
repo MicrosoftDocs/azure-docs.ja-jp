@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 04/01/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877005"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802016"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -43,7 +43,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 削除されてからまだ 30 日が経過していないユーザーはすべて表示することができます。 これらのユーザーは復元することができます。
 
 ### <a name="to-view-your-restorable-users"></a>復元可能なユーザーを表示するには
-1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
+1. 組織のグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[Azure Active Directory]**、**[ユーザー]**、**[削除済みのユーザー]** の順に選択します。
 
@@ -52,7 +52,11 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
     ![まだ復元可能なユーザーが表示されている [ユーザー - 削除済みのユーザー] ページ](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
 
 ## <a name="restore-a-recently-deleted-user"></a>最近削除されたユーザーを復元する
-ユーザーのアカウントが中断されている間は、関連するディレクトリ情報がすべて保持されます。 ユーザーを復元すると、このディレクトリ情報も復元されます。
+
+ユーザー アカウントが組織から削除されると、そのアカウントは中断状態となりますが、関連する組織情報はすべて維持されます。 ユーザーを復元すると、この組織情報も復元されます。
+
+> [!Note]
+> ユーザーが復元されると、削除時点でユーザーに割り当てられていたライセンスも復元されます。それらのライセンスで利用可能なシートが存在していなかったとしても同様です。 その後、購入分を超えるライセンスを利用した場合、所属組織は、ライセンスの使用に関して一時的に非準拠状態となる可能性があります。
 
 ### <a name="to-restore-a-user"></a>ユーザーを復元するには
 1. **[ユーザー - 削除済みユーザー]** ページ上で、利用可能なユーザーを検索し、その中のいずれかを選択します。 たとえば、_Mary Parker_ を選択します。
@@ -62,7 +66,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
     ![[ユーザー - 削除済みユーザー] ページ上で強調表示されている [ユーザーの復元] オプション](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
 ## <a name="permanently-delete-a-user"></a>ユーザーの完全な削除
-30 日経過してから自動削除されるのを待つことなく、ご利用のディレクトリからユーザーを完全に削除することができます。 完全に削除されたユーザーは、担当の管理者も、別の管理者も、Microsoft カスタマー サポートも復元することができません。
+30 日経過してから自動削除されるのを待つことなく、ご利用の組織からユーザーを完全に削除することができます。 完全に削除されたユーザーは、担当の管理者も、別の管理者も、Microsoft カスタマー サポートも復元することができません。
 
 >[!Note]
 >誤ってユーザーを完全に削除してしまった場合は、新しいユーザーを作成して、以前の情報をすべて手動で入力する必要があります。 新しいユーザーの作成の詳細については、[ユーザーの追加または削除](add-users-azure-active-directory.md)に関するページを参照してください。
@@ -84,6 +88,6 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
-- [別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md) 
+- [別の組織からゲスト ユーザーを追加する](../b2b/what-is-b2b.md)
 
-他の使用可能なユーザー管理タスクの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。
+他の使用可能なユーザー管理タスクの詳細については、[Azure AD のユーザー管理のドキュメント](../users-groups-roles/index.yml)を参照してください。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbda2a16e57f3907ef2910b17ed3c744d2d1ec3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005835"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487857"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -58,7 +58,7 @@ installer.log をレビューして、インストールが失敗した原因を
 
 ストレージ同期サービスの **[登録済みサーバー]** にサーバーが一覧表示されていない場合は、登録解除するサーバー上で次の PowerShell コマンドを実行します。
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Reset-StorageSyncServer
 ```
@@ -113,7 +113,7 @@ Reset-StorageSyncServer
 <a id="server-endpoint-provisioningfailed"></a>**[サーバー エンドポイントのプロパティ] ページが開かない、またはクラウドの階層化ポリシーを更新できない**  
 この問題は、サーバー エンドポイントでの管理操作が失敗する場合に発生することがあります。 Azure Portal で [サーバー エンドポイントのプロパティ] ページが開かない場合は、サーバーから PowerShell コマンドでサーバー エンドポイント を更新すると、この問題が解決する場合があります。 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 # Get the server endpoint id based on the server endpoint DisplayName property
 Get-AzureRmStorageSyncServerEndpoint `
@@ -253,7 +253,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、または削除保留中状態の場合に、発生する可能性があります。 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、次の理由で発生する可能性があります: ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、ファイルが削除保留中状態の場合、またはファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 ファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合、Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)を参照してください。
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
@@ -331,7 +331,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 
 1. サーバーからストレージの DNS 名を解決できることを確認します。
 
-    ```PowerShell
+    ```powershell
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
@@ -457,13 +457,13 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 
 1. SkipVerifyingPinnedRootCertificate レジストリ値を作成します。
 
-    ```PowerShell
+    ```powershell
     New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Azure\StorageSync -Name SkipVerifyingPinnedRootCertificate -PropertyType DWORD -Value 1
     ```
 
 2. 登録済みサーバー上で同期サービスを再起動します。
 
-    ```PowerShell
+    ```powershell
     Restart-Service -Name FileSyncSvc -Force
     ```
 
@@ -503,7 +503,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 1. Azure File Sync エージェント バージョン 4.0.1.0 以降がインストールされていることを確認します。
 2. サーバーで、次の PowerShell コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
     Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -616,7 +616,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
     ![ストレージ アカウントへのリンクが表示されたクラウド エンドポイントの詳細ウィンドウを示すスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
 $region = "<Az_Region>"
@@ -719,7 +719,7 @@ if ($storageAccount -eq $null) {
     ![ストレージ アカウントのファイアウォールとネットワーク ルールが無効になっていることを示すスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
     Write-Host ("The storage account referenced contains network " + `
@@ -735,7 +735,7 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 3. クラウド エンドポイントによって参照されているファイル共有 (上の手順 1 でメモしたもの) がファイル共有の一覧に表示されていることを確認します。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
     $_.IsSnapshot -eq $false
@@ -762,7 +762,7 @@ if ($fileShare -eq $null) {
     - **[選択]** フィールドに「**Hybrid File Sync Service**」と入力してロールを選択し、**[保存]** をクリックします。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell    
+```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
@@ -790,13 +790,13 @@ if (!$foundSyncPrincipal) {
 
 まず、[New-FsrmFileGroup コマンドレット](https://docs.microsoft.com/powershell/module/fileserverresourcemanager/new-fsrmfilegroup)を使用して FSRM ファイル グループを作成します。 この例では、サポートされていない文字を 2 つだけ含むグループを定義しますが、必要な数の文字をファイル グループに含めることができます。
 
-```PowerShell
+```powershell
 New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
 ```
 
 FSRM ファイル グループを定義したら、New-FsrmFileScreen コマンドレットを使用して、FSRM ファイル スクリーンを作成できます。
 
-```PowerShell
+```powershell
 New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
 ```
 
@@ -893,7 +893,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 1. AFSDiag の出力が保存されるディレクトリを作成します (例: C:\Output)。
 2. 管理者特権で PowerShell ウィンドウを開き、次のコマンドを実行します (各コマンドの後で Enter キーを押します)。
 
-    ```PowerShell
+    ```powershell
     cd "c:\Program Files\Azure\StorageSyncAgent"
     Import-Module .\afsdiag.ps1
     Debug-Afs c:\output # Note: Use the path created in step 1.

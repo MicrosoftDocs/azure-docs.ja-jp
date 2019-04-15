@@ -4,18 +4,18 @@ description: データ インジェスト、データのセキュリティ、お
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
-manager: jhubbard
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 7e120980ed1379fb4ea18bca9f1e84938964cac5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961892"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882820"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -187,5 +187,5 @@ Hive や従来の SQL データベースなどのデータベースで直接処�
 * [Azure Data Lake Storage Gen1 のパフォーマンス チューニング](data-lake-store-performance-tuning-guidance.md)
 * [Azure Data Lake Storage Gen1 で HDInsight Spark を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
 * [Azure Data Lake Storage Gen1 で HDInsight Hive を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
-* は、 「 [Azure Data Lake Storage Gen1 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka) 」を参照してください
+* [Azure Data Lake Storage Gen1 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Data Lake Storage Gen1 で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)

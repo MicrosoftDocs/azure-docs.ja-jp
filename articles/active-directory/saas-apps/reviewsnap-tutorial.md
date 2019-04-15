@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09fd6c94fe32d683e61aacba5300b130fa6f416a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 24f4983f2ba1567241a6dfc6231a4925805947cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187408"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>チュートリアル:Azure Active Directory と Reviewsnap の統合
 
@@ -109,16 +109,15 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Reviewsnap のドメインと URL] のシングル サインオン情報](./media/reviewsnap-tutorial/tutorial_reviewsnap_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://app.reviewsnap.com`
+    a. **[識別子]** ボックスに次の URL を入力します。 `https://app.reviewsnap.com`
 
-    b. **[応答 URL]** ボックスに、`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>
-` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[Reviewsnap のドメインと URL] のシングル サインオン情報](./media/reviewsnap-tutorial/tutorial_reviewsnap_url1.png)
 
-    **[サインオン URL]** ボックスに、「`https://app.reviewsnap.com/login`」と入力します。
+    **[サインオン URL]** ボックスに、次の URL を入力します。 `https://app.reviewsnap.com/login`
      
     > [!NOTE] 
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Reviewsnap クライアント サポート チーム](mailto:support@reviewsnap.com)に連絡してください。 
@@ -167,7 +166,7 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-reviewsnap-test-user"></a>Reviewsnap テスト ユーザーの作成
 

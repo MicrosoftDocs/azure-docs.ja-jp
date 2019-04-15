@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc78dade345c9f9c72cf936136d9969b79bc1398
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013561"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878589"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -139,9 +139,9 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
 
 ストレージ エミュレーターのサービス エンドポイントは、次のとおりです。
 
-* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Queue サービス: `http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob service:  `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Queue サービス:  `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Table service:  `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
 Version 3.1 以降では、ストレージ エミュレーターで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 クラウド内のストレージ リソースとローカル エミュレーター内のストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に -secondary を付加します。 たとえば、ストレージ エミュレーターで読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
@@ -169,10 +169,10 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 | オプション | 説明 | command | 引数 |
 | --- | --- | --- | --- |
-| **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*:新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
+| **start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*:新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
-| **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
-| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
+| **Status** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
+| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
 | **Init** |エミュレーターをセットアップするために、1 回限りの初期化を実行します。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*:SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*:既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*:SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*:SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*:サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*:サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*:新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>ストレージ エミュレーターと Azure ストレージとの違い

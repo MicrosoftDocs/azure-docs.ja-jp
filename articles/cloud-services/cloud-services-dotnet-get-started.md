@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762608"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917478"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure クラウド サービス](cloud-services-choose-me.md)にデプロイする方法について説明します。 このアプリケーションでは、[Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。 MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) できます。
+このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure クラウド サービス](cloud-services-choose-me.md)にデプロイする方法について説明します。 このアプリケーションでは、[Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。 MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) できます。
 
 このチュートリアルでは、アプリケーションを作成してローカルで実行する方法、アプリケーションを Azure にデプロイしてクラウドで実行する方法、アプリケーションを最初から作成する方法について説明します。 アプリケーションを最初から作成する手順から始め、必要に応じて後でアプリケーションのテストとデプロイ手順に進んでください。
 
@@ -81,7 +81,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 6. Visual Studio 2015 以上を使用している場合は、ContosoAdsWeb プロジェクトのアプリケーションの *Web.config* ファイルと ContosoAdsCloudService プロジェクトの *ServiceConfiguration.Local.cscfg* ファイルで SQL Server 接続文字列を変更します。 いずれの場合も、"(localdb)\v11.0" を "(localdb)\MSSQLLocalDB" に変更します。
 7. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
+    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) を使用して、Azure クラウド ストレージをシミュレートします。
 
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -178,7 +178,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
     クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。 データ センター内の帯域幅は無料です。
 
-    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。 このチュートリアルでは、アフィニティ グループを使用しません。 詳細については、 [Azure でアフィニティ グループを作成する方法に関するページ](https://msdn.microsoft.com/library/azure/gg715317.aspx)を参照してください。
+    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。 このチュートリアルでは、アフィニティ グループを使用しません。 詳細については、 [Azure でアフィニティ グループを作成する方法に関するページ](/previous-versions/azure/reference/gg715317(v=azure.100))を参照してください。
 7. **Create** をクリックしてください。
 
     ![新しいストレージ アカウント ](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -232,7 +232,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 1. **ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、**[プロパティ]** をクリックします。
 
     ![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. **[設定]** タブをクリックします。[サービス構成] ボックスの一覧の **[クラウド]** を選択します。
+2. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
     ![クラウドの構成](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。 省略記号ボタンをクリックして、 **[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。
@@ -417,8 +417,8 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 以降のセクションでは、Azure 環境、BLOB、およびキューの操作に関連するコードについて説明します。 このチュートリアルでは、スキャフォールディングを使用した MVC コントローラーおよびビューの作成方法、SQL Server データベースで動作する Entity Framework コードの作成方法、ASP.NET 4.5 での非同期プログラミングの基礎については説明していません。 これらのトピックについては、次のリソースを参照してください。
 
-* [ASP.NET MVC 5 の概要](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
-* [MVC 5 を使用する Entity Framework 6 Code First の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
+* [MVC 5 の概要](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [EF 6 と MVC 5 の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
 * [.NET 4.5 での非同期プログラミングの概要](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)
 
 ### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon - Ad.cs
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。 ただし、ファイルをアップロードして Blob Storage に保存する HttpPost `Create` メソッドは例外です。 モデル バインダーは、このメソッドに [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
+コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。 ただし、ファイルをアップロードして Blob Storage に保存する HttpPost `Create` メソッドは例外です。 モデル バインダーは、このメソッドに [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase) オブジェクトを提供します。
 
 ```csharp
 [HttpPost]
@@ -703,7 +703,7 @@ public override void Run()
 
 ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。 このようなメッセージは *有害メッセージ*と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。  そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
-`ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
+`ProcessQueueMessage`  は、キュー メッセージが見つかったときに呼び出されます。
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)
@@ -775,7 +775,7 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Cloud Services パート 1:概要](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure Cloud Services パート 1: はじめに](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

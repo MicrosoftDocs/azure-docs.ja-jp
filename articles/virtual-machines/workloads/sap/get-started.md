@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91228074e13453ce53c0b4a7606479d45e8a90ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40ed06bef45948068e3845e728d9c1d63ed62e71
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182780"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762805"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 
@@ -36,14 +36,16 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 
 ## <a name="latest-changes"></a>最新の変更
 
+[Azure portal を介した Azure HANA L インスタンスの制御](hana-li-portal.md)のリリース
+
+[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](high-availability-guide-suse-netapp-files.md)のリリース
+
+Azure Load Balancer と関連した **Linux OS パラメーター net.ipv4.tcp_timestamps** の設定の明確化
+
 [Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)のリリース
 
 [SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)のリリース
 
-待ち時間が重要な SAP システムの通信パスでの [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)の使用法および構成の明確化。
-
-- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 
 

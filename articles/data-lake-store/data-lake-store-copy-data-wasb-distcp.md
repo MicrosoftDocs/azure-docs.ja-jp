@@ -3,21 +3,21 @@ title: Distcp を使用して Azure Data Lake Storage Gen1 と WASB の間でデ
 description: Distcp ツールを使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ae2e9506-69dd-4b95-8759-4dadca37ea70
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168709"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884467"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Distcp を使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 > [!div class="op_single_selector"]
@@ -111,7 +111,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 * Azure Blob Storage アカウントからコピーする場合、コピー ジョブは、Blob Storage 側で調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
-* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
+* [Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする](data-lake-store-copy-data-azure-storage-blob.md)
+* [Data Lake Storage Gen1 のデータをセキュリティ保護する](data-lake-store-secure-data.md)
 * [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

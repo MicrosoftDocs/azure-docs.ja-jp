@@ -1,5 +1,5 @@
 ---
-title: PIM での電子メール通知 - Azure | Microsoft Docs
+title: PIM での電子メール通知 - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) でのメール通知について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905173"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576949"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
-Azure AD Privileged Identity Management (PIM) を使用すると、重要なイベントの発生を知ることができます (ロールが割り当てられたときや、アクティブ化されたときなど)。 PIM では、自分や他の参加者に電子メール通知を送信して、最新情報を知らせることができます。 これらの電子メールには、関連するタスク (ロールのアクティブ化や更新など) へのリンクが含まれる場合もあります。 この記事では、これらの電子メールがどのように表示されるかや、それらがいつ誰に送信されるのかについて説明します。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、ロールが割り当てられたときや、アクティブ化されたときなど、重要なイベントの発生を知ることができます。 PIM では、自分や他の参加者に電子メール通知を送信して、最新情報を知らせることができます。 これらの電子メールには、関連するタスク (ロールのアクティブ化や更新など) へのリンクが含まれる場合もあります。 この記事では、これらの電子メールがどのように表示されるかや、それらがいつ誰に送信されるのかについて説明します。
 
 ## <a name="sender-email-address-and-subject-line"></a>送信者の電子メール アドレスと件名行
 
@@ -101,5 +101,5 @@ PIM では、Azure リソース ロールに関する次のイベントが発生
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
-- [PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)
+- [PIM で Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)
+- [PIM で Azure AD ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)

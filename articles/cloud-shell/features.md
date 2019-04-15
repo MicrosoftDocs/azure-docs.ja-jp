@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell features | Microsoft Docs
-description: Overview of features of Bash in Azure Cloud Shell
+title: Azure Cloud Shell の機能 | Microsoft Docs
+description: Azure Cloud Shell での Bash の機能の概要
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,73 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: damaerte
-ms.openlocfilehash: 7e2ead6d5fc13b0d7517258d75148d50a3f1bc62
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fe04c5450ecd2c21affa5cbb89c627bc30cf7b6f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246357"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903456"
 ---
-# <a name="features--tools-for-azure-cloud-shell"></a>Features & tools for Azure Cloud Shell
+# <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-Azure Cloud Shell runs on `Ubuntu 16.04 LTS`.
+Azure Cloud Shell は `Ubuntu 16.04 LTS` 上で実行されます。
 
-## <a name="features"></a>Features
+## <a name="features"></a>機能
 
-### <a name="secure-automatic-authentication"></a>Secure automatic authentication
+### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
-Cloud Shell securely and automatically authenticates account access for the Azure CLI and Azure PowerShell.
+Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
 
-### <a name="home-persistence-across-sessions"></a>$HOME persistence across sessions
+### <a name="home-persistence-across-sessions"></a>セッション間での $HOME の永続化
 
-To persist files across sessions, Cloud Shell walks you through attaching an Azure file share on first launch.
-Once completed, Cloud Shell will automatically attach your storage (mounted as `$HOME\clouddrive`) for all future sessions.
-Additionally, your `$HOME` directory is persisted as an .img in your Azure File share.
-Files outside of `$HOME` and machine state are not persisted across sessions. Use best practices when storing secrets such as SSH keys. Services like [Azure Key Vault have tutorials for setup](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Azure ファイル共有のアタッチについてのチュートリアルがあります。
+完了すると、今後すべてのセッションで、ストレージが自動的にアタッチされます (`$HOME\clouddrive` としてマウントされます) 。
+さらに、`$HOME` ディレクトリが .img として Azure ファイル共有に永続化されます。
+`$HOME` およびマシン状態の外部にあるファイルは、セッション間で保持されません。 SSH キーなどのシークレットを格納するときは、ベスト プラクティスを使用します。 [Azure Key Vault などのサービスには、設定用のチュートリアルが用意されています](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites)。
 
-[Learn more about persisting files in Cloud Shell.](persisting-shell-storage.md)
+[Cloud Shell でのファイルの永続化については、こちらを参照してください。](persisting-shell-storage.md)
 
-### <a name="azure-drive-azure"></a>Azure drive (Azure:)
+### <a name="azure-drive-azure"></a>Azure ドライブ (Azure:)
 
-PowerShell in Cloud Shell starts you in Azure drive (`Azure:`).
-The Azure drive enables easy discovery and navigation of Azure resources such as Compute, Network, Storage etc. similar to filesystem navigation.
-You can continue to use the familiar [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure) to manage these resources regardless of the drive you are in.
-Any changes made to the Azure resources, either made directly in Azure portal or through Azure PowerShell cmdlets, are reflected in the Azure drive.  You can run `dir -Force` to refresh your resources.
+Cloud Shell の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
+Azure ドライブを使用すると、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
+使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
+Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
 
 ![](media/features-powershell/azure-drive.png)
 
-### <a name="deep-integration-with-open-source-tooling"></a>Deep integration with open-source tooling
+### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
 
-Cloud Shell includes pre-configured authentication for open-source tools such as Terraform, Ansible, and Chef InSpec. Try it out from the example walkthroughs.
+Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソース ツールのための事前に構成された認証が含まれています。 チュートリアルの例からそれを試してみてください。
 
-## <a name="tools"></a>Tools
+## <a name="tools"></a>ツール
 
-|Category   |Name   |
+|Category   |名前   |
 |---|---|
-|Linux tools            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure tools            |[Azure CLI](https://github.com/Azure/azure-cli) and [Azure classic CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Text editors           |code (Cloud Shell editor)<br> vim<br> nano<br> emacs    |
-|Source control         |git                    |
-|Build tools            |make<br> maven<br> npm<br> pip         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|Databases              |MySQL client<br> PostgreSql client<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Other                  |iPython Client<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
+|Linux ツール            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
+|Azure ツール            |[Azure CLI](https://github.com/Azure/azure-cli) と [Azure クラシック CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|テキスト エディター           |コード (Cloud Shell エディター)<br> vim<br> nano<br> emacs    |
+|ソース管理         |git                    |
+|ビルド ツール            |make<br> maven<br> npm<br> pip         |
+|Containers             |[Docker マシン](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
+|データベース              |MySQL クライアント<br> PostgreSql クライアント<br> [sqlcmd ユーティリティ](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|その他                  |iPython クライアント<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
 
-## <a name="language-support"></a>Language support
+## <a name="language-support"></a>言語のサポート
 
-|Language   |Version   |
+|言語   |バージョン   |
 |---|---|
 |.NET Core  |2.0.0       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
 |PowerShell |[6.1.2](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2.7 and 3.5 (default)|
+|Python     |2.7 および 3.5 (既定)|
 
-## <a name="next-steps"></a>Next steps
-[Bash in Cloud Shell Quickstart](quickstart.md) <br>
-[PowerShell in Cloud Shell Quickstart](quickstart-powershell.md) <br>
-[Learn about Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
-[Learn about Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>
+## <a name="next-steps"></a>次の手順
+[Cloud Shell の Bash のクイック スタート](quickstart.md) <br>
+[Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
+[Azure CLI について学習する](https://docs.microsoft.com/cli/azure/) <br>
+[Azure PowerShell について学習する](https://docs.microsoft.com/powershell/azure/) <br>

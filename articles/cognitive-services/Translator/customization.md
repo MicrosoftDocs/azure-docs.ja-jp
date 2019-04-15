@@ -3,19 +3,19 @@ title: 翻訳のカスタマイズ - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Microsoft Translator Hub を利用し、適切な用語とスタイルを使用して、独自の機械翻訳システムを構築します。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124016"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918231"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -66,4 +66,4 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)
+> [カスタム翻訳ツールを使用してカスタマイズされた言語システムを設定する](https://aka.ms/CustomTranslatorDocs)

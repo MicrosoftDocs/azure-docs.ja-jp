@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480721"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918639"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -113,7 +113,7 @@ CSV で結果を表示するには:
 ### <a name="system-requirements"></a>システム要件
 - Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 を実行しているサーバー:
 
-    | Version | サポートされている SKU | サポートされているデプロイ オプション |
+    | バージョン | サポートされている SKU | サポートされているデプロイ オプション |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Datacenter および Standard | フル (UI ありのサーバー) |
     | Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
@@ -278,6 +278,8 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | 東アジア           | 東南アジア     |
 | 米国東部             | 米国西部            |
 | 米国東部 2           | 米国中央部         |
+| 韓国中部       | 韓国南部        |
+| 韓国南部         | 韓国中部      |
 | 北ヨーロッパ        | 西ヨーロッパ        |
 | 米国中北部    | 米国中南部   |
 | インド南部         | インド中部      |
@@ -293,6 +295,6 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 ## <a name="next-steps"></a>次の手順
 * [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files のデプロイの計画](storage-files-planning.md)
-* [Azure Files をデプロイする](storage-files-deployment-guide.md)
-* [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+* [Azure Files のデプロイ](storage-files-deployment-guide.md)
+* [Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)
 * [Azure File Sync の監視](storage-sync-files-monitoring.md)

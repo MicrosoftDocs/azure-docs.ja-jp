@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 52ec7c83b4070a4c38963b3ab12f58f923fa889d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562627"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893522"
 ---
 # <a name="social-accounts-claims-transformations"></a>ソーシャル アカウント要求変換
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) B2C では、ソーシャル アカウント I
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId のスキーマ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType)」を参照してください。
+Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId のスキーマ](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType)」を参照してください。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
@@ -81,7 +81,7 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 次の例では、新しいソーシャル ID と既存のアカウントをリンクしています。 新しいソーシャル ID をリンクするには:
 1. **AAD-UserReadUsingAlternativeSecurityId** および **AAD-UserReadUsingObjectId** 技術プロファイルで、ユーザーの **alternativeSecurityIds** 要求を出力します。
 1. このユーザーに関連付けられていない ID プロバイダーのいずれかを使用してサインインするように、ユーザーに依頼します。
-1. **CreateAlternativeSecurityId** 要求変換を使用して、新しい **alternativeSecurityId** 要求の種類を `AlternativeSecurityId2` という名前で作成します。
+1. **CreateAlternativeSecurityId** 要求変換を使用して、新しい **alternativeSecurityId** 要求の種類を次の名前で作成します:  `AlternativeSecurityId2`
 1. **AddItemToAlternativeSecurityIdCollection** 要求変換を呼び出して、既存の **AlternativeSecurityIds** 要求に **AlternativeSecurityId2** 要求を追加します。
 1. ユーザー アカウントに **alternativeSecurityIds** 要求を保持します。
 

@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200362"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883447"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>トークン署名証明書に使用する AD FS の既定の構成
 通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover**と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Office 365 と Azure AD では、証明書は期限切れになる前に自動的に更新されます。
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Office 365 ポータルまたは電子メールからの更新通知
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Microsoft 365 管理センターからの更新の通知またはメール
 > [!NOTE]
 > Office の証明書を更新するよう求める電子メールまたはポータル通知が届いた場合は、 [トークン署名証明書に対する変更の管理](#managecerts) についての記載を参照して、何らかの対処が必要かどうかを確認してください。 実際には対処が不要であるにもかかわらず証明書の更新を求める通知が送信される問題が確認されています。
 >
@@ -44,8 +44,8 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 
 Azure AD は、フェデレーション メタデータを監視し、その結果に応じてトークン署名証明書の更新を試みます。 トークン署名証明書の有効期限が切れる 30 日前に、Azure AD がフェデレーション メタデータをポーリングして新しい証明書が利用可能かどうかをチェックします。
 
-* フェデレーション メタデータをポーリングして新しい証明書を取得できた場合は、電子メール通知も Office 365 ポータルの警告もユーザーには送信されません。
-* フェデレーション メタデータにアクセスできないか、証明書の自動ロールオーバーが有効になっていないことが原因で、新しいトークン署名証明書を取得できない場合は、Azure AD によって、Office 365 ポータルで電子メール通知と警告が発行されます。
+* フェデレーション メタデータをポーリングして新しい証明書を取得できた場合は、Microsoft 365 管理センターでのメール通知も警告もユーザーには送信されません。
+* フェデレーション メタデータにアクセスできないか、証明書の自動ロールオーバーが有効になっていないことが原因で、新しいトークン署名証明書を取得できない場合は、Azure AD によって、Microsoft 365 管理センターでメール通知と警告が発行されます。
 
 ![Office 365 portal notification](./media/how-to-connect-fed-o365-certs/notification.png)
 
@@ -118,7 +118,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
+この `(your_FS_name)` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## トークン署名証明書を手動で更新する <a name="manualrenew"></a>

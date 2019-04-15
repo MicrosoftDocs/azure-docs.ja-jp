@@ -1,6 +1,6 @@
 ---
-title: Azure Stack のマネージド ディスクに関する相違点と考慮事項 | Microsoft Docs
-description: Azure Stack でマネージド ディスクを操作する際の相違点と考慮事項について説明します。
+title: Azure Stack のマネージド ディスクとマネージド イメージに関する相違点と考慮事項 | Microsoft Docs
+description: Azure Stack でマネージド ディスクとマネージド イメージを操作する際の相違点と考慮事項について説明します。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: c1975c885efc0a2a22b2ab478f8bc9afbcc8bce3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961977"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400373"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack Managed Disks: 相違点と考慮事項
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack マネージド ディスク: 相違点と考慮事項
 
-この記事は、[Azure Stack の Managed Disks](azure-stack-manage-vm-disks.md) と [Azure の Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) の既知の相違点をまとめたものです。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
+この記事は、[Azure Stack のマネージド ディスク](azure-stack-manage-vm-disks.md)と [Azure のマネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)の既知の相違点をまとめたものです。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
 
 マネージド ディスクを使用すると、VM ディスクに関連付けられている[ストレージ アカウント](../azure-stack-manage-storage-accounts.md)を管理できるため、IaaS VM のディスク管理が簡素化されます。
 
 > [!Note]  
-> Azure Stack の Managed Disks は 1808 更新プログラムから使用できます。 1811 更新プログラムから Azure Stack ポータルを使用して仮想マシンを作成すると、既定で有効になります。
+> Azure Stack のマネージド ディスクは 1808 更新プログラムから使用できます。 1811 更新プログラム以降で Azure Stack ポータルを使用して仮想マシンを作成すると、既定で有効になります。
   
-## <a name="cheat-sheet-managed-disk-differences"></a>チート シート:マネージド ディスクの相違点
+## <a name="cheat-sheet-managed-disk-differences"></a>チート シート: マネージド ディスクの相違点
 
 | 機能 | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
@@ -134,13 +134,32 @@ Azure Stack では*マネージド イメージ*がサポートされていま�
 - 汎用化されたアンマネージド VM があり、今後はマネージド ディスクを使用する。
 - 汎用化されたマネージド VM があり、同様のマネージド VM を複数作成する。
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>アンマネージド VM をマネージド ディスクに移行する
+### <a name="step-1-generalize-the-vm"></a>手順 1:VM の汎用化
 
-[こちら](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account)の指示に従い、ストレージ アカウントで、汎用化された VHD からマネージド イメージを作成します。 以降、このイメージはマネージド VM の作成に使用できます。
+Windows の場合は、「[Sysprep を使用して Windows VM を一般化する](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)」のセクションに従います。 Linux の場合は、手順 1 ([こちら](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm)) に従います。
 
-### <a name="create-managed-image-from-vm"></a>VM からマネージド イメージを作成する
+> [!NOTE]
+> 必ず VM を一般化してください。 適切に一般化されていないイメージから VM を作成すると、**VMProvisioningTimeout** エラーが発生します。
+
+### <a name="step-2-create-the-managed-image"></a>手順 2:マネージド イメージを作成する
+
+ポータル、PowerShell、または Azure CLI を使用してマネージド イメージを作成できます。 Azure の記事 ([こちら](/azure/virtual-machines/windows/capture-image-resource)) の手順に従います。
+
+### <a name="step-3-choose-the-use-case"></a>手順 3:ユース ケースを選択する
+
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>ケース 1:アンマネージド VM をマネージド ディスクに移行する
+
+この手順を実行する前に、VM を適切に一般化してください。 一般化の後ではその VM を使用できなくなります。 適切に一般化されていないイメージから VM を作成すると、**VMProvisioningTimeout** エラーが発生します。
+
+[こちら](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account)の指示に従い、ストレージ アカウントで、汎用化された VHD からマネージド イメージを作成します。 以降、このイメージを使用して、マネージド VM を作成します。
+
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>ケース 2:Powershell を使用してマネージド イメージからマネージド VM を作成する
 
 [こちら](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell)のスクリプトを使って既存のマネージド ディスク VM からイメージを作成した後、次のサンプル スクリプトで、既存のイメージ オブジェクトから類似の Linux VM を作成します。
+
+Azure Stack PowerShell モジュール 1.7.0 以上: [こちら](../../virtual-machines/windows/create-vm-generalized-managed.md)の手順に従います。
+
+Azure Stack PowerShell モジュール 1.6.0 以前:
 
 ```powershell
 # Variables for common values
@@ -181,6 +200,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 $image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
@@ -191,11 +211,11 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-詳細については、Azure マネージド イメージに関する記事「[Azure で汎用化された VM のマネージド イメージを作成する](../../virtual-machines/windows/capture-image-resource.md)」および「[マネージド イメージから VM を作成する](../../virtual-machines/windows/create-vm-generalized-managed.md)」を参照してください。
+ポータルを使用して、マネージド イメージから VM を作成することもできます。 詳細については、Azure マネージド イメージに関する記事「[Azure で汎用化された VM のマネージド イメージを作成する](../../virtual-machines/windows/capture-image-resource.md)」および「[マネージド イメージから VM を作成する](../../virtual-machines/windows/create-vm-generalized-managed.md)」を参照してください。
 
 ## <a name="configuration"></a>構成
 
-1808 以降の更新プログラムを適用した後、Managed Disks を使用する前に次の構成を実行する必要があります。
+1808 以降の更新プログラムを適用した後、マネージド ディスクを使用する前に次の構成を実行する必要があります。
 
 - 1808 更新プログラムの前にサブスクリプションが作成された場合は、次の手順に従ってサブスクリプションを更新します。 そうでないと、このサブスクリプションに VM をデプロイする操作がエラー メッセージ "ディスク マネージャーでの内部エラーです" で失敗することがあります。
    1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。

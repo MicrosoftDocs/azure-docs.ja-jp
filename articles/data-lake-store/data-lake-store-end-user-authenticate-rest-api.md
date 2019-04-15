@@ -3,20 +3,20 @@ title: 'エンドユーザー認証: REST API から Azure Active Directory を�
 description: REST API と Azure Active Directory を使用した Azure Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: d5603bb6bbb56d1aebb719902c60de631a4f14f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twooley
+ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108190"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881445"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 でのエンドユーザー認証
 > [!div class="op_single_selector"]

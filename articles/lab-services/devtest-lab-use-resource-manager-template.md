@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181556"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648437"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -30,7 +30,7 @@ ms.locfileid: "58181556"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>マルチ VM と単一 VM の Resource Manager テンプレートの比較
-Resource Manager テンプレートを使用して DevTest Labs で VM を作成する方法は 2 つあります。Microsoft.DevTestLab/labs/virtualmachines リソースのプロビジョニング、またはMicrosoft.Commpute/virtualmachines リソースのプロビジョニングです。 それぞれ、異なるシナリオで使用され、異なるアクセス許可が必要です。
+Resource Manager テンプレートを使用して DevTest Labs で VM を作成する方法は 2 つあります。Microsoft.DevTestLab/labs/virtualmachines リソースのプロビジョニング、またはMicrosoft.Compute/virtualmachines リソースのプロビジョニングです。 それぞれ、異なるシナリオで使用され、異なるアクセス許可が必要です。
 
 - Microsoft.DevTestLab/labs/virtualmachines というリソースの種類 (テンプレートの “resource” プロパティで宣言される) を使用する Resource Manager テンプレートは、個々のラボ VM をプロビジョニングできます。 その後、各 VM は DevTest Labs 仮想マシンの一覧に 1 つの項目として表示されます。
 

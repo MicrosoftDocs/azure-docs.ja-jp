@@ -1,46 +1,29 @@
 ---
-title: Azure Site Recovery と Azure Backup の相互運用性  | Microsoft Docs
+title: Azure Site Recovery と Azure Backup の使用のサポート| Microsoft Docs
 description: Azure Site Recovery と Azure Backup を一緒に使用する方法の概要を示します。
 services: site-recovery
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/18/2019
 ms.author: sideeksh
-ms.openlocfilehash: 6658ab8c967c70ac1deaeba3d1dfeac602515591
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: e902f70225ec0eb0caa98f7e19a16c87220cb6f9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731871"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312888"
 ---
-# <a name="about-site-recovery-and-backup-interoperability"></a>Site Recovery と Backup の相互運用性について
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>Azure Site Recovery と Azure Backup の使用
 
-この記事では、Azure IaaS VM Backup と Azure VM ディザスター リカバリーを正しく使用するためのガイダンスを提供します。
+この記事では、[Site Recovery サービス](site-recovery-overview.md)と [Azure Backup サービス](https://docs.microsoft.com/azure/backup/backup-overview)を一緒に使用するためのサポートについて説明します。
 
-## <a name="azure-backup"></a>Azure Backup
-
-Azure Backup は、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータの保護に役立ちます。 Azure Site Recovery は、Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーの調整と管理を行います。
-
-## <a name="azure-site-recovery"></a>Azure Site Recovery
-
-Azure Backup と Azure Site Recovery の両方を 1 台の VM または VM グループに構成することが可能です。 両方の製品は、相互運用が可能です。 Backup と Azure Site Recovery の間の相互運用が重要になるシナリオとしては次のようなものがあります。
-
-### <a name="file-backuprestore"></a>ファイルのバックアップ/復元
-
-バックアップとレプリケーションの両方が有効になっていて、バックアップが取られる場合、ソース サイド VM または VM グループでのファイルの復元には何の問題もありません。 レプリケーションは通常どおり続行され、レプリケーションの正常性に変化はありません。
-
-### <a name="disk-backuprestore"></a>ディスクのバックアップ/復元
-
-ディスクをバックアップから復元する場合は、仮想マシンの保護を再び有効にする必要があります。
-
-### <a name="vm-backuprestore"></a>VM のバックアップ/復元
-
-VM または VM グループのバックアップと復元はサポートされていません。 機能するようにするには、保護を再度有効にする必要があります。
-
-**シナリオ** | **Azure Site Recovery によってサポートされるか** | **回避策 (ある場合)**  
+**アクション** | **Site Recovery のサポート** | **詳細**
 --- | --- | ---
-ファイル/フォルダーのバックアップ | はい | 適用外
-ディスクのバックアップ | 現時点ではできません | 保護の無効化と有効化
-VM のバックアップ | いいえ  | 保護の無効化と有効化
+**サービスを一緒にデプロイする** | サポートされています | サービスは相互運用可能であり、一緒に構成できます。
+**ファイルのバックアップ/復元** | サポートされています | VM のバックアップとレプリケーションが有効になっていて、バックアップが取られる場合、ソース側の VM または VM グループでのファイルの復元には何の問題もありません。 レプリケーションは通常どおり続行され、レプリケーションの正常性に変化はありません。
+**ディスクのバックアップ/復元** | 現在サポートされていません | バックアップしたディスクを復元する場合、VM のレプリケーションを無効にしてから、再度有効にする必要があります。
+**VM のバックアップ/復元** | 現在サポートされていません | VM または VM グループをバックアップまたは復元する場合、VM のレプリケーションを無効にしてから、再度有効にする必要があります。  
+
+

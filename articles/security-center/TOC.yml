@@ -161,6 +161,8 @@ items:
       href: security-center-events-dashboard.md
     - name: Search
       href: security-center-search.md
+    - name: 計画と運用
+      href: security-center-planning-and-operations-guide.md
 - name: リファレンス
   items:
   - name: REST API
@@ -175,8 +177,6 @@ items:
     href: security-center-privacy.md
   - name: FAQ
     href: security-center-faq.md
-  - name: 計画と運用
-    href: security-center-planning-and-operations-guide.md
   - name: Azure Security
     href: /azure/security/
   - name: Azure のロードマップ
@@ -195,9 +195,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: トラブルシューティング
     href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: 582597639fb8681f4ac2894fb1cac7fe4ec17fcf
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 702e8fe5f5fec2488135104614936762e054b98c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895141"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520933"

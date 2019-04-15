@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887121"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805195"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -197,7 +197,7 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
     
-1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを SQL Database サーバーに割り当てます。
+1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
 
    > [!NOTE] 
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。

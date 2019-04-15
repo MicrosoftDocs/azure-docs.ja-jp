@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 93f73e133e99025b479d0b38512e26088a8eaefa
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729499"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369117"
 ---
 # <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
@@ -37,7 +37,7 @@ Azure CLI を使用して複数コンテナー グループをデプロイする
 
 まず、`azuredeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。
 
-この Resource Manager テンプレートでは、2 つのコンテナー、パブリック IP アドレス、公開された 2 つのポートを備えるコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
+この Resource Manager テンプレートでは、2 つのコンテナー、パブリック IP アドレス、公開された 2 つのポートを備えるコンテナー グループが定義されます。 コンテナーは、パブリック Microsoft イメージからデプロイされます。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
 
 ```JSON
 {
@@ -54,15 +54,15 @@ Azure CLI を使用して複数コンテナー グループをデプロイする
   },
   "variables": {
     "container1name": "aci-tutorial-app",
-    "container1image": "microsoft/aci-helloworld:latest",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
     "container2name": "aci-tutorial-sidecar",
-    "container2image": "microsoft/aci-tutorial-sidecar"
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
   },
   "resources": [
     {
       "name": "[parameters('containerGroupName')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-04-01",
+      "apiVersion": "2018-10-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -164,9 +164,9 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
 
 ```bash
-Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
-----------------  ---------------  -------------------  --------------------------------------------------------------  ---------------------  ---------------  --------  ----------
-myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     westus
+Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
+myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
 ## <a name="view-logs"></a>ログを表示する。
@@ -181,9 +181,9 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 ```bash
 listening on port 80
-::1 - - [09/Jan/2018:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [09/Jan/2018:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 サイドカー コンテナーのログを表示するには、2 番目のコンテナー名を指定して、同じコマンドを実行します。
@@ -195,7 +195,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 出力:
 
 ```bash
-Every 3s: curl -I http://localhost                          2018-01-09 23:25:11
+Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -208,7 +208,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Tue, 09 Jan 2018 23:25:11 GMT
+Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 

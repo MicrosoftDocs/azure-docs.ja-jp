@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726874"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540042"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Mapping Data Flow の結合変換
 
@@ -67,6 +67,10 @@ SSIS などのツールのマージ結合とは異なり、ADF Data Flow の結�
 ![自己結合](media/data-flow/selfjoin.png "自己結合")
 
 上の図では、先頭に選択変換があります。 これは、元のストリームを "OrigSourceBatting" にエイリアス化しています。 下部の強調表示されている結合変換で、この選択エイリアス ストリームを右側の結合として使用して、内部結合の右側と左側の両方で同じキーを参照できるようになっていることがわかります。
+
+## <a name="composite-and-custom-keys"></a>複合キーおよびカスタム キー
+
+カスタム キーや複合キーは、結合変換内でその場で構築できます。 リレーションシップの各行の横にあるプラス記号 (+) を使用して、結合列の行を追加します。 または、その場で結合値を求める式ビルダーで新しいキー値を計算します。
 
 ## <a name="next-steps"></a>次の手順
 

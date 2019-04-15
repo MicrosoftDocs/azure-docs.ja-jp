@@ -149,9 +149,9 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) | **SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) | **REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows | Windows |
 
 ## <a id="nextsteps"></a>次のステップ
 

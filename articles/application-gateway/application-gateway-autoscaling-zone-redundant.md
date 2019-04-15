@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544042"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444816"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -29,6 +29,29 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 > 自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU は、現在、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>v1 SKU と v2 SKU の機能比較
+
+次の表では、各 SKU で使用できる機能を比較しています。
+
+|                                                   | v1 SKU   | v2 SKU   |
+| ------------------------------------------------- | -------- | -------- |
+| 自動スケール                                       |          | &#x2713; |
+| ゾーン冗長性                                   |          | &#x2713; |
+| &nbsp;静的 VIP&nbsp;&nbsp;                      |          | &#x2713; |
+| URL ベースのルーティング                                 | &#x2713; | &#x2713; |
+| 複数サイトのホスティング                             | &#x2713; | &#x2713; |
+| トラフィック リダイレクト                               | &#x2713; | &#x2713; |
+| Web アプリケーション ファイアウォール (WAF)                    | &#x2713; | &#x2713; |
+| Secure Sockets Layer (SSL) の終了            | &#x2713; | &#x2713; |
+| エンドツーエンド SSL 暗号化                         | &#x2713; | &#x2713; |
+| セッション アフィニティ                                  | &#x2713; | &#x2713; |
+| カスタム エラー ページ                                | &#x2713; | &#x2713; |
+| HTTP ヘッダーを書き換える                           |          | &#x2713; |
+| WebSocket のサポート                                 | &#x2713; | &#x2713; |
+| HTTP/2 のサポート                                    | &#x2713; | &#x2713; |
+| 接続のドレイン                               | &#x2713; | &#x2713; |
+| Azure Kubernetes Service (AKS) のイングレス コントローラー |          | &#x2713; |
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -48,7 +71,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
 |Azure 診断でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
 |課金|現在は請求されません。|
-|FIPS モード、WebSocket|現在はサポートされていません。|
+|FIPS モード|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|
 |Netwatcher 統合|パブリック プレビューではサポートされていません。|
 

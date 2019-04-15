@@ -4,7 +4,7 @@ description: Service Fabric クラスターでオペレーティング システ
 services: service-fabric
 documentationcenter: .net
 author: khandelwalbrijeshiitr
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432993"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847739"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -28,6 +28,12 @@ ms.locfileid: "57432993"
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
+
+
+> 
+> [!IMPORTANT]
+> アプリケーションのバージョン 1.2.* は 2019 年 4 月 30 日にサポートが終了する予定です。 最新のバージョンにアップグレードしてください。
+
 
 [Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)は、Azure でオペレーティング システムに修正プログラムを適用させたままにするために最適で、Azure 以外でホストされるクラスターの OS パッチ スケジュールに基づいた構成を可能にする Service Fabrics RepairManager Systems サービスのラッパーです。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、アップグレード ドメインによる更新プログラムのインストールのスケジュール設定は、ダウンタイムなく Service Fabric クラスターのホストに修正プログラムを適用するために必要です。
 
@@ -319,7 +325,7 @@ A. 'UpgradeDomainWise' を設定すると、アップグレード ドメイン�
 
 Q. **ノードにパッチを適用するにはどのくらい時間がかかりますか?**
 
-A. ノードへのパッチの適用には、数分 (例:[Windows Defender 定義の更新プログラム](https://www.microsoft.com/wdsi/definitions)) から数時間 (例:[Windows の累積的な更新プログラム](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) かかることがあります。 ノードにパッチを適用するために必要な時間は、主に次の要因によって変わります。 
+A. ノードへのパッチの適用には、数分 (例:[Windows Defender 定義の更新プログラム](https://www.microsoft.com/en-us/wdsi/definitions)) から数時間 (例:[Windows の累積的な更新プログラム](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) かかることがあります。 ノードにパッチを適用するために必要な時間は、主に次の要因によって変わります。 
  - 更新プログラムのサイズ
  - (パッチの適用期間内に適用する必要がある) 更新プログラムの数
  - 更新プログラムのインストール、ノードの再起動 (必要な場合)、再起動後のインストール手順の完了までにかかる時間。
